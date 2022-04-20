@@ -7,7 +7,7 @@
 # 依赖环境
 
 1. Go 1.17 版本及以上。
-2. 在金山云控制台 [访问控制](https://console.ksyun.com) 页面获取密钥 AccessKey 和 SecretKey，请务必妥善保管，或者使用更安全的临时安全凭证。
+2. 在金山云控制台页面获取密钥 AccessKey 和 SecretKey，请务必妥善保管，或者使用更安全的临时安全凭证。
 
 # 获取安装
 
@@ -19,27 +19,14 @@
 
 可以按照产品下载，您只需下载基础包和对应的产品包(如iam)即可，不需要下载全部的产品，从而加快您构建镜像或者编译的速度：
 
-1. 安装公共基础包：
+1. 安装SDK包：
 
     ```bash
     go get -v -u github.com/kingsoftcloud/sdk-go/ksyun/common
     ```
-
-2. 安装对应的产品包(如iam):
-
-    ```bash
-    go get -v -u github.com/kingsoftcloud/sdk-go/ksyun/iam
-    ```
-
 ### 全部安装
 
 此模式支持 GOPATH 和 Go Modules
-
-此方式会一次性下载金山云所有产品的包：
-
-```bash
-go get -v -u github.com/kingsoftcloud/
-```
 
 ## 通过源码安装
 

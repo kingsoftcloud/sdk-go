@@ -24,7 +24,7 @@ func NewDescribeBillSummaryByPayModeRequest() (request *DescribeBillSummaryByPay
     request = &DescribeBillSummaryByPayModeRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("bill_union", APIVersion, "DescribeBillSummaryByPayMode")
+    request.Init().WithApiInfo("bill-union", APIVersion, "DescribeBillSummaryByPayMode")
     return
 }
 
@@ -53,7 +53,7 @@ func NewDescribeBillSummaryByProductRequest() (request *DescribeBillSummaryByPro
     request = &DescribeBillSummaryByProductRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("bill_union", APIVersion, "DescribeBillSummaryByProduct")
+    request.Init().WithApiInfo("bill-union", APIVersion, "DescribeBillSummaryByProduct")
     return
 }
 
@@ -82,7 +82,7 @@ func NewDescribeBillSummaryByProjectRequest() (request *DescribeBillSummaryByPro
     request = &DescribeBillSummaryByProjectRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("bill_union", APIVersion, "DescribeBillSummaryByProject")
+    request.Init().WithApiInfo("bill-union", APIVersion, "DescribeBillSummaryByProject")
     return
 }
 
@@ -111,7 +111,7 @@ func NewDescribeInstanceSummaryBillsRequest() (request *DescribeInstanceSummaryB
     request = &DescribeInstanceSummaryBillsRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("bill_union", APIVersion, "DescribeInstanceSummaryBills")
+    request.Init().WithApiInfo("bill-union", APIVersion, "DescribeInstanceSummaryBills")
     return
 }
 
@@ -140,7 +140,7 @@ func NewDescribeProductCodeRequest() (request *DescribeProductCodeRequest) {
     request = &DescribeProductCodeRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("bill_union", APIVersion, "DescribeProductCode")
+    request.Init().WithApiInfo("bill-union", APIVersion, "DescribeProductCode")
     return
 }
 
@@ -169,7 +169,7 @@ func NewDescribeSplitItemBillDetailsRequest() (request *DescribeSplitItemBillDet
     request = &DescribeSplitItemBillDetailsRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("bill_union", APIVersion, "DescribeSplitItemBillDetails")
+    request.Init().WithApiInfo("bill-union", APIVersion, "DescribeSplitItemBillDetails")
     return
 }
 

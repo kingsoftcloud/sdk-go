@@ -24,7 +24,7 @@ func NewDescribeCostBillRequest() (request *DescribeCostBillRequest) {
     request = &DescribeCostBillRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
     }
-    request.Init().WithApiInfo("bill_union", APIVersion, "DescribeCostBill")
+    request.Init().WithApiInfo("bill-union", APIVersion, "DescribeCostBill")
     return
 }
 

@@ -202,7 +202,7 @@ func (r *ResizeVolumeResponse) FromJsonString(s string) error {
 
 type DescribeVolumesRequest struct {
     *ksyunhttp.BaseRequest
-    VolumeId [] *string `json:"VolumeId,omitempty" name:"VolumeId"`
+    VolumeId []*string `json:"VolumeId,omitempty" name:"VolumeId"`
     VolumeCategory *string `json:"VolumeCategory,omitempty" name:"VolumeCategory"`
     VolumeStatus *string `json:"VolumeStatus,omitempty" name:"VolumeStatus"`
     VolumeType *string `json:"VolumeType,omitempty" name:"VolumeType"`
@@ -422,7 +422,7 @@ func (r *RenewVolumeResponse) FromJsonString(s string) error {
 
 type UpdateVolumeProjectRequest struct {
     *ksyunhttp.BaseRequest
-    VolumeId [] *string `json:"VolumeId,omitempty" name:"VolumeId"`
+    VolumeId []*string `json:"VolumeId,omitempty" name:"VolumeId"`
     ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 

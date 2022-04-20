@@ -89,7 +89,7 @@ func (r *DeleteForwardConfResponse) FromJsonString(s string) error {
 type DescribeForwardConfRequest struct {
     *ksyunhttp.BaseRequest
     KadId *string `json:"KadId,omitempty" name:"KadId"`
-    ForwardConfId [] *string `json:"ForwardConfId,omitempty" name:"ForwardConfId"`
+    ForwardConfId []*string `json:"ForwardConfId,omitempty" name:"ForwardConfId"`
 }
 
 func (r *DescribeForwardConfRequest) ToJsonString() string {
@@ -226,7 +226,7 @@ func (r *DeleteForwardSourceResponse) FromJsonString(s string) error {
 type DescribeForwardSourceRequest struct {
     *ksyunhttp.BaseRequest
     ForwardConfId *string `json:"ForwardConfId,omitempty" name:"ForwardConfId"`
-    ForwardSourceId [] *string `json:"ForwardSourceId,omitempty" name:"ForwardSourceId"`
+    ForwardSourceId []*string `json:"ForwardSourceId,omitempty" name:"ForwardSourceId"`
 }
 
 func (r *DescribeForwardSourceRequest) ToJsonString() string {
