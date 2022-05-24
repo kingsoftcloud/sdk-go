@@ -7,6 +7,11 @@ import (
 
 type DescribeCostBillRequest struct {
     *ksyunhttp.BaseRequest
+    billMonth *int `json:"billMonth,omitempty" name:"billMonth"`
+    statisticalItem *int `json:"statisticalItem,omitempty" name:"statisticalItem"`
+    instanceIds *string `json:"instanceIds,omitempty" name:"instanceIds"`
+    pageNo *int `json:"pageNo,omitempty" name:"pageNo"`
+    pageSize *int `json:"pageSize,omitempty" name:"pageSize"`
 }
 
 func (r *DescribeCostBillRequest) ToJsonString() string {
@@ -27,7 +32,7 @@ func (r *DescribeCostBillRequest) FromJsonString(s string) error {
 
 type DescribeCostBillResponse struct {
     *ksyunhttp.BaseResponse
-    status *int `json:"status" name:"status"`
+    Status *int `json:"Status" name:"Status"`
 }
 
 func (r *DescribeCostBillResponse) ToJsonString() string {

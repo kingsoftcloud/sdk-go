@@ -7,6 +7,8 @@ import (
 
 type DescribeBillSummaryByPayModeRequest struct {
     *ksyunhttp.BaseRequest
+    BillBeginMonth *string `json:"BillBeginMonth,omitempty" name:"BillBeginMonth"`
+    BillEndMonth *string `json:"BillEndMonth,omitempty" name:"BillEndMonth"`
 }
 
 func (r *DescribeBillSummaryByPayModeRequest) ToJsonString() string {
@@ -48,6 +50,8 @@ func (r *DescribeBillSummaryByPayModeResponse) FromJsonString(s string) error {
 
 type DescribeBillSummaryByProductRequest struct {
     *ksyunhttp.BaseRequest
+    BillBeginMonth *string `json:"BillBeginMonth,omitempty" name:"BillBeginMonth"`
+    BillEndMonth *string `json:"BillEndMonth,omitempty" name:"BillEndMonth"`
 }
 
 func (r *DescribeBillSummaryByProductRequest) ToJsonString() string {
@@ -134,6 +138,10 @@ func (r *DescribeBillSummaryByProjectResponse) FromJsonString(s string) error {
 
 type DescribeInstanceSummaryBillsRequest struct {
     *ksyunhttp.BaseRequest
+    BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
+    ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
+    Page *int `json:"Page,omitempty" name:"Page"`
+    Size *int `json:"Size,omitempty" name:"Size"`
 }
 
 func (r *DescribeInstanceSummaryBillsRequest) ToJsonString() string {
@@ -254,6 +262,13 @@ func (r *DescribeProductCodeResponse) FromJsonString(s string) error {
 
 type DescribeSplitItemBillDetailsRequest struct {
     *ksyunhttp.BaseRequest
+    CustomerBillMonth *int `json:"CustomerBillMonth,omitempty" name:"CustomerBillMonth"`
+    ProductGroupCode *string `json:"ProductGroupCode,omitempty" name:"ProductGroupCode"`
+    StatisticType *int `json:"StatisticType,omitempty" name:"StatisticType"`
+    PayType *int `json:"PayType,omitempty" name:"PayType"`
+    SubAccountId *int `json:"SubAccountId,omitempty" name:"SubAccountId"`
+    Page *int `json:"Page,omitempty" name:"Page"`
+    Size *string `json:"Size,omitempty" name:"Size"`
 }
 
 func (r *DescribeSplitItemBillDetailsRequest) ToJsonString() string {
