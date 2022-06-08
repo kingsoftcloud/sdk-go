@@ -7,7 +7,8 @@ import (
 
 type GetMonthBillRequest struct {
     *ksyunhttp.BaseRequest
-    Action *string `json:"Action,omitempty" name:"Action"`
+    BillStartMonth *string `json:"BillStartMonth,omitempty" name:"BillStartMonth"`
+    BillEndMonth *string `json:"BillEndMonth,omitempty" name:"BillEndMonth"`
 }
 
 func (r *GetMonthBillRequest) ToJsonString() string {
@@ -41,6 +42,10 @@ func (r *GetMonthBillResponse) FromJsonString(s string) error {
 
 type GetPostpayDetailBillRequest struct {
     *ksyunhttp.BaseRequest
+    BillStartMonth *string `json:"BillStartMonth,omitempty" name:"BillStartMonth"`
+    BillEndMonth *string `json:"BillEndMonth,omitempty" name:"BillEndMonth"`
+    ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
+    ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *GetPostpayDetailBillRequest) ToJsonString() string {
@@ -74,6 +79,10 @@ func (r *GetPostpayDetailBillResponse) FromJsonString(s string) error {
 
 type GetPostpayDetailBillCSVRequest struct {
     *ksyunhttp.BaseRequest
+    BillStartMonth *string `json:"BillStartMonth,omitempty" name:"BillStartMonth"`
+    BillEndMonth *string `json:"BillEndMonth,omitempty" name:"BillEndMonth"`
+    ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
+    ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *GetPostpayDetailBillCSVRequest) ToJsonString() string {
@@ -140,6 +149,7 @@ func (r *GetProductCodeResponse) FromJsonString(s string) error {
 
 type getMonthConsumeRequest struct {
     *ksyunhttp.BaseRequest
+    BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
 }
 
 func (r *getMonthConsumeRequest) ToJsonString() string {
@@ -173,6 +183,11 @@ func (r *getMonthConsumeResponse) FromJsonString(s string) error {
 
 type getPostpayDetailConsumeRequest struct {
     *ksyunhttp.BaseRequest
+    BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
+    ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
+    ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+    PageNo *int `json:"PageNo,omitempty" name:"PageNo"`
+    PageSize *int `json:"PageSize,omitempty" name:"PageSize"`
 }
 
 func (r *getPostpayDetailConsumeRequest) ToJsonString() string {
