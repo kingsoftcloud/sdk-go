@@ -1,6 +1,7 @@
 package v20200831
 import (
     "context"
+    "fmt"
     "github.com/kingsoftcloud/sdk-go/ksyun/common"
     ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
     "github.com/kingsoftcloud/sdk-go/ksyun/common/profile"
@@ -35,19 +36,22 @@ func NewSetRenewalResponse() (response *SetRenewalResponse) {
     return
 }
 
-func (c *Client) SetRenewal(request *SetRenewalRequest) (response *SetRenewalResponse, err error) {
+func (c *Client) SetRenewal(request *SetRenewalRequest) (string) {
     return c.SetRenewalWithContext(context.Background(), request)
 }
 
-func (c *Client) SetRenewalWithContext(ctx context.Context, request *SetRenewalRequest) (response *SetRenewalResponse, err error) {
+func (c *Client) SetRenewalWithContext(ctx context.Context, request *SetRenewalRequest) (string) {
     if request == nil {
         request = NewSetRenewalRequest()
     }
     request.SetContext(ctx)
 
-    response = NewSetRenewalResponse()
-    err = c.Send(request, response)
-    return
+    response := NewSetRenewalResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 
 

@@ -1,6 +1,7 @@
 package v20200114
 import (
     "context"
+    "fmt"
     "github.com/kingsoftcloud/sdk-go/ksyun/common"
     ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
     "github.com/kingsoftcloud/sdk-go/ksyun/common/profile"
@@ -35,19 +36,22 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
     return
 }
 
-func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
+func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (string) {
     return c.DescribeInstancesWithContext(context.Background(), request)
 }
 
-func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
+func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *DescribeInstancesRequest) (string) {
     if request == nil {
         request = NewDescribeInstancesRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDescribeInstancesResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDescribeInstancesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 
 

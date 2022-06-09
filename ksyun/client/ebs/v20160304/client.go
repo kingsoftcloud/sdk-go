@@ -1,6 +1,7 @@
 package v20160304
 import (
     "context"
+    "fmt"
     "github.com/kingsoftcloud/sdk-go/ksyun/common"
     ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
     "github.com/kingsoftcloud/sdk-go/ksyun/common/profile"
@@ -35,19 +36,22 @@ func NewCreateVolumeResponse() (response *CreateVolumeResponse) {
     return
 }
 
-func (c *Client) CreateVolume(request *CreateVolumeRequest) (response *CreateVolumeResponse, err error) {
+func (c *Client) CreateVolume(request *CreateVolumeRequest) (string) {
     return c.CreateVolumeWithContext(context.Background(), request)
 }
 
-func (c *Client) CreateVolumeWithContext(ctx context.Context, request *CreateVolumeRequest) (response *CreateVolumeResponse, err error) {
+func (c *Client) CreateVolumeWithContext(ctx context.Context, request *CreateVolumeRequest) (string) {
     if request == nil {
         request = NewCreateVolumeRequest()
     }
     request.SetContext(ctx)
 
-    response = NewCreateVolumeResponse()
-    err = c.Send(request, response)
-    return
+    response := NewCreateVolumeResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewAttachVolumeRequest() (request *AttachVolumeRequest) {
     request = &AttachVolumeRequest{
@@ -64,19 +68,22 @@ func NewAttachVolumeResponse() (response *AttachVolumeResponse) {
     return
 }
 
-func (c *Client) AttachVolume(request *AttachVolumeRequest) (response *AttachVolumeResponse, err error) {
+func (c *Client) AttachVolume(request *AttachVolumeRequest) (string) {
     return c.AttachVolumeWithContext(context.Background(), request)
 }
 
-func (c *Client) AttachVolumeWithContext(ctx context.Context, request *AttachVolumeRequest) (response *AttachVolumeResponse, err error) {
+func (c *Client) AttachVolumeWithContext(ctx context.Context, request *AttachVolumeRequest) (string) {
     if request == nil {
         request = NewAttachVolumeRequest()
     }
     request.SetContext(ctx)
 
-    response = NewAttachVolumeResponse()
-    err = c.Send(request, response)
-    return
+    response := NewAttachVolumeResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDetachVolumeRequest() (request *DetachVolumeRequest) {
     request = &DetachVolumeRequest{
@@ -93,19 +100,22 @@ func NewDetachVolumeResponse() (response *DetachVolumeResponse) {
     return
 }
 
-func (c *Client) DetachVolume(request *DetachVolumeRequest) (response *DetachVolumeResponse, err error) {
+func (c *Client) DetachVolume(request *DetachVolumeRequest) (string) {
     return c.DetachVolumeWithContext(context.Background(), request)
 }
 
-func (c *Client) DetachVolumeWithContext(ctx context.Context, request *DetachVolumeRequest) (response *DetachVolumeResponse, err error) {
+func (c *Client) DetachVolumeWithContext(ctx context.Context, request *DetachVolumeRequest) (string) {
     if request == nil {
         request = NewDetachVolumeRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDetachVolumeResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDetachVolumeResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDeleteVolumeRequest() (request *DeleteVolumeRequest) {
     request = &DeleteVolumeRequest{
@@ -122,19 +132,22 @@ func NewDeleteVolumeResponse() (response *DeleteVolumeResponse) {
     return
 }
 
-func (c *Client) DeleteVolume(request *DeleteVolumeRequest) (response *DeleteVolumeResponse, err error) {
+func (c *Client) DeleteVolume(request *DeleteVolumeRequest) (string) {
     return c.DeleteVolumeWithContext(context.Background(), request)
 }
 
-func (c *Client) DeleteVolumeWithContext(ctx context.Context, request *DeleteVolumeRequest) (response *DeleteVolumeResponse, err error) {
+func (c *Client) DeleteVolumeWithContext(ctx context.Context, request *DeleteVolumeRequest) (string) {
     if request == nil {
         request = NewDeleteVolumeRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDeleteVolumeResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDeleteVolumeResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewResizeVolumeRequest() (request *ResizeVolumeRequest) {
     request = &ResizeVolumeRequest{
@@ -151,19 +164,22 @@ func NewResizeVolumeResponse() (response *ResizeVolumeResponse) {
     return
 }
 
-func (c *Client) ResizeVolume(request *ResizeVolumeRequest) (response *ResizeVolumeResponse, err error) {
+func (c *Client) ResizeVolume(request *ResizeVolumeRequest) (string) {
     return c.ResizeVolumeWithContext(context.Background(), request)
 }
 
-func (c *Client) ResizeVolumeWithContext(ctx context.Context, request *ResizeVolumeRequest) (response *ResizeVolumeResponse, err error) {
+func (c *Client) ResizeVolumeWithContext(ctx context.Context, request *ResizeVolumeRequest) (string) {
     if request == nil {
         request = NewResizeVolumeRequest()
     }
     request.SetContext(ctx)
 
-    response = NewResizeVolumeResponse()
-    err = c.Send(request, response)
-    return
+    response := NewResizeVolumeResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDescribeVolumesRequest() (request *DescribeVolumesRequest) {
     request = &DescribeVolumesRequest{
@@ -180,19 +196,22 @@ func NewDescribeVolumesResponse() (response *DescribeVolumesResponse) {
     return
 }
 
-func (c *Client) DescribeVolumes(request *DescribeVolumesRequest) (response *DescribeVolumesResponse, err error) {
+func (c *Client) DescribeVolumes(request *DescribeVolumesRequest) (string) {
     return c.DescribeVolumesWithContext(context.Background(), request)
 }
 
-func (c *Client) DescribeVolumesWithContext(ctx context.Context, request *DescribeVolumesRequest) (response *DescribeVolumesResponse, err error) {
+func (c *Client) DescribeVolumesWithContext(ctx context.Context, request *DescribeVolumesRequest) (string) {
     if request == nil {
         request = NewDescribeVolumesRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDescribeVolumesResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDescribeVolumesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewModifyVolumeRequest() (request *ModifyVolumeRequest) {
     request = &ModifyVolumeRequest{
@@ -209,19 +228,22 @@ func NewModifyVolumeResponse() (response *ModifyVolumeResponse) {
     return
 }
 
-func (c *Client) ModifyVolume(request *ModifyVolumeRequest) (response *ModifyVolumeResponse, err error) {
+func (c *Client) ModifyVolume(request *ModifyVolumeRequest) (string) {
     return c.ModifyVolumeWithContext(context.Background(), request)
 }
 
-func (c *Client) ModifyVolumeWithContext(ctx context.Context, request *ModifyVolumeRequest) (response *ModifyVolumeResponse, err error) {
+func (c *Client) ModifyVolumeWithContext(ctx context.Context, request *ModifyVolumeRequest) (string) {
     if request == nil {
         request = NewModifyVolumeRequest()
     }
     request.SetContext(ctx)
 
-    response = NewModifyVolumeResponse()
-    err = c.Send(request, response)
-    return
+    response := NewModifyVolumeResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDescribeEbsInstancesRequest() (request *DescribeEbsInstancesRequest) {
     request = &DescribeEbsInstancesRequest{
@@ -238,19 +260,22 @@ func NewDescribeEbsInstancesResponse() (response *DescribeEbsInstancesResponse) 
     return
 }
 
-func (c *Client) DescribeEbsInstances(request *DescribeEbsInstancesRequest) (response *DescribeEbsInstancesResponse, err error) {
+func (c *Client) DescribeEbsInstances(request *DescribeEbsInstancesRequest) (string) {
     return c.DescribeEbsInstancesWithContext(context.Background(), request)
 }
 
-func (c *Client) DescribeEbsInstancesWithContext(ctx context.Context, request *DescribeEbsInstancesRequest) (response *DescribeEbsInstancesResponse, err error) {
+func (c *Client) DescribeEbsInstancesWithContext(ctx context.Context, request *DescribeEbsInstancesRequest) (string) {
     if request == nil {
         request = NewDescribeEbsInstancesRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDescribeEbsInstancesResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDescribeEbsInstancesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDescribeInstanceVolumesRequest() (request *DescribeInstanceVolumesRequest) {
     request = &DescribeInstanceVolumesRequest{
@@ -267,19 +292,22 @@ func NewDescribeInstanceVolumesResponse() (response *DescribeInstanceVolumesResp
     return
 }
 
-func (c *Client) DescribeInstanceVolumes(request *DescribeInstanceVolumesRequest) (response *DescribeInstanceVolumesResponse, err error) {
+func (c *Client) DescribeInstanceVolumes(request *DescribeInstanceVolumesRequest) (string) {
     return c.DescribeInstanceVolumesWithContext(context.Background(), request)
 }
 
-func (c *Client) DescribeInstanceVolumesWithContext(ctx context.Context, request *DescribeInstanceVolumesRequest) (response *DescribeInstanceVolumesResponse, err error) {
+func (c *Client) DescribeInstanceVolumesWithContext(ctx context.Context, request *DescribeInstanceVolumesRequest) (string) {
     if request == nil {
         request = NewDescribeInstanceVolumesRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDescribeInstanceVolumesResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDescribeInstanceVolumesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewRenewVolumeRequest() (request *RenewVolumeRequest) {
     request = &RenewVolumeRequest{
@@ -296,19 +324,22 @@ func NewRenewVolumeResponse() (response *RenewVolumeResponse) {
     return
 }
 
-func (c *Client) RenewVolume(request *RenewVolumeRequest) (response *RenewVolumeResponse, err error) {
+func (c *Client) RenewVolume(request *RenewVolumeRequest) (string) {
     return c.RenewVolumeWithContext(context.Background(), request)
 }
 
-func (c *Client) RenewVolumeWithContext(ctx context.Context, request *RenewVolumeRequest) (response *RenewVolumeResponse, err error) {
+func (c *Client) RenewVolumeWithContext(ctx context.Context, request *RenewVolumeRequest) (string) {
     if request == nil {
         request = NewRenewVolumeRequest()
     }
     request.SetContext(ctx)
 
-    response = NewRenewVolumeResponse()
-    err = c.Send(request, response)
-    return
+    response := NewRenewVolumeResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewUpdateVolumeProjectRequest() (request *UpdateVolumeProjectRequest) {
     request = &UpdateVolumeProjectRequest{
@@ -325,19 +356,22 @@ func NewUpdateVolumeProjectResponse() (response *UpdateVolumeProjectResponse) {
     return
 }
 
-func (c *Client) UpdateVolumeProject(request *UpdateVolumeProjectRequest) (response *UpdateVolumeProjectResponse, err error) {
+func (c *Client) UpdateVolumeProject(request *UpdateVolumeProjectRequest) (string) {
     return c.UpdateVolumeProjectWithContext(context.Background(), request)
 }
 
-func (c *Client) UpdateVolumeProjectWithContext(ctx context.Context, request *UpdateVolumeProjectRequest) (response *UpdateVolumeProjectResponse, err error) {
+func (c *Client) UpdateVolumeProjectWithContext(ctx context.Context, request *UpdateVolumeProjectRequest) (string) {
     if request == nil {
         request = NewUpdateVolumeProjectRequest()
     }
     request.SetContext(ctx)
 
-    response = NewUpdateVolumeProjectResponse()
-    err = c.Send(request, response)
-    return
+    response := NewUpdateVolumeProjectResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDescribeSnapshotsRequest() (request *DescribeSnapshotsRequest) {
     request = &DescribeSnapshotsRequest{
@@ -354,19 +388,22 @@ func NewDescribeSnapshotsResponse() (response *DescribeSnapshotsResponse) {
     return
 }
 
-func (c *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (response *DescribeSnapshotsResponse, err error) {
+func (c *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (string) {
     return c.DescribeSnapshotsWithContext(context.Background(), request)
 }
 
-func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, request *DescribeSnapshotsRequest) (response *DescribeSnapshotsResponse, err error) {
+func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, request *DescribeSnapshotsRequest) (string) {
     if request == nil {
         request = NewDescribeSnapshotsRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDescribeSnapshotsResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDescribeSnapshotsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewCreateSnapshotRequest() (request *CreateSnapshotRequest) {
     request = &CreateSnapshotRequest{
@@ -383,19 +420,22 @@ func NewCreateSnapshotResponse() (response *CreateSnapshotResponse) {
     return
 }
 
-func (c *Client) CreateSnapshot(request *CreateSnapshotRequest) (response *CreateSnapshotResponse, err error) {
+func (c *Client) CreateSnapshot(request *CreateSnapshotRequest) (string) {
     return c.CreateSnapshotWithContext(context.Background(), request)
 }
 
-func (c *Client) CreateSnapshotWithContext(ctx context.Context, request *CreateSnapshotRequest) (response *CreateSnapshotResponse, err error) {
+func (c *Client) CreateSnapshotWithContext(ctx context.Context, request *CreateSnapshotRequest) (string) {
     if request == nil {
         request = NewCreateSnapshotRequest()
     }
     request.SetContext(ctx)
 
-    response = NewCreateSnapshotResponse()
-    err = c.Send(request, response)
-    return
+    response := NewCreateSnapshotResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDeleteSnapshotRequest() (request *DeleteSnapshotRequest) {
     request = &DeleteSnapshotRequest{
@@ -412,19 +452,22 @@ func NewDeleteSnapshotResponse() (response *DeleteSnapshotResponse) {
     return
 }
 
-func (c *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (response *DeleteSnapshotResponse, err error) {
+func (c *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (string) {
     return c.DeleteSnapshotWithContext(context.Background(), request)
 }
 
-func (c *Client) DeleteSnapshotWithContext(ctx context.Context, request *DeleteSnapshotRequest) (response *DeleteSnapshotResponse, err error) {
+func (c *Client) DeleteSnapshotWithContext(ctx context.Context, request *DeleteSnapshotRequest) (string) {
     if request == nil {
         request = NewDeleteSnapshotRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDeleteSnapshotResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDeleteSnapshotResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewRollbackSnapshotRequest() (request *RollbackSnapshotRequest) {
     request = &RollbackSnapshotRequest{
@@ -441,19 +484,22 @@ func NewRollbackSnapshotResponse() (response *RollbackSnapshotResponse) {
     return
 }
 
-func (c *Client) RollbackSnapshot(request *RollbackSnapshotRequest) (response *RollbackSnapshotResponse, err error) {
+func (c *Client) RollbackSnapshot(request *RollbackSnapshotRequest) (string) {
     return c.RollbackSnapshotWithContext(context.Background(), request)
 }
 
-func (c *Client) RollbackSnapshotWithContext(ctx context.Context, request *RollbackSnapshotRequest) (response *RollbackSnapshotResponse, err error) {
+func (c *Client) RollbackSnapshotWithContext(ctx context.Context, request *RollbackSnapshotRequest) (string) {
     if request == nil {
         request = NewRollbackSnapshotRequest()
     }
     request.SetContext(ctx)
 
-    response = NewRollbackSnapshotResponse()
-    err = c.Send(request, response)
-    return
+    response := NewRollbackSnapshotResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewModifySnapshotRequest() (request *ModifySnapshotRequest) {
     request = &ModifySnapshotRequest{
@@ -470,19 +516,22 @@ func NewModifySnapshotResponse() (response *ModifySnapshotResponse) {
     return
 }
 
-func (c *Client) ModifySnapshot(request *ModifySnapshotRequest) (response *ModifySnapshotResponse, err error) {
+func (c *Client) ModifySnapshot(request *ModifySnapshotRequest) (string) {
     return c.ModifySnapshotWithContext(context.Background(), request)
 }
 
-func (c *Client) ModifySnapshotWithContext(ctx context.Context, request *ModifySnapshotRequest) (response *ModifySnapshotResponse, err error) {
+func (c *Client) ModifySnapshotWithContext(ctx context.Context, request *ModifySnapshotRequest) (string) {
     if request == nil {
         request = NewModifySnapshotRequest()
     }
     request.SetContext(ctx)
 
-    response = NewModifySnapshotResponse()
-    err = c.Send(request, response)
-    return
+    response := NewModifySnapshotResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewRecoveryVolumeRequest() (request *RecoveryVolumeRequest) {
     request = &RecoveryVolumeRequest{
@@ -499,19 +548,22 @@ func NewRecoveryVolumeResponse() (response *RecoveryVolumeResponse) {
     return
 }
 
-func (c *Client) RecoveryVolume(request *RecoveryVolumeRequest) (response *RecoveryVolumeResponse, err error) {
+func (c *Client) RecoveryVolume(request *RecoveryVolumeRequest) (string) {
     return c.RecoveryVolumeWithContext(context.Background(), request)
 }
 
-func (c *Client) RecoveryVolumeWithContext(ctx context.Context, request *RecoveryVolumeRequest) (response *RecoveryVolumeResponse, err error) {
+func (c *Client) RecoveryVolumeWithContext(ctx context.Context, request *RecoveryVolumeRequest) (string) {
     if request == nil {
         request = NewRecoveryVolumeRequest()
     }
     request.SetContext(ctx)
 
-    response = NewRecoveryVolumeResponse()
-    err = c.Send(request, response)
-    return
+    response := NewRecoveryVolumeResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewValidateAttachInstanceRequest() (request *ValidateAttachInstanceRequest) {
     request = &ValidateAttachInstanceRequest{
@@ -528,19 +580,22 @@ func NewValidateAttachInstanceResponse() (response *ValidateAttachInstanceRespon
     return
 }
 
-func (c *Client) ValidateAttachInstance(request *ValidateAttachInstanceRequest) (response *ValidateAttachInstanceResponse, err error) {
+func (c *Client) ValidateAttachInstance(request *ValidateAttachInstanceRequest) (string) {
     return c.ValidateAttachInstanceWithContext(context.Background(), request)
 }
 
-func (c *Client) ValidateAttachInstanceWithContext(ctx context.Context, request *ValidateAttachInstanceRequest) (response *ValidateAttachInstanceResponse, err error) {
+func (c *Client) ValidateAttachInstanceWithContext(ctx context.Context, request *ValidateAttachInstanceRequest) (string) {
     if request == nil {
         request = NewValidateAttachInstanceRequest()
     }
     request.SetContext(ctx)
 
-    response = NewValidateAttachInstanceResponse()
-    err = c.Send(request, response)
-    return
+    response := NewValidateAttachInstanceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 
 

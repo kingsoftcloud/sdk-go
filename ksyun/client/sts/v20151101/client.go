@@ -1,6 +1,7 @@
 package v20151101
 import (
     "context"
+    "fmt"
     "github.com/kingsoftcloud/sdk-go/ksyun/common"
     ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
     "github.com/kingsoftcloud/sdk-go/ksyun/common/profile"
@@ -35,19 +36,22 @@ func NewAssumeRoleResponse() (response *AssumeRoleResponse) {
     return
 }
 
-func (c *Client) AssumeRole(request *AssumeRoleRequest) (response *AssumeRoleResponse, err error) {
+func (c *Client) AssumeRole(request *AssumeRoleRequest) (string) {
     return c.AssumeRoleWithContext(context.Background(), request)
 }
 
-func (c *Client) AssumeRoleWithContext(ctx context.Context, request *AssumeRoleRequest) (response *AssumeRoleResponse, err error) {
+func (c *Client) AssumeRoleWithContext(ctx context.Context, request *AssumeRoleRequest) (string) {
     if request == nil {
         request = NewAssumeRoleRequest()
     }
     request.SetContext(ctx)
 
-    response = NewAssumeRoleResponse()
-    err = c.Send(request, response)
-    return
+    response := NewAssumeRoleResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 
 

@@ -1,6 +1,7 @@
 package v20151101
 import (
     "context"
+    "fmt"
     "github.com/kingsoftcloud/sdk-go/ksyun/common"
     ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
     "github.com/kingsoftcloud/sdk-go/ksyun/common/profile"
@@ -35,19 +36,22 @@ func NewCreateUserResponse() (response *CreateUserResponse) {
     return
 }
 
-func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserResponse, err error) {
+func (c *Client) CreateUser(request *CreateUserRequest) (string) {
     return c.CreateUserWithContext(context.Background(), request)
 }
 
-func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserRequest) (response *CreateUserResponse, err error) {
+func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserRequest) (string) {
     if request == nil {
         request = NewCreateUserRequest()
     }
     request.SetContext(ctx)
 
-    response = NewCreateUserResponse()
-    err = c.Send(request, response)
-    return
+    response := NewCreateUserResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewListUsersRequest() (request *ListUsersRequest) {
     request = &ListUsersRequest{
@@ -64,19 +68,22 @@ func NewListUsersResponse() (response *ListUsersResponse) {
     return
 }
 
-func (c *Client) ListUsers(request *ListUsersRequest) (response *ListUsersResponse, err error) {
+func (c *Client) ListUsers(request *ListUsersRequest) (string) {
     return c.ListUsersWithContext(context.Background(), request)
 }
 
-func (c *Client) ListUsersWithContext(ctx context.Context, request *ListUsersRequest) (response *ListUsersResponse, err error) {
+func (c *Client) ListUsersWithContext(ctx context.Context, request *ListUsersRequest) (string) {
     if request == nil {
         request = NewListUsersRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListUsersResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListUsersResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewUpdateUserRequest() (request *UpdateUserRequest) {
     request = &UpdateUserRequest{
@@ -93,19 +100,22 @@ func NewUpdateUserResponse() (response *UpdateUserResponse) {
     return
 }
 
-func (c *Client) UpdateUser(request *UpdateUserRequest) (response *UpdateUserResponse, err error) {
+func (c *Client) UpdateUser(request *UpdateUserRequest) (string) {
     return c.UpdateUserWithContext(context.Background(), request)
 }
 
-func (c *Client) UpdateUserWithContext(ctx context.Context, request *UpdateUserRequest) (response *UpdateUserResponse, err error) {
+func (c *Client) UpdateUserWithContext(ctx context.Context, request *UpdateUserRequest) (string) {
     if request == nil {
         request = NewUpdateUserRequest()
     }
     request.SetContext(ctx)
 
-    response = NewUpdateUserResponse()
-    err = c.Send(request, response)
-    return
+    response := NewUpdateUserResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewGetUserRequest() (request *GetUserRequest) {
     request = &GetUserRequest{
@@ -122,19 +132,22 @@ func NewGetUserResponse() (response *GetUserResponse) {
     return
 }
 
-func (c *Client) GetUser(request *GetUserRequest) (response *GetUserResponse, err error) {
+func (c *Client) GetUser(request *GetUserRequest) (string) {
     return c.GetUserWithContext(context.Background(), request)
 }
 
-func (c *Client) GetUserWithContext(ctx context.Context, request *GetUserRequest) (response *GetUserResponse, err error) {
+func (c *Client) GetUserWithContext(ctx context.Context, request *GetUserRequest) (string) {
     if request == nil {
         request = NewGetUserRequest()
     }
     request.SetContext(ctx)
 
-    response = NewGetUserResponse()
-    err = c.Send(request, response)
-    return
+    response := NewGetUserResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDeleteUserRequest() (request *DeleteUserRequest) {
     request = &DeleteUserRequest{
@@ -151,19 +164,22 @@ func NewDeleteUserResponse() (response *DeleteUserResponse) {
     return
 }
 
-func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
+func (c *Client) DeleteUser(request *DeleteUserRequest) (string) {
     return c.DeleteUserWithContext(context.Background(), request)
 }
 
-func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
+func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserRequest) (string) {
     if request == nil {
         request = NewDeleteUserRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDeleteUserResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDeleteUserResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewListAttachedUserPoliciesRequest() (request *ListAttachedUserPoliciesRequest) {
     request = &ListAttachedUserPoliciesRequest{
@@ -180,19 +196,22 @@ func NewListAttachedUserPoliciesResponse() (response *ListAttachedUserPoliciesRe
     return
 }
 
-func (c *Client) ListAttachedUserPolicies(request *ListAttachedUserPoliciesRequest) (response *ListAttachedUserPoliciesResponse, err error) {
+func (c *Client) ListAttachedUserPolicies(request *ListAttachedUserPoliciesRequest) (string) {
     return c.ListAttachedUserPoliciesWithContext(context.Background(), request)
 }
 
-func (c *Client) ListAttachedUserPoliciesWithContext(ctx context.Context, request *ListAttachedUserPoliciesRequest) (response *ListAttachedUserPoliciesResponse, err error) {
+func (c *Client) ListAttachedUserPoliciesWithContext(ctx context.Context, request *ListAttachedUserPoliciesRequest) (string) {
     if request == nil {
         request = NewListAttachedUserPoliciesRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListAttachedUserPoliciesResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListAttachedUserPoliciesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewListPolicyVersionsRequest() (request *ListPolicyVersionsRequest) {
     request = &ListPolicyVersionsRequest{
@@ -209,19 +228,22 @@ func NewListPolicyVersionsResponse() (response *ListPolicyVersionsResponse) {
     return
 }
 
-func (c *Client) ListPolicyVersions(request *ListPolicyVersionsRequest) (response *ListPolicyVersionsResponse, err error) {
+func (c *Client) ListPolicyVersions(request *ListPolicyVersionsRequest) (string) {
     return c.ListPolicyVersionsWithContext(context.Background(), request)
 }
 
-func (c *Client) ListPolicyVersionsWithContext(ctx context.Context, request *ListPolicyVersionsRequest) (response *ListPolicyVersionsResponse, err error) {
+func (c *Client) ListPolicyVersionsWithContext(ctx context.Context, request *ListPolicyVersionsRequest) (string) {
     if request == nil {
         request = NewListPolicyVersionsRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListPolicyVersionsResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListPolicyVersionsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewSetDefaultPolicyVersionRequest() (request *SetDefaultPolicyVersionRequest) {
     request = &SetDefaultPolicyVersionRequest{
@@ -238,19 +260,22 @@ func NewSetDefaultPolicyVersionResponse() (response *SetDefaultPolicyVersionResp
     return
 }
 
-func (c *Client) SetDefaultPolicyVersion(request *SetDefaultPolicyVersionRequest) (response *SetDefaultPolicyVersionResponse, err error) {
+func (c *Client) SetDefaultPolicyVersion(request *SetDefaultPolicyVersionRequest) (string) {
     return c.SetDefaultPolicyVersionWithContext(context.Background(), request)
 }
 
-func (c *Client) SetDefaultPolicyVersionWithContext(ctx context.Context, request *SetDefaultPolicyVersionRequest) (response *SetDefaultPolicyVersionResponse, err error) {
+func (c *Client) SetDefaultPolicyVersionWithContext(ctx context.Context, request *SetDefaultPolicyVersionRequest) (string) {
     if request == nil {
         request = NewSetDefaultPolicyVersionRequest()
     }
     request.SetContext(ctx)
 
-    response = NewSetDefaultPolicyVersionResponse()
-    err = c.Send(request, response)
-    return
+    response := NewSetDefaultPolicyVersionResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewAttachUserPolicyRequest() (request *AttachUserPolicyRequest) {
     request = &AttachUserPolicyRequest{
@@ -267,19 +292,22 @@ func NewAttachUserPolicyResponse() (response *AttachUserPolicyResponse) {
     return
 }
 
-func (c *Client) AttachUserPolicy(request *AttachUserPolicyRequest) (response *AttachUserPolicyResponse, err error) {
+func (c *Client) AttachUserPolicy(request *AttachUserPolicyRequest) (string) {
     return c.AttachUserPolicyWithContext(context.Background(), request)
 }
 
-func (c *Client) AttachUserPolicyWithContext(ctx context.Context, request *AttachUserPolicyRequest) (response *AttachUserPolicyResponse, err error) {
+func (c *Client) AttachUserPolicyWithContext(ctx context.Context, request *AttachUserPolicyRequest) (string) {
     if request == nil {
         request = NewAttachUserPolicyRequest()
     }
     request.SetContext(ctx)
 
-    response = NewAttachUserPolicyResponse()
-    err = c.Send(request, response)
-    return
+    response := NewAttachUserPolicyResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDeletePolicyVersionRequest() (request *DeletePolicyVersionRequest) {
     request = &DeletePolicyVersionRequest{
@@ -296,19 +324,22 @@ func NewDeletePolicyVersionResponse() (response *DeletePolicyVersionResponse) {
     return
 }
 
-func (c *Client) DeletePolicyVersion(request *DeletePolicyVersionRequest) (response *DeletePolicyVersionResponse, err error) {
+func (c *Client) DeletePolicyVersion(request *DeletePolicyVersionRequest) (string) {
     return c.DeletePolicyVersionWithContext(context.Background(), request)
 }
 
-func (c *Client) DeletePolicyVersionWithContext(ctx context.Context, request *DeletePolicyVersionRequest) (response *DeletePolicyVersionResponse, err error) {
+func (c *Client) DeletePolicyVersionWithContext(ctx context.Context, request *DeletePolicyVersionRequest) (string) {
     if request == nil {
         request = NewDeletePolicyVersionRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDeletePolicyVersionResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDeletePolicyVersionResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewGetPolicyVersionRequest() (request *GetPolicyVersionRequest) {
     request = &GetPolicyVersionRequest{
@@ -325,19 +356,22 @@ func NewGetPolicyVersionResponse() (response *GetPolicyVersionResponse) {
     return
 }
 
-func (c *Client) GetPolicyVersion(request *GetPolicyVersionRequest) (response *GetPolicyVersionResponse, err error) {
+func (c *Client) GetPolicyVersion(request *GetPolicyVersionRequest) (string) {
     return c.GetPolicyVersionWithContext(context.Background(), request)
 }
 
-func (c *Client) GetPolicyVersionWithContext(ctx context.Context, request *GetPolicyVersionRequest) (response *GetPolicyVersionResponse, err error) {
+func (c *Client) GetPolicyVersionWithContext(ctx context.Context, request *GetPolicyVersionRequest) (string) {
     if request == nil {
         request = NewGetPolicyVersionRequest()
     }
     request.SetContext(ctx)
 
-    response = NewGetPolicyVersionResponse()
-    err = c.Send(request, response)
-    return
+    response := NewGetPolicyVersionResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewCreatePolicyVersionRequest() (request *CreatePolicyVersionRequest) {
     request = &CreatePolicyVersionRequest{
@@ -354,19 +388,22 @@ func NewCreatePolicyVersionResponse() (response *CreatePolicyVersionResponse) {
     return
 }
 
-func (c *Client) CreatePolicyVersion(request *CreatePolicyVersionRequest) (response *CreatePolicyVersionResponse, err error) {
+func (c *Client) CreatePolicyVersion(request *CreatePolicyVersionRequest) (string) {
     return c.CreatePolicyVersionWithContext(context.Background(), request)
 }
 
-func (c *Client) CreatePolicyVersionWithContext(ctx context.Context, request *CreatePolicyVersionRequest) (response *CreatePolicyVersionResponse, err error) {
+func (c *Client) CreatePolicyVersionWithContext(ctx context.Context, request *CreatePolicyVersionRequest) (string) {
     if request == nil {
         request = NewCreatePolicyVersionRequest()
     }
     request.SetContext(ctx)
 
-    response = NewCreatePolicyVersionResponse()
-    err = c.Send(request, response)
-    return
+    response := NewCreatePolicyVersionResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewListPoliciesRequest() (request *ListPoliciesRequest) {
     request = &ListPoliciesRequest{
@@ -383,19 +420,22 @@ func NewListPoliciesResponse() (response *ListPoliciesResponse) {
     return
 }
 
-func (c *Client) ListPolicies(request *ListPoliciesRequest) (response *ListPoliciesResponse, err error) {
+func (c *Client) ListPolicies(request *ListPoliciesRequest) (string) {
     return c.ListPoliciesWithContext(context.Background(), request)
 }
 
-func (c *Client) ListPoliciesWithContext(ctx context.Context, request *ListPoliciesRequest) (response *ListPoliciesResponse, err error) {
+func (c *Client) ListPoliciesWithContext(ctx context.Context, request *ListPoliciesRequest) (string) {
     if request == nil {
         request = NewListPoliciesRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListPoliciesResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListPoliciesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewGetPolicyRequest() (request *GetPolicyRequest) {
     request = &GetPolicyRequest{
@@ -412,19 +452,22 @@ func NewGetPolicyResponse() (response *GetPolicyResponse) {
     return
 }
 
-func (c *Client) GetPolicy(request *GetPolicyRequest) (response *GetPolicyResponse, err error) {
+func (c *Client) GetPolicy(request *GetPolicyRequest) (string) {
     return c.GetPolicyWithContext(context.Background(), request)
 }
 
-func (c *Client) GetPolicyWithContext(ctx context.Context, request *GetPolicyRequest) (response *GetPolicyResponse, err error) {
+func (c *Client) GetPolicyWithContext(ctx context.Context, request *GetPolicyRequest) (string) {
     if request == nil {
         request = NewGetPolicyRequest()
     }
     request.SetContext(ctx)
 
-    response = NewGetPolicyResponse()
-    err = c.Send(request, response)
-    return
+    response := NewGetPolicyResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDeletePolicyRequest() (request *DeletePolicyRequest) {
     request = &DeletePolicyRequest{
@@ -441,19 +484,22 @@ func NewDeletePolicyResponse() (response *DeletePolicyResponse) {
     return
 }
 
-func (c *Client) DeletePolicy(request *DeletePolicyRequest) (response *DeletePolicyResponse, err error) {
+func (c *Client) DeletePolicy(request *DeletePolicyRequest) (string) {
     return c.DeletePolicyWithContext(context.Background(), request)
 }
 
-func (c *Client) DeletePolicyWithContext(ctx context.Context, request *DeletePolicyRequest) (response *DeletePolicyResponse, err error) {
+func (c *Client) DeletePolicyWithContext(ctx context.Context, request *DeletePolicyRequest) (string) {
     if request == nil {
         request = NewDeletePolicyRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDeletePolicyResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDeletePolicyResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewCreatePolicyRequest() (request *CreatePolicyRequest) {
     request = &CreatePolicyRequest{
@@ -470,19 +516,22 @@ func NewCreatePolicyResponse() (response *CreatePolicyResponse) {
     return
 }
 
-func (c *Client) CreatePolicy(request *CreatePolicyRequest) (response *CreatePolicyResponse, err error) {
+func (c *Client) CreatePolicy(request *CreatePolicyRequest) (string) {
     return c.CreatePolicyWithContext(context.Background(), request)
 }
 
-func (c *Client) CreatePolicyWithContext(ctx context.Context, request *CreatePolicyRequest) (response *CreatePolicyResponse, err error) {
+func (c *Client) CreatePolicyWithContext(ctx context.Context, request *CreatePolicyRequest) (string) {
     if request == nil {
         request = NewCreatePolicyRequest()
     }
     request.SetContext(ctx)
 
-    response = NewCreatePolicyResponse()
-    err = c.Send(request, response)
-    return
+    response := NewCreatePolicyResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewChangePasswordRequest() (request *ChangePasswordRequest) {
     request = &ChangePasswordRequest{
@@ -499,19 +548,22 @@ func NewChangePasswordResponse() (response *ChangePasswordResponse) {
     return
 }
 
-func (c *Client) ChangePassword(request *ChangePasswordRequest) (response *ChangePasswordResponse, err error) {
+func (c *Client) ChangePassword(request *ChangePasswordRequest) (string) {
     return c.ChangePasswordWithContext(context.Background(), request)
 }
 
-func (c *Client) ChangePasswordWithContext(ctx context.Context, request *ChangePasswordRequest) (response *ChangePasswordResponse, err error) {
+func (c *Client) ChangePasswordWithContext(ctx context.Context, request *ChangePasswordRequest) (string) {
     if request == nil {
         request = NewChangePasswordRequest()
     }
     request.SetContext(ctx)
 
-    response = NewChangePasswordResponse()
-    err = c.Send(request, response)
-    return
+    response := NewChangePasswordResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewUpdateLoginProfileRequest() (request *UpdateLoginProfileRequest) {
     request = &UpdateLoginProfileRequest{
@@ -528,19 +580,22 @@ func NewUpdateLoginProfileResponse() (response *UpdateLoginProfileResponse) {
     return
 }
 
-func (c *Client) UpdateLoginProfile(request *UpdateLoginProfileRequest) (response *UpdateLoginProfileResponse, err error) {
+func (c *Client) UpdateLoginProfile(request *UpdateLoginProfileRequest) (string) {
     return c.UpdateLoginProfileWithContext(context.Background(), request)
 }
 
-func (c *Client) UpdateLoginProfileWithContext(ctx context.Context, request *UpdateLoginProfileRequest) (response *UpdateLoginProfileResponse, err error) {
+func (c *Client) UpdateLoginProfileWithContext(ctx context.Context, request *UpdateLoginProfileRequest) (string) {
     if request == nil {
         request = NewUpdateLoginProfileRequest()
     }
     request.SetContext(ctx)
 
-    response = NewUpdateLoginProfileResponse()
-    err = c.Send(request, response)
-    return
+    response := NewUpdateLoginProfileResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewGetLoginProfileRequest() (request *GetLoginProfileRequest) {
     request = &GetLoginProfileRequest{
@@ -557,19 +612,22 @@ func NewGetLoginProfileResponse() (response *GetLoginProfileResponse) {
     return
 }
 
-func (c *Client) GetLoginProfile(request *GetLoginProfileRequest) (response *GetLoginProfileResponse, err error) {
+func (c *Client) GetLoginProfile(request *GetLoginProfileRequest) (string) {
     return c.GetLoginProfileWithContext(context.Background(), request)
 }
 
-func (c *Client) GetLoginProfileWithContext(ctx context.Context, request *GetLoginProfileRequest) (response *GetLoginProfileResponse, err error) {
+func (c *Client) GetLoginProfileWithContext(ctx context.Context, request *GetLoginProfileRequest) (string) {
     if request == nil {
         request = NewGetLoginProfileRequest()
     }
     request.SetContext(ctx)
 
-    response = NewGetLoginProfileResponse()
-    err = c.Send(request, response)
-    return
+    response := NewGetLoginProfileResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewCreateAccessKeyRequest() (request *CreateAccessKeyRequest) {
     request = &CreateAccessKeyRequest{
@@ -586,19 +644,22 @@ func NewCreateAccessKeyResponse() (response *CreateAccessKeyResponse) {
     return
 }
 
-func (c *Client) CreateAccessKey(request *CreateAccessKeyRequest) (response *CreateAccessKeyResponse, err error) {
+func (c *Client) CreateAccessKey(request *CreateAccessKeyRequest) (string) {
     return c.CreateAccessKeyWithContext(context.Background(), request)
 }
 
-func (c *Client) CreateAccessKeyWithContext(ctx context.Context, request *CreateAccessKeyRequest) (response *CreateAccessKeyResponse, err error) {
+func (c *Client) CreateAccessKeyWithContext(ctx context.Context, request *CreateAccessKeyRequest) (string) {
     if request == nil {
         request = NewCreateAccessKeyRequest()
     }
     request.SetContext(ctx)
 
-    response = NewCreateAccessKeyResponse()
-    err = c.Send(request, response)
-    return
+    response := NewCreateAccessKeyResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewListAccessKeysRequest() (request *ListAccessKeysRequest) {
     request = &ListAccessKeysRequest{
@@ -615,19 +676,22 @@ func NewListAccessKeysResponse() (response *ListAccessKeysResponse) {
     return
 }
 
-func (c *Client) ListAccessKeys(request *ListAccessKeysRequest) (response *ListAccessKeysResponse, err error) {
+func (c *Client) ListAccessKeys(request *ListAccessKeysRequest) (string) {
     return c.ListAccessKeysWithContext(context.Background(), request)
 }
 
-func (c *Client) ListAccessKeysWithContext(ctx context.Context, request *ListAccessKeysRequest) (response *ListAccessKeysResponse, err error) {
+func (c *Client) ListAccessKeysWithContext(ctx context.Context, request *ListAccessKeysRequest) (string) {
     if request == nil {
         request = NewListAccessKeysRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListAccessKeysResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListAccessKeysResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewUpdateAccessKeyRequest() (request *UpdateAccessKeyRequest) {
     request = &UpdateAccessKeyRequest{
@@ -644,19 +708,22 @@ func NewUpdateAccessKeyResponse() (response *UpdateAccessKeyResponse) {
     return
 }
 
-func (c *Client) UpdateAccessKey(request *UpdateAccessKeyRequest) (response *UpdateAccessKeyResponse, err error) {
+func (c *Client) UpdateAccessKey(request *UpdateAccessKeyRequest) (string) {
     return c.UpdateAccessKeyWithContext(context.Background(), request)
 }
 
-func (c *Client) UpdateAccessKeyWithContext(ctx context.Context, request *UpdateAccessKeyRequest) (response *UpdateAccessKeyResponse, err error) {
+func (c *Client) UpdateAccessKeyWithContext(ctx context.Context, request *UpdateAccessKeyRequest) (string) {
     if request == nil {
         request = NewUpdateAccessKeyRequest()
     }
     request.SetContext(ctx)
 
-    response = NewUpdateAccessKeyResponse()
-    err = c.Send(request, response)
-    return
+    response := NewUpdateAccessKeyResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDeleteAccessKeyRequest() (request *DeleteAccessKeyRequest) {
     request = &DeleteAccessKeyRequest{
@@ -673,19 +740,22 @@ func NewDeleteAccessKeyResponse() (response *DeleteAccessKeyResponse) {
     return
 }
 
-func (c *Client) DeleteAccessKey(request *DeleteAccessKeyRequest) (response *DeleteAccessKeyResponse, err error) {
+func (c *Client) DeleteAccessKey(request *DeleteAccessKeyRequest) (string) {
     return c.DeleteAccessKeyWithContext(context.Background(), request)
 }
 
-func (c *Client) DeleteAccessKeyWithContext(ctx context.Context, request *DeleteAccessKeyRequest) (response *DeleteAccessKeyResponse, err error) {
+func (c *Client) DeleteAccessKeyWithContext(ctx context.Context, request *DeleteAccessKeyRequest) (string) {
     if request == nil {
         request = NewDeleteAccessKeyRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDeleteAccessKeyResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDeleteAccessKeyResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewCreateRoleRequest() (request *CreateRoleRequest) {
     request = &CreateRoleRequest{
@@ -702,19 +772,22 @@ func NewCreateRoleResponse() (response *CreateRoleResponse) {
     return
 }
 
-func (c *Client) CreateRole(request *CreateRoleRequest) (response *CreateRoleResponse, err error) {
+func (c *Client) CreateRole(request *CreateRoleRequest) (string) {
     return c.CreateRoleWithContext(context.Background(), request)
 }
 
-func (c *Client) CreateRoleWithContext(ctx context.Context, request *CreateRoleRequest) (response *CreateRoleResponse, err error) {
+func (c *Client) CreateRoleWithContext(ctx context.Context, request *CreateRoleRequest) (string) {
     if request == nil {
         request = NewCreateRoleRequest()
     }
     request.SetContext(ctx)
 
-    response = NewCreateRoleResponse()
-    err = c.Send(request, response)
-    return
+    response := NewCreateRoleResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDeleteRoleRequest() (request *DeleteRoleRequest) {
     request = &DeleteRoleRequest{
@@ -731,19 +804,22 @@ func NewDeleteRoleResponse() (response *DeleteRoleResponse) {
     return
 }
 
-func (c *Client) DeleteRole(request *DeleteRoleRequest) (response *DeleteRoleResponse, err error) {
+func (c *Client) DeleteRole(request *DeleteRoleRequest) (string) {
     return c.DeleteRoleWithContext(context.Background(), request)
 }
 
-func (c *Client) DeleteRoleWithContext(ctx context.Context, request *DeleteRoleRequest) (response *DeleteRoleResponse, err error) {
+func (c *Client) DeleteRoleWithContext(ctx context.Context, request *DeleteRoleRequest) (string) {
     if request == nil {
         request = NewDeleteRoleRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDeleteRoleResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDeleteRoleResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewGetRoleRequest() (request *GetRoleRequest) {
     request = &GetRoleRequest{
@@ -760,19 +836,22 @@ func NewGetRoleResponse() (response *GetRoleResponse) {
     return
 }
 
-func (c *Client) GetRole(request *GetRoleRequest) (response *GetRoleResponse, err error) {
+func (c *Client) GetRole(request *GetRoleRequest) (string) {
     return c.GetRoleWithContext(context.Background(), request)
 }
 
-func (c *Client) GetRoleWithContext(ctx context.Context, request *GetRoleRequest) (response *GetRoleResponse, err error) {
+func (c *Client) GetRoleWithContext(ctx context.Context, request *GetRoleRequest) (string) {
     if request == nil {
         request = NewGetRoleRequest()
     }
     request.SetContext(ctx)
 
-    response = NewGetRoleResponse()
-    err = c.Send(request, response)
-    return
+    response := NewGetRoleResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewListRolesRequest() (request *ListRolesRequest) {
     request = &ListRolesRequest{
@@ -789,19 +868,22 @@ func NewListRolesResponse() (response *ListRolesResponse) {
     return
 }
 
-func (c *Client) ListRoles(request *ListRolesRequest) (response *ListRolesResponse, err error) {
+func (c *Client) ListRoles(request *ListRolesRequest) (string) {
     return c.ListRolesWithContext(context.Background(), request)
 }
 
-func (c *Client) ListRolesWithContext(ctx context.Context, request *ListRolesRequest) (response *ListRolesResponse, err error) {
+func (c *Client) ListRolesWithContext(ctx context.Context, request *ListRolesRequest) (string) {
     if request == nil {
         request = NewListRolesRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListRolesResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListRolesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewAttachRolePolicyRequest() (request *AttachRolePolicyRequest) {
     request = &AttachRolePolicyRequest{
@@ -818,19 +900,22 @@ func NewAttachRolePolicyResponse() (response *AttachRolePolicyResponse) {
     return
 }
 
-func (c *Client) AttachRolePolicy(request *AttachRolePolicyRequest) (response *AttachRolePolicyResponse, err error) {
+func (c *Client) AttachRolePolicy(request *AttachRolePolicyRequest) (string) {
     return c.AttachRolePolicyWithContext(context.Background(), request)
 }
 
-func (c *Client) AttachRolePolicyWithContext(ctx context.Context, request *AttachRolePolicyRequest) (response *AttachRolePolicyResponse, err error) {
+func (c *Client) AttachRolePolicyWithContext(ctx context.Context, request *AttachRolePolicyRequest) (string) {
     if request == nil {
         request = NewAttachRolePolicyRequest()
     }
     request.SetContext(ctx)
 
-    response = NewAttachRolePolicyResponse()
-    err = c.Send(request, response)
-    return
+    response := NewAttachRolePolicyResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDetachRolePolicyRequest() (request *DetachRolePolicyRequest) {
     request = &DetachRolePolicyRequest{
@@ -847,19 +932,22 @@ func NewDetachRolePolicyResponse() (response *DetachRolePolicyResponse) {
     return
 }
 
-func (c *Client) DetachRolePolicy(request *DetachRolePolicyRequest) (response *DetachRolePolicyResponse, err error) {
+func (c *Client) DetachRolePolicy(request *DetachRolePolicyRequest) (string) {
     return c.DetachRolePolicyWithContext(context.Background(), request)
 }
 
-func (c *Client) DetachRolePolicyWithContext(ctx context.Context, request *DetachRolePolicyRequest) (response *DetachRolePolicyResponse, err error) {
+func (c *Client) DetachRolePolicyWithContext(ctx context.Context, request *DetachRolePolicyRequest) (string) {
     if request == nil {
         request = NewDetachRolePolicyRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDetachRolePolicyResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDetachRolePolicyResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewListAttachedRolePoliciesRequest() (request *ListAttachedRolePoliciesRequest) {
     request = &ListAttachedRolePoliciesRequest{
@@ -876,19 +964,22 @@ func NewListAttachedRolePoliciesResponse() (response *ListAttachedRolePoliciesRe
     return
 }
 
-func (c *Client) ListAttachedRolePolicies(request *ListAttachedRolePoliciesRequest) (response *ListAttachedRolePoliciesResponse, err error) {
+func (c *Client) ListAttachedRolePolicies(request *ListAttachedRolePoliciesRequest) (string) {
     return c.ListAttachedRolePoliciesWithContext(context.Background(), request)
 }
 
-func (c *Client) ListAttachedRolePoliciesWithContext(ctx context.Context, request *ListAttachedRolePoliciesRequest) (response *ListAttachedRolePoliciesResponse, err error) {
+func (c *Client) ListAttachedRolePoliciesWithContext(ctx context.Context, request *ListAttachedRolePoliciesRequest) (string) {
     if request == nil {
         request = NewListAttachedRolePoliciesRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListAttachedRolePoliciesResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListAttachedRolePoliciesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewUpdateRoleTrustAccountsRequest() (request *UpdateRoleTrustAccountsRequest) {
     request = &UpdateRoleTrustAccountsRequest{
@@ -905,19 +996,22 @@ func NewUpdateRoleTrustAccountsResponse() (response *UpdateRoleTrustAccountsResp
     return
 }
 
-func (c *Client) UpdateRoleTrustAccounts(request *UpdateRoleTrustAccountsRequest) (response *UpdateRoleTrustAccountsResponse, err error) {
+func (c *Client) UpdateRoleTrustAccounts(request *UpdateRoleTrustAccountsRequest) (string) {
     return c.UpdateRoleTrustAccountsWithContext(context.Background(), request)
 }
 
-func (c *Client) UpdateRoleTrustAccountsWithContext(ctx context.Context, request *UpdateRoleTrustAccountsRequest) (response *UpdateRoleTrustAccountsResponse, err error) {
+func (c *Client) UpdateRoleTrustAccountsWithContext(ctx context.Context, request *UpdateRoleTrustAccountsRequest) (string) {
     if request == nil {
         request = NewUpdateRoleTrustAccountsRequest()
     }
     request.SetContext(ctx)
 
-    response = NewUpdateRoleTrustAccountsResponse()
-    err = c.Send(request, response)
-    return
+    response := NewUpdateRoleTrustAccountsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewListEntityForPolicyRequest() (request *ListEntityForPolicyRequest) {
     request = &ListEntityForPolicyRequest{
@@ -934,19 +1028,22 @@ func NewListEntityForPolicyResponse() (response *ListEntityForPolicyResponse) {
     return
 }
 
-func (c *Client) ListEntityForPolicy(request *ListEntityForPolicyRequest) (response *ListEntityForPolicyResponse, err error) {
+func (c *Client) ListEntityForPolicy(request *ListEntityForPolicyRequest) (string) {
     return c.ListEntityForPolicyWithContext(context.Background(), request)
 }
 
-func (c *Client) ListEntityForPolicyWithContext(ctx context.Context, request *ListEntityForPolicyRequest) (response *ListEntityForPolicyResponse, err error) {
+func (c *Client) ListEntityForPolicyWithContext(ctx context.Context, request *ListEntityForPolicyRequest) (string) {
     if request == nil {
         request = NewListEntityForPolicyRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListEntityForPolicyResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListEntityForPolicyResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewCreateProjectRequest() (request *CreateProjectRequest) {
     request = &CreateProjectRequest{
@@ -963,19 +1060,22 @@ func NewCreateProjectResponse() (response *CreateProjectResponse) {
     return
 }
 
-func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateProjectResponse, err error) {
+func (c *Client) CreateProject(request *CreateProjectRequest) (string) {
     return c.CreateProjectWithContext(context.Background(), request)
 }
 
-func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreateProjectRequest) (response *CreateProjectResponse, err error) {
+func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreateProjectRequest) (string) {
     if request == nil {
         request = NewCreateProjectRequest()
     }
     request.SetContext(ctx)
 
-    response = NewCreateProjectResponse()
-    err = c.Send(request, response)
-    return
+    response := NewCreateProjectResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewListEntitiesForPolicyRequest() (request *ListEntitiesForPolicyRequest) {
     request = &ListEntitiesForPolicyRequest{
@@ -992,19 +1092,22 @@ func NewListEntitiesForPolicyResponse() (response *ListEntitiesForPolicyResponse
     return
 }
 
-func (c *Client) ListEntitiesForPolicy(request *ListEntitiesForPolicyRequest) (response *ListEntitiesForPolicyResponse, err error) {
+func (c *Client) ListEntitiesForPolicy(request *ListEntitiesForPolicyRequest) (string) {
     return c.ListEntitiesForPolicyWithContext(context.Background(), request)
 }
 
-func (c *Client) ListEntitiesForPolicyWithContext(ctx context.Context, request *ListEntitiesForPolicyRequest) (response *ListEntitiesForPolicyResponse, err error) {
+func (c *Client) ListEntitiesForPolicyWithContext(ctx context.Context, request *ListEntitiesForPolicyRequest) (string) {
     if request == nil {
         request = NewListEntitiesForPolicyRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListEntitiesForPolicyResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListEntitiesForPolicyResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewListProjectMemberRequest() (request *ListProjectMemberRequest) {
     request = &ListProjectMemberRequest{
@@ -1021,19 +1124,22 @@ func NewListProjectMemberResponse() (response *ListProjectMemberResponse) {
     return
 }
 
-func (c *Client) ListProjectMember(request *ListProjectMemberRequest) (response *ListProjectMemberResponse, err error) {
+func (c *Client) ListProjectMember(request *ListProjectMemberRequest) (string) {
     return c.ListProjectMemberWithContext(context.Background(), request)
 }
 
-func (c *Client) ListProjectMemberWithContext(ctx context.Context, request *ListProjectMemberRequest) (response *ListProjectMemberResponse, err error) {
+func (c *Client) ListProjectMemberWithContext(ctx context.Context, request *ListProjectMemberRequest) (string) {
     if request == nil {
         request = NewListProjectMemberRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListProjectMemberResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListProjectMemberResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDeleteProjectMemberRequest() (request *DeleteProjectMemberRequest) {
     request = &DeleteProjectMemberRequest{
@@ -1050,19 +1156,22 @@ func NewDeleteProjectMemberResponse() (response *DeleteProjectMemberResponse) {
     return
 }
 
-func (c *Client) DeleteProjectMember(request *DeleteProjectMemberRequest) (response *DeleteProjectMemberResponse, err error) {
+func (c *Client) DeleteProjectMember(request *DeleteProjectMemberRequest) (string) {
     return c.DeleteProjectMemberWithContext(context.Background(), request)
 }
 
-func (c *Client) DeleteProjectMemberWithContext(ctx context.Context, request *DeleteProjectMemberRequest) (response *DeleteProjectMemberResponse, err error) {
+func (c *Client) DeleteProjectMemberWithContext(ctx context.Context, request *DeleteProjectMemberRequest) (string) {
     if request == nil {
         request = NewDeleteProjectMemberRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDeleteProjectMemberResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDeleteProjectMemberResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewAddProjectMemberRequest() (request *AddProjectMemberRequest) {
     request = &AddProjectMemberRequest{
@@ -1079,19 +1188,22 @@ func NewAddProjectMemberResponse() (response *AddProjectMemberResponse) {
     return
 }
 
-func (c *Client) AddProjectMember(request *AddProjectMemberRequest) (response *AddProjectMemberResponse, err error) {
+func (c *Client) AddProjectMember(request *AddProjectMemberRequest) (string) {
     return c.AddProjectMemberWithContext(context.Background(), request)
 }
 
-func (c *Client) AddProjectMemberWithContext(ctx context.Context, request *AddProjectMemberRequest) (response *AddProjectMemberResponse, err error) {
+func (c *Client) AddProjectMemberWithContext(ctx context.Context, request *AddProjectMemberRequest) (string) {
     if request == nil {
         request = NewAddProjectMemberRequest()
     }
     request.SetContext(ctx)
 
-    response = NewAddProjectMemberResponse()
-    err = c.Send(request, response)
-    return
+    response := NewAddProjectMemberResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewUpdateRoleRequest() (request *UpdateRoleRequest) {
     request = &UpdateRoleRequest{
@@ -1108,19 +1220,22 @@ func NewUpdateRoleResponse() (response *UpdateRoleResponse) {
     return
 }
 
-func (c *Client) UpdateRole(request *UpdateRoleRequest) (response *UpdateRoleResponse, err error) {
+func (c *Client) UpdateRole(request *UpdateRoleRequest) (string) {
     return c.UpdateRoleWithContext(context.Background(), request)
 }
 
-func (c *Client) UpdateRoleWithContext(ctx context.Context, request *UpdateRoleRequest) (response *UpdateRoleResponse, err error) {
+func (c *Client) UpdateRoleWithContext(ctx context.Context, request *UpdateRoleRequest) (string) {
     if request == nil {
         request = NewUpdateRoleRequest()
     }
     request.SetContext(ctx)
 
-    response = NewUpdateRoleResponse()
-    err = c.Send(request, response)
-    return
+    response := NewUpdateRoleResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewUpdatePolicyRequest() (request *UpdatePolicyRequest) {
     request = &UpdatePolicyRequest{
@@ -1137,19 +1252,22 @@ func NewUpdatePolicyResponse() (response *UpdatePolicyResponse) {
     return
 }
 
-func (c *Client) UpdatePolicy(request *UpdatePolicyRequest) (response *UpdatePolicyResponse, err error) {
+func (c *Client) UpdatePolicy(request *UpdatePolicyRequest) (string) {
     return c.UpdatePolicyWithContext(context.Background(), request)
 }
 
-func (c *Client) UpdatePolicyWithContext(ctx context.Context, request *UpdatePolicyRequest) (response *UpdatePolicyResponse, err error) {
+func (c *Client) UpdatePolicyWithContext(ctx context.Context, request *UpdatePolicyRequest) (string) {
     if request == nil {
         request = NewUpdatePolicyRequest()
     }
     request.SetContext(ctx)
 
-    response = NewUpdatePolicyResponse()
-    err = c.Send(request, response)
-    return
+    response := NewUpdatePolicyResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewCreateGroupRequest() (request *CreateGroupRequest) {
     request = &CreateGroupRequest{
@@ -1166,19 +1284,22 @@ func NewCreateGroupResponse() (response *CreateGroupResponse) {
     return
 }
 
-func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroupResponse, err error) {
+func (c *Client) CreateGroup(request *CreateGroupRequest) (string) {
     return c.CreateGroupWithContext(context.Background(), request)
 }
 
-func (c *Client) CreateGroupWithContext(ctx context.Context, request *CreateGroupRequest) (response *CreateGroupResponse, err error) {
+func (c *Client) CreateGroupWithContext(ctx context.Context, request *CreateGroupRequest) (string) {
     if request == nil {
         request = NewCreateGroupRequest()
     }
     request.SetContext(ctx)
 
-    response = NewCreateGroupResponse()
-    err = c.Send(request, response)
-    return
+    response := NewCreateGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
     request = &DeleteGroupRequest{
@@ -1195,19 +1316,22 @@ func NewDeleteGroupResponse() (response *DeleteGroupResponse) {
     return
 }
 
-func (c *Client) DeleteGroup(request *DeleteGroupRequest) (response *DeleteGroupResponse, err error) {
+func (c *Client) DeleteGroup(request *DeleteGroupRequest) (string) {
     return c.DeleteGroupWithContext(context.Background(), request)
 }
 
-func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGroupRequest) (response *DeleteGroupResponse, err error) {
+func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGroupRequest) (string) {
     if request == nil {
         request = NewDeleteGroupRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDeleteGroupResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDeleteGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDetachGroupPolicyRequest() (request *DetachGroupPolicyRequest) {
     request = &DetachGroupPolicyRequest{
@@ -1224,19 +1348,22 @@ func NewDetachGroupPolicyResponse() (response *DetachGroupPolicyResponse) {
     return
 }
 
-func (c *Client) DetachGroupPolicy(request *DetachGroupPolicyRequest) (response *DetachGroupPolicyResponse, err error) {
+func (c *Client) DetachGroupPolicy(request *DetachGroupPolicyRequest) (string) {
     return c.DetachGroupPolicyWithContext(context.Background(), request)
 }
 
-func (c *Client) DetachGroupPolicyWithContext(ctx context.Context, request *DetachGroupPolicyRequest) (response *DetachGroupPolicyResponse, err error) {
+func (c *Client) DetachGroupPolicyWithContext(ctx context.Context, request *DetachGroupPolicyRequest) (string) {
     if request == nil {
         request = NewDetachGroupPolicyRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDetachGroupPolicyResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDetachGroupPolicyResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewAttachGroupPolicyRequest() (request *AttachGroupPolicyRequest) {
     request = &AttachGroupPolicyRequest{
@@ -1253,19 +1380,22 @@ func NewAttachGroupPolicyResponse() (response *AttachGroupPolicyResponse) {
     return
 }
 
-func (c *Client) AttachGroupPolicy(request *AttachGroupPolicyRequest) (response *AttachGroupPolicyResponse, err error) {
+func (c *Client) AttachGroupPolicy(request *AttachGroupPolicyRequest) (string) {
     return c.AttachGroupPolicyWithContext(context.Background(), request)
 }
 
-func (c *Client) AttachGroupPolicyWithContext(ctx context.Context, request *AttachGroupPolicyRequest) (response *AttachGroupPolicyResponse, err error) {
+func (c *Client) AttachGroupPolicyWithContext(ctx context.Context, request *AttachGroupPolicyRequest) (string) {
     if request == nil {
         request = NewAttachGroupPolicyRequest()
     }
     request.SetContext(ctx)
 
-    response = NewAttachGroupPolicyResponse()
-    err = c.Send(request, response)
-    return
+    response := NewAttachGroupPolicyResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewListGroupPoliciesRequest() (request *ListGroupPoliciesRequest) {
     request = &ListGroupPoliciesRequest{
@@ -1282,19 +1412,22 @@ func NewListGroupPoliciesResponse() (response *ListGroupPoliciesResponse) {
     return
 }
 
-func (c *Client) ListGroupPolicies(request *ListGroupPoliciesRequest) (response *ListGroupPoliciesResponse, err error) {
+func (c *Client) ListGroupPolicies(request *ListGroupPoliciesRequest) (string) {
     return c.ListGroupPoliciesWithContext(context.Background(), request)
 }
 
-func (c *Client) ListGroupPoliciesWithContext(ctx context.Context, request *ListGroupPoliciesRequest) (response *ListGroupPoliciesResponse, err error) {
+func (c *Client) ListGroupPoliciesWithContext(ctx context.Context, request *ListGroupPoliciesRequest) (string) {
     if request == nil {
         request = NewListGroupPoliciesRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListGroupPoliciesResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListGroupPoliciesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewAddUserToGroupRequest() (request *AddUserToGroupRequest) {
     request = &AddUserToGroupRequest{
@@ -1311,19 +1444,22 @@ func NewAddUserToGroupResponse() (response *AddUserToGroupResponse) {
     return
 }
 
-func (c *Client) AddUserToGroup(request *AddUserToGroupRequest) (response *AddUserToGroupResponse, err error) {
+func (c *Client) AddUserToGroup(request *AddUserToGroupRequest) (string) {
     return c.AddUserToGroupWithContext(context.Background(), request)
 }
 
-func (c *Client) AddUserToGroupWithContext(ctx context.Context, request *AddUserToGroupRequest) (response *AddUserToGroupResponse, err error) {
+func (c *Client) AddUserToGroupWithContext(ctx context.Context, request *AddUserToGroupRequest) (string) {
     if request == nil {
         request = NewAddUserToGroupRequest()
     }
     request.SetContext(ctx)
 
-    response = NewAddUserToGroupResponse()
-    err = c.Send(request, response)
-    return
+    response := NewAddUserToGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewGetGroupRequest() (request *GetGroupRequest) {
     request = &GetGroupRequest{
@@ -1340,19 +1476,22 @@ func NewGetGroupResponse() (response *GetGroupResponse) {
     return
 }
 
-func (c *Client) GetGroup(request *GetGroupRequest) (response *GetGroupResponse, err error) {
+func (c *Client) GetGroup(request *GetGroupRequest) (string) {
     return c.GetGroupWithContext(context.Background(), request)
 }
 
-func (c *Client) GetGroupWithContext(ctx context.Context, request *GetGroupRequest) (response *GetGroupResponse, err error) {
+func (c *Client) GetGroupWithContext(ctx context.Context, request *GetGroupRequest) (string) {
     if request == nil {
         request = NewGetGroupRequest()
     }
     request.SetContext(ctx)
 
-    response = NewGetGroupResponse()
-    err = c.Send(request, response)
-    return
+    response := NewGetGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewListGroupsForUserRequest() (request *ListGroupsForUserRequest) {
     request = &ListGroupsForUserRequest{
@@ -1369,19 +1508,22 @@ func NewListGroupsForUserResponse() (response *ListGroupsForUserResponse) {
     return
 }
 
-func (c *Client) ListGroupsForUser(request *ListGroupsForUserRequest) (response *ListGroupsForUserResponse, err error) {
+func (c *Client) ListGroupsForUser(request *ListGroupsForUserRequest) (string) {
     return c.ListGroupsForUserWithContext(context.Background(), request)
 }
 
-func (c *Client) ListGroupsForUserWithContext(ctx context.Context, request *ListGroupsForUserRequest) (response *ListGroupsForUserResponse, err error) {
+func (c *Client) ListGroupsForUserWithContext(ctx context.Context, request *ListGroupsForUserRequest) (string) {
     if request == nil {
         request = NewListGroupsForUserRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListGroupsForUserResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListGroupsForUserResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewListGroupsRequest() (request *ListGroupsRequest) {
     request = &ListGroupsRequest{
@@ -1398,19 +1540,22 @@ func NewListGroupsResponse() (response *ListGroupsResponse) {
     return
 }
 
-func (c *Client) ListGroups(request *ListGroupsRequest) (response *ListGroupsResponse, err error) {
+func (c *Client) ListGroups(request *ListGroupsRequest) (string) {
     return c.ListGroupsWithContext(context.Background(), request)
 }
 
-func (c *Client) ListGroupsWithContext(ctx context.Context, request *ListGroupsRequest) (response *ListGroupsResponse, err error) {
+func (c *Client) ListGroupsWithContext(ctx context.Context, request *ListGroupsRequest) (string) {
     if request == nil {
         request = NewListGroupsRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListGroupsResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListGroupsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewRemoveUserFromGroupRequest() (request *RemoveUserFromGroupRequest) {
     request = &RemoveUserFromGroupRequest{
@@ -1427,19 +1572,22 @@ func NewRemoveUserFromGroupResponse() (response *RemoveUserFromGroupResponse) {
     return
 }
 
-func (c *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (response *RemoveUserFromGroupResponse, err error) {
+func (c *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (string) {
     return c.RemoveUserFromGroupWithContext(context.Background(), request)
 }
 
-func (c *Client) RemoveUserFromGroupWithContext(ctx context.Context, request *RemoveUserFromGroupRequest) (response *RemoveUserFromGroupResponse, err error) {
+func (c *Client) RemoveUserFromGroupWithContext(ctx context.Context, request *RemoveUserFromGroupRequest) (string) {
     if request == nil {
         request = NewRemoveUserFromGroupRequest()
     }
     request.SetContext(ctx)
 
-    response = NewRemoveUserFromGroupResponse()
-    err = c.Send(request, response)
-    return
+    response := NewRemoveUserFromGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 
 

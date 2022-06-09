@@ -1,6 +1,7 @@
 package v20161122
 import (
     "context"
+    "fmt"
     "github.com/kingsoftcloud/sdk-go/ksyun/common"
     ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
     "github.com/kingsoftcloud/sdk-go/ksyun/common/profile"
@@ -35,19 +36,22 @@ func NewCreateForwardConfResponse() (response *CreateForwardConfResponse) {
     return
 }
 
-func (c *Client) CreateForwardConf(request *CreateForwardConfRequest) (response *CreateForwardConfResponse, err error) {
+func (c *Client) CreateForwardConf(request *CreateForwardConfRequest) (string) {
     return c.CreateForwardConfWithContext(context.Background(), request)
 }
 
-func (c *Client) CreateForwardConfWithContext(ctx context.Context, request *CreateForwardConfRequest) (response *CreateForwardConfResponse, err error) {
+func (c *Client) CreateForwardConfWithContext(ctx context.Context, request *CreateForwardConfRequest) (string) {
     if request == nil {
         request = NewCreateForwardConfRequest()
     }
     request.SetContext(ctx)
 
-    response = NewCreateForwardConfResponse()
-    err = c.Send(request, response)
-    return
+    response := NewCreateForwardConfResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDeleteForwardConfRequest() (request *DeleteForwardConfRequest) {
     request = &DeleteForwardConfRequest{
@@ -64,19 +68,22 @@ func NewDeleteForwardConfResponse() (response *DeleteForwardConfResponse) {
     return
 }
 
-func (c *Client) DeleteForwardConf(request *DeleteForwardConfRequest) (response *DeleteForwardConfResponse, err error) {
+func (c *Client) DeleteForwardConf(request *DeleteForwardConfRequest) (string) {
     return c.DeleteForwardConfWithContext(context.Background(), request)
 }
 
-func (c *Client) DeleteForwardConfWithContext(ctx context.Context, request *DeleteForwardConfRequest) (response *DeleteForwardConfResponse, err error) {
+func (c *Client) DeleteForwardConfWithContext(ctx context.Context, request *DeleteForwardConfRequest) (string) {
     if request == nil {
         request = NewDeleteForwardConfRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDeleteForwardConfResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDeleteForwardConfResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDescribeForwardConfRequest() (request *DescribeForwardConfRequest) {
     request = &DescribeForwardConfRequest{
@@ -93,19 +100,22 @@ func NewDescribeForwardConfResponse() (response *DescribeForwardConfResponse) {
     return
 }
 
-func (c *Client) DescribeForwardConf(request *DescribeForwardConfRequest) (response *DescribeForwardConfResponse, err error) {
+func (c *Client) DescribeForwardConf(request *DescribeForwardConfRequest) (string) {
     return c.DescribeForwardConfWithContext(context.Background(), request)
 }
 
-func (c *Client) DescribeForwardConfWithContext(ctx context.Context, request *DescribeForwardConfRequest) (response *DescribeForwardConfResponse, err error) {
+func (c *Client) DescribeForwardConfWithContext(ctx context.Context, request *DescribeForwardConfRequest) (string) {
     if request == nil {
         request = NewDescribeForwardConfRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDescribeForwardConfResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDescribeForwardConfResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewCreateForwardSourceRequest() (request *CreateForwardSourceRequest) {
     request = &CreateForwardSourceRequest{
@@ -122,19 +132,22 @@ func NewCreateForwardSourceResponse() (response *CreateForwardSourceResponse) {
     return
 }
 
-func (c *Client) CreateForwardSource(request *CreateForwardSourceRequest) (response *CreateForwardSourceResponse, err error) {
+func (c *Client) CreateForwardSource(request *CreateForwardSourceRequest) (string) {
     return c.CreateForwardSourceWithContext(context.Background(), request)
 }
 
-func (c *Client) CreateForwardSourceWithContext(ctx context.Context, request *CreateForwardSourceRequest) (response *CreateForwardSourceResponse, err error) {
+func (c *Client) CreateForwardSourceWithContext(ctx context.Context, request *CreateForwardSourceRequest) (string) {
     if request == nil {
         request = NewCreateForwardSourceRequest()
     }
     request.SetContext(ctx)
 
-    response = NewCreateForwardSourceResponse()
-    err = c.Send(request, response)
-    return
+    response := NewCreateForwardSourceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDeleteForwardSourceRequest() (request *DeleteForwardSourceRequest) {
     request = &DeleteForwardSourceRequest{
@@ -151,19 +164,22 @@ func NewDeleteForwardSourceResponse() (response *DeleteForwardSourceResponse) {
     return
 }
 
-func (c *Client) DeleteForwardSource(request *DeleteForwardSourceRequest) (response *DeleteForwardSourceResponse, err error) {
+func (c *Client) DeleteForwardSource(request *DeleteForwardSourceRequest) (string) {
     return c.DeleteForwardSourceWithContext(context.Background(), request)
 }
 
-func (c *Client) DeleteForwardSourceWithContext(ctx context.Context, request *DeleteForwardSourceRequest) (response *DeleteForwardSourceResponse, err error) {
+func (c *Client) DeleteForwardSourceWithContext(ctx context.Context, request *DeleteForwardSourceRequest) (string) {
     if request == nil {
         request = NewDeleteForwardSourceRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDeleteForwardSourceResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDeleteForwardSourceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDescribeForwardSourceRequest() (request *DescribeForwardSourceRequest) {
     request = &DescribeForwardSourceRequest{
@@ -180,19 +196,22 @@ func NewDescribeForwardSourceResponse() (response *DescribeForwardSourceResponse
     return
 }
 
-func (c *Client) DescribeForwardSource(request *DescribeForwardSourceRequest) (response *DescribeForwardSourceResponse, err error) {
+func (c *Client) DescribeForwardSource(request *DescribeForwardSourceRequest) (string) {
     return c.DescribeForwardSourceWithContext(context.Background(), request)
 }
 
-func (c *Client) DescribeForwardSourceWithContext(ctx context.Context, request *DescribeForwardSourceRequest) (response *DescribeForwardSourceResponse, err error) {
+func (c *Client) DescribeForwardSourceWithContext(ctx context.Context, request *DescribeForwardSourceRequest) (string) {
     if request == nil {
         request = NewDescribeForwardSourceRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDescribeForwardSourceResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDescribeForwardSourceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 
 

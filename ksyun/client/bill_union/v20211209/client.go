@@ -1,6 +1,7 @@
 package v20211209
 import (
     "context"
+    "fmt"
     "github.com/kingsoftcloud/sdk-go/ksyun/common"
     ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
     "github.com/kingsoftcloud/sdk-go/ksyun/common/profile"
@@ -35,19 +36,22 @@ func NewDescribeCostBillResponse() (response *DescribeCostBillResponse) {
     return
 }
 
-func (c *Client) DescribeCostBill(request *DescribeCostBillRequest) (response *DescribeCostBillResponse, err error) {
+func (c *Client) DescribeCostBill(request *DescribeCostBillRequest) (string) {
     return c.DescribeCostBillWithContext(context.Background(), request)
 }
 
-func (c *Client) DescribeCostBillWithContext(ctx context.Context, request *DescribeCostBillRequest) (response *DescribeCostBillResponse, err error) {
+func (c *Client) DescribeCostBillWithContext(ctx context.Context, request *DescribeCostBillRequest) (string) {
     if request == nil {
         request = NewDescribeCostBillRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDescribeCostBillResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDescribeCostBillResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 
 

@@ -59,30 +59,13 @@ func (r *BaseResponse) ParseErrorFromHTTPResponse(body []byte) (err error) {
 	return nil
 }
 
-func ParseFromHttpResponse(hr *http.Response, response Response) (err error) {
+func ParseFromHttpResponse(hr *http.Response, response Response) (string) {
+
 	defer hr.Body.Close()
 	body, err := ioutil.ReadAll(hr.Body)
 	if err != nil {
 		msg := fmt.Sprintf("Fail to read response body because %s", err)
-		return errors.NewKsyunSDKError("ClientError.IOError", msg, "")
+		return msg
 	}
-	if hr.StatusCode != 200 {
-		msg := fmt.Sprintf("Request fail with http status code: %s, with body: %s", hr.Status, body)
-		return errors.NewKsyunSDKError("ClientError.HttpStatusCodeError", msg, "")
-	}
-
-	err = response.ParseErrorFromHTTPResponse(body)
-	if err != nil {
-		return
-	}
-
-	if err != nil {
-		return
-	}
-	err = json.Unmarshal(body, &response)
-	if err != nil {
-		msg := fmt.Sprintf("Fail to parse json content: %s, because: %s", body, err)
-		return errors.NewKsyunSDKError("ClientError.ParseJsonError", msg, "")
-	}
-	return
+	return string(body)
 }

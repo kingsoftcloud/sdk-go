@@ -25,7 +25,7 @@ type Client struct {
 	debug           bool
 }
 
-func (c *Client) Send(request ksyunhttp.Request, response ksyunhttp.Response) (err error) {
+func (c *Client) Send(request ksyunhttp.Request, response ksyunhttp.Response) (error, string) {
 	if request.GetScheme() == "" {
 		request.SetScheme(c.httpProfile.Scheme)
 	}
@@ -44,22 +44,23 @@ func (c *Client) Send(request ksyunhttp.Request, response ksyunhttp.Response) (e
 
 	ksyunhttp.HandleCommonParams(request, c.GetRegion())
 
-	return c.sendWithSampleSignature(request, response)
+	err, msg := c.sendWithSampleSignature(request, response)
+	return err, msg
 }
 
-func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksyunhttp.Response) (err error) {
-	err = ksyunhttp.ConstructParams(request)
+func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksyunhttp.Response) (error, string) {
+	err := ksyunhttp.ConstructParams(request)
 	if err != nil {
-		return err
+		return err, ""
 	}
 
 	err = signRequest(request, c.credential, c.signMethod)
 	if err != nil {
-		return err
+		return err, ""
 	}
 	httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), request.GetUrl(), request.GetBodyReader())
 	if err != nil {
-		return err
+		return err, ""
 	}
 	httpRequest.Header.Set("Accept", "application/json")
 	if request.GetHttpMethod() == "POST" {
@@ -67,10 +68,11 @@ func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksy
 	}
 	httpResponse, err := c.sendHttp(httpRequest)
 	if err != nil {
-		return err
+		return err, ""
 	}
-	err = ksyunhttp.ParseFromHttpResponse(httpResponse, response)
-	return err
+
+	res := ksyunhttp.ParseFromHttpResponse(httpResponse, response)
+	return nil, res
 }
 
 // send http request

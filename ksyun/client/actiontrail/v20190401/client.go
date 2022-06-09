@@ -1,6 +1,7 @@
 package v20190401
 import (
     "context"
+    "fmt"
     "github.com/kingsoftcloud/sdk-go/ksyun/common"
     ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
     "github.com/kingsoftcloud/sdk-go/ksyun/common/profile"
@@ -35,19 +36,22 @@ func NewListOperateLogsResponse() (response *ListOperateLogsResponse) {
     return
 }
 
-func (c *Client) ListOperateLogs(request *ListOperateLogsRequest) (response *ListOperateLogsResponse, err error) {
+func (c *Client) ListOperateLogs(request *ListOperateLogsRequest) (string) {
     return c.ListOperateLogsWithContext(context.Background(), request)
 }
 
-func (c *Client) ListOperateLogsWithContext(ctx context.Context, request *ListOperateLogsRequest) (response *ListOperateLogsResponse, err error) {
+func (c *Client) ListOperateLogsWithContext(ctx context.Context, request *ListOperateLogsRequest) (string) {
     if request == nil {
         request = NewListOperateLogsRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListOperateLogsResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListOperateLogsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 
 

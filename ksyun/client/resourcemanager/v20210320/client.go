@@ -1,6 +1,7 @@
 package v20210320
 import (
     "context"
+    "fmt"
     "github.com/kingsoftcloud/sdk-go/ksyun/common"
     ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
     "github.com/kingsoftcloud/sdk-go/ksyun/common/profile"
@@ -35,19 +36,22 @@ func NewCreateFolderResponse() (response *CreateFolderResponse) {
     return
 }
 
-func (c *Client) CreateFolder(request *CreateFolderRequest) (response *CreateFolderResponse, err error) {
+func (c *Client) CreateFolder(request *CreateFolderRequest) (string) {
     return c.CreateFolderWithContext(context.Background(), request)
 }
 
-func (c *Client) CreateFolderWithContext(ctx context.Context, request *CreateFolderRequest) (response *CreateFolderResponse, err error) {
+func (c *Client) CreateFolderWithContext(ctx context.Context, request *CreateFolderRequest) (string) {
     if request == nil {
         request = NewCreateFolderRequest()
     }
     request.SetContext(ctx)
 
-    response = NewCreateFolderResponse()
-    err = c.Send(request, response)
-    return
+    response := NewCreateFolderResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewDeleteFolderRequest() (request *DeleteFolderRequest) {
     request = &DeleteFolderRequest{
@@ -64,19 +68,22 @@ func NewDeleteFolderResponse() (response *DeleteFolderResponse) {
     return
 }
 
-func (c *Client) DeleteFolder(request *DeleteFolderRequest) (response *DeleteFolderResponse, err error) {
+func (c *Client) DeleteFolder(request *DeleteFolderRequest) (string) {
     return c.DeleteFolderWithContext(context.Background(), request)
 }
 
-func (c *Client) DeleteFolderWithContext(ctx context.Context, request *DeleteFolderRequest) (response *DeleteFolderResponse, err error) {
+func (c *Client) DeleteFolderWithContext(ctx context.Context, request *DeleteFolderRequest) (string) {
     if request == nil {
         request = NewDeleteFolderRequest()
     }
     request.SetContext(ctx)
 
-    response = NewDeleteFolderResponse()
-    err = c.Send(request, response)
-    return
+    response := NewDeleteFolderResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewUpdateFolderRequest() (request *UpdateFolderRequest) {
     request = &UpdateFolderRequest{
@@ -93,19 +100,22 @@ func NewUpdateFolderResponse() (response *UpdateFolderResponse) {
     return
 }
 
-func (c *Client) UpdateFolder(request *UpdateFolderRequest) (response *UpdateFolderResponse, err error) {
+func (c *Client) UpdateFolder(request *UpdateFolderRequest) (string) {
     return c.UpdateFolderWithContext(context.Background(), request)
 }
 
-func (c *Client) UpdateFolderWithContext(ctx context.Context, request *UpdateFolderRequest) (response *UpdateFolderResponse, err error) {
+func (c *Client) UpdateFolderWithContext(ctx context.Context, request *UpdateFolderRequest) (string) {
     if request == nil {
         request = NewUpdateFolderRequest()
     }
     request.SetContext(ctx)
 
-    response = NewUpdateFolderResponse()
-    err = c.Send(request, response)
-    return
+    response := NewUpdateFolderResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewListAccountsForParentRequest() (request *ListAccountsForParentRequest) {
     request = &ListAccountsForParentRequest{
@@ -122,19 +132,22 @@ func NewListAccountsForParentResponse() (response *ListAccountsForParentResponse
     return
 }
 
-func (c *Client) ListAccountsForParent(request *ListAccountsForParentRequest) (response *ListAccountsForParentResponse, err error) {
+func (c *Client) ListAccountsForParent(request *ListAccountsForParentRequest) (string) {
     return c.ListAccountsForParentWithContext(context.Background(), request)
 }
 
-func (c *Client) ListAccountsForParentWithContext(ctx context.Context, request *ListAccountsForParentRequest) (response *ListAccountsForParentResponse, err error) {
+func (c *Client) ListAccountsForParentWithContext(ctx context.Context, request *ListAccountsForParentRequest) (string) {
     if request == nil {
         request = NewListAccountsForParentRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListAccountsForParentResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListAccountsForParentResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewMoveAccountRequest() (request *MoveAccountRequest) {
     request = &MoveAccountRequest{
@@ -151,19 +164,22 @@ func NewMoveAccountResponse() (response *MoveAccountResponse) {
     return
 }
 
-func (c *Client) MoveAccount(request *MoveAccountRequest) (response *MoveAccountResponse, err error) {
+func (c *Client) MoveAccount(request *MoveAccountRequest) (string) {
     return c.MoveAccountWithContext(context.Background(), request)
 }
 
-func (c *Client) MoveAccountWithContext(ctx context.Context, request *MoveAccountRequest) (response *MoveAccountResponse, err error) {
+func (c *Client) MoveAccountWithContext(ctx context.Context, request *MoveAccountRequest) (string) {
     if request == nil {
         request = NewMoveAccountRequest()
     }
     request.SetContext(ctx)
 
-    response = NewMoveAccountResponse()
-    err = c.Send(request, response)
-    return
+    response := NewMoveAccountResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewUpdateAccountRequest() (request *UpdateAccountRequest) {
     request = &UpdateAccountRequest{
@@ -180,19 +196,22 @@ func NewUpdateAccountResponse() (response *UpdateAccountResponse) {
     return
 }
 
-func (c *Client) UpdateAccount(request *UpdateAccountRequest) (response *UpdateAccountResponse, err error) {
+func (c *Client) UpdateAccount(request *UpdateAccountRequest) (string) {
     return c.UpdateAccountWithContext(context.Background(), request)
 }
 
-func (c *Client) UpdateAccountWithContext(ctx context.Context, request *UpdateAccountRequest) (response *UpdateAccountResponse, err error) {
+func (c *Client) UpdateAccountWithContext(ctx context.Context, request *UpdateAccountRequest) (string) {
     if request == nil {
         request = NewUpdateAccountRequest()
     }
     request.SetContext(ctx)
 
-    response = NewUpdateAccountResponse()
-    err = c.Send(request, response)
-    return
+    response := NewUpdateAccountResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewListAccountsRequest() (request *ListAccountsRequest) {
     request = &ListAccountsRequest{
@@ -209,19 +228,22 @@ func NewListAccountsResponse() (response *ListAccountsResponse) {
     return
 }
 
-func (c *Client) ListAccounts(request *ListAccountsRequest) (response *ListAccountsResponse, err error) {
+func (c *Client) ListAccounts(request *ListAccountsRequest) (string) {
     return c.ListAccountsWithContext(context.Background(), request)
 }
 
-func (c *Client) ListAccountsWithContext(ctx context.Context, request *ListAccountsRequest) (response *ListAccountsResponse, err error) {
+func (c *Client) ListAccountsWithContext(ctx context.Context, request *ListAccountsRequest) (string) {
     if request == nil {
         request = NewListAccountsRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListAccountsResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListAccountsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 func NewListFoldersRequest() (request *ListFoldersRequest) {
     request = &ListFoldersRequest{
@@ -238,19 +260,22 @@ func NewListFoldersResponse() (response *ListFoldersResponse) {
     return
 }
 
-func (c *Client) ListFolders(request *ListFoldersRequest) (response *ListFoldersResponse, err error) {
+func (c *Client) ListFolders(request *ListFoldersRequest) (string) {
     return c.ListFoldersWithContext(context.Background(), request)
 }
 
-func (c *Client) ListFoldersWithContext(ctx context.Context, request *ListFoldersRequest) (response *ListFoldersResponse, err error) {
+func (c *Client) ListFoldersWithContext(ctx context.Context, request *ListFoldersRequest) (string) {
     if request == nil {
         request = NewListFoldersRequest()
     }
     request.SetContext(ctx)
 
-    response = NewListFoldersResponse()
-    err = c.Send(request, response)
-    return
+    response := NewListFoldersResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
 }
 
 
