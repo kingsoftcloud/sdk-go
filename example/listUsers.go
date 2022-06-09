@@ -10,8 +10,8 @@ import (
 
 func main() {
 	credential := common.NewCredential(
-		"AKLTJH6a6I8lRKisbTnGmcZbjw",
-		"OO+oVgJ34o+dYZyeMqmpvICg1MN9zG5qGnw4CrQ5hwZePc8+lFE3QibmIjsCzZKMxw==",
+		"KSYUN_AK_HERE",
+        	"KSYUN_SK_HERE",
 	)
 
 	cpf := profile.NewClientProfile()
