@@ -13,6 +13,7 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 	"net/url"
 	"sort"
+	"strings"
 )
 
 const (
@@ -51,9 +52,9 @@ func getStringToSign(request ksyunhttp.Request) string {
 	sort.Strings(keys)
 	for i := range keys {
 		k := keys[i]
-		buf.WriteString(url.QueryEscape(k))
+		buf.WriteString(strings.Replace(url.QueryEscape(k), "+", "%20", -1))
 		buf.WriteString("=")
-		buf.WriteString(url.QueryEscape(params[k]))
+		buf.WriteString(strings.Replace(url.QueryEscape(params[k]), "+", "%20", -1))
 		buf.WriteString("&")
 	}
 	buf.Truncate(buf.Len() - 1)
