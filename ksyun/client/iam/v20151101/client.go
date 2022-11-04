@@ -757,6 +757,134 @@ func (c *Client) DeleteAccessKeyWithContext(ctx context.Context, request *Delete
     }
     return msg
 }
+func NewListVirtualMFADevicesRequest() (request *ListVirtualMFADevicesRequest) {
+    request = &ListVirtualMFADevicesRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iam", APIVersion, "ListVirtualMFADevices")
+    return
+}
+
+func NewListVirtualMFADevicesResponse() (response *ListVirtualMFADevicesResponse) {
+    response = &ListVirtualMFADevicesResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ListVirtualMFADevices(request *ListVirtualMFADevicesRequest) (string) {
+    return c.ListVirtualMFADevicesWithContext(context.Background(), request)
+}
+
+func (c *Client) ListVirtualMFADevicesWithContext(ctx context.Context, request *ListVirtualMFADevicesRequest) (string) {
+    if request == nil {
+        request = NewListVirtualMFADevicesRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewListVirtualMFADevicesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewEnableMFADeviceRequest() (request *EnableMFADeviceRequest) {
+    request = &EnableMFADeviceRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iam", APIVersion, "EnableMFADevice")
+    return
+}
+
+func NewEnableMFADeviceResponse() (response *EnableMFADeviceResponse) {
+    response = &EnableMFADeviceResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) EnableMFADevice(request *EnableMFADeviceRequest) (string) {
+    return c.EnableMFADeviceWithContext(context.Background(), request)
+}
+
+func (c *Client) EnableMFADeviceWithContext(ctx context.Context, request *EnableMFADeviceRequest) (string) {
+    if request == nil {
+        request = NewEnableMFADeviceRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewEnableMFADeviceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeactivateMFADeviceRequest() (request *DeactivateMFADeviceRequest) {
+    request = &DeactivateMFADeviceRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iam", APIVersion, "DeactivateMFADevice")
+    return
+}
+
+func NewDeactivateMFADeviceResponse() (response *DeactivateMFADeviceResponse) {
+    response = &DeactivateMFADeviceResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeactivateMFADevice(request *DeactivateMFADeviceRequest) (string) {
+    return c.DeactivateMFADeviceWithContext(context.Background(), request)
+}
+
+func (c *Client) DeactivateMFADeviceWithContext(ctx context.Context, request *DeactivateMFADeviceRequest) (string) {
+    if request == nil {
+        request = NewDeactivateMFADeviceRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeactivateMFADeviceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewGetVirtualMFADeviceRequest() (request *GetVirtualMFADeviceRequest) {
+    request = &GetVirtualMFADeviceRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iam", APIVersion, "GetVirtualMFADevice")
+    return
+}
+
+func NewGetVirtualMFADeviceResponse() (response *GetVirtualMFADeviceResponse) {
+    response = &GetVirtualMFADeviceResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) GetVirtualMFADevice(request *GetVirtualMFADeviceRequest) (string) {
+    return c.GetVirtualMFADeviceWithContext(context.Background(), request)
+}
+
+func (c *Client) GetVirtualMFADeviceWithContext(ctx context.Context, request *GetVirtualMFADeviceRequest) (string) {
+    if request == nil {
+        request = NewGetVirtualMFADeviceRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewGetVirtualMFADeviceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewCreateRoleRequest() (request *CreateRoleRequest) {
     request = &CreateRoleRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -1013,38 +1141,6 @@ func (c *Client) UpdateRoleTrustAccountsWithContext(ctx context.Context, request
     }
     return msg
 }
-func NewListEntityForPolicyRequest() (request *ListEntityForPolicyRequest) {
-    request = &ListEntityForPolicyRequest{
-        BaseRequest: &ksyunhttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("iam", APIVersion, "ListEntityForPolicy")
-    return
-}
-
-func NewListEntityForPolicyResponse() (response *ListEntityForPolicyResponse) {
-    response = &ListEntityForPolicyResponse{
-        BaseResponse: &ksyunhttp.BaseResponse{},
-    }
-    return
-}
-
-func (c *Client) ListEntityForPolicy(request *ListEntityForPolicyRequest) (string) {
-    return c.ListEntityForPolicyWithContext(context.Background(), request)
-}
-
-func (c *Client) ListEntityForPolicyWithContext(ctx context.Context, request *ListEntityForPolicyRequest) (string) {
-    if request == nil {
-        request = NewListEntityForPolicyRequest()
-    }
-    request.SetContext(ctx)
-
-    response := NewListEntityForPolicyResponse()
-    err, msg := c.Send(request, response)
-    if err != nil {
-        return fmt.Sprintf("%+v\n", err)
-    }
-    return msg
-}
 func NewCreateProjectRequest() (request *CreateProjectRequest) {
     request = &CreateProjectRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -1071,6 +1167,102 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreatePr
     request.SetContext(ctx)
 
     response := NewCreateProjectResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewGetAccountAllProjectListRequest() (request *GetAccountAllProjectListRequest) {
+    request = &GetAccountAllProjectListRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iam", APIVersion, "GetAccountAllProjectList")
+    return
+}
+
+func NewGetAccountAllProjectListResponse() (response *GetAccountAllProjectListResponse) {
+    response = &GetAccountAllProjectListResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) GetAccountAllProjectList(request *GetAccountAllProjectListRequest) (string) {
+    return c.GetAccountAllProjectListWithContext(context.Background(), request)
+}
+
+func (c *Client) GetAccountAllProjectListWithContext(ctx context.Context, request *GetAccountAllProjectListRequest) (string) {
+    if request == nil {
+        request = NewGetAccountAllProjectListRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewGetAccountAllProjectListResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewGetProjectInstanceListRequest() (request *GetProjectInstanceListRequest) {
+    request = &GetProjectInstanceListRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iam", APIVersion, "GetProjectInstanceList")
+    return
+}
+
+func NewGetProjectInstanceListResponse() (response *GetProjectInstanceListResponse) {
+    response = &GetProjectInstanceListResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) GetProjectInstanceList(request *GetProjectInstanceListRequest) (string) {
+    return c.GetProjectInstanceListWithContext(context.Background(), request)
+}
+
+func (c *Client) GetProjectInstanceListWithContext(ctx context.Context, request *GetProjectInstanceListRequest) (string) {
+    if request == nil {
+        request = NewGetProjectInstanceListRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewGetProjectInstanceListResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewUpdateInstanceProjectIdRequest() (request *UpdateInstanceProjectIdRequest) {
+    request = &UpdateInstanceProjectIdRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iam", APIVersion, "UpdateInstanceProjectId")
+    return
+}
+
+func NewUpdateInstanceProjectIdResponse() (response *UpdateInstanceProjectIdResponse) {
+    response = &UpdateInstanceProjectIdResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) UpdateInstanceProjectId(request *UpdateInstanceProjectIdRequest) (string) {
+    return c.UpdateInstanceProjectIdWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateInstanceProjectIdWithContext(ctx context.Context, request *UpdateInstanceProjectIdRequest) (string) {
+    if request == nil {
+        request = NewUpdateInstanceProjectIdRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewUpdateInstanceProjectIdResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)
@@ -1583,6 +1775,38 @@ func (c *Client) RemoveUserFromGroupWithContext(ctx context.Context, request *Re
     request.SetContext(ctx)
 
     response := NewRemoveUserFromGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewListAllUserAccessKeysRequest() (request *ListAllUserAccessKeysRequest) {
+    request = &ListAllUserAccessKeysRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iam", APIVersion, "ListAllUserAccessKeys")
+    return
+}
+
+func NewListAllUserAccessKeysResponse() (response *ListAllUserAccessKeysResponse) {
+    response = &ListAllUserAccessKeysResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ListAllUserAccessKeys(request *ListAllUserAccessKeysRequest) (string) {
+    return c.ListAllUserAccessKeysWithContext(context.Background(), request)
+}
+
+func (c *Client) ListAllUserAccessKeysWithContext(ctx context.Context, request *ListAllUserAccessKeysRequest) (string) {
+    if request == nil {
+        request = NewListAllUserAccessKeysRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewListAllUserAccessKeysResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)

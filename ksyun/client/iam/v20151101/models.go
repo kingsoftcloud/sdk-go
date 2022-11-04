@@ -1079,6 +1079,164 @@ func (r *DeleteAccessKeyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ListVirtualMFADevicesRequest struct {
+    *ksyunhttp.BaseRequest
+    AssignmentStatus *string `json:"AssignmentStatus,omitempty" name:"AssignmentStatus"`
+    Marker *string `json:"Marker,omitempty" name:"Marker"`
+    MaxItems *int `json:"MaxItems,omitempty" name:"MaxItems"`
+}
+
+func (r *ListVirtualMFADevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListVirtualMFADevicesRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListVirtualMFADevicesRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListVirtualMFADevicesResponse struct {
+    *ksyunhttp.BaseResponse
+	ListVirtualMFADevicesResult struct {
+		VirtualMFADevices struct {
+			Member struct {
+				SerialNumber *string `json:"SerialNumber"`
+				EnableDate *string `json:"EnableDate"`
+				User *string `json:"User"`
+			} `json:"Member"`
+		} `json:"VirtualMFADevices"`
+	} `json:"ListVirtualMFADevicesResult"`
+}
+
+func (r *ListVirtualMFADevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListVirtualMFADevicesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableMFADeviceRequest struct {
+    *ksyunhttp.BaseRequest
+    AuthenticationCode1 *string `json:"AuthenticationCode1,omitempty" name:"AuthenticationCode1"`
+    AuthenticationCode2 *string `json:"AuthenticationCode2,omitempty" name:"AuthenticationCode2"`
+    SerialNumber *string `json:"SerialNumber,omitempty" name:"SerialNumber"`
+    UserName *string `json:"UserName,omitempty" name:"UserName"`
+}
+
+func (r *EnableMFADeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableMFADeviceRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "EnableMFADeviceRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableMFADeviceResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *EnableMFADeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *EnableMFADeviceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeactivateMFADeviceRequest struct {
+    *ksyunhttp.BaseRequest
+    SerialNumber *string `json:"SerialNumber,omitempty" name:"SerialNumber"`
+    UserName *string `json:"UserName,omitempty" name:"UserName"`
+}
+
+func (r *DeactivateMFADeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeactivateMFADeviceRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeactivateMFADeviceRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeactivateMFADeviceResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeactivateMFADeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeactivateMFADeviceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetVirtualMFADeviceRequest struct {
+    *ksyunhttp.BaseRequest
+    UserName *string `json:"UserName,omitempty" name:"UserName"`
+}
+
+func (r *GetVirtualMFADeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetVirtualMFADeviceRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetVirtualMFADeviceRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetVirtualMFADeviceResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+	VirtualMFADevice struct {
+		SerialNumber *string `json:"SerialNumber"`
+		EnableDate *string `json:"EnableDate"`
+	} `json:"VirtualMFADevice"`
+}
+
+func (r *GetVirtualMFADeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetVirtualMFADeviceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateRoleRequest struct {
     *ksyunhttp.BaseRequest
     RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
@@ -1431,43 +1589,6 @@ func (r *UpdateRoleTrustAccountsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type ListEntityForPolicyRequest struct {
-    *ksyunhttp.BaseRequest
-    PolicyKrn *string `json:"PolicyKrn,omitempty" name:"PolicyKrn"`
-    Marker *string `json:"Marker,omitempty" name:"Marker"`
-    MaxItems *int `json:"MaxItems,omitempty" name:"MaxItems"`
-}
-
-func (r *ListEntityForPolicyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ListEntityForPolicyRequest) FromJsonString(s string) error {
-    f := make(map[string]interface{})
-    if err := json.Unmarshal([]byte(s), &f); err != nil {
-        return err
-    }
-    if len(f) > 0 {
-        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListEntityForPolicyRequest has unknown keys!", "")
-    }
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type ListEntityForPolicyResponse struct {
-    *ksyunhttp.BaseResponse
-    ListEntitiesForPolicyResponse *string `json:"ListEntitiesForPolicyResponse" name:"ListEntitiesForPolicyResponse"`
-}
-
-func (r *ListEntityForPolicyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ListEntityForPolicyResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateProjectRequest struct {
     *ksyunhttp.BaseRequest
     ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
@@ -1502,6 +1623,143 @@ func (r *CreateProjectResponse) ToJsonString() string {
 }
 
 func (r *CreateProjectResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAccountAllProjectListRequest struct {
+    *ksyunhttp.BaseRequest
+}
+
+func (r *GetAccountAllProjectListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetAccountAllProjectListRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetAccountAllProjectListRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAccountAllProjectListResponse struct {
+    *ksyunhttp.BaseResponse
+	ListProjectResult struct {
+		Total *int `json:"Total"`
+		ProjectList []struct {
+					ProjectId *int `json:"ProjectId"`
+					AccountId *string `json:"AccountId"`
+					ProjectName *string `json:"ProjectName"`
+					ProjectDesc *string `json:"ProjectDesc"`
+					Status *int `json:"Status"`
+					Krn *string `json:"Krn"`
+					CreateTime *string `json:"CreateTime"`
+					UpdateTime *string `json:"UpdateTime"`
+			} `json:"ProjectList"`
+		} `json:"ListProjectResult"`
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *GetAccountAllProjectListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetAccountAllProjectListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetProjectInstanceListRequest struct {
+    *ksyunhttp.BaseRequest
+    ProjectId *int `json:"ProjectId,omitempty" name:"ProjectId"`
+    ProductLine *string `json:"ProductLine,omitempty" name:"ProductLine"`
+    Ps *int `json:"Ps,omitempty" name:"Ps"`
+    Pn *int `json:"Pn,omitempty" name:"Pn"`
+}
+
+func (r *GetProjectInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetProjectInstanceListRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetProjectInstanceListRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetProjectInstanceListResponse struct {
+    *ksyunhttp.BaseResponse
+	ListInstanceResult struct {
+		Items []struct {
+					ProjectId *string `json:"ProjectId"`
+					InstanceId *string `json:"InstanceId"`
+					ProductGroup *string `json:"ProductGroup"`
+					ProductType *string `json:"ProductType"`
+					Region *string `json:"Region"`
+					AccountId *int `json:"AccountId"`
+					Status *string `json:"Status"`
+			} `json:"Items"`
+			CurrentPage *int `json:"CurrentPage"`
+			PageSize *int `json:"PageSize"`
+			Total *int `json:"Total"`
+		} `json:"ListInstanceResult"`
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *GetProjectInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetProjectInstanceListResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateInstanceProjectIdRequest struct {
+    *ksyunhttp.BaseRequest
+    ProjectId *int `json:"ProjectId,omitempty" name:"ProjectId"`
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    Action *string `json:"Action,omitempty" name:"Action"`
+    Version *string `json:"Version,omitempty" name:"Version"`
+}
+
+func (r *UpdateInstanceProjectIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateInstanceProjectIdRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpdateInstanceProjectIdRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateInstanceProjectIdResponse struct {
+    *ksyunhttp.BaseResponse
+    UpdateInstanceProjectIdResponse *string `json:"UpdateInstanceProjectIdResponse" name:"UpdateInstanceProjectIdResponse"`
+}
+
+func (r *UpdateInstanceProjectIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateInstanceProjectIdResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2191,6 +2449,46 @@ func (r *RemoveUserFromGroupResponse) ToJsonString() string {
 }
 
 func (r *RemoveUserFromGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListAllUserAccessKeysRequest struct {
+    *ksyunhttp.BaseRequest
+}
+
+func (r *ListAllUserAccessKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListAllUserAccessKeysRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListAllUserAccessKeysRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListAllUserAccessKeysResponse struct {
+    *ksyunhttp.BaseResponse
+	AccessKeyList []struct {
+		UserName *string `json:"UserName"`
+		AccessKey *string `json:"AccessKey"`
+		LastLoginTime *string `json:"LastLoginTime"`
+		AkLastUsedTime *string `json:"AkLastUsedTime"`
+	} `json:"AccessKeyList"`
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ListAllUserAccessKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListAllUserAccessKeysResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
