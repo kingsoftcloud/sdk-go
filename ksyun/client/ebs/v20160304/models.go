@@ -736,3 +736,45 @@ func (r *ValidateAttachInstanceResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCreateVolumePriceRequest struct {
+    *ksyunhttp.BaseRequest
+    VolumeType *string `json:"VolumeType,omitempty" name:"VolumeType"`
+    Size *int `json:"Size,omitempty" name:"Size"`
+    AvailabilityZone *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+    ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+    PurchaseTime *int `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
+}
+
+func (r *DescribeCreateVolumePriceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCreateVolumePriceRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeCreateVolumePriceRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCreateVolumePriceResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+	VolumePrice struct {
+		CurrencyUnit *string `json:"CurrencyUnit"`
+	} `json:"VolumePrice"`
+}
+
+func (r *DescribeCreateVolumePriceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeCreateVolumePriceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+

@@ -597,5 +597,37 @@ func (c *Client) ValidateAttachInstanceWithContext(ctx context.Context, request 
     }
     return msg
 }
+func NewDescribeCreateVolumePriceRequest() (request *DescribeCreateVolumePriceRequest) {
+    request = &DescribeCreateVolumePriceRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ebs", APIVersion, "DescribeCreateVolumePrice")
+    return
+}
+
+func NewDescribeCreateVolumePriceResponse() (response *DescribeCreateVolumePriceResponse) {
+    response = &DescribeCreateVolumePriceResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeCreateVolumePrice(request *DescribeCreateVolumePriceRequest) (string) {
+    return c.DescribeCreateVolumePriceWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeCreateVolumePriceWithContext(ctx context.Context, request *DescribeCreateVolumePriceRequest) (string) {
+    if request == nil {
+        request = NewDescribeCreateVolumePriceRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeCreateVolumePriceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 
