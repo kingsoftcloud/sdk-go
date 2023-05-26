@@ -41,7 +41,6 @@ type CreateEpcRequest struct {
     AvailabilityZone *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
     Raid *string `json:"Raid,omitempty" name:"Raid"`
     RaidId *string `json:"RaidId,omitempty" name:"RaidId"`
-    RaidInfo *string `json:"RaidInfo,omitempty" name:"RaidInfo"`
     ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
     NetworkInterfaceMode *string `json:"NetworkInterfaceMode,omitempty" name:"NetworkInterfaceMode"`
     SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
@@ -63,15 +62,12 @@ type CreateEpcRequest struct {
     ExtensionDNS1 *string `json:"ExtensionDNS1,omitempty" name:"ExtensionDNS1"`
     ExtensionDNS2 *string `json:"ExtensionDNS2,omitempty" name:"ExtensionDNS2"`
     Description *string `json:"Description,omitempty" name:"Description"`
-    HostId *string `json:"HostId,omitempty" name:"HostId"`
     AddressBandWidth *string `json:"AddressBandWidth,omitempty" name:"AddressBandWidth"`
     LineId *string `json:"LineId,omitempty" name:"LineId"`
     BandWidthShareId *string `json:"BandWidthShareId,omitempty" name:"BandWidthShareId"`
     AddressChargeType *string `json:"AddressChargeType,omitempty" name:"AddressChargeType"`
     AddressPurchaseTime *string `json:"AddressPurchaseTime,omitempty" name:"AddressPurchaseTime"`
     AddressProjectId *string `json:"AddressProjectId,omitempty" name:"AddressProjectId"`
-    ContainerInfo *string `json:"ContainerInfo,omitempty" name:"ContainerInfo"`
-    LimitDay *int `json:"LimitDay,omitempty" name:"LimitDay"`
     SystemFileType *string `json:"SystemFileType,omitempty" name:"SystemFileType"`
     DataFileType *string `json:"DataFileType,omitempty" name:"DataFileType"`
     DataDiskCatalogue *string `json:"DataDiskCatalogue,omitempty" name:"DataDiskCatalogue"`
@@ -240,9 +236,7 @@ type ReinstallEpcRequest struct {
     CloudMonitorAgent *string `json:"CloudMonitorAgent,omitempty" name:"CloudMonitorAgent"`
     Raid *string `json:"Raid,omitempty" name:"Raid"`
     RaidId *string `json:"RaidId,omitempty" name:"RaidId"`
-    ReserveDisk *string `json:"ReserveDisk,omitempty" name:"ReserveDisk"`
     HostName *string `json:"HostName,omitempty" name:"HostName"`
-    ContainerInfo *string `json:"ContainerInfo,omitempty" name:"ContainerInfo"`
     SystemFileType *string `json:"SystemFileType,omitempty" name:"SystemFileType"`
     DataFileType *string `json:"DataFileType,omitempty" name:"DataFileType"`
     DataDiskCatalogue *string `json:"DataDiskCatalogue,omitempty" name:"DataDiskCatalogue"`
@@ -252,7 +246,6 @@ type ReinstallEpcRequest struct {
     NvmeDataDiskCatalogue *string `json:"NvmeDataDiskCatalogue,omitempty" name:"NvmeDataDiskCatalogue"`
     NvmeDataDiskCatalogueSuffix *string `json:"NvmeDataDiskCatalogueSuffix,omitempty" name:"NvmeDataDiskCatalogueSuffix"`
     BondAttribute *string `json:"bondAttribute,omitempty" name:"bondAttribute"`
-    Region *string `json:"Region,omitempty" name:"Region"`
     KesAgent *string `json:"KesAgent,omitempty" name:"KesAgent"`
     KmrAgent *string `json:"KmrAgent,omitempty" name:"KmrAgent"`
     ComputerName *string `json:"ComputerName,omitempty" name:"ComputerName"`
@@ -588,7 +581,6 @@ type DescribeEpcsResponse struct {
 									DeleteWithInstance *bool `json:"DeleteWithInstance"`
 							} `json:"DataVolumeSet"`
 							GpuImageDriverId *string `json:"GpuImageDriverId"`
-							Tags *string `json:"Tags"`
 							HyperThreading *string `json:"HyperThreading"`
 						} `json:"HostSet"`
 }
