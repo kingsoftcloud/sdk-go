@@ -144,6 +144,9 @@ type RunInstancesRequest struct {
     ProjectId *int `json:"ProjectId,omitempty" name:"ProjectId"`
     DataDisk []*RunInstancesDataDisk `json:"DataDisk,omitempty" name:"DataDisk"`
     NetworkInterface []*RunInstancesNetworkInterface `json:"NetworkInterface,omitempty" name:"NetworkInterface"`
+    Userdata *string `json:"Userdata,omitempty" name:"Userdata"`
+    SystemDiskDiskType *string `json:"SystemDisk.DiskType,omitempty" name:"SystemDisk.DiskType"`
+    SystemDiskDiskSize *int `json:"SystemDisk.DiskSize,omitempty" name:"SystemDisk.DiskSize"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {
@@ -165,10 +168,6 @@ func (r *RunInstancesRequest) FromJsonString(s string) error {
 type RunInstancesResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
-	InstancesSet []struct {
-		InstanceId *string `json:"InstanceId"`
-		InstanceName *string `json:"InstanceName"`
-	} `json:"InstancesSet"`
 }
 
 func (r *RunInstancesResponse) ToJsonString() string {
@@ -343,6 +342,8 @@ type ModifyInstanceTypeRequest struct {
     DataDisk []*ModifyInstanceTypeDataDisk `json:"DataDisk,omitempty" name:"DataDisk"`
     StopInstance *bool `json:"StopInstance,omitempty" name:"StopInstance"`
     AutoRestart *bool `json:"AutoRestart,omitempty" name:"AutoRestart"`
+    SystemDiskDiskSize *int `json:"SystemDisk.DiskSize,omitempty" name:"SystemDisk.DiskSize"`
+    SystemDiskResizeType *string `json:"SystemDisk.ResizeType,omitempty" name:"SystemDisk.ResizeType"`
 }
 
 func (r *ModifyInstanceTypeRequest) ToJsonString() string {
@@ -463,6 +464,7 @@ type DescribeImagesResponse struct {
 			CloudInitSupport *bool `json:"CloudInitSupport"`
 			Ipv6Support *bool `json:"Ipv6Support"`
 			IsModifyType *bool `json:"IsModifyType"`
+			ImageRealId *string `json:"ImageRealId"`
 			IsCloudMarket *bool `json:"IsCloudMarket"`
 		} `json:"ImagesSet"`
 }
@@ -519,10 +521,12 @@ type ModifyInstanceImageRequest struct {
     *ksyunhttp.BaseRequest
     InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
     ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
-    SystemDisk *string `json:"SystemDisk,omitempty" name:"SystemDisk"`
+    SystemDiskDiskSize *int `json:"SystemDisk.DiskSize,omitempty" name:"SystemDisk.DiskSize"`
     InstancePassword *string `json:"InstancePassword,omitempty" name:"InstancePassword"`
     KeyId []*string `json:"KeyId,omitempty" name:"KeyId"`
     KeepImageLogin *bool `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
+    SystemDiskDiskType *string `json:"SystemDisk.DiskType,omitempty" name:"SystemDisk.DiskType"`
+    SystemDiskResizeType *string `json:"SystemDisk.ResizeType,omitempty" name:"SystemDisk.ResizeType"`
 }
 
 func (r *ModifyInstanceImageRequest) ToJsonString() string {
@@ -1398,7 +1402,7 @@ type CreateScalingConfigurationRequest struct {
     KeepImageLogin *bool `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
     KeyId []*string `json:"KeyId,omitempty" name:"KeyId"`
     DataDisk []*CreateScalingConfigurationDataDisk `json:"DataDisk,omitempty" name:"DataDisk"`
-    SystemDisk []*string `json:"SystemDisk,omitempty" name:"SystemDisk"`
+    SystemDiskDiskSize *string `json:"SystemDisk.DiskSize,omitempty" name:"SystemDisk.DiskSize"`
     AddressBandWidth *int `json:"AddressBandWidth,omitempty" name:"AddressBandWidth"`
     BandWidthShareId *string `json:"BandWidthShareId,omitempty" name:"BandWidthShareId"`
     LineId *string `json:"LineId,omitempty" name:"LineId"`
@@ -1408,6 +1412,8 @@ type CreateScalingConfigurationRequest struct {
     UserData *string `json:"UserData,omitempty" name:"UserData"`
     InstanceNameTimeSuffix *bool `json:"InstanceNameTimeSuffix,omitempty" name:"InstanceNameTimeSuffix"`
     Tag []*CreateScalingConfigurationTag `json:"Tag,omitempty" name:"Tag"`
+    SystemDiskDiskType *string `json:"SystemDisk.DiskType,omitempty" name:"SystemDisk.DiskType"`
+    SystemDiskResizeType *string `json:"SystemDisk.ResizeType,omitempty" name:"SystemDisk.ResizeType"`
 }
 
 func (r *CreateScalingConfigurationRequest) ToJsonString() string {
@@ -3087,7 +3093,7 @@ type CreateModelRequest struct {
     *ksyunhttp.BaseRequest
     ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
     InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
-    SystemDisk *string `json:"SystemDisk,omitempty" name:"SystemDisk"`
+    SystemDiskDiskSize *string `json:"SystemDisk.DiskSize,omitempty" name:"SystemDisk.DiskSize"`
     DataDiskGb *int `json:"DataDiskGb,omitempty" name:"DataDiskGb"`
     SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
     DataDisk []*CreateModelDataDisk `json:"DataDisk,omitempty" name:"DataDisk"`
@@ -3108,6 +3114,8 @@ type CreateModelRequest struct {
     AddressPurchaseTime *int `json:"AddressPurchaseTime,omitempty" name:"AddressPurchaseTime"`
     AddressProjectId *string `json:"AddressProjectId,omitempty" name:"AddressProjectId"`
     ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
+    SystemDiskDiskType *string `json:"SystemDisk.DiskType,omitempty" name:"SystemDisk.DiskType"`
+    SystemDiskResizeType *string `json:"SystemDisk.ResizeType,omitempty" name:"SystemDisk.ResizeType"`
 }
 
 func (r *CreateModelRequest) ToJsonString() string {
@@ -3505,7 +3513,7 @@ type ModifyScalingConfigurationRequest struct {
     KeepImageLogin *bool `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
     KeyId []*string `json:"KeyId,omitempty" name:"KeyId"`
     DataDisk []*ModifyScalingConfigurationDataDisk `json:"DataDisk,omitempty" name:"DataDisk"`
-    SystemDisk []*string `json:"SystemDisk,omitempty" name:"SystemDisk"`
+    SystemDiskDiskSize *int `json:"SystemDisk.DiskSize,omitempty" name:"SystemDisk.DiskSize"`
     AddressBandWidth *int `json:"AddressBandWidth,omitempty" name:"AddressBandWidth"`
     BandWidthShareId *string `json:"BandWidthShareId,omitempty" name:"BandWidthShareId"`
     LineId *string `json:"LineId,omitempty" name:"LineId"`
@@ -3518,6 +3526,8 @@ type ModifyScalingConfigurationRequest struct {
     LoginSetAfter *bool `json:"LoginSetAfter,omitempty" name:"LoginSetAfter"`
     IpBindAfter *bool `json:"IpBindAfter,omitempty" name:"IpBindAfter"`
     InstanceNameRandom *bool `json:"InstanceNameRandom,omitempty" name:"InstanceNameRandom"`
+    SystemDiskDiskType *string `json:"SystemDisk.DiskType,omitempty" name:"SystemDisk.DiskType"`
+    SystemDiskResizeType *string `json:"SystemDisk.ResizeType,omitempty" name:"SystemDisk.ResizeType"`
 }
 
 func (r *ModifyScalingConfigurationRequest) ToJsonString() string {
@@ -3828,6 +3838,79 @@ func (r *DetachInstancesIamRoleResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type PreMigrateInstanceRequest struct {
+    *ksyunhttp.BaseRequest
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+    SystemDiskType *string `json:"SystemDiskType,omitempty" name:"SystemDiskType"`
+    DataDiskType *string `json:"DataDiskType,omitempty" name:"DataDiskType"`
+}
+
+func (r *PreMigrateInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PreMigrateInstanceRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "PreMigrateInstanceRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type PreMigrateInstanceResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *PreMigrateInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *PreMigrateInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelPreMigrateInstanceRequest struct {
+    *ksyunhttp.BaseRequest
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *CancelPreMigrateInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelPreMigrateInstanceRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CancelPreMigrateInstanceRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelPreMigrateInstanceResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CancelPreMigrateInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelPreMigrateInstanceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInstanceKmrRequest struct {
     *ksyunhttp.BaseRequest
 }
@@ -3859,109 +3942,6 @@ func (r *DescribeInstanceKmrResponse) ToJsonString() string {
 }
 
 func (r *DescribeInstanceKmrResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type ValidatedDiskEncryptRequest struct {
-    *ksyunhttp.BaseRequest
-    AccountId *string `json:"AccountId,omitempty" name:"AccountId"`
-}
-
-func (r *ValidatedDiskEncryptRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ValidatedDiskEncryptRequest) FromJsonString(s string) error {
-    f := make(map[string]interface{})
-    if err := json.Unmarshal([]byte(s), &f); err != nil {
-        return err
-    }
-    if len(f) > 0 {
-        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ValidatedDiskEncryptRequest has unknown keys!", "")
-    }
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type ValidatedDiskEncryptResponse struct {
-    *ksyunhttp.BaseResponse
-    test *int `json:"test" name:"test"`
-}
-
-func (r *ValidatedDiskEncryptResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ValidatedDiskEncryptResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DistributeKmsPermissionRequest struct {
-    *ksyunhttp.BaseRequest
-}
-
-func (r *DistributeKmsPermissionRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DistributeKmsPermissionRequest) FromJsonString(s string) error {
-    f := make(map[string]interface{})
-    if err := json.Unmarshal([]byte(s), &f); err != nil {
-        return err
-    }
-    if len(f) > 0 {
-        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DistributeKmsPermissionRequest has unknown keys!", "")
-    }
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DistributeKmsPermissionResponse struct {
-    *ksyunhttp.BaseResponse
-    test *int `json:"test" name:"test"`
-}
-
-func (r *DistributeKmsPermissionResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DistributeKmsPermissionResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeEntrySnapshotsRequest struct {
-    *ksyunhttp.BaseRequest
-}
-
-func (r *DescribeEntrySnapshotsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeEntrySnapshotsRequest) FromJsonString(s string) error {
-    f := make(map[string]interface{})
-    if err := json.Unmarshal([]byte(s), &f); err != nil {
-        return err
-    }
-    if len(f) > 0 {
-        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeEntrySnapshotsRequest has unknown keys!", "")
-    }
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeEntrySnapshotsResponse struct {
-    *ksyunhttp.BaseResponse
-    test *int `json:"test" name:"test"`
-}
-
-func (r *DescribeEntrySnapshotsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeEntrySnapshotsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

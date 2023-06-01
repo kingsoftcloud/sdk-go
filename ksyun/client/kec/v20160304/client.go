@@ -2933,6 +2933,70 @@ func (c *Client) DetachInstancesIamRoleWithContext(ctx context.Context, request 
     }
     return msg
 }
+func NewPreMigrateInstanceRequest() (request *PreMigrateInstanceRequest) {
+    request = &PreMigrateInstanceRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kec", APIVersion, "PreMigrateInstance")
+    return
+}
+
+func NewPreMigrateInstanceResponse() (response *PreMigrateInstanceResponse) {
+    response = &PreMigrateInstanceResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) PreMigrateInstance(request *PreMigrateInstanceRequest) (string) {
+    return c.PreMigrateInstanceWithContext(context.Background(), request)
+}
+
+func (c *Client) PreMigrateInstanceWithContext(ctx context.Context, request *PreMigrateInstanceRequest) (string) {
+    if request == nil {
+        request = NewPreMigrateInstanceRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewPreMigrateInstanceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCancelPreMigrateInstanceRequest() (request *CancelPreMigrateInstanceRequest) {
+    request = &CancelPreMigrateInstanceRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kec", APIVersion, "CancelPreMigrateInstance")
+    return
+}
+
+func NewCancelPreMigrateInstanceResponse() (response *CancelPreMigrateInstanceResponse) {
+    response = &CancelPreMigrateInstanceResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CancelPreMigrateInstance(request *CancelPreMigrateInstanceRequest) (string) {
+    return c.CancelPreMigrateInstanceWithContext(context.Background(), request)
+}
+
+func (c *Client) CancelPreMigrateInstanceWithContext(ctx context.Context, request *CancelPreMigrateInstanceRequest) (string) {
+    if request == nil {
+        request = NewCancelPreMigrateInstanceRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewCancelPreMigrateInstanceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewDescribeInstanceKmrRequest() (request *DescribeInstanceKmrRequest) {
     request = &DescribeInstanceKmrRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -2959,102 +3023,6 @@ func (c *Client) DescribeInstanceKmrWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
 
     response := NewDescribeInstanceKmrResponse()
-    err, msg := c.Send(request, response)
-    if err != nil {
-        return fmt.Sprintf("%+v\n", err)
-    }
-    return msg
-}
-func NewValidatedDiskEncryptRequest() (request *ValidatedDiskEncryptRequest) {
-    request = &ValidatedDiskEncryptRequest{
-        BaseRequest: &ksyunhttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("kec", APIVersion, "ValidatedDiskEncrypt")
-    return
-}
-
-func NewValidatedDiskEncryptResponse() (response *ValidatedDiskEncryptResponse) {
-    response = &ValidatedDiskEncryptResponse{
-        BaseResponse: &ksyunhttp.BaseResponse{},
-    }
-    return
-}
-
-func (c *Client) ValidatedDiskEncrypt(request *ValidatedDiskEncryptRequest) (string) {
-    return c.ValidatedDiskEncryptWithContext(context.Background(), request)
-}
-
-func (c *Client) ValidatedDiskEncryptWithContext(ctx context.Context, request *ValidatedDiskEncryptRequest) (string) {
-    if request == nil {
-        request = NewValidatedDiskEncryptRequest()
-    }
-    request.SetContext(ctx)
-
-    response := NewValidatedDiskEncryptResponse()
-    err, msg := c.Send(request, response)
-    if err != nil {
-        return fmt.Sprintf("%+v\n", err)
-    }
-    return msg
-}
-func NewDistributeKmsPermissionRequest() (request *DistributeKmsPermissionRequest) {
-    request = &DistributeKmsPermissionRequest{
-        BaseRequest: &ksyunhttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("kec", APIVersion, "DistributeKmsPermission")
-    return
-}
-
-func NewDistributeKmsPermissionResponse() (response *DistributeKmsPermissionResponse) {
-    response = &DistributeKmsPermissionResponse{
-        BaseResponse: &ksyunhttp.BaseResponse{},
-    }
-    return
-}
-
-func (c *Client) DistributeKmsPermission(request *DistributeKmsPermissionRequest) (string) {
-    return c.DistributeKmsPermissionWithContext(context.Background(), request)
-}
-
-func (c *Client) DistributeKmsPermissionWithContext(ctx context.Context, request *DistributeKmsPermissionRequest) (string) {
-    if request == nil {
-        request = NewDistributeKmsPermissionRequest()
-    }
-    request.SetContext(ctx)
-
-    response := NewDistributeKmsPermissionResponse()
-    err, msg := c.Send(request, response)
-    if err != nil {
-        return fmt.Sprintf("%+v\n", err)
-    }
-    return msg
-}
-func NewDescribeEntrySnapshotsRequest() (request *DescribeEntrySnapshotsRequest) {
-    request = &DescribeEntrySnapshotsRequest{
-        BaseRequest: &ksyunhttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("kec", APIVersion, "DescribeEntrySnapshots")
-    return
-}
-
-func NewDescribeEntrySnapshotsResponse() (response *DescribeEntrySnapshotsResponse) {
-    response = &DescribeEntrySnapshotsResponse{
-        BaseResponse: &ksyunhttp.BaseResponse{},
-    }
-    return
-}
-
-func (c *Client) DescribeEntrySnapshots(request *DescribeEntrySnapshotsRequest) (string) {
-    return c.DescribeEntrySnapshotsWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeEntrySnapshotsWithContext(ctx context.Context, request *DescribeEntrySnapshotsRequest) (string) {
-    if request == nil {
-        request = NewDescribeEntrySnapshotsRequest()
-    }
-    request.SetContext(ctx)
-
-    response := NewDescribeEntrySnapshotsResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)
