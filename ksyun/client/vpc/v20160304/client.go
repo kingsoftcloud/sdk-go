@@ -1,0 +1,2489 @@
+package v20160304
+import (
+    "context"
+    "fmt"
+    "github.com/kingsoftcloud/sdk-go/ksyun/common"
+    ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
+    "github.com/kingsoftcloud/sdk-go/ksyun/common/profile"
+)
+
+const APIVersion = "2016-03-04"
+
+type Client struct {
+    common.Client
+}
+
+func NewClient(credential common.Credentials, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+    client = &Client{}
+    client.Init(region).
+        WithCredential(credential).
+        WithProfile(clientProfile)
+    return
+}
+
+func NewCreateVpcRequest() (request *CreateVpcRequest) {
+    request = &CreateVpcRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateVpc")
+    return
+}
+
+func NewCreateVpcResponse() (response *CreateVpcResponse) {
+    response = &CreateVpcResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateVpc(request *CreateVpcRequest) (string) {
+    return c.CreateVpcWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateVpcWithContext(ctx context.Context, request *CreateVpcRequest) (string) {
+    if request == nil {
+        request = NewCreateVpcRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewCreateVpcResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteVpcRequest() (request *DeleteVpcRequest) {
+    request = &DeleteVpcRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpc")
+    return
+}
+
+func NewDeleteVpcResponse() (response *DeleteVpcResponse) {
+    response = &DeleteVpcResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteVpc(request *DeleteVpcRequest) (string) {
+    return c.DeleteVpcWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteVpcWithContext(ctx context.Context, request *DeleteVpcRequest) (string) {
+    if request == nil {
+        request = NewDeleteVpcRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteVpcResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeVpcsRequest() (request *DescribeVpcsRequest) {
+    request = &DescribeVpcsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcs")
+    return
+}
+
+func NewDescribeVpcsResponse() (response *DescribeVpcsResponse) {
+    response = &DescribeVpcsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeVpcs(request *DescribeVpcsRequest) (string) {
+    return c.DescribeVpcsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeVpcsWithContext(ctx context.Context, request *DescribeVpcsRequest) (string) {
+    if request == nil {
+        request = NewDescribeVpcsRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeVpcsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateSubnetRequest() (request *CreateSubnetRequest) {
+    request = &CreateSubnetRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateSubnet")
+    return
+}
+
+func NewCreateSubnetResponse() (response *CreateSubnetResponse) {
+    response = &CreateSubnetResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateSubnet(request *CreateSubnetRequest) (string) {
+    return c.CreateSubnetWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateSubnetWithContext(ctx context.Context, request *CreateSubnetRequest) (string) {
+    if request == nil {
+        request = NewCreateSubnetRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewCreateSubnetResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteSubnetRequest() (request *DeleteSubnetRequest) {
+    request = &DeleteSubnetRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteSubnet")
+    return
+}
+
+func NewDeleteSubnetResponse() (response *DeleteSubnetResponse) {
+    response = &DeleteSubnetResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteSubnet(request *DeleteSubnetRequest) (string) {
+    return c.DeleteSubnetWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteSubnetWithContext(ctx context.Context, request *DeleteSubnetRequest) (string) {
+    if request == nil {
+        request = NewDeleteSubnetRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteSubnetResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeSubnetsRequest() (request *DescribeSubnetsRequest) {
+    request = &DescribeSubnetsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeSubnets")
+    return
+}
+
+func NewDescribeSubnetsResponse() (response *DescribeSubnetsResponse) {
+    response = &DescribeSubnetsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeSubnets(request *DescribeSubnetsRequest) (string) {
+    return c.DescribeSubnetsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeSubnetsWithContext(ctx context.Context, request *DescribeSubnetsRequest) (string) {
+    if request == nil {
+        request = NewDescribeSubnetsRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeSubnetsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewAssociateNetworkAclRequest() (request *AssociateNetworkAclRequest) {
+    request = &AssociateNetworkAclRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AssociateNetworkAcl")
+    return
+}
+
+func NewAssociateNetworkAclResponse() (response *AssociateNetworkAclResponse) {
+    response = &AssociateNetworkAclResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) AssociateNetworkAcl(request *AssociateNetworkAclRequest) (string) {
+    return c.AssociateNetworkAclWithContext(context.Background(), request)
+}
+
+func (c *Client) AssociateNetworkAclWithContext(ctx context.Context, request *AssociateNetworkAclRequest) (string) {
+    if request == nil {
+        request = NewAssociateNetworkAclRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewAssociateNetworkAclResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDisassociateNetworkAclRequest() (request *DisassociateNetworkAclRequest) {
+    request = &DisassociateNetworkAclRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DisassociateNetworkAcl")
+    return
+}
+
+func NewDisassociateNetworkAclResponse() (response *DisassociateNetworkAclResponse) {
+    response = &DisassociateNetworkAclResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DisassociateNetworkAcl(request *DisassociateNetworkAclRequest) (string) {
+    return c.DisassociateNetworkAclWithContext(context.Background(), request)
+}
+
+func (c *Client) DisassociateNetworkAclWithContext(ctx context.Context, request *DisassociateNetworkAclRequest) (string) {
+    if request == nil {
+        request = NewDisassociateNetworkAclRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDisassociateNetworkAclResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateRouteRequest() (request *CreateRouteRequest) {
+    request = &CreateRouteRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateRoute")
+    return
+}
+
+func NewCreateRouteResponse() (response *CreateRouteResponse) {
+    response = &CreateRouteResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateRoute(request *CreateRouteRequest) (string) {
+    return c.CreateRouteWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateRouteWithContext(ctx context.Context, request *CreateRouteRequest) (string) {
+    if request == nil {
+        request = NewCreateRouteRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewCreateRouteResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteRouteRequest() (request *DeleteRouteRequest) {
+    request = &DeleteRouteRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteRoute")
+    return
+}
+
+func NewDeleteRouteResponse() (response *DeleteRouteResponse) {
+    response = &DeleteRouteResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteRoute(request *DeleteRouteRequest) (string) {
+    return c.DeleteRouteWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteRouteWithContext(ctx context.Context, request *DeleteRouteRequest) (string) {
+    if request == nil {
+        request = NewDeleteRouteRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteRouteResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeRoutesRequest() (request *DescribeRoutesRequest) {
+    request = &DescribeRoutesRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeRoutes")
+    return
+}
+
+func NewDescribeRoutesResponse() (response *DescribeRoutesResponse) {
+    response = &DescribeRoutesResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeRoutes(request *DescribeRoutesRequest) (string) {
+    return c.DescribeRoutesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeRoutesWithContext(ctx context.Context, request *DescribeRoutesRequest) (string) {
+    if request == nil {
+        request = NewDescribeRoutesRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeRoutesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateNetworkAclRequest() (request *CreateNetworkAclRequest) {
+    request = &CreateNetworkAclRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkAcl")
+    return
+}
+
+func NewCreateNetworkAclResponse() (response *CreateNetworkAclResponse) {
+    response = &CreateNetworkAclResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateNetworkAcl(request *CreateNetworkAclRequest) (string) {
+    return c.CreateNetworkAclWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateNetworkAclWithContext(ctx context.Context, request *CreateNetworkAclRequest) (string) {
+    if request == nil {
+        request = NewCreateNetworkAclRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewCreateNetworkAclResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteNetworkAclRequest() (request *DeleteNetworkAclRequest) {
+    request = &DeleteNetworkAclRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkAcl")
+    return
+}
+
+func NewDeleteNetworkAclResponse() (response *DeleteNetworkAclResponse) {
+    response = &DeleteNetworkAclResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteNetworkAcl(request *DeleteNetworkAclRequest) (string) {
+    return c.DeleteNetworkAclWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteNetworkAclWithContext(ctx context.Context, request *DeleteNetworkAclRequest) (string) {
+    if request == nil {
+        request = NewDeleteNetworkAclRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteNetworkAclResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateNetworkAclEntryRequest() (request *CreateNetworkAclEntryRequest) {
+    request = &CreateNetworkAclEntryRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkAclEntry")
+    return
+}
+
+func NewCreateNetworkAclEntryResponse() (response *CreateNetworkAclEntryResponse) {
+    response = &CreateNetworkAclEntryResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateNetworkAclEntry(request *CreateNetworkAclEntryRequest) (string) {
+    return c.CreateNetworkAclEntryWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateNetworkAclEntryWithContext(ctx context.Context, request *CreateNetworkAclEntryRequest) (string) {
+    if request == nil {
+        request = NewCreateNetworkAclEntryRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewCreateNetworkAclEntryResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteNetworkAclEntryRequest() (request *DeleteNetworkAclEntryRequest) {
+    request = &DeleteNetworkAclEntryRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkAclEntry")
+    return
+}
+
+func NewDeleteNetworkAclEntryResponse() (response *DeleteNetworkAclEntryResponse) {
+    response = &DeleteNetworkAclEntryResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteNetworkAclEntry(request *DeleteNetworkAclEntryRequest) (string) {
+    return c.DeleteNetworkAclEntryWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteNetworkAclEntryWithContext(ctx context.Context, request *DeleteNetworkAclEntryRequest) (string) {
+    if request == nil {
+        request = NewDeleteNetworkAclEntryRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteNetworkAclEntryResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeNetworkAclsRequest() (request *DescribeNetworkAclsRequest) {
+    request = &DescribeNetworkAclsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetworkAcls")
+    return
+}
+
+func NewDescribeNetworkAclsResponse() (response *DescribeNetworkAclsResponse) {
+    response = &DescribeNetworkAclsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeNetworkAcls(request *DescribeNetworkAclsRequest) (string) {
+    return c.DescribeNetworkAclsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeNetworkAclsWithContext(ctx context.Context, request *DescribeNetworkAclsRequest) (string) {
+    if request == nil {
+        request = NewDescribeNetworkAclsRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeNetworkAclsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateSecurityGroupRequest() (request *CreateSecurityGroupRequest) {
+    request = &CreateSecurityGroupRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateSecurityGroup")
+    return
+}
+
+func NewCreateSecurityGroupResponse() (response *CreateSecurityGroupResponse) {
+    response = &CreateSecurityGroupResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateSecurityGroup(request *CreateSecurityGroupRequest) (string) {
+    return c.CreateSecurityGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *CreateSecurityGroupRequest) (string) {
+    if request == nil {
+        request = NewCreateSecurityGroupRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewCreateSecurityGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteSecurityGroupRequest() (request *DeleteSecurityGroupRequest) {
+    request = &DeleteSecurityGroupRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteSecurityGroup")
+    return
+}
+
+func NewDeleteSecurityGroupResponse() (response *DeleteSecurityGroupResponse) {
+    response = &DeleteSecurityGroupResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteSecurityGroup(request *DeleteSecurityGroupRequest) (string) {
+    return c.DeleteSecurityGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *DeleteSecurityGroupRequest) (string) {
+    if request == nil {
+        request = NewDeleteSecurityGroupRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteSecurityGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewAuthorizeSecurityGroupEntryRequest() (request *AuthorizeSecurityGroupEntryRequest) {
+    request = &AuthorizeSecurityGroupEntryRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AuthorizeSecurityGroupEntry")
+    return
+}
+
+func NewAuthorizeSecurityGroupEntryResponse() (response *AuthorizeSecurityGroupEntryResponse) {
+    response = &AuthorizeSecurityGroupEntryResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) AuthorizeSecurityGroupEntry(request *AuthorizeSecurityGroupEntryRequest) (string) {
+    return c.AuthorizeSecurityGroupEntryWithContext(context.Background(), request)
+}
+
+func (c *Client) AuthorizeSecurityGroupEntryWithContext(ctx context.Context, request *AuthorizeSecurityGroupEntryRequest) (string) {
+    if request == nil {
+        request = NewAuthorizeSecurityGroupEntryRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewAuthorizeSecurityGroupEntryResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewRevokeSecurityGroupEntryRequest() (request *RevokeSecurityGroupEntryRequest) {
+    request = &RevokeSecurityGroupEntryRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "RevokeSecurityGroupEntry")
+    return
+}
+
+func NewRevokeSecurityGroupEntryResponse() (response *RevokeSecurityGroupEntryResponse) {
+    response = &RevokeSecurityGroupEntryResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) RevokeSecurityGroupEntry(request *RevokeSecurityGroupEntryRequest) (string) {
+    return c.RevokeSecurityGroupEntryWithContext(context.Background(), request)
+}
+
+func (c *Client) RevokeSecurityGroupEntryWithContext(ctx context.Context, request *RevokeSecurityGroupEntryRequest) (string) {
+    if request == nil {
+        request = NewRevokeSecurityGroupEntryRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewRevokeSecurityGroupEntryResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeSecurityGroupsRequest() (request *DescribeSecurityGroupsRequest) {
+    request = &DescribeSecurityGroupsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeSecurityGroups")
+    return
+}
+
+func NewDescribeSecurityGroupsResponse() (response *DescribeSecurityGroupsResponse) {
+    response = &DescribeSecurityGroupsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeSecurityGroups(request *DescribeSecurityGroupsRequest) (string) {
+    return c.DescribeSecurityGroupsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeSecurityGroupsWithContext(ctx context.Context, request *DescribeSecurityGroupsRequest) (string) {
+    if request == nil {
+        request = NewDescribeSecurityGroupsRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeSecurityGroupsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateNatRequest() (request *CreateNatRequest) {
+    request = &CreateNatRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateNat")
+    return
+}
+
+func NewCreateNatResponse() (response *CreateNatResponse) {
+    response = &CreateNatResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateNat(request *CreateNatRequest) (string) {
+    return c.CreateNatWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateNatWithContext(ctx context.Context, request *CreateNatRequest) (string) {
+    if request == nil {
+        request = NewCreateNatRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewCreateNatResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteNatRequest() (request *DeleteNatRequest) {
+    request = &DeleteNatRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteNat")
+    return
+}
+
+func NewDeleteNatResponse() (response *DeleteNatResponse) {
+    response = &DeleteNatResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteNat(request *DeleteNatRequest) (string) {
+    return c.DeleteNatWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteNatWithContext(ctx context.Context, request *DeleteNatRequest) (string) {
+    if request == nil {
+        request = NewDeleteNatRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteNatResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeNatsRequest() (request *DescribeNatsRequest) {
+    request = &DescribeNatsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeNats")
+    return
+}
+
+func NewDescribeNatsResponse() (response *DescribeNatsResponse) {
+    response = &DescribeNatsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeNats(request *DescribeNatsRequest) (string) {
+    return c.DescribeNatsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeNatsWithContext(ctx context.Context, request *DescribeNatsRequest) (string) {
+    if request == nil {
+        request = NewDescribeNatsRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeNatsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewAssociateNatRequest() (request *AssociateNatRequest) {
+    request = &AssociateNatRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AssociateNat")
+    return
+}
+
+func NewAssociateNatResponse() (response *AssociateNatResponse) {
+    response = &AssociateNatResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) AssociateNat(request *AssociateNatRequest) (string) {
+    return c.AssociateNatWithContext(context.Background(), request)
+}
+
+func (c *Client) AssociateNatWithContext(ctx context.Context, request *AssociateNatRequest) (string) {
+    if request == nil {
+        request = NewAssociateNatRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewAssociateNatResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDisassociateNatRequest() (request *DisassociateNatRequest) {
+    request = &DisassociateNatRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DisassociateNat")
+    return
+}
+
+func NewDisassociateNatResponse() (response *DisassociateNatResponse) {
+    response = &DisassociateNatResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DisassociateNat(request *DisassociateNatRequest) (string) {
+    return c.DisassociateNatWithContext(context.Background(), request)
+}
+
+func (c *Client) DisassociateNatWithContext(ctx context.Context, request *DisassociateNatRequest) (string) {
+    if request == nil {
+        request = NewDisassociateNatRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDisassociateNatResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeInternetGatewaysRequest() (request *DescribeInternetGatewaysRequest) {
+    request = &DescribeInternetGatewaysRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeInternetGateways")
+    return
+}
+
+func NewDescribeInternetGatewaysResponse() (response *DescribeInternetGatewaysResponse) {
+    response = &DescribeInternetGatewaysResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeInternetGateways(request *DescribeInternetGatewaysRequest) (string) {
+    return c.DescribeInternetGatewaysWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeInternetGatewaysWithContext(ctx context.Context, request *DescribeInternetGatewaysRequest) (string) {
+    if request == nil {
+        request = NewDescribeInternetGatewaysRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeInternetGatewaysResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateVpcPeeringConnectionRequest() (request *CreateVpcPeeringConnectionRequest) {
+    request = &CreateVpcPeeringConnectionRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateVpcPeeringConnection")
+    return
+}
+
+func NewCreateVpcPeeringConnectionResponse() (response *CreateVpcPeeringConnectionResponse) {
+    response = &CreateVpcPeeringConnectionResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateVpcPeeringConnection(request *CreateVpcPeeringConnectionRequest) (string) {
+    return c.CreateVpcPeeringConnectionWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateVpcPeeringConnectionWithContext(ctx context.Context, request *CreateVpcPeeringConnectionRequest) (string) {
+    if request == nil {
+        request = NewCreateVpcPeeringConnectionRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewCreateVpcPeeringConnectionResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteVpcPeeringConnectionRequest() (request *DeleteVpcPeeringConnectionRequest) {
+    request = &DeleteVpcPeeringConnectionRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpcPeeringConnection")
+    return
+}
+
+func NewDeleteVpcPeeringConnectionResponse() (response *DeleteVpcPeeringConnectionResponse) {
+    response = &DeleteVpcPeeringConnectionResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteVpcPeeringConnection(request *DeleteVpcPeeringConnectionRequest) (string) {
+    return c.DeleteVpcPeeringConnectionWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteVpcPeeringConnectionWithContext(ctx context.Context, request *DeleteVpcPeeringConnectionRequest) (string) {
+    if request == nil {
+        request = NewDeleteVpcPeeringConnectionRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteVpcPeeringConnectionResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeVpcPeeringConnectionsRequest() (request *DescribeVpcPeeringConnectionsRequest) {
+    request = &DescribeVpcPeeringConnectionsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcPeeringConnections")
+    return
+}
+
+func NewDescribeVpcPeeringConnectionsResponse() (response *DescribeVpcPeeringConnectionsResponse) {
+    response = &DescribeVpcPeeringConnectionsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeVpcPeeringConnections(request *DescribeVpcPeeringConnectionsRequest) (string) {
+    return c.DescribeVpcPeeringConnectionsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeVpcPeeringConnectionsWithContext(ctx context.Context, request *DescribeVpcPeeringConnectionsRequest) (string) {
+    if request == nil {
+        request = NewDescribeVpcPeeringConnectionsRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeVpcPeeringConnectionsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyNetworkAclRequest() (request *ModifyNetworkAclRequest) {
+    request = &ModifyNetworkAclRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkAcl")
+    return
+}
+
+func NewModifyNetworkAclResponse() (response *ModifyNetworkAclResponse) {
+    response = &ModifyNetworkAclResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyNetworkAcl(request *ModifyNetworkAclRequest) (string) {
+    return c.ModifyNetworkAclWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyNetworkAclWithContext(ctx context.Context, request *ModifyNetworkAclRequest) (string) {
+    if request == nil {
+        request = NewModifyNetworkAclRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewModifyNetworkAclResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifySecurityGroupRequest() (request *ModifySecurityGroupRequest) {
+    request = &ModifySecurityGroupRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifySecurityGroup")
+    return
+}
+
+func NewModifySecurityGroupResponse() (response *ModifySecurityGroupResponse) {
+    response = &ModifySecurityGroupResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifySecurityGroup(request *ModifySecurityGroupRequest) (string) {
+    return c.ModifySecurityGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifySecurityGroupWithContext(ctx context.Context, request *ModifySecurityGroupRequest) (string) {
+    if request == nil {
+        request = NewModifySecurityGroupRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewModifySecurityGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifySubnetRequest() (request *ModifySubnetRequest) {
+    request = &ModifySubnetRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifySubnet")
+    return
+}
+
+func NewModifySubnetResponse() (response *ModifySubnetResponse) {
+    response = &ModifySubnetResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifySubnet(request *ModifySubnetRequest) (string) {
+    return c.ModifySubnetWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifySubnetWithContext(ctx context.Context, request *ModifySubnetRequest) (string) {
+    if request == nil {
+        request = NewModifySubnetRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewModifySubnetResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyNatRequest() (request *ModifyNatRequest) {
+    request = &ModifyNatRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyNat")
+    return
+}
+
+func NewModifyNatResponse() (response *ModifyNatResponse) {
+    response = &ModifyNatResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyNat(request *ModifyNatRequest) (string) {
+    return c.ModifyNatWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyNatWithContext(ctx context.Context, request *ModifyNatRequest) (string) {
+    if request == nil {
+        request = NewModifyNatRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewModifyNatResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeNetworkInterfacesRequest() (request *DescribeNetworkInterfacesRequest) {
+    request = &DescribeNetworkInterfacesRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetworkInterfaces")
+    return
+}
+
+func NewDescribeNetworkInterfacesResponse() (response *DescribeNetworkInterfacesResponse) {
+    response = &DescribeNetworkInterfacesResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeNetworkInterfaces(request *DescribeNetworkInterfacesRequest) (string) {
+    return c.DescribeNetworkInterfacesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeNetworkInterfacesWithContext(ctx context.Context, request *DescribeNetworkInterfacesRequest) (string) {
+    if request == nil {
+        request = NewDescribeNetworkInterfacesRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeNetworkInterfacesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeSubnetAvailableAddressesRequest() (request *DescribeSubnetAvailableAddressesRequest) {
+    request = &DescribeSubnetAvailableAddressesRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeSubnetAvailableAddresses")
+    return
+}
+
+func NewDescribeSubnetAvailableAddressesResponse() (response *DescribeSubnetAvailableAddressesResponse) {
+    response = &DescribeSubnetAvailableAddressesResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeSubnetAvailableAddresses(request *DescribeSubnetAvailableAddressesRequest) (string) {
+    return c.DescribeSubnetAvailableAddressesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeSubnetAvailableAddressesWithContext(ctx context.Context, request *DescribeSubnetAvailableAddressesRequest) (string) {
+    if request == nil {
+        request = NewDescribeSubnetAvailableAddressesRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeSubnetAvailableAddressesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyVpcRequest() (request *ModifyVpcRequest) {
+    request = &ModifyVpcRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpc")
+    return
+}
+
+func NewModifyVpcResponse() (response *ModifyVpcResponse) {
+    response = &ModifyVpcResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyVpc(request *ModifyVpcRequest) (string) {
+    return c.ModifyVpcWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyVpcWithContext(ctx context.Context, request *ModifyVpcRequest) (string) {
+    if request == nil {
+        request = NewModifyVpcRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewModifyVpcResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewAcceptVpcPeeringConnectionRequest() (request *AcceptVpcPeeringConnectionRequest) {
+    request = &AcceptVpcPeeringConnectionRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AcceptVpcPeeringConnection")
+    return
+}
+
+func NewAcceptVpcPeeringConnectionResponse() (response *AcceptVpcPeeringConnectionResponse) {
+    response = &AcceptVpcPeeringConnectionResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) AcceptVpcPeeringConnection(request *AcceptVpcPeeringConnectionRequest) (string) {
+    return c.AcceptVpcPeeringConnectionWithContext(context.Background(), request)
+}
+
+func (c *Client) AcceptVpcPeeringConnectionWithContext(ctx context.Context, request *AcceptVpcPeeringConnectionRequest) (string) {
+    if request == nil {
+        request = NewAcceptVpcPeeringConnectionRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewAcceptVpcPeeringConnectionResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewRejectVpcPeeringConnectionRequest() (request *RejectVpcPeeringConnectionRequest) {
+    request = &RejectVpcPeeringConnectionRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "RejectVpcPeeringConnection")
+    return
+}
+
+func NewRejectVpcPeeringConnectionResponse() (response *RejectVpcPeeringConnectionResponse) {
+    response = &RejectVpcPeeringConnectionResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) RejectVpcPeeringConnection(request *RejectVpcPeeringConnectionRequest) (string) {
+    return c.RejectVpcPeeringConnectionWithContext(context.Background(), request)
+}
+
+func (c *Client) RejectVpcPeeringConnectionWithContext(ctx context.Context, request *RejectVpcPeeringConnectionRequest) (string) {
+    if request == nil {
+        request = NewRejectVpcPeeringConnectionRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewRejectVpcPeeringConnectionResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyVpcPeeringConnectionRequest() (request *ModifyVpcPeeringConnectionRequest) {
+    request = &ModifyVpcPeeringConnectionRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpcPeeringConnection")
+    return
+}
+
+func NewModifyVpcPeeringConnectionResponse() (response *ModifyVpcPeeringConnectionResponse) {
+    response = &ModifyVpcPeeringConnectionResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyVpcPeeringConnection(request *ModifyVpcPeeringConnectionRequest) (string) {
+    return c.ModifyVpcPeeringConnectionWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyVpcPeeringConnectionWithContext(ctx context.Context, request *ModifyVpcPeeringConnectionRequest) (string) {
+    if request == nil {
+        request = NewModifyVpcPeeringConnectionRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewModifyVpcPeeringConnectionResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeAvailabilityZonesRequest() (request *DescribeAvailabilityZonesRequest) {
+    request = &DescribeAvailabilityZonesRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeAvailabilityZones")
+    return
+}
+
+func NewDescribeAvailabilityZonesResponse() (response *DescribeAvailabilityZonesResponse) {
+    response = &DescribeAvailabilityZonesResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeAvailabilityZones(request *DescribeAvailabilityZonesRequest) (string) {
+    return c.DescribeAvailabilityZonesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAvailabilityZonesWithContext(ctx context.Context, request *DescribeAvailabilityZonesRequest) (string) {
+    if request == nil {
+        request = NewDescribeAvailabilityZonesRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeAvailabilityZonesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeDirectConnectsRequest() (request *DescribeDirectConnectsRequest) {
+    request = &DescribeDirectConnectsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnects")
+    return
+}
+
+func NewDescribeDirectConnectsResponse() (response *DescribeDirectConnectsResponse) {
+    response = &DescribeDirectConnectsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeDirectConnects(request *DescribeDirectConnectsRequest) (string) {
+    return c.DescribeDirectConnectsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDirectConnectsWithContext(ctx context.Context, request *DescribeDirectConnectsRequest) (string) {
+    if request == nil {
+        request = NewDescribeDirectConnectsRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeDirectConnectsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateDirectConnectInterfaceRequest() (request *CreateDirectConnectInterfaceRequest) {
+    request = &CreateDirectConnectInterfaceRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateDirectConnectInterface")
+    return
+}
+
+func NewCreateDirectConnectInterfaceResponse() (response *CreateDirectConnectInterfaceResponse) {
+    response = &CreateDirectConnectInterfaceResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateDirectConnectInterface(request *CreateDirectConnectInterfaceRequest) (string) {
+    return c.CreateDirectConnectInterfaceWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateDirectConnectInterfaceWithContext(ctx context.Context, request *CreateDirectConnectInterfaceRequest) (string) {
+    if request == nil {
+        request = NewCreateDirectConnectInterfaceRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewCreateDirectConnectInterfaceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteDirectConnectInterfaceRequest() (request *DeleteDirectConnectInterfaceRequest) {
+    request = &DeleteDirectConnectInterfaceRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteDirectConnectInterface")
+    return
+}
+
+func NewDeleteDirectConnectInterfaceResponse() (response *DeleteDirectConnectInterfaceResponse) {
+    response = &DeleteDirectConnectInterfaceResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteDirectConnectInterface(request *DeleteDirectConnectInterfaceRequest) (string) {
+    return c.DeleteDirectConnectInterfaceWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteDirectConnectInterfaceWithContext(ctx context.Context, request *DeleteDirectConnectInterfaceRequest) (string) {
+    if request == nil {
+        request = NewDeleteDirectConnectInterfaceRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteDirectConnectInterfaceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeDirectConnectInterfacesRequest() (request *DescribeDirectConnectInterfacesRequest) {
+    request = &DescribeDirectConnectInterfacesRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectInterfaces")
+    return
+}
+
+func NewDescribeDirectConnectInterfacesResponse() (response *DescribeDirectConnectInterfacesResponse) {
+    response = &DescribeDirectConnectInterfacesResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeDirectConnectInterfaces(request *DescribeDirectConnectInterfacesRequest) (string) {
+    return c.DescribeDirectConnectInterfacesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDirectConnectInterfacesWithContext(ctx context.Context, request *DescribeDirectConnectInterfacesRequest) (string) {
+    if request == nil {
+        request = NewDescribeDirectConnectInterfacesRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeDirectConnectInterfacesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateDirectConnectGatewayRequest() (request *CreateDirectConnectGatewayRequest) {
+    request = &CreateDirectConnectGatewayRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateDirectConnectGateway")
+    return
+}
+
+func NewCreateDirectConnectGatewayResponse() (response *CreateDirectConnectGatewayResponse) {
+    response = &CreateDirectConnectGatewayResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateDirectConnectGateway(request *CreateDirectConnectGatewayRequest) (string) {
+    return c.CreateDirectConnectGatewayWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateDirectConnectGatewayWithContext(ctx context.Context, request *CreateDirectConnectGatewayRequest) (string) {
+    if request == nil {
+        request = NewCreateDirectConnectGatewayRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewCreateDirectConnectGatewayResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteDirectConnectGatewayRequest() (request *DeleteDirectConnectGatewayRequest) {
+    request = &DeleteDirectConnectGatewayRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteDirectConnectGateway")
+    return
+}
+
+func NewDeleteDirectConnectGatewayResponse() (response *DeleteDirectConnectGatewayResponse) {
+    response = &DeleteDirectConnectGatewayResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteDirectConnectGateway(request *DeleteDirectConnectGatewayRequest) (string) {
+    return c.DeleteDirectConnectGatewayWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteDirectConnectGatewayWithContext(ctx context.Context, request *DeleteDirectConnectGatewayRequest) (string) {
+    if request == nil {
+        request = NewDeleteDirectConnectGatewayRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteDirectConnectGatewayResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeDirectConnectGatewaysRequest() (request *DescribeDirectConnectGatewaysRequest) {
+    request = &DescribeDirectConnectGatewaysRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectGateways")
+    return
+}
+
+func NewDescribeDirectConnectGatewaysResponse() (response *DescribeDirectConnectGatewaysResponse) {
+    response = &DescribeDirectConnectGatewaysResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeDirectConnectGateways(request *DescribeDirectConnectGatewaysRequest) (string) {
+    return c.DescribeDirectConnectGatewaysWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDirectConnectGatewaysWithContext(ctx context.Context, request *DescribeDirectConnectGatewaysRequest) (string) {
+    if request == nil {
+        request = NewDescribeDirectConnectGatewaysRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeDirectConnectGatewaysResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewAttachDirectConnectGatewayRequest() (request *AttachDirectConnectGatewayRequest) {
+    request = &AttachDirectConnectGatewayRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AttachDirectConnectGateway")
+    return
+}
+
+func NewAttachDirectConnectGatewayResponse() (response *AttachDirectConnectGatewayResponse) {
+    response = &AttachDirectConnectGatewayResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) AttachDirectConnectGateway(request *AttachDirectConnectGatewayRequest) (string) {
+    return c.AttachDirectConnectGatewayWithContext(context.Background(), request)
+}
+
+func (c *Client) AttachDirectConnectGatewayWithContext(ctx context.Context, request *AttachDirectConnectGatewayRequest) (string) {
+    if request == nil {
+        request = NewAttachDirectConnectGatewayRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewAttachDirectConnectGatewayResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDetachDirectConnectGatewayRequest() (request *DetachDirectConnectGatewayRequest) {
+    request = &DetachDirectConnectGatewayRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DetachDirectConnectGateway")
+    return
+}
+
+func NewDetachDirectConnectGatewayResponse() (response *DetachDirectConnectGatewayResponse) {
+    response = &DetachDirectConnectGatewayResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DetachDirectConnectGateway(request *DetachDirectConnectGatewayRequest) (string) {
+    return c.DetachDirectConnectGatewayWithContext(context.Background(), request)
+}
+
+func (c *Client) DetachDirectConnectGatewayWithContext(ctx context.Context, request *DetachDirectConnectGatewayRequest) (string) {
+    if request == nil {
+        request = NewDetachDirectConnectGatewayRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDetachDirectConnectGatewayResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyDirectConnectInterfaceRequest() (request *ModifyDirectConnectInterfaceRequest) {
+    request = &ModifyDirectConnectInterfaceRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyDirectConnectInterface")
+    return
+}
+
+func NewModifyDirectConnectInterfaceResponse() (response *ModifyDirectConnectInterfaceResponse) {
+    response = &ModifyDirectConnectInterfaceResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyDirectConnectInterface(request *ModifyDirectConnectInterfaceRequest) (string) {
+    return c.ModifyDirectConnectInterfaceWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyDirectConnectInterfaceWithContext(ctx context.Context, request *ModifyDirectConnectInterfaceRequest) (string) {
+    if request == nil {
+        request = NewModifyDirectConnectInterfaceRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewModifyDirectConnectInterfaceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyDirectConnectGatewayRequest() (request *ModifyDirectConnectGatewayRequest) {
+    request = &ModifyDirectConnectGatewayRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyDirectConnectGateway")
+    return
+}
+
+func NewModifyDirectConnectGatewayResponse() (response *ModifyDirectConnectGatewayResponse) {
+    response = &ModifyDirectConnectGatewayResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyDirectConnectGateway(request *ModifyDirectConnectGatewayRequest) (string) {
+    return c.ModifyDirectConnectGatewayWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyDirectConnectGatewayWithContext(ctx context.Context, request *ModifyDirectConnectGatewayRequest) (string) {
+    if request == nil {
+        request = NewModifyDirectConnectGatewayRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewModifyDirectConnectGatewayResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateVpnGatewayRequest() (request *CreateVpnGatewayRequest) {
+    request = &CreateVpnGatewayRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnGateway")
+    return
+}
+
+func NewCreateVpnGatewayResponse() (response *CreateVpnGatewayResponse) {
+    response = &CreateVpnGatewayResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (string) {
+    return c.CreateVpnGatewayWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateVpnGatewayWithContext(ctx context.Context, request *CreateVpnGatewayRequest) (string) {
+    if request == nil {
+        request = NewCreateVpnGatewayRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewCreateVpnGatewayResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyVpnGatewayRequest() (request *ModifyVpnGatewayRequest) {
+    request = &ModifyVpnGatewayRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnGateway")
+    return
+}
+
+func NewModifyVpnGatewayResponse() (response *ModifyVpnGatewayResponse) {
+    response = &ModifyVpnGatewayResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyVpnGateway(request *ModifyVpnGatewayRequest) (string) {
+    return c.ModifyVpnGatewayWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyVpnGatewayWithContext(ctx context.Context, request *ModifyVpnGatewayRequest) (string) {
+    if request == nil {
+        request = NewModifyVpnGatewayRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewModifyVpnGatewayResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteVpnGatewayRequest() (request *DeleteVpnGatewayRequest) {
+    request = &DeleteVpnGatewayRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnGateway")
+    return
+}
+
+func NewDeleteVpnGatewayResponse() (response *DeleteVpnGatewayResponse) {
+    response = &DeleteVpnGatewayResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteVpnGateway(request *DeleteVpnGatewayRequest) (string) {
+    return c.DeleteVpnGatewayWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteVpnGatewayWithContext(ctx context.Context, request *DeleteVpnGatewayRequest) (string) {
+    if request == nil {
+        request = NewDeleteVpnGatewayRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteVpnGatewayResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeVpnGatewaysRequest() (request *DescribeVpnGatewaysRequest) {
+    request = &DescribeVpnGatewaysRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnGateways")
+    return
+}
+
+func NewDescribeVpnGatewaysResponse() (response *DescribeVpnGatewaysResponse) {
+    response = &DescribeVpnGatewaysResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeVpnGateways(request *DescribeVpnGatewaysRequest) (string) {
+    return c.DescribeVpnGatewaysWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeVpnGatewaysWithContext(ctx context.Context, request *DescribeVpnGatewaysRequest) (string) {
+    if request == nil {
+        request = NewDescribeVpnGatewaysRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeVpnGatewaysResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateVpnTunnelRequest() (request *CreateVpnTunnelRequest) {
+    request = &CreateVpnTunnelRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnTunnel")
+    return
+}
+
+func NewCreateVpnTunnelResponse() (response *CreateVpnTunnelResponse) {
+    response = &CreateVpnTunnelResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateVpnTunnel(request *CreateVpnTunnelRequest) (string) {
+    return c.CreateVpnTunnelWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateVpnTunnelWithContext(ctx context.Context, request *CreateVpnTunnelRequest) (string) {
+    if request == nil {
+        request = NewCreateVpnTunnelRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewCreateVpnTunnelResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyVpnTunnelRequest() (request *ModifyVpnTunnelRequest) {
+    request = &ModifyVpnTunnelRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnTunnel")
+    return
+}
+
+func NewModifyVpnTunnelResponse() (response *ModifyVpnTunnelResponse) {
+    response = &ModifyVpnTunnelResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyVpnTunnel(request *ModifyVpnTunnelRequest) (string) {
+    return c.ModifyVpnTunnelWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyVpnTunnelWithContext(ctx context.Context, request *ModifyVpnTunnelRequest) (string) {
+    if request == nil {
+        request = NewModifyVpnTunnelRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewModifyVpnTunnelResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteVpnTunnelRequest() (request *DeleteVpnTunnelRequest) {
+    request = &DeleteVpnTunnelRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnTunnel")
+    return
+}
+
+func NewDeleteVpnTunnelResponse() (response *DeleteVpnTunnelResponse) {
+    response = &DeleteVpnTunnelResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteVpnTunnel(request *DeleteVpnTunnelRequest) (string) {
+    return c.DeleteVpnTunnelWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteVpnTunnelWithContext(ctx context.Context, request *DeleteVpnTunnelRequest) (string) {
+    if request == nil {
+        request = NewDeleteVpnTunnelRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteVpnTunnelResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeVpnTunnelsRequest() (request *DescribeVpnTunnelsRequest) {
+    request = &DescribeVpnTunnelsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnTunnels")
+    return
+}
+
+func NewDescribeVpnTunnelsResponse() (response *DescribeVpnTunnelsResponse) {
+    response = &DescribeVpnTunnelsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeVpnTunnels(request *DescribeVpnTunnelsRequest) (string) {
+    return c.DescribeVpnTunnelsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeVpnTunnelsWithContext(ctx context.Context, request *DescribeVpnTunnelsRequest) (string) {
+    if request == nil {
+        request = NewDescribeVpnTunnelsRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeVpnTunnelsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateCustomerGatewayRequest() (request *CreateCustomerGatewayRequest) {
+    request = &CreateCustomerGatewayRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateCustomerGateway")
+    return
+}
+
+func NewCreateCustomerGatewayResponse() (response *CreateCustomerGatewayResponse) {
+    response = &CreateCustomerGatewayResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateCustomerGateway(request *CreateCustomerGatewayRequest) (string) {
+    return c.CreateCustomerGatewayWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateCustomerGatewayWithContext(ctx context.Context, request *CreateCustomerGatewayRequest) (string) {
+    if request == nil {
+        request = NewCreateCustomerGatewayRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewCreateCustomerGatewayResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyCustomerGatewayRequest() (request *ModifyCustomerGatewayRequest) {
+    request = &ModifyCustomerGatewayRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyCustomerGateway")
+    return
+}
+
+func NewModifyCustomerGatewayResponse() (response *ModifyCustomerGatewayResponse) {
+    response = &ModifyCustomerGatewayResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyCustomerGateway(request *ModifyCustomerGatewayRequest) (string) {
+    return c.ModifyCustomerGatewayWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyCustomerGatewayWithContext(ctx context.Context, request *ModifyCustomerGatewayRequest) (string) {
+    if request == nil {
+        request = NewModifyCustomerGatewayRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewModifyCustomerGatewayResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteCustomerGatewayRequest() (request *DeleteCustomerGatewayRequest) {
+    request = &DeleteCustomerGatewayRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteCustomerGateway")
+    return
+}
+
+func NewDeleteCustomerGatewayResponse() (response *DeleteCustomerGatewayResponse) {
+    response = &DeleteCustomerGatewayResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteCustomerGateway(request *DeleteCustomerGatewayRequest) (string) {
+    return c.DeleteCustomerGatewayWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteCustomerGatewayWithContext(ctx context.Context, request *DeleteCustomerGatewayRequest) (string) {
+    if request == nil {
+        request = NewDeleteCustomerGatewayRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteCustomerGatewayResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyDirectConnectRequest() (request *ModifyDirectConnectRequest) {
+    request = &ModifyDirectConnectRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyDirectConnect")
+    return
+}
+
+func NewModifyDirectConnectResponse() (response *ModifyDirectConnectResponse) {
+    response = &ModifyDirectConnectResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyDirectConnect(request *ModifyDirectConnectRequest) (string) {
+    return c.ModifyDirectConnectWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyDirectConnectWithContext(ctx context.Context, request *ModifyDirectConnectRequest) (string) {
+    if request == nil {
+        request = NewModifyDirectConnectRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewModifyDirectConnectResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeCustomerGatewaysRequest() (request *DescribeCustomerGatewaysRequest) {
+    request = &DescribeCustomerGatewaysRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCustomerGateways")
+    return
+}
+
+func NewDescribeCustomerGatewaysResponse() (response *DescribeCustomerGatewaysResponse) {
+    response = &DescribeCustomerGatewaysResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeCustomerGateways(request *DescribeCustomerGatewaysRequest) (string) {
+    return c.DescribeCustomerGatewaysWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeCustomerGatewaysWithContext(ctx context.Context, request *DescribeCustomerGatewaysRequest) (string) {
+    if request == nil {
+        request = NewDescribeCustomerGatewaysRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeCustomerGatewaysResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeSubnetAllocatedIpAddressesRequest() (request *DescribeSubnetAllocatedIpAddressesRequest) {
+    request = &DescribeSubnetAllocatedIpAddressesRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeSubnetAllocatedIpAddresses")
+    return
+}
+
+func NewDescribeSubnetAllocatedIpAddressesResponse() (response *DescribeSubnetAllocatedIpAddressesResponse) {
+    response = &DescribeSubnetAllocatedIpAddressesResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeSubnetAllocatedIpAddresses(request *DescribeSubnetAllocatedIpAddressesRequest) (string) {
+    return c.DescribeSubnetAllocatedIpAddressesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeSubnetAllocatedIpAddressesWithContext(ctx context.Context, request *DescribeSubnetAllocatedIpAddressesRequest) (string) {
+    if request == nil {
+        request = NewDescribeSubnetAllocatedIpAddressesRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeSubnetAllocatedIpAddressesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteNetworkInterfaceRequest() (request *DeleteNetworkInterfaceRequest) {
+    request = &DeleteNetworkInterfaceRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkInterface")
+    return
+}
+
+func NewDeleteNetworkInterfaceResponse() (response *DeleteNetworkInterfaceResponse) {
+    response = &DeleteNetworkInterfaceResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteNetworkInterface(request *DeleteNetworkInterfaceRequest) (string) {
+    return c.DeleteNetworkInterfaceWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteNetworkInterfaceWithContext(ctx context.Context, request *DeleteNetworkInterfaceRequest) (string) {
+    if request == nil {
+        request = NewDeleteNetworkInterfaceRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteNetworkInterfaceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateNetworkInterfaceRequest() (request *CreateNetworkInterfaceRequest) {
+    request = &CreateNetworkInterfaceRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkInterface")
+    return
+}
+
+func NewCreateNetworkInterfaceResponse() (response *CreateNetworkInterfaceResponse) {
+    response = &CreateNetworkInterfaceResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateNetworkInterface(request *CreateNetworkInterfaceRequest) (string) {
+    return c.CreateNetworkInterfaceWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateNetworkInterfaceWithContext(ctx context.Context, request *CreateNetworkInterfaceRequest) (string) {
+    if request == nil {
+        request = NewCreateNetworkInterfaceRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewCreateNetworkInterfaceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyNetworkInterfaceRequest() (request *ModifyNetworkInterfaceRequest) {
+    request = &ModifyNetworkInterfaceRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkInterface")
+    return
+}
+
+func NewModifyNetworkInterfaceResponse() (response *ModifyNetworkInterfaceResponse) {
+    response = &ModifyNetworkInterfaceResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyNetworkInterface(request *ModifyNetworkInterfaceRequest) (string) {
+    return c.ModifyNetworkInterfaceWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyNetworkInterfaceWithContext(ctx context.Context, request *ModifyNetworkInterfaceRequest) (string) {
+    if request == nil {
+        request = NewModifyNetworkInterfaceRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewModifyNetworkInterfaceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteDirectConnectGatewayRouteRequest() (request *DeleteDirectConnectGatewayRouteRequest) {
+    request = &DeleteDirectConnectGatewayRouteRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteDirectConnectGatewayRoute")
+    return
+}
+
+func NewDeleteDirectConnectGatewayRouteResponse() (response *DeleteDirectConnectGatewayRouteResponse) {
+    response = &DeleteDirectConnectGatewayRouteResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteDirectConnectGatewayRoute(request *DeleteDirectConnectGatewayRouteRequest) (string) {
+    return c.DeleteDirectConnectGatewayRouteWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteDirectConnectGatewayRouteWithContext(ctx context.Context, request *DeleteDirectConnectGatewayRouteRequest) (string) {
+    if request == nil {
+        request = NewDeleteDirectConnectGatewayRouteRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteDirectConnectGatewayRouteResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeDirectConnectGatewayRouteRequest() (request *DescribeDirectConnectGatewayRouteRequest) {
+    request = &DescribeDirectConnectGatewayRouteRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectGatewayRoute")
+    return
+}
+
+func NewDescribeDirectConnectGatewayRouteResponse() (response *DescribeDirectConnectGatewayRouteResponse) {
+    response = &DescribeDirectConnectGatewayRouteResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeDirectConnectGatewayRoute(request *DescribeDirectConnectGatewayRouteRequest) (string) {
+    return c.DescribeDirectConnectGatewayRouteWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDirectConnectGatewayRouteWithContext(ctx context.Context, request *DescribeDirectConnectGatewayRouteRequest) (string) {
+    if request == nil {
+        request = NewDescribeDirectConnectGatewayRouteRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeDirectConnectGatewayRouteResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewPublishDirectConnectRouteRequest() (request *PublishDirectConnectRouteRequest) {
+    request = &PublishDirectConnectRouteRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "PublishDirectConnectRoute")
+    return
+}
+
+func NewPublishDirectConnectRouteResponse() (response *PublishDirectConnectRouteResponse) {
+    response = &PublishDirectConnectRouteResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) PublishDirectConnectRoute(request *PublishDirectConnectRouteRequest) (string) {
+    return c.PublishDirectConnectRouteWithContext(context.Background(), request)
+}
+
+func (c *Client) PublishDirectConnectRouteWithContext(ctx context.Context, request *PublishDirectConnectRouteRequest) (string) {
+    if request == nil {
+        request = NewPublishDirectConnectRouteRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewPublishDirectConnectRouteResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewUnpublishDirectConnectRouteRequest() (request *UnpublishDirectConnectRouteRequest) {
+    request = &UnpublishDirectConnectRouteRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "UnpublishDirectConnectRoute")
+    return
+}
+
+func NewUnpublishDirectConnectRouteResponse() (response *UnpublishDirectConnectRouteResponse) {
+    response = &UnpublishDirectConnectRouteResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) UnpublishDirectConnectRoute(request *UnpublishDirectConnectRouteRequest) (string) {
+    return c.UnpublishDirectConnectRouteWithContext(context.Background(), request)
+}
+
+func (c *Client) UnpublishDirectConnectRouteWithContext(ctx context.Context, request *UnpublishDirectConnectRouteRequest) (string) {
+    if request == nil {
+        request = NewUnpublishDirectConnectRouteRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewUnpublishDirectConnectRouteResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewAddSecondaryCidrBlockRequest() (request *AddSecondaryCidrBlockRequest) {
+    request = &AddSecondaryCidrBlockRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AddSecondaryCidrBlock")
+    return
+}
+
+func NewAddSecondaryCidrBlockResponse() (response *AddSecondaryCidrBlockResponse) {
+    response = &AddSecondaryCidrBlockResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) AddSecondaryCidrBlock(request *AddSecondaryCidrBlockRequest) (string) {
+    return c.AddSecondaryCidrBlockWithContext(context.Background(), request)
+}
+
+func (c *Client) AddSecondaryCidrBlockWithContext(ctx context.Context, request *AddSecondaryCidrBlockRequest) (string) {
+    if request == nil {
+        request = NewAddSecondaryCidrBlockRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewAddSecondaryCidrBlockResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteSecondaryCidrBlockRequest() (request *DeleteSecondaryCidrBlockRequest) {
+    request = &DeleteSecondaryCidrBlockRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteSecondaryCidrBlock")
+    return
+}
+
+func NewDeleteSecondaryCidrBlockResponse() (response *DeleteSecondaryCidrBlockResponse) {
+    response = &DeleteSecondaryCidrBlockResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteSecondaryCidrBlock(request *DeleteSecondaryCidrBlockRequest) (string) {
+    return c.DeleteSecondaryCidrBlockWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteSecondaryCidrBlockWithContext(ctx context.Context, request *DeleteSecondaryCidrBlockRequest) (string) {
+    if request == nil {
+        request = NewDeleteSecondaryCidrBlockRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteSecondaryCidrBlockResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewAssignPrivateIpAddressRequest() (request *AssignPrivateIpAddressRequest) {
+    request = &AssignPrivateIpAddressRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AssignPrivateIpAddress")
+    return
+}
+
+func NewAssignPrivateIpAddressResponse() (response *AssignPrivateIpAddressResponse) {
+    response = &AssignPrivateIpAddressResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) AssignPrivateIpAddress(request *AssignPrivateIpAddressRequest) (string) {
+    return c.AssignPrivateIpAddressWithContext(context.Background(), request)
+}
+
+func (c *Client) AssignPrivateIpAddressWithContext(ctx context.Context, request *AssignPrivateIpAddressRequest) (string) {
+    if request == nil {
+        request = NewAssignPrivateIpAddressRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewAssignPrivateIpAddressResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewUnassignPrivateIpAddressRequest() (request *UnassignPrivateIpAddressRequest) {
+    request = &UnassignPrivateIpAddressRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "UnassignPrivateIpAddress")
+    return
+}
+
+func NewUnassignPrivateIpAddressResponse() (response *UnassignPrivateIpAddressResponse) {
+    response = &UnassignPrivateIpAddressResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) UnassignPrivateIpAddress(request *UnassignPrivateIpAddressRequest) (string) {
+    return c.UnassignPrivateIpAddressWithContext(context.Background(), request)
+}
+
+func (c *Client) UnassignPrivateIpAddressWithContext(ctx context.Context, request *UnassignPrivateIpAddressRequest) (string) {
+    if request == nil {
+        request = NewUnassignPrivateIpAddressRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewUnassignPrivateIpAddressResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+
+
