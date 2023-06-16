@@ -2229,6 +2229,166 @@ func (c *Client) ModifyNetworkInterfaceWithContext(ctx context.Context, request 
     }
     return msg
 }
+func NewCreateHaVipRequest() (request *CreateHaVipRequest) {
+    request = &CreateHaVipRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateHaVip")
+    return
+}
+
+func NewCreateHaVipResponse() (response *CreateHaVipResponse) {
+    response = &CreateHaVipResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateHaVip(request *CreateHaVipRequest) (string) {
+    return c.CreateHaVipWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateHaVipWithContext(ctx context.Context, request *CreateHaVipRequest) (string) {
+    if request == nil {
+        request = NewCreateHaVipRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewCreateHaVipResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteHaVipRequest() (request *DeleteHaVipRequest) {
+    request = &DeleteHaVipRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteHaVip")
+    return
+}
+
+func NewDeleteHaVipResponse() (response *DeleteHaVipResponse) {
+    response = &DeleteHaVipResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteHaVip(request *DeleteHaVipRequest) (string) {
+    return c.DeleteHaVipWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteHaVipWithContext(ctx context.Context, request *DeleteHaVipRequest) (string) {
+    if request == nil {
+        request = NewDeleteHaVipRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteHaVipResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewAssociateHaVipRequest() (request *AssociateHaVipRequest) {
+    request = &AssociateHaVipRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AssociateHaVip")
+    return
+}
+
+func NewAssociateHaVipResponse() (response *AssociateHaVipResponse) {
+    response = &AssociateHaVipResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) AssociateHaVip(request *AssociateHaVipRequest) (string) {
+    return c.AssociateHaVipWithContext(context.Background(), request)
+}
+
+func (c *Client) AssociateHaVipWithContext(ctx context.Context, request *AssociateHaVipRequest) (string) {
+    if request == nil {
+        request = NewAssociateHaVipRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewAssociateHaVipResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewUnAssociateHaVipRequest() (request *UnAssociateHaVipRequest) {
+    request = &UnAssociateHaVipRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "UnAssociateHaVip")
+    return
+}
+
+func NewUnAssociateHaVipResponse() (response *UnAssociateHaVipResponse) {
+    response = &UnAssociateHaVipResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) UnAssociateHaVip(request *UnAssociateHaVipRequest) (string) {
+    return c.UnAssociateHaVipWithContext(context.Background(), request)
+}
+
+func (c *Client) UnAssociateHaVipWithContext(ctx context.Context, request *UnAssociateHaVipRequest) (string) {
+    if request == nil {
+        request = NewUnAssociateHaVipRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewUnAssociateHaVipResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeHaVipRequest() (request *DescribeHaVipRequest) {
+    request = &DescribeHaVipRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeHaVip")
+    return
+}
+
+func NewDescribeHaVipResponse() (response *DescribeHaVipResponse) {
+    response = &DescribeHaVipResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeHaVip(request *DescribeHaVipRequest) (string) {
+    return c.DescribeHaVipWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeHaVipWithContext(ctx context.Context, request *DescribeHaVipRequest) (string) {
+    if request == nil {
+        request = NewDescribeHaVipRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeHaVipResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewDeleteDirectConnectGatewayRouteRequest() (request *DeleteDirectConnectGatewayRouteRequest) {
     request = &DeleteDirectConnectGatewayRouteRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},

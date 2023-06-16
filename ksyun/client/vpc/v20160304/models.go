@@ -69,6 +69,11 @@ type DescribeSubnetAllocatedIpAddressesFilter struct {
     Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
+type DescribeHaVipFilter struct {
+    Name *string `json:"Name,omitempty" name:"Name"`
+    Value []*string `json:"Value,omitempty" name:"Value"`
+}
+
 type DescribeDirectConnectGatewayRouteFilter struct {
     Name *string `json:"Name,omitempty" name:"Name"`
     Value []*string `json:"Value,omitempty" name:"Value"`
@@ -3100,6 +3105,202 @@ func (r *ModifyNetworkInterfaceResponse) ToJsonString() string {
 }
 
 func (r *ModifyNetworkInterfaceResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateHaVipRequest struct {
+    *ksyunhttp.BaseRequest
+    SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+    IpAddress *string `json:"IpAddress,omitempty" name:"IpAddress"`
+}
+
+func (r *CreateHaVipRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateHaVipRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateHaVipRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateHaVipResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateHaVipResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateHaVipResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteHaVipRequest struct {
+    *ksyunhttp.BaseRequest
+    HaVipId *string `json:"HaVipId,omitempty" name:"HaVipId"`
+}
+
+func (r *DeleteHaVipRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteHaVipRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteHaVipRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteHaVipResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *DeleteHaVipResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteHaVipResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociateHaVipRequest struct {
+    *ksyunhttp.BaseRequest
+    NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
+    HaVipId *string `json:"HaVipId,omitempty" name:"HaVipId"`
+}
+
+func (r *AssociateHaVipRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssociateHaVipRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "AssociateHaVipRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociateHaVipResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *AssociateHaVipResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssociateHaVipResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnAssociateHaVipRequest struct {
+    *ksyunhttp.BaseRequest
+    NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
+    HaVipId *string `json:"HaVipId,omitempty" name:"HaVipId"`
+}
+
+func (r *UnAssociateHaVipRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnAssociateHaVipRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UnAssociateHaVipRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UnAssociateHaVipResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *UnAssociateHaVipResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UnAssociateHaVipResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHaVipRequest struct {
+    *ksyunhttp.BaseRequest
+    HaVipId []*string `json:"HaVipId,omitempty" name:"HaVipId"`
+    Filter []*DescribeHaVipFilter `json:"Filter,omitempty" name:"Filter"`
+    MaxResults *int `json:"MaxResults,omitempty" name:"MaxResults"`
+    NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
+}
+
+func (r *DescribeHaVipRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHaVipRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeHaVipRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHaVipResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    NextToken *string `json:"NextToken" name:"NextToken"`
+	HaVipSet []struct {
+		HaVipId *string `json:"HaVipId"`
+		SubnetId *string `json:"SubnetId"`
+		MasterNetworkInterfaceId *string `json:"MasterNetworkInterfaceId"`
+		VpcId *string `json:"VpcId"`
+		AllocationId *string `json:"AllocationId"`
+		IpAddress *string `json:"IpAddress"`
+		CreateTime *string `json:"CreateTime"`
+		SlaveNetworkInterfaceIdSet []struct {
+			} `json:"SlaveNetworkInterfaceIdSet"`
+		} `json:"HaVipSet"`
+}
+
+func (r *DescribeHaVipResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeHaVipResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
