@@ -917,6 +917,38 @@ func (c *Client) DeleteRemoteManagementWithContext(ctx context.Context, request 
     }
     return msg
 }
+func NewResetPasswordRequest() (request *ResetPasswordRequest) {
+    request = &ResetPasswordRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("epc", APIVersion, "ResetPassword")
+    return
+}
+
+func NewResetPasswordResponse() (response *ResetPasswordResponse) {
+    response = &ResetPasswordResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ResetPassword(request *ResetPasswordRequest) (string) {
+    return c.ResetPasswordWithContext(context.Background(), request)
+}
+
+func (c *Client) ResetPasswordWithContext(ctx context.Context, request *ResetPasswordRequest) (string) {
+    if request == nil {
+        request = NewResetPasswordRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewResetPasswordResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewModifyHyperThreadingRequest() (request *ModifyHyperThreadingRequest) {
     request = &ModifyHyperThreadingRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
