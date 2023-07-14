@@ -150,6 +150,7 @@ type RunInstancesRequest struct {
     ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
     ModelVersion *int `json:"ModelVersion,omitempty" name:"ModelVersion"`
     AssembledImageDataDiskType *string `json:"AssembledImageDataDiskType,omitempty" name:"AssembledImageDataDiskType"`
+    AutoCreateEbs *bool `json:"AutoCreateEbs,omitempty" name:"AutoCreateEbs"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {
