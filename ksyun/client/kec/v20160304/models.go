@@ -147,6 +147,9 @@ type RunInstancesRequest struct {
     Userdata *string `json:"Userdata,omitempty" name:"Userdata"`
     SystemDiskDiskType *string `json:"SystemDisk.DiskType,omitempty" name:"SystemDisk.DiskType"`
     SystemDiskDiskSize *int `json:"SystemDisk.DiskSize,omitempty" name:"SystemDisk.DiskSize"`
+    ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+    ModelVersion *int `json:"ModelVersion,omitempty" name:"ModelVersion"`
+    AssembledImageDataDiskType *string `json:"AssembledImageDataDiskType,omitempty" name:"AssembledImageDataDiskType"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {
@@ -527,6 +530,7 @@ type ModifyInstanceImageRequest struct {
     KeepImageLogin *bool `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
     SystemDiskDiskType *string `json:"SystemDisk.DiskType,omitempty" name:"SystemDisk.DiskType"`
     SystemDiskResizeType *string `json:"SystemDisk.ResizeType,omitempty" name:"SystemDisk.ResizeType"`
+    UserData *string `json:"UserData,omitempty" name:"UserData"`
 }
 
 func (r *ModifyInstanceImageRequest) ToJsonString() string {
@@ -3116,6 +3120,7 @@ type CreateModelRequest struct {
     ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
     SystemDiskDiskType *string `json:"SystemDisk.DiskType,omitempty" name:"SystemDisk.DiskType"`
     SystemDiskResizeType *string `json:"SystemDisk.ResizeType,omitempty" name:"SystemDisk.ResizeType"`
+    VersionDetail *string `json:"VersionDetail,omitempty" name:"VersionDetail"`
 }
 
 func (r *CreateModelRequest) ToJsonString() string {
@@ -3153,7 +3158,8 @@ func (r *CreateModelResponse) FromJsonString(s string) error {
 
 type TerminateModelsRequest struct {
     *ksyunhttp.BaseRequest
-    ModelId []*string `json:"ModelId,omitempty" name:"ModelId"`
+    ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+    ModelVersion *int `json:"ModelVersion,omitempty" name:"ModelVersion"`
 }
 
 func (r *TerminateModelsRequest) ToJsonString() string {
@@ -3212,7 +3218,8 @@ func (r *DescribeModelsRequest) FromJsonString(s string) error {
 type DescribeModelsResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
-    ModelSet *string `json:"ModelSet" name:"ModelSet"`
+    ModelParent *string `json:"ModelParent" name:"ModelParent"`
+    InstanceCount *int `json:"InstanceCount" name:"InstanceCount"`
 }
 
 func (r *DescribeModelsResponse) ToJsonString() string {
