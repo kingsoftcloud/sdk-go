@@ -13,6 +13,7 @@ type RunInstancesDataDisk struct {
     DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
     Type *string `json:"Type,omitempty" name:"Type"`
     Size *int `json:"Size,omitempty" name:"Size"`
+    SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 }
 
 type RunInstancesNetworkInterface struct {
