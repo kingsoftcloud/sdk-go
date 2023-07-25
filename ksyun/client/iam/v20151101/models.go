@@ -235,6 +235,7 @@ type GetUserResponse struct {
 		NeedBindMfa *int `json:"NeedBindMfa"`
 		UpdateDate *string `json:"UpdateDate"`
 		ViewAllProject *string `json:"ViewAllProject"`
+		Id *int `json:"Id"`
 	} `json:"GetUserResult"`
     RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -281,6 +282,43 @@ func (r *DeleteUserResponse) ToJsonString() string {
 }
 
 func (r *DeleteUserResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachUserPolicyRequest struct {
+    *ksyunhttp.BaseRequest
+    PolicyKrn *string `json:"PolicyKrn,omitempty" name:"PolicyKrn"`
+    UserName *string `json:"UserName,omitempty" name:"UserName"`
+}
+
+func (r *DetachUserPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetachUserPolicyRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DetachUserPolicyRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachUserPolicyResponse struct {
+    *ksyunhttp.BaseResponse
+    result *bool `json:"result" name:"result"`
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DetachUserPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DetachUserPolicyResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -869,6 +907,7 @@ func (r *UpdateLoginProfileResponse) FromJsonString(s string) error {
 type GetLoginProfileRequest struct {
     *ksyunhttp.BaseRequest
     UserName *string `json:"UserName,omitempty" name:"UserName"`
+    NotCheckPassword *int `json:"NotCheckPassword,omitempty" name:"NotCheckPassword"`
 }
 
 func (r *GetLoginProfileRequest) ToJsonString() string {
@@ -2489,6 +2528,95 @@ func (r *ListAllUserAccessKeysResponse) ToJsonString() string {
 }
 
 func (r *ListAllUserAccessKeysResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InsertInstanceToESRequest struct {
+    *ksyunhttp.BaseRequest
+    ProjectId *int `json:"ProjectId,omitempty" name:"ProjectId"`
+    ProductLine *string `json:"ProductLine,omitempty" name:"ProductLine"`
+    ProductGroup *int `json:"ProductGroup,omitempty" name:"ProductGroup"`
+    ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    RegionEn *string `json:"RegionEn,omitempty" name:"RegionEn"`
+    InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+}
+
+func (r *InsertInstanceToESRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InsertInstanceToESRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "InsertInstanceToESRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type InsertInstanceToESResponse struct {
+    *ksyunhttp.BaseResponse
+	Data []struct {
+		InstanceId *string `json:"InstanceId"`
+		Status *int `json:"Status"`
+		Result *string `json:"Result"`
+		Reason *string `json:"Reason"`
+	} `json:"Data"`
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *InsertInstanceToESResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *InsertInstanceToESResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DelInstanceFromESRequest struct {
+    *ksyunhttp.BaseRequest
+    ProductLine *string `json:"ProductLine,omitempty" name:"ProductLine"`
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DelInstanceFromESRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DelInstanceFromESRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DelInstanceFromESRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DelInstanceFromESResponse struct {
+    *ksyunhttp.BaseResponse
+	Data []struct {
+		InstanceId *string `json:"InstanceId"`
+		Status *int `json:"Status"`
+		Result *string `json:"Result"`
+		Reason *string `json:"Reason"`
+	} `json:"Data"`
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DelInstanceFromESResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DelInstanceFromESResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

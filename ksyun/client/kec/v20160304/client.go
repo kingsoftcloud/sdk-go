@@ -917,6 +917,38 @@ func (c *Client) CreateDedicatedHostsWithContext(ctx context.Context, request *C
     }
     return msg
 }
+func NewDeleteDedicatedHostRequest() (request *DeleteDedicatedHostRequest) {
+    request = &DeleteDedicatedHostRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kec", APIVersion, "DeleteDedicatedHost")
+    return
+}
+
+func NewDeleteDedicatedHostResponse() (response *DeleteDedicatedHostResponse) {
+    response = &DeleteDedicatedHostResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteDedicatedHost(request *DeleteDedicatedHostRequest) (string) {
+    return c.DeleteDedicatedHostWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteDedicatedHostWithContext(ctx context.Context, request *DeleteDedicatedHostRequest) (string) {
+    if request == nil {
+        request = NewDeleteDedicatedHostRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDeleteDedicatedHostResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewRenameDedicatedHostRequest() (request *RenameDedicatedHostRequest) {
     request = &RenameDedicatedHostRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -1877,6 +1909,70 @@ func (c *Client) ModifyImageSharePermissionWithContext(ctx context.Context, requ
     }
     return msg
 }
+func NewDescribeImageSharePermissionRequest() (request *DescribeImageSharePermissionRequest) {
+    request = &DescribeImageSharePermissionRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kec", APIVersion, "DescribeImageSharePermission")
+    return
+}
+
+func NewDescribeImageSharePermissionResponse() (response *DescribeImageSharePermissionResponse) {
+    response = &DescribeImageSharePermissionResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeImageSharePermission(request *DescribeImageSharePermissionRequest) (string) {
+    return c.DescribeImageSharePermissionWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeImageSharePermissionWithContext(ctx context.Context, request *DescribeImageSharePermissionRequest) (string) {
+    if request == nil {
+        request = NewDescribeImageSharePermissionRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeImageSharePermissionResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
+    request = &DescribeRegionsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kec", APIVersion, "DescribeRegions")
+    return
+}
+
+func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
+    response = &DescribeRegionsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (string) {
+    return c.DescribeRegionsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest) (string) {
+    if request == nil {
+        request = NewDescribeRegionsRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeRegionsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewAttachKeyRequest() (request *AttachKeyRequest) {
     request = &AttachKeyRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -1935,6 +2031,38 @@ func (c *Client) DetachKeyWithContext(ctx context.Context, request *DetachKeyReq
     request.SetContext(ctx)
 
     response := NewDetachKeyResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeAvailabilityZonesRequest() (request *DescribeAvailabilityZonesRequest) {
+    request = &DescribeAvailabilityZonesRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kec", APIVersion, "DescribeAvailabilityZones")
+    return
+}
+
+func NewDescribeAvailabilityZonesResponse() (response *DescribeAvailabilityZonesResponse) {
+    response = &DescribeAvailabilityZonesResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeAvailabilityZones(request *DescribeAvailabilityZonesRequest) (string) {
+    return c.DescribeAvailabilityZonesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAvailabilityZonesWithContext(ctx context.Context, request *DescribeAvailabilityZonesRequest) (string) {
+    if request == nil {
+        request = NewDescribeAvailabilityZonesRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeAvailabilityZonesResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)
@@ -2549,6 +2677,38 @@ func (c *Client) ModifyDedicatedClusterNameWithContext(ctx context.Context, requ
     }
     return msg
 }
+func NewInstanceMigrateRequest() (request *InstanceMigrateRequest) {
+    request = &InstanceMigrateRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kec", APIVersion, "InstanceMigrate")
+    return
+}
+
+func NewInstanceMigrateResponse() (response *InstanceMigrateResponse) {
+    response = &InstanceMigrateResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) InstanceMigrate(request *InstanceMigrateRequest) (string) {
+    return c.InstanceMigrateWithContext(context.Background(), request)
+}
+
+func (c *Client) InstanceMigrateWithContext(ctx context.Context, request *InstanceMigrateRequest) (string) {
+    if request == nil {
+        request = NewInstanceMigrateRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewInstanceMigrateResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewModifyInstanceAutoDeleteTimeRequest() (request *ModifyInstanceAutoDeleteTimeRequest) {
     request = &ModifyInstanceAutoDeleteTimeRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -2895,6 +3055,38 @@ func (c *Client) CancelPreMigrateInstanceWithContext(ctx context.Context, reques
     request.SetContext(ctx)
 
     response := NewCancelPreMigrateInstanceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeMinFlavorCountRequest() (request *DescribeMinFlavorCountRequest) {
+    request = &DescribeMinFlavorCountRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kec", APIVersion, "DescribeMinFlavorCount")
+    return
+}
+
+func NewDescribeMinFlavorCountResponse() (response *DescribeMinFlavorCountResponse) {
+    response = &DescribeMinFlavorCountResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeMinFlavorCount(request *DescribeMinFlavorCountRequest) (string) {
+    return c.DescribeMinFlavorCountWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeMinFlavorCountWithContext(ctx context.Context, request *DescribeMinFlavorCountRequest) (string) {
+    if request == nil {
+        request = NewDescribeMinFlavorCountRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDescribeMinFlavorCountResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)

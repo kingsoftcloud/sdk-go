@@ -181,6 +181,38 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserR
     }
     return msg
 }
+func NewDetachUserPolicyRequest() (request *DetachUserPolicyRequest) {
+    request = &DetachUserPolicyRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iam", APIVersion, "DetachUserPolicy")
+    return
+}
+
+func NewDetachUserPolicyResponse() (response *DetachUserPolicyResponse) {
+    response = &DetachUserPolicyResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DetachUserPolicy(request *DetachUserPolicyRequest) (string) {
+    return c.DetachUserPolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) DetachUserPolicyWithContext(ctx context.Context, request *DetachUserPolicyRequest) (string) {
+    if request == nil {
+        request = NewDetachUserPolicyRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDetachUserPolicyResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewListAttachedUserPoliciesRequest() (request *ListAttachedUserPoliciesRequest) {
     request = &ListAttachedUserPoliciesRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -1807,6 +1839,70 @@ func (c *Client) ListAllUserAccessKeysWithContext(ctx context.Context, request *
     request.SetContext(ctx)
 
     response := NewListAllUserAccessKeysResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewInsertInstanceToESRequest() (request *InsertInstanceToESRequest) {
+    request = &InsertInstanceToESRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iam", APIVersion, "InsertInstanceToES")
+    return
+}
+
+func NewInsertInstanceToESResponse() (response *InsertInstanceToESResponse) {
+    response = &InsertInstanceToESResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) InsertInstanceToES(request *InsertInstanceToESRequest) (string) {
+    return c.InsertInstanceToESWithContext(context.Background(), request)
+}
+
+func (c *Client) InsertInstanceToESWithContext(ctx context.Context, request *InsertInstanceToESRequest) (string) {
+    if request == nil {
+        request = NewInsertInstanceToESRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewInsertInstanceToESResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDelInstanceFromESRequest() (request *DelInstanceFromESRequest) {
+    request = &DelInstanceFromESRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iam", APIVersion, "DelInstanceFromES")
+    return
+}
+
+func NewDelInstanceFromESResponse() (response *DelInstanceFromESResponse) {
+    response = &DelInstanceFromESResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DelInstanceFromES(request *DelInstanceFromESRequest) (string) {
+    return c.DelInstanceFromESWithContext(context.Background(), request)
+}
+
+func (c *Client) DelInstanceFromESWithContext(ctx context.Context, request *DelInstanceFromESRequest) (string) {
+    if request == nil {
+        request = NewDelInstanceFromESRequest()
+    }
+    request.SetContext(ctx)
+
+    response := NewDelInstanceFromESResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)
