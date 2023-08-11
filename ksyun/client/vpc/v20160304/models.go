@@ -79,6 +79,11 @@ type DescribeDirectConnectGatewayRouteFilter struct {
     Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
+type DescribeVpnGatewayRoutesFilter struct {
+    Name *string `json:"Name,omitempty" name:"Name"`
+    Value []*string `json:"Value,omitempty" name:"Value"`
+}
+
 
 type CreateVpcRequest struct {
     *ksyunhttp.BaseRequest
@@ -3609,6 +3614,218 @@ func (r *UnassignPrivateIpAddressResponse) ToJsonString() string {
 }
 
 func (r *UnassignPrivateIpAddressResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpnGatewayRoutesRequest struct {
+    *ksyunhttp.BaseRequest
+    VpnGatewayId *string `json:"vpnGatewayId,omitempty" name:"vpnGatewayId"`
+    Filter []*DescribeVpnGatewayRoutesFilter `json:"Filter,omitempty" name:"Filter"`
+    MaxResults *int `json:"maxResults,omitempty" name:"maxResults"`
+    NextToken *string `json:"nextToken,omitempty" name:"nextToken"`
+}
+
+func (r *DescribeVpnGatewayRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpnGatewayRoutesRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeVpnGatewayRoutesRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpnGatewayRoutesResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+	VpnGatewayRouteSet []struct {
+		CreateTime *string `json:"CreateTime"`
+		VpnGatewayRouteId *string `json:"VpnGatewayRouteId"`
+		DestinationCidrBlock *string `json:"DestinationCidrBlock"`
+		RouteType *string `json:"RouteType"`
+		NextHopType *string `json:"NextHopType"`
+		NextHopInstanceName *string `json:"NextHopInstanceName"`
+	} `json:"VpnGatewayRouteSet"`
+    NextToken *string `json:"NextToken" name:"NextToken"`
+}
+
+func (r *DescribeVpnGatewayRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpnGatewayRoutesResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVpnGatewayRouteRequest struct {
+    *ksyunhttp.BaseRequest
+    VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
+    DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" name:"DestinationCidrBlock"`
+    NextHopType *string `json:"NextHopType,omitempty" name:"NextHopType"`
+    NextHopInstanceId *string `json:"NextHopInstanceId,omitempty" name:"NextHopInstanceId"`
+}
+
+func (r *CreateVpnGatewayRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVpnGatewayRouteRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateVpnGatewayRouteRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateVpnGatewayRouteResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    RouteId *string `json:"RouteId" name:"RouteId"`
+}
+
+func (r *CreateVpnGatewayRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateVpnGatewayRouteResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVpnGatewayRouteRequest struct {
+    *ksyunhttp.BaseRequest
+    VpnGatewayRouteId *string `json:"VpnGatewayRouteId,omitempty" name:"VpnGatewayRouteId"`
+}
+
+func (r *DeleteVpnGatewayRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteVpnGatewayRouteRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteVpnGatewayRouteRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteVpnGatewayRouteResponse struct {
+    *ksyunhttp.BaseResponse
+    Return *bool `json:"Return" name:"Return"`
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteVpnGatewayRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteVpnGatewayRouteResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpnTunnelIpsecStatusRequest struct {
+    *ksyunhttp.BaseRequest
+    IsMaster *int `json:"IsMaster,omitempty" name:"IsMaster"`
+    VpnTunnelId []*string `json:"VpnTunnelId,omitempty" name:"VpnTunnelId"`
+}
+
+func (r *DescribeVpnTunnelIpsecStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpnTunnelIpsecStatusRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeVpnTunnelIpsecStatusRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVpnTunnelIpsecStatusResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+	VpnTunnelIpsecStatusList []struct {
+		IsMaster *int `json:"IsMaster"`
+		IpsecStatus *bool `json:"IpsecStatus"`
+		IkeStatus *bool `json:"IkeStatus"`
+		Id *string `json:"Id"`
+	} `json:"VpnTunnelIpsecStatusList"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *DescribeVpnTunnelIpsecStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeVpnTunnelIpsecStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryNatTopVifMonitorRequest struct {
+    *ksyunhttp.BaseRequest
+    NatId *string `json:"natId,omitempty" name:"natId"`
+    StartTime *string `json:"startTime,omitempty" name:"startTime"`
+    EndTime *string `json:"endTime,omitempty" name:"endTime"`
+    SortType *string `json:"sortType,omitempty" name:"sortType"`
+    InstanceType *string `json:"instanceType,omitempty" name:"instanceType"`
+    Ip *string `json:"ip,omitempty" name:"ip"`
+}
+
+func (r *QueryNatTopVifMonitorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryNatTopVifMonitorRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "QueryNatTopVifMonitorRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryNatTopVifMonitorResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+	NatMonitorDataList []struct {
+		InstanceId *string `json:"InstanceId"`
+		Ip *string `json:"Ip"`
+		InBound *int `json:"InBound"`
+		OutBound *int `json:"OutBound"`
+		Num *int `json:"Num"`
+	} `json:"NatMonitorDataList"`
+}
+
+func (r *QueryNatTopVifMonitorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryNatTopVifMonitorResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

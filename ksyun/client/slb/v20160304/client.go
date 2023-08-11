@@ -45,6 +45,7 @@ func (c *Client) DescribeListenersWithContext(ctx context.Context, request *Desc
         request = NewDescribeListenersRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeListenersResponse()
     err, msg := c.Send(request, response)
@@ -77,6 +78,7 @@ func (c *Client) ModifyListenersWithContext(ctx context.Context, request *Modify
         request = NewModifyListenersRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyListenersResponse()
     err, msg := c.Send(request, response)
@@ -109,6 +111,7 @@ func (c *Client) CreateListenersWithContext(ctx context.Context, request *Create
         request = NewCreateListenersRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateListenersResponse()
     err, msg := c.Send(request, response)
@@ -141,6 +144,7 @@ func (c *Client) ModifyInstancesWithListenerWithContext(ctx context.Context, req
         request = NewModifyInstancesWithListenerRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyInstancesWithListenerResponse()
     err, msg := c.Send(request, response)
@@ -173,6 +177,7 @@ func (c *Client) RegisterInstancesWithListenerWithContext(ctx context.Context, r
         request = NewRegisterInstancesWithListenerRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewRegisterInstancesWithListenerResponse()
     err, msg := c.Send(request, response)
@@ -205,6 +210,7 @@ func (c *Client) DeregisterInstancesFromListenerWithContext(ctx context.Context,
         request = NewDeregisterInstancesFromListenerRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeregisterInstancesFromListenerResponse()
     err, msg := c.Send(request, response)
@@ -237,6 +243,7 @@ func (c *Client) DescribeInstancesWithListenerWithContext(ctx context.Context, r
         request = NewDescribeInstancesWithListenerRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeInstancesWithListenerResponse()
     err, msg := c.Send(request, response)
@@ -269,6 +276,7 @@ func (c *Client) ModifyHealthCheckWithContext(ctx context.Context, request *Modi
         request = NewModifyHealthCheckRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyHealthCheckResponse()
     err, msg := c.Send(request, response)
@@ -301,6 +309,7 @@ func (c *Client) DescribeHealthChecksWithContext(ctx context.Context, request *D
         request = NewDescribeHealthChecksRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeHealthChecksResponse()
     err, msg := c.Send(request, response)
@@ -333,6 +342,7 @@ func (c *Client) ConfigureHealthCheckWithContext(ctx context.Context, request *C
         request = NewConfigureHealthCheckRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewConfigureHealthCheckResponse()
     err, msg := c.Send(request, response)
@@ -365,6 +375,7 @@ func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, request *
         request = NewDescribeLoadBalancersRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeLoadBalancersResponse()
     err, msg := c.Send(request, response)
@@ -397,6 +408,7 @@ func (c *Client) ModifyLoadBalancerWithContext(ctx context.Context, request *Mod
         request = NewModifyLoadBalancerRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyLoadBalancerResponse()
     err, msg := c.Send(request, response)
@@ -429,6 +441,7 @@ func (c *Client) CreateLoadBalancerWithContext(ctx context.Context, request *Cre
         request = NewCreateLoadBalancerRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateLoadBalancerResponse()
     err, msg := c.Send(request, response)
@@ -461,6 +474,7 @@ func (c *Client) CreateHostHeaderWithContext(ctx context.Context, request *Creat
         request = NewCreateHostHeaderRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateHostHeaderResponse()
     err, msg := c.Send(request, response)
@@ -493,6 +507,7 @@ func (c *Client) ModifyHostHeaderWithContext(ctx context.Context, request *Modif
         request = NewModifyHostHeaderRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyHostHeaderResponse()
     err, msg := c.Send(request, response)
@@ -525,6 +540,7 @@ func (c *Client) DeleteHostHeaderWithContext(ctx context.Context, request *Delet
         request = NewDeleteHostHeaderRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteHostHeaderResponse()
     err, msg := c.Send(request, response)
@@ -557,6 +573,7 @@ func (c *Client) DescribeHostHeadersWithContext(ctx context.Context, request *De
         request = NewDescribeHostHeadersRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeHostHeadersResponse()
     err, msg := c.Send(request, response)
@@ -589,6 +606,7 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleR
         request = NewDeleteRuleRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteRuleResponse()
     err, msg := c.Send(request, response)
@@ -621,6 +639,7 @@ func (c *Client) DescribeRulesWithContext(ctx context.Context, request *Describe
         request = NewDescribeRulesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeRulesResponse()
     err, msg := c.Send(request, response)
@@ -653,6 +672,7 @@ func (c *Client) CreateBackendServerGroupWithContext(ctx context.Context, reques
         request = NewCreateBackendServerGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateBackendServerGroupResponse()
     err, msg := c.Send(request, response)
@@ -685,6 +705,7 @@ func (c *Client) DeleteBackendServerGroupWithContext(ctx context.Context, reques
         request = NewDeleteBackendServerGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteBackendServerGroupResponse()
     err, msg := c.Send(request, response)
@@ -717,6 +738,7 @@ func (c *Client) ModifyBackendServerGroupWithContext(ctx context.Context, reques
         request = NewModifyBackendServerGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyBackendServerGroupResponse()
     err, msg := c.Send(request, response)
@@ -749,6 +771,7 @@ func (c *Client) DescribeBackendServerGroupsWithContext(ctx context.Context, req
         request = NewDescribeBackendServerGroupsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeBackendServerGroupsResponse()
     err, msg := c.Send(request, response)
@@ -781,6 +804,7 @@ func (c *Client) RegisterBackendServerWithContext(ctx context.Context, request *
         request = NewRegisterBackendServerRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewRegisterBackendServerResponse()
     err, msg := c.Send(request, response)
@@ -813,6 +837,7 @@ func (c *Client) DeregisterBackendServerWithContext(ctx context.Context, request
         request = NewDeregisterBackendServerRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeregisterBackendServerResponse()
     err, msg := c.Send(request, response)
@@ -845,6 +870,7 @@ func (c *Client) DescribeBackendServersWithContext(ctx context.Context, request 
         request = NewDescribeBackendServersRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeBackendServersResponse()
     err, msg := c.Send(request, response)
@@ -877,6 +903,7 @@ func (c *Client) CreateLoadBalancerAclWithContext(ctx context.Context, request *
         request = NewCreateLoadBalancerAclRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateLoadBalancerAclResponse()
     err, msg := c.Send(request, response)
@@ -909,6 +936,7 @@ func (c *Client) DeleteLoadBalancerAclWithContext(ctx context.Context, request *
         request = NewDeleteLoadBalancerAclRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteLoadBalancerAclResponse()
     err, msg := c.Send(request, response)
@@ -941,6 +969,7 @@ func (c *Client) ModifyLoadBalancerAclWithContext(ctx context.Context, request *
         request = NewModifyLoadBalancerAclRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyLoadBalancerAclResponse()
     err, msg := c.Send(request, response)
@@ -973,6 +1002,7 @@ func (c *Client) CreateLoadBalancerAclEntryWithContext(ctx context.Context, requ
         request = NewCreateLoadBalancerAclEntryRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateLoadBalancerAclEntryResponse()
     err, msg := c.Send(request, response)
@@ -1005,6 +1035,7 @@ func (c *Client) DeleteLoadBalancerAclEntryWithContext(ctx context.Context, requ
         request = NewDeleteLoadBalancerAclEntryRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteLoadBalancerAclEntryResponse()
     err, msg := c.Send(request, response)
@@ -1037,6 +1068,7 @@ func (c *Client) AssociateLoadBalancerAclWithContext(ctx context.Context, reques
         request = NewAssociateLoadBalancerAclRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAssociateLoadBalancerAclResponse()
     err, msg := c.Send(request, response)
@@ -1069,6 +1101,7 @@ func (c *Client) DisassociateLoadBalancerAclWithContext(ctx context.Context, req
         request = NewDisassociateLoadBalancerAclRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDisassociateLoadBalancerAclResponse()
     err, msg := c.Send(request, response)
@@ -1101,6 +1134,7 @@ func (c *Client) DescribeLoadBalancerAclsWithContext(ctx context.Context, reques
         request = NewDescribeLoadBalancerAclsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeLoadBalancerAclsResponse()
     err, msg := c.Send(request, response)
@@ -1133,6 +1167,7 @@ func (c *Client) CreateSlbRuleWithContext(ctx context.Context, request *CreateSl
         request = NewCreateSlbRuleRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateSlbRuleResponse()
     err, msg := c.Send(request, response)
@@ -1165,6 +1200,7 @@ func (c *Client) ModifySlbRuleWithContext(ctx context.Context, request *ModifySl
         request = NewModifySlbRuleRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifySlbRuleResponse()
     err, msg := c.Send(request, response)
@@ -1197,6 +1233,7 @@ func (c *Client) CreatePrivateLinkServerWithContext(ctx context.Context, request
         request = NewCreatePrivateLinkServerRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreatePrivateLinkServerResponse()
     err, msg := c.Send(request, response)
@@ -1229,6 +1266,7 @@ func (c *Client) DescribePrivateLinkServerWithContext(ctx context.Context, reque
         request = NewDescribePrivateLinkServerRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribePrivateLinkServerResponse()
     err, msg := c.Send(request, response)
@@ -1261,6 +1299,7 @@ func (c *Client) DeletePrivateLinkServerWithContext(ctx context.Context, request
         request = NewDeletePrivateLinkServerRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeletePrivateLinkServerResponse()
     err, msg := c.Send(request, response)
@@ -1293,6 +1332,7 @@ func (c *Client) ModifyPrivateLinkServerWithContext(ctx context.Context, request
         request = NewModifyPrivateLinkServerRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyPrivateLinkServerResponse()
     err, msg := c.Send(request, response)
@@ -1325,6 +1365,7 @@ func (c *Client) AssociatePrivateLinkServerWithContext(ctx context.Context, requ
         request = NewAssociatePrivateLinkServerRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAssociatePrivateLinkServerResponse()
     err, msg := c.Send(request, response)
@@ -1357,6 +1398,7 @@ func (c *Client) DescribePrivateLinkWithContext(ctx context.Context, request *De
         request = NewDescribePrivateLinkRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribePrivateLinkResponse()
     err, msg := c.Send(request, response)
@@ -1389,6 +1431,7 @@ func (c *Client) DeletePrivateLinkWithContext(ctx context.Context, request *Dele
         request = NewDeletePrivateLinkRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeletePrivateLinkResponse()
     err, msg := c.Send(request, response)
@@ -1421,6 +1464,7 @@ func (c *Client) ModifyLoadBalancerAclEntryWithContext(ctx context.Context, requ
         request = NewModifyLoadBalancerAclEntryRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyLoadBalancerAclEntryResponse()
     err, msg := c.Send(request, response)
@@ -1453,6 +1497,7 @@ func (c *Client) AcceptPrivateLinkWithContext(ctx context.Context, request *Acce
         request = NewAcceptPrivateLinkRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAcceptPrivateLinkResponse()
     err, msg := c.Send(request, response)
@@ -1485,6 +1530,7 @@ func (c *Client) RejectPrivateLinkWithContext(ctx context.Context, request *Reje
         request = NewRejectPrivateLinkRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewRejectPrivateLinkResponse()
     err, msg := c.Send(request, response)
@@ -1517,6 +1563,7 @@ func (c *Client) ListPrivateLinkServerWithContext(ctx context.Context, request *
         request = NewListPrivateLinkServerRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewListPrivateLinkServerResponse()
     err, msg := c.Send(request, response)
@@ -1549,8 +1596,75 @@ func (c *Client) RemovePrivateLinkWithContext(ctx context.Context, request *Remo
         request = NewRemovePrivateLinkRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewRemovePrivateLinkResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewSetEnableAlbAccessLogRequest() (request *SetEnableAlbAccessLogRequest) {
+    request = &SetEnableAlbAccessLogRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "SetEnableAlbAccessLog")
+    return
+}
+
+func NewSetEnableAlbAccessLogResponse() (response *SetEnableAlbAccessLogResponse) {
+    response = &SetEnableAlbAccessLogResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) SetEnableAlbAccessLog(request *SetEnableAlbAccessLogRequest) (string) {
+    return c.SetEnableAlbAccessLogWithContext(context.Background(), request)
+}
+
+func (c *Client) SetEnableAlbAccessLogWithContext(ctx context.Context, request *SetEnableAlbAccessLogRequest) (string) {
+    if request == nil {
+        request = NewSetEnableAlbAccessLogRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewSetEnableAlbAccessLogResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewSetAlbAccessLogRequest() (request *SetAlbAccessLogRequest) {
+    request = &SetAlbAccessLogRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "SetAlbAccessLog")
+    return
+}
+
+func NewSetAlbAccessLogResponse() (response *SetAlbAccessLogResponse) {
+    response = &SetAlbAccessLogResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) SetAlbAccessLog(request *SetAlbAccessLogRequest) (string) {
+    return c.SetAlbAccessLogWithContext(context.Background(), request)
+}
+
+func (c *Client) SetAlbAccessLogWithContext(ctx context.Context, request *SetAlbAccessLogRequest) (string) {
+    if request == nil {
+        request = NewSetAlbAccessLogRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewSetAlbAccessLogResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)

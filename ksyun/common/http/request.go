@@ -1,29 +1,27 @@
 /**
- * @author: liyanyan2@kingsoft.com
+ * @author: fengyikai@kingsoft.com
  * @date:  3/18/2022
  * @code: f844b0d56cd31661b4fa3f33787082bb
  */
 package http
 
 import (
+	"bytes"
 	"context"
 	"io"
 	"net/url"
 	"reflect"
 	"strconv"
 	"strings"
-	"time"
 )
 
 const (
-	POST = "POST"
-	GET  = "GET"
-	HTTP  = "http"
-	HTTPS = "https"
-	RootDomain = "api.ksyun.com"
-	Path       = "/"
-	SignatureVersion = "1.0"
-	SignatureMethod = "HMAC-SHA256"
+	POST             = "POST"
+	GET              = "GET"
+	HTTP             = "http"
+	HTTPS            = "https"
+	RootDomain       = "api.ksyun.com"
+	Path             = "/"
 )
 
 type Request interface {
@@ -201,8 +199,13 @@ func GetUrlQueriesEncoded(params map[string]string) string {
 
 func (r *BaseRequest) GetBodyReader() io.Reader {
 	if r.httpMethod == POST {
-		s := GetUrlQueriesEncoded(r.params)
-		return strings.NewReader(s)
+		if r.contentType == "application/json" {
+			bodyParams := r.GetBody()
+			return bytes.NewReader(bodyParams)
+		} else {
+			s := GetUrlQueriesEncoded(r.params)
+			return strings.NewReader(s)
+		}
 	} else {
 		return strings.NewReader("")
 	}
@@ -233,22 +236,16 @@ func HandleCommonParams(request Request, region string) {
 	params["Service"] = request.GetService()
 	params["Action"] = request.GetAction()
 	params["Version"] = request.GetVersion()
-    utcTime := time.Now().UTC()
-    time := utcTime.Format("2006-01-02T15:04:05Z")
-	params["Timestamp"] = time
-	params["Region"] = region
-	params["SignatureVersion"] = SignatureVersion
-	params["SignatureMethod"] = SignatureMethod
 }
 
 func ConstructParams(req Request) (err error) {
 	value := reflect.ValueOf(req).Elem()
-	err = flatStructure(value, req, "")
+	err = FlatStructure(value, req, "")
 	//log.Printf("[DEBUG] params=%s", req.GetParams())
 	return
 }
 
-func flatStructure(value reflect.Value, request Request, prefix string) (err error) {
+func FlatStructure(value reflect.Value, request Request, prefix string) (err error) {
 	//log.Printf("[DEBUG] reflect value: %v", value.Type())
 	valueType := value.Type()
 	for i := 0; i < valueType.NumField(); i++ {
@@ -304,17 +301,16 @@ func flatStructure(value reflect.Value, request Request, prefix string) (err err
 				} else if kind == reflect.Float64 {
 					request.GetParams()[key] = strconv.FormatFloat(vj.Float(), 'f', -1, 64)
 				} else {
-					if err = flatStructure(vj, request, key+"."); err != nil {
+					if err = FlatStructure(vj, request, key+"."); err != nil {
 						return
 					}
 				}
 			}
 		} else {
-			if err = flatStructure(reflect.ValueOf(field.Interface()), request, prefix+nameTag+"."); err != nil {
+			if err = FlatStructure(reflect.ValueOf(field.Interface()), request, prefix+nameTag+"."); err != nil {
 				return
 			}
 		}
 	}
 	return
 }
-

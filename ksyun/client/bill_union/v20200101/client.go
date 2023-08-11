@@ -45,6 +45,7 @@ func (c *Client) DescribeBillSummaryByPayModeWithContext(ctx context.Context, re
         request = NewDescribeBillSummaryByPayModeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeBillSummaryByPayModeResponse()
     err, msg := c.Send(request, response)
@@ -77,6 +78,7 @@ func (c *Client) DescribeBillSummaryByProductWithContext(ctx context.Context, re
         request = NewDescribeBillSummaryByProductRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeBillSummaryByProductResponse()
     err, msg := c.Send(request, response)
@@ -109,6 +111,7 @@ func (c *Client) DescribeBillSummaryByProjectWithContext(ctx context.Context, re
         request = NewDescribeBillSummaryByProjectRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeBillSummaryByProjectResponse()
     err, msg := c.Send(request, response)
@@ -141,6 +144,7 @@ func (c *Client) DescribeInstanceSummaryBillsWithContext(ctx context.Context, re
         request = NewDescribeInstanceSummaryBillsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeInstanceSummaryBillsResponse()
     err, msg := c.Send(request, response)
@@ -173,6 +177,7 @@ func (c *Client) DescribeProductCodeWithContext(ctx context.Context, request *De
         request = NewDescribeProductCodeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeProductCodeResponse()
     err, msg := c.Send(request, response)
@@ -205,8 +210,42 @@ func (c *Client) DescribeSplitItemBillDetailsWithContext(ctx context.Context, re
         request = NewDescribeSplitItemBillDetailsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeSplitItemBillDetailsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeSplitItemDayBillDetailsRequest() (request *DescribeSplitItemDayBillDetailsRequest) {
+    request = &DescribeSplitItemDayBillDetailsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bill-union", APIVersion, "DescribeSplitItemDayBillDetails")
+    return
+}
+
+func NewDescribeSplitItemDayBillDetailsResponse() (response *DescribeSplitItemDayBillDetailsResponse) {
+    response = &DescribeSplitItemDayBillDetailsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeSplitItemDayBillDetails(request *DescribeSplitItemDayBillDetailsRequest) (string) {
+    return c.DescribeSplitItemDayBillDetailsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeSplitItemDayBillDetailsWithContext(ctx context.Context, request *DescribeSplitItemDayBillDetailsRequest) (string) {
+    if request == nil {
+        request = NewDescribeSplitItemDayBillDetailsRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewDescribeSplitItemDayBillDetailsResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)

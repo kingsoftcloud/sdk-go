@@ -2196,3 +2196,77 @@ func (r *RemovePrivateLinkResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type SetEnableAlbAccessLogRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbId *string `json:"AlbId,omitempty" name:"AlbId"`
+    EnabledLog *bool `json:"EnabledLog,omitempty" name:"EnabledLog"`
+}
+
+func (r *SetEnableAlbAccessLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetEnableAlbAccessLogRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetEnableAlbAccessLogRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetEnableAlbAccessLogResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *SetEnableAlbAccessLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetEnableAlbAccessLogResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetAlbAccessLogRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbId *string `json:"AlbId,omitempty" name:"AlbId"`
+    ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+    LogpoolName *string `json:"LogpoolName,omitempty" name:"LogpoolName"`
+}
+
+func (r *SetAlbAccessLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetAlbAccessLogRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetAlbAccessLogRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetAlbAccessLogResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *SetAlbAccessLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetAlbAccessLogResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+

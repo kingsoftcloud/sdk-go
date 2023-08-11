@@ -45,6 +45,7 @@ func (c *Client) ListAlarmPolicyWithContext(ctx context.Context, request *ListAl
         request = NewListAlarmPolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewListAlarmPolicyResponse()
     err, msg := c.Send(request, response)
@@ -77,6 +78,7 @@ func (c *Client) DescribeAlarmPolicyWithContext(ctx context.Context, request *De
         request = NewDescribeAlarmPolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeAlarmPolicyResponse()
     err, msg := c.Send(request, response)
@@ -109,6 +111,7 @@ func (c *Client) DescribePolicyObjectWithContext(ctx context.Context, request *D
         request = NewDescribePolicyObjectRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribePolicyObjectResponse()
     err, msg := c.Send(request, response)
@@ -141,6 +144,7 @@ func (c *Client) DescribeAlarmReceivesWithContext(ctx context.Context, request *
         request = NewDescribeAlarmReceivesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeAlarmReceivesResponse()
     err, msg := c.Send(request, response)
@@ -173,6 +177,7 @@ func (c *Client) AddAlarmReceivesWithContext(ctx context.Context, request *AddAl
         request = NewAddAlarmReceivesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAddAlarmReceivesResponse()
     err, msg := c.Send(request, response)
@@ -205,6 +210,7 @@ func (c *Client) DeleteAlarmReceivesWithContext(ctx context.Context, request *De
         request = NewDeleteAlarmReceivesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteAlarmReceivesResponse()
     err, msg := c.Send(request, response)
@@ -237,6 +243,7 @@ func (c *Client) GetUserGroupWithContext(ctx context.Context, request *GetUserGr
         request = NewGetUserGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewGetUserGroupResponse()
     err, msg := c.Send(request, response)
@@ -269,40 +276,9 @@ func (c *Client) GetAlertUserWithContext(ctx context.Context, request *GetAlertU
         request = NewGetAlertUserRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewGetAlertUserResponse()
-    err, msg := c.Send(request, response)
-    if err != nil {
-        return fmt.Sprintf("%+v\n", err)
-    }
-    return msg
-}
-func NewListMetricsRequest() (request *ListMetricsRequest) {
-    request = &ListMetricsRequest{
-        BaseRequest: &ksyunhttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("monitor", APIVersion, "ListMetrics")
-    return
-}
-
-func NewListMetricsResponse() (response *ListMetricsResponse) {
-    response = &ListMetricsResponse{
-        BaseResponse: &ksyunhttp.BaseResponse{},
-    }
-    return
-}
-
-func (c *Client) ListMetrics(request *ListMetricsRequest) (string) {
-    return c.ListMetricsWithContext(context.Background(), request)
-}
-
-func (c *Client) ListMetricsWithContext(ctx context.Context, request *ListMetricsRequest) (string) {
-    if request == nil {
-        request = NewListMetricsRequest()
-    }
-    request.SetContext(ctx)
-
-    response := NewListMetricsResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)

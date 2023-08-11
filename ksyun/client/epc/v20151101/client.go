@@ -45,6 +45,7 @@ func (c *Client) CreateEpcWithContext(ctx context.Context, request *CreateEpcReq
         request = NewCreateEpcRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateEpcResponse()
     err, msg := c.Send(request, response)
@@ -77,6 +78,7 @@ func (c *Client) StartEpcWithContext(ctx context.Context, request *StartEpcReque
         request = NewStartEpcRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewStartEpcResponse()
     err, msg := c.Send(request, response)
@@ -109,6 +111,7 @@ func (c *Client) RebootEpcWithContext(ctx context.Context, request *RebootEpcReq
         request = NewRebootEpcRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewRebootEpcResponse()
     err, msg := c.Send(request, response)
@@ -141,6 +144,7 @@ func (c *Client) DeleteEpcWithContext(ctx context.Context, request *DeleteEpcReq
         request = NewDeleteEpcRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDeleteEpcResponse()
     err, msg := c.Send(request, response)
@@ -173,6 +177,7 @@ func (c *Client) ReinstallEpcWithContext(ctx context.Context, request *Reinstall
         request = NewReinstallEpcRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewReinstallEpcResponse()
     err, msg := c.Send(request, response)
@@ -205,6 +210,7 @@ func (c *Client) ModifySecurityGroupWithContext(ctx context.Context, request *Mo
         request = NewModifySecurityGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewModifySecurityGroupResponse()
     err, msg := c.Send(request, response)
@@ -237,6 +243,7 @@ func (c *Client) ImportKeyWithContext(ctx context.Context, request *ImportKeyReq
         request = NewImportKeyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewImportKeyResponse()
     err, msg := c.Send(request, response)
@@ -269,6 +276,7 @@ func (c *Client) DeleteKeyWithContext(ctx context.Context, request *DeleteKeyReq
         request = NewDeleteKeyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteKeyResponse()
     err, msg := c.Send(request, response)
@@ -301,6 +309,7 @@ func (c *Client) CreateKeyWithContext(ctx context.Context, request *CreateKeyReq
         request = NewCreateKeyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateKeyResponse()
     err, msg := c.Send(request, response)
@@ -333,6 +342,7 @@ func (c *Client) DescribeKeysWithContext(ctx context.Context, request *DescribeK
         request = NewDescribeKeysRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeKeysResponse()
     err, msg := c.Send(request, response)
@@ -365,6 +375,7 @@ func (c *Client) DescribeEpcsWithContext(ctx context.Context, request *DescribeE
         request = NewDescribeEpcsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeEpcsResponse()
     err, msg := c.Send(request, response)
@@ -397,6 +408,7 @@ func (c *Client) GetDynamicCodeWithContext(ctx context.Context, request *GetDyna
         request = NewGetDynamicCodeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewGetDynamicCodeResponse()
     err, msg := c.Send(request, response)
@@ -429,6 +441,7 @@ func (c *Client) DescribeVpnsWithContext(ctx context.Context, request *DescribeV
         request = NewDescribeVpnsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeVpnsResponse()
     err, msg := c.Send(request, response)
@@ -461,6 +474,7 @@ func (c *Client) CreateImageWithContext(ctx context.Context, request *CreateImag
         request = NewCreateImageRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateImageResponse()
     err, msg := c.Send(request, response)
@@ -493,6 +507,7 @@ func (c *Client) ModifyImageWithContext(ctx context.Context, request *ModifyImag
         request = NewModifyImageRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyImageResponse()
     err, msg := c.Send(request, response)
@@ -525,6 +540,7 @@ func (c *Client) DeleteImageWithContext(ctx context.Context, request *DeleteImag
         request = NewDeleteImageRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteImageResponse()
     err, msg := c.Send(request, response)
@@ -557,6 +573,7 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, request *Describ
         request = NewDescribeImagesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeImagesResponse()
     err, msg := c.Send(request, response)
@@ -589,6 +606,7 @@ func (c *Client) ModifyDnsWithContext(ctx context.Context, request *ModifyDnsReq
         request = NewModifyDnsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyDnsResponse()
     err, msg := c.Send(request, response)
@@ -621,6 +639,7 @@ func (c *Client) ModifyNetworkInterfaceAttributeWithContext(ctx context.Context,
         request = NewModifyNetworkInterfaceAttributeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyNetworkInterfaceAttributeResponse()
     err, msg := c.Send(request, response)
@@ -653,6 +672,7 @@ func (c *Client) DescribePhysicalMonitorWithContext(ctx context.Context, request
         request = NewDescribePhysicalMonitorRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribePhysicalMonitorResponse()
     err, msg := c.Send(request, response)
@@ -685,6 +705,7 @@ func (c *Client) DescribeEpcManagementsWithContext(ctx context.Context, request 
         request = NewDescribeEpcManagementsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeEpcManagementsResponse()
     err, msg := c.Send(request, response)
@@ -717,6 +738,7 @@ func (c *Client) DescribeRemoteManagementsWithContext(ctx context.Context, reque
         request = NewDescribeRemoteManagementsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeRemoteManagementsResponse()
     err, msg := c.Send(request, response)
@@ -749,6 +771,7 @@ func (c *Client) StopEpcWithContext(ctx context.Context, request *StopEpcRequest
         request = NewStopEpcRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewStopEpcResponse()
     err, msg := c.Send(request, response)
@@ -781,6 +804,7 @@ func (c *Client) ModifyEpcWithContext(ctx context.Context, request *ModifyEpcReq
         request = NewModifyEpcRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyEpcResponse()
     err, msg := c.Send(request, response)
@@ -813,6 +837,7 @@ func (c *Client) ModifyRemoteManagementWithContext(ctx context.Context, request 
         request = NewModifyRemoteManagementRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyRemoteManagementResponse()
     err, msg := c.Send(request, response)
@@ -845,6 +870,7 @@ func (c *Client) CreateRemoteManagementWithContext(ctx context.Context, request 
         request = NewCreateRemoteManagementRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateRemoteManagementResponse()
     err, msg := c.Send(request, response)
@@ -877,6 +903,7 @@ func (c *Client) ReinstallCustomerEpcWithContext(ctx context.Context, request *R
         request = NewReinstallCustomerEpcRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewReinstallCustomerEpcResponse()
     err, msg := c.Send(request, response)
@@ -909,6 +936,7 @@ func (c *Client) DeleteRemoteManagementWithContext(ctx context.Context, request 
         request = NewDeleteRemoteManagementRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteRemoteManagementResponse()
     err, msg := c.Send(request, response)
@@ -941,6 +969,7 @@ func (c *Client) ResetPasswordWithContext(ctx context.Context, request *ResetPas
         request = NewResetPasswordRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewResetPasswordResponse()
     err, msg := c.Send(request, response)
@@ -973,6 +1002,7 @@ func (c *Client) ModifyHyperThreadingWithContext(ctx context.Context, request *M
         request = NewModifyHyperThreadingRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyHyperThreadingResponse()
     err, msg := c.Send(request, response)
@@ -1005,6 +1035,7 @@ func (c *Client) AssociateClusterWithContext(ctx context.Context, request *Assoc
         request = NewAssociateClusterRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAssociateClusterResponse()
     err, msg := c.Send(request, response)
@@ -1037,6 +1068,7 @@ func (c *Client) DisassociateClusterWithContext(ctx context.Context, request *Di
         request = NewDisassociateClusterRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDisassociateClusterResponse()
     err, msg := c.Send(request, response)
@@ -1069,6 +1101,7 @@ func (c *Client) DescribeInspectionsWithContext(ctx context.Context, request *De
         request = NewDescribeInspectionsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeInspectionsResponse()
     err, msg := c.Send(request, response)
@@ -1101,6 +1134,7 @@ func (c *Client) DescribeEpcStocksWithContext(ctx context.Context, request *Desc
         request = NewDescribeEpcStocksRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeEpcStocksResponse()
     err, msg := c.Send(request, response)
@@ -1133,6 +1167,7 @@ func (c *Client) DescribeEpcDeviceAttributesWithContext(ctx context.Context, req
         request = NewDescribeEpcDeviceAttributesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeEpcDeviceAttributesResponse()
     err, msg := c.Send(request, response)
@@ -1165,6 +1200,7 @@ func (c *Client) DescribeProcessesWithContext(ctx context.Context, request *Desc
         request = NewDescribeProcessesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeProcessesResponse()
     err, msg := c.Send(request, response)
@@ -1197,6 +1233,7 @@ func (c *Client) CreateProcessWithContext(ctx context.Context, request *CreatePr
         request = NewCreateProcessRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateProcessResponse()
     err, msg := c.Send(request, response)
@@ -1229,6 +1266,7 @@ func (c *Client) DeleteProcessWithContext(ctx context.Context, request *DeletePr
         request = NewDeleteProcessRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteProcessResponse()
     err, msg := c.Send(request, response)
@@ -1261,6 +1299,7 @@ func (c *Client) ReplyProcessWithContext(ctx context.Context, request *ReplyProc
         request = NewReplyProcessRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewReplyProcessResponse()
     err, msg := c.Send(request, response)
@@ -1293,6 +1332,7 @@ func (c *Client) DescribeEpcTrashesWithContext(ctx context.Context, request *Des
         request = NewDescribeEpcTrashesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeEpcTrashesResponse()
     err, msg := c.Send(request, response)
@@ -1325,6 +1365,7 @@ func (c *Client) ReturnEpcWithContext(ctx context.Context, request *ReturnEpcReq
         request = NewReturnEpcRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewReturnEpcResponse()
     err, msg := c.Send(request, response)
@@ -1357,6 +1398,7 @@ func (c *Client) CreateResourceRequirementWithContext(ctx context.Context, reque
         request = NewCreateResourceRequirementRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateResourceRequirementResponse()
     err, msg := c.Send(request, response)
@@ -1389,6 +1431,7 @@ func (c *Client) AttachVolumeWithContext(ctx context.Context, request *AttachVol
         request = NewAttachVolumeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAttachVolumeResponse()
     err, msg := c.Send(request, response)
@@ -1421,6 +1464,7 @@ func (c *Client) DetachVolumeWithContext(ctx context.Context, request *DetachVol
         request = NewDetachVolumeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDetachVolumeResponse()
     err, msg := c.Send(request, response)
@@ -1453,6 +1497,7 @@ func (c *Client) DescribePriceWithContext(ctx context.Context, request *Describe
         request = NewDescribePriceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribePriceResponse()
     err, msg := c.Send(request, response)
@@ -1485,6 +1530,7 @@ func (c *Client) ModifyOverclockingAttributeWithContext(ctx context.Context, req
         request = NewModifyOverclockingAttributeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyOverclockingAttributeResponse()
     err, msg := c.Send(request, response)
@@ -1517,6 +1563,7 @@ func (c *Client) CopyImageWithContext(ctx context.Context, request *CopyImageReq
         request = NewCopyImageRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCopyImageResponse()
     err, msg := c.Send(request, response)
@@ -1549,6 +1596,7 @@ func (c *Client) DescribeEpcRaidAttributesWithContext(ctx context.Context, reque
         request = NewDescribeEpcRaidAttributesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeEpcRaidAttributesResponse()
     err, msg := c.Send(request, response)
@@ -1581,6 +1629,7 @@ func (c *Client) DescribeGpuImageDriverWithContext(ctx context.Context, request 
         request = NewDescribeGpuImageDriverRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeGpuImageDriverResponse()
     err, msg := c.Send(request, response)
@@ -1613,6 +1662,7 @@ func (c *Client) CreateShareImageWithContext(ctx context.Context, request *Creat
         request = NewCreateShareImageRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateShareImageResponse()
     err, msg := c.Send(request, response)
@@ -1645,6 +1695,7 @@ func (c *Client) DeleteShareImageWithContext(ctx context.Context, request *Delet
         request = NewDeleteShareImageRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteShareImageResponse()
     err, msg := c.Send(request, response)
@@ -1677,6 +1728,7 @@ func (c *Client) DescribeShareImageAccountListWithContext(ctx context.Context, r
         request = NewDescribeShareImageAccountListRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeShareImageAccountListResponse()
     err, msg := c.Send(request, response)
@@ -1709,6 +1761,7 @@ func (c *Client) DescribeShareImageWithContext(ctx context.Context, request *Des
         request = NewDescribeShareImageRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeShareImageResponse()
     err, msg := c.Send(request, response)
@@ -1741,6 +1794,7 @@ func (c *Client) AcceptShareImageWithContext(ctx context.Context, request *Accep
         request = NewAcceptShareImageRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAcceptShareImageResponse()
     err, msg := c.Send(request, response)
@@ -1773,6 +1827,7 @@ func (c *Client) RejectShareImageWithContext(ctx context.Context, request *Rejec
         request = NewRejectShareImageRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewRejectShareImageResponse()
     err, msg := c.Send(request, response)

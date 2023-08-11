@@ -45,6 +45,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
         request = NewDescribeInstancesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeInstancesResponse()
     err, msg := c.Send(request, response)
@@ -77,6 +78,7 @@ func (c *Client) RunInstancesWithContext(ctx context.Context, request *RunInstan
         request = NewRunInstancesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewRunInstancesResponse()
     err, msg := c.Send(request, response)
@@ -109,6 +111,7 @@ func (c *Client) StartInstancesWithContext(ctx context.Context, request *StartIn
         request = NewStartInstancesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewStartInstancesResponse()
     err, msg := c.Send(request, response)
@@ -141,6 +144,7 @@ func (c *Client) StopInstancesWithContext(ctx context.Context, request *StopInst
         request = NewStopInstancesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewStopInstancesResponse()
     err, msg := c.Send(request, response)
@@ -173,6 +177,7 @@ func (c *Client) RebootInstancesWithContext(ctx context.Context, request *Reboot
         request = NewRebootInstancesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewRebootInstancesResponse()
     err, msg := c.Send(request, response)
@@ -205,6 +210,7 @@ func (c *Client) ModifyInstanceAttributeWithContext(ctx context.Context, request
         request = NewModifyInstanceAttributeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyInstanceAttributeResponse()
     err, msg := c.Send(request, response)
@@ -237,6 +243,7 @@ func (c *Client) ModifyInstanceTypeWithContext(ctx context.Context, request *Mod
         request = NewModifyInstanceTypeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyInstanceTypeResponse()
     err, msg := c.Send(request, response)
@@ -269,6 +276,7 @@ func (c *Client) TerminateInstancesWithContext(ctx context.Context, request *Ter
         request = NewTerminateInstancesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewTerminateInstancesResponse()
     err, msg := c.Send(request, response)
@@ -301,6 +309,7 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, request *Describ
         request = NewDescribeImagesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeImagesResponse()
     err, msg := c.Send(request, response)
@@ -333,6 +342,7 @@ func (c *Client) ModifyImageAttributeWithContext(ctx context.Context, request *M
         request = NewModifyImageAttributeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyImageAttributeResponse()
     err, msg := c.Send(request, response)
@@ -365,6 +375,7 @@ func (c *Client) ModifyInstanceImageWithContext(ctx context.Context, request *Mo
         request = NewModifyInstanceImageRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyInstanceImageResponse()
     err, msg := c.Send(request, response)
@@ -397,6 +408,7 @@ func (c *Client) CreateImageWithContext(ctx context.Context, request *CreateImag
         request = NewCreateImageRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateImageResponse()
     err, msg := c.Send(request, response)
@@ -429,6 +441,7 @@ func (c *Client) RemoveImagesWithContext(ctx context.Context, request *RemoveIma
         request = NewRemoveImagesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewRemoveImagesResponse()
     err, msg := c.Send(request, response)
@@ -461,6 +474,7 @@ func (c *Client) ModifyNetworkInterfaceAttributeWithContext(ctx context.Context,
         request = NewModifyNetworkInterfaceAttributeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyNetworkInterfaceAttributeResponse()
     err, msg := c.Send(request, response)
@@ -493,6 +507,7 @@ func (c *Client) AttachNetworkInterfaceWithContext(ctx context.Context, request 
         request = NewAttachNetworkInterfaceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAttachNetworkInterfaceResponse()
     err, msg := c.Send(request, response)
@@ -525,6 +540,7 @@ func (c *Client) DetachNetworkInterfaceWithContext(ctx context.Context, request 
         request = NewDetachNetworkInterfaceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDetachNetworkInterfaceResponse()
     err, msg := c.Send(request, response)
@@ -557,6 +573,7 @@ func (c *Client) DescribeLocalVolumesWithContext(ctx context.Context, request *D
         request = NewDescribeLocalVolumesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeLocalVolumesResponse()
     err, msg := c.Send(request, response)
@@ -589,6 +606,7 @@ func (c *Client) CreateLocalVolumeSnapshotWithContext(ctx context.Context, reque
         request = NewCreateLocalVolumeSnapshotRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateLocalVolumeSnapshotResponse()
     err, msg := c.Send(request, response)
@@ -621,6 +639,7 @@ func (c *Client) DescribeLocalVolumeSnapshotsWithContext(ctx context.Context, re
         request = NewDescribeLocalVolumeSnapshotsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeLocalVolumeSnapshotsResponse()
     err, msg := c.Send(request, response)
@@ -653,6 +672,7 @@ func (c *Client) RollbackLocalVolumeWithContext(ctx context.Context, request *Ro
         request = NewRollbackLocalVolumeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewRollbackLocalVolumeResponse()
     err, msg := c.Send(request, response)
@@ -685,6 +705,7 @@ func (c *Client) DeleteLocalVolumeSnapshotWithContext(ctx context.Context, reque
         request = NewDeleteLocalVolumeSnapshotRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteLocalVolumeSnapshotResponse()
     err, msg := c.Send(request, response)
@@ -717,6 +738,7 @@ func (c *Client) ModifyDataGuardGroupsWithContext(ctx context.Context, request *
         request = NewModifyDataGuardGroupsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyDataGuardGroupsResponse()
     err, msg := c.Send(request, response)
@@ -749,6 +771,7 @@ func (c *Client) DescribeDataGuardCapacityWithContext(ctx context.Context, reque
         request = NewDescribeDataGuardCapacityRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeDataGuardCapacityResponse()
     err, msg := c.Send(request, response)
@@ -781,6 +804,7 @@ func (c *Client) CreateDataGuardGroupWithContext(ctx context.Context, request *C
         request = NewCreateDataGuardGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateDataGuardGroupResponse()
     err, msg := c.Send(request, response)
@@ -813,6 +837,7 @@ func (c *Client) DeleteDataGuardGroupsWithContext(ctx context.Context, request *
         request = NewDeleteDataGuardGroupsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteDataGuardGroupsResponse()
     err, msg := c.Send(request, response)
@@ -845,6 +870,7 @@ func (c *Client) DescribeDataGuardGroupWithContext(ctx context.Context, request 
         request = NewDescribeDataGuardGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeDataGuardGroupResponse()
     err, msg := c.Send(request, response)
@@ -877,6 +903,7 @@ func (c *Client) RemoveVmFromDataGuardWithContext(ctx context.Context, request *
         request = NewRemoveVmFromDataGuardRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewRemoveVmFromDataGuardResponse()
     err, msg := c.Send(request, response)
@@ -909,6 +936,7 @@ func (c *Client) CreateDedicatedHostsWithContext(ctx context.Context, request *C
         request = NewCreateDedicatedHostsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateDedicatedHostsResponse()
     err, msg := c.Send(request, response)
@@ -941,6 +969,7 @@ func (c *Client) DeleteDedicatedHostWithContext(ctx context.Context, request *De
         request = NewDeleteDedicatedHostRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteDedicatedHostResponse()
     err, msg := c.Send(request, response)
@@ -973,6 +1002,7 @@ func (c *Client) RenameDedicatedHostWithContext(ctx context.Context, request *Re
         request = NewRenameDedicatedHostRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewRenameDedicatedHostResponse()
     err, msg := c.Send(request, response)
@@ -1005,6 +1035,7 @@ func (c *Client) DescribeDedicatedHostsWithContext(ctx context.Context, request 
         request = NewDescribeDedicatedHostsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeDedicatedHostsResponse()
     err, msg := c.Send(request, response)
@@ -1037,6 +1068,7 @@ func (c *Client) DescribeScalingConfigurationWithContext(ctx context.Context, re
         request = NewDescribeScalingConfigurationRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeScalingConfigurationResponse()
     err, msg := c.Send(request, response)
@@ -1069,6 +1101,7 @@ func (c *Client) CreateScalingConfigurationWithContext(ctx context.Context, requ
         request = NewCreateScalingConfigurationRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateScalingConfigurationResponse()
     err, msg := c.Send(request, response)
@@ -1101,6 +1134,7 @@ func (c *Client) DeleteScalingConfigurationWithContext(ctx context.Context, requ
         request = NewDeleteScalingConfigurationRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteScalingConfigurationResponse()
     err, msg := c.Send(request, response)
@@ -1133,6 +1167,7 @@ func (c *Client) CreateScalingGroupWithContext(ctx context.Context, request *Cre
         request = NewCreateScalingGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateScalingGroupResponse()
     err, msg := c.Send(request, response)
@@ -1165,6 +1200,7 @@ func (c *Client) DescribeScalingGroupWithContext(ctx context.Context, request *D
         request = NewDescribeScalingGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeScalingGroupResponse()
     err, msg := c.Send(request, response)
@@ -1197,6 +1233,7 @@ func (c *Client) ModifyScalingGroupWithContext(ctx context.Context, request *Mod
         request = NewModifyScalingGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyScalingGroupResponse()
     err, msg := c.Send(request, response)
@@ -1229,6 +1266,7 @@ func (c *Client) SetKvmProtectedDetachWithContext(ctx context.Context, request *
         request = NewSetKvmProtectedDetachRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewSetKvmProtectedDetachResponse()
     err, msg := c.Send(request, response)
@@ -1261,6 +1299,7 @@ func (c *Client) DescribeScalingInstanceWithContext(ctx context.Context, request
         request = NewDescribeScalingInstanceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeScalingInstanceResponse()
     err, msg := c.Send(request, response)
@@ -1293,6 +1332,7 @@ func (c *Client) AttachInstanceWithContext(ctx context.Context, request *AttachI
         request = NewAttachInstanceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAttachInstanceResponse()
     err, msg := c.Send(request, response)
@@ -1325,6 +1365,7 @@ func (c *Client) DetachInstanceWithContext(ctx context.Context, request *DetachI
         request = NewDetachInstanceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDetachInstanceResponse()
     err, msg := c.Send(request, response)
@@ -1357,6 +1398,7 @@ func (c *Client) DescribeScalingActivityWithContext(ctx context.Context, request
         request = NewDescribeScalingActivityRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeScalingActivityResponse()
     err, msg := c.Send(request, response)
@@ -1389,6 +1431,7 @@ func (c *Client) DeleteScalingGroupWithContext(ctx context.Context, request *Del
         request = NewDeleteScalingGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteScalingGroupResponse()
     err, msg := c.Send(request, response)
@@ -1421,6 +1464,7 @@ func (c *Client) DisableScalingGroupWithContext(ctx context.Context, request *Di
         request = NewDisableScalingGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDisableScalingGroupResponse()
     err, msg := c.Send(request, response)
@@ -1453,6 +1497,7 @@ func (c *Client) EnableScalingGroupWithContext(ctx context.Context, request *Ena
         request = NewEnableScalingGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewEnableScalingGroupResponse()
     err, msg := c.Send(request, response)
@@ -1485,6 +1530,7 @@ func (c *Client) DescribeScalingNotificationWithContext(ctx context.Context, req
         request = NewDescribeScalingNotificationRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeScalingNotificationResponse()
     err, msg := c.Send(request, response)
@@ -1517,6 +1563,7 @@ func (c *Client) CreateScalingNotificationWithContext(ctx context.Context, reque
         request = NewCreateScalingNotificationRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateScalingNotificationResponse()
     err, msg := c.Send(request, response)
@@ -1549,6 +1596,7 @@ func (c *Client) ModifyScalingNotificationWithContext(ctx context.Context, reque
         request = NewModifyScalingNotificationRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyScalingNotificationResponse()
     err, msg := c.Send(request, response)
@@ -1581,6 +1629,7 @@ func (c *Client) CreateScheduledTaskWithContext(ctx context.Context, request *Cr
         request = NewCreateScheduledTaskRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateScheduledTaskResponse()
     err, msg := c.Send(request, response)
@@ -1613,6 +1662,7 @@ func (c *Client) DescribeScheduledTaskWithContext(ctx context.Context, request *
         request = NewDescribeScheduledTaskRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeScheduledTaskResponse()
     err, msg := c.Send(request, response)
@@ -1645,6 +1695,7 @@ func (c *Client) ModifyScheduledTaskWithContext(ctx context.Context, request *Mo
         request = NewModifyScheduledTaskRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyScheduledTaskResponse()
     err, msg := c.Send(request, response)
@@ -1677,6 +1728,7 @@ func (c *Client) DeleteScheduledTaskWithContext(ctx context.Context, request *De
         request = NewDeleteScheduledTaskRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteScheduledTaskResponse()
     err, msg := c.Send(request, response)
@@ -1709,6 +1761,7 @@ func (c *Client) CreateScalingPolicyWithContext(ctx context.Context, request *Cr
         request = NewCreateScalingPolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateScalingPolicyResponse()
     err, msg := c.Send(request, response)
@@ -1741,6 +1794,7 @@ func (c *Client) DescribeScalingPolicyWithContext(ctx context.Context, request *
         request = NewDescribeScalingPolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeScalingPolicyResponse()
     err, msg := c.Send(request, response)
@@ -1773,6 +1827,7 @@ func (c *Client) ModifyScalingPolicyWithContext(ctx context.Context, request *Mo
         request = NewModifyScalingPolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyScalingPolicyResponse()
     err, msg := c.Send(request, response)
@@ -1805,6 +1860,7 @@ func (c *Client) DeleteScalingPolicyWithContext(ctx context.Context, request *De
         request = NewDeleteScalingPolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteScalingPolicyResponse()
     err, msg := c.Send(request, response)
@@ -1837,6 +1893,7 @@ func (c *Client) ImportImageWithContext(ctx context.Context, request *ImportImag
         request = NewImportImageRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewImportImageResponse()
     err, msg := c.Send(request, response)
@@ -1869,6 +1926,7 @@ func (c *Client) CopyImageWithContext(ctx context.Context, request *CopyImageReq
         request = NewCopyImageRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCopyImageResponse()
     err, msg := c.Send(request, response)
@@ -1901,6 +1959,7 @@ func (c *Client) ModifyImageSharePermissionWithContext(ctx context.Context, requ
         request = NewModifyImageSharePermissionRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyImageSharePermissionResponse()
     err, msg := c.Send(request, response)
@@ -1933,6 +1992,7 @@ func (c *Client) DescribeImageSharePermissionWithContext(ctx context.Context, re
         request = NewDescribeImageSharePermissionRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeImageSharePermissionResponse()
     err, msg := c.Send(request, response)
@@ -1965,6 +2025,7 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
         request = NewDescribeRegionsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeRegionsResponse()
     err, msg := c.Send(request, response)
@@ -1997,6 +2058,7 @@ func (c *Client) AttachKeyWithContext(ctx context.Context, request *AttachKeyReq
         request = NewAttachKeyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAttachKeyResponse()
     err, msg := c.Send(request, response)
@@ -2029,6 +2091,7 @@ func (c *Client) DetachKeyWithContext(ctx context.Context, request *DetachKeyReq
         request = NewDetachKeyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDetachKeyResponse()
     err, msg := c.Send(request, response)
@@ -2061,6 +2124,7 @@ func (c *Client) DescribeAvailabilityZonesWithContext(ctx context.Context, reque
         request = NewDescribeAvailabilityZonesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeAvailabilityZonesResponse()
     err, msg := c.Send(request, response)
@@ -2093,6 +2157,7 @@ func (c *Client) DescribeInstanceTypeConfigsWithContext(ctx context.Context, req
         request = NewDescribeInstanceTypeConfigsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeInstanceTypeConfigsResponse()
     err, msg := c.Send(request, response)
@@ -2125,6 +2190,7 @@ func (c *Client) DescribeInstanceFamilysWithContext(ctx context.Context, request
         request = NewDescribeInstanceFamilysRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeInstanceFamilysResponse()
     err, msg := c.Send(request, response)
@@ -2157,6 +2223,7 @@ func (c *Client) AddVmIntoDataGuardWithContext(ctx context.Context, request *Add
         request = NewAddVmIntoDataGuardRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAddVmIntoDataGuardResponse()
     err, msg := c.Send(request, response)
@@ -2189,6 +2256,7 @@ func (c *Client) CreateFileSystemWithContext(ctx context.Context, request *Creat
         request = NewCreateFileSystemRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateFileSystemResponse()
     err, msg := c.Send(request, response)
@@ -2221,6 +2289,7 @@ func (c *Client) DeleteFileSystemWithContext(ctx context.Context, request *Delet
         request = NewDeleteFileSystemRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteFileSystemResponse()
     err, msg := c.Send(request, response)
@@ -2253,6 +2322,7 @@ func (c *Client) DescribeFileSystemsWithContext(ctx context.Context, request *De
         request = NewDescribeFileSystemsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeFileSystemsResponse()
     err, msg := c.Send(request, response)
@@ -2285,6 +2355,7 @@ func (c *Client) ModifyFileSystemWithContext(ctx context.Context, request *Modif
         request = NewModifyFileSystemRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyFileSystemResponse()
     err, msg := c.Send(request, response)
@@ -2317,6 +2388,7 @@ func (c *Client) CreateMountTargetWithContext(ctx context.Context, request *Crea
         request = NewCreateMountTargetRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateMountTargetResponse()
     err, msg := c.Send(request, response)
@@ -2349,6 +2421,7 @@ func (c *Client) DeleteMountTargetWithContext(ctx context.Context, request *Dele
         request = NewDeleteMountTargetRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteMountTargetResponse()
     err, msg := c.Send(request, response)
@@ -2381,6 +2454,7 @@ func (c *Client) DescribeMountTargetsWithContext(ctx context.Context, request *D
         request = NewDescribeMountTargetsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeMountTargetsResponse()
     err, msg := c.Send(request, response)
@@ -2413,6 +2487,7 @@ func (c *Client) CreateModelWithContext(ctx context.Context, request *CreateMode
         request = NewCreateModelRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateModelResponse()
     err, msg := c.Send(request, response)
@@ -2445,6 +2520,7 @@ func (c *Client) TerminateModelsWithContext(ctx context.Context, request *Termin
         request = NewTerminateModelsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewTerminateModelsResponse()
     err, msg := c.Send(request, response)
@@ -2477,6 +2553,7 @@ func (c *Client) DescribeModelsWithContext(ctx context.Context, request *Describ
         request = NewDescribeModelsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeModelsResponse()
     err, msg := c.Send(request, response)
@@ -2509,6 +2586,7 @@ func (c *Client) DescribeDedicatedClusterWithContext(ctx context.Context, reques
         request = NewDescribeDedicatedClusterRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeDedicatedClusterResponse()
     err, msg := c.Send(request, response)
@@ -2541,6 +2619,7 @@ func (c *Client) CreateDedicatedClusterWithContext(ctx context.Context, request 
         request = NewCreateDedicatedClusterRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateDedicatedClusterResponse()
     err, msg := c.Send(request, response)
@@ -2573,6 +2652,7 @@ func (c *Client) DeleteDedicatedClusterWithContext(ctx context.Context, request 
         request = NewDeleteDedicatedClusterRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteDedicatedClusterResponse()
     err, msg := c.Send(request, response)
@@ -2605,6 +2685,7 @@ func (c *Client) SetvCPUWithContext(ctx context.Context, request *SetvCPURequest
         request = NewSetvCPURequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewSetvCPUResponse()
     err, msg := c.Send(request, response)
@@ -2637,6 +2718,7 @@ func (c *Client) DedicatedHostMigrateWithContext(ctx context.Context, request *D
         request = NewDedicatedHostMigrateRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDedicatedHostMigrateResponse()
     err, msg := c.Send(request, response)
@@ -2669,6 +2751,7 @@ func (c *Client) ModifyDedicatedClusterNameWithContext(ctx context.Context, requ
         request = NewModifyDedicatedClusterNameRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyDedicatedClusterNameResponse()
     err, msg := c.Send(request, response)
@@ -2701,6 +2784,7 @@ func (c *Client) InstanceMigrateWithContext(ctx context.Context, request *Instan
         request = NewInstanceMigrateRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewInstanceMigrateResponse()
     err, msg := c.Send(request, response)
@@ -2733,6 +2817,7 @@ func (c *Client) ModifyInstanceAutoDeleteTimeWithContext(ctx context.Context, re
         request = NewModifyInstanceAutoDeleteTimeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyInstanceAutoDeleteTimeResponse()
     err, msg := c.Send(request, response)
@@ -2765,6 +2850,7 @@ func (c *Client) ModifyScalingConfigurationWithContext(ctx context.Context, requ
         request = NewModifyScalingConfigurationRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyScalingConfigurationResponse()
     err, msg := c.Send(request, response)
@@ -2797,6 +2883,7 @@ func (c *Client) DescribeSpotPriceHistoryWithContext(ctx context.Context, reques
         request = NewDescribeSpotPriceHistoryRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeSpotPriceHistoryResponse()
     err, msg := c.Send(request, response)
@@ -2829,6 +2916,7 @@ func (c *Client) DescribePriceWithContext(ctx context.Context, request *Describe
         request = NewDescribePriceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribePriceResponse()
     err, msg := c.Send(request, response)
@@ -2861,6 +2949,7 @@ func (c *Client) EnableImageCachingWithContext(ctx context.Context, request *Ena
         request = NewEnableImageCachingRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewEnableImageCachingResponse()
     err, msg := c.Send(request, response)
@@ -2893,6 +2982,7 @@ func (c *Client) DisableImageCachingWithContext(ctx context.Context, request *Di
         request = NewDisableImageCachingRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDisableImageCachingResponse()
     err, msg := c.Send(request, response)
@@ -2925,6 +3015,7 @@ func (c *Client) ModifyLoadBalancersWithContext(ctx context.Context, request *Mo
         request = NewModifyLoadBalancersRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyLoadBalancersResponse()
     err, msg := c.Send(request, response)
@@ -2957,6 +3048,7 @@ func (c *Client) AttachInstancesIamRoleWithContext(ctx context.Context, request 
         request = NewAttachInstancesIamRoleRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAttachInstancesIamRoleResponse()
     err, msg := c.Send(request, response)
@@ -2989,6 +3081,7 @@ func (c *Client) DetachInstancesIamRoleWithContext(ctx context.Context, request 
         request = NewDetachInstancesIamRoleRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDetachInstancesIamRoleResponse()
     err, msg := c.Send(request, response)
@@ -3021,6 +3114,7 @@ func (c *Client) PreMigrateInstanceWithContext(ctx context.Context, request *Pre
         request = NewPreMigrateInstanceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewPreMigrateInstanceResponse()
     err, msg := c.Send(request, response)
@@ -3053,6 +3147,7 @@ func (c *Client) CancelPreMigrateInstanceWithContext(ctx context.Context, reques
         request = NewCancelPreMigrateInstanceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCancelPreMigrateInstanceResponse()
     err, msg := c.Send(request, response)
@@ -3085,6 +3180,7 @@ func (c *Client) DescribeMinFlavorCountWithContext(ctx context.Context, request 
         request = NewDescribeMinFlavorCountRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeMinFlavorCountResponse()
     err, msg := c.Send(request, response)

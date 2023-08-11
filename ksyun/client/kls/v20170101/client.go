@@ -45,6 +45,7 @@ func (c *Client) ListStreamDurationsWithContext(ctx context.Context, request *Li
         request = NewListStreamDurationsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewListStreamDurationsResponse()
     err, msg := c.Send(request, response)
@@ -77,6 +78,7 @@ func (c *Client) ListHistoryPubStreamsErrInfoWithContext(ctx context.Context, re
         request = NewListHistoryPubStreamsErrInfoRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewListHistoryPubStreamsErrInfoResponse()
     err, msg := c.Send(request, response)
@@ -109,6 +111,7 @@ func (c *Client) ListHistoryPubStreamsInfoWithContext(ctx context.Context, reque
         request = NewListHistoryPubStreamsInfoRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewListHistoryPubStreamsInfoResponse()
     err, msg := c.Send(request, response)
@@ -141,6 +144,7 @@ func (c *Client) ForbidStreamWithContext(ctx context.Context, request *ForbidStr
         request = NewForbidStreamRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewForbidStreamResponse()
     err, msg := c.Send(request, response)
@@ -173,6 +177,7 @@ func (c *Client) ResumeStreamWithContext(ctx context.Context, request *ResumeStr
         request = NewResumeStreamRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewResumeStreamResponse()
     err, msg := c.Send(request, response)
@@ -205,6 +210,7 @@ func (c *Client) GetBlacklistWithContext(ctx context.Context, request *GetBlackl
         request = NewGetBlacklistRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewGetBlacklistResponse()
     err, msg := c.Send(request, response)
@@ -237,6 +243,7 @@ func (c *Client) CheckBlacklistWithContext(ctx context.Context, request *CheckBl
         request = NewCheckBlacklistRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewCheckBlacklistResponse()
     err, msg := c.Send(request, response)
@@ -269,6 +276,7 @@ func (c *Client) ListRealtimeStreamsInfoWithContext(ctx context.Context, request
         request = NewListRealtimeStreamsInfoRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewListRealtimeStreamsInfoResponse()
     err, msg := c.Send(request, response)

@@ -45,6 +45,7 @@ func (c *Client) GetMonthBillWithContext(ctx context.Context, request *GetMonthB
         request = NewGetMonthBillRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewGetMonthBillResponse()
     err, msg := c.Send(request, response)
@@ -77,6 +78,7 @@ func (c *Client) GetPostpayDetailBillWithContext(ctx context.Context, request *G
         request = NewGetPostpayDetailBillRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewGetPostpayDetailBillResponse()
     err, msg := c.Send(request, response)
@@ -109,6 +111,7 @@ func (c *Client) GetProductCodeWithContext(ctx context.Context, request *GetProd
         request = NewGetProductCodeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewGetProductCodeResponse()
     err, msg := c.Send(request, response)

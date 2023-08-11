@@ -349,3 +349,45 @@ func (r *DescribeSplitItemBillDetailsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSplitItemDayBillDetailsRequest struct {
+    *ksyunhttp.BaseRequest
+    CustomerBillMonth *int `json:"CustomerBillMonth,omitempty" name:"CustomerBillMonth"`
+    ProductGroupCode *string `json:"ProductGroupCode,omitempty" name:"ProductGroupCode"`
+    StatisticType *int `json:"StatisticType,omitempty" name:"StatisticType"`
+    PayType *int `json:"PayType,omitempty" name:"PayType"`
+    SubAccountId *int `json:"SubAccountId,omitempty" name:"SubAccountId"`
+    Page *int `json:"Page,omitempty" name:"Page"`
+    Size *int `json:"Size,omitempty" name:"Size"`
+}
+
+func (r *DescribeSplitItemDayBillDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSplitItemDayBillDetailsRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeSplitItemDayBillDetailsRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSplitItemDayBillDetailsResponse struct {
+    *ksyunhttp.BaseResponse
+    Status *int `json:"Status" name:"Status"`
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DescribeSplitItemDayBillDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeSplitItemDayBillDetailsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+

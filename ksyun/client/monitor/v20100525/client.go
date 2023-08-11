@@ -45,8 +45,42 @@ func (c *Client) GetMetricStatisticsWithContext(ctx context.Context, request *Ge
         request = NewGetMetricStatisticsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewGetMetricStatisticsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewListMetricsRequest() (request *ListMetricsRequest) {
+    request = &ListMetricsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "ListMetrics")
+    return
+}
+
+func NewListMetricsResponse() (response *ListMetricsResponse) {
+    response = &ListMetricsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ListMetrics(request *ListMetricsRequest) (string) {
+    return c.ListMetricsWithContext(context.Background(), request)
+}
+
+func (c *Client) ListMetricsWithContext(ctx context.Context, request *ListMetricsRequest) (string) {
+    if request == nil {
+        request = NewListMetricsRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewListMetricsResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)

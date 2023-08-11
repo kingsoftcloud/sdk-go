@@ -45,6 +45,7 @@ func (c *Client) CreateMongoDBInstanceWithContext(ctx context.Context, request *
         request = NewCreateMongoDBInstanceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateMongoDBInstanceResponse()
     err, msg := c.Send(request, response)
@@ -77,6 +78,7 @@ func (c *Client) DeleteMongoDBInstanceWithContext(ctx context.Context, request *
         request = NewDeleteMongoDBInstanceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDeleteMongoDBInstanceResponse()
     err, msg := c.Send(request, response)
@@ -109,6 +111,7 @@ func (c *Client) DescribeMongoDBInstanceWithContext(ctx context.Context, request
         request = NewDescribeMongoDBInstanceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeMongoDBInstanceResponse()
     err, msg := c.Send(request, response)
@@ -141,6 +144,7 @@ func (c *Client) DescribeMongoDBInstancesWithContext(ctx context.Context, reques
         request = NewDescribeMongoDBInstancesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeMongoDBInstancesResponse()
     err, msg := c.Send(request, response)
@@ -173,6 +177,7 @@ func (c *Client) DescribeMongoDBInstanceNodeWithContext(ctx context.Context, req
         request = NewDescribeMongoDBInstanceNodeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeMongoDBInstanceNodeResponse()
     err, msg := c.Send(request, response)
@@ -205,6 +210,7 @@ func (c *Client) RenameMongoDBInstanceWithContext(ctx context.Context, request *
         request = NewRenameMongoDBInstanceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewRenameMongoDBInstanceResponse()
     err, msg := c.Send(request, response)
@@ -237,6 +243,7 @@ func (c *Client) ResetPasswordMongoDBInstanceWithContext(ctx context.Context, re
         request = NewResetPasswordMongoDBInstanceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewResetPasswordMongoDBInstanceResponse()
     err, msg := c.Send(request, response)
@@ -269,6 +276,7 @@ func (c *Client) RestartMongoDBInstanceWithContext(ctx context.Context, request 
         request = NewRestartMongoDBInstanceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewRestartMongoDBInstanceResponse()
     err, msg := c.Send(request, response)
@@ -301,6 +309,7 @@ func (c *Client) CreateMongoDBSnapshotWithContext(ctx context.Context, request *
         request = NewCreateMongoDBSnapshotRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateMongoDBSnapshotResponse()
     err, msg := c.Send(request, response)
@@ -333,6 +342,7 @@ func (c *Client) SetMongoDBTimingSnapshotWithContext(ctx context.Context, reques
         request = NewSetMongoDBTimingSnapshotRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewSetMongoDBTimingSnapshotResponse()
     err, msg := c.Send(request, response)
@@ -365,6 +375,7 @@ func (c *Client) DescribeMongoDBSnapshotWithContext(ctx context.Context, request
         request = NewDescribeMongoDBSnapshotRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeMongoDBSnapshotResponse()
     err, msg := c.Send(request, response)
@@ -397,6 +408,7 @@ func (c *Client) DeleteMongoDBSnapshotWithContext(ctx context.Context, request *
         request = NewDeleteMongoDBSnapshotRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDeleteMongoDBSnapshotResponse()
     err, msg := c.Send(request, response)
@@ -429,6 +441,7 @@ func (c *Client) RenameMongoDBSnapshotWithContext(ctx context.Context, request *
         request = NewRenameMongoDBSnapshotRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewRenameMongoDBSnapshotResponse()
     err, msg := c.Send(request, response)
@@ -461,6 +474,7 @@ func (c *Client) AddSecurityGroupRuleWithContext(ctx context.Context, request *A
         request = NewAddSecurityGroupRuleRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAddSecurityGroupRuleResponse()
     err, msg := c.Send(request, response)
@@ -493,6 +507,7 @@ func (c *Client) ListSecurityGroupRulesWithContext(ctx context.Context, request 
         request = NewListSecurityGroupRulesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewListSecurityGroupRulesResponse()
     err, msg := c.Send(request, response)
@@ -525,6 +540,7 @@ func (c *Client) UpdateMongoDBInstanceWithContext(ctx context.Context, request *
         request = NewUpdateMongoDBInstanceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewUpdateMongoDBInstanceResponse()
     err, msg := c.Send(request, response)
@@ -557,6 +573,7 @@ func (c *Client) AddSecondaryInstanceWithContext(ctx context.Context, request *A
         request = NewAddSecondaryInstanceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewAddSecondaryInstanceResponse()
     err, msg := c.Send(request, response)
@@ -589,6 +606,7 @@ func (c *Client) DescribeMongoDBShardNodeWithContext(ctx context.Context, reques
         request = NewDescribeMongoDBShardNodeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeMongoDBShardNodeResponse()
     err, msg := c.Send(request, response)
@@ -621,6 +639,7 @@ func (c *Client) DescribeValidRegionWithContext(ctx context.Context, request *De
         request = NewDescribeValidRegionRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeValidRegionResponse()
     err, msg := c.Send(request, response)
@@ -653,6 +672,7 @@ func (c *Client) AllocateEipWithContext(ctx context.Context, request *AllocateEi
         request = NewAllocateEipRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAllocateEipResponse()
     err, msg := c.Send(request, response)
@@ -685,6 +705,7 @@ func (c *Client) DeallocateEipWithContext(ctx context.Context, request *Dealloca
         request = NewDeallocateEipRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeallocateEipResponse()
     err, msg := c.Send(request, response)
@@ -717,6 +738,7 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
         request = NewDescribeRegionsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeRegionsResponse()
     err, msg := c.Send(request, response)
@@ -749,6 +771,7 @@ func (c *Client) CreateMongoDBShardInstanceWithContext(ctx context.Context, requ
         request = NewCreateMongoDBShardInstanceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateMongoDBShardInstanceResponse()
     err, msg := c.Send(request, response)
@@ -781,6 +804,7 @@ func (c *Client) DownloadSnapshotWithContext(ctx context.Context, request *Downl
         request = NewDownloadSnapshotRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDownloadSnapshotResponse()
     err, msg := c.Send(request, response)
@@ -813,6 +837,7 @@ func (c *Client) CloneInstanceWithContext(ctx context.Context, request *CloneIns
         request = NewCloneInstanceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCloneInstanceResponse()
     err, msg := c.Send(request, response)
@@ -845,6 +870,7 @@ func (c *Client) DescribeShardNodeWithContext(ctx context.Context, request *Desc
         request = NewDescribeShardNodeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeShardNodeResponse()
     err, msg := c.Send(request, response)
@@ -877,6 +903,7 @@ func (c *Client) DescribeInstanceStatisticWithContext(ctx context.Context, reque
         request = NewDescribeInstanceStatisticRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeInstanceStatisticResponse()
     err, msg := c.Send(request, response)
@@ -909,6 +936,7 @@ func (c *Client) AddClusterNodeWithContext(ctx context.Context, request *AddClus
         request = NewAddClusterNodeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAddClusterNodeResponse()
     err, msg := c.Send(request, response)
@@ -941,6 +969,7 @@ func (c *Client) DeleteClusterNodeWithContext(ctx context.Context, request *Dele
         request = NewDeleteClusterNodeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteClusterNodeResponse()
     err, msg := c.Send(request, response)
@@ -973,6 +1002,7 @@ func (c *Client) DescribeSlowLogDetailWithContext(ctx context.Context, request *
         request = NewDescribeSlowLogDetailRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeSlowLogDetailResponse()
     err, msg := c.Send(request, response)
@@ -1005,6 +1035,7 @@ func (c *Client) DescribeSlowLogStatisticsWithContext(ctx context.Context, reque
         request = NewDescribeSlowLogStatisticsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeSlowLogStatisticsResponse()
     err, msg := c.Send(request, response)
@@ -1037,6 +1068,7 @@ func (c *Client) DescribeSlowLogDatabaseWithContext(ctx context.Context, request
         request = NewDescribeSlowLogDatabaseRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeSlowLogDatabaseResponse()
     err, msg := c.Send(request, response)
@@ -1069,6 +1101,7 @@ func (c *Client) DescribeSlowLogLineChartWithContext(ctx context.Context, reques
         request = NewDescribeSlowLogLineChartRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeSlowLogLineChartResponse()
     err, msg := c.Send(request, response)
@@ -1101,8 +1134,42 @@ func (c *Client) UpdateMongoDBInstanceClusterWithContext(ctx context.Context, re
         request = NewUpdateMongoDBInstanceClusterRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewUpdateMongoDBInstanceClusterResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeClusterForRestoreRequest() (request *DescribeClusterForRestoreRequest) {
+    request = &DescribeClusterForRestoreRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeClusterForRestore")
+    return
+}
+
+func NewDescribeClusterForRestoreResponse() (response *DescribeClusterForRestoreResponse) {
+    response = &DescribeClusterForRestoreResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeClusterForRestore(request *DescribeClusterForRestoreRequest) (string) {
+    return c.DescribeClusterForRestoreWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeClusterForRestoreWithContext(ctx context.Context, request *DescribeClusterForRestoreRequest) (string) {
+    if request == nil {
+        request = NewDescribeClusterForRestoreRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewDescribeClusterForRestoreResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)

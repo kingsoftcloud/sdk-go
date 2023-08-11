@@ -45,6 +45,7 @@ func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, request *
         request = NewDescribeLoadBalancersRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeLoadBalancersResponse()
     err, msg := c.Send(request, response)

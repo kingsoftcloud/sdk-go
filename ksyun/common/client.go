@@ -1,16 +1,25 @@
 /**
- * @author: liyanyan2@kingsoft.com
+ * @author: fengyikai@kingsoft.com
  * @date:  3/18/2022
  * @code: f844b0d56cd31661b4fa3f33787082bb
  */
 package common
 
 import (
+	"bytes"
+	"encoding/json"
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/credentials"
+	"github.com/aws/aws-sdk-go/aws/session"
+	v4 "github.com/aws/aws-sdk-go/aws/signer/v4"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 	ksyunprofile "github.com/kingsoftcloud/sdk-go/ksyun/common/profile"
 	"log"
 	"net/http"
 	"net/http/httputil"
+	"net/url"
+	"reflect"
+	"strings"
 	"time"
 )
 
@@ -49,30 +58,74 @@ func (c *Client) Send(request ksyunhttp.Request, response ksyunhttp.Response) (e
 }
 
 func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksyunhttp.Response) (error, string) {
-	err := ksyunhttp.ConstructParams(request)
-	if err != nil {
-		return err, ""
-	}
+	sess := session.Must(session.NewSession(&aws.Config{
+		Region:      aws.String(c.GetRegion()),
+		Credentials: credentials.NewStaticCredentials(c.credential.GetSecretId(), c.credential.GetSecretKey(), ""),
+	}))
+	signer := v4.NewSigner(sess.Config.Credentials)
 
-	err = signRequest(request, c.credential, c.signMethod)
-	if err != nil {
-		return err, ""
+	var urlRe = ""
+	if request.GetHttpMethod() == "POST" && request.GetContentType() == "application/json" {
+		body, _ := json.Marshal(request)
+		request.SetBody(body)
+		urlRe = request.GetUrl() + "?Action=" + request.GetAction() + "&Version=" + request.GetVersion() + "&Service=" + request.GetService()
+		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
+		httpRequest.Header.Set("Accept", "application/json")
+		httpRequest.Header.Set("X-Amz-Date", time.Now().UTC().Format("20060102T150405Z"))
+		httpRequest.Header.Set("Content-Type", request.GetContentType())
+		httpRequest.Header.Set("Host", request.GetDomain())
+		_, err = signer.Sign(httpRequest, bytes.NewReader(body), request.GetService(), c.GetRegion(), time.Now().UTC())
+		httpResponse, err := c.sendHttp(httpRequest)
+		if err != nil {
+			return err, ""
+		}
+		res := ksyunhttp.ParseFromHttpResponse(httpResponse, response)
+		return nil, res
+	} else if request.GetHttpMethod() == "POST" && request.GetContentType() == "application/x-www-form-urlencoded" {
+		value := reflect.ValueOf(request).Elem()
+		err := ksyunhttp.FlatStructure(value, request, "")
+		if err != nil {
+			return err, ""
+		}
+		paramsM := request.GetParams()
+		formData := url.Values{}
+		for key, value := range paramsM {
+			formData.Set(key, value)
+		}
+		formDataEncoded := formData.Encode()
+		urlRe = request.GetUrl() + "?Action=" + request.GetAction() + "&Version=" + request.GetVersion() + "&Service=" + request.GetService()
+		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
+		httpRequest.Header.Set("Accept", "application/json")
+		httpRequest.Header.Set("X-Amz-Date", time.Now().UTC().Format("20060102T150405Z"))
+		httpRequest.Header.Set("Content-Type", request.GetContentType())
+		httpRequest.Header.Set("Host", request.GetDomain())
+		_, err = signer.Sign(httpRequest, strings.NewReader(formDataEncoded), request.GetService(), c.GetRegion(), time.Now().UTC())
+		httpResponse, err := c.sendHttp(httpRequest)
+		if err != nil {
+			return err, ""
+		}
+		res := ksyunhttp.ParseFromHttpResponse(httpResponse, response)
+		return nil, res
+	} else {
+		value := reflect.ValueOf(request).Elem()
+		err := ksyunhttp.FlatStructure(value, request, "")
+		if err != nil {
+			return err, ""
+		}
+		urlRe = request.GetUrl()
+		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
+		httpRequest.Header.Set("Accept", "application/json")
+		httpRequest.Header.Set("X-Amz-Date", time.Now().UTC().Format("20060102T150405Z"))
+		httpRequest.Header.Set("Content-Type", request.GetContentType())
+		httpRequest.Header.Set("Host", request.GetDomain())
+		_, err = signer.Sign(httpRequest, nil, request.GetService(), c.GetRegion(), time.Now().UTC())
+		httpResponse, err := c.sendHttp(httpRequest)
+		if err != nil {
+			return err, ""
+		}
+		res := ksyunhttp.ParseFromHttpResponse(httpResponse, response)
+		return nil, res
 	}
-	httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), request.GetUrl(), request.GetBodyReader())
-	if err != nil {
-		return err, ""
-	}
-	httpRequest.Header.Set("Accept", "application/json")
-	if request.GetHttpMethod() == "POST" {
-		httpRequest.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-	}
-	httpResponse, err := c.sendHttp(httpRequest)
-	if err != nil {
-		return err, ""
-	}
-
-	res := ksyunhttp.ParseFromHttpResponse(httpResponse, response)
-	return nil, res
 }
 
 // send http request
@@ -134,4 +187,3 @@ func (c *Client) WithDebug(flag bool) *Client {
 	c.debug = flag
 	return c
 }
-

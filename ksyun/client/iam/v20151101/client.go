@@ -45,6 +45,7 @@ func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserR
         request = NewCreateUserRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateUserResponse()
     err, msg := c.Send(request, response)
@@ -77,6 +78,7 @@ func (c *Client) ListUsersWithContext(ctx context.Context, request *ListUsersReq
         request = NewListUsersRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewListUsersResponse()
     err, msg := c.Send(request, response)
@@ -109,6 +111,7 @@ func (c *Client) UpdateUserWithContext(ctx context.Context, request *UpdateUserR
         request = NewUpdateUserRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewUpdateUserResponse()
     err, msg := c.Send(request, response)
@@ -141,6 +144,7 @@ func (c *Client) GetUserWithContext(ctx context.Context, request *GetUserRequest
         request = NewGetUserRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewGetUserResponse()
     err, msg := c.Send(request, response)
@@ -173,6 +177,7 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserR
         request = NewDeleteUserRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteUserResponse()
     err, msg := c.Send(request, response)
@@ -205,6 +210,7 @@ func (c *Client) DetachUserPolicyWithContext(ctx context.Context, request *Detac
         request = NewDetachUserPolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDetachUserPolicyResponse()
     err, msg := c.Send(request, response)
@@ -237,6 +243,7 @@ func (c *Client) ListAttachedUserPoliciesWithContext(ctx context.Context, reques
         request = NewListAttachedUserPoliciesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewListAttachedUserPoliciesResponse()
     err, msg := c.Send(request, response)
@@ -269,6 +276,7 @@ func (c *Client) ListPolicyVersionsWithContext(ctx context.Context, request *Lis
         request = NewListPolicyVersionsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewListPolicyVersionsResponse()
     err, msg := c.Send(request, response)
@@ -301,6 +309,7 @@ func (c *Client) SetDefaultPolicyVersionWithContext(ctx context.Context, request
         request = NewSetDefaultPolicyVersionRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewSetDefaultPolicyVersionResponse()
     err, msg := c.Send(request, response)
@@ -333,6 +342,7 @@ func (c *Client) AttachUserPolicyWithContext(ctx context.Context, request *Attac
         request = NewAttachUserPolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAttachUserPolicyResponse()
     err, msg := c.Send(request, response)
@@ -365,6 +375,7 @@ func (c *Client) DeletePolicyVersionWithContext(ctx context.Context, request *De
         request = NewDeletePolicyVersionRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeletePolicyVersionResponse()
     err, msg := c.Send(request, response)
@@ -397,6 +408,7 @@ func (c *Client) GetPolicyVersionWithContext(ctx context.Context, request *GetPo
         request = NewGetPolicyVersionRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewGetPolicyVersionResponse()
     err, msg := c.Send(request, response)
@@ -429,6 +441,7 @@ func (c *Client) CreatePolicyVersionWithContext(ctx context.Context, request *Cr
         request = NewCreatePolicyVersionRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreatePolicyVersionResponse()
     err, msg := c.Send(request, response)
@@ -461,6 +474,7 @@ func (c *Client) ListPoliciesWithContext(ctx context.Context, request *ListPolic
         request = NewListPoliciesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewListPoliciesResponse()
     err, msg := c.Send(request, response)
@@ -493,6 +507,7 @@ func (c *Client) GetPolicyWithContext(ctx context.Context, request *GetPolicyReq
         request = NewGetPolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewGetPolicyResponse()
     err, msg := c.Send(request, response)
@@ -525,6 +540,7 @@ func (c *Client) DeletePolicyWithContext(ctx context.Context, request *DeletePol
         request = NewDeletePolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeletePolicyResponse()
     err, msg := c.Send(request, response)
@@ -557,6 +573,7 @@ func (c *Client) CreatePolicyWithContext(ctx context.Context, request *CreatePol
         request = NewCreatePolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreatePolicyResponse()
     err, msg := c.Send(request, response)
@@ -589,6 +606,7 @@ func (c *Client) ChangePasswordWithContext(ctx context.Context, request *ChangeP
         request = NewChangePasswordRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewChangePasswordResponse()
     err, msg := c.Send(request, response)
@@ -621,6 +639,7 @@ func (c *Client) UpdateLoginProfileWithContext(ctx context.Context, request *Upd
         request = NewUpdateLoginProfileRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewUpdateLoginProfileResponse()
     err, msg := c.Send(request, response)
@@ -653,6 +672,7 @@ func (c *Client) GetLoginProfileWithContext(ctx context.Context, request *GetLog
         request = NewGetLoginProfileRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewGetLoginProfileResponse()
     err, msg := c.Send(request, response)
@@ -685,6 +705,7 @@ func (c *Client) CreateAccessKeyWithContext(ctx context.Context, request *Create
         request = NewCreateAccessKeyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateAccessKeyResponse()
     err, msg := c.Send(request, response)
@@ -717,6 +738,7 @@ func (c *Client) ListAccessKeysWithContext(ctx context.Context, request *ListAcc
         request = NewListAccessKeysRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewListAccessKeysResponse()
     err, msg := c.Send(request, response)
@@ -749,6 +771,7 @@ func (c *Client) UpdateAccessKeyWithContext(ctx context.Context, request *Update
         request = NewUpdateAccessKeyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewUpdateAccessKeyResponse()
     err, msg := c.Send(request, response)
@@ -781,6 +804,7 @@ func (c *Client) DeleteAccessKeyWithContext(ctx context.Context, request *Delete
         request = NewDeleteAccessKeyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteAccessKeyResponse()
     err, msg := c.Send(request, response)
@@ -813,6 +837,7 @@ func (c *Client) ListVirtualMFADevicesWithContext(ctx context.Context, request *
         request = NewListVirtualMFADevicesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewListVirtualMFADevicesResponse()
     err, msg := c.Send(request, response)
@@ -845,6 +870,7 @@ func (c *Client) EnableMFADeviceWithContext(ctx context.Context, request *Enable
         request = NewEnableMFADeviceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewEnableMFADeviceResponse()
     err, msg := c.Send(request, response)
@@ -877,6 +903,7 @@ func (c *Client) DeactivateMFADeviceWithContext(ctx context.Context, request *De
         request = NewDeactivateMFADeviceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeactivateMFADeviceResponse()
     err, msg := c.Send(request, response)
@@ -909,6 +936,7 @@ func (c *Client) GetVirtualMFADeviceWithContext(ctx context.Context, request *Ge
         request = NewGetVirtualMFADeviceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewGetVirtualMFADeviceResponse()
     err, msg := c.Send(request, response)
@@ -941,6 +969,7 @@ func (c *Client) CreateRoleWithContext(ctx context.Context, request *CreateRoleR
         request = NewCreateRoleRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateRoleResponse()
     err, msg := c.Send(request, response)
@@ -973,6 +1002,7 @@ func (c *Client) DeleteRoleWithContext(ctx context.Context, request *DeleteRoleR
         request = NewDeleteRoleRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteRoleResponse()
     err, msg := c.Send(request, response)
@@ -1005,6 +1035,7 @@ func (c *Client) GetRoleWithContext(ctx context.Context, request *GetRoleRequest
         request = NewGetRoleRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewGetRoleResponse()
     err, msg := c.Send(request, response)
@@ -1037,6 +1068,7 @@ func (c *Client) ListRolesWithContext(ctx context.Context, request *ListRolesReq
         request = NewListRolesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewListRolesResponse()
     err, msg := c.Send(request, response)
@@ -1069,6 +1101,7 @@ func (c *Client) AttachRolePolicyWithContext(ctx context.Context, request *Attac
         request = NewAttachRolePolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAttachRolePolicyResponse()
     err, msg := c.Send(request, response)
@@ -1101,6 +1134,7 @@ func (c *Client) DetachRolePolicyWithContext(ctx context.Context, request *Detac
         request = NewDetachRolePolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDetachRolePolicyResponse()
     err, msg := c.Send(request, response)
@@ -1133,6 +1167,7 @@ func (c *Client) ListAttachedRolePoliciesWithContext(ctx context.Context, reques
         request = NewListAttachedRolePoliciesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewListAttachedRolePoliciesResponse()
     err, msg := c.Send(request, response)
@@ -1165,6 +1200,7 @@ func (c *Client) UpdateRoleTrustAccountsWithContext(ctx context.Context, request
         request = NewUpdateRoleTrustAccountsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewUpdateRoleTrustAccountsResponse()
     err, msg := c.Send(request, response)
@@ -1197,6 +1233,7 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreatePr
         request = NewCreateProjectRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateProjectResponse()
     err, msg := c.Send(request, response)
@@ -1229,6 +1266,7 @@ func (c *Client) GetAccountAllProjectListWithContext(ctx context.Context, reques
         request = NewGetAccountAllProjectListRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewGetAccountAllProjectListResponse()
     err, msg := c.Send(request, response)
@@ -1261,6 +1299,7 @@ func (c *Client) GetProjectInstanceListWithContext(ctx context.Context, request 
         request = NewGetProjectInstanceListRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewGetProjectInstanceListResponse()
     err, msg := c.Send(request, response)
@@ -1293,6 +1332,7 @@ func (c *Client) UpdateInstanceProjectIdWithContext(ctx context.Context, request
         request = NewUpdateInstanceProjectIdRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewUpdateInstanceProjectIdResponse()
     err, msg := c.Send(request, response)
@@ -1325,6 +1365,7 @@ func (c *Client) ListEntitiesForPolicyWithContext(ctx context.Context, request *
         request = NewListEntitiesForPolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewListEntitiesForPolicyResponse()
     err, msg := c.Send(request, response)
@@ -1357,6 +1398,7 @@ func (c *Client) ListProjectMemberWithContext(ctx context.Context, request *List
         request = NewListProjectMemberRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewListProjectMemberResponse()
     err, msg := c.Send(request, response)
@@ -1389,6 +1431,7 @@ func (c *Client) DeleteProjectMemberWithContext(ctx context.Context, request *De
         request = NewDeleteProjectMemberRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteProjectMemberResponse()
     err, msg := c.Send(request, response)
@@ -1421,6 +1464,7 @@ func (c *Client) AddProjectMemberWithContext(ctx context.Context, request *AddPr
         request = NewAddProjectMemberRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAddProjectMemberResponse()
     err, msg := c.Send(request, response)
@@ -1453,6 +1497,7 @@ func (c *Client) UpdateRoleWithContext(ctx context.Context, request *UpdateRoleR
         request = NewUpdateRoleRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewUpdateRoleResponse()
     err, msg := c.Send(request, response)
@@ -1485,6 +1530,7 @@ func (c *Client) UpdatePolicyWithContext(ctx context.Context, request *UpdatePol
         request = NewUpdatePolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewUpdatePolicyResponse()
     err, msg := c.Send(request, response)
@@ -1517,6 +1563,7 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, request *CreateGrou
         request = NewCreateGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateGroupResponse()
     err, msg := c.Send(request, response)
@@ -1549,6 +1596,7 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGrou
         request = NewDeleteGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteGroupResponse()
     err, msg := c.Send(request, response)
@@ -1581,6 +1629,7 @@ func (c *Client) DetachGroupPolicyWithContext(ctx context.Context, request *Deta
         request = NewDetachGroupPolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDetachGroupPolicyResponse()
     err, msg := c.Send(request, response)
@@ -1613,6 +1662,7 @@ func (c *Client) AttachGroupPolicyWithContext(ctx context.Context, request *Atta
         request = NewAttachGroupPolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAttachGroupPolicyResponse()
     err, msg := c.Send(request, response)
@@ -1645,6 +1695,7 @@ func (c *Client) ListGroupPoliciesWithContext(ctx context.Context, request *List
         request = NewListGroupPoliciesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewListGroupPoliciesResponse()
     err, msg := c.Send(request, response)
@@ -1677,6 +1728,7 @@ func (c *Client) AddUserToGroupWithContext(ctx context.Context, request *AddUser
         request = NewAddUserToGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAddUserToGroupResponse()
     err, msg := c.Send(request, response)
@@ -1709,6 +1761,7 @@ func (c *Client) GetGroupWithContext(ctx context.Context, request *GetGroupReque
         request = NewGetGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewGetGroupResponse()
     err, msg := c.Send(request, response)
@@ -1741,6 +1794,7 @@ func (c *Client) ListGroupsForUserWithContext(ctx context.Context, request *List
         request = NewListGroupsForUserRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewListGroupsForUserResponse()
     err, msg := c.Send(request, response)
@@ -1773,6 +1827,7 @@ func (c *Client) ListGroupsWithContext(ctx context.Context, request *ListGroupsR
         request = NewListGroupsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewListGroupsResponse()
     err, msg := c.Send(request, response)
@@ -1805,6 +1860,7 @@ func (c *Client) RemoveUserFromGroupWithContext(ctx context.Context, request *Re
         request = NewRemoveUserFromGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewRemoveUserFromGroupResponse()
     err, msg := c.Send(request, response)
@@ -1837,6 +1893,7 @@ func (c *Client) ListAllUserAccessKeysWithContext(ctx context.Context, request *
         request = NewListAllUserAccessKeysRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewListAllUserAccessKeysResponse()
     err, msg := c.Send(request, response)
@@ -1869,6 +1926,7 @@ func (c *Client) InsertInstanceToESWithContext(ctx context.Context, request *Ins
         request = NewInsertInstanceToESRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewInsertInstanceToESResponse()
     err, msg := c.Send(request, response)
@@ -1901,6 +1959,7 @@ func (c *Client) DelInstanceFromESWithContext(ctx context.Context, request *DelI
         request = NewDelInstanceFromESRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDelInstanceFromESResponse()
     err, msg := c.Send(request, response)

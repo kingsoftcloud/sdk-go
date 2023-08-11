@@ -45,6 +45,7 @@ func (c *Client) CreateBandWidthShareWithContext(ctx context.Context, request *C
         request = NewCreateBandWidthShareRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateBandWidthShareResponse()
     err, msg := c.Send(request, response)
@@ -77,6 +78,7 @@ func (c *Client) DescribeBandWidthSharesWithContext(ctx context.Context, request
         request = NewDescribeBandWidthSharesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeBandWidthSharesResponse()
     err, msg := c.Send(request, response)
@@ -109,6 +111,7 @@ func (c *Client) AssociateBandWidthShareWithContext(ctx context.Context, request
         request = NewAssociateBandWidthShareRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAssociateBandWidthShareResponse()
     err, msg := c.Send(request, response)
@@ -141,6 +144,7 @@ func (c *Client) DisassociateBandWidthShareWithContext(ctx context.Context, requ
         request = NewDisassociateBandWidthShareRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDisassociateBandWidthShareResponse()
     err, msg := c.Send(request, response)
@@ -173,6 +177,7 @@ func (c *Client) ModifyBandWidthShareWithContext(ctx context.Context, request *M
         request = NewModifyBandWidthShareRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyBandWidthShareResponse()
     err, msg := c.Send(request, response)
@@ -205,6 +210,7 @@ func (c *Client) DeleteBandWidthShareWithContext(ctx context.Context, request *D
         request = NewDeleteBandWidthShareRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteBandWidthShareResponse()
     err, msg := c.Send(request, response)

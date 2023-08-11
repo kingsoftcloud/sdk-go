@@ -45,6 +45,7 @@ func (c *Client) GetLinesWithContext(ctx context.Context, request *GetLinesReque
         request = NewGetLinesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewGetLinesResponse()
     err, msg := c.Send(request, response)
@@ -77,6 +78,7 @@ func (c *Client) DescribeAddressesWithContext(ctx context.Context, request *Desc
         request = NewDescribeAddressesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeAddressesResponse()
     err, msg := c.Send(request, response)
@@ -109,6 +111,7 @@ func (c *Client) AllocateAddressWithContext(ctx context.Context, request *Alloca
         request = NewAllocateAddressRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAllocateAddressResponse()
     err, msg := c.Send(request, response)
@@ -141,6 +144,7 @@ func (c *Client) ReleaseAddressWithContext(ctx context.Context, request *Release
         request = NewReleaseAddressRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewReleaseAddressResponse()
     err, msg := c.Send(request, response)
@@ -173,6 +177,7 @@ func (c *Client) AssociateAddressWithContext(ctx context.Context, request *Assoc
         request = NewAssociateAddressRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAssociateAddressResponse()
     err, msg := c.Send(request, response)
@@ -205,6 +210,7 @@ func (c *Client) DisassociateAddressWithContext(ctx context.Context, request *Di
         request = NewDisassociateAddressRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDisassociateAddressResponse()
     err, msg := c.Send(request, response)
@@ -237,6 +243,7 @@ func (c *Client) ModifyAddressWithContext(ctx context.Context, request *ModifyAd
         request = NewModifyAddressRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyAddressResponse()
     err, msg := c.Send(request, response)

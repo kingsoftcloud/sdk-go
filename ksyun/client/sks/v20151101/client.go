@@ -45,6 +45,7 @@ func (c *Client) CreateKeyWithContext(ctx context.Context, request *CreateKeyReq
         request = NewCreateKeyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateKeyResponse()
     err, msg := c.Send(request, response)
@@ -77,6 +78,7 @@ func (c *Client) ImportKeyWithContext(ctx context.Context, request *ImportKeyReq
         request = NewImportKeyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewImportKeyResponse()
     err, msg := c.Send(request, response)
@@ -109,6 +111,7 @@ func (c *Client) DeleteKeyWithContext(ctx context.Context, request *DeleteKeyReq
         request = NewDeleteKeyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteKeyResponse()
     err, msg := c.Send(request, response)
@@ -141,6 +144,7 @@ func (c *Client) ModifyKeyWithContext(ctx context.Context, request *ModifyKeyReq
         request = NewModifyKeyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyKeyResponse()
     err, msg := c.Send(request, response)
@@ -173,6 +177,7 @@ func (c *Client) DescribeKeysWithContext(ctx context.Context, request *DescribeK
         request = NewDescribeKeysRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeKeysResponse()
     err, msg := c.Send(request, response)

@@ -45,6 +45,7 @@ func (c *Client) CreateVolumeWithContext(ctx context.Context, request *CreateVol
         request = NewCreateVolumeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewCreateVolumeResponse()
     err, msg := c.Send(request, response)
@@ -77,6 +78,7 @@ func (c *Client) AttachVolumeWithContext(ctx context.Context, request *AttachVol
         request = NewAttachVolumeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewAttachVolumeResponse()
     err, msg := c.Send(request, response)
@@ -109,6 +111,7 @@ func (c *Client) DetachVolumeWithContext(ctx context.Context, request *DetachVol
         request = NewDetachVolumeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDetachVolumeResponse()
     err, msg := c.Send(request, response)
@@ -141,6 +144,7 @@ func (c *Client) DeleteVolumeWithContext(ctx context.Context, request *DeleteVol
         request = NewDeleteVolumeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDeleteVolumeResponse()
     err, msg := c.Send(request, response)
@@ -173,6 +177,7 @@ func (c *Client) ResizeVolumeWithContext(ctx context.Context, request *ResizeVol
         request = NewResizeVolumeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewResizeVolumeResponse()
     err, msg := c.Send(request, response)
@@ -205,6 +210,7 @@ func (c *Client) DescribeVolumesWithContext(ctx context.Context, request *Descri
         request = NewDescribeVolumesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeVolumesResponse()
     err, msg := c.Send(request, response)
@@ -237,6 +243,7 @@ func (c *Client) ModifyVolumeWithContext(ctx context.Context, request *ModifyVol
         request = NewModifyVolumeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewModifyVolumeResponse()
     err, msg := c.Send(request, response)
@@ -269,6 +276,7 @@ func (c *Client) DescribeEbsInstancesWithContext(ctx context.Context, request *D
         request = NewDescribeEbsInstancesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeEbsInstancesResponse()
     err, msg := c.Send(request, response)
@@ -301,6 +309,7 @@ func (c *Client) DescribeInstanceVolumesWithContext(ctx context.Context, request
         request = NewDescribeInstanceVolumesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeInstanceVolumesResponse()
     err, msg := c.Send(request, response)
@@ -333,6 +342,7 @@ func (c *Client) RenewVolumeWithContext(ctx context.Context, request *RenewVolum
         request = NewRenewVolumeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewRenewVolumeResponse()
     err, msg := c.Send(request, response)
@@ -365,6 +375,7 @@ func (c *Client) UpdateVolumeProjectWithContext(ctx context.Context, request *Up
         request = NewUpdateVolumeProjectRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewUpdateVolumeProjectResponse()
     err, msg := c.Send(request, response)
@@ -397,6 +408,7 @@ func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, request *Desc
         request = NewDescribeSnapshotsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeSnapshotsResponse()
     err, msg := c.Send(request, response)
@@ -429,6 +441,7 @@ func (c *Client) CreateSnapshotWithContext(ctx context.Context, request *CreateS
         request = NewCreateSnapshotRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewCreateSnapshotResponse()
     err, msg := c.Send(request, response)
@@ -461,6 +474,7 @@ func (c *Client) DeleteSnapshotWithContext(ctx context.Context, request *DeleteS
         request = NewDeleteSnapshotRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDeleteSnapshotResponse()
     err, msg := c.Send(request, response)
@@ -493,6 +507,7 @@ func (c *Client) RollbackSnapshotWithContext(ctx context.Context, request *Rollb
         request = NewRollbackSnapshotRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewRollbackSnapshotResponse()
     err, msg := c.Send(request, response)
@@ -525,6 +540,7 @@ func (c *Client) ModifySnapshotWithContext(ctx context.Context, request *ModifyS
         request = NewModifySnapshotRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewModifySnapshotResponse()
     err, msg := c.Send(request, response)
@@ -557,6 +573,7 @@ func (c *Client) RecoveryVolumeWithContext(ctx context.Context, request *Recover
         request = NewRecoveryVolumeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewRecoveryVolumeResponse()
     err, msg := c.Send(request, response)
@@ -589,6 +606,7 @@ func (c *Client) ValidateAttachInstanceWithContext(ctx context.Context, request 
         request = NewValidateAttachInstanceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewValidateAttachInstanceResponse()
     err, msg := c.Send(request, response)
@@ -621,6 +639,7 @@ func (c *Client) DescribeCreateVolumePriceWithContext(ctx context.Context, reque
         request = NewDescribeCreateVolumePriceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeCreateVolumePriceResponse()
     err, msg := c.Send(request, response)

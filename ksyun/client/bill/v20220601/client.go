@@ -45,6 +45,7 @@ func (c *Client) GetMonthConsumeWithContext(ctx context.Context, request *GetMon
         request = NewGetMonthConsumeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewGetMonthConsumeResponse()
     err, msg := c.Send(request, response)
@@ -77,6 +78,7 @@ func (c *Client) GetPostpayDetailConsumeWithContext(ctx context.Context, request
         request = NewGetPostpayDetailConsumeRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewGetPostpayDetailConsumeResponse()
     err, msg := c.Send(request, response)

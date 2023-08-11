@@ -145,7 +145,7 @@ type RunInstancesRequest struct {
     ProjectId *int `json:"ProjectId,omitempty" name:"ProjectId"`
     DataDisk []*RunInstancesDataDisk `json:"DataDisk,omitempty" name:"DataDisk"`
     NetworkInterface []*RunInstancesNetworkInterface `json:"NetworkInterface,omitempty" name:"NetworkInterface"`
-    Userdata *string `json:"Userdata,omitempty" name:"Userdata"`
+    UserData *string `json:"UserData,omitempty" name:"UserData"`
     SystemDiskDiskType *string `json:"SystemDisk.DiskType,omitempty" name:"SystemDisk.DiskType"`
     SystemDiskDiskSize *int `json:"SystemDisk.DiskSize,omitempty" name:"SystemDisk.DiskSize"`
     ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
@@ -349,6 +349,7 @@ type ModifyInstanceTypeRequest struct {
     AutoRestart *bool `json:"AutoRestart,omitempty" name:"AutoRestart"`
     SystemDiskDiskSize *int `json:"SystemDisk.DiskSize,omitempty" name:"SystemDisk.DiskSize"`
     SystemDiskResizeType *string `json:"SystemDisk.ResizeType,omitempty" name:"SystemDisk.ResizeType"`
+    InstantAccess *bool `json:"InstantAccess,omitempty" name:"InstantAccess"`
 }
 
 func (r *ModifyInstanceTypeRequest) ToJsonString() string {
@@ -471,6 +472,7 @@ type DescribeImagesResponse struct {
 			IsModifyType *bool `json:"IsModifyType"`
 			ImageRealId *string `json:"ImageRealId"`
 			IsCloudMarket *bool `json:"IsCloudMarket"`
+			InstantAccess *bool `json:"InstantAccess"`
 		} `json:"ImagesSet"`
 }
 
@@ -573,6 +575,7 @@ type CreateImageRequest struct {
     Type *string `json:"Type,omitempty" name:"Type"`
     DataDiskIds []*string `json:"DataDiskIds,omitempty" name:"DataDiskIds"`
     SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds"`
+    InstantAccess *bool `json:"InstantAccess,omitempty" name:"InstantAccess"`
 }
 
 func (r *CreateImageRequest) ToJsonString() string {
@@ -818,6 +821,7 @@ type CreateLocalVolumeSnapshotRequest struct {
     LocalVolumeId *string `json:"LocalVolumeId,omitempty" name:"LocalVolumeId"`
     LocalVolumeSnapshotName *string `json:"LocalVolumeSnapshotName,omitempty" name:"LocalVolumeSnapshotName"`
     LocalVolumeSnapshotDesc *string `json:"LocalVolumeSnapshotDesc,omitempty" name:"LocalVolumeSnapshotDesc"`
+    InstantAccess *bool `json:"InstantAccess,omitempty" name:"InstantAccess"`
 }
 
 func (r *CreateLocalVolumeSnapshotRequest) ToJsonString() string {
@@ -892,6 +896,7 @@ type DescribeLocalVolumeSnapshotsResponse struct {
 		InstanceId *string `json:"InstanceId"`
 		DiskSize *int `json:"DiskSize"`
 		SnapshotType *string `json:"SnapshotType"`
+		InstantAccess *bool `json:"InstantAccess"`
 	} `json:"LocalVolumeSnapshotSet"`
 }
 
@@ -3929,6 +3934,7 @@ type PreMigrateInstanceRequest struct {
     InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
     SystemDiskType *string `json:"SystemDiskType,omitempty" name:"SystemDiskType"`
     DataDiskType *string `json:"DataDiskType,omitempty" name:"DataDiskType"`
+    InstantAccess *bool `json:"InstantAccess,omitempty" name:"InstantAccess"`
 }
 
 func (r *PreMigrateInstanceRequest) ToJsonString() string {

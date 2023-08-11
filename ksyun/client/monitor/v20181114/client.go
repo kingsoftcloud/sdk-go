@@ -45,6 +45,7 @@ func (c *Client) GetMetricStatisticsBatchWithContext(ctx context.Context, reques
         request = NewGetMetricStatisticsBatchRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewGetMetricStatisticsBatchResponse()
     err, msg := c.Send(request, response)

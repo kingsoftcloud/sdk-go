@@ -45,6 +45,7 @@ func (c *Client) CreateVpcWithContext(ctx context.Context, request *CreateVpcReq
         request = NewCreateVpcRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateVpcResponse()
     err, msg := c.Send(request, response)
@@ -77,6 +78,7 @@ func (c *Client) DeleteVpcWithContext(ctx context.Context, request *DeleteVpcReq
         request = NewDeleteVpcRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteVpcResponse()
     err, msg := c.Send(request, response)
@@ -109,6 +111,7 @@ func (c *Client) DescribeVpcsWithContext(ctx context.Context, request *DescribeV
         request = NewDescribeVpcsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeVpcsResponse()
     err, msg := c.Send(request, response)
@@ -141,6 +144,7 @@ func (c *Client) CreateSubnetWithContext(ctx context.Context, request *CreateSub
         request = NewCreateSubnetRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateSubnetResponse()
     err, msg := c.Send(request, response)
@@ -173,6 +177,7 @@ func (c *Client) DeleteSubnetWithContext(ctx context.Context, request *DeleteSub
         request = NewDeleteSubnetRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteSubnetResponse()
     err, msg := c.Send(request, response)
@@ -205,6 +210,7 @@ func (c *Client) DescribeSubnetsWithContext(ctx context.Context, request *Descri
         request = NewDescribeSubnetsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeSubnetsResponse()
     err, msg := c.Send(request, response)
@@ -237,6 +243,7 @@ func (c *Client) AssociateNetworkAclWithContext(ctx context.Context, request *As
         request = NewAssociateNetworkAclRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAssociateNetworkAclResponse()
     err, msg := c.Send(request, response)
@@ -269,6 +276,7 @@ func (c *Client) DisassociateNetworkAclWithContext(ctx context.Context, request 
         request = NewDisassociateNetworkAclRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDisassociateNetworkAclResponse()
     err, msg := c.Send(request, response)
@@ -301,6 +309,7 @@ func (c *Client) CreateRouteWithContext(ctx context.Context, request *CreateRout
         request = NewCreateRouteRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateRouteResponse()
     err, msg := c.Send(request, response)
@@ -333,6 +342,7 @@ func (c *Client) DeleteRouteWithContext(ctx context.Context, request *DeleteRout
         request = NewDeleteRouteRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteRouteResponse()
     err, msg := c.Send(request, response)
@@ -365,6 +375,7 @@ func (c *Client) DescribeRoutesWithContext(ctx context.Context, request *Describ
         request = NewDescribeRoutesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeRoutesResponse()
     err, msg := c.Send(request, response)
@@ -397,6 +408,7 @@ func (c *Client) CreateNetworkAclWithContext(ctx context.Context, request *Creat
         request = NewCreateNetworkAclRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateNetworkAclResponse()
     err, msg := c.Send(request, response)
@@ -429,6 +441,7 @@ func (c *Client) DeleteNetworkAclWithContext(ctx context.Context, request *Delet
         request = NewDeleteNetworkAclRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteNetworkAclResponse()
     err, msg := c.Send(request, response)
@@ -461,6 +474,7 @@ func (c *Client) CreateNetworkAclEntryWithContext(ctx context.Context, request *
         request = NewCreateNetworkAclEntryRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateNetworkAclEntryResponse()
     err, msg := c.Send(request, response)
@@ -493,6 +507,7 @@ func (c *Client) DeleteNetworkAclEntryWithContext(ctx context.Context, request *
         request = NewDeleteNetworkAclEntryRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteNetworkAclEntryResponse()
     err, msg := c.Send(request, response)
@@ -525,6 +540,7 @@ func (c *Client) DescribeNetworkAclsWithContext(ctx context.Context, request *De
         request = NewDescribeNetworkAclsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeNetworkAclsResponse()
     err, msg := c.Send(request, response)
@@ -557,6 +573,7 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
         request = NewCreateSecurityGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateSecurityGroupResponse()
     err, msg := c.Send(request, response)
@@ -589,6 +606,7 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
         request = NewDeleteSecurityGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteSecurityGroupResponse()
     err, msg := c.Send(request, response)
@@ -621,6 +639,7 @@ func (c *Client) AuthorizeSecurityGroupEntryWithContext(ctx context.Context, req
         request = NewAuthorizeSecurityGroupEntryRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAuthorizeSecurityGroupEntryResponse()
     err, msg := c.Send(request, response)
@@ -653,6 +672,7 @@ func (c *Client) RevokeSecurityGroupEntryWithContext(ctx context.Context, reques
         request = NewRevokeSecurityGroupEntryRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewRevokeSecurityGroupEntryResponse()
     err, msg := c.Send(request, response)
@@ -685,6 +705,7 @@ func (c *Client) DescribeSecurityGroupsWithContext(ctx context.Context, request 
         request = NewDescribeSecurityGroupsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeSecurityGroupsResponse()
     err, msg := c.Send(request, response)
@@ -717,6 +738,7 @@ func (c *Client) CreateNatWithContext(ctx context.Context, request *CreateNatReq
         request = NewCreateNatRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateNatResponse()
     err, msg := c.Send(request, response)
@@ -749,6 +771,7 @@ func (c *Client) DeleteNatWithContext(ctx context.Context, request *DeleteNatReq
         request = NewDeleteNatRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteNatResponse()
     err, msg := c.Send(request, response)
@@ -781,6 +804,7 @@ func (c *Client) DescribeNatsWithContext(ctx context.Context, request *DescribeN
         request = NewDescribeNatsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeNatsResponse()
     err, msg := c.Send(request, response)
@@ -813,6 +837,7 @@ func (c *Client) AssociateNatWithContext(ctx context.Context, request *Associate
         request = NewAssociateNatRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAssociateNatResponse()
     err, msg := c.Send(request, response)
@@ -845,6 +870,7 @@ func (c *Client) DisassociateNatWithContext(ctx context.Context, request *Disass
         request = NewDisassociateNatRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDisassociateNatResponse()
     err, msg := c.Send(request, response)
@@ -877,6 +903,7 @@ func (c *Client) DescribeInternetGatewaysWithContext(ctx context.Context, reques
         request = NewDescribeInternetGatewaysRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeInternetGatewaysResponse()
     err, msg := c.Send(request, response)
@@ -909,6 +936,7 @@ func (c *Client) CreateVpcPeeringConnectionWithContext(ctx context.Context, requ
         request = NewCreateVpcPeeringConnectionRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateVpcPeeringConnectionResponse()
     err, msg := c.Send(request, response)
@@ -941,6 +969,7 @@ func (c *Client) DeleteVpcPeeringConnectionWithContext(ctx context.Context, requ
         request = NewDeleteVpcPeeringConnectionRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteVpcPeeringConnectionResponse()
     err, msg := c.Send(request, response)
@@ -973,6 +1002,7 @@ func (c *Client) DescribeVpcPeeringConnectionsWithContext(ctx context.Context, r
         request = NewDescribeVpcPeeringConnectionsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeVpcPeeringConnectionsResponse()
     err, msg := c.Send(request, response)
@@ -1005,6 +1035,7 @@ func (c *Client) ModifyNetworkAclWithContext(ctx context.Context, request *Modif
         request = NewModifyNetworkAclRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyNetworkAclResponse()
     err, msg := c.Send(request, response)
@@ -1037,6 +1068,7 @@ func (c *Client) ModifySecurityGroupWithContext(ctx context.Context, request *Mo
         request = NewModifySecurityGroupRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifySecurityGroupResponse()
     err, msg := c.Send(request, response)
@@ -1069,6 +1101,7 @@ func (c *Client) ModifySubnetWithContext(ctx context.Context, request *ModifySub
         request = NewModifySubnetRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifySubnetResponse()
     err, msg := c.Send(request, response)
@@ -1101,6 +1134,7 @@ func (c *Client) ModifyNatWithContext(ctx context.Context, request *ModifyNatReq
         request = NewModifyNatRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyNatResponse()
     err, msg := c.Send(request, response)
@@ -1133,6 +1167,7 @@ func (c *Client) DescribeNetworkInterfacesWithContext(ctx context.Context, reque
         request = NewDescribeNetworkInterfacesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeNetworkInterfacesResponse()
     err, msg := c.Send(request, response)
@@ -1165,6 +1200,7 @@ func (c *Client) DescribeSubnetAvailableAddressesWithContext(ctx context.Context
         request = NewDescribeSubnetAvailableAddressesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeSubnetAvailableAddressesResponse()
     err, msg := c.Send(request, response)
@@ -1197,6 +1233,7 @@ func (c *Client) ModifyVpcWithContext(ctx context.Context, request *ModifyVpcReq
         request = NewModifyVpcRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyVpcResponse()
     err, msg := c.Send(request, response)
@@ -1229,6 +1266,7 @@ func (c *Client) AcceptVpcPeeringConnectionWithContext(ctx context.Context, requ
         request = NewAcceptVpcPeeringConnectionRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAcceptVpcPeeringConnectionResponse()
     err, msg := c.Send(request, response)
@@ -1261,6 +1299,7 @@ func (c *Client) RejectVpcPeeringConnectionWithContext(ctx context.Context, requ
         request = NewRejectVpcPeeringConnectionRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewRejectVpcPeeringConnectionResponse()
     err, msg := c.Send(request, response)
@@ -1293,6 +1332,7 @@ func (c *Client) ModifyVpcPeeringConnectionWithContext(ctx context.Context, requ
         request = NewModifyVpcPeeringConnectionRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyVpcPeeringConnectionResponse()
     err, msg := c.Send(request, response)
@@ -1325,6 +1365,7 @@ func (c *Client) DescribeAvailabilityZonesWithContext(ctx context.Context, reque
         request = NewDescribeAvailabilityZonesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeAvailabilityZonesResponse()
     err, msg := c.Send(request, response)
@@ -1357,6 +1398,7 @@ func (c *Client) DescribeDirectConnectsWithContext(ctx context.Context, request 
         request = NewDescribeDirectConnectsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeDirectConnectsResponse()
     err, msg := c.Send(request, response)
@@ -1389,6 +1431,7 @@ func (c *Client) CreateDirectConnectInterfaceWithContext(ctx context.Context, re
         request = NewCreateDirectConnectInterfaceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateDirectConnectInterfaceResponse()
     err, msg := c.Send(request, response)
@@ -1421,6 +1464,7 @@ func (c *Client) DeleteDirectConnectInterfaceWithContext(ctx context.Context, re
         request = NewDeleteDirectConnectInterfaceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteDirectConnectInterfaceResponse()
     err, msg := c.Send(request, response)
@@ -1453,6 +1497,7 @@ func (c *Client) DescribeDirectConnectInterfacesWithContext(ctx context.Context,
         request = NewDescribeDirectConnectInterfacesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeDirectConnectInterfacesResponse()
     err, msg := c.Send(request, response)
@@ -1485,6 +1530,7 @@ func (c *Client) CreateDirectConnectGatewayWithContext(ctx context.Context, requ
         request = NewCreateDirectConnectGatewayRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateDirectConnectGatewayResponse()
     err, msg := c.Send(request, response)
@@ -1517,6 +1563,7 @@ func (c *Client) DeleteDirectConnectGatewayWithContext(ctx context.Context, requ
         request = NewDeleteDirectConnectGatewayRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteDirectConnectGatewayResponse()
     err, msg := c.Send(request, response)
@@ -1549,6 +1596,7 @@ func (c *Client) DescribeDirectConnectGatewaysWithContext(ctx context.Context, r
         request = NewDescribeDirectConnectGatewaysRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeDirectConnectGatewaysResponse()
     err, msg := c.Send(request, response)
@@ -1581,6 +1629,7 @@ func (c *Client) AttachDirectConnectGatewayWithContext(ctx context.Context, requ
         request = NewAttachDirectConnectGatewayRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAttachDirectConnectGatewayResponse()
     err, msg := c.Send(request, response)
@@ -1613,6 +1662,7 @@ func (c *Client) DetachDirectConnectGatewayWithContext(ctx context.Context, requ
         request = NewDetachDirectConnectGatewayRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDetachDirectConnectGatewayResponse()
     err, msg := c.Send(request, response)
@@ -1645,6 +1695,7 @@ func (c *Client) ModifyDirectConnectInterfaceWithContext(ctx context.Context, re
         request = NewModifyDirectConnectInterfaceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyDirectConnectInterfaceResponse()
     err, msg := c.Send(request, response)
@@ -1677,6 +1728,7 @@ func (c *Client) ModifyDirectConnectGatewayWithContext(ctx context.Context, requ
         request = NewModifyDirectConnectGatewayRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyDirectConnectGatewayResponse()
     err, msg := c.Send(request, response)
@@ -1709,6 +1761,7 @@ func (c *Client) CreateVpnGatewayWithContext(ctx context.Context, request *Creat
         request = NewCreateVpnGatewayRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateVpnGatewayResponse()
     err, msg := c.Send(request, response)
@@ -1741,6 +1794,7 @@ func (c *Client) ModifyVpnGatewayWithContext(ctx context.Context, request *Modif
         request = NewModifyVpnGatewayRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyVpnGatewayResponse()
     err, msg := c.Send(request, response)
@@ -1773,6 +1827,7 @@ func (c *Client) DeleteVpnGatewayWithContext(ctx context.Context, request *Delet
         request = NewDeleteVpnGatewayRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteVpnGatewayResponse()
     err, msg := c.Send(request, response)
@@ -1805,6 +1860,7 @@ func (c *Client) DescribeVpnGatewaysWithContext(ctx context.Context, request *De
         request = NewDescribeVpnGatewaysRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeVpnGatewaysResponse()
     err, msg := c.Send(request, response)
@@ -1837,6 +1893,7 @@ func (c *Client) CreateVpnTunnelWithContext(ctx context.Context, request *Create
         request = NewCreateVpnTunnelRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateVpnTunnelResponse()
     err, msg := c.Send(request, response)
@@ -1869,6 +1926,7 @@ func (c *Client) ModifyVpnTunnelWithContext(ctx context.Context, request *Modify
         request = NewModifyVpnTunnelRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyVpnTunnelResponse()
     err, msg := c.Send(request, response)
@@ -1901,6 +1959,7 @@ func (c *Client) DeleteVpnTunnelWithContext(ctx context.Context, request *Delete
         request = NewDeleteVpnTunnelRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteVpnTunnelResponse()
     err, msg := c.Send(request, response)
@@ -1933,6 +1992,7 @@ func (c *Client) DescribeVpnTunnelsWithContext(ctx context.Context, request *Des
         request = NewDescribeVpnTunnelsRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeVpnTunnelsResponse()
     err, msg := c.Send(request, response)
@@ -1965,6 +2025,7 @@ func (c *Client) CreateCustomerGatewayWithContext(ctx context.Context, request *
         request = NewCreateCustomerGatewayRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateCustomerGatewayResponse()
     err, msg := c.Send(request, response)
@@ -1997,6 +2058,7 @@ func (c *Client) ModifyCustomerGatewayWithContext(ctx context.Context, request *
         request = NewModifyCustomerGatewayRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyCustomerGatewayResponse()
     err, msg := c.Send(request, response)
@@ -2029,6 +2091,7 @@ func (c *Client) DeleteCustomerGatewayWithContext(ctx context.Context, request *
         request = NewDeleteCustomerGatewayRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteCustomerGatewayResponse()
     err, msg := c.Send(request, response)
@@ -2061,6 +2124,7 @@ func (c *Client) ModifyDirectConnectWithContext(ctx context.Context, request *Mo
         request = NewModifyDirectConnectRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyDirectConnectResponse()
     err, msg := c.Send(request, response)
@@ -2093,6 +2157,7 @@ func (c *Client) DescribeCustomerGatewaysWithContext(ctx context.Context, reques
         request = NewDescribeCustomerGatewaysRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeCustomerGatewaysResponse()
     err, msg := c.Send(request, response)
@@ -2125,6 +2190,7 @@ func (c *Client) DescribeSubnetAllocatedIpAddressesWithContext(ctx context.Conte
         request = NewDescribeSubnetAllocatedIpAddressesRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeSubnetAllocatedIpAddressesResponse()
     err, msg := c.Send(request, response)
@@ -2157,6 +2223,7 @@ func (c *Client) DeleteNetworkInterfaceWithContext(ctx context.Context, request 
         request = NewDeleteNetworkInterfaceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteNetworkInterfaceResponse()
     err, msg := c.Send(request, response)
@@ -2189,6 +2256,7 @@ func (c *Client) CreateNetworkInterfaceWithContext(ctx context.Context, request 
         request = NewCreateNetworkInterfaceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateNetworkInterfaceResponse()
     err, msg := c.Send(request, response)
@@ -2221,6 +2289,7 @@ func (c *Client) ModifyNetworkInterfaceWithContext(ctx context.Context, request 
         request = NewModifyNetworkInterfaceRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyNetworkInterfaceResponse()
     err, msg := c.Send(request, response)
@@ -2253,6 +2322,7 @@ func (c *Client) CreateHaVipWithContext(ctx context.Context, request *CreateHaVi
         request = NewCreateHaVipRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateHaVipResponse()
     err, msg := c.Send(request, response)
@@ -2285,6 +2355,7 @@ func (c *Client) DeleteHaVipWithContext(ctx context.Context, request *DeleteHaVi
         request = NewDeleteHaVipRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteHaVipResponse()
     err, msg := c.Send(request, response)
@@ -2317,6 +2388,7 @@ func (c *Client) AssociateHaVipWithContext(ctx context.Context, request *Associa
         request = NewAssociateHaVipRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAssociateHaVipResponse()
     err, msg := c.Send(request, response)
@@ -2349,6 +2421,7 @@ func (c *Client) UnAssociateHaVipWithContext(ctx context.Context, request *UnAss
         request = NewUnAssociateHaVipRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewUnAssociateHaVipResponse()
     err, msg := c.Send(request, response)
@@ -2381,6 +2454,7 @@ func (c *Client) DescribeHaVipWithContext(ctx context.Context, request *Describe
         request = NewDescribeHaVipRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeHaVipResponse()
     err, msg := c.Send(request, response)
@@ -2413,6 +2487,7 @@ func (c *Client) DeleteDirectConnectGatewayRouteWithContext(ctx context.Context,
         request = NewDeleteDirectConnectGatewayRouteRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteDirectConnectGatewayRouteResponse()
     err, msg := c.Send(request, response)
@@ -2445,6 +2520,7 @@ func (c *Client) DescribeDirectConnectGatewayRouteWithContext(ctx context.Contex
         request = NewDescribeDirectConnectGatewayRouteRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/json")
 
     response := NewDescribeDirectConnectGatewayRouteResponse()
     err, msg := c.Send(request, response)
@@ -2477,6 +2553,7 @@ func (c *Client) PublishDirectConnectRouteWithContext(ctx context.Context, reque
         request = NewPublishDirectConnectRouteRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewPublishDirectConnectRouteResponse()
     err, msg := c.Send(request, response)
@@ -2509,6 +2586,7 @@ func (c *Client) UnpublishDirectConnectRouteWithContext(ctx context.Context, req
         request = NewUnpublishDirectConnectRouteRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewUnpublishDirectConnectRouteResponse()
     err, msg := c.Send(request, response)
@@ -2541,6 +2619,7 @@ func (c *Client) AddSecondaryCidrBlockWithContext(ctx context.Context, request *
         request = NewAddSecondaryCidrBlockRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAddSecondaryCidrBlockResponse()
     err, msg := c.Send(request, response)
@@ -2573,6 +2652,7 @@ func (c *Client) DeleteSecondaryCidrBlockWithContext(ctx context.Context, reques
         request = NewDeleteSecondaryCidrBlockRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteSecondaryCidrBlockResponse()
     err, msg := c.Send(request, response)
@@ -2605,6 +2685,7 @@ func (c *Client) AssignPrivateIpAddressWithContext(ctx context.Context, request 
         request = NewAssignPrivateIpAddressRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAssignPrivateIpAddressResponse()
     err, msg := c.Send(request, response)
@@ -2637,8 +2718,174 @@ func (c *Client) UnassignPrivateIpAddressWithContext(ctx context.Context, reques
         request = NewUnassignPrivateIpAddressRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewUnassignPrivateIpAddressResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeVpnGatewayRoutesRequest() (request *DescribeVpnGatewayRoutesRequest) {
+    request = &DescribeVpnGatewayRoutesRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnGatewayRoutes")
+    return
+}
+
+func NewDescribeVpnGatewayRoutesResponse() (response *DescribeVpnGatewayRoutesResponse) {
+    response = &DescribeVpnGatewayRoutesResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeVpnGatewayRoutes(request *DescribeVpnGatewayRoutesRequest) (string) {
+    return c.DescribeVpnGatewayRoutesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeVpnGatewayRoutesWithContext(ctx context.Context, request *DescribeVpnGatewayRoutesRequest) (string) {
+    if request == nil {
+        request = NewDescribeVpnGatewayRoutesRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDescribeVpnGatewayRoutesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateVpnGatewayRouteRequest() (request *CreateVpnGatewayRouteRequest) {
+    request = &CreateVpnGatewayRouteRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnGatewayRoute")
+    return
+}
+
+func NewCreateVpnGatewayRouteResponse() (response *CreateVpnGatewayRouteResponse) {
+    response = &CreateVpnGatewayRouteResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateVpnGatewayRoute(request *CreateVpnGatewayRouteRequest) (string) {
+    return c.CreateVpnGatewayRouteWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateVpnGatewayRouteWithContext(ctx context.Context, request *CreateVpnGatewayRouteRequest) (string) {
+    if request == nil {
+        request = NewCreateVpnGatewayRouteRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewCreateVpnGatewayRouteResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteVpnGatewayRouteRequest() (request *DeleteVpnGatewayRouteRequest) {
+    request = &DeleteVpnGatewayRouteRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnGatewayRoute")
+    return
+}
+
+func NewDeleteVpnGatewayRouteResponse() (response *DeleteVpnGatewayRouteResponse) {
+    response = &DeleteVpnGatewayRouteResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteVpnGatewayRoute(request *DeleteVpnGatewayRouteRequest) (string) {
+    return c.DeleteVpnGatewayRouteWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteVpnGatewayRouteWithContext(ctx context.Context, request *DeleteVpnGatewayRouteRequest) (string) {
+    if request == nil {
+        request = NewDeleteVpnGatewayRouteRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDeleteVpnGatewayRouteResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeVpnTunnelIpsecStatusRequest() (request *DescribeVpnTunnelIpsecStatusRequest) {
+    request = &DescribeVpnTunnelIpsecStatusRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnTunnelIpsecStatus")
+    return
+}
+
+func NewDescribeVpnTunnelIpsecStatusResponse() (response *DescribeVpnTunnelIpsecStatusResponse) {
+    response = &DescribeVpnTunnelIpsecStatusResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeVpnTunnelIpsecStatus(request *DescribeVpnTunnelIpsecStatusRequest) (string) {
+    return c.DescribeVpnTunnelIpsecStatusWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeVpnTunnelIpsecStatusWithContext(ctx context.Context, request *DescribeVpnTunnelIpsecStatusRequest) (string) {
+    if request == nil {
+        request = NewDescribeVpnTunnelIpsecStatusRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDescribeVpnTunnelIpsecStatusResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewQueryNatTopVifMonitorRequest() (request *QueryNatTopVifMonitorRequest) {
+    request = &QueryNatTopVifMonitorRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "QueryNatTopVifMonitor")
+    return
+}
+
+func NewQueryNatTopVifMonitorResponse() (response *QueryNatTopVifMonitorResponse) {
+    response = &QueryNatTopVifMonitorResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) QueryNatTopVifMonitor(request *QueryNatTopVifMonitorRequest) (string) {
+    return c.QueryNatTopVifMonitorWithContext(context.Background(), request)
+}
+
+func (c *Client) QueryNatTopVifMonitorWithContext(ctx context.Context, request *QueryNatTopVifMonitorRequest) (string) {
+    if request == nil {
+        request = NewQueryNatTopVifMonitorRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewQueryNatTopVifMonitorResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)

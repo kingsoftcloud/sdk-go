@@ -1545,3 +1545,89 @@ func (r *UpdateMongoDBInstanceClusterResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeClusterForRestoreRequest struct {
+    *ksyunhttp.BaseRequest
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    ResetTimePoint *string `json:"ResetTimePoint,omitempty" name:"ResetTimePoint"`
+}
+
+func (r *DescribeClusterForRestoreRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterForRestoreRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeClusterForRestoreRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterForRestoreResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+	MongoDBInstanceResult struct {
+		UserId *string `json:"UserId"`
+		Region *string `json:"Region"`
+		Name *string `json:"Name"`
+		InstanceId *string `json:"InstanceId"`
+		Status *string `json:"Status"`
+		IP *string `json:"IP"`
+		InstanceType *string `json:"InstanceType"`
+		Version *string `json:"Version"`
+		InstanceClass *string `json:"InstanceClass"`
+		Storage *int `json:"Storage"`
+		SecurityGroupId *string `json:"SecurityGroupId"`
+		Port *int `json:"Port"`
+		NetworkType *string `json:"NetworkType"`
+		VpcId *string `json:"VpcId"`
+		VnetId *string `json:"VnetId"`
+		TimingSwitch *string `json:"TimingSwitch"`
+		Timezone *string `json:"Timezone"`
+		TimeCycle *string `json:"TimeCycle"`
+		ProductId *string `json:"ProductId"`
+		PayType *string `json:"PayType"`
+		ProductWhat *int `json:"ProductWhat"`
+		CreateDate *string `json:"CreateDate"`
+		ExpirationDate *string `json:"ExpirationDate"`
+		IamProjectId *string `json:"IamProjectId"`
+		IamProjectName *string `json:"IamProjectName"`
+		NodeNum *int `json:"NodeNum"`
+		MongosNum *string `json:"MongosNum"`
+		ShardNum *string `json:"ShardNum"`
+		Mode *string `json:"Mode"`
+		Config *string `json:"Config"`
+		Area *string `json:"Area"`
+		SlbaclId *string `json:"SlbaclId"`
+		Ipv6Vip *string `json:"Ipv6Vip"`
+		IpVersion *string `json:"IpVersion"`
+		Tags []struct {
+			} `json:"Tags"`
+			Shards struct {
+					vcpu *int `json:"vcpu"`
+					mem_size *int `json:"mem_size"`
+					shards_num *int `json:"shards_num"`
+					disk_size *int `json:"disk_size"`
+			} `json:"Shards"`
+			Mongos struct {
+					vcpu *int `json:"vcpu"`
+					mem_size *int `json:"mem_size"`
+					mongos_num *int `json:"mongos_num"`
+					disk_size *int `json:"disk_size"`
+			} `json:"Mongos"`
+		} `json:"MongoDBInstanceResult"`
+}
+
+func (r *DescribeClusterForRestoreResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterForRestoreResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+

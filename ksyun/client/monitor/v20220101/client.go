@@ -45,6 +45,7 @@ func (c *Client) CreateAlarmPolicyWithContext(ctx context.Context, request *Crea
         request = NewCreateAlarmPolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateAlarmPolicyResponse()
     err, msg := c.Send(request, response)
@@ -77,6 +78,7 @@ func (c *Client) DeleteAlarmPolicyWithContext(ctx context.Context, request *Dele
         request = NewDeleteAlarmPolicyRequest()
     }
     request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteAlarmPolicyResponse()
     err, msg := c.Send(request, response)
