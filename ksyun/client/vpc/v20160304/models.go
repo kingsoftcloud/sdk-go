@@ -1713,6 +1713,7 @@ type DescribeNetworkInterfacesResponse struct {
 					NetworkInterfaceName *string `json:"NetworkInterfaceName"`
 					Ipv6Public *bool `json:"Ipv6Public"`
 					Ipv6Address *string `json:"Ipv6Address"`
+					State *string `json:"State"`
 				} `json:"NetworkInterfaceSet"`
 }
 
@@ -3651,6 +3652,7 @@ type DescribeVpnGatewayRoutesResponse struct {
 		RouteType *string `json:"RouteType"`
 		NextHopType *string `json:"NextHopType"`
 		NextHopInstanceName *string `json:"NextHopInstanceName"`
+		VpnGatewayId *string `json:"VpnGatewayId"`
 	} `json:"VpnGatewayRouteSet"`
     NextToken *string `json:"NextToken" name:"NextToken"`
 }
@@ -3814,8 +3816,6 @@ type QueryNatTopVifMonitorResponse struct {
 	NatMonitorDataList []struct {
 		InstanceId *string `json:"InstanceId"`
 		Ip *string `json:"Ip"`
-		InBound *int `json:"InBound"`
-		OutBound *int `json:"OutBound"`
 		Num *int `json:"Num"`
 	} `json:"NatMonitorDataList"`
 }
