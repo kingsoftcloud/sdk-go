@@ -78,7 +78,7 @@ func (c *Client) DeleteAlarmPolicyWithContext(ctx context.Context, request *Dele
         request = NewDeleteAlarmPolicyRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/x-www-form-urlencoded")
+    request.SetContentType("application/json")
 
     response := NewDeleteAlarmPolicyResponse()
     err, msg := c.Send(request, response)

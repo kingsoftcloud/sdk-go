@@ -285,5 +285,38 @@ func (c *Client) GetAlertUserWithContext(ctx context.Context, request *GetAlertU
     }
     return msg
 }
+func NewUpdateAlertUserStatusRequest() (request *UpdateAlertUserStatusRequest) {
+    request = &UpdateAlertUserStatusRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "UpdateAlertUserStatus")
+    return
+}
+
+func NewUpdateAlertUserStatusResponse() (response *UpdateAlertUserStatusResponse) {
+    response = &UpdateAlertUserStatusResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) UpdateAlertUserStatus(request *UpdateAlertUserStatusRequest) (string) {
+    return c.UpdateAlertUserStatusWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateAlertUserStatusWithContext(ctx context.Context, request *UpdateAlertUserStatusRequest) (string) {
+    if request == nil {
+        request = NewUpdateAlertUserStatusRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewUpdateAlertUserStatusResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 

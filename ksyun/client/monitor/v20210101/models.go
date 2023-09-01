@@ -254,7 +254,7 @@ func (r *AddAlarmReceivesResponse) FromJsonString(s string) error {
 
 type DeleteAlarmReceivesRequest struct {
     *ksyunhttp.BaseRequest
-    PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+    PolicyId *int `json:"PolicyId,omitempty" name:"PolicyId"`
     ContactFlag *int `json:"ContactFlag,omitempty" name:"ContactFlag"`
     ContactId []*int `json:"ContactId,omitempty" name:"ContactId"`
 }
@@ -377,6 +377,54 @@ func (r *GetAlertUserResponse) ToJsonString() string {
 }
 
 func (r *GetAlertUserResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateAlertUserStatusRequest struct {
+    *ksyunhttp.BaseRequest
+    UserId []*int `json:"UserId,omitempty" name:"UserId"`
+    UserStatus *int `json:"UserStatus,omitempty" name:"UserStatus"`
+}
+
+func (r *UpdateAlertUserStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateAlertUserStatusRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpdateAlertUserStatusRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateAlertUserStatusResponse struct {
+    *ksyunhttp.BaseResponse
+	Data struct {
+		UserList []struct {
+					userId *int `json:"userId"`
+					userName *string `json:"userName"`
+					userEmail *string `json:"userEmail"`
+					userPhone *string `json:"userPhone"`
+					groupName *string `json:"groupName"`
+					userGrpId *int `json:"userGrpId"`
+					userStatus *int `json:"userStatus"`
+			} `json:"UserList"`
+		} `json:"Data"`
+    totalCount *int `json:"totalCount" name:"totalCount"`
+    requestId *string `json:"requestId" name:"requestId"`
+}
+
+func (r *UpdateAlertUserStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UpdateAlertUserStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
