@@ -36,6 +36,7 @@ type CreateScalingConfigurationDataDisk struct {
     Type *string `json:"Type,omitempty" name:"Type"`
     Size *int `json:"Size,omitempty" name:"Size"`
     DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
+    SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 }
 
 type CreateScalingConfigurationTag struct {
@@ -152,6 +153,11 @@ type RunInstancesRequest struct {
     ModelVersion *int `json:"ModelVersion,omitempty" name:"ModelVersion"`
     AssembledImageDataDiskType *string `json:"AssembledImageDataDiskType,omitempty" name:"AssembledImageDataDiskType"`
     AutoCreateEbs *bool `json:"AutoCreateEbs,omitempty" name:"AutoCreateEbs"`
+    LineId *string `json:"LineId,omitempty" name:"LineId"`
+    AddressBandWidth *int `json:"AddressBandWidth,omitempty" name:"AddressBandWidth"`
+    AddressChargeType *string `json:"AddressChargeType,omitempty" name:"AddressChargeType"`
+    AddressProjectId *string `json:"AddressProjectId,omitempty" name:"AddressProjectId"`
+    AddressPurchaseTime *int `json:"AddressPurchaseTime,omitempty" name:"AddressPurchaseTime"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {
@@ -4033,6 +4039,49 @@ func (r *DescribeMinFlavorCountResponse) ToJsonString() string {
 }
 
 func (r *DescribeMinFlavorCountResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetVNCAddressRequest struct {
+    *ksyunhttp.BaseRequest
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *GetVNCAddressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetVNCAddressRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetVNCAddressRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetVNCAddressResponse struct {
+    *ksyunhttp.BaseResponse
+	VNCAddress struct {
+		Port *string `json:"Port"`
+		Host *string `json:"Host"`
+	} `json:"VNCAddress"`
+	Cookies []struct {
+		CookieKey *string `json:"CookieKey"`
+		CookieValue *string `json:"CookieValue"`
+	} `json:"Cookies"`
+    Domain *string `json:"Domain" name:"Domain"`
+}
+
+func (r *GetVNCAddressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetVNCAddressResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

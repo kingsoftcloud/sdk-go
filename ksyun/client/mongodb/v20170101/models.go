@@ -233,6 +233,7 @@ func (r *DescribeMongoDBInstancesResponse) FromJsonString(s string) error {
 type DescribeMongoDBInstanceNodeRequest struct {
     *ksyunhttp.BaseRequest
     InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
 }
 
 func (r *DescribeMongoDBInstanceNodeRequest) ToJsonString() string {

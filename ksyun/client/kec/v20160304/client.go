@@ -3189,5 +3189,38 @@ func (c *Client) DescribeMinFlavorCountWithContext(ctx context.Context, request 
     }
     return msg
 }
+func NewGetVNCAddressRequest() (request *GetVNCAddressRequest) {
+    request = &GetVNCAddressRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kec", APIVersion, "GetVNCAddress")
+    return
+}
+
+func NewGetVNCAddressResponse() (response *GetVNCAddressResponse) {
+    response = &GetVNCAddressResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) GetVNCAddress(request *GetVNCAddressRequest) (string) {
+    return c.GetVNCAddressWithContext(context.Background(), request)
+}
+
+func (c *Client) GetVNCAddressWithContext(ctx context.Context, request *GetVNCAddressRequest) (string) {
+    if request == nil {
+        request = NewGetVNCAddressRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewGetVNCAddressResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 
