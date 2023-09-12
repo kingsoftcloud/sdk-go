@@ -103,19 +103,19 @@ type ListUsersResponse struct {
 				UserName *string `json:"UserName"`
 				RealName *string `json:"RealName"`
 				CreateDate *string `json:"CreateDate"`
-				Phone *int `json:"Phone"`
-				CountryMobileCode *int `json:"CountryMobileCode"`
-				IsInternational *string `json:"IsInternational"`
+				Phone *string `json:"Phone"`
+				CountryMobileCode *string `json:"CountryMobileCode"`
+				IsInternational *int `json:"IsInternational"`
 				Email *string `json:"Email"`
 				PhoneVerified *string `json:"PhoneVerified"`
 				EmailVerified *string `json:"EmailVerified"`
 				Remark *string `json:"Remark"`
 				Krn *string `json:"Krn"`
 				PasswordResetRequired *bool `json:"PasswordResetRequired"`
-				EnableMFA *string `json:"EnableMFA"`
+				EnableMFA *int `json:"EnableMFA"`
 				NeedBindMfa *string `json:"NeedBindMfa"`
 				UpdateDate *string `json:"UpdateDate"`
-				Id *string `json:"Id"`
+				Id *int `json:"Id"`
 			} `json:"Member"`
 		} `json:"Users"`
 		IsTruncated *bool `json:"IsTruncated"`
@@ -347,10 +347,9 @@ func (r *ListAttachedUserPoliciesRequest) FromJsonString(s string) error {
 
 type ListAttachedUserPoliciesResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
 	ListAttachedUserPoliciesResult struct {
 		AttachedPolicies struct {
-			Member struct {
+			Member []struct {
 				PolicyKrn *string `json:"PolicyKrn"`
 				PolicyName *string `json:"PolicyName"`
 				CreateTime *string `json:"CreateTime"`
@@ -360,7 +359,9 @@ type ListAttachedUserPoliciesResponse struct {
 			} `json:"Member"`
 		} `json:"AttachedPolicies"`
 		IsTruncated *bool `json:"IsTruncated"`
+		Marker *string `json:"Marker"`
 	} `json:"ListAttachedUserPoliciesResult"`
+    RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
 func (r *ListAttachedUserPoliciesResponse) ToJsonString() string {
