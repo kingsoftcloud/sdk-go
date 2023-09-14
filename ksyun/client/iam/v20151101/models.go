@@ -1029,6 +1029,7 @@ type ListAccessKeysResponse struct {
 				AccessKeyId *string `json:"AccessKeyId"`
 				Status *string `json:"Status"`
 				CreateDate *string `json:"CreateDate"`
+				AkLastUsedTime *string `json:"AkLastUsedTime"`
 			} `json:"Member"`
 		} `json:"AccessKeyMetadata"`
 	} `json:"ListAccessKeyResult"`
