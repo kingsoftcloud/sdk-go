@@ -384,8 +384,6 @@ type PutLogsRequest struct {
     *ksyunhttp.BaseRequest
     ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
     LogPoolName *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
-    参数名称 *string `json:"参数名称,omitempty" name:"参数名称"`
-    - *string `json:"-,omitempty" name:"-"`
     Time *string `json:"Time,omitempty" name:"Time"`
     Contents *string `json:"Contents,omitempty" name:"Contents"`
     Key *string `json:"Key,omitempty" name:"Key"`
@@ -773,8 +771,6 @@ type CreateChartRequest struct {
     ChartType *string `json:"ChartType,omitempty" name:"ChartType"`
     Search *string `json:"Search,omitempty" name:"Search"`
     Display *string `json:"Display,omitempty" name:"Display"`
-    参数名称 *string `json:"参数名称,omitempty" name:"参数名称"`
-    - *string `json:"-,omitempty" name:"-"`
     LogPoolName *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
     TimeRange *string `json:"TimeRange,omitempty" name:"TimeRange"`
     Query *string `json:"Query,omitempty" name:"Query"`
@@ -998,8 +994,6 @@ type SetIndexTemplateRequest struct {
     IndexStatus *bool `json:"IndexStatus,omitempty" name:"IndexStatus"`
     FullTextIndex *string `json:"FullTextIndex,omitempty" name:"FullTextIndex"`
     IndexFields *string `json:"IndexFields,omitempty" name:"IndexFields"`
-    参数名称 *string `json:"参数名称,omitempty" name:"参数名称"`
-    - *string `json:"-,omitempty" name:"-"`
     Lowercase *bool `json:"Lowercase,omitempty" name:"Lowercase"`
     Separator *string `json:"Separator,omitempty" name:"Separator"`
     FieldName *string `json:"FieldName,omitempty" name:"FieldName"`

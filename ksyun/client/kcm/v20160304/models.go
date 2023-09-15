@@ -66,6 +66,8 @@ type UpdateCertificateRequest struct {
     CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
     AuthMethod *string `json:"AuthMethod,omitempty" name:"AuthMethod"`
     CSR *string `json:"CSR,omitempty" name:"CSR"`
+    ContactId *int `json:"ContactId,omitempty" name:"ContactId"`
+    CompanyId *int `json:"CompanyId,omitempty" name:"CompanyId"`
     CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
     Department *string `json:"Department,omitempty" name:"Department"`
     State *string `json:"State,omitempty" name:"State"`

@@ -325,79 +325,6 @@ func (r *ModifySecurityGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type ImportKeyRequest struct {
-    *ksyunhttp.BaseRequest
-    KeyName *string `json:"KeyName,omitempty" name:"KeyName"`
-    PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
-    Description *string `json:"Description,omitempty" name:"Description"`
-}
-
-func (r *ImportKeyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ImportKeyRequest) FromJsonString(s string) error {
-    f := make(map[string]interface{})
-    if err := json.Unmarshal([]byte(s), &f); err != nil {
-        return err
-    }
-    if len(f) > 0 {
-        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ImportKeyRequest has unknown keys!", "")
-    }
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type ImportKeyResponse struct {
-    *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-}
-
-func (r *ImportKeyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *ImportKeyResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DeleteKeyRequest struct {
-    *ksyunhttp.BaseRequest
-    KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
-}
-
-func (r *DeleteKeyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DeleteKeyRequest) FromJsonString(s string) error {
-    f := make(map[string]interface{})
-    if err := json.Unmarshal([]byte(s), &f); err != nil {
-        return err
-    }
-    if len(f) > 0 {
-        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteKeyRequest has unknown keys!", "")
-    }
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DeleteKeyResponse struct {
-    *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    Return *bool `json:"Return" name:"Return"`
-}
-
-func (r *DeleteKeyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DeleteKeyResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateKeyRequest struct {
     *ksyunhttp.BaseRequest
     KeyName *string `json:"KeyName,omitempty" name:"KeyName"`
@@ -432,43 +359,6 @@ func (r *CreateKeyResponse) ToJsonString() string {
 }
 
 func (r *CreateKeyResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeKeysRequest struct {
-    *ksyunhttp.BaseRequest
-    KeyId []*string `json:"KeyId,omitempty" name:"KeyId"`
-}
-
-func (r *DescribeKeysRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeKeysRequest) FromJsonString(s string) error {
-    f := make(map[string]interface{})
-    if err := json.Unmarshal([]byte(s), &f); err != nil {
-        return err
-    }
-    if len(f) > 0 {
-        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeKeysRequest has unknown keys!", "")
-    }
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeKeysResponse struct {
-    *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    KeySet *string `json:"KeySet" name:"KeySet"`
-    TotalCount *int `json:"TotalCount" name:"TotalCount"`
-}
-
-func (r *DescribeKeysResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeKeysResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -882,6 +772,11 @@ func (r *ModifyDnsResponse) FromJsonString(s string) error {
 
 type ModifyNetworkInterfaceAttributeRequest struct {
     *ksyunhttp.BaseRequest
+    NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
+    HostId *string `json:"HostId,omitempty" name:"HostId"`
+    SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+    IpAddress *string `json:"IpAddress,omitempty" name:"IpAddress"`
+    SecurityGroupIdList []*string `json:"SecurityGroupIdList,omitempty" name:"SecurityGroupIdList"`
 }
 
 func (r *ModifyNetworkInterfaceAttributeRequest) ToJsonString() string {
@@ -1254,6 +1149,7 @@ func (r *ReinstallCustomerEpcResponse) FromJsonString(s string) error {
 
 type DeleteRemoteManagementRequest struct {
     *ksyunhttp.BaseRequest
+    RemoteManagementId *string `json:"RemoteManagementId,omitempty" name:"RemoteManagementId"`
 }
 
 func (r *DeleteRemoteManagementRequest) ToJsonString() string {
@@ -1771,6 +1667,8 @@ func (r *ReplyProcessResponse) FromJsonString(s string) error {
 
 type DescribeEpcTrashesRequest struct {
     *ksyunhttp.BaseRequest
+    MaxResults *int `json:"MaxResults,omitempty" name:"MaxResults"`
+    NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
 }
 
 func (r *DescribeEpcTrashesRequest) ToJsonString() string {

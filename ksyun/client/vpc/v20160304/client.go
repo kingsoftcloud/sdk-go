@@ -2892,5 +2892,38 @@ func (c *Client) QueryNatTopVifMonitorWithContext(ctx context.Context, request *
     }
     return msg
 }
+func NewModifyNatIpStatusRequest() (request *ModifyNatIpStatusRequest) {
+    request = &ModifyNatIpStatusRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyNatIpStatus")
+    return
+}
+
+func NewModifyNatIpStatusResponse() (response *ModifyNatIpStatusResponse) {
+    response = &ModifyNatIpStatusResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyNatIpStatus(request *ModifyNatIpStatusRequest) (string) {
+    return c.ModifyNatIpStatusWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyNatIpStatusWithContext(ctx context.Context, request *ModifyNatIpStatusRequest) (string) {
+    if request == nil {
+        request = NewModifyNatIpStatusRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewModifyNatIpStatusResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 

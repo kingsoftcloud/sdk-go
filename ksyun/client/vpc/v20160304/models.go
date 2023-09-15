@@ -1045,6 +1045,7 @@ type CreateNatResponse struct {
 	NatIpSet []struct {
 		NatIp *string `json:"NatIp"`
 		NatIpId *string `json:"NatIpId"`
+		Enabled *bool `json:"Enabled"`
 	} `json:"NatIpSet"`
 }
 
@@ -1137,6 +1138,7 @@ type DescribeNatsResponse struct {
 		NatIpSet []struct {
 					NatIp *string `json:"NatIp"`
 					NatIpId *string `json:"NatIpId"`
+					Enabled *bool `json:"Enabled"`
 			} `json:"NatIpSet"`
 			AssociateDirectConnectGatewaySet []struct {
 						DirectConnectGatewayId *string `json:"DirectConnectGatewayId"`
@@ -1614,6 +1616,7 @@ type ModifyNatResponse struct {
 	NatIpSet []struct {
 		NatIp *string `json:"NatIp"`
 		NatIpId *string `json:"NatIpId"`
+		Enabled *bool `json:"Enabled"`
 	} `json:"NatIpSet"`
 	AssociateDirectConnectGatewaySet []struct {
 		DirectConnectGatewayId *string `json:"DirectConnectGatewayId"`
@@ -3786,11 +3789,11 @@ func (r *DescribeVpnTunnelIpsecStatusResponse) FromJsonString(s string) error {
 
 type QueryNatTopVifMonitorRequest struct {
     *ksyunhttp.BaseRequest
-    NatId *string `json:"natId,omitempty" name:"natId"`
-    StartTime *string `json:"startTime,omitempty" name:"startTime"`
-    EndTime *string `json:"endTime,omitempty" name:"endTime"`
-    SortType *string `json:"sortType,omitempty" name:"sortType"`
-    InstanceType *string `json:"instanceType,omitempty" name:"instanceType"`
+    NatId *string `json:"NatId,omitempty" name:"NatId"`
+    StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+    EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+    SortType *string `json:"SortType,omitempty" name:"SortType"`
+    InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
     Ip *string `json:"ip,omitempty" name:"ip"`
 }
 
@@ -3815,8 +3818,11 @@ type QueryNatTopVifMonitorResponse struct {
     RequestId *string `json:"RequestId" name:"RequestId"`
 	NatMonitorDataList []struct {
 		InstanceId *string `json:"InstanceId"`
+		InstanceName *string `json:"InstanceName"`
 		Ip *string `json:"Ip"`
-		Num *int `json:"Num"`
+		InBound *string `json:"InBound"`
+		OutBound *string `json:"OutBound"`
+		Num *string `json:"Num"`
 	} `json:"NatMonitorDataList"`
 }
 
@@ -3826,6 +3832,42 @@ func (r *QueryNatTopVifMonitorResponse) ToJsonString() string {
 }
 
 func (r *QueryNatTopVifMonitorResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyNatIpStatusRequest struct {
+    *ksyunhttp.BaseRequest
+    NatIpId *string `json:"NatIpId,omitempty" name:"NatIpId"`
+    Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+}
+
+func (r *ModifyNatIpStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNatIpStatusRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyNatIpStatusRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyNatIpStatusResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyNatIpStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyNatIpStatusResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

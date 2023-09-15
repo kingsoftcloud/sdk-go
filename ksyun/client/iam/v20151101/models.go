@@ -664,10 +664,11 @@ type ListPoliciesResponse struct {
 				PolicyType *int `json:"PolicyType"`
 				CreateMode *int `json:"CreateMode"`
 				UpdateDate *string `json:"UpdateDate"`
-				AttachmentCount *string `json:"AttachmentCount"`
+				AttachmentCount *int `json:"AttachmentCount"`
 			} `json:"Member"`
 		} `json:"Policies"`
-		IsTruncated *string `json:"IsTruncated"`
+		IsTruncated *bool `json:"IsTruncated"`
+		Marker *string `json:"Marker"`
 	} `json:"ListPoliciesResult"`
     RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1147,12 +1148,22 @@ type ListVirtualMFADevicesResponse struct {
     *ksyunhttp.BaseResponse
 	ListVirtualMFADevicesResult struct {
 		VirtualMFADevices struct {
-			Member struct {
+			Member []struct {
 				SerialNumber *string `json:"SerialNumber"`
 				EnableDate *string `json:"EnableDate"`
-				User *string `json:"User"`
+				User struct {
+						Uuid *string `json:"Uuid"`
+						Name *string `json:"Name"`
+						RealName *string `json:"RealName"`
+						Path *string `json:"Path"`
+						Krn *string `json:"Krn"`
+						CreatedTime *string `json:"CreatedTime"`
+						PwdLastUsed *string `json:"PwdLastUsed"`
+				} `json:"User"`
 			} `json:"Member"`
 		} `json:"VirtualMFADevices"`
+		Marker *string `json:"Marker"`
+		IsTruncated *bool `json:"IsTruncated"`
 	} `json:"ListVirtualMFADevicesResult"`
 }
 
@@ -1452,10 +1463,11 @@ type ListRolesResponse struct {
 					TrustProvider *string `json:"TrustProvider"`
 					CreateDate *string `json:"CreateDate"`
 					RoleId *string `json:"RoleId"`
-					ServiceRoleType *string `json:"ServiceRoleType"`
+					ServiceRoleType *int `json:"ServiceRoleType"`
 				} `json:"Member"`
 		} `json:"Roles"`
-		IsTruncated *string `json:"IsTruncated"`
+		IsTruncated *bool `json:"IsTruncated"`
+		Marker *string `json:"Marker"`
 	} `json:"ListRolesResult"`
     RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1579,7 +1591,8 @@ type ListAttachedRolePoliciesResponse struct {
 				Type *int `json:"Type"`
 			} `json:"Member"`
 		} `json:"AttachedPolicies"`
-		IsTruncated *string `json:"IsTruncated"`
+		IsTruncated *bool `json:"IsTruncated"`
+		Marker *string `json:"Marker"`
 	} `json:"ListAttachedRolePoliciesResult"`
     RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2253,7 +2266,8 @@ type ListGroupPoliciesResponse struct {
 				Type *int `json:"Type"`
 			} `json:"Member"`
 		} `json:"AttachedPolicies"`
-		IsTruncated *string `json:"IsTruncated"`
+		IsTruncated *bool `json:"IsTruncated"`
+		Marker *string `json:"Marker"`
 	} `json:"ListGroupPoliciesResult"`
     RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2391,7 +2405,8 @@ type ListGroupsForUserResponse struct {
 				PolicyCount *int `json:"PolicyCount"`
 			} `json:"Member"`
 		} `json:"Groups"`
-		IsTruncated *string `json:"IsTruncated"`
+		IsTruncated *bool `json:"IsTruncated"`
+		Marker *string `json:"Marker"`
 	} `json:"ListGroupsForUserResult"`
     RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2442,7 +2457,8 @@ type ListGroupsResponse struct {
 				PolicyCount *int `json:"PolicyCount"`
 			} `json:"Member"`
 		} `json:"Groups"`
-		IsTruncated *string `json:"IsTruncated"`
+		IsTruncated *bool `json:"IsTruncated"`
+		Marker *string `json:"Marker"`
 	} `json:"ListGroupsResult"`
     RequestId *string `json:"RequestId" name:"RequestId"`
 }

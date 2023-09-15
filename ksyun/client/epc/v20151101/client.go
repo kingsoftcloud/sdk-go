@@ -219,72 +219,6 @@ func (c *Client) ModifySecurityGroupWithContext(ctx context.Context, request *Mo
     }
     return msg
 }
-func NewImportKeyRequest() (request *ImportKeyRequest) {
-    request = &ImportKeyRequest{
-        BaseRequest: &ksyunhttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("epc", APIVersion, "ImportKey")
-    return
-}
-
-func NewImportKeyResponse() (response *ImportKeyResponse) {
-    response = &ImportKeyResponse{
-        BaseResponse: &ksyunhttp.BaseResponse{},
-    }
-    return
-}
-
-func (c *Client) ImportKey(request *ImportKeyRequest) (string) {
-    return c.ImportKeyWithContext(context.Background(), request)
-}
-
-func (c *Client) ImportKeyWithContext(ctx context.Context, request *ImportKeyRequest) (string) {
-    if request == nil {
-        request = NewImportKeyRequest()
-    }
-    request.SetContext(ctx)
-    request.SetContentType("application/x-www-form-urlencoded")
-
-    response := NewImportKeyResponse()
-    err, msg := c.Send(request, response)
-    if err != nil {
-        return fmt.Sprintf("%+v\n", err)
-    }
-    return msg
-}
-func NewDeleteKeyRequest() (request *DeleteKeyRequest) {
-    request = &DeleteKeyRequest{
-        BaseRequest: &ksyunhttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("epc", APIVersion, "DeleteKey")
-    return
-}
-
-func NewDeleteKeyResponse() (response *DeleteKeyResponse) {
-    response = &DeleteKeyResponse{
-        BaseResponse: &ksyunhttp.BaseResponse{},
-    }
-    return
-}
-
-func (c *Client) DeleteKey(request *DeleteKeyRequest) (string) {
-    return c.DeleteKeyWithContext(context.Background(), request)
-}
-
-func (c *Client) DeleteKeyWithContext(ctx context.Context, request *DeleteKeyRequest) (string) {
-    if request == nil {
-        request = NewDeleteKeyRequest()
-    }
-    request.SetContext(ctx)
-    request.SetContentType("application/x-www-form-urlencoded")
-
-    response := NewDeleteKeyResponse()
-    err, msg := c.Send(request, response)
-    if err != nil {
-        return fmt.Sprintf("%+v\n", err)
-    }
-    return msg
-}
 func NewCreateKeyRequest() (request *CreateKeyRequest) {
     request = &CreateKeyRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -312,39 +246,6 @@ func (c *Client) CreateKeyWithContext(ctx context.Context, request *CreateKeyReq
     request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateKeyResponse()
-    err, msg := c.Send(request, response)
-    if err != nil {
-        return fmt.Sprintf("%+v\n", err)
-    }
-    return msg
-}
-func NewDescribeKeysRequest() (request *DescribeKeysRequest) {
-    request = &DescribeKeysRequest{
-        BaseRequest: &ksyunhttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("epc", APIVersion, "DescribeKeys")
-    return
-}
-
-func NewDescribeKeysResponse() (response *DescribeKeysResponse) {
-    response = &DescribeKeysResponse{
-        BaseResponse: &ksyunhttp.BaseResponse{},
-    }
-    return
-}
-
-func (c *Client) DescribeKeys(request *DescribeKeysRequest) (string) {
-    return c.DescribeKeysWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeKeysWithContext(ctx context.Context, request *DescribeKeysRequest) (string) {
-    if request == nil {
-        request = NewDescribeKeysRequest()
-    }
-    request.SetContext(ctx)
-    request.SetContentType("application/x-www-form-urlencoded")
-
-    response := NewDescribeKeysResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)
