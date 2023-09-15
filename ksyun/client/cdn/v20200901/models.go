@@ -141,12 +141,8 @@ type GetDomainUsageDataRequest struct {
     Domains *string `json:"Domains,omitempty" name:"Domains"`
     Areas *string `json:"Areas,omitempty" name:"Areas"`
     Interval *string `json:"Interval,omitempty" name:"Interval"`
-    参数名 *string `json:"参数名,omitempty" name:"参数名"`
-    :-------- *string `json:":--------,omitempty" name:":--------"`
     RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
     PeakTime *string `json:"PeakTime,omitempty" name:"PeakTime"`
-    参数 *string `json:"参数,omitempty" name:"参数"`
-    :---- *string `json:":----,omitempty" name:":----"`
     Time *string `json:"Time,omitempty" name:"Time"`
     Value *string `json:"Value,omitempty" name:"Value"`
 }
@@ -192,7 +188,6 @@ func (r *GetDomainUsageDataResponse) FromJsonString(s string) error {
 
 type CreateUsageDetailDataExportTaskRequest struct {
     *ksyunhttp.BaseRequest
-    参数名 *string `json:"参数名,omitempty" name:"参数名"`
     StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
     EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
     Type *string `json:"Type,omitempty" name:"Type"`

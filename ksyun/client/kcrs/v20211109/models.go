@@ -1110,8 +1110,6 @@ type CreateWebhookTriggerRequest struct {
     InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
     Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
     Trigger *string `json:"Trigger,omitempty" name:"Trigger"`
-    参数 *string `json:"参数,omitempty" name:"参数"`
-    - *string `json:"-,omitempty" name:"-"`
     TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
     EventType []*string `json:"EventType,omitempty" name:"EventType"`
     TriggerUrl *string `json:"TriggerUrl,omitempty" name:"TriggerUrl"`
@@ -1204,8 +1202,6 @@ type ModifyWebhookTriggerRequest struct {
     InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
     Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
     Trigger *string `json:"Trigger,omitempty" name:"Trigger"`
-    参数 *string `json:"参数,omitempty" name:"参数"`
-    - *string `json:"-,omitempty" name:"-"`
     TriggerId *string `json:"TriggerId,omitempty" name:"TriggerId"`
     TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
     EventType []*string `json:"EventType,omitempty" name:"EventType"`
