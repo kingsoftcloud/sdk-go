@@ -54,6 +54,39 @@ func (c *Client) DescribeListenersWithContext(ctx context.Context, request *Desc
     }
     return msg
 }
+func NewDeleteListenersRequest() (request *DeleteListenersRequest) {
+    request = &DeleteListenersRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DeleteListeners")
+    return
+}
+
+func NewDeleteListenersResponse() (response *DeleteListenersResponse) {
+    response = &DeleteListenersResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteListeners(request *DeleteListenersRequest) (string) {
+    return c.DeleteListenersWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteListenersWithContext(ctx context.Context, request *DeleteListenersRequest) (string) {
+    if request == nil {
+        request = NewDeleteListenersRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDeleteListenersResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewModifyListenersRequest() (request *ModifyListenersRequest) {
     request = &ModifyListenersRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -285,6 +318,39 @@ func (c *Client) ModifyHealthCheckWithContext(ctx context.Context, request *Modi
     }
     return msg
 }
+func NewDeleteHealthCheckRequest() (request *DeleteHealthCheckRequest) {
+    request = &DeleteHealthCheckRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DeleteHealthCheck")
+    return
+}
+
+func NewDeleteHealthCheckResponse() (response *DeleteHealthCheckResponse) {
+    response = &DeleteHealthCheckResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteHealthCheck(request *DeleteHealthCheckRequest) (string) {
+    return c.DeleteHealthCheckWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteHealthCheckWithContext(ctx context.Context, request *DeleteHealthCheckRequest) (string) {
+    if request == nil {
+        request = NewDeleteHealthCheckRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDeleteHealthCheckResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewDescribeHealthChecksRequest() (request *DescribeHealthChecksRequest) {
     request = &DescribeHealthChecksRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -378,6 +444,39 @@ func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, request *
     request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeLoadBalancersResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteLoadBalancerRequest() (request *DeleteLoadBalancerRequest) {
+    request = &DeleteLoadBalancerRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DeleteLoadBalancer")
+    return
+}
+
+func NewDeleteLoadBalancerResponse() (response *DeleteLoadBalancerResponse) {
+    response = &DeleteLoadBalancerResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (string) {
+    return c.DeleteLoadBalancerWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteLoadBalancerWithContext(ctx context.Context, request *DeleteLoadBalancerRequest) (string) {
+    if request == nil {
+        request = NewDeleteLoadBalancerRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDeleteLoadBalancerResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)
@@ -1599,6 +1698,666 @@ func (c *Client) RemovePrivateLinkWithContext(ctx context.Context, request *Remo
     request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewRemovePrivateLinkResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateAlbRequest() (request *CreateAlbRequest) {
+    request = &CreateAlbRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "CreateAlb")
+    return
+}
+
+func NewCreateAlbResponse() (response *CreateAlbResponse) {
+    response = &CreateAlbResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateAlb(request *CreateAlbRequest) (string) {
+    return c.CreateAlbWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateAlbWithContext(ctx context.Context, request *CreateAlbRequest) (string) {
+    if request == nil {
+        request = NewCreateAlbRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewCreateAlbResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteAlbRequest() (request *DeleteAlbRequest) {
+    request = &DeleteAlbRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DeleteAlb")
+    return
+}
+
+func NewDeleteAlbResponse() (response *DeleteAlbResponse) {
+    response = &DeleteAlbResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteAlb(request *DeleteAlbRequest) (string) {
+    return c.DeleteAlbWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteAlbWithContext(ctx context.Context, request *DeleteAlbRequest) (string) {
+    if request == nil {
+        request = NewDeleteAlbRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDeleteAlbResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewSetAlbNameRequest() (request *SetAlbNameRequest) {
+    request = &SetAlbNameRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "SetAlbName")
+    return
+}
+
+func NewSetAlbNameResponse() (response *SetAlbNameResponse) {
+    response = &SetAlbNameResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) SetAlbName(request *SetAlbNameRequest) (string) {
+    return c.SetAlbNameWithContext(context.Background(), request)
+}
+
+func (c *Client) SetAlbNameWithContext(ctx context.Context, request *SetAlbNameRequest) (string) {
+    if request == nil {
+        request = NewSetAlbNameRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewSetAlbNameResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewSetAlbStatusRequest() (request *SetAlbStatusRequest) {
+    request = &SetAlbStatusRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "SetAlbStatus")
+    return
+}
+
+func NewSetAlbStatusResponse() (response *SetAlbStatusResponse) {
+    response = &SetAlbStatusResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) SetAlbStatus(request *SetAlbStatusRequest) (string) {
+    return c.SetAlbStatusWithContext(context.Background(), request)
+}
+
+func (c *Client) SetAlbStatusWithContext(ctx context.Context, request *SetAlbStatusRequest) (string) {
+    if request == nil {
+        request = NewSetAlbStatusRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewSetAlbStatusResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeAlbsRequest() (request *DescribeAlbsRequest) {
+    request = &DescribeAlbsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DescribeAlbs")
+    return
+}
+
+func NewDescribeAlbsResponse() (response *DescribeAlbsResponse) {
+    response = &DescribeAlbsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeAlbs(request *DescribeAlbsRequest) (string) {
+    return c.DescribeAlbsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAlbsWithContext(ctx context.Context, request *DescribeAlbsRequest) (string) {
+    if request == nil {
+        request = NewDescribeAlbsRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDescribeAlbsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateAlbListenerRequest() (request *CreateAlbListenerRequest) {
+    request = &CreateAlbListenerRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "CreateAlbListener")
+    return
+}
+
+func NewCreateAlbListenerResponse() (response *CreateAlbListenerResponse) {
+    response = &CreateAlbListenerResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateAlbListener(request *CreateAlbListenerRequest) (string) {
+    return c.CreateAlbListenerWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateAlbListenerWithContext(ctx context.Context, request *CreateAlbListenerRequest) (string) {
+    if request == nil {
+        request = NewCreateAlbListenerRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewCreateAlbListenerResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyAlbListenerRequest() (request *ModifyAlbListenerRequest) {
+    request = &ModifyAlbListenerRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "ModifyAlbListener")
+    return
+}
+
+func NewModifyAlbListenerResponse() (response *ModifyAlbListenerResponse) {
+    response = &ModifyAlbListenerResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyAlbListener(request *ModifyAlbListenerRequest) (string) {
+    return c.ModifyAlbListenerWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyAlbListenerWithContext(ctx context.Context, request *ModifyAlbListenerRequest) (string) {
+    if request == nil {
+        request = NewModifyAlbListenerRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewModifyAlbListenerResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteAlbListenerRequest() (request *DeleteAlbListenerRequest) {
+    request = &DeleteAlbListenerRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DeleteAlbListener")
+    return
+}
+
+func NewDeleteAlbListenerResponse() (response *DeleteAlbListenerResponse) {
+    response = &DeleteAlbListenerResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteAlbListener(request *DeleteAlbListenerRequest) (string) {
+    return c.DeleteAlbListenerWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteAlbListenerWithContext(ctx context.Context, request *DeleteAlbListenerRequest) (string) {
+    if request == nil {
+        request = NewDeleteAlbListenerRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDeleteAlbListenerResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeAlbListenersRequest() (request *DescribeAlbListenersRequest) {
+    request = &DescribeAlbListenersRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DescribeAlbListeners")
+    return
+}
+
+func NewDescribeAlbListenersResponse() (response *DescribeAlbListenersResponse) {
+    response = &DescribeAlbListenersResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeAlbListeners(request *DescribeAlbListenersRequest) (string) {
+    return c.DescribeAlbListenersWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAlbListenersWithContext(ctx context.Context, request *DescribeAlbListenersRequest) (string) {
+    if request == nil {
+        request = NewDescribeAlbListenersRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDescribeAlbListenersResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateAlbRuleGroupRequest() (request *CreateAlbRuleGroupRequest) {
+    request = &CreateAlbRuleGroupRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "CreateAlbRuleGroup")
+    return
+}
+
+func NewCreateAlbRuleGroupResponse() (response *CreateAlbRuleGroupResponse) {
+    response = &CreateAlbRuleGroupResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateAlbRuleGroup(request *CreateAlbRuleGroupRequest) (string) {
+    return c.CreateAlbRuleGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateAlbRuleGroupWithContext(ctx context.Context, request *CreateAlbRuleGroupRequest) (string) {
+    if request == nil {
+        request = NewCreateAlbRuleGroupRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewCreateAlbRuleGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteAlbRuleGroupRequest() (request *DeleteAlbRuleGroupRequest) {
+    request = &DeleteAlbRuleGroupRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DeleteAlbRuleGroup")
+    return
+}
+
+func NewDeleteAlbRuleGroupResponse() (response *DeleteAlbRuleGroupResponse) {
+    response = &DeleteAlbRuleGroupResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteAlbRuleGroup(request *DeleteAlbRuleGroupRequest) (string) {
+    return c.DeleteAlbRuleGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteAlbRuleGroupWithContext(ctx context.Context, request *DeleteAlbRuleGroupRequest) (string) {
+    if request == nil {
+        request = NewDeleteAlbRuleGroupRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDeleteAlbRuleGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeAlbRuleGroupsRequest() (request *DescribeAlbRuleGroupsRequest) {
+    request = &DescribeAlbRuleGroupsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DescribeAlbRuleGroups")
+    return
+}
+
+func NewDescribeAlbRuleGroupsResponse() (response *DescribeAlbRuleGroupsResponse) {
+    response = &DescribeAlbRuleGroupsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeAlbRuleGroups(request *DescribeAlbRuleGroupsRequest) (string) {
+    return c.DescribeAlbRuleGroupsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAlbRuleGroupsWithContext(ctx context.Context, request *DescribeAlbRuleGroupsRequest) (string) {
+    if request == nil {
+        request = NewDescribeAlbRuleGroupsRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDescribeAlbRuleGroupsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyAlbRuleGroupRequest() (request *ModifyAlbRuleGroupRequest) {
+    request = &ModifyAlbRuleGroupRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "ModifyAlbRuleGroup")
+    return
+}
+
+func NewModifyAlbRuleGroupResponse() (response *ModifyAlbRuleGroupResponse) {
+    response = &ModifyAlbRuleGroupResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyAlbRuleGroup(request *ModifyAlbRuleGroupRequest) (string) {
+    return c.ModifyAlbRuleGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyAlbRuleGroupWithContext(ctx context.Context, request *ModifyAlbRuleGroupRequest) (string) {
+    if request == nil {
+        request = NewModifyAlbRuleGroupRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewModifyAlbRuleGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewAddAlbRuleRequest() (request *AddAlbRuleRequest) {
+    request = &AddAlbRuleRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "AddAlbRule")
+    return
+}
+
+func NewAddAlbRuleResponse() (response *AddAlbRuleResponse) {
+    response = &AddAlbRuleResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) AddAlbRule(request *AddAlbRuleRequest) (string) {
+    return c.AddAlbRuleWithContext(context.Background(), request)
+}
+
+func (c *Client) AddAlbRuleWithContext(ctx context.Context, request *AddAlbRuleRequest) (string) {
+    if request == nil {
+        request = NewAddAlbRuleRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewAddAlbRuleResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteAlbRuleRequest() (request *DeleteAlbRuleRequest) {
+    request = &DeleteAlbRuleRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DeleteAlbRule")
+    return
+}
+
+func NewDeleteAlbRuleResponse() (response *DeleteAlbRuleResponse) {
+    response = &DeleteAlbRuleResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteAlbRule(request *DeleteAlbRuleRequest) (string) {
+    return c.DeleteAlbRuleWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteAlbRuleWithContext(ctx context.Context, request *DeleteAlbRuleRequest) (string) {
+    if request == nil {
+        request = NewDeleteAlbRuleRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDeleteAlbRuleResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateAlbListenerCertGroupRequest() (request *CreateAlbListenerCertGroupRequest) {
+    request = &CreateAlbListenerCertGroupRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "CreateAlbListenerCertGroup")
+    return
+}
+
+func NewCreateAlbListenerCertGroupResponse() (response *CreateAlbListenerCertGroupResponse) {
+    response = &CreateAlbListenerCertGroupResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateAlbListenerCertGroup(request *CreateAlbListenerCertGroupRequest) (string) {
+    return c.CreateAlbListenerCertGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateAlbListenerCertGroupWithContext(ctx context.Context, request *CreateAlbListenerCertGroupRequest) (string) {
+    if request == nil {
+        request = NewCreateAlbListenerCertGroupRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewCreateAlbListenerCertGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteAlbListenerCertGroupRequest() (request *DeleteAlbListenerCertGroupRequest) {
+    request = &DeleteAlbListenerCertGroupRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DeleteAlbListenerCertGroup")
+    return
+}
+
+func NewDeleteAlbListenerCertGroupResponse() (response *DeleteAlbListenerCertGroupResponse) {
+    response = &DeleteAlbListenerCertGroupResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteAlbListenerCertGroup(request *DeleteAlbListenerCertGroupRequest) (string) {
+    return c.DeleteAlbListenerCertGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteAlbListenerCertGroupWithContext(ctx context.Context, request *DeleteAlbListenerCertGroupRequest) (string) {
+    if request == nil {
+        request = NewDeleteAlbListenerCertGroupRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDeleteAlbListenerCertGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeAlbListenerCertGroupsRequest() (request *DescribeAlbListenerCertGroupsRequest) {
+    request = &DescribeAlbListenerCertGroupsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DescribeAlbListenerCertGroups")
+    return
+}
+
+func NewDescribeAlbListenerCertGroupsResponse() (response *DescribeAlbListenerCertGroupsResponse) {
+    response = &DescribeAlbListenerCertGroupsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeAlbListenerCertGroups(request *DescribeAlbListenerCertGroupsRequest) (string) {
+    return c.DescribeAlbListenerCertGroupsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAlbListenerCertGroupsWithContext(ctx context.Context, request *DescribeAlbListenerCertGroupsRequest) (string) {
+    if request == nil {
+        request = NewDescribeAlbListenerCertGroupsRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDescribeAlbListenerCertGroupsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewAssociateCertificateWithGroupRequest() (request *AssociateCertificateWithGroupRequest) {
+    request = &AssociateCertificateWithGroupRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "AssociateCertificateWithGroup")
+    return
+}
+
+func NewAssociateCertificateWithGroupResponse() (response *AssociateCertificateWithGroupResponse) {
+    response = &AssociateCertificateWithGroupResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) AssociateCertificateWithGroup(request *AssociateCertificateWithGroupRequest) (string) {
+    return c.AssociateCertificateWithGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) AssociateCertificateWithGroupWithContext(ctx context.Context, request *AssociateCertificateWithGroupRequest) (string) {
+    if request == nil {
+        request = NewAssociateCertificateWithGroupRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewAssociateCertificateWithGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDissociateCertificateWithGroupRequest() (request *DissociateCertificateWithGroupRequest) {
+    request = &DissociateCertificateWithGroupRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DissociateCertificateWithGroup")
+    return
+}
+
+func NewDissociateCertificateWithGroupResponse() (response *DissociateCertificateWithGroupResponse) {
+    response = &DissociateCertificateWithGroupResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DissociateCertificateWithGroup(request *DissociateCertificateWithGroupRequest) (string) {
+    return c.DissociateCertificateWithGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) DissociateCertificateWithGroupWithContext(ctx context.Context, request *DissociateCertificateWithGroupRequest) (string) {
+    if request == nil {
+        request = NewDissociateCertificateWithGroupRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDissociateCertificateWithGroupResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)

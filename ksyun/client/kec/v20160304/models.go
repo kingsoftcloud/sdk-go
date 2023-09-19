@@ -58,6 +58,11 @@ type ModifyScalingGroupSlb struct {
     Weight *int `json:"Weight,omitempty" name:"Weight"`
 }
 
+type DescribeInstanceTypeConfigsFilter struct {
+    Name []*string `json:"Name,omitempty" name:"Name"`
+    Value []*string `json:"Value,omitempty" name:"Value"`
+}
+
 type CreateModelDataDisk struct {
     Type *string `json:"Type,omitempty" name:"Type"`
     Size *int `json:"Size,omitempty" name:"Size"`
@@ -2442,7 +2447,12 @@ func (r *DeleteScheduledTaskRequest) FromJsonString(s string) error {
 
 type DeleteScheduledTaskResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
+	DeleteScheduledTaskResponse struct {
+		RequestId *string `json:"RequestId"`
+		ReturnSet struct {
+				ScalingScheduleTaskId *string `json:"ScalingScheduleTaskId"`
+		} `json:"ReturnSet"`
+	} `json:"DeleteScheduledTaskResponse"`
 }
 
 func (r *DeleteScheduledTaskResponse) ToJsonString() string {
@@ -2527,6 +2537,25 @@ func (r *DescribeScalingPolicyRequest) FromJsonString(s string) error {
 type DescribeScalingPolicyResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
+    ScalingPolicySize *int `json:"ScalingPolicySize" name:"ScalingPolicySize"`
+	ScalingPolicySet []struct {
+		ScalingGroupId *string `json:"ScalingGroupId"`
+		ScalingPolicyId *string `json:"ScalingPolicyId"`
+		ScalingPolicyName *string `json:"ScalingPolicyName"`
+		AdjustmentType *string `json:"AdjustmentType"`
+		AdjustmentValue *int `json:"AdjustmentValue"`
+		Metric struct {
+				DimensionName *string `json:"DimensionName"`
+				ComparisonOperator *string `json:"ComparisonOperator"`
+				Threshold *int `json:"Threshold"`
+				RepeatTimes *int `json:"RepeatTimes"`
+				Period *int `json:"Period"`
+				Function *string `json:"Function"`
+		} `json:"Metric"`
+		CreateTime *string `json:"CreateTime"`
+		CoolDown *int `json:"CoolDown"`
+		AvailabilityZone *string `json:"AvailabilityZone"`
+	} `json:"ScalingPolicySet"`
 }
 
 func (r *DescribeScalingPolicyResponse) ToJsonString() string {
@@ -2567,7 +2596,13 @@ func (r *ModifyScalingPolicyRequest) FromJsonString(s string) error {
 
 type ModifyScalingPolicyResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
+	ModifyScalingPolicyResponse struct {
+		RequestId *string `json:"RequestId"`
+		Return *string `json:"Return"`
+		ReturnSet struct {
+				ScalingPolicyId *string `json:"ScalingPolicyId"`
+		} `json:"ReturnSet"`
+	} `json:"ModifyScalingPolicyResponse"`
 }
 
 func (r *ModifyScalingPolicyResponse) ToJsonString() string {
@@ -2603,7 +2638,12 @@ func (r *DeleteScalingPolicyRequest) FromJsonString(s string) error {
 
 type DeleteScalingPolicyResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
+	DeleteScalingPolicyResponse struct {
+		RequestId *string `json:"RequestId"`
+		ReturnSet struct {
+				ScalingPolicyId *string `json:"ScalingPolicyId"`
+		} `json:"ReturnSet"`
+	} `json:"DeleteScalingPolicyResponse"`
 }
 
 func (r *DeleteScalingPolicyResponse) ToJsonString() string {
@@ -2645,8 +2685,10 @@ func (r *ImportImageRequest) FromJsonString(s string) error {
 
 type ImportImageResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    ImageId *string `json:"ImageId" name:"ImageId"`
+	ImageImportResponse struct {
+		RequestId *string `json:"RequestId"`
+		ImageId *string `json:"ImageId"`
+	} `json:"ImageImportResponse"`
 }
 
 func (r *ImportImageResponse) ToJsonString() string {
@@ -2683,9 +2725,10 @@ func (r *CopyImageRequest) FromJsonString(s string) error {
 
 type CopyImageResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    Return *bool `json:"Return" name:"Return"`
-    Message *string `json:"Message" name:"Message"`
+	ImageCopyResponse struct {
+		RequestId *string `json:"RequestId"`
+		Return *string `json:"Return"`
+	} `json:"ImageCopyResponse"`
 }
 
 func (r *CopyImageResponse) ToJsonString() string {
@@ -2722,8 +2765,8 @@ func (r *ModifyImageSharePermissionRequest) FromJsonString(s string) error {
 
 type ModifyImageSharePermissionResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
     Return *bool `json:"Return" name:"Return"`
+    RequestId *string `json:"RequestId" name:"RequestId"`
     Message *string `json:"Message" name:"Message"`
 }
 
@@ -2796,11 +2839,15 @@ func (r *DescribeRegionsRequest) FromJsonString(s string) error {
 
 type DescribeRegionsResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-	RegionSet []struct {
-		Region *string `json:"Region"`
-		RegionName *string `json:"RegionName"`
-	} `json:"RegionSet"`
+	RegionResponse struct {
+		RegionSet struct {
+			Region []struct {
+				Region *string `json:"Region"`
+				RegionName *string `json:"RegionName"`
+			} `json:"Region"`
+		} `json:"RegionSet"`
+		RequestId *string `json:"RequestId"`
+	} `json:"RegionResponse"`
 }
 
 func (r *DescribeRegionsResponse) ToJsonString() string {
@@ -2934,6 +2981,7 @@ func (r *DescribeAvailabilityZonesResponse) FromJsonString(s string) error {
 
 type DescribeInstanceTypeConfigsRequest struct {
     *ksyunhttp.BaseRequest
+    Filter []*DescribeInstanceTypeConfigsFilter `json:"Filter,omitempty" name:"Filter"`
 }
 
 func (r *DescribeInstanceTypeConfigsRequest) ToJsonString() string {
@@ -3049,7 +3097,14 @@ func (r *AddVmIntoDataGuardRequest) FromJsonString(s string) error {
 
 type AddVmIntoDataGuardResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
+	AddVmToDataGuardResponse struct {
+		DataGuardResult struct {
+				flag *string `json:"flag"`
+				instanceId *string `json:"instanceId"`
+		} `json:"DataGuardResult"`
+		RequestId *string `json:"RequestId"`
+		Return *string `json:"Return"`
+	} `json:"AddVmToDataGuardResponse"`
 }
 
 func (r *AddVmIntoDataGuardResponse) ToJsonString() string {
@@ -3088,8 +3143,10 @@ func (r *CreateFileSystemRequest) FromJsonString(s string) error {
 
 type CreateFileSystemResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    FileSystemId *string `json:"FileSystemId" name:"FileSystemId"`
+	CreateFileSystemResponse struct {
+		RequestId *string `json:"RequestId"`
+		FileSystemId *string `json:"FileSystemId"`
+	} `json:"CreateFileSystemResponse"`
 }
 
 func (r *CreateFileSystemResponse) ToJsonString() string {
@@ -3124,8 +3181,10 @@ func (r *DeleteFileSystemRequest) FromJsonString(s string) error {
 
 type DeleteFileSystemResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    Return *bool `json:"Return" name:"Return"`
+	DeleteFileSystemResponse struct {
+		RequestId *string `json:"RequestId"`
+		Return *string `json:"Return"`
+	} `json:"DeleteFileSystemResponse"`
 }
 
 func (r *DeleteFileSystemResponse) ToJsonString() string {
@@ -3220,8 +3279,10 @@ func (r *ModifyFileSystemRequest) FromJsonString(s string) error {
 
 type ModifyFileSystemResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    Return *bool `json:"Return" name:"Return"`
+	ModifyFileSystemResponse struct {
+		RequestId *string `json:"RequestId"`
+		Return *string `json:"Return"`
+	} `json:"ModifyFileSystemResponse"`
 }
 
 func (r *ModifyFileSystemResponse) ToJsonString() string {
@@ -3258,9 +3319,11 @@ func (r *CreateMountTargetRequest) FromJsonString(s string) error {
 
 type CreateMountTargetResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    MountTargetID *string `json:"MountTargetID" name:"MountTargetID"`
-    IpAddress *string `json:"IpAddress" name:"IpAddress"`
+	CreateMountTargetResponse struct {
+		RequestId *string `json:"RequestId"`
+		MountTargetId *string `json:"MountTargetId"`
+		IpAddress *string `json:"IpAddress"`
+	} `json:"CreateMountTargetResponse"`
 }
 
 func (r *CreateMountTargetResponse) ToJsonString() string {
@@ -3295,8 +3358,10 @@ func (r *DeleteMountTargetRequest) FromJsonString(s string) error {
 
 type DeleteMountTargetResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    Return *bool `json:"Return" name:"Return"`
+	DeleteMountTargetResponse struct {
+		RequestId *string `json:"RequestId"`
+		Return *string `json:"Return"`
+	} `json:"DeleteMountTargetResponse"`
 }
 
 func (r *DeleteMountTargetResponse) ToJsonString() string {
@@ -3334,16 +3399,20 @@ func (r *DescribeMountTargetsRequest) FromJsonString(s string) error {
 
 type DescribeMountTargetsResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    Marker *int `json:"Marker" name:"Marker"`
-    FileSystemCount *int `json:"FileSystemCount" name:"FileSystemCount"`
-	MountTargets []struct {
-		MountTargetId *string `json:"MountTargetId"`
-		SubnetId *string `json:"SubnetId"`
-		IpAddress *string `json:"IpAddress"`
-		MountTargetState *string `json:"MountTargetState"`
-		CreationDate *string `json:"CreationDate"`
-	} `json:"MountTargets"`
+	DescribeMountTargetsResponse struct {
+		RequestId *string `json:"RequestId"`
+		Marker *string `json:"Marker"`
+		FileSystemCount *string `json:"FileSystemCount"`
+		MountTargets struct {
+			Item struct {
+				MountTargetId *string `json:"MountTargetId"`
+				SubnetId *string `json:"SubnetId"`
+				IpAddress *string `json:"IpAddress"`
+				MountTargetState *string `json:"MountTargetState"`
+				CreationDate *string `json:"CreationDate"`
+			} `json:"Item"`
+		} `json:"MountTargets"`
+	} `json:"DescribeMountTargetsResponse"`
 }
 
 func (r *DescribeMountTargetsResponse) ToJsonString() string {
@@ -3403,10 +3472,11 @@ func (r *CreateModelRequest) FromJsonString(s string) error {
 
 type CreateModelResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    ModelId *string `json:"ModelId" name:"ModelId"`
-    ModelName *string `json:"ModelName" name:"ModelName"`
-    IamRoleName *string `json:"IamRoleName" name:"IamRoleName"`
+	CreateModelResponse struct {
+		RequestId *string `json:"RequestId"`
+		ModelId *string `json:"ModelId"`
+		ModelName *string `json:"ModelName"`
+	} `json:"CreateModelResponse"`
 }
 
 func (r *CreateModelResponse) ToJsonString() string {
@@ -3442,7 +3512,10 @@ func (r *TerminateModelsRequest) FromJsonString(s string) error {
 
 type TerminateModelsResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
+	DeleteModelResponse struct {
+		RequestId *string `json:"RequestId"`
+		Return *string `json:"Return"`
+	} `json:"DeleteModelResponse"`
 }
 
 func (r *TerminateModelsResponse) ToJsonString() string {
@@ -3518,15 +3591,15 @@ type DescribeDedicatedClusterResponse struct {
     *ksyunhttp.BaseResponse
 	DescribeDedicatedClusterResponse struct {
 		RequestId *string `json:"RequestId"`
-		DedicatedClustersSet []struct {
-					DedicatedClusterId *string `json:"DedicatedClusterId"`
-					DedicatedClusterName *string `json:"DedicatedClusterName"`
-					CreationDate *string `json:"CreationDate"`
-					AvailabilityZone *string `json:"AvailabilityZone"`
-					AvailabilityZoneName *string `json:"AvailabilityZoneName"`
-					Model *string `json:"Model"`
-			} `json:"DedicatedClustersSet"`
-		} `json:"DescribeDedicatedClusterResponse"`
+		DedicatedClustersSet struct {
+				DedicatedClusterId *string `json:"DedicatedClusterId"`
+				DedicatedClusterName *string `json:"DedicatedClusterName"`
+				CreationDate *string `json:"CreationDate"`
+				AvailabilityZone *string `json:"AvailabilityZone"`
+				AvailabilityZoneName *string `json:"AvailabilityZoneName"`
+				Model *string `json:"Model"`
+		} `json:"DedicatedClustersSet"`
+	} `json:"DescribeDedicatedClusterResponse"`
 }
 
 func (r *DescribeDedicatedClusterResponse) ToJsonString() string {
@@ -3563,8 +3636,10 @@ func (r *CreateDedicatedClusterRequest) FromJsonString(s string) error {
 
 type CreateDedicatedClusterResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    DedicatedClusterId *string `json:"DedicatedClusterId" name:"DedicatedClusterId"`
+	CreateDedicatedClusterResponse struct {
+		Request_id *string `json:"Request_id"`
+		DedicatedClusterId *string `json:"DedicatedClusterId"`
+	} `json:"CreateDedicatedClusterResponse"`
 }
 
 func (r *CreateDedicatedClusterResponse) ToJsonString() string {
@@ -3599,7 +3674,15 @@ func (r *DeleteDedicatedClusterRequest) FromJsonString(s string) error {
 
 type DeleteDedicatedClusterResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
+	DeleteDedicatedClusterResponse struct {
+		DedicatedClustersSet struct {
+			Item struct {
+				DedicatedClusterId *string `json:"DedicatedClusterId"`
+				Return *string `json:"Return"`
+			} `json:"Item"`
+		} `json:"DedicatedClustersSet"`
+		RequestId *string `json:"RequestId"`
+	} `json:"DeleteDedicatedClusterResponse"`
 }
 
 func (r *DeleteDedicatedClusterResponse) ToJsonString() string {
@@ -3679,11 +3762,15 @@ func (r *DedicatedHostMigrateRequest) FromJsonString(s string) error {
 
 type DedicatedHostMigrateResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-	ReturnSet []struct {
-		DedicatedHostId *string `json:"DedicatedHostId"`
-		Return *bool `json:"Return"`
-	} `json:"ReturnSet"`
+	DedicatedHostMigrateResponse struct {
+		ReturnSet struct {
+			Item struct {
+				DedicatedHostId *string `json:"DedicatedHostId"`
+				Return *string `json:"Return"`
+			} `json:"Item"`
+		} `json:"ReturnSet"`
+		RequestId *string `json:"RequestId"`
+	} `json:"DedicatedHostMigrateResponse"`
 }
 
 func (r *DedicatedHostMigrateResponse) ToJsonString() string {
@@ -3719,7 +3806,10 @@ func (r *ModifyDedicatedClusterNameRequest) FromJsonString(s string) error {
 
 type ModifyDedicatedClusterNameResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *bool `json:"RequestId" name:"RequestId"`
+	ModifyDedicatedClusterNameResponse struct {
+		Request_id *string `json:"Request_id"`
+		Ret *string `json:"Ret"`
+	} `json:"ModifyDedicatedClusterNameResponse"`
 }
 
 func (r *ModifyDedicatedClusterNameResponse) ToJsonString() string {
@@ -3757,7 +3847,8 @@ func (r *InstanceMigrateRequest) FromJsonString(s string) error {
 
 type InstanceMigrateResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *bool `json:"RequestId" name:"RequestId"`
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
 }
 
 func (r *InstanceMigrateResponse) ToJsonString() string {
@@ -3794,8 +3885,10 @@ func (r *ModifyInstanceAutoDeleteTimeRequest) FromJsonString(s string) error {
 
 type ModifyInstanceAutoDeleteTimeResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    Return *bool `json:"Return" name:"Return"`
+	AutoDeleteResponse struct {
+		RequestId *string `json:"RequestId"`
+		Return *string `json:"Return"`
+	} `json:"AutoDeleteResponse"`
 }
 
 func (r *ModifyInstanceAutoDeleteTimeResponse) ToJsonString() string {
@@ -3855,8 +3948,10 @@ func (r *ModifyScalingConfigurationRequest) FromJsonString(s string) error {
 
 type ModifyScalingConfigurationResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    Return *string `json:"Return" name:"Return"`
+	ModifyScalingConfigurationResponse struct {
+		RequestId *string `json:"RequestId"`
+		Return *string `json:"Return"`
+	} `json:"ModifyScalingConfigurationResponse"`
 }
 
 func (r *ModifyScalingConfigurationResponse) ToJsonString() string {
@@ -3894,11 +3989,11 @@ func (r *DescribeSpotPriceHistoryRequest) FromJsonString(s string) error {
 
 type DescribeSpotPriceHistoryResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    Currency *string `json:"Currency" name:"Currency"`
-    InstanceType *string `json:"InstanceType" name:"InstanceType"`
-    AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
-    SpotPrices *string `json:"SpotPrices" name:"SpotPrices"`
+    RequestID *string `json:"RequestID" name:"RequestID"`
+	Error struct {
+		Code *string `json:"Code"`
+		Message *string `json:"Message"`
+	} `json:"Error"`
 }
 
 func (r *DescribeSpotPriceHistoryResponse) ToJsonString() string {
@@ -3983,8 +4078,10 @@ func (r *EnableImageCachingRequest) FromJsonString(s string) error {
 
 type EnableImageCachingResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    Return *string `json:"Return" name:"Return"`
+	WarmUpImageResponse struct {
+		Request_id *string `json:"Request_id"`
+		Return *string `json:"Return"`
+	} `json:"WarmUpImageResponse"`
 }
 
 func (r *EnableImageCachingResponse) ToJsonString() string {
@@ -4019,8 +4116,10 @@ func (r *DisableImageCachingRequest) FromJsonString(s string) error {
 
 type DisableImageCachingResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    Return *bool `json:"Return" name:"Return"`
+	WarmUpImageResponse struct {
+		Request_id *string `json:"Request_id"`
+		Return *string `json:"Return"`
+	} `json:"WarmUpImageResponse"`
 }
 
 func (r *DisableImageCachingResponse) ToJsonString() string {
@@ -4055,7 +4154,10 @@ func (r *ModifyLoadBalancersRequest) FromJsonString(s string) error {
 
 type ModifyLoadBalancersResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
+	ModifyLoadBalancersResponse struct {
+		Request_id *string `json:"Request_id"`
+		Return *string `json:"Return"`
+	} `json:"ModifyLoadBalancersResponse"`
 }
 
 func (r *ModifyLoadBalancersResponse) ToJsonString() string {
@@ -4091,11 +4193,16 @@ func (r *AttachInstancesIamRoleRequest) FromJsonString(s string) error {
 
 type AttachInstancesIamRoleResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    Results *string `json:"Results" name:"Results"`
-    FailCount *string `json:"FailCount" name:"FailCount"`
-    TotalCount *string `json:"TotalCount" name:"TotalCount"`
-    IamRoleName *string `json:"IamRoleName" name:"IamRoleName"`
+	InstanceIamRoleResponse struct {
+		RequestId *string `json:"RequestId"`
+		FailCount *string `json:"FailCount"`
+		TotalCount *string `json:"TotalCount"`
+		IamRoleName *string `json:"IamRoleName"`
+		Results struct {
+				InstanceId *string `json:"InstanceId"`
+				Result *string `json:"Result"`
+		} `json:"Results"`
+	} `json:"InstanceIamRoleResponse"`
 }
 
 func (r *AttachInstancesIamRoleResponse) ToJsonString() string {
@@ -4130,10 +4237,15 @@ func (r *DetachInstancesIamRoleRequest) FromJsonString(s string) error {
 
 type DetachInstancesIamRoleResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    Results *string `json:"Results" name:"Results"`
-    FailCount *string `json:"FailCount" name:"FailCount"`
-    TotalCount *string `json:"TotalCount" name:"TotalCount"`
+	InstanceIamRoleResponse struct {
+		RequestId *string `json:"RequestId"`
+		FailCount *string `json:"FailCount"`
+		TotalCount *string `json:"TotalCount"`
+		Results struct {
+				InstanceId *string `json:"InstanceId"`
+				Result *string `json:"Result"`
+		} `json:"Results"`
+	} `json:"InstanceIamRoleResponse"`
 }
 
 func (r *DetachInstancesIamRoleResponse) ToJsonString() string {
@@ -4172,7 +4284,10 @@ func (r *PreMigrateInstanceRequest) FromJsonString(s string) error {
 
 type PreMigrateInstanceResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
+	PreMigrateInstanceResponse struct {
+		RequestId *string `json:"RequestId"`
+		Return *string `json:"Return"`
+	} `json:"PreMigrateInstanceResponse"`
 }
 
 func (r *PreMigrateInstanceResponse) ToJsonString() string {
@@ -4207,7 +4322,10 @@ func (r *CancelPreMigrateInstanceRequest) FromJsonString(s string) error {
 
 type CancelPreMigrateInstanceResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
+	CancelPreMigrateInstanceResponse struct {
+		RequestId *string `json:"RequestId"`
+		Return *string `json:"Return"`
+	} `json:"CancelPreMigrateInstanceResponse"`
 }
 
 func (r *CancelPreMigrateInstanceResponse) ToJsonString() string {
@@ -4216,46 +4334,6 @@ func (r *CancelPreMigrateInstanceResponse) ToJsonString() string {
 }
 
 func (r *CancelPreMigrateInstanceResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeMinFlavorCountRequest struct {
-    *ksyunhttp.BaseRequest
-    ProductType *int `json:"ProductType,omitempty" name:"ProductType"`
-}
-
-func (r *DescribeMinFlavorCountRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeMinFlavorCountRequest) FromJsonString(s string) error {
-    f := make(map[string]interface{})
-    if err := json.Unmarshal([]byte(s), &f); err != nil {
-        return err
-    }
-    if len(f) > 0 {
-        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeMinFlavorCountRequest has unknown keys!", "")
-    }
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeMinFlavorCountResponse struct {
-    *ksyunhttp.BaseResponse
-	DeleteScheduledTaskResponse struct {
-		RequestId *string `json:"RequestId"`
-		ReturnSet struct {
-				ScalingScheduleTaskId *string `json:"ScalingScheduleTaskId"`
-		} `json:"ReturnSet"`
-	} `json:"DeleteScheduledTaskResponse"`
-}
-
-func (r *DescribeMinFlavorCountResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeMinFlavorCountResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

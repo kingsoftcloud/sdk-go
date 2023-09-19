@@ -2199,6 +2199,39 @@ func (c *Client) DescribeSubnetAllocatedIpAddressesWithContext(ctx context.Conte
     }
     return msg
 }
+func NewModifyPrivateIpAddressAttributeRequest() (request *ModifyPrivateIpAddressAttributeRequest) {
+    request = &ModifyPrivateIpAddressAttributeRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyPrivateIpAddressAttribute")
+    return
+}
+
+func NewModifyPrivateIpAddressAttributeResponse() (response *ModifyPrivateIpAddressAttributeResponse) {
+    response = &ModifyPrivateIpAddressAttributeResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyPrivateIpAddressAttribute(request *ModifyPrivateIpAddressAttributeRequest) (string) {
+    return c.ModifyPrivateIpAddressAttributeWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyPrivateIpAddressAttributeWithContext(ctx context.Context, request *ModifyPrivateIpAddressAttributeRequest) (string) {
+    if request == nil {
+        request = NewModifyPrivateIpAddressAttributeRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewModifyPrivateIpAddressAttributeResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewDeleteNetworkInterfaceRequest() (request *DeleteNetworkInterfaceRequest) {
     request = &DeleteNetworkInterfaceRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},

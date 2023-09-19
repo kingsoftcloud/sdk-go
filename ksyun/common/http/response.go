@@ -8,8 +8,8 @@ package http
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"github.com/kingsoftcloud/sdk-go/ksyun/common/errors"
+	"io/ioutil"
 	"net/http"
 )
 
@@ -21,13 +21,11 @@ type BaseResponse struct {
 }
 
 type ErrorResponse struct {
-	Response struct {
-		Error struct {
-			Code    string `json:"Code"`
-			Message string `json:"Message"`
-		} `json:"Error,omitempty"`
-		RequestId string `json:"RequestId"`
-	} `json:"Response"`
+	Error struct {
+		Code    string `json:"Code"`
+		Message string `json:"Message"`
+	} `json:"Error,omitempty"`
+	RequestId string `json:"RequestId"`
 }
 
 type DeprecatedAPIErrorResponse struct {
@@ -43,8 +41,8 @@ func (r *BaseResponse) ParseErrorFromHTTPResponse(body []byte) (err error) {
 		msg := fmt.Sprintf("Fail to parse json content: %s, because: %s", body, err)
 		return errors.NewKsyunSDKError("ClientError.ParseJsonError", msg, "")
 	}
-	if resp.Response.Error.Code != "" {
-		return errors.NewKsyunSDKError(resp.Response.Error.Code, resp.Response.Error.Message, resp.Response.RequestId)
+	if resp.Error.Code != "" {
+		return errors.NewKsyunSDKError(resp.Error.Code, resp.Error.Message, resp.RequestId)
 	}
 
 	deprecated := &DeprecatedAPIErrorResponse{}
@@ -59,7 +57,7 @@ func (r *BaseResponse) ParseErrorFromHTTPResponse(body []byte) (err error) {
 	return nil
 }
 
-func ParseFromHttpResponse(hr *http.Response, response Response) (string) {
+func ParseFromHttpResponse(hr *http.Response, response Response) string {
 
 	defer hr.Body.Close()
 	body, err := ioutil.ReadAll(hr.Body)

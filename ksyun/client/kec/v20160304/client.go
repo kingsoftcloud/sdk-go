@@ -3156,39 +3156,6 @@ func (c *Client) CancelPreMigrateInstanceWithContext(ctx context.Context, reques
     }
     return msg
 }
-func NewDescribeMinFlavorCountRequest() (request *DescribeMinFlavorCountRequest) {
-    request = &DescribeMinFlavorCountRequest{
-        BaseRequest: &ksyunhttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("kec", APIVersion, "DescribeMinFlavorCount")
-    return
-}
-
-func NewDescribeMinFlavorCountResponse() (response *DescribeMinFlavorCountResponse) {
-    response = &DescribeMinFlavorCountResponse{
-        BaseResponse: &ksyunhttp.BaseResponse{},
-    }
-    return
-}
-
-func (c *Client) DescribeMinFlavorCount(request *DescribeMinFlavorCountRequest) (string) {
-    return c.DescribeMinFlavorCountWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeMinFlavorCountWithContext(ctx context.Context, request *DescribeMinFlavorCountRequest) (string) {
-    if request == nil {
-        request = NewDescribeMinFlavorCountRequest()
-    }
-    request.SetContext(ctx)
-    request.SetContentType("application/json")
-
-    response := NewDescribeMinFlavorCountResponse()
-    err, msg := c.Send(request, response)
-    if err != nil {
-        return fmt.Sprintf("%+v\n", err)
-    }
-    return msg
-}
 func NewGetVNCAddressRequest() (request *GetVNCAddressRequest) {
     request = &GetVNCAddressRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},

@@ -3005,6 +3005,43 @@ func (r *DescribeSubnetAllocatedIpAddressesResponse) FromJsonString(s string) er
     return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyPrivateIpAddressAttributeRequest struct {
+    *ksyunhttp.BaseRequest
+    SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+    PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
+    Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ModifyPrivateIpAddressAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPrivateIpAddressAttributeRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyPrivateIpAddressAttributeRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPrivateIpAddressAttributeResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyPrivateIpAddressAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyPrivateIpAddressAttributeResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteNetworkInterfaceRequest struct {
     *ksyunhttp.BaseRequest
     NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`

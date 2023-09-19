@@ -49,6 +49,36 @@ type ListPrivateLinkServerFilter struct {
     Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
+type DescribeAlbsFilter struct {
+    Name *string `json:"Name,omitempty" name:"Name"`
+    Value []*string `json:"Value,omitempty" name:"Value"`
+}
+
+type DescribeAlbListenersFilter struct {
+    Name *string `json:"Name,omitempty" name:"Name"`
+    Value []*string `json:"Value,omitempty" name:"Value"`
+}
+
+type CreateAlbRuleGroupAlbRuleSet struct {
+    AlbRuleType *string `json:"AlbRuleType,omitempty" name:"AlbRuleType"`
+    AlbRuleValue *string `json:"AlbRuleValue,omitempty" name:"AlbRuleValue"`
+}
+
+type DescribeAlbRuleGroupsFilter struct {
+    Name *string `json:"Name,omitempty" name:"Name"`
+    Value []*string `json:"Value,omitempty" name:"Value"`
+}
+
+type ModifyAlbRuleGroupAlbRuleSet struct {
+    AlbRuleType *string `json:"AlbRuleType,omitempty" name:"AlbRuleType"`
+    AlbRuleValue *string `json:"AlbRuleValue,omitempty" name:"AlbRuleValue"`
+}
+
+type DescribeAlbListenerCertGroupsFilter struct {
+    Name *string `json:"Name,omitempty" name:"Name"`
+    Value []*string `json:"Value,omitempty" name:"Value"`
+}
+
 
 type DescribeListenersRequest struct {
     *ksyunhttp.BaseRequest
@@ -124,6 +154,42 @@ func (r *DescribeListenersResponse) ToJsonString() string {
 }
 
 func (r *DescribeListenersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteListenersRequest struct {
+    *ksyunhttp.BaseRequest
+    ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+}
+
+func (r *DeleteListenersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteListenersRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteListenersRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteListenersResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *DeleteListenersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteListenersResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -517,6 +583,42 @@ func (r *ModifyHealthCheckResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteHealthCheckRequest struct {
+    *ksyunhttp.BaseRequest
+    HealthCheckId *string `json:"HealthCheckId,omitempty" name:"HealthCheckId"`
+}
+
+func (r *DeleteHealthCheckRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteHealthCheckRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteHealthCheckRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteHealthCheckResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *DeleteHealthCheckResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteHealthCheckResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeHealthChecksRequest struct {
     *ksyunhttp.BaseRequest
     HealthCheckId []*string `json:"HealthCheckId,omitempty" name:"HealthCheckId"`
@@ -683,6 +785,42 @@ func (r *DescribeLoadBalancersResponse) ToJsonString() string {
 }
 
 func (r *DescribeLoadBalancersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLoadBalancerRequest struct {
+    *ksyunhttp.BaseRequest
+    LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+}
+
+func (r *DeleteLoadBalancerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLoadBalancerRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteLoadBalancerRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLoadBalancerResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *DeleteLoadBalancerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteLoadBalancerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2193,6 +2331,873 @@ func (r *RemovePrivateLinkResponse) ToJsonString() string {
 }
 
 func (r *RemovePrivateLinkResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAlbRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbName *string `json:"AlbName,omitempty" name:"AlbName"`
+    AlbVersion *string `json:"AlbVersion,omitempty" name:"AlbVersion"`
+    AlbType *string `json:"AlbType,omitempty" name:"AlbType"`
+    VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+    IpVersion *string `json:"IpVersion,omitempty" name:"IpVersion"`
+    ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+    AllocationId *string `json:"AllocationId,omitempty" name:"AllocationId"`
+    ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+}
+
+func (r *CreateAlbRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAlbRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateAlbRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAlbResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateAlbResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAlbResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAlbRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbId *string `json:"AlbId,omitempty" name:"AlbId"`
+}
+
+func (r *DeleteAlbRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAlbRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteAlbRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAlbResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *DeleteAlbResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAlbResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetAlbNameRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbId *string `json:"AlbId,omitempty" name:"AlbId"`
+    AlbName *string `json:"AlbName,omitempty" name:"AlbName"`
+}
+
+func (r *SetAlbNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetAlbNameRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetAlbNameRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetAlbNameResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *SetAlbNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetAlbNameResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetAlbStatusRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbId *string `json:"AlbId,omitempty" name:"AlbId"`
+    State *string `json:"State,omitempty" name:"State"`
+}
+
+func (r *SetAlbStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetAlbStatusRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetAlbStatusRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetAlbStatusResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *SetAlbStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetAlbStatusResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAlbsRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbId []*string `json:"AlbId,omitempty" name:"AlbId"`
+    Filter []*DescribeAlbsFilter `json:"Filter,omitempty" name:"Filter"`
+    MaxResults *int `json:"MaxResults,omitempty" name:"MaxResults"`
+    NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
+}
+
+func (r *DescribeAlbsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAlbsRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeAlbsRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAlbsResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    NextToken *string `json:"NextToken" name:"NextToken"`
+	ApplicationLoadBalancerSet []struct {
+		AlbId *string `json:"AlbId"`
+		CreateTime *string `json:"CreateTime"`
+		AlbName *string `json:"AlbName"`
+		ProjectId *string `json:"ProjectId"`
+		AlbVersion *string `json:"AlbVersion"`
+		IpVersion *string `json:"IpVersion"`
+		AlbType *string `json:"AlbType"`
+		PublicIp *string `json:"PublicIp"`
+		VpcId *string `json:"VpcId"`
+		State *string `json:"State"`
+		ListenersCount *int `json:"ListenersCount"`
+		Status *string `json:"Status"`
+		EnabledLog *bool `json:"EnabledLog"`
+		BillType *int `json:"BillType"`
+		ProductWhat *int `json:"ProductWhat"`
+		ServiceEndTime *string `json:"ServiceEndTime"`
+	} `json:"ApplicationLoadBalancerSet"`
+}
+
+func (r *DescribeAlbsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAlbsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAlbListenerRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbId *string `json:"AlbId,omitempty" name:"AlbId"`
+    AlbListenerName *string `json:"AlbListenerName,omitempty" name:"AlbListenerName"`
+    Method *string `json:"Method,omitempty" name:"Method"`
+    Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+    Port *int `json:"Port,omitempty" name:"Port"`
+    CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+    TlsCipherPolicy *string `json:"TlsCipherPolicy,omitempty" name:"TlsCipherPolicy"`
+    AlbListenerAclId *string `json:"AlbListenerAclId,omitempty" name:"AlbListenerAclId"`
+    AlbListenerState *string `json:"AlbListenerState,omitempty" name:"AlbListenerState"`
+    RedirectAlbListenerId *string `json:"RedirectAlbListenerId,omitempty" name:"RedirectAlbListenerId"`
+    SessionState *string `json:"SessionState,omitempty" name:"SessionState"`
+    SessionPersistencePeriod *int `json:"SessionPersistencePeriod,omitempty" name:"SessionPersistencePeriod"`
+    CookieType *string `json:"CookieType,omitempty" name:"CookieType"`
+    CookieName *string `json:"CookieName,omitempty" name:"CookieName"`
+    EnableHttp2 *bool `json:"EnableHttp2,omitempty" name:"EnableHttp2"`
+    HttpProtocol *string `json:"HttpProtocol,omitempty" name:"HttpProtocol"`
+}
+
+func (r *CreateAlbListenerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAlbListenerRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateAlbListenerRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAlbListenerResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateAlbListenerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAlbListenerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAlbListenerRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbListenerId *string `json:"AlbListenerId,omitempty" name:"AlbListenerId"`
+    AlbListenerName *string `json:"AlbListenerName,omitempty" name:"AlbListenerName"`
+    AlbListenerState *string `json:"AlbListenerState,omitempty" name:"AlbListenerState"`
+    Method *string `json:"Method,omitempty" name:"Method"`
+    CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+    TlsCipherPolicy *string `json:"TlsCipherPolicy,omitempty" name:"TlsCipherPolicy"`
+    AlbListenerAclId *string `json:"AlbListenerAclId,omitempty" name:"AlbListenerAclId"`
+    HttpProtocol *string `json:"HttpProtocol,omitempty" name:"HttpProtocol"`
+    SessionState *string `json:"SessionState,omitempty" name:"SessionState"`
+    SessionPersistencePeriod *int `json:"SessionPersistencePeriod,omitempty" name:"SessionPersistencePeriod"`
+    CookieType *string `json:"CookieType,omitempty" name:"CookieType"`
+    CookieName *string `json:"CookieName,omitempty" name:"CookieName"`
+    EnableHttp2 *bool `json:"EnableHttp2,omitempty" name:"EnableHttp2"`
+}
+
+func (r *ModifyAlbListenerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAlbListenerRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyAlbListenerRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAlbListenerResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyAlbListenerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAlbListenerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAlbListenerRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbListenerId *string `json:"AlbListenerId,omitempty" name:"AlbListenerId"`
+}
+
+func (r *DeleteAlbListenerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAlbListenerRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteAlbListenerRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAlbListenerResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *DeleteAlbListenerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAlbListenerResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAlbListenersRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbListenerId []*string `json:"AlbListenerId,omitempty" name:"AlbListenerId"`
+    Filter []*DescribeAlbListenersFilter `json:"Filter,omitempty" name:"Filter"`
+    MaxResults *int `json:"MaxResults,omitempty" name:"MaxResults"`
+    NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
+}
+
+func (r *DescribeAlbListenersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAlbListenersRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeAlbListenersRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAlbListenersResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    NextToken *string `json:"NextToken" name:"NextToken"`
+	AlbListenerSet []struct {
+		AlbListenerId *string `json:"AlbListenerId"`
+		AlbId *string `json:"AlbId"`
+		CreateTime *string `json:"CreateTime"`
+		Method *string `json:"Method"`
+		AlbListenerName *string `json:"AlbListenerName"`
+		Protocol *string `json:"Protocol"`
+		Port *int `json:"Port"`
+		CertificateId *string `json:"CertificateId"`
+		TlsCipherPolicy *string `json:"TlsCipherPolicy"`
+		DefaultBackendServerGroupId *string `json:"DefaultBackendServerGroupId"`
+		AlbListenerAclId *string `json:"AlbListenerAclId"`
+		AlbListenerState *string `json:"AlbListenerState"`
+		RedirectAlbListenerId *string `json:"RedirectAlbListenerId"`
+		HttpProtocol *string `json:"HttpProtocol"`
+		EnableHttp2 *bool `json:"EnableHttp2"`
+	} `json:"AlbListenerSet"`
+}
+
+func (r *DescribeAlbListenersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAlbListenersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAlbRuleGroupRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbRuleGroupName *string `json:"AlbRuleGroupName,omitempty" name:"AlbRuleGroupName"`
+    AlbListenerId *string `json:"AlbListenerId,omitempty" name:"AlbListenerId"`
+    BackendServerGroupId *string `json:"BackendServerGroupId,omitempty" name:"BackendServerGroupId"`
+    ListenerSync *string `json:"ListenerSync,omitempty" name:"ListenerSync"`
+    Method *string `json:"Method,omitempty" name:"Method"`
+    SessionState *string `json:"SessionState,omitempty" name:"SessionState"`
+    SessionPersistencePeriod *int `json:"SessionPersistencePeriod,omitempty" name:"SessionPersistencePeriod"`
+    CookieType *string `json:"CookieType,omitempty" name:"CookieType"`
+    CookieName *string `json:"CookieName,omitempty" name:"CookieName"`
+    HealthCheckState *string `json:"HealthCheckState,omitempty" name:"HealthCheckState"`
+    Timeout *int `json:"Timeout,omitempty" name:"Timeout"`
+    Interval *int `json:"Interval,omitempty" name:"Interval"`
+    HealthyThreshold *int `json:"HealthyThreshold,omitempty" name:"HealthyThreshold"`
+    UnhealthyThreshold *int `json:"UnhealthyThreshold,omitempty" name:"UnhealthyThreshold"`
+    UrlPath *string `json:"UrlPath,omitempty" name:"UrlPath"`
+    HostName *string `json:"HostName,omitempty" name:"HostName"`
+    AlbRuleSet []*CreateAlbRuleGroupAlbRuleSet `json:"AlbRuleSet,omitempty" name:"AlbRuleSet"`
+}
+
+func (r *CreateAlbRuleGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAlbRuleGroupRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateAlbRuleGroupRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAlbRuleGroupResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateAlbRuleGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAlbRuleGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAlbRuleGroupRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbRuleGroupId *string `json:"AlbRuleGroupId,omitempty" name:"AlbRuleGroupId"`
+}
+
+func (r *DeleteAlbRuleGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAlbRuleGroupRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteAlbRuleGroupRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAlbRuleGroupResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *DeleteAlbRuleGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAlbRuleGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAlbRuleGroupsRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbRuleGroupId []*string `json:"AlbRuleGroupId,omitempty" name:"AlbRuleGroupId"`
+    Filter []*DescribeAlbRuleGroupsFilter `json:"Filter,omitempty" name:"Filter"`
+    MaxResults *int `json:"MaxResults,omitempty" name:"MaxResults"`
+    NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
+}
+
+func (r *DescribeAlbRuleGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAlbRuleGroupsRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeAlbRuleGroupsRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAlbRuleGroupsResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    NextToken *string `json:"NextToken" name:"NextToken"`
+	AlbRuleGroupSet []struct {
+		AlbRuleGroupId *string `json:"AlbRuleGroupId"`
+		AlbListenerId *string `json:"AlbListenerId"`
+		AlbRuleGroupName *string `json:"AlbRuleGroupName"`
+		Method *string `json:"Method"`
+		BackendServerGroupId *string `json:"BackendServerGroupId"`
+		ListenerSync *string `json:"ListenerSync"`
+		SessionState *string `json:"SessionState"`
+		SessionPersistencePeriod *int `json:"SessionPersistencePeriod"`
+		CookieType *string `json:"CookieType"`
+		CookieName *string `json:"CookieName"`
+		HealthCheckState *string `json:"HealthCheckState"`
+		Timeout *int `json:"Timeout"`
+		Interval *int `json:"Interval"`
+		HealthyThreshold *int `json:"HealthyThreshold"`
+		UnhealthyThreshold *int `json:"UnhealthyThreshold"`
+		UrlPath *string `json:"UrlPath"`
+		HostName *string `json:"HostName"`
+		AlbRuleSet []struct {
+					AlbRuleType *string `json:"AlbRuleType"`
+					AlbRuleValue *string `json:"AlbRuleValue"`
+			} `json:"AlbRuleSet"`
+		} `json:"AlbRuleGroupSet"`
+}
+
+func (r *DescribeAlbRuleGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAlbRuleGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAlbRuleGroupRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbRuleGroupId *string `json:"AlbRuleGroupId,omitempty" name:"AlbRuleGroupId"`
+    AlbRuleGroupName *string `json:"AlbRuleGroupName,omitempty" name:"AlbRuleGroupName"`
+    BackendServerGroupId *string `json:"BackendServerGroupId,omitempty" name:"BackendServerGroupId"`
+    ListenerSync *string `json:"ListenerSync,omitempty" name:"ListenerSync"`
+    Method *string `json:"Method,omitempty" name:"Method"`
+    SessionState *string `json:"SessionState,omitempty" name:"SessionState"`
+    SessionPersistencePeriod *int `json:"SessionPersistencePeriod,omitempty" name:"SessionPersistencePeriod"`
+    CookieType *string `json:"CookieType,omitempty" name:"CookieType"`
+    CookieName *string `json:"CookieName,omitempty" name:"CookieName"`
+    HealthCheckState *string `json:"HealthCheckState,omitempty" name:"HealthCheckState"`
+    Timeout *int `json:"Timeout,omitempty" name:"Timeout"`
+    Interval *int `json:"Interval,omitempty" name:"Interval"`
+    HealthyThreshold *int `json:"HealthyThreshold,omitempty" name:"HealthyThreshold"`
+    UnhealthyThreshold *int `json:"UnhealthyThreshold,omitempty" name:"UnhealthyThreshold"`
+    UrlPath *string `json:"UrlPath,omitempty" name:"UrlPath"`
+    HostName *string `json:"HostName,omitempty" name:"HostName"`
+    AlbRuleSet []*ModifyAlbRuleGroupAlbRuleSet `json:"AlbRuleSet,omitempty" name:"AlbRuleSet"`
+}
+
+func (r *ModifyAlbRuleGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAlbRuleGroupRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyAlbRuleGroupRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAlbRuleGroupResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyAlbRuleGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAlbRuleGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddAlbRuleRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbRuleGroupId *string `json:"AlbRuleGroupId,omitempty" name:"AlbRuleGroupId"`
+    AlbRuleType *string `json:"AlbRuleType,omitempty" name:"AlbRuleType"`
+    AlbRuleValue *string `json:"AlbRuleValue,omitempty" name:"AlbRuleValue"`
+}
+
+func (r *AddAlbRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddAlbRuleRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "AddAlbRuleRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddAlbRuleResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *AddAlbRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddAlbRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAlbRuleRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbRuleGroupId *string `json:"AlbRuleGroupId,omitempty" name:"AlbRuleGroupId"`
+    AlbRuleType *string `json:"AlbRuleType,omitempty" name:"AlbRuleType"`
+    AlbRuleValue *string `json:"AlbRuleValue,omitempty" name:"AlbRuleValue"`
+}
+
+func (r *DeleteAlbRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAlbRuleRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteAlbRuleRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAlbRuleResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *DeleteAlbRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAlbRuleResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAlbListenerCertGroupRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbListenerId *string `json:"AlbListenerId,omitempty" name:"AlbListenerId"`
+}
+
+func (r *CreateAlbListenerCertGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAlbListenerCertGroupRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateAlbListenerCertGroupRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAlbListenerCertGroupResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateAlbListenerCertGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAlbListenerCertGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAlbListenerCertGroupRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbListenerCertGroupId *string `json:"AlbListenerCertGroupId,omitempty" name:"AlbListenerCertGroupId"`
+}
+
+func (r *DeleteAlbListenerCertGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAlbListenerCertGroupRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteAlbListenerCertGroupRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAlbListenerCertGroupResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *DeleteAlbListenerCertGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAlbListenerCertGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAlbListenerCertGroupsRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbListenerCertGroupId []*string `json:"AlbListenerCertGroupId,omitempty" name:"AlbListenerCertGroupId"`
+    Filter []*DescribeAlbListenerCertGroupsFilter `json:"Filter,omitempty" name:"Filter"`
+    MaxResults *int `json:"MaxResults,omitempty" name:"MaxResults"`
+    NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
+}
+
+func (r *DescribeAlbListenerCertGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAlbListenerCertGroupsRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeAlbListenerCertGroupsRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAlbListenerCertGroupsResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    NextToken *string `json:"NextToken" name:"NextToken"`
+	AlbListenerCertGroupSet []struct {
+		AlbListenerId *string `json:"AlbListenerId"`
+		AlbListenerCertGroupId *string `json:"AlbListenerCertGroupId"`
+		AlbListenerCertSet []struct {
+					CreateTime *string `json:"CreateTime"`
+					CertificateId *string `json:"CertificateId"`
+					CertificateName *string `json:"CertificateName"`
+					CertAuthority *string `json:"CertAuthority"`
+					CommonName *string `json:"CommonName"`
+					ExpireTime *string `json:"ExpireTime"`
+			} `json:"AlbListenerCertSet"`
+		} `json:"AlbListenerCertGroupSet"`
+}
+
+func (r *DescribeAlbListenerCertGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAlbListenerCertGroupsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociateCertificateWithGroupRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbListenerCertGroupId *string `json:"AlbListenerCertGroupId,omitempty" name:"AlbListenerCertGroupId"`
+    CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+}
+
+func (r *AssociateCertificateWithGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssociateCertificateWithGroupRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "AssociateCertificateWithGroupRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociateCertificateWithGroupResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *AssociateCertificateWithGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AssociateCertificateWithGroupResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DissociateCertificateWithGroupRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbListenerCertGroupId *string `json:"AlbListenerCertGroupId,omitempty" name:"AlbListenerCertGroupId"`
+    CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+}
+
+func (r *DissociateCertificateWithGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DissociateCertificateWithGroupRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DissociateCertificateWithGroupRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DissociateCertificateWithGroupResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *DissociateCertificateWithGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DissociateCertificateWithGroupResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
