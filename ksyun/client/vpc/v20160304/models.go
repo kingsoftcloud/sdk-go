@@ -3610,6 +3610,41 @@ func (r *AssignPrivateIpAddressRequest) FromJsonString(s string) error {
 type AssignPrivateIpAddressResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
+	NetworkInterface struct {
+		CreateTime *string `json:"CreateTime"`
+		VpcId *string `json:"VpcId"`
+		VpcName *string `json:"VpcName"`
+		SubnetName *string `json:"SubnetName"`
+		SubnetId *string `json:"SubnetId"`
+		CidrBlock *string `json:"CidrBlock"`
+		SecurityGroupName *string `json:"SecurityGroupName"`
+		SecurityGroupId *string `json:"SecurityGroupId"`
+		InstanceId *string `json:"InstanceId"`
+		PrivateIpAddress *string `json:"PrivateIpAddress"`
+		InstanceType *string `json:"InstanceType"`
+		Dns1 *string `json:"Dns1"`
+		Dns2 *string `json:"Dns2"`
+		NetworkInterfaceType *string `json:"NetworkInterfaceType"`
+		MacAddress *string `json:"MacAddress"`
+		NetworkInterfaceId *string `json:"NetworkInterfaceId"`
+		AvailabilityZoneName *string `json:"AvailabilityZoneName"`
+		AssignedPrivateIpAddressSet []struct {
+					PrivateIpAddress *string `json:"PrivateIpAddress"`
+			} `json:"AssignedPrivateIpAddressSet"`
+			SecurityGroupSet []struct {
+						SecurityGroupId *string `json:"SecurityGroupId"`
+						SecurityGroupName *string `json:"SecurityGroupName"`
+				} `json:"SecurityGroupSet"`
+				Ipv6PublicIpAddressSet []struct {
+							Ipv6PublicIpAddress *string `json:"Ipv6PublicIpAddress"`
+							Ipv6PublicIpAddressId *string `json:"Ipv6PublicIpAddressId"`
+							Ipv6PublicIpCreateTime *string `json:"Ipv6PublicIpCreateTime"`
+							BandWidth *int `json:"BandWidth"`
+					} `json:"Ipv6PublicIpAddressSet"`
+					NetworkInterfaceName *string `json:"NetworkInterfaceName"`
+					Ipv6Public *bool `json:"Ipv6Public"`
+					Ipv6Address *string `json:"Ipv6Address"`
+				} `json:"NetworkInterface"`
 }
 
 func (r *AssignPrivateIpAddressResponse) ToJsonString() string {
