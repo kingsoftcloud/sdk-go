@@ -123,6 +123,7 @@ type DescribeInstancesResponse struct {
 		ProjectId *int `json:"ProjectId"`
 		InstanceName *string `json:"InstanceName"`
 		InstanceType *string `json:"InstanceType"`
+		IsDistributeIpv6 *bool `json:"IsDistributeIpv6"`
 		InstanceConfigure struct {
 				VCPU *int `json:"VCPU"`
 				GPU *int `json:"GPU"`
@@ -130,26 +131,20 @@ type DescribeInstancesResponse struct {
 				DataDiskGb *int `json:"DataDiskGb"`
 				RootDiskGb *int `json:"RootDiskGb"`
 				DataDiskType *string `json:"DataDiskType"`
+				VGPU *string `json:"VGPU"`
 		} `json:"InstanceConfigure"`
 		ImageId *string `json:"ImageId"`
 		SubnetId *string `json:"SubnetId"`
 		PrivateIpAddress *string `json:"PrivateIpAddress"`
 		InstanceState struct {
 				Name *string `json:"Name"`
+				OnMigrate *bool `json:"OnMigrate"`
+				CostTime *string `json:"CostTime"`
+				TimeStamp *string `json:"TimeStamp"`
 		} `json:"InstanceState"`
 		Monitoring struct {
 				State *string `json:"State"`
 		} `json:"Monitoring"`
-		DataDisks struct {
-				DiskId *string `json:"DiskId"`
-				DiskType *string `json:"DiskType"`
-				DiskSize *int `json:"DiskSize"`
-				DeleteWithInstance *bool `json:"DeleteWithInstance"`
-		} `json:"DataDisks"`
-		DataGuard struct {
-				DataGuardId *string `json:"DataGuardId"`
-				DataGuardName *string `json:"DataGuardName"`
-		} `json:"DataGuard"`
 		NetworkInterfaceSet []struct {
 					NetworkInterfaceId *string `json:"NetworkInterfaceId"`
 					NetworkInterfaceType *string `json:"NetworkInterfaceType"`
@@ -157,32 +152,41 @@ type DescribeInstancesResponse struct {
 					SubnetId *string `json:"SubnetId"`
 					MacAddress *string `json:"MacAddress"`
 					PrivateIpAddress *string `json:"PrivateIpAddress"`
-					PublicIp *string `json:"PublicIp"`
-				Ipv6PublicIpAddressSet []struct {
-					Ipv6PublicIpAddress *string `json:"Ipv6PublicIpAddress"`
-				} `json:"Ipv6PublicIpAddressSet"`
 				GroupSet []struct {
 					GroupId *string `json:"GroupId"`
 				} `json:"GroupSet"`
-					AllocationId *string `json:"AllocationId"`
 				SecurityGroupSet []struct {
 					SecurityGroupId *string `json:"SecurityGroupId"`
 				} `json:"SecurityGroupSet"`
+					NetworkInterfaceName *string `json:"NetworkInterfaceName"`
 			} `json:"NetworkInterfaceSet"`
 			SriovNetSupport *string `json:"SriovNetSupport"`
 			IsShowSriovNetSupport *bool `json:"IsShowSriovNetSupport"`
 			CreationDate *string `json:"CreationDate"`
 			AvailabilityZone *string `json:"AvailabilityZone"`
 			AvailabilityZoneName *string `json:"AvailabilityZoneName"`
-			AutoScalingType *string `json:"AutoScalingType"`
+			DedicatedUuid *string `json:"DedicatedUuid"`
 			ProductType *int `json:"ProductType"`
 			ProductWhat *int `json:"ProductWhat"`
+			LiveUpgradeSupport *bool `json:"LiveUpgradeSupport"`
 			ChargeType *string `json:"ChargeType"`
 			SystemDisk struct {
 					DiskType *string `json:"DiskType"`
 					DiskSize *int `json:"DiskSize"`
 			} `json:"SystemDisk"`
-		} `json:"InstancesSet"`
+			HostName *string `json:"HostName"`
+			UserData *string `json:"UserData"`
+			Migration *int `json:"Migration"`
+			DataDisks []struct {
+						DiskId *string `json:"DiskId"`
+						DiskType *string `json:"DiskType"`
+						DiskSize *int `json:"DiskSize"`
+						DeleteWithInstance *bool `json:"DeleteWithInstance"`
+						Encrypted *bool `json:"Encrypted"`
+				} `json:"DataDisks"`
+				VncSupport *bool `json:"VncSupport"`
+				Platform *string `json:"Platform"`
+			} `json:"InstancesSet"`
 }
 
 func (r *DescribeInstancesResponse) ToJsonString() string {
