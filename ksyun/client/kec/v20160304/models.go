@@ -3022,8 +3022,6 @@ type DescribeInstanceTypeConfigsResponse struct {
 				} `json:"SystemDiskQuotaSet"`
 				DataDiskQuotaSet []struct {
 							DataDiskType *string `json:"DataDiskType"`
-							DataDiskMinSize *int `json:"DataDiskMinSize"`
-							DataDiskMaxsize *int `json:"DataDiskMaxsize"`
 							DataDiskCount *int `json:"DataDiskCount"`
 					} `json:"DataDiskQuotaSet"`
 				} `json:"InstanceTypeConfigSet"`
