@@ -337,7 +337,7 @@ type DescribeSubnetsResponse struct {
 		AvailabilityZoneName *string `json:"AvailabilityZoneName"`
 		ProvidedIpv6CidrBlock *bool `json:"ProvidedIpv6CidrBlock"`
 		SecondaryCidrId *string `json:"SecondaryCidrId"`
-		AvailableIpNumber *int `json:"AvailableIpNumber"`
+		AvailableIpNumber *string `json:"AvailableIpNumber"`
 		NetworkAclId *string `json:"NetworkAclId"`
 		NatId *string `json:"NatId"`
 		RouteTableId *string `json:"RouteTableId"`
