@@ -933,10 +933,10 @@ type GetLoginProfileResponse struct {
 	CreateLoginProfileResult struct {
 		LoginProfile struct {
 				UserName *string `json:"UserName"`
-				PasswordResetRequired *string `json:"PasswordResetRequired"`
-				OpenLoginProtection *string `json:"OpenLoginProtection"`
-				OpenSecurityProtection *string `json:"OpenSecurityProtection"`
-				EnableMfa *string `json:"EnableMfa"`
+				PasswordResetRequired *bool `json:"PasswordResetRequired"`
+				OpenLoginProtection *int `json:"OpenLoginProtection"`
+				OpenSecurityProtection *int `json:"OpenSecurityProtection"`
+				EnableMfa *int `json:"EnableMfa"`
 				ViewAllProject *int `json:"ViewAllProject"`
 				LastLoginDate *string `json:"LastLoginDate"`
 				LastLoginIp *string `json:"LastLoginIp"`
