@@ -120,7 +120,7 @@ type DescribeInstancesResponse struct {
     RequestId *string `json:"RequestId" name:"RequestId"`
 	InstancesSet []struct {
 		InstanceId *string `json:"InstanceId"`
-		ProjectId *string `json:"ProjectId"`
+		ProjectId *int `json:"ProjectId"`
 		ShutdownNoCharge *bool `json:"ShutdownNoCharge"`
 		IsDistributeIpv6 *bool `json:"IsDistributeIpv6"`
 		InstanceName *string `json:"InstanceName"`
