@@ -978,39 +978,6 @@ func (c *Client) DeleteDedicatedHostWithContext(ctx context.Context, request *De
     }
     return msg
 }
-func NewRenameDedicatedHostRequest() (request *RenameDedicatedHostRequest) {
-    request = &RenameDedicatedHostRequest{
-        BaseRequest: &ksyunhttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("kec", APIVersion, "RenameDedicatedHost")
-    return
-}
-
-func NewRenameDedicatedHostResponse() (response *RenameDedicatedHostResponse) {
-    response = &RenameDedicatedHostResponse{
-        BaseResponse: &ksyunhttp.BaseResponse{},
-    }
-    return
-}
-
-func (c *Client) RenameDedicatedHost(request *RenameDedicatedHostRequest) (string) {
-    return c.RenameDedicatedHostWithContext(context.Background(), request)
-}
-
-func (c *Client) RenameDedicatedHostWithContext(ctx context.Context, request *RenameDedicatedHostRequest) (string) {
-    if request == nil {
-        request = NewRenameDedicatedHostRequest()
-    }
-    request.SetContext(ctx)
-    request.SetContentType("application/x-www-form-urlencoded")
-
-    response := NewRenameDedicatedHostResponse()
-    err, msg := c.Send(request, response)
-    if err != nil {
-        return fmt.Sprintf("%+v\n", err)
-    }
-    return msg
-}
 func NewDescribeDedicatedHostsRequest() (request *DescribeDedicatedHostsRequest) {
     request = &DescribeDedicatedHostsRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -3084,6 +3051,39 @@ func (c *Client) DetachInstancesIamRoleWithContext(ctx context.Context, request 
     request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDetachInstancesIamRoleResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCopySnapshotRequest() (request *CopySnapshotRequest) {
+    request = &CopySnapshotRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kec", APIVersion, "CopySnapshot")
+    return
+}
+
+func NewCopySnapshotResponse() (response *CopySnapshotResponse) {
+    response = &CopySnapshotResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CopySnapshot(request *CopySnapshotRequest) (string) {
+    return c.CopySnapshotWithContext(context.Background(), request)
+}
+
+func (c *Client) CopySnapshotWithContext(ctx context.Context, request *CopySnapshotRequest) (string) {
+    if request == nil {
+        request = NewCopySnapshotRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewCopySnapshotResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)
