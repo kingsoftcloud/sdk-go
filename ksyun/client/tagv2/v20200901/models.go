@@ -125,8 +125,8 @@ type ListTagsResponse struct {
 		Key *string `json:"Key"`
 		Value *string `json:"Value"`
 		CreateTime *string `json:"CreateTime"`
-		CanDelete *bool `json:"CanDelete"`
-		IsBillTag *bool `json:"IsBillTag"`
+		CanDelete *int `json:"CanDelete"`
+		IsBillTag *int `json:"IsBillTag"`
 	} `json:"Tags"`
     Page *int `json:"Page" name:"Page"`
     PageSize *int `json:"PageSize" name:"PageSize"`
