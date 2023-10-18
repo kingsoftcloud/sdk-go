@@ -78,7 +78,7 @@ func (c *Client) DeleteTagWithContext(ctx context.Context, request *DeleteTagReq
         request = NewDeleteTagRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/x-www-form-urlencoded")
+    request.SetContentType("application/json")
 
     response := NewDeleteTagResponse()
     err, msg := c.Send(request, response)
@@ -243,7 +243,7 @@ func (c *Client) ReplaceResourcesTagsWithContext(ctx context.Context, request *R
         request = NewReplaceResourcesTagsRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/x-www-form-urlencoded")
+    request.SetContentType("application/json")
 
     response := NewReplaceResourcesTagsResponse()
     err, msg := c.Send(request, response)
