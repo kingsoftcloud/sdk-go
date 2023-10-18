@@ -44,7 +44,7 @@ func (r *CreateTagRequest) FromJsonString(s string) error {
 
 type CreateTagResponse struct {
     *ksyunhttp.BaseResponse
-    Result *string `json:"Result" name:"Result"`
+    Result *bool `json:"Result" name:"Result"`
     TagId *int `json:"TagId" name:"TagId"`
     RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -81,7 +81,7 @@ func (r *DeleteTagRequest) FromJsonString(s string) error {
 
 type DeleteTagResponse struct {
     *ksyunhttp.BaseResponse
-    Result *string `json:"Result" name:"Result"`
+    Result *bool `json:"Result" name:"Result"`
     RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -301,7 +301,7 @@ func (r *ReplaceResourcesTagsRequest) FromJsonString(s string) error {
 
 type ReplaceResourcesTagsResponse struct {
     *ksyunhttp.BaseResponse
-    Result *string `json:"Result" name:"Result"`
+    Result *bool `json:"Result" name:"Result"`
     RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -339,7 +339,7 @@ func (r *DetachResourceTagsRequest) FromJsonString(s string) error {
 
 type DetachResourceTagsResponse struct {
     *ksyunhttp.BaseResponse
-    Result *string `json:"Result" name:"Result"`
+    Result *bool `json:"Result" name:"Result"`
     RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
