@@ -271,6 +271,7 @@ type RunInstancesRequest struct {
     AddressPurchaseTime *int `json:"AddressPurchaseTime,omitempty" name:"AddressPurchaseTime"`
     KeyId []*string `json:"KeyId,omitempty" name:"KeyId"`
     KeepImageLogin *bool `json:"keepImageLogin,omitempty" name:"keepImageLogin"`
+    KeyId []*string `json:"keyId,omitempty" name:"keyId"`
     HostName *string `json:"HostName,omitempty" name:"HostName"`
     HostNameSuffix *int `json:"HostNameSuffix,omitempty" name:"HostNameSuffix"`
     Password *string `json:"Password,omitempty" name:"Password"`
@@ -3298,9 +3299,10 @@ func (r *DeleteFileSystemResponse) FromJsonString(s string) error {
 
 type DescribeFileSystemsRequest struct {
     *ksyunhttp.BaseRequest
-    FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+    FileSystemId []*string `json:"FileSystemId,omitempty" name:"FileSystemId"`
     MaxResults *int `json:"MaxResults,omitempty" name:"MaxResults"`
     Marker *int `json:"Marker,omitempty" name:"Marker"`
+    ProjectId []*int `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *DescribeFileSystemsRequest) ToJsonString() string {
