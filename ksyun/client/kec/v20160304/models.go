@@ -271,7 +271,6 @@ type RunInstancesRequest struct {
     AddressPurchaseTime *int `json:"AddressPurchaseTime,omitempty" name:"AddressPurchaseTime"`
     KeyId []*string `json:"KeyId,omitempty" name:"KeyId"`
     KeepImageLogin *bool `json:"keepImageLogin,omitempty" name:"keepImageLogin"`
-    KeyId []*string `json:"keyId,omitempty" name:"keyId"`
     HostName *string `json:"HostName,omitempty" name:"HostName"`
     HostNameSuffix *int `json:"HostNameSuffix,omitempty" name:"HostNameSuffix"`
     Password *string `json:"Password,omitempty" name:"Password"`
