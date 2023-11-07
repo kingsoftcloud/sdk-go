@@ -38,6 +38,7 @@ type GetLinesResponse struct {
 		LineType *string `json:"LineType"`
 		LineName *string `json:"LineName"`
 		IpVersion *string `json:"IpVersion"`
+		Isp *string `json:"Isp"`
 	} `json:"LineSet"`
 }
 
@@ -86,7 +87,9 @@ type DescribeAddressesResponse struct {
 		BandWidth *int `json:"BandWidth"`
 		CreateTime *string `json:"CreateTime"`
 		State *string `json:"State"`
+		IpState *string `json:"IpState"`
 		AllocationId *string `json:"AllocationId"`
+		InternetGatewayId *string `json:"InternetGatewayId"`
 		PublicIp *string `json:"PublicIp"`
 		InstanceType *string `json:"InstanceType"`
 		InstanceId *string `json:"InstanceId"`
@@ -97,6 +100,9 @@ type DescribeAddressesResponse struct {
 		BandWidthShareId *string `json:"BandWidthShareId"`
 		ProjectId *string `json:"ProjectId"`
 		Mode *string `json:"Mode"`
+		ChargeType *string `json:"ChargeType"`
+		ServiceEndTime *string `json:"ServiceEndTime"`
+		HostType *string `json:"HostType"`
 	} `json:"AddressesSet"`
 }
 

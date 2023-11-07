@@ -2958,5 +2958,38 @@ func (c *Client) ModifyNatIpStatusWithContext(ctx context.Context, request *Modi
     }
     return msg
 }
+func NewQueryPeerTopVifMonitorRequest() (request *QueryPeerTopVifMonitorRequest) {
+    request = &QueryPeerTopVifMonitorRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "QueryPeerTopVifMonitor")
+    return
+}
+
+func NewQueryPeerTopVifMonitorResponse() (response *QueryPeerTopVifMonitorResponse) {
+    response = &QueryPeerTopVifMonitorResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) QueryPeerTopVifMonitor(request *QueryPeerTopVifMonitorRequest) (string) {
+    return c.QueryPeerTopVifMonitorWithContext(context.Background(), request)
+}
+
+func (c *Client) QueryPeerTopVifMonitorWithContext(ctx context.Context, request *QueryPeerTopVifMonitorRequest) (string) {
+    if request == nil {
+        request = NewQueryPeerTopVifMonitorRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewQueryPeerTopVifMonitorResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 

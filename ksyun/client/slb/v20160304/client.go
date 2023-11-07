@@ -2430,5 +2430,38 @@ func (c *Client) SetAlbAccessLogWithContext(ctx context.Context, request *SetAlb
     }
     return msg
 }
+func NewCloneLoadBalancerRequest() (request *CloneLoadBalancerRequest) {
+    request = &CloneLoadBalancerRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "CloneLoadBalancer")
+    return
+}
+
+func NewCloneLoadBalancerResponse() (response *CloneLoadBalancerResponse) {
+    response = &CloneLoadBalancerResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CloneLoadBalancer(request *CloneLoadBalancerRequest) (string) {
+    return c.CloneLoadBalancerWithContext(context.Background(), request)
+}
+
+func (c *Client) CloneLoadBalancerWithContext(ctx context.Context, request *CloneLoadBalancerRequest) (string) {
+    if request == nil {
+        request = NewCloneLoadBalancerRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewCloneLoadBalancerResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 

@@ -38,6 +38,11 @@ func (r *CreateBandWidthShareRequest) FromJsonString(s string) error {
 type CreateBandWidthShareResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
+    BandWidthShareId *string `json:"BandWidthShareId" name:"BandWidthShareId"`
+    BandWidth *int `json:"BandWidth" name:"BandWidth"`
+    BandWidthShareName *string `json:"BandWidthShareName" name:"BandWidthShareName"`
+    CreateTime *string `json:"CreateTime" name:"CreateTime"`
+    LineId *string `json:"LineId" name:"LineId"`
 }
 
 func (r *CreateBandWidthShareResponse) ToJsonString() string {
@@ -85,9 +90,12 @@ type DescribeBandWidthSharesResponse struct {
 		CreateTime *string `json:"CreateTime"`
 		LineId *string `json:"LineId"`
 		ProjectId *string `json:"ProjectId"`
+		LineName *string `json:"LineName"`
 		AssociateBandWidthShareInfoSet []struct {
 					AllocationId *string `json:"AllocationId"`
 			} `json:"AssociateBandWidthShareInfoSet"`
+			ChargeType *string `json:"ChargeType"`
+			ServiceEndTime *string `json:"ServiceEndTime"`
 		} `json:"BandWidthShareSet"`
 }
 
@@ -245,6 +253,52 @@ func (r *DeleteBandWidthShareResponse) ToJsonString() string {
 }
 
 func (r *DeleteBandWidthShareResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryBwsTopEipMonitorRequest struct {
+    *ksyunhttp.BaseRequest
+    BandWidthShareId *string `json:"BandWidthShareId,omitempty" name:"BandWidthShareId"`
+    StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+    EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+    SortType *string `json:"SortType,omitempty" name:"SortType"`
+    PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+}
+
+func (r *QueryBwsTopEipMonitorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryBwsTopEipMonitorRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "QueryBwsTopEipMonitorRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryBwsTopEipMonitorResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+	BwsMonitorDataList []struct {
+		AllocationId *string `json:"AllocationId"`
+		PublicIp *string `json:"PublicIp"`
+		InBound *string `json:"InBound"`
+		OutBound *string `json:"OutBound"`
+		Num *string `json:"Num"`
+	} `json:"BwsMonitorDataList"`
+}
+
+func (r *QueryBwsTopEipMonitorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryBwsTopEipMonitorResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
