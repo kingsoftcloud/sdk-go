@@ -219,5 +219,38 @@ func (c *Client) DeleteBandWidthShareWithContext(ctx context.Context, request *D
     }
     return msg
 }
+func NewQueryBwsTopEipMonitorRequest() (request *QueryBwsTopEipMonitorRequest) {
+    request = &QueryBwsTopEipMonitorRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bws", APIVersion, "QueryBwsTopEipMonitor")
+    return
+}
+
+func NewQueryBwsTopEipMonitorResponse() (response *QueryBwsTopEipMonitorResponse) {
+    response = &QueryBwsTopEipMonitorResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) QueryBwsTopEipMonitor(request *QueryBwsTopEipMonitorRequest) (string) {
+    return c.QueryBwsTopEipMonitorWithContext(context.Background(), request)
+}
+
+func (c *Client) QueryBwsTopEipMonitorWithContext(ctx context.Context, request *QueryBwsTopEipMonitorRequest) (string) {
+    if request == nil {
+        request = NewQueryBwsTopEipMonitorRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewQueryBwsTopEipMonitorResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 
