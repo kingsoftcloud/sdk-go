@@ -13,7 +13,7 @@ type GetMetricStatisticsRequest struct {
     StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
     EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
     Aggregate *string `json:"Aggregate,omitempty" name:"Aggregate"`
-    Period *int `json:"Period,omitempty" name:"Period"`
+    Period *string `json:"Period,omitempty" name:"Period"`
 }
 
 func (r *GetMetricStatisticsRequest) ToJsonString() string {
