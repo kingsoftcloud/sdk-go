@@ -942,7 +942,6 @@ type DescribeRemoteManagementsResponse struct {
 		RemoteManagementId *string `json:"RemoteManagementId"`
 		PhoneNumber *string `json:"PhoneNumber"`
 		Name *string `json:"Name"`
-		Name *string `json:"Name"`
 	} `json:"RemoteManagementSet"`
 }
 
