@@ -1737,5 +1737,38 @@ func (c *Client) RejectShareImageWithContext(ctx context.Context, request *Rejec
     }
     return msg
 }
+func NewAutoDeleteEpcRequest() (request *AutoDeleteEpcRequest) {
+    request = &AutoDeleteEpcRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("epc", APIVersion, "AutoDeleteEpc")
+    return
+}
+
+func NewAutoDeleteEpcResponse() (response *AutoDeleteEpcResponse) {
+    response = &AutoDeleteEpcResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) AutoDeleteEpc(request *AutoDeleteEpcRequest) (string) {
+    return c.AutoDeleteEpcWithContext(context.Background(), request)
+}
+
+func (c *Client) AutoDeleteEpcWithContext(ctx context.Context, request *AutoDeleteEpcRequest) (string) {
+    if request == nil {
+        request = NewAutoDeleteEpcRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewAutoDeleteEpcResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 
