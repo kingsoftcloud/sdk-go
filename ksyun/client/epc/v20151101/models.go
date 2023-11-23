@@ -355,6 +355,7 @@ type ReinstallEpcRequest struct {
     DelayStart *int `json:"DelayStart,omitempty" name:"DelayStart"`
     AvailabilityZone *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
     GpuImageDriverId *string `json:"GpuImageDriverId,omitempty" name:"GpuImageDriverId"`
+    ContainerAgent *string `json:"containerAgent,omitempty" name:"containerAgent"`
 }
 
 func (r *ReinstallEpcRequest) ToJsonString() string {
