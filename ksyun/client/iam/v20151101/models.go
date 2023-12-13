@@ -46,14 +46,14 @@ type CreateUserResponse struct {
 				CreateDate *string `json:"CreateDate"`
 				Phone *string `json:"Phone"`
 				CountryMobileCode *string `json:"CountryMobileCode"`
-				isInternational *string `json:"isInternational"`
+				isInternational *int `json:"isInternational"`
 				Email *string `json:"Email"`
 				PhoneVerified *string `json:"PhoneVerified"`
 				EmailVerified *string `json:"EmailVerified"`
 				Remark *string `json:"Remark"`
 				Krn *string `json:"Krn"`
 				PasswordResetRequired *bool `json:"PasswordResetRequired"`
-				EnableMFA *string `json:"EnableMFA"`
+				EnableMFA *int `json:"EnableMFA"`
 				NeedBindMfa *string `json:"NeedBindMfa"`
 				UpdateDate *string `json:"UpdateDate"`
 		} `json:"User"`
