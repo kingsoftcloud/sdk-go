@@ -2463,5 +2463,368 @@ func (c *Client) CloneLoadBalancerWithContext(ctx context.Context, request *Clon
     }
     return msg
 }
+func NewSetLBDeleteProtectionRequest() (request *SetLBDeleteProtectionRequest) {
+    request = &SetLBDeleteProtectionRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "SetLBDeleteProtection")
+    return
+}
+
+func NewSetLBDeleteProtectionResponse() (response *SetLBDeleteProtectionResponse) {
+    response = &SetLBDeleteProtectionResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) SetLBDeleteProtection(request *SetLBDeleteProtectionRequest) (string) {
+    return c.SetLBDeleteProtectionWithContext(context.Background(), request)
+}
+
+func (c *Client) SetLBDeleteProtectionWithContext(ctx context.Context, request *SetLBDeleteProtectionRequest) (string) {
+    if request == nil {
+        request = NewSetLBDeleteProtectionRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewSetLBDeleteProtectionResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewSetLBModificationProtectionRequest() (request *SetLBModificationProtectionRequest) {
+    request = &SetLBModificationProtectionRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "SetLBModificationProtection")
+    return
+}
+
+func NewSetLBModificationProtectionResponse() (response *SetLBModificationProtectionResponse) {
+    response = &SetLBModificationProtectionResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) SetLBModificationProtection(request *SetLBModificationProtectionRequest) (string) {
+    return c.SetLBModificationProtectionWithContext(context.Background(), request)
+}
+
+func (c *Client) SetLBModificationProtectionWithContext(ctx context.Context, request *SetLBModificationProtectionRequest) (string) {
+    if request == nil {
+        request = NewSetLBModificationProtectionRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewSetLBModificationProtectionResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyCertificateWithGroupRequest() (request *ModifyCertificateWithGroupRequest) {
+    request = &ModifyCertificateWithGroupRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "ModifyCertificateWithGroup")
+    return
+}
+
+func NewModifyCertificateWithGroupResponse() (response *ModifyCertificateWithGroupResponse) {
+    response = &ModifyCertificateWithGroupResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyCertificateWithGroup(request *ModifyCertificateWithGroupRequest) (string) {
+    return c.ModifyCertificateWithGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyCertificateWithGroupWithContext(ctx context.Context, request *ModifyCertificateWithGroupRequest) (string) {
+    if request == nil {
+        request = NewModifyCertificateWithGroupRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewModifyCertificateWithGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateAlbBackendServerGroupRequest() (request *CreateAlbBackendServerGroupRequest) {
+    request = &CreateAlbBackendServerGroupRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "CreateAlbBackendServerGroup")
+    return
+}
+
+func NewCreateAlbBackendServerGroupResponse() (response *CreateAlbBackendServerGroupResponse) {
+    response = &CreateAlbBackendServerGroupResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateAlbBackendServerGroup(request *CreateAlbBackendServerGroupRequest) (string) {
+    return c.CreateAlbBackendServerGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateAlbBackendServerGroupWithContext(ctx context.Context, request *CreateAlbBackendServerGroupRequest) (string) {
+    if request == nil {
+        request = NewCreateAlbBackendServerGroupRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewCreateAlbBackendServerGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteAlbBackendServerGroupRequest() (request *DeleteAlbBackendServerGroupRequest) {
+    request = &DeleteAlbBackendServerGroupRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DeleteAlbBackendServerGroup")
+    return
+}
+
+func NewDeleteAlbBackendServerGroupResponse() (response *DeleteAlbBackendServerGroupResponse) {
+    response = &DeleteAlbBackendServerGroupResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteAlbBackendServerGroup(request *DeleteAlbBackendServerGroupRequest) (string) {
+    return c.DeleteAlbBackendServerGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteAlbBackendServerGroupWithContext(ctx context.Context, request *DeleteAlbBackendServerGroupRequest) (string) {
+    if request == nil {
+        request = NewDeleteAlbBackendServerGroupRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDeleteAlbBackendServerGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyAlbBackendServerGroupRequest() (request *ModifyAlbBackendServerGroupRequest) {
+    request = &ModifyAlbBackendServerGroupRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "ModifyAlbBackendServerGroup")
+    return
+}
+
+func NewModifyAlbBackendServerGroupResponse() (response *ModifyAlbBackendServerGroupResponse) {
+    response = &ModifyAlbBackendServerGroupResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyAlbBackendServerGroup(request *ModifyAlbBackendServerGroupRequest) (string) {
+    return c.ModifyAlbBackendServerGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyAlbBackendServerGroupWithContext(ctx context.Context, request *ModifyAlbBackendServerGroupRequest) (string) {
+    if request == nil {
+        request = NewModifyAlbBackendServerGroupRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewModifyAlbBackendServerGroupResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeAlbBackendServerGroupsRequest() (request *DescribeAlbBackendServerGroupsRequest) {
+    request = &DescribeAlbBackendServerGroupsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DescribeAlbBackendServerGroups")
+    return
+}
+
+func NewDescribeAlbBackendServerGroupsResponse() (response *DescribeAlbBackendServerGroupsResponse) {
+    response = &DescribeAlbBackendServerGroupsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeAlbBackendServerGroups(request *DescribeAlbBackendServerGroupsRequest) (string) {
+    return c.DescribeAlbBackendServerGroupsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAlbBackendServerGroupsWithContext(ctx context.Context, request *DescribeAlbBackendServerGroupsRequest) (string) {
+    if request == nil {
+        request = NewDescribeAlbBackendServerGroupsRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDescribeAlbBackendServerGroupsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewRegisterAlbBackendServerRequest() (request *RegisterAlbBackendServerRequest) {
+    request = &RegisterAlbBackendServerRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "RegisterAlbBackendServer")
+    return
+}
+
+func NewRegisterAlbBackendServerResponse() (response *RegisterAlbBackendServerResponse) {
+    response = &RegisterAlbBackendServerResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) RegisterAlbBackendServer(request *RegisterAlbBackendServerRequest) (string) {
+    return c.RegisterAlbBackendServerWithContext(context.Background(), request)
+}
+
+func (c *Client) RegisterAlbBackendServerWithContext(ctx context.Context, request *RegisterAlbBackendServerRequest) (string) {
+    if request == nil {
+        request = NewRegisterAlbBackendServerRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewRegisterAlbBackendServerResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeregisterAlbBackendServerRequest() (request *DeregisterAlbBackendServerRequest) {
+    request = &DeregisterAlbBackendServerRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DeregisterAlbBackendServer")
+    return
+}
+
+func NewDeregisterAlbBackendServerResponse() (response *DeregisterAlbBackendServerResponse) {
+    response = &DeregisterAlbBackendServerResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeregisterAlbBackendServer(request *DeregisterAlbBackendServerRequest) (string) {
+    return c.DeregisterAlbBackendServerWithContext(context.Background(), request)
+}
+
+func (c *Client) DeregisterAlbBackendServerWithContext(ctx context.Context, request *DeregisterAlbBackendServerRequest) (string) {
+    if request == nil {
+        request = NewDeregisterAlbBackendServerRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDeregisterAlbBackendServerResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyAlbBackendServerRequest() (request *ModifyAlbBackendServerRequest) {
+    request = &ModifyAlbBackendServerRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "ModifyAlbBackendServer")
+    return
+}
+
+func NewModifyAlbBackendServerResponse() (response *ModifyAlbBackendServerResponse) {
+    response = &ModifyAlbBackendServerResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyAlbBackendServer(request *ModifyAlbBackendServerRequest) (string) {
+    return c.ModifyAlbBackendServerWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyAlbBackendServerWithContext(ctx context.Context, request *ModifyAlbBackendServerRequest) (string) {
+    if request == nil {
+        request = NewModifyAlbBackendServerRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewModifyAlbBackendServerResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeAlbBackendServersRequest() (request *DescribeAlbBackendServersRequest) {
+    request = &DescribeAlbBackendServersRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "DescribeAlbBackendServers")
+    return
+}
+
+func NewDescribeAlbBackendServersResponse() (response *DescribeAlbBackendServersResponse) {
+    response = &DescribeAlbBackendServersResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeAlbBackendServers(request *DescribeAlbBackendServersRequest) (string) {
+    return c.DescribeAlbBackendServersWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAlbBackendServersWithContext(ctx context.Context, request *DescribeAlbBackendServersRequest) (string) {
+    if request == nil {
+        request = NewDescribeAlbBackendServersRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDescribeAlbBackendServersResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 

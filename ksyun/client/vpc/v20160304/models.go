@@ -29,6 +29,11 @@ type DescribeNatsFilter struct {
     Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
+type DescribeNatsTagKV struct {
+    Name *string `json:"Name,omitempty" name:"Name"`
+    Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type DescribeInternetGatewaysFilter struct {
     Name *string `json:"Name,omitempty" name:"Name"`
     Value []*string `json:"Value,omitempty" name:"Value"`
@@ -441,6 +446,10 @@ type CreateRouteRequest struct {
     DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitempty" name:"DirectConnectGatewayId"`
     VpnTunnelId *string `json:"VpnTunnelId,omitempty" name:"VpnTunnelId"`
     NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
+    HaVipId *string `json:"HaVipId,omitempty" name:"HaVipId"`
+    HaVipMasterNetworkInterfaceId *string `json:"HaVipMasterNetworkInterfaceId,omitempty" name:"HaVipMasterNetworkInterfaceId"`
+    Description *string `json:"Description,omitempty" name:"Description"`
+    RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 }
 
 func (r *CreateRouteRequest) ToJsonString() string {
@@ -463,7 +472,14 @@ type CreateRouteResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
     RouteId *string `json:"RouteId" name:"RouteId"`
+    RouteType *string `json:"RouteType" name:"RouteType"`
+    CreateTime *string `json:"CreateTime" name:"CreateTime"`
+    VpcId *string `json:"VpcId" name:"VpcId"`
+    DestinationCidrBlock *string `json:"DestinationCidrBlock" name:"DestinationCidrBlock"`
     System *bool `json:"System" name:"System"`
+    Description *string `json:"Description" name:"Description"`
+    RouteTableId *string `json:"RouteTableId" name:"RouteTableId"`
+    RouteEntryType *string `json:"RouteEntryType" name:"RouteEntryType"`
 }
 
 func (r *CreateRouteResponse) ToJsonString() string {
@@ -548,6 +564,9 @@ type DescribeRoutesResponse struct {
 		Status *string `json:"Status"`
 		System *bool `json:"System"`
 		RoutePublishStatus *string `json:"RoutePublishStatus"`
+		Description *string `json:"Description"`
+		RouteTableId *string `json:"RouteTableId"`
+		RouteEntryType *string `json:"RouteEntryType"`
 		NextHopSet []struct {
 					GatewayId *string `json:"GatewayId"`
 					GatewayName *string `json:"GatewayName"`
@@ -1134,6 +1153,9 @@ type DescribeNatsRequest struct {
     ProjectId []*string `json:"ProjectId,omitempty" name:"ProjectId"`
     NatId []*string `json:"NatId,omitempty" name:"NatId"`
     Filter []*DescribeNatsFilter `json:"Filter,omitempty" name:"Filter"`
+    IsContainTag *bool `json:"IsContainTag,omitempty" name:"IsContainTag"`
+    TagKey []*string `json:"TagKey,omitempty" name:"TagKey"`
+    TagKV []*DescribeNatsTagKV `json:"TagKV,omitempty" name:"TagKV"`
     MaxResults *int `json:"MaxResults,omitempty" name:"MaxResults"`
     NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
 }
@@ -1201,7 +1223,13 @@ type DescribeNatsResponse struct {
 										Description *string `json:"Description"`
 										Enabled *bool `json:"Enabled"`
 								} `json:"DnatSet"`
-							} `json:"NatSet"`
+								TagSet []struct {
+											ResourceUuid *string `json:"ResourceUuid"`
+											TagId *string `json:"TagId"`
+											TagKey *string `json:"TagKey"`
+											TagValue *string `json:"TagValue"`
+									} `json:"TagSet"`
+								} `json:"NatSet"`
 }
 
 func (r *DescribeNatsResponse) ToJsonString() string {
