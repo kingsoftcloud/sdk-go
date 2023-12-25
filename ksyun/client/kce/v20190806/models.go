@@ -110,17 +110,6 @@ type CreateNodePoolInstanceTag struct {
     Value *string `json:"Value,omitempty" name:"Value"`
 }
 
-type CreateNodePoolLabel struct {
-    Key *string `json:"Key,omitempty" name:"Key"`
-    Value *string `json:"Value,omitempty" name:"Value"`
-}
-
-type CreateNodePoolTaint struct {
-    Key *string `json:"Key,omitempty" name:"Key"`
-    Value *string `json:"Value,omitempty" name:"Value"`
-    Effect *string `json:"Effect,omitempty" name:"Effect"`
-}
-
 type ModifyNodePoolLabel struct {
     Key *string `json:"Key,omitempty" name:"Key"`
     Value *string `json:"Value,omitempty" name:"Value"`
