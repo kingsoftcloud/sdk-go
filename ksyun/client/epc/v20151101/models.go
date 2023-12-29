@@ -491,7 +491,7 @@ func (r *DescribeEpcsRequest) FromJsonString(s string) error {
 
 type DescribeEpcsResponse struct {
     *ksyunhttp.BaseResponse
-    TotalCount *int `json:"TotalCount" name:"TotalCount"`
+    TotalCount *string `json:"TotalCount" name:"TotalCount"`
     RequestId *string `json:"RequestId" name:"RequestId"`
     NextToken *string `json:"NextToken" name:"NextToken"`
 	HostSet []struct {
@@ -501,96 +501,90 @@ type DescribeEpcsResponse struct {
 		GpuImageDriverId *string `json:"GpuImageDriverId"`
 		NvmeDataFileType *string `json:"NvmeDataFileType"`
 		Memory *string `json:"Memory"`
-		Cpu []struct {
-					Model *string `json:"Model"`
-					Count *int `json:"Count"`
-					Frequence *string `json:"Frequence"`
-					CoreCount *int `json:"CoreCount"`
-			} `json:"Cpu"`
-			Raid *string `json:"Raid"`
-			Gpu []struct {
-						Model *string `json:"Model"`
-						GpuCount *int `json:"GpuCount"`
-						Count *int `json:"Count"`
-						Frequence *string `json:"Frequence"`
-						CoreCount *int `json:"CoreCount"`
-				} `json:"Gpu"`
-				Roce struct {
-						RoceIp *string `json:"RoceIp"`
-						RoceMask *string `json:"RoceMask"`
-						RoceGateWay *string `json:"RoceGateWay"`
-				} `json:"Roce"`
-				CloudMonitorAgent *string `json:"CloudMonitorAgent"`
-				DataDiskCatalogue *string `json:"DataDiskCatalogue"`
-				NetworkInterfaceMode *string `json:"NetworkInterfaceMode"`
-				RaidTemplateId *string `json:"RaidTemplateId"`
-				DataVolumeSet []struct {
-							VolumeId *string `json:"VolumeId"`
-							VolumeType *string `json:"VolumeType"`
-							DeleteWithInstance *bool `json:"DeleteWithInstance"`
-							VolumeSize *string `json:"VolumeSize"`
-					} `json:"DataVolumeSet"`
-					ImageId *string `json:"ImageId"`
-					SystemVolumeType *string `json:"SystemVolumeType"`
-					HostName *string `json:"HostName"`
-					Tags *string `json:"Tags"`
-					SystemFileType *string `json:"SystemFileType"`
-					EnableBond *bool `json:"EnableBond"`
-					ProductType *string `json:"ProductType"`
-					AvailabilityZone *string `json:"AvailabilityZone"`
-					HostId *string `json:"HostId"`
-					NetworkInterfaceAttributeSet []struct {
-								PrivateIpAddress *string `json:"PrivateIpAddress"`
-								NetworkInterfaceType *string `json:"NetworkInterfaceType"`
-							SecurityGroupSet []struct {
-								SecurityGroupId *string `json:"SecurityGroupId"`
-							} `json:"SecurityGroupSet"`
-								DNS1 *string `json:"DNS1"`
-								DNS2 *string `json:"DNS2"`
-								SubnetId *string `json:"SubnetId"`
-								NetworkInterfaceId *string `json:"NetworkInterfaceId"`
-								Mac *string `json:"Mac"`
-								VpcId *string `json:"VpcId"`
-						} `json:"NetworkInterfaceAttributeSet"`
-						ComputerName *string `json:"ComputerName"`
-						CabinetId *string `json:"CabinetId"`
-						DiskSet []struct {
-									DiskType *string `json:"DiskType"`
-									Space *string `json:"Space"`
-									DiskCount *int `json:"DiskCount"`
-									Raid *string `json:"Raid"`
-									DiskAttribute *string `json:"DiskAttribute"`
-									SystemDiskSpace *string `json:"SystemDiskSpace"`
-									DiskSpace *string `json:"DiskSpace"`
-							} `json:"DiskSet"`
-							DataDiskCatalogueSuffix *string `json:"DataDiskCatalogueSuffix"`
-							DataFileType *string `json:"DataFileType"`
-							HostType *string `json:"HostType"`
-							SystemVolumeSize *string `json:"SystemVolumeSize"`
-							NvmeDataDiskCatalogue *string `json:"NvmeDataDiskCatalogue"`
-							HostStatus *string `json:"HostStatus"`
-							EnableContainer *bool `json:"EnableContainer"`
-							ClusterId *string `json:"ClusterId"`
-							HyperThreading *string `json:"HyperThreading"`
-							CreateTime *string `json:"CreateTime"`
-							OsName *string `json:"OsName"`
-							CabinetName *string `json:"CabinetName"`
-							ProjectId *string `json:"ProjectId"`
-							KeyId *string `json:"KeyId"`
-							AllowModifyHyperThreading *bool `json:"AllowModifyHyperThreading"`
-							ReleasableTime *string `json:"ReleasableTime"`
-							RackName *string `json:"RackName"`
-							KmrAgent *string `json:"KmrAgent"`
-							Sn *string `json:"Sn"`
-							NvmeDataDiskCatalogueSuffix *string `json:"NvmeDataDiskCatalogueSuffix"`
-							SecurityAgent *string `json:"SecurityAgent"`
-							SupportEbs *string `json:"SupportEbs"`
-							KplAgent *string `json:"KplAgent"`
-							RackId *string `json:"RackId"`
-							ContainerAgent *string `json:"ContainerAgent"`
-							ServiceEndTime *string `json:"ServiceEndTime"`
-							ChargeType *string `json:"ChargeType"`
-						} `json:"HostSet"`
+		Cpu struct {
+				Model *string `json:"Model"`
+				Count *string `json:"Count"`
+				Frequence *string `json:"Frequence"`
+				CoreCount *string `json:"CoreCount"`
+		} `json:"Cpu"`
+		Raid *string `json:"Raid"`
+		Gpu struct {
+				Model *string `json:"Model"`
+				GpuCount *string `json:"GpuCount"`
+				Count *string `json:"Count"`
+				Frequence *string `json:"Frequence"`
+				CoreCount *int `json:"CoreCount"`
+		} `json:"Gpu"`
+		Roce struct {
+				RoceIp *string `json:"RoceIp"`
+				RoceMask *string `json:"RoceMask"`
+				RoceGateWay *string `json:"RoceGateWay"`
+		} `json:"Roce"`
+		CloudMonitorAgent *string `json:"CloudMonitorAgent"`
+		DataDiskCatalogue *string `json:"DataDiskCatalogue"`
+		NetworkInterfaceMode *string `json:"NetworkInterfaceMode"`
+		RaidTemplateId *string `json:"RaidTemplateId"`
+		DataVolumeSet []struct {
+					VolumeId *string `json:"VolumeId"`
+					VolumeType *string `json:"VolumeType"`
+					DeleteWithInstance *bool `json:"DeleteWithInstance"`
+					VolumeSize *string `json:"VolumeSize"`
+			} `json:"DataVolumeSet"`
+			ImageId *string `json:"ImageId"`
+			SystemVolumeType *string `json:"SystemVolumeType"`
+			HostName *string `json:"HostName"`
+			Tags *string `json:"Tags"`
+			SystemFileType *string `json:"SystemFileType"`
+			EnableBond *bool `json:"EnableBond"`
+			ProductType *string `json:"ProductType"`
+			AvailabilityZone *string `json:"AvailabilityZone"`
+			HostId *string `json:"HostId"`
+			NetworkInterfaceAttributeSet []struct {
+						PrivateIpAddress *string `json:"PrivateIpAddress"`
+						NetworkInterfaceType *string `json:"NetworkInterfaceType"`
+					SecurityGroupSet []struct {
+						SecurityGroupId *string `json:"SecurityGroupId"`
+					} `json:"SecurityGroupSet"`
+						DNS1 *string `json:"DNS1"`
+						DNS2 *string `json:"DNS2"`
+						SubnetId *string `json:"SubnetId"`
+						NetworkInterfaceId *string `json:"NetworkInterfaceId"`
+						Mac *string `json:"Mac"`
+				} `json:"NetworkInterfaceAttributeSet"`
+				ComputerName *string `json:"ComputerName"`
+				CabinetId *string `json:"CabinetId"`
+				DiskSet []struct {
+							DiskType *string `json:"DiskType"`
+							Space *string `json:"Space"`
+							DiskCount *string `json:"DiskCount"`
+							Raid *string `json:"Raid"`
+							DiskAttribute *string `json:"DiskAttribute"`
+							SystemDiskSpace *string `json:"SystemDiskSpace"`
+					} `json:"DiskSet"`
+					DataDiskCatalogueSuffix *string `json:"DataDiskCatalogueSuffix"`
+					DataFileType *string `json:"DataFileType"`
+					HostType *string `json:"HostType"`
+					SystemVolumeSize *string `json:"SystemVolumeSize"`
+					NvmeDataDiskCatalogue *string `json:"NvmeDataDiskCatalogue"`
+					HostStatus *string `json:"HostStatus"`
+					EnableContainer *bool `json:"EnableContainer"`
+					ClusterId *string `json:"ClusterId"`
+					HyperThreading *string `json:"HyperThreading"`
+					CreateTime *string `json:"CreateTime"`
+					OsName *string `json:"OsName"`
+					CabinetName *string `json:"CabinetName"`
+					ProjectId *string `json:"ProjectId"`
+					KeyId *string `json:"KeyId"`
+					AllowModifyHyperThreading *string `json:"AllowModifyHyperThreading"`
+					ReleasableTime *string `json:"ReleasableTime"`
+					RackName *string `json:"RackName"`
+					KmrAgent *string `json:"KmrAgent"`
+					Sn *string `json:"Sn"`
+					NvmeDataDiskCatalogueSuffix *string `json:"NvmeDataDiskCatalogueSuffix"`
+					SecurityAgent *string `json:"SecurityAgent"`
+					SupportEbs *string `json:"SupportEbs"`
+					KplAgent *string `json:"KplAgent"`
+				} `json:"HostSet"`
 }
 
 func (r *DescribeEpcsResponse) ToJsonString() string {
@@ -2511,6 +2505,53 @@ func (r *RejectShareImageResponse) ToJsonString() string {
 }
 
 func (r *RejectShareImageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeManagedAccessoryRequest struct {
+    *ksyunhttp.BaseRequest
+}
+
+func (r *DescribeManagedAccessoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeManagedAccessoryRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeManagedAccessoryRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeManagedAccessoryResponse struct {
+    *ksyunhttp.BaseResponse
+	ManagedAccessorySet []struct {
+		SN *string `json:"SN"`
+		IDC *string `json:"IDC"`
+		Classification *string `json:"Classification"`
+		Model *string `json:"Model"`
+		Manufacturer *string `json:"Manufacturer"`
+		State *string `json:"State"`
+		Date *string `json:"Date"`
+		Source *string `json:"Source"`
+		Notes *string `json:"Notes"`
+		Num *int `json:"Num"`
+	} `json:"ManagedAccessorySet"`
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *DescribeManagedAccessoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeManagedAccessoryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
