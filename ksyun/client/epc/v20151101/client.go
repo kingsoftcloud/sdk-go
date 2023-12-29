@@ -1737,6 +1737,39 @@ func (c *Client) RejectShareImageWithContext(ctx context.Context, request *Rejec
     }
     return msg
 }
+func NewDescribeManagedAccessoryRequest() (request *DescribeManagedAccessoryRequest) {
+    request = &DescribeManagedAccessoryRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("epc", APIVersion, "DescribeManagedAccessory")
+    return
+}
+
+func NewDescribeManagedAccessoryResponse() (response *DescribeManagedAccessoryResponse) {
+    response = &DescribeManagedAccessoryResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeManagedAccessory(request *DescribeManagedAccessoryRequest) (string) {
+    return c.DescribeManagedAccessoryWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeManagedAccessoryWithContext(ctx context.Context, request *DescribeManagedAccessoryRequest) (string) {
+    if request == nil {
+        request = NewDescribeManagedAccessoryRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDescribeManagedAccessoryResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewAutoDeleteEpcRequest() (request *AutoDeleteEpcRequest) {
     request = &AutoDeleteEpcRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
