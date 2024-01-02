@@ -17,8 +17,37 @@ type DescribeClusterInstanceFilter struct {
 }
 
 type AddClusterInstancesInstanceSet struct {
-	NodeRole *string   `json:"NodeRole,omitempty" name:"NodeRole"`
-	NodePara []*string `json:"NodePara,omitempty" name:"NodePara"`
+	NodeRole        *string   `json:"NodeRole,omitempty" name:"NodeRole"`
+	NodePara        []*string `json:"NodePara,omitempty" name:"NodePara"`
+	AdvancedSetting struct {
+		DataDisk struct {
+			AutoFormatAndMount *bool   `json:"AutoFormatAndMount"`
+			FileSystem         *string `json:"FileSystem"`
+			MountTarget        *string `json:"MountTarget"`
+		} `json:"DataDisk"`
+		ContainerRuntime *string `json:"ContainerRuntime"`
+		DockerPath       *string `json:"DockerPath"`
+		ContainerPath    *string `json:"ContainerPath"`
+		UserScript       *string `json:"UserScript"`
+		PreUserScript    *string `json:"PreUserScript"`
+		Schedulable      *bool   `json:"Schedulable"`
+		Label            []struct {
+			Key   *string `json:"Key"`
+			Value *string `json:"Value"`
+		} `json:"Label"`
+		ExtraArg struct {
+			Kubelet []struct {
+				CustomArg *string `json:"CustomArg"`
+			} `json:"Kubelet"`
+		} `json:"ExtraArg"`
+		ContainerLogMaxSize  *int `json:"ContainerLogMaxSize"`
+		ContainerLogMaxFiles *int `json:"ContainerLogMaxFiles"`
+		Taints               []struct {
+			Key    *string `json:"Key"`
+			Value  *string `json:"Value"`
+			Effect *string `json:"Effect"`
+		} `json:"Taints"`
+	} `json:"AdvancedSetting"`
 }
 
 type AddClusterInstancesLabel struct {
