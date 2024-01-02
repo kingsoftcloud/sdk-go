@@ -46,6 +46,15 @@ type CreateClusterEpcConfig struct {
     Para *string `json:"Para,omitempty" name:"Para"`
 }
 
+type CreateClusterLabel struct {
+    Key *string `json:"Key,omitempty" name:"Key"`
+    Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type CreateClusterKubelet struct {
+    CustomArg *string `json:"CustomArg,omitempty" name:"CustomArg"`
+}
+
 type CreateClusterTaint struct {
     Key *string `json:"Key,omitempty" name:"Key"`
     Value *string `json:"Value,omitempty" name:"Value"`
