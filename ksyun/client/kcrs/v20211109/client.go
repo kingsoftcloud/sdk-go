@@ -1110,72 +1110,6 @@ func (c *Client) DeleteWebhookTriggerWithContext(ctx context.Context, request *D
     }
     return msg
 }
-func NewDescribeAllRepositoryRequest() (request *DescribeAllRepositoryRequest) {
-    request = &DescribeAllRepositoryRequest{
-        BaseRequest: &ksyunhttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("kcrs", APIVersion, "DescribeAllRepository")
-    return
-}
-
-func NewDescribeAllRepositoryResponse() (response *DescribeAllRepositoryResponse) {
-    response = &DescribeAllRepositoryResponse{
-        BaseResponse: &ksyunhttp.BaseResponse{},
-    }
-    return
-}
-
-func (c *Client) DescribeAllRepository(request *DescribeAllRepositoryRequest) (string) {
-    return c.DescribeAllRepositoryWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeAllRepositoryWithContext(ctx context.Context, request *DescribeAllRepositoryRequest) (string) {
-    if request == nil {
-        request = NewDescribeAllRepositoryRequest()
-    }
-    request.SetContext(ctx)
-    request.SetContentType("application/x-www-form-urlencoded")
-
-    response := NewDescribeAllRepositoryResponse()
-    err, msg := c.Send(request, response)
-    if err != nil {
-        return fmt.Sprintf("%+v\n", err)
-    }
-    return msg
-}
-func NewGetMetadataRequest() (request *GetMetadataRequest) {
-    request = &GetMetadataRequest{
-        BaseRequest: &ksyunhttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("kcrs", APIVersion, "GetMetadata")
-    return
-}
-
-func NewGetMetadataResponse() (response *GetMetadataResponse) {
-    response = &GetMetadataResponse{
-        BaseResponse: &ksyunhttp.BaseResponse{},
-    }
-    return
-}
-
-func (c *Client) GetMetadata(request *GetMetadataRequest) (string) {
-    return c.GetMetadataWithContext(context.Background(), request)
-}
-
-func (c *Client) GetMetadataWithContext(ctx context.Context, request *GetMetadataRequest) (string) {
-    if request == nil {
-        request = NewGetMetadataRequest()
-    }
-    request.SetContext(ctx)
-    request.SetContentType("application/x-www-form-urlencoded")
-
-    response := NewGetMetadataResponse()
-    err, msg := c.Send(request, response)
-    if err != nil {
-        return fmt.Sprintf("%+v\n", err)
-    }
-    return msg
-}
 func NewCreateRetentionRuleRequest() (request *CreateRetentionRuleRequest) {
     request = &CreateRetentionRuleRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -1500,39 +1434,6 @@ func (c *Client) UpdateRetentionTriggerWithContext(ctx context.Context, request 
     request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewUpdateRetentionTriggerResponse()
-    err, msg := c.Send(request, response)
-    if err != nil {
-        return fmt.Sprintf("%+v\n", err)
-    }
-    return msg
-}
-func NewGetNamespacePolicyRequest() (request *GetNamespacePolicyRequest) {
-    request = &GetNamespacePolicyRequest{
-        BaseRequest: &ksyunhttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("kcrs", APIVersion, "GetNamespacePolicy")
-    return
-}
-
-func NewGetNamespacePolicyResponse() (response *GetNamespacePolicyResponse) {
-    response = &GetNamespacePolicyResponse{
-        BaseResponse: &ksyunhttp.BaseResponse{},
-    }
-    return
-}
-
-func (c *Client) GetNamespacePolicy(request *GetNamespacePolicyRequest) (string) {
-    return c.GetNamespacePolicyWithContext(context.Background(), request)
-}
-
-func (c *Client) GetNamespacePolicyWithContext(ctx context.Context, request *GetNamespacePolicyRequest) (string) {
-    if request == nil {
-        request = NewGetNamespacePolicyRequest()
-    }
-    request.SetContext(ctx)
-    request.SetContentType("application/x-www-form-urlencoded")
-
-    response := NewGetNamespacePolicyResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)

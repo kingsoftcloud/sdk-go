@@ -4,6 +4,11 @@ import (
     "github.com/kingsoftcloud/sdk-go/ksyun/common/errors"
     ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 )
+type CreateWebhookTriggerHeader struct {
+    Key *string `json:"Key,omitempty" name:"Key"`
+    Value []*string `json:"Value,omitempty" name:"Value"`
+}
+
 
 type CreateNamespaceRequest struct {
     *ksyunhttp.BaseRequest
@@ -225,6 +230,17 @@ func (r *DescribeImagesRequest) FromJsonString(s string) error {
 
 type DescribeImagesResponse struct {
     *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    MaxResults *int `json:"MaxResults" name:"MaxResults"`
+    Marker *int `json:"Marker" name:"Marker"`
+    TotalCount *int `json:"TotalCount" name:"TotalCount"`
+	ImageSet struct {
+		ImageId *string `json:"ImageId"`
+		Size *int `json:"Size"`
+		CreateTime *string `json:"CreateTime"`
+		TagNames []struct {
+			} `json:"TagNames"`
+		} `json:"ImageSet"`
 }
 
 func (r *DescribeImagesResponse) ToJsonString() string {
@@ -340,11 +356,15 @@ func (r *DescribeRepositoryRequest) FromJsonString(s string) error {
 type DescribeRepositoryResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
+    MaxResults *int `json:"MaxResults" name:"MaxResults"`
+    Marker *int `json:"Marker" name:"Marker"`
+    TotalCount *int `json:"TotalCount" name:"TotalCount"`
 	RepoSet []struct {
 		RepoName *string `json:"RepoName"`
 		Public *bool `json:"Public"`
 		CreateTime *string `json:"CreateTime"`
 		UpdateTime *string `json:"UpdateTime"`
+		Desc *string `json:"Desc"`
 	} `json:"RepoSet"`
 }
 
@@ -500,8 +520,20 @@ type DescribeImageScanResponse struct {
     Status *string `json:"Status" name:"Status"`
     FinishTime *string `json:"FinishTime" name:"FinishTime"`
 	Summary struct {
+		High *int `json:"High"`
+		Medium *int `json:"Medium"`
+		Low *int `json:"Low"`
+		Negligible *int `json:"Negligible"`
+		Unknown *int `json:"Unknown"`
 	} `json:"Summary"`
 	VulnerabilitySet struct {
+		CveName *string `json:"CveName"`
+		CveLink *string `json:"CveLink"`
+		Description *string `json:"Description"`
+		Severity *string `json:"Severity"`
+		Feature *string `json:"Feature"`
+		CurrentVersion *string `json:"CurrentVersion"`
+		RepairedVersion *string `json:"RepairedVersion"`
 	} `json:"VulnerabilitySet"`
 }
 
@@ -623,6 +655,9 @@ func (r *DescribeInstanceTokenRequest) FromJsonString(s string) error {
 type DescribeInstanceTokenResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
+    TotalCount *int `json:"TotalCount" name:"TotalCount"`
+    Marker *int `json:"Marker" name:"Marker"`
+    MaxResults *int `json:"MaxResults" name:"MaxResults"`
 	TokenSet []struct {
 		TokenId *string `json:"TokenId"`
 		Enable *bool `json:"Enable"`
@@ -988,7 +1023,7 @@ func (r *CreateInstanceResponse) FromJsonString(s string) error {
 type DeleteInstanceRequest struct {
     *ksyunhttp.BaseRequest
     InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-    DeleteBucket *string `json:"DeleteBucket,omitempty" name:"DeleteBucket"`
+    DeleteBucket *bool `json:"DeleteBucket,omitempty" name:"DeleteBucket"`
 }
 
 func (r *DeleteInstanceRequest) ToJsonString() string {
@@ -1045,6 +1080,10 @@ func (r *DescribeInstanceUsageRequest) FromJsonString(s string) error {
 type DescribeInstanceUsageResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
+    NamespaceQuota *int `json:"NamespaceQuota" name:"NamespaceQuota"`
+    NamespaceUsage *int `json:"NamespaceUsage" name:"NamespaceUsage"`
+    RepoQuota *int `json:"RepoQuota" name:"RepoQuota"`
+    RepoUsage *int `json:"RepoUsage" name:"RepoUsage"`
 }
 
 func (r *DescribeInstanceUsageResponse) ToJsonString() string {
@@ -1109,14 +1148,6 @@ type CreateWebhookTriggerRequest struct {
     *ksyunhttp.BaseRequest
     InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
     Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
-    Trigger *string `json:"Trigger,omitempty" name:"Trigger"`
-    TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
-    EventType []*string `json:"EventType,omitempty" name:"EventType"`
-    TriggerUrl *string `json:"TriggerUrl,omitempty" name:"TriggerUrl"`
-    Header []*string `json:"Header,omitempty" name:"Header"`
-    Enabled *string `json:"Enabled,omitempty" name:"Enabled"`
-    Key *string `json:"Key,omitempty" name:"Key"`
-    Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
 func (r *CreateWebhookTriggerRequest) ToJsonString() string {
@@ -1320,75 +1351,10 @@ func (r *DeleteWebhookTriggerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeAllRepositoryRequest struct {
-    *ksyunhttp.BaseRequest
-}
-
-func (r *DescribeAllRepositoryRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeAllRepositoryRequest) FromJsonString(s string) error {
-    f := make(map[string]interface{})
-    if err := json.Unmarshal([]byte(s), &f); err != nil {
-        return err
-    }
-    if len(f) > 0 {
-        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeAllRepositoryRequest has unknown keys!", "")
-    }
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeAllRepositoryResponse struct {
-    *ksyunhttp.BaseResponse
-}
-
-func (r *DescribeAllRepositoryResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeAllRepositoryResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type GetMetadataRequest struct {
-    *ksyunhttp.BaseRequest
-}
-
-func (r *GetMetadataRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *GetMetadataRequest) FromJsonString(s string) error {
-    f := make(map[string]interface{})
-    if err := json.Unmarshal([]byte(s), &f); err != nil {
-        return err
-    }
-    if len(f) > 0 {
-        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetMetadataRequest has unknown keys!", "")
-    }
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type GetMetadataResponse struct {
-    *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
-}
-
-func (r *GetMetadataResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *GetMetadataResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateRetentionRuleRequest struct {
     *ksyunhttp.BaseRequest
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 }
 
 func (r *CreateRetentionRuleRequest) ToJsonString() string {
@@ -1410,6 +1376,7 @@ func (r *CreateRetentionRuleRequest) FromJsonString(s string) error {
 type CreateRetentionRuleResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
+    Data *string `json:"Data" name:"Data"`
 }
 
 func (r *CreateRetentionRuleResponse) ToJsonString() string {
@@ -1423,6 +1390,8 @@ func (r *CreateRetentionRuleResponse) FromJsonString(s string) error {
 
 type UpdateRetentionRuleRequest struct {
     *ksyunhttp.BaseRequest
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 }
 
 func (r *UpdateRetentionRuleRequest) ToJsonString() string {
@@ -1443,6 +1412,8 @@ func (r *UpdateRetentionRuleRequest) FromJsonString(s string) error {
 
 type UpdateRetentionRuleResponse struct {
     *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Data *string `json:"Data" name:"Data"`
 }
 
 func (r *UpdateRetentionRuleResponse) ToJsonString() string {
@@ -1456,6 +1427,8 @@ func (r *UpdateRetentionRuleResponse) FromJsonString(s string) error {
 
 type DeleteRetentionRuleRequest struct {
     *ksyunhttp.BaseRequest
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 }
 
 func (r *DeleteRetentionRuleRequest) ToJsonString() string {
@@ -1477,6 +1450,7 @@ func (r *DeleteRetentionRuleRequest) FromJsonString(s string) error {
 type DeleteRetentionRuleResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
+    Data *string `json:"Data" name:"Data"`
 }
 
 func (r *DeleteRetentionRuleResponse) ToJsonString() string {
@@ -1490,6 +1464,8 @@ func (r *DeleteRetentionRuleResponse) FromJsonString(s string) error {
 
 type DescribeRetentionRuleRequest struct {
     *ksyunhttp.BaseRequest
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 }
 
 func (r *DescribeRetentionRuleRequest) ToJsonString() string {
@@ -1511,6 +1487,16 @@ func (r *DescribeRetentionRuleRequest) FromJsonString(s string) error {
 type DescribeRetentionRuleResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
+	Data struct {
+		Id *int `json:"Id"`
+		Disabled *bool `json:"Disabled"`
+		RegistryScope *string `json:"RegistryScope"`
+		Type *string `json:"Type"`
+		UnTagged *bool `json:"UnTagged"`
+		Template *string `json:"Template"`
+		TagPatten *string `json:"TagPatten"`
+		Param *int `json:"Param"`
+	} `json:"Data"`
 }
 
 func (r *DescribeRetentionRuleResponse) ToJsonString() string {
@@ -1524,6 +1510,9 @@ func (r *DescribeRetentionRuleResponse) FromJsonString(s string) error {
 
 type RunRetentionPolicyRequest struct {
     *ksyunhttp.BaseRequest
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+    TestRun *bool `json:"TestRun,omitempty" name:"TestRun"`
 }
 
 func (r *RunRetentionPolicyRequest) ToJsonString() string {
@@ -1545,6 +1534,7 @@ func (r *RunRetentionPolicyRequest) FromJsonString(s string) error {
 type RunRetentionPolicyResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
+    Data *string `json:"Data" name:"Data"`
 }
 
 func (r *RunRetentionPolicyResponse) ToJsonString() string {
@@ -1558,6 +1548,10 @@ func (r *RunRetentionPolicyResponse) FromJsonString(s string) error {
 
 type GetRetentionPolicyLogsRequest struct {
     *ksyunhttp.BaseRequest
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+    Page *int `json:"Page,omitempty" name:"Page"`
+    PageSize *int `json:"PageSize,omitempty" name:"PageSize"`
 }
 
 func (r *GetRetentionPolicyLogsRequest) ToJsonString() string {
@@ -1579,6 +1573,18 @@ func (r *GetRetentionPolicyLogsRequest) FromJsonString(s string) error {
 type GetRetentionPolicyLogsResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
+	Data struct {
+		Id *string `json:"Id"`
+		EndTime *string `json:"EndTime"`
+		StartTime *string `json:"StartTime"`
+		Status *string `json:"Status"`
+		Trigger *string `json:"Trigger"`
+		DryRun *bool `json:"DryRun"`
+		TakeTime *int `json:"TakeTime"`
+	} `json:"Data"`
+    Page *int `json:"Page" name:"Page"`
+    PageSize *int `json:"PageSize" name:"PageSize"`
+    Total *int `json:"Total" name:"Total"`
 }
 
 func (r *GetRetentionPolicyLogsResponse) ToJsonString() string {
@@ -1592,6 +1598,11 @@ func (r *GetRetentionPolicyLogsResponse) FromJsonString(s string) error {
 
 type GetRetentionPolicyLogDetailRequest struct {
     *ksyunhttp.BaseRequest
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+    ExecutionId *string `json:"ExecutionId,omitempty" name:"ExecutionId"`
+    Page *int `json:"Page,omitempty" name:"Page"`
+    PageSize *int `json:"PageSize,omitempty" name:"PageSize"`
 }
 
 func (r *GetRetentionPolicyLogDetailRequest) ToJsonString() string {
@@ -1612,6 +1623,24 @@ func (r *GetRetentionPolicyLogDetailRequest) FromJsonString(s string) error {
 
 type GetRetentionPolicyLogDetailResponse struct {
     *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+	Data struct {
+		LogDetail struct {
+				ExecutionId *string `json:"ExecutionId"`
+				Id *int `json:"Id"`
+				EndTime *string `json:"EndTime"`
+				StartTime *string `json:"StartTime"`
+				Status *string `json:"Status"`
+				StatusCode *string `json:"StatusCode"`
+				Repository *string `json:"Repository"`
+				Rentained *int `json:"Rentained"`
+				Total *int `json:"Total"`
+				TakeTime *int `json:"TakeTime"`
+		} `json:"LogDetail"`
+		Page *int `json:"Page"`
+		PageSize *int `json:"PageSize"`
+		Total *int `json:"Total"`
+	} `json:"Data"`
 }
 
 func (r *GetRetentionPolicyLogDetailResponse) ToJsonString() string {
@@ -1625,6 +1654,10 @@ func (r *GetRetentionPolicyLogDetailResponse) FromJsonString(s string) error {
 
 type GetRetentionPolicyLogRequest struct {
     *ksyunhttp.BaseRequest
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+    TaskId *int `json:"TaskId,omitempty" name:"TaskId"`
+    ExecutionId *int `json:"ExecutionId,omitempty" name:"ExecutionId"`
 }
 
 func (r *GetRetentionPolicyLogRequest) ToJsonString() string {
@@ -1645,7 +1678,7 @@ func (r *GetRetentionPolicyLogRequest) FromJsonString(s string) error {
 
 type GetRetentionPolicyLogResponse struct {
     *ksyunhttp.BaseResponse
-    RequestId *string `json:"RequestId" name:"RequestId"`
+    Data *string `json:"Data" name:"Data"`
 }
 
 func (r *GetRetentionPolicyLogResponse) ToJsonString() string {
@@ -1659,6 +1692,8 @@ func (r *GetRetentionPolicyLogResponse) FromJsonString(s string) error {
 
 type GetRetentionTriggerRequest struct {
     *ksyunhttp.BaseRequest
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 }
 
 func (r *GetRetentionTriggerRequest) ToJsonString() string {
@@ -1680,6 +1715,12 @@ func (r *GetRetentionTriggerRequest) FromJsonString(s string) error {
 type GetRetentionTriggerResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
+	Data struct {
+		DisplayText *string `json:"DisplayText"`
+		Cron *string `json:"Cron"`
+		Optional []struct {
+			} `json:"Optional"`
+		} `json:"Data"`
 }
 
 func (r *GetRetentionTriggerResponse) ToJsonString() string {
@@ -1693,6 +1734,9 @@ func (r *GetRetentionTriggerResponse) FromJsonString(s string) error {
 
 type UpdateRetentionTriggerRequest struct {
     *ksyunhttp.BaseRequest
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+    Trigger *string `json:"Trigger,omitempty" name:"Trigger"`
 }
 
 func (r *UpdateRetentionTriggerRequest) ToJsonString() string {
@@ -1714,6 +1758,7 @@ func (r *UpdateRetentionTriggerRequest) FromJsonString(s string) error {
 type UpdateRetentionTriggerResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
+    Data *string `json:"Data" name:"Data"`
 }
 
 func (r *UpdateRetentionTriggerResponse) ToJsonString() string {
@@ -1725,41 +1770,10 @@ func (r *UpdateRetentionTriggerResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
-type GetNamespacePolicyRequest struct {
-    *ksyunhttp.BaseRequest
-}
-
-func (r *GetNamespacePolicyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *GetNamespacePolicyRequest) FromJsonString(s string) error {
-    f := make(map[string]interface{})
-    if err := json.Unmarshal([]byte(s), &f); err != nil {
-        return err
-    }
-    if len(f) > 0 {
-        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetNamespacePolicyRequest has unknown keys!", "")
-    }
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type GetNamespacePolicyResponse struct {
-    *ksyunhttp.BaseResponse
-}
-
-func (r *GetNamespacePolicyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *GetNamespacePolicyResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
-
 type ScheduleRequest struct {
     *ksyunhttp.BaseRequest
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    TestRun *bool `json:"TestRun,omitempty" name:"TestRun"`
 }
 
 func (r *ScheduleRequest) ToJsonString() string {
@@ -1780,6 +1794,8 @@ func (r *ScheduleRequest) FromJsonString(s string) error {
 
 type ScheduleResponse struct {
     *ksyunhttp.BaseResponse
+    Requestid *string `json:"Requestid" name:"Requestid"`
+    Data *string `json:"Data" name:"Data"`
 }
 
 func (r *ScheduleResponse) ToJsonString() string {
