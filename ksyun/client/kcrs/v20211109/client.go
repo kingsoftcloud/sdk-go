@@ -45,7 +45,7 @@ func (c *Client) CreateNamespaceWithContext(ctx context.Context, request *Create
         request = NewCreateNamespaceRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateNamespaceResponse()
     err, msg := c.Send(request, response)
@@ -78,7 +78,7 @@ func (c *Client) DescribeNamespaceWithContext(ctx context.Context, request *Desc
         request = NewDescribeNamespaceRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeNamespaceResponse()
     err, msg := c.Send(request, response)
@@ -111,7 +111,7 @@ func (c *Client) ModifyNamespaceTypeWithContext(ctx context.Context, request *Mo
         request = NewModifyNamespaceTypeRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyNamespaceTypeResponse()
     err, msg := c.Send(request, response)
@@ -177,7 +177,7 @@ func (c *Client) DeleteNamespaceWithContext(ctx context.Context, request *Delete
         request = NewDeleteNamespaceRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteNamespaceResponse()
     err, msg := c.Send(request, response)
@@ -210,7 +210,7 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, request *Describ
         request = NewDescribeImagesRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeImagesResponse()
     err, msg := c.Send(request, response)
@@ -243,7 +243,7 @@ func (c *Client) DeleteImagesWithContext(ctx context.Context, request *DeleteIma
         request = NewDeleteImagesRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteImagesResponse()
     err, msg := c.Send(request, response)
@@ -276,7 +276,7 @@ func (c *Client) DeleteRepoTagWithContext(ctx context.Context, request *DeleteRe
         request = NewDeleteRepoTagRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteRepoTagResponse()
     err, msg := c.Send(request, response)
@@ -309,7 +309,7 @@ func (c *Client) DescribeRepositoryWithContext(ctx context.Context, request *Des
         request = NewDescribeRepositoryRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeRepositoryResponse()
     err, msg := c.Send(request, response)
@@ -342,7 +342,7 @@ func (c *Client) ModifyRepoDescWithContext(ctx context.Context, request *ModifyR
         request = NewModifyRepoDescRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyRepoDescResponse()
     err, msg := c.Send(request, response)
@@ -375,7 +375,7 @@ func (c *Client) DeleteRepositoryWithContext(ctx context.Context, request *Delet
         request = NewDeleteRepositoryRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteRepositoryResponse()
     err, msg := c.Send(request, response)
@@ -408,7 +408,7 @@ func (c *Client) StartImageScanWithContext(ctx context.Context, request *StartIm
         request = NewStartImageScanRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewStartImageScanResponse()
     err, msg := c.Send(request, response)
@@ -441,7 +441,7 @@ func (c *Client) DescribeImageScanWithContext(ctx context.Context, request *Desc
         request = NewDescribeImageScanRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeImageScanResponse()
     err, msg := c.Send(request, response)
@@ -474,7 +474,7 @@ func (c *Client) CreateInstanceTokenWithContext(ctx context.Context, request *Cr
         request = NewCreateInstanceTokenRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateInstanceTokenResponse()
     err, msg := c.Send(request, response)
@@ -507,7 +507,7 @@ func (c *Client) DescribeInternalEndpointWithContext(ctx context.Context, reques
         request = NewDescribeInternalEndpointRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeInternalEndpointResponse()
     err, msg := c.Send(request, response)
@@ -540,7 +540,7 @@ func (c *Client) DescribeInstanceTokenWithContext(ctx context.Context, request *
         request = NewDescribeInstanceTokenRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeInstanceTokenResponse()
     err, msg := c.Send(request, response)
@@ -573,7 +573,7 @@ func (c *Client) CreateInternalEndpointWithContext(ctx context.Context, request 
         request = NewCreateInternalEndpointRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateInternalEndpointResponse()
     err, msg := c.Send(request, response)
@@ -606,7 +606,7 @@ func (c *Client) ModifyInstanceTokenStatusWithContext(ctx context.Context, reque
         request = NewModifyInstanceTokenStatusRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyInstanceTokenStatusResponse()
     err, msg := c.Send(request, response)
@@ -639,7 +639,7 @@ func (c *Client) DeleteInternalEndpointWithContext(ctx context.Context, request 
         request = NewDeleteInternalEndpointRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteInternalEndpointResponse()
     err, msg := c.Send(request, response)
@@ -672,7 +672,7 @@ func (c *Client) ModifyInstanceTokenInformationWithContext(ctx context.Context, 
         request = NewModifyInstanceTokenInformationRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyInstanceTokenInformationResponse()
     err, msg := c.Send(request, response)
@@ -705,7 +705,7 @@ func (c *Client) DescribeInternalEndpointDnsWithContext(ctx context.Context, req
         request = NewDescribeInternalEndpointDnsRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeInternalEndpointDnsResponse()
     err, msg := c.Send(request, response)
@@ -738,7 +738,7 @@ func (c *Client) DeleteInstanceTokenWithContext(ctx context.Context, request *De
         request = NewDeleteInstanceTokenRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteInstanceTokenResponse()
     err, msg := c.Send(request, response)
@@ -771,7 +771,7 @@ func (c *Client) CreateInternalEndpointDnsWithContext(ctx context.Context, reque
         request = NewCreateInternalEndpointDnsRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateInternalEndpointDnsResponse()
     err, msg := c.Send(request, response)
@@ -804,7 +804,7 @@ func (c *Client) DeleteInternalEndpointDnsWithContext(ctx context.Context, reque
         request = NewDeleteInternalEndpointDnsRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteInternalEndpointDnsResponse()
     err, msg := c.Send(request, response)
@@ -837,7 +837,7 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
         request = NewCreateInstanceRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewCreateInstanceResponse()
     err, msg := c.Send(request, response)
@@ -936,7 +936,7 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
         request = NewDescribeInstanceRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeInstanceResponse()
     err, msg := c.Send(request, response)
@@ -1002,7 +1002,7 @@ func (c *Client) DescribeWebhookTriggerWithContext(ctx context.Context, request 
         request = NewDescribeWebhookTriggerRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeWebhookTriggerResponse()
     err, msg := c.Send(request, response)
@@ -1035,7 +1035,7 @@ func (c *Client) ModifyWebhookTriggerWithContext(ctx context.Context, request *M
         request = NewModifyWebhookTriggerRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyWebhookTriggerResponse()
     err, msg := c.Send(request, response)
@@ -1068,7 +1068,7 @@ func (c *Client) DescribeWebhookTriggerLogWithContext(ctx context.Context, reque
         request = NewDescribeWebhookTriggerLogRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeWebhookTriggerLogResponse()
     err, msg := c.Send(request, response)
@@ -1101,7 +1101,7 @@ func (c *Client) DeleteWebhookTriggerWithContext(ctx context.Context, request *D
         request = NewDeleteWebhookTriggerRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteWebhookTriggerResponse()
     err, msg := c.Send(request, response)
