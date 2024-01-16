@@ -3189,5 +3189,38 @@ func (c *Client) GetVNCAddressWithContext(ctx context.Context, request *GetVNCAd
     }
     return msg
 }
+func NewSwitchImageTypeRequest() (request *SwitchImageTypeRequest) {
+    request = &SwitchImageTypeRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kec", APIVersion, "SwitchImageType")
+    return
+}
+
+func NewSwitchImageTypeResponse() (response *SwitchImageTypeResponse) {
+    response = &SwitchImageTypeResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) SwitchImageType(request *SwitchImageTypeRequest) (string) {
+    return c.SwitchImageTypeWithContext(context.Background(), request)
+}
+
+func (c *Client) SwitchImageTypeWithContext(ctx context.Context, request *SwitchImageTypeRequest) (string) {
+    if request == nil {
+        request = NewSwitchImageTypeRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewSwitchImageTypeResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 

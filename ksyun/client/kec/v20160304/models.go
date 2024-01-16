@@ -22,6 +22,12 @@ type RunInstancesNetworkInterface struct {
     PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
 }
 
+type RunInstancesTag struct {
+    Key *string `json:"Key,omitempty" name:"Key"`
+    Id *int `json:"Id,omitempty" name:"Id"`
+    Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type ModifyInstanceTypeDataDisk struct {
     Type *string `json:"Type,omitempty" name:"Type"`
     Size *string `json:"Size,omitempty" name:"Size"`
@@ -281,6 +287,8 @@ type RunInstancesRequest struct {
     HostNameSuffix *int `json:"HostNameSuffix,omitempty" name:"HostNameSuffix"`
     Password *string `json:"Password,omitempty" name:"Password"`
     FailureAutoDelete *bool `json:"FailureAutoDelete,omitempty" name:"FailureAutoDelete"`
+    Tag []*RunInstancesTag `json:"Tag,omitempty" name:"Tag"`
+    DataGuardId *string `json:"DataGuardId,omitempty" name:"DataGuardId"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {
@@ -628,6 +636,7 @@ type DescribeImagesResponse struct {
 			IsCloudMarket *bool `json:"IsCloudMarket"`
 			RealImageId *string `json:"RealImageId"`
 			OnlineExpansion *bool `json:"OnlineExpansion"`
+			ImageMode *string `json:"ImageMode"`
 		} `json:"ImagesSet"`
 }
 
@@ -4521,6 +4530,46 @@ func (r *GetVNCAddressResponse) ToJsonString() string {
 }
 
 func (r *GetVNCAddressResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SwitchImageTypeRequest struct {
+    *ksyunhttp.BaseRequest
+    ImageId []*string `json:"ImageId,omitempty" name:"ImageId"`
+}
+
+func (r *SwitchImageTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SwitchImageTypeRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SwitchImageTypeRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SwitchImageTypeResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+	ImageErrorResponses []struct {
+		Result *bool `json:"Result"`
+		Reason *string `json:"Reason"`
+		ImageId *string `json:"ImageId"`
+	} `json:"ImageErrorResponses"`
+}
+
+func (r *SwitchImageTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SwitchImageTypeResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
