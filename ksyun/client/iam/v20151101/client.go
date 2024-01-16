@@ -1968,5 +1968,38 @@ func (c *Client) DelInstanceFromESWithContext(ctx context.Context, request *DelI
     }
     return msg
 }
+func NewGetAccountAllProjectsByParamsRequest() (request *GetAccountAllProjectsByParamsRequest) {
+    request = &GetAccountAllProjectsByParamsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iam", APIVersion, "GetAccountAllProjectsByParams")
+    return
+}
+
+func NewGetAccountAllProjectsByParamsResponse() (response *GetAccountAllProjectsByParamsResponse) {
+    response = &GetAccountAllProjectsByParamsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) GetAccountAllProjectsByParams(request *GetAccountAllProjectsByParamsRequest) (string) {
+    return c.GetAccountAllProjectsByParamsWithContext(context.Background(), request)
+}
+
+func (c *Client) GetAccountAllProjectsByParamsWithContext(ctx context.Context, request *GetAccountAllProjectsByParamsRequest) (string) {
+    if request == nil {
+        request = NewGetAccountAllProjectsByParamsRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewGetAccountAllProjectsByParamsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 

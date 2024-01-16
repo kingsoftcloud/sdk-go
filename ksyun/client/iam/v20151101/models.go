@@ -2638,3 +2638,52 @@ func (r *DelInstanceFromESResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type GetAccountAllProjectsByParamsRequest struct {
+    *ksyunhttp.BaseRequest
+    Ps *int `json:"Ps,omitempty" name:"Ps"`
+    Pn *int `json:"Pn,omitempty" name:"Pn"`
+    ParamUserName *string `json:"ParamUserName,omitempty" name:"ParamUserName"`
+    ParamAccessKey *string `json:"ParamAccessKey,omitempty" name:"ParamAccessKey"`
+}
+
+func (r *GetAccountAllProjectsByParamsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetAccountAllProjectsByParamsRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetAccountAllProjectsByParamsRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAccountAllProjectsByParamsResponse struct {
+    *ksyunhttp.BaseResponse
+	ListProjectResult struct {
+		Total *int `json:"Total"`
+		ProjectList []struct {
+					ProjectId *int `json:"ProjectId"`
+					AccountId *string `json:"AccountId"`
+					ProjectName *string `json:"ProjectName"`
+					ProjectDesc *string `json:"ProjectDesc"`
+					Status *int `json:"Status"`
+					Krn *string `json:"Krn"`
+					CreateTime *string `json:"CreateTime"`
+			} `json:"ProjectList"`
+		} `json:"ListProjectResult"`
+}
+
+func (r *GetAccountAllProjectsByParamsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetAccountAllProjectsByParamsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
