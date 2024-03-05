@@ -155,11 +155,6 @@ type CreateEpcResponse struct {
 				} `json:"NetworkInterfaceAttributeSet"`
 				ComputerName *string `json:"ComputerName"`
 				CabinetId *string `json:"CabinetId"`
-				Roce struct {
-						Ip *string `json:"Ip"`
-						GateWay *string `json:"GateWay"`
-						Mask *string `json:"Mask"`
-				} `json:"Roce"`
 				DiskSet []struct {
 							DiskType *string `json:"DiskType"`
 							Space *string `json:"Space"`
@@ -207,7 +202,16 @@ type CreateEpcResponse struct {
 							CoreCount *int `json:"CoreCount"`
 							GpuCount *int `json:"GpuCount"`
 					} `json:"Gpu"`
-				} `json:"Host"`
+					Roces []struct {
+								Ip *string `json:"Ip"`
+								Mask *string `json:"Mask"`
+								GateWay *string `json:"GateWay"`
+								Type *string `json:"Type"`
+						} `json:"Roces"`
+						ContractDueTime *string `json:"ContractDueTime"`
+						AutoDeleteTime *string `json:"AutoDeleteTime"`
+						VpcTrust *int `json:"VpcTrust"`
+					} `json:"Host"`
 }
 
 func (r *CreateEpcResponse) ToJsonString() string {
@@ -528,7 +532,6 @@ type DescribeEpcsResponse struct {
 			ImageId *string `json:"ImageId"`
 			SystemVolumeType *string `json:"SystemVolumeType"`
 			HostName *string `json:"HostName"`
-			Tags *string `json:"Tags"`
 			SystemFileType *string `json:"SystemFileType"`
 			EnableBond *bool `json:"EnableBond"`
 			ProductType *string `json:"ProductType"`
@@ -1886,24 +1889,25 @@ type DescribeEpcTrashesResponse struct {
 					ContainerAgent *string `json:"ContainerAgent"`
 					ServiceEndTime *string `json:"ServiceEndTime"`
 					ChargeType *string `json:"ChargeType"`
-					Roce []struct {
+					Cpu struct {
+							Model *string `json:"Model"`
+							Frequence *string `json:"Frequence"`
+							Count *int `json:"Count"`
+							CoreCount *int `json:"CoreCount"`
+					} `json:"Cpu"`
+					Gpu struct {
+							Model *string `json:"Model"`
+							Frequence *string `json:"Frequence"`
+							Count *int `json:"Count"`
+							CoreCount *int `json:"CoreCount"`
+							GpuCount *int `json:"GpuCount"`
+					} `json:"Gpu"`
+					Roces []struct {
 								Ip *string `json:"Ip"`
 								Mask *string `json:"Mask"`
 								GateWay *string `json:"GateWay"`
-						} `json:"Roce"`
-						Cpu struct {
-								Model *string `json:"Model"`
-								Frequence *string `json:"Frequence"`
-								Count *int `json:"Count"`
-								CoreCount *int `json:"CoreCount"`
-						} `json:"Cpu"`
-						Gpu struct {
-								Model *string `json:"Model"`
-								Frequence *string `json:"Frequence"`
-								Count *int `json:"Count"`
-								CoreCount *int `json:"CoreCount"`
-								GpuCount *int `json:"GpuCount"`
-						} `json:"Gpu"`
+								Type *string `json:"Type"`
+						} `json:"Roces"`
 					} `json:"HostSet"`
 }
 
@@ -2552,6 +2556,7 @@ type DescribeManagedAccessoryResponse struct {
 		Source *string `json:"Source"`
 		Notes *string `json:"Notes"`
 		Num *int `json:"Num"`
+		AlarmNum *int `json:"AlarmNum"`
 	} `json:"ManagedAccessorySet"`
     RequestId *string `json:"RequestId" name:"RequestId"`
     Return *bool `json:"Return" name:"Return"`
@@ -2601,6 +2606,121 @@ func (r *AutoDeleteEpcResponse) ToJsonString() string {
 }
 
 func (r *AutoDeleteEpcResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportImageRequest struct {
+    *ksyunhttp.BaseRequest
+    ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+    Ks3Bucket *string `json:"Ks3Bucket,omitempty" name:"Ks3Bucket"`
+    ObjectName *string `json:"ObjectName,omitempty" name:"ObjectName"`
+}
+
+func (r *ExportImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportImageRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ExportImageRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportImageResponse struct {
+    *ksyunhttp.BaseResponse
+    Return *bool `json:"Return" name:"Return"`
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ExportImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ExportImageResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryBucketsRequest struct {
+    *ksyunhttp.BaseRequest
+}
+
+func (r *QueryBucketsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryBucketsRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "QueryBucketsRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryBucketsResponse struct {
+    *ksyunhttp.BaseResponse
+	BucketSet []struct {
+		BucketName *string `json:"BucketName"`
+		BucketHost *string `json:"BucketHost"`
+		BucketHostCompatible *string `json:"BucketHostCompatible"`
+		BucketInnerHost *string `json:"BucketInnerHost"`
+		Endpoint *string `json:"Endpoint"`
+	} `json:"BucketSet"`
+    Code *int `json:"Code" name:"Code"`
+}
+
+func (r *QueryBucketsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *QueryBucketsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelImageExportRequest struct {
+    *ksyunhttp.BaseRequest
+    ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+}
+
+func (r *CancelImageExportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelImageExportRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CancelImageExportRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelImageExportResponse struct {
+    *ksyunhttp.BaseResponse
+    Return *bool `json:"Return" name:"Return"`
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CancelImageExportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelImageExportResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

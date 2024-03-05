@@ -111,7 +111,7 @@ func (c *Client) RebootEpcWithContext(ctx context.Context, request *RebootEpcReq
         request = NewRebootEpcRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewRebootEpcResponse()
     err, msg := c.Send(request, response)
@@ -1797,6 +1797,105 @@ func (c *Client) AutoDeleteEpcWithContext(ctx context.Context, request *AutoDele
     request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewAutoDeleteEpcResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewExportImageRequest() (request *ExportImageRequest) {
+    request = &ExportImageRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("epc", APIVersion, "ExportImage")
+    return
+}
+
+func NewExportImageResponse() (response *ExportImageResponse) {
+    response = &ExportImageResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ExportImage(request *ExportImageRequest) (string) {
+    return c.ExportImageWithContext(context.Background(), request)
+}
+
+func (c *Client) ExportImageWithContext(ctx context.Context, request *ExportImageRequest) (string) {
+    if request == nil {
+        request = NewExportImageRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewExportImageResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewQueryBucketsRequest() (request *QueryBucketsRequest) {
+    request = &QueryBucketsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("epc", APIVersion, "QueryBuckets")
+    return
+}
+
+func NewQueryBucketsResponse() (response *QueryBucketsResponse) {
+    response = &QueryBucketsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) QueryBuckets(request *QueryBucketsRequest) (string) {
+    return c.QueryBucketsWithContext(context.Background(), request)
+}
+
+func (c *Client) QueryBucketsWithContext(ctx context.Context, request *QueryBucketsRequest) (string) {
+    if request == nil {
+        request = NewQueryBucketsRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewQueryBucketsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCancelImageExportRequest() (request *CancelImageExportRequest) {
+    request = &CancelImageExportRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("epc", APIVersion, "CancelImageExport")
+    return
+}
+
+func NewCancelImageExportResponse() (response *CancelImageExportResponse) {
+    response = &CancelImageExportResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CancelImageExport(request *CancelImageExportRequest) (string) {
+    return c.CancelImageExportWithContext(context.Background(), request)
+}
+
+func (c *Client) CancelImageExportWithContext(ctx context.Context, request *CancelImageExportRequest) (string) {
+    if request == nil {
+        request = NewCancelImageExportRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewCancelImageExportResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)
