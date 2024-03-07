@@ -21,33 +21,24 @@ type AddClusterInstancesInstanceSet struct {
 	NodePara        []*string `json:"NodePara,omitempty" name:"NodePara"`
 	AdvancedSetting struct {
 		DataDisk struct {
-			AutoFormatAndMount *bool   `json:"AutoFormatAndMount"`
-			FileSystem         *string `json:"FileSystem"`
-			MountTarget        *string `json:"MountTarget"`
-		} `json:"DataDisk"`
-		ContainerRuntime *string `json:"ContainerRuntime"`
-		DockerPath       *string `json:"DockerPath"`
-		ContainerPath    *string `json:"ContainerPath"`
-		UserScript       *string `json:"UserScript"`
-		PreUserScript    *string `json:"PreUserScript"`
-		Schedulable      *bool   `json:"Schedulable"`
-		Label            []struct {
-			Key   *string `json:"Key"`
-			Value *string `json:"Value"`
-		} `json:"Label"`
-		ExtraArg struct {
-			Kubelet []struct {
-				CustomArg *string `json:"CustomArg"`
-			} `json:"Kubelet"`
-		} `json:"ExtraArg"`
-		ContainerLogMaxSize  *int `json:"ContainerLogMaxSize"`
-		ContainerLogMaxFiles *int `json:"ContainerLogMaxFiles"`
-		Taints               []struct {
-			Key    *string `json:"Key"`
-			Value  *string `json:"Value"`
-			Effect *string `json:"Effect"`
-		} `json:"Taints"`
-	} `json:"AdvancedSetting"`
+			AutoFormatAndMount *bool   `json:"AutoFormatAndMount,omitempty"`
+			FileSystem         *string `json:"FileSystem,omitempty"`
+			MountTarget        *string `json:"MountTarget,omitempty"`
+		} `json:"DataDisk,omitempty" name:"DataDisk" `
+		ContainerRuntime *string                     `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
+		DockerPath       *string                     `json:"DockerPath,omitempty" name:"DockerPath"`
+		ContainerPath    *string                     `json:"ContainerPath,omitempty" name:"ContainerPath"`
+		UserScript       *string                     `json:"UserScript,omitempty" name:"UserScript"`
+		PreUserScript    *string                     `json:"PreUserScript,omitempty" name:"PreUserScript"`
+		Schedulable      *bool                       `json:"Schedulable,omitempty" name:"Schedulable"`
+		Label            []*AddClusterInstancesLabel `json:"Label,omitempty" name:"Label"`
+		ExtraArg         struct {
+			Kubelet []*AddClusterInstancesKubelet `json:"Kubelet,omitempty" name:"Kubelet"`
+		} `json:"ExtraArg,omitempty" name:"ExtraArg"`
+		ContainerLogMaxSize  *int                         `json:"ContainerLogMaxSize,omitempty" name:"ContainerLogMaxSize"`
+		ContainerLogMaxFiles *int                         `json:"ContainerLogMaxFiles,omitempty" name:"ContainerLogMaxFiles"`
+		Taints               []*AddClusterInstancesTaints `json:"Taints,omitempty" name:"Taints"`
+	} `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
 }
 
 type AddClusterInstancesLabel struct {
@@ -95,33 +86,24 @@ type AddExistedInstancesExistedInstanceKecSet struct {
 	KecPara         []*string `json:"KecPara,omitempty" name:"KecPara"`
 	AdvancedSetting struct {
 		DataDisk struct {
-			AutoFormatAndMount *bool   `json:"AutoFormatAndMount"`
-			FileSystem         *string `json:"FileSystem"`
-			MountTarget        *string `json:"MountTarget"`
-		} `json:"DataDisk"`
-		ContainerRuntime *string `json:"ContainerRuntime"`
-		DockerPath       *string `json:"DockerPath"`
-		ContainerPath    *string `json:"ContainerPath"`
-		UserScript       *string `json:"UserScript"`
-		PreUserScript    *string `json:"PreUserScript"`
-		Schedulable      *bool   `json:"Schedulable"`
-		Label            []struct {
-			Key   *string `json:"Key"`
-			Value *string `json:"Value"`
-		} `json:"Label"`
-		ExtraArg struct {
-			Kubelet []struct {
-				CustomArg *string `json:"CustomArg"`
-			} `json:"Kubelet"`
-		} `json:"ExtraArg"`
-		ContainerLogMaxSize  *int `json:"ContainerLogMaxSize"`
-		ContainerLogMaxFiles *int `json:"ContainerLogMaxFiles"`
-		Taints               []struct {
-			Key    *string `json:"Key"`
-			Value  *string `json:"Value"`
-			Effect *string `json:"Effect"`
-		} `json:"Taints"`
-	} `json:"AdvancedSetting"`
+			AutoFormatAndMount *bool   `json:"AutoFormatAndMount,omitempty" name:"AutoFormatAndMount"`
+			FileSystem         *string `json:"FileSystem,omitempty" name:"FileSystem"`
+			MountTarget        *string `json:"MountTarget,omitempty" name:"MountTarget"`
+		} `json:"DataDisk,omitempty" name:"DataDisk"`
+		ContainerRuntime *string                     `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
+		DockerPath       *string                     `json:"DockerPath,omitempty" name:"DockerPath"`
+		ContainerPath    *string                     `json:"ContainerPath,omitempty" name:"ContainerPath"`
+		UserScript       *string                     `json:"UserScript,omitempty" name:"UserScript"`
+		PreUserScript    *string                     `json:"PreUserScript,omitempty" name:"PreUserScript"`
+		Schedulable      *bool                       `json:"Schedulable,omitempty" name:"Schedulable"`
+		Label            []*AddExistedInstancesLabel `json:"Label,omitempty" name:"Label"`
+		ExtraArg         struct {
+			Kubelet []*AddExistedInstancesKubelet `json:"Kubelet,omitempty" name:"Kubelet"`
+		} `json:"ExtraArg,omitempty" name:"ExtraArg"`
+		ContainerLogMaxSize  *int                         `json:"ContainerLogMaxSize,omitempty" name:"ContainerLogMaxSize"`
+		ContainerLogMaxFiles *int                         `json:"ContainerLogMaxFiles,omitempty" name:"ContainerLogMaxFiles"`
+		Taints               []*AddExistedInstancesTaints `json:"Taints,omitempty" name:"Taints"`
+	} `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
 }
 
 type AddExistedInstancesLabel struct {
@@ -134,6 +116,21 @@ type AddExistedInstancesKubelet struct {
 }
 
 type AddExistedInstancesTaints struct {
+	Key    *string `json:"Key,omitempty" name:"Key"`
+	Value  *string `json:"Value,omitempty" name:"Value"`
+	Effect *string `json:"Effect,omitempty" name:"Effect"`
+}
+
+type AddClusterEpcInstancesAdvancedSettingLabel struct {
+	Key   *string `json:"Key,omitempty" name:"Key"`
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type AddClusterEpcInstancesAdvancedSettingExtraArgKubelet struct {
+	CustomArg *string `json:"CustomArg,omitempty" name:"CustomArg"`
+}
+
+type AddClusterEpcInstancesAdvancedSettingTaints struct {
 	Key    *string `json:"Key,omitempty" name:"Key"`
 	Value  *string `json:"Value,omitempty" name:"Value"`
 	Effect *string `json:"Effect,omitempty" name:"Effect"`
@@ -786,29 +783,20 @@ type AddClusterEpcInstancesRequest struct {
 	InstanceId      []*string `json:"InstanceId,omitempty" name:"InstanceId"`
 	EpcPara         []*string `json:"EpcPara,omitempty" name:"EpcPara"`
 	AdvancedSetting struct {
-		ContainerRuntime *string `json:"ContainerRuntime"`
-		DockerPath       *string `json:"DockerPath"`
-		ContainerPath    *string `json:"ContainerPath"`
-		UserScript       *string `json:"UserScript"`
-		PreUserScript    *string `json:"PreUserScript"`
-		Schedulable      *bool   `json:"Schedulable"`
-		Label []struct {
-			Key   *string `json:"Key"`
-			Value *string `json:"Value"`
-		} `json:"Label"`
-		ExtraArg struct {
-			Kubelet []struct {
-				CustomArg *string `json:"CustomArg"`
-			} `json:"Kubelet"`
-		} `json:"ExtraArg"`
-		ContainerLogMaxSize  *int `json:"ContainerLogMaxSize"`
-		ContainerLogMaxFiles *int `json:"ContainerLogMaxFiles"`
-		Taints               []struct {
-			Key    *string `json:"Key"`
-			Value  *string `json:"Value"`
-			Effect *string `json:"Effect"`
-		} `json:"Taints"`
-	} `json:"AdvancedSetting"`
+		ContainerRuntime *string                                       `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
+		DockerPath       *string                                       `json:"DockerPath,omitempty" name:"DockerPath"`
+		ContainerPath    *string                                       `json:"ContainerPath,omitempty" name:"ContainerPath"`
+		UserScript       *string                                       `json:"UserScript,omitempty" name:"UserScript"`
+		PreUserScript    *string                                       `json:"PreUserScript,omitempty" name:"PreUserScript"`
+		Schedulable      *bool                                         `json:"Schedulable,omitempty" name:"Schedulable"`
+		Label            []*AddClusterEpcInstancesAdvancedSettingLabel `json:"Label,omitempty" name:"Label"`
+		ExtraArg         struct {
+			Kubelet []*AddClusterEpcInstancesAdvancedSettingExtraArgKubelet `json:"Kubelet,omitempty" name:"Kubelet"`
+		} `json:"ExtraArg,omitempty" name:"ExtraArg"`
+		ContainerLogMaxSize  *int                                           `json:"ContainerLogMaxSize,omitempty" name:"ContainerLogMaxSize"`
+		ContainerLogMaxFiles *int                                           `json:"ContainerLogMaxFiles,omitempty" name:"ContainerLogMaxFiles"`
+		Taints               []*AddClusterEpcInstancesAdvancedSettingTaints `json:"Taints,omitempty" name:"Taints"`
+	} `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
 }
 
 func (r *AddClusterEpcInstancesRequest) ToJsonString() string {
