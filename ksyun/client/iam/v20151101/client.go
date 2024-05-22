@@ -2001,5 +2001,71 @@ func (c *Client) GetAccountAllProjectsByParamsWithContext(ctx context.Context, r
     }
     return msg
 }
+func NewSetUserSsoSettingsRequest() (request *SetUserSsoSettingsRequest) {
+    request = &SetUserSsoSettingsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iam", APIVersion, "SetUserSsoSettings")
+    return
+}
+
+func NewSetUserSsoSettingsResponse() (response *SetUserSsoSettingsResponse) {
+    response = &SetUserSsoSettingsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) SetUserSsoSettings(request *SetUserSsoSettingsRequest) (string) {
+    return c.SetUserSsoSettingsWithContext(context.Background(), request)
+}
+
+func (c *Client) SetUserSsoSettingsWithContext(ctx context.Context, request *SetUserSsoSettingsRequest) (string) {
+    if request == nil {
+        request = NewSetUserSsoSettingsRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewSetUserSsoSettingsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewGetUserSsoSettingsRequest() (request *GetUserSsoSettingsRequest) {
+    request = &GetUserSsoSettingsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iam", APIVersion, "GetUserSsoSettings")
+    return
+}
+
+func NewGetUserSsoSettingsResponse() (response *GetUserSsoSettingsResponse) {
+    response = &GetUserSsoSettingsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) GetUserSsoSettings(request *GetUserSsoSettingsRequest) (string) {
+    return c.GetUserSsoSettingsWithContext(context.Background(), request)
+}
+
+func (c *Client) GetUserSsoSettingsWithContext(ctx context.Context, request *GetUserSsoSettingsRequest) (string) {
+    if request == nil {
+        request = NewGetUserSsoSettingsRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewGetUserSsoSettingsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 
