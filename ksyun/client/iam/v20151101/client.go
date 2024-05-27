@@ -1242,6 +1242,39 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreatePr
     }
     return msg
 }
+func NewUpdateProjectInfoRequest() (request *UpdateProjectInfoRequest) {
+    request = &UpdateProjectInfoRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iam", APIVersion, "UpdateProjectInfo")
+    return
+}
+
+func NewUpdateProjectInfoResponse() (response *UpdateProjectInfoResponse) {
+    response = &UpdateProjectInfoResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) UpdateProjectInfo(request *UpdateProjectInfoRequest) (string) {
+    return c.UpdateProjectInfoWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateProjectInfoWithContext(ctx context.Context, request *UpdateProjectInfoRequest) (string) {
+    if request == nil {
+        request = NewUpdateProjectInfoRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewUpdateProjectInfoResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewGetAccountAllProjectListRequest() (request *GetAccountAllProjectListRequest) {
     request = &GetAccountAllProjectListRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
