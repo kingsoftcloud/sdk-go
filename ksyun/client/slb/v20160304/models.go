@@ -176,6 +176,8 @@ type DescribeListenersResponse struct {
 							Weight *int `json:"Weight"`
 							BackendServerState *string `json:"BackendServerState"`
 					} `json:"BackendServerSet"`
+					CaCertificateId *string `json:"CaCertificateId"`
+					CaEnabled *bool `json:"CaEnabled"`
 				} `json:"ListenerSet"`
 }
 
@@ -242,6 +244,8 @@ type ModifyListenersRequest struct {
     CookieName *string `json:"CookieName,omitempty" name:"CookieName"`
     CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
     RedirectListenerId *string `json:"RedirectListenerId,omitempty" name:"RedirectListenerId"`
+    CaCertificateId *string `json:"CaCertificateId,omitempty" name:"CaCertificateId"`
+    CaEnabled *bool `json:"CaEnabled,omitempty" name:"CaEnabled"`
 }
 
 func (r *ModifyListenersRequest) ToJsonString() string {
@@ -324,6 +328,8 @@ type CreateListenersRequest struct {
     CookieType *string `json:"CookieType,omitempty" name:"CookieType"`
     CookieName *string `json:"CookieName,omitempty" name:"CookieName"`
     CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+    CaCertificateId *string `json:"CaCertificateId,omitempty" name:"CaCertificateId"`
+    CaEnabled *bool `json:"CaEnabled,omitempty" name:"CaEnabled"`
 }
 
 func (r *CreateListenersRequest) ToJsonString() string {
@@ -817,6 +823,9 @@ type DescribeLoadBalancersResponse struct {
 		ChargeType *string `json:"ChargeType"`
 		LbType *string `json:"LbType"`
 		LbStatus *string `json:"LbStatus"`
+		VnetId *string `json:"VnetId"`
+		DeleteProtection *string `json:"DeleteProtection"`
+		ModifyProtection *string `json:"ModifyProtection"`
 		TagSet []struct {
 					ResourceUuid *string `json:"ResourceUuid"`
 					TagId *string `json:"TagId"`
@@ -924,11 +933,11 @@ type CreateLoadBalancerRequest struct {
     Type *string `json:"Type,omitempty" name:"Type"`
     SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
     PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
+    DeleteProtection *string `json:"DeleteProtection,omitempty" name:"DeleteProtection"`
+    ModificationProtection *string `json:"ModificationProtection,omitempty" name:"ModificationProtection"`
     IpVersion *string `json:"IpVersion,omitempty" name:"IpVersion"`
     LbType *string `json:"LbType,omitempty" name:"LbType"`
     ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
-    DeleteProtection *string `json:"DeleteProtection,omitempty" name:"DeleteProtection"`
-    ModificationProtection *string `json:"ModificationProtection,omitempty" name:"ModificationProtection"`
 }
 
 func (r *CreateLoadBalancerRequest) ToJsonString() string {
@@ -2389,6 +2398,10 @@ type CreateAlbRequest struct {
     ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
     AllocationId *string `json:"AllocationId,omitempty" name:"AllocationId"`
     ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+    SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+    PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
+    EnabledQuic *bool `json:"EnabledQuic,omitempty" name:"EnabledQuic"`
+    EnableHpa *bool `json:"EnableHpa,omitempty" name:"EnableHpa"`
 }
 
 func (r *CreateAlbRequest) ToJsonString() string {
@@ -2423,6 +2436,7 @@ func (r *CreateAlbResponse) FromJsonString(s string) error {
 
 type DeleteAlbRequest struct {
     *ksyunhttp.BaseRequest
+    AlbId *string `json:"AlbId,omitempty" name:"AlbId"`
 }
 
 func (r *DeleteAlbRequest) ToJsonString() string {
@@ -2535,9 +2549,9 @@ type DescribeAlbsRequest struct {
     IsContainTag *bool `json:"IsContainTag,omitempty" name:"IsContainTag"`
     TagKey []*string `json:"TagKey,omitempty" name:"TagKey"`
     TagKV []*DescribeAlbsTagKV `json:"TagKV,omitempty" name:"TagKV"`
+    ProjectId []*string `json:"ProjectId,omitempty" name:"ProjectId"`
     MaxResults *int `json:"MaxResults,omitempty" name:"MaxResults"`
     NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
-    ProjectId []*string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *DescribeAlbsRequest) ToJsonString() string {
@@ -2577,6 +2591,10 @@ type DescribeAlbsResponse struct {
 		BillType *int `json:"BillType"`
 		ProductWhat *int `json:"ProductWhat"`
 		ServiceEndTime *string `json:"ServiceEndTime"`
+		SubnetId *string `json:"SubnetId"`
+		PrivateIpAddress *string `json:"PrivateIpAddress"`
+		EnabledQuic *bool `json:"EnabledQuic"`
+		EnableHpa *bool `json:"EnableHpa"`
 		TagSet []struct {
 					ResourceUuid *string `json:"ResourceUuid"`
 					TagId *string `json:"TagId"`
@@ -3311,7 +3329,7 @@ type SetAlbAccessLogRequest struct {
     *ksyunhttp.BaseRequest
     AlbId *string `json:"AlbId,omitempty" name:"AlbId"`
     ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
-    LogPoolName *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
+    LogpoolName *string `json:"LogpoolName,omitempty" name:"LogpoolName"`
 }
 
 func (r *SetAlbAccessLogRequest) ToJsonString() string {
@@ -3346,9 +3364,15 @@ func (r *SetAlbAccessLogResponse) FromJsonString(s string) error {
 
 type CloneLoadBalancerRequest struct {
     *ksyunhttp.BaseRequest
-    VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+    CloneLoadBalancerId *string `json:"cloneLoadBalancerId,omitempty" name:"cloneLoadBalancerId"`
     LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
     Type *string `json:"Type,omitempty" name:"Type"`
+    SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+    PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
+    IpVersion *string `json:"IpVersion,omitempty" name:"IpVersion"`
+    LbType *string `json:"LbType,omitempty" name:"LbType"`
+    TagId []*string `json:"TagId,omitempty" name:"TagId"`
+    ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *CloneLoadBalancerRequest) ToJsonString() string {
@@ -3370,6 +3394,14 @@ func (r *CloneLoadBalancerRequest) FromJsonString(s string) error {
 type CloneLoadBalancerResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
+    LoadBalancerId *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+    LoadBalancerName *string `json:"LoadBalancerName" name:"LoadBalancerName"`
+    Type *string `json:"Type" name:"Type"`
+    CreateTime *string `json:"CreateTime" name:"CreateTime"`
+    VpcId *string `json:"VpcId" name:"VpcId"`
+    PublicIp *string `json:"PublicIp" name:"PublicIp"`
+    IpVersion *string `json:"IpVersion" name:"IpVersion"`
+    LbType *string `json:"LbType" name:"LbType"`
 }
 
 func (r *CloneLoadBalancerResponse) ToJsonString() string {

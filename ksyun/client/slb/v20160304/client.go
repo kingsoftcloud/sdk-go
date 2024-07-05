@@ -1893,7 +1893,7 @@ func (c *Client) CreateAlbListenerWithContext(ctx context.Context, request *Crea
         request = NewCreateAlbListenerRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/x-www-form-urlencoded")
+    request.SetContentType("application/json")
 
     response := NewCreateAlbListenerResponse()
     err, msg := c.Send(request, response)
