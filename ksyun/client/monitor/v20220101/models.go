@@ -4,39 +4,9 @@ import (
     "github.com/kingsoftcloud/sdk-go/ksyun/common/errors"
     ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 )
-type CreateAlarmPolicyTriggerRules struct {
-    Period *string `json:"Period,omitempty" name:"Period"`
-    Method *string `json:"Method,omitempty" name:"Method"`
-    Compare *string `json:"Compare,omitempty" name:"Compare"`
-    TriggerValue *string `json:"TriggerValue,omitempty" name:"TriggerValue"`
-    ItemName *string `json:"ItemName,omitempty" name:"ItemName"`
-    ItemKey *string `json:"ItemKey,omitempty" name:"ItemKey"`
-    Units *string `json:"Units,omitempty" name:"Units"`
-    Points *int `json:"Points,omitempty" name:"Points"`
-    EffectBT *string `json:"EffectBT,omitempty" name:"EffectBT"`
-    EffectET *string `json:"EffectET,omitempty" name:"EffectET"`
-    Interval *int `json:"Interval,omitempty" name:"Interval"`
-    MaxCount *int `json:"MaxCount,omitempty" name:"MaxCount"`
-}
-
-type CreateAlarmPolicyUserNotice struct {
-    ContactWay *int `json:"ContactWay,omitempty" name:"ContactWay"`
-    ContactFlag *int `json:"ContactFlag,omitempty" name:"ContactFlag"`
-    ContactId *int `json:"ContactId,omitempty" name:"ContactId"`
-}
-
 
 type CreateAlarmPolicyRequest struct {
     *ksyunhttp.BaseRequest
-    PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
-    ProductType *int `json:"ProductType,omitempty" name:"ProductType"`
-    PolicyType *int `json:"PolicyType,omitempty" name:"PolicyType"`
-    ResourceBindType *int `json:"ResourceBindType,omitempty" name:"ResourceBindType"`
-    ProjectId *int `json:"ProjectId,omitempty" name:"ProjectId"`
-    InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
-    TriggerRules []*CreateAlarmPolicyTriggerRules `json:"TriggerRules,omitempty" name:"TriggerRules"`
-    UserNotice []*CreateAlarmPolicyUserNotice `json:"UserNotice,omitempty" name:"UserNotice"`
-    URLNotice []*string `json:"URLNotice,omitempty" name:"URLNotice"`
 }
 
 func (r *CreateAlarmPolicyRequest) ToJsonString() string {

@@ -318,5 +318,38 @@ func (c *Client) UpdateAlertUserStatusWithContext(ctx context.Context, request *
     }
     return msg
 }
+func NewDescribeMonitorProductListRequest() (request *DescribeMonitorProductListRequest) {
+    request = &DescribeMonitorProductListRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeMonitorProductList")
+    return
+}
+
+func NewDescribeMonitorProductListResponse() (response *DescribeMonitorProductListResponse) {
+    response = &DescribeMonitorProductListResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeMonitorProductList(request *DescribeMonitorProductListRequest) (string) {
+    return c.DescribeMonitorProductListWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeMonitorProductListWithContext(ctx context.Context, request *DescribeMonitorProductListRequest) (string) {
+    if request == nil {
+        request = NewDescribeMonitorProductListRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewDescribeMonitorProductListResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 
