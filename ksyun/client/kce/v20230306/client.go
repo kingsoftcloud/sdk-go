@@ -582,5 +582,170 @@ func (c *Client) DescribeTargetsListWithContext(ctx context.Context, request *De
     }
     return msg
 }
+func NewDescribeAgentStatusRequest() (request *DescribeAgentStatusRequest) {
+    request = &DescribeAgentStatusRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kce", APIVersion, "DescribeAgentStatus")
+    return
+}
+
+func NewDescribeAgentStatusResponse() (response *DescribeAgentStatusResponse) {
+    response = &DescribeAgentStatusResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeAgentStatus(request *DescribeAgentStatusRequest) (string) {
+    return c.DescribeAgentStatusWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAgentStatusWithContext(ctx context.Context, request *DescribeAgentStatusRequest) (string) {
+    if request == nil {
+        request = NewDescribeAgentStatusRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDescribeAgentStatusResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateMonitorCollectionConfigRequest() (request *CreateMonitorCollectionConfigRequest) {
+    request = &CreateMonitorCollectionConfigRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kce", APIVersion, "CreateMonitorCollectionConfig")
+    return
+}
+
+func NewCreateMonitorCollectionConfigResponse() (response *CreateMonitorCollectionConfigResponse) {
+    response = &CreateMonitorCollectionConfigResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateMonitorCollectionConfig(request *CreateMonitorCollectionConfigRequest) (string) {
+    return c.CreateMonitorCollectionConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateMonitorCollectionConfigWithContext(ctx context.Context, request *CreateMonitorCollectionConfigRequest) (string) {
+    if request == nil {
+        request = NewCreateMonitorCollectionConfigRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewCreateMonitorCollectionConfigResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteMonitorCollectionConfigRequest() (request *DeleteMonitorCollectionConfigRequest) {
+    request = &DeleteMonitorCollectionConfigRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kce", APIVersion, "DeleteMonitorCollectionConfig")
+    return
+}
+
+func NewDeleteMonitorCollectionConfigResponse() (response *DeleteMonitorCollectionConfigResponse) {
+    response = &DeleteMonitorCollectionConfigResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteMonitorCollectionConfig(request *DeleteMonitorCollectionConfigRequest) (string) {
+    return c.DeleteMonitorCollectionConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteMonitorCollectionConfigWithContext(ctx context.Context, request *DeleteMonitorCollectionConfigRequest) (string) {
+    if request == nil {
+        request = NewDeleteMonitorCollectionConfigRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDeleteMonitorCollectionConfigResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewEnableMetricsRequest() (request *EnableMetricsRequest) {
+    request = &EnableMetricsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kce", APIVersion, "EnableMetrics")
+    return
+}
+
+func NewEnableMetricsResponse() (response *EnableMetricsResponse) {
+    response = &EnableMetricsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) EnableMetrics(request *EnableMetricsRequest) (string) {
+    return c.EnableMetricsWithContext(context.Background(), request)
+}
+
+func (c *Client) EnableMetricsWithContext(ctx context.Context, request *EnableMetricsRequest) (string) {
+    if request == nil {
+        request = NewEnableMetricsRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewEnableMetricsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDropMetricsRequest() (request *DropMetricsRequest) {
+    request = &DropMetricsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kce", APIVersion, "DropMetrics")
+    return
+}
+
+func NewDropMetricsResponse() (response *DropMetricsResponse) {
+    response = &DropMetricsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DropMetrics(request *DropMetricsRequest) (string) {
+    return c.DropMetricsWithContext(context.Background(), request)
+}
+
+func (c *Client) DropMetricsWithContext(ctx context.Context, request *DropMetricsRequest) (string) {
+    if request == nil {
+        request = NewDropMetricsRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDropMetricsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 

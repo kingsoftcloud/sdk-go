@@ -417,39 +417,6 @@ func (c *Client) AddExistedInstancesWithContext(ctx context.Context, request *Ad
     }
     return msg
 }
-func NewForceRemoveClusterInstanceRequest() (request *ForceRemoveClusterInstanceRequest) {
-    request = &ForceRemoveClusterInstanceRequest{
-        BaseRequest: &ksyunhttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("kce", APIVersion, "ForceRemoveClusterInstance")
-    return
-}
-
-func NewForceRemoveClusterInstanceResponse() (response *ForceRemoveClusterInstanceResponse) {
-    response = &ForceRemoveClusterInstanceResponse{
-        BaseResponse: &ksyunhttp.BaseResponse{},
-    }
-    return
-}
-
-func (c *Client) ForceRemoveClusterInstance(request *ForceRemoveClusterInstanceRequest) (string) {
-    return c.ForceRemoveClusterInstanceWithContext(context.Background(), request)
-}
-
-func (c *Client) ForceRemoveClusterInstanceWithContext(ctx context.Context, request *ForceRemoveClusterInstanceRequest) (string) {
-    if request == nil {
-        request = NewForceRemoveClusterInstanceRequest()
-    }
-    request.SetContext(ctx)
-    request.SetContentType("application/x-www-form-urlencoded")
-
-    response := NewForceRemoveClusterInstanceResponse()
-    err, msg := c.Send(request, response)
-    if err != nil {
-        return fmt.Sprintf("%+v\n", err)
-    }
-    return msg
-}
 func NewCreateNodePoolRequest() (request *CreateNodePoolRequest) {
     request = &CreateNodePoolRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -807,6 +774,72 @@ func (c *Client) DescribeEpcImageWithContext(ctx context.Context, request *Descr
     request.SetContentType("application/json")
 
     response := NewDescribeEpcImageResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewEditEventCollectingRequest() (request *EditEventCollectingRequest) {
+    request = &EditEventCollectingRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kce", APIVersion, "EditEventCollecting")
+    return
+}
+
+func NewEditEventCollectingResponse() (response *EditEventCollectingResponse) {
+    response = &EditEventCollectingResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) EditEventCollecting(request *EditEventCollectingRequest) (string) {
+    return c.EditEventCollectingWithContext(context.Background(), request)
+}
+
+func (c *Client) EditEventCollectingWithContext(ctx context.Context, request *EditEventCollectingRequest) (string) {
+    if request == nil {
+        request = NewEditEventCollectingRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewEditEventCollectingResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeNodePoolSummaryRequest() (request *DescribeNodePoolSummaryRequest) {
+    request = &DescribeNodePoolSummaryRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kce", APIVersion, "DescribeNodePoolSummary")
+    return
+}
+
+func NewDescribeNodePoolSummaryResponse() (response *DescribeNodePoolSummaryResponse) {
+    response = &DescribeNodePoolSummaryResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeNodePoolSummary(request *DescribeNodePoolSummaryRequest) (string) {
+    return c.DescribeNodePoolSummaryWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeNodePoolSummaryWithContext(ctx context.Context, request *DescribeNodePoolSummaryRequest) (string) {
+    if request == nil {
+        request = NewDescribeNodePoolSummaryRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDescribeNodePoolSummaryResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)

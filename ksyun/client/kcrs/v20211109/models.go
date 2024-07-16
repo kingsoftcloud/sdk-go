@@ -75,6 +75,8 @@ func (r *DescribeNamespaceRequest) FromJsonString(s string) error {
 type DescribeNamespaceResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
+    MaxResults *int `json:"MaxResults" name:"MaxResults"`
+    Marker *int `json:"Marker" name:"Marker"`
 	NamespaceSet []struct {
 		Namespace *string `json:"Namespace"`
 		Public *bool `json:"Public"`
@@ -1129,6 +1131,7 @@ type DescribeInstanceResponse struct {
 		InstanceStatus *string `json:"InstanceStatus"`
 		InternalEndpoint *string `json:"InternalEndpoint"`
 		CreateTime *string `json:"CreateTime"`
+		ExpiredTime *string `json:"ExpiredTime"`
 		ChargeType *string `json:"ChargeType"`
 		ProjectId *string `json:"ProjectId"`
 	} `json:"InstanceSet"`

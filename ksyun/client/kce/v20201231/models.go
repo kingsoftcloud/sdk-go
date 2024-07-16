@@ -80,13 +80,13 @@ type CreateClusterRequest struct {
     K8sVersion *string `json:"K8sVersion,omitempty" name:"K8sVersion"`
     ReserveSubnetId *string `json:"ReserveSubnetId,omitempty" name:"ReserveSubnetId"`
     PublicApiServer *string `json:"PublicApiServer,omitempty" name:"PublicApiServer"`
+    ExposePublicApiServer *bool `json:"ExposePublicApiServer,omitempty" name:"ExposePublicApiServer"`
     MaxPodPerNode *string `json:"MaxPodPerNode,omitempty" name:"MaxPodPerNode"`
     MasterEtcdSeparate *bool `json:"MasterEtcdSeparate,omitempty" name:"MasterEtcdSeparate"`
     ManagedClusterMultiMaster []*CreateClusterManagedClusterMultiMaster `json:"ManagedClusterMultiMaster,omitempty" name:"ManagedClusterMultiMaster"`
     InstanceForNode []*CreateClusterInstanceForNode `json:"InstanceForNode,omitempty" name:"InstanceForNode"`
     ExistedInstanceForEpc []*CreateClusterExistedInstanceForEpc `json:"ExistedInstanceForEpc,omitempty" name:"ExistedInstanceForEpc"`
     Component []*CreateClusterComponent `json:"Component,omitempty" name:"Component"`
-    ExposePublicApiServer *bool `json:"ExposePublicApiServer,omitempty" name:"ExposePublicApiServer"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
