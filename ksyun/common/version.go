@@ -4,4 +4,4 @@ package common
 const SDKName = "ksyun-sdk-go"
 
 // SDKVersion is the version of this SDK
-const SDKVersion = "1.7.1"
+const SDKVersion = "1.7.2"
