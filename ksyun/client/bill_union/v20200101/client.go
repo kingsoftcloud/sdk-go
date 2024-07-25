@@ -219,6 +219,39 @@ func (c *Client) DescribeSplitItemBillDetailsWithContext(ctx context.Context, re
     }
     return msg
 }
+func NewDescribeMiItemBillsRequest() (request *DescribeMiItemBillsRequest) {
+    request = &DescribeMiItemBillsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bill-union", APIVersion, "DescribeMiItemBills")
+    return
+}
+
+func NewDescribeMiItemBillsResponse() (response *DescribeMiItemBillsResponse) {
+    response = &DescribeMiItemBillsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeMiItemBills(request *DescribeMiItemBillsRequest) (string) {
+    return c.DescribeMiItemBillsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeMiItemBillsWithContext(ctx context.Context, request *DescribeMiItemBillsRequest) (string) {
+    if request == nil {
+        request = NewDescribeMiItemBillsRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewDescribeMiItemBillsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewDescribeSplitItemDayBillDetailsRequest() (request *DescribeSplitItemDayBillDetailsRequest) {
     request = &DescribeSplitItemDayBillDetailsRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -246,6 +279,39 @@ func (c *Client) DescribeSplitItemDayBillDetailsWithContext(ctx context.Context,
     request.SetContentType("application/json")
 
     response := NewDescribeSplitItemDayBillDetailsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewListProductGroupsRequest() (request *ListProductGroupsRequest) {
+    request = &ListProductGroupsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bill-union", APIVersion, "ListProductGroups")
+    return
+}
+
+func NewListProductGroupsResponse() (response *ListProductGroupsResponse) {
+    response = &ListProductGroupsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ListProductGroups(request *ListProductGroupsRequest) (string) {
+    return c.ListProductGroupsWithContext(context.Background(), request)
+}
+
+func (c *Client) ListProductGroupsWithContext(ctx context.Context, request *ListProductGroupsRequest) (string) {
+    if request == nil {
+        request = NewListProductGroupsRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewListProductGroupsResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)

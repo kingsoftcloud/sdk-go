@@ -349,6 +349,46 @@ func (r *DescribeSplitItemBillDetailsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeMiItemBillsRequest struct {
+    *ksyunhttp.BaseRequest
+    BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
+}
+
+func (r *DescribeMiItemBillsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMiItemBillsRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeMiItemBillsRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMiItemBillsResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    url *string `json:"url" name:"url"`
+	Error struct {
+		Code *string `json:"Code"`
+		Message *string `json:"Message"`
+	} `json:"Error"`
+}
+
+func (r *DescribeMiItemBillsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeMiItemBillsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSplitItemDayBillDetailsRequest struct {
     *ksyunhttp.BaseRequest
     CustomerBillMonth *int `json:"CustomerBillMonth,omitempty" name:"CustomerBillMonth"`
@@ -388,6 +428,47 @@ func (r *DescribeSplitItemDayBillDetailsResponse) ToJsonString() string {
 }
 
 func (r *DescribeSplitItemDayBillDetailsResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListProductGroupsRequest struct {
+    *ksyunhttp.BaseRequest
+}
+
+func (r *ListProductGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListProductGroupsRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListProductGroupsRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ListProductGroupsResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Success *bool `json:"Success" name:"Success"`
+	Data []struct {
+		Id *int `json:"Id"`
+		Code *string `json:"Code"`
+		Name *string `json:"Name"`
+		EnName *string `json:"EnName"`
+	} `json:"Data"`
+}
+
+func (r *ListProductGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ListProductGroupsResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
