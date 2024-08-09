@@ -9,6 +9,7 @@ type DescribeBillSummaryByPayModeRequest struct {
     *ksyunhttp.BaseRequest
     BillBeginMonth *string `json:"BillBeginMonth,omitempty" name:"BillBeginMonth"`
     BillEndMonth *string `json:"BillEndMonth,omitempty" name:"BillEndMonth"`
+    SubAccount *int `json:"SubAccount,omitempty" name:"SubAccount"`
 }
 
 func (r *DescribeBillSummaryByPayModeRequest) ToJsonString() string {
@@ -52,6 +53,7 @@ type DescribeBillSummaryByProductRequest struct {
     *ksyunhttp.BaseRequest
     BillBeginMonth *string `json:"BillBeginMonth,omitempty" name:"BillBeginMonth"`
     BillEndMonth *string `json:"BillEndMonth,omitempty" name:"BillEndMonth"`
+    SubAccount *int `json:"SubAccount,omitempty" name:"SubAccount"`
 }
 
 func (r *DescribeBillSummaryByProductRequest) ToJsonString() string {
@@ -96,6 +98,7 @@ type DescribeBillSummaryByProjectRequest struct {
     *ksyunhttp.BaseRequest
     BillBeginMonth *string `json:"BillBeginMonth,omitempty" name:"BillBeginMonth"`
     BillEndMonth *string `json:"BillEndMonth,omitempty" name:"BillEndMonth"`
+    SubAccount *int `json:"SubAccount,omitempty" name:"SubAccount"`
 }
 
 func (r *DescribeBillSummaryByProjectRequest) ToJsonString() string {
