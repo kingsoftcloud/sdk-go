@@ -2199,6 +2199,72 @@ func (c *Client) DescribeSubnetAllocatedIpAddressesWithContext(ctx context.Conte
     }
     return msg
 }
+func NewAddNatIpRequest() (request *AddNatIpRequest) {
+    request = &AddNatIpRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AddNatIp")
+    return
+}
+
+func NewAddNatIpResponse() (response *AddNatIpResponse) {
+    response = &AddNatIpResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) AddNatIp(request *AddNatIpRequest) (string) {
+    return c.AddNatIpWithContext(context.Background(), request)
+}
+
+func (c *Client) AddNatIpWithContext(ctx context.Context, request *AddNatIpRequest) (string) {
+    if request == nil {
+        request = NewAddNatIpRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewAddNatIpResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteNatIpRequest() (request *DeleteNatIpRequest) {
+    request = &DeleteNatIpRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteNatIp")
+    return
+}
+
+func NewDeleteNatIpResponse() (response *DeleteNatIpResponse) {
+    response = &DeleteNatIpResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteNatIp(request *DeleteNatIpRequest) (string) {
+    return c.DeleteNatIpWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteNatIpWithContext(ctx context.Context, request *DeleteNatIpRequest) (string) {
+    if request == nil {
+        request = NewDeleteNatIpRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDeleteNatIpResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewModifyPrivateIpAddressAttributeRequest() (request *ModifyPrivateIpAddressAttributeRequest) {
     request = &ModifyPrivateIpAddressAttributeRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -2226,6 +2292,171 @@ func (c *Client) ModifyPrivateIpAddressAttributeWithContext(ctx context.Context,
     request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyPrivateIpAddressAttributeResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateRouteTableRequest() (request *CreateRouteTableRequest) {
+    request = &CreateRouteTableRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateRouteTable")
+    return
+}
+
+func NewCreateRouteTableResponse() (response *CreateRouteTableResponse) {
+    response = &CreateRouteTableResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateRouteTable(request *CreateRouteTableRequest) (string) {
+    return c.CreateRouteTableWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateRouteTableWithContext(ctx context.Context, request *CreateRouteTableRequest) (string) {
+    if request == nil {
+        request = NewCreateRouteTableRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewCreateRouteTableResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteRouteTableRequest() (request *DeleteRouteTableRequest) {
+    request = &DeleteRouteTableRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteRouteTable")
+    return
+}
+
+func NewDeleteRouteTableResponse() (response *DeleteRouteTableResponse) {
+    response = &DeleteRouteTableResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteRouteTable(request *DeleteRouteTableRequest) (string) {
+    return c.DeleteRouteTableWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteRouteTableWithContext(ctx context.Context, request *DeleteRouteTableRequest) (string) {
+    if request == nil {
+        request = NewDeleteRouteTableRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDeleteRouteTableResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyRouteTableRequest() (request *ModifyRouteTableRequest) {
+    request = &ModifyRouteTableRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyRouteTable")
+    return
+}
+
+func NewModifyRouteTableResponse() (response *ModifyRouteTableResponse) {
+    response = &ModifyRouteTableResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyRouteTable(request *ModifyRouteTableRequest) (string) {
+    return c.ModifyRouteTableWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyRouteTableWithContext(ctx context.Context, request *ModifyRouteTableRequest) (string) {
+    if request == nil {
+        request = NewModifyRouteTableRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewModifyRouteTableResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeRouteTablesRequest() (request *DescribeRouteTablesRequest) {
+    request = &DescribeRouteTablesRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeRouteTables")
+    return
+}
+
+func NewDescribeRouteTablesResponse() (response *DescribeRouteTablesResponse) {
+    response = &DescribeRouteTablesResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeRouteTables(request *DescribeRouteTablesRequest) (string) {
+    return c.DescribeRouteTablesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeRouteTablesWithContext(ctx context.Context, request *DescribeRouteTablesRequest) (string) {
+    if request == nil {
+        request = NewDescribeRouteTablesRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDescribeRouteTablesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewAssociateRouteTableRequest() (request *AssociateRouteTableRequest) {
+    request = &AssociateRouteTableRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "AssociateRouteTable")
+    return
+}
+
+func NewAssociateRouteTableResponse() (response *AssociateRouteTableResponse) {
+    response = &AssociateRouteTableResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) AssociateRouteTable(request *AssociateRouteTableRequest) (string) {
+    return c.AssociateRouteTableWithContext(context.Background(), request)
+}
+
+func (c *Client) AssociateRouteTableWithContext(ctx context.Context, request *AssociateRouteTableRequest) (string) {
+    if request == nil {
+        request = NewAssociateRouteTableRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewAssociateRouteTableResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)
@@ -2325,6 +2556,138 @@ func (c *Client) ModifyNetworkInterfaceWithContext(ctx context.Context, request 
     request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewModifyNetworkInterfaceResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateNatRateLimitRequest() (request *CreateNatRateLimitRequest) {
+    request = &CreateNatRateLimitRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateNatRateLimit")
+    return
+}
+
+func NewCreateNatRateLimitResponse() (response *CreateNatRateLimitResponse) {
+    response = &CreateNatRateLimitResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateNatRateLimit(request *CreateNatRateLimitRequest) (string) {
+    return c.CreateNatRateLimitWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateNatRateLimitWithContext(ctx context.Context, request *CreateNatRateLimitRequest) (string) {
+    if request == nil {
+        request = NewCreateNatRateLimitRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewCreateNatRateLimitResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeNatRateLimitRequest() (request *DescribeNatRateLimitRequest) {
+    request = &DescribeNatRateLimitRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeNatRateLimit")
+    return
+}
+
+func NewDescribeNatRateLimitResponse() (response *DescribeNatRateLimitResponse) {
+    response = &DescribeNatRateLimitResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeNatRateLimit(request *DescribeNatRateLimitRequest) (string) {
+    return c.DescribeNatRateLimitWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeNatRateLimitWithContext(ctx context.Context, request *DescribeNatRateLimitRequest) (string) {
+    if request == nil {
+        request = NewDescribeNatRateLimitRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDescribeNatRateLimitResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyNatRateLimitRequest() (request *ModifyNatRateLimitRequest) {
+    request = &ModifyNatRateLimitRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyNatRateLimit")
+    return
+}
+
+func NewModifyNatRateLimitResponse() (response *ModifyNatRateLimitResponse) {
+    response = &ModifyNatRateLimitResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyNatRateLimit(request *ModifyNatRateLimitRequest) (string) {
+    return c.ModifyNatRateLimitWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyNatRateLimitWithContext(ctx context.Context, request *ModifyNatRateLimitRequest) (string) {
+    if request == nil {
+        request = NewModifyNatRateLimitRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewModifyNatRateLimitResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteNatRateLimitRequest() (request *DeleteNatRateLimitRequest) {
+    request = &DeleteNatRateLimitRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteNatRateLimit")
+    return
+}
+
+func NewDeleteNatRateLimitResponse() (response *DeleteNatRateLimitResponse) {
+    response = &DeleteNatRateLimitResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteNatRateLimit(request *DeleteNatRateLimitRequest) (string) {
+    return c.DeleteNatRateLimitWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteNatRateLimitWithContext(ctx context.Context, request *DeleteNatRateLimitRequest) (string) {
+    if request == nil {
+        request = NewDeleteNatRateLimitRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDeleteNatRateLimitResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)
@@ -2490,6 +2853,39 @@ func (c *Client) DescribeHaVipWithContext(ctx context.Context, request *Describe
     request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeHaVipResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateDirectConnectGatewayRouteRequest() (request *CreateDirectConnectGatewayRouteRequest) {
+    request = &CreateDirectConnectGatewayRouteRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateDirectConnectGatewayRoute")
+    return
+}
+
+func NewCreateDirectConnectGatewayRouteResponse() (response *CreateDirectConnectGatewayRouteResponse) {
+    response = &CreateDirectConnectGatewayRouteResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateDirectConnectGatewayRoute(request *CreateDirectConnectGatewayRouteRequest) (string) {
+    return c.CreateDirectConnectGatewayRouteWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateDirectConnectGatewayRouteWithContext(ctx context.Context, request *CreateDirectConnectGatewayRouteRequest) (string) {
+    if request == nil {
+        request = NewCreateDirectConnectGatewayRouteRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewCreateDirectConnectGatewayRouteResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)
@@ -2760,6 +3156,105 @@ func (c *Client) UnassignPrivateIpAddressWithContext(ctx context.Context, reques
     }
     return msg
 }
+func NewBatchCreateNatRateLimitRequest() (request *BatchCreateNatRateLimitRequest) {
+    request = &BatchCreateNatRateLimitRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "BatchCreateNatRateLimit")
+    return
+}
+
+func NewBatchCreateNatRateLimitResponse() (response *BatchCreateNatRateLimitResponse) {
+    response = &BatchCreateNatRateLimitResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) BatchCreateNatRateLimit(request *BatchCreateNatRateLimitRequest) (string) {
+    return c.BatchCreateNatRateLimitWithContext(context.Background(), request)
+}
+
+func (c *Client) BatchCreateNatRateLimitWithContext(ctx context.Context, request *BatchCreateNatRateLimitRequest) (string) {
+    if request == nil {
+        request = NewBatchCreateNatRateLimitRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewBatchCreateNatRateLimitResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewBatchModifyNatRateLimitRequest() (request *BatchModifyNatRateLimitRequest) {
+    request = &BatchModifyNatRateLimitRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "BatchModifyNatRateLimit")
+    return
+}
+
+func NewBatchModifyNatRateLimitResponse() (response *BatchModifyNatRateLimitResponse) {
+    response = &BatchModifyNatRateLimitResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) BatchModifyNatRateLimit(request *BatchModifyNatRateLimitRequest) (string) {
+    return c.BatchModifyNatRateLimitWithContext(context.Background(), request)
+}
+
+func (c *Client) BatchModifyNatRateLimitWithContext(ctx context.Context, request *BatchModifyNatRateLimitRequest) (string) {
+    if request == nil {
+        request = NewBatchModifyNatRateLimitRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewBatchModifyNatRateLimitResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewBatchDeleteNatRateLimitRequest() (request *BatchDeleteNatRateLimitRequest) {
+    request = &BatchDeleteNatRateLimitRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "BatchDeleteNatRateLimit")
+    return
+}
+
+func NewBatchDeleteNatRateLimitResponse() (response *BatchDeleteNatRateLimitResponse) {
+    response = &BatchDeleteNatRateLimitResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) BatchDeleteNatRateLimit(request *BatchDeleteNatRateLimitRequest) (string) {
+    return c.BatchDeleteNatRateLimitWithContext(context.Background(), request)
+}
+
+func (c *Client) BatchDeleteNatRateLimitWithContext(ctx context.Context, request *BatchDeleteNatRateLimitRequest) (string) {
+    if request == nil {
+        request = NewBatchDeleteNatRateLimitRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewBatchDeleteNatRateLimitResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewDescribeVpnGatewayRoutesRequest() (request *DescribeVpnGatewayRoutesRequest) {
     request = &DescribeVpnGatewayRoutesRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -2985,6 +3480,105 @@ func (c *Client) QueryPeerTopVifMonitorWithContext(ctx context.Context, request 
     request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewQueryPeerTopVifMonitorResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewModifyVpnGatewayRouteRequest() (request *ModifyVpnGatewayRouteRequest) {
+    request = &ModifyVpnGatewayRouteRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnGatewayRoute")
+    return
+}
+
+func NewModifyVpnGatewayRouteResponse() (response *ModifyVpnGatewayRouteResponse) {
+    response = &ModifyVpnGatewayRouteResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ModifyVpnGatewayRoute(request *ModifyVpnGatewayRouteRequest) (string) {
+    return c.ModifyVpnGatewayRouteWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyVpnGatewayRouteWithContext(ctx context.Context, request *ModifyVpnGatewayRouteRequest) (string) {
+    if request == nil {
+        request = NewModifyVpnGatewayRouteRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewModifyVpnGatewayRouteResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateDcNatIpRequest() (request *CreateDcNatIpRequest) {
+    request = &CreateDcNatIpRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateDcNatIp")
+    return
+}
+
+func NewCreateDcNatIpResponse() (response *CreateDcNatIpResponse) {
+    response = &CreateDcNatIpResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateDcNatIp(request *CreateDcNatIpRequest) (string) {
+    return c.CreateDcNatIpWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateDcNatIpWithContext(ctx context.Context, request *CreateDcNatIpRequest) (string) {
+    if request == nil {
+        request = NewCreateDcNatIpRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewCreateDcNatIpResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDeleteDcNatIpRequest() (request *DeleteDcNatIpRequest) {
+    request = &DeleteDcNatIpRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteDcNatIp")
+    return
+}
+
+func NewDeleteDcNatIpResponse() (response *DeleteDcNatIpResponse) {
+    response = &DeleteDcNatIpResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DeleteDcNatIp(request *DeleteDcNatIpRequest) (string) {
+    return c.DeleteDcNatIpWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteDcNatIpWithContext(ctx context.Context, request *DeleteDcNatIpRequest) (string) {
+    if request == nil {
+        request = NewDeleteDcNatIpRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDeleteDcNatIpResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)
