@@ -55,7 +55,6 @@ type CreateEpcRequest struct {
     Sn *string `json:"Sn,omitempty" name:"Sn"`
     PurchaseTime *int `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
     Password *string `json:"Password,omitempty" name:"Password"`
-    SecurityAgent *string `json:"SecurityAgent,omitempty" name:"SecurityAgent"`
     CloudMonitorAgent *string `json:"CloudMonitorAgent,omitempty" name:"CloudMonitorAgent"`
     ExtensionSubnetId *string `json:"ExtensionSubnetId,omitempty" name:"ExtensionSubnetId"`
     ExtensionPrivateIpAddress *string `json:"ExtensionPrivateIpAddress,omitempty" name:"ExtensionPrivateIpAddress"`
@@ -76,7 +75,7 @@ type CreateEpcRequest struct {
     NvmeDataFileType *string `json:"NvmeDataFileType,omitempty" name:"NvmeDataFileType"`
     NvmeDataDiskCatalogue *string `json:"NvmeDataDiskCatalogue,omitempty" name:"NvmeDataDiskCatalogue"`
     NvmeDataDiskCatalogueSuffix *string `json:"NvmeDataDiskCatalogueSuffix,omitempty" name:"NvmeDataDiskCatalogueSuffix"`
-    BondAttribute *string `json:"bondAttribute,omitempty" name:"bondAttribute"`
+    BondAttribute *string `json:"BondAttribute,omitempty" name:"BondAttribute"`
     ContainerAgent *string `json:"ContainerAgent,omitempty" name:"ContainerAgent"`
     KesAgent *string `json:"KesAgent,omitempty" name:"KesAgent"`
     KmrAgent *string `json:"KmrAgent,omitempty" name:"KmrAgent"`
@@ -86,6 +85,8 @@ type CreateEpcRequest struct {
     SystemVolumeType *string `json:"SystemVolumeType,omitempty" name:"SystemVolumeType"`
     SystemVolumeSize *string `json:"SystemVolumeSize,omitempty" name:"SystemVolumeSize"`
     RoceNetwork *string `json:"RoceNetwork,omitempty" name:"RoceNetwork"`
+    ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+    ZoneType *string `json:"ZoneType,omitempty" name:"ZoneType"`
 }
 
 func (r *CreateEpcRequest) ToJsonString() string {
@@ -338,7 +339,6 @@ type ReinstallEpcRequest struct {
     KeyId *string `json:"keyId,omitempty" name:"keyId"`
     Password *string `json:"Password,omitempty" name:"Password"`
     NetworkInterfaceMode *string `json:"NetworkInterfaceMode,omitempty" name:"NetworkInterfaceMode"`
-    SecurityAgent *string `json:"SecurityAgent,omitempty" name:"SecurityAgent"`
     CloudMonitorAgent *string `json:"CloudMonitorAgent,omitempty" name:"CloudMonitorAgent"`
     Raid *string `json:"Raid,omitempty" name:"Raid"`
     RaidId *string `json:"RaidId,omitempty" name:"RaidId"`
@@ -351,7 +351,7 @@ type ReinstallEpcRequest struct {
     NvmeDataFileType *string `json:"NvmeDataFileType,omitempty" name:"NvmeDataFileType"`
     NvmeDataDiskCatalogue *string `json:"NvmeDataDiskCatalogue,omitempty" name:"NvmeDataDiskCatalogue"`
     NvmeDataDiskCatalogueSuffix *string `json:"NvmeDataDiskCatalogueSuffix,omitempty" name:"NvmeDataDiskCatalogueSuffix"`
-    BondAttribute *string `json:"bondAttribute,omitempty" name:"bondAttribute"`
+    BondAttribute *string `json:"BondAttribute,omitempty" name:"BondAttribute"`
     KesAgent *string `json:"KesAgent,omitempty" name:"KesAgent"`
     KmrAgent *string `json:"KmrAgent,omitempty" name:"KmrAgent"`
     ComputerName *string `json:"ComputerName,omitempty" name:"ComputerName"`
@@ -359,7 +359,7 @@ type ReinstallEpcRequest struct {
     DelayStart *int `json:"DelayStart,omitempty" name:"DelayStart"`
     AvailabilityZone *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
     GpuImageDriverId *string `json:"GpuImageDriverId,omitempty" name:"GpuImageDriverId"`
-    ContainerAgent *string `json:"containerAgent,omitempty" name:"containerAgent"`
+    ContainerAgent *string `json:"ContainerAgent,omitempty" name:"ContainerAgent"`
 }
 
 func (r *ReinstallEpcRequest) ToJsonString() string {
@@ -1678,6 +1678,7 @@ type CreateProcessRequest struct {
     Type *string `json:"Type,omitempty" name:"Type"`
     Confirm *string `json:"Confirm,omitempty" name:"Confirm"`
     ProcessSource *int `json:"ProcessSource,omitempty" name:"ProcessSource"`
+    AutoNocCase *int `json:"autoNocCase,omitempty" name:"autoNocCase"`
 }
 
 func (r *CreateProcessRequest) ToJsonString() string {
