@@ -380,6 +380,11 @@ func (r *CreateListenersResponse) FromJsonString(s string) error {
 
 type ModifyInstancesWithListenerRequest struct {
     *ksyunhttp.BaseRequest
+    RegisterId *string `json:"RegisterId,omitempty" name:"RegisterId"`
+    Weight *int `json:"Weight,omitempty" name:"Weight"`
+    RealServerPort *int `json:"RealServerPort,omitempty" name:"RealServerPort"`
+    MasterSlaveType *string `json:"MasterSlaveType,omitempty" name:"MasterSlaveType"`
+    Tag *string `json:"Tag,omitempty" name:"Tag"`
 }
 
 func (r *ModifyInstancesWithListenerRequest) ToJsonString() string {
@@ -2402,6 +2407,8 @@ type CreateAlbRequest struct {
     PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
     EnabledQuic *bool `json:"EnabledQuic,omitempty" name:"EnabledQuic"`
     EnableHpa *bool `json:"EnableHpa,omitempty" name:"EnableHpa"`
+    DeleteProtection *bool `json:"DeleteProtection,omitempty" name:"DeleteProtection"`
+    ModificationProtection *bool `json:"ModificationProtection,omitempty" name:"ModificationProtection"`
 }
 
 func (r *CreateAlbRequest) ToJsonString() string {
@@ -2595,6 +2602,8 @@ type DescribeAlbsResponse struct {
 		PrivateIpAddress *string `json:"PrivateIpAddress"`
 		EnabledQuic *bool `json:"EnabledQuic"`
 		EnableHpa *bool `json:"EnableHpa"`
+		DeleteProtection *bool `json:"DeleteProtection"`
+		ModifyProtection *bool `json:"ModifyProtection"`
 		TagSet []struct {
 					ResourceUuid *string `json:"ResourceUuid"`
 					TagId *string `json:"TagId"`
@@ -2926,7 +2935,6 @@ type DescribeAlbRuleGroupsResponse struct {
 		AlbListenerId *string `json:"AlbListenerId"`
 		AlbRuleGroupName *string `json:"AlbRuleGroupName"`
 		Method *string `json:"Method"`
-		Type *string `json:"Type"`
 		BackendServerGroupId *string `json:"BackendServerGroupId"`
 		ListenerSync *string `json:"ListenerSync"`
 		SessionState *string `json:"SessionState"`
@@ -2940,17 +2948,13 @@ type DescribeAlbRuleGroupsResponse struct {
 		UnhealthyThreshold *int `json:"UnhealthyThreshold"`
 		UrlPath *string `json:"UrlPath"`
 		HostName *string `json:"HostName"`
+		HealthPort *int `json:"HealthPort"`
+		HealthProtocol *string `json:"HealthProtocol"`
+		HttpMethod *string `json:"HttpMethod"`
 		AlbRuleSet []struct {
 					AlbRuleType *string `json:"AlbRuleType"`
 					AlbRuleValue *string `json:"AlbRuleValue"`
 			} `json:"AlbRuleSet"`
-			RedirectAlbListenerId *string `json:"RedirectAlbListenerId"`
-			RedirectHttpCode *string `json:"RedirectHttpCode"`
-			FixedResponseConfig struct {
-					Content *string `json:"Content"`
-					ContentType *string `json:"ContentType"`
-					HttpCode *string `json:"HttpCode"`
-			} `json:"FixedResponseConfig"`
 		} `json:"AlbRuleGroupSet"`
 }
 
@@ -3839,6 +3843,116 @@ func (r *DescribeAlbBackendServersResponse) ToJsonString() string {
 }
 
 func (r *DescribeAlbBackendServersResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetPrivateLinkDeleteProtectionRequest struct {
+    *ksyunhttp.BaseRequest
+    InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+    DeleteProtection *string `json:"DeleteProtection,omitempty" name:"DeleteProtection"`
+}
+
+func (r *SetPrivateLinkDeleteProtectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetPrivateLinkDeleteProtectionRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetPrivateLinkDeleteProtectionRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetPrivateLinkDeleteProtectionResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *SetPrivateLinkDeleteProtectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetPrivateLinkDeleteProtectionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetAlbDeleteProtectionRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbId *string `json:"albId,omitempty" name:"albId"`
+    DeleteProtection *string `json:"deleteProtection,omitempty" name:"deleteProtection"`
+}
+
+func (r *SetAlbDeleteProtectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetAlbDeleteProtectionRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetAlbDeleteProtectionRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetAlbDeleteProtectionResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *SetAlbDeleteProtectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetAlbDeleteProtectionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetAlbModificationProtectionRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbId *string `json:"albId,omitempty" name:"albId"`
+    ModificationProtection *string `json:"modificationProtection,omitempty" name:"modificationProtection"`
+}
+
+func (r *SetAlbModificationProtectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetAlbModificationProtectionRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetAlbModificationProtectionRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type SetAlbModificationProtectionResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *SetAlbModificationProtectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *SetAlbModificationProtectionResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

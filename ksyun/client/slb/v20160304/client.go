@@ -2826,5 +2826,104 @@ func (c *Client) DescribeAlbBackendServersWithContext(ctx context.Context, reque
     }
     return msg
 }
+func NewSetPrivateLinkDeleteProtectionRequest() (request *SetPrivateLinkDeleteProtectionRequest) {
+    request = &SetPrivateLinkDeleteProtectionRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "SetPrivateLinkDeleteProtection")
+    return
+}
+
+func NewSetPrivateLinkDeleteProtectionResponse() (response *SetPrivateLinkDeleteProtectionResponse) {
+    response = &SetPrivateLinkDeleteProtectionResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) SetPrivateLinkDeleteProtection(request *SetPrivateLinkDeleteProtectionRequest) (string) {
+    return c.SetPrivateLinkDeleteProtectionWithContext(context.Background(), request)
+}
+
+func (c *Client) SetPrivateLinkDeleteProtectionWithContext(ctx context.Context, request *SetPrivateLinkDeleteProtectionRequest) (string) {
+    if request == nil {
+        request = NewSetPrivateLinkDeleteProtectionRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewSetPrivateLinkDeleteProtectionResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewSetAlbDeleteProtectionRequest() (request *SetAlbDeleteProtectionRequest) {
+    request = &SetAlbDeleteProtectionRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "SetAlbDeleteProtection")
+    return
+}
+
+func NewSetAlbDeleteProtectionResponse() (response *SetAlbDeleteProtectionResponse) {
+    response = &SetAlbDeleteProtectionResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) SetAlbDeleteProtection(request *SetAlbDeleteProtectionRequest) (string) {
+    return c.SetAlbDeleteProtectionWithContext(context.Background(), request)
+}
+
+func (c *Client) SetAlbDeleteProtectionWithContext(ctx context.Context, request *SetAlbDeleteProtectionRequest) (string) {
+    if request == nil {
+        request = NewSetAlbDeleteProtectionRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewSetAlbDeleteProtectionResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewSetAlbModificationProtectionRequest() (request *SetAlbModificationProtectionRequest) {
+    request = &SetAlbModificationProtectionRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "SetAlbModificationProtection")
+    return
+}
+
+func NewSetAlbModificationProtectionResponse() (response *SetAlbModificationProtectionResponse) {
+    response = &SetAlbModificationProtectionResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) SetAlbModificationProtection(request *SetAlbModificationProtectionRequest) (string) {
+    return c.SetAlbModificationProtectionWithContext(context.Background(), request)
+}
+
+func (c *Client) SetAlbModificationProtectionWithContext(ctx context.Context, request *SetAlbModificationProtectionRequest) (string) {
+    if request == nil {
+        request = NewSetAlbModificationProtectionRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewSetAlbModificationProtectionResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 
