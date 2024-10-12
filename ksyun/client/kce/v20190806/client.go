@@ -21,39 +21,6 @@ func NewClient(credential common.Credentials, region string, clientProfile *prof
     return
 }
 
-func NewDescribeClusterRequest() (request *DescribeClusterRequest) {
-    request = &DescribeClusterRequest{
-        BaseRequest: &ksyunhttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("kce", APIVersion, "DescribeCluster")
-    return
-}
-
-func NewDescribeClusterResponse() (response *DescribeClusterResponse) {
-    response = &DescribeClusterResponse{
-        BaseResponse: &ksyunhttp.BaseResponse{},
-    }
-    return
-}
-
-func (c *Client) DescribeCluster(request *DescribeClusterRequest) (string) {
-    return c.DescribeClusterWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeClusterWithContext(ctx context.Context, request *DescribeClusterRequest) (string) {
-    if request == nil {
-        request = NewDescribeClusterRequest()
-    }
-    request.SetContext(ctx)
-    request.SetContentType("application/x-www-form-urlencoded")
-
-    response := NewDescribeClusterResponse()
-    err, msg := c.Send(request, response)
-    if err != nil {
-        return fmt.Sprintf("%+v\n", err)
-    }
-    return msg
-}
 func NewDescribeClusterInstanceRequest() (request *DescribeClusterInstanceRequest) {
     request = &DescribeClusterInstanceRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -840,6 +807,39 @@ func (c *Client) DescribeNodePoolSummaryWithContext(ctx context.Context, request
     request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDescribeNodePoolSummaryResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewDescribeClusterSummaryRequest() (request *DescribeClusterSummaryRequest) {
+    request = &DescribeClusterSummaryRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kce", APIVersion, "DescribeClusterSummary")
+    return
+}
+
+func NewDescribeClusterSummaryResponse() (response *DescribeClusterSummaryResponse) {
+    response = &DescribeClusterSummaryResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeClusterSummary(request *DescribeClusterSummaryRequest) (string) {
+    return c.DescribeClusterSummaryWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeClusterSummaryWithContext(ctx context.Context, request *DescribeClusterSummaryRequest) (string) {
+    if request == nil {
+        request = NewDescribeClusterSummaryRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDescribeClusterSummaryResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)

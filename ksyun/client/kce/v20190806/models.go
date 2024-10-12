@@ -4,11 +4,6 @@ import (
     "github.com/kingsoftcloud/sdk-go/ksyun/common/errors"
     ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 )
-type DescribeClusterFilter struct {
-    Name *string `json:"Name,omitempty" name:"Name"`
-    Value []*string `json:"Value,omitempty" name:"Value"`
-}
-
 type DescribeClusterInstanceFilter struct {
     Name *string `json:"Name,omitempty" name:"Name"`
     Value []*string `json:"Value,omitempty" name:"Value"`
@@ -89,12 +84,6 @@ type CreateNodePoolKubelet struct {
     CustomArg *string `json:"CustomArg,omitempty" name:"CustomArg"`
 }
 
-type CreateNodePoolTaint struct {
-    Key *string `json:"Key,omitempty" name:"Key"`
-    Value *string `json:"Value,omitempty" name:"Value"`
-    Effect *string `json:"Effect,omitempty" name:"Effect"`
-}
-
 type CreateNodePoolEbsTag struct {
     Key *string `json:"Key,omitempty" name:"Key"`
     Value *string `json:"Value,omitempty" name:"Value"`
@@ -108,6 +97,12 @@ type CreateNodePoolInstanceTag struct {
 type CreateNodePoolLabel struct {
     Key *string `json:"Key,omitempty" name:"Key"`
     Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type CreateNodePoolTaint struct {
+    Key *string `json:"Key,omitempty" name:"Key"`
+    Value *string `json:"Value,omitempty" name:"Value"`
+    Effect *string `json:"Effect,omitempty" name:"Effect"`
 }
 
 type ModifyNodePoolLabel struct {
@@ -152,106 +147,6 @@ type ModifyNodeTemplateInstanceTag struct {
     Value *string `json:"Value,omitempty" name:"Value"`
 }
 
-
-type DescribeClusterRequest struct {
-    *ksyunhttp.BaseRequest
-    ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-    Marker *int `json:"Marker,omitempty" name:"Marker"`
-    MaxResults *string `json:"MaxResults,omitempty" name:"MaxResults"`
-    Search *string `json:"Search,omitempty" name:"Search"`
-    Filter []*DescribeClusterFilter `json:"Filter,omitempty" name:"Filter"`
-}
-
-func (r *DescribeClusterRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeClusterRequest) FromJsonString(s string) error {
-    f := make(map[string]interface{})
-    if err := json.Unmarshal([]byte(s), &f); err != nil {
-        return err
-    }
-    if len(f) > 0 {
-        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeClusterRequest has unknown keys!", "")
-    }
-    return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeClusterResponse struct {
-    *ksyunhttp.BaseResponse
-	ClusterSet []struct {
-		ClusterId *string `json:"ClusterId"`
-		ClusterName *string `json:"ClusterName"`
-		ClusterType *string `json:"ClusterType"`
-		ClusterManageMode *string `json:"ClusterManageMode"`
-		K8sVersion *string `json:"K8sVersion"`
-		ClusterDesc *string `json:"ClusterDesc"`
-		PodCidr *string `json:"PodCidr"`
-		ServiceCidr *string `json:"ServiceCidr"`
-		VpcId *string `json:"VpcId"`
-		VpcCidr *string `json:"VpcCidr"`
-		Status *string `json:"Status"`
-		NodeNum *int `json:"NodeNum"`
-		CreateTime *string `json:"CreateTime"`
-		UpdateTime *string `json:"UpdateTime"`
-		EnableKMSE *bool `json:"EnableKMSE"`
-		NetworkType *string `json:"NetworkType"`
-		NormalNodeNum *int `json:"NormalNodeNum"`
-		MaxPodPerNode *int `json:"MaxPodPerNode"`
-		MasterEtcdSeparate *bool `json:"MasterEtcdSeparate"`
-		EnhanceServiceSet []struct {
-					Name *string `json:"Name"`
-			} `json:"EnhanceServiceSet"`
-			KciSubnetSet []struct {
-						SubnetName *string `json:"SubnetName"`
-						SubnetId *string `json:"SubnetId"`
-						AvailabilityZoneName *string `json:"AvailabilityZoneName"`
-				} `json:"KciSubnetSet"`
-				KciSecurityGroupSet []struct {
-							SecurityGroupId *string `json:"SecurityGroupId"`
-					} `json:"KciSecurityGroupSet"`
-					ManagedClusterControlPlaneLog struct {
-							Enable *bool `json:"Enable"`
-							ExistProject *bool `json:"ExistProject"`
-							ProjectName *string `json:"ProjectName"`
-						Items []struct {
-							ItemName *string `json:"ItemName"`
-							Available *bool `json:"Available"`
-							PoolName *string `json:"PoolName"`
-						} `json:"Items"`
-					} `json:"ManagedClusterControlPlaneLog"`
-					OrderType *int `json:"OrderType"`
-					ServiceEndTime *string `json:"ServiceEndTime"`
-					VpcCni struct {
-							VpcCniType *string `json:"VpcCniType"`
-							Status *string `json:"Status"`
-						EniSubnet []struct {
-							SubnetId *string `json:"SubnetId"`
-							CidrBlock *string `json:"CidrBlock"`
-							AvailableIpNumber *int `json:"AvailableIpNumber"`
-						} `json:"EniSubnet"`
-							Namespace *string `json:"Namespace"`
-							ReleaseName *string `json:"ReleaseName"`
-							ComponentVersion *string `json:"ComponentVersion"`
-							SupportFixedIp *bool `json:"SupportFixedIp"`
-							PodReleaseAfter *string `json:"PodReleaseAfter"`
-					} `json:"VpcCni"`
-				} `json:"ClusterSet"`
-    RequestId *string `json:"RequestId" name:"RequestId"`
-    TotalCount *int `json:"TotalCount" name:"TotalCount"`
-    MaxResults *int `json:"MaxResults" name:"MaxResults"`
-    Marker *int `json:"Marker" name:"Marker"`
-}
-
-func (r *DescribeClusterResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-func (r *DescribeClusterResponse) FromJsonString(s string) error {
-    return json.Unmarshal([]byte(s), &r)
-}
 
 type DescribeClusterInstanceRequest struct {
     *ksyunhttp.BaseRequest
@@ -540,7 +435,9 @@ type DescribeInstanceImageResponse struct {
 		ImageId *string `json:"ImageId"`
 		ImageName *string `json:"ImageName"`
 		ImageType *string `json:"ImageType"`
-	} `json:"ImageSet"`
+		MatchedK8sVersions []struct {
+			} `json:"MatchedK8sVersions"`
+		} `json:"ImageSet"`
     TotalCount *int `json:"TotalCount" name:"TotalCount"`
     RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1477,6 +1374,53 @@ func (r *DescribeNodePoolSummaryResponse) ToJsonString() string {
 }
 
 func (r *DescribeNodePoolSummaryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterSummaryRequest struct {
+    *ksyunhttp.BaseRequest
+}
+
+func (r *DescribeClusterSummaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterSummaryRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeClusterSummaryRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeClusterSummaryResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+	ClusterSet struct {
+		ClusterId *string `json:"ClusterId"`
+		ClusterName *string `json:"ClusterName"`
+		ClusterManageMode *string `json:"ClusterManageMode"`
+		K8sVersion *string `json:"K8sVersion"`
+		PodCidr *string `json:"PodCidr"`
+		ServiceCidr *string `json:"ServiceCidr"`
+		VpcId *string `json:"VpcId"`
+		VpcCidr *string `json:"VpcCidr"`
+		NetworkType *string `json:"NetworkType"`
+		Status *string `json:"Status"`
+		CreateTime *string `json:"CreateTime"`
+	} `json:"ClusterSet"`
+}
+
+func (r *DescribeClusterSummaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeClusterSummaryResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
