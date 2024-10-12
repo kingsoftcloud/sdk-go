@@ -65,8 +65,6 @@ type DescribeAlbsTagKV struct {
 }
 
 type DescribeAlbListenersFilter struct {
-    Name *string `json:"Name,omitempty" name:"Name"`
-    Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
 type CreateAlbRuleGroupAlbRuleSet struct {
@@ -1927,6 +1925,7 @@ type CreatePrivateLinkServerRequest struct {
     ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
     Description *string `json:"Description,omitempty" name:"Description"`
     ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+    DeleteProtection *string `json:"DeleteProtection,omitempty" name:"DeleteProtection"`
 }
 
 func (r *CreatePrivateLinkServerRequest) ToJsonString() string {
@@ -1997,6 +1996,7 @@ type DescribePrivateLinkServerResponse struct {
 		ProjectId *string `json:"ProjectId"`
 		PrivateLinkNum *int `json:"PrivateLinkNum"`
 		ServiceEndTime *string `json:"ServiceEndTime"`
+		DeleteProtection *string `json:"DeleteProtection"`
 	} `json:"PrivateLinkServerSet"`
 }
 
@@ -2050,6 +2050,7 @@ type ModifyPrivateLinkServerRequest struct {
     PrivateLinkServerId *string `json:"PrivateLinkServerId,omitempty" name:"PrivateLinkServerId"`
     PrivateLinkServerName *string `json:"PrivateLinkServerName,omitempty" name:"PrivateLinkServerName"`
     Description *string `json:"Description,omitempty" name:"Description"`
+    DeleteProtection *string `json:"DeleteProtection,omitempty" name:"DeleteProtection"`
 }
 
 func (r *ModifyPrivateLinkServerRequest) ToJsonString() string {
@@ -2088,6 +2089,7 @@ type AssociatePrivateLinkServerRequest struct {
     LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
     ListenerPort *int `json:"ListenerPort,omitempty" name:"ListenerPort"`
     ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+    DeleteProtection *string `json:"DeleteProtection,omitempty" name:"DeleteProtection"`
 }
 
 func (r *AssociatePrivateLinkServerRequest) ToJsonString() string {
@@ -2630,6 +2632,10 @@ type CreateAlbListenerRequest struct {
     Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
     Port *int `json:"Port,omitempty" name:"Port"`
     CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+    CaCertificateId *string `json:"CaCertificateId,omitempty" name:"CaCertificateId"`
+    CaEnabled *bool `json:"CaEnabled,omitempty" name:"CaEnabled"`
+    QuicListenerId *string `json:"QuicListenerId,omitempty" name:"QuicListenerId"`
+    EnableQuicUpgrade *bool `json:"EnableQuicUpgrade,omitempty" name:"EnableQuicUpgrade"`
     TlsCipherPolicy *string `json:"TlsCipherPolicy,omitempty" name:"TlsCipherPolicy"`
     AlbListenerAclId *string `json:"AlbListenerAclId,omitempty" name:"AlbListenerAclId"`
     AlbListenerState *string `json:"AlbListenerState,omitempty" name:"AlbListenerState"`
@@ -2680,6 +2686,10 @@ type ModifyAlbListenerRequest struct {
     AlbListenerState *string `json:"AlbListenerState,omitempty" name:"AlbListenerState"`
     Method *string `json:"Method,omitempty" name:"Method"`
     CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+    CaCertificateId *string `json:"CaCertificateId,omitempty" name:"CaCertificateId"`
+    CaEnabled *bool `json:"CaEnabled,omitempty" name:"CaEnabled"`
+    QuicListenerId *string `json:"QuicListenerId,omitempty" name:"QuicListenerId"`
+    EnableQuicUpgrade *bool `json:"EnableQuicUpgrade,omitempty" name:"EnableQuicUpgrade"`
     TlsCipherPolicy *string `json:"TlsCipherPolicy,omitempty" name:"TlsCipherPolicy"`
     AlbListenerAclId *string `json:"AlbListenerAclId,omitempty" name:"AlbListenerAclId"`
     HttpProtocol *string `json:"HttpProtocol,omitempty" name:"HttpProtocol"`
@@ -2793,6 +2803,10 @@ type DescribeAlbListenersResponse struct {
 		Protocol *string `json:"Protocol"`
 		Port *int `json:"Port"`
 		CertificateId *string `json:"CertificateId"`
+		CaCertificateId *string `json:"CaCertificateId"`
+		CaEnabled *bool `json:"CaEnabled"`
+		QuicListenerId *string `json:"QuicListenerId"`
+		EnableQuicUpgrade *bool `json:"EnableQuicUpgrade"`
 		TlsCipherPolicy *string `json:"TlsCipherPolicy"`
 		DefaultBackendServerGroupId *string `json:"DefaultBackendServerGroupId"`
 		AlbListenerAclId *string `json:"AlbListenerAclId"`
@@ -3871,6 +3885,7 @@ func (r *SetPrivateLinkDeleteProtectionRequest) FromJsonString(s string) error {
 type SetPrivateLinkDeleteProtectionResponse struct {
     *ksyunhttp.BaseResponse
     RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
 }
 
 func (r *SetPrivateLinkDeleteProtectionResponse) ToJsonString() string {
@@ -3953,6 +3968,43 @@ func (r *SetAlbModificationProtectionResponse) ToJsonString() string {
 }
 
 func (r *SetAlbModificationProtectionResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddAlbRulesRequest struct {
+    *ksyunhttp.BaseRequest
+    AlbRuleGroupId *string `json:"AlbRuleGroupId,omitempty" name:"AlbRuleGroupId"`
+    AlbRuleType *string `json:"AlbRuleType,omitempty" name:"AlbRuleType"`
+    AlbRuleValue *string `json:"AlbRuleValue,omitempty" name:"AlbRuleValue"`
+}
+
+func (r *AddAlbRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddAlbRulesRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "AddAlbRulesRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type AddAlbRulesResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *AddAlbRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *AddAlbRulesResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

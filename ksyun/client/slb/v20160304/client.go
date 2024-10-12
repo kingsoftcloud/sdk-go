@@ -2925,5 +2925,38 @@ func (c *Client) SetAlbModificationProtectionWithContext(ctx context.Context, re
     }
     return msg
 }
+func NewAddAlbRulesRequest() (request *AddAlbRulesRequest) {
+    request = &AddAlbRulesRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("slb", APIVersion, "AddAlbRules")
+    return
+}
+
+func NewAddAlbRulesResponse() (response *AddAlbRulesResponse) {
+    response = &AddAlbRulesResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) AddAlbRules(request *AddAlbRulesRequest) (string) {
+    return c.AddAlbRulesWithContext(context.Background(), request)
+}
+
+func (c *Client) AddAlbRulesWithContext(ctx context.Context, request *AddAlbRulesRequest) (string) {
+    if request == nil {
+        request = NewAddAlbRulesRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewAddAlbRulesResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 
