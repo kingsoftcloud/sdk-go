@@ -85,11 +85,6 @@ type CreateNodePoolDataDisk struct {
     DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
 }
 
-type CreateNodePoolLabel struct {
-    Key *string `json:"Key,omitempty" name:"Key"`
-    Value *string `json:"Value,omitempty" name:"Value"`
-}
-
 type CreateNodePoolKubelet struct {
     CustomArg *string `json:"CustomArg,omitempty" name:"CustomArg"`
 }
@@ -113,12 +108,6 @@ type CreateNodePoolInstanceTag struct {
 type CreateNodePoolLabel struct {
     Key *string `json:"Key,omitempty" name:"Key"`
     Value *string `json:"Value,omitempty" name:"Value"`
-}
-
-type CreateNodePoolTaint struct {
-    Key *string `json:"Key,omitempty" name:"Key"`
-    Value *string `json:"Value,omitempty" name:"Value"`
-    Effect *string `json:"Effect,omitempty" name:"Effect"`
 }
 
 type ModifyNodePoolLabel struct {
