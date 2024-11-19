@@ -1902,5 +1902,71 @@ func (c *Client) CancelImageExportWithContext(ctx context.Context, request *Canc
     }
     return msg
 }
+func NewUseHotStandByEpcRequest() (request *UseHotStandByEpcRequest) {
+    request = &UseHotStandByEpcRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("epc", APIVersion, "UseHotStandByEpc")
+    return
+}
+
+func NewUseHotStandByEpcResponse() (response *UseHotStandByEpcResponse) {
+    response = &UseHotStandByEpcResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) UseHotStandByEpc(request *UseHotStandByEpcRequest) (string) {
+    return c.UseHotStandByEpcWithContext(context.Background(), request)
+}
+
+func (c *Client) UseHotStandByEpcWithContext(ctx context.Context, request *UseHotStandByEpcRequest) (string) {
+    if request == nil {
+        request = NewUseHotStandByEpcRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewUseHotStandByEpcResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewActivateHotStandbyEpcRequest() (request *ActivateHotStandbyEpcRequest) {
+    request = &ActivateHotStandbyEpcRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("epc", APIVersion, "ActivateHotStandbyEpc")
+    return
+}
+
+func NewActivateHotStandbyEpcResponse() (response *ActivateHotStandbyEpcResponse) {
+    response = &ActivateHotStandbyEpcResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ActivateHotStandbyEpc(request *ActivateHotStandbyEpcRequest) (string) {
+    return c.ActivateHotStandbyEpcWithContext(context.Background(), request)
+}
+
+func (c *Client) ActivateHotStandbyEpcWithContext(ctx context.Context, request *ActivateHotStandbyEpcRequest) (string) {
+    if request == nil {
+        request = NewActivateHotStandbyEpcRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewActivateHotStandbyEpcResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 

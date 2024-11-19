@@ -2725,3 +2725,74 @@ func (r *CancelImageExportResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type UseHotStandByEpcRequest struct {
+    *ksyunhttp.BaseRequest
+    HostId *string `json:"HostId,omitempty" name:"HostId"`
+    HotStandByHostId *string `json:"HotStandByHostId,omitempty" name:"HotStandByHostId"`
+}
+
+func (r *UseHotStandByEpcRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UseHotStandByEpcRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UseHotStandByEpcRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type UseHotStandByEpcResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+    Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *UseHotStandByEpcResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *UseHotStandByEpcResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ActivateHotStandbyEpcRequest struct {
+    *ksyunhttp.BaseRequest
+    HostId *string `json:"HostId,omitempty" name:"HostId"`
+}
+
+func (r *ActivateHotStandbyEpcRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ActivateHotStandbyEpcRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ActivateHotStandbyEpcRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type ActivateHotStandbyEpcResponse struct {
+    *ksyunhttp.BaseResponse
+}
+
+func (r *ActivateHotStandbyEpcResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ActivateHotStandbyEpcResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
