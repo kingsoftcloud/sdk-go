@@ -45,7 +45,7 @@ func (c *Client) CreateTagWithContext(ctx context.Context, request *CreateTagReq
         request = NewCreateTagRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/x-www-form-urlencoded")
+    request.SetContentType("application/json")
 
     response := NewCreateTagResponse()
     err, msg := c.Send(request, response)
@@ -219,6 +219,39 @@ func (c *Client) ListResourcesWithContext(ctx context.Context, request *ListReso
     }
     return msg
 }
+func NewListTagsByResourceIdsRequest() (request *ListTagsByResourceIdsRequest) {
+    request = &ListTagsByResourceIdsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tagv2", APIVersion, "ListTagsByResourceIds")
+    return
+}
+
+func NewListTagsByResourceIdsResponse() (response *ListTagsByResourceIdsResponse) {
+    response = &ListTagsByResourceIdsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) ListTagsByResourceIds(request *ListTagsByResourceIdsRequest) (string) {
+    return c.ListTagsByResourceIdsWithContext(context.Background(), request)
+}
+
+func (c *Client) ListTagsByResourceIdsWithContext(ctx context.Context, request *ListTagsByResourceIdsRequest) (string) {
+    if request == nil {
+        request = NewListTagsByResourceIdsRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewListTagsByResourceIdsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 func NewReplaceResourcesTagsRequest() (request *ReplaceResourcesTagsRequest) {
     request = &ReplaceResourcesTagsRequest{
         BaseRequest: &ksyunhttp.BaseRequest{},
@@ -279,6 +312,39 @@ func (c *Client) DetachResourceTagsWithContext(ctx context.Context, request *Det
     request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDetachResourceTagsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateTagAndAttachResourceRequest() (request *CreateTagAndAttachResourceRequest) {
+    request = &CreateTagAndAttachResourceRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tagv2", APIVersion, "CreateTagAndAttachResource")
+    return
+}
+
+func NewCreateTagAndAttachResourceResponse() (response *CreateTagAndAttachResourceResponse) {
+    response = &CreateTagAndAttachResourceResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateTagAndAttachResource(request *CreateTagAndAttachResourceRequest) (string) {
+    return c.CreateTagAndAttachResourceWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateTagAndAttachResourceWithContext(ctx context.Context, request *CreateTagAndAttachResourceRequest) (string) {
+    if request == nil {
+        request = NewCreateTagAndAttachResourceRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewCreateTagAndAttachResourceResponse()
     err, msg := c.Send(request, response)
     if err != nil {
         return fmt.Sprintf("%+v\n", err)
