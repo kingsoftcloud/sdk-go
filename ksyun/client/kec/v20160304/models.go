@@ -2172,18 +2172,16 @@ type DescribeScalingActivityResponse struct {
 	AvailabilityZone     *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 	ScalingActivityCount *int    `json:"ScalingActivityCount" name:"ScalingActivityCount"`
 	ScalingActivitySet   []struct {
-		ScalingGroupId    *string `json:"ScalingGroupId"`
-		Status            *int    `json:"Status"`
-		Cause             *string `json:"Cause"`
-		Description       *string `json:"Description"`
-		StartTime         *string `json:"StartTime"`
-		ScalingActivityId *string `json:"ScalingActivityId"`
-		EndTime           *string `json:"EndTime"`
-		Type              *int    `json:"Type"`
-		SuccInsList       []struct {
-		} `json:"SuccInsList"`
-		FailInsList []struct {
-		} `json:"FailInsList"`
+		ScalingGroupId    *string  `json:"ScalingGroupId"`
+		Status            *int     `json:"Status"`
+		Cause             *string  `json:"Cause"`
+		Description       *string  `json:"Description"`
+		StartTime         *string  `json:"StartTime"`
+		ScalingActivityId *string  `json:"ScalingActivityId"`
+		EndTime           *string  `json:"EndTime"`
+		Type              *int     `json:"Type"`
+		SuccInsList       []string `json:"SuccInsList"`
+		FailInsList       []string `json:"FailInsList"`
 		ErrorCode *int `json:"ErrorCode"`
 	} `json:"ScalingActivitySet"`
 }
