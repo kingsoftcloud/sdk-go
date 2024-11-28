@@ -835,7 +835,7 @@ type DescribeNodePoolResponse struct {
 				ChargeType *string `json:"ChargeType"`
 				InstanceType *string `json:"InstanceType"`
 				InstanceName *string `json:"InstanceName"`
-				InstanceNameSuffix *string `json:"InstanceNameSuffix"`
+				InstanceNameSuffix *int `json:"InstanceNameSuffix"`
 			SystemDisk struct {
 				DiskType *string `json:"DiskType"`
 				DiskSize *int `json:"DiskSize"`
@@ -1421,6 +1421,42 @@ func (r *DescribeClusterSummaryResponse) ToJsonString() string {
 }
 
 func (r *DescribeClusterSummaryResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetScaleAPIServerConfigRequest struct {
+    *ksyunhttp.BaseRequest
+    ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+    InstanceIp *string `json:"InstanceIp,omitempty" name:"InstanceIp"`
+}
+
+func (r *GetScaleAPIServerConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetScaleAPIServerConfigRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetScaleAPIServerConfigRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type GetScaleAPIServerConfigResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *GetScaleAPIServerConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *GetScaleAPIServerConfigResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 

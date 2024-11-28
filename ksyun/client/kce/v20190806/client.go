@@ -846,5 +846,38 @@ func (c *Client) DescribeClusterSummaryWithContext(ctx context.Context, request 
     }
     return msg
 }
+func NewGetScaleAPIServerConfigRequest() (request *GetScaleAPIServerConfigRequest) {
+    request = &GetScaleAPIServerConfigRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("kce", APIVersion, "GetScaleAPIServerConfig")
+    return
+}
+
+func NewGetScaleAPIServerConfigResponse() (response *GetScaleAPIServerConfigResponse) {
+    response = &GetScaleAPIServerConfigResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) GetScaleAPIServerConfig(request *GetScaleAPIServerConfigRequest) (string) {
+    return c.GetScaleAPIServerConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) GetScaleAPIServerConfigWithContext(ctx context.Context, request *GetScaleAPIServerConfigRequest) (string) {
+    if request == nil {
+        request = NewGetScaleAPIServerConfigRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewGetScaleAPIServerConfigResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 
