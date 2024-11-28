@@ -1891,27 +1891,26 @@ type DescribeScalingGroupResponse struct {
 			Weight          *int    `json:"Weight"`
 			HealthCheckType *string `json:"HealthCheckType"`
 		} `json:"SlbConfigSet"`
-		ScalingGroupName         *string `json:"ScalingGroupName"`
-		ScalingConfigurationId   *string `json:"ScalingConfigurationId"`
-		ScalingConfigurationName *string `json:"ScalingConfigurationName"`
-		MinSize                  *int    `json:"MinSize"`
-		MaxSize                  *int    `json:"MaxSize"`
-		InstanceNum              *int    `json:"InstanceNum"`
-		CreateTime               *string `json:"CreateTime"`
-		RemovePolicy             *string `json:"RemovePolicy"`
-		VpcId                    *string `json:"VpcId"`
-		SecurityGroupId          *string `json:"SecurityGroupId"`
-		SubnetId                 *string `json:"SubnetId"`
-		Status                   *string `json:"Status"`
-		AvailabilityZone         *string `json:"AvailabilityZone"`
-		ProductLine              *string `json:"ProductLine"`
-		AvailabilityZoneName     *string `json:"AvailabilityZoneName"`
-		DesiredCapacity          *int    `json:"DesiredCapacity"`
-		DistributeIpv6           *bool   `json:"DistributeIpv6"`
-		SubnetIdSet              []struct {
-		} `json:"SubnetIdSet"`
-		SubnetStrategy     *string `json:"SubnetStrategy"`
-		SecurityGroupIdSet []struct {
+		ScalingGroupName         *string   `json:"ScalingGroupName"`
+		ScalingConfigurationId   *string   `json:"ScalingConfigurationId"`
+		ScalingConfigurationName *string   `json:"ScalingConfigurationName"`
+		MinSize                  *int      `json:"MinSize"`
+		MaxSize                  *int      `json:"MaxSize"`
+		InstanceNum              *int      `json:"InstanceNum"`
+		CreateTime               *string   `json:"CreateTime"`
+		RemovePolicy             *string   `json:"RemovePolicy"`
+		VpcId                    *string   `json:"VpcId"`
+		SecurityGroupId          *string   `json:"SecurityGroupId"`
+		SubnetId                 *string   `json:"SubnetId"`
+		Status                   *string   `json:"Status"`
+		AvailabilityZone         *string   `json:"AvailabilityZone"`
+		ProductLine              *string   `json:"ProductLine"`
+		AvailabilityZoneName     *string   `json:"AvailabilityZoneName"`
+		DesiredCapacity          *int      `json:"DesiredCapacity"`
+		DistributeIpv6           *bool     `json:"DistributeIpv6"`
+		SubnetIdSet              []*string `json:"SubnetIdSet"`
+		SubnetStrategy           *string   `json:"SubnetStrategy"`
+		SecurityGroupIdSet       []struct {
 		} `json:"SecurityGroupIdSet"`
 		LockDesiredCapacity   *bool `json:"LockDesiredCapacity"`
 		AllowSlbScalingPolicy *bool `json:"AllowSlbScalingPolicy"`
@@ -2172,17 +2171,17 @@ type DescribeScalingActivityResponse struct {
 	AvailabilityZone     *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 	ScalingActivityCount *int    `json:"ScalingActivityCount" name:"ScalingActivityCount"`
 	ScalingActivitySet   []struct {
-		ScalingGroupId    *string  `json:"ScalingGroupId"`
-		Status            *int     `json:"Status"`
-		Cause             *string  `json:"Cause"`
-		Description       *string  `json:"Description"`
-		StartTime         *string  `json:"StartTime"`
-		ScalingActivityId *string  `json:"ScalingActivityId"`
-		EndTime           *string  `json:"EndTime"`
-		Type              *int     `json:"Type"`
-		SuccInsList       []string `json:"SuccInsList"`
-		FailInsList       []string `json:"FailInsList"`
-		ErrorCode *int `json:"ErrorCode"`
+		ScalingGroupId    *string   `json:"ScalingGroupId"`
+		Status            *int      `json:"Status"`
+		Cause             *string   `json:"Cause"`
+		Description       *string   `json:"Description"`
+		StartTime         *string   `json:"StartTime"`
+		ScalingActivityId *string   `json:"ScalingActivityId"`
+		EndTime           *string   `json:"EndTime"`
+		Type              *int      `json:"Type"`
+		SuccInsList       []*string `json:"SuccInsList"`
+		FailInsList       []*string `json:"FailInsList"`
+		ErrorCode         *int      `json:"ErrorCode"`
 	} `json:"ScalingActivitySet"`
 }
 
