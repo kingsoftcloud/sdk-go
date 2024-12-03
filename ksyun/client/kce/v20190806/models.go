@@ -282,6 +282,7 @@ type DescribeClusterInstanceResponse struct {
 		} `json:"EpcInstancePara"`
 		Type         *string `json:"Type"`
 		ErrorMessage *string `json:"ErrorMessage"`
+		NodeName     *string `json:"NodeName"`
 	} `json:"InstanceSet"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
@@ -877,8 +878,8 @@ type DescribeNodePoolResponse struct {
 						CustomArg *string `json:"CustomArg"`
 					} `json:"Kubelet"`
 				} `json:"ExtraArg"`
-				ContainerLogMaxSize  *int `json:"ContainerLogMaxSize"`
-				ContainerLogMaxFiles *int `json:"ContainerLogMaxFiles"`
+				ContainerLogMaxSize  *string `json:"ContainerLogMaxSize"`
+				ContainerLogMaxFiles *string `json:"ContainerLogMaxFiles"`
 				Taints               []struct {
 					Key    *string `json:"Key"`
 					Value  *string `json:"Value"`
