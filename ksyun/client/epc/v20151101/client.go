@@ -1968,5 +1968,38 @@ func (c *Client) ActivateHotStandbyEpcWithContext(ctx context.Context, request *
     }
     return msg
 }
+func NewBatchCreateEpcRequest() (request *BatchCreateEpcRequest) {
+    request = &BatchCreateEpcRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("epc", APIVersion, "BatchCreateEpc")
+    return
+}
+
+func NewBatchCreateEpcResponse() (response *BatchCreateEpcResponse) {
+    response = &BatchCreateEpcResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) BatchCreateEpc(request *BatchCreateEpcRequest) (string) {
+    return c.BatchCreateEpcWithContext(context.Background(), request)
+}
+
+func (c *Client) BatchCreateEpcWithContext(ctx context.Context, request *BatchCreateEpcRequest) (string) {
+    if request == nil {
+        request = NewBatchCreateEpcRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewBatchCreateEpcResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 

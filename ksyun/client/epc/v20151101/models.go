@@ -2796,3 +2796,92 @@ func (r *ActivateHotStandbyEpcResponse) FromJsonString(s string) error {
     return json.Unmarshal([]byte(s), &r)
 }
 
+type BatchCreateEpcRequest struct {
+    *ksyunhttp.BaseRequest
+    HostType *string `json:"HostType,omitempty" name:"HostType"`
+    AvailabilityZone *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+    Raid *string `json:"Raid,omitempty" name:"Raid"`
+    RaidId *string `json:"RaidId,omitempty" name:"RaidId"`
+    ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+    NetworkInterfaceMode *string `json:"NetworkInterfaceMode,omitempty" name:"NetworkInterfaceMode"`
+    SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+    KeyId *string `json:"keyId,omitempty" name:"keyId"`
+    SecurityGroupId []*string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+    DNS1 *string `json:"DNS1,omitempty" name:"DNS1"`
+    DNS2 *string `json:"DNS2,omitempty" name:"DNS2"`
+    HostName *string `json:"HostName,omitempty" name:"HostName"`
+    ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+    ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+    Sn *string `json:"Sn,omitempty" name:"Sn"`
+    PurchaseTime *int `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
+    Password *string `json:"Password,omitempty" name:"Password"`
+    CloudMonitorAgent *string `json:"CloudMonitorAgent,omitempty" name:"CloudMonitorAgent"`
+    ExtensionSubnetId *string `json:"ExtensionSubnetId,omitempty" name:"ExtensionSubnetId"`
+    ExtensionDNS1 *string `json:"ExtensionDNS1,omitempty" name:"ExtensionDNS1"`
+    ExtensionDNS2 *string `json:"ExtensionDNS2,omitempty" name:"ExtensionDNS2"`
+    Description *string `json:"Description,omitempty" name:"Description"`
+    AddressBandWidth *string `json:"AddressBandWidth,omitempty" name:"AddressBandWidth"`
+    LineId *string `json:"LineId,omitempty" name:"LineId"`
+    BandWidthShareId *string `json:"BandWidthShareId,omitempty" name:"BandWidthShareId"`
+    AddressChargeType *string `json:"AddressChargeType,omitempty" name:"AddressChargeType"`
+    AddressPurchaseTime *string `json:"AddressPurchaseTime,omitempty" name:"AddressPurchaseTime"`
+    AddressProjectId *string `json:"AddressProjectId,omitempty" name:"AddressProjectId"`
+    SystemFileType *string `json:"SystemFileType,omitempty" name:"SystemFileType"`
+    DataFileType *string `json:"DataFileType,omitempty" name:"DataFileType"`
+    DataDiskCatalogue *string `json:"DataDiskCatalogue,omitempty" name:"DataDiskCatalogue"`
+    DataDiskCatalogueSuffix *string `json:"DataDiskCatalogueSuffix,omitempty" name:"DataDiskCatalogueSuffix"`
+    HyperThreading *string `json:"HyperThreading,omitempty" name:"HyperThreading"`
+    NvmeDataFileType *string `json:"NvmeDataFileType,omitempty" name:"NvmeDataFileType"`
+    NvmeDataDiskCatalogue *string `json:"NvmeDataDiskCatalogue,omitempty" name:"NvmeDataDiskCatalogue"`
+    NvmeDataDiskCatalogueSuffix *string `json:"NvmeDataDiskCatalogueSuffix,omitempty" name:"NvmeDataDiskCatalogueSuffix"`
+    BondAttribute *string `json:"BondAttribute,omitempty" name:"BondAttribute"`
+    ContainerAgent *string `json:"ContainerAgent,omitempty" name:"ContainerAgent"`
+    KesAgent *string `json:"KesAgent,omitempty" name:"KesAgent"`
+    KmrAgent *string `json:"KmrAgent,omitempty" name:"KmrAgent"`
+    ComputerName *string `json:"ComputerName,omitempty" name:"ComputerName"`
+    OverclockingAttribute *string `json:"OverclockingAttribute,omitempty" name:"OverclockingAttribute"`
+    GpuImageDriverId *string `json:"GpuImageDriverId,omitempty" name:"GpuImageDriverId"`
+    SystemVolumeType *string `json:"SystemVolumeType,omitempty" name:"SystemVolumeType"`
+    SystemVolumeSize *string `json:"SystemVolumeSize,omitempty" name:"SystemVolumeSize"`
+    RoceNetwork *string `json:"RoceNetwork,omitempty" name:"RoceNetwork"`
+    ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+    ZoneType *string `json:"ZoneType,omitempty" name:"ZoneType"`
+    HostNameStartNo *int `json:"HostNameStartNo,omitempty" name:"HostNameStartNo"`
+    ComputerNameStartNo *int `json:"ComputerNameStartNo,omitempty" name:"ComputerNameStartNo"`
+    Amount *int `json:"Amount,omitempty" name:"Amount"`
+}
+
+func (r *BatchCreateEpcRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BatchCreateEpcRequest) FromJsonString(s string) error {
+    f := make(map[string]interface{})
+    if err := json.Unmarshal([]byte(s), &f); err != nil {
+        return err
+    }
+    if len(f) > 0 {
+        return errors.NewKsyunSDKError("ClientError.BuildRequestError", "BatchCreateEpcRequest has unknown keys!", "")
+    }
+    return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchCreateEpcResponse struct {
+    *ksyunhttp.BaseResponse
+    RequestId *string `json:"RequestId" name:"RequestId"`
+	Host []struct {
+		HostId *string `json:"HostId"`
+		HostName *string `json:"HostName"`
+	} `json:"Host"`
+}
+
+func (r *BatchCreateEpcResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *BatchCreateEpcResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
