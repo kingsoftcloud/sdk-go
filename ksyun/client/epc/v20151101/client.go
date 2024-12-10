@@ -78,7 +78,7 @@ func (c *Client) StartEpcWithContext(ctx context.Context, request *StartEpcReque
         request = NewStartEpcRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewStartEpcResponse()
     err, msg := c.Send(request, response)
