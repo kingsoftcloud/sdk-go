@@ -622,9 +622,32 @@ func (r *DescribeEpcForClusterResponse) FromJsonString(s string) error {
 
 type AddClusterEpcInstancesRequest struct {
 	*ksyunhttp.BaseRequest
-	ClusterId  *string   `json:"ClusterId,omitempty" name:"ClusterId"`
-	InstanceId []*string `json:"InstanceId,omitempty" name:"InstanceId"`
-	EpcPara    []*string `json:"EpcPara,omitempty" name:"EpcPara"`
+	ClusterId       *string   `json:"ClusterId,omitempty" name:"ClusterId"`
+	InstanceId      []*string `json:"InstanceId,omitempty" name:"InstanceId"`
+	EpcPara         []*string `json:"EpcPara,omitempty" name:"EpcPara"`
+	AdvancedSetting struct {
+		ContainerRuntime *string `json:"ContainerRuntime"`
+		ContainerPath    *string `json:"ContainerPath"`
+		UserScript       *string `json:"UserScript"`
+		PreUserScript    *string `json:"PreUserScript"`
+		Schedulable      *bool   `json:"Schedulable"`
+		Label            struct {
+			Key   *string `json:"Key"`
+			Value *string `json:"Value"`
+		} `json:"Label"`
+		ExtraArg struct {
+			Kubelet struct {
+				CustomArg *string `json:"CustomArg"`
+			} `json:"Kubelet"`
+		} `json:"ExtraArg"`
+		ContainerLogMaxSize  *int `json:"ContainerLogMaxSize"`
+		ContainerLogMaxFiles *int `json:"ContainerLogMaxFiles"`
+		Taints               struct {
+			Key    *string `json:"Key"`
+			Value  *string `json:"Value"`
+			Effect *string `json:"Effect"`
+		} `json:"Taints"`
+	} `json:"AdvancedSetting"`
 }
 
 func (r *AddClusterEpcInstancesRequest) ToJsonString() string {
