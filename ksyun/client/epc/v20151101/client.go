@@ -144,7 +144,7 @@ func (c *Client) DeleteEpcWithContext(ctx context.Context, request *DeleteEpcReq
         request = NewDeleteEpcRequest()
     }
     request.SetContext(ctx)
-    request.SetContentType("application/json")
+    request.SetContentType("application/x-www-form-urlencoded")
 
     response := NewDeleteEpcResponse()
     err, msg := c.Send(request, response)
