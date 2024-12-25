@@ -87,6 +87,7 @@ type CreateEpcRequest struct {
     RoceNetwork *string `json:"RoceNetwork,omitempty" name:"RoceNetwork"`
     ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
     ZoneType *string `json:"ZoneType,omitempty" name:"ZoneType"`
+    UseHotStandby *string `json:"UseHotStandby,omitempty" name:"UseHotStandby"`
 }
 
 func (r *CreateEpcRequest) ToJsonString() string {
@@ -596,6 +597,7 @@ type DescribeEpcsResponse struct {
 						AutoDeleteTime *string `json:"AutoDeleteTime"`
 						VpcTrust *int `json:"VpcTrust"`
 					} `json:"HostSet"`
+    ChargeType *string `json:"ChargeType" name:"ChargeType"`
 }
 
 func (r *DescribeEpcsResponse) ToJsonString() string {
@@ -2729,6 +2731,7 @@ type UseHotStandByEpcRequest struct {
     *ksyunhttp.BaseRequest
     HostId *string `json:"HostId,omitempty" name:"HostId"`
     HotStandByHostId *string `json:"HotStandByHostId,omitempty" name:"HotStandByHostId"`
+    RetainInstanceInfo *string `json:"RetainInstanceInfo,omitempty" name:"RetainInstanceInfo"`
 }
 
 func (r *UseHotStandByEpcRequest) ToJsonString() string {

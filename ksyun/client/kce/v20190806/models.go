@@ -537,11 +537,12 @@ func (r *DeleteClusterInstancesResponse) FromJsonString(s string) error {
 
 type DescribeEpcForClusterRequest struct {
 	*ksyunhttp.BaseRequest
-	ClusterId  *string                        `json:"ClusterId,omitempty" name:"ClusterId"`
-	InstanceId []*string                      `json:"InstanceId,omitempty" name:"InstanceId"`
-	Filter     []*DescribeEpcForClusterFilter `json:"Filter,omitempty" name:"Filter"`
-	Marker     *int                           `json:"Marker,omitempty" name:"Marker"`
-	MaxResults *int                           `json:"MaxResults,omitempty" name:"MaxResults"`
+	ClusterId    *string                        `json:"ClusterId,omitempty" name:"ClusterId"`
+	InstanceId   []*string                      `json:"InstanceId,omitempty" name:"InstanceId"`
+	Filter       []*DescribeEpcForClusterFilter `json:"Filter,omitempty" name:"Filter"`
+	Marker       *int                           `json:"Marker,omitempty" name:"Marker"`
+	MaxResults   *int                           `json:"MaxResults,omitempty" name:"MaxResults"`
+	OperatorType *string                        `json:"OperatorType,omitempty" name:"OperatorType"`
 }
 
 func (r *DescribeEpcForClusterRequest) ToJsonString() string {
