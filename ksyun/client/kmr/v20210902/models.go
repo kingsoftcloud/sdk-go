@@ -23,13 +23,29 @@ type LaunchClusterInstanceGroups struct {
 
 type ScaleInInstanceGroupsInstanceGroups struct {
     Id *string `json:"Id,omitempty" name:"Id"`
-Instance   []struct {
+Instances   []struct {
                 InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-        } `json:"instance,omitempty" name:"instance"`
+        } `json:"instances,omitempty" name:"instances"`
 }
 
-type ScaleInInstanceGroupsinstance struct {
+type ScaleInInstanceGroupsinstances struct {
     InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type ScaleOutInstanceGroupsInstanceGroups struct {
+    InstanceGroupType *string `json:"InstanceGroupType,omitempty" name:"InstanceGroupType"`
+    InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+    ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+    InstanceCount *int `json:"InstanceCount,omitempty" name:"InstanceCount"`
+    RaidType *string `json:"RaidType,omitempty" name:"RaidType"`
+    VolumeType *string `json:"VolumeType,omitempty" name:"VolumeType"`
+    VolumeSize *int `json:"VolumeSize,omitempty" name:"VolumeSize"`
+    VolumeCount *int `json:"VolumeCount,omitempty" name:"VolumeCount"`
+    SystemDiskType *string `json:"SystemDiskType,omitempty" name:"SystemDiskType"`
+    SystemDiskSize *int `json:"SystemDiskSize,omitempty" name:"SystemDiskSize"`
+    AvailabilityZone *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+    AvailabilityZoneIndex *int `json:"AvailabilityZoneIndex,omitempty" name:"AvailabilityZoneIndex"`
+    InstanceGroupIndex *int `json:"InstanceGroupIndex,omitempty" name:"InstanceGroupIndex"`
 }
 
 type BindTagsTags struct {
@@ -109,7 +125,7 @@ type LaunchClusterRequest struct {
     MainVersion *string `json:"MainVersion,omitempty" name:"MainVersion"`
     ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
     Services []*string `json:"Services,omitempty" name:"Services"`
-    ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+    ProjectId *int `json:"ProjectId,omitempty" name:"ProjectId"`
     VpcDomainId *string `json:"VpcDomainId,omitempty" name:"VpcDomainId"`
     SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
     InstanceGroups []*LaunchClusterInstanceGroups `json:"InstanceGroups,omitempty" name:"InstanceGroups"`
@@ -189,6 +205,9 @@ func (r *ScaleInInstanceGroupsResponse) FromJsonString(s string) error {
 
 type ScaleOutInstanceGroupsRequest struct {
     *ksyunhttp.BaseRequest
+    ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+    InstanceGroups []*ScaleOutInstanceGroupsInstanceGroups `json:"InstanceGroups,omitempty" name:"InstanceGroups"`
+    ProjectId *int `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *ScaleOutInstanceGroupsRequest) ToJsonString() string {
@@ -225,6 +244,7 @@ func (r *ScaleOutInstanceGroupsResponse) FromJsonString(s string) error {
 
 type DescribeClusterInfoRequest struct {
     *ksyunhttp.BaseRequest
+    ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *DescribeClusterInfoRequest) ToJsonString() string {
@@ -319,6 +339,7 @@ func (r *ListServiceStatusResponse) FromJsonString(s string) error {
 
 type ListClustersRequest struct {
     *ksyunhttp.BaseRequest
+    Marker *string `json:"Marker,omitempty" name:"Marker"`
 }
 
 func (r *ListClustersRequest) ToJsonString() string {
@@ -432,6 +453,7 @@ func (r *ListClusterVersionsResponse) FromJsonString(s string) error {
 
 type DescribeServiceRequest struct {
     *ksyunhttp.BaseRequest
+    ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *DescribeServiceRequest) ToJsonString() string {
@@ -596,6 +618,7 @@ func (r *ListConfigurationHistoryResponse) FromJsonString(s string) error {
 
 type ListTagValuesRequest struct {
     *ksyunhttp.BaseRequest
+    ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *ListTagValuesRequest) ToJsonString() string {
@@ -641,6 +664,7 @@ func (r *ListTagValuesResponse) FromJsonString(s string) error {
 
 type ListTagKeysRequest struct {
     *ksyunhttp.BaseRequest
+    ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *ListTagKeysRequest) ToJsonString() string {
@@ -718,6 +742,8 @@ func (r *BindTagsResponse) FromJsonString(s string) error {
 
 type StartInstancesRequest struct {
     *ksyunhttp.BaseRequest
+    ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+    InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *StartInstancesRequest) ToJsonString() string {
@@ -754,6 +780,11 @@ func (r *StartInstancesResponse) FromJsonString(s string) error {
 
 type RestartInstancesRequest struct {
     *ksyunhttp.BaseRequest
+    ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+    InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+    Interval *int `json:"Interval,omitempty" name:"Interval"`
+    RollingRestart *bool `json:"RollingRestart,omitempty" name:"RollingRestart"`
+    ForceReboot *bool `json:"ForceReboot,omitempty" name:"ForceReboot"`
 }
 
 func (r *RestartInstancesRequest) ToJsonString() string {
@@ -790,6 +821,8 @@ func (r *RestartInstancesResponse) FromJsonString(s string) error {
 
 type StopInstancesRequest struct {
     *ksyunhttp.BaseRequest
+    ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+    InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *StopInstancesRequest) ToJsonString() string {
@@ -826,6 +859,7 @@ func (r *StopInstancesResponse) FromJsonString(s string) error {
 
 type ListScaleStrategyRequest struct {
     *ksyunhttp.BaseRequest
+    ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *ListScaleStrategyRequest) ToJsonString() string {
@@ -948,6 +982,7 @@ func (r *ListScaleStrategyResponse) FromJsonString(s string) error {
 
 type ModifyScaleStrategyRequest struct {
     *ksyunhttp.BaseRequest
+    ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *ModifyScaleStrategyRequest) ToJsonString() string {
@@ -1025,6 +1060,7 @@ func (r *DeleteScaleStrategyResponse) FromJsonString(s string) error {
 
 type ListScaleHistoryRequest struct {
     *ksyunhttp.BaseRequest
+    ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *ListScaleHistoryRequest) ToJsonString() string {
@@ -1078,6 +1114,7 @@ func (r *ListScaleHistoryResponse) FromJsonString(s string) error {
 
 type AddLoadBasedScaleStrategyRequest struct {
     *ksyunhttp.BaseRequest
+    ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *AddLoadBasedScaleStrategyRequest) ToJsonString() string {
@@ -1115,6 +1152,7 @@ func (r *AddLoadBasedScaleStrategyResponse) FromJsonString(s string) error {
 
 type ModifyLoadBasedScaleStrategyRequest struct {
     *ksyunhttp.BaseRequest
+    ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *ModifyLoadBasedScaleStrategyRequest) ToJsonString() string {
