@@ -57,8 +57,40 @@ type DescribeExistedInstancesFilter struct {
 }
 
 type AddExistedInstancesExistedInstanceKecSet struct {
-	NodeRole *string   `json:"NodeRole,omitempty" name:"NodeRole"`
-	KecPara  []*string `json:"KecPara,omitempty" name:"KecPara"`
+	NodeRole        *string                                                 `json:"NodeRole,omitempty" name:"NodeRole"`
+	KecPara         []*string                                               `json:"KecPara,omitempty" name:"KecPara"`
+	AdvancedSetting AddExistedInstancesExistedInstanceKecSetAdvancedSetting `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
+}
+
+type AddExistedInstancesExistedInstanceKecSetAdvancedSetting struct {
+	DataDisk struct {
+		AutoFormatAndMount *bool   `json:"AutoFormatAndMount"`
+		FileSystem         *string `json:"FileSystem"`
+		MountTarget        *string `json:"MountTarget"`
+	} `json:"DataDisk"`
+	ContainerRuntime *string `json:"ContainerRuntime"`
+	ContainerPath    *string `json:"ContainerPath"`
+	UserScript       *string `json:"UserScript"`
+	PreUserScript    *string `json:"PreUserScript"`
+	Schedulable      *bool   `json:"Schedulable"`
+	Label            struct {
+		Key   *string `json:"Key"`
+		Value *string `json:"Value"`
+	} `json:"Label"`
+	ExtraArg struct {
+		Kubelet struct {
+			CustomArg *string `json:"CustomArg"`
+		} `json:"Kubelet"`
+	} `json:"ExtraArg"`
+	ContainerLogMaxSize  *int                                                          `json:"ContainerLogMaxSize"`
+	ContainerLogMaxFiles *int                                                          `json:"ContainerLogMaxFiles"`
+	Taints               AddExistedInstancesExistedInstanceKecSetAdvancedSettingTaints `json:"Taints"`
+}
+
+type AddExistedInstancesExistedInstanceKecSetAdvancedSettingTaints struct {
+	Key    *string `json:"Key,omitempty" name:"Key"`
+	Value  *string `json:"Value,omitempty" name:"Value"`
+	Effect *string `json:"Effect,omitempty" name:"Effect"`
 }
 
 type AddExistedInstancesLabel struct {
