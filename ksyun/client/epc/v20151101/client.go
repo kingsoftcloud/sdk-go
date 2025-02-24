@@ -2001,5 +2001,38 @@ func (c *Client) BatchCreateEpcWithContext(ctx context.Context, request *BatchCr
     }
     return msg
 }
+func NewDescribeUseHotStandbyRecordsRequest() (request *DescribeUseHotStandbyRecordsRequest) {
+    request = &DescribeUseHotStandbyRecordsRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("epc", APIVersion, "DescribeUseHotStandbyRecords")
+    return
+}
+
+func NewDescribeUseHotStandbyRecordsResponse() (response *DescribeUseHotStandbyRecordsResponse) {
+    response = &DescribeUseHotStandbyRecordsResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) DescribeUseHotStandbyRecords(request *DescribeUseHotStandbyRecordsRequest) (string) {
+    return c.DescribeUseHotStandbyRecordsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeUseHotStandbyRecordsWithContext(ctx context.Context, request *DescribeUseHotStandbyRecordsRequest) (string) {
+    if request == nil {
+        request = NewDescribeUseHotStandbyRecordsRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewDescribeUseHotStandbyRecordsResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 

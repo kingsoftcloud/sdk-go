@@ -89,6 +89,7 @@ type CreateEpcRequest struct {
 	ZoneId                      *string   `json:"ZoneId,omitempty" name:"ZoneId"`
 	ZoneType                    *string   `json:"ZoneType,omitempty" name:"ZoneType"`
 	UseHotStandby               *string   `json:"UseHotStandby,omitempty" name:"UseHotStandby"`
+	TimedRegularization         *string   `json:"TimedRegularization,omitempty" name:"TimedRegularization"`
 }
 
 func (r *CreateEpcRequest) ToJsonString() string {
@@ -211,9 +212,10 @@ type CreateEpcResponse struct {
 			GateWay *string `json:"GateWay"`
 			Type    *string `json:"Type"`
 		} `json:"Roces"`
-		ContractDueTime *string `json:"ContractDueTime"`
-		AutoDeleteTime  *string `json:"AutoDeleteTime"`
-		VpcTrust        *int    `json:"VpcTrust"`
+		ContractDueTime         *string `json:"ContractDueTime"`
+		AutoDeleteTime          *string `json:"AutoDeleteTime"`
+		VpcTrust                *int    `json:"VpcTrust"`
+		TimedRegularizationTime *string `json:"TimedRegularizationTime"`
 	} `json:"Host"`
 }
 
@@ -497,7 +499,7 @@ func (r *DescribeEpcsRequest) FromJsonString(s string) error {
 
 type DescribeEpcsResponse struct {
 	*ksyunhttp.BaseResponse
-	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	TotalCount *string `json:"TotalCount" name:"TotalCount"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	NextToken  *string `json:"NextToken" name:"NextToken"`
 	HostSet    []struct {
@@ -509,9 +511,9 @@ type DescribeEpcsResponse struct {
 		Memory           *string `json:"Memory"`
 		Cpu              struct {
 			Model     *string `json:"Model"`
-			Count     *int    `json:"Count"`
+			Count     *string `json:"Count"`
 			Frequence *string `json:"Frequence"`
-			CoreCount *int    `json:"CoreCount"`
+			CoreCount *string `json:"CoreCount"`
 		} `json:"Cpu"`
 		Raid *string `json:"Raid"`
 		Gpu  struct {
@@ -521,6 +523,11 @@ type DescribeEpcsResponse struct {
 			Frequence *string `json:"Frequence"`
 			CoreCount *int    `json:"CoreCount"`
 		} `json:"Gpu"`
+		Roce struct {
+			RoceIp      *string `json:"RoceIp"`
+			RoceMask    *string `json:"RoceMask"`
+			RoceGateWay *string `json:"RoceGateWay"`
+		} `json:"Roce"`
 		CloudMonitorAgent    *string `json:"CloudMonitorAgent"`
 		DataDiskCatalogue    *string `json:"DataDiskCatalogue"`
 		NetworkInterfaceMode *string `json:"NetworkInterfaceMode"`
@@ -550,18 +557,16 @@ type DescribeEpcsResponse struct {
 			SubnetId           *string `json:"SubnetId"`
 			NetworkInterfaceId *string `json:"NetworkInterfaceId"`
 			Mac                *string `json:"Mac"`
-			VpcId              *string `json:"VpcId"`
 		} `json:"NetworkInterfaceAttributeSet"`
 		ComputerName *string `json:"ComputerName"`
 		CabinetId    *string `json:"CabinetId"`
 		DiskSet      []struct {
 			DiskType        *string `json:"DiskType"`
 			Space           *string `json:"Space"`
-			DiskCount       *int    `json:"DiskCount"`
+			DiskCount       *string `json:"DiskCount"`
 			Raid            *string `json:"Raid"`
 			DiskAttribute   *string `json:"DiskAttribute"`
 			SystemDiskSpace *string `json:"SystemDiskSpace"`
-			DiskSpace       *string `json:"DiskSpace"`
 		} `json:"DiskSet"`
 		DataDiskCatalogueSuffix     *string `json:"DataDiskCatalogueSuffix"`
 		DataFileType                *string `json:"DataFileType"`
@@ -577,7 +582,7 @@ type DescribeEpcsResponse struct {
 		CabinetName                 *string `json:"CabinetName"`
 		ProjectId                   *string `json:"ProjectId"`
 		KeyId                       *string `json:"KeyId"`
-		AllowModifyHyperThreading   *bool   `json:"AllowModifyHyperThreading"`
+		AllowModifyHyperThreading   *string `json:"AllowModifyHyperThreading"`
 		ReleasableTime              *string `json:"ReleasableTime"`
 		RackName                    *string `json:"RackName"`
 		KmrAgent                    *string `json:"KmrAgent"`
@@ -586,18 +591,8 @@ type DescribeEpcsResponse struct {
 		SecurityAgent               *string `json:"SecurityAgent"`
 		SupportEbs                  *string `json:"SupportEbs"`
 		KplAgent                    *string `json:"KplAgent"`
-		RackId                      *string `json:"RackId"`
-		ContainerAgent              *string `json:"ContainerAgent"`
-		Roce                        struct {
-			Ip      *string `json:"Ip"`
-			Mask    *string `json:"Mask"`
-			GateWay *string `json:"GateWay"`
-			Type    *string `json:"Type"`
-		} `json:"Roce"`
-		ContractDueTime *string `json:"ContractDueTime"`
-		AutoDeleteTime  *string `json:"AutoDeleteTime"`
-		VpcTrust        *int    `json:"VpcTrust"`
-		ChargeType      *string `json:"ChargeType" name:"ChargeType"`
+		ChargeType                  *string `json:"ChargeType"`
+		TimedRegularizationTime     *string `json:"TimedRegularizationTime"`
 	} `json:"HostSet"`
 }
 
@@ -2853,6 +2848,7 @@ type BatchCreateEpcRequest struct {
 	HostNameStartNo             *int      `json:"HostNameStartNo,omitempty" name:"HostNameStartNo"`
 	ComputerNameStartNo         *int      `json:"ComputerNameStartNo,omitempty" name:"ComputerNameStartNo"`
 	Amount                      *int      `json:"Amount,omitempty" name:"Amount"`
+	TimedRegularization         *string   `json:"TimedRegularization,omitempty" name:"TimedRegularization"`
 }
 
 func (r *BatchCreateEpcRequest) ToJsonString() string {
@@ -2886,5 +2882,59 @@ func (r *BatchCreateEpcResponse) ToJsonString() string {
 }
 
 func (r *BatchCreateEpcResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUseHotStandbyRecordsRequest struct {
+	*ksyunhttp.BaseRequest
+	MaxResults *int    `json:"MaxResults,omitempty" name:"MaxResults"`
+	NextToken  *string `json:"NextToken,omitempty" name:"NextToken"`
+}
+
+func (r *DescribeUseHotStandbyRecordsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeUseHotStandbyRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeUseHotStandbyRecordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUseHotStandbyRecordsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId               *string `json:"RequestId" name:"RequestId"`
+	NextToken               *string `json:"NextToken" name:"NextToken"`
+	TotalCount              *int    `json:"TotalCount" name:"TotalCount"`
+	UseHotStandbyRecordsSet []struct {
+		FaultHostName        *string `json:"FaultHostName"`
+		FaultInstanceId      *string `json:"FaultInstanceId"`
+		FaultSn              *string `json:"FaultSn"`
+		FaultHostType        *string `json:"FaultHostType"`
+		FaultPrivateIp       *string `json:"FaultPrivateIp"`
+		FaultEip             *string `json:"FaultEip"`
+		ReplaceType          *string `json:"ReplaceType"`
+		HotStandbyHostName   *string `json:"HotStandbyHostName"`
+		HotStandbyInstanceId *string `json:"HotStandbyInstanceId"`
+		HotStandbySn         *string `json:"HotStandbySn"`
+		HotStandbyHostType   *string `json:"HotStandbyHostType"`
+		HotStandbyPrivateIp  *string `json:"HotStandbyPrivateIp"`
+		HotStandbyEip        *string `json:"HotStandbyEip"`
+		CreateTime           *string `json:"CreateTime"`
+	} `json:"UseHotStandbyRecordsSet"`
+}
+
+func (r *DescribeUseHotStandbyRecordsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeUseHotStandbyRecordsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
