@@ -978,5 +978,236 @@ func (c *Client) UserslistWithContext(ctx context.Context, request *UserslistReq
     }
     return msg
 }
+func NewQueryStrategyruledetailRequest() (request *QueryStrategyruledetailRequest) {
+    request = &QueryStrategyruledetailRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ked", APIVersion, "QueryStrategyruledetail")
+    return
+}
+
+func NewQueryStrategyruledetailResponse() (response *QueryStrategyruledetailResponse) {
+    response = &QueryStrategyruledetailResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) QueryStrategyruledetail(request *QueryStrategyruledetailRequest) (string) {
+    return c.QueryStrategyruledetailWithContext(context.Background(), request)
+}
+
+func (c *Client) QueryStrategyruledetailWithContext(ctx context.Context, request *QueryStrategyruledetailRequest) (string) {
+    if request == nil {
+        request = NewQueryStrategyruledetailRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewQueryStrategyruledetailResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCloudDeskgetDesktopUrlRequest() (request *CloudDeskgetDesktopUrlRequest) {
+    request = &CloudDeskgetDesktopUrlRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ked", APIVersion, "CloudDeskgetDesktopUrl")
+    return
+}
+
+func NewCloudDeskgetDesktopUrlResponse() (response *CloudDeskgetDesktopUrlResponse) {
+    response = &CloudDeskgetDesktopUrlResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CloudDeskgetDesktopUrl(request *CloudDeskgetDesktopUrlRequest) (string) {
+    return c.CloudDeskgetDesktopUrlWithContext(context.Background(), request)
+}
+
+func (c *Client) CloudDeskgetDesktopUrlWithContext(ctx context.Context, request *CloudDeskgetDesktopUrlRequest) (string) {
+    if request == nil {
+        request = NewCloudDeskgetDesktopUrlRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewCloudDeskgetDesktopUrlResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewQueryCloudDesksubmitShellRequest() (request *QueryCloudDesksubmitShellRequest) {
+    request = &QueryCloudDesksubmitShellRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ked", APIVersion, "QueryCloudDesksubmitShell")
+    return
+}
+
+func NewQueryCloudDesksubmitShellResponse() (response *QueryCloudDesksubmitShellResponse) {
+    response = &QueryCloudDesksubmitShellResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) QueryCloudDesksubmitShell(request *QueryCloudDesksubmitShellRequest) (string) {
+    return c.QueryCloudDesksubmitShellWithContext(context.Background(), request)
+}
+
+func (c *Client) QueryCloudDesksubmitShellWithContext(ctx context.Context, request *QueryCloudDesksubmitShellRequest) (string) {
+    if request == nil {
+        request = NewQueryCloudDesksubmitShellRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewQueryCloudDesksubmitShellResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewCreateCloudDeskgetTokenRequest() (request *CreateCloudDeskgetTokenRequest) {
+    request = &CreateCloudDeskgetTokenRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ked", APIVersion, "CreateCloudDeskgetToken")
+    return
+}
+
+func NewCreateCloudDeskgetTokenResponse() (response *CreateCloudDeskgetTokenResponse) {
+    response = &CreateCloudDeskgetTokenResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) CreateCloudDeskgetToken(request *CreateCloudDeskgetTokenRequest) (string) {
+    return c.CreateCloudDeskgetTokenWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateCloudDeskgetTokenWithContext(ctx context.Context, request *CreateCloudDeskgetTokenRequest) (string) {
+    if request == nil {
+        request = NewCreateCloudDeskgetTokenRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewCreateCloudDeskgetTokenResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewQueryShellStatusRequest() (request *QueryShellStatusRequest) {
+    request = &QueryShellStatusRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ked", APIVersion, "QueryShellStatus")
+    return
+}
+
+func NewQueryShellStatusResponse() (response *QueryShellStatusResponse) {
+    response = &QueryShellStatusResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) QueryShellStatus(request *QueryShellStatusRequest) (string) {
+    return c.QueryShellStatusWithContext(context.Background(), request)
+}
+
+func (c *Client) QueryShellStatusWithContext(ctx context.Context, request *QueryShellStatusRequest) (string) {
+    if request == nil {
+        request = NewQueryShellStatusRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewQueryShellStatusResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewSetProxyIpRequest() (request *SetProxyIpRequest) {
+    request = &SetProxyIpRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ked", APIVersion, "SetProxyIp")
+    return
+}
+
+func NewSetProxyIpResponse() (response *SetProxyIpResponse) {
+    response = &SetProxyIpResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) SetProxyIp(request *SetProxyIpRequest) (string) {
+    return c.SetProxyIpWithContext(context.Background(), request)
+}
+
+func (c *Client) SetProxyIpWithContext(ctx context.Context, request *SetProxyIpRequest) (string) {
+    if request == nil {
+        request = NewSetProxyIpRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/json")
+
+    response := NewSetProxyIpResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
+func NewGetProxyConfigRequest() (request *GetProxyConfigRequest) {
+    request = &GetProxyConfigRequest{
+        BaseRequest: &ksyunhttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ked", APIVersion, "GetProxyConfig")
+    return
+}
+
+func NewGetProxyConfigResponse() (response *GetProxyConfigResponse) {
+    response = &GetProxyConfigResponse{
+        BaseResponse: &ksyunhttp.BaseResponse{},
+    }
+    return
+}
+
+func (c *Client) GetProxyConfig(request *GetProxyConfigRequest) (string) {
+    return c.GetProxyConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) GetProxyConfigWithContext(ctx context.Context, request *GetProxyConfigRequest) (string) {
+    if request == nil {
+        request = NewGetProxyConfigRequest()
+    }
+    request.SetContext(ctx)
+    request.SetContentType("application/x-www-form-urlencoded")
+
+    response := NewGetProxyConfigResponse()
+    err, msg := c.Send(request, response)
+    if err != nil {
+        return fmt.Sprintf("%+v\n", err)
+    }
+    return msg
+}
 
 
