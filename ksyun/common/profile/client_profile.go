@@ -24,12 +24,12 @@ func ExponentialBackoff(index int) time.Duration {
 }
 
 type ClientProfile struct {
-	HttpProfile *HttpProfile
-	SignMethod      string
-	UnsignedPayload bool
-	Language string
-	Debug    bool
-	BackupEndPoint string
+	HttpProfile                    *HttpProfile
+	SignMethod                     string
+	UnsignedPayload                bool
+	Language                       string
+	Debug                          bool
+	BackupEndPoint                 string
 	NetworkFailureRetryDuration    DurationFunc
 	RateLimitExceededRetryDuration DurationFunc
 }
@@ -41,6 +41,6 @@ func NewClientProfile() *ClientProfile {
 		UnsignedPayload: false,
 		Language:        "zh-CN",
 		Debug:           false,
-		BackupEndPoint:       "",
+		BackupEndPoint:  "",
 	}
 }

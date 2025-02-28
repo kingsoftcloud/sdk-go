@@ -12,7 +12,8 @@
 
 # 获取安装
 
-注意：此安装方式仅支持使用 **Go Modules** 模式进行依赖管理，即环境变量 `GO111MODULE=auto`或者`GO111MODULE=on`, 并且在您的项目中执行了 `go mod init xxx`.
+注意：此安装方式仅支持使用 **Go Modules** 模式进行依赖管理，即环境变量 `GO111MODULE=auto`或者`GO111MODULE=on`,
+并且在您的项目中执行了 `go mod init xxx`.
 
 如果您使用 GOPATH, 请参考下节： 全部安装
 
@@ -28,12 +29,15 @@
 
 # 快速开始
 
-每个接口都有一个对应的 Request 结构和一个 Response 结构。例如访问控制中查询子用户列表接口ListUsers, 有对应的请求结构体ListUsersRequest 和返回结构体 ListUsersResponse 。
+每个接口都有一个对应的 Request 结构和一个 Response 结构。例如访问控制中查询子用户列表接口ListUsers,
+有对应的请求结构体ListUsersRequest 和返回结构体 ListUsersResponse 。
 
 下面以访问控制查询子用户列表接口为例，介绍 SDK 的基础用法。
 
-## 
+##  
+
 Demo
+
 ```go
 
 package main

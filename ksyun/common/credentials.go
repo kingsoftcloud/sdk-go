@@ -4,6 +4,7 @@
  * @code: f844b0d56cd31661b4fa3f33787082bb
  */
 package common
+
 var creErr = "ClientErr.CredentialErr"
 
 type Credentials interface {

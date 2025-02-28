@@ -11,7 +11,7 @@ type HttpProfile struct {
 	Scheme     string
 	RootDomain string
 	Endpoint   string
-	Protocol string
+	Protocol   string
 }
 
 func NewHttpProfile() *HttpProfile {

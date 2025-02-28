@@ -16,12 +16,12 @@ import (
 )
 
 const (
-	POST             = "POST"
-	GET              = "GET"
-	HTTP             = "http"
-	HTTPS            = "https"
-	RootDomain       = "api.ksyun.com"
-	Path             = "/"
+	POST       = "POST"
+	GET        = "GET"
+	HTTP       = "http"
+	HTTPS      = "https"
+	RootDomain = "api.ksyun.com"
+	Path       = "/"
 )
 
 type Request interface {

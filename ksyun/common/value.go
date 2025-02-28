@@ -9,9 +9,10 @@ import (
 	"fmt"
 	"github.com/kingsoftcloud/sdk-go/ksyun/common/errors"
 	"strconv"
-
 )
+
 const iniErr = "ClientError.INIError"
+
 type value struct {
 	raw string
 }

@@ -10,7 +10,7 @@ import (
 func main() {
 	credential := common.NewCredential(
 		"KSYUN_AK_HERE",
-        	"KSYUN_SK_HERE",
+		"KSYUN_SK_HERE",
 	)
 
 	cpf := profile.NewClientProfile()
@@ -20,7 +20,6 @@ func main() {
 	client, _ := bill.NewClient(credential, "cn-beijing-6", cpf)
 
 	request := bill.NewGetProductCodeRequest()
-
 
 	response := client.GetProductCode(request)
 

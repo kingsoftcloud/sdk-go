@@ -11,7 +11,7 @@ import (
 func main() {
 	credential := common.NewCredential(
 		"KSYUN_AK_HERE",
-        	"KSYUN_SK_HERE",
+		"KSYUN_SK_HERE",
 	)
 
 	cpf := profile.NewClientProfile()
@@ -23,16 +23,16 @@ func main() {
 	client, _ := iam.NewClient(credential, "cn-shanghai-3", cpf)
 
 	request := iam.NewListUsersRequest()
-// 	request.MaxItems = common.StringPtr("zone")
-// 	request.String = common.StringPtr("zone")
-// 	request.Users = []string{"liyukun_01"}
-// 	request.Policies = []string{"krn:ksc:resourcemanager::ksc:control-policy/LY_sys"}
-// 	request.Filter = []*iam.Filter{
-// 		&iam.Filter{
-// 			Name:   common.StringPtr("zone"),
-// 			Values: common.StringPtrs([]string{"ap-guangzhou-1"}),
-// 		},
-// 	}
+	// 	request.MaxItems = common.StringPtr("zone")
+	// 	request.String = common.StringPtr("zone")
+	// 	request.Users = []string{"liyukun_01"}
+	// 	request.Policies = []string{"krn:ksc:resourcemanager::ksc:control-policy/LY_sys"}
+	// 	request.Filter = []*iam.Filter{
+	// 		&iam.Filter{
+	// 			Name:   common.StringPtr("zone"),
+	// 			Values: common.StringPtrs([]string{"ap-guangzhou-1"}),
+	// 		},
+	// 	}
 	response := client.ListUsers(request)
 
 	fmt.Printf("%s", response)
