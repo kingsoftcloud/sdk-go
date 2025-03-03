@@ -67,14 +67,14 @@ func (r *DeleteForwardConfRequest) FromJsonString(s string) error {
 type DeleteForwardConfResponse struct {
 	*ksyunhttp.BaseResponse
 	Response struct {
-		RequestId      *string `json:"RequestId"`
+		RequestId      *string `json:"RequestId" name:"RequestId"`
 		ForwardConfSet struct {
 			Item []struct {
-				ForwardConfId *string `json:"ForwardConfId"`
-				Return        *string `json:"Return"`
-				Message       *string `json:"Message"`
+				ForwardConfId *string `json:"ForwardConfId" name:"ForwardConfId"`
+				Return        *string `json:"Return" name:"Return"`
+				Message       *string `json:"Message" name:"Message"`
 			} `json:"Item"`
-		} `json:"ForwardConfSet"`
+		} `json:"ForwardConfSet" name:"ForwardConfSet"`
 	} `json:"Response"`
 }
 
@@ -112,23 +112,23 @@ func (r *DescribeForwardConfRequest) FromJsonString(s string) error {
 type DescribeForwardConfResponse struct {
 	*ksyunhttp.BaseResponse
 	Response struct {
-		RequestId      *string `json:"RequestId"`
+		RequestId      *string `json:"RequestId" name:"RequestId"`
 		ForwardConfSet struct {
 			Item struct {
-				KadId         *string `json:"KadId"`
-				ForwardConfId *string `json:"ForwardConfId"`
-				ServicePort   *string `json:"ServicePort"`
-				Cname         *string `json:"Cname"`
-				Protocol      *string `json:"Protocol"`
-				SourceCount   *string `json:"SourceCount"`
+				KadId         *string `json:"KadId" name:"KadId"`
+				ForwardConfId *string `json:"ForwardConfId" name:"ForwardConfId"`
+				ServicePort   *string `json:"ServicePort" name:"ServicePort"`
+				Cname         *string `json:"Cname" name:"Cname"`
+				Protocol      *string `json:"Protocol" name:"Protocol"`
+				SourceCount   *string `json:"SourceCount" name:"SourceCount"`
 				HealthMonitor struct {
-					Switch *string `json:"Switch"`
-					Rise   *string `json:"Rise"`
-					Fall   *string `json:"Fall"`
-					Delay  *string `json:"Delay"`
-				} `json:"HealthMonitor"`
+					Switch *string `json:"Switch" name:"Switch"`
+					Rise   *string `json:"Rise" name:"Rise"`
+					Fall   *string `json:"Fall" name:"Fall"`
+					Delay  *string `json:"Delay" name:"Delay"`
+				} `json:"HealthMonitor" name:"HealthMonitor"`
 			} `json:"Item"`
-		} `json:"ForwardConfSet"`
+		} `json:"ForwardConfSet" name:"ForwardConfSet"`
 	} `json:"Response"`
 }
 
@@ -167,13 +167,13 @@ func (r *CreateForwardSourceRequest) FromJsonString(s string) error {
 type CreateForwardSourceResponse struct {
 	*ksyunhttp.BaseResponse
 	Response struct {
-		RequestId     *string `json:"RequestId"`
+		RequestId     *string `json:"RequestId" name:"RequestId"`
 		ForwardSource struct {
-			ForwardConfId   *string `json:"ForwardConfId"`
-			ForwardSourceId *string `json:"ForwardSourceId"`
-			SourceIp        *string `json:"SourceIp"`
-			SourcePort      *string `json:"SourcePort"`
-		} `json:"ForwardSource"`
+			ForwardConfId   *string `json:"ForwardConfId" name:"ForwardConfId"`
+			ForwardSourceId *string `json:"ForwardSourceId" name:"ForwardSourceId"`
+			SourceIp        *string `json:"SourceIp" name:"SourceIp"`
+			SourcePort      *string `json:"SourcePort" name:"SourcePort"`
+		} `json:"ForwardSource" name:"ForwardSource"`
 	} `json:"Response"`
 }
 
@@ -210,8 +210,8 @@ func (r *DeleteForwardSourceRequest) FromJsonString(s string) error {
 type DeleteForwardSourceResponse struct {
 	*ksyunhttp.BaseResponse
 	DeleteForwardSourceResponse struct {
-		RequestId *string `json:"RequestId"`
-		Return    *string `json:"Return"`
+		RequestId *string `json:"RequestId" name:"RequestId"`
+		Return    *string `json:"Return" name:"Return"`
 	} `json:"DeleteForwardSourceResponse"`
 }
 
@@ -249,25 +249,25 @@ func (r *DescribeForwardSourceRequest) FromJsonString(s string) error {
 type DescribeForwardSourceResponse struct {
 	*ksyunhttp.BaseResponse
 	DescribeForwardSourceResponse struct {
-		RequestId        *string `json:"RequestId"`
+		RequestId        *string `json:"RequestId" name:"RequestId"`
 		ForwardSourceSet struct {
 			Item struct {
-				ForwardConfId          *string `json:"ForwardConfId"`
-				ForwardSourceId        *string `json:"ForwardSourceId"`
-				SourceIp               *string `json:"SourceIp"`
-				SourcePort             *string `json:"SourcePort"`
-				AutoReplace            *string `json:"AutoReplace"`
-				RsRegion               *string `json:"RsRegion"`
+				ForwardConfId          *string `json:"ForwardConfId" name:"ForwardConfId"`
+				ForwardSourceId        *string `json:"ForwardSourceId" name:"ForwardSourceId"`
+				SourceIp               *string `json:"SourceIp" name:"SourceIp"`
+				SourcePort             *string `json:"SourcePort" name:"SourcePort"`
+				AutoReplace            *string `json:"AutoReplace" name:"AutoReplace"`
+				RsRegion               *string `json:"RsRegion" name:"RsRegion"`
 				HealthMonitorStatusSet struct {
 					Item struct {
-						Ip       *string `json:"Ip"`
-						Region   *string `json:"Region"`
-						Status   *string `json:"Status"`
-						LinkType *string `json:"LinkType"`
+						Ip       *string `json:"Ip" name:"Ip"`
+						Region   *string `json:"Region" name:"Region"`
+						Status   *string `json:"Status" name:"Status"`
+						LinkType *string `json:"LinkType" name:"LinkType"`
 					} `json:"Item"`
-				} `json:"HealthMonitorStatusSet"`
+				} `json:"HealthMonitorStatusSet" name:"HealthMonitorStatusSet"`
 			} `json:"Item"`
-		} `json:"ForwardSourceSet"`
+		} `json:"ForwardSourceSet" name:"ForwardSourceSet"`
 	} `json:"DescribeForwardSourceResponse"`
 }
 
@@ -277,5 +277,74 @@ func (r *DescribeForwardSourceResponse) ToJsonString() string {
 }
 
 func (r *DescribeForwardSourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAttackLogRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *GetAttackLogRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetAttackLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetAttackLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAttackLogResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *GetAttackLogResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetAttackLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOverviewRequest struct {
+	*ksyunhttp.BaseRequest
+	KadId     *string `json:"KadId,omitempty" name:"KadId"`
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime   *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeOverviewRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOverviewResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *DescribeOverviewResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeOverviewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -32,7 +32,7 @@ func (r *SetRenewalRequest) FromJsonString(s string) error {
 type SetRenewalResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
-	success   *bool   `json:"success" name:"success"`
+	Success   *bool   `json:"success" name:"success"`
 }
 
 func (r *SetRenewalResponse) ToJsonString() string {

@@ -1,4 +1,4 @@
-package v20240501
+package v20250501
 
 import (
 	"encoding/json"
@@ -29,14 +29,14 @@ func (r *QueryCashWalletActionRequest) FromJsonString(s string) error {
 
 type QueryCashWalletActionResponse struct {
 	*ksyunhttp.BaseResponse
-	status     *int    `json:"status" name:"status"`
-	request_id *string `json:"request_id" name:"request_id"`
-	Data       struct {
-		CustomerId      *int    `json:"CustomerId"`
-		AvailableAmount *string `json:"AvailableAmount"`
-		RewardAmount    *string `json:"RewardAmount"`
-		FrozenAmount    *string `json:"FrozenAmount"`
-		Currency        *string `json:"Currency"`
+	Status    *int    `json:"status" name:"status"`
+	RequestId *string `json:"request_id" name:"request_id"`
+	Data      struct {
+		CustomerId      *int    `json:"CustomerId" name:"CustomerId"`
+		AvailableAmount *string `json:"AvailableAmount" name:"AvailableAmount"`
+		RewardAmount    *string `json:"RewardAmount" name:"RewardAmount"`
+		FrozenAmount    *string `json:"FrozenAmount" name:"FrozenAmount"`
+		Currency        *string `json:"Currency" name:"Currency"`
 	} `json:"Data"`
 }
 

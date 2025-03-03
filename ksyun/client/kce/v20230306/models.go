@@ -74,21 +74,21 @@ type DescribePrometheusInstanceResponse struct {
 	Marker      *int    `json:"Marker" name:"Marker"`
 	TotalCount  *int    `json:"TotalCount" name:"TotalCount"`
 	InstanceSet []struct {
-		InstanceId             *string `json:"InstanceId"`
-		InstanceName           *string `json:"InstanceName"`
-		InstanceStatus         *string `json:"InstanceStatus"`
-		CreateTime             *string `json:"CreateTime"`
-		ChargeType             *string `json:"ChargeType"`
-		DataRetentionTime      *int    `json:"DataRetentionTime"`
-		AuthToken              *string `json:"AuthToken"`
-		RemoteWriteUrl         *string `json:"RemoteWriteUrl"`
-		HttpApiUrl             *string `json:"HttpApiUrl"`
-		GrafanaEnabled         *bool   `json:"GrafanaEnabled"`
-		GrafanaInternalUrl     *string `json:"GrafanaInternalUrl"`
-		GrafanaInternetEnabled *bool   `json:"GrafanaInternetEnabled"`
-		GrafanaInternetUrl     *string `json:"GrafanaInternetUrl"`
+		InstanceId             *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName           *string `json:"InstanceName" name:"InstanceName"`
+		InstanceStatus         *string `json:"InstanceStatus" name:"InstanceStatus"`
+		CreateTime             *string `json:"CreateTime" name:"CreateTime"`
+		ChargeType             *string `json:"ChargeType" name:"ChargeType"`
+		DataRetentionTime      *int    `json:"DataRetentionTime" name:"DataRetentionTime"`
+		AuthToken              *string `json:"AuthToken" name:"AuthToken"`
+		RemoteWriteUrl         *string `json:"RemoteWriteUrl" name:"RemoteWriteUrl"`
+		HttpApiUrl             *string `json:"HttpApiUrl" name:"HttpApiUrl"`
+		GrafanaEnabled         *bool   `json:"GrafanaEnabled" name:"GrafanaEnabled"`
+		GrafanaInternalUrl     *string `json:"GrafanaInternalUrl" name:"GrafanaInternalUrl"`
+		GrafanaInternetEnabled *bool   `json:"GrafanaInternetEnabled" name:"GrafanaInternetEnabled"`
+		GrafanaInternetUrl     *string `json:"GrafanaInternetUrl" name:"GrafanaInternetUrl"`
 		GrafanaWhiteList       []struct {
-		} `json:"GrafanaWhiteList"`
+		} `json:"GrafanaWhiteList" name:"GrafanaWhiteList"`
 	} `json:"InstanceSet"`
 }
 
@@ -456,7 +456,7 @@ type DescribeAssociateClusterListResponse struct {
 	Marker     *int    `json:"Marker" name:"Marker"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	ClusterSet []struct {
-		ClusterId *string `json:"ClusterId"`
+		ClusterId *string `json:"ClusterId" name:"ClusterId"`
 	} `json:"ClusterSet"`
 }
 
@@ -500,10 +500,10 @@ type DescribeMonitorListResponse struct {
 	Marker     *int    `json:"Marker" name:"Marker"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	MonitorSet []struct {
-		MonitorName   *string `json:"MonitorName"`
-		Type          *string `json:"Type"`
-		TargetState   *string `json:"TargetState"`
-		MonitorSource *string `json:"MonitorSource"`
+		MonitorName   *string `json:"MonitorName" name:"MonitorName"`
+		Type          *string `json:"Type" name:"Type"`
+		TargetState   *string `json:"TargetState" name:"TargetState"`
+		MonitorSource *string `json:"MonitorSource" name:"MonitorSource"`
 	} `json:"MonitorSet"`
 }
 
@@ -627,8 +627,8 @@ type DescribeMonitorMetricsListResponse struct {
 	Marker     *int    `json:"Marker" name:"Marker"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	MetricsSet []struct {
-		MetricName *string `json:"MetricName"`
-		IsFree     *bool   `json:"IsFree"`
+		MetricName *string `json:"MetricName" name:"MetricName"`
+		IsFree     *bool   `json:"IsFree" name:"IsFree"`
 	} `json:"MetricsSet"`
 }
 
@@ -673,12 +673,12 @@ type DescribeTargetsListResponse struct {
 	Marker     *int    `json:"Marker" name:"Marker"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	TargetSet  []struct {
-		EndpointName       *string `json:"EndpointName"`
-		EndpointState      *bool   `json:"EndpointState"`
-		Labels             *string `json:"Labels"`
-		LastScrapeTime     *string `json:"LastScrapeTime"`
-		LastScrapeDuration *string `json:"LastScrapeDuration"`
-		ErrorMessage       *string `json:"ErrorMessage"`
+		EndpointName       *string `json:"EndpointName" name:"EndpointName"`
+		EndpointState      *bool   `json:"EndpointState" name:"EndpointState"`
+		Labels             *string `json:"Labels" name:"Labels"`
+		LastScrapeTime     *string `json:"LastScrapeTime" name:"LastScrapeTime"`
+		LastScrapeDuration *string `json:"LastScrapeDuration" name:"LastScrapeDuration"`
+		ErrorMessage       *string `json:"ErrorMessage" name:"ErrorMessage"`
 	} `json:"TargetSet"`
 }
 

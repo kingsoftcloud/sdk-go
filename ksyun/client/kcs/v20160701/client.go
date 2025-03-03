@@ -1936,3 +1936,201 @@ func (c *Client) AnalyzeDailySwitchWithContext(ctx context.Context, request *Ana
 	}
 	return msg
 }
+func NewRestoreByTimePointSwitchRequest() (request *RestoreByTimePointSwitchRequest) {
+	request = &RestoreByTimePointSwitchRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcs", APIVersion, "RestoreByTimePointSwitch")
+	return
+}
+
+func NewRestoreByTimePointSwitchResponse() (response *RestoreByTimePointSwitchResponse) {
+	response = &RestoreByTimePointSwitchResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RestoreByTimePointSwitch(request *RestoreByTimePointSwitchRequest) string {
+	return c.RestoreByTimePointSwitchWithContext(context.Background(), request)
+}
+
+func (c *Client) RestoreByTimePointSwitchWithContext(ctx context.Context, request *RestoreByTimePointSwitchRequest) string {
+	if request == nil {
+		request = NewRestoreByTimePointSwitchRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewRestoreByTimePointSwitchResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeRestoreTimePointsRequest() (request *DescribeRestoreTimePointsRequest) {
+	request = &DescribeRestoreTimePointsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcs", APIVersion, "DescribeRestoreTimePoints")
+	return
+}
+
+func NewDescribeRestoreTimePointsResponse() (response *DescribeRestoreTimePointsResponse) {
+	response = &DescribeRestoreTimePointsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeRestoreTimePoints(request *DescribeRestoreTimePointsRequest) string {
+	return c.DescribeRestoreTimePointsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeRestoreTimePointsWithContext(ctx context.Context, request *DescribeRestoreTimePointsRequest) string {
+	if request == nil {
+		request = NewDescribeRestoreTimePointsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeRestoreTimePointsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeBigHotKeysRequest() (request *DescribeBigHotKeysRequest) {
+	request = &DescribeBigHotKeysRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcs", APIVersion, "DescribeBigHotKeys")
+	return
+}
+
+func NewDescribeBigHotKeysResponse() (response *DescribeBigHotKeysResponse) {
+	response = &DescribeBigHotKeysResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeBigHotKeys(request *DescribeBigHotKeysRequest) string {
+	return c.DescribeBigHotKeysWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeBigHotKeysWithContext(ctx context.Context, request *DescribeBigHotKeysRequest) string {
+	if request == nil {
+		request = NewDescribeBigHotKeysRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeBigHotKeysResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribePluginsRequest() (request *DescribePluginsRequest) {
+	request = &DescribePluginsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcs", APIVersion, "DescribePlugins")
+	return
+}
+
+func NewDescribePluginsResponse() (response *DescribePluginsResponse) {
+	response = &DescribePluginsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribePlugins(request *DescribePluginsRequest) string {
+	return c.DescribePluginsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribePluginsWithContext(ctx context.Context, request *DescribePluginsRequest) string {
+	if request == nil {
+		request = NewDescribePluginsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribePluginsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewInstallPluginsRequest() (request *InstallPluginsRequest) {
+	request = &InstallPluginsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcs", APIVersion, "InstallPlugins")
+	return
+}
+
+func NewInstallPluginsResponse() (response *InstallPluginsResponse) {
+	response = &InstallPluginsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) InstallPlugins(request *InstallPluginsRequest) string {
+	return c.InstallPluginsWithContext(context.Background(), request)
+}
+
+func (c *Client) InstallPluginsWithContext(ctx context.Context, request *InstallPluginsRequest) string {
+	if request == nil {
+		request = NewInstallPluginsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewInstallPluginsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewUninstallPluginsRequest() (request *UninstallPluginsRequest) {
+	request = &UninstallPluginsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcs", APIVersion, "UninstallPlugins")
+	return
+}
+
+func NewUninstallPluginsResponse() (response *UninstallPluginsResponse) {
+	response = &UninstallPluginsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UninstallPlugins(request *UninstallPluginsRequest) string {
+	return c.UninstallPluginsWithContext(context.Background(), request)
+}
+
+func (c *Client) UninstallPluginsWithContext(ctx context.Context, request *UninstallPluginsRequest) string {
+	if request == nil {
+		request = NewUninstallPluginsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUninstallPluginsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

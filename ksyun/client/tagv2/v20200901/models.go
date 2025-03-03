@@ -122,12 +122,12 @@ func (r *ListTagsRequest) FromJsonString(s string) error {
 type ListTagsResponse struct {
 	*ksyunhttp.BaseResponse
 	Tags []struct {
-		Id         *int    `json:"Id"`
-		Key        *string `json:"Key"`
-		Value      *string `json:"Value"`
-		CreateTime *string `json:"CreateTime"`
-		CanDelete  *int    `json:"CanDelete"`
-		IsBillTag  *int    `json:"IsBillTag"`
+		Id         *int    `json:"Id" name:"Id"`
+		Key        *string `json:"Key" name:"Key"`
+		Value      *string `json:"Value" name:"Value"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		CanDelete  *int    `json:"CanDelete" name:"CanDelete"`
+		IsBillTag  *int    `json:"IsBillTag" name:"IsBillTag"`
 	} `json:"Tags"`
 	Page      *int    `json:"Page" name:"Page"`
 	PageSize  *int    `json:"PageSize" name:"PageSize"`
@@ -211,11 +211,11 @@ func (r *ListTagValuesRequest) FromJsonString(s string) error {
 type ListTagValuesResponse struct {
 	*ksyunhttp.BaseResponse
 	TagValues []struct {
-		ID         *string `json:"ID"`
-		Key        *string `json:"Key"`
-		Value      *string `json:"Value"`
-		CreateTime *string `json:"CreateTime"`
-		BindNum    *int    `json:"BindNum"`
+		ID         *string `json:"ID" name:"ID"`
+		Key        *string `json:"Key" name:"Key"`
+		Value      *string `json:"Value" name:"Value"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		BindNum    *int    `json:"BindNum" name:"BindNum"`
 	} `json:"TagValues"`
 	Page      *int    `json:"Page" name:"Page"`
 	PageSize  *int    `json:"PageSize" name:"PageSize"`
@@ -303,10 +303,10 @@ func (r *ListTagsByResourceIdsRequest) FromJsonString(s string) error {
 type ListTagsByResourceIdsResponse struct {
 	*ksyunhttp.BaseResponse
 	Tags []struct {
-		ResourceUuid *string `json:"ResourceUuid"`
-		TagId        *int    `json:"TagId"`
-		TagKey       *string `json:"TagKey"`
-		TagValue     *string `json:"TagValue"`
+		ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
+		TagId        *int    `json:"TagId" name:"TagId"`
+		TagKey       *string `json:"TagKey" name:"TagKey"`
+		TagValue     *string `json:"TagValue" name:"TagValue"`
 	} `json:"Tags"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }

@@ -319,6 +319,39 @@ func (c *Client) UpdateAlertUserStatusWithContext(ctx context.Context, request *
 	}
 	return msg
 }
+func NewDescribeSysEventGroupListRequest() (request *DescribeSysEventGroupListRequest) {
+	request = &DescribeSysEventGroupListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("monitor", APIVersion, "DescribeSysEventGroupList")
+	return
+}
+
+func NewDescribeSysEventGroupListResponse() (response *DescribeSysEventGroupListResponse) {
+	response = &DescribeSysEventGroupListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeSysEventGroupList(request *DescribeSysEventGroupListRequest) string {
+	return c.DescribeSysEventGroupListWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeSysEventGroupListWithContext(ctx context.Context, request *DescribeSysEventGroupListRequest) string {
+	if request == nil {
+		request = NewDescribeSysEventGroupListRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeSysEventGroupListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
 func NewDescribeMonitorProductListRequest() (request *DescribeMonitorProductListRequest) {
 	request = &DescribeMonitorProductListRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},

@@ -22,6 +22,39 @@ func NewClient(credential common.Credentials, region string, clientProfile *prof
 	return
 }
 
+func NewCreateCertificateRequest() (request *CreateCertificateRequest) {
+	request = &CreateCertificateRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcm", APIVersion, "CreateCertificate")
+	return
+}
+
+func NewCreateCertificateResponse() (response *CreateCertificateResponse) {
+	response = &CreateCertificateResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateCertificate(request *CreateCertificateRequest) string {
+	return c.CreateCertificateWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateCertificateWithContext(ctx context.Context, request *CreateCertificateRequest) string {
+	if request == nil {
+		request = NewCreateCertificateRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateCertificateResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
 func NewApplyCertificateRequest() (request *ApplyCertificateRequest) {
 	request = &ApplyCertificateRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -82,6 +115,72 @@ func (c *Client) UpdateCertificateWithContext(ctx context.Context, request *Upda
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewUpdateCertificateResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewReIssueCertificateRequest() (request *ReIssueCertificateRequest) {
+	request = &ReIssueCertificateRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcm", APIVersion, "ReIssueCertificate")
+	return
+}
+
+func NewReIssueCertificateResponse() (response *ReIssueCertificateResponse) {
+	response = &ReIssueCertificateResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ReIssueCertificate(request *ReIssueCertificateRequest) string {
+	return c.ReIssueCertificateWithContext(context.Background(), request)
+}
+
+func (c *Client) ReIssueCertificateWithContext(ctx context.Context, request *ReIssueCertificateRequest) string {
+	if request == nil {
+		request = NewReIssueCertificateRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewReIssueCertificateResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCancelTransactionRequest() (request *CancelTransactionRequest) {
+	request = &CancelTransactionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcm", APIVersion, "CancelTransaction")
+	return
+}
+
+func NewCancelTransactionResponse() (response *CancelTransactionResponse) {
+	response = &CancelTransactionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CancelTransaction(request *CancelTransactionRequest) string {
+	return c.CancelTransactionWithContext(context.Background(), request)
+}
+
+func (c *Client) CancelTransactionWithContext(ctx context.Context, request *CancelTransactionRequest) string {
+	if request == nil {
+		request = NewCancelTransactionRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCancelTransactionResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)

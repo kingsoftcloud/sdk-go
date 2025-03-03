@@ -11,8 +11,17 @@ type DescribeAddressesFilter struct {
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
+type DescribeAddressesTagKV struct {
+	Name  *string `json:"Name,omitempty" name:"Name"`
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type GetLinesRequest struct {
 	*ksyunhttp.BaseRequest
+	Uuid      *string `json:"Uuid,omitempty" name:"Uuid"`
+	Name      *string `json:"Name,omitempty" name:"Name"`
+	IpVersion *string `json:"IpVersion,omitempty" name:"IpVersion"`
+	Type      *string `json:"Type,omitempty" name:"Type"`
 }
 
 func (r *GetLinesRequest) ToJsonString() string {
@@ -35,11 +44,11 @@ type GetLinesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	LineSet   []struct {
-		LineId    *string `json:"LineId"`
-		LineType  *string `json:"LineType"`
-		LineName  *string `json:"LineName"`
-		IpVersion *string `json:"IpVersion"`
-		Isp       *string `json:"Isp"`
+		LineId    *string `json:"LineId" name:"LineId"`
+		LineType  *string `json:"LineType" name:"LineType"`
+		LineName  *string `json:"LineName" name:"LineName"`
+		IpVersion *string `json:"IpVersion" name:"IpVersion"`
+		Isp       *string `json:"Isp" name:"Isp"`
 	} `json:"LineSet"`
 }
 
@@ -57,6 +66,9 @@ type DescribeAddressesRequest struct {
 	ProjectId    []*string                  `json:"ProjectId,omitempty" name:"ProjectId"`
 	AllocationId []*string                  `json:"AllocationId,omitempty" name:"AllocationId"`
 	Filter       []*DescribeAddressesFilter `json:"Filter,omitempty" name:"Filter"`
+	IsContainTag *bool                      `json:"IsContainTag,omitempty" name:"IsContainTag"`
+	TagKey       []*string                  `json:"TagKey,omitempty" name:"TagKey"`
+	TagKV        []*DescribeAddressesTagKV  `json:"TagKV,omitempty" name:"TagKV"`
 	MaxResults   *int                       `json:"MaxResults,omitempty" name:"MaxResults"`
 	NextToken    *string                    `json:"NextToken,omitempty" name:"NextToken"`
 	State        *string                    `json:"State,omitempty" name:"State"`
@@ -84,26 +96,32 @@ type DescribeAddressesResponse struct {
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	NextToken    *string `json:"NextToken" name:"NextToken"`
 	AddressesSet []struct {
-		LineId               *string `json:"LineId"`
-		BandWidth            *int    `json:"BandWidth"`
-		CreateTime           *string `json:"CreateTime"`
-		State                *string `json:"State"`
-		IpState              *string `json:"IpState"`
-		AllocationId         *string `json:"AllocationId"`
-		InternetGatewayId    *string `json:"InternetGatewayId"`
-		PublicIp             *string `json:"PublicIp"`
-		InstanceType         *string `json:"InstanceType"`
-		InstanceId           *string `json:"InstanceId"`
-		IpVersion            *string `json:"IpVersion"`
-		NetworkInterfaceId   *string `json:"NetworkInterfaceId"`
-		NetworkInterfaceType *string `json:"NetworkInterfaceType"`
-		PrivateIpAddress     *string `json:"PrivateIpAddress"`
-		BandWidthShareId     *string `json:"BandWidthShareId"`
-		ProjectId            *string `json:"ProjectId"`
-		Mode                 *string `json:"Mode"`
-		ChargeType           *string `json:"ChargeType"`
-		ServiceEndTime       *string `json:"ServiceEndTime"`
-		HostType             *string `json:"HostType"`
+		LineId               *string `json:"LineId" name:"LineId"`
+		BandWidth            *int    `json:"BandWidth" name:"BandWidth"`
+		CreateTime           *string `json:"CreateTime" name:"CreateTime"`
+		State                *string `json:"State" name:"State"`
+		IpState              *string `json:"IpState" name:"IpState"`
+		AllocationId         *string `json:"AllocationId" name:"AllocationId"`
+		InternetGatewayId    *string `json:"InternetGatewayId" name:"InternetGatewayId"`
+		PublicIp             *string `json:"PublicIp" name:"PublicIp"`
+		InstanceType         *string `json:"InstanceType" name:"InstanceType"`
+		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
+		IpVersion            *string `json:"IpVersion" name:"IpVersion"`
+		NetworkInterfaceId   *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+		NetworkInterfaceType *string `json:"NetworkInterfaceType" name:"NetworkInterfaceType"`
+		PrivateIpAddress     *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+		BandWidthShareId     *string `json:"BandWidthShareId" name:"BandWidthShareId"`
+		ProjectId            *string `json:"ProjectId" name:"ProjectId"`
+		Mode                 *string `json:"Mode" name:"Mode"`
+		ChargeType           *string `json:"ChargeType" name:"ChargeType"`
+		ServiceEndTime       *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		HostType             *string `json:"HostType" name:"HostType"`
+		TagSet               []struct {
+			ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
+			TagId        *string `json:"TagId" name:"TagId"`
+			TagKey       *string `json:"TagKey" name:"TagKey"`
+			TagValue     *string `json:"TagValue" name:"TagValue"`
+		} `json:"TagSet" name:"TagSet"`
 	} `json:"AddressesSet"`
 }
 
@@ -314,5 +332,175 @@ func (r *ModifyAddressResponse) ToJsonString() string {
 }
 
 func (r *ModifyAddressResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateEipPoolRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *CreateEipPoolRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateEipPoolRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateEipPoolRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateEipPoolResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateEipPoolResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateEipPoolResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteEipPoolRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *DeleteEipPoolRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteEipPoolRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteEipPoolRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteEipPoolResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteEipPoolResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteEipPoolResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyEipPoolRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *ModifyEipPoolRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyEipPoolRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyEipPoolRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyEipPoolResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyEipPoolResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyEipPoolResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEipPoolsRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *DescribeEipPoolsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeEipPoolsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeEipPoolsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEipPoolsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DescribeEipPoolsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeEipPoolsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIpExistEipPoolUseRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *DescribeIpExistEipPoolUseRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeIpExistEipPoolUseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeIpExistEipPoolUseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeIpExistEipPoolUseResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DescribeIpExistEipPoolUseResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeIpExistEipPoolUseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

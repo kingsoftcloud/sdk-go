@@ -6,6 +6,11 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 )
 
+type StartLoopSrcInfo struct {
+	Path  *string `json:"Path,omitempty" name:"Path"`
+	Index *int    `json:"Index,omitempty" name:"Index"`
+}
+
 type PresetRequest struct {
 	*ksyunhttp.BaseRequest
 	UniqName    *string `json:"UniqName,omitempty" name:"UniqName"`
@@ -230,5 +235,91 @@ func (r *GetStreamTranListResponse) ToJsonString() string {
 }
 
 func (r *GetStreamTranListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StartLoopRequest struct {
+	*ksyunhttp.BaseRequest
+	UniqName      *string             `json:"UniqName,omitempty" name:"UniqName"`
+	App           *string             `json:"App,omitempty" name:"App"`
+	Preset        *string             `json:"Preset,omitempty" name:"Preset"`
+	StreamID      *string             `json:"StreamID,omitempty" name:"StreamID"`
+	SrcInfo       []*StartLoopSrcInfo `json:"SrcInfo,omitempty" name:"SrcInfo"`
+	PubDomain     *string             `json:"PubDomain,omitempty" name:"PubDomain"`
+	TaskStartTime *string             `json:"TaskStartTime,omitempty" name:"TaskStartTime"`
+	TaskStopTime  *string             `json:"TaskStopTime,omitempty" name:"TaskStopTime"`
+	LoopTimes     *int                `json:"LoopTimes,omitempty" name:"LoopTimes"`
+}
+
+func (r *StartLoopRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *StartLoopRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "StartLoopRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StartLoopResponse struct {
+	*ksyunhttp.BaseResponse
+	ErrNum *int    `json:"ErrNum" name:"ErrNum"`
+	ErrMsg *string `json:"ErrMsg" name:"ErrMsg"`
+	List   []struct {
+		TaskID *string `json:"TaskID" name:"TaskID"`
+		Format *int    `json:"Format" name:"Format"`
+	} `json:"List"`
+}
+
+func (r *StartLoopResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *StartLoopResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StopLoopRequest struct {
+	*ksyunhttp.BaseRequest
+	UniqName *string `json:"UniqName,omitempty" name:"UniqName"`
+	App      *string `json:"App,omitempty" name:"App"`
+	StreamID *string `json:"StreamID,omitempty" name:"StreamID"`
+}
+
+func (r *StopLoopRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *StopLoopRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "StopLoopRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StopLoopResponse struct {
+	*ksyunhttp.BaseResponse
+	ErrNum *int    `json:"ErrNum" name:"ErrNum"`
+	ErrMsg *string `json:"ErrMsg" name:"ErrMsg"`
+}
+
+func (r *StopLoopResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *StopLoopResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

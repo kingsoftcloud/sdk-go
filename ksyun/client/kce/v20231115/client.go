@@ -55,3 +55,36 @@ func (c *Client) DescribeClusterWithContext(ctx context.Context, request *Descri
 	}
 	return msg
 }
+func NewUpdateClusterDelProtectionRequest() (request *UpdateClusterDelProtectionRequest) {
+	request = &UpdateClusterDelProtectionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kce", APIVersion, "UpdateClusterDelProtection")
+	return
+}
+
+func NewUpdateClusterDelProtectionResponse() (response *UpdateClusterDelProtectionResponse) {
+	response = &UpdateClusterDelProtectionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateClusterDelProtection(request *UpdateClusterDelProtectionRequest) string {
+	return c.UpdateClusterDelProtectionWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateClusterDelProtectionWithContext(ctx context.Context, request *UpdateClusterDelProtectionRequest) string {
+	if request == nil {
+		request = NewUpdateClusterDelProtectionRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateClusterDelProtectionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

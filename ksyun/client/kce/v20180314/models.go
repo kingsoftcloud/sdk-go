@@ -93,11 +93,11 @@ type DescribeRepoNamespaceResponse struct {
 	MaxResults   *int    `json:"MaxResults" name:"MaxResults"`
 	TotalCount   *int    `json:"TotalCount" name:"TotalCount"`
 	NamespaceSet []struct {
-		Namespace  *string `json:"Namespace"`
-		Public     *bool   `json:"Public"`
-		RepoCount  *int    `json:"RepoCount"`
-		ChartCount *int    `json:"ChartCount"`
-		CreateTime *string `json:"CreateTime"`
+		Namespace  *string `json:"Namespace" name:"Namespace"`
+		Public     *bool   `json:"Public" name:"Public"`
+		RepoCount  *int    `json:"RepoCount" name:"RepoCount"`
+		ChartCount *int    `json:"ChartCount" name:"ChartCount"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"NamespaceSet"`
 }
 
@@ -284,12 +284,12 @@ type DescribeRepositoryResponse struct {
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	RepoSet    []struct {
-		RepoName    *string `json:"RepoName"`
-		Public      *bool   `json:"Public"`
-		FavorCount  *int    `json:"FavorCount"`
-		PullCount   *int    `json:"PullCount"`
-		Description *string `json:"Description"`
-		CreateTime  *string `json:"CreateTime"`
+		RepoName    *string `json:"RepoName" name:"RepoName"`
+		Public      *bool   `json:"Public" name:"Public"`
+		FavorCount  *int    `json:"FavorCount" name:"FavorCount"`
+		PullCount   *int    `json:"PullCount" name:"PullCount"`
+		Description *string `json:"Description" name:"Description"`
+		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"RepoSet"`
 }
 
@@ -333,12 +333,12 @@ type DescribePublicRepositoryResponse struct {
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	RepoSet    []struct {
-		RepoName    *string `json:"RepoName"`
-		Public      *bool   `json:"Public"`
-		FavorCount  *int    `json:"FavorCount"`
-		PullCount   *int    `json:"PullCount"`
-		Description *string `json:"Description"`
-		CreateTime  *string `json:"CreateTime"`
+		RepoName    *string `json:"RepoName" name:"RepoName"`
+		Public      *bool   `json:"Public" name:"Public"`
+		FavorCount  *int    `json:"FavorCount" name:"FavorCount"`
+		PullCount   *int    `json:"PullCount" name:"PullCount"`
+		Description *string `json:"Description" name:"Description"`
+		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"RepoSet"`
 }
 
@@ -418,15 +418,15 @@ type DescribeTagResponse struct {
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	TagSet     []struct {
-		RepoName      *string `json:"RepoName"`
-		TagName       *string `json:"TagName"`
-		ImageId       *string `json:"ImageId"`
-		CreateTime    *string `json:"CreateTime"`
-		SizeByte      *int    `json:"SizeByte"`
-		Author        *string `json:"Author"`
-		DockerVersion *string `json:"DockerVersion"`
-		Architecture  *string `json:"Architecture"`
-		Os            *string `json:"Os"`
+		RepoName      *string `json:"RepoName" name:"RepoName"`
+		TagName       *string `json:"TagName" name:"TagName"`
+		ImageId       *string `json:"ImageId" name:"ImageId"`
+		CreateTime    *string `json:"CreateTime" name:"CreateTime"`
+		SizeByte      *int    `json:"SizeByte" name:"SizeByte"`
+		Author        *string `json:"Author" name:"Author"`
+		DockerVersion *string `json:"DockerVersion" name:"DockerVersion"`
+		Architecture  *string `json:"Architecture" name:"Architecture"`
+		Os            *string `json:"Os" name:"Os"`
 	} `json:"TagSet"`
 }
 
@@ -576,9 +576,9 @@ type GetFavorResponse struct {
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	FavorSet   []struct {
-		RepoName   *string `json:"RepoName"`
-		RepoType   *string `json:"RepoType"`
-		CreateTime *string `json:"CreateTime"`
+		RepoName   *string `json:"RepoName" name:"RepoName"`
+		RepoType   *string `json:"RepoType" name:"RepoType"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"FavorSet"`
 }
 

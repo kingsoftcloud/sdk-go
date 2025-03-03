@@ -84,14 +84,14 @@ type DescribeClusterResponse struct {
 	ClusterType    *string `json:"ClusterType" name:"ClusterType"`
 	MainVersion    *string `json:"MainVersion" name:"MainVersion"`
 	InstanceGroups []struct {
-		Id                *string `json:"Id"`
-		InstanceGroupType *string `json:"InstanceGroupType"`
-		ResourceType      *string `json:"ResourceType"`
-		InstanceType      *string `json:"InstanceType"`
-		VolumeSize        *int    `json:"VolumeSize"`
-		VolumeType        *string `json:"VolumeType"`
+		Id                *string `json:"Id" name:"Id"`
+		InstanceGroupType *string `json:"InstanceGroupType" name:"InstanceGroupType"`
+		ResourceType      *string `json:"ResourceType" name:"ResourceType"`
+		InstanceType      *string `json:"InstanceType" name:"InstanceType"`
+		VolumeSize        *int    `json:"VolumeSize" name:"VolumeSize"`
+		VolumeType        *string `json:"VolumeType" name:"VolumeType"`
 		InstanceIds       []struct {
-		} `json:"InstanceIds"`
+		} `json:"InstanceIds" name:"InstanceIds"`
 	} `json:"InstanceGroups"`
 	EnableEip      *bool   `json:"EnableEip" name:"EnableEip"`
 	Region         *string `json:"Region" name:"Region"`
@@ -104,9 +104,9 @@ type DescribeClusterResponse struct {
 	RequestId      *string `json:"RequestId" name:"RequestId"`
 	StatusCode     *int    `json:"StatusCode" name:"StatusCode"`
 	Tags           []struct {
-		TagId    *int    `json:"TagId"`
-		TagKey   *string `json:"TagKey"`
-		TagValue *string `json:"TagValue"`
+		TagId    *int    `json:"TagId" name:"TagId"`
+		TagKey   *string `json:"TagKey" name:"TagKey"`
+		TagValue *string `json:"TagValue" name:"TagValue"`
 	} `json:"Tags"`
 }
 
@@ -268,8 +268,8 @@ type DescribeClusterInfoResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	GaeaInfo  struct {
-		Ks3Path *string `json:"Ks3Path"`
-		Ks3Type *string `json:"Ks3Type"`
+		Ks3Path *string `json:"Ks3Path" name:"Ks3Path"`
+		Ks3Type *string `json:"Ks3Type" name:"Ks3Type"`
 	} `json:"GaeaInfo"`
 	StatusCode *int `json:"StatusCode" name:"StatusCode"`
 }
@@ -308,21 +308,21 @@ type ListServiceStatusResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Services  []struct {
-		ClusterId     *string `json:"ClusterId"`
-		ServiceId     *string `json:"ServiceId"`
-		ServiceName   *string `json:"ServiceName"`
-		Status        *int    `json:"Status"`
-		Steady        *bool   `json:"Steady"`
-		Version       *string `json:"Version"`
-		AbnormalCount *int    `json:"AbnormalCount"`
+		ClusterId     *string `json:"ClusterId" name:"ClusterId"`
+		ServiceId     *string `json:"ServiceId" name:"ServiceId"`
+		ServiceName   *string `json:"ServiceName" name:"ServiceName"`
+		Status        *int    `json:"Status" name:"Status"`
+		Steady        *bool   `json:"Steady" name:"Steady"`
+		Version       *string `json:"Version" name:"Version"`
+		AbnormalCount *int    `json:"AbnormalCount" name:"AbnormalCount"`
 		ComponentInfo []struct {
-		} `json:"ComponentInfo"`
-		LastStartTime *string `json:"LastStartTime"`
-		WebUrl        *string `json:"WebUrl"`
+		} `json:"ComponentInfo" name:"ComponentInfo"`
+		LastStartTime *string `json:"LastStartTime" name:"LastStartTime"`
+		WebUrl        *string `json:"WebUrl" name:"WebUrl"`
 		Port          []struct {
-		} `json:"Port"`
+		} `json:"Port" name:"Port"`
 		WebInfo []struct {
-		} `json:"WebInfo"`
+		} `json:"WebInfo" name:"WebInfo"`
 	} `json:"Services"`
 	EnableEip      *bool `json:"EnableEip" name:"EnableEip"`
 	IsConfComplete *bool `json:"IsConfComplete" name:"IsConfComplete"`
@@ -362,25 +362,25 @@ func (r *ListClustersRequest) FromJsonString(s string) error {
 type ListClustersResponse struct {
 	*ksyunhttp.BaseResponse
 	Clusters []struct {
-		ClusterId      *string `json:"ClusterId"`
-		ClusterName    *string `json:"ClusterName"`
-		MainVersion    *string `json:"MainVersion"`
+		ClusterId      *string `json:"ClusterId" name:"ClusterId"`
+		ClusterName    *string `json:"ClusterName" name:"ClusterName"`
+		MainVersion    *string `json:"MainVersion" name:"MainVersion"`
 		InstanceGroups []struct {
-			Id                *string `json:"Id"`
-			InstanceGroupType *string `json:"InstanceGroupType"`
-			ResourceType      *string `json:"ResourceType"`
-			InstanceType      *string `json:"InstanceType"`
-		} `json:"InstanceGroups"`
-		EnableEip        *bool   `json:"EnableEip"`
-		Region           *string `json:"Region"`
-		AvailabilityZone *string `json:"AvailabilityZone"`
-		VpcDomainId      *string `json:"VpcDomainId"`
-		VpcSubnetId      *string `json:"VpcSubnetId"`
-		ChargeType       *string `json:"ChargeType"`
-		ClusterStatus    *string `json:"ClusterStatus"`
-		CreateTime       *string `json:"CreateTime"`
-		UpdateTime       *string `json:"UpdateTime"`
-		ServingMinutes   *int    `json:"ServingMinutes"`
+			Id                *string `json:"Id" name:"Id"`
+			InstanceGroupType *string `json:"InstanceGroupType" name:"InstanceGroupType"`
+			ResourceType      *string `json:"ResourceType" name:"ResourceType"`
+			InstanceType      *string `json:"InstanceType" name:"InstanceType"`
+		} `json:"InstanceGroups" name:"InstanceGroups"`
+		EnableEip        *bool   `json:"EnableEip" name:"EnableEip"`
+		Region           *string `json:"Region" name:"Region"`
+		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		VpcDomainId      *string `json:"VpcDomainId" name:"VpcDomainId"`
+		VpcSubnetId      *string `json:"VpcSubnetId" name:"VpcSubnetId"`
+		ChargeType       *string `json:"ChargeType" name:"ChargeType"`
+		ClusterStatus    *string `json:"ClusterStatus" name:"ClusterStatus"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime       *string `json:"UpdateTime" name:"UpdateTime"`
+		ServingMinutes   *int    `json:"ServingMinutes" name:"ServingMinutes"`
 	} `json:"Clusters"`
 	Total      *int    `json:"Total" name:"Total"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
@@ -421,24 +421,24 @@ type ListClusterVersionsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Versions  []struct {
-		Id       *string `json:"Id"`
-		Version  *string `json:"Version"`
+		Id       *string `json:"Id" name:"Id"`
+		Version  *string `json:"Version" name:"Version"`
 		Services []struct {
-			Name               *string `json:"Name"`
-			Version            *string `json:"Version"`
-			Essential          *bool   `json:"Essential"`
-			IsSystem           *bool   `json:"IsSystem"`
-			DependencyServices *string `json:"DependencyServices"`
-		} `json:"Services"`
+			Name               *string `json:"Name" name:"Name"`
+			Version            *string `json:"Version" name:"Version"`
+			Essential          *bool   `json:"Essential" name:"Essential"`
+			IsSystem           *bool   `json:"IsSystem" name:"IsSystem"`
+			DependencyServices *string `json:"DependencyServices" name:"DependencyServices"`
+		} `json:"Services" name:"Services"`
 	} `json:"Versions"`
 	InstanceGroupRequirements []struct {
-		Name      *string `json:"Name"`
-		Essential *bool   `json:"Essential"`
-		IsPrimary *bool   `json:"IsPrimary"`
-		Isomerism *bool   `json:"Isomerism"`
-		Max       *int    `json:"Max"`
-		Min       *int    `json:"Min"`
-		Step      *int    `json:"Step"`
+		Name      *string `json:"Name" name:"Name"`
+		Essential *bool   `json:"Essential" name:"Essential"`
+		IsPrimary *bool   `json:"IsPrimary" name:"IsPrimary"`
+		Isomerism *bool   `json:"Isomerism" name:"Isomerism"`
+		Max       *int    `json:"Max" name:"Max"`
+		Min       *int    `json:"Min" name:"Min"`
+		Step      *int    `json:"Step" name:"Step"`
 	} `json:"InstanceGroupRequirements"`
 	StatusCode *int `json:"StatusCode" name:"StatusCode"`
 }
@@ -478,26 +478,26 @@ type DescribeServiceResponse struct {
 	RequestId       *string `json:"RequestId" name:"RequestId"`
 	Services        *string `json:"Services" name:"Services"`
 	ComponentStatus []struct {
-		ClusterId             *string `json:"ClusterId"`
-		ComponentId           *string `json:"ComponentId"`
-		ComponentName         *string `json:"ComponentName"`
-		Role                  *string `json:"Role"`
-		InstanceId            *string `json:"InstanceId"`
-		InstanceName          *string `json:"InstanceName"`
-		InternalIp            *string `json:"InternalIp"`
-		InstanceGroupType     *string `json:"InstanceGroupType"`
-		InstanceGroupIndex    *int    `json:"InstanceGroupIndex"`
-		AvailabilityZoneIndex *int    `json:"AvailabilityZoneIndex"`
-		Installed             *bool   `json:"Installed"`
-		State                 *int    `json:"State"`
-		TargetState           *int    `json:"TargetState"`
-		Steady                *bool   `json:"Steady"`
-		LastStartTime         *string `json:"LastStartTime"`
-		ErrorType             *int    `json:"ErrorType"`
-		ErrorMsg              *string `json:"ErrorMsg"`
-		RestartRequired       *bool   `json:"RestartRequired"`
+		ClusterId             *string `json:"ClusterId" name:"ClusterId"`
+		ComponentId           *string `json:"ComponentId" name:"ComponentId"`
+		ComponentName         *string `json:"ComponentName" name:"ComponentName"`
+		Role                  *string `json:"Role" name:"Role"`
+		InstanceId            *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName          *string `json:"InstanceName" name:"InstanceName"`
+		InternalIp            *string `json:"InternalIp" name:"InternalIp"`
+		InstanceGroupType     *string `json:"InstanceGroupType" name:"InstanceGroupType"`
+		InstanceGroupIndex    *int    `json:"InstanceGroupIndex" name:"InstanceGroupIndex"`
+		AvailabilityZoneIndex *int    `json:"AvailabilityZoneIndex" name:"AvailabilityZoneIndex"`
+		Installed             *bool   `json:"Installed" name:"Installed"`
+		State                 *int    `json:"State" name:"State"`
+		TargetState           *int    `json:"TargetState" name:"TargetState"`
+		Steady                *bool   `json:"Steady" name:"Steady"`
+		LastStartTime         *string `json:"LastStartTime" name:"LastStartTime"`
+		ErrorType             *int    `json:"ErrorType" name:"ErrorType"`
+		ErrorMsg              *string `json:"ErrorMsg" name:"ErrorMsg"`
+		RestartRequired       *bool   `json:"RestartRequired" name:"RestartRequired"`
 		ExtraInfo             []struct {
-		} `json:"ExtraInfo"`
+		} `json:"ExtraInfo" name:"ExtraInfo"`
 	} `json:"ComponentStatus"`
 	Total      *int `json:"Total" name:"Total"`
 	StatusCode *int `json:"StatusCode" name:"StatusCode"`
@@ -540,19 +540,19 @@ type ListConfigurationsResponse struct {
 	ClusterId    *string `json:"ClusterId" name:"ClusterId"`
 	ServiceName  *string `json:"ServiceName" name:"ServiceName"`
 	ConfigGroups []struct {
-		Id              *string `json:"Id"`
-		InstanceGroupId *string `json:"InstanceGroupId"`
+		Id              *string `json:"Id" name:"Id"`
+		InstanceGroupId *string `json:"InstanceGroupId" name:"InstanceGroupId"`
 		ConfigTags      []struct {
-			Tag            *string `json:"Tag"`
+			Tag            *string `json:"Tag" name:"Tag"`
 			Configurations []struct {
-				Key         *string `json:"Key"`
-				Value       *string `json:"Value"`
-				Custom      *bool   `json:"Custom"`
-				Description *string `json:"Description"`
-				RelatedKey  *string `json:"RelatedKey"`
-				UpdateTime  *string `json:"UpdateTime"`
+				Key         *string `json:"Key" name:"Key"`
+				Value       *string `json:"Value" name:"Value"`
+				Custom      *bool   `json:"Custom" name:"Custom"`
+				Description *string `json:"Description" name:"Description"`
+				RelatedKey  *string `json:"RelatedKey" name:"RelatedKey"`
+				UpdateTime  *string `json:"UpdateTime" name:"UpdateTime"`
 			} `json:"Configurations"`
-		} `json:"ConfigTags"`
+		} `json:"ConfigTags" name:"ConfigTags"`
 	} `json:"ConfigGroups"`
 	StatusCode *int `json:"StatusCode" name:"StatusCode"`
 }
@@ -596,14 +596,14 @@ type ListConfigurationHistoryResponse struct {
 	ServiceName *string `json:"ServiceName" name:"ServiceName"`
 	Total       *int    `json:"Total" name:"Total"`
 	Data        []struct {
-		Key                   *string `json:"Key"`
-		InstanceGroupType     *string `json:"InstanceGroupType"`
-		InstanceGroupIndex    *int    `json:"InstanceGroupIndex"`
-		AvailabilityZoneIndex *int    `json:"AvailabilityZoneIndex"`
-		UpdateTime            *string `json:"UpdateTime"`
-		SourceValue           *string `json:"SourceValue"`
-		TargetValue           *string `json:"TargetValue"`
-		Activated             *bool   `json:"Activated"`
+		Key                   *string `json:"Key" name:"Key"`
+		InstanceGroupType     *string `json:"InstanceGroupType" name:"InstanceGroupType"`
+		InstanceGroupIndex    *int    `json:"InstanceGroupIndex" name:"InstanceGroupIndex"`
+		AvailabilityZoneIndex *int    `json:"AvailabilityZoneIndex" name:"AvailabilityZoneIndex"`
+		UpdateTime            *string `json:"UpdateTime" name:"UpdateTime"`
+		SourceValue           *string `json:"SourceValue" name:"SourceValue"`
+		TargetValue           *string `json:"TargetValue" name:"TargetValue"`
+		Activated             *bool   `json:"Activated" name:"Activated"`
 	} `json:"Data"`
 	StatusCode *int `json:"StatusCode" name:"StatusCode"`
 }
@@ -641,11 +641,11 @@ func (r *ListTagValuesRequest) FromJsonString(s string) error {
 type ListTagValuesResponse struct {
 	*ksyunhttp.BaseResponse
 	TagValues []struct {
-		Id         *int    `json:"Id"`
-		Key        *string `json:"Key"`
-		Value      *string `json:"Value"`
-		CreateTime *string `json:"CreateTime"`
-		BindNum    *int    `json:"BindNum"`
+		Id         *int    `json:"Id" name:"Id"`
+		Key        *string `json:"Key" name:"Key"`
+		Value      *string `json:"Value" name:"Value"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		BindNum    *int    `json:"BindNum" name:"BindNum"`
 	} `json:"TagValues"`
 	Page       *int    `json:"Page" name:"Page"`
 	PageSize   *int    `json:"PageSize" name:"PageSize"`
@@ -886,88 +886,88 @@ type ListScaleStrategyResponse struct {
 	Name           *string `json:"Name" name:"Name"`
 	StrategyModule *string `json:"StrategyModule" name:"StrategyModule"`
 	Strategies     []struct {
-		Id                 *string `json:"Id"`
-		Name               *string `json:"Name"`
-		ClusterId          *string `json:"ClusterId"`
-		Type               *string `json:"Type"`
-		Enabled            *bool   `json:"Enabled"`
-		Priority           *int    `json:"Priority"`
-		MaxInstance        *int    `json:"MaxInstance"`
-		MinInstance        *int    `json:"MinInstance"`
-		ChargeType         *string `json:"ChargeType"`
-		PeriodType         *string `json:"PeriodType"`
-		PeriodParam        *string `json:"PeriodParam"`
-		PeriodTime         *string `json:"PeriodTime"`
-		Step               *int    `json:"Step"`
-		NewTaskGroup       *bool   `json:"NewTaskGroup"`
-		InstanceGroupId    *string `json:"InstanceGroupId"`
-		InstanceGroupAlias *string `json:"InstanceGroupAlias"`
+		Id                 *string `json:"Id" name:"Id"`
+		Name               *string `json:"Name" name:"Name"`
+		ClusterId          *string `json:"ClusterId" name:"ClusterId"`
+		Type               *string `json:"Type" name:"Type"`
+		Enabled            *bool   `json:"Enabled" name:"Enabled"`
+		Priority           *int    `json:"Priority" name:"Priority"`
+		MaxInstance        *int    `json:"MaxInstance" name:"MaxInstance"`
+		MinInstance        *int    `json:"MinInstance" name:"MinInstance"`
+		ChargeType         *string `json:"ChargeType" name:"ChargeType"`
+		PeriodType         *string `json:"PeriodType" name:"PeriodType"`
+		PeriodParam        *string `json:"PeriodParam" name:"PeriodParam"`
+		PeriodTime         *string `json:"PeriodTime" name:"PeriodTime"`
+		Step               *int    `json:"Step" name:"Step"`
+		NewTaskGroup       *bool   `json:"NewTaskGroup" name:"NewTaskGroup"`
+		InstanceGroupId    *string `json:"InstanceGroupId" name:"InstanceGroupId"`
+		InstanceGroupAlias *string `json:"InstanceGroupAlias" name:"InstanceGroupAlias"`
 		InstanceGroupTypes struct {
-			VpcSubnetId     *string `json:"VpcSubnetId"`
-			SecurityGroupId *string `json:"SecurityGroupId"`
-			ResourceTypes   *string `json:"ResourceTypes"`
-		} `json:"InstanceGroupTypes"`
-		ResourceBackUp    *bool   `json:"ResourceBackUp"`
-		AutoRestore       *string `json:"AutoRestore"`
-		ActivateTime      *string `json:"ActivateTime"`
-		ExpireTime        *string `json:"ExpireTime"`
+			VpcSubnetId     *string `json:"VpcSubnetId" name:"VpcSubnetId"`
+			SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+			ResourceTypes   *string `json:"ResourceTypes" name:"ResourceTypes"`
+		} `json:"InstanceGroupTypes" name:"InstanceGroupTypes"`
+		ResourceBackUp    *bool   `json:"ResourceBackUp" name:"ResourceBackUp"`
+		AutoRestore       *string `json:"AutoRestore" name:"AutoRestore"`
+		ActivateTime      *string `json:"ActivateTime" name:"ActivateTime"`
+		ExpireTime        *string `json:"ExpireTime" name:"ExpireTime"`
 		InstanceGroupInfo struct {
-			SystemDiskType *string `json:"SystemDiskType"`
-			SystemDiskSize *int    `json:"SystemDiskSize"`
-		} `json:"InstanceGroupInfo"`
-		GracefulScaleIn        *bool   `json:"GracefulScaleIn"`
-		GracefulScaleInTimeout *int    `json:"GracefulScaleInTimeout"`
-		InstancePassword       *string `json:"InstancePassword"`
-		LabelId                *string `json:"LabelId"`
-		CreatedAt              *string `json:"CreatedAt"`
-		UpdatedAt              *string `json:"UpdatedAt"`
+			SystemDiskType *string `json:"SystemDiskType" name:"SystemDiskType"`
+			SystemDiskSize *int    `json:"SystemDiskSize" name:"SystemDiskSize"`
+		} `json:"InstanceGroupInfo" name:"InstanceGroupInfo"`
+		GracefulScaleIn        *bool   `json:"GracefulScaleIn" name:"GracefulScaleIn"`
+		GracefulScaleInTimeout *int    `json:"GracefulScaleInTimeout" name:"GracefulScaleInTimeout"`
+		InstancePassword       *string `json:"InstancePassword" name:"InstancePassword"`
+		LabelId                *string `json:"LabelId" name:"LabelId"`
+		CreatedAt              *string `json:"CreatedAt" name:"CreatedAt"`
+		UpdatedAt              *string `json:"UpdatedAt" name:"UpdatedAt"`
 	} `json:"Strategies"`
 	ConflictStrategies  *string `json:"ConflictStrategies" name:"ConflictStrategies"`
 	LoadBasedStrategies []struct {
-		Id                 *string `json:"Id"`
-		ClusterId          *string `json:"ClusterId"`
-		ActivateTime       *string `json:"ActivateTime"`
-		ChargeType         *string `json:"ChargeType"`
-		Enabled            *bool   `json:"Enabled"`
-		ExpireTime         *string `json:"ExpireTime"`
-		NewTaskGroup       *bool   `json:"NewTaskGroup"`
-		InstanceGroupId    *string `json:"InstanceGroupId"`
-		InstanceGroupAlias *string `json:"InstanceGroupAlias"`
+		Id                 *string `json:"Id" name:"Id"`
+		ClusterId          *string `json:"ClusterId" name:"ClusterId"`
+		ActivateTime       *string `json:"ActivateTime" name:"ActivateTime"`
+		ChargeType         *string `json:"ChargeType" name:"ChargeType"`
+		Enabled            *bool   `json:"Enabled" name:"Enabled"`
+		ExpireTime         *string `json:"ExpireTime" name:"ExpireTime"`
+		NewTaskGroup       *bool   `json:"NewTaskGroup" name:"NewTaskGroup"`
+		InstanceGroupId    *string `json:"InstanceGroupId" name:"InstanceGroupId"`
+		InstanceGroupAlias *string `json:"InstanceGroupAlias" name:"InstanceGroupAlias"`
 		InstanceGroupInfo  struct {
-			SystemDiskType *string `json:"SystemDiskType"`
-			SystemDiskSize *int    `json:"SystemDiskSize"`
-		} `json:"InstanceGroupInfo"`
+			SystemDiskType *string `json:"SystemDiskType" name:"SystemDiskType"`
+			SystemDiskSize *int    `json:"SystemDiskSize" name:"SystemDiskSize"`
+		} `json:"InstanceGroupInfo" name:"InstanceGroupInfo"`
 		InstanceGroupTypes struct {
-			VpcSubnetId     *string `json:"VpcSubnetId"`
-			SecurityGroupId *string `json:"SecurityGroupId"`
+			VpcSubnetId     *string `json:"VpcSubnetId" name:"VpcSubnetId"`
+			SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
 			ResourceTypes   []struct {
-				TypeCode       *string `json:"TypeCode"`
-				DiskType       *string `json:"DiskType"`
-				DiskSize       *int    `json:"DiskSize"`
-				VolumeCount    *int    `json:"VolumeCount"`
-				SystemDiskType *string `json:"SystemDiskType"`
-				SystemDiskSize *int    `json:"SystemDiskSize"`
+				TypeCode       *string `json:"TypeCode" name:"TypeCode"`
+				DiskType       *string `json:"DiskType" name:"DiskType"`
+				DiskSize       *int    `json:"DiskSize" name:"DiskSize"`
+				VolumeCount    *int    `json:"VolumeCount" name:"VolumeCount"`
+				SystemDiskType *string `json:"SystemDiskType" name:"SystemDiskType"`
+				SystemDiskSize *int    `json:"SystemDiskSize" name:"SystemDiskSize"`
 			} `json:"ResourceTypes"`
-		} `json:"InstanceGroupTypes"`
-		MaxInstance    *int    `json:"MaxInstance"`
-		MinInstance    *int    `json:"MinInstance"`
-		Name           *string `json:"Name"`
-		Step           *int    `json:"Step"`
-		Type           *string `json:"Type"`
+		} `json:"InstanceGroupTypes" name:"InstanceGroupTypes"`
+		MaxInstance    *int    `json:"MaxInstance" name:"MaxInstance"`
+		MinInstance    *int    `json:"MinInstance" name:"MinInstance"`
+		Name           *string `json:"Name" name:"Name"`
+		Step           *int    `json:"Step" name:"Step"`
+		Type           *string `json:"Type" name:"Type"`
 		StatisticsRule struct {
-			LoadMetricId   *string `json:"LoadMetricId"`
-			Period         *int    `json:"Period"`
-			CompareType    *string `json:"CompareType"`
-			Threshold      *int    `json:"Threshold"`
-			RepeatCount    *int    `json:"RepeatCount"`
-			CoolDownPeriod *int    `json:"CoolDownPeriod"`
-		} `json:"StatisticsRule"`
-		TriggerTimes           *int    `json:"TriggerTimes"`
-		GracefulScaleIn        *bool   `json:"GracefulScaleIn"`
-		GracefulScaleInTimeout *int    `json:"GracefulScaleInTimeout"`
-		InstancePassword       *string `json:"InstancePassword"`
-		CreatedAt              *string `json:"CreatedAt"`
-		UpdatedAt              *string `json:"UpdatedAt"`
+			LoadMetricId   *string `json:"LoadMetricId" name:"LoadMetricId"`
+			Period         *int    `json:"Period" name:"Period"`
+			CompareType    *string `json:"CompareType" name:"CompareType"`
+			Threshold      *int    `json:"Threshold" name:"Threshold"`
+			RepeatCount    *int    `json:"RepeatCount" name:"RepeatCount"`
+			CoolDownPeriod *int    `json:"CoolDownPeriod" name:"CoolDownPeriod"`
+		} `json:"StatisticsRule" name:"StatisticsRule"`
+		TriggerTimes           *int    `json:"TriggerTimes" name:"TriggerTimes"`
+		GracefulScaleIn        *bool   `json:"GracefulScaleIn" name:"GracefulScaleIn"`
+		GracefulScaleInTimeout *int    `json:"GracefulScaleInTimeout" name:"GracefulScaleInTimeout"`
+		InstancePassword       *string `json:"InstancePassword" name:"InstancePassword"`
+		CreatedAt              *string `json:"CreatedAt" name:"CreatedAt"`
+		UpdatedAt              *string `json:"UpdatedAt" name:"UpdatedAt"`
 	} `json:"LoadBasedStrategies"`
 	StatusCode *int `json:"StatusCode" name:"StatusCode"`
 }
@@ -1085,20 +1085,20 @@ type ListScaleHistoryResponse struct {
 	RequestId      *string `json:"RequestId" name:"RequestId"`
 	ClusterId      *string `json:"ClusterId" name:"ClusterId"`
 	ScaleHistories []struct {
-		StartTime                *string `json:"StartTime"`
-		ScaleHistoryId           *string `json:"ScaleHistoryId"`
-		StrategyName             *string `json:"StrategyName"`
-		Action                   *string `json:"Action"`
-		StrategyModule           *string `json:"StrategyModule"`
-		InstanceGroupId          *string `json:"InstanceGroupId"`
-		InstanceCount            *int    `json:"InstanceCount"`
-		Status                   *string `json:"Status"`
-		Result                   *string `json:"Result"`
-		PreviousCount            *int    `json:"PreviousCount"`
-		FinalCount               *int    `json:"FinalCount"`
-		AutoCreatedInstanceGroup *bool   `json:"AutoCreatedInstanceGroup"`
-		LabelId                  *string `json:"LabelId"`
-		ResourceType             *string `json:"ResourceType"`
+		StartTime                *string `json:"StartTime" name:"StartTime"`
+		ScaleHistoryId           *string `json:"ScaleHistoryId" name:"ScaleHistoryId"`
+		StrategyName             *string `json:"StrategyName" name:"StrategyName"`
+		Action                   *string `json:"Action" name:"Action"`
+		StrategyModule           *string `json:"StrategyModule" name:"StrategyModule"`
+		InstanceGroupId          *string `json:"InstanceGroupId" name:"InstanceGroupId"`
+		InstanceCount            *int    `json:"InstanceCount" name:"InstanceCount"`
+		Status                   *string `json:"Status" name:"Status"`
+		Result                   *string `json:"Result" name:"Result"`
+		PreviousCount            *int    `json:"PreviousCount" name:"PreviousCount"`
+		FinalCount               *int    `json:"FinalCount" name:"FinalCount"`
+		AutoCreatedInstanceGroup *bool   `json:"AutoCreatedInstanceGroup" name:"AutoCreatedInstanceGroup"`
+		LabelId                  *string `json:"LabelId" name:"LabelId"`
+		ResourceType             *string `json:"ResourceType" name:"ResourceType"`
 	} `json:"ScaleHistories"`
 	Total      *int `json:"Total" name:"Total"`
 	StatusCode *int `json:"StatusCode" name:"StatusCode"`

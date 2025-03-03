@@ -51,6 +51,7 @@ type ImportKeyRequest struct {
 	KeyName     *string `json:"KeyName,omitempty" name:"KeyName"`
 	PublicKey   *string `json:"PublicKey,omitempty" name:"PublicKey"`
 	Description *string `json:"Description,omitempty" name:"Description"`
+	IsCheck     *bool   `json:"IsCheck,omitempty" name:"IsCheck"`
 }
 
 func (r *ImportKeyRequest) ToJsonString() string {
@@ -186,10 +187,10 @@ type DescribeKeysResponse struct {
 	NextToken  *string `json:"NextToken" name:"NextToken"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	KeySet     []struct {
-		KeyId      *string `json:"KeyId"`
-		PublicKey  *string `json:"PublicKey"`
-		CreateTime *string `json:"CreateTime"`
-		KeyName    *string `json:"KeyName"`
+		KeyId      *string `json:"KeyId" name:"KeyId"`
+		PublicKey  *string `json:"PublicKey" name:"PublicKey"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		KeyName    *string `json:"KeyName" name:"KeyName"`
 	} `json:"KeySet"`
 }
 

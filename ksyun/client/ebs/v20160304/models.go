@@ -203,13 +203,18 @@ func (r *ResizeVolumeResponse) FromJsonString(s string) error {
 
 type DescribeVolumesRequest struct {
 	*ksyunhttp.BaseRequest
-	VolumeId         []*string `json:"VolumeId,omitempty" name:"VolumeId"`
-	VolumeCategory   *string   `json:"VolumeCategory,omitempty" name:"VolumeCategory"`
-	VolumeStatus     *string   `json:"VolumeStatus,omitempty" name:"VolumeStatus"`
-	VolumeType       *string   `json:"VolumeType,omitempty" name:"VolumeType"`
-	VolumeCreateDate *string   `json:"VolumeCreateDate,omitempty" name:"VolumeCreateDate"`
-	Marker           *int      `json:"Marker,omitempty" name:"Marker"`
-	MaxResults       *int      `json:"MaxResults,omitempty" name:"MaxResults"`
+	VolumeId              []*string `json:"VolumeId,omitempty" name:"VolumeId"`
+	VolumeCategory        *string   `json:"VolumeCategory,omitempty" name:"VolumeCategory"`
+	VolumeStatus          *string   `json:"VolumeStatus,omitempty" name:"VolumeStatus"`
+	VolumeType            *string   `json:"VolumeType,omitempty" name:"VolumeType"`
+	VolumeCreateDate      *string   `json:"VolumeCreateDate,omitempty" name:"VolumeCreateDate"`
+	Marker                *int      `json:"Marker,omitempty" name:"Marker"`
+	MaxResults            *int      `json:"MaxResults,omitempty" name:"MaxResults"`
+	TagNKey               *string   `json:"Tag.N.Key,omitempty" name:"Tag.N.Key"`
+	TagNValue             *string   `json:"Tag.N.Value,omitempty" name:"Tag.N.Value"`
+	VolumeCreateEndDate   *string   `json:"VolumeCreateEndDate,omitempty" name:"VolumeCreateEndDate"`
+	VolumeCreateStartDate *string   `json:"VolumeCreateStartDate,omitempty" name:"VolumeCreateStartDate"`
+	SourceSnapshotId      *string   `json:"SourceSnapshotId,omitempty" name:"SourceSnapshotId"`
 }
 
 func (r *DescribeVolumesRequest) ToJsonString() string {
@@ -232,25 +237,25 @@ type DescribeVolumesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Volumes   []struct {
-		VolumeId          *string `json:"VolumeId"`
-		VolumeName        *string `json:"VolumeName"`
-		VolumeDesc        *string `json:"VolumeDesc"`
-		Size              *int    `json:"Size"`
-		VolumeStatus      *string `json:"VolumeStatus"`
-		VolumeType        *string `json:"VolumeType"`
-		VolumeCategory    *string `json:"VolumeCategory"`
-		InstanceId        *string `json:"InstanceId"`
-		AvailabilityZone  *string `json:"AvailabilityZone"`
-		ChargeType        *string `json:"ChargeType"`
-		InstanceTradeType *int    `json:"InstanceTradeType"`
-		CreateTime        *string `json:"CreateTime"`
+		VolumeId          *string `json:"VolumeId" name:"VolumeId"`
+		VolumeName        *string `json:"VolumeName" name:"VolumeName"`
+		VolumeDesc        *string `json:"VolumeDesc" name:"VolumeDesc"`
+		Size              *int    `json:"Size" name:"Size"`
+		VolumeStatus      *string `json:"VolumeStatus" name:"VolumeStatus"`
+		VolumeType        *string `json:"VolumeType" name:"VolumeType"`
+		VolumeCategory    *string `json:"VolumeCategory" name:"VolumeCategory"`
+		InstanceId        *string `json:"InstanceId" name:"InstanceId"`
+		AvailabilityZone  *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		ChargeType        *string `json:"ChargeType" name:"ChargeType"`
+		InstanceTradeType *int    `json:"InstanceTradeType" name:"InstanceTradeType"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
 		Attachment        []struct {
-			InstanceId         *string `json:"InstanceId"`
-			MountPoint         *string `json:"MountPoint"`
-			DeleteWithInstance *bool   `json:"DeleteWithInstance"`
-		} `json:"Attachment"`
-		ProjectId  *string `json:"ProjectId"`
-		ExpireTime *string `json:"ExpireTime"`
+			InstanceId         *string `json:"InstanceId" name:"InstanceId"`
+			MountPoint         *string `json:"MountPoint" name:"MountPoint"`
+			DeleteWithInstance *bool   `json:"DeleteWithInstance" name:"DeleteWithInstance"`
+		} `json:"Attachment" name:"Attachment"`
+		ProjectId  *string `json:"ProjectId" name:"ProjectId"`
+		ExpireTime *string `json:"ExpireTime" name:"ExpireTime"`
 	} `json:"Volumes"`
 }
 
@@ -328,10 +333,10 @@ type DescribeEbsInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Instances []struct {
-		InstanceId     *string `json:"InstanceId"`
-		InstanceName   *string `json:"InstanceName"`
-		InstanceIp     *string `json:"InstanceIp"`
-		InstanceEnable *string `json:"InstanceEnable"`
+		InstanceId     *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName   *string `json:"InstanceName" name:"InstanceName"`
+		InstanceIp     *string `json:"InstanceIp" name:"InstanceIp"`
+		InstanceEnable *string `json:"InstanceEnable" name:"InstanceEnable"`
 	} `json:"Instances"`
 }
 
@@ -369,9 +374,9 @@ type DescribeInstanceVolumesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	Attachments []struct {
-		InstanceId *string `json:"InstanceId"`
-		VolumeId   *string `json:"VolumeId"`
-		MountPoint *string `json:"MountPoint"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		VolumeId   *string `json:"VolumeId" name:"VolumeId"`
+		MountPoint *string `json:"MountPoint" name:"MountPoint"`
 	} `json:"Attachments"`
 }
 
@@ -489,19 +494,19 @@ type DescribeSnapshotsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Snapshots []struct {
-		SnapshotId       *string `json:"SnapshotId"`
-		SnapshotName     *string `json:"SnapshotName"`
-		VolumeId         *string `json:"VolumeId"`
-		Size             *int    `json:"Size"`
-		CreateTime       *string `json:"CreateTime"`
-		SnapshotStatus   *string `json:"SnapshotStatus"`
-		VolumeCategory   *string `json:"VolumeCategory"`
-		VolumeName       *string `json:"VolumeName"`
-		VolumeType       *string `json:"VolumeType"`
-		Progress         *string `json:"Progress"`
-		AvailabilityZone *string `json:"AvailabilityZone"`
-		VolumeStatus     *string `json:"VolumeStatus"`
-		SnapshotType     *string `json:"SnapshotType"`
+		SnapshotId       *string `json:"SnapshotId" name:"SnapshotId"`
+		SnapshotName     *string `json:"SnapshotName" name:"SnapshotName"`
+		VolumeId         *string `json:"VolumeId" name:"VolumeId"`
+		Size             *int    `json:"Size" name:"Size"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		SnapshotStatus   *string `json:"SnapshotStatus" name:"SnapshotStatus"`
+		VolumeCategory   *string `json:"VolumeCategory" name:"VolumeCategory"`
+		VolumeName       *string `json:"VolumeName" name:"VolumeName"`
+		VolumeType       *string `json:"VolumeType" name:"VolumeType"`
+		Progress         *string `json:"Progress" name:"Progress"`
+		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		VolumeStatus     *string `json:"VolumeStatus" name:"VolumeStatus"`
+		SnapshotType     *string `json:"SnapshotType" name:"SnapshotType"`
 	} `json:"Snapshots"`
 }
 
@@ -766,7 +771,7 @@ type DescribeCreateVolumePriceResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	VolumePrice struct {
-		CurrencyUnit *string `json:"CurrencyUnit"`
+		CurrencyUnit *string `json:"CurrencyUnit" name:"CurrencyUnit"`
 	} `json:"VolumePrice"`
 }
 
@@ -776,5 +781,244 @@ func (r *DescribeCreateVolumePriceResponse) ToJsonString() string {
 }
 
 func (r *DescribeCreateVolumePriceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySnapshotTypeRequest struct {
+	*ksyunhttp.BaseRequest
+	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds"`
+}
+
+func (r *ModifySnapshotTypeRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifySnapshotTypeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifySnapshotTypeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySnapshotTypeResponse struct {
+	*ksyunhttp.BaseResponse
+	Result []struct {
+		SnapshotId *string `json:"SnapshotId" name:"SnapshotId"`
+		Return     *bool   `json:"Return" name:"Return"`
+	} `json:"Result"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifySnapshotTypeResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifySnapshotTypeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyVolumeTypeRequest struct {
+	*ksyunhttp.BaseRequest
+	VolumeId                       *string `json:"VolumeId,omitempty" name:"VolumeId"`
+	PerformanceVolumeSize          *string `json:"PerformanceVolumeSize,omitempty" name:"PerformanceVolumeSize"`
+	PerformanceLevelVolumeCategory *string `json:"PerformanceLevelVolumeCategory,omitempty" name:"PerformanceLevelVolumeCategory"`
+}
+
+func (r *ModifyVolumeTypeRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyVolumeTypeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyVolumeTypeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyVolumeTypeResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *ModifyVolumeTypeResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyVolumeTypeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDedicatedBlockStorageClusterAttributeRequest struct {
+	*ksyunhttp.BaseRequest
+	DbscId           *string `json:"DbscId,omitempty" name:"DbscId"`
+	DbscName         *string `json:"DbscName,omitempty" name:"DbscName"`
+	AvailabilityZone *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	DbscDesc         *string `json:"DbscDesc,omitempty" name:"DbscDesc"`
+}
+
+func (r *ModifyDedicatedBlockStorageClusterAttributeRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyDedicatedBlockStorageClusterAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyDedicatedBlockStorageClusterAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDedicatedBlockStorageClusterAttributeResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	DbscId    *string `json:"DbscId" name:"DbscId"`
+}
+
+func (r *ModifyDedicatedBlockStorageClusterAttributeResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyDedicatedBlockStorageClusterAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResizeDedicatedBlockStorageClustersRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *ResizeDedicatedBlockStorageClustersRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ResizeDedicatedBlockStorageClustersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ResizeDedicatedBlockStorageClustersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResizeDedicatedBlockStorageClustersResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ResizeDedicatedBlockStorageClustersResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ResizeDedicatedBlockStorageClustersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDedicatedBlockStorageClustersRequest struct {
+	*ksyunhttp.BaseRequest
+	AvailabilityZone *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	DbscName         *string `json:"DbscName,omitempty" name:"DbscName"`
+	Marker           *int    `json:"Marker,omitempty" name:"Marker"`
+	MaxResults       *int    `json:"MaxResults,omitempty" name:"MaxResults"`
+	DbscCreateDate   *string `json:"DbscCreateDate,omitempty" name:"DbscCreateDate"`
+}
+
+func (r *DescribeDedicatedBlockStorageClustersRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDedicatedBlockStorageClustersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeDedicatedBlockStorageClustersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDedicatedBlockStorageClustersResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"requestId" name:"requestId"`
+	Dbscs     []struct {
+		DscId                            *string `json:"DscId" name:"DscId"`
+		DbscName                         *string `json:"DbscName" name:"DbscName"`
+		DbscDescription                  *string `json:"DbscDescription" name:"DbscDescription"`
+		AvailabilityZone                 *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		DbscStatus                       *string `json:"DbscStatus" name:"DbscStatus"`
+		DbscType                         *string `json:"DbscType" name:"DbscType"`
+		EbsClusterId                     *string `json:"EbsClusterId" name:"EbsClusterId"`
+		CreateTime                       *string `json:"CreateTime" name:"CreateTime"`
+		DedicatedBlockStorageClusterSize struct {
+			AvailableSize *int `json:"AvailableSize" name:"AvailableSize"`
+			TotalSize     *int `json:"TotalSize" name:"TotalSize"`
+			DeliverySize  *int `json:"DeliverySize" name:"DeliverySize"`
+			UsedSize      *int `json:"UsedSize" name:"UsedSize"`
+		} `json:"DedicatedBlockStorageClusterSize" name:"DedicatedBlockStorageClusterSize"`
+	} `json:"Dbscs"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+	Marker     *int `json:"Marker" name:"Marker"`
+	MaxResults *int `json:"MaxResults" name:"MaxResults"`
+}
+
+func (r *DescribeDedicatedBlockStorageClustersResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDedicatedBlockStorageClustersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDedicatedBlockStorageClusterRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *CreateDedicatedBlockStorageClusterRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateDedicatedBlockStorageClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateDedicatedBlockStorageClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDedicatedBlockStorageClusterResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *CreateDedicatedBlockStorageClusterResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateDedicatedBlockStorageClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

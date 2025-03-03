@@ -35,9 +35,9 @@ type DescribeBillSummaryByPayModeResponse struct {
 	Currency        *string `json:"Currency" name:"Currency"`
 	RealTotalCost   *string `json:"RealTotalCost" name:"RealTotalCost"`
 	SummaryOverview []struct {
-		PayMode       *string `json:"PayMode"`
-		RealTotalCost *string `json:"RealTotalCost"`
-		BillMonth     *string `json:"BillMonth"`
+		PayMode       *string `json:"PayMode" name:"PayMode"`
+		RealTotalCost *string `json:"RealTotalCost" name:"RealTotalCost"`
+		BillMonth     *string `json:"BillMonth" name:"BillMonth"`
 	} `json:"SummaryOverview"`
 }
 
@@ -79,10 +79,10 @@ type DescribeBillSummaryByProductResponse struct {
 	Currency        *string `json:"Currency" name:"Currency"`
 	RealTotalCost   *string `json:"RealTotalCost" name:"RealTotalCost"`
 	SummaryOverview []struct {
-		ProductCode   *string `json:"ProductCode"`
-		ProductName   *string `json:"ProductName"`
-		RealTotalCost *string `json:"RealTotalCost"`
-		BillMonth     *string `json:"BillMonth"`
+		ProductCode   *string `json:"ProductCode" name:"ProductCode"`
+		ProductName   *string `json:"ProductName" name:"ProductName"`
+		RealTotalCost *string `json:"RealTotalCost" name:"RealTotalCost"`
+		BillMonth     *string `json:"BillMonth" name:"BillMonth"`
 	} `json:"SummaryOverview"`
 }
 
@@ -124,10 +124,10 @@ type DescribeBillSummaryByProjectResponse struct {
 	Currency        *string `json:"Currency" name:"Currency"`
 	RealTotalCost   *string `json:"RealTotalCost" name:"RealTotalCost"`
 	SummaryOverview []struct {
-		ProjectId     *string `json:"ProjectId"`
-		ProjectName   *string `json:"ProjectName"`
-		RealTotalCost *string `json:"RealTotalCost"`
-		BillMonth     *string `json:"BillMonth"`
+		ProjectId     *string `json:"ProjectId" name:"ProjectId"`
+		ProjectName   *string `json:"ProjectName" name:"ProjectName"`
+		RealTotalCost *string `json:"RealTotalCost" name:"RealTotalCost"`
+		BillMonth     *string `json:"BillMonth" name:"BillMonth"`
 	} `json:"SummaryOverview"`
 }
 
@@ -173,47 +173,47 @@ type DescribeInstanceSummaryBillsResponse struct {
 	TotalCount      *int    `json:"TotalCount" name:"TotalCount"`
 	CustomerId      *int    `json:"CustomerId" name:"CustomerId"`
 	SummaryOverview []struct {
-		BillsNo              *string `json:"BillsNo"`
-		CustomerBillMonth    *string `json:"CustomerBillMonth"`
-		BillMonth            *string `json:"BillMonth"`
-		ProductName          *string `json:"ProductName"`
-		ProductSubTyeName    *string `json:"ProductSubTyeName"`
-		InstanceId           *string `json:"InstanceId"`
-		InstanceName         *string `json:"InstanceName"`
-		Currency             *string `json:"Currency"`
-		DetailBillStartTime  *string `json:"DetailBillStartTime"`
-		DetailBillEndTime    *string `json:"DetailBillEndTime"`
-		ServiceBillStartTime *string `json:"ServiceBillStartTime"`
-		PayMode              *string `json:"PayMode"`
-		BillTypeName         *string `json:"BillTypeName"`
-		RegionName           *string `json:"RegionName"`
-		ZoneName             *string `json:"ZoneName"`
-		ProjectName          *string `json:"ProjectName"`
-		Duration             *string `json:"Duration"`
-		Remark               *string `json:"Remark"`
-		Cost                 *string `json:"Cost"`
-		RealCost             *string `json:"RealCost"`
+		BillsNo              *string `json:"BillsNo" name:"BillsNo"`
+		CustomerBillMonth    *string `json:"CustomerBillMonth" name:"CustomerBillMonth"`
+		BillMonth            *string `json:"BillMonth" name:"BillMonth"`
+		ProductName          *string `json:"ProductName" name:"ProductName"`
+		ProductSubTyeName    *string `json:"ProductSubTyeName" name:"ProductSubTyeName"`
+		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName         *string `json:"InstanceName" name:"InstanceName"`
+		Currency             *string `json:"Currency" name:"Currency"`
+		DetailBillStartTime  *string `json:"DetailBillStartTime" name:"DetailBillStartTime"`
+		DetailBillEndTime    *string `json:"DetailBillEndTime" name:"DetailBillEndTime"`
+		ServiceBillStartTime *string `json:"ServiceBillStartTime" name:"ServiceBillStartTime"`
+		PayMode              *string `json:"PayMode" name:"PayMode"`
+		BillTypeName         *string `json:"BillTypeName" name:"BillTypeName"`
+		RegionName           *string `json:"RegionName" name:"RegionName"`
+		ZoneName             *string `json:"ZoneName" name:"ZoneName"`
+		ProjectName          *string `json:"ProjectName" name:"ProjectName"`
+		Duration             *string `json:"Duration" name:"Duration"`
+		Remark               *string `json:"Remark" name:"Remark"`
+		Cost                 *string `json:"Cost" name:"Cost"`
+		RealCost             *string `json:"RealCost" name:"RealCost"`
 		ConfigSet            []struct {
-			Key   *string `json:"Key"`
-			Code  *string `json:"Code"`
-			Value *string `json:"Value"`
-		} `json:"ConfigSet"`
+			Key   *string `json:"Key" name:"Key"`
+			Code  *string `json:"Code" name:"Code"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"ConfigSet" name:"ConfigSet"`
 		ProviderSet []struct {
-			Key   *string `json:"Key"`
-			Code  *string `json:"Code"`
-			Value *string `json:"Value"`
-		} `json:"ProviderSet"`
+			Key   *string `json:"Key" name:"Key"`
+			Code  *string `json:"Code" name:"Code"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"ProviderSet" name:"ProviderSet"`
 		ConsumeResources []struct {
-		} `json:"ConsumeResources"`
+		} `json:"ConsumeResources" name:"ConsumeResources"`
 		ExtraSet []struct {
-			Key   *string `json:"Key"`
-			Code  *string `json:"Code"`
-			Value *string `json:"Value"`
-		} `json:"ExtraSet"`
+			Key   *string `json:"Key" name:"Key"`
+			Code  *string `json:"Code" name:"Code"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"ExtraSet" name:"ExtraSet"`
 		TagSet []struct {
-			Key   *string `json:"Key"`
-			Value *string `json:"Value"`
-		} `json:"TagSet"`
+			Key   *string `json:"Key" name:"Key"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"TagSet" name:"TagSet"`
 	} `json:"SummaryOverview"`
 }
 
@@ -250,8 +250,8 @@ type DescribeProductCodeResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId       *string `json:"RequestId" name:"RequestId"`
 	ProductGroupSet []struct {
-		Key   *string `json:"Key"`
-		Value *string `json:"Value"`
+		Key   *string `json:"Key" name:"Key"`
+		Value *string `json:"Value" name:"Value"`
 	} `json:"ProductGroupSet"`
 }
 
@@ -296,50 +296,47 @@ type DescribeSplitItemBillDetailsResponse struct {
 	Status    *int    `json:"Status" name:"Status"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		Page  *int `json:"Page"`
-		Size  *int `json:"Size"`
-		Total *int `json:"Total"`
+		Page  *int `json:"Page" name:"Page"`
+		Size  *int `json:"Size" name:"Size"`
+		Total *int `json:"Total" name:"Total"`
 		Bills []struct {
-			InstanceId              *string `json:"InstanceId"`
-			InstanceName            *string `json:"InstanceName"`
-			ProjectId               *int    `json:"ProjectId"`
-			ProjectName             *string `json:"ProjectName"`
-			ProductGroupName        *string `json:"ProductGroupName"`
-			ProductTypeName         *string `json:"ProductTypeName"`
-			BillItemName            *string `json:"BillItemName"`
-			BillStartTime           *string `json:"BillStartTime"`
-			BillEndTime             *string `json:"BillEndTime"`
-			ServiceBeginTime        *string `json:"ServiceBeginTime"`
-			RegionName              *string `json:"RegionName"`
-			AvailabilityZone        *string `json:"AvailabilityZone"`
-			PayTypeName             *string `json:"PayTypeName"`
-			BillTypeName            *string `json:"BillTypeName"`
-			BillDetailTypeName      *string `json:"BillDetailTypeName"`
-			MeasureValue            *string `json:"MeasureValue"`
-			MeasureValueUnit        *string `json:"MeasureValueUnit"`
-			SplitItemName           *string `json:"SplitItemName"`
-			SplitRatio              *string `json:"SplitRatio"`
-			Price                   *string `json:"Price"`
-			RealPrice               *string `json:"RealPrice"`
-			Cash                    *string `json:"Cash"`
-			Reward                  *string `json:"Reward"`
-			CloudTicketDenomination *string `json:"CloudTicketDenomination"`
-			ResourceDeductValue     *string `json:"ResourceDeductValue"`
-			Duration                *string `json:"Duration"`
-			RuleRemark              *string `json:"RuleRemark"`
-			FinanceUnitName         *string `json:"FinanceUnitName"`
-			PriceFactorInfo         []struct {
-			} `json:"PriceFactorInfo"`
-			ExtraInfo []struct {
-			} `json:"ExtraInfo"`
-			TagInfo []struct {
-			} `json:"TagInfo"`
-			UserId            *int    `json:"UserId"`
-			UserName          *string `json:"UserName"`
-			BillMonth         *int    `json:"BillMonth"`
-			CustomerBillMonth *int    `json:"CustomerBillMonth"`
-			CurrencyCode      *string `json:"CurrencyCode"`
-		} `json:"Bills"`
+			InstanceId              *string   `json:"InstanceId" name:"InstanceId"`
+			InstanceName            *string   `json:"InstanceName" name:"InstanceName"`
+			ProjectId               *int      `json:"ProjectId" name:"ProjectId"`
+			ProjectName             *string   `json:"ProjectName" name:"ProjectName"`
+			ProductGroupName        *string   `json:"ProductGroupName" name:"ProductGroupName"`
+			ProductTypeName         *string   `json:"ProductTypeName" name:"ProductTypeName"`
+			BillItemName            *string   `json:"BillItemName" name:"BillItemName"`
+			BillStartTime           *string   `json:"BillStartTime" name:"BillStartTime"`
+			BillEndTime             *string   `json:"BillEndTime" name:"BillEndTime"`
+			ServiceBeginTime        *string   `json:"ServiceBeginTime" name:"ServiceBeginTime"`
+			RegionName              *string   `json:"RegionName" name:"RegionName"`
+			AvailabilityZone        *string   `json:"AvailabilityZone" name:"AvailabilityZone"`
+			PayTypeName             *string   `json:"PayTypeName" name:"PayTypeName"`
+			BillTypeName            *string   `json:"BillTypeName" name:"BillTypeName"`
+			BillDetailTypeName      *string   `json:"BillDetailTypeName" name:"BillDetailTypeName"`
+			MeasureValue            *string   `json:"MeasureValue" name:"MeasureValue"`
+			MeasureValueUnit        *string   `json:"MeasureValueUnit" name:"MeasureValueUnit"`
+			SplitItemName           *string   `json:"SplitItemName" name:"SplitItemName"`
+			SplitRatio              *string   `json:"SplitRatio" name:"SplitRatio"`
+			Price                   *string   `json:"Price" name:"Price"`
+			RealPrice               *string   `json:"RealPrice" name:"RealPrice"`
+			Cash                    *string   `json:"Cash" name:"Cash"`
+			Reward                  *string   `json:"Reward" name:"Reward"`
+			CloudTicketDenomination *string   `json:"CloudTicketDenomination" name:"CloudTicketDenomination"`
+			ResourceDeductValue     *string   `json:"ResourceDeductValue" name:"ResourceDeductValue"`
+			Duration                *string   `json:"Duration" name:"Duration"`
+			RuleRemark              *string   `json:"RuleRemark" name:"RuleRemark"`
+			FinanceUnitName         *string   `json:"FinanceUnitName" name:"FinanceUnitName"`
+			PriceFactorInfo         []*string `json:"PriceFactorInfo" name:"PriceFactorInfo"`
+			ExtraInfo               []*string `json:"ExtraInfo" name:"ExtraInfo"`
+			TagInfo                 []*string `json:"TagInfo" name:"TagInfo"`
+			UserId                  *int      `json:"UserId" name:"UserId"`
+			UserName                *string   `json:"UserName" name:"UserName"`
+			BillMonth               *int      `json:"BillMonth" name:"BillMonth"`
+			CustomerBillMonth       *int      `json:"CustomerBillMonth" name:"CustomerBillMonth"`
+			CurrencyCode            *string   `json:"CurrencyCode" name:"CurrencyCode"`
+		} `json:"Bills" name:"Bills"`
 	} `json:"Data"`
 	Error *string `json:"Error" name:"Error"`
 }
@@ -377,10 +374,10 @@ func (r *DescribeMiItemBillsRequest) FromJsonString(s string) error {
 type DescribeMiItemBillsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
-	url       *string `json:"url" name:"url"`
+	Url       *string `json:"url" name:"url"`
 	Error     struct {
-		Code    *string `json:"Code"`
-		Message *string `json:"Message"`
+		Code    *string `json:"Code" name:"Code"`
+		Message *string `json:"Message" name:"Message"`
 	} `json:"Error"`
 }
 
@@ -460,10 +457,10 @@ type ListProductGroupsResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Success   *bool   `json:"Success" name:"Success"`
 	Data      []struct {
-		Id     *int    `json:"Id"`
-		Code   *string `json:"Code"`
-		Name   *string `json:"Name"`
-		EnName *string `json:"EnName"`
+		Id     *int    `json:"Id" name:"Id"`
+		Code   *string `json:"Code" name:"Code"`
+		Name   *string `json:"Name" name:"Name"`
+		EnName *string `json:"EnName" name:"EnName"`
 	} `json:"Data"`
 }
 

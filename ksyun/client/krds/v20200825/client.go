@@ -286,3 +286,69 @@ func (c *Client) ModifySecurityGroupRuleNameWithContext(ctx context.Context, req
 	}
 	return msg
 }
+func NewCreateDBParameterGroupRequest() (request *CreateDBParameterGroupRequest) {
+	request = &CreateDBParameterGroupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "CreateDBParameterGroup")
+	return
+}
+
+func NewCreateDBParameterGroupResponse() (response *CreateDBParameterGroupResponse) {
+	response = &CreateDBParameterGroupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateDBParameterGroup(request *CreateDBParameterGroupRequest) string {
+	return c.CreateDBParameterGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateDBParameterGroupWithContext(ctx context.Context, request *CreateDBParameterGroupRequest) string {
+	if request == nil {
+		request = NewCreateDBParameterGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateDBParameterGroupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyDBParameterGroupRequest() (request *ModifyDBParameterGroupRequest) {
+	request = &ModifyDBParameterGroupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "ModifyDBParameterGroup")
+	return
+}
+
+func NewModifyDBParameterGroupResponse() (response *ModifyDBParameterGroupResponse) {
+	response = &ModifyDBParameterGroupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyDBParameterGroup(request *ModifyDBParameterGroupRequest) string {
+	return c.ModifyDBParameterGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyDBParameterGroupWithContext(ctx context.Context, request *ModifyDBParameterGroupRequest) string {
+	if request == nil {
+		request = NewModifyDBParameterGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyDBParameterGroupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

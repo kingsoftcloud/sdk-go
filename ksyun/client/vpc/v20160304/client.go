@@ -3586,3 +3586,234 @@ func (c *Client) DeleteDcNatIpWithContext(ctx context.Context, request *DeleteDc
 	}
 	return msg
 }
+func NewDescribeDirectConnectInterfacesBgpStatusRequest() (request *DescribeDirectConnectInterfacesBgpStatusRequest) {
+	request = &DescribeDirectConnectInterfacesBgpStatusRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectInterfacesBgpStatus")
+	return
+}
+
+func NewDescribeDirectConnectInterfacesBgpStatusResponse() (response *DescribeDirectConnectInterfacesBgpStatusResponse) {
+	response = &DescribeDirectConnectInterfacesBgpStatusResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeDirectConnectInterfacesBgpStatus(request *DescribeDirectConnectInterfacesBgpStatusRequest) string {
+	return c.DescribeDirectConnectInterfacesBgpStatusWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDirectConnectInterfacesBgpStatusWithContext(ctx context.Context, request *DescribeDirectConnectInterfacesBgpStatusRequest) string {
+	if request == nil {
+		request = NewDescribeDirectConnectInterfacesBgpStatusRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeDirectConnectInterfacesBgpStatusResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeactiveFlowLogRequest() (request *DeactiveFlowLogRequest) {
+	request = &DeactiveFlowLogRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "DeactiveFlowLog")
+	return
+}
+
+func NewDeactiveFlowLogResponse() (response *DeactiveFlowLogResponse) {
+	response = &DeactiveFlowLogResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeactiveFlowLog(request *DeactiveFlowLogRequest) string {
+	return c.DeactiveFlowLogWithContext(context.Background(), request)
+}
+
+func (c *Client) DeactiveFlowLogWithContext(ctx context.Context, request *DeactiveFlowLogRequest) string {
+	if request == nil {
+		request = NewDeactiveFlowLogRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeactiveFlowLogResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewActiveFlowLogRequest() (request *ActiveFlowLogRequest) {
+	request = &ActiveFlowLogRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "ActiveFlowLog")
+	return
+}
+
+func NewActiveFlowLogResponse() (response *ActiveFlowLogResponse) {
+	response = &ActiveFlowLogResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ActiveFlowLog(request *ActiveFlowLogRequest) string {
+	return c.ActiveFlowLogWithContext(context.Background(), request)
+}
+
+func (c *Client) ActiveFlowLogWithContext(ctx context.Context, request *ActiveFlowLogRequest) string {
+	if request == nil {
+		request = NewActiveFlowLogRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewActiveFlowLogResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeleteFlowLogRequest() (request *DeleteFlowLogRequest) {
+	request = &DeleteFlowLogRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "DeleteFlowLog")
+	return
+}
+
+func NewDeleteFlowLogResponse() (response *DeleteFlowLogResponse) {
+	response = &DeleteFlowLogResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteFlowLog(request *DeleteFlowLogRequest) string {
+	return c.DeleteFlowLogWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteFlowLogWithContext(ctx context.Context, request *DeleteFlowLogRequest) string {
+	if request == nil {
+		request = NewDeleteFlowLogRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteFlowLogResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyFlowLogRequest() (request *ModifyFlowLogRequest) {
+	request = &ModifyFlowLogRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "ModifyFlowLog")
+	return
+}
+
+func NewModifyFlowLogResponse() (response *ModifyFlowLogResponse) {
+	response = &ModifyFlowLogResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyFlowLog(request *ModifyFlowLogRequest) string {
+	return c.ModifyFlowLogWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyFlowLogWithContext(ctx context.Context, request *ModifyFlowLogRequest) string {
+	if request == nil {
+		request = NewModifyFlowLogRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyFlowLogResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeFlowLogsRequest() (request *DescribeFlowLogsRequest) {
+	request = &DescribeFlowLogsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "DescribeFlowLogs")
+	return
+}
+
+func NewDescribeFlowLogsResponse() (response *DescribeFlowLogsResponse) {
+	response = &DescribeFlowLogsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeFlowLogs(request *DescribeFlowLogsRequest) string {
+	return c.DescribeFlowLogsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeFlowLogsWithContext(ctx context.Context, request *DescribeFlowLogsRequest) string {
+	if request == nil {
+		request = NewDescribeFlowLogsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeFlowLogsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCreateFlowLogRequest() (request *CreateFlowLogRequest) {
+	request = &CreateFlowLogRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "CreateFlowLog")
+	return
+}
+
+func NewCreateFlowLogResponse() (response *CreateFlowLogResponse) {
+	response = &CreateFlowLogResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateFlowLog(request *CreateFlowLogRequest) string {
+	return c.CreateFlowLogWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateFlowLogWithContext(ctx context.Context, request *CreateFlowLogRequest) string {
+	if request == nil {
+		request = NewCreateFlowLogRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateFlowLogResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

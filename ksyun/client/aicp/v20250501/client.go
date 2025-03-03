@@ -1,4 +1,4 @@
-package v20240501
+package v20250501
 
 import (
 	"context"
@@ -79,7 +79,7 @@ func (c *Client) ListImagesWithContext(ctx context.Context, request *ListImagesR
 		request = NewListImagesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewListImagesResponse()
 	err, msg := c.Send(request, response)
@@ -145,7 +145,7 @@ func (c *Client) CreateImageWithContext(ctx context.Context, request *CreateImag
 		request = NewCreateImageRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewCreateImageResponse()
 	err, msg := c.Send(request, response)
@@ -343,7 +343,7 @@ func (c *Client) CreateSpaceStorageWithContext(ctx context.Context, request *Cre
 		request = NewCreateSpaceStorageRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewCreateSpaceStorageResponse()
 	err, msg := c.Send(request, response)
@@ -541,7 +541,7 @@ func (c *Client) DeleteJobWithContext(ctx context.Context, request *DeleteJobReq
 		request = NewDeleteJobRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewDeleteJobResponse()
 	err, msg := c.Send(request, response)
@@ -805,7 +805,7 @@ func (c *Client) StopJobWithContext(ctx context.Context, request *StopJobRequest
 		request = NewStopJobRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewStopJobResponse()
 	err, msg := c.Send(request, response)

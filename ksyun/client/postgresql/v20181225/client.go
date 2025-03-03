@@ -1276,3 +1276,267 @@ func (c *Client) ModifyDBInstanceExtensionWithContext(ctx context.Context, reque
 	}
 	return msg
 }
+func NewDescribeCollationsRequest() (request *DescribeCollationsRequest) {
+	request = &DescribeCollationsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("postgresql", APIVersion, "DescribeCollations")
+	return
+}
+
+func NewDescribeCollationsResponse() (response *DescribeCollationsResponse) {
+	response = &DescribeCollationsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeCollations(request *DescribeCollationsRequest) string {
+	return c.DescribeCollationsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeCollationsWithContext(ctx context.Context, request *DescribeCollationsRequest) string {
+	if request == nil {
+		request = NewDescribeCollationsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeCollationsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyInstanceDatabaseOwnerRequest() (request *ModifyInstanceDatabaseOwnerRequest) {
+	request = &ModifyInstanceDatabaseOwnerRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("postgresql", APIVersion, "ModifyInstanceDatabaseOwner")
+	return
+}
+
+func NewModifyInstanceDatabaseOwnerResponse() (response *ModifyInstanceDatabaseOwnerResponse) {
+	response = &ModifyInstanceDatabaseOwnerResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyInstanceDatabaseOwner(request *ModifyInstanceDatabaseOwnerRequest) string {
+	return c.ModifyInstanceDatabaseOwnerWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyInstanceDatabaseOwnerWithContext(ctx context.Context, request *ModifyInstanceDatabaseOwnerRequest) string {
+	if request == nil {
+		request = NewModifyInstanceDatabaseOwnerRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyInstanceDatabaseOwnerResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeleteInstanceDatabaseRequest() (request *DeleteInstanceDatabaseRequest) {
+	request = &DeleteInstanceDatabaseRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("postgresql", APIVersion, "DeleteInstanceDatabase")
+	return
+}
+
+func NewDeleteInstanceDatabaseResponse() (response *DeleteInstanceDatabaseResponse) {
+	response = &DeleteInstanceDatabaseResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteInstanceDatabase(request *DeleteInstanceDatabaseRequest) string {
+	return c.DeleteInstanceDatabaseWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteInstanceDatabaseWithContext(ctx context.Context, request *DeleteInstanceDatabaseRequest) string {
+	if request == nil {
+		request = NewDeleteInstanceDatabaseRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteInstanceDatabaseResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCreateInstanceDatabaseRequest() (request *CreateInstanceDatabaseRequest) {
+	request = &CreateInstanceDatabaseRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("postgresql", APIVersion, "CreateInstanceDatabase")
+	return
+}
+
+func NewCreateInstanceDatabaseResponse() (response *CreateInstanceDatabaseResponse) {
+	response = &CreateInstanceDatabaseResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateInstanceDatabase(request *CreateInstanceDatabaseRequest) string {
+	return c.CreateInstanceDatabaseWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateInstanceDatabaseWithContext(ctx context.Context, request *CreateInstanceDatabaseRequest) string {
+	if request == nil {
+		request = NewCreateInstanceDatabaseRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateInstanceDatabaseResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeInstanceAccountsRequest() (request *DescribeInstanceAccountsRequest) {
+	request = &DescribeInstanceAccountsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("postgresql", APIVersion, "DescribeInstanceAccounts")
+	return
+}
+
+func NewDescribeInstanceAccountsResponse() (response *DescribeInstanceAccountsResponse) {
+	response = &DescribeInstanceAccountsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeInstanceAccounts(request *DescribeInstanceAccountsRequest) string {
+	return c.DescribeInstanceAccountsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeInstanceAccountsWithContext(ctx context.Context, request *DescribeInstanceAccountsRequest) string {
+	if request == nil {
+		request = NewDescribeInstanceAccountsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeInstanceAccountsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCreateInstanceAccountRequest() (request *CreateInstanceAccountRequest) {
+	request = &CreateInstanceAccountRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("postgresql", APIVersion, "CreateInstanceAccount")
+	return
+}
+
+func NewCreateInstanceAccountResponse() (response *CreateInstanceAccountResponse) {
+	response = &CreateInstanceAccountResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateInstanceAccount(request *CreateInstanceAccountRequest) string {
+	return c.CreateInstanceAccountWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateInstanceAccountWithContext(ctx context.Context, request *CreateInstanceAccountRequest) string {
+	if request == nil {
+		request = NewCreateInstanceAccountRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateInstanceAccountResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeleteInstanceAccountRequest() (request *DeleteInstanceAccountRequest) {
+	request = &DeleteInstanceAccountRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("postgresql", APIVersion, "DeleteInstanceAccount")
+	return
+}
+
+func NewDeleteInstanceAccountResponse() (response *DeleteInstanceAccountResponse) {
+	response = &DeleteInstanceAccountResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteInstanceAccount(request *DeleteInstanceAccountRequest) string {
+	return c.DeleteInstanceAccountWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteInstanceAccountWithContext(ctx context.Context, request *DeleteInstanceAccountRequest) string {
+	if request == nil {
+		request = NewDeleteInstanceAccountRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteInstanceAccountResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyDBNetworkRequest() (request *ModifyDBNetworkRequest) {
+	request = &ModifyDBNetworkRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("postgresql", APIVersion, "ModifyDBNetwork")
+	return
+}
+
+func NewModifyDBNetworkResponse() (response *ModifyDBNetworkResponse) {
+	response = &ModifyDBNetworkResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyDBNetwork(request *ModifyDBNetworkRequest) string {
+	return c.ModifyDBNetworkWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyDBNetworkWithContext(ctx context.Context, request *ModifyDBNetworkRequest) string {
+	if request == nil {
+		request = NewModifyDBNetworkRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyDBNetworkResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

@@ -32,19 +32,19 @@ type ListAlarmPolicyResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		AlarmPolicyList []struct {
-			policyId          *int    `json:"policyId"`
-			policyName        *string `json:"policyName"`
-			productType       *string `json:"productType"`
-			policyType        *string `json:"policyType"`
-			enabled           *string `json:"enabled"`
-			instanceInfoCount *int    `json:"instanceInfoCount"`
-			triggerRuleCount  *int    `json:"triggerRuleCount"`
-			contactInfoCount  *int    `json:"contactInfoCount"`
-			callbackUrl       *string `json:"callbackUrl"`
-		} `json:"AlarmPolicyList"`
+			PolicyId          *int    `json:"policyId" name:"policyId"`
+			PolicyName        *string `json:"policyName" name:"policyName"`
+			ProductType       *string `json:"productType" name:"productType"`
+			PolicyType        *string `json:"policyType" name:"policyType"`
+			Enabled           *string `json:"enabled" name:"enabled"`
+			InstanceInfoCount *int    `json:"instanceInfoCount" name:"instanceInfoCount"`
+			TriggerRuleCount  *int    `json:"triggerRuleCount" name:"triggerRuleCount"`
+			ContactInfoCount  *int    `json:"contactInfoCount" name:"contactInfoCount"`
+			CallbackUrl       *string `json:"callbackUrl" name:"callbackUrl"`
+		} `json:"AlarmPolicyList" name:"AlarmPolicyList"`
 	} `json:"Data"`
-	totalCount *int    `json:"totalCount" name:"totalCount"`
-	requestId  *string `json:"requestId" name:"requestId"`
+	TotalCount *int    `json:"totalCount" name:"totalCount"`
+	RequestId  *string `json:"requestId" name:"requestId"`
 }
 
 func (r *ListAlarmPolicyResponse) ToJsonString() string {
@@ -81,39 +81,39 @@ type DescribeAlarmPolicyResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		AlarmPolicyList []struct {
-			policyId          *int    `json:"policyId"`
-			policyName        *string `json:"policyName"`
-			productType       *int    `json:"productType"`
-			policyType        *int    `json:"policyType"`
-			enabled           *int    `json:"enabled"`
-			InstanceInfoCount *int    `json:"InstanceInfoCount"`
+			PolicyId          *int    `json:"policyId" name:"policyId"`
+			PolicyName        *string `json:"policyName" name:"policyName"`
+			ProductType       *int    `json:"productType" name:"productType"`
+			PolicyType        *int    `json:"policyType" name:"policyType"`
+			Enabled           *int    `json:"enabled" name:"enabled"`
+			InstanceInfoCount *int    `json:"InstanceInfoCount" name:"InstanceInfoCount"`
 			TriggerRuleList   []struct {
-				TriggerId    *int    `json:"TriggerId"`
-				Period       *string `json:"Period"`
-				Method       *string `json:"Method"`
-				Compare      *string `json:"Compare"`
-				TriggerValue *string `json:"TriggerValue"`
-				ItemName     *string `json:"ItemName"`
-				ItemKey      *string `json:"ItemKey"`
-				Units        *string `json:"Units"`
-				EffectBT     *string `json:"EffectBT"`
-				EffectET     *string `json:"EffectET"`
-				Tags         *string `json:"Tags"`
-				Interval     *string `json:"Interval"`
-				Points       *int    `json:"Points"`
-				MaxCount     *int    `json:"MaxCount"`
+				TriggerId    *int    `json:"TriggerId" name:"TriggerId"`
+				Period       *string `json:"Period" name:"Period"`
+				Method       *string `json:"Method" name:"Method"`
+				Compare      *string `json:"Compare" name:"Compare"`
+				TriggerValue *string `json:"TriggerValue" name:"TriggerValue"`
+				ItemName     *string `json:"ItemName" name:"ItemName"`
+				ItemKey      *string `json:"ItemKey" name:"ItemKey"`
+				Units        *string `json:"Units" name:"Units"`
+				EffectBT     *string `json:"EffectBT" name:"EffectBT"`
+				EffectET     *string `json:"EffectET" name:"EffectET"`
+				Tags         *string `json:"Tags" name:"Tags"`
+				Interval     *string `json:"Interval" name:"Interval"`
+				Points       *int    `json:"Points" name:"Points"`
+				MaxCount     *int    `json:"MaxCount" name:"MaxCount"`
 			} `json:"TriggerRuleList"`
 			ContactInfoList []struct {
-				ContactId   *int    `json:"ContactId"`
-				ContactName *string `json:"ContactName"`
-				ContactWay  *int    `json:"ContactWay"`
-				ContactFlag *int    `json:"ContactFlag"`
+				ContactId   *int    `json:"ContactId" name:"ContactId"`
+				ContactName *string `json:"ContactName" name:"ContactName"`
+				ContactWay  *int    `json:"ContactWay" name:"ContactWay"`
+				ContactFlag *int    `json:"ContactFlag" name:"ContactFlag"`
 			} `json:"ContactInfoList"`
-			callbackUrl *string `json:"callbackUrl"`
-		} `json:"AlarmPolicyList"`
+			CallbackUrl *string `json:"callbackUrl" name:"callbackUrl"`
+		} `json:"AlarmPolicyList" name:"AlarmPolicyList"`
 	} `json:"Data"`
-	totalCount *int    `json:"totalCount" name:"totalCount"`
-	requestId  *string `json:"requestId" name:"requestId"`
+	TotalCount *int    `json:"totalCount" name:"totalCount"`
+	RequestId  *string `json:"requestId" name:"requestId"`
 }
 
 func (r *DescribeAlarmPolicyResponse) ToJsonString() string {
@@ -150,16 +150,16 @@ func (r *DescribePolicyObjectRequest) FromJsonString(s string) error {
 
 type DescribePolicyObjectResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
+	RequestId *string `json:"requestId" name:"requestId"`
 	Data      struct {
-		ProductType      *int `json:"ProductType"`
+		ProductType      *int `json:"ProductType" name:"ProductType"`
 		InstanceInfoList []struct {
-			instanceId   *string `json:"instanceId"`
-			ip           *string `json:"ip"`
-			instanceName *string `json:"instanceName"`
-		} `json:"InstanceInfoList"`
+			InstanceId   *string `json:"instanceId" name:"instanceId"`
+			Ip           *string `json:"ip" name:"ip"`
+			InstanceName *string `json:"instanceName" name:"instanceName"`
+		} `json:"InstanceInfoList" name:"InstanceInfoList"`
 	} `json:"Data"`
-	totalCount *int `json:"totalCount" name:"totalCount"`
+	TotalCount *int `json:"totalCount" name:"totalCount"`
 }
 
 func (r *DescribePolicyObjectResponse) ToJsonString() string {
@@ -197,13 +197,13 @@ type DescribeAlarmReceivesResponse struct {
 	Data struct {
 	} `json:"Data"`
 	ContactInfoList []struct {
-		ContactId   *int    `json:"ContactId"`
-		ContactName *string `json:"ContactName"`
-		ContactWay  *int    `json:"ContactWay"`
-		ContactFlag *int    `json:"ContactFlag"`
+		ContactId   *int    `json:"ContactId" name:"ContactId"`
+		ContactName *string `json:"ContactName" name:"ContactName"`
+		ContactWay  *int    `json:"ContactWay" name:"ContactWay"`
+		ContactFlag *int    `json:"ContactFlag" name:"ContactFlag"`
 	} `json:"ContactInfoList"`
-	totalCount *int    `json:"totalCount" name:"totalCount"`
-	requestId  *string `json:"requestId" name:"requestId"`
+	TotalCount *int    `json:"totalCount" name:"totalCount"`
+	RequestId  *string `json:"requestId" name:"requestId"`
 }
 
 func (r *DescribeAlarmReceivesResponse) ToJsonString() string {
@@ -241,7 +241,7 @@ func (r *AddAlarmReceivesRequest) FromJsonString(s string) error {
 
 type AddAlarmReceivesResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
+	RequestId *string `json:"requestId" name:"requestId"`
 }
 
 func (r *AddAlarmReceivesResponse) ToJsonString() string {
@@ -278,7 +278,7 @@ func (r *DeleteAlarmReceivesRequest) FromJsonString(s string) error {
 
 type DeleteAlarmReceivesResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
+	RequestId *string `json:"requestId" name:"requestId"`
 }
 
 func (r *DeleteAlarmReceivesResponse) ToJsonString() string {
@@ -314,13 +314,13 @@ type GetUserGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		UserGrpList []struct {
-			userGrpId *int    `json:"userGrpId"`
-			name      *string `json:"name"`
-			userCount *int    `json:"userCount"`
-		} `json:"UserGrpList"`
+			UserGrpId *int    `json:"userGrpId" name:"userGrpId"`
+			Name      *string `json:"name" name:"name"`
+			UserCount *int    `json:"userCount" name:"userCount"`
+		} `json:"UserGrpList" name:"UserGrpList"`
 	} `json:"Data"`
-	totalCount *int    `json:"totalCount" name:"totalCount"`
-	requestId  *string `json:"requestId" name:"requestId"`
+	TotalCount *int    `json:"totalCount" name:"totalCount"`
+	RequestId  *string `json:"requestId" name:"requestId"`
 }
 
 func (r *GetUserGroupResponse) ToJsonString() string {
@@ -357,19 +357,19 @@ type GetAlertUserResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		UserList struct {
-			userId     *int    `json:"userId"`
-			userName   *string `json:"userName"`
-			userEmail  *string `json:"userEmail"`
-			userPhone  *string `json:"userPhone"`
+			UserId     *int    `json:"userId" name:"userId"`
+			UserName   *string `json:"userName" name:"userName"`
+			UserEmail  *string `json:"userEmail" name:"userEmail"`
+			UserPhone  *string `json:"userPhone" name:"userPhone"`
 			UserGroups []struct {
-				UserGrpId *int    `json:"UserGrpId"`
-				GroupName *string `json:"GroupName"`
+				UserGrpId *int    `json:"UserGrpId" name:"UserGrpId"`
+				GroupName *string `json:"GroupName" name:"GroupName"`
 			} `json:"UserGroups"`
-			userStatus *int `json:"userStatus"`
-		} `json:"UserList"`
+			UserStatus *int `json:"userStatus" name:"userStatus"`
+		} `json:"UserList" name:"UserList"`
 	} `json:"Data"`
-	totalCount *int    `json:"totalCount" name:"totalCount"`
-	requestId  *string `json:"requestId" name:"requestId"`
+	TotalCount *int    `json:"totalCount" name:"totalCount"`
+	RequestId  *string `json:"requestId" name:"requestId"`
 }
 
 func (r *GetAlertUserResponse) ToJsonString() string {
@@ -407,17 +407,17 @@ type UpdateAlertUserStatusResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		UserList []struct {
-			userId     *int    `json:"userId"`
-			userName   *string `json:"userName"`
-			userEmail  *string `json:"userEmail"`
-			userPhone  *string `json:"userPhone"`
-			groupName  *string `json:"groupName"`
-			userGrpId  *int    `json:"userGrpId"`
-			userStatus *int    `json:"userStatus"`
-		} `json:"UserList"`
+			UserId     *int    `json:"userId" name:"userId"`
+			UserName   *string `json:"userName" name:"userName"`
+			UserEmail  *string `json:"userEmail" name:"userEmail"`
+			UserPhone  *string `json:"userPhone" name:"userPhone"`
+			GroupName  *string `json:"groupName" name:"groupName"`
+			UserGrpId  *int    `json:"userGrpId" name:"userGrpId"`
+			UserStatus *int    `json:"userStatus" name:"userStatus"`
+		} `json:"UserList" name:"UserList"`
 	} `json:"Data"`
-	totalCount *int    `json:"totalCount" name:"totalCount"`
-	requestId  *string `json:"requestId" name:"requestId"`
+	TotalCount *int    `json:"totalCount" name:"totalCount"`
+	RequestId  *string `json:"requestId" name:"requestId"`
 }
 
 func (r *UpdateAlertUserStatusResponse) ToJsonString() string {
@@ -426,6 +426,63 @@ func (r *UpdateAlertUserStatusResponse) ToJsonString() string {
 }
 
 func (r *UpdateAlertUserStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSysEventGroupListRequest struct {
+	*ksyunhttp.BaseRequest
+	Namespace  *string   `json:"Namespace,omitempty" name:"Namespace"`
+	StartTime  *int      `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime    *int      `json:"EndTime,omitempty" name:"EndTime"`
+	EventName  *string   `json:"EventName,omitempty" name:"EventName"`
+	InstanceId []*string `json:"InstanceId,omitempty" name:"InstanceId"`
+	Order      *bool     `json:"Order,omitempty" name:"Order"`
+	PageIndex  *int      `json:"PageIndex,omitempty" name:"PageIndex"`
+	PageSize   *int      `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeSysEventGroupListRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeSysEventGroupListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeSysEventGroupListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSysEventGroupListResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId         *string `json:"requestId" name:"requestId"`
+	Code              *string `json:"code" name:"code"`
+	Message           *string `json:"message" name:"message"`
+	SysEventGroupList []struct {
+		InstanceId  *string `json:"InstanceId" name:"InstanceId"`
+		GroupId     *string `json:"GroupId" name:"GroupId"`
+		Producttype *int    `json:"Producttype" name:"Producttype"`
+		EventName   *string `json:"EventName" name:"EventName"`
+		Status      *string `json:"Status" name:"Status"`
+		CreatedAt   *int    `json:"CreatedAt" name:"CreatedAt"`
+		UpdateAt    *int    `json:"UpdateAt" name:"UpdateAt"`
+		PlanAt      *int    `json:"PlanAt" name:"PlanAt"`
+		FinishAt    *int    `json:"FinishAt" name:"FinishAt"`
+		Deadline    *int    `json:"Deadline" name:"Deadline"`
+	} `json:"SysEventGroupList"`
+	TotalCount *int `json:"totalCount" name:"totalCount"`
+}
+
+func (r *DescribeSysEventGroupListResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeSysEventGroupListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -57,40 +57,8 @@ type DescribeExistedInstancesFilter struct {
 }
 
 type AddExistedInstancesExistedInstanceKecSet struct {
-	NodeRole        *string                                                 `json:"NodeRole,omitempty" name:"NodeRole"`
-	KecPara         []*string                                               `json:"KecPara,omitempty" name:"KecPara"`
-	AdvancedSetting AddExistedInstancesExistedInstanceKecSetAdvancedSetting `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
-}
-
-type AddExistedInstancesExistedInstanceKecSetAdvancedSetting struct {
-	DataDisk struct {
-		AutoFormatAndMount *bool   `json:"AutoFormatAndMount"`
-		FileSystem         *string `json:"FileSystem"`
-		MountTarget        *string `json:"MountTarget"`
-	} `json:"DataDisk"`
-	ContainerRuntime *string `json:"ContainerRuntime"`
-	ContainerPath    *string `json:"ContainerPath"`
-	UserScript       *string `json:"UserScript"`
-	PreUserScript    *string `json:"PreUserScript"`
-	Schedulable      *bool   `json:"Schedulable"`
-	Label            struct {
-		Key   *string `json:"Key"`
-		Value *string `json:"Value"`
-	} `json:"Label"`
-	ExtraArg struct {
-		Kubelet struct {
-			CustomArg *string `json:"CustomArg"`
-		} `json:"Kubelet"`
-	} `json:"ExtraArg"`
-	ContainerLogMaxSize  *int                                                          `json:"ContainerLogMaxSize"`
-	ContainerLogMaxFiles *int                                                          `json:"ContainerLogMaxFiles"`
-	Taints               AddExistedInstancesExistedInstanceKecSetAdvancedSettingTaints `json:"Taints"`
-}
-
-type AddExistedInstancesExistedInstanceKecSetAdvancedSettingTaints struct {
-	Key    *string `json:"Key,omitempty" name:"Key"`
-	Value  *string `json:"Value,omitempty" name:"Value"`
-	Effect *string `json:"Effect,omitempty" name:"Effect"`
+	NodeRole *string   `json:"NodeRole,omitempty" name:"NodeRole"`
+	KecPara  []*string `json:"KecPara,omitempty" name:"KecPara"`
 }
 
 type AddExistedInstancesLabel struct {
@@ -181,6 +149,31 @@ type ModifyNodeTemplateInstanceTag struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type CreateLogRuleNamespaceList struct {
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+	AllContainer  *bool   `json:"AllContainer,omitempty" name:"AllContainer"`
+	Workload      []struct {
+		WorkloadType *string `json:"WorkloadType,omitempty" name:"WorkloadType"`
+		WorkloadName *string `json:"WorkloadName,omitempty" name:"WorkloadName"`
+	} `json:"Workload,omitempty" name:"Workload"`
+}
+
+type CreateLogRuleWorkload struct {
+	WorkloadType *string `json:"WorkloadType,omitempty" name:"WorkloadType"`
+	WorkloadName *string `json:"WorkloadName,omitempty" name:"WorkloadName"`
+}
+
+type CreateLogRuleContainerLabel struct {
+	Key      *string `json:"Key,omitempty" name:"Key"`
+	Value    *string `json:"Value,omitempty" name:"Value"`
+	Operator *int    `json:"Operator,omitempty" name:"Operator"`
+}
+
+type CreateLogRuleLabel struct {
+	Value *string `json:"Value,omitempty" name:"Value"`
+	Key   *string `json:"Key,omitempty" name:"Key"`
+}
+
 type DescribeClusterInstanceRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId  *string                          `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -209,112 +202,112 @@ func (r *DescribeClusterInstanceRequest) FromJsonString(s string) error {
 type DescribeClusterInstanceResponse struct {
 	*ksyunhttp.BaseResponse
 	InstanceSet []struct {
-		InstanceId      *string `json:"InstanceId"`
-		InstanceName    *string `json:"InstanceName"`
-		InstanceRole    *string `json:"InstanceRole"`
-		InstanceStatus  *string `json:"InstanceStatus"`
+		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName    *string `json:"InstanceName" name:"InstanceName"`
+		InstanceRole    *string `json:"InstanceRole" name:"InstanceRole"`
+		InstanceStatus  *string `json:"InstanceStatus" name:"InstanceStatus"`
 		KecInstancePara struct {
-			ProjectId         *int    `json:"ProjectId"`
-			InstanceType      *string `json:"InstanceType"`
+			ProjectId         *int    `json:"ProjectId" name:"ProjectId"`
+			InstanceType      *string `json:"InstanceType" name:"InstanceType"`
 			InstanceConfigure struct {
-				VCPU         *int    `json:"VCPU"`
-				MemoryGb     *int    `json:"MemoryGb"`
-				GPU          *int    `json:"GPU"`
-				DataDiskGb   *int    `json:"DataDiskGb"`
-				RootDiskGb   *int    `json:"RootDiskGb"`
-				DataDiskType *string `json:"DataDiskType"`
+				VCPU         *int    `json:"VCPU" name:"VCPU"`
+				MemoryGb     *int    `json:"MemoryGb" name:"MemoryGb"`
+				GPU          *int    `json:"GPU" name:"GPU"`
+				DataDiskGb   *int    `json:"DataDiskGb" name:"DataDiskGb"`
+				RootDiskGb   *int    `json:"RootDiskGb" name:"RootDiskGb"`
+				DataDiskType *string `json:"DataDiskType" name:"DataDiskType"`
 			} `json:"InstanceConfigure"`
 			SystemDisk struct {
-				DiskType *string `json:"DiskType"`
-				DiskSize *int    `json:"DiskSize"`
+				DiskType *string `json:"DiskType" name:"DiskType"`
+				DiskSize *int    `json:"DiskSize" name:"DiskSize"`
 			} `json:"SystemDisk"`
-			ImageId             *string `json:"ImageId"`
-			PrivateIpAddress    *string `json:"PrivateIpAddress"`
-			ChargeType          *string `json:"ChargeType"`
-			CreateTime          *string `json:"CreateTime"`
-			AvailabilityZone    *string `json:"AvailabilityZone"`
-			SubnetId            *string `json:"SubnetId"`
-			VpcId               *string `json:"VpcId"`
+			ImageId             *string `json:"ImageId" name:"ImageId"`
+			PrivateIpAddress    *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+			ChargeType          *string `json:"ChargeType" name:"ChargeType"`
+			CreateTime          *string `json:"CreateTime" name:"CreateTime"`
+			AvailabilityZone    *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+			SubnetId            *string `json:"SubnetId" name:"SubnetId"`
+			VpcId               *string `json:"VpcId" name:"VpcId"`
 			NetworkInterfaceSet []struct {
-				NetworkInterfaceId   *string `json:"NetworkInterfaceId"`
-				NetworkInterfaceType *string `json:"NetworkInterfaceType"`
-				SubnetId             *string `json:"SubnetId"`
-				PrivateIpAddress     *string `json:"PrivateIpAddress"`
-				MacAddress           *string `json:"MacAddress"`
+				NetworkInterfaceId   *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+				NetworkInterfaceType *string `json:"NetworkInterfaceType" name:"NetworkInterfaceType"`
+				SubnetId             *string `json:"SubnetId" name:"SubnetId"`
+				PrivateIpAddress     *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+				MacAddress           *string `json:"MacAddress" name:"MacAddress"`
 				SecurityGroupSet     []struct {
-					SecurityGroupId *string `json:"SecurityGroupId"`
-				} `json:"SecurityGroupSet"`
+					SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+				} `json:"SecurityGroupSet" name:"SecurityGroupSet"`
 			} `json:"NetworkInterfaceSet"`
-			DedicatedName *string `json:"DedicatedName"`
-			DedicatedId   *string `json:"DedicatedId"`
-		} `json:"KecInstancePara"`
-		UnSchedulable   *bool   `json:"UnSchedulable"`
-		DrainStatus     *string `json:"DrainStatus"`
-		NodePoolId      *string `json:"NodePoolId"`
+			DedicatedName *string `json:"DedicatedName" name:"DedicatedName"`
+			DedicatedId   *string `json:"DedicatedId" name:"DedicatedId"`
+		} `json:"KecInstancePara" name:"KecInstancePara"`
+		UnSchedulable   *bool   `json:"UnSchedulable" name:"UnSchedulable"`
+		DrainStatus     *string `json:"DrainStatus" name:"DrainStatus"`
+		NodePoolId      *string `json:"NodePoolId" name:"NodePoolId"`
 		AdvancedSetting struct {
 			DataDisk struct {
-				AutoFormatAndMount *bool   `json:"AutoFormatAndMount"`
-				FileSystem         *string `json:"FileSystem"`
-				MountTarget        *string `json:"MountTarget"`
+				AutoFormatAndMount *bool   `json:"AutoFormatAndMount" name:"AutoFormatAndMount"`
+				FileSystem         *string `json:"FileSystem" name:"FileSystem"`
+				MountTarget        *string `json:"MountTarget" name:"MountTarget"`
 			} `json:"DataDisk"`
-			ContainerRuntime *string `json:"ContainerRuntime"`
-			DockerPath       *string `json:"DockerPath"`
-			ContainerPath    *string `json:"ContainerPath"`
-			UserScript       *string `json:"UserScript"`
-			PreUserScript    *string `json:"PreUserScript"`
-			Schedulable      *bool   `json:"Schedulable"`
+			ContainerRuntime *string `json:"ContainerRuntime" name:"ContainerRuntime"`
+			DockerPath       *string `json:"DockerPath" name:"DockerPath"`
+			ContainerPath    *string `json:"ContainerPath" name:"ContainerPath"`
+			UserScript       *string `json:"UserScript" name:"UserScript"`
+			PreUserScript    *string `json:"PreUserScript" name:"PreUserScript"`
+			Schedulable      *bool   `json:"Schedulable" name:"Schedulable"`
 			Label            []struct {
-				Key   *string `json:"Key"`
-				Value *string `json:"Value"`
+				Key   *string `json:"Key" name:"Key"`
+				Value *string `json:"Value" name:"Value"`
 			} `json:"Label"`
 			ExtraArg struct {
 				Kubelet []struct {
-				} `json:"Kubelet"`
+				} `json:"Kubelet" name:"Kubelet"`
 			} `json:"ExtraArg"`
-			ContainerLogMaxSize  *int `json:"ContainerLogMaxSize"`
-			ContainerLogMaxFiles *int `json:"ContainerLogMaxFiles"`
-		} `json:"AdvancedSetting"`
+			ContainerLogMaxSize  *int `json:"ContainerLogMaxSize" name:"ContainerLogMaxSize"`
+			ContainerLogMaxFiles *int `json:"ContainerLogMaxFiles" name:"ContainerLogMaxFiles"`
+		} `json:"AdvancedSetting" name:"AdvancedSetting"`
 		EpcInstancePara struct {
-			ProjectId    *int    `json:"ProjectId"`
-			InstanceType *string `json:"InstanceType"`
+			ProjectId    *int    `json:"ProjectId" name:"ProjectId"`
+			InstanceType *string `json:"InstanceType" name:"InstanceType"`
 			Cpu          struct {
-				Model     *string `json:"Model"`
-				Frequence *string `json:"Frequence"`
-				Count     *int    `json:"Count"`
-				CoreCount *int    `json:"CoreCount"`
+				Model     *string `json:"Model" name:"Model"`
+				Frequence *string `json:"Frequence" name:"Frequence"`
+				Count     *int    `json:"Count" name:"Count"`
+				CoreCount *int    `json:"CoreCount" name:"CoreCount"`
 			} `json:"Cpu"`
-			Memory *string `json:"Memory"`
+			Memory *string `json:"Memory" name:"Memory"`
 			Gpu    struct {
-				Model     *string `json:"Model"`
-				Frequence *string `json:"Frequence"`
-				Count     *int    `json:"Count"`
-				CoreCount *int    `json:"CoreCount"`
+				Model     *string `json:"Model" name:"Model"`
+				Frequence *string `json:"Frequence" name:"Frequence"`
+				Count     *int    `json:"Count" name:"Count"`
+				CoreCount *int    `json:"CoreCount" name:"CoreCount"`
 			} `json:"Gpu"`
 			DiskSet []struct {
-				DiskType *string `json:"DiskType"`
-				Raid     *string `json:"Raid"`
-				Space    *string `json:"Space"`
+				DiskType *string `json:"DiskType" name:"DiskType"`
+				Raid     *string `json:"Raid" name:"Raid"`
+				Space    *string `json:"Space" name:"Space"`
 			} `json:"DiskSet"`
-			OsName              *string `json:"OsName"`
-			ImageId             *string `json:"ImageId"`
-			CreateTime          *string `json:"CreateTime"`
-			AvailabilityZone    *string `json:"AvailabilityZone"`
+			OsName              *string `json:"OsName" name:"OsName"`
+			ImageId             *string `json:"ImageId" name:"ImageId"`
+			CreateTime          *string `json:"CreateTime" name:"CreateTime"`
+			AvailabilityZone    *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 			NetworkInterfaceSet []struct {
-				NetworkInterfaceId   *string `json:"NetworkInterfaceId"`
-				NetworkInterfaceType *string `json:"NetworkInterfaceType"`
-				SubnetId             *string `json:"SubnetId"`
-				PrivateIpAddress     *string `json:"PrivateIpAddress"`
-				MacAddress           *string `json:"MacAddress"`
+				NetworkInterfaceId   *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+				NetworkInterfaceType *string `json:"NetworkInterfaceType" name:"NetworkInterfaceType"`
+				SubnetId             *string `json:"SubnetId" name:"SubnetId"`
+				PrivateIpAddress     *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+				MacAddress           *string `json:"MacAddress" name:"MacAddress"`
 				SecurityGroupSet     []struct {
-					SecurityGroupId *string `json:"SecurityGroupId"`
-				} `json:"SecurityGroupSet"`
+					SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+				} `json:"SecurityGroupSet" name:"SecurityGroupSet"`
 			} `json:"NetworkInterfaceSet"`
-			EnableContainer *bool   `json:"EnableContainer"`
-			ProductType     *string `json:"ProductType"`
-		} `json:"EpcInstancePara"`
-		Type         *string `json:"Type"`
-		ErrorMessage *string `json:"ErrorMessage"`
-		NodeName     *string `json:"NodeName"`
+			EnableContainer *bool   `json:"EnableContainer" name:"EnableContainer"`
+			ProductType     *string `json:"ProductType" name:"ProductType"`
+		} `json:"EpcInstancePara" name:"EpcInstancePara"`
+		Type         *string `json:"Type" name:"Type"`
+		ErrorMessage *string `json:"ErrorMessage" name:"ErrorMessage"`
+		NodeName     *string `json:"NodeName" name:"NodeName"`
 	} `json:"InstanceSet"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
@@ -466,11 +459,11 @@ func (r *DescribeInstanceImageRequest) FromJsonString(s string) error {
 type DescribeInstanceImageResponse struct {
 	*ksyunhttp.BaseResponse
 	ImageSet []struct {
-		ImageId            *string `json:"ImageId"`
-		ImageName          *string `json:"ImageName"`
-		ImageType          *string `json:"ImageType"`
+		ImageId            *string `json:"ImageId" name:"ImageId"`
+		ImageName          *string `json:"ImageName" name:"ImageName"`
+		ImageType          *string `json:"ImageType" name:"ImageType"`
 		MatchedK8sVersions []struct {
-		} `json:"MatchedK8sVersions"`
+		} `json:"MatchedK8sVersions" name:"MatchedK8sVersions"`
 	} `json:"ImageSet"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
@@ -511,8 +504,8 @@ type AddClusterInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	InstanceSet []struct {
-		InstanceId   *string `json:"InstanceId"`
-		InstanceName *string `json:"InstanceName"`
+		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName *string `json:"InstanceName" name:"InstanceName"`
 	} `json:"InstanceSet"`
 }
 
@@ -552,9 +545,9 @@ type DeleteClusterInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	InstanceSet []struct {
-		Message    *string `json:"Message"`
-		Return     *bool   `json:"Return"`
-		InstanceId *string `json:"InstanceId"`
+		Message    *string `json:"Message" name:"Message"`
+		Return     *bool   `json:"Return" name:"Return"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 	} `json:"InstanceSet"`
 }
 
@@ -600,47 +593,47 @@ type DescribeEpcForClusterResponse struct {
 	MaxResults  *int    `json:"MaxResults" name:"MaxResults"`
 	TotalCount  *string `json:"TotalCount" name:"TotalCount"`
 	InstanceSet []struct {
-		InstanceId      *string `json:"InstanceId"`
-		InstanceName    *string `json:"InstanceName"`
+		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName    *string `json:"InstanceName" name:"InstanceName"`
 		EpcInstancePara struct {
-			ProjectId    *int    `json:"ProjectId"`
-			InstanceType *string `json:"InstanceType"`
+			ProjectId    *int    `json:"ProjectId" name:"ProjectId"`
+			InstanceType *string `json:"InstanceType" name:"InstanceType"`
 			Cpu          struct {
-				Model     *string `json:"Model"`
-				Frequence *string `json:"Frequence"`
-				Count     *int    `json:"Count"`
-				CoreCount *int    `json:"CoreCount"`
+				Model     *string `json:"Model" name:"Model"`
+				Frequence *string `json:"Frequence" name:"Frequence"`
+				Count     *int    `json:"Count" name:"Count"`
+				CoreCount *int    `json:"CoreCount" name:"CoreCount"`
 			} `json:"Cpu"`
-			Memory *string `json:"Memory"`
+			Memory *string `json:"Memory" name:"Memory"`
 			Gpu    struct {
-				Model     *string `json:"Model"`
-				Frequence *string `json:"Frequence"`
-				Count     *int    `json:"Count"`
-				CoreCount *int    `json:"CoreCount"`
+				Model     *string `json:"Model" name:"Model"`
+				Frequence *string `json:"Frequence" name:"Frequence"`
+				Count     *int    `json:"Count" name:"Count"`
+				CoreCount *int    `json:"CoreCount" name:"CoreCount"`
 			} `json:"Gpu"`
 			DiskSet []struct {
-				DiskType *string `json:"DiskType"`
-				Raid     *string `json:"Raid"`
-				Space    *string `json:"Space"`
+				DiskType *string `json:"DiskType" name:"DiskType"`
+				Raid     *string `json:"Raid" name:"Raid"`
+				Space    *string `json:"Space" name:"Space"`
 			} `json:"DiskSet"`
-			ImageId             *string `json:"ImageId"`
-			OsName              *string `json:"OsName"`
-			AvailabilityZone    *string `json:"AvailabilityZone"`
+			ImageId             *string `json:"ImageId" name:"ImageId"`
+			OsName              *string `json:"OsName" name:"OsName"`
+			AvailabilityZone    *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 			NetworkInterfaceSet []struct {
-				NetworkInterfaceId   *string `json:"NetworkInterfaceId"`
-				NetworkInterfaceType *string `json:"NetworkInterfaceType"`
-				SubnetId             *string `json:"SubnetId"`
-				PrivateIpAddress     *string `json:"PrivateIpAddress"`
-				MacAddress           *string `json:"MacAddress"`
+				NetworkInterfaceId   *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+				NetworkInterfaceType *string `json:"NetworkInterfaceType" name:"NetworkInterfaceType"`
+				SubnetId             *string `json:"SubnetId" name:"SubnetId"`
+				PrivateIpAddress     *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+				MacAddress           *string `json:"MacAddress" name:"MacAddress"`
 				SecurityGroupSet     []struct {
-					SecurityGroupId *string `json:"SecurityGroupId"`
-				} `json:"SecurityGroupSet"`
+					SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+				} `json:"SecurityGroupSet" name:"SecurityGroupSet"`
 			} `json:"NetworkInterfaceSet"`
-			ProductType     *string `json:"ProductType"`
-			EnableContainer *bool   `json:"EnableContainer"`
-		} `json:"EpcInstancePara"`
-		Type           *string `json:"Type"`
-		InstanceStatus *string `json:"InstanceStatus"`
+			ProductType     *string `json:"ProductType" name:"ProductType"`
+			EnableContainer *bool   `json:"EnableContainer" name:"EnableContainer"`
+		} `json:"EpcInstancePara" name:"EpcInstancePara"`
+		Type           *string `json:"Type" name:"Type"`
+		InstanceStatus *string `json:"InstanceStatus" name:"InstanceStatus"`
 	} `json:"InstanceSet"`
 }
 
@@ -655,32 +648,9 @@ func (r *DescribeEpcForClusterResponse) FromJsonString(s string) error {
 
 type AddClusterEpcInstancesRequest struct {
 	*ksyunhttp.BaseRequest
-	ClusterId       *string   `json:"ClusterId,omitempty" name:"ClusterId"`
-	InstanceId      []*string `json:"InstanceId,omitempty" name:"InstanceId"`
-	EpcPara         []*string `json:"EpcPara,omitempty" name:"EpcPara"`
-	AdvancedSetting struct {
-		ContainerRuntime *string `json:"ContainerRuntime"`
-		ContainerPath    *string `json:"ContainerPath"`
-		UserScript       *string `json:"UserScript"`
-		PreUserScript    *string `json:"PreUserScript"`
-		Schedulable      *bool   `json:"Schedulable"`
-		Label            struct {
-			Key   *string `json:"Key"`
-			Value *string `json:"Value"`
-		} `json:"Label"`
-		ExtraArg struct {
-			Kubelet struct {
-				CustomArg *string `json:"CustomArg"`
-			} `json:"Kubelet"`
-		} `json:"ExtraArg"`
-		ContainerLogMaxSize  *int `json:"ContainerLogMaxSize"`
-		ContainerLogMaxFiles *int `json:"ContainerLogMaxFiles"`
-		Taints               struct {
-			Key    *string `json:"Key"`
-			Value  *string `json:"Value"`
-			Effect *string `json:"Effect"`
-		} `json:"Taints"`
-	} `json:"AdvancedSetting"`
+	ClusterId  *string   `json:"ClusterId,omitempty" name:"ClusterId"`
+	InstanceId []*string `json:"InstanceId,omitempty" name:"InstanceId"`
+	EpcPara    []*string `json:"EpcPara,omitempty" name:"EpcPara"`
 }
 
 func (r *AddClusterEpcInstancesRequest) ToJsonString() string {
@@ -703,8 +673,8 @@ type AddClusterEpcInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	InstanceSet []struct {
-		Return     *bool   `json:"Return"`
-		InstanceId *string `json:"InstanceId"`
+		Return     *bool   `json:"Return" name:"Return"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 	} `json:"InstanceSet"`
 }
 
@@ -746,13 +716,13 @@ func (r *DescribeExistedInstancesRequest) FromJsonString(s string) error {
 type DescribeExistedInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	InstanceSet []struct {
-		InstanceId        *string `json:"InstanceId"`
-		InstanceName      *string `json:"InstanceName"`
-		InstanceType      *string `json:"InstanceType"`
-		PrivateIpAddress  *string `json:"PrivateIpAddress"`
-		Available         *bool   `json:"Available"`
-		UnavailableReason *string `json:"UnavailableReason"`
-		ClusterId         *string `json:"ClusterId"`
+		InstanceId        *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName      *string `json:"InstanceName" name:"InstanceName"`
+		InstanceType      *string `json:"InstanceType" name:"InstanceType"`
+		PrivateIpAddress  *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+		Available         *bool   `json:"Available" name:"Available"`
+		UnavailableReason *string `json:"UnavailableReason" name:"UnavailableReason"`
+		ClusterId         *string `json:"ClusterId" name:"ClusterId"`
 	} `json:"InstanceSet"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
@@ -794,9 +764,9 @@ func (r *AddExistedInstancesRequest) FromJsonString(s string) error {
 type AddExistedInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	InstanceSet []struct {
-		InstanceId *string `json:"InstanceId"`
-		Return     *bool   `json:"Return"`
-		Reason     *string `json:"Reason"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Return     *bool   `json:"Return" name:"Return"`
+		Reason     *string `json:"Reason" name:"Reason"`
 	} `json:"InstanceSet"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -812,14 +782,15 @@ func (r *AddExistedInstancesResponse) FromJsonString(s string) error {
 
 type CreateNodePoolRequest struct {
 	*ksyunhttp.BaseRequest
-	NodePoolName    *string                `json:"NodePoolName,omitempty" name:"NodePoolName"`
-	ClusterId       *string                `json:"ClusterId,omitempty" name:"ClusterId"`
-	EnableAutoScale *bool                  `json:"EnableAutoScale,omitempty" name:"EnableAutoScale"`
-	Label           []*CreateNodePoolLabel `json:"Label,omitempty" name:"Label"`
-	Taint           []*CreateNodePoolTaint `json:"Taint,omitempty" name:"Taint"`
-	MinSize         *int                   `json:"MinSize,omitempty" name:"MinSize"`
-	MaxSize         *int                   `json:"MaxSize,omitempty" name:"MaxSize"`
-	DesiredCapacity *int                   `json:"DesiredCapacity,omitempty" name:"DesiredCapacity"`
+	NodePoolName        *string                `json:"NodePoolName,omitempty" name:"NodePoolName"`
+	ClusterId           *string                `json:"ClusterId,omitempty" name:"ClusterId"`
+	EnableAutoScale     *bool                  `json:"EnableAutoScale,omitempty" name:"EnableAutoScale"`
+	Label               []*CreateNodePoolLabel `json:"Label,omitempty" name:"Label"`
+	Taint               []*CreateNodePoolTaint `json:"Taint,omitempty" name:"Taint"`
+	MinSize             *int                   `json:"MinSize,omitempty" name:"MinSize"`
+	MaxSize             *int                   `json:"MaxSize,omitempty" name:"MaxSize"`
+	DesiredCapacity     *int                   `json:"DesiredCapacity,omitempty" name:"DesiredCapacity"`
+	EnableDelProtection *bool                  `json:"EnableDelProtection,omitempty" name:"EnableDelProtection"`
 }
 
 func (r *CreateNodePoolRequest) ToJsonString() string {
@@ -885,104 +856,103 @@ type DescribeNodePoolResponse struct {
 	Marker      *int    `json:"Marker" name:"Marker"`
 	TotalCount  *int    `json:"TotalCount" name:"TotalCount"`
 	NodePoolSet []struct {
-		NodePoolId      *string `json:"NodePoolId"`
-		NodePoolName    *string `json:"NodePoolName"`
-		Status          *string `json:"Status"`
-		EnableAutoScale *bool   `json:"EnableAutoScale"`
+		NodePoolId      *string `json:"NodePoolId" name:"NodePoolId"`
+		NodePoolName    *string `json:"NodePoolName" name:"NodePoolName"`
+		Status          *string `json:"Status" name:"Status"`
+		EnableAutoScale *bool   `json:"EnableAutoScale" name:"EnableAutoScale"`
 		NodeTemplate    struct {
-			ChargeType         *string `json:"ChargeType"`
-			InstanceType       *string `json:"InstanceType"`
-			InstanceName       *string `json:"InstanceName"`
-			InstanceNameSuffix *int    `json:"InstanceNameSuffix"`
+			ChargeType         *string `json:"ChargeType" name:"ChargeType"`
+			InstanceType       *string `json:"InstanceType" name:"InstanceType"`
+			InstanceName       *string `json:"InstanceName" name:"InstanceName"`
+			InstanceNameSuffix *int    `json:"InstanceNameSuffix" name:"InstanceNameSuffix"`
 			SystemDisk         struct {
-				DiskType *string `json:"DiskType"`
-				DiskSize *int    `json:"DiskSize"`
+				DiskType *string `json:"DiskType" name:"DiskType"`
+				DiskSize *int    `json:"DiskSize" name:"DiskSize"`
 			} `json:"SystemDisk"`
-			DataDiskGb *int `json:"DataDiskGb"`
+			DataDiskGb *int `json:"DataDiskGb" name:"DataDiskGb"`
 			DataDisk   struct {
-				DiskType           *string `json:"DiskType"`
-				DiskSize           *int    `json:"DiskSize"`
-				DeleteWithInstance *bool   `json:"DeleteWithInstance"`
+				DiskType           *string `json:"DiskType" name:"DiskType"`
+				DiskSize           *int    `json:"DiskSize" name:"DiskSize"`
+				DeleteWithInstance *bool   `json:"DeleteWithInstance" name:"DeleteWithInstance"`
 			} `json:"DataDisk"`
-			ImageId         *string   `json:"ImageId"`
-			VpcId           *string   `json:"VpcId"`
-			SubnetIdSet     []*string `json:"SubnetIdSet"`
-			SubnetStrategy  *string   `json:"SubnetStrategy"`
-			SecurityGroupId *string   `json:"SecurityGroupId"`
-			ProjectId       *int      `json:"ProjectId"`
-			Password        *string   `json:"Password"`
-			KeyIdSet        []struct {
-			} `json:"KeyIdSet"`
+			ImageId         *string   `json:"ImageId" name:"ImageId"`
+			VpcId           *string   `json:"VpcId" name:"VpcId"`
+			SubnetIdSet     []*string `json:"SubnetIdSet" name:"SubnetIdSet"`
+			SubnetStrategy  *string   `json:"SubnetStrategy" name:"SubnetStrategy"`
+			SecurityGroupId *string   `json:"SecurityGroupId" name:"SecurityGroupId"`
+			ProjectId       *int      `json:"ProjectId" name:"ProjectId"`
+			Password        *string   `json:"Password" name:"Password"`
+			KeyIdSet        []*string `json:"KeyIdSet" name:"KeyIdSet"`
 			AdvancedSetting struct {
 				DataDisk struct {
-					AutoFormatAndMount *bool   `json:"AutoFormatAndMount"`
-					FileSystem         *string `json:"FileSystem"`
-					MountTarget        *string `json:"MountTarget"`
-				} `json:"DataDisk"`
-				ContainerRuntime *string `json:"ContainerRuntime"`
-				DockerPath       *string `json:"DockerPath"`
-				ContainerPath    *string `json:"ContainerPath"`
-				UserScript       *string `json:"UserScript"`
-				PreUserScript    *string `json:"PreUserScript"`
-				Schedulable      *bool   `json:"Schedulable"`
+					AutoFormatAndMount *bool   `json:"AutoFormatAndMount" name:"AutoFormatAndMount"`
+					FileSystem         *string `json:"FileSystem" name:"FileSystem"`
+					MountTarget        *string `json:"MountTarget" name:"MountTarget"`
+				} `json:"DataDisk" name:"DataDisk"`
+				ContainerRuntime *string `json:"ContainerRuntime" name:"ContainerRuntime"`
+				DockerPath       *string `json:"DockerPath" name:"DockerPath"`
+				ContainerPath    *string `json:"ContainerPath" name:"ContainerPath"`
+				UserScript       *string `json:"UserScript" name:"UserScript"`
+				PreUserScript    *string `json:"PreUserScript" name:"PreUserScript"`
+				Schedulable      *bool   `json:"Schedulable" name:"Schedulable"`
 				Label            []struct {
-					Key   *string `json:"Key"`
-					Value *string `json:"Value"`
-				} `json:"Label"`
+					Key   *string `json:"Key" name:"Key"`
+					Value *string `json:"Value" name:"Value"`
+				} `json:"Label" name:"Label"`
 				ExtraArg struct {
 					Kubelet []struct {
-						CustomArg *string `json:"CustomArg"`
+						CustomArg *string `json:"CustomArg" name:"CustomArg"`
 					} `json:"Kubelet"`
-				} `json:"ExtraArg"`
-				ContainerLogMaxSize  *string `json:"ContainerLogMaxSize"`
-				ContainerLogMaxFiles *string `json:"ContainerLogMaxFiles"`
+				} `json:"ExtraArg" name:"ExtraArg"`
+				ContainerLogMaxSize  *string `json:"ContainerLogMaxSize" name:"ContainerLogMaxSize"`
+				ContainerLogMaxFiles *string `json:"ContainerLogMaxFiles" name:"ContainerLogMaxFiles"`
 				Taints               []struct {
-					Key    *string `json:"Key"`
-					Value  *string `json:"Value"`
-					Effect *string `json:"Effect"`
-				} `json:"Taints"`
+					Key    *string `json:"Key" name:"Key"`
+					Value  *string `json:"Value" name:"Value"`
+					Effect *string `json:"Effect" name:"Effect"`
+				} `json:"Taints" name:"Taints"`
 			} `json:"AdvancedSetting"`
 			EbsTags []struct {
-				Key   *string `json:"Key"`
-				Value *string `json:"Value"`
+				Key   *string `json:"Key" name:"Key"`
+				Value *string `json:"Value" name:"Value"`
 			} `json:"EbsTags"`
-			ScalingConfigurationId   *string `json:"ScalingConfigurationId"`
-			ScalingConfigurationName *string `json:"ScalingConfigurationName"`
-			Mem                      *string `json:"Mem"`
-			RemovePolicy             *string `json:"RemovePolicy"`
+			ScalingConfigurationId   *string `json:"ScalingConfigurationId" name:"ScalingConfigurationId"`
+			ScalingConfigurationName *string `json:"ScalingConfigurationName" name:"ScalingConfigurationName"`
+			Mem                      *string `json:"Mem" name:"Mem"`
+			RemovePolicy             *string `json:"RemovePolicy" name:"RemovePolicy"`
 			InstanceTags             []struct {
-				Key   *string `json:"Key"`
-				Value *string `json:"Value"`
+				Key   *string `json:"Key" name:"Key"`
+				Value *string `json:"Value" name:"Value"`
 			} `json:"InstanceTags"`
-			DeleteDataDisk    *bool   `json:"DeleteDataDisk"`
-			DeleteInstanceTag *bool   `json:"DeleteInstanceTag"`
-			DeleteEbsTag      *bool   `json:"DeleteEbsTag"`
-			Cpu               *string `json:"Cpu"`
-		} `json:"NodeTemplate"`
+			DeleteDataDisk    *bool   `json:"DeleteDataDisk" name:"DeleteDataDisk"`
+			DeleteInstanceTag *bool   `json:"DeleteInstanceTag" name:"DeleteInstanceTag"`
+			DeleteEbsTag      *bool   `json:"DeleteEbsTag" name:"DeleteEbsTag"`
+			Cpu               *string `json:"Cpu" name:"Cpu"`
+		} `json:"NodeTemplate" name:"NodeTemplate"`
 		Labels []struct {
-			Key   *string `json:"Key"`
-			Value *string `json:"Value"`
-		} `json:"Labels"`
+			Key   *string `json:"Key" name:"Key"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"Labels" name:"Labels"`
 		Taints []struct {
-			Key    *string `json:"Key"`
-			Value  *string `json:"Value"`
-			Effect *string `json:"Effect"`
-		} `json:"Taints"`
-		MinSize            *int    `json:"MinSize"`
-		MaxSize            *int    `json:"MaxSize"`
-		DesiredCapacity    *int    `json:"DesiredCapacity"`
-		InstanceCount      *int    `json:"InstanceCount"`
-		CreateTime         *string `json:"CreateTime"`
-		ClusterId          *string `json:"ClusterId"`
-		ErrorStatusMessage *string `json:"ErrorStatusMessage"`
+			Key    *string `json:"Key" name:"Key"`
+			Value  *string `json:"Value" name:"Value"`
+			Effect *string `json:"Effect" name:"Effect"`
+		} `json:"Taints" name:"Taints"`
+		MinSize            *int    `json:"MinSize" name:"MinSize"`
+		MaxSize            *int    `json:"MaxSize" name:"MaxSize"`
+		DesiredCapacity    *int    `json:"DesiredCapacity" name:"DesiredCapacity"`
+		InstanceCount      *int    `json:"InstanceCount" name:"InstanceCount"`
+		CreateTime         *string `json:"CreateTime" name:"CreateTime"`
+		ClusterId          *string `json:"ClusterId" name:"ClusterId"`
+		ErrorStatusMessage *string `json:"ErrorStatusMessage" name:"ErrorStatusMessage"`
 	} `json:"NodePoolSet"`
 	ScaleUpPolicy   *string `json:"ScaleUpPolicy" name:"ScaleUpPolicy"`
 	ScaleDownPolicy struct {
-		ScaleDownEnabled              *bool `json:"ScaleDownEnabled"`
-		ScaleDownDelayAfterAdd        *int  `json:"ScaleDownDelayAfterAdd"`
-		ScaleDownUnneededTime         *int  `json:"ScaleDownUnneededTime"`
-		ScaleDownUtilizationThreshold *int  `json:"ScaleDownUtilizationThreshold"`
-		MaxEmptyBulkDelete            *int  `json:"MaxEmptyBulkDelete"`
+		ScaleDownEnabled              *bool `json:"ScaleDownEnabled" name:"ScaleDownEnabled"`
+		ScaleDownDelayAfterAdd        *int  `json:"ScaleDownDelayAfterAdd" name:"ScaleDownDelayAfterAdd"`
+		ScaleDownUnneededTime         *int  `json:"ScaleDownUnneededTime" name:"ScaleDownUnneededTime"`
+		ScaleDownUtilizationThreshold *int  `json:"ScaleDownUtilizationThreshold" name:"ScaleDownUtilizationThreshold"`
+		MaxEmptyBulkDelete            *int  `json:"MaxEmptyBulkDelete" name:"MaxEmptyBulkDelete"`
 	} `json:"ScaleDownPolicy"`
 }
 
@@ -1022,9 +992,9 @@ type DeleteNodePoolResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet []struct {
-		ScalingGroupId *string `json:"ScalingGroupId"`
-		Message        *string `json:"Message"`
-		Return         *bool   `json:"Return"`
+		ScalingGroupId *string `json:"ScalingGroupId" name:"ScalingGroupId"`
+		Message        *string `json:"Message" name:"Message"`
+		Return         *bool   `json:"Return" name:"Return"`
 	} `json:"ReturnSet"`
 }
 
@@ -1220,9 +1190,9 @@ type AddClusterInstanceToNodePoolResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	InstanceSet []struct {
-		InstanceId *string `json:"InstanceId"`
-		Return     *bool   `json:"Return"`
-		Message    *string `json:"Message"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Return     *bool   `json:"Return" name:"Return"`
+		Message    *string `json:"Message" name:"Message"`
 	} `json:"InstanceSet"`
 }
 
@@ -1303,9 +1273,9 @@ type DeleteClusterInstancesFromNodePoolResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	InstanceSet []struct {
-		InstanceId *string `json:"InstanceId"`
-		Return     *bool   `json:"Return"`
-		Message    *string `json:"Message"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Return     *bool   `json:"Return" name:"Return"`
+		Message    *string `json:"Message" name:"Message"`
 	} `json:"InstanceSet"`
 }
 
@@ -1342,9 +1312,9 @@ func (r *DescribeEpcImageRequest) FromJsonString(s string) error {
 type DescribeEpcImageResponse struct {
 	*ksyunhttp.BaseResponse
 	ImageSet []struct {
-		ImageId   *string `json:"ImageId"`
-		ImageName *string `json:"ImageName"`
-		ImageType *string `json:"ImageType"`
+		ImageId   *string `json:"ImageId" name:"ImageId"`
+		ImageName *string `json:"ImageName" name:"ImageName"`
+		ImageType *string `json:"ImageType" name:"ImageType"`
 	} `json:"ImageSet"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
@@ -1420,8 +1390,8 @@ type DescribeNodePoolSummaryResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	NodePools []struct {
-		NodePoolId   *string `json:"NodePoolId"`
-		NodePoolName *string `json:"NodePoolName"`
+		NodePoolId   *string `json:"NodePoolId" name:"NodePoolId"`
+		NodePoolName *string `json:"NodePoolName" name:"NodePoolName"`
 	} `json:"NodePools"`
 }
 
@@ -1431,6 +1401,42 @@ func (r *DescribeNodePoolSummaryResponse) ToJsonString() string {
 }
 
 func (r *DescribeNodePoolSummaryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLogRuleRequest struct {
+	*ksyunhttp.BaseRequest
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	RuleName  *string `json:"RuleName,omitempty" name:"RuleName"`
+}
+
+func (r *CreateLogRuleRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateLogRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateLogRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLogRuleResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateLogRuleResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateLogRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1458,17 +1464,17 @@ type DescribeClusterSummaryResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	ClusterSet struct {
-		ClusterId         *string `json:"ClusterId"`
-		ClusterName       *string `json:"ClusterName"`
-		ClusterManageMode *string `json:"ClusterManageMode"`
-		K8sVersion        *string `json:"K8sVersion"`
-		PodCidr           *string `json:"PodCidr"`
-		ServiceCidr       *string `json:"ServiceCidr"`
-		VpcId             *string `json:"VpcId"`
-		VpcCidr           *string `json:"VpcCidr"`
-		NetworkType       *string `json:"NetworkType"`
-		Status            *string `json:"Status"`
-		CreateTime        *string `json:"CreateTime"`
+		ClusterId         *string `json:"ClusterId" name:"ClusterId"`
+		ClusterName       *string `json:"ClusterName" name:"ClusterName"`
+		ClusterManageMode *string `json:"ClusterManageMode" name:"ClusterManageMode"`
+		K8sVersion        *string `json:"K8sVersion" name:"K8sVersion"`
+		PodCidr           *string `json:"PodCidr" name:"PodCidr"`
+		ServiceCidr       *string `json:"ServiceCidr" name:"ServiceCidr"`
+		VpcId             *string `json:"VpcId" name:"VpcId"`
+		VpcCidr           *string `json:"VpcCidr" name:"VpcCidr"`
+		NetworkType       *string `json:"NetworkType" name:"NetworkType"`
+		Status            *string `json:"Status" name:"Status"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"ClusterSet"`
 }
 
@@ -1514,5 +1520,41 @@ func (r *GetScaleAPIServerConfigResponse) ToJsonString() string {
 }
 
 func (r *GetScaleAPIServerConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateNodePoolDelProtectionRequest struct {
+	*ksyunhttp.BaseRequest
+	NodePoolId          *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
+	EnableDelProtection *bool   `json:"EnableDelProtection,omitempty" name:"EnableDelProtection"`
+}
+
+func (r *UpdateNodePoolDelProtectionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateNodePoolDelProtectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpdateNodePoolDelProtectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateNodePoolDelProtectionResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *UpdateNodePoolDelProtectionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateNodePoolDelProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

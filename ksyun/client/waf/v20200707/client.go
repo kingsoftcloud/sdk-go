@@ -22,6 +22,39 @@ func NewClient(credential common.Credentials, region string, clientProfile *prof
 	return
 }
 
+func NewCreateWafRequest() (request *CreateWafRequest) {
+	request = &CreateWafRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("waf", APIVersion, "CreateWaf")
+	return
+}
+
+func NewCreateWafResponse() (response *CreateWafResponse) {
+	response = &CreateWafResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateWaf(request *CreateWafRequest) string {
+	return c.CreateWafWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateWafWithContext(ctx context.Context, request *CreateWafRequest) string {
+	if request == nil {
+		request = NewCreateWafRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateWafResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
 func NewCreateDomainRequest() (request *CreateDomainRequest) {
 	request = &CreateDomainRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -379,6 +412,270 @@ func (c *Client) DeleteIpv6ProtectionWithContext(ctx context.Context, request *D
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteIpv6ProtectionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyStorageTimeRequest() (request *ModifyStorageTimeRequest) {
+	request = &ModifyStorageTimeRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("waf", APIVersion, "ModifyStorageTime")
+	return
+}
+
+func NewModifyStorageTimeResponse() (response *ModifyStorageTimeResponse) {
+	response = &ModifyStorageTimeResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyStorageTime(request *ModifyStorageTimeRequest) string {
+	return c.ModifyStorageTimeWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyStorageTimeWithContext(ctx context.Context, request *ModifyStorageTimeRequest) string {
+	if request == nil {
+		request = NewModifyStorageTimeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyStorageTimeResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCreateAlbDomainRequest() (request *CreateAlbDomainRequest) {
+	request = &CreateAlbDomainRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("waf", APIVersion, "CreateAlbDomain")
+	return
+}
+
+func NewCreateAlbDomainResponse() (response *CreateAlbDomainResponse) {
+	response = &CreateAlbDomainResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateAlbDomain(request *CreateAlbDomainRequest) string {
+	return c.CreateAlbDomainWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateAlbDomainWithContext(ctx context.Context, request *CreateAlbDomainRequest) string {
+	if request == nil {
+		request = NewCreateAlbDomainRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateAlbDomainResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyAlbDomainRequest() (request *ModifyAlbDomainRequest) {
+	request = &ModifyAlbDomainRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("waf", APIVersion, "ModifyAlbDomain")
+	return
+}
+
+func NewModifyAlbDomainResponse() (response *ModifyAlbDomainResponse) {
+	response = &ModifyAlbDomainResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyAlbDomain(request *ModifyAlbDomainRequest) string {
+	return c.ModifyAlbDomainWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyAlbDomainWithContext(ctx context.Context, request *ModifyAlbDomainRequest) string {
+	if request == nil {
+		request = NewModifyAlbDomainRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyAlbDomainResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeleteAlbDomainRequest() (request *DeleteAlbDomainRequest) {
+	request = &DeleteAlbDomainRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("waf", APIVersion, "DeleteAlbDomain")
+	return
+}
+
+func NewDeleteAlbDomainResponse() (response *DeleteAlbDomainResponse) {
+	response = &DeleteAlbDomainResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteAlbDomain(request *DeleteAlbDomainRequest) string {
+	return c.DeleteAlbDomainWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteAlbDomainWithContext(ctx context.Context, request *DeleteAlbDomainRequest) string {
+	if request == nil {
+		request = NewDeleteAlbDomainRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteAlbDomainResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCreateAlbWafRequest() (request *CreateAlbWafRequest) {
+	request = &CreateAlbWafRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("waf", APIVersion, "CreateAlbWaf")
+	return
+}
+
+func NewCreateAlbWafResponse() (response *CreateAlbWafResponse) {
+	response = &CreateAlbWafResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateAlbWaf(request *CreateAlbWafRequest) string {
+	return c.CreateAlbWafWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateAlbWafWithContext(ctx context.Context, request *CreateAlbWafRequest) string {
+	if request == nil {
+		request = NewCreateAlbWafRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateAlbWafResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyAlbWafRequest() (request *ModifyAlbWafRequest) {
+	request = &ModifyAlbWafRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("waf", APIVersion, "ModifyAlbWaf")
+	return
+}
+
+func NewModifyAlbWafResponse() (response *ModifyAlbWafResponse) {
+	response = &ModifyAlbWafResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyAlbWaf(request *ModifyAlbWafRequest) string {
+	return c.ModifyAlbWafWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyAlbWafWithContext(ctx context.Context, request *ModifyAlbWafRequest) string {
+	if request == nil {
+		request = NewModifyAlbWafRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyAlbWafResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeAlbCertificatesRequest() (request *DescribeAlbCertificatesRequest) {
+	request = &DescribeAlbCertificatesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("waf", APIVersion, "DescribeAlbCertificates")
+	return
+}
+
+func NewDescribeAlbCertificatesResponse() (response *DescribeAlbCertificatesResponse) {
+	response = &DescribeAlbCertificatesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeAlbCertificates(request *DescribeAlbCertificatesRequest) string {
+	return c.DescribeAlbCertificatesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAlbCertificatesWithContext(ctx context.Context, request *DescribeAlbCertificatesRequest) string {
+	if request == nil {
+		request = NewDescribeAlbCertificatesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAlbCertificatesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeAlbDomainsRequest() (request *DescribeAlbDomainsRequest) {
+	request = &DescribeAlbDomainsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("waf", APIVersion, "DescribeAlbDomains")
+	return
+}
+
+func NewDescribeAlbDomainsResponse() (response *DescribeAlbDomainsResponse) {
+	response = &DescribeAlbDomainsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeAlbDomains(request *DescribeAlbDomainsRequest) string {
+	return c.DescribeAlbDomainsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAlbDomainsWithContext(ctx context.Context, request *DescribeAlbDomainsRequest) string {
+	if request == nil {
+		request = NewDescribeAlbDomainsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAlbDomainsResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)

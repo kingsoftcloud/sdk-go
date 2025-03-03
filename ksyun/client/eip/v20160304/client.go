@@ -253,3 +253,168 @@ func (c *Client) ModifyAddressWithContext(ctx context.Context, request *ModifyAd
 	}
 	return msg
 }
+func NewCreateEipPoolRequest() (request *CreateEipPoolRequest) {
+	request = &CreateEipPoolRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("eip", APIVersion, "CreateEipPool")
+	return
+}
+
+func NewCreateEipPoolResponse() (response *CreateEipPoolResponse) {
+	response = &CreateEipPoolResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateEipPool(request *CreateEipPoolRequest) string {
+	return c.CreateEipPoolWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateEipPoolWithContext(ctx context.Context, request *CreateEipPoolRequest) string {
+	if request == nil {
+		request = NewCreateEipPoolRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateEipPoolResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeleteEipPoolRequest() (request *DeleteEipPoolRequest) {
+	request = &DeleteEipPoolRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("eip", APIVersion, "DeleteEipPool")
+	return
+}
+
+func NewDeleteEipPoolResponse() (response *DeleteEipPoolResponse) {
+	response = &DeleteEipPoolResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteEipPool(request *DeleteEipPoolRequest) string {
+	return c.DeleteEipPoolWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteEipPoolWithContext(ctx context.Context, request *DeleteEipPoolRequest) string {
+	if request == nil {
+		request = NewDeleteEipPoolRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteEipPoolResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyEipPoolRequest() (request *ModifyEipPoolRequest) {
+	request = &ModifyEipPoolRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("eip", APIVersion, "ModifyEipPool")
+	return
+}
+
+func NewModifyEipPoolResponse() (response *ModifyEipPoolResponse) {
+	response = &ModifyEipPoolResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyEipPool(request *ModifyEipPoolRequest) string {
+	return c.ModifyEipPoolWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyEipPoolWithContext(ctx context.Context, request *ModifyEipPoolRequest) string {
+	if request == nil {
+		request = NewModifyEipPoolRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyEipPoolResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeEipPoolsRequest() (request *DescribeEipPoolsRequest) {
+	request = &DescribeEipPoolsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("eip", APIVersion, "DescribeEipPools")
+	return
+}
+
+func NewDescribeEipPoolsResponse() (response *DescribeEipPoolsResponse) {
+	response = &DescribeEipPoolsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeEipPools(request *DescribeEipPoolsRequest) string {
+	return c.DescribeEipPoolsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeEipPoolsWithContext(ctx context.Context, request *DescribeEipPoolsRequest) string {
+	if request == nil {
+		request = NewDescribeEipPoolsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeEipPoolsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeIpExistEipPoolUseRequest() (request *DescribeIpExistEipPoolUseRequest) {
+	request = &DescribeIpExistEipPoolUseRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("eip", APIVersion, "DescribeIpExistEipPoolUse")
+	return
+}
+
+func NewDescribeIpExistEipPoolUseResponse() (response *DescribeIpExistEipPoolUseResponse) {
+	response = &DescribeIpExistEipPoolUseResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeIpExistEipPoolUse(request *DescribeIpExistEipPoolUseRequest) string {
+	return c.DescribeIpExistEipPoolUseWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeIpExistEipPoolUseWithContext(ctx context.Context, request *DescribeIpExistEipPoolUseRequest) string {
+	if request == nil {
+		request = NewDescribeIpExistEipPoolUseRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeIpExistEipPoolUseResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

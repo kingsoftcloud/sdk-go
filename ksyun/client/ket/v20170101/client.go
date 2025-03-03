@@ -220,3 +220,69 @@ func (c *Client) GetStreamTranListWithContext(ctx context.Context, request *GetS
 	}
 	return msg
 }
+func NewStartLoopRequest() (request *StartLoopRequest) {
+	request = &StartLoopRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ket", APIVersion, "StartLoop")
+	return
+}
+
+func NewStartLoopResponse() (response *StartLoopResponse) {
+	response = &StartLoopResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) StartLoop(request *StartLoopRequest) string {
+	return c.StartLoopWithContext(context.Background(), request)
+}
+
+func (c *Client) StartLoopWithContext(ctx context.Context, request *StartLoopRequest) string {
+	if request == nil {
+		request = NewStartLoopRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewStartLoopResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewStopLoopRequest() (request *StopLoopRequest) {
+	request = &StopLoopRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ket", APIVersion, "StopLoop")
+	return
+}
+
+func NewStopLoopResponse() (response *StopLoopResponse) {
+	response = &StopLoopResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) StopLoop(request *StopLoopRequest) string {
+	return c.StopLoopWithContext(context.Background(), request)
+}
+
+func (c *Client) StopLoopWithContext(ctx context.Context, request *StopLoopRequest) string {
+	if request == nil {
+		request = NewStopLoopRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewStopLoopResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

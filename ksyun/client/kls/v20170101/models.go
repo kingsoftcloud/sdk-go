@@ -78,17 +78,17 @@ func (r *ListHistoryPubStreamsErrInfoRequest) FromJsonString(s string) error {
 type ListHistoryPubStreamsErrInfoResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
-		App       *string `json:"App"`
-		Pubdomain *string `json:"Pubdomain"`
+		App       *string `json:"App" name:"App"`
+		Pubdomain *string `json:"Pubdomain" name:"Pubdomain"`
 		Result    []struct {
 			Detail []struct {
-				Clientip      *string `json:"Clientip"`
-				StatusMessage *string `json:"StatusMessage"`
+				Clientip      *string `json:"Clientip" name:"Clientip"`
+				StatusMessage *string `json:"StatusMessage" name:"StatusMessage"`
 			} `json:"Detail"`
-			Stream *string `json:"Stream"`
-		} `json:"Result"`
-		RetMsg     *string `json:"RetMsg"`
-		UniqueName *string `json:"UniqueName"`
+			Stream *string `json:"Stream" name:"Stream"`
+		} `json:"Result" name:"Result"`
+		RetMsg     *string `json:"RetMsg" name:"RetMsg"`
+		UniqueName *string `json:"UniqueName" name:"UniqueName"`
 	} `json:"Data"`
 }
 
@@ -133,17 +133,17 @@ func (r *ListHistoryPubStreamsInfoRequest) FromJsonString(s string) error {
 type ListHistoryPubStreamsInfoResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
-		App       *string `json:"App"`
-		Pubdomain *string `json:"Pubdomain"`
+		App       *string `json:"App" name:"App"`
+		Pubdomain *string `json:"Pubdomain" name:"Pubdomain"`
 		Result    []struct {
 			Detail []struct {
-				Clientip      *string `json:"Clientip"`
-				StatusMessage *string `json:"StatusMessage"`
+				Clientip      *string `json:"Clientip" name:"Clientip"`
+				StatusMessage *string `json:"StatusMessage" name:"StatusMessage"`
 			} `json:"Detail"`
-			Stream *string `json:"Stream"`
-		} `json:"Result"`
-		RetMsg     *string `json:"RetMsg"`
-		UniqueName *string `json:"UniqueName"`
+			Stream *string `json:"Stream" name:"Stream"`
+		} `json:"Result" name:"Result"`
+		RetMsg     *string `json:"RetMsg" name:"RetMsg"`
+		UniqueName *string `json:"UniqueName" name:"UniqueName"`
 	} `json:"Data"`
 }
 
@@ -184,7 +184,7 @@ func (r *ForbidStreamRequest) FromJsonString(s string) error {
 type ForbidStreamResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
-		RetMsg *string `json:"RetMsg"`
+		RetMsg *string `json:"RetMsg" name:"RetMsg"`
 	} `json:"Data"`
 }
 
@@ -224,7 +224,7 @@ func (r *ResumeStreamRequest) FromJsonString(s string) error {
 type ResumeStreamResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
-		RetMsg *string `json:"RetMsg"`
+		RetMsg *string `json:"RetMsg" name:"RetMsg"`
 	} `json:"Data"`
 }
 
@@ -263,13 +263,13 @@ func (r *GetBlacklistRequest) FromJsonString(s string) error {
 type GetBlacklistResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
-		App       *string `json:"App"`
-		Pubdomain *string `json:"Pubdomain"`
+		App       *string `json:"App" name:"App"`
+		Pubdomain *string `json:"Pubdomain" name:"Pubdomain"`
 		Recs      []struct {
-			Stream *string `json:"Stream"`
-		} `json:"Recs"`
-		RetMsg     *string `json:"RetMsg"`
-		UniqueName *string `json:"UniqueName"`
+			Stream *string `json:"Stream" name:"Stream"`
+		} `json:"Recs" name:"Recs"`
+		RetMsg     *string `json:"RetMsg" name:"RetMsg"`
+		UniqueName *string `json:"UniqueName" name:"UniqueName"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -310,7 +310,7 @@ func (r *CheckBlacklistRequest) FromJsonString(s string) error {
 type CheckBlacklistResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
-		RetMsg *string `json:"RetMsg"`
+		RetMsg *string `json:"RetMsg" name:"RetMsg"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }

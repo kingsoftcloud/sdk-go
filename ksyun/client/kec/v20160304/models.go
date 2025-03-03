@@ -24,21 +24,10 @@ type RunInstancesNetworkInterface struct {
 	PrivateIpAddress *string   `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
 }
 
-type RunInstancesSystemDisk struct {
-	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
-	DiskSize *int    `json:"DiskSize,omitempty" name:"DiskSize"`
-}
-
 type RunInstancesTag struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Id    *int    `json:"Id,omitempty" name:"Id"`
 	Value *string `json:"Value,omitempty" name:"Value"`
-}
-
-type RunInstancesTagInstanceConfigure struct {
-	VCPU       *string `json:"VCPU,omitempty" name:"VCPU"`
-	MemoryGb   *string `json:"MemoryGb,omitempty" name:"MemoryGb"`
-	DataDiskGb *string `json:"DataDiskGb,omitempty" name:"DataDiskGb"`
 }
 
 type ModifyInstanceTypeDataDisk struct {
@@ -156,113 +145,113 @@ type DescribeInstancesResponse struct {
 	InstanceCount *int    `json:"InstanceCount" name:"InstanceCount"`
 	RequestId     *string `json:"RequestId" name:"RequestId"`
 	InstancesSet  []struct {
-		InstanceId        *string `json:"InstanceId"`
-		ProjectId         *int    `json:"ProjectId"`
-		ShutdownNoCharge  *bool   `json:"ShutdownNoCharge"`
-		IsDistributeIpv6  *bool   `json:"IsDistributeIpv6"`
-		InstanceName      *string `json:"InstanceName"`
-		InstanceType      *string `json:"InstanceType"`
+		InstanceId        *string `json:"InstanceId" name:"InstanceId"`
+		ProjectId         *int    `json:"ProjectId" name:"ProjectId"`
+		ShutdownNoCharge  *bool   `json:"ShutdownNoCharge" name:"ShutdownNoCharge"`
+		IsDistributeIpv6  *bool   `json:"IsDistributeIpv6" name:"IsDistributeIpv6"`
+		InstanceName      *string `json:"InstanceName" name:"InstanceName"`
+		InstanceType      *string `json:"InstanceType" name:"InstanceType"`
 		InstanceConfigure struct {
-			VCPU         *int    `json:"VCPU"`
-			GPU          *int    `json:"GPU"`
-			MemoryGb     *int    `json:"MemoryGb"`
-			DataDiskGb   *int    `json:"DataDiskGb"`
-			RootDiskGb   *int    `json:"RootDiskGb"`
-			DataDiskType *string `json:"DataDiskType"`
-			VGPU         *string `json:"VGPU"`
-			Spec         *string `json:"Spec"`
-		} `json:"InstanceConfigure"`
-		ImageId          *string `json:"ImageId"`
-		SubnetId         *string `json:"SubnetId"`
-		PrivateIpAddress *string `json:"PrivateIpAddress"`
+			VCPU         *int    `json:"VCPU" name:"VCPU"`
+			GPU          *int    `json:"GPU" name:"GPU"`
+			MemoryGb     *int    `json:"MemoryGb" name:"MemoryGb"`
+			DataDiskGb   *int    `json:"DataDiskGb" name:"DataDiskGb"`
+			RootDiskGb   *int    `json:"RootDiskGb" name:"RootDiskGb"`
+			DataDiskType *string `json:"DataDiskType" name:"DataDiskType"`
+			VGPU         *string `json:"VGPU" name:"VGPU"`
+			Spec         *string `json:"Spec" name:"Spec"`
+		} `json:"InstanceConfigure" name:"InstanceConfigure"`
+		ImageId          *string `json:"ImageId" name:"ImageId"`
+		SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
 		InstanceState    struct {
-			Name               *string `json:"Name"`
-			OnMigrate          *bool   `json:"OnMigrate"`
-			TaskState          *string `json:"TaskState"`
-			PreMigrationStatus *string `json:"PreMigrationStatus"`
-			CostTime           *string `json:"CostTime"`
-			TimeStamp          *string `json:"TimeStamp"`
-		} `json:"InstanceState"`
-		IsRunOptimised   *bool `json:"IsRunOptimised"`
+			Name               *string `json:"Name" name:"Name"`
+			OnMigrate          *bool   `json:"OnMigrate" name:"OnMigrate"`
+			TaskState          *string `json:"TaskState" name:"TaskState"`
+			PreMigrationStatus *string `json:"PreMigrationStatus" name:"PreMigrationStatus"`
+			CostTime           *string `json:"CostTime" name:"CostTime"`
+			TimeStamp          *string `json:"TimeStamp" name:"TimeStamp"`
+		} `json:"InstanceState" name:"InstanceState"`
+		IsRunOptimised   *bool `json:"IsRunOptimised" name:"IsRunOptimised"`
 		PreMigrateConfig struct {
 			VmConfig struct {
-				InstanceType    *string `json:"InstanceType"`
-				Cpu             *int    `json:"Cpu"`
-				Mem             *int    `json:"Mem"`
-				ProductType     *int    `json:"ProductType"`
-				SystemType      *string `json:"SystemType"`
-				SystemSize      *int    `json:"SystemSize"`
-				DedicatedHostId *string `json:"DedicatedHostId"`
-				Model           *string `json:"Model"`
+				InstanceType    *string `json:"InstanceType" name:"InstanceType"`
+				Cpu             *int    `json:"Cpu" name:"Cpu"`
+				Mem             *int    `json:"Mem" name:"Mem"`
+				ProductType     *int    `json:"ProductType" name:"ProductType"`
+				SystemType      *string `json:"SystemType" name:"SystemType"`
+				SystemSize      *int    `json:"SystemSize" name:"SystemSize"`
+				DedicatedHostId *string `json:"DedicatedHostId" name:"DedicatedHostId"`
+				Model           *string `json:"Model" name:"Model"`
 			} `json:"VmConfig"`
 			VolumeConfig struct {
-				VolumeType        *string `json:"VolumeType"`
-				VolumeSize        *int    `json:"VolumeSize"`
-				VolumeProductType *int    `json:"VolumeProductType"`
-				VolumeId          *string `json:"VolumeId"`
+				VolumeType        *string `json:"VolumeType" name:"VolumeType"`
+				VolumeSize        *int    `json:"VolumeSize" name:"VolumeSize"`
+				VolumeProductType *int    `json:"VolumeProductType" name:"VolumeProductType"`
+				VolumeId          *string `json:"VolumeId" name:"VolumeId"`
 			} `json:"VolumeConfig"`
-		} `json:"PreMigrateConfig"`
+		} `json:"PreMigrateConfig" name:"PreMigrateConfig"`
 		Monitoring struct {
-			State *string `json:"State"`
-		} `json:"Monitoring"`
+			State *string `json:"State" name:"State"`
+		} `json:"Monitoring" name:"Monitoring"`
 		NetworkInterfaceSet []struct {
-			NetworkInterfaceId   *string `json:"NetworkInterfaceId"`
-			NetworkInterfaceType *string `json:"NetworkInterfaceType"`
-			VpcId                *string `json:"VpcId"`
-			SubnetId             *string `json:"SubnetId"`
-			MacAddress           *string `json:"MacAddress"`
-			PrivateIpAddress     *string `json:"PrivateIpAddress"`
+			NetworkInterfaceId   *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+			NetworkInterfaceType *string `json:"NetworkInterfaceType" name:"NetworkInterfaceType"`
+			VpcId                *string `json:"VpcId" name:"VpcId"`
+			SubnetId             *string `json:"SubnetId" name:"SubnetId"`
+			MacAddress           *string `json:"MacAddress" name:"MacAddress"`
+			PrivateIpAddress     *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
 			GroupSet             []struct {
-				GroupId *string `json:"GroupId"`
+				GroupId *string `json:"GroupId" name:"GroupId"`
 			} `json:"GroupSet"`
 			SecurityGroupSet []struct {
-				SecurityGroupId *string `json:"SecurityGroupId"`
+				SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
 			} `json:"SecurityGroupSet"`
-			NetworkInterfaceName *string `json:"NetworkInterfaceName"`
-		} `json:"NetworkInterfaceSet"`
-		SriovNetSupport       *string `json:"SriovNetSupport"`
-		IsShowSriovNetSupport *bool   `json:"IsShowSriovNetSupport"`
-		CreationDate          *string `json:"CreationDate"`
-		AvailabilityZone      *string `json:"AvailabilityZone"`
-		AvailabilityZoneName  *string `json:"AvailabilityZoneName"`
+			NetworkInterfaceName *string `json:"NetworkInterfaceName" name:"NetworkInterfaceName"`
+		} `json:"NetworkInterfaceSet" name:"NetworkInterfaceSet"`
+		SriovNetSupport       *string `json:"SriovNetSupport" name:"SriovNetSupport"`
+		IsShowSriovNetSupport *bool   `json:"IsShowSriovNetSupport" name:"IsShowSriovNetSupport"`
+		CreationDate          *string `json:"CreationDate" name:"CreationDate"`
+		AvailabilityZone      *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		AvailabilityZoneName  *string `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
 		DataGuardSet          []struct {
-			DataGuardId   *string `json:"DataGuardId"`
-			DataGuardName *string `json:"DataGuardName"`
-			DataGuardType *string `json:"DataGuardType"`
-		} `json:"DataGuardSet"`
-		DedicatedName      *string `json:"DedicatedName"`
-		DedicatedClusterId *string `json:"DedicatedClusterId"`
-		DedicatedUuid      *string `json:"DedicatedUuid"`
-		AutoScalingType    *string `json:"AutoScalingType"`
-		LargeEBSCapacity   *string `json:"LargeEBSCapacity"`
+			DataGuardId   *string `json:"DataGuardId" name:"DataGuardId"`
+			DataGuardName *string `json:"DataGuardName" name:"DataGuardName"`
+			DataGuardType *string `json:"DataGuardType" name:"DataGuardType"`
+		} `json:"DataGuardSet" name:"DataGuardSet"`
+		DedicatedName      *string `json:"DedicatedName" name:"DedicatedName"`
+		DedicatedClusterId *string `json:"DedicatedClusterId" name:"DedicatedClusterId"`
+		DedicatedUuid      *string `json:"DedicatedUuid" name:"DedicatedUuid"`
+		AutoScalingType    *string `json:"AutoScalingType" name:"AutoScalingType"`
+		LargeEBSCapacity   *string `json:"LargeEBSCapacity" name:"LargeEBSCapacity"`
 		Metadata           []struct {
-			Id            *string `json:"Id"`
-			Key           *bool   `json:"Key"`
-			Value         *string `json:"Value"`
-			Instance_uuid *string `json:"Instance_uuid"`
-		} `json:"Metadata"`
-		ProductType        *int    `json:"ProductType"`
-		ProductWhat        *int    `json:"ProductWhat"`
-		LiveUpgradeSupport *bool   `json:"LiveUpgradeSupport"`
-		ChargeType         *string `json:"ChargeType"`
+			Id           *string `json:"Id" name:"Id"`
+			Key          *bool   `json:"Key" name:"Key"`
+			Value        *string `json:"Value" name:"Value"`
+			InstanceUuid *string `json:"Instance_uuid" name:"Instance_uuid"`
+		} `json:"Metadata" name:"Metadata"`
+		ProductType        *int    `json:"ProductType" name:"ProductType"`
+		ProductWhat        *int    `json:"ProductWhat" name:"ProductWhat"`
+		LiveUpgradeSupport *bool   `json:"LiveUpgradeSupport" name:"LiveUpgradeSupport"`
+		ChargeType         *string `json:"ChargeType" name:"ChargeType"`
 		SystemDisk         struct {
-			DiskType *string `json:"DiskType"`
-			DiskSize *int    `json:"DiskSize"`
-		} `json:"SystemDisk"`
-		HostName  *string `json:"HostName"`
-		UserData  *string `json:"UserData"`
-		Migration *int    `json:"Migration"`
+			DiskType *string `json:"DiskType" name:"DiskType"`
+			DiskSize *int    `json:"DiskSize" name:"DiskSize"`
+		} `json:"SystemDisk" name:"SystemDisk"`
+		HostName  *string `json:"HostName" name:"HostName"`
+		UserData  *string `json:"UserData" name:"UserData"`
+		Migration *int    `json:"Migration" name:"Migration"`
 		DataDisks []struct {
-			DiskId             *string `json:"DiskId"`
-			DiskType           *string `json:"DiskType"`
-			DiskSize           *int    `json:"DiskSize"`
-			DeleteWithInstance *bool   `json:"DeleteWithInstance"`
-			Encrypted          *bool   `json:"Encrypted"`
-		} `json:"DataDisks"`
-		VncSupport        *bool   `json:"VncSupport"`
-		Platform          *string `json:"Platform"`
-		FailureAutoDelete *bool   `json:"FailureAutoDelete"`
-		SyncTag           *bool   `json:"SyncTag"`
+			DiskId             *string `json:"DiskId" name:"DiskId"`
+			DiskType           *string `json:"DiskType" name:"DiskType"`
+			DiskSize           *int    `json:"DiskSize" name:"DiskSize"`
+			DeleteWithInstance *bool   `json:"DeleteWithInstance" name:"DeleteWithInstance"`
+			Encrypted          *bool   `json:"Encrypted" name:"Encrypted"`
+		} `json:"DataDisks" name:"DataDisks"`
+		VncSupport        *bool   `json:"VncSupport" name:"VncSupport"`
+		Platform          *string `json:"Platform" name:"Platform"`
+		FailureAutoDelete *bool   `json:"FailureAutoDelete" name:"FailureAutoDelete"`
+		SyncTag           *bool   `json:"SyncTag" name:"SyncTag"`
 	} `json:"InstancesSet"`
 }
 
@@ -277,51 +266,49 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 
 type RunInstancesRequest struct {
 	*ksyunhttp.BaseRequest
-	ImageId                    *string                           `json:"ImageId,omitempty" name:"ImageId"`
-	DedicatedHostId            *string                           `json:"DedicatedHostId,omitempty" name:"DedicatedHostId"`
-	InstanceType               *string                           `json:"InstanceType,omitempty" name:"InstanceType"`
-	DataDiskGb                 *int                              `json:"DataDiskGb,omitempty" name:"DataDiskGb"`
-	MaxCount                   *int                              `json:"MaxCount,omitempty" name:"MaxCount"`
-	MinCount                   *int                              `json:"MinCount,omitempty" name:"MinCount"`
-	SubnetId                   *string                           `json:"SubnetId,omitempty" name:"SubnetId"`
-	InstancePassword           *string                           `json:"InstancePassword,omitempty" name:"InstancePassword"`
-	ChargeType                 *string                           `json:"ChargeType,omitempty" name:"ChargeType"`
-	PurchaseTime               *int                              `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
-	SecurityGroupId            []*string                         `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
-	PrivateIpAddress           *string                           `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
-	InstanceName               *string                           `json:"InstanceName,omitempty" name:"InstanceName"`
-	InstanceNameSuffix         *string                           `json:"InstanceNameSuffix,omitempty" name:"InstanceNameSuffix"`
-	ProjectId                  *int                              `json:"ProjectId,omitempty" name:"ProjectId"`
-	DataDisk                   []*RunInstancesDataDisk           `json:"DataDisk,omitempty" name:"DataDisk"`
-	NetworkInterface           []*RunInstancesNetworkInterface   `json:"NetworkInterface,omitempty" name:"NetworkInterface"`
-	UserData                   *string                           `json:"UserData,omitempty" name:"UserData"`
-	SystemDisk                 *RunInstancesSystemDisk           `json:"SystemDisk,omitempty" name:"SystemDisk"`
-	ModelId                    *string                           `json:"ModelId,omitempty" name:"ModelId"`
-	ModelVersion               *int                              `json:"ModelVersion,omitempty" name:"ModelVersion"`
-	AssembledImageDataDiskType *string                           `json:"AssembledImageDataDiskType,omitempty" name:"AssembledImageDataDiskType"`
-	AutoCreateEbs              *bool                             `json:"AutoCreateEbs,omitempty" name:"AutoCreateEbs"`
-	LineId                     *string                           `json:"LineId,omitempty" name:"LineId"`
-	AddressBandWidth           *int                              `json:"AddressBandWidth,omitempty" name:"AddressBandWidth"`
-	AddressChargeType          *string                           `json:"AddressChargeType,omitempty" name:"AddressChargeType"`
-	AddressProjectId           *string                           `json:"AddressProjectId,omitempty" name:"AddressProjectId"`
-	BandWidthShareId           *string                           `json:"BandWidthShareId,omitempty" name:"BandWidthShareId"`
-	AddressPurchaseTime        *int                              `json:"AddressPurchaseTime,omitempty" name:"AddressPurchaseTime"`
-	KeyId                      []*string                         `json:"KeyId,omitempty" name:"KeyId"`
-	KeepImageLogin             *bool                             `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
-	HostName                   *string                           `json:"HostName,omitempty" name:"HostName"`
-	HostNameSuffix             *int                              `json:"HostNameSuffix,omitempty" name:"HostNameSuffix"`
-	FailureAutoDelete          *bool                             `json:"FailureAutoDelete,omitempty" name:"FailureAutoDelete"`
-	Tag                        []*RunInstancesTag                `json:"Tag,omitempty" name:"Tag"`
-	DataGuardId                *string                           `json:"DataGuardId,omitempty" name:"DataGuardId"`
-	InstanceConfigure          *RunInstancesTagInstanceConfigure `json:"InstanceConfigure,omitempty" name:"InstanceConfigure"`
-	SriovNetSupport            *bool                             `json:"SriovNetSupport,omitempty" name:"SriovNetSupport"`
-	DistributeIpv6             *bool                             `json:"DistributeIpv6,omitempty" name:"DistributeIpv6"`
-	LocalVolumeSnapshotId      *string                           `json:"LocalVolumeSnapshotId,omitempty" name:"LocalVolumeSnapshotId"`
-	SyncTag                    *bool                             `json:"SyncTag,omitempty" name:"SyncTag"`
-	IamRoleName                *string                           `json:"IamRoleName,omitempty" name:"IamRoleName"`
-	AutoDeleteTime             *string                           `json:"AutoDeleteTime,omitempty" name:"AutoDeleteTime"`
-	AutoDeleteEip              *bool                             `json:"AutoDeleteEip,omitempty" name:"AutoDeleteEip"`
-	IsProtect                  *bool                             `json:"IsProtect,omitempty" name:"IsProtect"`
+	ImageId                    *string                         `json:"ImageId,omitempty" name:"ImageId"`
+	DedicatedHostId            *string                         `json:"DedicatedHostId,omitempty" name:"DedicatedHostId"`
+	InstanceType               *string                         `json:"InstanceType,omitempty" name:"InstanceType"`
+	DataDiskGb                 *int                            `json:"DataDiskGb,omitempty" name:"DataDiskGb"`
+	MaxCount                   *int                            `json:"MaxCount,omitempty" name:"MaxCount"`
+	MinCount                   *int                            `json:"MinCount,omitempty" name:"MinCount"`
+	SubnetId                   *string                         `json:"SubnetId,omitempty" name:"SubnetId"`
+	InstancePassword           *string                         `json:"InstancePassword,omitempty" name:"InstancePassword"`
+	ChargeType                 *string                         `json:"ChargeType,omitempty" name:"ChargeType"`
+	PurchaseTime               *int                            `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
+	SecurityGroupId            []*string                       `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	PrivateIpAddress           *string                         `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
+	InstanceName               *string                         `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceNameSuffix         *string                         `json:"InstanceNameSuffix,omitempty" name:"InstanceNameSuffix"`
+	ProjectId                  *int                            `json:"ProjectId,omitempty" name:"ProjectId"`
+	DataDisk                   []*RunInstancesDataDisk         `json:"DataDisk,omitempty" name:"DataDisk"`
+	NetworkInterface           []*RunInstancesNetworkInterface `json:"NetworkInterface,omitempty" name:"NetworkInterface"`
+	UserData                   *string                         `json:"UserData,omitempty" name:"UserData"`
+	ModelId                    *string                         `json:"ModelId,omitempty" name:"ModelId"`
+	ModelVersion               *int                            `json:"ModelVersion,omitempty" name:"ModelVersion"`
+	AssembledImageDataDiskType *string                         `json:"AssembledImageDataDiskType,omitempty" name:"AssembledImageDataDiskType"`
+	AutoCreateEbs              *bool                           `json:"AutoCreateEbs,omitempty" name:"AutoCreateEbs"`
+	LineId                     *string                         `json:"LineId,omitempty" name:"LineId"`
+	AddressBandWidth           *int                            `json:"AddressBandWidth,omitempty" name:"AddressBandWidth"`
+	AddressChargeType          *string                         `json:"AddressChargeType,omitempty" name:"AddressChargeType"`
+	AddressProjectId           *string                         `json:"AddressProjectId,omitempty" name:"AddressProjectId"`
+	BandWidthShareId           *string                         `json:"BandWidthShareId,omitempty" name:"BandWidthShareId"`
+	AddressPurchaseTime        *int                            `json:"AddressPurchaseTime,omitempty" name:"AddressPurchaseTime"`
+	KeyId                      []*string                       `json:"KeyId,omitempty" name:"KeyId"`
+	KeepImageLogin             *bool                           `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
+	HostName                   *string                         `json:"HostName,omitempty" name:"HostName"`
+	HostNameSuffix             *int                            `json:"HostNameSuffix,omitempty" name:"HostNameSuffix"`
+	FailureAutoDelete          *bool                           `json:"FailureAutoDelete,omitempty" name:"FailureAutoDelete"`
+	Tag                        []*RunInstancesTag              `json:"Tag,omitempty" name:"Tag"`
+	DataGuardId                *string                         `json:"DataGuardId,omitempty" name:"DataGuardId"`
+	SriovNetSupport            *bool                           `json:"SriovNetSupport,omitempty" name:"SriovNetSupport"`
+	DistributeIpv6             *bool                           `json:"DistributeIpv6,omitempty" name:"DistributeIpv6"`
+	LocalVolumeSnapshotId      *string                         `json:"LocalVolumeSnapshotId,omitempty" name:"LocalVolumeSnapshotId"`
+	SyncTag                    *bool                           `json:"SyncTag,omitempty" name:"SyncTag"`
+	IamRoleName                *string                         `json:"IamRoleName,omitempty" name:"IamRoleName"`
+	AutoDeleteTime             *string                         `json:"AutoDeleteTime,omitempty" name:"AutoDeleteTime"`
+	AutoDeleteEip              *bool                           `json:"AutoDeleteEip,omitempty" name:"AutoDeleteEip"`
+	IsProtect                  *bool                           `json:"IsProtect,omitempty" name:"IsProtect"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {
@@ -344,8 +331,8 @@ type RunInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	InstancesSet []struct {
-		InstanceId   *string `json:"InstanceId"`
-		InstanceName *string `json:"InstanceName"`
+		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName *string `json:"InstanceName" name:"InstanceName"`
 	} `json:"InstancesSet"`
 }
 
@@ -383,9 +370,9 @@ type StartInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	InstancesSet []struct {
-		InstanceId *string `json:"InstanceId"`
-		Return     *bool   `json:"Return"`
-		Message    *string `json:"Message"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Return     *bool   `json:"Return" name:"Return"`
+		Message    *string `json:"Message" name:"Message"`
 	} `json:"InstancesSet"`
 }
 
@@ -425,9 +412,9 @@ type StopInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	InstancesSet []struct {
-		InstanceId *string `json:"InstanceId"`
-		Return     *bool   `json:"Return"`
-		Messgae    *string `json:"Messgae"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Return     *bool   `json:"Return" name:"Return"`
+		Messgae    *string `json:"Messgae" name:"Messgae"`
 	} `json:"InstancesSet"`
 }
 
@@ -466,8 +453,8 @@ type RebootInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	InstancesSet []struct {
-		InstanceId *string `json:"InstanceId"`
-		Return     *bool   `json:"Return"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Return     *bool   `json:"Return" name:"Return"`
 	} `json:"InstancesSet"`
 }
 
@@ -594,9 +581,9 @@ type TerminateInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	InstancesSet []struct {
-		InstanceId *string `json:"InstanceId"`
-		Return     *bool   `json:"Return"`
-		Message    *string `json:"Message"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Return     *bool   `json:"Return" name:"Return"`
+		Message    *string `json:"Message" name:"Message"`
 	} `json:"InstancesSet"`
 }
 
@@ -635,41 +622,41 @@ type DescribeImagesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	ImagesSet []struct {
-		ImageId         *string `json:"ImageId"`
-		InstantAccess   *bool   `json:"InstantAccess"`
-		ContainerFormat *string `json:"ContainerFormat"`
+		ImageId         *string `json:"ImageId" name:"ImageId"`
+		InstantAccess   *bool   `json:"InstantAccess" name:"InstantAccess"`
+		ContainerFormat *string `json:"ContainerFormat" name:"ContainerFormat"`
 		SnapshotSet     []struct {
-			SnapshotId *string `json:"SnapshotId"`
-			DiskType   *string `json:"DiskType"`
-			DiskSize   *int    `json:"DiskSize"`
-			Type       *string `json:"Type"`
-			VolumeType *string `json:"VolumeType"`
-		} `json:"SnapshotSet"`
-		AvailabilityZone      *string `json:"AvailabilityZone"`
-		ExportingStatus       *string `json:"ExportingStatus"`
-		ExportingFinishedTime *string `json:"ExportingFinishedTime"`
-		Type                  *string `json:"Type"`
-		Name                  *string `json:"Name"`
-		ImageState            *string `json:"ImageState"`
-		CreationDate          *string `json:"CreationDate"`
-		Platform              *string `json:"Platform"`
-		IsPublic              *bool   `json:"IsPublic"`
-		InstanceId            *string `json:"InstanceId"`
-		IsNpe                 *bool   `json:"IsNpe"`
-		UserCategory          *string `json:"UserCategory"`
-		SysDisk               *int    `json:"SysDisk"`
-		Progress              *string `json:"Progress"`
-		ImageSource           *string `json:"ImageSource"`
-		CloudInitSupport      *bool   `json:"CloudInitSupport"`
-		Ipv6Support           *bool   `json:"Ipv6Support"`
-		IsModifyType          *bool   `json:"IsModifyType"`
-		Architecture          *string `json:"Architecture"`
-		FastBoot              *bool   `json:"FastBoot"`
-		OriginalImageId       *string `json:"OriginalImageId"`
-		IsCloudMarket         *bool   `json:"IsCloudMarket"`
-		RealImageId           *string `json:"RealImageId"`
-		OnlineExpansion       *bool   `json:"OnlineExpansion"`
-		ImageMode             *string `json:"ImageMode"`
+			SnapshotId *string `json:"SnapshotId" name:"SnapshotId"`
+			DiskType   *string `json:"DiskType" name:"DiskType"`
+			DiskSize   *int    `json:"DiskSize" name:"DiskSize"`
+			Type       *string `json:"Type" name:"Type"`
+			VolumeType *string `json:"VolumeType" name:"VolumeType"`
+		} `json:"SnapshotSet" name:"SnapshotSet"`
+		AvailabilityZone      *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		ExportingStatus       *string `json:"ExportingStatus" name:"ExportingStatus"`
+		ExportingFinishedTime *string `json:"ExportingFinishedTime" name:"ExportingFinishedTime"`
+		Type                  *string `json:"Type" name:"Type"`
+		Name                  *string `json:"Name" name:"Name"`
+		ImageState            *string `json:"ImageState" name:"ImageState"`
+		CreationDate          *string `json:"CreationDate" name:"CreationDate"`
+		Platform              *string `json:"Platform" name:"Platform"`
+		IsPublic              *bool   `json:"IsPublic" name:"IsPublic"`
+		InstanceId            *string `json:"InstanceId" name:"InstanceId"`
+		IsNpe                 *bool   `json:"IsNpe" name:"IsNpe"`
+		UserCategory          *string `json:"UserCategory" name:"UserCategory"`
+		SysDisk               *int    `json:"SysDisk" name:"SysDisk"`
+		Progress              *string `json:"Progress" name:"Progress"`
+		ImageSource           *string `json:"ImageSource" name:"ImageSource"`
+		CloudInitSupport      *bool   `json:"CloudInitSupport" name:"CloudInitSupport"`
+		Ipv6Support           *bool   `json:"Ipv6Support" name:"Ipv6Support"`
+		IsModifyType          *bool   `json:"IsModifyType" name:"IsModifyType"`
+		Architecture          *string `json:"Architecture" name:"Architecture"`
+		FastBoot              *bool   `json:"FastBoot" name:"FastBoot"`
+		OriginalImageId       *string `json:"OriginalImageId" name:"OriginalImageId"`
+		IsCloudMarket         *bool   `json:"IsCloudMarket" name:"IsCloudMarket"`
+		RealImageId           *string `json:"RealImageId" name:"RealImageId"`
+		OnlineExpansion       *bool   `json:"OnlineExpansion" name:"OnlineExpansion"`
+		ImageMode             *string `json:"ImageMode" name:"ImageMode"`
 	} `json:"ImagesSet"`
 }
 
@@ -830,8 +817,8 @@ func (r *RemoveImagesRequest) FromJsonString(s string) error {
 type RemoveImagesResponse struct {
 	*ksyunhttp.BaseResponse
 	ReturnSet []struct {
-		ImageId *string `json:"ImageId"`
-		Return  *bool   `json:"Return"`
+		ImageId *string `json:"ImageId" name:"ImageId"`
+		Return  *bool   `json:"Return" name:"Return"`
 	} `json:"ReturnSet"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1003,17 +990,17 @@ type DescribeLocalVolumesResponse struct {
 	Marker           *int    `json:"Marker" name:"Marker"`
 	LocalVolumeCount *int    `json:"LocalVolumeCount" name:"LocalVolumeCount"`
 	LocalVolumeSet   []struct {
-		LocalVolumeId        *string `json:"LocalVolumeId"`
-		LocalVolumeName      *string `json:"LocalVolumeName"`
-		LocalVolumeState     *string `json:"LocalVolumeState"`
-		InstanceId           *string `json:"InstanceId"`
-		InstanceName         *string `json:"InstanceName"`
-		InstanceState        *string `json:"InstanceState"`
-		LocalVolumeType      *string `json:"LocalVolumeType"`
-		LocalVolumeCategory  *string `json:"LocalVolumeCategory"`
-		LocalVolumeSize      *int    `json:"LocalVolumeSize"`
-		CreationDate         *string `json:"CreationDate"`
-		AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId"`
+		LocalVolumeId        *string `json:"LocalVolumeId" name:"LocalVolumeId"`
+		LocalVolumeName      *string `json:"LocalVolumeName" name:"LocalVolumeName"`
+		LocalVolumeState     *string `json:"LocalVolumeState" name:"LocalVolumeState"`
+		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName         *string `json:"InstanceName" name:"InstanceName"`
+		InstanceState        *string `json:"InstanceState" name:"InstanceState"`
+		LocalVolumeType      *string `json:"LocalVolumeType" name:"LocalVolumeType"`
+		LocalVolumeCategory  *string `json:"LocalVolumeCategory" name:"LocalVolumeCategory"`
+		LocalVolumeSize      *int    `json:"LocalVolumeSize" name:"LocalVolumeSize"`
+		CreationDate         *string `json:"CreationDate" name:"CreationDate"`
+		AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId" name:"AutoSnapshotPolicyId"`
 	} `json:"LocalVolumeSet"`
 }
 
@@ -1095,23 +1082,23 @@ type DescribeLocalVolumeSnapshotsResponse struct {
 	LocalVolumeSnapshotCount *int    `json:"LocalVolumeSnapshotCount" name:"LocalVolumeSnapshotCount"`
 	Marker                   *int    `json:"Marker" name:"Marker"`
 	LocalVolumeSnapshotSet   []struct {
-		LocalVolumeSnapshotId     *string `json:"LocalVolumeSnapshotId"`
-		InstantAccess             *bool   `json:"InstantAccess"`
-		LocalVolumeSnapshotName   *string `json:"LocalVolumeSnapshotName"`
-		LocalVolumeSnapshotDesc   *string `json:"LocalVolumeSnapshotDesc"`
-		SourceLocalVolumeId       *string `json:"SourceLocalVolumeId"`
-		SourceLocalVolumeName     *string `json:"SourceLocalVolumeName"`
-		ScheduledDeleteTime       *string `json:"ScheduledDeleteTime"`
-		CreateImage               *bool   `json:"CreateImage"`
-		CopyFromRemote            *bool   `json:"CopyFromRemote"`
-		SourceLocalVolumeCategory *string `json:"SourceLocalVolumeCategory"`
-		SourceLocalVolumeState    *string `json:"SourceLocalVolumeState"`
-		State                     *string `json:"State"`
-		CreationDate              *string `json:"CreationDate"`
-		InstanceId                *string `json:"InstanceId"`
-		DiskSize                  *int    `json:"DiskSize"`
-		SnapshotType              *string `json:"SnapshotType"`
-		MinDisk                   *int    `json:"MinDisk"`
+		LocalVolumeSnapshotId     *string `json:"LocalVolumeSnapshotId" name:"LocalVolumeSnapshotId"`
+		InstantAccess             *bool   `json:"InstantAccess" name:"InstantAccess"`
+		LocalVolumeSnapshotName   *string `json:"LocalVolumeSnapshotName" name:"LocalVolumeSnapshotName"`
+		LocalVolumeSnapshotDesc   *string `json:"LocalVolumeSnapshotDesc" name:"LocalVolumeSnapshotDesc"`
+		SourceLocalVolumeId       *string `json:"SourceLocalVolumeId" name:"SourceLocalVolumeId"`
+		SourceLocalVolumeName     *string `json:"SourceLocalVolumeName" name:"SourceLocalVolumeName"`
+		ScheduledDeleteTime       *string `json:"ScheduledDeleteTime" name:"ScheduledDeleteTime"`
+		CreateImage               *bool   `json:"CreateImage" name:"CreateImage"`
+		CopyFromRemote            *bool   `json:"CopyFromRemote" name:"CopyFromRemote"`
+		SourceLocalVolumeCategory *string `json:"SourceLocalVolumeCategory" name:"SourceLocalVolumeCategory"`
+		SourceLocalVolumeState    *string `json:"SourceLocalVolumeState" name:"SourceLocalVolumeState"`
+		State                     *string `json:"State" name:"State"`
+		CreationDate              *string `json:"CreationDate" name:"CreationDate"`
+		InstanceId                *string `json:"InstanceId" name:"InstanceId"`
+		DiskSize                  *int    `json:"DiskSize" name:"DiskSize"`
+		SnapshotType              *string `json:"SnapshotType" name:"SnapshotType"`
+		MinDisk                   *int    `json:"MinDisk" name:"MinDisk"`
 	} `json:"LocalVolumeSnapshotSet"`
 }
 
@@ -1185,10 +1172,10 @@ type DeleteLocalVolumeSnapshotResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet []struct {
-		LocalVolumeSnapshotId *string `json:"LocalVolumeSnapshotId"`
-		Return                *bool   `json:"Return"`
-		Reason                *string `json:"Reason"`
-		ErrorCode             *string `json:"ErrorCode"`
+		LocalVolumeSnapshotId *string `json:"LocalVolumeSnapshotId" name:"LocalVolumeSnapshotId"`
+		Return                *bool   `json:"Return" name:"Return"`
+		Reason                *string `json:"Reason" name:"Reason"`
+		ErrorCode             *string `json:"ErrorCode" name:"ErrorCode"`
 	} `json:"ReturnSet"`
 }
 
@@ -1262,12 +1249,12 @@ type DescribeDataGuardCapacityResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId         *string `json:"RequestId" name:"RequestId"`
 	DataGuardCapacity struct {
-		Region   *string `json:"Region"`
-		Capacity *int    `json:"Capacity"`
+		Region   *string `json:"Region" name:"Region"`
+		Capacity *int    `json:"Capacity" name:"Capacity"`
 	} `json:"DataGuardCapacity"`
 	DataGuardCapacitySet []struct {
-		DomainTypeCapacity *int `json:"DomainTypeCapacity"`
-		HostTypeCapacity   *int `json:"HostTypeCapacity"`
+		DomainTypeCapacity *int `json:"DomainTypeCapacity" name:"DomainTypeCapacity"`
+		HostTypeCapacity   *int `json:"HostTypeCapacity" name:"HostTypeCapacity"`
 	} `json:"DataGuardCapacitySet"`
 }
 
@@ -1341,8 +1328,8 @@ type DeleteDataGuardGroupsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet []struct {
-		DataGuardId *string `json:"DataGuardId"`
-		Return      *bool   `json:"Return"`
+		DataGuardId *string `json:"DataGuardId" name:"DataGuardId"`
+		Return      *bool   `json:"Return" name:"Return"`
 	} `json:"ReturnSet"`
 }
 
@@ -1381,18 +1368,18 @@ type DescribeDataGuardGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId     *string `json:"RequestId" name:"RequestId"`
 	DataGuardsSet []struct {
-		DataGuardId            *string `json:"DataGuardId"`
-		DataGuardName          *string `json:"DataGuardName"`
-		DataGuardLevel         *string `json:"DataGuardLevel"`
-		DataGuardCapacity      *int    `json:"DataGuardCapacity"`
-		DataGuardUsedSize      *int    `json:"DataGuardUsedSize"`
+		DataGuardId            *string `json:"DataGuardId" name:"DataGuardId"`
+		DataGuardName          *string `json:"DataGuardName" name:"DataGuardName"`
+		DataGuardLevel         *string `json:"DataGuardLevel" name:"DataGuardLevel"`
+		DataGuardCapacity      *int    `json:"DataGuardCapacity" name:"DataGuardCapacity"`
+		DataGuardUsedSize      *int    `json:"DataGuardUsedSize" name:"DataGuardUsedSize"`
 		DataGuardInstancesList []struct {
-			InstanceId   *string `json:"InstanceId"`
-			InstanceName *string `json:"InstanceName"`
-		} `json:"DataGuardInstancesList"`
-		DataGuardType *string `json:"DataGuardType"`
+			InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+			InstanceName *string `json:"InstanceName" name:"InstanceName"`
+		} `json:"DataGuardInstancesList" name:"DataGuardInstancesList"`
+		DataGuardType *string `json:"DataGuardType" name:"DataGuardType"`
 	} `json:"DataGuardsSet"`
-	isSupportDomain *bool `json:"isSupportDomain" name:"isSupportDomain"`
+	IsSupportDomain *bool `json:"isSupportDomain" name:"isSupportDomain"`
 }
 
 func (r *DescribeDataGuardGroupResponse) ToJsonString() string {
@@ -1430,8 +1417,8 @@ type RemoveVmFromDataGuardResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet []struct {
-		InstanceId *string `json:"InstanceId"`
-		Return     *bool   `json:"Return"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Return     *bool   `json:"Return" name:"Return"`
 	} `json:"ReturnSet"`
 }
 
@@ -1476,8 +1463,8 @@ type CreateDedicatedHostsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId        *string `json:"RequestId" name:"RequestId"`
 	DedicatedHostSet struct {
-		DedicatedHostId   *string `json:"DedicatedHostId"`
-		DedicatedHostName *string `json:"DedicatedHostName"`
+		DedicatedHostId   *string `json:"DedicatedHostId" name:"DedicatedHostId"`
+		DedicatedHostName *string `json:"DedicatedHostName" name:"DedicatedHostName"`
 	} `json:"DedicatedHostSet"`
 }
 
@@ -1516,9 +1503,9 @@ type DeleteDedicatedHostResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet struct {
-		DedicatedHostId *string `json:"DedicatedHostId"`
-		Return          *bool   `json:"Return"`
-		Message         *string `json:"Message"`
+		DedicatedHostId *string `json:"DedicatedHostId" name:"DedicatedHostId"`
+		Return          *bool   `json:"Return" name:"Return"`
+		Message         *string `json:"Message" name:"Message"`
 	} `json:"ReturnSet"`
 }
 
@@ -1558,23 +1545,23 @@ type DescribeDedicatedHostsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId        *string `json:"RequestId" name:"RequestId"`
 	DedicatedHostSet []struct {
-		DedicatedHostId   *string `json:"DedicatedHostId"`
-		DedicatedHostName *string `json:"DedicatedHostName"`
-		State             *string `json:"State"`
-		TotalCpu          *int    `json:"TotalCpu"`
-		OriCpu            *int    `json:"OriCpu"`
-		AvailableCpu      *int    `json:"AvailableCpu"`
-		TotalMemory       *int    `json:"TotalMemory"`
-		AvailableMemory   *int    `json:"AvailableMemory"`
-		TotalDatadisk     *int    `json:"TotalDatadisk"`
-		AvailableDatadisk *int    `json:"AvailableDatadisk"`
+		DedicatedHostId   *string `json:"DedicatedHostId" name:"DedicatedHostId"`
+		DedicatedHostName *string `json:"DedicatedHostName" name:"DedicatedHostName"`
+		State             *string `json:"State" name:"State"`
+		TotalCpu          *int    `json:"TotalCpu" name:"TotalCpu"`
+		OriCpu            *int    `json:"OriCpu" name:"OriCpu"`
+		AvailableCpu      *int    `json:"AvailableCpu" name:"AvailableCpu"`
+		TotalMemory       *int    `json:"TotalMemory" name:"TotalMemory"`
+		AvailableMemory   *int    `json:"AvailableMemory" name:"AvailableMemory"`
+		TotalDatadisk     *int    `json:"TotalDatadisk" name:"TotalDatadisk"`
+		AvailableDatadisk *int    `json:"AvailableDatadisk" name:"AvailableDatadisk"`
 		Instances         []struct {
-		} `json:"Instances"`
-		CreateDate           *string `json:"CreateDate"`
-		AvailabilityZone     *string `json:"AvailabilityZone"`
-		AvailabilityZoneName *string `json:"AvailabilityZoneName"`
-		Model                *string `json:"Model"`
-		ProjectId            *int    `json:"ProjectId"`
+		} `json:"Instances" name:"Instances"`
+		CreateDate           *string `json:"CreateDate" name:"CreateDate"`
+		AvailabilityZone     *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		AvailabilityZoneName *string `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
+		Model                *string `json:"Model" name:"Model"`
+		ProjectId            *int    `json:"ProjectId" name:"ProjectId"`
 	} `json:"DedicatedHostSet"`
 }
 
@@ -1617,78 +1604,78 @@ type DescribeScalingConfigurationResponse struct {
 	RequestId                 *string `json:"RequestId" name:"RequestId"`
 	ScalingConfigurationCount *int    `json:"ScalingConfigurationCount" name:"ScalingConfigurationCount"`
 	ScalingConfigurationSet   []struct {
-		AvailabilityZone         *string `json:"AvailabilityZone"`
-		Description              *string `json:"Description"`
-		ContainerLabel           *string `json:"ContainerLabel"`
-		HostName                 *string `json:"HostName"`
-		HostNameSuffix           *int    `json:"HostNameSuffix"`
-		KeyIds                   *string `json:"KeyIds"`
-		DataDiskPerformanceMode  *string `json:"DataDiskPerformanceMode"`
-		ScalingConfigurationId   *string `json:"ScalingConfigurationId"`
-		ScalingConfigurationName *string `json:"ScalingConfigurationName"`
+		AvailabilityZone         *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		Description              *string `json:"Description" name:"Description"`
+		ContainerLabel           *string `json:"ContainerLabel" name:"ContainerLabel"`
+		HostName                 *string `json:"HostName" name:"HostName"`
+		HostNameSuffix           *int    `json:"HostNameSuffix" name:"HostNameSuffix"`
+		KeyIds                   *string `json:"KeyIds" name:"KeyIds"`
+		DataDiskPerformanceMode  *string `json:"DataDiskPerformanceMode" name:"DataDiskPerformanceMode"`
+		ScalingConfigurationId   *string `json:"ScalingConfigurationId" name:"ScalingConfigurationId"`
+		ScalingConfigurationName *string `json:"ScalingConfigurationName" name:"ScalingConfigurationName"`
 		ScalingGroupIdSet        []struct {
-			ScalingGroupId   *string `json:"ScalingGroupId"`
-			ScalingGroupName *string `json:"ScalingGroupName"`
-		} `json:"ScalingGroupIdSet"`
-		Cpu               *int    `json:"Cpu"`
-		Mem               *int    `json:"Mem"`
-		StorageType       *string `json:"StorageType"`
-		StorageSize       *int    `json:"StorageSize"`
-		RootSize          *int    `json:"RootSize"`
-		Gpu               *int    `json:"Gpu"`
-		ImageId           *string `json:"ImageId"`
-		NeedMonitorAgent  *int    `json:"NeedMonitorAgent"`
-		NeedSecurityAgent *int    `json:"NeedSecurityAgent"`
-		ChargeType        *string `json:"ChargeType"`
-		InstanceType      *string `json:"InstanceType"`
+			ScalingGroupId   *string `json:"ScalingGroupId" name:"ScalingGroupId"`
+			ScalingGroupName *string `json:"ScalingGroupName" name:"ScalingGroupName"`
+		} `json:"ScalingGroupIdSet" name:"ScalingGroupIdSet"`
+		Cpu               *int    `json:"Cpu" name:"Cpu"`
+		Mem               *int    `json:"Mem" name:"Mem"`
+		StorageType       *string `json:"StorageType" name:"StorageType"`
+		StorageSize       *int    `json:"StorageSize" name:"StorageSize"`
+		RootSize          *int    `json:"RootSize" name:"RootSize"`
+		Gpu               *int    `json:"Gpu" name:"Gpu"`
+		ImageId           *string `json:"ImageId" name:"ImageId"`
+		NeedMonitorAgent  *int    `json:"NeedMonitorAgent" name:"NeedMonitorAgent"`
+		NeedSecurityAgent *int    `json:"NeedSecurityAgent" name:"NeedSecurityAgent"`
+		ChargeType        *string `json:"ChargeType" name:"ChargeType"`
+		InstanceType      *string `json:"InstanceType" name:"InstanceType"`
 		InstanceTypeSet   []struct {
-		} `json:"InstanceTypeSet"`
-		Available      *int    `json:"Available"`
-		CreateTime     *string `json:"CreateTime"`
-		Password       *string `json:"Password"`
-		ProductLine    *string `json:"ProductLine"`
-		ContainerParam *string `json:"ContainerParam"`
-		InstanceName   *string `json:"InstanceName"`
+		} `json:"InstanceTypeSet" name:"InstanceTypeSet"`
+		Available      *int    `json:"Available" name:"Available"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+		Password       *string `json:"Password" name:"Password"`
+		ProductLine    *string `json:"ProductLine" name:"ProductLine"`
+		ContainerParam *string `json:"ContainerParam" name:"ContainerParam"`
+		InstanceName   *string `json:"InstanceName" name:"InstanceName"`
 		Project        struct {
-			ProjectId   *int    `json:"ProjectId"`
-			AccountId   *int    `json:"AccountId"`
-			ProjectName *string `json:"ProjectName"`
-			ProjectDesc *string `json:"ProjectDesc"`
-			Krn         *string `json:"Krn"`
-			Status      *int    `json:"Status"`
-			CreateTime  *string `json:"CreateTime"`
-			UpdateTime  *string `json:"UpdateTime"`
-		} `json:"Project"`
-		ProjectId                *int    `json:"ProjectId"`
-		KeepImageLogin           *bool   `json:"KeepImageLogin"`
-		DataDiskEbsDetail        *string `json:"DataDiskEbsDetail"`
-		SystemDiskType           *string `json:"SystemDiskType"`
-		SystemDiskSize           *int    `json:"SystemDiskSize"`
-		AvailabilityZoneName     *string `json:"AvailabilityZoneName"`
-		InstanceNameTimeSuffix   *bool   `json:"InstanceNameTimeSuffix"`
+			ProjectId   *int    `json:"ProjectId" name:"ProjectId"`
+			AccountId   *int    `json:"AccountId" name:"AccountId"`
+			ProjectName *string `json:"ProjectName" name:"ProjectName"`
+			ProjectDesc *string `json:"ProjectDesc" name:"ProjectDesc"`
+			Krn         *string `json:"Krn" name:"Krn"`
+			Status      *int    `json:"Status" name:"Status"`
+			CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+			UpdateTime  *string `json:"UpdateTime" name:"UpdateTime"`
+		} `json:"Project" name:"Project"`
+		ProjectId                *int    `json:"ProjectId" name:"ProjectId"`
+		KeepImageLogin           *bool   `json:"KeepImageLogin" name:"KeepImageLogin"`
+		DataDiskEbsDetail        *string `json:"DataDiskEbsDetail" name:"DataDiskEbsDetail"`
+		SystemDiskType           *string `json:"SystemDiskType" name:"SystemDiskType"`
+		SystemDiskSize           *int    `json:"SystemDiskSize" name:"SystemDiskSize"`
+		AvailabilityZoneName     *string `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
+		InstanceNameTimeSuffix   *bool   `json:"InstanceNameTimeSuffix" name:"InstanceNameTimeSuffix"`
 		SupportAvailabilityZones []struct {
-		} `json:"SupportAvailabilityZones"`
-		BillType                *int    `json:"BillType"`
-		IsRunOptimised          *bool   `json:"IsRunOptimised"`
-		UserData                *string `json:"UserData"`
-		AddressBandWidth        *int    `json:"AddressBandWidth"`
-		LineId                  *string `json:"LineId"`
-		AddressProjectId        *int    `json:"AddressProjectId"`
-		AddressChargeType       *string `json:"AddressChargeType"`
-		BandWidthShareId        *string `json:"BandWidthShareId"`
-		LocalVolumeSnapshotId   *string `json:"LocalVolumeSnapshotId"`
-		LocalVolumeSnapshotName *string `json:"LocalVolumeSnapshotName"`
-		AddressProject          *string `json:"AddressProject"`
+		} `json:"SupportAvailabilityZones" name:"SupportAvailabilityZones"`
+		BillType                *int    `json:"BillType" name:"BillType"`
+		IsRunOptimised          *bool   `json:"IsRunOptimised" name:"IsRunOptimised"`
+		UserData                *string `json:"UserData" name:"UserData"`
+		AddressBandWidth        *int    `json:"AddressBandWidth" name:"AddressBandWidth"`
+		LineId                  *string `json:"LineId" name:"LineId"`
+		AddressProjectId        *int    `json:"AddressProjectId" name:"AddressProjectId"`
+		AddressChargeType       *string `json:"AddressChargeType" name:"AddressChargeType"`
+		BandWidthShareId        *string `json:"BandWidthShareId" name:"BandWidthShareId"`
+		LocalVolumeSnapshotId   *string `json:"LocalVolumeSnapshotId" name:"LocalVolumeSnapshotId"`
+		LocalVolumeSnapshotName *string `json:"LocalVolumeSnapshotName" name:"LocalVolumeSnapshotName"`
+		AddressProject          *string `json:"AddressProject" name:"AddressProject"`
 		TagSet                  []struct {
-			Key   *string `json:"Key"`
-			Value *string `json:"Value"`
-		} `json:"TagSet"`
+			Key   *string `json:"Key" name:"Key"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"TagSet" name:"TagSet"`
 		EbsTagSet []struct {
-			Key   *string `json:"Key"`
-			Value *string `json:"Value"`
-		} `json:"EbsTagSet"`
-		SpotStrategy *string `json:"SpotStrategy"`
-		SyncTag      *bool   `json:"SyncTag"`
+			Key   *string `json:"Key" name:"Key"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"EbsTagSet" name:"EbsTagSet"`
+		SpotStrategy *string `json:"SpotStrategy" name:"SpotStrategy"`
+		SyncTag      *bool   `json:"SyncTag" name:"SyncTag"`
 	} `json:"ScalingConfigurationSet"`
 }
 
@@ -1784,8 +1771,8 @@ type DeleteScalingConfigurationResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet []struct {
-		ScalingConfigurationId *string `json:"ScalingConfigurationId"`
-		Message                *string `json:"Message"`
+		ScalingConfigurationId *string `json:"ScalingConfigurationId" name:"ScalingConfigurationId"`
+		Message                *string `json:"Message" name:"Message"`
 	} `json:"ReturnSet"`
 }
 
@@ -1831,7 +1818,7 @@ type CreateScalingGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet struct {
-		ScalingGroupId *string `json:"ScalingGroupId"`
+		ScalingGroupId *string `json:"ScalingGroupId" name:"ScalingGroupId"`
 	} `json:"ReturnSet"`
 }
 
@@ -1876,44 +1863,44 @@ type DescribeScalingGroupResponse struct {
 	RequestId         *string `json:"RequestId" name:"RequestId"`
 	ScalingGroupCount *int    `json:"ScalingGroupCount" name:"ScalingGroupCount"`
 	ScalingGroupSet   []struct {
-		ScalingGroupId     *string `json:"ScalingGroupId"`
-		BInScalingActivity *int    `json:"BInScalingActivity"`
-		SlbId              *string `json:"SlbId"`
-		ServerPort         *int    `json:"ServerPort"`
-		ListenerId         *string `json:"ListenerId"`
-		Description        *string `json:"Description"`
-		ServerPorts        *string `json:"ServerPorts"`
+		ScalingGroupId     *string `json:"ScalingGroupId" name:"ScalingGroupId"`
+		BInScalingActivity *int    `json:"BInScalingActivity" name:"BInScalingActivity"`
+		SlbId              *string `json:"SlbId" name:"SlbId"`
+		ServerPort         *int    `json:"ServerPort" name:"ServerPort"`
+		ListenerId         *string `json:"ListenerId" name:"ListenerId"`
+		Description        *string `json:"Description" name:"Description"`
+		ServerPorts        *string `json:"ServerPorts" name:"ServerPorts"`
 		SlbConfigSet       []struct {
-			SlbId         *string `json:"SlbId"`
-			ListenerId    *string `json:"ListenerId"`
-			ServerPortSet []struct {
-			} `json:"ServerPortSet"`
-			Weight          *int    `json:"Weight"`
-			HealthCheckType *string `json:"HealthCheckType"`
-		} `json:"SlbConfigSet"`
-		ScalingGroupName         *string   `json:"ScalingGroupName"`
-		ScalingConfigurationId   *string   `json:"ScalingConfigurationId"`
-		ScalingConfigurationName *string   `json:"ScalingConfigurationName"`
-		MinSize                  *int      `json:"MinSize"`
-		MaxSize                  *int      `json:"MaxSize"`
-		InstanceNum              *int      `json:"InstanceNum"`
-		CreateTime               *string   `json:"CreateTime"`
-		RemovePolicy             *string   `json:"RemovePolicy"`
-		VpcId                    *string   `json:"VpcId"`
-		SecurityGroupId          *string   `json:"SecurityGroupId"`
-		SubnetId                 *string   `json:"SubnetId"`
-		Status                   *string   `json:"Status"`
-		AvailabilityZone         *string   `json:"AvailabilityZone"`
-		ProductLine              *string   `json:"ProductLine"`
-		AvailabilityZoneName     *string   `json:"AvailabilityZoneName"`
-		DesiredCapacity          *int      `json:"DesiredCapacity"`
-		DistributeIpv6           *bool     `json:"DistributeIpv6"`
-		SubnetIdSet              []*string `json:"SubnetIdSet"`
-		SubnetStrategy           *string   `json:"SubnetStrategy"`
-		SecurityGroupIdSet       []struct {
-		} `json:"SecurityGroupIdSet"`
-		LockDesiredCapacity   *bool `json:"LockDesiredCapacity"`
-		AllowSlbScalingPolicy *bool `json:"AllowSlbScalingPolicy"`
+			SlbId           *string `json:"SlbId" name:"SlbId"`
+			ListenerId      *string `json:"ListenerId" name:"ListenerId"`
+			ServerPortSet   []*int  `json:"ServerPortSet" name:"ServerPortSet"`
+			Weight          *int    `json:"Weight" name:"Weight"`
+			HealthCheckType *string `json:"HealthCheckType" name:"HealthCheckType"`
+		} `json:"SlbConfigSet" name:"SlbConfigSet"`
+		ScalingGroupName         *string `json:"ScalingGroupName" name:"ScalingGroupName"`
+		ScalingConfigurationId   *string `json:"ScalingConfigurationId" name:"ScalingConfigurationId"`
+		ScalingConfigurationName *string `json:"ScalingConfigurationName" name:"ScalingConfigurationName"`
+		MinSize                  *int    `json:"MinSize" name:"MinSize"`
+		MaxSize                  *int    `json:"MaxSize" name:"MaxSize"`
+		InstanceNum              *int    `json:"InstanceNum" name:"InstanceNum"`
+		CreateTime               *string `json:"CreateTime" name:"CreateTime"`
+		RemovePolicy             *string `json:"RemovePolicy" name:"RemovePolicy"`
+		VpcId                    *string `json:"VpcId" name:"VpcId"`
+		SecurityGroupId          *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		SubnetId                 *string `json:"SubnetId" name:"SubnetId"`
+		Status                   *string `json:"Status" name:"Status"`
+		AvailabilityZone         *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		ProductLine              *string `json:"ProductLine" name:"ProductLine"`
+		AvailabilityZoneName     *string `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
+		DesiredCapacity          *int    `json:"DesiredCapacity" name:"DesiredCapacity"`
+		DistributeIpv6           *bool   `json:"DistributeIpv6" name:"DistributeIpv6"`
+		SubnetIdSet              []struct {
+		} `json:"SubnetIdSet" name:"SubnetIdSet"`
+		SubnetStrategy     *string `json:"SubnetStrategy" name:"SubnetStrategy"`
+		SecurityGroupIdSet []struct {
+		} `json:"SecurityGroupIdSet" name:"SecurityGroupIdSet"`
+		LockDesiredCapacity   *bool `json:"LockDesiredCapacity" name:"LockDesiredCapacity"`
+		AllowSlbScalingPolicy *bool `json:"AllowSlbScalingPolicy" name:"AllowSlbScalingPolicy"`
 	} `json:"ScalingGroupSet"`
 }
 
@@ -1962,7 +1949,7 @@ type ModifyScalingGroupResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Return    *bool   `json:"Return" name:"Return"`
 	ReturnSet struct {
-		ScalingGroupId *string `json:"ScalingGroupId"`
+		ScalingGroupId *string `json:"ScalingGroupId" name:"ScalingGroupId"`
 	} `json:"ReturnSet"`
 }
 
@@ -2044,15 +2031,15 @@ type DescribeScalingInstanceResponse struct {
 	RequestId            *string `json:"RequestId" name:"RequestId"`
 	ScalingInstanceCount *int    `json:"ScalingInstanceCount" name:"ScalingInstanceCount"`
 	ScalingInstanceSet   []struct {
-		InstanceId           *string `json:"InstanceId"`
-		InstanceName         *string `json:"InstanceName"`
-		HealthStatus         *string `json:"HealthStatus"`
-		CreationType         *string `json:"CreationType"`
-		AddTime              *string `json:"AddTime"`
-		ProtectedFromScaleIn *int    `json:"ProtectedFromScaleIn"`
-		HostName             *string `json:"HostName"`
-		LifeCycleState       *string `json:"LifeCycleState"`
-		AvailabilityZone     *string `json:"AvailabilityZone"`
+		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName         *string `json:"InstanceName" name:"InstanceName"`
+		HealthStatus         *string `json:"HealthStatus" name:"HealthStatus"`
+		CreationType         *string `json:"CreationType" name:"CreationType"`
+		AddTime              *string `json:"AddTime" name:"AddTime"`
+		ProtectedFromScaleIn *int    `json:"ProtectedFromScaleIn" name:"ProtectedFromScaleIn"`
+		HostName             *string `json:"HostName" name:"HostName"`
+		LifeCycleState       *string `json:"LifeCycleState" name:"LifeCycleState"`
+		AvailabilityZone     *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 	} `json:"ScalingInstanceSet"`
 }
 
@@ -2171,17 +2158,19 @@ type DescribeScalingActivityResponse struct {
 	AvailabilityZone     *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 	ScalingActivityCount *int    `json:"ScalingActivityCount" name:"ScalingActivityCount"`
 	ScalingActivitySet   []struct {
-		ScalingGroupId    *string   `json:"ScalingGroupId"`
-		Status            *int      `json:"Status"`
-		Cause             *string   `json:"Cause"`
-		Description       *string   `json:"Description"`
-		StartTime         *string   `json:"StartTime"`
-		ScalingActivityId *string   `json:"ScalingActivityId"`
-		EndTime           *string   `json:"EndTime"`
-		Type              *int      `json:"Type"`
-		SuccInsList       []*string `json:"SuccInsList"`
-		FailInsList       []*string `json:"FailInsList"`
-		ErrorCode         *int      `json:"ErrorCode"`
+		ScalingGroupId    *string `json:"ScalingGroupId" name:"ScalingGroupId"`
+		Status            *int    `json:"Status" name:"Status"`
+		Cause             *string `json:"Cause" name:"Cause"`
+		Description       *string `json:"Description" name:"Description"`
+		StartTime         *string `json:"StartTime" name:"StartTime"`
+		ScalingActivityId *string `json:"ScalingActivityId" name:"ScalingActivityId"`
+		EndTime           *string `json:"EndTime" name:"EndTime"`
+		Type              *int    `json:"Type" name:"Type"`
+		SuccInsList       []struct {
+		} `json:"SuccInsList" name:"SuccInsList"`
+		FailInsList []struct {
+		} `json:"FailInsList" name:"FailInsList"`
+		ErrorCode *int `json:"ErrorCode" name:"ErrorCode"`
 	} `json:"ScalingActivitySet"`
 }
 
@@ -2219,7 +2208,7 @@ type DeleteScalingGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet struct {
-		ScalingGroupId *string `json:"ScalingGroupId"`
+		ScalingGroupId *string `json:"ScalingGroupId" name:"ScalingGroupId"`
 	} `json:"ReturnSet"`
 }
 
@@ -2257,7 +2246,7 @@ type DisableScalingGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet struct {
-		ScalingGroupId *string `json:"ScalingGroupId"`
+		ScalingGroupId *string `json:"ScalingGroupId" name:"ScalingGroupId"`
 	} `json:"ReturnSet"`
 }
 
@@ -2295,7 +2284,7 @@ type EnableScalingGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet struct {
-		ScalingGroupId *string `json:"ScalingGroupId"`
+		ScalingGroupId *string `json:"ScalingGroupId" name:"ScalingGroupId"`
 	} `json:"ReturnSet"`
 }
 
@@ -2337,12 +2326,12 @@ type DescribeScalingNotificationResponse struct {
 	RequestId                *string `json:"RequestId" name:"RequestId"`
 	ScalingNotificationCount *int    `json:"ScalingNotificationCount" name:"ScalingNotificationCount"`
 	ScalingNotificationSet   []struct {
-		ScalingNotificationId    *string `json:"ScalingNotificationId"`
-		ScalingGroupId           *string `json:"ScalingGroupId"`
+		ScalingNotificationId    *string `json:"ScalingNotificationId" name:"ScalingNotificationId"`
+		ScalingGroupId           *string `json:"ScalingGroupId" name:"ScalingGroupId"`
 		ScalingNotificationTypes []struct {
-		} `json:"ScalingNotificationTypes"`
-		Description      *string `json:"Description"`
-		AvailabilityZone *string `json:"AvailabilityZone"`
+		} `json:"ScalingNotificationTypes" name:"ScalingNotificationTypes"`
+		Description      *string `json:"Description" name:"Description"`
+		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 	} `json:"ScalingNotificationSet"`
 }
 
@@ -2466,7 +2455,7 @@ type CreateScheduledTaskResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet struct {
-		ScalingScheduleTaskId *string `json:"ScalingScheduleTaskId"`
+		ScalingScheduleTaskId *string `json:"ScalingScheduleTaskId" name:"ScalingScheduleTaskId"`
 	} `json:"ReturnSet"`
 }
 
@@ -2509,20 +2498,20 @@ type DescribeScheduledTaskResponse struct {
 	RequestId              *string `json:"RequestId" name:"RequestId"`
 	ScheduledTaskSize      *int    `json:"ScheduledTaskSize" name:"ScheduledTaskSize"`
 	ScalingScheduleTaskSet []struct {
-		ScalingGroupId           *string `json:"ScalingGroupId"`
-		ScalingScheduledTaskId   *string `json:"ScalingScheduledTaskId"`
-		ScalingScheduledTaskName *string `json:"ScalingScheduledTaskName"`
-		ReadjustMaxSize          *int    `json:"ReadjustMaxSize"`
-		ReadjustMinSize          *int    `json:"ReadjustMinSize"`
-		ReadjustExpectSize       *int    `json:"ReadjustExpectSize"`
-		StartTime                *string `json:"StartTime"`
-		Recurrence               *string `json:"Recurrence"`
-		RepeatUnit               *string `json:"RepeatUnit"`
-		RepeatCycle              *string `json:"RepeatCycle"`
-		CreateTime               *string `json:"CreateTime"`
-		EndTime                  *string `json:"EndTime"`
-		AvailabilityZone         *string `json:"AvailabilityZone"`
-		Description              *string `json:"Description"`
+		ScalingGroupId           *string `json:"ScalingGroupId" name:"ScalingGroupId"`
+		ScalingScheduledTaskId   *string `json:"ScalingScheduledTaskId" name:"ScalingScheduledTaskId"`
+		ScalingScheduledTaskName *string `json:"ScalingScheduledTaskName" name:"ScalingScheduledTaskName"`
+		ReadjustMaxSize          *int    `json:"ReadjustMaxSize" name:"ReadjustMaxSize"`
+		ReadjustMinSize          *int    `json:"ReadjustMinSize" name:"ReadjustMinSize"`
+		ReadjustExpectSize       *int    `json:"ReadjustExpectSize" name:"ReadjustExpectSize"`
+		StartTime                *string `json:"StartTime" name:"StartTime"`
+		Recurrence               *string `json:"Recurrence" name:"Recurrence"`
+		RepeatUnit               *string `json:"RepeatUnit" name:"RepeatUnit"`
+		RepeatCycle              *string `json:"RepeatCycle" name:"RepeatCycle"`
+		CreateTime               *string `json:"CreateTime" name:"CreateTime"`
+		EndTime                  *string `json:"EndTime" name:"EndTime"`
+		AvailabilityZone         *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		Description              *string `json:"Description" name:"Description"`
 	} `json:"ScalingScheduleTaskSet"`
 }
 
@@ -2560,7 +2549,7 @@ type ModifyScheduledTaskResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Return    *bool   `json:"Return" name:"Return"`
 	ReturnSet struct {
-		ScalingScheduleTaskId *string `json:"ScalingScheduleTaskId"`
+		ScalingScheduleTaskId *string `json:"ScalingScheduleTaskId" name:"ScalingScheduleTaskId"`
 	} `json:"ReturnSet"`
 }
 
@@ -2599,8 +2588,8 @@ type DeleteScheduledTaskResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet struct {
-		ScalingScheduleTaskId *string `json:"ScalingScheduleTaskId"`
-		Message               *string `json:"Message"`
+		ScalingScheduleTaskId *string `json:"ScalingScheduleTaskId" name:"ScalingScheduleTaskId"`
+		Message               *string `json:"Message" name:"Message"`
 	} `json:"ReturnSet"`
 }
 
@@ -2643,7 +2632,7 @@ type CreateScalingPolicyResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet struct {
-		ScalingPolicyId *string `json:"ScalingPolicyId"`
+		ScalingPolicyId *string `json:"ScalingPolicyId" name:"ScalingPolicyId"`
 	} `json:"ReturnSet"`
 }
 
@@ -2686,23 +2675,23 @@ type DescribeScalingPolicyResponse struct {
 	RequestId         *string `json:"RequestId" name:"RequestId"`
 	ScalingPolicySize *int    `json:"ScalingPolicySize" name:"ScalingPolicySize"`
 	ScalingPolicySet  []struct {
-		ScalingGroupId    *string `json:"ScalingGroupId"`
-		ScalingPolicyId   *string `json:"ScalingPolicyId"`
-		Description       *string `json:"Description"`
-		ScalingPolicyName *string `json:"ScalingPolicyName"`
-		AdjustmentType    *string `json:"AdjustmentType"`
-		AdjustmentValue   *int    `json:"AdjustmentValue"`
+		ScalingGroupId    *string `json:"ScalingGroupId" name:"ScalingGroupId"`
+		ScalingPolicyId   *string `json:"ScalingPolicyId" name:"ScalingPolicyId"`
+		Description       *string `json:"Description" name:"Description"`
+		ScalingPolicyName *string `json:"ScalingPolicyName" name:"ScalingPolicyName"`
+		AdjustmentType    *string `json:"AdjustmentType" name:"AdjustmentType"`
+		AdjustmentValue   *int    `json:"AdjustmentValue" name:"AdjustmentValue"`
 		Metric            struct {
-			DimensionName      *string `json:"DimensionName"`
-			ComparisonOperator *string `json:"ComparisonOperator"`
-			Threshold          *int    `json:"Threshold"`
-			RepeatTimes        *int    `json:"RepeatTimes"`
-			Period             *int    `json:"Period"`
-			Function           *string `json:"Function"`
-		} `json:"Metric"`
-		CreateTime       *string `json:"CreateTime"`
-		CoolDown         *int    `json:"CoolDown"`
-		AvailabilityZone *string `json:"AvailabilityZone"`
+			DimensionName      *string `json:"DimensionName" name:"DimensionName"`
+			ComparisonOperator *string `json:"ComparisonOperator" name:"ComparisonOperator"`
+			Threshold          *int    `json:"Threshold" name:"Threshold"`
+			RepeatTimes        *int    `json:"RepeatTimes" name:"RepeatTimes"`
+			Period             *int    `json:"Period" name:"Period"`
+			Function           *string `json:"Function" name:"Function"`
+		} `json:"Metric" name:"Metric"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		CoolDown         *int    `json:"CoolDown" name:"CoolDown"`
+		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 	} `json:"ScalingPolicySet"`
 }
 
@@ -2747,7 +2736,7 @@ type ModifyScalingPolicyResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Return    *string `json:"Return" name:"Return"`
 	ReturnSet struct {
-		ScalingPolicyId *string `json:"ScalingPolicyId"`
+		ScalingPolicyId *string `json:"ScalingPolicyId" name:"ScalingPolicyId"`
 	} `json:"ReturnSet"`
 }
 
@@ -2786,7 +2775,7 @@ type DeleteScalingPolicyResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet struct {
-		ScalingPolicyId *string `json:"ScalingPolicyId"`
+		ScalingPolicyId *string `json:"ScalingPolicyId" name:"ScalingPolicyId"`
 	} `json:"ReturnSet"`
 }
 
@@ -2945,7 +2934,7 @@ type DescribeImageSharePermissionResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId          *string `json:"RequestId" name:"RequestId"`
 	SharePermissionSet []struct {
-		AccountId *string `json:"AccountId"`
+		AccountId *string `json:"AccountId" name:"AccountId"`
 	} `json:"SharePermissionSet"`
 }
 
@@ -2981,8 +2970,8 @@ func (r *DescribeRegionsRequest) FromJsonString(s string) error {
 type DescribeRegionsResponse struct {
 	*ksyunhttp.BaseResponse
 	RegionSet []struct {
-		Region     *string `json:"Region"`
-		RegionName *string `json:"RegionName"`
+		Region     *string `json:"Region" name:"Region"`
+		RegionName *string `json:"RegionName" name:"RegionName"`
 	} `json:"RegionSet"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -3023,9 +3012,9 @@ type AttachKeyResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	InstancesSet []struct {
-		InstanceId *string `json:"InstanceId"`
-		Message    *string `json:"Message"`
-		Return     *bool   `json:"Return"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Message    *string `json:"Message" name:"Message"`
+		Return     *bool   `json:"Return" name:"Return"`
 	} `json:"InstancesSet"`
 }
 
@@ -3065,9 +3054,9 @@ type DetachKeyResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	InstancesSet []struct {
-		InstanceId *string `json:"InstanceId"`
-		Message    *string `json:"Message"`
-		Return     *bool   `json:"Return"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Message    *string `json:"Message" name:"Message"`
+		Return     *bool   `json:"Return" name:"Return"`
 	} `json:"InstancesSet"`
 }
 
@@ -3104,8 +3093,8 @@ type DescribeAvailabilityZonesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId           *string `json:"RequestId" name:"RequestId"`
 	AvailabilityZoneSet []struct {
-		AvailabilityZone *string `json:"AvailabilityZone"`
-		Region           *string `json:"Region"`
+		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		Region           *string `json:"Region" name:"Region"`
 	} `json:"AvailabilityZoneSet"`
 }
 
@@ -3143,32 +3132,32 @@ type DescribeInstanceTypeConfigsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId             *string `json:"RequestId" name:"RequestId"`
 	InstanceTypeConfigSet []struct {
-		InstanceType          *string `json:"InstanceType"`
-		InstanceFamily        *string `json:"InstanceFamily"`
-		InstanceFamilyName    *string `json:"InstanceFamilyName"`
-		CPU                   *int    `json:"CPU"`
-		GPU                   *int    `json:"GPU"`
-		Memory                *int    `json:"Memory"`
+		InstanceType          *string `json:"InstanceType" name:"InstanceType"`
+		InstanceFamily        *string `json:"InstanceFamily" name:"InstanceFamily"`
+		InstanceFamilyName    *string `json:"InstanceFamilyName" name:"InstanceFamilyName"`
+		CPU                   *int    `json:"CPU" name:"CPU"`
+		GPU                   *int    `json:"GPU" name:"GPU"`
+		Memory                *int    `json:"Memory" name:"Memory"`
 		NetworkInterfaceQuota struct {
-			NetworkInterfaceCount *int `json:"NetworkInterfaceCount"`
-		} `json:"NetworkInterfaceQuota"`
+			NetworkInterfaceCount *int `json:"NetworkInterfaceCount" name:"NetworkInterfaceCount"`
+		} `json:"NetworkInterfaceQuota" name:"NetworkInterfaceQuota"`
 		PrivateIpQuota struct {
-			PrivateIpCount *int `json:"PrivateIpCount"`
-		} `json:"PrivateIpQuota"`
+			PrivateIpCount *int `json:"PrivateIpCount" name:"PrivateIpCount"`
+		} `json:"PrivateIpQuota" name:"PrivateIpQuota"`
 		AvailabilityZoneSet []struct {
-			AzCode *string `json:"AzCode"`
-		} `json:"AvailabilityZoneSet"`
+			AzCode *string `json:"AzCode" name:"AzCode"`
+		} `json:"AvailabilityZoneSet" name:"AvailabilityZoneSet"`
 		SystemDiskQuotaSet []struct {
-			SystemDiskType *string `json:"SystemDiskType"`
-		} `json:"SystemDiskQuotaSet"`
+			SystemDiskType *string `json:"SystemDiskType" name:"SystemDiskType"`
+		} `json:"SystemDiskQuotaSet" name:"SystemDiskQuotaSet"`
 		DataDiskQuotaSet []struct {
-			DataDiskType        *string `json:"DataDiskType"`
-			DataDiskCount       *int    `json:"DataDiskCount"`
+			DataDiskType        *string `json:"DataDiskType" name:"DataDiskType"`
+			DataDiskCount       *int    `json:"DataDiskCount" name:"DataDiskCount"`
 			AvailabilityZoneSet []struct {
-				AzCode    *string `json:"AzCode"`
-				IsSellOut *bool   `json:"IsSellOut"`
+				AzCode    *string `json:"AzCode" name:"AzCode"`
+				IsSellOut *bool   `json:"IsSellOut" name:"IsSellOut"`
 			} `json:"AvailabilityZoneSet"`
-		} `json:"DataDiskQuotaSet"`
+		} `json:"DataDiskQuotaSet" name:"DataDiskQuotaSet"`
 	} `json:"InstanceTypeConfigSet"`
 }
 
@@ -3206,10 +3195,10 @@ type DescribeInstanceFamilysResponse struct {
 	RequestId         *string `json:"RequestId" name:"RequestId"`
 	InstanceFamilySet []struct {
 		AvailabilityZoneSet []struct {
-			AzCode *string `json:"AzCode"`
-		} `json:"AvailabilityZoneSet"`
-		InstanceFamilyName *string `json:"InstanceFamilyName"`
-		InstanceFamily     *string `json:"InstanceFamily"`
+			AzCode *string `json:"AzCode" name:"AzCode"`
+		} `json:"AvailabilityZoneSet" name:"AvailabilityZoneSet"`
+		InstanceFamilyName *string `json:"InstanceFamilyName" name:"InstanceFamilyName"`
+		InstanceFamily     *string `json:"InstanceFamily" name:"InstanceFamily"`
 	} `json:"InstanceFamilySet"`
 }
 
@@ -3247,9 +3236,9 @@ func (r *AddVmIntoDataGuardRequest) FromJsonString(s string) error {
 type AddVmIntoDataGuardResponse struct {
 	*ksyunhttp.BaseResponse
 	DataGuardResult struct {
-		Flag       *bool   `json:"Flag"`
-		InstanceId *string `json:"InstanceId"`
-		Message    *string `json:"Message"`
+		Flag       *bool   `json:"Flag" name:"Flag"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Message    *string `json:"Message" name:"Message"`
 	} `json:"DataGuardResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Return    *bool   `json:"Return" name:"Return"`
@@ -3293,8 +3282,8 @@ func (r *CreateFileSystemRequest) FromJsonString(s string) error {
 type CreateFileSystemResponse struct {
 	*ksyunhttp.BaseResponse
 	CreateFileSystemResponse struct {
-		RequestId    *string `json:"RequestId"`
-		FileSystemId *string `json:"FileSystemId"`
+		RequestId    *string `json:"RequestId" name:"RequestId"`
+		FileSystemId *string `json:"FileSystemId" name:"FileSystemId"`
 	} `json:"CreateFileSystemResponse"`
 }
 
@@ -3331,8 +3320,8 @@ func (r *DeleteFileSystemRequest) FromJsonString(s string) error {
 type DeleteFileSystemResponse struct {
 	*ksyunhttp.BaseResponse
 	DeleteFileSystemResponse struct {
-		RequestId *string `json:"RequestId"`
-		Return    *string `json:"Return"`
+		RequestId *string `json:"RequestId" name:"RequestId"`
+		Return    *string `json:"Return" name:"Return"`
 	} `json:"DeleteFileSystemResponse"`
 }
 
@@ -3377,24 +3366,24 @@ type DescribeFileSystemsResponse struct {
 	Marker          *int    `json:"Marker" name:"Marker"`
 	FileSystemCount *int    `json:"FileSystemCount" name:"FileSystemCount"`
 	FileSystems     []struct {
-		FileSystemId         *string `json:"FileSystemId"`
-		FileSystemName       *string `json:"FileSystemName"`
-		AvailabilityZone     *string `json:"AvailabilityZone"`
-		AvailabilityZoneName *string `json:"AvailabilityZoneName"`
-		StorageType          *string `json:"StorageType"`
-		ProtocolType         *string `json:"ProtocolType"`
-		VpcId                *string `json:"VpcId"`
-		FileSystemState      *string `json:"FileSystemState"`
-		CreationDate         *string `json:"CreationDate"`
+		FileSystemId         *string `json:"FileSystemId" name:"FileSystemId"`
+		FileSystemName       *string `json:"FileSystemName" name:"FileSystemName"`
+		AvailabilityZone     *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		AvailabilityZoneName *string `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
+		StorageType          *string `json:"StorageType" name:"StorageType"`
+		ProtocolType         *string `json:"ProtocolType" name:"ProtocolType"`
+		VpcId                *string `json:"VpcId" name:"VpcId"`
+		FileSystemState      *string `json:"FileSystemState" name:"FileSystemState"`
+		CreationDate         *string `json:"CreationDate" name:"CreationDate"`
 		MountTargets         []struct {
-			MountTargetId    *string `json:"MountTargetId"`
-			SubnetId         *string `json:"SubnetId"`
-			IpAddress        *string `json:"IpAddress"`
-			MountTargetState *string `json:"MountTargetState"`
-			CreationDate     *string `json:"CreationDate"`
-		} `json:"MountTargets"`
-		Size     *int `json:"Size"`
-		UsedSize *int `json:"UsedSize"`
+			MountTargetId    *string `json:"MountTargetId" name:"MountTargetId"`
+			SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+			IpAddress        *string `json:"IpAddress" name:"IpAddress"`
+			MountTargetState *string `json:"MountTargetState" name:"MountTargetState"`
+			CreationDate     *string `json:"CreationDate" name:"CreationDate"`
+		} `json:"MountTargets" name:"MountTargets"`
+		Size     *int `json:"Size" name:"Size"`
+		UsedSize *int `json:"UsedSize" name:"UsedSize"`
 	} `json:"FileSystems"`
 }
 
@@ -3432,8 +3421,8 @@ func (r *ModifyFileSystemRequest) FromJsonString(s string) error {
 type ModifyFileSystemResponse struct {
 	*ksyunhttp.BaseResponse
 	ModifyFileSystemResponse struct {
-		RequestId *string `json:"RequestId"`
-		Return    *string `json:"Return"`
+		RequestId *string `json:"RequestId" name:"RequestId"`
+		Return    *string `json:"Return" name:"Return"`
 	} `json:"ModifyFileSystemResponse"`
 }
 
@@ -3472,9 +3461,9 @@ func (r *CreateMountTargetRequest) FromJsonString(s string) error {
 type CreateMountTargetResponse struct {
 	*ksyunhttp.BaseResponse
 	CreateMountTargetResponse struct {
-		RequestId     *string `json:"RequestId"`
-		MountTargetId *string `json:"MountTargetId"`
-		IpAddress     *string `json:"IpAddress"`
+		RequestId     *string `json:"RequestId" name:"RequestId"`
+		MountTargetId *string `json:"MountTargetId" name:"MountTargetId"`
+		IpAddress     *string `json:"IpAddress" name:"IpAddress"`
 	} `json:"CreateMountTargetResponse"`
 }
 
@@ -3511,8 +3500,8 @@ func (r *DeleteMountTargetRequest) FromJsonString(s string) error {
 type DeleteMountTargetResponse struct {
 	*ksyunhttp.BaseResponse
 	DeleteMountTargetResponse struct {
-		RequestId *string `json:"RequestId"`
-		Return    *string `json:"Return"`
+		RequestId *string `json:"RequestId" name:"RequestId"`
+		Return    *string `json:"Return" name:"Return"`
 	} `json:"DeleteMountTargetResponse"`
 }
 
@@ -3552,18 +3541,18 @@ func (r *DescribeMountTargetsRequest) FromJsonString(s string) error {
 type DescribeMountTargetsResponse struct {
 	*ksyunhttp.BaseResponse
 	DescribeMountTargetsResponse struct {
-		RequestId       *string `json:"RequestId"`
-		Marker          *string `json:"Marker"`
-		FileSystemCount *string `json:"FileSystemCount"`
+		RequestId       *string `json:"RequestId" name:"RequestId"`
+		Marker          *string `json:"Marker" name:"Marker"`
+		FileSystemCount *string `json:"FileSystemCount" name:"FileSystemCount"`
 		MountTargets    struct {
 			Item struct {
-				MountTargetId    *string `json:"MountTargetId"`
-				SubnetId         *string `json:"SubnetId"`
-				IpAddress        *string `json:"IpAddress"`
-				MountTargetState *string `json:"MountTargetState"`
-				CreationDate     *string `json:"CreationDate"`
+				MountTargetId    *string `json:"MountTargetId" name:"MountTargetId"`
+				SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+				IpAddress        *string `json:"IpAddress" name:"IpAddress"`
+				MountTargetState *string `json:"MountTargetState" name:"MountTargetState"`
+				CreationDate     *string `json:"CreationDate" name:"CreationDate"`
 			} `json:"Item"`
-		} `json:"MountTargets"`
+		} `json:"MountTargets" name:"MountTargets"`
 	} `json:"DescribeMountTargetsResponse"`
 }
 
@@ -3713,27 +3702,27 @@ type DescribeModelsResponse struct {
 	RequestId     *string `json:"RequestId" name:"RequestId"`
 	InstanceCount *int    `json:"InstanceCount" name:"InstanceCount"`
 	ModelSet      []struct {
-		ModelName            *string `json:"ModelName"`
-		AvailabilityZone     *string `json:"AvailabilityZone"`
-		AvailabilityZoneName *string `json:"AvailabilityZoneName"`
-		CreateTime           *string `json:"CreateTime"`
-		ModelId              *string `json:"ModelId"`
-		ModifiedTime         *string `json:"ModifiedTime"`
-		ImageId              *string `json:"ImageId"`
-		InstanceType         *string `json:"InstanceType"`
-		SubnetId             *string `json:"SubnetId"`
-		ChargeType           *string `json:"ChargeType"`
-		PurchaseTime         *string `json:"PurchaseTime"`
-		SecurityGroupId      *string `json:"SecurityGroupId"`
-		InstanceName         *string `json:"InstanceName"`
-		SriovNetSupport      *string `json:"SriovNetSupport"`
-		KeepImageLogin       *string `json:"KeepImageLogin"`
+		ModelName            *string `json:"ModelName" name:"ModelName"`
+		AvailabilityZone     *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		AvailabilityZoneName *string `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
+		CreateTime           *string `json:"CreateTime" name:"CreateTime"`
+		ModelId              *string `json:"ModelId" name:"ModelId"`
+		ModifiedTime         *string `json:"ModifiedTime" name:"ModifiedTime"`
+		ImageId              *string `json:"ImageId" name:"ImageId"`
+		InstanceType         *string `json:"InstanceType" name:"InstanceType"`
+		SubnetId             *string `json:"SubnetId" name:"SubnetId"`
+		ChargeType           *string `json:"ChargeType" name:"ChargeType"`
+		PurchaseTime         *string `json:"PurchaseTime" name:"PurchaseTime"`
+		SecurityGroupId      *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		InstanceName         *string `json:"InstanceName" name:"InstanceName"`
+		SriovNetSupport      *string `json:"SriovNetSupport" name:"SriovNetSupport"`
+		KeepImageLogin       *string `json:"KeepImageLogin" name:"KeepImageLogin"`
 		SystemDisk           struct {
-			DiskType *string `json:"DiskType"`
-			DiskSize *string `json:"DiskSize"`
-		} `json:"SystemDisk"`
-		FailureAutoDelete *bool `json:"FailureAutoDelete"`
-		SyncTag           *bool `json:"SyncTag"`
+			DiskType *string `json:"DiskType" name:"DiskType"`
+			DiskSize *string `json:"DiskSize" name:"DiskSize"`
+		} `json:"SystemDisk" name:"SystemDisk"`
+		FailureAutoDelete *bool `json:"FailureAutoDelete" name:"FailureAutoDelete"`
+		SyncTag           *bool `json:"SyncTag" name:"SyncTag"`
 	} `json:"ModelSet"`
 }
 
@@ -3771,16 +3760,16 @@ type DescribeDedicatedClusterResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId            *string `json:"RequestId" name:"RequestId"`
 	DedicatedClustersSet struct {
-		DedicatedClusterId   *string `json:"DedicatedClusterId"`
-		DedicatedClusterName *string `json:"DedicatedClusterName"`
-		CreationDate         *string `json:"CreationDate"`
-		AvailabilityZone     *string `json:"AvailabilityZone"`
-		AvailabilityZoneName *string `json:"AvailabilityZoneName"`
-		Model                *string `json:"Model"`
+		DedicatedClusterId   *string `json:"DedicatedClusterId" name:"DedicatedClusterId"`
+		DedicatedClusterName *string `json:"DedicatedClusterName" name:"DedicatedClusterName"`
+		CreationDate         *string `json:"CreationDate" name:"CreationDate"`
+		AvailabilityZone     *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		AvailabilityZoneName *string `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
+		Model                *string `json:"Model" name:"Model"`
 		DedicatedHostsSet    []struct {
-			DedicatedHostId   *string `json:"DedicatedHostId"`
-			DedicatedHostName *string `json:"DedicatedHostName"`
-		} `json:"DedicatedHostsSet"`
+			DedicatedHostId   *string `json:"DedicatedHostId" name:"DedicatedHostId"`
+			DedicatedHostName *string `json:"DedicatedHostName" name:"DedicatedHostName"`
+		} `json:"DedicatedHostsSet" name:"DedicatedHostsSet"`
 	} `json:"DedicatedClustersSet"`
 }
 
@@ -3855,9 +3844,9 @@ func (r *DeleteDedicatedClusterRequest) FromJsonString(s string) error {
 type DeleteDedicatedClusterResponse struct {
 	*ksyunhttp.BaseResponse
 	DedicatedClustersSet []struct {
-		DedicatedClusterId *string `json:"DedicatedClusterId"`
-		Return             *string `json:"Return"`
-		Message            *string `json:"Message"`
+		DedicatedClusterId *string `json:"DedicatedClusterId" name:"DedicatedClusterId"`
+		Return             *string `json:"Return" name:"Return"`
+		Message            *string `json:"Message" name:"Message"`
 	} `json:"DedicatedClustersSet"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -3896,9 +3885,9 @@ func (r *SetvCPURequest) FromJsonString(s string) error {
 type SetvCPUResponse struct {
 	*ksyunhttp.BaseResponse
 	ReturnSet []struct {
-		DedicatedHostId *string `json:"DedicatedHostId"`
-		Return          *string `json:"Return"`
-		Message         *string `json:"Message"`
+		DedicatedHostId *string `json:"DedicatedHostId" name:"DedicatedHostId"`
+		Return          *string `json:"Return" name:"Return"`
+		Message         *string `json:"Message" name:"Message"`
 	} `json:"ReturnSet"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -3937,9 +3926,9 @@ func (r *DedicatedHostMigrateRequest) FromJsonString(s string) error {
 type DedicatedHostMigrateResponse struct {
 	*ksyunhttp.BaseResponse
 	ReturnSet []struct {
-		DedicatedHostId *string `json:"DedicatedHostId"`
-		Return          *string `json:"Return"`
-		Message         *string `json:"Message"`
+		DedicatedHostId *string `json:"DedicatedHostId" name:"DedicatedHostId"`
+		Return          *string `json:"Return" name:"Return"`
+		Message         *string `json:"Message" name:"Message"`
 	} `json:"ReturnSet"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -4159,7 +4148,7 @@ type DescribeSpotPriceHistoryResponse struct {
 	InstanceType     *string `json:"InstanceType" name:"InstanceType"`
 	AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 	SpotPrices       []struct {
-		Timestamp *string `json:"Timestamp"`
+		Timestamp *string `json:"Timestamp" name:"Timestamp"`
 	} `json:"SpotPrices"`
 }
 
@@ -4206,11 +4195,11 @@ type DescribePriceResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	PriceInfo struct {
 		InstancePrice struct {
-			PriceUnit *string `json:"PriceUnit"`
-		} `json:"InstancePrice"`
+			PriceUnit *string `json:"PriceUnit" name:"PriceUnit"`
+		} `json:"InstancePrice" name:"InstancePrice"`
 		EBSPrice struct {
-			PriceUnit *string `json:"PriceUnit"`
-		} `json:"EBSPrice"`
+			PriceUnit *string `json:"PriceUnit" name:"PriceUnit"`
+		} `json:"EBSPrice" name:"EBSPrice"`
 	} `json:"PriceInfo"`
 }
 
@@ -4320,8 +4309,8 @@ func (r *ModifyLoadBalancersRequest) FromJsonString(s string) error {
 type ModifyLoadBalancersResponse struct {
 	*ksyunhttp.BaseResponse
 	ModifyLoadBalancersResponse struct {
-		Request_id *string `json:"Request_id"`
-		Return     *string `json:"Return"`
+		RequestId *string `json:"RequestId" name:"RequestId"`
+		Return    *string `json:"Return" name:"Return"`
 	} `json:"ModifyLoadBalancersResponse"`
 }
 
@@ -4363,8 +4352,8 @@ type AttachInstancesIamRoleResponse struct {
 	TotalCount  *int    `json:"TotalCount" name:"TotalCount"`
 	IamRoleName *string `json:"IamRoleName" name:"IamRoleName"`
 	Results     struct {
-		InstanceId *string `json:"InstanceId"`
-		Result     *string `json:"Result"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Result     *string `json:"Result" name:"Result"`
 	} `json:"Results"`
 }
 
@@ -4404,8 +4393,8 @@ type DetachInstancesIamRoleResponse struct {
 	FailCount  *int    `json:"FailCount" name:"FailCount"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	Results    struct {
-		InstanceId *string `json:"InstanceId"`
-		Result     *bool   `json:"Result"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Result     *bool   `json:"Result" name:"Result"`
 	} `json:"Results"`
 }
 
@@ -4557,12 +4546,12 @@ func (r *GetVNCAddressRequest) FromJsonString(s string) error {
 type GetVNCAddressResponse struct {
 	*ksyunhttp.BaseResponse
 	VNCAddress struct {
-		Port *string `json:"Port"`
-		Host *string `json:"Host"`
+		Port *string `json:"Port" name:"Port"`
+		Host *string `json:"Host" name:"Host"`
 	} `json:"VNCAddress"`
 	Cookies []struct {
-		CookieKey   *string `json:"CookieKey"`
-		CookieValue *string `json:"CookieValue"`
+		CookieKey   *string `json:"CookieKey" name:"CookieKey"`
+		CookieValue *string `json:"CookieValue" name:"CookieValue"`
 	} `json:"Cookies"`
 	Domain    *string `json:"Domain" name:"Domain"`
 	VNCPort   *string `json:"VNCPort" name:"VNCPort"`
@@ -4603,9 +4592,9 @@ type SwitchImageTypeResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId           *string `json:"RequestId" name:"RequestId"`
 	ImageErrorResponses []struct {
-		Result  *bool   `json:"Result"`
-		Reason  *string `json:"Reason"`
-		ImageId *string `json:"ImageId"`
+		Result  *bool   `json:"Result" name:"Result"`
+		Reason  *string `json:"Reason" name:"Reason"`
+		ImageId *string `json:"ImageId" name:"ImageId"`
 	} `json:"ImageErrorResponses"`
 }
 

@@ -88,39 +88,6 @@ func (c *Client) DescribeContainerGroupWithContext(ctx context.Context, request 
 	}
 	return msg
 }
-func NewDescribeContainerGroupListRequest() (request *DescribeContainerGroupListRequest) {
-	request = &DescribeContainerGroupListRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("kci", APIVersion, "DescribeContainerGroupList")
-	return
-}
-
-func NewDescribeContainerGroupListResponse() (response *DescribeContainerGroupListResponse) {
-	response = &DescribeContainerGroupListResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) DescribeContainerGroupList(request *DescribeContainerGroupListRequest) string {
-	return c.DescribeContainerGroupListWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeContainerGroupListWithContext(ctx context.Context, request *DescribeContainerGroupListRequest) string {
-	if request == nil {
-		request = NewDescribeContainerGroupListRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeContainerGroupListResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
 func NewDeleteContainerGroupRequest() (request *DeleteContainerGroupRequest) {
 	request = &DeleteContainerGroupRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -511,6 +478,39 @@ func (c *Client) DescribeImageCacheEventWithContext(ctx context.Context, request
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeImageCacheEventResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewUpdateImageCacheRequest() (request *UpdateImageCacheRequest) {
+	request = &UpdateImageCacheRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kci", APIVersion, "UpdateImageCache")
+	return
+}
+
+func NewUpdateImageCacheResponse() (response *UpdateImageCacheResponse) {
+	response = &UpdateImageCacheResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateImageCache(request *UpdateImageCacheRequest) string {
+	return c.UpdateImageCacheWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateImageCacheWithContext(ctx context.Context, request *UpdateImageCacheRequest) string {
+	if request == nil {
+		request = NewUpdateImageCacheRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateImageCacheResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)

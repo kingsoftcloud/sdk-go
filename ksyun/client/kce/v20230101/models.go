@@ -42,29 +42,29 @@ type DescribeEventLogsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		ClusterId  *string `json:"ClusterId"`
-		MaxResults *int    `json:"MaxResults"`
-		TotalCount *int    `json:"TotalCount"`
+		ClusterId  *string `json:"ClusterId" name:"ClusterId"`
+		MaxResults *int    `json:"MaxResults" name:"MaxResults"`
+		TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 		EventLogs  struct {
 			RuntimeInfo struct {
-				RuntimeName *string `json:"RuntimeName"`
-				RuntimeIP   *string `json:"RuntimeIP"`
-				NodeIP      *string `json:"NodeIP"`
+				RuntimeName *string `json:"RuntimeName" name:"RuntimeName"`
+				RuntimeIP   *string `json:"RuntimeIP" name:"RuntimeIP"`
+				NodeIP      *string `json:"NodeIP" name:"NodeIP"`
 			} `json:"RuntimeInfo"`
 			UserInfo struct {
-				AccountId *string `json:"AccountId"`
-				Region    *string `json:"Region"`
+				AccountId *string `json:"AccountId" name:"AccountId"`
+				Region    *string `json:"Region" name:"Region"`
 			} `json:"UserInfo"`
 			EventInfo struct {
-				EventId     *string `json:"EventId"`
-				ClusterId   *string `json:"ClusterId"`
-				EventType   *string `json:"EventType"`
-				Level       *string `json:"Level"`
-				CreatedTime *string `json:"CreatedTime"`
-				Content     *string `json:"Content"`
-				Category    *int    `json:"Category"`
+				EventId     *string `json:"EventId" name:"EventId"`
+				ClusterId   *string `json:"ClusterId" name:"ClusterId"`
+				EventType   *string `json:"EventType" name:"EventType"`
+				Level       *string `json:"Level" name:"Level"`
+				CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+				Content     *string `json:"Content" name:"Content"`
+				Category    *int    `json:"Category" name:"Category"`
 			} `json:"EventInfo"`
-		} `json:"EventLogs"`
+		} `json:"EventLogs" name:"EventLogs"`
 	} `json:"Data"`
 }
 
@@ -101,9 +101,9 @@ type CreateAddonInstanceResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		ClusterId   *string `json:"ClusterId"`
+		ClusterId   *string `json:"ClusterId" name:"ClusterId"`
 		InstanceIds []struct {
-		} `json:"InstanceIds"`
+		} `json:"InstanceIds" name:"InstanceIds"`
 	} `json:"Data"`
 }
 
@@ -187,15 +187,15 @@ type DescribeAddonInstancesResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
 		Addons []struct {
-			ClusterId   *string `json:"ClusterId"`
-			AddonId     *string `json:"AddonId"`
-			InstanceId  *string `json:"InstanceId"`
-			Type        *string `json:"Type"`
-			ToDelete    *bool   `json:"ToDelete"`
-			Phase       *string `json:"Phase"`
-			CreatedTime *string `json:"CreatedTime"`
-			UpdatedTime *string `json:"UpdatedTime"`
-		} `json:"Addons"`
+			ClusterId   *string `json:"ClusterId" name:"ClusterId"`
+			AddonId     *string `json:"AddonId" name:"AddonId"`
+			InstanceId  *string `json:"InstanceId" name:"InstanceId"`
+			Type        *string `json:"Type" name:"Type"`
+			ToDelete    *bool   `json:"ToDelete" name:"ToDelete"`
+			Phase       *string `json:"Phase" name:"Phase"`
+			CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+			UpdatedTime *string `json:"UpdatedTime" name:"UpdatedTime"`
+		} `json:"Addons" name:"Addons"`
 	} `json:"Data"`
 	Args struct {
 	} `json:"Args"`
@@ -239,18 +239,18 @@ type DescribeAddonListResponse struct {
 	Data      struct {
 		AddonList []struct {
 			CompatibleK8SVersion struct {
-				Max            *string `json:"Max"`
-				Min            *string `json:"Min"`
-				DescriptionCn  *string `json:"DescriptionCn"`
-				Description    *string `json:"Description"`
-				Category       *string `json:"Category"`
-				SubCategory    *string `json:"SubCategory"`
-				AddonId        *string `json:"AddonId"`
-				AddonVersion   *string `json:"AddonVersion"`
-				Name           *string `json:"Name"`
-				DefaultInstall *bool   `json:"DefaultInstall"`
+				Max            *string `json:"Max" name:"Max"`
+				Min            *string `json:"Min" name:"Min"`
+				DescriptionCn  *string `json:"DescriptionCn" name:"DescriptionCn"`
+				Description    *string `json:"Description" name:"Description"`
+				Category       *string `json:"Category" name:"Category"`
+				SubCategory    *string `json:"SubCategory" name:"SubCategory"`
+				AddonId        *string `json:"AddonId" name:"AddonId"`
+				AddonVersion   *string `json:"AddonVersion" name:"AddonVersion"`
+				Name           *string `json:"Name" name:"Name"`
+				DefaultInstall *bool   `json:"DefaultInstall" name:"DefaultInstall"`
 			} `json:"CompatibleK8SVersion"`
-		} `json:"AddonList"`
+		} `json:"AddonList" name:"AddonList"`
 	} `json:"Data"`
 }
 
@@ -291,12 +291,12 @@ type DescribeComponentParamsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequeestId *string `json:"RequeestId" name:"RequeestId"`
 	Data       struct {
-		ClusterId *string `json:"ClusterId"`
+		ClusterId *string `json:"ClusterId" name:"ClusterId"`
 	} `json:"Data"`
 	Components []struct {
-		Type    *string `json:"Type"`
-		Version *string `json:"Version"`
-		Args    *string `json:"Args"`
+		Type    *string `json:"Type" name:"Type"`
+		Version *string `json:"Version" name:"Version"`
+		Args    *string `json:"Args" name:"Args"`
 	} `json:"Components"`
 }
 
@@ -336,25 +336,25 @@ type DescribeNetworkResponse struct {
 	ClusterId *string `json:"ClusterId" name:"ClusterId"`
 	NetworkId *string `json:"NetworkId" name:"NetworkId"`
 	PublicSLB struct {
-		Phase  *string `json:"Phase"`
-		Reason *string `json:"Reason"`
+		Phase  *string `json:"Phase" name:"Phase"`
+		Reason *string `json:"Reason" name:"Reason"`
 	} `json:"PublicSLB"`
 	PrivateSLB struct {
-		SLBId  *string `json:"SLBId"`
-		SLBIp  *string `json:"SLBIp"`
-		Phase  *string `json:"Phase"`
-		Reason *string `json:"Reason"`
+		SLBId  *string `json:"SLBId" name:"SLBId"`
+		SLBIp  *string `json:"SLBIp" name:"SLBIp"`
+		Phase  *string `json:"Phase" name:"Phase"`
+		Reason *string `json:"Reason" name:"Reason"`
 	} `json:"PrivateSLB"`
 	PrivateLink struct {
-		LinkIp   *string `json:"LinkIp"`
-		LinkPort *string `json:"LinkPort"`
-		Phase    *string `json:"Phase"`
-		Reason   *string `json:"Reason"`
+		LinkIp   *string `json:"LinkIp" name:"LinkIp"`
+		LinkPort *string `json:"LinkPort" name:"LinkPort"`
+		Phase    *string `json:"Phase" name:"Phase"`
+		Reason   *string `json:"Reason" name:"Reason"`
 	} `json:"PrivateLink"`
 	EIP struct {
-		EIPId  *string `json:"EIPId"`
-		Phase  *string `json:"Phase"`
-		Reason *string `json:"Reason"`
+		EIPId  *string `json:"EIPId" name:"EIPId"`
+		Phase  *string `json:"Phase" name:"Phase"`
+		Reason *string `json:"Reason" name:"Reason"`
 	} `json:"EIP"`
 	PublicAccess *bool   `json:"PublicAccess" name:"PublicAccess"`
 	CreatedTime  *string `json:"CreatedTime" name:"CreatedTime"`
@@ -400,15 +400,15 @@ type DescribeNodeComponentsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		ClusterId      *string `json:"ClusterId"`
+		ClusterId      *string `json:"ClusterId" name:"ClusterId"`
 		NodeComponents []struct {
-			NodeId          *string `json:"NodeId"`
+			NodeId          *string `json:"NodeId" name:"NodeId"`
 			ComponentStatus []struct {
-				Type        *string `json:"Type"`
-				CurVersion  *string `json:"CurVersion"`
-				SpecVersion *string `json:"SpecVersion"`
+				Type        *string `json:"Type" name:"Type"`
+				CurVersion  *string `json:"CurVersion" name:"CurVersion"`
+				SpecVersion *string `json:"SpecVersion" name:"SpecVersion"`
 			} `json:"ComponentStatus"`
-		} `json:"NodeComponents"`
+		} `json:"NodeComponents" name:"NodeComponents"`
 	} `json:"Data"`
 }
 

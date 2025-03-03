@@ -946,3 +946,267 @@ func (c *Client) ResetDBParameterWithContext(ctx context.Context, request *Reset
 	}
 	return msg
 }
+func NewDescribeBucketsRequest() (request *DescribeBucketsRequest) {
+	request = &DescribeBucketsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeBuckets")
+	return
+}
+
+func NewDescribeBucketsResponse() (response *DescribeBucketsResponse) {
+	response = &DescribeBucketsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeBuckets(request *DescribeBucketsRequest) string {
+	return c.DescribeBucketsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeBucketsWithContext(ctx context.Context, request *DescribeBucketsRequest) string {
+	if request == nil {
+		request = NewDescribeBucketsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeBucketsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewOperateHotAndColdSeparationRequest() (request *OperateHotAndColdSeparationRequest) {
+	request = &OperateHotAndColdSeparationRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("clickhouse", APIVersion, "OperateHotAndColdSeparation")
+	return
+}
+
+func NewOperateHotAndColdSeparationResponse() (response *OperateHotAndColdSeparationResponse) {
+	response = &OperateHotAndColdSeparationResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) OperateHotAndColdSeparation(request *OperateHotAndColdSeparationRequest) string {
+	return c.OperateHotAndColdSeparationWithContext(context.Background(), request)
+}
+
+func (c *Client) OperateHotAndColdSeparationWithContext(ctx context.Context, request *OperateHotAndColdSeparationRequest) string {
+	if request == nil {
+		request = NewOperateHotAndColdSeparationRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewOperateHotAndColdSeparationResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCreateInstanceAccountRequest() (request *CreateInstanceAccountRequest) {
+	request = &CreateInstanceAccountRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("clickhouse", APIVersion, "CreateInstanceAccount")
+	return
+}
+
+func NewCreateInstanceAccountResponse() (response *CreateInstanceAccountResponse) {
+	response = &CreateInstanceAccountResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateInstanceAccount(request *CreateInstanceAccountRequest) string {
+	return c.CreateInstanceAccountWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateInstanceAccountWithContext(ctx context.Context, request *CreateInstanceAccountRequest) string {
+	if request == nil {
+		request = NewCreateInstanceAccountRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateInstanceAccountResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyInstanceAccountPrivilegesRequest() (request *ModifyInstanceAccountPrivilegesRequest) {
+	request = &ModifyInstanceAccountPrivilegesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("clickhouse", APIVersion, "ModifyInstanceAccountPrivileges")
+	return
+}
+
+func NewModifyInstanceAccountPrivilegesResponse() (response *ModifyInstanceAccountPrivilegesResponse) {
+	response = &ModifyInstanceAccountPrivilegesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyInstanceAccountPrivileges(request *ModifyInstanceAccountPrivilegesRequest) string {
+	return c.ModifyInstanceAccountPrivilegesWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyInstanceAccountPrivilegesWithContext(ctx context.Context, request *ModifyInstanceAccountPrivilegesRequest) string {
+	if request == nil {
+		request = NewModifyInstanceAccountPrivilegesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyInstanceAccountPrivilegesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeleteInstanceAccountRequest() (request *DeleteInstanceAccountRequest) {
+	request = &DeleteInstanceAccountRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("clickhouse", APIVersion, "DeleteInstanceAccount")
+	return
+}
+
+func NewDeleteInstanceAccountResponse() (response *DeleteInstanceAccountResponse) {
+	response = &DeleteInstanceAccountResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteInstanceAccount(request *DeleteInstanceAccountRequest) string {
+	return c.DeleteInstanceAccountWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteInstanceAccountWithContext(ctx context.Context, request *DeleteInstanceAccountRequest) string {
+	if request == nil {
+		request = NewDeleteInstanceAccountRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteInstanceAccountResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeInstanceAccountsRequest() (request *DescribeInstanceAccountsRequest) {
+	request = &DescribeInstanceAccountsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeInstanceAccounts")
+	return
+}
+
+func NewDescribeInstanceAccountsResponse() (response *DescribeInstanceAccountsResponse) {
+	response = &DescribeInstanceAccountsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeInstanceAccounts(request *DescribeInstanceAccountsRequest) string {
+	return c.DescribeInstanceAccountsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeInstanceAccountsWithContext(ctx context.Context, request *DescribeInstanceAccountsRequest) string {
+	if request == nil {
+		request = NewDescribeInstanceAccountsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeInstanceAccountsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeInstanceDatabasesRequest() (request *DescribeInstanceDatabasesRequest) {
+	request = &DescribeInstanceDatabasesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeInstanceDatabases")
+	return
+}
+
+func NewDescribeInstanceDatabasesResponse() (response *DescribeInstanceDatabasesResponse) {
+	response = &DescribeInstanceDatabasesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeInstanceDatabases(request *DescribeInstanceDatabasesRequest) string {
+	return c.DescribeInstanceDatabasesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeInstanceDatabasesWithContext(ctx context.Context, request *DescribeInstanceDatabasesRequest) string {
+	if request == nil {
+		request = NewDescribeInstanceDatabasesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeInstanceDatabasesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyInstanceAccountInfoRequest() (request *ModifyInstanceAccountInfoRequest) {
+	request = &ModifyInstanceAccountInfoRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("clickhouse", APIVersion, "ModifyInstanceAccountInfo")
+	return
+}
+
+func NewModifyInstanceAccountInfoResponse() (response *ModifyInstanceAccountInfoResponse) {
+	response = &ModifyInstanceAccountInfoResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyInstanceAccountInfo(request *ModifyInstanceAccountInfoRequest) string {
+	return c.ModifyInstanceAccountInfoWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyInstanceAccountInfoWithContext(ctx context.Context, request *ModifyInstanceAccountInfoRequest) string {
+	if request == nil {
+		request = NewModifyInstanceAccountInfoRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyInstanceAccountInfoResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

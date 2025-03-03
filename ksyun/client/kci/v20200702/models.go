@@ -6,6 +6,11 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 )
 
+type CreateContainerGroupOption struct {
+	Name  *string `json:"Name,omitempty" name:"Name"`
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type CreateContainerGroupMachineHostAliase struct {
 	Ip       *string   `json:"Ip,omitempty" name:"Ip"`
 	Hostname []*string `json:"Hostname,omitempty" name:"Hostname"`
@@ -68,11 +73,6 @@ type CreateContainerGroupVolumeMount struct {
 	ReadOnly  *bool   `json:"ReadOnly,omitempty" name:"ReadOnly"`
 }
 
-type CreateContainerGroupOption struct {
-	Name  *string `json:"Name,omitempty" name:"Name"`
-	Value *string `json:"Value,omitempty" name:"Value"`
-}
-
 type CreateContainerGroupHostAliase struct {
 	Ip       *string   `json:"Ip,omitempty" name:"Ip"`
 	Hostname []*string `json:"Hostname,omitempty" name:"Hostname"`
@@ -104,6 +104,12 @@ type DescribeContainerGroupFilter struct {
 }
 
 type CreateImageCacheImageRegistryCredential struct {
+	Server   *string `json:"Server,omitempty" name:"Server"`
+	Username *string `json:"Username,omitempty" name:"Username"`
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
+type UpdateImageCacheImageRegistryCredential struct {
 	Server   *string `json:"Server,omitempty" name:"Server"`
 	Username *string `json:"Username,omitempty" name:"Username"`
 	Password *string `json:"Password,omitempty" name:"Password"`
@@ -208,155 +214,148 @@ type DescribeContainerGroupResponse struct {
 	Marker          *int    `json:"Marker" name:"Marker"`
 	TotalCount      *int    `json:"TotalCount" name:"TotalCount"`
 	ContainerGroups []struct {
-		ContainerGroupId           *string `json:"ContainerGroupId"`
-		ContainerGroupName         *string `json:"ContainerGroupName"`
-		AvailabilityZone           *string `json:"AvailabilityZone"`
-		ChargeType                 *string `json:"ChargeType"`
-		ProjectId                  *int    `json:"ProjectId"`
-		KciType                    *string `json:"KciType"`
-		KciMode                    *string `json:"KciMode"`
-		InstanceType               *string `json:"InstanceType"`
-		Status                     *string `json:"Status"`
-		CreateTime                 *string `json:"CreateTime"`
-		Cpu                        *int    `json:"Cpu"`
-		Memory                     *int    `json:"Memory"`
-		RetainIp                   *bool   `json:"RetainIp"`
-		RetainIpHours              *int    `json:"RetainIpHours"`
+		ContainerGroupId           *string `json:"ContainerGroupId" name:"ContainerGroupId"`
+		ContainerGroupName         *string `json:"ContainerGroupName" name:"ContainerGroupName"`
+		AvailabilityZone           *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		ChargeType                 *string `json:"ChargeType" name:"ChargeType"`
+		ProjectId                  *int    `json:"ProjectId" name:"ProjectId"`
+		KciType                    *string `json:"KciType" name:"KciType"`
+		KciMode                    *string `json:"KciMode" name:"KciMode"`
+		InstanceType               *string `json:"InstanceType" name:"InstanceType"`
+		Status                     *string `json:"Status" name:"Status"`
+		CreateTime                 *string `json:"CreateTime" name:"CreateTime"`
+		Cpu                        *int    `json:"Cpu" name:"Cpu"`
+		Memory                     *int    `json:"Memory" name:"Memory"`
+		RetainIp                   *bool   `json:"RetainIp" name:"RetainIp"`
+		RetainIpHours              *int    `json:"RetainIpHours" name:"RetainIpHours"`
 		NetworkInterfaceAttributes []struct {
-			NetworkInterfaceId   *string `json:"NetworkInterfaceId"`
-			NetworkInterfaceType *string `json:"NetworkInterfaceType"`
-			VpcId                *string `json:"VpcId"`
-			SubnetId             *string `json:"SubnetId"`
-			PrivateIpAddress     *string `json:"PrivateIpAddress"`
-			PublicIp             *string `json:"PublicIp"`
-			MacAddress           *string `json:"MacAddress"`
+			NetworkInterfaceId   *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+			NetworkInterfaceType *string `json:"NetworkInterfaceType" name:"NetworkInterfaceType"`
+			VpcId                *string `json:"VpcId" name:"VpcId"`
+			SubnetId             *string `json:"SubnetId" name:"SubnetId"`
+			PrivateIpAddress     *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+			PublicIp             *string `json:"PublicIp" name:"PublicIp"`
+			MacAddress           *string `json:"MacAddress" name:"MacAddress"`
 			SecurityGroups       []struct {
-				SecurityGroupId *string `json:"SecurityGroupId"`
+				SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
 			} `json:"SecurityGroups"`
-		} `json:"NetworkInterfaceAttributes"`
-		RestartPolicy *string `json:"RestartPolicy"`
-		SucceededTime *string `json:"SucceededTime"`
+		} `json:"NetworkInterfaceAttributes" name:"NetworkInterfaceAttributes"`
+		RestartPolicy *string `json:"RestartPolicy" name:"RestartPolicy"`
+		SucceededTime *string `json:"SucceededTime" name:"SucceededTime"`
 		Labels        []struct {
-			Key   *string `json:"Key"`
-			Value *string `json:"Value"`
-		} `json:"Labels"`
+			Key   *string `json:"Key" name:"Key"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"Labels" name:"Labels"`
 		DnsConfig struct {
-			NameServers []struct {
-			} `json:"NameServers"`
-			Searches []struct {
-			} `json:"Searches"`
-			Options []struct {
-				Name  *string `json:"Name"`
-				Value *string `json:"Value"`
+			NameServers []*string `json:"NameServers" name:"NameServers"`
+			Searches    []*string `json:"Searches" name:"Searches"`
+			Options     []struct {
+				Name  *string `json:"Name" name:"Name"`
+				Value *string `json:"Value" name:"Value"`
 			} `json:"Options"`
-		} `json:"DnsConfig"`
+		} `json:"DnsConfig" name:"DnsConfig"`
 		HostAliases []struct {
-			Hostnames []struct {
-			} `json:"Hostnames"`
-			Ip *string `json:"Ip"`
-		} `json:"HostAliases"`
+			Hostnames []*string `json:"Hostnames" name:"Hostnames"`
+			Ip        *string   `json:"Ip" name:"Ip"`
+		} `json:"HostAliases" name:"HostAliases"`
 		Volumes []struct {
-			Name      *string `json:"Name"`
-			Type      *string `json:"Type"`
+			Name      *string `json:"Name" name:"Name"`
+			Type      *string `json:"Type" name:"Type"`
 			NFSVolume struct {
-				Path     *string `json:"Path"`
-				Server   *string `json:"Server"`
-				ReadOnly *bool   `json:"ReadOnly"`
+				Path     *string `json:"Path" name:"Path"`
+				Server   *string `json:"Server" name:"Server"`
+				ReadOnly *bool   `json:"ReadOnly" name:"ReadOnly"`
 			} `json:"NFSVolume"`
 			HostPathVolume struct {
-				Path *string `json:"Path"`
+				Path *string `json:"Path" name:"Path"`
 			} `json:"HostPathVolume"`
 			EBSVolume struct {
-				FsType   *string `json:"FsType"`
-				VolumeId *string `json:"VolumeId"`
+				FsType   *string `json:"FsType" name:"FsType"`
+				VolumeId *string `json:"VolumeId" name:"VolumeId"`
 			} `json:"EBSVolume"`
 			ConfigFileVolume struct {
 				ConfigFileToPaths []struct {
-					Path *string `json:"Path"`
-				} `json:"ConfigFileToPaths"`
+					Path *string `json:"Path" name:"Path"`
+				} `json:"ConfigFileToPaths" name:"ConfigFileToPaths"`
 			} `json:"ConfigFileVolume"`
-		} `json:"Volumes"`
+		} `json:"Volumes" name:"Volumes"`
 		Containers []struct {
-			Name     *string `json:"Name"`
-			Commands []struct {
-			} `json:"Commands"`
-			Args []struct {
-			} `json:"Args"`
+			Name            *string   `json:"Name" name:"Name"`
+			Commands        []*string `json:"Commands" name:"Commands"`
+			Args            []*string `json:"Args" name:"Args"`
 			EnvironmentVars []struct {
-				Key       *string `json:"Key"`
-				Value     *string `json:"Value"`
+				Key       *string `json:"Key" name:"Key"`
+				Value     *string `json:"Value" name:"Value"`
 				ValueFrom struct {
 					FieldRef struct {
-						FieldPath *string `json:"FieldPath"`
+						FieldPath *string `json:"FieldPath" name:"FieldPath"`
 					} `json:"FieldRef"`
-				} `json:"ValueFrom"`
+				} `json:"ValueFrom" name:"ValueFrom"`
 			} `json:"EnvironmentVars"`
-			WorkingDir      *string `json:"WorkingDir"`
-			Image           *string `json:"Image"`
-			ImagePullPolicy *string `json:"ImagePullPolicy"`
-			RestartCount    *int    `json:"RestartCount"`
+			WorkingDir      *string `json:"WorkingDir" name:"WorkingDir"`
+			Image           *string `json:"Image" name:"Image"`
+			ImagePullPolicy *string `json:"ImagePullPolicy" name:"ImagePullPolicy"`
+			RestartCount    *int    `json:"RestartCount" name:"RestartCount"`
 			Ports           []struct {
-				Protocol *string `json:"Protocol"`
-				Port     *int    `json:"Port"`
+				Protocol *string `json:"Protocol" name:"Protocol"`
+				Port     *int    `json:"Port" name:"Port"`
 			} `json:"Ports"`
 			VolumeMounts []struct {
-				Name      *string `json:"Name"`
-				MountPath *string `json:"MountPath"`
-				ReadOnly  *bool   `json:"ReadOnly"`
+				Name      *string `json:"Name" name:"Name"`
+				MountPath *string `json:"MountPath" name:"MountPath"`
+				ReadOnly  *bool   `json:"ReadOnly" name:"ReadOnly"`
 			} `json:"VolumeMounts"`
 			CurrentState struct {
-				StartTime  *string `json:"StartTime"`
-				FinishTime *string `json:"FinishTime"`
-				State      *string `json:"State"`
-				Reason     *string `json:"Reason"`
-				ExitCode   *int    `json:"ExitCode"`
+				StartTime  *string `json:"StartTime" name:"StartTime"`
+				FinishTime *string `json:"FinishTime" name:"FinishTime"`
+				State      *string `json:"State" name:"State"`
+				Reason     *string `json:"Reason" name:"Reason"`
+				ExitCode   *int    `json:"ExitCode" name:"ExitCode"`
 			} `json:"CurrentState"`
 			PreviousState struct {
-				StartTime  *string `json:"StartTime"`
-				FinishTime *string `json:"FinishTime"`
-				State      *string `json:"State"`
-				Reason     *string `json:"Reason"`
-				ExitCode   *int    `json:"ExitCode"`
+				StartTime  *string `json:"StartTime" name:"StartTime"`
+				FinishTime *string `json:"FinishTime" name:"FinishTime"`
+				State      *string `json:"State" name:"State"`
+				Reason     *string `json:"Reason" name:"Reason"`
+				ExitCode   *int    `json:"ExitCode" name:"ExitCode"`
 			} `json:"PreviousState"`
 			LivenessProbe struct {
-				InitialDelaySeconds *int `json:"InitialDelaySeconds"`
-				PeriodSeconds       *int `json:"PeriodSeconds"`
-				TimeoutSeconds      *int `json:"TimeoutSeconds"`
-				SuccessThreshold    *int `json:"SuccessThreshold"`
-				FailureThreshold    *int `json:"FailureThreshold"`
+				InitialDelaySeconds *int `json:"InitialDelaySeconds" name:"InitialDelaySeconds"`
+				PeriodSeconds       *int `json:"PeriodSeconds" name:"PeriodSeconds"`
+				TimeoutSeconds      *int `json:"TimeoutSeconds" name:"TimeoutSeconds"`
+				SuccessThreshold    *int `json:"SuccessThreshold" name:"SuccessThreshold"`
+				FailureThreshold    *int `json:"FailureThreshold" name:"FailureThreshold"`
 				HttpGet             struct {
-					Port   *int    `json:"Port"`
-					Path   *string `json:"Path"`
-					Scheme *string `json:"Scheme"`
-				} `json:"HttpGet"`
+					Port   *int    `json:"Port" name:"Port"`
+					Path   *string `json:"Path" name:"Path"`
+					Scheme *string `json:"Scheme" name:"Scheme"`
+				} `json:"HttpGet" name:"HttpGet"`
 				Exec struct {
-					Commands []struct {
-					} `json:"Commands"`
-				} `json:"Exec"`
+					Commands []*string `json:"Commands" name:"Commands"`
+				} `json:"Exec" name:"Exec"`
 				TcpSocket struct {
-					Port *int `json:"Port"`
-				} `json:"TcpSocket"`
+					Port *int `json:"Port" name:"Port"`
+				} `json:"TcpSocket" name:"TcpSocket"`
 			} `json:"LivenessProbe"`
 			ReadinessProbe struct {
-				InitialDelaySeconds *int `json:"InitialDelaySeconds"`
-				PeriodSeconds       *int `json:"PeriodSeconds"`
-				TimeoutSeconds      *int `json:"TimeoutSeconds"`
-				SuccessThreshold    *int `json:"SuccessThreshold"`
-				FailureThreshold    *int `json:"FailureThreshold"`
+				InitialDelaySeconds *int `json:"InitialDelaySeconds" name:"InitialDelaySeconds"`
+				PeriodSeconds       *int `json:"PeriodSeconds" name:"PeriodSeconds"`
+				TimeoutSeconds      *int `json:"TimeoutSeconds" name:"TimeoutSeconds"`
+				SuccessThreshold    *int `json:"SuccessThreshold" name:"SuccessThreshold"`
+				FailureThreshold    *int `json:"FailureThreshold" name:"FailureThreshold"`
 				HttpGet             struct {
-					Port   *int    `json:"Port"`
-					Path   *string `json:"Path"`
-					Scheme *string `json:"Scheme"`
-				} `json:"HttpGet"`
+					Port   *int    `json:"Port" name:"Port"`
+					Path   *string `json:"Path" name:"Path"`
+					Scheme *string `json:"Scheme" name:"Scheme"`
+				} `json:"HttpGet" name:"HttpGet"`
 				Exec struct {
-					Commands []struct {
-					} `json:"Commands"`
-				} `json:"Exec"`
+					Commands []*string `json:"Commands" name:"Commands"`
+				} `json:"Exec" name:"Exec"`
 				TcpSocket struct {
-					Port *int `json:"Port"`
-				} `json:"TcpSocket"`
+					Port *int `json:"Port" name:"Port"`
+				} `json:"TcpSocket" name:"TcpSocket"`
 			} `json:"ReadinessProbe"`
-		} `json:"Containers"`
+		} `json:"Containers" name:"Containers"`
 	} `json:"ContainerGroups"`
 }
 
@@ -366,41 +365,6 @@ func (r *DescribeContainerGroupResponse) ToJsonString() string {
 }
 
 func (r *DescribeContainerGroupResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeContainerGroupListRequest struct {
-	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
-}
-
-func (r *DescribeContainerGroupListRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DescribeContainerGroupListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeContainerGroupListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeContainerGroupListResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-}
-
-func (r *DescribeContainerGroupListResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DescribeContainerGroupListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -502,10 +466,10 @@ type DescribeRegionsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Regions   []struct {
-		Region            *string `json:"Region"`
-		RegionName        *string `json:"RegionName"`
+		Region            *string `json:"Region" name:"Region"`
+		RegionName        *string `json:"RegionName" name:"RegionName"`
 		AvailabilityZones []struct {
-		} `json:"AvailabilityZones"`
+		} `json:"AvailabilityZones" name:"AvailabilityZones"`
 	} `json:"Regions"`
 }
 
@@ -581,8 +545,8 @@ type DescribeContainerGroupCountResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId        *string `json:"RequestId" name:"RequestId"`
 	ClusterPodCounts []struct {
-		ClusterId *string `json:"ClusterId"`
-		Count     *int    `json:"Count"`
+		ClusterId *string `json:"ClusterId" name:"ClusterId"`
+		Count     *int    `json:"Count" name:"Count"`
 	} `json:"ClusterPodCounts"`
 }
 
@@ -620,12 +584,12 @@ type DescribeContainerGroupEventsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Events    []struct {
-		FirstTimestamp *string `json:"FirstTimestamp"`
-		LastTimestamp  *string `json:"LastTimestamp"`
-		Count          *int    `json:"Count"`
-		Type           *string `json:"Type"`
-		Reason         *string `json:"Reason"`
-		Message        *string `json:"Message"`
+		FirstTimestamp *string `json:"FirstTimestamp" name:"FirstTimestamp"`
+		LastTimestamp  *string `json:"LastTimestamp" name:"LastTimestamp"`
+		Count          *int    `json:"Count" name:"Count"`
+		Type           *string `json:"Type" name:"Type"`
+		Reason         *string `json:"Reason" name:"Reason"`
+		Message        *string `json:"Message" name:"Message"`
 	} `json:"Events"`
 }
 
@@ -666,7 +630,7 @@ type DescribeKciPackagesResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Packages  []struct {
 		Mem []struct {
-		} `json:"Mem"`
+		} `json:"Mem" name:"Mem"`
 	} `json:"Packages"`
 }
 
@@ -790,18 +754,18 @@ type DescribeImageCacheResponse struct {
 	Marker      *int    `json:"Marker" name:"Marker"`
 	TotalCount  *int    `json:"TotalCount" name:"TotalCount"`
 	ImageCaches []struct {
-		ImageCacheId     *string `json:"ImageCacheId"`
-		ImageCacheName   *string `json:"ImageCacheName"`
-		ExpireTime       *string `json:"ExpireTime"`
-		CreateTime       *string `json:"CreateTime"`
-		Status           *string `json:"Status"`
-		ImageCacheSize   *int    `json:"ImageCacheSize"`
-		SnapshotId       *string `json:"SnapshotId"`
-		ContainerGroupId *string `json:"ContainerGroupId"`
+		ImageCacheId     *string `json:"ImageCacheId" name:"ImageCacheId"`
+		ImageCacheName   *string `json:"ImageCacheName" name:"ImageCacheName"`
+		ExpireTime       *string `json:"ExpireTime" name:"ExpireTime"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		Status           *string `json:"Status" name:"Status"`
+		ImageCacheSize   *int    `json:"ImageCacheSize" name:"ImageCacheSize"`
+		SnapshotId       *string `json:"SnapshotId" name:"SnapshotId"`
+		ContainerGroupId *string `json:"ContainerGroupId" name:"ContainerGroupId"`
 		Images           []struct {
-		} `json:"Images"`
-		Reason         *string `json:"Reason"`
-		ImageCacheType *string `json:"ImageCacheType"`
+		} `json:"Images" name:"Images"`
+		Reason         *string `json:"Reason" name:"Reason"`
+		ImageCacheType *string `json:"ImageCacheType" name:"ImageCacheType"`
 	} `json:"ImageCaches"`
 }
 
@@ -839,8 +803,8 @@ type MatchImageCacheResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	ImageCaches []struct {
-		ImageCacheId   *string `json:"ImageCacheId"`
-		ImageCacheName *string `json:"ImageCacheName"`
+		ImageCacheId   *string `json:"ImageCacheId" name:"ImageCacheId"`
+		ImageCacheName *string `json:"ImageCacheName" name:"ImageCacheName"`
 	} `json:"ImageCaches"`
 }
 
@@ -878,12 +842,12 @@ type DescribeImageCacheEventResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Events    []struct {
-		FirstTimestamp *string `json:"FirstTimestamp"`
-		LastTimestamp  *string `json:"LastTimestamp"`
-		Count          *int    `json:"Count"`
-		Type           *string `json:"Type"`
-		Reason         *string `json:"Reason"`
-		Message        *string `json:"Message"`
+		FirstTimestamp *string `json:"FirstTimestamp" name:"FirstTimestamp"`
+		LastTimestamp  *string `json:"LastTimestamp" name:"LastTimestamp"`
+		Count          *int    `json:"Count" name:"Count"`
+		Type           *string `json:"Type" name:"Type"`
+		Reason         *string `json:"Reason" name:"Reason"`
+		Message        *string `json:"Message" name:"Message"`
 	} `json:"Events"`
 }
 
@@ -893,5 +857,50 @@ func (r *DescribeImageCacheEventResponse) ToJsonString() string {
 }
 
 func (r *DescribeImageCacheEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateImageCacheRequest struct {
+	*ksyunhttp.BaseRequest
+	ImageCacheId            *string                                    `json:"ImageCacheId,omitempty" name:"ImageCacheId"`
+	ImageCacheName          *string                                    `json:"ImageCacheName,omitempty" name:"ImageCacheName"`
+	SubnetId                *string                                    `json:"SubnetId,omitempty" name:"SubnetId"`
+	SecurityGroupId         *string                                    `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	ImageCacheSize          *int                                       `json:"ImageCacheSize,omitempty" name:"ImageCacheSize"`
+	RetentionDays           *int                                       `json:"RetentionDays,omitempty" name:"RetentionDays"`
+	Image                   []*string                                  `json:"Image,omitempty" name:"Image"`
+	ImageCacheType          *string                                    `json:"ImageCacheType,omitempty" name:"ImageCacheType"`
+	EnableWarm              *bool                                      `json:"EnableWarm,omitempty" name:"EnableWarm"`
+	ImageRegistryCredential []*UpdateImageCacheImageRegistryCredential `json:"ImageRegistryCredential,omitempty" name:"ImageRegistryCredential"`
+}
+
+func (r *UpdateImageCacheRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateImageCacheRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpdateImageCacheRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateImageCacheResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId    *string `json:"RequestId" name:"RequestId"`
+	ImageCacheId *string `json:"ImageCacheId" name:"ImageCacheId"`
+}
+
+func (r *UpdateImageCacheResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateImageCacheResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

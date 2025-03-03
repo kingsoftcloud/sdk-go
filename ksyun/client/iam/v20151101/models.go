@@ -40,24 +40,24 @@ type CreateUserResponse struct {
 	*ksyunhttp.BaseResponse
 	CreateUserResult struct {
 		User struct {
-			UserId                *string `json:"UserId"`
-			Path                  *string `json:"Path"`
-			UserName              *string `json:"UserName"`
-			RealName              *string `json:"RealName"`
-			CreateDate            *string `json:"CreateDate"`
-			Phone                 *string `json:"Phone"`
-			CountryMobileCode     *string `json:"CountryMobileCode"`
-			isInternational       *int    `json:"isInternational"`
-			Email                 *string `json:"Email"`
-			PhoneVerified         *string `json:"PhoneVerified"`
-			EmailVerified         *string `json:"EmailVerified"`
-			Remark                *string `json:"Remark"`
-			Krn                   *string `json:"Krn"`
-			PasswordResetRequired *bool   `json:"PasswordResetRequired"`
-			EnableMFA             *int    `json:"EnableMFA"`
-			NeedBindMfa           *string `json:"NeedBindMfa"`
-			UpdateDate            *string `json:"UpdateDate"`
-		} `json:"User"`
+			UserId                *string `json:"UserId" name:"UserId"`
+			Path                  *string `json:"Path" name:"Path"`
+			UserName              *string `json:"UserName" name:"UserName"`
+			RealName              *string `json:"RealName" name:"RealName"`
+			CreateDate            *string `json:"CreateDate" name:"CreateDate"`
+			Phone                 *string `json:"Phone" name:"Phone"`
+			CountryMobileCode     *string `json:"CountryMobileCode" name:"CountryMobileCode"`
+			IsInternational       *int    `json:"isInternational" name:"isInternational"`
+			Email                 *string `json:"Email" name:"Email"`
+			PhoneVerified         *string `json:"PhoneVerified" name:"PhoneVerified"`
+			EmailVerified         *string `json:"EmailVerified" name:"EmailVerified"`
+			Remark                *string `json:"Remark" name:"Remark"`
+			Krn                   *string `json:"Krn" name:"Krn"`
+			PasswordResetRequired *bool   `json:"PasswordResetRequired" name:"PasswordResetRequired"`
+			EnableMFA             *int    `json:"EnableMFA" name:"EnableMFA"`
+			NeedBindMfa           *string `json:"NeedBindMfa" name:"NeedBindMfa"`
+			UpdateDate            *string `json:"UpdateDate" name:"UpdateDate"`
+		} `json:"User" name:"User"`
 	} `json:"CreateUserResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -99,28 +99,28 @@ type ListUsersResponse struct {
 	ListUserResult struct {
 		Users struct {
 			Member []struct {
-				UserId                *string `json:"UserId"`
-				Path                  *string `json:"Path"`
-				UserName              *string `json:"UserName"`
-				RealName              *string `json:"RealName"`
-				CreateDate            *string `json:"CreateDate"`
-				Phone                 *string `json:"Phone"`
-				CountryMobileCode     *string `json:"CountryMobileCode"`
-				IsInternational       *int    `json:"IsInternational"`
-				Email                 *string `json:"Email"`
-				PhoneVerified         *string `json:"PhoneVerified"`
-				EmailVerified         *string `json:"EmailVerified"`
-				Remark                *string `json:"Remark"`
-				Krn                   *string `json:"Krn"`
-				PasswordResetRequired *bool   `json:"PasswordResetRequired"`
-				EnableMFA             *int    `json:"EnableMFA"`
-				NeedBindMfa           *string `json:"NeedBindMfa"`
-				UpdateDate            *string `json:"UpdateDate"`
-				Id                    *int    `json:"Id"`
+				UserId                *string `json:"UserId" name:"UserId"`
+				Path                  *string `json:"Path" name:"Path"`
+				UserName              *string `json:"UserName" name:"UserName"`
+				RealName              *string `json:"RealName" name:"RealName"`
+				CreateDate            *string `json:"CreateDate" name:"CreateDate"`
+				Phone                 *string `json:"Phone" name:"Phone"`
+				CountryMobileCode     *string `json:"CountryMobileCode" name:"CountryMobileCode"`
+				IsInternational       *int    `json:"IsInternational" name:"IsInternational"`
+				Email                 *string `json:"Email" name:"Email"`
+				PhoneVerified         *string `json:"PhoneVerified" name:"PhoneVerified"`
+				EmailVerified         *string `json:"EmailVerified" name:"EmailVerified"`
+				Remark                *string `json:"Remark" name:"Remark"`
+				Krn                   *string `json:"Krn" name:"Krn"`
+				PasswordResetRequired *bool   `json:"PasswordResetRequired" name:"PasswordResetRequired"`
+				EnableMFA             *int    `json:"EnableMFA" name:"EnableMFA"`
+				NeedBindMfa           *string `json:"NeedBindMfa" name:"NeedBindMfa"`
+				UpdateDate            *string `json:"UpdateDate" name:"UpdateDate"`
+				Id                    *int    `json:"Id" name:"Id"`
 			} `json:"Member"`
-		} `json:"Users"`
-		IsTruncated *bool   `json:"IsTruncated"`
-		Marker      *string `json:"Marker"`
+		} `json:"Users" name:"Users"`
+		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
+		Marker      *string `json:"Marker" name:"Marker"`
 	} `json:"ListUserResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -165,24 +165,24 @@ type UpdateUserResponse struct {
 	*ksyunhttp.BaseResponse
 	UpdateUserResult struct {
 		User struct {
-			UserId                *string `json:"UserId"`
-			Path                  *string `json:"Path"`
-			UserName              *string `json:"UserName"`
-			RealName              *string `json:"RealName"`
-			CreateDate            *string `json:"CreateDate"`
-			Phone                 *string `json:"Phone"`
-			CountryMobileCode     *string `json:"CountryMobileCode"`
-			isInternational       *int    `json:"isInternational"`
-			Email                 *string `json:"Email"`
-			PhoneVerified         *string `json:"PhoneVerified"`
-			EmailVerified         *string `json:"EmailVerified"`
-			Remark                *string `json:"Remark"`
-			Krn                   *string `json:"Krn"`
-			PasswordResetRequired *string `json:"PasswordResetRequired"`
-			EnableMFA             *int    `json:"EnableMFA"`
-			NeedBindMfa           *string `json:"NeedBindMfa"`
-			UpdateDate            *string `json:"UpdateDate"`
-		} `json:"User"`
+			UserId                *string `json:"UserId" name:"UserId"`
+			Path                  *string `json:"Path" name:"Path"`
+			UserName              *string `json:"UserName" name:"UserName"`
+			RealName              *string `json:"RealName" name:"RealName"`
+			CreateDate            *string `json:"CreateDate" name:"CreateDate"`
+			Phone                 *string `json:"Phone" name:"Phone"`
+			CountryMobileCode     *string `json:"CountryMobileCode" name:"CountryMobileCode"`
+			IsInternational       *int    `json:"isInternational" name:"isInternational"`
+			Email                 *string `json:"Email" name:"Email"`
+			PhoneVerified         *string `json:"PhoneVerified" name:"PhoneVerified"`
+			EmailVerified         *string `json:"EmailVerified" name:"EmailVerified"`
+			Remark                *string `json:"Remark" name:"Remark"`
+			Krn                   *string `json:"Krn" name:"Krn"`
+			PasswordResetRequired *string `json:"PasswordResetRequired" name:"PasswordResetRequired"`
+			EnableMFA             *int    `json:"EnableMFA" name:"EnableMFA"`
+			NeedBindMfa           *string `json:"NeedBindMfa" name:"NeedBindMfa"`
+			UpdateDate            *string `json:"UpdateDate" name:"UpdateDate"`
+		} `json:"User" name:"User"`
 	} `json:"UpdateUserResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -220,23 +220,23 @@ func (r *GetUserRequest) FromJsonString(s string) error {
 type GetUserResponse struct {
 	*ksyunhttp.BaseResponse
 	GetUserResult struct {
-		UserId                *string `json:"UserId"`
-		Path                  *string `json:"Path"`
-		UserName              *string `json:"UserName"`
-		CreateDate            *string `json:"CreateDate"`
-		Phone                 *int    `json:"Phone"`
-		CountryMobileCode     *int    `json:"CountryMobileCode"`
-		IsInternational       *int    `json:"IsInternational"`
-		Email                 *string `json:"Email"`
-		PhoneVerified         *string `json:"PhoneVerified"`
-		EmailVerified         *string `json:"EmailVerified"`
-		Remark                *string `json:"Remark"`
-		PasswordResetRequired *string `json:"PasswordResetRequired"`
-		EnableMFA             *int    `json:"EnableMFA"`
-		NeedBindMfa           *int    `json:"NeedBindMfa"`
-		UpdateDate            *string `json:"UpdateDate"`
-		ViewAllProject        *string `json:"ViewAllProject"`
-		Id                    *int    `json:"Id"`
+		UserId                *string `json:"UserId" name:"UserId"`
+		Path                  *string `json:"Path" name:"Path"`
+		UserName              *string `json:"UserName" name:"UserName"`
+		CreateDate            *string `json:"CreateDate" name:"CreateDate"`
+		Phone                 *int    `json:"Phone" name:"Phone"`
+		CountryMobileCode     *int    `json:"CountryMobileCode" name:"CountryMobileCode"`
+		IsInternational       *int    `json:"IsInternational" name:"IsInternational"`
+		Email                 *string `json:"Email" name:"Email"`
+		PhoneVerified         *string `json:"PhoneVerified" name:"PhoneVerified"`
+		EmailVerified         *string `json:"EmailVerified" name:"EmailVerified"`
+		Remark                *string `json:"Remark" name:"Remark"`
+		PasswordResetRequired *string `json:"PasswordResetRequired" name:"PasswordResetRequired"`
+		EnableMFA             *int    `json:"EnableMFA" name:"EnableMFA"`
+		NeedBindMfa           *int    `json:"NeedBindMfa" name:"NeedBindMfa"`
+		UpdateDate            *string `json:"UpdateDate" name:"UpdateDate"`
+		ViewAllProject        *string `json:"ViewAllProject" name:"ViewAllProject"`
+		Id                    *int    `json:"Id" name:"Id"`
 	} `json:"GetUserResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -273,7 +273,7 @@ func (r *DeleteUserRequest) FromJsonString(s string) error {
 
 type DeleteUserResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *int    `json:"result" name:"result"`
+	Result    *int    `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -310,7 +310,7 @@ func (r *DetachUserPolicyRequest) FromJsonString(s string) error {
 
 type DetachUserPolicyResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *bool   `json:"result" name:"result"`
+	Result    *bool   `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -351,16 +351,16 @@ type ListAttachedUserPoliciesResponse struct {
 	ListAttachedUserPoliciesResult struct {
 		AttachedPolicies struct {
 			Member []struct {
-				PolicyKrn      *string `json:"PolicyKrn"`
-				PolicyName     *string `json:"PolicyName"`
-				CreateTime     *string `json:"CreateTime"`
-				Description    *string `json:"Description"`
-				Description_en *string `json:"Description_en"`
-				Type           *int    `json:"Type"`
+				PolicyKrn     *string `json:"PolicyKrn" name:"PolicyKrn"`
+				PolicyName    *string `json:"PolicyName" name:"PolicyName"`
+				CreateTime    *string `json:"CreateTime" name:"CreateTime"`
+				Description   *string `json:"Description" name:"Description"`
+				DescriptionEn *string `json:"DescriptionEn" name:"DescriptionEn"`
+				Type          *int    `json:"Type" name:"Type"`
 			} `json:"Member"`
-		} `json:"AttachedPolicies"`
-		IsTruncated *bool   `json:"IsTruncated"`
-		Marker      *string `json:"Marker"`
+		} `json:"AttachedPolicies" name:"AttachedPolicies"`
+		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
+		Marker      *string `json:"Marker" name:"Marker"`
 	} `json:"ListAttachedUserPoliciesResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -400,14 +400,14 @@ type ListPolicyVersionsResponse struct {
 	ListPolicyVersionsResult struct {
 		Versions struct {
 			Member []struct {
-				IsDefaultVersion *string `json:"IsDefaultVersion"`
-				VersionId        *string `json:"VersionId"`
-				Document         *string `json:"Document"`
+				IsDefaultVersion *string `json:"IsDefaultVersion" name:"IsDefaultVersion"`
+				VersionId        *string `json:"VersionId" name:"VersionId"`
+				Document         *string `json:"Document" name:"Document"`
 				PolicyStruct     []struct {
-				} `json:"PolicyStruct"`
-				CreateDate *string `json:"CreateDate"`
+				} `json:"PolicyStruct" name:"PolicyStruct"`
+				CreateDate *string `json:"CreateDate" name:"CreateDate"`
 			} `json:"Member"`
-		} `json:"Versions"`
+		} `json:"Versions" name:"Versions"`
 	} `json:"ListPolicyVersionsResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -445,7 +445,7 @@ func (r *SetDefaultPolicyVersionRequest) FromJsonString(s string) error {
 
 type SetDefaultPolicyVersionResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *bool   `json:"result" name:"result"`
+	Result    *bool   `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -482,7 +482,7 @@ func (r *AttachUserPolicyRequest) FromJsonString(s string) error {
 
 type AttachUserPolicyResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *int    `json:"result" name:"result"`
+	Result    *int    `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -519,7 +519,7 @@ func (r *DeletePolicyVersionRequest) FromJsonString(s string) error {
 
 type DeletePolicyVersionResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *bool   `json:"result" name:"result"`
+	Result    *bool   `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -558,13 +558,12 @@ type GetPolicyVersionResponse struct {
 	*ksyunhttp.BaseResponse
 	GetPolicyVersionResult struct {
 		PolicyVersion struct {
-			IsDefaultVersion *string `json:"IsDefaultVersion"`
-			VersionId        *string `json:"VersionId"`
-			Document         *string `json:"Document"`
-			PolicyStruct     []struct {
-			} `json:"PolicyStruct"`
-			CreateDate *string `json:"CreateDate"`
-		} `json:"PolicyVersion"`
+			IsDefaultVersion *string   `json:"IsDefaultVersion" name:"IsDefaultVersion"`
+			VersionId        *string   `json:"VersionId" name:"VersionId"`
+			Document         *string   `json:"Document" name:"Document"`
+			PolicyStruct     []*string `json:"PolicyStruct" name:"PolicyStruct"`
+			CreateDate       *string   `json:"CreateDate" name:"CreateDate"`
+		} `json:"PolicyVersion" name:"PolicyVersion"`
 	} `json:"GetPolicyVersionResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -606,10 +605,10 @@ type CreatePolicyVersionResponse struct {
 	*ksyunhttp.BaseResponse
 	CreatePolicyVersionResult struct {
 		PolicyVersion struct {
-			IsDefaultVersion *string `json:"IsDefaultVersion"`
-			VersionId        *string `json:"VersionId"`
-			CreateDate       *string `json:"CreateDate"`
-		} `json:"PolicyVersion"`
+			IsDefaultVersion *string `json:"IsDefaultVersion" name:"IsDefaultVersion"`
+			VersionId        *string `json:"VersionId" name:"VersionId"`
+			CreateDate       *string `json:"CreateDate" name:"CreateDate"`
+		} `json:"PolicyVersion" name:"PolicyVersion"`
 	} `json:"CreatePolicyVersionResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -652,24 +651,24 @@ type ListPoliciesResponse struct {
 	ListPoliciesResult struct {
 		Policies struct {
 			Member []struct {
-				CreateDate       *string `json:"CreateDate"`
-				DefaultVersionId *string `json:"DefaultVersionId"`
-				Description      *string `json:"Description"`
-				Krn              *string `json:"Krn"`
-				Path             *string `json:"Path"`
-				PolicyId         *string `json:"PolicyId"`
-				PolicyName       *string `json:"PolicyName"`
-				ServiceId        *int    `json:"ServiceId"`
-				ServiceName      *string `json:"ServiceName"`
-				ServiceViewName  *string `json:"ServiceViewName"`
-				PolicyType       *int    `json:"PolicyType"`
-				CreateMode       *int    `json:"CreateMode"`
-				UpdateDate       *string `json:"UpdateDate"`
-				AttachmentCount  *int    `json:"AttachmentCount"`
+				CreateDate       *string `json:"CreateDate" name:"CreateDate"`
+				DefaultVersionId *string `json:"DefaultVersionId" name:"DefaultVersionId"`
+				Description      *string `json:"Description" name:"Description"`
+				Krn              *string `json:"Krn" name:"Krn"`
+				Path             *string `json:"Path" name:"Path"`
+				PolicyId         *string `json:"PolicyId" name:"PolicyId"`
+				PolicyName       *string `json:"PolicyName" name:"PolicyName"`
+				ServiceId        *int    `json:"ServiceId" name:"ServiceId"`
+				ServiceName      *string `json:"ServiceName" name:"ServiceName"`
+				ServiceViewName  *string `json:"ServiceViewName" name:"ServiceViewName"`
+				PolicyType       *int    `json:"PolicyType" name:"PolicyType"`
+				CreateMode       *int    `json:"CreateMode" name:"CreateMode"`
+				UpdateDate       *string `json:"UpdateDate" name:"UpdateDate"`
+				AttachmentCount  *int    `json:"AttachmentCount" name:"AttachmentCount"`
 			} `json:"Member"`
-		} `json:"Policies"`
-		IsTruncated *bool   `json:"IsTruncated"`
-		Marker      *string `json:"Marker"`
+		} `json:"Policies" name:"Policies"`
+		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
+		Marker      *string `json:"Marker" name:"Marker"`
 	} `json:"ListPoliciesResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -708,17 +707,17 @@ type GetPolicyResponse struct {
 	*ksyunhttp.BaseResponse
 	GetPolicyResult struct {
 		Policy struct {
-			CreateDate       *string `json:"CreateDate"`
-			DefaultVersionId *string `json:"DefaultVersionId"`
-			Description      *string `json:"Description"`
-			Krn              *string `json:"Krn"`
-			Path             *string `json:"Path"`
-			PolicyId         *string `json:"PolicyId"`
-			PolicyName       *string `json:"PolicyName"`
-			PolicyType       *int    `json:"PolicyType"`
-			CreateMode       *int    `json:"CreateMode"`
-			UpdateDate       *string `json:"UpdateDate"`
-		} `json:"Policy"`
+			CreateDate       *string `json:"CreateDate" name:"CreateDate"`
+			DefaultVersionId *string `json:"DefaultVersionId" name:"DefaultVersionId"`
+			Description      *string `json:"Description" name:"Description"`
+			Krn              *string `json:"Krn" name:"Krn"`
+			Path             *string `json:"Path" name:"Path"`
+			PolicyId         *string `json:"PolicyId" name:"PolicyId"`
+			PolicyName       *string `json:"PolicyName" name:"PolicyName"`
+			PolicyType       *int    `json:"PolicyType" name:"PolicyType"`
+			CreateMode       *int    `json:"CreateMode" name:"CreateMode"`
+			UpdateDate       *string `json:"UpdateDate" name:"UpdateDate"`
+		} `json:"Policy" name:"Policy"`
 	} `json:"GetPolicyResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -755,7 +754,7 @@ func (r *DeletePolicyRequest) FromJsonString(s string) error {
 
 type DeletePolicyResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *bool   `json:"result" name:"result"`
+	Result    *bool   `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -797,16 +796,16 @@ type CreatePolicyResponse struct {
 	*ksyunhttp.BaseResponse
 	CreatePolicyResult struct {
 		Policy struct {
-			AttachmentCount  *string `json:"AttachmentCount"`
-			CreateDate       *string `json:"CreateDate"`
-			DefaultVersionId *string `json:"DefaultVersionId"`
-			Description      *string `json:"Description"`
-			Krn              *string `json:"Krn"`
-			Path             *string `json:"Path"`
-			PolicyId         *string `json:"PolicyId"`
-			PolicyName       *string `json:"PolicyName"`
-			UpdateDate       *string `json:"UpdateDate"`
-		} `json:"Policy"`
+			AttachmentCount  *string `json:"AttachmentCount" name:"AttachmentCount"`
+			CreateDate       *string `json:"CreateDate" name:"CreateDate"`
+			DefaultVersionId *string `json:"DefaultVersionId" name:"DefaultVersionId"`
+			Description      *string `json:"Description" name:"Description"`
+			Krn              *string `json:"Krn" name:"Krn"`
+			Path             *string `json:"Path" name:"Path"`
+			PolicyId         *string `json:"PolicyId" name:"PolicyId"`
+			PolicyName       *string `json:"PolicyName" name:"PolicyName"`
+			UpdateDate       *string `json:"UpdateDate" name:"UpdateDate"`
+		} `json:"Policy" name:"Policy"`
 	} `json:"CreatePolicyResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -844,7 +843,7 @@ func (r *ChangePasswordRequest) FromJsonString(s string) error {
 
 type ChangePasswordResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *bool   `json:"result" name:"result"`
+	Result    *bool   `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -887,13 +886,13 @@ type UpdateLoginProfileResponse struct {
 	*ksyunhttp.BaseResponse
 	CreateLoginProfileResult struct {
 		LoginProfile struct {
-			UserName               *string `json:"UserName"`
-			OpenLoginProtection    *string `json:"OpenLoginProtection"`
-			OpenSecurityProtection *string `json:"OpenSecurityProtection"`
-			PasswordResetRequired  *string `json:"PasswordResetRequired"`
-			UpdateDate             *string `json:"UpdateDate"`
-			Password               *string `json:"Password"`
-		} `json:"LoginProfile"`
+			UserName               *string `json:"UserName" name:"UserName"`
+			OpenLoginProtection    *string `json:"OpenLoginProtection" name:"OpenLoginProtection"`
+			OpenSecurityProtection *string `json:"OpenSecurityProtection" name:"OpenSecurityProtection"`
+			PasswordResetRequired  *string `json:"PasswordResetRequired" name:"PasswordResetRequired"`
+			UpdateDate             *string `json:"UpdateDate" name:"UpdateDate"`
+			Password               *string `json:"Password" name:"Password"`
+		} `json:"LoginProfile" name:"LoginProfile"`
 	} `json:"CreateLoginProfileResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -933,17 +932,17 @@ type GetLoginProfileResponse struct {
 	*ksyunhttp.BaseResponse
 	CreateLoginProfileResult struct {
 		LoginProfile struct {
-			UserName               *string `json:"UserName"`
-			PasswordResetRequired  *bool   `json:"PasswordResetRequired"`
-			OpenLoginProtection    *int    `json:"OpenLoginProtection"`
-			OpenSecurityProtection *int    `json:"OpenSecurityProtection"`
-			EnableMfa              *int    `json:"EnableMfa"`
-			ViewAllProject         *int    `json:"ViewAllProject"`
-			LastLoginDate          *string `json:"LastLoginDate"`
-			LastLoginIp            *string `json:"LastLoginIp"`
-			CreateDate             *string `json:"CreateDate"`
-			ConsoleLogin           *bool   `json:"ConsoleLogin"`
-		} `json:"LoginProfile"`
+			UserName               *string `json:"UserName" name:"UserName"`
+			PasswordResetRequired  *bool   `json:"PasswordResetRequired" name:"PasswordResetRequired"`
+			OpenLoginProtection    *int    `json:"OpenLoginProtection" name:"OpenLoginProtection"`
+			OpenSecurityProtection *int    `json:"OpenSecurityProtection" name:"OpenSecurityProtection"`
+			EnableMfa              *int    `json:"EnableMfa" name:"EnableMfa"`
+			ViewAllProject         *int    `json:"ViewAllProject" name:"ViewAllProject"`
+			LastLoginDate          *string `json:"LastLoginDate" name:"LastLoginDate"`
+			LastLoginIp            *string `json:"LastLoginIp" name:"LastLoginIp"`
+			CreateDate             *string `json:"CreateDate" name:"CreateDate"`
+			ConsoleLogin           *bool   `json:"ConsoleLogin" name:"ConsoleLogin"`
+		} `json:"LoginProfile" name:"LoginProfile"`
 	} `json:"CreateLoginProfileResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -982,12 +981,12 @@ type CreateAccessKeyResponse struct {
 	*ksyunhttp.BaseResponse
 	CreateAccessKeyResult struct {
 		AccessKey struct {
-			UserName        *string `json:"UserName"`
-			AccessKeyId     *string `json:"AccessKeyId"`
-			SecretAccessKey *string `json:"SecretAccessKey"`
-			Status          *string `json:"Status"`
-			CreateDate      *string `json:"CreateDate"`
-		} `json:"AccessKey"`
+			UserName        *string `json:"UserName" name:"UserName"`
+			AccessKeyId     *string `json:"AccessKeyId" name:"AccessKeyId"`
+			SecretAccessKey *string `json:"SecretAccessKey" name:"SecretAccessKey"`
+			Status          *string `json:"Status" name:"Status"`
+			CreateDate      *string `json:"CreateDate" name:"CreateDate"`
+		} `json:"AccessKey" name:"AccessKey"`
 	} `json:"CreateAccessKeyResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1027,13 +1026,13 @@ type ListAccessKeysResponse struct {
 	ListAccessKeyResult struct {
 		AccessKeyMetadata struct {
 			Member []struct {
-				UserName       *string `json:"UserName"`
-				AccessKeyId    *string `json:"AccessKeyId"`
-				Status         *string `json:"Status"`
-				CreateDate     *string `json:"CreateDate"`
-				AkLastUsedTime *string `json:"AkLastUsedTime"`
+				UserName       *string `json:"UserName" name:"UserName"`
+				AccessKeyId    *string `json:"AccessKeyId" name:"AccessKeyId"`
+				Status         *string `json:"Status" name:"Status"`
+				CreateDate     *string `json:"CreateDate" name:"CreateDate"`
+				AkLastUsedTime *string `json:"AkLastUsedTime" name:"AkLastUsedTime"`
 			} `json:"Member"`
-		} `json:"AccessKeyMetadata"`
+		} `json:"AccessKeyMetadata" name:"AccessKeyMetadata"`
 	} `json:"ListAccessKeyResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1072,7 +1071,7 @@ func (r *UpdateAccessKeyRequest) FromJsonString(s string) error {
 
 type UpdateAccessKeyResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *bool   `json:"result" name:"result"`
+	Result    *bool   `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -1109,7 +1108,7 @@ func (r *DeleteAccessKeyRequest) FromJsonString(s string) error {
 
 type DeleteAccessKeyResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *bool   `json:"result" name:"result"`
+	Result    *bool   `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -1150,21 +1149,21 @@ type ListVirtualMFADevicesResponse struct {
 	ListVirtualMFADevicesResult struct {
 		VirtualMFADevices struct {
 			Member []struct {
-				SerialNumber *string `json:"SerialNumber"`
-				EnableDate   *string `json:"EnableDate"`
+				SerialNumber *string `json:"SerialNumber" name:"SerialNumber"`
+				EnableDate   *string `json:"EnableDate" name:"EnableDate"`
 				User         struct {
-					Uuid        *string `json:"Uuid"`
-					Name        *string `json:"Name"`
-					RealName    *string `json:"RealName"`
-					Path        *string `json:"Path"`
-					Krn         *string `json:"Krn"`
-					CreatedTime *string `json:"CreatedTime"`
-					PwdLastUsed *string `json:"PwdLastUsed"`
-				} `json:"User"`
+					Uuid        *string `json:"Uuid" name:"Uuid"`
+					Name        *string `json:"Name" name:"Name"`
+					RealName    *string `json:"RealName" name:"RealName"`
+					Path        *string `json:"Path" name:"Path"`
+					Krn         *string `json:"Krn" name:"Krn"`
+					CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+					PwdLastUsed *string `json:"PwdLastUsed" name:"PwdLastUsed"`
+				} `json:"User" name:"User"`
 			} `json:"Member"`
-		} `json:"VirtualMFADevices"`
-		Marker      *string `json:"Marker"`
-		IsTruncated *bool   `json:"IsTruncated"`
+		} `json:"VirtualMFADevices" name:"VirtualMFADevices"`
+		Marker      *string `json:"Marker" name:"Marker"`
+		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
 	} `json:"ListVirtualMFADevicesResult"`
 }
 
@@ -1276,8 +1275,8 @@ type GetVirtualMFADeviceResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId        *string `json:"RequestId" name:"RequestId"`
 	VirtualMFADevice struct {
-		SerialNumber *string `json:"SerialNumber"`
-		EnableDate   *string `json:"EnableDate"`
+		SerialNumber *string `json:"SerialNumber" name:"SerialNumber"`
+		EnableDate   *string `json:"EnableDate" name:"EnableDate"`
 	} `json:"VirtualMFADevice"`
 }
 
@@ -1317,14 +1316,14 @@ type CreateRoleResponse struct {
 	*ksyunhttp.BaseResponse
 	CreateRoleResult struct {
 		Role struct {
-			Path          *string `json:"Path"`
-			Krn           *string `json:"Krn"`
-			RoleName      *string `json:"RoleName"`
-			Description   *string `json:"Description"`
-			TrustAccounts *string `json:"TrustAccounts"`
-			CreateDate    *string `json:"CreateDate"`
-			RoleId        *string `json:"RoleId"`
-		} `json:"Role"`
+			Path          *string `json:"Path" name:"Path"`
+			Krn           *string `json:"Krn" name:"Krn"`
+			RoleName      *string `json:"RoleName" name:"RoleName"`
+			Description   *string `json:"Description" name:"Description"`
+			TrustAccounts *string `json:"TrustAccounts" name:"TrustAccounts"`
+			CreateDate    *string `json:"CreateDate" name:"CreateDate"`
+			RoleId        *string `json:"RoleId" name:"RoleId"`
+		} `json:"Role" name:"Role"`
 	} `json:"CreateRoleResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1361,7 +1360,7 @@ func (r *DeleteRoleRequest) FromJsonString(s string) error {
 
 type DeleteRoleResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *bool   `json:"result" name:"result"`
+	Result    *bool   `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -1399,20 +1398,19 @@ type GetRoleResponse struct {
 	*ksyunhttp.BaseResponse
 	GetRoleResult struct {
 		Role struct {
-			Id            *int    `json:"Id"`
-			Path          *string `json:"Path"`
-			Krn           *string `json:"Krn"`
-			RoleName      *string `json:"RoleName"`
-			Description   *string `json:"Description"`
-			TrustAccounts *string `json:"TrustAccounts"`
-			TrustServices *string `json:"TrustServices"`
-			TrustProvider *string `json:"TrustProvider"`
-			ProviderList  []struct {
-			} `json:"ProviderList"`
-			TrustType  *int    `json:"TrustType"`
-			CreateDate *string `json:"CreateDate"`
-			RoleId     *string `json:"RoleId"`
-		} `json:"Role"`
+			Id            *int      `json:"Id" name:"Id"`
+			Path          *string   `json:"Path" name:"Path"`
+			Krn           *string   `json:"Krn" name:"Krn"`
+			RoleName      *string   `json:"RoleName" name:"RoleName"`
+			Description   *string   `json:"Description" name:"Description"`
+			TrustAccounts *string   `json:"TrustAccounts" name:"TrustAccounts"`
+			TrustServices *string   `json:"TrustServices" name:"TrustServices"`
+			TrustProvider *string   `json:"TrustProvider" name:"TrustProvider"`
+			ProviderList  []*string `json:"ProviderList" name:"ProviderList"`
+			TrustType     *int      `json:"TrustType" name:"TrustType"`
+			CreateDate    *string   `json:"CreateDate" name:"CreateDate"`
+			RoleId        *string   `json:"RoleId" name:"RoleId"`
+		} `json:"Role" name:"Role"`
 	} `json:"GetRoleResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1453,22 +1451,22 @@ type ListRolesResponse struct {
 	ListRolesResult struct {
 		Roles struct {
 			Member []struct {
-				Path          *string `json:"Path"`
-				Krn           *string `json:"Krn"`
-				RoleName      *string `json:"RoleName"`
-				Description   *string `json:"Description"`
-				TrustType     *int    `json:"TrustType"`
-				TrustAccounts *string `json:"TrustAccounts"`
+				Path          *string `json:"Path" name:"Path"`
+				Krn           *string `json:"Krn" name:"Krn"`
+				RoleName      *string `json:"RoleName" name:"RoleName"`
+				Description   *string `json:"Description" name:"Description"`
+				TrustType     *int    `json:"TrustType" name:"TrustType"`
+				TrustAccounts *string `json:"TrustAccounts" name:"TrustAccounts"`
 				TrustServices []struct {
-				} `json:"TrustServices"`
-				TrustProvider   *string `json:"TrustProvider"`
-				CreateDate      *string `json:"CreateDate"`
-				RoleId          *string `json:"RoleId"`
-				ServiceRoleType *int    `json:"ServiceRoleType"`
+				} `json:"TrustServices" name:"TrustServices"`
+				TrustProvider   *string `json:"TrustProvider" name:"TrustProvider"`
+				CreateDate      *string `json:"CreateDate" name:"CreateDate"`
+				RoleId          *string `json:"RoleId" name:"RoleId"`
+				ServiceRoleType *int    `json:"ServiceRoleType" name:"ServiceRoleType"`
 			} `json:"Member"`
-		} `json:"Roles"`
-		IsTruncated *bool   `json:"IsTruncated"`
-		Marker      *string `json:"Marker"`
+		} `json:"Roles" name:"Roles"`
+		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
+		Marker      *string `json:"Marker" name:"Marker"`
 	} `json:"ListRolesResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1506,7 +1504,7 @@ func (r *AttachRolePolicyRequest) FromJsonString(s string) error {
 
 type AttachRolePolicyResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *int    `json:"result" name:"result"`
+	Result    *int    `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -1543,7 +1541,7 @@ func (r *DetachRolePolicyRequest) FromJsonString(s string) error {
 
 type DetachRolePolicyResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *bool   `json:"result" name:"result"`
+	Result    *bool   `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -1584,16 +1582,16 @@ type ListAttachedRolePoliciesResponse struct {
 	ListAttachedRolePoliciesResult struct {
 		AttachedPolicies struct {
 			Member []struct {
-				PolicyKrn      *string `json:"PolicyKrn"`
-				PolicyName     *string `json:"PolicyName"`
-				CreateTime     *string `json:"CreateTime"`
-				Description    *string `json:"Description"`
-				Description_en *string `json:"Description_en"`
-				Type           *int    `json:"Type"`
+				PolicyKrn     *string `json:"PolicyKrn" name:"PolicyKrn"`
+				PolicyName    *string `json:"PolicyName" name:"PolicyName"`
+				CreateTime    *string `json:"CreateTime" name:"CreateTime"`
+				Description   *string `json:"Description" name:"Description"`
+				DescriptionEn *string `json:"DescriptionEn" name:"DescriptionEn"`
+				Type          *int    `json:"Type" name:"Type"`
 			} `json:"Member"`
-		} `json:"AttachedPolicies"`
-		IsTruncated *bool   `json:"IsTruncated"`
-		Marker      *string `json:"Marker"`
+		} `json:"AttachedPolicies" name:"AttachedPolicies"`
+		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
+		Marker      *string `json:"Marker" name:"Marker"`
 	} `json:"ListAttachedRolePoliciesResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1631,7 +1629,7 @@ func (r *UpdateRoleTrustAccountsRequest) FromJsonString(s string) error {
 
 type UpdateRoleTrustAccountsResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *bool   `json:"result" name:"result"`
+	Result    *bool   `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -1742,17 +1740,17 @@ func (r *GetAccountAllProjectListRequest) FromJsonString(s string) error {
 type GetAccountAllProjectListResponse struct {
 	*ksyunhttp.BaseResponse
 	ListProjectResult struct {
-		Total       *int `json:"Total"`
+		Total       *int `json:"Total" name:"Total"`
 		ProjectList []struct {
-			ProjectId   *int    `json:"ProjectId"`
-			AccountId   *string `json:"AccountId"`
-			ProjectName *string `json:"ProjectName"`
-			ProjectDesc *string `json:"ProjectDesc"`
-			Status      *int    `json:"Status"`
-			Krn         *string `json:"Krn"`
-			CreateTime  *string `json:"CreateTime"`
-			UpdateTime  *string `json:"UpdateTime"`
-		} `json:"ProjectList"`
+			ProjectId   *int    `json:"ProjectId" name:"ProjectId"`
+			AccountId   *string `json:"AccountId" name:"AccountId"`
+			ProjectName *string `json:"ProjectName" name:"ProjectName"`
+			ProjectDesc *string `json:"ProjectDesc" name:"ProjectDesc"`
+			Status      *int    `json:"Status" name:"Status"`
+			Krn         *string `json:"Krn" name:"Krn"`
+			CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+			UpdateTime  *string `json:"UpdateTime" name:"UpdateTime"`
+		} `json:"ProjectList" name:"ProjectList"`
 	} `json:"ListProjectResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1794,17 +1792,17 @@ type GetProjectInstanceListResponse struct {
 	*ksyunhttp.BaseResponse
 	ListInstanceResult struct {
 		Items []struct {
-			ProjectId    *string `json:"ProjectId"`
-			InstanceId   *string `json:"InstanceId"`
-			ProductGroup *string `json:"ProductGroup"`
-			ProductType  *string `json:"ProductType"`
-			Region       *string `json:"Region"`
-			AccountId    *int    `json:"AccountId"`
-			Status       *string `json:"Status"`
-		} `json:"Items"`
-		CurrentPage *int `json:"CurrentPage"`
-		PageSize    *int `json:"PageSize"`
-		Total       *int `json:"Total"`
+			ProjectId    *string `json:"ProjectId" name:"ProjectId"`
+			InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+			ProductGroup *string `json:"ProductGroup" name:"ProductGroup"`
+			ProductType  *string `json:"ProductType" name:"ProductType"`
+			Region       *string `json:"Region" name:"Region"`
+			AccountId    *int    `json:"AccountId" name:"AccountId"`
+			Status       *string `json:"Status" name:"Status"`
+		} `json:"Items" name:"Items"`
+		CurrentPage *int `json:"CurrentPage" name:"CurrentPage"`
+		PageSize    *int `json:"PageSize" name:"PageSize"`
+		Total       *int `json:"Total" name:"Total"`
 	} `json:"ListInstanceResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1884,29 +1882,29 @@ type ListEntitiesForPolicyResponse struct {
 	ListEntitiesForPolicyResult struct {
 		PolicyUsers struct {
 			Member []struct {
-				UserId       *string `json:"UserId"`
-				UserName     *string `json:"UserName"`
-				UserRealName *string `json:"UserRealName"`
-				CreateDate   *string `json:"CreateDate"`
+				UserId       *string `json:"UserId" name:"UserId"`
+				UserName     *string `json:"UserName" name:"UserName"`
+				UserRealName *string `json:"UserRealName" name:"UserRealName"`
+				CreateDate   *string `json:"CreateDate" name:"CreateDate"`
 			} `json:"Member"`
-		} `json:"PolicyUsers"`
+		} `json:"PolicyUsers" name:"PolicyUsers"`
 		PolicyRoles struct {
 			Member []struct {
-				RoleId          *string `json:"RoleId"`
-				RoleName        *string `json:"RoleName"`
-				RoleDescription *string `json:"RoleDescription"`
-				CreateDate      *string `json:"CreateDate"`
+				RoleId          *string `json:"RoleId" name:"RoleId"`
+				RoleName        *string `json:"RoleName" name:"RoleName"`
+				RoleDescription *string `json:"RoleDescription" name:"RoleDescription"`
+				CreateDate      *string `json:"CreateDate" name:"CreateDate"`
 			} `json:"Member"`
-		} `json:"PolicyRoles"`
+		} `json:"PolicyRoles" name:"PolicyRoles"`
 		PolicyGroups struct {
 			Member []struct {
-				GroupId          *string `json:"GroupId"`
-				GroupName        *string `json:"GroupName"`
-				GroupDescription *string `json:"GroupDescription"`
-				CreateDate       *string `json:"CreateDate"`
+				GroupId          *string `json:"GroupId" name:"GroupId"`
+				GroupName        *string `json:"GroupName" name:"GroupName"`
+				GroupDescription *string `json:"GroupDescription" name:"GroupDescription"`
+				CreateDate       *string `json:"CreateDate" name:"CreateDate"`
 			} `json:"Member"`
-		} `json:"PolicyGroups"`
-		IsTruncated *string `json:"IsTruncated"`
+		} `json:"PolicyGroups" name:"PolicyGroups"`
+		IsTruncated *string `json:"IsTruncated" name:"IsTruncated"`
 	} `json:"ListEntitiesForPolicyResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1944,11 +1942,11 @@ func (r *ListProjectMemberRequest) FromJsonString(s string) error {
 type ListProjectMemberResponse struct {
 	*ksyunhttp.BaseResponse
 	ListProjectMember []struct {
-		MemberId     *int    `json:"MemberId"`
-		IdentityType *int    `json:"IdentityType"`
-		IdentityName *string `json:"IdentityName"`
-		CreateTime   *string `json:"CreateTime"`
-		Krn          *string `json:"Krn"`
+		MemberId     *int    `json:"MemberId" name:"MemberId"`
+		IdentityType *int    `json:"IdentityType" name:"IdentityType"`
+		IdentityName *string `json:"IdentityName" name:"IdentityName"`
+		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		Krn          *string `json:"Krn" name:"Krn"`
 	} `json:"ListProjectMember"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2099,7 +2097,7 @@ func (r *UpdatePolicyRequest) FromJsonString(s string) error {
 type UpdatePolicyResponse struct {
 	*ksyunhttp.BaseResponse
 	UpdatePolicyResult struct {
-		Policy *bool `json:"Policy"`
+		Policy *bool `json:"Policy" name:"Policy"`
 	} `json:"UpdatePolicyResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2139,13 +2137,13 @@ type CreateGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	CreateGroupResult struct {
 		Group struct {
-			GroupId     *string `json:"GroupId"`
-			Path        *string `json:"Path"`
-			GroupName   *string `json:"GroupName"`
-			Description *string `json:"Description"`
-			CreateDate  *string `json:"CreateDate"`
-			Krn         *string `json:"Krn"`
-		} `json:"Group"`
+			GroupId     *string `json:"GroupId" name:"GroupId"`
+			Path        *string `json:"Path" name:"Path"`
+			GroupName   *string `json:"GroupName" name:"GroupName"`
+			Description *string `json:"Description" name:"Description"`
+			CreateDate  *string `json:"CreateDate" name:"CreateDate"`
+			Krn         *string `json:"Krn" name:"Krn"`
+		} `json:"Group" name:"Group"`
 	} `json:"CreateGroupResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2182,7 +2180,7 @@ func (r *DeleteGroupRequest) FromJsonString(s string) error {
 
 type DeleteGroupResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *bool   `json:"result" name:"result"`
+	Result    *bool   `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -2219,7 +2217,7 @@ func (r *DetachGroupPolicyRequest) FromJsonString(s string) error {
 
 type DetachGroupPolicyResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *bool   `json:"result" name:"result"`
+	Result    *bool   `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -2256,7 +2254,7 @@ func (r *AttachGroupPolicyRequest) FromJsonString(s string) error {
 
 type AttachGroupPolicyResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *int    `json:"result" name:"result"`
+	Result    *int    `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -2297,16 +2295,16 @@ type ListGroupPoliciesResponse struct {
 	ListGroupPoliciesResult struct {
 		AttachedPolicies struct {
 			Member []struct {
-				PolicyKrn      *string `json:"PolicyKrn"`
-				PolicyName     *string `json:"PolicyName"`
-				CreateTime     *string `json:"CreateTime"`
-				Description    *string `json:"Description"`
-				Description_en *string `json:"Description_en"`
-				Type           *int    `json:"Type"`
+				PolicyKrn     *string `json:"PolicyKrn" name:"PolicyKrn"`
+				PolicyName    *string `json:"PolicyName" name:"PolicyName"`
+				CreateTime    *string `json:"CreateTime" name:"CreateTime"`
+				Description   *string `json:"Description" name:"Description"`
+				DescriptionEn *string `json:"DescriptionEn" name:"DescriptionEn"`
+				Type          *int    `json:"Type" name:"Type"`
 			} `json:"Member"`
-		} `json:"AttachedPolicies"`
-		IsTruncated *bool   `json:"IsTruncated"`
-		Marker      *string `json:"Marker"`
+		} `json:"AttachedPolicies" name:"AttachedPolicies"`
+		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
+		Marker      *string `json:"Marker" name:"Marker"`
 	} `json:"ListGroupPoliciesResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2344,7 +2342,7 @@ func (r *AddUserToGroupRequest) FromJsonString(s string) error {
 
 type AddUserToGroupResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *bool   `json:"result" name:"result"`
+	Result    *bool   `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -2385,14 +2383,14 @@ type GetGroupResponse struct {
 	GetGroupResult struct {
 		Group struct {
 			Group struct {
-				GroupId     *string `json:"GroupId"`
-				Path        *string `json:"Path"`
-				GroupName   *string `json:"GroupName"`
-				Description *string `json:"Description"`
-				CreateDate  *string `json:"CreateDate"`
-				Krn         *string `json:"Krn"`
+				GroupId     *string `json:"GroupId" name:"GroupId"`
+				Path        *string `json:"Path" name:"Path"`
+				GroupName   *string `json:"GroupName" name:"GroupName"`
+				Description *string `json:"Description" name:"Description"`
+				CreateDate  *string `json:"CreateDate" name:"CreateDate"`
+				Krn         *string `json:"Krn" name:"Krn"`
 			} `json:"Group"`
-		} `json:"Group"`
+		} `json:"Group" name:"Group"`
 	} `json:"GetGroupResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2434,18 +2432,18 @@ type ListGroupsForUserResponse struct {
 	ListGroupsForUserResult struct {
 		Groups struct {
 			Member []struct {
-				Id          *int    `json:"Id"`
-				GroupId     *string `json:"GroupId"`
-				Path        *string `json:"Path"`
-				GroupName   *string `json:"GroupName"`
-				Description *string `json:"Description"`
-				CreateDate  *string `json:"CreateDate"`
-				Krn         *string `json:"Krn"`
-				PolicyCount *int    `json:"PolicyCount"`
+				Id          *int    `json:"Id" name:"Id"`
+				GroupId     *string `json:"GroupId" name:"GroupId"`
+				Path        *string `json:"Path" name:"Path"`
+				GroupName   *string `json:"GroupName" name:"GroupName"`
+				Description *string `json:"Description" name:"Description"`
+				CreateDate  *string `json:"CreateDate" name:"CreateDate"`
+				Krn         *string `json:"Krn" name:"Krn"`
+				PolicyCount *int    `json:"PolicyCount" name:"PolicyCount"`
 			} `json:"Member"`
-		} `json:"Groups"`
-		IsTruncated *bool   `json:"IsTruncated"`
-		Marker      *string `json:"Marker"`
+		} `json:"Groups" name:"Groups"`
+		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
+		Marker      *string `json:"Marker" name:"Marker"`
 	} `json:"ListGroupsForUserResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2486,18 +2484,18 @@ type ListGroupsResponse struct {
 	ListGroupsResult struct {
 		Groups struct {
 			Member []struct {
-				GroupId     *string `json:"GroupId"`
-				Path        *string `json:"Path"`
-				GroupName   *string `json:"GroupName"`
-				Description *string `json:"Description"`
-				CreateDate  *string `json:"CreateDate"`
-				Krn         *string `json:"Krn"`
-				UserCount   *int    `json:"UserCount"`
-				PolicyCount *int    `json:"PolicyCount"`
+				GroupId     *string `json:"GroupId" name:"GroupId"`
+				Path        *string `json:"Path" name:"Path"`
+				GroupName   *string `json:"GroupName" name:"GroupName"`
+				Description *string `json:"Description" name:"Description"`
+				CreateDate  *string `json:"CreateDate" name:"CreateDate"`
+				Krn         *string `json:"Krn" name:"Krn"`
+				UserCount   *int    `json:"UserCount" name:"UserCount"`
+				PolicyCount *int    `json:"PolicyCount" name:"PolicyCount"`
 			} `json:"Member"`
-		} `json:"Groups"`
-		IsTruncated *bool   `json:"IsTruncated"`
-		Marker      *string `json:"Marker"`
+		} `json:"Groups" name:"Groups"`
+		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
+		Marker      *string `json:"Marker" name:"Marker"`
 	} `json:"ListGroupsResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2535,7 +2533,7 @@ func (r *RemoveUserFromGroupRequest) FromJsonString(s string) error {
 
 type RemoveUserFromGroupResponse struct {
 	*ksyunhttp.BaseResponse
-	result    *bool   `json:"result" name:"result"`
+	Result    *bool   `json:"result" name:"result"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -2571,10 +2569,10 @@ func (r *ListAllUserAccessKeysRequest) FromJsonString(s string) error {
 type ListAllUserAccessKeysResponse struct {
 	*ksyunhttp.BaseResponse
 	AccessKeyList []struct {
-		UserName       *string `json:"UserName"`
-		AccessKey      *string `json:"AccessKey"`
-		LastLoginTime  *string `json:"LastLoginTime"`
-		AkLastUsedTime *string `json:"AkLastUsedTime"`
+		UserName       *string `json:"UserName" name:"UserName"`
+		AccessKey      *string `json:"AccessKey" name:"AccessKey"`
+		LastLoginTime  *string `json:"LastLoginTime" name:"LastLoginTime"`
+		AkLastUsedTime *string `json:"AkLastUsedTime" name:"AkLastUsedTime"`
 	} `json:"AccessKeyList"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2618,10 +2616,10 @@ func (r *InsertInstanceToESRequest) FromJsonString(s string) error {
 type InsertInstanceToESResponse struct {
 	*ksyunhttp.BaseResponse
 	Data []struct {
-		InstanceId *string `json:"InstanceId"`
-		Status     *int    `json:"Status"`
-		Result     *string `json:"Result"`
-		Reason     *string `json:"Reason"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Status     *int    `json:"Status" name:"Status"`
+		Result     *string `json:"Result" name:"Result"`
+		Reason     *string `json:"Reason" name:"Reason"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2660,10 +2658,10 @@ func (r *DelInstanceFromESRequest) FromJsonString(s string) error {
 type DelInstanceFromESResponse struct {
 	*ksyunhttp.BaseResponse
 	Data []struct {
-		InstanceId *string `json:"InstanceId"`
-		Status     *int    `json:"Status"`
-		Result     *string `json:"Result"`
-		Reason     *string `json:"Reason"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Status     *int    `json:"Status" name:"Status"`
+		Result     *string `json:"Result" name:"Result"`
+		Reason     *string `json:"Reason" name:"Reason"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2704,16 +2702,16 @@ func (r *GetAccountAllProjectsByParamsRequest) FromJsonString(s string) error {
 type GetAccountAllProjectsByParamsResponse struct {
 	*ksyunhttp.BaseResponse
 	ListProjectResult struct {
-		Total       *int `json:"Total"`
+		Total       *int `json:"Total" name:"Total"`
 		ProjectList []struct {
-			ProjectId   *int    `json:"ProjectId"`
-			AccountId   *string `json:"AccountId"`
-			ProjectName *string `json:"ProjectName"`
-			ProjectDesc *string `json:"ProjectDesc"`
-			Status      *int    `json:"Status"`
-			Krn         *string `json:"Krn"`
-			CreateTime  *string `json:"CreateTime"`
-		} `json:"ProjectList"`
+			ProjectId   *int    `json:"ProjectId" name:"ProjectId"`
+			AccountId   *string `json:"AccountId" name:"AccountId"`
+			ProjectName *string `json:"ProjectName" name:"ProjectName"`
+			ProjectDesc *string `json:"ProjectDesc" name:"ProjectDesc"`
+			Status      *int    `json:"Status" name:"Status"`
+			Krn         *string `json:"Krn" name:"Krn"`
+			CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+		} `json:"ProjectList" name:"ProjectList"`
 	} `json:"ListProjectResult"`
 }
 
@@ -2753,9 +2751,9 @@ type SetUserSsoSettingsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId       *string `json:"RequestId" name:"RequestId"`
 	UserSsoSettings struct {
-		Status   *int    `json:"Status"`
-		Metadata *string `json:"Metadata"`
-		Domain   *string `json:"Domain"`
+		Status   *int    `json:"Status" name:"Status"`
+		Metadata *string `json:"Metadata" name:"Metadata"`
+		Domain   *string `json:"Domain" name:"Domain"`
 	} `json:"UserSsoSettings"`
 }
 
@@ -2792,9 +2790,9 @@ type GetUserSsoSettingsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId       *string `json:"RequestId" name:"RequestId"`
 	UserSsoSettings struct {
-		Status   *int    `json:"Status"`
-		Metadata *string `json:"Metadata"`
-		Domain   *string `json:"Domain"`
+		Status   *int    `json:"Status" name:"Status"`
+		Metadata *string `json:"Metadata" name:"Metadata"`
+		Domain   *string `json:"Domain" name:"Domain"`
 	} `json:"UserSsoSettings"`
 }
 

@@ -28,9 +28,9 @@ func (r *CreateAlarmPolicyRequest) FromJsonString(s string) error {
 
 type CreateAlarmPolicyResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
+	RequestId *string `json:"requestId" name:"requestId"`
 	Data      struct {
-		PolicyId *int `json:"PolicyId"`
+		PolicyId *int `json:"PolicyId" name:"PolicyId"`
 	} `json:"Data"`
 }
 
@@ -66,7 +66,7 @@ func (r *DeleteAlarmPolicyRequest) FromJsonString(s string) error {
 
 type DeleteAlarmPolicyResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
+	RequestId *string `json:"requestId" name:"requestId"`
 }
 
 func (r *DeleteAlarmPolicyResponse) ToJsonString() string {

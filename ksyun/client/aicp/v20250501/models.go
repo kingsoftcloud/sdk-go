@@ -1,4 +1,4 @@
-package v20240501
+package v20250501
 
 import (
 	"encoding/json"
@@ -34,19 +34,18 @@ func (r *GetImageRequest) FromJsonString(s string) error {
 
 type GetImageResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
 	Result  struct {
-		Id            *int    `json:"Id"`
-		Create_at     *int    `json:"Create_at"`
-		Update_at     *int    `json:"Update_at"`
-		Image_name    *string `json:"Image_name"`
-		Raw_image_url *string `json:"Raw_image_url"`
-		Description   *string `json:"Description"`
-		Image_type    *string `json:"Image_type"`
-		Status        *string `json:"Status"`
-		Message       *string `json:"Message"`
-		Op_type       *string `json:"Op_type"`
+		Id          *int    `json:"Id" name:"Id"`
+		CreateAt    *int    `json:"CreateAt" name:"CreateAt"`
+		UpdateAt    *int    `json:"UpdateAt" name:"UpdateAt"`
+		ImageName   *string `json:"ImageName" name:"ImageName"`
+		RawImageUrl *string `json:"RawImageUrl" name:"RawImageUrl"`
+		Description *string `json:"Description" name:"Description"`
+		ImageType   *string `json:"ImageType" name:"ImageType"`
+		Status      *string `json:"Status" name:"Status"`
+		OpType      *string `json:"OpType" name:"OpType"`
 	} `json:"Result"`
 }
 
@@ -85,18 +84,18 @@ func (r *ListImagesRequest) FromJsonString(s string) error {
 
 type ListImagesResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
 	Result  []struct {
-		Id            *int    `json:"Id"`
-		Create_at     *int    `json:"Create_at"`
-		Update_at     *int    `json:"Update_at"`
-		Image_name    *string `json:"Image_name"`
-		Raw_image_url *string `json:"Raw_image_url"`
-		Description   *string `json:"Description"`
-		Image_type    *string `json:"Image_type"`
-		Status        *string `json:"Status"`
-		Op_type       *string `json:"Op_type"`
+		Id          *int    `json:"Id" name:"Id"`
+		CreateAt    *int    `json:"CreateAt" name:"CreateAt"`
+		UpdateAt    *int    `json:"UpdateAt" name:"UpdateAt"`
+		ImageName   *string `json:"ImageName" name:"ImageName"`
+		RawImageUrl *string `json:"RawImageUrl" name:"RawImageUrl"`
+		Description *string `json:"Description" name:"Description"`
+		ImageType   *string `json:"ImageType" name:"ImageType"`
+		Status      *string `json:"Status" name:"Status"`
+		OpType      *string `json:"OpType" name:"OpType"`
 	} `json:"Result"`
 }
 
@@ -132,8 +131,8 @@ func (r *DeleteImageRequest) FromJsonString(s string) error {
 
 type DeleteImageResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
 }
 
 func (r *DeleteImageResponse) ToJsonString() string {
@@ -175,9 +174,9 @@ func (r *CreateImageRequest) FromJsonString(s string) error {
 
 type CreateImageResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
-	result  *string `json:"result" name:"result"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
+	Result  *string `json:"result" name:"result"`
 }
 
 func (r *CreateImageResponse) ToJsonString() string {
@@ -215,17 +214,17 @@ func (r *ListNodeMetricsRequest) FromJsonString(s string) error {
 
 type ListNodeMetricsResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
 	Result  []struct {
-		Ip        *string `json:"Ip"`
-		Gpu_count *int    `json:"Gpu_count"`
-		Gpu_used  *int    `json:"Gpu_used"`
-		Gpu_free  *int    `json:"Gpu_free"`
+		Ip       *string `json:"Ip" name:"Ip"`
+		GpuCount *int    `json:"GpuCount" name:"GpuCount"`
+		GpuUsed  *int    `json:"GpuUsed" name:"GpuUsed"`
+		GpuFree  *int    `json:"GpuFree" name:"GpuFree"`
 	} `json:"Result"`
-	Gpu_infos []struct {
-		Index *int `json:"Index"`
-	} `json:"Gpu_infos"`
+	GpuInfo []struct {
+		Index *int `json:"Index" name:"Index"`
+	} `json:"GpuInfo"`
 }
 
 func (r *ListNodeMetricsResponse) ToJsonString() string {
@@ -261,14 +260,14 @@ func (r *ListStorageConfigsRequest) FromJsonString(s string) error {
 
 type ListStorageConfigsResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
 	Result  []struct {
-		Id          *int    `json:"Id"`
-		Create_at   *int    `json:"Create_at"`
-		Update_at   *int    `json:"Update_at"`
-		Name        *string `json:"Name"`
-		Description *string `json:"Description"`
+		Id          *int    `json:"Id" name:"Id"`
+		CreateAt    *int    `json:"CreateAt" name:"CreateAt"`
+		UpdateAt    *int    `json:"UpdateAt" name:"UpdateAt"`
+		Name        *string `json:"Name" name:"Name"`
+		Description *string `json:"Description" name:"Description"`
 	} `json:"Result"`
 }
 
@@ -307,19 +306,19 @@ func (r *ListSpaceStoragesRequest) FromJsonString(s string) error {
 
 type ListSpaceStoragesResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
 	Result  []struct {
-		Id                *int    `json:"Id"`
-		Create_at         *int    `json:"Create_at"`
-		Update_at         *int    `json:"Update_at"`
-		Name              *string `json:"Name"`
-		Description       *string `json:"Description"`
-		Path              *string `json:"Path"`
-		Max_quota_byte    *int    `json:"Max_quota_byte"`
-		Create_user_id    *int    `json:"Create_user_id"`
-		Create_username   *string `json:"Create_username"`
-		Storage_config_id *int    `json:"Storage_config_id"`
+		Id              *int    `json:"Id" name:"Id"`
+		CreateAt        *int    `json:"CreateAt" name:"CreateAt"`
+		UpdateAt        *int    `json:"UpdateAt" name:"UpdateAt"`
+		Name            *string `json:"Name" name:"Name"`
+		Description     *string `json:"Description" name:"Description"`
+		Path            *string `json:"Path" name:"Path"`
+		MaxQuotaByte    *int    `json:"MaxQuotaByte" name:"MaxQuotaByte"`
+		CreateUserId    *int    `json:"CreateUserId" name:"CreateUserId"`
+		CreateUsername  *string `json:"CreateUsername" name:"CreateUsername"`
+		StorageConfigId *int    `json:"StorageConfigId" name:"StorageConfigId"`
 	} `json:"Result"`
 }
 
@@ -357,14 +356,14 @@ func (r *ListWorkspacesRequest) FromJsonString(s string) error {
 
 type ListWorkspacesResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
 	Result  []struct {
-		Id          *int    `json:"Id"`
-		Create_at   *int    `json:"Create_at"`
-		Update_at   *int    `json:"Update_at"`
-		Name        *string `json:"Name"`
-		Description *string `json:"Description"`
+		Id          *int    `json:"Id" name:"Id"`
+		CreateAt    *int    `json:"CreateAt" name:"CreateAt"`
+		UpdateAt    *int    `json:"UpdateAt" name:"UpdateAt"`
+		Name        *string `json:"Name" name:"Name"`
+		Description *string `json:"Description" name:"Description"`
 	} `json:"Result"`
 }
 
@@ -401,16 +400,16 @@ func (r *ListGpuTypesRequest) FromJsonString(s string) error {
 
 type ListGpuTypesResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
 	Result  []struct {
-		Id            *int    `json:"Id"`
-		Create_at     *int    `json:"Create_at"`
-		Update_at     *int    `json:"Update_at"`
-		Name          *string `json:"Name"`
-		Status        *bool   `json:"Status"`
-		Device_memory *int    `json:"Device_memory"`
-		Device_type   *string `json:"Device_type"`
+		Id           *int    `json:"Id" name:"Id"`
+		CreateAt     *int    `json:"CreateAt" name:"CreateAt"`
+		UpdateAt     *int    `json:"UpdateAt" name:"UpdateAt"`
+		Name         *string `json:"Name" name:"Name"`
+		Status       *bool   `json:"Status" name:"Status"`
+		DeviceMemory *int    `json:"DeviceMemory" name:"DeviceMemory"`
+		DeviceType   *string `json:"DeviceType" name:"DeviceType"`
 	} `json:"Result"`
 }
 
@@ -451,19 +450,17 @@ func (r *CreateSpaceStorageRequest) FromJsonString(s string) error {
 
 type CreateSpaceStorageResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
 	Result  struct {
-		Id                *int    `json:"Id"`
-		Create_at         *int    `json:"Create_at"`
-		Update_at         *int    `json:"Update_at"`
-		Name              *string `json:"Name"`
-		Description       *string `json:"Description"`
-		Path              *string `json:"Path"`
-		Max_quota_byte    *int    `json:"Max_quota_byte"`
-		Create_user_id    *int    `json:"Create_user_id"`
-		Create_username   *string `json:"Create_username"`
-		Storage_config_id *int    `json:"Storage_config_id"`
+		Id              *int    `json:"Id" name:"Id"`
+		CreateAt        *int    `json:"CreateAt" name:"CreateAt"`
+		UpdateAt        *int    `json:"UpdateAt" name:"UpdateAt"`
+		Name            *string `json:"Name" name:"Name"`
+		Description     *string `json:"Description" name:"Description"`
+		Path            *string `json:"Path" name:"Path"`
+		MaxQuotaByte    *int    `json:"MaxQuotaByte" name:"MaxQuotaByte"`
+		StorageConfigId *int    `json:"StorageConfigId" name:"StorageConfigId"`
 	} `json:"Result"`
 }
 
@@ -499,93 +496,93 @@ func (r *GetWorkspaceQuotaRequest) FromJsonString(s string) error {
 
 type GetWorkspaceQuotaResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
 	Result  struct {
-		Quota_limit struct {
+		QuotaLimit struct {
 			Exclusive struct {
-				Cpu_quota  *int `json:"Cpu_quota"`
-				Gpu_quotas []struct {
-					type *string `json:"type"`
-					quota *int `json:"quota"`
-				} `json:"Gpu_quotas"`
-				Memory_quota  *int    `json:"Memory_quota"`
-				Resource_type *string `json:"Resource_type"`
-				Space_id      *int    `json:"Space_id"`
+				CpuQuota  *int `json:"CpuQuota" name:"CpuQuota"`
+				GpuQuotas []struct {
+					Type  *string `json:"type" name:"type"`
+					Quota *int    `json:"quota" name:"quota"`
+				} `json:"GpuQuotas" name:"GpuQuotas"`
+				MemoryQuota  *int    `json:"MemoryQuota" name:"MemoryQuota"`
+				ResourceType *string `json:"ResourceType" name:"ResourceType"`
+				SpaceId      *int    `json:"SpaceId" name:"SpaceId"`
 			} `json:"Exclusive"`
 			Fixed struct {
-				Cpu_quota  *int `json:"Cpu_quota"`
-				Gpu_quotas []struct {
-					type *string `json:"type"`
-					quota *int `json:"quota"`
-				} `json:"Gpu_quotas"`
-				Memory_quota  *int    `json:"Memory_quota"`
-				Resource_type *string `json:"Resource_type"`
-				Space_id      *int    `json:"Space_id"`
+				CpuQuota  *int `json:"CpuQuota" name:"CpuQuota"`
+				GpuQuotas []struct {
+					Type  *string `json:"type" name:"type"`
+					Quota *int    `json:"quota" name:"quota"`
+				} `json:"GpuQuotas" name:"GpuQuotas"`
+				MemoryQuota  *int    `json:"MemoryQuota" name:"MemoryQuota"`
+				ResourceType *string `json:"ResourceType" name:"ResourceType"`
+				SpaceId      *int    `json:"SpaceId" name:"SpaceId"`
 			} `json:"Fixed"`
-			Shared-develop struct {
-			Cpu_quota *int `json:"Cpu_quota"`
-			Gpu_quotas []struct {
-			quota *int `json:"quota"`
-			type *string `json:"type"`
-		} `json:"Gpu_quotas"`
-			Memory_quota *int `json:"Memory_quota"`
-			Resource_type *string `json:"Resource_type"`
-			Space_id *int `json:"Space_id"`
-		} `json:"Shared-develop"`
-			Shared-training struct {
-			Cpu_quota *int `json:"Cpu_quota"`
-			Gpu_quotas []struct {
-			quota *int `json:"quota"`
-			type *string `json:"type"`
-		} `json:"Gpu_quotas"`
-			Memory_quota *int `json:"Memory_quota"`
-			Resource_type *string `json:"Resource_type"`
-			Space_id *int `json:"Space_id"`
-		} `json:"Shared-training"`
-		} `json:"Quota_limit"`
-		Quota_remain struct {
+			SharedDevelop struct {
+				CpuQuota  *int `json:"CpuQuota" name:"CpuQuota"`
+				GpuQuotas []struct {
+					Quota *int    `json:"quota" name:"quota"`
+					Type  *string `json:"type" name:"type"`
+				} `json:"GpuQuotas" name:"GpuQuotas"`
+				MemoryQuota  *int    `json:"MemoryQuota" name:"MemoryQuota"`
+				ResourceType *string `json:"ResourceType" name:"ResourceType"`
+				SpaceId      *int    `json:"SpaceId" name:"SpaceId"`
+			} `json:"SharedDevelop"`
+			SharedTraining struct {
+				CpuQuota  *int `json:"CpuQuota" name:"CpuQuota"`
+				GpuQuotas []struct {
+					Quota *int    `json:"quota" name:"quota"`
+					Type  *string `json:"type" name:"type"`
+				} `json:"GpuQuotas" name:"GpuQuotas"`
+				MemoryQuota  *int    `json:"MemoryQuota" name:"MemoryQuota"`
+				ResourceType *string `json:"ResourceType" name:"ResourceType"`
+				SpaceId      *int    `json:"SpaceId" name:"SpaceId"`
+			} `json:"SharedTraining"`
+		} `json:"QuotaLimit" name:"QuotaLimit"`
+		QuotaRemain struct {
 			Exclusive struct {
-				Cpu_quota  *int `json:"Cpu_quota"`
-				Gpu_quotas []struct {
-					type *string `json:"type"`
-					quota *int `json:"quota"`
-				} `json:"Gpu_quotas"`
-				Memory_quota  *int    `json:"Memory_quota"`
-				Resource_type *string `json:"Resource_type"`
-				Space_id      *int    `json:"Space_id"`
+				CpuQuota  *int `json:"CpuQuota" name:"CpuQuota"`
+				GpuQuotas []struct {
+					Type  *string `json:"type" name:"type"`
+					Quota *int    `json:"quota" name:"quota"`
+				} `json:"GpuQuotas" name:"GpuQuotas"`
+				MemoryQuota  *int    `json:"MemoryQuota" name:"MemoryQuota"`
+				ResourceType *string `json:"ResourceType" name:"ResourceType"`
+				SpaceId      *int    `json:"SpaceId" name:"SpaceId"`
 			} `json:"Exclusive"`
 			Fixed struct {
-				Cpu_quota  *int `json:"Cpu_quota"`
-				Gpu_quotas []struct {
-					type *string `json:"type"`
-					quota *int `json:"quota"`
-				} `json:"Gpu_quotas"`
-				Memory_quota  *int    `json:"Memory_quota"`
-				Resource_type *string `json:"Resource_type"`
-				Space_id      *int    `json:"Space_id"`
+				CpuQuota  *int `json:"CpuQuota" name:"CpuQuota"`
+				GpuQuotas []struct {
+					Type  *string `json:"type" name:"type"`
+					Quota *int    `json:"quota" name:"quota"`
+				} `json:"GpuQuotas" name:"GpuQuotas"`
+				MemoryQuota  *int    `json:"MemoryQuota" name:"MemoryQuota"`
+				ResourceType *string `json:"ResourceType" name:"ResourceType"`
+				SpaceId      *int    `json:"SpaceId" name:"SpaceId"`
 			} `json:"Fixed"`
-			Shared-develop struct {
-			Cpu_quota *int `json:"Cpu_quota"`
-			Gpu_quotas []struct {
-			quota *int `json:"quota"`
-			type *string `json:"type"`
-		} `json:"Gpu_quotas"`
-			Memory_quota *int `json:"Memory_quota"`
-			Resource_type *string `json:"Resource_type"`
-			Space_id *int `json:"Space_id"`
-		} `json:"Shared-develop"`
-			Shared-training struct {
-			Cpu_quota *int `json:"Cpu_quota"`
-			Gpu_quotas []struct {
-			quota *int `json:"quota"`
-			type *string `json:"type"`
-		} `json:"Gpu_quotas"`
-			Memory_quota *int `json:"Memory_quota"`
-			Resource_type *string `json:"Resource_type"`
-			Space_id *int `json:"Space_id"`
-		} `json:"Shared-training"`
-		} `json:"Quota_remain"`
+			SharedDevelop struct {
+				CpuQuota  *int `json:"CpuQuota" name:"CpuQuota"`
+				GpuQuotas []struct {
+					Quota *int    `json:"quota" name:"quota"`
+					Type  *string `json:"type" name:"type"`
+				} `json:"GpuQuotas" name:"GpuQuotas"`
+				MemoryQuota  *int    `json:"MemoryQuota" name:"MemoryQuota"`
+				ResourceType *string `json:"ResourceType" name:"ResourceType"`
+				SpaceId      *int    `json:"SpaceId" name:"SpaceId"`
+			} `json:"SharedDevelop"`
+			SharedTraining struct {
+				CpuQuota  *int `json:"CpuQuota" name:"CpuQuota"`
+				GpuQuotas []struct {
+					Quota *int    `json:"quota" name:"quota"`
+					Type  *string `json:"type" name:"type"`
+				} `json:"GpuQuotas" name:"GpuQuotas"`
+				MemoryQuota  *int    `json:"MemoryQuota" name:"MemoryQuota"`
+				ResourceType *string `json:"ResourceType" name:"ResourceType"`
+				SpaceId      *int    `json:"SpaceId" name:"SpaceId"`
+			} `json:"SharedTraining"`
+		} `json:"QuotaRemain" name:"QuotaRemain"`
 	} `json:"Result"`
 }
 
@@ -606,7 +603,7 @@ type CreateJobRequest struct {
 	Description            *string                    `json:"description,omitempty" name:"description"`
 	Image_type             *int                       `json:"image_type,omitempty" name:"image_type"`
 	Image_id               *int                       `json:"image_id,omitempty" name:"image_id"`
-	Imgae_url              *string                    `json:"imgae_url,omitempty" name:"imgae_url"`
+	Image_url              *string                    `json:"image_url,omitempty" name:"image_url"`
 	Pull_user              *string                    `json:"pull_user,omitempty" name:"pull_user"`
 	Pull_password          *string                    `json:"pull_password,omitempty" name:"pull_password"`
 	Code_resource          *string                    `json:"code_resource,omitempty" name:"code_resource"`
@@ -644,12 +641,12 @@ func (r *CreateJobRequest) FromJsonString(s string) error {
 
 type CreateJobResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
 	Result  struct {
-		Job_id  *int    `json:"Job_id"`
-		Task_id *int    `json:"Task_id"`
-		Message *string `json:"Message"`
+		JobId   *int    `json:"JobId" name:"JobId"`
+		TaskId  *int    `json:"TaskId" name:"TaskId"`
+		Message *string `json:"Message" name:"Message"`
 	} `json:"Result"`
 }
 
@@ -685,9 +682,9 @@ func (r *ListSpaceStorageBindedSpacesRequest) FromJsonString(s string) error {
 
 type ListSpaceStorageBindedSpacesResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
-	result  []*int  `json:"result" name:"result"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
+	Result  []*int  `json:"Result" name:"Result"`
 }
 
 func (r *ListSpaceStorageBindedSpacesResponse) ToJsonString() string {
@@ -723,9 +720,9 @@ func (r *SpaceStorageBindSpaceRequest) FromJsonString(s string) error {
 
 type SpaceStorageBindSpaceResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
-	result  *string `json:"result" name:"result"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
+	Result  *string `json:"result" name:"result"`
 }
 
 func (r *SpaceStorageBindSpaceResponse) ToJsonString() string {
@@ -761,9 +758,9 @@ func (r *SpaceStorageUnbindSpaceRequest) FromJsonString(s string) error {
 
 type SpaceStorageUnbindSpaceResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
-	result  *string `json:"result" name:"result"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
+	Result  *string `json:"result" name:"result"`
 }
 
 func (r *SpaceStorageUnbindSpaceResponse) ToJsonString() string {
@@ -777,7 +774,8 @@ func (r *SpaceStorageUnbindSpaceResponse) FromJsonString(s string) error {
 
 type DeleteJobRequest struct {
 	*ksyunhttp.BaseRequest
-	Job_id *int `json:"job_id,omitempty" name:"job_id"`
+	Job_id   *int `json:"job_id,omitempty" name:"job_id"`
+	Space_id *int `json:"space_id,omitempty" name:"space_id"`
 }
 
 func (r *DeleteJobRequest) ToJsonString() string {
@@ -798,9 +796,9 @@ func (r *DeleteJobRequest) FromJsonString(s string) error {
 
 type DeleteJobResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
-	result  *string `json:"result" name:"result"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
+	Result  *string `json:"result" name:"result"`
 }
 
 func (r *DeleteJobResponse) ToJsonString() string {
@@ -814,7 +812,8 @@ func (r *DeleteJobResponse) FromJsonString(s string) error {
 
 type GetJobRequest struct {
 	*ksyunhttp.BaseRequest
-	Job_id *int `json:"job_id,omitempty" name:"job_id"`
+	Job_id   *int `json:"job_id,omitempty" name:"job_id"`
+	Space_id *int `json:"space_id,omitempty" name:"space_id"`
 }
 
 func (r *GetJobRequest) ToJsonString() string {
@@ -835,111 +834,110 @@ func (r *GetJobRequest) FromJsonString(s string) error {
 
 type GetJobResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
 	Result  struct {
-		Id              *int    `json:"Id"`
-		Create_at       *int    `json:"Create_at"`
-		Update_at       *int    `json:"Update_at"`
-		Name            *string `json:"Name"`
-		Priority        *int    `json:"Priority"`
-		Description     *string `json:"Description"`
-		Status          *string `json:"Status"`
-		Status_message  *string `json:"Status_message"`
-		Space_id        *int    `json:"Space_id"`
-		Image_type      *int    `json:"Image_type"`
-		Image_url       *string `json:"Image_url"`
-		Image_name      *string `json:"Image_name"`
-		Pull_user       *string `json:"Pull_user"`
-		Pull_password   *string `json:"Pull_password"`
-		Working_folder  *string `json:"Working_folder"`
-		Run_command     *string `json:"Run_command"`
-		Create_user_id  *int    `json:"Create_user_id"`
-		Create_username *string `json:"Create_username"`
-		Update_user_id  *int    `json:"Update_user_id"`
-		Task_id         *int    `json:"Task_id"`
-		Task            struct {
-			id                     *int    `json:"id"`
-			create_at              *int    `json:"create_at"`
-			update_at              *int    `json:"update_at"`
-			name                   *string `json:"name"`
-			description            *string `json:"description"`
-			task_type              *string `json:"task_type"`
-			image_url              *string `json:"image_url"`
-			working_folder         *string `json:"working_folder"`
-			run_command            *string `json:"run_command"`
-			space_id               *int    `json:"space_id"`
-			job_id                 *int    `json:"job_id"`
-			job_name               *string `json:"job_name"`
-			status                 *string `json:"status"`
-			status_message         *string `json:"status_message"`
-			start_user             *string `json:"start_user"`
-			start_at               *int    `json:"start_at"`
-			stop_at                *int    `json:"stop_at"`
-			duration               *string `json:"duration"`
-			stop_user              *string `json:"stop_user"`
-			stop_way               *string `json:"stop_way"`
-			use_gpu                *bool   `json:"use_gpu"`
-			cpu_peak               *int    `json:"cpu_peak"`
-			mem_peak               *int    `json:"mem_peak"`
-			self_healing           *int    `json:"self_healing"`
-			max_self_healing_times *int    `json:"max_self_healing_times"`
-			hanging_duration       *int    `json:"hanging_duration"`
-			op_src                 *int    `json:"op_src"`
-			task_health            *string `json:"task_health"`
-			latest                 *int    `json:"latest"`
-			pod_name_list          *string `json:"pod_name_list"`
-		} `json:"Task"`
-		Task_list []struct {
-			id                     *int    `json:"id"`
-			create_at              *int    `json:"create_at"`
-			update_at              *int    `json:"update_at"`
-			name                   *string `json:"name"`
-			description            *string `json:"description"`
-			task_type              *string `json:"task_type"`
-			image_url              *string `json:"image_url"`
-			working_folder         *string `json:"working_folder"`
-			run_command            *string `json:"run_command"`
-			space_id               *int    `json:"space_id"`
-			job_id                 *int    `json:"job_id"`
-			job_name               *string `json:"job_name"`
-			status                 *string `json:"status"`
-			status_message         *string `json:"status_message"`
-			start_user             *string `json:"start_user"`
-			start_at               *int    `json:"start_at"`
-			stop_at                *int    `json:"stop_at"`
-			duration               *string `json:"duration"`
-			stop_user              *string `json:"stop_user"`
-			stop_way               *string `json:"stop_way"`
-			use_gpu                *bool   `json:"use_gpu"`
-			cpu_peak               *int    `json:"cpu_peak"`
-			mem_peak               *int    `json:"mem_peak"`
-			self_healing           *int    `json:"self_healing"`
-			max_self_healing_times *int    `json:"max_self_healing_times"`
-			hanging_duration       *int    `json:"hanging_duration"`
-			op_src                 *int    `json:"op_src"`
-			task_health            *string `json:"task_health"`
-			latest                 *int    `json:"latest"`
-			Pod_name_list          []struct {
-			} `json:"Pod_name_list"`
-		} `json:"Task_list"`
-		Resource_type          *string `json:"Resource_type"`
-		Space_name             *string `json:"Space_name"`
-		Cpu_peak               *int    `json:"Cpu_peak"`
-		Mem_peak               *int    `json:"Mem_peak"`
-		Training_type          *string `json:"Training_type"`
-		Cron_enable            *bool   `json:"Cron_enable"`
-		Is_out_of_quota        *bool   `json:"Is_out_of_quota"`
-		Code_resource          *string `json:"Code_resource"`
-		Git_url                *string `json:"Git_url"`
-		Git_branch             *string `json:"Git_branch"`
-		Account                *string `json:"Account"`
-		Access_token           *string `json:"Access_token"`
-		Download_path          *string `json:"Download_path"`
-		Self_healing           *int    `json:"Self_healing"`
-		Max_self_healing_times *int    `json:"Max_self_healing_times"`
-		Hanging_duration       *int    `json:"Hanging_duration"`
-		Containers             *string `json:"Containers"`
+		Id             *int    `json:"Id" name:"Id"`
+		CreateAt       *int    `json:"CreateAt" name:"CreateAt"`
+		UpdateAt       *int    `json:"UpdateAt" name:"UpdateAt"`
+		Name           *string `json:"Name" name:"Name"`
+		Priority       *int    `json:"Priority" name:"Priority"`
+		Description    *string `json:"Description" name:"Description"`
+		Status         *string `json:"Status" name:"Status"`
+		StatusMessage  *string `json:"StatusMessage" name:"StatusMessage"`
+		SpaceId        *int    `json:"SpaceId" name:"SpaceId"`
+		ImageType      *int    `json:"ImageType" name:"ImageType"`
+		ImageUrl       *string `json:"ImageUrl" name:"ImageUrl"`
+		ImageName      *string `json:"ImageName" name:"ImageName"`
+		PullUser       *string `json:"PullUser" name:"PullUser"`
+		PullPassword   *string `json:"PullPassword" name:"PullPassword"`
+		WorkingFolder  *string `json:"WorkingFolder" name:"WorkingFolder"`
+		RunCommand     *string `json:"RunCommand" name:"RunCommand"`
+		CreateUserId   *int    `json:"CreateUserId" name:"CreateUserId"`
+		CreateUsername *string `json:"CreateUsername" name:"CreateUsername"`
+		UpdateUserId   *int    `json:"UpdateUserId" name:"UpdateUserId"`
+		TaskId         *int    `json:"TaskId" name:"TaskId"`
+		Task           struct {
+			Id                  *int    `json:"id" name:"id"`
+			CreateAt            *int    `json:"create_at" name:"create_at"`
+			UpdateAt            *int    `json:"update_at" name:"update_at"`
+			Name                *string `json:"name" name:"name"`
+			Description         *string `json:"description" name:"description"`
+			TaskType            *string `json:"task_type" name:"task_type"`
+			ImageUrl            *string `json:"image_url" name:"image_url"`
+			WorkingFolder       *string `json:"working_folder" name:"working_folder"`
+			RunCommand          *string `json:"run_command" name:"run_command"`
+			SpaceId             *int    `json:"space_id" name:"space_id"`
+			JobId               *int    `json:"job_id" name:"job_id"`
+			JobName             *string `json:"job_name" name:"job_name"`
+			Status              *string `json:"status" name:"status"`
+			StatusMessage       *string `json:"status_message" name:"status_message"`
+			StartUser           *string `json:"start_user" name:"start_user"`
+			StartAt             *int    `json:"start_at" name:"start_at"`
+			StopAt              *int    `json:"stop_at" name:"stop_at"`
+			Duration            *string `json:"duration" name:"duration"`
+			StopUser            *string `json:"stop_user" name:"stop_user"`
+			StopWay             *string `json:"stop_way" name:"stop_way"`
+			UseGpu              *bool   `json:"use_gpu" name:"use_gpu"`
+			CpuPeak             *int    `json:"cpu_peak" name:"cpu_peak"`
+			MemPeak             *int    `json:"mem_peak" name:"mem_peak"`
+			SelfHealing         *int    `json:"self_healing" name:"self_healing"`
+			MaxSelfHealingTimes *int    `json:"max_self_healing_times" name:"max_self_healing_times"`
+			HangingDuration     *int    `json:"hanging_duration" name:"hanging_duration"`
+			OpSrc               *int    `json:"op_src" name:"op_src"`
+			TaskHealth          *string `json:"task_health" name:"task_health"`
+			Latest              *int    `json:"latest" name:"latest"`
+			PodNameList         *string `json:"pod_name_list" name:"pod_name_list"`
+		} `json:"Task" name:"Task"`
+		TaskList []struct {
+			Id                  *int      `json:"id" name:"id"`
+			CreateAt            *int      `json:"create_at" name:"create_at"`
+			UpdateAt            *int      `json:"update_at" name:"update_at"`
+			Name                *string   `json:"name" name:"name"`
+			Description         *string   `json:"description" name:"description"`
+			TaskType            *string   `json:"task_type" name:"task_type"`
+			ImageUrl            *string   `json:"image_url" name:"image_url"`
+			WorkingFolder       *string   `json:"working_folder" name:"working_folder"`
+			RunCommand          *string   `json:"run_command" name:"run_command"`
+			SpaceId             *int      `json:"space_id" name:"space_id"`
+			JobId               *int      `json:"job_id" name:"job_id"`
+			JobName             *string   `json:"job_name" name:"job_name"`
+			Status              *string   `json:"status" name:"status"`
+			StatusMessage       *string   `json:"status_message" name:"status_message"`
+			StartUser           *string   `json:"start_user" name:"start_user"`
+			StartAt             *int      `json:"start_at" name:"start_at"`
+			StopAt              *int      `json:"stop_at" name:"stop_at"`
+			Duration            *string   `json:"duration" name:"duration"`
+			StopUser            *string   `json:"stop_user" name:"stop_user"`
+			StopWay             *string   `json:"stop_way" name:"stop_way"`
+			UseGpu              *bool     `json:"use_gpu" name:"use_gpu"`
+			CpuPeak             *int      `json:"cpu_peak" name:"cpu_peak"`
+			MemPeak             *int      `json:"mem_peak" name:"mem_peak"`
+			SelfHealing         *int      `json:"self_healing" name:"self_healing"`
+			MaxSelfHealingTimes *int      `json:"max_self_healing_times" name:"max_self_healing_times"`
+			HangingDuration     *int      `json:"hanging_duration" name:"hanging_duration"`
+			OpSrc               *int      `json:"op_src" name:"op_src"`
+			TaskHealth          *string   `json:"task_health" name:"task_health"`
+			Latest              *int      `json:"latest" name:"latest"`
+			PodNameList         []*string `json:"PodNameList" name:"PodNameList"`
+		} `json:"TaskList" name:"TaskList"`
+		ResourceType        *string `json:"ResourceType" name:"ResourceType"`
+		SpaceName           *string `json:"SpaceName" name:"SpaceName"`
+		CpuPeak             *int    `json:"CpuPeak" name:"CpuPeak"`
+		MemPeak             *int    `json:"MemPeak" name:"MemPeak"`
+		TrainingType        *string `json:"TrainingType" name:"TrainingType"`
+		CronEnable          *bool   `json:"CronEnable" name:"CronEnable"`
+		IsOutOfQuota        *bool   `json:"IsOutOfQuota" name:"IsOutOfQuota"`
+		CodeResource        *string `json:"CodeResource" name:"CodeResource"`
+		GitUrl              *string `json:"GitUrl" name:"GitUrl"`
+		GitBranch           *string `json:"GitBranch" name:"GitBranch"`
+		Account             *string `json:"Account" name:"Account"`
+		AccessToken         *string `json:"AccessToken" name:"AccessToken"`
+		DownloadPath        *string `json:"DownloadPath" name:"DownloadPath"`
+		SelfHealing         *int    `json:"SelfHealing" name:"SelfHealing"`
+		MaxSelfHealingTimes *int    `json:"MaxSelfHealingTimes" name:"MaxSelfHealingTimes"`
+		HangingDuration     *int    `json:"HangingDuration" name:"HangingDuration"`
+		Containers          *string `json:"Containers" name:"Containers"`
 	} `json:"Result"`
 }
 
@@ -954,8 +952,9 @@ func (r *GetJobResponse) FromJsonString(s string) error {
 
 type GetJobEventsRequest struct {
 	*ksyunhttp.BaseRequest
-	Job_id  *int `json:"job_id,omitempty" name:"job_id"`
-	Task_id *int `json:"task_id,omitempty" name:"task_id"`
+	Job_id   *int `json:"job_id,omitempty" name:"job_id"`
+	Task_id  *int `json:"task_id,omitempty" name:"task_id"`
+	Space_id *int `json:"space_id,omitempty" name:"space_id"`
 }
 
 func (r *GetJobEventsRequest) ToJsonString() string {
@@ -976,18 +975,18 @@ func (r *GetJobEventsRequest) FromJsonString(s string) error {
 
 type GetJobEventsResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
 	Result  []struct {
-		Id        *int    `json:"Id"`
-		Create_at *int    `json:"Create_at"`
-		Update_at *int    `json:"Update_at"`
-		Task_id   *int    `json:"Task_id"`
-		Pod_name  *string `json:"Pod_name"`
-		Type      *string `json:"Type"`
-		Status    *string `json:"Status"`
-		Message   *string `json:"Message"`
-		Add_at    *int    `json:"Add_at"`
+		Id       *int    `json:"Id" name:"Id"`
+		CreateAt *int    `json:"CreateAt" name:"CreateAt"`
+		UpdateAt *int    `json:"UpdateAt" name:"UpdateAt"`
+		TaskId   *int    `json:"TaskId" name:"TaskId"`
+		PodName  *string `json:"PodName" name:"PodName"`
+		Type     *string `json:"Type" name:"Type"`
+		Status   *string `json:"Status" name:"Status"`
+		Message  *string `json:"Message" name:"Message"`
+		AddAt    *int    `json:"AddAt" name:"AddAt"`
 	} `json:"Result"`
 }
 
@@ -1005,6 +1004,7 @@ type GetPodEventsRequest struct {
 	Job_id   *int    `json:"job_id,omitempty" name:"job_id"`
 	Task_id  *int    `json:"task_id,omitempty" name:"task_id"`
 	Pod_name *string `json:"pod_name,omitempty" name:"pod_name"`
+	Space_id *int    `json:"space_id,omitempty" name:"space_id"`
 }
 
 func (r *GetPodEventsRequest) ToJsonString() string {
@@ -1025,18 +1025,18 @@ func (r *GetPodEventsRequest) FromJsonString(s string) error {
 
 type GetPodEventsResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
 	Result  []struct {
-		Id        *int    `json:"Id"`
-		Create_at *int    `json:"Create_at"`
-		Update_at *int    `json:"Update_at"`
-		Task_id   *int    `json:"Task_id"`
-		Pod_name  *string `json:"Pod_name"`
-		Type      *string `json:"Type"`
-		Status    *string `json:"Status"`
-		Message   *string `json:"Message"`
-		Add_at    *int    `json:"Add_at"`
+		Id       *int    `json:"Id" name:"Id"`
+		CreateAt *int    `json:"CreateAt" name:"CreateAt"`
+		UpdateAt *int    `json:"UpdateAt" name:"UpdateAt"`
+		TaskId   *int    `json:"TaskId" name:"TaskId"`
+		PodName  *string `json:"PodName" name:"PodName"`
+		Type     *string `json:"Type" name:"Type"`
+		Status   *string `json:"Status" name:"Status"`
+		Message  *string `json:"Message" name:"Message"`
+		AddAt    *int    `json:"AddAt" name:"AddAt"`
 	} `json:"Result"`
 }
 
@@ -1054,6 +1054,7 @@ type GetWebTerminalRequest struct {
 	Job_id   *int    `json:"job_id,omitempty" name:"job_id"`
 	Task_id  *int    `json:"task_id,omitempty" name:"task_id"`
 	Pod_name *string `json:"pod_name,omitempty" name:"pod_name"`
+	Space_id *int    `json:"space_id,omitempty" name:"space_id"`
 }
 
 func (r *GetWebTerminalRequest) ToJsonString() string {
@@ -1074,9 +1075,9 @@ func (r *GetWebTerminalRequest) FromJsonString(s string) error {
 
 type GetWebTerminalResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
-	result  *string `json:"result" name:"result"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
+	Result  *string `json:"result" name:"result"`
 }
 
 func (r *GetWebTerminalResponse) ToJsonString() string {
@@ -1097,6 +1098,7 @@ type GetJobMetricsRequest struct {
 	Time_step     *string `json:"time_step,omitempty" name:"time_step"`
 	Metric_type   *string `json:"metric_type,omitempty" name:"metric_type"`
 	Metric_detail *int    `json:"metric_detail,omitempty" name:"metric_detail"`
+	Space_id      *int    `json:"space_id,omitempty" name:"space_id"`
 }
 
 func (r *GetJobMetricsRequest) ToJsonString() string {
@@ -1117,14 +1119,14 @@ func (r *GetJobMetricsRequest) FromJsonString(s string) error {
 
 type GetJobMetricsResponse struct {
 	*ksyunhttp.BaseResponse
-	code   *int    `json:"code" name:"code"`
-	msg    *string `json:"msg" name:"msg"`
+	Code   *int    `json:"code" name:"code"`
+	Msg    *string `json:"msg" name:"msg"`
 	Result []struct {
-		Legend  *string `json:"Legend"`
+		Legend  *string `json:"Legend" name:"Legend"`
 		Metrics []struct {
-			timestamp *int `json:"timestamp"`
-			value     *int `json:"value"`
-		} `json:"Metrics"`
+			Timestamp *int `json:"timestamp" name:"timestamp"`
+			Value     *int `json:"value" name:"value"`
+		} `json:"Metrics" name:"Metrics"`
 	} `json:"Result"`
 }
 
@@ -1165,84 +1167,84 @@ func (r *ListJobsRequest) FromJsonString(s string) error {
 
 type ListJobsResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
 	Result  struct {
 		Data []struct {
-			id              *int    `json:"id"`
-			create_at       *int    `json:"create_at"`
-			update_at       *int    `json:"update_at"`
-			name            *string `json:"name"`
-			priority        *int    `json:"priority"`
-			description     *string `json:"description"`
-			status          *string `json:"status"`
-			status_message  *string `json:"status_message"`
-			space_id        *int    `json:"space_id"`
-			image_type      *int    `json:"image_type"`
-			image_url       *string `json:"image_url"`
-			image_name      *string `json:"image_name"`
-			pull_user       *string `json:"pull_user"`
-			pull_password   *string `json:"pull_password"`
-			working_folder  *string `json:"working_folder"`
-			run_command     *string `json:"run_command"`
-			containers      *string `json:"containers"`
-			create_user_id  *int    `json:"create_user_id"`
-			create_username *string `json:"create_username"`
-			update_user_id  *int    `json:"update_user_id"`
-			task_id         *int    `json:"task_id"`
-			Task            struct {
-				Id                     *int    `json:"Id"`
-				Create_at              *int    `json:"Create_at"`
-				Update_at              *int    `json:"Update_at"`
-				Name                   *string `json:"Name"`
-				Description            *string `json:"Description"`
-				Task_type              *string `json:"Task_type"`
-				Image_url              *string `json:"Image_url"`
-				Working_folder         *string `json:"Working_folder"`
-				Run_command            *string `json:"Run_command"`
-				Space_id               *int    `json:"Space_id"`
-				Job_id                 *int    `json:"Job_id"`
-				Job_name               *string `json:"Job_name"`
-				Status                 *string `json:"Status"`
-				Status_message         *string `json:"Status_message"`
-				Start_user             *string `json:"Start_user"`
-				Start_at               *int    `json:"Start_at"`
-				Stop_at                *int    `json:"Stop_at"`
-				Duration               *string `json:"Duration"`
-				Stop_user              *string `json:"Stop_user"`
-				Stop_way               *string `json:"Stop_way"`
-				Use_gpu                *bool   `json:"Use_gpu"`
-				Cpu_peak               *int    `json:"Cpu_peak"`
-				Mem_peak               *int    `json:"Mem_peak"`
-				Self_healing           *int    `json:"Self_healing"`
-				Max_self_healing_times *int    `json:"Max_self_healing_times"`
-				Hanging_duration       *int    `json:"Hanging_duration"`
-				Op_src                 *int    `json:"Op_src"`
-				Task_health            *string `json:"Task_health"`
-				Latest                 *int    `json:"Latest"`
-				Pod_name_list          *string `json:"Pod_name_list"`
+			Id             *int    `json:"id" name:"id"`
+			CreateAt       *int    `json:"create_at" name:"create_at"`
+			UpdateAt       *int    `json:"update_at" name:"update_at"`
+			Name           *string `json:"name" name:"name"`
+			Priority       *int    `json:"priority" name:"priority"`
+			Description    *string `json:"description" name:"description"`
+			Status         *string `json:"status" name:"status"`
+			StatusMessage  *string `json:"status_message" name:"status_message"`
+			SpaceId        *int    `json:"space_id" name:"space_id"`
+			ImageType      *int    `json:"image_type" name:"image_type"`
+			ImageUrl       *string `json:"image_url" name:"image_url"`
+			ImageName      *string `json:"image_name" name:"image_name"`
+			PullUser       *string `json:"pull_user" name:"pull_user"`
+			PullPassword   *string `json:"pull_password" name:"pull_password"`
+			WorkingFolder  *string `json:"working_folder" name:"working_folder"`
+			RunCommand     *string `json:"run_command" name:"run_command"`
+			Containers     *string `json:"containers" name:"containers"`
+			CreateUserId   *int    `json:"create_user_id" name:"create_user_id"`
+			CreateUsername *string `json:"create_username" name:"create_username"`
+			UpdateUserId   *int    `json:"update_user_id" name:"update_user_id"`
+			TaskId         *int    `json:"task_id" name:"task_id"`
+			Task           struct {
+				Id                  *int    `json:"Id" name:"Id"`
+				CreateAt            *int    `json:"CreateAt" name:"CreateAt"`
+				UpdateAt            *int    `json:"UpdateAt" name:"UpdateAt"`
+				Name                *string `json:"Name" name:"Name"`
+				Description         *string `json:"Description" name:"Description"`
+				TaskType            *string `json:"TaskType" name:"TaskType"`
+				ImageUrl            *string `json:"ImageUrl" name:"ImageUrl"`
+				WorkingFolder       *string `json:"WorkingFolder" name:"WorkingFolder"`
+				RunCommand          *string `json:"RunCommand" name:"RunCommand"`
+				SpaceId             *int    `json:"SpaceId" name:"SpaceId"`
+				JobId               *int    `json:"JobId" name:"JobId"`
+				JobName             *string `json:"JobName" name:"JobName"`
+				Status              *string `json:"Status" name:"Status"`
+				StatusMessage       *string `json:"StatusMessage" name:"StatusMessage"`
+				StartUser           *string `json:"StartUser" name:"StartUser"`
+				StartAt             *int    `json:"StartAt" name:"StartAt"`
+				StopAt              *int    `json:"StopAt" name:"StopAt"`
+				Duration            *string `json:"Duration" name:"Duration"`
+				StopUser            *string `json:"StopUser" name:"StopUser"`
+				StopWay             *string `json:"StopWay" name:"StopWay"`
+				UseGpu              *bool   `json:"UseGpu" name:"UseGpu"`
+				CpuPeak             *int    `json:"CpuPeak" name:"CpuPeak"`
+				MemPeak             *int    `json:"MemPeak" name:"MemPeak"`
+				SelfHealing         *int    `json:"SelfHealing" name:"SelfHealing"`
+				MaxSelfHealingTimes *int    `json:"MaxSelfHealingTimes" name:"MaxSelfHealingTimes"`
+				HangingDuration     *int    `json:"HangingDuration" name:"HangingDuration"`
+				OpSrc               *int    `json:"OpSrc" name:"OpSrc"`
+				TaskHealth          *string `json:"TaskHealth" name:"TaskHealth"`
+				Latest              *int    `json:"Latest" name:"Latest"`
+				PodNameList         *string `json:"PodNameList" name:"PodNameList"`
 			} `json:"Task"`
-			resource_type          *string `json:"resource_type"`
-			space_name             *string `json:"space_name"`
-			cpu_peak               *int    `json:"cpu_peak"`
-			mem_peak               *int    `json:"mem_peak"`
-			training_type          *string `json:"training_type"`
-			cron_enable            *bool   `json:"cron_enable"`
-			is_out_of_quota        *bool   `json:"is_out_of_quota"`
-			code_resource          *string `json:"code_resource"`
-			git_url                *string `json:"git_url"`
-			git_branch             *string `json:"git_branch"`
-			account                *string `json:"account"`
-			access_token           *string `json:"access_token"`
-			download_path          *string `json:"download_path"`
-			self_healing           *int    `json:"self_healing"`
-			max_self_healing_times *int    `json:"max_self_healing_times"`
-			hanging_duration       *int    `json:"hanging_duration"`
-		} `json:"Data"`
-		Page_num   *int `json:"Page_num"`
-		Page_index *int `json:"Page_index"`
-		Page_size  *int `json:"Page_size"`
-		Total      *int `json:"Total"`
+			ResourceType        *string `json:"resource_type" name:"resource_type"`
+			SpaceName           *string `json:"space_name" name:"space_name"`
+			CpuPeak             *int    `json:"cpu_peak" name:"cpu_peak"`
+			MemPeak             *int    `json:"mem_peak" name:"mem_peak"`
+			TrainingType        *string `json:"training_type" name:"training_type"`
+			CronEnable          *bool   `json:"cron_enable" name:"cron_enable"`
+			IsOutOfQuota        *bool   `json:"is_out_of_quota" name:"is_out_of_quota"`
+			CodeResource        *string `json:"code_resource" name:"code_resource"`
+			GitUrl              *string `json:"git_url" name:"git_url"`
+			GitBranch           *string `json:"git_branch" name:"git_branch"`
+			Account             *string `json:"account" name:"account"`
+			AccessToken         *string `json:"access_token" name:"access_token"`
+			DownloadPath        *string `json:"download_path" name:"download_path"`
+			SelfHealing         *int    `json:"self_healing" name:"self_healing"`
+			MaxSelfHealingTimes *int    `json:"max_self_healing_times" name:"max_self_healing_times"`
+			HangingDuration     *int    `json:"hanging_duration" name:"hanging_duration"`
+		} `json:"Data" name:"Data"`
+		PageNum   *int `json:"PageNum" name:"PageNum"`
+		PageIndex *int `json:"PageIndex" name:"PageIndex"`
+		PageSize  *int `json:"PageSize" name:"PageSize"`
+		Total     *int `json:"Total" name:"Total"`
 	} `json:"Result"`
 }
 
@@ -1262,6 +1264,7 @@ type GetPodLogsRequest struct {
 	Pod_name *string `json:"pod_name,omitempty" name:"pod_name"`
 	Key_word *string `json:"key_word,omitempty" name:"key_word"`
 	Tail     *int    `json:"tail,omitempty" name:"tail"`
+	Space_id *int    `json:"space_id,omitempty" name:"space_id"`
 }
 
 func (r *GetPodLogsRequest) ToJsonString() string {
@@ -1282,11 +1285,11 @@ func (r *GetPodLogsRequest) FromJsonString(s string) error {
 
 type GetPodLogsResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
 	Result  []struct {
-		Pod_name *string `json:"Pod_name"`
-		Message  *string `json:"Message"`
+		PodName *string `json:"PodName" name:"PodName"`
+		Message *string `json:"Message" name:"Message"`
 	} `json:"Result"`
 }
 
@@ -1301,7 +1304,8 @@ func (r *GetPodLogsResponse) FromJsonString(s string) error {
 
 type StopJobRequest struct {
 	*ksyunhttp.BaseRequest
-	Job_id *int `json:"job_id,omitempty" name:"job_id"`
+	Job_id   *int `json:"job_id,omitempty" name:"job_id"`
+	Space_id *int `json:"space_id,omitempty" name:"space_id"`
 }
 
 func (r *StopJobRequest) ToJsonString() string {
@@ -1322,9 +1326,9 @@ func (r *StopJobRequest) FromJsonString(s string) error {
 
 type StopJobResponse struct {
 	*ksyunhttp.BaseResponse
-	code    *int    `json:"code" name:"code"`
-	message *string `json:"message" name:"message"`
-	result  *string `json:"result" name:"result"`
+	Code    *int    `json:"code" name:"code"`
+	Message *string `json:"message" name:"message"`
+	Result  *string `json:"result" name:"result"`
 }
 
 func (r *StopJobResponse) ToJsonString() string {

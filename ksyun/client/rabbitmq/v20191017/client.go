@@ -418,3 +418,234 @@ func (c *Client) RenameWithContext(ctx context.Context, request *RenameRequest) 
 	}
 	return msg
 }
+func NewAllocateEipRequest() (request *AllocateEipRequest) {
+	request = &AllocateEipRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("rabbitmq", APIVersion, "AllocateEip")
+	return
+}
+
+func NewAllocateEipResponse() (response *AllocateEipResponse) {
+	response = &AllocateEipResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) AllocateEip(request *AllocateEipRequest) string {
+	return c.AllocateEipWithContext(context.Background(), request)
+}
+
+func (c *Client) AllocateEipWithContext(ctx context.Context, request *AllocateEipRequest) string {
+	if request == nil {
+		request = NewAllocateEipRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAllocateEipResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeallocateEipRequest() (request *DeallocateEipRequest) {
+	request = &DeallocateEipRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("rabbitmq", APIVersion, "DeallocateEip")
+	return
+}
+
+func NewDeallocateEipResponse() (response *DeallocateEipResponse) {
+	response = &DeallocateEipResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeallocateEip(request *DeallocateEipRequest) string {
+	return c.DeallocateEipWithContext(context.Background(), request)
+}
+
+func (c *Client) DeallocateEipWithContext(ctx context.Context, request *DeallocateEipRequest) string {
+	if request == nil {
+		request = NewDeallocateEipRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeallocateEipResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewSupportPluginsRequest() (request *SupportPluginsRequest) {
+	request = &SupportPluginsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("rabbitmq", APIVersion, "SupportPlugins")
+	return
+}
+
+func NewSupportPluginsResponse() (response *SupportPluginsResponse) {
+	response = &SupportPluginsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SupportPlugins(request *SupportPluginsRequest) string {
+	return c.SupportPluginsWithContext(context.Background(), request)
+}
+
+func (c *Client) SupportPluginsWithContext(ctx context.Context, request *SupportPluginsRequest) string {
+	if request == nil {
+		request = NewSupportPluginsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSupportPluginsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewRestartInstanceRequest() (request *RestartInstanceRequest) {
+	request = &RestartInstanceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("rabbitmq", APIVersion, "RestartInstance")
+	return
+}
+
+func NewRestartInstanceResponse() (response *RestartInstanceResponse) {
+	response = &RestartInstanceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RestartInstance(request *RestartInstanceRequest) string {
+	return c.RestartInstanceWithContext(context.Background(), request)
+}
+
+func (c *Client) RestartInstanceWithContext(ctx context.Context, request *RestartInstanceRequest) string {
+	if request == nil {
+		request = NewRestartInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewRestartInstanceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewListInstancePluginsRequest() (request *ListInstancePluginsRequest) {
+	request = &ListInstancePluginsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("rabbitmq", APIVersion, "ListInstancePlugins")
+	return
+}
+
+func NewListInstancePluginsResponse() (response *ListInstancePluginsResponse) {
+	response = &ListInstancePluginsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ListInstancePlugins(request *ListInstancePluginsRequest) string {
+	return c.ListInstancePluginsWithContext(context.Background(), request)
+}
+
+func (c *Client) ListInstancePluginsWithContext(ctx context.Context, request *ListInstancePluginsRequest) string {
+	if request == nil {
+		request = NewListInstancePluginsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListInstancePluginsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewEnableInstancePluginsRequest() (request *EnableInstancePluginsRequest) {
+	request = &EnableInstancePluginsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("rabbitmq", APIVersion, "EnableInstancePlugins")
+	return
+}
+
+func NewEnableInstancePluginsResponse() (response *EnableInstancePluginsResponse) {
+	response = &EnableInstancePluginsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) EnableInstancePlugins(request *EnableInstancePluginsRequest) string {
+	return c.EnableInstancePluginsWithContext(context.Background(), request)
+}
+
+func (c *Client) EnableInstancePluginsWithContext(ctx context.Context, request *EnableInstancePluginsRequest) string {
+	if request == nil {
+		request = NewEnableInstancePluginsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewEnableInstancePluginsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDisableInstancePluginsRequest() (request *DisableInstancePluginsRequest) {
+	request = &DisableInstancePluginsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("rabbitmq", APIVersion, "DisableInstancePlugins")
+	return
+}
+
+func NewDisableInstancePluginsResponse() (response *DisableInstancePluginsResponse) {
+	response = &DisableInstancePluginsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DisableInstancePlugins(request *DisableInstancePluginsRequest) string {
+	return c.DisableInstancePluginsWithContext(context.Background(), request)
+}
+
+func (c *Client) DisableInstancePluginsWithContext(ctx context.Context, request *DisableInstancePluginsRequest) string {
+	if request == nil {
+		request = NewDisableInstancePluginsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDisableInstancePluginsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

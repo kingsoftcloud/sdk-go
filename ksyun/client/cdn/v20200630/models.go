@@ -53,10 +53,10 @@ type GetClientRequestDataResponse struct {
 	ResultType *string `json:"ResultType" name:"ResultType"`
 	Datas      []struct {
 		Condition struct {
-		} `json:"Condition"`
+		} `json:"Condition" name:"Condition"`
 		Data []struct {
-			Time *string `json:"Time"`
-		} `json:"Data"`
+			Time *string `json:"Time" name:"Time"`
+		} `json:"Data" name:"Data"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -113,11 +113,11 @@ type GetServerDataResponse struct {
 	ResultType *string `json:"ResultType" name:"ResultType"`
 	Datas      []struct {
 		Condition struct {
-			DataType *string `json:"DataType"`
-		} `json:"Condition"`
+			DataType *string `json:"DataType" name:"DataType"`
+		} `json:"Condition" name:"Condition"`
 		Data []struct {
-			Time *string `json:"Time"`
-		} `json:"Data"`
+			Time *string `json:"Time" name:"Time"`
+		} `json:"Data" name:"Data"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -162,8 +162,8 @@ type GetDomainRankingListDataResponse struct {
 	CdnType   *string `json:"CdnType" name:"CdnType"`
 	SortBy    *string `json:"SortBy" name:"SortBy"`
 	Datas     []struct {
-		Domain   *string `json:"Domain"`
-		PeakTime *string `json:"PeakTime"`
+		Domain   *string `json:"Domain" name:"Domain"`
+		PeakTime *string `json:"PeakTime" name:"PeakTime"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -208,10 +208,10 @@ type GetAreaIspDataResponse struct {
 	CdnType   *string `json:"CdnType" name:"CdnType"`
 	Domains   *string `json:"Domains" name:"Domains"`
 	Datas     []struct {
-		Area *string `json:"Area"`
+		Area *string `json:"Area" name:"Area"`
 		Isps []struct {
-			Isp *string `json:"Isp"`
-		} `json:"Isps"`
+			Isp *string `json:"Isp" name:"Isp"`
+		} `json:"Isps" name:"Isps"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -259,7 +259,7 @@ type GetTopReferDataResponse struct {
 	Domains   *string `json:"Domains" name:"Domains"`
 	SortBy    *string `json:"SortBy" name:"SortBy"`
 	Datas     []struct {
-		Refer *string `json:"Refer"`
+		Refer *string `json:"Refer" name:"Refer"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -307,7 +307,7 @@ type GetTopUrlDataResponse struct {
 	Domains   *string `json:"Domains" name:"Domains"`
 	SortBy    *string `json:"SortBy" name:"SortBy"`
 	Datas     []struct {
-		Url *string `json:"Url"`
+		Url *string `json:"Url" name:"Url"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -358,9 +358,9 @@ type GetRealTimeHitRateDataResponse struct {
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	Datas       []struct {
 		Condition struct {
-		} `json:"Condition"`
+		} `json:"Condition" name:"Condition"`
 		DetailData struct {
-		} `json:"DetailData"`
+		} `json:"DetailData" name:"DetailData"`
 	} `json:"Datas"`
 }
 
@@ -409,10 +409,10 @@ type GetReqHitRateDataResponse struct {
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	Datas      []struct {
 		Condition struct {
-		} `json:"Condition"`
+		} `json:"Condition" name:"Condition"`
 		DetailData []struct {
-			Time *string `json:"Time"`
-		} `json:"DetailData"`
+			Time *string `json:"Time" name:"Time"`
+		} `json:"DetailData" name:"DetailData"`
 	} `json:"Datas"`
 }
 
@@ -461,10 +461,10 @@ type GetFlowHitRateDataResponse struct {
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	Datas      []struct {
 		Condition struct {
-		} `json:"Condition"`
+		} `json:"Condition" name:"Condition"`
 		DetailData []struct {
-			Time *string `json:"Time"`
-		} `json:"DetailData"`
+			Time *string `json:"Time" name:"Time"`
+		} `json:"DetailData" name:"DetailData"`
 	} `json:"Datas"`
 }
 
@@ -529,11 +529,11 @@ type GetDomainRequestPeriodRatioDataResponse struct {
 	RequestId              *string `json:"RequestId" name:"RequestId"`
 	Datas                  []struct {
 		Condition struct {
-		} `json:"Condition"`
+		} `json:"Condition" name:"Condition"`
 		Data []struct {
-			CurrentPeriodTime *string `json:"CurrentPeriodTime"`
-			PriorPeriodTime   *string `json:"PriorPeriodTime"`
-		} `json:"Data"`
+			CurrentPeriodTime *string `json:"CurrentPeriodTime" name:"CurrentPeriodTime"`
+			PriorPeriodTime   *string `json:"PriorPeriodTime" name:"PriorPeriodTime"`
+		} `json:"Data" name:"Data"`
 	} `json:"Datas"`
 }
 
@@ -581,10 +581,10 @@ type GetUvDataResponse struct {
 	ResultType *string `json:"ResultType" name:"ResultType"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	Datas      []struct {
-		Time    *string `json:"Time"`
+		Time    *string `json:"Time" name:"Time"`
 		Domains []struct {
-			Domain *string `json:"Domain"`
-		} `json:"Domains"`
+			Domain *string `json:"Domain" name:"Domain"`
+		} `json:"Domains" name:"Domains"`
 	} `json:"Datas"`
 }
 
@@ -629,7 +629,7 @@ type GetTopIpDataResponse struct {
 	EndTime   *string `json:"EndTime" name:"EndTime"`
 	CdnType   *string `json:"CdnType" name:"CdnType"`
 	Datas     []struct {
-		Ip *string `json:"Ip"`
+		Ip *string `json:"Ip" name:"Ip"`
 	} `json:"Datas"`
 	Domains   *string `json:"Domains" name:"Domains"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -722,11 +722,11 @@ type GetSrcDomainHttpCodeDataResponse struct {
 	ResultType *string `json:"ResultType" name:"ResultType"`
 	Datas      []struct {
 		Condition struct {
-			Domains *string `json:"Domains"`
-		} `json:"Condition"`
+			Domains *string `json:"Domains" name:"Domains"`
+		} `json:"Condition" name:"Condition"`
 		HttpcodeData []struct {
-			CodeType *string `json:"CodeType"`
-		} `json:"HttpcodeData"`
+			CodeType *string `json:"CodeType" name:"CodeType"`
+		} `json:"HttpcodeData" name:"HttpcodeData"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -774,6 +774,7 @@ func (r *GetDomainHttpCodeDetailedDataRequest) FromJsonString(s string) error {
 
 type GetDomainHttpCodeDetailedDataResponse struct {
 	*ksyunhttp.BaseResponse
+	StartTime *string `json:"StartTime" name:"StartTime"`
 }
 
 func (r *GetDomainHttpCodeDetailedDataResponse) ToJsonString() string {
@@ -829,11 +830,11 @@ type GetDomainHttpCodeDataResponse struct {
 	ResultType *string `json:"ResultType" name:"ResultType"`
 	Datas      []struct {
 		Condition struct {
-			Domains *string `json:"Domains"`
-		} `json:"Condition"`
+			Domains *string `json:"Domains" name:"Domains"`
+		} `json:"Condition" name:"Condition"`
 		HttpcodeData []struct {
-			CodeType *string `json:"CodeType"`
-		} `json:"HttpcodeData"`
+			CodeType *string `json:"CodeType" name:"CodeType"`
+		} `json:"HttpcodeData" name:"HttpcodeData"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }

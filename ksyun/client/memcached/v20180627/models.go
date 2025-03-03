@@ -42,11 +42,11 @@ type CreateCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		CacheId    *string `json:"CacheId"`
-		Name       *string `json:"Name"`
-		Size       *string `json:"Size"`
-		Port       *string `json:"Port"`
-		SubOrderId *string `json:"SubOrderId"`
+		CacheId    *string `json:"CacheId" name:"CacheId"`
+		Name       *string `json:"Name" name:"Name"`
+		Size       *string `json:"Size" name:"Size"`
+		Port       *string `json:"Port" name:"Port"`
+		SubOrderId *string `json:"SubOrderId" name:"SubOrderId"`
 	} `json:"Data"`
 }
 
@@ -162,21 +162,21 @@ func (r *DescribeCacheClustersRequest) FromJsonString(s string) error {
 
 type DescribeCacheClustersResponse struct {
 	*ksyunhttp.BaseResponse
-	reqId   *string `json:"reqId" name:"reqId"`
-	message *string `json:"message" name:"message"`
+	ReqId   *string `json:"reqId" name:"reqId"`
+	Message *string `json:"message" name:"message"`
 	Data    struct {
 		List []struct {
-			cacheId         *string `json:"cacheId"`
-			name            *string `json:"name"`
-			securityGroupId *string `json:"securityGroupId"`
-			engine          *string `json:"engine"`
-			vip             *string `json:"vip"`
-			createTime      *string `json:"createTime"`
-			vpcId           *string `json:"vpcId"`
-			vnetId          *string `json:"vnetId"`
-			iamProjectId    *string `json:"iamProjectId"`
-			iamProjectName  *string `json:"iamProjectName"`
-		} `json:"List"`
+			CacheId         *string `json:"cacheId" name:"cacheId"`
+			Name            *string `json:"name" name:"name"`
+			SecurityGroupId *string `json:"securityGroupId" name:"securityGroupId"`
+			Engine          *string `json:"engine" name:"engine"`
+			Vip             *string `json:"vip" name:"vip"`
+			CreateTime      *string `json:"createTime" name:"createTime"`
+			VpcId           *string `json:"vpcId" name:"vpcId"`
+			VnetId          *string `json:"vnetId" name:"vnetId"`
+			IamProjectId    *string `json:"iamProjectId" name:"iamProjectId"`
+			IamProjectName  *string `json:"iamProjectName" name:"iamProjectName"`
+		} `json:"List" name:"List"`
 	} `json:"Data"`
 }
 
@@ -215,25 +215,25 @@ type DescribeCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		CacheId          *string `json:"CacheId"`
-		Az               *string `json:"Az"`
-		Name             *string `json:"Name"`
-		SecurityGroupId  *string `json:"SecurityGroupId"`
-		Engine           *string `json:"Engine"`
-		Vip              *string `json:"Vip"`
-		SlaveVip         *string `json:"SlaveVip"`
-		CreateTime       *string `json:"CreateTime"`
-		VpcId            *string `json:"VpcId"`
-		VnetId           *string `json:"VnetId"`
-		TimingSwitch     *string `json:"TimingSwitch"`
-		Timezone         *string `json:"Timezone"`
-		SubOrderId       *string `json:"SubOrderId"`
-		ProductId        *string `json:"ProductId"`
-		ServiceBeginTime *string `json:"ServiceBeginTime"`
-		ServiceEndTime   *string `json:"ServiceEndTime"`
-		IamProjectId     *string `json:"IamProjectId"`
-		IamProjectName   *string `json:"IamProjectName"`
-		Protocol         *string `json:"Protocol"`
+		CacheId          *string `json:"CacheId" name:"CacheId"`
+		Az               *string `json:"Az" name:"Az"`
+		Name             *string `json:"Name" name:"Name"`
+		SecurityGroupId  *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		Engine           *string `json:"Engine" name:"Engine"`
+		Vip              *string `json:"Vip" name:"Vip"`
+		SlaveVip         *string `json:"SlaveVip" name:"SlaveVip"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		VpcId            *string `json:"VpcId" name:"VpcId"`
+		VnetId           *string `json:"VnetId" name:"VnetId"`
+		TimingSwitch     *string `json:"TimingSwitch" name:"TimingSwitch"`
+		Timezone         *string `json:"Timezone" name:"Timezone"`
+		SubOrderId       *string `json:"SubOrderId" name:"SubOrderId"`
+		ProductId        *string `json:"ProductId" name:"ProductId"`
+		ServiceBeginTime *string `json:"ServiceBeginTime" name:"ServiceBeginTime"`
+		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		IamProjectId     *string `json:"IamProjectId" name:"IamProjectId"`
+		IamProjectName   *string `json:"IamProjectName" name:"IamProjectName"`
+		Protocol         *string `json:"Protocol" name:"Protocol"`
 	} `json:"Data"`
 }
 
@@ -341,7 +341,7 @@ func (r *UpdatePasswordRequest) FromJsonString(s string) error {
 
 type UpdatePasswordResponse struct {
 	*ksyunhttp.BaseResponse
-	reqId *string `json:"reqId" name:"reqId"`
+	ReqId *string `json:"reqId" name:"reqId"`
 }
 
 func (r *UpdatePasswordResponse) ToJsonString() string {
@@ -476,8 +476,8 @@ func (r *DescribeRegionsRequest) FromJsonString(s string) error {
 type DescribeRegionsResponse struct {
 	*ksyunhttp.BaseResponse
 	RegionSet []struct {
-		RegionName *string `json:"RegionName"`
-		Region     *string `json:"Region"`
+		RegionName *string `json:"RegionName" name:"RegionName"`
+		Region     *string `json:"Region" name:"Region"`
 	} `json:"RegionSet"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -514,8 +514,8 @@ func (r *DescribeAvailabilityZonesRequest) FromJsonString(s string) error {
 type DescribeAvailabilityZonesResponse struct {
 	*ksyunhttp.BaseResponse
 	AvailabilityZoneSet []struct {
-		Region           *string `json:"Region"`
-		AvailabilityZone *string `json:"AvailabilityZone"`
+		Region           *string `json:"Region" name:"Region"`
+		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 	} `json:"AvailabilityZoneSet"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }

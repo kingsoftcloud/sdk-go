@@ -42,20 +42,20 @@ type GetMetricStatisticsBatchResponse struct {
 	GetMetricStatisticsBatchResults struct {
 		Datapoints struct {
 			Member []struct {
-				Timestamp     *string `json:"Timestamp"`
-				UnixTimestamp *int    `json:"UnixTimestamp"`
-				Average       *string `json:"Average"`
-				Max           *string `json:"Max"`
-				Min           *string `json:"Min"`
+				Timestamp     *string `json:"Timestamp" name:"Timestamp"`
+				UnixTimestamp *int    `json:"UnixTimestamp" name:"UnixTimestamp"`
+				Average       *string `json:"Average" name:"Average"`
+				Max           *string `json:"Max" name:"Max"`
+				Min           *string `json:"Min" name:"Min"`
 			} `json:"Member"`
-		} `json:"Datapoints"`
-		Label    *string `json:"Label"`
-		Instance *string `json:"Instance"`
+		} `json:"Datapoints" name:"Datapoints"`
+		Label    *string `json:"Label" name:"Label"`
+		Instance *string `json:"Instance" name:"Instance"`
 	} `json:"GetMetricStatisticsBatchResults"`
 	ResponseMetadata struct {
-		RequestId *string `json:"RequestId"`
+		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"ResponseMetadata"`
-	errorMessage []*string `json:"errorMessage" name:"errorMessage"`
+	ErrorMessage []*string `json:"ErrorMessage" name:"ErrorMessage"`
 }
 
 func (r *GetMetricStatisticsBatchResponse) ToJsonString() string {

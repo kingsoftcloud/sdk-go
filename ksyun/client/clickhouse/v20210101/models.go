@@ -9,6 +9,11 @@ import (
 type ModifyDBParameterGroupParameters struct {
 }
 
+type ModifyInstanceAccountPrivilegesInstanceAccountPrivileges struct {
+	InstanceDatabaseName *string `json:"InstanceDatabaseName,omitempty" name:"InstanceDatabaseName"`
+	Privilege            *string `json:"Privilege,omitempty" name:"Privilege"`
+}
+
 type ListInstanceRequest struct {
 	*ksyunhttp.BaseRequest
 	ProductType *string   `json:"ProductType,omitempty" name:"ProductType"`
@@ -38,7 +43,6 @@ func (r *ListInstanceRequest) FromJsonString(s string) error {
 
 type ListInstanceResponse struct {
 	*ksyunhttp.BaseResponse
-	Int *int `json:"1" name:"1"`
 }
 
 func (r *ListInstanceResponse) ToJsonString() string {
@@ -77,54 +81,54 @@ type DescribeInstanceResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		InstanceId        *string `json:"InstanceId"`
-		InstanceName      *string `json:"InstanceName"`
-		InstacneConfig    *string `json:"InstacneConfig"`
-		AdminUser         *string `json:"AdminUser"`
-		StatusName        *string `json:"StatusName"`
-		Status            *string `json:"Status"`
-		NetworkType       *string `json:"NetworkType"`
-		VpcId             *string `json:"VpcId"`
-		SubnetId          *string `json:"SubnetId"`
-		Vip               *string `json:"Vip"`
-		Engine            *string `json:"Engine"`
-		EngineVersion     *string `json:"EngineVersion"`
-		ProjectId         *string `json:"ProjectId"`
-		ProjectName       *string `json:"ProjectName"`
-		BillType          *int    `json:"BillType"`
-		StorageSize       *int    `json:"StorageSize"`
-		UsedStorageSize   *int    `json:"UsedStorageSize"`
-		StorageType       *string `json:"StorageType"`
-		Mem               *int    `json:"Mem"`
-		Cpu               *int    `json:"Cpu"`
-		TcpPort           *int    `json:"TcpPort"`
-		HttpPort          *int    `json:"HttpPort"`
-		NodeNum           *int    `json:"NodeNum"`
-		ProductId         *string `json:"ProductId"`
-		ProductType       *int    `json:"ProductType"`
-		ProductTypeName   *string `json:"ProductTypeName"`
-		ProductWhat       *int    `json:"ProductWhat"`
-		CreateDate        *string `json:"CreateDate"`
-		UpdateDate        *string `json:"UpdateDate"`
-		Region            *string `json:"Region"`
-		Az                *string `json:"Az"`
-		UserId            *string `json:"UserId"`
-		SecurityGroupId   *string `json:"SecurityGroupId"`
-		SecurityGroupName *string `json:"SecurityGroupName"`
-		SecurityGroupDesc *string `json:"SecurityGroupDesc"`
-		ServiceEndTime    *string `json:"ServiceEndTime"`
+		InstanceId        *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName      *string `json:"InstanceName" name:"InstanceName"`
+		InstacneConfig    *string `json:"InstacneConfig" name:"InstacneConfig"`
+		AdminUser         *string `json:"AdminUser" name:"AdminUser"`
+		StatusName        *string `json:"StatusName" name:"StatusName"`
+		Status            *string `json:"Status" name:"Status"`
+		NetworkType       *string `json:"NetworkType" name:"NetworkType"`
+		VpcId             *string `json:"VpcId" name:"VpcId"`
+		SubnetId          *string `json:"SubnetId" name:"SubnetId"`
+		Vip               *string `json:"Vip" name:"Vip"`
+		Engine            *string `json:"Engine" name:"Engine"`
+		EngineVersion     *string `json:"EngineVersion" name:"EngineVersion"`
+		ProjectId         *string `json:"ProjectId" name:"ProjectId"`
+		ProjectName       *string `json:"ProjectName" name:"ProjectName"`
+		BillType          *int    `json:"BillType" name:"BillType"`
+		StorageSize       *int    `json:"StorageSize" name:"StorageSize"`
+		UsedStorageSize   *int    `json:"UsedStorageSize" name:"UsedStorageSize"`
+		StorageType       *string `json:"StorageType" name:"StorageType"`
+		Mem               *int    `json:"Mem" name:"Mem"`
+		Cpu               *int    `json:"Cpu" name:"Cpu"`
+		TcpPort           *int    `json:"TcpPort" name:"TcpPort"`
+		HttpPort          *int    `json:"HttpPort" name:"HttpPort"`
+		NodeNum           *int    `json:"NodeNum" name:"NodeNum"`
+		ProductId         *string `json:"ProductId" name:"ProductId"`
+		ProductType       *int    `json:"ProductType" name:"ProductType"`
+		ProductTypeName   *string `json:"ProductTypeName" name:"ProductTypeName"`
+		ProductWhat       *int    `json:"ProductWhat" name:"ProductWhat"`
+		CreateDate        *string `json:"CreateDate" name:"CreateDate"`
+		UpdateDate        *string `json:"UpdateDate" name:"UpdateDate"`
+		Region            *string `json:"Region" name:"Region"`
+		Az                *string `json:"Az" name:"Az"`
+		UserId            *string `json:"UserId" name:"UserId"`
+		SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+		SecurityGroupDesc *string `json:"SecurityGroupDesc" name:"SecurityGroupDesc"`
+		ServiceEndTime    *string `json:"ServiceEndTime" name:"ServiceEndTime"`
 		ShardList         []struct {
-			id   *string `json:"id"`
-			name *string `json:"name"`
-		} `json:"ShardList"`
-		Replicas             *int `json:"Replicas"`
+			Id   *string `json:"id" name:"id"`
+			Name *string `json:"name" name:"name"`
+		} `json:"ShardList" name:"ShardList"`
+		Replicas             *int `json:"Replicas" name:"Replicas"`
 		DirectConnectionVips []struct {
-		} `json:"DirectConnectionVips"`
-		MultiAz *int `json:"MultiAz"`
+		} `json:"DirectConnectionVips" name:"DirectConnectionVips"`
+		MultiAz *int `json:"MultiAz" name:"MultiAz"`
 		Area    struct {
-			Master  *string `json:"Master"`
-			Standby *string `json:"Standby"`
-		} `json:"Area"`
+			Master  *string `json:"Master" name:"Master"`
+			Standby *string `json:"Standby" name:"Standby"`
+		} `json:"Area" name:"Area"`
 	} `json:"Data"`
 }
 
@@ -185,13 +189,13 @@ type CreateInstanceResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		InstanceId   *string `json:"InstanceId"`
-		InstanceName *string `json:"InstanceName"`
-		InstanceType *string `json:"InstanceType"`
-		OrderId      *string `json:"OrderId"`
-		AccountId    *string `json:"AccountId"`
-		Region       *string `json:"Region"`
-		Az           *string `json:"Az"`
+		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName *string `json:"InstanceName" name:"InstanceName"`
+		InstanceType *string `json:"InstanceType" name:"InstanceType"`
+		OrderId      *string `json:"OrderId" name:"OrderId"`
+		AccountId    *string `json:"AccountId" name:"AccountId"`
+		Region       *string `json:"Region" name:"Region"`
+		Az           *string `json:"Az" name:"Az"`
 	} `json:"Data"`
 }
 
@@ -232,9 +236,9 @@ type DeleteInstanceResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      []struct {
-		InstanceId *string `json:"InstanceId"`
-		OperStatus *string `json:"OperStatus"`
-		Msg        *string `json:"Msg"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		OperStatus *string `json:"OperStatus" name:"OperStatus"`
+		Msg        *string `json:"Msg" name:"Msg"`
 	} `json:"Data"`
 }
 
@@ -313,29 +317,29 @@ type ListSecurityGroupResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      []struct {
-		SecurityGroupId   *string `json:"SecurityGroupId"`
-		SecurityGroupName *string `json:"SecurityGroupName"`
-		IpVersion         *string `json:"IpVersion"`
-		Description       *string `json:"Description"`
-		InstanceCount     *int    `json:"InstanceCount"`
-		CreateTime        *string `json:"CreateTime"`
-		UpdateTime        *string `json:"UpdateTime"`
+		SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+		IpVersion         *string `json:"IpVersion" name:"IpVersion"`
+		Description       *string `json:"Description" name:"Description"`
+		InstanceCount     *int    `json:"InstanceCount" name:"InstanceCount"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime        *string `json:"UpdateTime" name:"UpdateTime"`
 		Rules             []struct {
-			RuleId      *string `json:"RuleId"`
-			Cidr        *string `json:"Cidr"`
-			CreateTime  *string `json:"CreateTime"`
-			Description *string `json:"Description"`
-		} `json:"Rules"`
+			RuleId      *string `json:"RuleId" name:"RuleId"`
+			Cidr        *string `json:"Cidr" name:"Cidr"`
+			CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+			Description *string `json:"Description" name:"Description"`
+		} `json:"Rules" name:"Rules"`
 		Instances []struct {
-			InstanceId      *string `json:"InstanceId"`
-			InstanceName    *string `json:"InstanceName"`
-			ProductType     *int    `json:"ProductType"`
-			ProductTypeName *string `json:"ProductTypeName"`
-			Vip             *string `json:"Vip"`
-			CreateTime      *string `json:"CreateTime"`
-			Status          *string `json:"Status"`
-			UpdatetTime     *string `json:"UpdatetTime"`
-		} `json:"Instances"`
+			InstanceId      *string `json:"InstanceId" name:"InstanceId"`
+			InstanceName    *string `json:"InstanceName" name:"InstanceName"`
+			ProductType     *int    `json:"ProductType" name:"ProductType"`
+			ProductTypeName *string `json:"ProductTypeName" name:"ProductTypeName"`
+			Vip             *string `json:"Vip" name:"Vip"`
+			CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+			Status          *string `json:"Status" name:"Status"`
+			UpdatetTime     *string `json:"UpdatetTime" name:"UpdatetTime"`
+		} `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 }
 
@@ -376,29 +380,29 @@ type DescribeSecurityGroupResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		SecurityGroupId   *string `json:"SecurityGroupId"`
-		SecurityGroupName *string `json:"SecurityGroupName"`
-		IpVersion         *string `json:"IpVersion"`
-		Description       *string `json:"Description"`
-		InstanceCount     *int    `json:"InstanceCount"`
-		CreateTime        *string `json:"CreateTime"`
-		UpdateTime        *string `json:"UpdateTime"`
+		SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+		IpVersion         *string `json:"IpVersion" name:"IpVersion"`
+		Description       *string `json:"Description" name:"Description"`
+		InstanceCount     *int    `json:"InstanceCount" name:"InstanceCount"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime        *string `json:"UpdateTime" name:"UpdateTime"`
 		Rules             []struct {
-			RuleId      *string `json:"RuleId"`
-			Cidr        *string `json:"Cidr"`
-			CreateTime  *string `json:"CreateTime"`
-			Description *string `json:"Description"`
-		} `json:"Rules"`
+			RuleId      *string `json:"RuleId" name:"RuleId"`
+			Cidr        *string `json:"Cidr" name:"Cidr"`
+			CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+			Description *string `json:"Description" name:"Description"`
+		} `json:"Rules" name:"Rules"`
 		Instances []struct {
-			InstanceId      *string `json:"InstanceId"`
-			InstanceName    *string `json:"InstanceName"`
-			ProductType     *int    `json:"ProductType"`
-			ProductTypeName *string `json:"ProductTypeName"`
-			Vip             *string `json:"Vip"`
-			CreateTime      *string `json:"CreateTime"`
-			Status          *string `json:"Status"`
-			UpdatetTime     *string `json:"UpdatetTime"`
-		} `json:"Instances"`
+			InstanceId      *string `json:"InstanceId" name:"InstanceId"`
+			InstanceName    *string `json:"InstanceName" name:"InstanceName"`
+			ProductType     *int    `json:"ProductType" name:"ProductType"`
+			ProductTypeName *string `json:"ProductTypeName" name:"ProductTypeName"`
+			Vip             *string `json:"Vip" name:"Vip"`
+			CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+			Status          *string `json:"Status" name:"Status"`
+			UpdatetTime     *string `json:"UpdatetTime" name:"UpdatetTime"`
+		} `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 }
 
@@ -440,17 +444,17 @@ type CreateSecurityGroupResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		SecurityGroupId   *string `json:"SecurityGroupId"`
-		SecurityGroupName *string `json:"SecurityGroupName"`
-		IpVersion         *string `json:"IpVersion"`
-		Description       *string `json:"Description"`
-		InstanceCount     *int    `json:"InstanceCount"`
-		CreateTime        *string `json:"CreateTime"`
-		UpdateTime        *string `json:"UpdateTime"`
+		SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+		IpVersion         *string `json:"IpVersion" name:"IpVersion"`
+		Description       *string `json:"Description" name:"Description"`
+		InstanceCount     *int    `json:"InstanceCount" name:"InstanceCount"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime        *string `json:"UpdateTime" name:"UpdateTime"`
 		Rules             []struct {
-		} `json:"Rules"`
+		} `json:"Rules" name:"Rules"`
 		Instances []struct {
-		} `json:"Instances"`
+		} `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 }
 
@@ -491,9 +495,9 @@ type DeleteSecurityGroupResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      []struct {
-		SecurityGroupId *string `json:"SecurityGroupId"`
-		OperStatus      *string `json:"OperStatus"`
-		Msg             *string `json:"Msg"`
+		SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		OperStatus      *string `json:"OperStatus" name:"OperStatus"`
+		Msg             *string `json:"Msg" name:"Msg"`
 	} `json:"Data"`
 }
 
@@ -536,17 +540,17 @@ type RenameSecurityGroupResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		SecurityGroupId   *string `json:"SecurityGroupId"`
-		SecurityGroupName *string `json:"SecurityGroupName"`
-		IpVersion         *string `json:"IpVersion"`
-		Description       *string `json:"Description"`
-		InstanceCount     *int    `json:"InstanceCount"`
-		CreateTime        *string `json:"CreateTime"`
-		UpdateTime        *string `json:"UpdateTime"`
+		SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+		IpVersion         *string `json:"IpVersion" name:"IpVersion"`
+		Description       *string `json:"Description" name:"Description"`
+		InstanceCount     *int    `json:"InstanceCount" name:"InstanceCount"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime        *string `json:"UpdateTime" name:"UpdateTime"`
 		Rules             []struct {
-		} `json:"Rules"`
+		} `json:"Rules" name:"Rules"`
 		Instances []struct {
-		} `json:"Instances"`
+		} `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 }
 
@@ -589,21 +593,21 @@ type CloneSecurityGroupResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		SecurityGroupId   *string `json:"SecurityGroupId"`
-		SecurityGroupName *string `json:"SecurityGroupName"`
-		IpVersion         *string `json:"IpVersion"`
-		Description       *string `json:"Description"`
-		InstanceCount     *int    `json:"InstanceCount"`
-		CreateTime        *string `json:"CreateTime"`
-		UpdateTime        *string `json:"UpdateTime"`
+		SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+		IpVersion         *string `json:"IpVersion" name:"IpVersion"`
+		Description       *string `json:"Description" name:"Description"`
+		InstanceCount     *int    `json:"InstanceCount" name:"InstanceCount"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime        *string `json:"UpdateTime" name:"UpdateTime"`
 		Rules             []struct {
-			RuleId      *string `json:"RuleId"`
-			Cidr        *string `json:"Cidr"`
-			CreateTime  *string `json:"CreateTime"`
-			Description *string `json:"Description"`
-		} `json:"Rules"`
+			RuleId      *string `json:"RuleId" name:"RuleId"`
+			Cidr        *string `json:"Cidr" name:"Cidr"`
+			CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+			Description *string `json:"Description" name:"Description"`
+		} `json:"Rules" name:"Rules"`
 		Instances []struct {
-		} `json:"Instances"`
+		} `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 }
 
@@ -811,14 +815,14 @@ type ListSecuredInstanceResponse struct {
 	Limit     *int    `json:"Limit" name:"Limit"`
 	Total     *int    `json:"Total" name:"Total"`
 	Data      []struct {
-		InstanceId      *string `json:"InstanceId"`
-		InstanceName    *string `json:"InstanceName"`
-		ProductType     *int    `json:"ProductType"`
-		ProductTypeName *string `json:"ProductTypeName"`
-		Vip             *string `json:"Vip"`
-		CreateTime      *string `json:"CreateTime"`
-		Status          *string `json:"Status"`
-		UpdatetTime     *string `json:"UpdatetTime"`
+		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName    *string `json:"InstanceName" name:"InstanceName"`
+		ProductType     *int    `json:"ProductType" name:"ProductType"`
+		ProductTypeName *string `json:"ProductTypeName" name:"ProductTypeName"`
+		Vip             *string `json:"Vip" name:"Vip"`
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+		Status          *string `json:"Status" name:"Status"`
+		UpdatetTime     *string `json:"UpdatetTime" name:"UpdatetTime"`
 	} `json:"Data"`
 }
 
@@ -864,14 +868,14 @@ type ListUnsecuredInstanceResponse struct {
 	Limit     *int    `json:"Limit" name:"Limit"`
 	Total     *int    `json:"Total" name:"Total"`
 	Data      []struct {
-		InstanceId      *string `json:"InstanceId"`
-		InstanceName    *string `json:"InstanceName"`
-		ProductType     *int    `json:"ProductType"`
-		ProductTypeName *string `json:"ProductTypeName"`
-		Vip             *string `json:"Vip"`
-		CreateTime      *string `json:"CreateTime"`
-		Status          *string `json:"Status"`
-		UpdatetTime     *string `json:"UpdatetTime"`
+		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName    *string `json:"InstanceName" name:"InstanceName"`
+		ProductType     *int    `json:"ProductType" name:"ProductType"`
+		ProductTypeName *string `json:"ProductTypeName" name:"ProductTypeName"`
+		Vip             *string `json:"Vip" name:"Vip"`
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+		Status          *string `json:"Status" name:"Status"`
+		UpdatetTime     *string `json:"UpdatetTime" name:"UpdatetTime"`
 	} `json:"Data"`
 }
 
@@ -957,9 +961,9 @@ type RecoverRecycledInstanceResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      []struct {
-		InstanceId *string `json:"InstanceId"`
-		OperStatus *string `json:"OperStatus"`
-		Msg        *string `json:"Msg"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		OperStatus *string `json:"OperStatus" name:"OperStatus"`
+		Msg        *string `json:"Msg" name:"Msg"`
 	} `json:"Data"`
 }
 
@@ -999,9 +1003,9 @@ type DropRecycledInstanceResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      []struct {
-		InstanceId *string `json:"InstanceId"`
-		OperStatus *string `json:"OperStatus"`
-		Msg        *string `json:"Msg"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		OperStatus *string `json:"OperStatus" name:"OperStatus"`
+		Msg        *string `json:"Msg" name:"Msg"`
 	} `json:"Data"`
 }
 
@@ -1041,21 +1045,21 @@ type ListRegionResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      []struct {
-		RegionId     *string `json:"RegionId"`
-		InnerCode    *string `json:"InnerCode"`
-		RegionCode   *string `json:"RegionCode"`
-		RegionName   *string `json:"RegionName"`
-		RegionEnName *string `json:"RegionEnName"`
-		Active       *bool   `json:"Active"`
-		RegionType   *int    `json:"RegionType"`
-		Overseas     *bool   `json:"Overseas"`
+		RegionId     *string `json:"RegionId" name:"RegionId"`
+		InnerCode    *string `json:"InnerCode" name:"InnerCode"`
+		RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+		RegionName   *string `json:"RegionName" name:"RegionName"`
+		RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
+		Active       *bool   `json:"Active" name:"Active"`
+		RegionType   *int    `json:"RegionType" name:"RegionType"`
+		Overseas     *bool   `json:"Overseas" name:"Overseas"`
 		AzList       []struct {
-			AzCode *string `json:"AzCode"`
-			AzName *string `json:"AzName"`
-		} `json:"AzList"`
-		AreaCode   *string `json:"AreaCode"`
-		AreaName   *string `json:"AreaName"`
-		AreaEnName *string `json:"AreaEnName"`
+			AzCode *string `json:"AzCode" name:"AzCode"`
+			AzName *string `json:"AzName" name:"AzName"`
+		} `json:"AzList" name:"AzList"`
+		AreaCode   *string `json:"AreaCode" name:"AreaCode"`
+		AreaName   *string `json:"AreaName" name:"AreaName"`
+		AreaEnName *string `json:"AreaEnName" name:"AreaEnName"`
 	} `json:"Data"`
 }
 
@@ -1096,21 +1100,21 @@ type DescRegionResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		RegionId     *string `json:"RegionId"`
-		InnerCode    *string `json:"InnerCode"`
-		RegionCode   *string `json:"RegionCode"`
-		RegionName   *string `json:"RegionName"`
-		RegionEnName *string `json:"RegionEnName"`
-		Active       *bool   `json:"Active"`
-		RegionType   *int    `json:"RegionType"`
-		Overseas     *bool   `json:"Overseas"`
+		RegionId     *string `json:"RegionId" name:"RegionId"`
+		InnerCode    *string `json:"InnerCode" name:"InnerCode"`
+		RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+		RegionName   *string `json:"RegionName" name:"RegionName"`
+		RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
+		Active       *bool   `json:"Active" name:"Active"`
+		RegionType   *int    `json:"RegionType" name:"RegionType"`
+		Overseas     *bool   `json:"Overseas" name:"Overseas"`
 		AzList       []struct {
-			AzCode *string `json:"AzCode"`
-			AzName *string `json:"AzName"`
-		} `json:"AzList"`
-		AreaCode   *string `json:"AreaCode"`
-		AreaName   *string `json:"AreaName"`
-		AreaEnName *string `json:"AreaEnName"`
+			AzCode *string `json:"AzCode" name:"AzCode"`
+			AzName *string `json:"AzName" name:"AzName"`
+		} `json:"AzList" name:"AzList"`
+		AreaCode   *string `json:"AreaCode" name:"AreaCode"`
+		AreaName   *string `json:"AreaName" name:"AreaName"`
+		AreaEnName *string `json:"AreaEnName" name:"AreaEnName"`
 	} `json:"Data"`
 }
 
@@ -1232,16 +1236,16 @@ type DescribeEngineDefaultParametersResponse struct {
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
 		Parameters []struct {
-			Name            *string `json:"name"`
-			Min             *string `json:"min"`
-			Max             *string `json:"max"`
-			Visible         *int    `json:"visible"`
-			RestartRequired *bool   `json:"restart_required"`
-			Type            *string `json:"type"`
-			configType      *string `json:"config_type"`
-			Enums           *string `json:"enums"`
-			Default         *string `json:"default"`
-		} `json:"Parameters"`
+			Name            *string `json:"name" name:"name"`
+			Min             *string `json:"min" name:"min"`
+			Max             *string `json:"max" name:"max"`
+			Visible         *int    `json:"visible" name:"visible"`
+			RestartRequired *bool   `json:"restart_required" name:"restart_required"`
+			Type            *string `json:"type" name:"type"`
+			ConfigType      *string `json:"config_type" name:"config_type"`
+			Enums           *string `json:"enums" name:"enums"`
+			Default         *string `json:"default" name:"default"`
+		} `json:"Parameters" name:"Parameters"`
 	} `json:"Data"`
 }
 
@@ -1323,53 +1327,53 @@ type DescribeDBInstanceParametersResponse struct {
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
 		Configuration struct {
-			Description *string `json:"description"`
-			Id          *string `json:"id"`
-			Name        *string `json:"name"`
+			Description *string `json:"description" name:"description"`
+			Id          *string `json:"id" name:"id"`
+			Name        *string `json:"name" name:"name"`
 			Values      struct {
-				Compile_aggregate_expressions                        *string `json:"Compile_aggregate_expressions"`
-				Enable_unaligned_array_join                          *string `json:"Enable_unaligned_array_join"`
-				Max_memory_usage_for_user                            *string `json:"Max_memory_usage_for_user"`
-				Enable_optimize_predicate_expression                 *string `json:"Enable_optimize_predicate_expression"`
-				Prefer_global_in_and_join                            *string `json:"Prefer_global_in_and_join"`
-				Max_bytes_in_join                                    *string `json:"Max_bytes_in_join"`
-				Join_use_nulls                                       *string `json:"Join_use_nulls"`
-				Join_default_strictness                              *string `json:"Join_default_strictness"`
-				Max_rows_in_join                                     *string `json:"Max_rows_in_join"`
-				Distributed_aggregation_memory_efficient             *string `json:"Distributed_aggregation_memory_efficient"`
-				Join_on_disk_max_files_to_merge                      *string `json:"Join_on_disk_max_files_to_merge"`
-				Union_default_mode                                   *string `json:"Union_default_mode"`
-				Optimize_move_to_prewhere                            *string `json:"Optimize_move_to_prewhere"`
-				Max_rows_to_group_by                                 *string `json:"Max_rows_to_group_by"`
-				Optimize_throw_if_noop                               *string `json:"Optimize_throw_if_noop"`
-				Join_any_take_last_row                               *string `json:"Join_any_take_last_row"`
-				Max_memory_usage                                     *string `json:"Max_memory_usage"`
-				Min_count_to_compile_aggregate_expression            *string `json:"Min_count_to_compile_aggregate_expression"`
-				Max_block_size                                       *string `json:"Max_block_size"`
-				Min_count_to_compile_expression                      *string `json:"Min_count_to_compile_expression"`
-				Mutations_sync                                       *string `json:"Mutations_sync"`
-				Max_execution_time                                   *string `json:"Max_execution_time"`
-				Partial_merge_join_rows_in_right_blocks              *string `json:"Partial_merge_join_rows_in_right_blocks"`
-				Max_bytes_before_external_group_by                   *string `json:"Max_bytes_before_external_group_by"`
-				Compile_expressions                                  *string `json:"Compile_expressions"`
-				Distributed_product_mode                             *string `json:"Distributed_product_mode"`
-				Max_insert_block_size                                *string `json:"Max_insert_block_size"`
-				Totals_mode                                          *string `json:"Totals_mode"`
-				Join_algorithm                                       *string `json:"Join_algorithm"`
-				Optimize_aggregation_in_order                        *string `json:"Optimize_aggregation_in_order"`
-				Join_overflow_mode                                   *string `json:"Join_overflow_mode"`
-				Use_uncompressed_cache                               *string `json:"Use_uncompressed_cache"`
-				Allow_experimental_alter_materialized_view_structure *string `json:"Allow_experimental_alter_materialized_view_structure"`
-				Insert_null_as_default                               *string `json:"Insert_null_as_default"`
-				Optimize_read_in_order                               *string `json:"Optimize_read_in_order"`
-				Max_bytes_before_external_sort                       *string `json:"Max_bytes_before_external_sort"`
-				Any_join_distinct_right_table_keys                   *string `json:"Any_join_distinct_right_table_keys"`
-				Group_by_overflow_mode                               *string `json:"Group_by_overflow_mode"`
-				Optimize_move_to_prewhere_if_final                   *string `json:"Optimize_move_to_prewhere_if_final"`
-				Partial_merge_join_optimizations                     *string `json:"Partial_merge_join_optimizations"`
+				CompileAggregateExpressions                     *string `json:"CompileAggregateExpressions" name:"CompileAggregateExpressions"`
+				EnableUnalignedArrayJoin                        *string `json:"EnableUnalignedArrayJoin" name:"EnableUnalignedArrayJoin"`
+				MaxMemoryUsageForUser                           *string `json:"MaxMemoryUsageForUser" name:"MaxMemoryUsageForUser"`
+				EnableOptimizePredicateExpression               *string `json:"EnableOptimizePredicateExpression" name:"EnableOptimizePredicateExpression"`
+				PreferGlobalInAndJoin                           *string `json:"PreferGlobalInAndJoin" name:"PreferGlobalInAndJoin"`
+				MaxBytesInJoin                                  *string `json:"MaxBytesInJoin" name:"MaxBytesInJoin"`
+				JoinUseNulls                                    *string `json:"JoinUseNulls" name:"JoinUseNulls"`
+				JoinDefaultStrictness                           *string `json:"JoinDefaultStrictness" name:"JoinDefaultStrictness"`
+				MaxRowsInJoin                                   *string `json:"MaxRowsInJoin" name:"MaxRowsInJoin"`
+				DistributedAggregationMemoryEfficient           *string `json:"DistributedAggregationMemoryEfficient" name:"DistributedAggregationMemoryEfficient"`
+				JoinOnDiskMaxFilesToMerge                       *string `json:"JoinOnDiskMaxFilesToMerge" name:"JoinOnDiskMaxFilesToMerge"`
+				UnionDefaultMode                                *string `json:"UnionDefaultMode" name:"UnionDefaultMode"`
+				OptimizeMoveToPrewhere                          *string `json:"OptimizeMoveToPrewhere" name:"OptimizeMoveToPrewhere"`
+				MaxRowsToGroupBy                                *string `json:"MaxRowsToGroupBy" name:"MaxRowsToGroupBy"`
+				OptimizeThrowIfNoop                             *string `json:"OptimizeThrowIfNoop" name:"OptimizeThrowIfNoop"`
+				JoinAnyTakeLastRow                              *string `json:"JoinAnyTakeLastRow" name:"JoinAnyTakeLastRow"`
+				MaxMemoryUsage                                  *string `json:"MaxMemoryUsage" name:"MaxMemoryUsage"`
+				MinCountToCompileAggregateExpression            *string `json:"MinCountToCompileAggregateExpression" name:"MinCountToCompileAggregateExpression"`
+				MaxBlockSize                                    *string `json:"MaxBlockSize" name:"MaxBlockSize"`
+				MinCountToCompileExpression                     *string `json:"MinCountToCompileExpression" name:"MinCountToCompileExpression"`
+				MutationsSync                                   *string `json:"MutationsSync" name:"MutationsSync"`
+				MaxExecutionTime                                *string `json:"MaxExecutionTime" name:"MaxExecutionTime"`
+				PartialMergeJoinRowsInRightBlocks               *string `json:"PartialMergeJoinRowsInRightBlocks" name:"PartialMergeJoinRowsInRightBlocks"`
+				MaxBytesBeforeExternalGroupBy                   *string `json:"MaxBytesBeforeExternalGroupBy" name:"MaxBytesBeforeExternalGroupBy"`
+				CompileExpressions                              *string `json:"CompileExpressions" name:"CompileExpressions"`
+				DistributedProductMode                          *string `json:"DistributedProductMode" name:"DistributedProductMode"`
+				MaxInsertBlockSize                              *string `json:"MaxInsertBlockSize" name:"MaxInsertBlockSize"`
+				TotalsMode                                      *string `json:"TotalsMode" name:"TotalsMode"`
+				JoinAlgorithm                                   *string `json:"JoinAlgorithm" name:"JoinAlgorithm"`
+				OptimizeAggregationInOrder                      *string `json:"OptimizeAggregationInOrder" name:"OptimizeAggregationInOrder"`
+				JoinOverflowMode                                *string `json:"JoinOverflowMode" name:"JoinOverflowMode"`
+				UseUncompressedCache                            *string `json:"UseUncompressedCache" name:"UseUncompressedCache"`
+				AllowExperimentalAlterMaterializedViewStructure *string `json:"AllowExperimentalAlterMaterializedViewStructure" name:"AllowExperimentalAlterMaterializedViewStructure"`
+				InsertNullAsDefault                             *string `json:"InsertNullAsDefault" name:"InsertNullAsDefault"`
+				OptimizeReadInOrder                             *string `json:"OptimizeReadInOrder" name:"OptimizeReadInOrder"`
+				MaxBytesBeforeExternalSort                      *string `json:"MaxBytesBeforeExternalSort" name:"MaxBytesBeforeExternalSort"`
+				AnyJoinDistinctRightTableKeys                   *string `json:"AnyJoinDistinctRightTableKeys" name:"AnyJoinDistinctRightTableKeys"`
+				GroupByOverflowMode                             *string `json:"GroupByOverflowMode" name:"GroupByOverflowMode"`
+				OptimizeMoveToPrewhereIfFinal                   *string `json:"OptimizeMoveToPrewhereIfFinal" name:"OptimizeMoveToPrewhereIfFinal"`
+				PartialMergeJoinOptimizations                   *string `json:"PartialMergeJoinOptimizations" name:"PartialMergeJoinOptimizations"`
 			} `json:"Values"`
-			datastore_version_id *string `json:"datastore_version_id"`
-		} `json:"Configuration"`
+			DatastoreVersionId *string `json:"datastore_version_id" name:"datastore_version_id"`
+		} `json:"Configuration" name:"Configuration"`
 	} `json:"Data"`
 }
 
@@ -1411,53 +1415,53 @@ type ResetDBParameterResponse struct {
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
 		Configuration struct {
-			description *string `json:"description"`
-			id          *string `json:"id"`
-			name        *string `json:"name"`
+			Description *string `json:"description" name:"description"`
+			Id          *string `json:"id" name:"id"`
+			Name        *string `json:"name" name:"name"`
 			Values      struct {
-				Compile_aggregate_expressions                        *string `json:"Compile_aggregate_expressions"`
-				Enable_unaligned_array_join                          *string `json:"Enable_unaligned_array_join"`
-				Max_memory_usage_for_user                            *string `json:"Max_memory_usage_for_user"`
-				Enable_optimize_predicate_expression                 *string `json:"Enable_optimize_predicate_expression"`
-				Prefer_global_in_and_join                            *string `json:"Prefer_global_in_and_join"`
-				Max_bytes_in_join                                    *string `json:"Max_bytes_in_join"`
-				Join_use_nulls                                       *string `json:"Join_use_nulls"`
-				Join_default_strictness                              *string `json:"Join_default_strictness"`
-				Max_rows_in_join                                     *string `json:"Max_rows_in_join"`
-				Distributed_aggregation_memory_efficient             *string `json:"Distributed_aggregation_memory_efficient"`
-				Join_on_disk_max_files_to_merge                      *string `json:"Join_on_disk_max_files_to_merge"`
-				Union_default_mode                                   *string `json:"Union_default_mode"`
-				Optimize_move_to_prewhere                            *string `json:"Optimize_move_to_prewhere"`
-				Max_rows_to_group_by                                 *string `json:"Max_rows_to_group_by"`
-				Optimize_throw_if_noop                               *string `json:"Optimize_throw_if_noop"`
-				Join_any_take_last_row                               *string `json:"Join_any_take_last_row"`
-				Max_memory_usage                                     *string `json:"Max_memory_usage"`
-				Min_count_to_compile_aggregate_expression            *string `json:"Min_count_to_compile_aggregate_expression"`
-				Max_block_size                                       *string `json:"Max_block_size"`
-				Min_count_to_compile_expression                      *string `json:"Min_count_to_compile_expression"`
-				Mutations_sync                                       *string `json:"Mutations_sync"`
-				Max_execution_time                                   *string `json:"Max_execution_time"`
-				Partial_merge_join_rows_in_right_blocks              *string `json:"Partial_merge_join_rows_in_right_blocks"`
-				Max_bytes_before_external_group_by                   *string `json:"Max_bytes_before_external_group_by"`
-				Compile_expressions                                  *string `json:"Compile_expressions"`
-				Distributed_product_mode                             *string `json:"Distributed_product_mode"`
-				Max_insert_block_size                                *string `json:"Max_insert_block_size"`
-				Totals_mode                                          *string `json:"Totals_mode"`
-				Join_algorithm                                       *string `json:"Join_algorithm"`
-				Optimize_aggregation_in_order                        *string `json:"Optimize_aggregation_in_order"`
-				Join_overflow_mode                                   *string `json:"Join_overflow_mode"`
-				Use_uncompressed_cache                               *string `json:"Use_uncompressed_cache"`
-				Allow_experimental_alter_materialized_view_structure *string `json:"Allow_experimental_alter_materialized_view_structure"`
-				Insert_null_as_default                               *string `json:"Insert_null_as_default"`
-				Optimize_read_in_order                               *string `json:"Optimize_read_in_order"`
-				Max_bytes_before_external_sort                       *string `json:"Max_bytes_before_external_sort"`
-				Any_join_distinct_right_table_keys                   *string `json:"Any_join_distinct_right_table_keys"`
-				Group_by_overflow_mode                               *string `json:"Group_by_overflow_mode"`
-				Optimize_move_to_prewhere_if_final                   *string `json:"Optimize_move_to_prewhere_if_final"`
-				Partial_merge_join_optimizations                     *string `json:"Partial_merge_join_optimizations"`
+				CompileAggregateExpressions                     *string `json:"CompileAggregateExpressions" name:"CompileAggregateExpressions"`
+				EnableUnalignedArrayJoin                        *string `json:"EnableUnalignedArrayJoin" name:"EnableUnalignedArrayJoin"`
+				MaxMemoryUsageForUser                           *string `json:"MaxMemoryUsageForUser" name:"MaxMemoryUsageForUser"`
+				EnableOptimizePredicateExpression               *string `json:"EnableOptimizePredicateExpression" name:"EnableOptimizePredicateExpression"`
+				PreferGlobalInAndJoin                           *string `json:"PreferGlobalInAndJoin" name:"PreferGlobalInAndJoin"`
+				MaxBytesInJoin                                  *string `json:"MaxBytesInJoin" name:"MaxBytesInJoin"`
+				JoinUseNulls                                    *string `json:"JoinUseNulls" name:"JoinUseNulls"`
+				JoinDefaultStrictness                           *string `json:"JoinDefaultStrictness" name:"JoinDefaultStrictness"`
+				MaxRowsInJoin                                   *string `json:"MaxRowsInJoin" name:"MaxRowsInJoin"`
+				DistributedAggregationMemoryEfficient           *string `json:"DistributedAggregationMemoryEfficient" name:"DistributedAggregationMemoryEfficient"`
+				JoinOnDiskMaxFilesToMerge                       *string `json:"JoinOnDiskMaxFilesToMerge" name:"JoinOnDiskMaxFilesToMerge"`
+				UnionDefaultMode                                *string `json:"UnionDefaultMode" name:"UnionDefaultMode"`
+				OptimizeMoveToPrewhere                          *string `json:"OptimizeMoveToPrewhere" name:"OptimizeMoveToPrewhere"`
+				MaxRowsToGroupBy                                *string `json:"MaxRowsToGroupBy" name:"MaxRowsToGroupBy"`
+				OptimizeThrowIfNoop                             *string `json:"OptimizeThrowIfNoop" name:"OptimizeThrowIfNoop"`
+				JoinAnyTakeLastRow                              *string `json:"JoinAnyTakeLastRow" name:"JoinAnyTakeLastRow"`
+				MaxMemoryUsage                                  *string `json:"MaxMemoryUsage" name:"MaxMemoryUsage"`
+				MinCountToCompileAggregateExpression            *string `json:"MinCountToCompileAggregateExpression" name:"MinCountToCompileAggregateExpression"`
+				MaxBlockSize                                    *string `json:"MaxBlockSize" name:"MaxBlockSize"`
+				MinCountToCompileExpression                     *string `json:"MinCountToCompileExpression" name:"MinCountToCompileExpression"`
+				MutationsSync                                   *string `json:"MutationsSync" name:"MutationsSync"`
+				MaxExecutionTime                                *string `json:"MaxExecutionTime" name:"MaxExecutionTime"`
+				PartialMergeJoinRowsInRightBlocks               *string `json:"PartialMergeJoinRowsInRightBlocks" name:"PartialMergeJoinRowsInRightBlocks"`
+				MaxBytesBeforeExternalGroupBy                   *string `json:"MaxBytesBeforeExternalGroupBy" name:"MaxBytesBeforeExternalGroupBy"`
+				CompileExpressions                              *string `json:"CompileExpressions" name:"CompileExpressions"`
+				DistributedProductMode                          *string `json:"DistributedProductMode" name:"DistributedProductMode"`
+				MaxInsertBlockSize                              *string `json:"MaxInsertBlockSize" name:"MaxInsertBlockSize"`
+				TotalsMode                                      *string `json:"TotalsMode" name:"TotalsMode"`
+				JoinAlgorithm                                   *string `json:"JoinAlgorithm" name:"JoinAlgorithm"`
+				OptimizeAggregationInOrder                      *string `json:"OptimizeAggregationInOrder" name:"OptimizeAggregationInOrder"`
+				JoinOverflowMode                                *string `json:"JoinOverflowMode" name:"JoinOverflowMode"`
+				UseUncompressedCache                            *string `json:"UseUncompressedCache" name:"UseUncompressedCache"`
+				AllowExperimentalAlterMaterializedViewStructure *string `json:"AllowExperimentalAlterMaterializedViewStructure" name:"AllowExperimentalAlterMaterializedViewStructure"`
+				InsertNullAsDefault                             *string `json:"InsertNullAsDefault" name:"InsertNullAsDefault"`
+				OptimizeReadInOrder                             *string `json:"OptimizeReadInOrder" name:"OptimizeReadInOrder"`
+				MaxBytesBeforeExternalSort                      *string `json:"MaxBytesBeforeExternalSort" name:"MaxBytesBeforeExternalSort"`
+				AnyJoinDistinctRightTableKeys                   *string `json:"AnyJoinDistinctRightTableKeys" name:"AnyJoinDistinctRightTableKeys"`
+				GroupByOverflowMode                             *string `json:"GroupByOverflowMode" name:"GroupByOverflowMode"`
+				OptimizeMoveToPrewhereIfFinal                   *string `json:"OptimizeMoveToPrewhereIfFinal" name:"OptimizeMoveToPrewhereIfFinal"`
+				PartialMergeJoinOptimizations                   *string `json:"PartialMergeJoinOptimizations" name:"PartialMergeJoinOptimizations"`
 			} `json:"Values"`
-			datastore_version_id *string `json:"datastore_version_id"`
-		} `json:"Configuration"`
+			DatastoreVersionId *string `json:"datastore_version_id" name:"datastore_version_id"`
+		} `json:"Configuration" name:"Configuration"`
 	} `json:"Data"`
 }
 
@@ -1467,5 +1471,336 @@ func (r *ResetDBParameterResponse) ToJsonString() string {
 }
 
 func (r *ResetDBParameterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBucketsRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *DescribeBucketsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeBucketsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeBucketsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBucketsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string   `json:"RequestId" name:"RequestId"`
+	Code      *string   `json:"Code" name:"Code"`
+	Message   *string   `json:"Message" name:"Message"`
+	Data      []*string `json:"Data" name:"Data"`
+}
+
+func (r *DescribeBucketsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeBucketsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type OperateHotAndColdSeparationRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *OperateHotAndColdSeparationRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *OperateHotAndColdSeparationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "OperateHotAndColdSeparationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type OperateHotAndColdSeparationResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *OperateHotAndColdSeparationResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *OperateHotAndColdSeparationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInstanceAccountRequest struct {
+	*ksyunhttp.BaseRequest
+	Name        *string `json:"Name,omitempty" name:"Name"`
+	Password    *string `json:"Password,omitempty" name:"Password"`
+	InstanceId  *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateInstanceAccountRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateInstanceAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateInstanceAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInstanceAccountResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      struct {
+		ModifyPrivileges *bool `json:"ModifyPrivileges" name:"ModifyPrivileges"`
+		CreateAccount    *bool `json:"CreateAccount" name:"CreateAccount"`
+	} `json:"Data"`
+}
+
+func (r *CreateInstanceAccountResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateInstanceAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstanceAccountPrivilegesRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId                *string                                                     `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceAccountName       *string                                                     `json:"InstanceAccountName,omitempty" name:"InstanceAccountName"`
+	InstanceAccountPrivileges []*ModifyInstanceAccountPrivilegesInstanceAccountPrivileges `json:"InstanceAccountPrivileges,omitempty" name:"InstanceAccountPrivileges"`
+}
+
+func (r *ModifyInstanceAccountPrivilegesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyInstanceAccountPrivilegesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyInstanceAccountPrivilegesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstanceAccountPrivilegesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      *string `json:"Data" name:"Data"`
+}
+
+func (r *ModifyInstanceAccountPrivilegesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyInstanceAccountPrivilegesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteInstanceAccountRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId          *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceAccountName *string `json:"InstanceAccountName,omitempty" name:"InstanceAccountName"`
+}
+
+func (r *DeleteInstanceAccountRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteInstanceAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteInstanceAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteInstanceAccountResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      struct {
+		Msg *string `json:"Msg" name:"Msg"`
+	} `json:"Data"`
+}
+
+func (r *DeleteInstanceAccountResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteInstanceAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceAccountsRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceAccountsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeInstanceAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeInstanceAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceAccountsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      struct {
+		Accounts []struct {
+			Status    *string `json:"status" name:"status"`
+			Databases []struct {
+				Name       *string `json:"Name" name:"Name"`
+				Privileges *string `json:"Privileges" name:"Privileges"`
+			} `json:"Databases"`
+			Name    *string `json:"name" name:"name"`
+			AccType *int    `json:"acc_type" name:"acc_type"`
+		} `json:"Accounts" name:"Accounts"`
+	} `json:"Data"`
+}
+
+func (r *DescribeInstanceAccountsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeInstanceAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceDatabasesRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceDatabasesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeInstanceDatabasesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeInstanceDatabasesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceDatabasesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      struct {
+		Databases []struct {
+			Name     *string `json:"name" name:"name"`
+			Accounts []struct {
+				Name       *string `json:"Name" name:"Name"`
+				Privileges *string `json:"Privileges" name:"Privileges"`
+			} `json:"Accounts"`
+			Status *string `json:"status" name:"status"`
+		} `json:"Databases" name:"Databases"`
+	} `json:"Data"`
+}
+
+func (r *DescribeInstanceDatabasesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeInstanceDatabasesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstanceAccountInfoRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId                 *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceAccountName        *string `json:"InstanceAccountName,omitempty" name:"InstanceAccountName"`
+	InstanceAccountPassword    *string `json:"InstanceAccountPassword,omitempty" name:"InstanceAccountPassword"`
+	InstanceAccountDescription *string `json:"InstanceAccountDescription,omitempty" name:"InstanceAccountDescription"`
+}
+
+func (r *ModifyInstanceAccountInfoRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyInstanceAccountInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyInstanceAccountInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstanceAccountInfoResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      *string `json:"Data" name:"Data"`
+}
+
+func (r *ModifyInstanceAccountInfoResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyInstanceAccountInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -847,3 +847,366 @@ func (c *Client) DescribeZoneRecordWithContext(ctx context.Context, request *Des
 	}
 	return msg
 }
+func NewUnbindFdZoneVpcRequest() (request *UnbindFdZoneVpcRequest) {
+	request = &UnbindFdZoneVpcRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("pdns", APIVersion, "UnbindFdZoneVpc")
+	return
+}
+
+func NewUnbindFdZoneVpcResponse() (response *UnbindFdZoneVpcResponse) {
+	response = &UnbindFdZoneVpcResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UnbindFdZoneVpc(request *UnbindFdZoneVpcRequest) string {
+	return c.UnbindFdZoneVpcWithContext(context.Background(), request)
+}
+
+func (c *Client) UnbindFdZoneVpcWithContext(ctx context.Context, request *UnbindFdZoneVpcRequest) string {
+	if request == nil {
+		request = NewUnbindFdZoneVpcRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUnbindFdZoneVpcResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewBindFdZoneVpcRequest() (request *BindFdZoneVpcRequest) {
+	request = &BindFdZoneVpcRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("pdns", APIVersion, "BindFdZoneVpc")
+	return
+}
+
+func NewBindFdZoneVpcResponse() (response *BindFdZoneVpcResponse) {
+	response = &BindFdZoneVpcResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) BindFdZoneVpc(request *BindFdZoneVpcRequest) string {
+	return c.BindFdZoneVpcWithContext(context.Background(), request)
+}
+
+func (c *Client) BindFdZoneVpcWithContext(ctx context.Context, request *BindFdZoneVpcRequest) string {
+	if request == nil {
+		request = NewBindFdZoneVpcRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewBindFdZoneVpcResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribePdnsFdZoneRequest() (request *DescribePdnsFdZoneRequest) {
+	request = &DescribePdnsFdZoneRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("pdns", APIVersion, "DescribePdnsFdZone")
+	return
+}
+
+func NewDescribePdnsFdZoneResponse() (response *DescribePdnsFdZoneResponse) {
+	response = &DescribePdnsFdZoneResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribePdnsFdZone(request *DescribePdnsFdZoneRequest) string {
+	return c.DescribePdnsFdZoneWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribePdnsFdZoneWithContext(ctx context.Context, request *DescribePdnsFdZoneRequest) string {
+	if request == nil {
+		request = NewDescribePdnsFdZoneRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribePdnsFdZoneResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeletePdnsFdZoneRequest() (request *DeletePdnsFdZoneRequest) {
+	request = &DeletePdnsFdZoneRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("pdns", APIVersion, "DeletePdnsFdZone")
+	return
+}
+
+func NewDeletePdnsFdZoneResponse() (response *DeletePdnsFdZoneResponse) {
+	response = &DeletePdnsFdZoneResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeletePdnsFdZone(request *DeletePdnsFdZoneRequest) string {
+	return c.DeletePdnsFdZoneWithContext(context.Background(), request)
+}
+
+func (c *Client) DeletePdnsFdZoneWithContext(ctx context.Context, request *DeletePdnsFdZoneRequest) string {
+	if request == nil {
+		request = NewDeletePdnsFdZoneRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeletePdnsFdZoneResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyPdnsFdZoneRequest() (request *ModifyPdnsFdZoneRequest) {
+	request = &ModifyPdnsFdZoneRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("pdns", APIVersion, "ModifyPdnsFdZone")
+	return
+}
+
+func NewModifyPdnsFdZoneResponse() (response *ModifyPdnsFdZoneResponse) {
+	response = &ModifyPdnsFdZoneResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyPdnsFdZone(request *ModifyPdnsFdZoneRequest) string {
+	return c.ModifyPdnsFdZoneWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyPdnsFdZoneWithContext(ctx context.Context, request *ModifyPdnsFdZoneRequest) string {
+	if request == nil {
+		request = NewModifyPdnsFdZoneRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyPdnsFdZoneResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCreatePdnsFdZoneRequest() (request *CreatePdnsFdZoneRequest) {
+	request = &CreatePdnsFdZoneRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("pdns", APIVersion, "CreatePdnsFdZone")
+	return
+}
+
+func NewCreatePdnsFdZoneResponse() (response *CreatePdnsFdZoneResponse) {
+	response = &CreatePdnsFdZoneResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreatePdnsFdZone(request *CreatePdnsFdZoneRequest) string {
+	return c.CreatePdnsFdZoneWithContext(context.Background(), request)
+}
+
+func (c *Client) CreatePdnsFdZoneWithContext(ctx context.Context, request *CreatePdnsFdZoneRequest) string {
+	if request == nil {
+		request = NewCreatePdnsFdZoneRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreatePdnsFdZoneResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewQueryEndPointRegionAZRequest() (request *QueryEndPointRegionAZRequest) {
+	request = &QueryEndPointRegionAZRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("pdns", APIVersion, "QueryEndPointRegionAZ")
+	return
+}
+
+func NewQueryEndPointRegionAZResponse() (response *QueryEndPointRegionAZResponse) {
+	response = &QueryEndPointRegionAZResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) QueryEndPointRegionAZ(request *QueryEndPointRegionAZRequest) string {
+	return c.QueryEndPointRegionAZWithContext(context.Background(), request)
+}
+
+func (c *Client) QueryEndPointRegionAZWithContext(ctx context.Context, request *QueryEndPointRegionAZRequest) string {
+	if request == nil {
+		request = NewQueryEndPointRegionAZRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewQueryEndPointRegionAZResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeEndPointsRequest() (request *DescribeEndPointsRequest) {
+	request = &DescribeEndPointsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("pdns", APIVersion, "DescribeEndPoints")
+	return
+}
+
+func NewDescribeEndPointsResponse() (response *DescribeEndPointsResponse) {
+	response = &DescribeEndPointsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeEndPoints(request *DescribeEndPointsRequest) string {
+	return c.DescribeEndPointsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeEndPointsWithContext(ctx context.Context, request *DescribeEndPointsRequest) string {
+	if request == nil {
+		request = NewDescribeEndPointsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeEndPointsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeleteEndPointRequest() (request *DeleteEndPointRequest) {
+	request = &DeleteEndPointRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("pdns", APIVersion, "DeleteEndPoint")
+	return
+}
+
+func NewDeleteEndPointResponse() (response *DeleteEndPointResponse) {
+	response = &DeleteEndPointResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteEndPoint(request *DeleteEndPointRequest) string {
+	return c.DeleteEndPointWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteEndPointWithContext(ctx context.Context, request *DeleteEndPointRequest) string {
+	if request == nil {
+		request = NewDeleteEndPointRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteEndPointResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyEndPointRequest() (request *ModifyEndPointRequest) {
+	request = &ModifyEndPointRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("pdns", APIVersion, "ModifyEndPoint")
+	return
+}
+
+func NewModifyEndPointResponse() (response *ModifyEndPointResponse) {
+	response = &ModifyEndPointResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyEndPoint(request *ModifyEndPointRequest) string {
+	return c.ModifyEndPointWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyEndPointWithContext(ctx context.Context, request *ModifyEndPointRequest) string {
+	if request == nil {
+		request = NewModifyEndPointRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyEndPointResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCreateEndPointRequest() (request *CreateEndPointRequest) {
+	request = &CreateEndPointRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("pdns", APIVersion, "CreateEndPoint")
+	return
+}
+
+func NewCreateEndPointResponse() (response *CreateEndPointResponse) {
+	response = &CreateEndPointResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateEndPoint(request *CreateEndPointRequest) string {
+	return c.CreateEndPointWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateEndPointWithContext(ctx context.Context, request *CreateEndPointRequest) string {
+	if request == nil {
+		request = NewCreateEndPointRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateEndPointResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

@@ -39,11 +39,11 @@ type GetMetricStatisticsResponse struct {
 		Datapoints struct {
 			Member []struct {
 			} `json:"Member"`
-		} `json:"Datapoints"`
-		Label *string `json:"Label"`
+		} `json:"Datapoints" name:"Datapoints"`
+		Label *string `json:"Label" name:"Label"`
 	} `json:"GetMetricStatisticsResult"`
 	ResponseMetadata struct {
-		RequestId *string `json:"RequestId"`
+		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"ResponseMetadata"`
 }
 
@@ -86,18 +86,18 @@ type ListMetricsResponse struct {
 	ListMetricsResult struct {
 		Metrics struct {
 			Member []struct {
-				InstanceId *string `json:"InstanceId"`
-				MetricName *string `json:"MetricName"`
-				MetricDesc *string `json:"MetricDesc"`
-				Namespace  *string `json:"Namespace"`
-				Interval   *string `json:"Interval"`
-				Type       *string `json:"Type"`
-				Unit       *string `json:"Unit"`
+				InstanceId *string `json:"InstanceId" name:"InstanceId"`
+				MetricName *string `json:"MetricName" name:"MetricName"`
+				MetricDesc *string `json:"MetricDesc" name:"MetricDesc"`
+				Namespace  *string `json:"Namespace" name:"Namespace"`
+				Interval   *string `json:"Interval" name:"Interval"`
+				Type       *string `json:"Type" name:"Type"`
+				Unit       *string `json:"Unit" name:"Unit"`
 			} `json:"Member"`
-		} `json:"Metrics"`
+		} `json:"Metrics" name:"Metrics"`
 	} `json:"ListMetricsResult"`
 	ResponseMetadata struct {
-		RequestId *string `json:"RequestId"`
+		RequestId *string `json:"RequestId" name:"RequestId"`
 	} `json:"ResponseMetadata"`
 }
 

@@ -253,3 +253,333 @@ func (c *Client) ListExecutorWithContext(ctx context.Context, request *ListExecu
 	}
 	return msg
 }
+func NewStartRayJobRunRequest() (request *StartRayJobRunRequest) {
+	request = &StartRayJobRunRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kmr", APIVersion, "StartRayJobRun")
+	return
+}
+
+func NewStartRayJobRunResponse() (response *StartRayJobRunResponse) {
+	response = &StartRayJobRunResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) StartRayJobRun(request *StartRayJobRunRequest) string {
+	return c.StartRayJobRunWithContext(context.Background(), request)
+}
+
+func (c *Client) StartRayJobRunWithContext(ctx context.Context, request *StartRayJobRunRequest) string {
+	if request == nil {
+		request = NewStartRayJobRunRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewStartRayJobRunResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewGetRayJobRunRequest() (request *GetRayJobRunRequest) {
+	request = &GetRayJobRunRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kmr", APIVersion, "GetRayJobRun")
+	return
+}
+
+func NewGetRayJobRunResponse() (response *GetRayJobRunResponse) {
+	response = &GetRayJobRunResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetRayJobRun(request *GetRayJobRunRequest) string {
+	return c.GetRayJobRunWithContext(context.Background(), request)
+}
+
+func (c *Client) GetRayJobRunWithContext(ctx context.Context, request *GetRayJobRunRequest) string {
+	if request == nil {
+		request = NewGetRayJobRunRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetRayJobRunResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewListRayJobRunsRequest() (request *ListRayJobRunsRequest) {
+	request = &ListRayJobRunsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kmr", APIVersion, "ListRayJobRuns")
+	return
+}
+
+func NewListRayJobRunsResponse() (response *ListRayJobRunsResponse) {
+	response = &ListRayJobRunsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ListRayJobRuns(request *ListRayJobRunsRequest) string {
+	return c.ListRayJobRunsWithContext(context.Background(), request)
+}
+
+func (c *Client) ListRayJobRunsWithContext(ctx context.Context, request *ListRayJobRunsRequest) string {
+	if request == nil {
+		request = NewListRayJobRunsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListRayJobRunsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCancelRayJobRunRequest() (request *CancelRayJobRunRequest) {
+	request = &CancelRayJobRunRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kmr", APIVersion, "CancelRayJobRun")
+	return
+}
+
+func NewCancelRayJobRunResponse() (response *CancelRayJobRunResponse) {
+	response = &CancelRayJobRunResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CancelRayJobRun(request *CancelRayJobRunRequest) string {
+	return c.CancelRayJobRunWithContext(context.Background(), request)
+}
+
+func (c *Client) CancelRayJobRunWithContext(ctx context.Context, request *CancelRayJobRunRequest) string {
+	if request == nil {
+		request = NewCancelRayJobRunRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCancelRayJobRunResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewStartFlinkJobRunRequest() (request *StartFlinkJobRunRequest) {
+	request = &StartFlinkJobRunRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kmr", APIVersion, "StartFlinkJobRun")
+	return
+}
+
+func NewStartFlinkJobRunResponse() (response *StartFlinkJobRunResponse) {
+	response = &StartFlinkJobRunResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) StartFlinkJobRun(request *StartFlinkJobRunRequest) string {
+	return c.StartFlinkJobRunWithContext(context.Background(), request)
+}
+
+func (c *Client) StartFlinkJobRunWithContext(ctx context.Context, request *StartFlinkJobRunRequest) string {
+	if request == nil {
+		request = NewStartFlinkJobRunRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewStartFlinkJobRunResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewGetFlinkJobRunRequest() (request *GetFlinkJobRunRequest) {
+	request = &GetFlinkJobRunRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kmr", APIVersion, "GetFlinkJobRun")
+	return
+}
+
+func NewGetFlinkJobRunResponse() (response *GetFlinkJobRunResponse) {
+	response = &GetFlinkJobRunResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetFlinkJobRun(request *GetFlinkJobRunRequest) string {
+	return c.GetFlinkJobRunWithContext(context.Background(), request)
+}
+
+func (c *Client) GetFlinkJobRunWithContext(ctx context.Context, request *GetFlinkJobRunRequest) string {
+	if request == nil {
+		request = NewGetFlinkJobRunRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetFlinkJobRunResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewListFlinkJobRunsRequest() (request *ListFlinkJobRunsRequest) {
+	request = &ListFlinkJobRunsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kmr", APIVersion, "ListFlinkJobRuns")
+	return
+}
+
+func NewListFlinkJobRunsResponse() (response *ListFlinkJobRunsResponse) {
+	response = &ListFlinkJobRunsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ListFlinkJobRuns(request *ListFlinkJobRunsRequest) string {
+	return c.ListFlinkJobRunsWithContext(context.Background(), request)
+}
+
+func (c *Client) ListFlinkJobRunsWithContext(ctx context.Context, request *ListFlinkJobRunsRequest) string {
+	if request == nil {
+		request = NewListFlinkJobRunsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListFlinkJobRunsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCancelFlinkJobRunRequest() (request *CancelFlinkJobRunRequest) {
+	request = &CancelFlinkJobRunRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kmr", APIVersion, "CancelFlinkJobRun")
+	return
+}
+
+func NewCancelFlinkJobRunResponse() (response *CancelFlinkJobRunResponse) {
+	response = &CancelFlinkJobRunResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CancelFlinkJobRun(request *CancelFlinkJobRunRequest) string {
+	return c.CancelFlinkJobRunWithContext(context.Background(), request)
+}
+
+func (c *Client) CancelFlinkJobRunWithContext(ctx context.Context, request *CancelFlinkJobRunRequest) string {
+	if request == nil {
+		request = NewCancelFlinkJobRunRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCancelFlinkJobRunResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewSuspendFlinkJobRunRequest() (request *SuspendFlinkJobRunRequest) {
+	request = &SuspendFlinkJobRunRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kmr", APIVersion, "SuspendFlinkJobRun")
+	return
+}
+
+func NewSuspendFlinkJobRunResponse() (response *SuspendFlinkJobRunResponse) {
+	response = &SuspendFlinkJobRunResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SuspendFlinkJobRun(request *SuspendFlinkJobRunRequest) string {
+	return c.SuspendFlinkJobRunWithContext(context.Background(), request)
+}
+
+func (c *Client) SuspendFlinkJobRunWithContext(ctx context.Context, request *SuspendFlinkJobRunRequest) string {
+	if request == nil {
+		request = NewSuspendFlinkJobRunRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSuspendFlinkJobRunResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewRestartFlinkJobRunRequest() (request *RestartFlinkJobRunRequest) {
+	request = &RestartFlinkJobRunRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kmr", APIVersion, "RestartFlinkJobRun")
+	return
+}
+
+func NewRestartFlinkJobRunResponse() (response *RestartFlinkJobRunResponse) {
+	response = &RestartFlinkJobRunResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RestartFlinkJobRun(request *RestartFlinkJobRunRequest) string {
+	return c.RestartFlinkJobRunWithContext(context.Background(), request)
+}
+
+func (c *Client) RestartFlinkJobRunWithContext(ctx context.Context, request *RestartFlinkJobRunRequest) string {
+	if request == nil {
+		request = NewRestartFlinkJobRunRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRestartFlinkJobRunResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

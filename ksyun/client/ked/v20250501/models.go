@@ -39,11 +39,11 @@ func (r *CloudDeskreinstallRequest) FromJsonString(s string) error {
 
 type CloudDeskreinstallResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *CloudDeskreinstallResponse) ToJsonString() string {
@@ -79,11 +79,11 @@ func (r *CloudDeskmanageRequest) FromJsonString(s string) error {
 
 type CloudDeskmanageResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *CloudDeskmanageResponse) ToJsonString() string {
@@ -120,11 +120,11 @@ func (r *CloudDeskeditRequest) FromJsonString(s string) error {
 
 type CloudDeskeditResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *CloudDeskeditResponse) ToJsonString() string {
@@ -170,13 +170,13 @@ func (r *CloudDeskcreateRequest) FromJsonString(s string) error {
 
 type CloudDeskcreateResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
 		InstanceId []struct {
-		} `json:"InstanceId"`
+		} `json:"InstanceId" name:"InstanceId"`
 	} `json:"Data"`
 }
 
@@ -214,47 +214,46 @@ func (r *CloudDesklistRequest) FromJsonString(s string) error {
 
 type CloudDesklistResponse struct {
 	*ksyunhttp.BaseResponse
-	message   *string `json:"message" name:"message"`
-	code      *int    `json:"code" name:"code"`
-	requestId *string `json:"requestId" name:"requestId"`
+	Message   *string `json:"message" name:"message"`
+	Code      *int    `json:"code" name:"code"`
+	RequestId *string `json:"requestId" name:"requestId"`
 	Data      struct {
-		PageSize *int `json:"PageSize"`
+		PageSize *int `json:"PageSize" name:"PageSize"`
 		Records  []struct {
-			id         *int    `json:"id"`
-			instanceId *string `json:"instanceId"`
-			userName   *string `json:"userName"`
-			name       *string `json:"name"`
-			region     *string `json:"region"`
-			ecStatus   *string `json:"ecStatus"`
-			vcpu       *int    `json:"vcpu"`
-			vmemory    *int    `json:"vmemory"`
-			VdiskList  []struct {
-			} `json:"VdiskList"`
-			sysDisk      *string `json:"sysDisk"`
-			serverVmType *string `json:"serverVmType"`
+			Id           *int      `json:"id" name:"id"`
+			InstanceId   *string   `json:"instanceId" name:"instanceId"`
+			UserName     *string   `json:"userName" name:"userName"`
+			Name         *string   `json:"name" name:"name"`
+			Region       *string   `json:"region" name:"region"`
+			EcStatus     *string   `json:"ecStatus" name:"ecStatus"`
+			Vcpu         *int      `json:"vcpu" name:"vcpu"`
+			Vmemory      *int      `json:"vmemory" name:"vmemory"`
+			VdiskList    []*string `json:"VdiskList" name:"VdiskList"`
+			SysDisk      *string   `json:"sysDisk" name:"sysDisk"`
+			ServerVmType *string   `json:"serverVmType" name:"serverVmType"`
 			IpInfo       struct {
-				PrivateIpV6 *string `json:"PrivateIpV6"`
-				PrivateIpV4 *string `json:"PrivateIpV4"`
-				PublicIpV6  *string `json:"PublicIpV6"`
-				PublicIpV4  *string `json:"PublicIpV4"`
+				PrivateIpV6 *string `json:"PrivateIpV6" name:"PrivateIpV6"`
+				PrivateIpV4 *string `json:"PrivateIpV4" name:"PrivateIpV4"`
+				PublicIpV6  *string `json:"PublicIpV6" name:"PublicIpV6"`
+				PublicIpV4  *string `json:"PublicIpV4" name:"PublicIpV4"`
 			} `json:"IpInfo"`
-			createdTime     *string `json:"createdTime"`
-			securityGroupId *string `json:"securityGroupId"`
-			userId          *int    `json:"userId"`
-			billingType     *int    `json:"billingType"`
-			systemType      *string `json:"systemType"`
-			accountId       *int    `json:"accountId"`
-			createTime      *string `json:"createTime"`
-			edgeNodeId      *string `json:"edgeNodeId"`
-			edgeNodeName    *string `json:"edgeNodeName"`
-			connected       *string `json:"connected"`
-			email           *string `json:"email"`
-			gpu             *string `json:"gpu"`
-		} `json:"Records"`
-		PageNum    *int `json:"PageNum"`
-		TotalCount *int `json:"TotalCount"`
+			CreatedTime     *string `json:"createdTime" name:"createdTime"`
+			SecurityGroupId *string `json:"securityGroupId" name:"securityGroupId"`
+			UserId          *int    `json:"userId" name:"userId"`
+			BillingType     *int    `json:"billingType" name:"billingType"`
+			SystemType      *string `json:"systemType" name:"systemType"`
+			AccountId       *int    `json:"accountId" name:"accountId"`
+			CreateTime      *string `json:"createTime" name:"createTime"`
+			EdgeNodeId      *string `json:"edgeNodeId" name:"edgeNodeId"`
+			EdgeNodeName    *string `json:"edgeNodeName" name:"edgeNodeName"`
+			Connected       *string `json:"connected" name:"connected"`
+			Email           *string `json:"email" name:"email"`
+			Gpu             *string `json:"gpu" name:"gpu"`
+		} `json:"Records" name:"Records"`
+		PageNum    *int `json:"PageNum" name:"PageNum"`
+		TotalCount *int `json:"TotalCount" name:"TotalCount"`
 	} `json:"Data"`
-	detail *string `json:"detail" name:"detail"`
+	Detail *string `json:"detail" name:"detail"`
 }
 
 func (r *CloudDesklistResponse) ToJsonString() string {
@@ -289,11 +288,11 @@ func (r *StrategyruleeditRequest) FromJsonString(s string) error {
 
 type StrategyruleeditResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *StrategyruleeditResponse) ToJsonString() string {
@@ -330,12 +329,12 @@ func (r *StrategyrulecreateRequest) FromJsonString(s string) error {
 
 type StrategyrulecreateResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
-		Id *int `json:"Id"`
+		Id *int `json:"Id" name:"Id"`
 	} `json:"Data"`
 }
 
@@ -372,11 +371,11 @@ func (r *StrategyunboundRequest) FromJsonString(s string) error {
 
 type StrategyunboundResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *StrategyunboundResponse) ToJsonString() string {
@@ -412,11 +411,11 @@ func (r *StrategyboundRequest) FromJsonString(s string) error {
 
 type StrategyboundResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *StrategyboundResponse) ToJsonString() string {
@@ -451,11 +450,11 @@ func (r *StrategydeleteRequest) FromJsonString(s string) error {
 
 type StrategydeleteResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *StrategydeleteResponse) ToJsonString() string {
@@ -492,11 +491,11 @@ func (r *StrategyeditRequest) FromJsonString(s string) error {
 
 type StrategyeditResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *StrategyeditResponse) ToJsonString() string {
@@ -532,19 +531,19 @@ func (r *StrategycreateRequest) FromJsonString(s string) error {
 
 type StrategycreateResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
-		Id           *int    `json:"Id"`
-		StrategyId   *string `json:"StrategyId"`
-		StrategyName *string `json:"StrategyName"`
-		AccountId    *int    `json:"AccountId"`
-		Comment      *string `json:"Comment"`
-		InstanceNum  *string `json:"InstanceNum"`
-		CreateTime   *string `json:"CreateTime"`
-		UpdateTime   *string `json:"UpdateTime"`
+		Id           *int    `json:"Id" name:"Id"`
+		StrategyId   *string `json:"StrategyId" name:"StrategyId"`
+		StrategyName *string `json:"StrategyName" name:"StrategyName"`
+		AccountId    *int    `json:"AccountId" name:"AccountId"`
+		Comment      *string `json:"Comment" name:"Comment"`
+		InstanceNum  *string `json:"InstanceNum" name:"InstanceNum"`
+		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime   *string `json:"UpdateTime" name:"UpdateTime"`
 	} `json:"Data"`
 }
 
@@ -582,23 +581,23 @@ func (r *StrategylistRequest) FromJsonString(s string) error {
 
 type StrategylistResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
-		PageNum    *int `json:"PageNum"`
-		PageSize   *int `json:"PageSize"`
-		TotalCount *int `json:"TotalCount"`
+		PageNum    *int `json:"PageNum" name:"PageNum"`
+		PageSize   *int `json:"PageSize" name:"PageSize"`
+		TotalCount *int `json:"TotalCount" name:"TotalCount"`
 		Records    []struct {
-			id              *int    `json:"id"`
-			securityGroupId *string `json:"securityGroupId"`
-			name            *string `json:"name"`
-			description     *string `json:"description"`
-			instanceNum     *int    `json:"instanceNum"`
-			createTime      *string `json:"createTime"`
-			updateTime      *string `json:"updateTime"`
-		} `json:"Records"`
+			Id              *int    `json:"id" name:"id"`
+			SecurityGroupId *string `json:"securityGroupId" name:"securityGroupId"`
+			Name            *string `json:"name" name:"name"`
+			Description     *string `json:"description" name:"description"`
+			InstanceNum     *int    `json:"instanceNum" name:"instanceNum"`
+			CreateTime      *string `json:"createTime" name:"createTime"`
+			UpdateTime      *string `json:"updateTime" name:"updateTime"`
+		} `json:"Records" name:"Records"`
 	} `json:"Data"`
 }
 
@@ -634,11 +633,11 @@ func (r *RolesdeleteRequest) FromJsonString(s string) error {
 
 type RolesdeleteResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *RolesdeleteResponse) ToJsonString() string {
@@ -679,11 +678,11 @@ func (r *RoleseditRequest) FromJsonString(s string) error {
 
 type RoleseditResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *RoleseditResponse) ToJsonString() string {
@@ -723,12 +722,12 @@ func (r *RolescreateRequest) FromJsonString(s string) error {
 
 type RolescreateResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
-		Id *int `json:"Id"`
+		Id *int `json:"Id" name:"Id"`
 	} `json:"Data"`
 }
 
@@ -766,24 +765,24 @@ func (r *RoleslistRequest) FromJsonString(s string) error {
 
 type RoleslistResponse struct {
 	*ksyunhttp.BaseResponse
-	message   *string `json:"message" name:"message"`
-	code      *int    `json:"code" name:"code"`
-	requestId *string `json:"requestId" name:"requestId"`
+	Message   *string `json:"message" name:"message"`
+	Code      *int    `json:"code" name:"code"`
+	RequestId *string `json:"requestId" name:"requestId"`
 	Data      struct {
-		PageNum    *int `json:"PageNum"`
-		PageSize   *int `json:"PageSize"`
-		TotalCount *int `json:"TotalCount"`
+		PageNum    *int `json:"PageNum" name:"PageNum"`
+		PageSize   *int `json:"PageSize" name:"PageSize"`
+		TotalCount *int `json:"TotalCount" name:"TotalCount"`
 		Records    []struct {
-			id           *int    `json:"id"`
-			createdAt    *string `json:"createdAt"`
-			name         *string `json:"name"`
-			description  *string `json:"description"`
-			userNums     *int    `json:"userNums"`
-			fileTransfer *int    `json:"fileTransfer"`
-			clipboard    *int    `json:"clipboard"`
-			disk         *int    `json:"disk"`
-			usb          *int    `json:"usb"`
-		} `json:"Records"`
+			Id           *int    `json:"id" name:"id"`
+			CreatedAt    *string `json:"createdAt" name:"createdAt"`
+			Name         *string `json:"name" name:"name"`
+			Description  *string `json:"description" name:"description"`
+			UserNums     *int    `json:"userNums" name:"userNums"`
+			FileTransfer *int    `json:"fileTransfer" name:"fileTransfer"`
+			Clipboard    *int    `json:"clipboard" name:"clipboard"`
+			Disk         *int    `json:"disk" name:"disk"`
+			Usb          *int    `json:"usb" name:"usb"`
+		} `json:"Records" name:"Records"`
 	} `json:"Data"`
 }
 
@@ -819,11 +818,11 @@ func (r *ImagedeleteRequest) FromJsonString(s string) error {
 
 type ImagedeleteResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *ImagedeleteResponse) ToJsonString() string {
@@ -860,11 +859,11 @@ func (r *ImageeditRequest) FromJsonString(s string) error {
 
 type ImageeditResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *ImageeditResponse) ToJsonString() string {
@@ -901,11 +900,11 @@ func (r *ImagecreateRequest) FromJsonString(s string) error {
 
 type ImagecreateResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *ImagecreateResponse) ToJsonString() string {
@@ -942,28 +941,28 @@ func (r *ImagelistRequest) FromJsonString(s string) error {
 
 type ImagelistResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
-		PageNum    *int `json:"PageNum"`
-		PageSize   *int `json:"PageSize"`
-		TotalCount *int `json:"TotalCount"`
+		PageNum    *int `json:"PageNum" name:"PageNum"`
+		PageSize   *int `json:"PageSize" name:"PageSize"`
+		TotalCount *int `json:"TotalCount" name:"TotalCount"`
 		Records    []struct {
-			id            *int    `json:"id"`
-			name          *string `json:"name"`
-			accountId     *int    `json:"accountId"`
-			imageType     *string `json:"imageType"`
-			imageSize     *string `json:"imageSize"`
-			description   *string `json:"description"`
-			status        *int    `json:"status"`
-			imageId       *string `json:"imageId"`
-			systemType    *string `json:"systemType"`
-			systemVersion *string `json:"systemVersion"`
-			createTime    *string `json:"createTime"`
-			updateTime    *string `json:"updateTime"`
-		} `json:"Records"`
+			Id            *int    `json:"id" name:"id"`
+			Name          *string `json:"name" name:"name"`
+			AccountId     *int    `json:"accountId" name:"accountId"`
+			ImageType     *string `json:"imageType" name:"imageType"`
+			ImageSize     *string `json:"imageSize" name:"imageSize"`
+			Description   *string `json:"description" name:"description"`
+			Status        *int    `json:"status" name:"status"`
+			ImageId       *string `json:"imageId" name:"imageId"`
+			SystemType    *string `json:"systemType" name:"systemType"`
+			SystemVersion *string `json:"systemVersion" name:"systemVersion"`
+			CreateTime    *string `json:"createTime" name:"createTime"`
+			UpdateTime    *string `json:"updateTime" name:"updateTime"`
+		} `json:"Records" name:"Records"`
 	} `json:"Data"`
 }
 
@@ -999,11 +998,11 @@ func (r *StrategyrulebatchEditRequest) FromJsonString(s string) error {
 
 type StrategyrulebatchEditResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *StrategyrulebatchEditResponse) ToJsonString() string {
@@ -1037,15 +1036,15 @@ func (r *MonitorregionsRequest) FromJsonString(s string) error {
 
 type MonitorregionsResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
 		Regions []struct {
-			name  *string `json:"name"`
-			value *string `json:"value"`
-		} `json:"Regions"`
+			Name  *string `json:"name" name:"name"`
+			Value *string `json:"value" name:"value"`
+		} `json:"Regions" name:"Regions"`
 	} `json:"Data"`
 }
 
@@ -1082,11 +1081,11 @@ func (r *UsersinstancebindRequest) FromJsonString(s string) error {
 
 type UsersinstancebindResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *UsersinstancebindResponse) ToJsonString() string {
@@ -1122,11 +1121,11 @@ func (r *UserspasswordresetRequest) FromJsonString(s string) error {
 
 type UserspasswordresetResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *UserspasswordresetResponse) ToJsonString() string {
@@ -1161,11 +1160,11 @@ func (r *UsersdeleteRequest) FromJsonString(s string) error {
 
 type UsersdeleteResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *UsersdeleteResponse) ToJsonString() string {
@@ -1204,11 +1203,11 @@ func (r *UserseditRequest) FromJsonString(s string) error {
 
 type UserseditResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
-	data      *bool   `json:"data" name:"data"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
+	Data      *bool   `json:"data" name:"data"`
 }
 
 func (r *UserseditResponse) ToJsonString() string {
@@ -1246,12 +1245,12 @@ func (r *UserscreateRequest) FromJsonString(s string) error {
 
 type UserscreateResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
-		Id *int `json:"Id"`
+		Id *int `json:"Id" name:"Id"`
 	} `json:"Data"`
 }
 
@@ -1288,24 +1287,24 @@ func (r *UserslistRequest) FromJsonString(s string) error {
 
 type UserslistResponse struct {
 	*ksyunhttp.BaseResponse
-	message   *string `json:"message" name:"message"`
-	code      *int    `json:"code" name:"code"`
-	requestId *string `json:"requestId" name:"requestId"`
+	Message   *string `json:"message" name:"message"`
+	Code      *int    `json:"code" name:"code"`
+	RequestId *string `json:"requestId" name:"requestId"`
 	Data      struct {
-		PageNum    *int `json:"PageNum"`
-		PageSize   *int `json:"PageSize"`
-		TotalCount *int `json:"TotalCount"`
+		PageNum    *int `json:"PageNum" name:"PageNum"`
+		PageSize   *int `json:"PageSize" name:"PageSize"`
+		TotalCount *int `json:"TotalCount" name:"TotalCount"`
 		Records    []struct {
-			id           *int    `json:"id"`
-			createdTime  *string `json:"createdTime"`
-			userName     *string `json:"userName"`
-			nickName     *string `json:"nickName"`
-			enable       *int    `json:"enable"`
-			deskNums     *int    `json:"deskNums"`
-			roleId       *int    `json:"roleId"`
-			roleName     *string `json:"roleName"`
-			phoneOrEmail *string `json:"phoneOrEmail"`
-		} `json:"Records"`
+			Id           *int    `json:"id" name:"id"`
+			CreatedTime  *string `json:"createdTime" name:"createdTime"`
+			UserName     *string `json:"userName" name:"userName"`
+			NickName     *string `json:"nickName" name:"nickName"`
+			Enable       *int    `json:"enable" name:"enable"`
+			DeskNums     *int    `json:"deskNums" name:"deskNums"`
+			RoleId       *int    `json:"roleId" name:"roleId"`
+			RoleName     *string `json:"roleName" name:"roleName"`
+			PhoneOrEmail *string `json:"phoneOrEmail" name:"phoneOrEmail"`
+		} `json:"Records" name:"Records"`
 	} `json:"Data"`
 }
 
@@ -1341,21 +1340,21 @@ func (r *QueryStrategyruledetailRequest) FromJsonString(s string) error {
 
 type QueryStrategyruledetailResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
-		Id                    *string `json:"Id"`
-		SecurityGroupId       *string `json:"SecurityGroupId"`
-		AccountId             *int    `json:"AccountId"`
-		Name                  *string `json:"Name"`
-		Description           *string `json:"Description"`
-		CreateTime            *string `json:"CreateTime"`
-		DeskTotal             *string `json:"DeskTotal"`
+		Id                    *string `json:"Id" name:"Id"`
+		SecurityGroupId       *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		AccountId             *int    `json:"AccountId" name:"AccountId"`
+		Name                  *string `json:"Name" name:"Name"`
+		Description           *string `json:"Description" name:"Description"`
+		CreateTime            *string `json:"CreateTime" name:"CreateTime"`
+		DeskTotal             *string `json:"DeskTotal" name:"DeskTotal"`
 		SecurityGroupPolicies []struct {
-		} `json:"SecurityGroupPolicies"`
-		BoundDesks *string `json:"BoundDesks"`
+		} `json:"SecurityGroupPolicies" name:"SecurityGroupPolicies"`
+		BoundDesks *string `json:"BoundDesks" name:"BoundDesks"`
 	} `json:"Data"`
 }
 
@@ -1392,13 +1391,13 @@ func (r *CloudDeskgetDesktopUrlRequest) FromJsonString(s string) error {
 
 type CloudDeskgetDesktopUrlResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
-		Code *int    `json:"Code"`
-		Url  *string `json:"Url"`
+		Code *int    `json:"Code" name:"Code"`
+		Url  *string `json:"Url" name:"Url"`
 	} `json:"Data"`
 }
 
@@ -1436,12 +1435,12 @@ func (r *QueryCloudDesksubmitShellRequest) FromJsonString(s string) error {
 
 type QueryCloudDesksubmitShellResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
-		PlanId *int `json:"PlanId"`
+		PlanId *int `json:"PlanId" name:"PlanId"`
 	} `json:"Data"`
 }
 
@@ -1478,13 +1477,13 @@ func (r *CreateCloudDeskgetTokenRequest) FromJsonString(s string) error {
 
 type CreateCloudDeskgetTokenResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
-		ExpiresAt *int    `json:"ExpiresAt"`
-		Token     *string `json:"Token"`
+		ExpiresAt *int    `json:"ExpiresAt" name:"ExpiresAt"`
+		Token     *string `json:"Token" name:"Token"`
 	} `json:"Data"`
 }
 
@@ -1521,16 +1520,16 @@ func (r *QueryShellStatusRequest) FromJsonString(s string) error {
 
 type QueryShellStatusResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
 	Data      []struct {
-		Plan_uuid *int    `json:"Plan_uuid"`
-		Status    *int    `json:"Status"`
-		Name      *string `json:"Name"`
-		Version   *string `json:"Version"`
-		Msg       *string `json:"Msg"`
+		PlanUuid *int    `json:"PlanUuid" name:"PlanUuid"`
+		Status   *int    `json:"Status" name:"Status"`
+		Name     *string `json:"Name" name:"Name"`
+		Version  *string `json:"Version" name:"Version"`
+		Msg      *string `json:"Msg" name:"Msg"`
 	} `json:"Data"`
 }
 
@@ -1569,12 +1568,12 @@ func (r *SetProxyIpRequest) FromJsonString(s string) error {
 
 type SetProxyIpResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
-		PlanId *int `json:"PlanId"`
+		PlanId *int `json:"PlanId" name:"PlanId"`
 	} `json:"Data"`
 }
 
@@ -1610,18 +1609,18 @@ func (r *GetProxyConfigRequest) FromJsonString(s string) error {
 
 type GetProxyConfigResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
-	code      *int    `json:"code" name:"code"`
-	message   *string `json:"message" name:"message"`
-	detail    *string `json:"detail" name:"detail"`
+	RequestId *string `json:"requestId" name:"requestId"`
+	Code      *int    `json:"code" name:"code"`
+	Message   *string `json:"message" name:"message"`
+	Detail    *string `json:"detail" name:"detail"`
 	Data      []struct {
-		Name        *string `json:"Name"`
-		Create_time *int    `json:"Create_time"`
-		City        *string `json:"City"`
-		Isp         *string `json:"Isp"`
-		Plan_uuid   *string `json:"Plan_uuid"`
-		Province    *string `json:"Province"`
-		Version     *string `json:"Version"`
+		Name       *string `json:"Name" name:"Name"`
+		CreateTime *int    `json:"CreateTime" name:"CreateTime"`
+		City       *string `json:"City" name:"City"`
+		Isp        *string `json:"Isp" name:"Isp"`
+		PlanUuid   *string `json:"PlanUuid" name:"PlanUuid"`
+		Province   *string `json:"Province" name:"Province"`
+		Version    *string `json:"Version" name:"Version"`
 	} `json:"Data"`
 }
 

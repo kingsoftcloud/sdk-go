@@ -42,10 +42,10 @@ type CreateMongoDBInstanceResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId             *string `json:"RequestId" name:"RequestId"`
 	MongoDBInstanceResult struct {
-		UserId     *string `json:"UserId"`
-		Region     *string `json:"Region"`
-		InstanceId *string `json:"InstanceId"`
-		Name       *string `json:"Name"`
+		UserId     *string `json:"UserId" name:"UserId"`
+		Region     *string `json:"Region" name:"Region"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Name       *string `json:"Name" name:"Name"`
 	} `json:"MongoDBInstanceResult"`
 }
 
@@ -119,30 +119,30 @@ type DescribeMongoDBInstanceResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId             *string `json:"RequestId" name:"RequestId"`
 	MongoDBInstanceResult struct {
-		UserId         *string `json:"UserId"`
-		Region         *string `json:"Region"`
-		Name           *string `json:"Name"`
-		InstanceId     *string `json:"InstanceId"`
-		Status         *string `json:"Status"`
-		IP             *string `json:"IP"`
-		InstanceType   *string `json:"InstanceType"`
-		Version        *string `json:"Version"`
-		InstanceClass  *string `json:"InstanceClass"`
-		Storage        *int    `json:"Storage"`
-		Port           *int    `json:"Port"`
-		NetworkType    *string `json:"NetworkType"`
-		VpcId          *string `json:"VpcId"`
-		VnetId         *string `json:"VnetId"`
-		TimingSwitch   *string `json:"TimingSwitch"`
-		Timezone       *string `json:"Timezone"`
-		TimeCycle      *string `json:"TimeCycle"`
-		ProductId      *string `json:"ProductId"`
-		ProductWhat    *int    `json:"ProductWhat"`
-		PayType        *string `json:"PayType"`
-		CreateDate     *string `json:"CreateDate"`
-		ExpirationDate *string `json:"ExpirationDate"`
-		IamProjectId   *string `json:"IamProjectId"`
-		IamProjectName *string `json:"IamProjectName"`
+		UserId         *string `json:"UserId" name:"UserId"`
+		Region         *string `json:"Region" name:"Region"`
+		Name           *string `json:"Name" name:"Name"`
+		InstanceId     *string `json:"InstanceId" name:"InstanceId"`
+		Status         *string `json:"Status" name:"Status"`
+		IP             *string `json:"IP" name:"IP"`
+		InstanceType   *string `json:"InstanceType" name:"InstanceType"`
+		Version        *string `json:"Version" name:"Version"`
+		InstanceClass  *string `json:"InstanceClass" name:"InstanceClass"`
+		Storage        *int    `json:"Storage" name:"Storage"`
+		Port           *int    `json:"Port" name:"Port"`
+		NetworkType    *string `json:"NetworkType" name:"NetworkType"`
+		VpcId          *string `json:"VpcId" name:"VpcId"`
+		VnetId         *string `json:"VnetId" name:"VnetId"`
+		TimingSwitch   *string `json:"TimingSwitch" name:"TimingSwitch"`
+		Timezone       *string `json:"Timezone" name:"Timezone"`
+		TimeCycle      *string `json:"TimeCycle" name:"TimeCycle"`
+		ProductId      *string `json:"ProductId" name:"ProductId"`
+		ProductWhat    *int    `json:"ProductWhat" name:"ProductWhat"`
+		PayType        *string `json:"PayType" name:"PayType"`
+		CreateDate     *string `json:"CreateDate" name:"CreateDate"`
+		ExpirationDate *string `json:"ExpirationDate" name:"ExpirationDate"`
+		IamProjectId   *string `json:"IamProjectId" name:"IamProjectId"`
+		IamProjectName *string `json:"IamProjectName" name:"IamProjectName"`
 	} `json:"MongoDBInstanceResult"`
 }
 
@@ -195,27 +195,27 @@ type DescribeMongoDBInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId              *string `json:"RequestId" name:"RequestId"`
 	MongoDBInstancesResult []struct {
-		IamProjectId   *string `json:"IamProjectId"`
-		IamProjectName *string `json:"IamProjectName"`
-		UserId         *string `json:"UserId"`
-		Region         *string `json:"Region"`
-		Name           *string `json:"Name"`
-		InstanceId     *string `json:"InstanceId"`
-		Status         *string `json:"Status"`
-		IP             *string `json:"IP"`
-		InstanceType   *string `json:"InstanceType"`
-		Version        *string `json:"Version"`
-		InstanceClass  *string `json:"InstanceClass"`
-		Storage        *int    `json:"Storage"`
-		Port           *string `json:"Port"`
-		NetworkType    *string `json:"NetworkType"`
-		VpcId          *string `json:"VpcId"`
-		VnetId         *string `json:"VnetId"`
-		ProductId      *string `json:"ProductId"`
-		ProductWhat    *int    `json:"ProductWhat"`
-		PayType        *string `json:"PayType"`
-		CreateDate     *string `json:"CreateDate"`
-		ExpirationDate *string `json:"ExpirationDate"`
+		IamProjectId   *string `json:"IamProjectId" name:"IamProjectId"`
+		IamProjectName *string `json:"IamProjectName" name:"IamProjectName"`
+		UserId         *string `json:"UserId" name:"UserId"`
+		Region         *string `json:"Region" name:"Region"`
+		Name           *string `json:"Name" name:"Name"`
+		InstanceId     *string `json:"InstanceId" name:"InstanceId"`
+		Status         *string `json:"Status" name:"Status"`
+		IP             *string `json:"IP" name:"IP"`
+		InstanceType   *string `json:"InstanceType" name:"InstanceType"`
+		Version        *string `json:"Version" name:"Version"`
+		InstanceClass  *string `json:"InstanceClass" name:"InstanceClass"`
+		Storage        *int    `json:"Storage" name:"Storage"`
+		Port           *string `json:"Port" name:"Port"`
+		NetworkType    *string `json:"NetworkType" name:"NetworkType"`
+		VpcId          *string `json:"VpcId" name:"VpcId"`
+		VnetId         *string `json:"VnetId" name:"VnetId"`
+		ProductId      *string `json:"ProductId" name:"ProductId"`
+		ProductWhat    *int    `json:"ProductWhat" name:"ProductWhat"`
+		PayType        *string `json:"PayType" name:"PayType"`
+		CreateDate     *string `json:"CreateDate" name:"CreateDate"`
+		ExpirationDate *string `json:"ExpirationDate" name:"ExpirationDate"`
 	} `json:"MongoDBInstancesResult"`
 	Offset *int `json:"Offset" name:"Offset"`
 	Limit  *int `json:"Limit" name:"Limit"`
@@ -257,12 +257,12 @@ type DescribeMongoDBInstanceNodeResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId                 *string `json:"RequestId" name:"RequestId"`
 	MongoDBInstanceNodeResult []struct {
-		NodeId *string `json:"NodeId"`
-		Name   *string `json:"Name"`
-		Role   *string `json:"Role"`
-		IP     *string `json:"IP"`
-		Port   *int    `json:"Port"`
-		Status *string `json:"Status"`
+		NodeId *string `json:"NodeId" name:"NodeId"`
+		Name   *string `json:"Name" name:"Name"`
+		Role   *string `json:"Role" name:"Role"`
+		IP     *string `json:"IP" name:"IP"`
+		Port   *int    `json:"Port" name:"Port"`
+		Status *string `json:"Status" name:"Status"`
 	} `json:"MongoDBInstanceNodeResult"`
 }
 
@@ -301,7 +301,7 @@ type RenameMongoDBInstanceResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
-	name       *string `json:"name" name:"name"`
+	Name       *string `json:"name" name:"name"`
 }
 
 func (r *RenameMongoDBInstanceResponse) ToJsonString() string {
@@ -413,11 +413,11 @@ type CreateMongoDBSnapshotResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId             *string `json:"RequestId" name:"RequestId"`
 	MongoDBSnapshotResult struct {
-		SnapshotId *string `json:"SnapshotId"`
-		Name       *string `json:"Name"`
-		InstanceId *string `json:"InstanceId"`
-		Status     *string `json:"Status"`
-		Create     *string `json:"Create"`
+		SnapshotId *string `json:"SnapshotId" name:"SnapshotId"`
+		Name       *string `json:"Name" name:"Name"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Status     *string `json:"Status" name:"Status"`
+		Create     *string `json:"Create" name:"Create"`
 	} `json:"MongoDBSnapshotResult"`
 }
 
@@ -494,15 +494,15 @@ type DescribeMongoDBSnapshotResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId             *string `json:"RequestId" name:"RequestId"`
 	MongoDBSnapshotResult []struct {
-		SnapshotId *string `json:"SnapshotId"`
-		Name       *string `json:"Name"`
-		InstanceId *string `json:"InstanceId"`
-		Type       *string `json:"Type"`
-		Size       *int    `json:"Size"`
-		Status     *string `json:"Status"`
-		BackupMode *string `json:"BackupMode"`
-		CreateTime *string `json:"CreateTime"`
-		UpdateTime *string `json:"UpdateTime"`
+		SnapshotId *string `json:"SnapshotId" name:"SnapshotId"`
+		Name       *string `json:"Name" name:"Name"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Type       *string `json:"Type" name:"Type"`
+		Size       *int    `json:"Size" name:"Size"`
+		Status     *string `json:"Status" name:"Status"`
+		BackupMode *string `json:"BackupMode" name:"BackupMode"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
 	} `json:"MongoDBSnapshotResult"`
 }
 
@@ -617,11 +617,11 @@ type AddSecurityGroupRuleResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId                *string `json:"RequestId" name:"RequestId"`
 	MongoDBSecurityGroupRule []struct {
-		To_port   *string `json:"To_port"`
-		Cidr      *string `json:"Cidr"`
-		From_port *string `json:"From_port"`
-		Protocol  *string `json:"Protocol"`
-		Id        *string `json:"Id"`
+		ToPort   *string `json:"ToPort" name:"ToPort"`
+		Cidr     *string `json:"Cidr" name:"Cidr"`
+		FromPort *string `json:"FromPort" name:"FromPort"`
+		Protocol *string `json:"Protocol" name:"Protocol"`
+		Id       *string `json:"Id" name:"Id"`
 	} `json:"MongoDBSecurityGroupRule"`
 }
 
@@ -659,11 +659,11 @@ type ListSecurityGroupRulesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId                *string `json:"RequestId" name:"RequestId"`
 	MongoDBSecurityGroupRule []struct {
-		To_port   *string `json:"To_port"`
-		Cidr      *string `json:"Cidr"`
-		From_port *string `json:"From_port"`
-		Protocol  *string `json:"Protocol"`
-		Id        *string `json:"Id"`
+		ToPort   *string `json:"ToPort" name:"ToPort"`
+		Cidr     *string `json:"Cidr" name:"Cidr"`
+		FromPort *string `json:"FromPort" name:"FromPort"`
+		Protocol *string `json:"Protocol" name:"Protocol"`
+		Id       *string `json:"Id" name:"Id"`
 	} `json:"MongoDBSecurityGroupRule"`
 }
 
@@ -703,10 +703,10 @@ type UpdateMongoDBInstanceResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId             *string `json:"RequestId" name:"RequestId"`
 	MongoDBInstanceResult struct {
-		UserId     *string `json:"UserId"`
-		Region     *string `json:"Region"`
-		InstanceId *string `json:"InstanceId"`
-		Name       *string `json:"Name"`
+		UserId     *string `json:"UserId" name:"UserId"`
+		Region     *string `json:"Region" name:"Region"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Name       *string `json:"Name" name:"Name"`
 	} `json:"MongoDBInstanceResult"`
 }
 
@@ -781,21 +781,21 @@ type DescribeMongoDBShardNodeResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId        *string `json:"RequestId" name:"RequestId"`
 	MongosNodeResult []struct {
-		NodeId        *string `json:"NodeId"`
-		Name          *string `json:"Name"`
-		Role          *string `json:"Role"`
-		Endpoint      *string `json:"Endpoint"`
-		Status        *string `json:"Status"`
-		Connections   *int    `json:"Connections"`
-		InstanceClass *string `json:"InstanceClass"`
+		NodeId        *string `json:"NodeId" name:"NodeId"`
+		Name          *string `json:"Name" name:"Name"`
+		Role          *string `json:"Role" name:"Role"`
+		Endpoint      *string `json:"Endpoint" name:"Endpoint"`
+		Status        *string `json:"Status" name:"Status"`
+		Connections   *int    `json:"Connections" name:"Connections"`
+		InstanceClass *string `json:"InstanceClass" name:"InstanceClass"`
 	} `json:"MongosNodeResult"`
 	ShardNodeResult []struct {
-		NodeId        *string `json:"NodeId"`
-		Name          *string `json:"Name"`
-		Status        *string `json:"Status"`
-		Disk          *int    `json:"Disk"`
-		Iops          *int    `json:"Iops"`
-		InstanceClass *string `json:"InstanceClass"`
+		NodeId        *string `json:"NodeId" name:"NodeId"`
+		Name          *string `json:"Name" name:"Name"`
+		Status        *string `json:"Status" name:"Status"`
+		Disk          *int    `json:"Disk" name:"Disk"`
+		Iops          *int    `json:"Iops" name:"Iops"`
+		InstanceClass *string `json:"InstanceClass" name:"InstanceClass"`
 	} `json:"ShardNodeResult"`
 }
 
@@ -834,19 +834,19 @@ type DescribeValidRegionResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
 		RegionList []struct {
-			areaEnName *string `json:"areaEnName"`
-			regionCode *string `json:"regionCode"`
-			areaCode   *string `json:"areaCode"`
-			innerCode  *string `json:"innerCode"`
-			regionType *int    `json:"regionType"`
-			areaName   *string `json:"areaName"`
+			AreaEnName *string `json:"areaEnName" name:"areaEnName"`
+			RegionCode *string `json:"regionCode" name:"regionCode"`
+			AreaCode   *string `json:"areaCode" name:"areaCode"`
+			InnerCode  *string `json:"innerCode" name:"innerCode"`
+			RegionType *int    `json:"regionType" name:"regionType"`
+			AreaName   *string `json:"areaName" name:"areaName"`
 			AzList     []struct {
-				AzName *string `json:"AzName"`
-				AzCode *string `json:"AzCode"`
+				AzName *string `json:"AzName" name:"AzName"`
+				AzCode *string `json:"AzCode" name:"AzCode"`
 			} `json:"AzList"`
-			regionName   *string `json:"regionName"`
-			regionEnName *string `json:"regionEnName"`
-		} `json:"RegionList"`
+			RegionName   *string `json:"regionName" name:"regionName"`
+			RegionEnName *string `json:"regionEnName" name:"regionEnName"`
+		} `json:"RegionList" name:"RegionList"`
 	} `json:"Data"`
 }
 
@@ -957,13 +957,13 @@ type DescribeRegionsResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		Regions []struct {
-			Code              *string `json:"Code"`
-			Name              *string `json:"Name"`
+			Code              *string `json:"Code" name:"Code"`
+			Name              *string `json:"Name" name:"Name"`
 			AvailabilityZones []struct {
-				Code *string `json:"Code"`
-				Name *string `json:"Name"`
+				Code *string `json:"Code" name:"Code"`
+				Name *string `json:"Name" name:"Name"`
 			} `json:"AvailabilityZones"`
-		} `json:"Regions"`
+		} `json:"Regions" name:"Regions"`
 	} `json:"Data"`
 }
 
@@ -1014,10 +1014,10 @@ type CreateMongoDBShardInstanceResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId             *string `json:"RequestId" name:"RequestId"`
 	MongoDBInstanceResult struct {
-		UserId     *string `json:"UserId"`
-		Region     *string `json:"Region"`
-		InstanceId *string `json:"InstanceId"`
-		Name       *string `json:"Name"`
+		UserId     *string `json:"UserId" name:"UserId"`
+		Region     *string `json:"Region" name:"Region"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Name       *string `json:"Name" name:"Name"`
 	} `json:"MongoDBInstanceResult"`
 }
 
@@ -1033,6 +1033,7 @@ func (r *CreateMongoDBShardInstanceResponse) FromJsonString(s string) error {
 type DownloadSnapshotRequest struct {
 	*ksyunhttp.BaseRequest
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 func (r *DownloadSnapshotRequest) ToJsonString() string {
@@ -1101,10 +1102,10 @@ type CloneInstanceResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId             *string `json:"RequestId" name:"RequestId"`
 	MongoDBInstanceResult struct {
-		UserId     *string `json:"UserId"`
-		Region     *string `json:"Region"`
-		InstanceId *string `json:"InstanceId"`
-		Name       *string `json:"Name"`
+		UserId     *string `json:"UserId" name:"UserId"`
+		Region     *string `json:"Region" name:"Region"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Name       *string `json:"Name" name:"Name"`
 	} `json:"MongoDBInstanceResult"`
 }
 
@@ -1142,25 +1143,25 @@ type DescribeShardNodeResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId        *string `json:"RequestId" name:"RequestId"`
 	MongosNodeResult []struct {
-		NodeId        *string `json:"NodeId"`
-		Name          *string `json:"Name"`
-		Role          *string `json:"Role"`
-		Endpoint      *string `json:"Endpoint"`
-		Status        *string `json:"Status"`
-		Connections   *int    `json:"Connections"`
-		InstanceClass *string `json:"InstanceClass"`
-		Ipv6Vip       *string `json:"Ipv6Vip"`
-		EipEport      *string `json:"EipEport"`
+		NodeId        *string `json:"NodeId" name:"NodeId"`
+		Name          *string `json:"Name" name:"Name"`
+		Role          *string `json:"Role" name:"Role"`
+		Endpoint      *string `json:"Endpoint" name:"Endpoint"`
+		Status        *string `json:"Status" name:"Status"`
+		Connections   *int    `json:"Connections" name:"Connections"`
+		InstanceClass *string `json:"InstanceClass" name:"InstanceClass"`
+		Ipv6Vip       *string `json:"Ipv6Vip" name:"Ipv6Vip"`
+		EipEport      *string `json:"EipEport" name:"EipEport"`
 	} `json:"MongosNodeResult"`
 	ShardNodeResult []struct {
-		NodeId        *string `json:"NodeId"`
-		Name          *string `json:"Name"`
-		Status        *string `json:"Status"`
-		Disk          *int    `json:"Disk"`
-		Iops          *int    `json:"Iops"`
-		InstanceClass *string `json:"InstanceClass"`
-		NodeNum       *int    `json:"NodeNum"`
-		UsedDisk      *int    `json:"UsedDisk"`
+		NodeId        *string `json:"NodeId" name:"NodeId"`
+		Name          *string `json:"Name" name:"Name"`
+		Status        *string `json:"Status" name:"Status"`
+		Disk          *int    `json:"Disk" name:"Disk"`
+		Iops          *int    `json:"Iops" name:"Iops"`
+		InstanceClass *string `json:"InstanceClass" name:"InstanceClass"`
+		NodeNum       *int    `json:"NodeNum" name:"NodeNum"`
+		UsedDisk      *int    `json:"UsedDisk" name:"UsedDisk"`
 	} `json:"ShardNodeResult"`
 }
 
@@ -1199,25 +1200,25 @@ type DescribeInstanceStatisticResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
 		Total struct {
-			code  *string `json:"code"`
-			name  *string `json:"name"`
-			count *int    `json:"count"`
+			Code  *string `json:"code" name:"code"`
+			Name  *string `json:"name" name:"name"`
+			Count *int    `json:"count" name:"count"`
 			Items []struct {
-				Code  *string `json:"Code"`
-				Name  *string `json:"Name"`
-				Count *int    `json:"Count"`
+				Code  *string `json:"Code" name:"Code"`
+				Name  *string `json:"Name" name:"Name"`
+				Count *int    `json:"Count" name:"Count"`
 			} `json:"Items"`
-		} `json:"Total"`
+		} `json:"Total" name:"Total"`
 		Details []struct {
-			code  *string `json:"code"`
-			name  *string `json:"name"`
-			count *int    `json:"count"`
+			Code  *string `json:"code" name:"code"`
+			Name  *string `json:"name" name:"name"`
+			Count *int    `json:"count" name:"count"`
 			Items []struct {
-				Code  *string `json:"Code"`
-				Name  *string `json:"Name"`
-				Count *int    `json:"Count"`
+				Code  *string `json:"Code" name:"Code"`
+				Name  *string `json:"Name" name:"Name"`
+				Count *int    `json:"Count" name:"Count"`
 			} `json:"Items"`
-		} `json:"Details"`
+		} `json:"Details" name:"Details"`
 	} `json:"Data"`
 }
 
@@ -1293,7 +1294,7 @@ func (r *DeleteClusterNodeRequest) FromJsonString(s string) error {
 
 type DeleteClusterNodeResponse struct {
 	*ksyunhttp.BaseResponse
-	null *string `json:"null" name:"null"`
+	Null *string `json:"null" name:"null"`
 }
 
 func (r *DeleteClusterNodeResponse) ToJsonString() string {
@@ -1337,20 +1338,20 @@ type DescribeSlowLogDetailResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      []struct {
-		ProcessingTime *string `json:"ProcessingTime"`
-		NameSpace      *string `json:"NameSpace"`
-		Content        *string `json:"Content"`
-		Client         *string `json:"Client"`
-		User           *string `json:"User"`
-		DocsExamined   *string `json:"DocsExamined"`
-		KeysExamined   *string `json:"KeysExamined"`
-		KeysUpdates    *string `json:"KeysUpdates"`
-		Nreturned      *string `json:"Nreturned"`
-		ResponseLength *string `json:"ResponseLength"`
-		Millis         *string `json:"Millis"`
+		ProcessingTime *string `json:"ProcessingTime" name:"ProcessingTime"`
+		NameSpace      *string `json:"NameSpace" name:"NameSpace"`
+		Content        *string `json:"Content" name:"Content"`
+		Client         *string `json:"Client" name:"Client"`
+		User           *string `json:"User" name:"User"`
+		DocsExamined   *string `json:"DocsExamined" name:"DocsExamined"`
+		KeysExamined   *string `json:"KeysExamined" name:"KeysExamined"`
+		KeysUpdates    *string `json:"KeysUpdates" name:"KeysUpdates"`
+		Nreturned      *string `json:"Nreturned" name:"Nreturned"`
+		ResponseLength *string `json:"ResponseLength" name:"ResponseLength"`
+		Millis         *string `json:"Millis" name:"Millis"`
 	} `json:"Data"`
-	marker     *int `json:"marker" name:"marker"`
-	maxRecords *int `json:"maxRecords" name:"maxRecords"`
+	Marker     *int `json:"marker" name:"marker"`
+	MaxRecords *int `json:"maxRecords" name:"maxRecords"`
 	Total      *int `json:"Total" name:"Total"`
 }
 
@@ -1394,16 +1395,16 @@ type DescribeSlowLogStatisticsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      []struct {
-		Op              *string `json:"Op"`
-		NameSpace       *string `json:"NameSpace"`
-		QueryCount      *int    `json:"QueryCount"`
-		MillisAvg       *int    `json:"MillisAvg"`
-		MillisMax       *int    `json:"MillisMax"`
-		DocsExaminedAvg *int    `json:"DocsExaminedAvg"`
-		KeysExaminedAvg *int    `json:"KeysExaminedAvg"`
-		KeysUpdatesAvg  *int    `json:"KeysUpdatesAvg"`
-		NreturnedAvg    *int    `json:"NreturnedAvg"`
-		SlowLogDetailVo *string `json:"SlowLogDetailVo"`
+		Op              *string `json:"Op" name:"Op"`
+		NameSpace       *string `json:"NameSpace" name:"NameSpace"`
+		QueryCount      *int    `json:"QueryCount" name:"QueryCount"`
+		MillisAvg       *int    `json:"MillisAvg" name:"MillisAvg"`
+		MillisMax       *int    `json:"MillisMax" name:"MillisMax"`
+		DocsExaminedAvg *int    `json:"DocsExaminedAvg" name:"DocsExaminedAvg"`
+		KeysExaminedAvg *int    `json:"KeysExaminedAvg" name:"KeysExaminedAvg"`
+		KeysUpdatesAvg  *int    `json:"KeysUpdatesAvg" name:"KeysUpdatesAvg"`
+		NreturnedAvg    *int    `json:"NreturnedAvg" name:"NreturnedAvg"`
+		SlowLogDetailVo *string `json:"SlowLogDetailVo" name:"SlowLogDetailVo"`
 	} `json:"Data"`
 	Offset *int `json:"Offset" name:"Offset"`
 	Limit  *int `json:"Limit" name:"Limit"`
@@ -1447,7 +1448,7 @@ func (r *DescribeSlowLogDatabaseRequest) FromJsonString(s string) error {
 type DescribeSlowLogDatabaseResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string   `json:"RequestId" name:"RequestId"`
-	data      []*string `json:"data" name:"data"`
+	Data      []*string `json:"Data" name:"Data"`
 }
 
 func (r *DescribeSlowLogDatabaseResponse) ToJsonString() string {
@@ -1488,8 +1489,8 @@ type DescribeSlowLogLineChartResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      []struct {
-		ExecTime *int `json:"ExecTime"`
-		Count    *int `json:"Count"`
+		ExecTime *int `json:"ExecTime" name:"ExecTime"`
+		Count    *int `json:"Count" name:"Count"`
 	} `json:"Data"`
 }
 
@@ -1531,10 +1532,10 @@ type UpdateMongoDBInstanceClusterResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId             *string `json:"RequestId" name:"RequestId"`
 	MongoDBInstanceResult struct {
-		UserId     *string `json:"UserId"`
-		Region     *string `json:"Region"`
-		InstanceId *string `json:"InstanceId"`
-		Name       *string `json:"Name"`
+		UserId     *string `json:"UserId" name:"UserId"`
+		Region     *string `json:"Region" name:"Region"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Name       *string `json:"Name" name:"Name"`
 	} `json:"MongoDBInstanceResult"`
 }
 
@@ -1573,54 +1574,54 @@ type DescribeClusterForRestoreResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId             *string `json:"RequestId" name:"RequestId"`
 	MongoDBInstanceResult struct {
-		UserId          *string `json:"UserId"`
-		Region          *string `json:"Region"`
-		Name            *string `json:"Name"`
-		InstanceId      *string `json:"InstanceId"`
-		Status          *string `json:"Status"`
-		IP              *string `json:"IP"`
-		InstanceType    *string `json:"InstanceType"`
-		Version         *string `json:"Version"`
-		InstanceClass   *string `json:"InstanceClass"`
-		Storage         *int    `json:"Storage"`
-		SecurityGroupId *string `json:"SecurityGroupId"`
-		Port            *int    `json:"Port"`
-		NetworkType     *string `json:"NetworkType"`
-		VpcId           *string `json:"VpcId"`
-		VnetId          *string `json:"VnetId"`
-		TimingSwitch    *string `json:"TimingSwitch"`
-		Timezone        *string `json:"Timezone"`
-		TimeCycle       *string `json:"TimeCycle"`
-		ProductId       *string `json:"ProductId"`
-		PayType         *string `json:"PayType"`
-		ProductWhat     *int    `json:"ProductWhat"`
-		CreateDate      *string `json:"CreateDate"`
-		ExpirationDate  *string `json:"ExpirationDate"`
-		IamProjectId    *string `json:"IamProjectId"`
-		IamProjectName  *string `json:"IamProjectName"`
-		NodeNum         *int    `json:"NodeNum"`
-		MongosNum       *string `json:"MongosNum"`
-		ShardNum        *string `json:"ShardNum"`
-		Mode            *string `json:"Mode"`
-		Config          *string `json:"Config"`
-		Area            *string `json:"Area"`
-		SlbaclId        *string `json:"SlbaclId"`
-		Ipv6Vip         *string `json:"Ipv6Vip"`
-		IpVersion       *string `json:"IpVersion"`
+		UserId          *string `json:"UserId" name:"UserId"`
+		Region          *string `json:"Region" name:"Region"`
+		Name            *string `json:"Name" name:"Name"`
+		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
+		Status          *string `json:"Status" name:"Status"`
+		IP              *string `json:"IP" name:"IP"`
+		InstanceType    *string `json:"InstanceType" name:"InstanceType"`
+		Version         *string `json:"Version" name:"Version"`
+		InstanceClass   *string `json:"InstanceClass" name:"InstanceClass"`
+		Storage         *int    `json:"Storage" name:"Storage"`
+		SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		Port            *int    `json:"Port" name:"Port"`
+		NetworkType     *string `json:"NetworkType" name:"NetworkType"`
+		VpcId           *string `json:"VpcId" name:"VpcId"`
+		VnetId          *string `json:"VnetId" name:"VnetId"`
+		TimingSwitch    *string `json:"TimingSwitch" name:"TimingSwitch"`
+		Timezone        *string `json:"Timezone" name:"Timezone"`
+		TimeCycle       *string `json:"TimeCycle" name:"TimeCycle"`
+		ProductId       *string `json:"ProductId" name:"ProductId"`
+		PayType         *string `json:"PayType" name:"PayType"`
+		ProductWhat     *int    `json:"ProductWhat" name:"ProductWhat"`
+		CreateDate      *string `json:"CreateDate" name:"CreateDate"`
+		ExpirationDate  *string `json:"ExpirationDate" name:"ExpirationDate"`
+		IamProjectId    *string `json:"IamProjectId" name:"IamProjectId"`
+		IamProjectName  *string `json:"IamProjectName" name:"IamProjectName"`
+		NodeNum         *int    `json:"NodeNum" name:"NodeNum"`
+		MongosNum       *string `json:"MongosNum" name:"MongosNum"`
+		ShardNum        *string `json:"ShardNum" name:"ShardNum"`
+		Mode            *string `json:"Mode" name:"Mode"`
+		Config          *string `json:"Config" name:"Config"`
+		Area            *string `json:"Area" name:"Area"`
+		SlbaclId        *string `json:"SlbaclId" name:"SlbaclId"`
+		Ipv6Vip         *string `json:"Ipv6Vip" name:"Ipv6Vip"`
+		IpVersion       *string `json:"IpVersion" name:"IpVersion"`
 		Tags            []struct {
-		} `json:"Tags"`
+		} `json:"Tags" name:"Tags"`
 		Shards struct {
-			vcpu       *int `json:"vcpu"`
-			mem_size   *int `json:"mem_size"`
-			shards_num *int `json:"shards_num"`
-			disk_size  *int `json:"disk_size"`
-		} `json:"Shards"`
+			Vcpu      *int `json:"vcpu" name:"vcpu"`
+			MemSize   *int `json:"mem_size" name:"mem_size"`
+			ShardsNum *int `json:"shards_num" name:"shards_num"`
+			DiskSize  *int `json:"disk_size" name:"disk_size"`
+		} `json:"Shards" name:"Shards"`
 		Mongos struct {
-			vcpu       *int `json:"vcpu"`
-			mem_size   *int `json:"mem_size"`
-			mongos_num *int `json:"mongos_num"`
-			disk_size  *int `json:"disk_size"`
-		} `json:"Mongos"`
+			Vcpu      *int `json:"vcpu" name:"vcpu"`
+			MemSize   *int `json:"mem_size" name:"mem_size"`
+			MongosNum *int `json:"mongos_num" name:"mongos_num"`
+			DiskSize  *int `json:"disk_size" name:"disk_size"`
+		} `json:"Mongos" name:"Mongos"`
 	} `json:"MongoDBInstanceResult"`
 }
 
@@ -1630,5 +1631,39 @@ func (r *DescribeClusterForRestoreResponse) ToJsonString() string {
 }
 
 func (r *DescribeClusterForRestoreResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceParamsRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceParamsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeInstanceParamsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeInstanceParamsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceParamsResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *DescribeInstanceParamsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeInstanceParamsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

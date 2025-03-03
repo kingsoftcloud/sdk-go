@@ -11,16 +11,38 @@ type ModifyDBParameterGroupParameters struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type CreateSecurityGroupSecurityGroupRule struct {
+	SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol,omitempty" name:"SecurityGroupRuleProtocol"`
+	SecurityGroupRuleName     *string `json:"SecurityGroupRuleName,omitempty" name:"SecurityGroupRuleName"`
+}
+
 type RestoreToCurInstanceSrcDatabases struct {
+	DatabaseName  *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+	WholeDatabase *string `json:"WholeDatabase,omitempty" name:"WholeDatabase"`
+	TableNames    *string `json:"TableNames,omitempty" name:"TableNames"`
 }
 
 type RestoreToCurInstanceDstDatabases struct {
+	TableNames    []*string `json:"TableNames,omitempty" name:"TableNames"`
+	WholeDatabase *string   `json:"WholeDatabase,omitempty" name:"WholeDatabase"`
+	DatabaseName  *string   `json:"DatabaseName,omitempty" name:"DatabaseName"`
 }
 
 type RestoreToSgInstanceSrcDatabases struct {
+	DatabaseName  *string   `json:"DatabaseName,omitempty" name:"DatabaseName"`
+	WholeDatabase *string   `json:"WholeDatabase,omitempty" name:"WholeDatabase"`
+	TableNames    []*string `json:"TableNames,omitempty" name:"TableNames"`
 }
 
 type RestoreToSgInstanceDstDatabases struct {
+	DatabaseName  *string   `json:"DatabaseName,omitempty" name:"DatabaseName"`
+	WholeDatabase *string   `json:"WholeDatabase,omitempty" name:"WholeDatabase"`
+	TableNames    []*string `json:"TableNames,omitempty" name:"TableNames"`
+}
+
+type ModifyInstanceAccountPrivilegesInstanceAccountPrivileges struct {
+	InstanceDatabaseName *string `json:"InstanceDatabaseName,omitempty" name:"InstanceDatabaseName"`
+	Privilege            *string `json:"Privilege,omitempty" name:"Privilege"`
 }
 
 type ModifyInstanceDatabasePrivilegesInstanceDatabasePrivileges struct {
@@ -36,6 +58,11 @@ type CreateInstanceAccountActionInstanceAccountPrivileges struct {
 type ModifyInstanceAccountPrivilegesActionInstanceAccountPrivileges struct {
 	InstanceDatabaseName *string `json:"InstanceDatabaseName,omitempty" name:"InstanceDatabaseName"`
 	Privilege            *string `json:"Privilege,omitempty" name:"Privilege"`
+}
+
+type SetUpProxyInstanceReadOnlyInstanceList struct {
+	Id     *string `json:"Id,omitempty" name:"Id"`
+	Weight *int    `json:"Weight,omitempty" name:"Weight"`
 }
 
 type RebootDBInstanceRequest struct {
@@ -64,47 +91,47 @@ type RebootDBInstanceResponse struct {
 	Data struct {
 		DBInstance struct {
 			DBInstanceClass struct {
-				Id *string `json:"Id"`
+				Id *string `json:"Id" name:"Id"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier"`
-			DBInstanceName         *string `json:"DBInstanceName"`
-			DBInstanceStatus       *string `json:"DBInstanceStatus"`
-			DBInstanceType         *string `json:"DBInstanceType"`
-			DBParameterGroupId     *string `json:"DBParameterGroupId"`
-			PreferredBackupTime    *string `json:"PreferredBackupTime"`
-			GroupId                *string `json:"GroupId"`
-			Vip                    *string `json:"Vip"`
-			Engine                 *string `json:"Engine"`
-			EngineVersion          *string `json:"EngineVersion"`
-			InstanceCreateTime     *string `json:"InstanceCreateTime"`
-			MasterUserName         *string `json:"MasterUserName"`
-			DatastoreVersionId     *string `json:"DatastoreVersionId"`
-			VpcId                  *string `json:"VpcId"`
-			SubnetId               *string `json:"SubnetId"`
-			PubliclyAccessible     *bool   `json:"PubliclyAccessible"`
-			BillType               *string `json:"BillType"`
-			OrderType              *string `json:"OrderType"`
-			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone"`
-			MasterAvailabilityZone *string `json:"MasterAvailabilityZone"`
-			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone"`
+			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName         *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus       *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType         *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId     *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime    *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId                *string `json:"GroupId" name:"GroupId"`
+			Vip                    *string `json:"Vip" name:"Vip"`
+			Engine                 *string `json:"Engine" name:"Engine"`
+			EngineVersion          *string `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime     *string `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName         *string `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId     *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                  *string `json:"VpcId" name:"VpcId"`
+			SubnetId               *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible     *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType               *string `json:"BillType" name:"BillType"`
+			OrderType              *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone *string `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
 			AvailabilityZoneList   []struct {
-				MemberType *string `json:"MemberType"`
-				AzCode     *string `json:"AzCode"`
+				MemberType *string `json:"MemberType" name:"MemberType"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
 			} `json:"AvailabilityZoneList"`
-			InnerEip                         *string `json:"InnerEip"`
-			InnerAzCode                      *string `json:"InnerAzCode"`
-			Audit                            *bool   `json:"Audit"`
+			InnerEip                         *string `json:"InnerEip" name:"InnerEip"`
+			InnerAzCode                      *string `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool   `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers struct {
 			} `json:"ReadReplicaDBInstanceIdentifiers"`
-			ProductId        *string `json:"ProductId"`
-			ProjectName      *string `json:"ProjectName"`
-			Region           *string `json:"Region"`
-			ServiceStartTime *string `json:"ServiceStartTime"`
-			SubOrderId       *string `json:"SubOrderId"`
+			ProductId        *string `json:"ProductId" name:"ProductId"`
+			ProjectName      *string `json:"ProjectName" name:"ProjectName"`
+			Region           *string `json:"Region" name:"Region"`
+			ServiceStartTime *string `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId       *string `json:"SubOrderId" name:"SubOrderId"`
 			SecurityGroups   struct {
 			} `json:"SecurityGroups"`
-			SupportIPV6 *bool `json:"SupportIPV6"`
-		} `json:"DBInstance"`
+			SupportIPV6 *bool `json:"SupportIPV6" name:"SupportIPV6"`
+		} `json:"DBInstance" name:"DBInstance"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -146,40 +173,40 @@ type ModifyDBParameterGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		DBParameterGroup struct {
-			DBParameterGroupId   *string `json:"DBParameterGroupId"`
-			DBParameterGroupName *string `json:"DBParameterGroupName"`
-			EngineVersion        *string `json:"EngineVersion"`
-			Description          *string `json:"Description"`
+			DBParameterGroupId   *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			DBParameterGroupName *string `json:"DBParameterGroupName" name:"DBParameterGroupName"`
+			EngineVersion        *string `json:"EngineVersion" name:"EngineVersion"`
+			Description          *string `json:"Description" name:"Description"`
 			Parameters           struct {
-				Delay_key_write                 *string `json:"Delay_key_write"`
-				Tx_isolation                    *string `json:"Tx_isolation"`
-				Innodb_print_all_deadlocks      *string `json:"Innodb_print_all_deadlocks"`
-				Innodb_stats_method             *string `json:"Innodb_stats_method"`
-				Innodb_strict_mode              *string `json:"Innodb_strict_mode"`
-				Default_time_zone               *string `json:"Default_time_zone"`
-				Performance_schema              *string `json:"Performance_schema"`
-				Rpl_semi_sync_slave_enabled     *string `json:"Rpl_semi_sync_slave_enabled"`
-				Innodb_rollback_on_timeout      *string `json:"Innodb_rollback_on_timeout"`
-				Old_alter_table                 *string `json:"Old_alter_table"`
-				Binlog_row_image                *string `json:"Binlog_row_image"`
-				Query_cache_type                *string `json:"Query_cache_type"`
-				Local_infile                    *string `json:"Local_infile"`
-				Init_connect                    *string `json:"Init_connect"`
-				Binlog_format                   *string `json:"Binlog_format"`
-				Log_slave_updates               *string `json:"Log_slave_updates"`
-				Innodb_table_locks              *string `json:"Innodb_table_locks"`
-				Low_priority_updates            *string `json:"Low_priority_updates"`
-				Concurrent_insert               *string `json:"Concurrent_insert"`
-				Slow_query_log                  *string `json:"Slow_query_log"`
-				Rpl_semi_sync_master_enabled    *string `json:"Rpl_semi_sync_master_enabled"`
-				Character_set_server            *string `json:"Character_set_server"`
-				Log_slow_admin_statements       *string `json:"Log_slow_admin_statements"`
-				Log_bin_trust_function_creators *string `json:"Log_bin_trust_function_creators"`
-				Log_queries_not_using_indexes   *string `json:"Log_queries_not_using_indexes"`
-				Innodb_stats_on_metadata        *string `json:"Innodb_stats_on_metadata"`
+				DelayKeyWrite               *string `json:"DelayKeyWrite" name:"DelayKeyWrite"`
+				TxIsolation                 *string `json:"TxIsolation" name:"TxIsolation"`
+				InnodbPrintAllDeadlocks     *string `json:"InnodbPrintAllDeadlocks" name:"InnodbPrintAllDeadlocks"`
+				InnodbStatsMethod           *string `json:"InnodbStatsMethod" name:"InnodbStatsMethod"`
+				InnodbStrictMode            *string `json:"InnodbStrictMode" name:"InnodbStrictMode"`
+				DefaultTimeZone             *string `json:"DefaultTimeZone" name:"DefaultTimeZone"`
+				PerformanceSchema           *string `json:"PerformanceSchema" name:"PerformanceSchema"`
+				RplSemiSyncSlaveEnabled     *string `json:"RplSemiSyncSlaveEnabled" name:"RplSemiSyncSlaveEnabled"`
+				InnodbRollbackOnTimeout     *string `json:"InnodbRollbackOnTimeout" name:"InnodbRollbackOnTimeout"`
+				OldAlterTable               *string `json:"OldAlterTable" name:"OldAlterTable"`
+				BinlogRowImage              *string `json:"BinlogRowImage" name:"BinlogRowImage"`
+				QueryCacheType              *string `json:"QueryCacheType" name:"QueryCacheType"`
+				LocalInfile                 *string `json:"LocalInfile" name:"LocalInfile"`
+				InitConnect                 *string `json:"InitConnect" name:"InitConnect"`
+				BinlogFormat                *string `json:"BinlogFormat" name:"BinlogFormat"`
+				LogSlaveUpdates             *string `json:"LogSlaveUpdates" name:"LogSlaveUpdates"`
+				InnodbTableLocks            *string `json:"InnodbTableLocks" name:"InnodbTableLocks"`
+				LowPriorityUpdates          *string `json:"LowPriorityUpdates" name:"LowPriorityUpdates"`
+				ConcurrentInsert            *string `json:"ConcurrentInsert" name:"ConcurrentInsert"`
+				SlowQueryLog                *string `json:"SlowQueryLog" name:"SlowQueryLog"`
+				RplSemiSyncMasterEnabled    *string `json:"RplSemiSyncMasterEnabled" name:"RplSemiSyncMasterEnabled"`
+				CharacterSetServer          *string `json:"CharacterSetServer" name:"CharacterSetServer"`
+				LogSlowAdminStatements      *string `json:"LogSlowAdminStatements" name:"LogSlowAdminStatements"`
+				LogBinTrustFunctionCreators *string `json:"LogBinTrustFunctionCreators" name:"LogBinTrustFunctionCreators"`
+				LogQueriesNotUsingIndexes   *string `json:"LogQueriesNotUsingIndexes" name:"LogQueriesNotUsingIndexes"`
+				InnodbStatsOnMetadata       *string `json:"InnodbStatsOnMetadata" name:"InnodbStatsOnMetadata"`
 			} `json:"Parameters"`
-			Engine *string `json:"Engine"`
-		} `json:"DBParameterGroup"`
+			Engine *string `json:"Engine" name:"Engine"`
+		} `json:"DBParameterGroup" name:"DBParameterGroup"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -218,40 +245,40 @@ type ResetDBParameterGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		DBParameterGroup struct {
-			DBParameterGroupId   *string `json:"DBParameterGroupId"`
-			DBParameterGroupName *string `json:"DBParameterGroupName"`
-			EngineVersion        *string `json:"EngineVersion"`
-			Description          *string `json:"Description"`
+			DBParameterGroupId   *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			DBParameterGroupName *string `json:"DBParameterGroupName" name:"DBParameterGroupName"`
+			EngineVersion        *string `json:"EngineVersion" name:"EngineVersion"`
+			Description          *string `json:"Description" name:"Description"`
 			Parameters           struct {
-				Delay_key_write                 *string `json:"Delay_key_write"`
-				Tx_isolation                    *string `json:"Tx_isolation"`
-				Innodb_print_all_deadlocks      *string `json:"Innodb_print_all_deadlocks"`
-				Innodb_stats_method             *string `json:"Innodb_stats_method"`
-				Innodb_strict_mode              *string `json:"Innodb_strict_mode"`
-				Default_time_zone               *string `json:"Default_time_zone"`
-				Performance_schema              *string `json:"Performance_schema"`
-				Rpl_semi_sync_slave_enabled     *string `json:"Rpl_semi_sync_slave_enabled"`
-				Innodb_rollback_on_timeout      *string `json:"Innodb_rollback_on_timeout"`
-				Old_alter_table                 *string `json:"Old_alter_table"`
-				Binlog_row_image                *string `json:"Binlog_row_image"`
-				Query_cache_type                *string `json:"Query_cache_type"`
-				Local_infile                    *string `json:"Local_infile"`
-				Init_connect                    *string `json:"Init_connect"`
-				Binlog_format                   *string `json:"Binlog_format"`
-				Log_slave_updates               *string `json:"Log_slave_updates"`
-				Innodb_table_locks              *string `json:"Innodb_table_locks"`
-				Low_priority_updates            *string `json:"Low_priority_updates"`
-				Concurrent_insert               *string `json:"Concurrent_insert"`
-				Slow_query_log                  *string `json:"Slow_query_log"`
-				Rpl_semi_sync_master_enabled    *string `json:"Rpl_semi_sync_master_enabled"`
-				Character_set_server            *string `json:"Character_set_server"`
-				Log_slow_admin_statements       *string `json:"Log_slow_admin_statements"`
-				Log_bin_trust_function_creators *string `json:"Log_bin_trust_function_creators"`
-				Log_queries_not_using_indexes   *string `json:"Log_queries_not_using_indexes"`
-				Innodb_stats_on_metadata        *string `json:"Innodb_stats_on_metadata"`
+				DelayKeyWrite               *string `json:"DelayKeyWrite" name:"DelayKeyWrite"`
+				TxIsolation                 *string `json:"TxIsolation" name:"TxIsolation"`
+				InnodbPrintAllDeadlocks     *string `json:"InnodbPrintAllDeadlocks" name:"InnodbPrintAllDeadlocks"`
+				InnodbStatsMethod           *string `json:"InnodbStatsMethod" name:"InnodbStatsMethod"`
+				InnodbStrictMode            *string `json:"InnodbStrictMode" name:"InnodbStrictMode"`
+				DefaultTimeZone             *string `json:"DefaultTimeZone" name:"DefaultTimeZone"`
+				PerformanceSchema           *string `json:"PerformanceSchema" name:"PerformanceSchema"`
+				RplSemiSyncSlaveEnabled     *string `json:"RplSemiSyncSlaveEnabled" name:"RplSemiSyncSlaveEnabled"`
+				InnodbRollbackOnTimeout     *string `json:"InnodbRollbackOnTimeout" name:"InnodbRollbackOnTimeout"`
+				OldAlterTable               *string `json:"OldAlterTable" name:"OldAlterTable"`
+				BinlogRowImage              *string `json:"BinlogRowImage" name:"BinlogRowImage"`
+				QueryCacheType              *string `json:"QueryCacheType" name:"QueryCacheType"`
+				LocalInfile                 *string `json:"LocalInfile" name:"LocalInfile"`
+				InitConnect                 *string `json:"InitConnect" name:"InitConnect"`
+				BinlogFormat                *string `json:"BinlogFormat" name:"BinlogFormat"`
+				LogSlaveUpdates             *string `json:"LogSlaveUpdates" name:"LogSlaveUpdates"`
+				InnodbTableLocks            *string `json:"InnodbTableLocks" name:"InnodbTableLocks"`
+				LowPriorityUpdates          *string `json:"LowPriorityUpdates" name:"LowPriorityUpdates"`
+				ConcurrentInsert            *string `json:"ConcurrentInsert" name:"ConcurrentInsert"`
+				SlowQueryLog                *string `json:"SlowQueryLog" name:"SlowQueryLog"`
+				RplSemiSyncMasterEnabled    *string `json:"RplSemiSyncMasterEnabled" name:"RplSemiSyncMasterEnabled"`
+				CharacterSetServer          *string `json:"CharacterSetServer" name:"CharacterSetServer"`
+				LogSlowAdminStatements      *string `json:"LogSlowAdminStatements" name:"LogSlowAdminStatements"`
+				LogBinTrustFunctionCreators *string `json:"LogBinTrustFunctionCreators" name:"LogBinTrustFunctionCreators"`
+				LogQueriesNotUsingIndexes   *string `json:"LogQueriesNotUsingIndexes" name:"LogQueriesNotUsingIndexes"`
+				InnodbStatsOnMetadata       *string `json:"InnodbStatsOnMetadata" name:"InnodbStatsOnMetadata"`
 			} `json:"Parameters"`
-			Engine *string `json:"Engine"`
-		} `json:"DBParameterGroup"`
+			Engine *string `json:"Engine" name:"Engine"`
+		} `json:"DBParameterGroup" name:"DBParameterGroup"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -294,14 +321,14 @@ type DescribeDBParameterGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		DBParameterGroups []struct {
-			DBParameterGroupId   *string `json:"DBParameterGroupId"`
-			DBParameterGroupName *string `json:"DBParameterGroupName"`
-			EngineVersion        *string `json:"EngineVersion"`
-			Engine               *string `json:"Engine"`
-		} `json:"DBParameterGroups"`
-		Source     *string `json:"Source"`
-		MaxRecords *int    `json:"MaxRecords"`
-		TotalCount *int    `json:"TotalCount"`
+			DBParameterGroupId   *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			DBParameterGroupName *string `json:"DBParameterGroupName" name:"DBParameterGroupName"`
+			EngineVersion        *string `json:"EngineVersion" name:"EngineVersion"`
+			Engine               *string `json:"Engine" name:"Engine"`
+		} `json:"DBParameterGroups" name:"DBParameterGroups"`
+		Source     *string `json:"Source" name:"Source"`
+		MaxRecords *int    `json:"MaxRecords" name:"MaxRecords"`
+		TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -340,439 +367,439 @@ func (r *DescribeEngineDefaultParametersRequest) FromJsonString(s string) error 
 type DescribeEngineDefaultParametersResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
-		Engine        *string `json:"Engine"`
-		EngineVersion *string `json:"EngineVersion"`
+		Engine        *string `json:"Engine" name:"Engine"`
+		EngineVersion *string `json:"EngineVersion" name:"EngineVersion"`
 		Parameters    struct {
-			Connect_timeout struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Connect_timeout"`
-			Delay_key_write struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+			ConnectTimeout struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"ConnectTimeout"`
+			DelayKeyWrite struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Delay_key_write"`
-			Innodb_purge_batch_size struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Innodb_purge_batch_size"`
-			Myisam_sort_buffer_size struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Myisam_sort_buffer_size"`
-			Bulk_insert_buffer_size struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Bulk_insert_buffer_size"`
-			Div_precision_increment struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Div_precision_increment"`
-			Innodb_concurrency_tickets struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Innodb_concurrency_tickets"`
-			Max_prepared_stmt_count struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Max_prepared_stmt_count"`
-			Wait_timeout struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Wait_timeout"`
-			Tx_isolation struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-				Alias           *string `json:"Alias"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"DelayKeyWrite"`
+			InnodbPurgeBatchSize struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InnodbPurgeBatchSize"`
+			MyisamSortBufferSize struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"MyisamSortBufferSize"`
+			BulkInsertBufferSize struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"BulkInsertBufferSize"`
+			DivPrecisionIncrement struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"DivPrecisionIncrement"`
+			InnodbConcurrencyTickets struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InnodbConcurrencyTickets"`
+			MaxPreparedStmtCount struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"MaxPreparedStmtCount"`
+			WaitTimeout struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"WaitTimeout"`
+			TxIsolation struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+				Alias           *string `json:"Alias" name:"Alias"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Tx_isolation"`
-			Table_definition_cache struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Table_definition_cache"`
-			Auto_increment_increment struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Auto_increment_increment"`
-			Ft_query_expansion_limit struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Ft_query_expansion_limit"`
-			Innodb_old_blocks_time struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Innodb_old_blocks_time"`
-			Innodb_stats_sample_pages struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Innodb_stats_sample_pages"`
-			Innodb_print_all_deadlocks struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"TxIsolation"`
+			TableDefinitionCache struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"TableDefinitionCache"`
+			AutoIncrementIncrement struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"AutoIncrementIncrement"`
+			FtQueryExpansionLimit struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"FtQueryExpansionLimit"`
+			InnodbOldBlocksTime struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InnodbOldBlocksTime"`
+			InnodbStatsSamplePages struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InnodbStatsSamplePages"`
+			InnodbPrintAllDeadlocks struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Innodb_print_all_deadlocks"`
-			Sync_binlog struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Sync_binlog"`
-			Innodb_stats_method struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"InnodbPrintAllDeadlocks"`
+			SyncBinlog struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"SyncBinlog"`
+			InnodbStatsMethod struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Innodb_stats_method"`
-			Lock_wait_timeout struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Lock_wait_timeout"`
-			Net_read_timeout struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Net_read_timeout"`
-			Query_prealloc_size struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Query_prealloc_size"`
-			Back_log struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Back_log"`
-			Max_error_count struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Max_error_count"`
-			Key_cache_age_threshold struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Key_cache_age_threshold"`
-			Innodb_log_file_size struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Innodb_log_file_size"`
-			Innodb_thread_concurrency struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Innodb_thread_concurrency"`
-			Innodb_strict_mode struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"InnodbStatsMethod"`
+			LockWaitTimeout struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"LockWaitTimeout"`
+			NetReadTimeout struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"NetReadTimeout"`
+			QueryPreallocSize struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"QueryPreallocSize"`
+			BackLog struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"BackLog"`
+			MaxErrorCount struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"MaxErrorCount"`
+			KeyCacheAgeThreshold struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"KeyCacheAgeThreshold"`
+			InnodbLogFileSize struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InnodbLogFileSize"`
+			InnodbThreadConcurrency struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InnodbThreadConcurrency"`
+			InnodbStrictMode struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Innodb_strict_mode"`
-			Innodb_flush_log_at_trx_commit struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Innodb_flush_log_at_trx_commit"`
-			Default_time_zone struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"InnodbStrictMode"`
+			InnodbFlushLogAtTrxCommit struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InnodbFlushLogAtTrxCommit"`
+			DefaultTimeZone struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Default_time_zone"`
-			Performance_schema struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"DefaultTimeZone"`
+			PerformanceSchema struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Performance_schema"`
-			Innodb_write_io_threads struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Innodb_write_io_threads"`
-			Rpl_semi_sync_master_timeout struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Rpl_semi_sync_master_timeout"`
-			Max_connect_errors struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Max_connect_errors"`
-			Join_buffer_size struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Join_buffer_size"`
-			Rpl_semi_sync_slave_enabled struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"PerformanceSchema"`
+			InnodbWriteIoThreads struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InnodbWriteIoThreads"`
+			RplSemiSyncMasterTimeout struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"RplSemiSyncMasterTimeout"`
+			MaxConnectErrors struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"MaxConnectErrors"`
+			JoinBufferSize struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"JoinBufferSize"`
+			RplSemiSyncSlaveEnabled struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Rpl_semi_sync_slave_enabled"`
-			Innodb_rollback_on_timeout struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"RplSemiSyncSlaveEnabled"`
+			InnodbRollbackOnTimeout struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Innodb_rollback_on_timeout"`
-			Old_alter_table struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"InnodbRollbackOnTimeout"`
+			OldAlterTable struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Old_alter_table"`
-			Binlog_row_image struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"OldAlterTable"`
+			BinlogRowImage struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Binlog_row_image"`
-			Key_cache_block_size struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Key_cache_block_size"`
-			Query_cache_type struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-				Ignore          *bool   `json:"Ignore"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"BinlogRowImage"`
+			KeyCacheBlockSize struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"KeyCacheBlockSize"`
+			QueryCacheType struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+				Ignore          *bool   `json:"Ignore" name:"Ignore"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Query_cache_type"`
-			Init_connect struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"QueryCacheType"`
+			InitConnect struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Init_connect"`
-			Local_infile struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"InitConnect"`
+			LocalInfile struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Local_infile"`
-			Binlog_format struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"LocalInfile"`
+			BinlogFormat struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Binlog_format"`
-			Log_slave_updates struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"BinlogFormat"`
+			LogSlaveUpdates struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Log_slave_updates"`
-			Slow_launch_time struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Slow_launch_time"`
-			Innodb_table_locks struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"LogSlaveUpdates"`
+			SlowLaunchTime struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"SlowLaunchTime"`
+			InnodbTableLocks struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Innodb_table_locks"`
-			Net_write_timeout struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Net_write_timeout"`
-			Query_alloc_block_size struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Query_alloc_block_size"`
-			Lower_case_table_names struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Lower_case_table_names"`
-			Tmp_table_size struct {
-				Default            *string `json:"Default"`
-				Max                *string `json:"Max"`
-				RestartRequired    *bool   `json:"RestartRequired"`
-				Type               *string `json:"Type"`
-				DefaultScaleFactor *string `json:"DefaultScaleFactor"`
-				MaxScaleFactor     *string `json:"MaxScaleFactor"`
-				Variable           *string `json:"Variable"`
-			} `json:"Tmp_table_size"`
-			Default_week_format struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Default_week_format"`
-			Key_cache_division_limit struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Key_cache_division_limit"`
-			Innodb_lock_wait_timeout struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Innodb_lock_wait_timeout"`
-			Delayed_insert_timeout struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Delayed_insert_timeout"`
-			Net_retry_count struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Net_retry_count"`
-			Innodb_purge_threads struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Innodb_purge_threads"`
-			Binlog_cache_size struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Binlog_cache_size"`
-			Low_priority_updates struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"InnodbTableLocks"`
+			NetWriteTimeout struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"NetWriteTimeout"`
+			QueryAllocBlockSize struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"QueryAllocBlockSize"`
+			LowerCaseTableNames struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"LowerCaseTableNames"`
+			TmpTableSize struct {
+				Default            *string `json:"Default" name:"Default"`
+				Max                *string `json:"Max" name:"Max"`
+				RestartRequired    *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type               *string `json:"Type" name:"Type"`
+				DefaultScaleFactor *string `json:"DefaultScaleFactor" name:"DefaultScaleFactor"`
+				MaxScaleFactor     *string `json:"MaxScaleFactor" name:"MaxScaleFactor"`
+				Variable           *string `json:"Variable" name:"Variable"`
+			} `json:"TmpTableSize"`
+			DefaultWeekFormat struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"DefaultWeekFormat"`
+			KeyCacheDivisionLimit struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"KeyCacheDivisionLimit"`
+			InnodbLockWaitTimeout struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InnodbLockWaitTimeout"`
+			DelayedInsertTimeout struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"DelayedInsertTimeout"`
+			NetRetryCount struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"NetRetryCount"`
+			InnodbPurgeThreads struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InnodbPurgeThreads"`
+			BinlogCacheSize struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"BinlogCacheSize"`
+			LowPriorityUpdates struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Low_priority_updates"`
-			Auto_increment_offset struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Auto_increment_offset"`
-			Innodb_max_dirty_pages_pct struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Innodb_max_dirty_pages_pct"`
-			Innodb_read_ahead_threshold struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Innodb_read_ahead_threshold"`
-			Query_cache_limit struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Query_cache_limit"`
-			Ft_min_word_len struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Ft_min_word_len"`
-			Concurrent_insert struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"LowPriorityUpdates"`
+			AutoIncrementOffset struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"AutoIncrementOffset"`
+			InnodbMaxDirtyPagesPct struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InnodbMaxDirtyPagesPct"`
+			InnodbReadAheadThreshold struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InnodbReadAheadThreshold"`
+			QueryCacheLimit struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"QueryCacheLimit"`
+			FtMinWordLen struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"FtMinWordLen"`
+			ConcurrentInsert struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Concurrent_insert"`
-			Int_query_time struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Int_query_time"`
-			Slow_query_log struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"ConcurrentInsert"`
+			IntQueryTime struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"IntQueryTime"`
+			SlowQueryLog struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Slow_query_log"`
-			Sort_buffer_size struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Sort_buffer_size"`
-			Interactive_timeout struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Interactive_timeout"`
-			Query_cache_size struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Query_cache_size"`
-			Innodb_read_io_threads struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Innodb_read_io_threads"`
-			Max_allowed_packet struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Max_allowed_packet"`
-			Rpl_semi_sync_master_enabled struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"SlowQueryLog"`
+			SortBufferSize struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"SortBufferSize"`
+			InteractiveTimeout struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InteractiveTimeout"`
+			QueryCacheSize struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"QueryCacheSize"`
+			InnodbReadIoThreads struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InnodbReadIoThreads"`
+			MaxAllowedPacket struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"MaxAllowedPacket"`
+			RplSemiSyncMasterEnabled struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Rpl_semi_sync_master_enabled"`
-			Delayed_insert_limit struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Delayed_insert_limit"`
-			Innodb_open_files struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Innodb_open_files"`
-			Character_set_server struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"RplSemiSyncMasterEnabled"`
+			DelayedInsertLimit struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"DelayedInsertLimit"`
+			InnodbOpenFiles struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InnodbOpenFiles"`
+			CharacterSetServer struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Character_set_server"`
-			Delayed_queue_size struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Delayed_queue_size"`
-			Max_user_connections struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Max_user_connections"`
-			Innodb_old_blocks_pct struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Innodb_old_blocks_pct"`
-			Table_open_cache struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Table_open_cache"`
-			Log_slow_admin_statements struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"CharacterSetServer"`
+			DelayedQueueSize struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"DelayedQueueSize"`
+			MaxUserConnections struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"MaxUserConnections"`
+			InnodbOldBlocksPct struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InnodbOldBlocksPct"`
+			TableOpenCache struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"TableOpenCache"`
+			LogSlowAdminStatements struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Log_slow_admin_statements"`
-			Log_bin_trust_function_creators struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"LogSlowAdminStatements"`
+			LogBinTrustFunctionCreators struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Log_bin_trust_function_creators"`
-			Log_queries_not_using_indexes struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"LogBinTrustFunctionCreators"`
+			LogQueriesNotUsingIndexes struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Log_queries_not_using_indexes"`
-			Innodb_stats_on_metadata struct {
-				Default         *string `json:"Default"`
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"LogQueriesNotUsingIndexes"`
+			InnodbStatsOnMetadata struct {
+				Default         *string `json:"Default" name:"Default"`
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
 				Enums           []struct {
-				} `json:"Enums"`
-			} `json:"Innodb_stats_on_metadata"`
-			Table_open_cache_instances struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Table_open_cache_instances"`
-			Group_concat_max_len struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Group_concat_max_len"`
-			Innodb_sort_buffer_size struct {
-				RestartRequired *bool   `json:"RestartRequired"`
-				Type            *string `json:"Type"`
-			} `json:"Innodb_sort_buffer_size"`
-		} `json:"Parameters"`
+				} `json:"Enums" name:"Enums"`
+			} `json:"InnodbStatsOnMetadata"`
+			TableOpenCacheInstances struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"TableOpenCacheInstances"`
+			GroupConcatMaxLen struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"GroupConcatMaxLen"`
+			InnodbSortBufferSize struct {
+				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string `json:"Type" name:"Type"`
+			} `json:"InnodbSortBufferSize"`
+		} `json:"Parameters" name:"Parameters"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -816,13 +843,13 @@ type CreateDBParameterGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		DBParameterGroup struct {
-			DBParameterGroupId   *string `json:"DBParameterGroupId"`
-			DBParameterGroupName *string `json:"DBParameterGroupName"`
-			EngineVersion        *string `json:"EngineVersion"`
+			DBParameterGroupId   *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			DBParameterGroupName *string `json:"DBParameterGroupName" name:"DBParameterGroupName"`
+			EngineVersion        *string `json:"EngineVersion" name:"EngineVersion"`
 			Parameters           struct {
 			} `json:"Parameters"`
-			Engine *string `json:"Engine"`
-		} `json:"DBParameterGroup"`
+			Engine *string `json:"Engine" name:"Engine"`
+		} `json:"DBParameterGroup" name:"DBParameterGroup"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -916,41 +943,41 @@ type CreateDBInstanceResponse struct {
 	Data struct {
 		DBInstance struct {
 			DBInstanceClass struct {
-				Id *string `json:"Id"`
+				Id *string `json:"Id" name:"Id"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier  *string `json:"DBInstanceIdentifier"`
-			DBInstanceName        *string `json:"DBInstanceName"`
-			DBInstanceStatus      *string `json:"DBInstanceStatus"`
-			DBInstanceType        *string `json:"DBInstanceType"`
-			DBParameterGroupId    *string `json:"DBParameterGroupId"`
-			PreferredBackupTime   *string `json:"PreferredBackupTime"`
-			GroupId               *string `json:"GroupId"`
-			Vip                   *string `json:"Vip"`
-			Engine                *string `json:"Engine"`
-			EngineVersion         *string `json:"EngineVersion"`
-			InstanceCreateTime    *string `json:"InstanceCreateTime"`
-			MasterUserName        *string `json:"MasterUserName"`
-			DatastoreVersionId    *string `json:"DatastoreVersionId"`
-			VpcId                 *string `json:"VpcId"`
-			SubnetId              *string `json:"SubnetId"`
-			PubliclyAccessible    *bool   `json:"PubliclyAccessible"`
-			BillType              *string `json:"BillType"`
-			OrderType             *string `json:"OrderType"`
-			MultiAvailabilityZone *bool   `json:"MultiAvailabilityZone"`
+			DBInstanceIdentifier  *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName        *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus      *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType        *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId    *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime   *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId               *string `json:"GroupId" name:"GroupId"`
+			Vip                   *string `json:"Vip" name:"Vip"`
+			Engine                *string `json:"Engine" name:"Engine"`
+			EngineVersion         *string `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime    *string `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName        *string `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId    *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                 *string `json:"VpcId" name:"VpcId"`
+			SubnetId              *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible    *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType              *string `json:"BillType" name:"BillType"`
+			OrderType             *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
 			AvailabilityZoneList  struct {
 			} `json:"AvailabilityZoneList"`
-			Audit                            *bool `json:"Audit"`
+			Audit                            *bool `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers struct {
 			} `json:"ReadReplicaDBInstanceIdentifiers"`
-			ProductId        *string `json:"ProductId"`
-			ProjectName      *string `json:"ProjectName"`
-			Region           *string `json:"Region"`
-			ServiceStartTime *string `json:"ServiceStartTime"`
-			SubOrderId       *string `json:"SubOrderId"`
+			ProductId        *string `json:"ProductId" name:"ProductId"`
+			ProjectName      *string `json:"ProjectName" name:"ProjectName"`
+			Region           *string `json:"Region" name:"Region"`
+			ServiceStartTime *string `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId       *string `json:"SubOrderId" name:"SubOrderId"`
 			SecurityGroups   struct {
 			} `json:"SecurityGroups"`
-			SupportIPV6 *bool `json:"SupportIPV6"`
-		} `json:"DBInstance"`
+			SupportIPV6 *bool `json:"SupportIPV6" name:"SupportIPV6"`
+		} `json:"DBInstance" name:"DBInstance"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -974,6 +1001,7 @@ type RestoreDBInstanceFromDBBackupRequest struct {
 	Duration           *int    `json:"Duration,omitempty" name:"Duration"`
 	DurationUnit       *string `json:"DurationUnit,omitempty" name:"DurationUnit"`
 	Port               *int    `json:"Port,omitempty" name:"Port"`
+	BillType           *string `json:"BillType,omitempty" name:"BillType"`
 }
 
 func (r *RestoreDBInstanceFromDBBackupRequest) ToJsonString() string {
@@ -997,48 +1025,48 @@ type RestoreDBInstanceFromDBBackupResponse struct {
 	Data struct {
 		DBInstance struct {
 			DBInstanceClass struct {
-				Id *string `json:"Id"`
+				Id *string `json:"Id" name:"Id"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier  *string `json:"DBInstanceIdentifier"`
-			DBInstanceName        *string `json:"DBInstanceName"`
-			DBInstanceStatus      *string `json:"DBInstanceStatus"`
-			DBInstanceType        *string `json:"DBInstanceType"`
-			DBParameterGroupId    *string `json:"DBParameterGroupId"`
-			PreferredBackupTime   *string `json:"PreferredBackupTime"`
-			GroupId               *string `json:"GroupId"`
-			Vip                   *string `json:"Vip"`
-			Engine                *string `json:"Engine"`
-			EngineVersion         *string `json:"EngineVersion"`
-			InstanceCreateTime    *string `json:"InstanceCreateTime"`
-			DatastoreVersionId    *string `json:"DatastoreVersionId"`
-			VpcId                 *string `json:"VpcId"`
-			SubnetId              *string `json:"SubnetId"`
-			PubliclyAccessible    *bool   `json:"PubliclyAccessible"`
-			BillType              *string `json:"BillType"`
-			OrderType             *string `json:"OrderType"`
-			MultiAvailabilityZone *bool   `json:"MultiAvailabilityZone"`
+			DBInstanceIdentifier  *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName        *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus      *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType        *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId    *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime   *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId               *string `json:"GroupId" name:"GroupId"`
+			Vip                   *string `json:"Vip" name:"Vip"`
+			Engine                *string `json:"Engine" name:"Engine"`
+			EngineVersion         *string `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime    *string `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			DatastoreVersionId    *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                 *string `json:"VpcId" name:"VpcId"`
+			SubnetId              *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible    *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType              *string `json:"BillType" name:"BillType"`
+			OrderType             *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
 			AvailabilityZoneList  struct {
 			} `json:"AvailabilityZoneList"`
-			Audit                            *bool `json:"Audit"`
+			Audit                            *bool `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers struct {
 			} `json:"ReadReplicaDBInstanceIdentifiers"`
 			DBSource struct {
-				DBInstanceIdentifier *string `json:"DBInstanceIdentifier"`
-				DBInstanceName       *string `json:"DBInstanceName"`
-				DBInstanceType       *string `json:"DBInstanceType"`
-				DBBackupIdentifier   *string `json:"DBBackupIdentifier"`
-				DBBackupName         *string `json:"DBBackupName"`
+				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+				DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+				DBInstanceType       *string `json:"DBInstanceType" name:"DBInstanceType"`
+				DBBackupIdentifier   *string `json:"DBBackupIdentifier" name:"DBBackupIdentifier"`
+				DBBackupName         *string `json:"DBBackupName" name:"DBBackupName"`
 			} `json:"DBSource"`
-			ProductId        *string `json:"ProductId"`
-			ProjectName      *string `json:"ProjectName"`
-			Region           *string `json:"Region"`
-			ServiceEndTime   *string `json:"ServiceEndTime"`
-			ServiceStartTime *string `json:"ServiceStartTime"`
-			SubOrderId       *string `json:"SubOrderId"`
+			ProductId        *string `json:"ProductId" name:"ProductId"`
+			ProjectName      *string `json:"ProjectName" name:"ProjectName"`
+			Region           *string `json:"Region" name:"Region"`
+			ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+			ServiceStartTime *string `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId       *string `json:"SubOrderId" name:"SubOrderId"`
 			SecurityGroups   struct {
 			} `json:"SecurityGroups"`
-			SupportIPV6 *bool `json:"SupportIPV6"`
-		} `json:"DBInstance"`
+			SupportIPV6 *bool `json:"SupportIPV6" name:"SupportIPV6"`
+		} `json:"DBInstance" name:"DBInstance"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1123,43 +1151,43 @@ type CreateDBInstanceReadReplicaResponse struct {
 	Data struct {
 		DBInstance struct {
 			DBInstanceClass struct {
-				Id *string `json:"Id"`
+				Id *string `json:"Id" name:"Id"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier  *string `json:"DBInstanceIdentifier"`
-			DBInstanceName        *string `json:"DBInstanceName"`
-			DBInstanceStatus      *string `json:"DBInstanceStatus"`
-			DBInstanceType        *string `json:"DBInstanceType"`
-			DBParameterGroupId    *string `json:"DBParameterGroupId"`
-			PreferredBackupTime   *string `json:"PreferredBackupTime"`
-			GroupId               *string `json:"GroupId"`
-			Vip                   *string `json:"Vip"`
-			Engine                *string `json:"Engine"`
-			EngineVersion         *string `json:"EngineVersion"`
-			MasterUserName        *string `json:"MasterUserName"`
-			DatastoreVersionId    *string `json:"DatastoreVersionId"`
-			VpcId                 *string `json:"VpcId"`
-			SubnetId              *string `json:"SubnetId"`
-			PubliclyAccessible    *bool   `json:"PubliclyAccessible"`
-			BillType              *string `json:"BillType"`
-			OrderType             *string `json:"OrderType"`
-			MultiAvailabilityZone *bool   `json:"MultiAvailabilityZone"`
+			DBInstanceIdentifier  *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName        *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus      *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType        *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId    *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime   *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId               *string `json:"GroupId" name:"GroupId"`
+			Vip                   *string `json:"Vip" name:"Vip"`
+			Engine                *string `json:"Engine" name:"Engine"`
+			EngineVersion         *string `json:"EngineVersion" name:"EngineVersion"`
+			MasterUserName        *string `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId    *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                 *string `json:"VpcId" name:"VpcId"`
+			SubnetId              *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible    *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType              *string `json:"BillType" name:"BillType"`
+			OrderType             *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
 			AvailabilityZoneList  struct {
 			} `json:"AvailabilityZoneList"`
-			Audit                            *bool `json:"Audit"`
+			Audit                            *bool `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers struct {
 			} `json:"ReadReplicaDBInstanceIdentifiers"`
 			DBSource struct {
-				DBInstanceIdentifier *string `json:"DBInstanceIdentifier"`
-				DBInstanceName       *string `json:"DBInstanceName"`
-				DBInstanceType       *string `json:"DBInstanceType"`
+				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+				DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+				DBInstanceType       *string `json:"DBInstanceType" name:"DBInstanceType"`
 			} `json:"DBSource"`
-			ProductId      *string `json:"ProductId"`
-			Region         *string `json:"Region"`
-			SubOrderId     *string `json:"SubOrderId"`
+			ProductId      *string `json:"ProductId" name:"ProductId"`
+			Region         *string `json:"Region" name:"Region"`
+			SubOrderId     *string `json:"SubOrderId" name:"SubOrderId"`
 			SecurityGroups struct {
 			} `json:"SecurityGroups"`
-			SupportIPV6 *bool `json:"SupportIPV6"`
-		} `json:"DBInstance"`
+			SupportIPV6 *bool `json:"SupportIPV6" name:"SupportIPV6"`
+		} `json:"DBInstance" name:"DBInstance"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1200,53 +1228,53 @@ type RestoreDBInstanceToPointInTimeResponse struct {
 	Data struct {
 		Instances []struct {
 			DBInstanceClass struct {
-				Id *string `json:"Id"`
+				Id *string `json:"Id" name:"Id"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier"`
-			DBInstanceName         *string `json:"DBInstanceName"`
-			DBInstanceStatus       *string `json:"DBInstanceStatus"`
-			DBInstanceType         *string `json:"DBInstanceType"`
-			DBParameterGroupId     *string `json:"DBParameterGroupId"`
-			PreferredBackupTime    *string `json:"PreferredBackupTime"`
-			GroupId                *string `json:"GroupId"`
-			Vip                    *string `json:"Vip"`
-			Engine                 *string `json:"Engine"`
-			EngineVersion          *string `json:"EngineVersion"`
-			InstanceCreateTime     *string `json:"InstanceCreateTime"`
-			MasterUserName         *string `json:"MasterUserName"`
-			DatastoreVersionId     *string `json:"DatastoreVersionId"`
-			VpcId                  *string `json:"VpcId"`
-			SubnetId               *string `json:"SubnetId"`
-			PubliclyAccessible     *bool   `json:"PubliclyAccessible"`
-			BillType               *string `json:"BillType"`
-			OrderType              *string `json:"OrderType"`
-			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone"`
-			MasterAvailabilityZone *string `json:"MasterAvailabilityZone"`
-			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone"`
+			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName         *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus       *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType         *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId     *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime    *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId                *string `json:"GroupId" name:"GroupId"`
+			Vip                    *string `json:"Vip" name:"Vip"`
+			Engine                 *string `json:"Engine" name:"Engine"`
+			EngineVersion          *string `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime     *string `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName         *string `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId     *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                  *string `json:"VpcId" name:"VpcId"`
+			SubnetId               *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible     *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType               *string `json:"BillType" name:"BillType"`
+			OrderType              *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone *string `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
 			AvailabilityZoneList   []struct {
-				MemberType *string `json:"MemberType"`
-				AzCode     *string `json:"AzCode"`
+				MemberType *string `json:"MemberType" name:"MemberType"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
 			} `json:"AvailabilityZoneList"`
-			InnerAzCode                      *string `json:"InnerAzCode"`
-			Audit                            *bool   `json:"Audit"`
+			InnerAzCode                      *string `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool   `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers struct {
 			} `json:"ReadReplicaDBInstanceIdentifiers"`
 			DBSource struct {
-				DBInstanceIdentifier *string `json:"DBInstanceIdentifier"`
-				DBInstanceName       *string `json:"DBInstanceName"`
-				DBInstanceType       *string `json:"DBInstanceType"`
-				DBBackupIdentifier   *string `json:"DBBackupIdentifier"`
+				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+				DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+				DBInstanceType       *string `json:"DBInstanceType" name:"DBInstanceType"`
+				DBBackupIdentifier   *string `json:"DBBackupIdentifier" name:"DBBackupIdentifier"`
 			} `json:"DBSource"`
-			ProductId        *string `json:"ProductId"`
-			ProjectName      *string `json:"ProjectName"`
-			Region           *string `json:"Region"`
-			ServiceEndTime   *string `json:"ServiceEndTime"`
-			ServiceStartTime *string `json:"ServiceStartTime"`
-			SubOrderId       *string `json:"SubOrderId"`
+			ProductId        *string `json:"ProductId" name:"ProductId"`
+			ProjectName      *string `json:"ProjectName" name:"ProjectName"`
+			Region           *string `json:"Region" name:"Region"`
+			ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+			ServiceStartTime *string `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId       *string `json:"SubOrderId" name:"SubOrderId"`
 			SecurityGroups   struct {
 			} `json:"SecurityGroups"`
-			SupportIPV6 *bool `json:"SupportIPV6"`
-		} `json:"Instances"`
+			SupportIPV6 *bool `json:"SupportIPV6" name:"SupportIPV6"`
+		} `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1285,9 +1313,9 @@ type DescribeDBInstanceRestorableTimeResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		RestorableTime struct {
-			Begin *string `json:"Begin"`
-			End   *string `json:"End"`
-		} `json:"RestorableTime"`
+			Begin *string `json:"Begin" name:"Begin"`
+			End   *string `json:"End" name:"End"`
+		} `json:"RestorableTime" name:"RestorableTime"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1330,61 +1358,60 @@ type ModifyDBInstanceResponse struct {
 	Data struct {
 		Instances []struct {
 			DBInstanceClass struct {
-				Id      *string `json:"Id"`
-				Iops    *int    `json:"Iops"`
-				Vcpus   *int    `json:"Vcpus"`
-				Disk    *int    `json:"Disk"`
-				Ram     *int    `json:"Ram"`
-				Mem     *int    `json:"Mem"`
-				MaxConn *int    `json:"MaxConn"`
+				Id      *string `json:"Id" name:"Id"`
+				Iops    *int    `json:"Iops" name:"Iops"`
+				Vcpus   *int    `json:"Vcpus" name:"Vcpus"`
+				Disk    *int    `json:"Disk" name:"Disk"`
+				Ram     *int    `json:"Ram" name:"Ram"`
+				Mem     *int    `json:"Mem" name:"Mem"`
+				MaxConn *int    `json:"MaxConn" name:"MaxConn"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier"`
-			DBInstanceName         *string `json:"DBInstanceName"`
-			DBInstanceStatus       *string `json:"DBInstanceStatus"`
-			DBInstanceType         *string `json:"DBInstanceType"`
-			DBParameterGroupId     *string `json:"DBParameterGroupId"`
-			PreferredBackupTime    *string `json:"PreferredBackupTime"`
-			GroupId                *string `json:"GroupId"`
-			SecurityGroupId        *string `json:"SecurityGroupId"`
-			Vip                    *string `json:"Vip"`
-			Port                   *int    `json:"Port"`
-			Engine                 *string `json:"Engine"`
-			EngineVersion          *string `json:"EngineVersion"`
-			InstanceCreateTime     *string `json:"InstanceCreateTime"`
-			MasterUserName         *string `json:"MasterUserName"`
-			DatastoreVersionId     *string `json:"DatastoreVersionId"`
-			VpcId                  *string `json:"VpcId"`
-			SubnetId               *string `json:"SubnetId"`
-			PubliclyAccessible     *bool   `json:"PubliclyAccessible"`
-			BillType               *string `json:"BillType"`
-			OrderType              *string `json:"OrderType"`
-			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone"`
-			MasterAvailabilityZone *string `json:"MasterAvailabilityZone"`
-			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone"`
+			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName         *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus       *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType         *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId     *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime    *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId                *string `json:"GroupId" name:"GroupId"`
+			SecurityGroupId        *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+			Vip                    *string `json:"Vip" name:"Vip"`
+			Port                   *int    `json:"Port" name:"Port"`
+			Engine                 *string `json:"Engine" name:"Engine"`
+			EngineVersion          *string `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime     *string `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName         *string `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId     *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                  *string `json:"VpcId" name:"VpcId"`
+			SubnetId               *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible     *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType               *string `json:"BillType" name:"BillType"`
+			OrderType              *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone *string `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
 			AvailabilityZoneList   []struct {
-				MemberType *string `json:"MemberType"`
-				AzCode     *string `json:"AzCode"`
+				MemberType *string `json:"MemberType" name:"MemberType"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
 			} `json:"AvailabilityZoneList"`
-			DiskUsed                         *int    `json:"DiskUsed"`
-			InnerAzCode                      *string `json:"InnerAzCode"`
-			Audit                            *bool   `json:"Audit"`
-			ReadReplicaDBInstanceIdentifiers []struct {
-			} `json:"ReadReplicaDBInstanceIdentifiers"`
-			ProductId        *string `json:"ProductId"`
-			ProductWhat      *int    `json:"ProductWhat"`
-			ProjectId        *int    `json:"ProjectId"`
-			ProjectName      *string `json:"ProjectName"`
-			Region           *string `json:"Region"`
-			ServiceStartTime *string `json:"ServiceStartTime"`
-			SubOrderId       *string `json:"SubOrderId"`
-			SecurityGroups   []struct {
-				SecurityGroupId   *string `json:"SecurityGroupId"`
-				SecurityGroupName *string `json:"SecurityGroupName"`
-				SecurityGroupType *string `json:"SecurityGroupType"`
+			DiskUsed                         *int      `json:"DiskUsed" name:"DiskUsed"`
+			InnerAzCode                      *string   `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool     `json:"Audit" name:"Audit"`
+			ReadReplicaDBInstanceIdentifiers []*string `json:"ReadReplicaDBInstanceIdentifiers" name:"ReadReplicaDBInstanceIdentifiers"`
+			ProductId                        *string   `json:"ProductId" name:"ProductId"`
+			ProductWhat                      *int      `json:"ProductWhat" name:"ProductWhat"`
+			ProjectId                        *int      `json:"ProjectId" name:"ProjectId"`
+			ProjectName                      *string   `json:"ProjectName" name:"ProjectName"`
+			Region                           *string   `json:"Region" name:"Region"`
+			ServiceStartTime                 *string   `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId                       *string   `json:"SubOrderId" name:"SubOrderId"`
+			SecurityGroups                   []struct {
+				SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+				SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+				SecurityGroupType *string `json:"SecurityGroupType" name:"SecurityGroupType"`
 			} `json:"SecurityGroups"`
-			SupportIPV6 *bool `json:"SupportIPV6"`
-			BillTypeId  *int  `json:"BillTypeId"`
-		} `json:"Instances"`
+			SupportIPV6 *bool `json:"SupportIPV6" name:"SupportIPV6"`
+			BillTypeId  *int  `json:"BillTypeId" name:"BillTypeId"`
+		} `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1426,11 +1453,11 @@ type DescribeDBLogFilesResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		DescribeDBLogFiles []struct {
-			LogFileName *string `json:"LogFileName"`
-			Date        *string `json:"Date"`
-			StartTime   *string `json:"StartTime"`
-			EndTime     *string `json:"EndTime"`
-		} `json:"DescribeDBLogFiles"`
+			LogFileName *string `json:"LogFileName" name:"LogFileName"`
+			Date        *string `json:"Date" name:"Date"`
+			StartTime   *string `json:"StartTime" name:"StartTime"`
+			EndTime     *string `json:"EndTime" name:"EndTime"`
+		} `json:"DescribeDBLogFiles" name:"DescribeDBLogFiles"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1473,23 +1500,23 @@ type DescribeDBBackupsResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		DBBackup []struct {
-			DBInstanceIdentifier *string `json:"DBInstanceIdentifier"`
-			DBBackupIdentifier   *string `json:"DBBackupIdentifier"`
-			Engine               *string `json:"Engine"`
-			EngineVersion        *string `json:"EngineVersion"`
-			BackupCreateTime     *string `json:"BackupCreateTime"`
-			BackupUpdatedTime    *string `json:"BackupUpdatedTime"`
-			DBBackupName         *string `json:"DBBackupName"`
-			BackupMode           *string `json:"BackupMode"`
-			BackupType           *string `json:"BackupType"`
-			Status               *string `json:"Status"`
-			BackupSize           *int    `json:"BackupSize"`
-			BackupLocationRef    *string `json:"BackupLocationRef"`
-			RemotePath           *string `json:"RemotePath"`
-			MD5                  *string `json:"MD5"`
-		} `json:"DBBackup"`
-		TotalCount *int `json:"TotalCount"`
-		MaxRecords *int `json:"MaxRecords"`
+			DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBBackupIdentifier   *string `json:"DBBackupIdentifier" name:"DBBackupIdentifier"`
+			Engine               *string `json:"Engine" name:"Engine"`
+			EngineVersion        *string `json:"EngineVersion" name:"EngineVersion"`
+			BackupCreateTime     *string `json:"BackupCreateTime" name:"BackupCreateTime"`
+			BackupUpdatedTime    *string `json:"BackupUpdatedTime" name:"BackupUpdatedTime"`
+			DBBackupName         *string `json:"DBBackupName" name:"DBBackupName"`
+			BackupMode           *string `json:"BackupMode" name:"BackupMode"`
+			BackupType           *string `json:"BackupType" name:"BackupType"`
+			Status               *string `json:"Status" name:"Status"`
+			BackupSize           *int    `json:"BackupSize" name:"BackupSize"`
+			BackupLocationRef    *string `json:"BackupLocationRef" name:"BackupLocationRef"`
+			RemotePath           *string `json:"RemotePath" name:"RemotePath"`
+			MD5                  *string `json:"MD5" name:"MD5"`
+		} `json:"DBBackup" name:"DBBackup"`
+		TotalCount *int `json:"TotalCount" name:"TotalCount"`
+		MaxRecords *int `json:"MaxRecords" name:"MaxRecords"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1531,46 +1558,46 @@ type ModifyDBInstanceSpecResponse struct {
 	Data struct {
 		Instances []struct {
 			DBInstanceClass struct {
-				Id *string `json:"Id"`
+				Id *string `json:"Id" name:"Id"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier"`
-			DBInstanceName         *string `json:"DBInstanceName"`
-			DBInstanceStatus       *string `json:"DBInstanceStatus"`
-			DBInstanceType         *string `json:"DBInstanceType"`
-			DBParameterGroupId     *string `json:"DBParameterGroupId"`
-			PreferredBackupTime    *string `json:"PreferredBackupTime"`
-			GroupId                *string `json:"GroupId"`
-			Vip                    *string `json:"Vip"`
-			Engine                 *string `json:"Engine"`
-			EngineVersion          *string `json:"EngineVersion"`
-			InstanceCreateTime     *string `json:"InstanceCreateTime"`
-			MasterUserName         *string `json:"MasterUserName"`
-			DatastoreVersionId     *string `json:"DatastoreVersionId"`
-			VpcId                  *string `json:"VpcId"`
-			SubnetId               *string `json:"SubnetId"`
-			PubliclyAccessible     *bool   `json:"PubliclyAccessible"`
-			BillType               *string `json:"BillType"`
-			OrderType              *string `json:"OrderType"`
-			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone"`
-			MasterAvailabilityZone *string `json:"MasterAvailabilityZone"`
-			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone"`
+			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName         *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus       *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType         *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId     *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime    *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId                *string `json:"GroupId" name:"GroupId"`
+			Vip                    *string `json:"Vip" name:"Vip"`
+			Engine                 *string `json:"Engine" name:"Engine"`
+			EngineVersion          *string `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime     *string `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName         *string `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId     *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                  *string `json:"VpcId" name:"VpcId"`
+			SubnetId               *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible     *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType               *string `json:"BillType" name:"BillType"`
+			OrderType              *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone *string `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
 			AvailabilityZoneList   []struct {
-				MemberType *string `json:"MemberType"`
-				AzCode     *string `json:"AzCode"`
+				MemberType *string `json:"MemberType" name:"MemberType"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
 			} `json:"AvailabilityZoneList"`
-			InnerAzCode                      *string `json:"InnerAzCode"`
-			Audit                            *bool   `json:"Audit"`
+			InnerAzCode                      *string `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool   `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers struct {
 			} `json:"ReadReplicaDBInstanceIdentifiers"`
-			ProductId        *string `json:"ProductId"`
-			ProjectName      *string `json:"ProjectName"`
-			Region           *string `json:"Region"`
-			ServiceStartTime *string `json:"ServiceStartTime"`
-			SubOrderId       *string `json:"SubOrderId"`
+			ProductId        *string `json:"ProductId" name:"ProductId"`
+			ProjectName      *string `json:"ProjectName" name:"ProjectName"`
+			Region           *string `json:"Region" name:"Region"`
+			ServiceStartTime *string `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId       *string `json:"SubOrderId" name:"SubOrderId"`
 			SecurityGroups   struct {
 			} `json:"SecurityGroups"`
-			SupportIPV6 *bool `json:"SupportIPV6"`
-		} `json:"Instances"`
+			SupportIPV6 *bool `json:"SupportIPV6" name:"SupportIPV6"`
+		} `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1597,7 +1624,7 @@ type DescribeDBInstancesRequest struct {
 	DBInstanceIdentifierIn []*string `json:"DBInstanceIdentifierIn,omitempty" name:"DBInstanceIdentifierIn"`
 	DBInstanceNameIn       []*string `json:"DBInstanceNameIn,omitempty" name:"DBInstanceNameIn"`
 	VipIn                  []*string `json:"VipIn,omitempty" name:"VipIn"`
-	EIPIn                  *string   `json:"EIPIn,omitempty" name:"EIPIn"`
+	EIPIn                  []*string `json:"EIPIn,omitempty" name:"EIPIn"`
 	ExpiryDateLessThan     *int      `json:"ExpiryDateLessThan,omitempty" name:"ExpiryDateLessThan"`
 }
 
@@ -1622,38 +1649,80 @@ type DescribeDBInstancesResponse struct {
 	Data struct {
 		Instances []struct {
 			DBInstanceClass struct {
-				Id *string `json:"Id"`
+				Id      *string `json:"Id" name:"Id"`
+				Iops    *int    `json:"Iops" name:"Iops"`
+				Vcpus   *int    `json:"Vcpus" name:"Vcpus"`
+				Disk    *int    `json:"Disk" name:"Disk"`
+				Ram     *int    `json:"Ram" name:"Ram"`
+				Mem     *int    `json:"Mem" name:"Mem"`
+				MaxConn *int    `json:"MaxConn" name:"MaxConn"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier *string `json:"DBInstanceIdentifier"`
-			DBSource             struct {
-				DBInstanceName *string `json:"DBInstanceName"`
-			} `json:"DBSource"`
-			DBInstanceName                   *string `json:"DBInstanceName"`
-			DBInstanceStatus                 *string `json:"DBInstanceStatus"`
-			DBInstanceType                   *string `json:"DBInstanceType"`
-			GroupId                          *string `json:"GroupId"`
-			Vip                              *string `json:"Vip"`
-			Engine                           *string `json:"Engine"`
-			EngineVersion                    *string `json:"EngineVersion"`
-			InstanceCreateTime               *string `json:"InstanceCreateTime"`
-			MasterUserName                   *string `json:"MasterUserName"`
-			VpcId                            *string `json:"VpcId"`
-			SubnetId                         *string `json:"SubnetId"`
-			PubliclyAccessible               *bool   `json:"PubliclyAccessible"`
-			ReadReplicaDBInstanceIdentifiers struct {
-			} `json:"ReadReplicaDBInstanceIdentifiers"`
-			BillType              *string `json:"BillType"`
-			OrderType             *string `json:"OrderType"`
-			OrderSource           *string `json:"OrderSource"`
-			MultiAvailabilityZone *bool   `json:"MultiAvailabilityZone"`
-			AvailabilityZone      *string `json:"AvailabilityZone"`
-			ProductId             *string `json:"ProductId"`
-			OrderUse              *string `json:"OrderUse"`
-			ProjectName           *string `json:"ProjectName"`
-			Region                *string `json:"Region"`
-			Tags                  struct {
-			} `json:"Tags"`
-		} `json:"Instances"`
+			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName         *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus       *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType         *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId     *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime    *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId                *string `json:"GroupId" name:"GroupId"`
+			SecurityGroupId        *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+			Vip                    *string `json:"Vip" name:"Vip"`
+			Port                   *int    `json:"Port" name:"Port"`
+			Engine                 *string `json:"Engine" name:"Engine"`
+			EngineVersion          *string `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime     *string `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName         *string `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId     *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                  *string `json:"VpcId" name:"VpcId"`
+			SubnetId               *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible     *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType               *string `json:"BillType" name:"BillType"`
+			OrderType              *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone *string `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
+			AvailabilityZoneList   []struct {
+				MemberType *string `json:"MemberType" name:"MemberType"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
+			} `json:"AvailabilityZoneList"`
+			DiskUsed                         *int      `json:"DiskUsed" name:"DiskUsed"`
+			InnerAzCode                      *string   `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool     `json:"Audit" name:"Audit"`
+			ReadReplicaDBInstanceIdentifiers []*string `json:"ReadReplicaDBInstanceIdentifiers" name:"ReadReplicaDBInstanceIdentifiers"`
+			ProductId                        *string   `json:"ProductId" name:"ProductId"`
+			ProductWhat                      *int      `json:"ProductWhat" name:"ProductWhat"`
+			ProjectId                        *int      `json:"ProjectId" name:"ProjectId"`
+			ProjectName                      *string   `json:"ProjectName" name:"ProjectName"`
+			Region                           *string   `json:"Region" name:"Region"`
+			ServiceStartTime                 *string   `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId                       *string   `json:"SubOrderId" name:"SubOrderId"`
+			MiniVersion                      *string   `json:"MiniVersion" name:"MiniVersion"`
+			SecurityGroups                   []struct {
+				SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+				SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+				SecurityGroupType *string `json:"SecurityGroupType" name:"SecurityGroupType"`
+			} `json:"SecurityGroups"`
+			NetworkType   *int  `json:"NetworkType" name:"NetworkType"`
+			SupportIPV6   *bool `json:"SupportIPV6" name:"SupportIPV6"`
+			BindInstances []struct {
+				Status *string `json:"Status" name:"Status"`
+				Weight *int    `json:"Weight" name:"Weight"`
+				Name   *string `json:"Name" name:"Name"`
+				Vpc    *string `json:"Vpc" name:"Vpc"`
+				Type   *string `json:"Type" name:"Type"`
+				Id     *string `json:"Id" name:"Id"`
+			} `json:"BindInstances"`
+			ProxyNodeInfo []struct {
+				Name *string `json:"Name" name:"Name"`
+				Id   *string `json:"Id" name:"Id"`
+			} `json:"ProxyNodeInfo"`
+			ProxyInfo struct {
+			} `json:"ProxyInfo"`
+			AutoSwitch *int `json:"AutoSwitch" name:"AutoSwitch"`
+			BillTypeId *int `json:"BillTypeId" name:"BillTypeId"`
+		} `json:"Instances" name:"Instances"`
+		TotalCount *int `json:"TotalCount" name:"TotalCount"`
+		MaxRecords *int `json:"MaxRecords" name:"MaxRecords"`
+		Marker     *int `json:"Marker" name:"Marker"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1694,53 +1763,53 @@ type OverrideDBInstanceResponse struct {
 	Data struct {
 		Instances []struct {
 			DBInstanceClass struct {
-				Id *string `json:"Id"`
+				Id *string `json:"Id" name:"Id"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier"`
-			DBInstanceName         *string `json:"DBInstanceName"`
-			DBInstanceStatus       *string `json:"DBInstanceStatus"`
-			DBInstanceType         *string `json:"DBInstanceType"`
-			DBParameterGroupId     *string `json:"DBParameterGroupId"`
-			PreferredBackupTime    *string `json:"PreferredBackupTime"`
-			GroupId                *string `json:"GroupId"`
-			Vip                    *string `json:"Vip"`
-			Engine                 *string `json:"Engine"`
-			EngineVersion          *string `json:"EngineVersion"`
-			InstanceCreateTime     *string `json:"InstanceCreateTime"`
-			MasterUserName         *string `json:"MasterUserName"`
-			DatastoreVersionId     *string `json:"DatastoreVersionId"`
-			VpcId                  *string `json:"VpcId"`
-			SubnetId               *string `json:"SubnetId"`
-			PubliclyAccessible     *bool   `json:"PubliclyAccessible"`
-			BillType               *string `json:"BillType"`
-			OrderType              *string `json:"OrderType"`
-			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone"`
-			MasterAvailabilityZone *string `json:"MasterAvailabilityZone"`
-			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone"`
+			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName         *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus       *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType         *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId     *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime    *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId                *string `json:"GroupId" name:"GroupId"`
+			Vip                    *string `json:"Vip" name:"Vip"`
+			Engine                 *string `json:"Engine" name:"Engine"`
+			EngineVersion          *string `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime     *string `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName         *string `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId     *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                  *string `json:"VpcId" name:"VpcId"`
+			SubnetId               *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible     *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType               *string `json:"BillType" name:"BillType"`
+			OrderType              *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone *string `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
 			AvailabilityZoneList   []struct {
-				MemberType *string `json:"MemberType"`
-				AzCode     *string `json:"AzCode"`
+				MemberType *string `json:"MemberType" name:"MemberType"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
 			} `json:"AvailabilityZoneList"`
-			InnerAzCode                      *string `json:"InnerAzCode"`
-			Audit                            *bool   `json:"Audit"`
+			InnerAzCode                      *string `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool   `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers struct {
 			} `json:"ReadReplicaDBInstanceIdentifiers"`
 			DBSource struct {
-				DBInstanceIdentifier *string `json:"DBInstanceIdentifier"`
-				DBInstanceName       *string `json:"DBInstanceName"`
-				DBInstanceType       *string `json:"DBInstanceType"`
-				DBBackupIdentifier   *string `json:"DBBackupIdentifier"`
+				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+				DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+				DBInstanceType       *string `json:"DBInstanceType" name:"DBInstanceType"`
+				DBBackupIdentifier   *string `json:"DBBackupIdentifier" name:"DBBackupIdentifier"`
 			} `json:"DBSource"`
-			ProductId        *string `json:"ProductId"`
-			ProjectName      *string `json:"ProjectName"`
-			Region           *string `json:"Region"`
-			ServiceEndTime   *string `json:"ServiceEndTime"`
-			ServiceStartTime *string `json:"ServiceStartTime"`
-			SubOrderId       *string `json:"SubOrderId"`
+			ProductId        *string `json:"ProductId" name:"ProductId"`
+			ProjectName      *string `json:"ProjectName" name:"ProjectName"`
+			Region           *string `json:"Region" name:"Region"`
+			ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+			ServiceStartTime *string `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId       *string `json:"SubOrderId" name:"SubOrderId"`
 			SecurityGroups   struct {
 			} `json:"SecurityGroups"`
-			SupportIPV6 *bool `json:"SupportIPV6"`
-		} `json:"Instances"`
+			SupportIPV6 *bool `json:"SupportIPV6" name:"SupportIPV6"`
+		} `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1779,22 +1848,22 @@ type DescribeDBEngineVersionsResponse struct {
 	Data struct {
 		Engines struct {
 			MySQL []struct {
-				Engine        *string `json:"Engine"`
-				EngineVersion *string `json:"EngineVersion"`
+				Engine        *string `json:"Engine" name:"Engine"`
+				EngineVersion *string `json:"EngineVersion" name:"EngineVersion"`
 			} `json:"MySQL"`
-			Consistent_mysql []struct {
-				Engine        *string `json:"Engine"`
-				EngineVersion *string `json:"EngineVersion"`
-			} `json:"Consistent_mysql"`
+			ConsistentMysql []struct {
+				Engine        *string `json:"Engine" name:"Engine"`
+				EngineVersion *string `json:"EngineVersion" name:"EngineVersion"`
+			} `json:"ConsistentMysql"`
 			Percona []struct {
-				Engine        *string `json:"Engine"`
-				EngineVersion *string `json:"EngineVersion"`
+				Engine        *string `json:"Engine" name:"Engine"`
+				EngineVersion *string `json:"EngineVersion" name:"EngineVersion"`
 			} `json:"Percona"`
-			Ebs_mysql []struct {
-				Engine        *string `json:"Engine"`
-				EngineVersion *string `json:"EngineVersion"`
-			} `json:"Ebs_mysql"`
-		} `json:"Engines"`
+			EbsMysql []struct {
+				Engine        *string `json:"Engine" name:"Engine"`
+				EngineVersion *string `json:"EngineVersion" name:"EngineVersion"`
+			} `json:"EbsMysql"`
+		} `json:"Engines" name:"Engines"`
 	} `json:"Data"`
 }
 
@@ -1835,50 +1904,60 @@ type UpgradeDBInstanceEngineVersionResponse struct {
 	Data struct {
 		Instances []struct {
 			DBInstanceClass struct {
-				Id *string `json:"Id"`
+				Id      *string `json:"Id" name:"Id"`
+				Iops    *int    `json:"Iops" name:"Iops"`
+				Vcpus   *int    `json:"Vcpus" name:"Vcpus"`
+				Disk    *int    `json:"Disk" name:"Disk"`
+				Ram     *int    `json:"Ram" name:"Ram"`
+				Mem     *int    `json:"Mem" name:"Mem"`
+				MaxConn *int    `json:"MaxConn" name:"MaxConn"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier"`
-			DBInstanceName         *string `json:"DBInstanceName"`
-			DBInstanceStatus       *string `json:"DBInstanceStatus"`
-			DBInstanceType         *string `json:"DBInstanceType"`
-			DBParameterGroupId     *string `json:"DBParameterGroupId"`
-			PreferredBackupTime    *string `json:"PreferredBackupTime"`
-			GroupId                *string `json:"GroupId"`
-			SecurityGroupId        *string `json:"SecurityGroupId"`
-			Vip                    *string `json:"Vip"`
-			Engine                 *string `json:"Engine"`
-			EngineVersion          *string `json:"EngineVersion"`
-			InstanceCreateTime     *string `json:"InstanceCreateTime"`
-			MasterUserName         *string `json:"MasterUserName"`
-			DatastoreVersionId     *string `json:"DatastoreVersionId"`
-			VpcId                  *string `json:"VpcId"`
-			SubnetId               *string `json:"SubnetId"`
-			PubliclyAccessible     *bool   `json:"PubliclyAccessible"`
-			BillType               *string `json:"BillType"`
-			OrderType              *string `json:"OrderType"`
-			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone"`
-			MasterAvailabilityZone *string `json:"MasterAvailabilityZone"`
-			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone"`
+			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName         *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus       *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType         *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId     *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime    *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId                *string `json:"GroupId" name:"GroupId"`
+			SecurityGroupId        *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+			Vip                    *string `json:"Vip" name:"Vip"`
+			Port                   *int    `json:"Port" name:"Port"`
+			Engine                 *string `json:"Engine" name:"Engine"`
+			EngineVersion          *string `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime     *string `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName         *string `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId     *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                  *string `json:"VpcId" name:"VpcId"`
+			SubnetId               *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible     *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType               *string `json:"BillType" name:"BillType"`
+			OrderType              *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone *string `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
 			AvailabilityZoneList   []struct {
-				MemberType *string `json:"MemberType"`
-				AzCode     *string `json:"AzCode"`
+				MemberType *string `json:"MemberType" name:"MemberType"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
 			} `json:"AvailabilityZoneList"`
-			InnerAzCode                      *string `json:"InnerAzCode"`
-			Audit                            *bool   `json:"Audit"`
-			ReadReplicaDBInstanceIdentifiers struct {
-			} `json:"ReadReplicaDBInstanceIdentifiers"`
-			ProductId        *string `json:"ProductId"`
-			ProjectName      *string `json:"ProjectName"`
-			Region           *string `json:"Region"`
-			ServiceStartTime *string `json:"ServiceStartTime"`
-			SubOrderId       *string `json:"SubOrderId"`
-			SecurityGroups   []struct {
-				SecurityGroupId   *string `json:"SecurityGroupId"`
-				SecurityGroupName *string `json:"SecurityGroupName"`
-				SecurityGroupType *string `json:"SecurityGroupType"`
+			DiskUsed                         *int      `json:"DiskUsed" name:"DiskUsed"`
+			InnerAzCode                      *string   `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool     `json:"Audit" name:"Audit"`
+			ReadReplicaDBInstanceIdentifiers []*string `json:"ReadReplicaDBInstanceIdentifiers" name:"ReadReplicaDBInstanceIdentifiers"`
+			ProductId                        *string   `json:"ProductId" name:"ProductId"`
+			ProductWhat                      *int      `json:"ProductWhat" name:"ProductWhat"`
+			ProjectId                        *int      `json:"ProjectId" name:"ProjectId"`
+			ProjectName                      *string   `json:"ProjectName" name:"ProjectName"`
+			Region                           *string   `json:"Region" name:"Region"`
+			ServiceStartTime                 *string   `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId                       *string   `json:"SubOrderId" name:"SubOrderId"`
+			SecurityGroups                   []struct {
+				SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+				SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+				SecurityGroupType *string `json:"SecurityGroupType" name:"SecurityGroupType"`
 			} `json:"SecurityGroups"`
-			SupportIPV6 *bool `json:"SupportIPV6"`
-		} `json:"Instances"`
+			SupportIPV6 *bool `json:"SupportIPV6" name:"SupportIPV6"`
+			BillTypeId  *int  `json:"BillTypeId" name:"BillTypeId"`
+		} `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1923,56 +2002,56 @@ type ModifyDBInstanceTypeResponse struct {
 	Data struct {
 		DBInstance struct {
 			DBInstanceClass struct {
-				Id *string `json:"Id"`
+				Id *string `json:"Id" name:"Id"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier  *string `json:"DBInstanceIdentifier"`
-			DBInstanceName        *string `json:"DBInstanceName"`
-			DBInstanceStatus      *string `json:"DBInstanceStatus"`
-			DBInstanceType        *string `json:"DBInstanceType"`
-			DBParameterGroupId    *string `json:"DBParameterGroupId"`
-			PreferredBackupTime   *string `json:"PreferredBackupTime"`
-			GroupId               *string `json:"GroupId"`
-			SecurityGroupId       *string `json:"SecurityGroupId"`
-			Vip                   *string `json:"Vip"`
-			Engine                *string `json:"Engine"`
-			EngineVersion         *string `json:"EngineVersion"`
-			InstanceCreateTime    *string `json:"InstanceCreateTime"`
-			MasterUserName        *string `json:"MasterUserName"`
-			DatastoreVersionId    *string `json:"DatastoreVersionId"`
-			VpcId                 *string `json:"VpcId"`
-			SubnetId              *string `json:"SubnetId"`
-			PubliclyAccessible    *bool   `json:"PubliclyAccessible"`
-			BillType              *string `json:"BillType"`
-			OrderType             *string `json:"OrderType"`
-			MultiAvailabilityZone *bool   `json:"MultiAvailabilityZone"`
-			AvailabilityZone      *string `json:"AvailabilityZone"`
+			DBInstanceIdentifier  *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName        *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus      *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType        *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId    *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime   *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId               *string `json:"GroupId" name:"GroupId"`
+			SecurityGroupId       *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+			Vip                   *string `json:"Vip" name:"Vip"`
+			Engine                *string `json:"Engine" name:"Engine"`
+			EngineVersion         *string `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime    *string `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName        *string `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId    *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                 *string `json:"VpcId" name:"VpcId"`
+			SubnetId              *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible    *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType              *string `json:"BillType" name:"BillType"`
+			OrderType             *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			AvailabilityZone      *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 			AvailabilityZoneList  []struct {
-				MemberType *string `json:"MemberType"`
-				AzCode     *string `json:"AzCode"`
+				MemberType *string `json:"MemberType" name:"MemberType"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
 			} `json:"AvailabilityZoneList"`
-			InnerAzCode                      *string `json:"InnerAzCode"`
-			Audit                            *bool   `json:"Audit"`
+			InnerAzCode                      *string `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool   `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers struct {
 			} `json:"ReadReplicaDBInstanceIdentifiers"`
 			DBSource struct {
-				DBInstanceIdentifier *string `json:"DBInstanceIdentifier"`
-				DBInstanceName       *string `json:"DBInstanceName"`
-				DBInstanceType       *string `json:"DBInstanceType"`
-				PointInTime          *string `json:"PointInTime"`
+				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+				DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+				DBInstanceType       *string `json:"DBInstanceType" name:"DBInstanceType"`
+				PointInTime          *string `json:"PointInTime" name:"PointInTime"`
 			} `json:"DBSource"`
-			ProductId        *string `json:"ProductId"`
-			ProjectName      *string `json:"ProjectName"`
-			Region           *string `json:"Region"`
-			ServiceEndTime   *string `json:"ServiceEndTime"`
-			ServiceStartTime *string `json:"ServiceStartTime"`
-			SubOrderId       *string `json:"SubOrderId"`
+			ProductId        *string `json:"ProductId" name:"ProductId"`
+			ProjectName      *string `json:"ProjectName" name:"ProjectName"`
+			Region           *string `json:"Region" name:"Region"`
+			ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+			ServiceStartTime *string `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId       *string `json:"SubOrderId" name:"SubOrderId"`
 			SecurityGroups   []struct {
-				SecurityGroupId   *string `json:"SecurityGroupId"`
-				SecurityGroupName *string `json:"SecurityGroupName"`
-				SecurityGroupType *string `json:"SecurityGroupType"`
+				SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+				SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+				SecurityGroupType *string `json:"SecurityGroupType" name:"SecurityGroupType"`
 			} `json:"SecurityGroups"`
-			SupportIPV6 *bool `json:"SupportIPV6"`
-		} `json:"DBInstance"`
+			SupportIPV6 *bool `json:"SupportIPV6" name:"SupportIPV6"`
+		} `json:"DBInstance" name:"DBInstance"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2010,36 +2089,36 @@ func (r *DescribeDBInstanceParametersRequest) FromJsonString(s string) error {
 type DescribeDBInstanceParametersResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
-		Engine        *string `json:"Engine"`
-		EngineVersion *string `json:"EngineVersion"`
+		Engine        *string `json:"Engine" name:"Engine"`
+		EngineVersion *string `json:"EngineVersion" name:"EngineVersion"`
 		Parameters    struct {
-			delay_key_write                 *string `json:"delay_key_write"`
-			tx_isolation                    *string `json:"tx_isolation"`
-			innodb_print_all_deadlocks      *string `json:"innodb_print_all_deadlocks"`
-			innodb_stats_method             *string `json:"innodb_stats_method"`
-			innodb_strict_mode              *string `json:"innodb_strict_mode"`
-			default_time_zone               *string `json:"default_time_zone"`
-			performance_schema              *string `json:"performance_schema"`
-			rpl_semi_sync_slave_enabled     *string `json:"rpl_semi_sync_slave_enabled"`
-			innodb_rollback_on_timeout      *string `json:"innodb_rollback_on_timeout"`
-			old_alter_table                 *string `json:"old_alter_table"`
-			binlog_row_image                *string `json:"binlog_row_image"`
-			query_cache_type                *string `json:"query_cache_type"`
-			local_infile                    *string `json:"local_infile"`
-			init_connect                    *string `json:"init_connect"`
-			binlog_format                   *string `json:"binlog_format"`
-			log_slave_updates               *string `json:"log_slave_updates"`
-			innodb_table_locks              *string `json:"innodb_table_locks"`
-			low_priority_updates            *string `json:"low_priority_updates"`
-			concurrent_insert               *string `json:"concurrent_insert"`
-			slow_query_log                  *string `json:"slow_query_log"`
-			rpl_semi_sync_master_enabled    *string `json:"rpl_semi_sync_master_enabled"`
-			character_set_server            *string `json:"character_set_server"`
-			log_slow_admin_statements       *string `json:"log_slow_admin_statements"`
-			log_bin_trust_function_creators *string `json:"log_bin_trust_function_creators"`
-			log_queries_not_using_indexes   *string `json:"log_queries_not_using_indexes"`
-			innodb_stats_on_metadata        *string `json:"innodb_stats_on_metadata"`
-		} `json:"Parameters"`
+			DelayKeyWrite               *string `json:"delay_key_write" name:"delay_key_write"`
+			TxIsolation                 *string `json:"tx_isolation" name:"tx_isolation"`
+			InnodbPrintAllDeadlocks     *string `json:"innodb_print_all_deadlocks" name:"innodb_print_all_deadlocks"`
+			InnodbStatsMethod           *string `json:"innodb_stats_method" name:"innodb_stats_method"`
+			InnodbStrictMode            *string `json:"innodb_strict_mode" name:"innodb_strict_mode"`
+			DefaultTimeZone             *string `json:"default_time_zone" name:"default_time_zone"`
+			PerformanceSchema           *string `json:"performance_schema" name:"performance_schema"`
+			RplSemiSyncSlaveEnabled     *string `json:"rpl_semi_sync_slave_enabled" name:"rpl_semi_sync_slave_enabled"`
+			InnodbRollbackOnTimeout     *string `json:"innodb_rollback_on_timeout" name:"innodb_rollback_on_timeout"`
+			OldAlterTable               *string `json:"old_alter_table" name:"old_alter_table"`
+			BinlogRowImage              *string `json:"binlog_row_image" name:"binlog_row_image"`
+			QueryCacheType              *string `json:"query_cache_type" name:"query_cache_type"`
+			LocalInfile                 *string `json:"local_infile" name:"local_infile"`
+			InitConnect                 *string `json:"init_connect" name:"init_connect"`
+			BinlogFormat                *string `json:"binlog_format" name:"binlog_format"`
+			LogSlaveUpdates             *string `json:"log_slave_updates" name:"log_slave_updates"`
+			InnodbTableLocks            *string `json:"innodb_table_locks" name:"innodb_table_locks"`
+			LowPriorityUpdates          *string `json:"low_priority_updates" name:"low_priority_updates"`
+			ConcurrentInsert            *string `json:"concurrent_insert" name:"concurrent_insert"`
+			SlowQueryLog                *string `json:"slow_query_log" name:"slow_query_log"`
+			RplSemiSyncMasterEnabled    *string `json:"rpl_semi_sync_master_enabled" name:"rpl_semi_sync_master_enabled"`
+			CharacterSetServer          *string `json:"character_set_server" name:"character_set_server"`
+			LogSlowAdminStatements      *string `json:"log_slow_admin_statements" name:"log_slow_admin_statements"`
+			LogBinTrustFunctionCreators *string `json:"log_bin_trust_function_creators" name:"log_bin_trust_function_creators"`
+			LogQueriesNotUsingIndexes   *string `json:"log_queries_not_using_indexes" name:"log_queries_not_using_indexes"`
+			InnodbStatsOnMetadata       *string `json:"innodb_stats_on_metadata" name:"innodb_stats_on_metadata"`
+		} `json:"Parameters" name:"Parameters"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2050,6 +2129,145 @@ func (r *DescribeDBInstanceParametersResponse) ToJsonString() string {
 }
 
 func (r *DescribeDBInstanceParametersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDBBackupPolicyRequest struct {
+	*ksyunhttp.BaseRequest
+	DBInstanceIdentifier   *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
+	PreferredBackupTime    *string `json:"PreferredBackupTime,omitempty" name:"PreferredBackupTime"`
+	ExpireAfter            *int    `json:"ExpireAfter,omitempty" name:"ExpireAfter"`
+	IncrementalBackupCycle *string `json:"IncrementalBackupCycle,omitempty" name:"IncrementalBackupCycle"`
+	FullBackupCycle        *string `json:"FullBackupCycle,omitempty" name:"FullBackupCycle"`
+	BinlogExpireAfter      *int    `json:"BinlogExpireAfter,omitempty" name:"BinlogExpireAfter"`
+	HighFrequencyBackup    *bool   `json:"HighFrequencyBackup,omitempty" name:"HighFrequencyBackup"`
+}
+
+func (r *ModifyDBBackupPolicyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyDBBackupPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyDBBackupPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDBBackupPolicyResponse struct {
+	*ksyunhttp.BaseResponse
+	Data struct {
+		Instances []struct {
+			DBInstanceClass struct {
+				Id      *string `json:"Id" name:"Id"`
+				Iops    *int    `json:"Iops" name:"Iops"`
+				Vcpus   *int    `json:"Vcpus" name:"Vcpus"`
+				Disk    *int    `json:"Disk" name:"Disk"`
+				Ram     *int    `json:"Ram" name:"Ram"`
+				Mem     *int    `json:"Mem" name:"Mem"`
+				MaxConn *int    `json:"MaxConn" name:"MaxConn"`
+			} `json:"DBInstanceClass"`
+			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName         *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus       *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType         *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId     *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime    *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId                *string `json:"GroupId" name:"GroupId"`
+			Vip                    *string `json:"Vip" name:"Vip"`
+			Port                   *int    `json:"Port" name:"Port"`
+			Engine                 *string `json:"Engine" name:"Engine"`
+			EngineVersion          *string `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime     *string `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName         *string `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId     *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                  *string `json:"VpcId" name:"VpcId"`
+			SubnetId               *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible     *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType               *string `json:"BillType" name:"BillType"`
+			OrderType              *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone *string `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
+			AvailabilityZoneList   []struct {
+				MemberType *string `json:"MemberType" name:"MemberType"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
+			} `json:"AvailabilityZoneList"`
+			DiskUsed                         *int      `json:"DiskUsed" name:"DiskUsed"`
+			InnerAzCode                      *string   `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool     `json:"Audit" name:"Audit"`
+			ReadReplicaDBInstanceIdentifiers []*string `json:"ReadReplicaDBInstanceIdentifiers" name:"ReadReplicaDBInstanceIdentifiers"`
+			ProductId                        *string   `json:"ProductId" name:"ProductId"`
+			ProductWhat                      *int      `json:"ProductWhat" name:"ProductWhat"`
+			ProjectId                        *int      `json:"ProjectId" name:"ProjectId"`
+			ProjectName                      *string   `json:"ProjectName" name:"ProjectName"`
+			Region                           *string   `json:"Region" name:"Region"`
+			ServiceStartTime                 *string   `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId                       *string   `json:"SubOrderId" name:"SubOrderId"`
+			SecurityGroups                   []*string `json:"SecurityGroups" name:"SecurityGroups"`
+			SupportIPV6                      *bool     `json:"SupportIPV6" name:"SupportIPV6"`
+			BillTypeId                       *int      `json:"BillTypeId" name:"BillTypeId"`
+		} `json:"Instances" name:"Instances"`
+	} `json:"Data"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyDBBackupPolicyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyDBBackupPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBBackupPolicyRequest struct {
+	*ksyunhttp.BaseRequest
+	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
+}
+
+func (r *DescribeDBBackupPolicyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDBBackupPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeDBBackupPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBBackupPolicyResponse struct {
+	*ksyunhttp.BaseResponse
+	BackupConfig struct {
+		ExpireAfter            *int    `json:"ExpireAfter" name:"ExpireAfter"`
+		AutobackupAt           *int    `json:"AutobackupAt" name:"AutobackupAt"`
+		IncrementalBackupCycle *int    `json:"IncrementalBackupCycle" name:"IncrementalBackupCycle"`
+		Duration               *int    `json:"Duration" name:"Duration"`
+		FullBackupCycle        *string `json:"FullBackupCycle" name:"FullBackupCycle"`
+		GroupId                *string `json:"GroupId" name:"GroupId"`
+		BinlogExpireAfter      *int    `json:"BinlogExpireAfter" name:"BinlogExpireAfter"`
+		HighFrequencyBackup    *bool   `json:"HighFrequencyBackup" name:"HighFrequencyBackup"`
+	} `json:"BackupConfig"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DescribeDBBackupPolicyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDBBackupPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2114,15 +2332,15 @@ func (r *CreateDBBackupRequest) FromJsonString(s string) error {
 type CreateDBBackupResponse struct {
 	*ksyunhttp.BaseResponse
 	DBBackup struct {
-		DBInstanceIdentifier *string `json:"DBInstanceIdentifier"`
-		DBBackupIdentifier   *string `json:"DBBackupIdentifier"`
-		Engine               *string `json:"Engine"`
-		EngineVersion        *string `json:"EngineVersion"`
-		BackupCreateTime     *string `json:"BackupCreateTime"`
-		BackupUpdatedTime    *string `json:"BackupUpdatedTime"`
-		DBBackupName         *string `json:"DBBackupName"`
-		BackupType           *string `json:"BackupType"`
-		Status               *string `json:"Status"`
+		DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+		DBBackupIdentifier   *string `json:"DBBackupIdentifier" name:"DBBackupIdentifier"`
+		Engine               *string `json:"Engine" name:"Engine"`
+		EngineVersion        *string `json:"EngineVersion" name:"EngineVersion"`
+		BackupCreateTime     *string `json:"BackupCreateTime" name:"BackupCreateTime"`
+		BackupUpdatedTime    *string `json:"BackupUpdatedTime" name:"BackupUpdatedTime"`
+		DBBackupName         *string `json:"DBBackupName" name:"DBBackupName"`
+		BackupType           *string `json:"BackupType" name:"BackupType"`
+		Status               *string `json:"Status" name:"Status"`
 	} `json:"DBBackup"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2133,84 +2351,6 @@ func (r *CreateDBBackupResponse) ToJsonString() string {
 }
 
 func (r *CreateDBBackupResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type RenewDBInstanceRequest struct {
-	*ksyunhttp.BaseRequest
-	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
-	Duration             *int    `json:"Duration,omitempty" name:"Duration"`
-	DurationUnit         *string `json:"DurationUnit,omitempty" name:"DurationUnit"`
-	BillType             *string `json:"BillType,omitempty" name:"BillType"`
-	EndTime              *string `json:"EndTime,omitempty" name:"EndTime"`
-}
-
-func (r *RenewDBInstanceRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *RenewDBInstanceRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "RenewDBInstanceRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type RenewDBInstanceResponse struct {
-	*ksyunhttp.BaseResponse
-	Data struct {
-		Instances []struct {
-			DBInstanceClass struct {
-				Id *string `json:"Id"`
-			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier             *string `json:"DBInstanceIdentifier"`
-			PreferredBackupTime              *string `json:"PreferredBackupTime"`
-			DBInstanceName                   *string `json:"DBInstanceName"`
-			DBInstanceStatus                 *string `json:"DBInstanceStatus"`
-			DBInstanceType                   *string `json:"DBInstanceType"`
-			DBParameterGroupId               *string `json:"DBParameterGroupId"`
-			GroupId                          *string `json:"GroupId"`
-			SecurityGroupId                  *string `json:"SecurityGroupId"`
-			Vip                              *string `json:"Vip"`
-			Engine                           *string `json:"Engine"`
-			EngineVersion                    *string `json:"EngineVersion"`
-			InstanceCreateTime               *string `json:"InstanceCreateTime"`
-			MasterUserName                   *string `json:"MasterUserName"`
-			DatastoreVersionId               *string `json:"DatastoreVersionId"`
-			Region                           *string `json:"Region"`
-			VpcId                            *string `json:"VpcId"`
-			PubliclyAccessible               *bool   `json:"PubliclyAccessible"`
-			ReadReplicaDBInstanceIdentifiers []struct {
-				Id                              *string `json:"Id"`
-				Vip                             *string `json:"Vip"`
-				ReadReplicaDBInstanceIdentifier *string `json:"ReadReplicaDBInstanceIdentifier"`
-			} `json:"ReadReplicaDBInstanceIdentifiers"`
-			BillType               *string `json:"BillType"`
-			OrderType              *string `json:"OrderType"`
-			OrderSource            *string `json:"OrderSource"`
-			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone"`
-			MasterAvailabilityZone *string `json:"MasterAvailabilityZone"`
-			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone"`
-			ProductId              *string `json:"ProductId"`
-			ServiceEndTime         *string `json:"ServiceEndTime"`
-			OrderUse               *string `json:"OrderUse"`
-			ProjectName            *string `json:"ProjectName"`
-		} `json:"Instances"`
-	} `json:"Data"`
-	RequestId *string `json:"RequestId" name:"RequestId"`
-}
-
-func (r *RenewDBInstanceResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *RenewDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2240,46 +2380,46 @@ type SwitchDBInstanceHAResponse struct {
 	Data struct {
 		DBInstance struct {
 			DBInstanceClass struct {
-				Id *string `json:"Id"`
+				Id *string `json:"Id" name:"Id"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier"`
-			DBInstanceName         *string `json:"DBInstanceName"`
-			DBInstanceStatus       *string `json:"DBInstanceStatus"`
-			DBInstanceType         *string `json:"DBInstanceType"`
-			DBParameterGroupId     *string `json:"DBParameterGroupId"`
-			PreferredBackupTime    *string `json:"PreferredBackupTime"`
-			GroupId                *string `json:"GroupId"`
-			Vip                    *string `json:"Vip"`
-			Engine                 *string `json:"Engine"`
-			EngineVersion          *string `json:"EngineVersion"`
-			InstanceCreateTime     *string `json:"InstanceCreateTime"`
-			MasterUserName         *string `json:"MasterUserName"`
-			DatastoreVersionId     *string `json:"DatastoreVersionId"`
-			VpcId                  *string `json:"VpcId"`
-			SubnetId               *string `json:"SubnetId"`
-			PubliclyAccessible     *bool   `json:"PubliclyAccessible"`
-			BillType               *string `json:"BillType"`
-			OrderType              *string `json:"OrderType"`
-			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone"`
-			MasterAvailabilityZone *string `json:"MasterAvailabilityZone"`
-			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone"`
+			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName         *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus       *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType         *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId     *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime    *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId                *string `json:"GroupId" name:"GroupId"`
+			Vip                    *string `json:"Vip" name:"Vip"`
+			Engine                 *string `json:"Engine" name:"Engine"`
+			EngineVersion          *string `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime     *string `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName         *string `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId     *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                  *string `json:"VpcId" name:"VpcId"`
+			SubnetId               *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible     *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType               *string `json:"BillType" name:"BillType"`
+			OrderType              *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone *string `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
 			AvailabilityZoneList   []struct {
-				MemberType *string `json:"MemberType"`
-				AzCode     *string `json:"AzCode"`
+				MemberType *string `json:"MemberType" name:"MemberType"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
 			} `json:"AvailabilityZoneList"`
-			InnerAzCode                      *string `json:"InnerAzCode"`
-			Audit                            *bool   `json:"Audit"`
+			InnerAzCode                      *string `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool   `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers struct {
 			} `json:"ReadReplicaDBInstanceIdentifiers"`
-			ProductId        *string `json:"ProductId"`
-			ProjectName      *string `json:"ProjectName"`
-			Region           *string `json:"Region"`
-			ServiceStartTime *string `json:"ServiceStartTime"`
-			SubOrderId       *string `json:"SubOrderId"`
+			ProductId        *string `json:"ProductId" name:"ProductId"`
+			ProjectName      *string `json:"ProjectName" name:"ProjectName"`
+			Region           *string `json:"Region" name:"Region"`
+			ServiceStartTime *string `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId       *string `json:"SubOrderId" name:"SubOrderId"`
 			SecurityGroups   struct {
 			} `json:"SecurityGroups"`
-			SupportIPV6 *bool `json:"SupportIPV6"`
-		} `json:"DBInstance"`
+			SupportIPV6 *bool `json:"SupportIPV6" name:"SupportIPV6"`
+		} `json:"DBInstance" name:"DBInstance"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2329,45 +2469,6 @@ func (r *GenerateDBAdminURLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type StatisticDBInstancesRequest struct {
-	*ksyunhttp.BaseRequest
-	ExpiryDateLessThan *int `json:"ExpiryDateLessThan,omitempty" name:"ExpiryDateLessThan"`
-}
-
-func (r *StatisticDBInstancesRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *StatisticDBInstancesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "StatisticDBInstancesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type StatisticDBInstancesResponse struct {
-	*ksyunhttp.BaseResponse
-	Data struct {
-		Statistic struct {
-		} `json:"Statistic"`
-	} `json:"Data"`
-	RequestId *string `json:"RequestId" name:"RequestId"`
-}
-
-func (r *StatisticDBInstancesResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *StatisticDBInstancesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type AllocateDBInstanceEipRequest struct {
 	*ksyunhttp.BaseRequest
 	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
@@ -2395,53 +2496,53 @@ type AllocateDBInstanceEipResponse struct {
 	Data struct {
 		DBInstance struct {
 			DBInstanceClass struct {
-				Id *string `json:"Id"`
+				Id *string `json:"Id" name:"Id"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier"`
-			DBInstanceName         *string `json:"DBInstanceName"`
-			DBInstanceStatus       *string `json:"DBInstanceStatus"`
-			DBInstanceType         *string `json:"DBInstanceType"`
-			DBParameterGroupId     *string `json:"DBParameterGroupId"`
-			PreferredBackupTime    *string `json:"PreferredBackupTime"`
-			GroupId                *string `json:"GroupId"`
-			SecurityGroupId        *string `json:"SecurityGroupId"`
-			Vip                    *string `json:"Vip"`
-			Engine                 *string `json:"Engine"`
-			EngineVersion          *string `json:"EngineVersion"`
-			InstanceCreateTime     *string `json:"InstanceCreateTime"`
-			MasterUserName         *string `json:"MasterUserName"`
-			DatastoreVersionId     *string `json:"DatastoreVersionId"`
-			VpcId                  *string `json:"VpcId"`
-			SubnetId               *string `json:"SubnetId"`
-			PubliclyAccessible     *bool   `json:"PubliclyAccessible"`
-			BillType               *string `json:"BillType"`
-			OrderType              *string `json:"OrderType"`
-			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone"`
-			MasterAvailabilityZone *string `json:"MasterAvailabilityZone"`
-			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone"`
+			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName         *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus       *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType         *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId     *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime    *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId                *string `json:"GroupId" name:"GroupId"`
+			SecurityGroupId        *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+			Vip                    *string `json:"Vip" name:"Vip"`
+			Engine                 *string `json:"Engine" name:"Engine"`
+			EngineVersion          *string `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime     *string `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName         *string `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId     *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                  *string `json:"VpcId" name:"VpcId"`
+			SubnetId               *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible     *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType               *string `json:"BillType" name:"BillType"`
+			OrderType              *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone *string `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
 			AvailabilityZoneList   []struct {
-				MemberType *string `json:"MemberType"`
-				AzCode     *string `json:"AzCode"`
+				MemberType *string `json:"MemberType" name:"MemberType"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
 			} `json:"AvailabilityZoneList"`
-			InnerAzCode                      *string `json:"InnerAzCode"`
-			Audit                            *bool   `json:"Audit"`
+			InnerAzCode                      *string `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool   `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers []struct {
-				Vip                             *string `json:"Vip"`
-				ReadReplicaDBInstanceIdentifier *string `json:"ReadReplicaDBInstanceIdentifier"`
-				Id                              *string `json:"Id"`
+				Vip                             *string `json:"Vip" name:"Vip"`
+				ReadReplicaDBInstanceIdentifier *string `json:"ReadReplicaDBInstanceIdentifier" name:"ReadReplicaDBInstanceIdentifier"`
+				Id                              *string `json:"Id" name:"Id"`
 			} `json:"ReadReplicaDBInstanceIdentifiers"`
-			ProductId        *string `json:"ProductId"`
-			ProjectName      *string `json:"ProjectName"`
-			Region           *string `json:"Region"`
-			ServiceStartTime *string `json:"ServiceStartTime"`
-			SubOrderId       *string `json:"SubOrderId"`
+			ProductId        *string `json:"ProductId" name:"ProductId"`
+			ProjectName      *string `json:"ProjectName" name:"ProjectName"`
+			Region           *string `json:"Region" name:"Region"`
+			ServiceStartTime *string `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId       *string `json:"SubOrderId" name:"SubOrderId"`
 			SecurityGroups   []struct {
-				SecurityGroupId   *string `json:"SecurityGroupId"`
-				SecurityGroupName *string `json:"SecurityGroupName"`
-				SecurityGroupType *string `json:"SecurityGroupType"`
+				SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+				SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+				SecurityGroupType *string `json:"SecurityGroupType" name:"SecurityGroupType"`
 			} `json:"SecurityGroups"`
-			SupportIPV6 *bool `json:"SupportIPV6"`
-		} `json:"DBInstance"`
+			SupportIPV6 *bool `json:"SupportIPV6" name:"SupportIPV6"`
+		} `json:"DBInstance" name:"DBInstance"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2481,53 +2582,53 @@ type ReleaseDBInstanceEipResponse struct {
 	Data struct {
 		DBInstance struct {
 			DBInstanceClass struct {
-				Id *string `json:"Id"`
+				Id *string `json:"Id" name:"Id"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier"`
-			DBInstanceName         *string `json:"DBInstanceName"`
-			DBInstanceStatus       *string `json:"DBInstanceStatus"`
-			DBInstanceType         *string `json:"DBInstanceType"`
-			DBParameterGroupId     *string `json:"DBParameterGroupId"`
-			PreferredBackupTime    *string `json:"PreferredBackupTime"`
-			GroupId                *string `json:"GroupId"`
-			SecurityGroupId        *string `json:"SecurityGroupId"`
-			Vip                    *string `json:"Vip"`
-			Engine                 *string `json:"Engine"`
-			EngineVersion          *string `json:"EngineVersion"`
-			InstanceCreateTime     *string `json:"InstanceCreateTime"`
-			MasterUserName         *string `json:"MasterUserName"`
-			DatastoreVersionId     *string `json:"DatastoreVersionId"`
-			VpcId                  *string `json:"VpcId"`
-			SubnetId               *string `json:"SubnetId"`
-			PubliclyAccessible     *bool   `json:"PubliclyAccessible"`
-			BillType               *string `json:"BillType"`
-			OrderType              *string `json:"OrderType"`
-			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone"`
-			MasterAvailabilityZone *string `json:"MasterAvailabilityZone"`
-			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone"`
+			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName         *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus       *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType         *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId     *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime    *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId                *string `json:"GroupId" name:"GroupId"`
+			SecurityGroupId        *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+			Vip                    *string `json:"Vip" name:"Vip"`
+			Engine                 *string `json:"Engine" name:"Engine"`
+			EngineVersion          *string `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime     *string `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName         *string `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId     *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                  *string `json:"VpcId" name:"VpcId"`
+			SubnetId               *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible     *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType               *string `json:"BillType" name:"BillType"`
+			OrderType              *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone *string `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
 			AvailabilityZoneList   []struct {
-				MemberType *string `json:"MemberType"`
-				AzCode     *string `json:"AzCode"`
+				MemberType *string `json:"MemberType" name:"MemberType"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
 			} `json:"AvailabilityZoneList"`
-			InnerAzCode                      *string `json:"InnerAzCode"`
-			Audit                            *bool   `json:"Audit"`
+			InnerAzCode                      *string `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool   `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers []struct {
-				Vip                             *string `json:"Vip"`
-				ReadReplicaDBInstanceIdentifier *string `json:"ReadReplicaDBInstanceIdentifier"`
-				Id                              *string `json:"Id"`
+				Vip                             *string `json:"Vip" name:"Vip"`
+				ReadReplicaDBInstanceIdentifier *string `json:"ReadReplicaDBInstanceIdentifier" name:"ReadReplicaDBInstanceIdentifier"`
+				Id                              *string `json:"Id" name:"Id"`
 			} `json:"ReadReplicaDBInstanceIdentifiers"`
-			ProductId        *string `json:"ProductId"`
-			ProjectName      *string `json:"ProjectName"`
-			Region           *string `json:"Region"`
-			ServiceStartTime *string `json:"ServiceStartTime"`
-			SubOrderId       *string `json:"SubOrderId"`
+			ProductId        *string `json:"ProductId" name:"ProductId"`
+			ProjectName      *string `json:"ProjectName" name:"ProjectName"`
+			Region           *string `json:"Region" name:"Region"`
+			ServiceStartTime *string `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId       *string `json:"SubOrderId" name:"SubOrderId"`
 			SecurityGroups   []struct {
-				SecurityGroupId   *string `json:"SecurityGroupId"`
-				SecurityGroupName *string `json:"SecurityGroupName"`
-				SecurityGroupType *string `json:"SecurityGroupType"`
+				SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+				SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+				SecurityGroupType *string `json:"SecurityGroupType" name:"SecurityGroupType"`
 			} `json:"SecurityGroups"`
-			SupportIPV6 *bool `json:"SupportIPV6"`
-		} `json:"DBInstance"`
+			SupportIPV6 *bool `json:"SupportIPV6" name:"SupportIPV6"`
+		} `json:"DBInstance" name:"DBInstance"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2569,46 +2670,46 @@ type ModifyDBInstanceAvailabilityZoneResponse struct {
 	Data struct {
 		DBInstance struct {
 			DBInstanceClass struct {
-				Id *string `json:"Id"`
+				Id *string `json:"Id" name:"Id"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier"`
-			DBInstanceName         *string `json:"DBInstanceName"`
-			DBInstanceStatus       *string `json:"DBInstanceStatus"`
-			DBInstanceType         *string `json:"DBInstanceType"`
-			DBParameterGroupId     *string `json:"DBParameterGroupId"`
-			PreferredBackupTime    *string `json:"PreferredBackupTime"`
-			GroupId                *string `json:"GroupId"`
-			Vip                    *string `json:"Vip"`
-			Engine                 *string `json:"Engine"`
-			EngineVersion          *string `json:"EngineVersion"`
-			InstanceCreateTime     *string `json:"InstanceCreateTime"`
-			MasterUserName         *string `json:"MasterUserName"`
-			DatastoreVersionId     *string `json:"DatastoreVersionId"`
-			VpcId                  *string `json:"VpcId"`
-			SubnetId               *string `json:"SubnetId"`
-			PubliclyAccessible     *bool   `json:"PubliclyAccessible"`
-			BillType               *string `json:"BillType"`
-			OrderType              *string `json:"OrderType"`
-			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone"`
-			MasterAvailabilityZone *string `json:"MasterAvailabilityZone"`
-			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone"`
+			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName         *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus       *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType         *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId     *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime    *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId                *string `json:"GroupId" name:"GroupId"`
+			Vip                    *string `json:"Vip" name:"Vip"`
+			Engine                 *string `json:"Engine" name:"Engine"`
+			EngineVersion          *string `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime     *string `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName         *string `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId     *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                  *string `json:"VpcId" name:"VpcId"`
+			SubnetId               *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible     *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType               *string `json:"BillType" name:"BillType"`
+			OrderType              *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone *string `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
 			AvailabilityZoneList   []struct {
-				MemberType *string `json:"MemberType"`
-				AzCode     *string `json:"AzCode"`
+				MemberType *string `json:"MemberType" name:"MemberType"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
 			} `json:"AvailabilityZoneList"`
-			InnerAzCode                      *string `json:"InnerAzCode"`
-			Audit                            *bool   `json:"Audit"`
+			InnerAzCode                      *string `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool   `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers struct {
 			} `json:"ReadReplicaDBInstanceIdentifiers"`
-			ProductId        *string `json:"ProductId"`
-			ProjectName      *string `json:"ProjectName"`
-			Region           *string `json:"Region"`
-			ServiceStartTime *string `json:"ServiceStartTime"`
-			SubOrderId       *string `json:"SubOrderId"`
+			ProductId        *string `json:"ProductId" name:"ProductId"`
+			ProjectName      *string `json:"ProjectName" name:"ProjectName"`
+			Region           *string `json:"Region" name:"Region"`
+			ServiceStartTime *string `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId       *string `json:"SubOrderId" name:"SubOrderId"`
 			SecurityGroups   struct {
 			} `json:"SecurityGroups"`
-			SupportIPV6 *bool `json:"SupportIPV6"`
-		} `json:"DBInstance"`
+			SupportIPV6 *bool `json:"SupportIPV6" name:"SupportIPV6"`
+		} `json:"DBInstance" name:"DBInstance"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2622,101 +2723,441 @@ func (r *ModifyDBInstanceAvailabilityZoneResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeDBInstanceRegionsRequest struct {
+type CreateSecurityGroupRequest struct {
 	*ksyunhttp.BaseRequest
+	SecurityGroupName        *string                                 `json:"SecurityGroupName,omitempty" name:"SecurityGroupName"`
+	SecurityGroupRule        []*CreateSecurityGroupSecurityGroupRule `json:"SecurityGroupRule,omitempty" name:"SecurityGroupRule"`
+	DBInstanceIdentifier     *string                                 `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
+	SecurityGroupDescription *string                                 `json:"SecurityGroupDescription,omitempty" name:"SecurityGroupDescription"`
 }
 
-func (r *DescribeDBInstanceRegionsRequest) ToJsonString() string {
+func (r *CreateSecurityGroupRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
 }
 
-func (r *DescribeDBInstanceRegionsRequest) FromJsonString(s string) error {
+func (r *CreateSecurityGroupRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeDBInstanceRegionsRequest has unknown keys!", "")
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateSecurityGroupRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeDBInstanceRegionsResponse struct {
+type CreateSecurityGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
-		Regions []struct {
-			Code              *string `json:"Code"`
-			Name              *string `json:"Name"`
-			RegionEnName      *string `json:"RegionEnName"`
-			AreaCode          *string `json:"AreaCode"`
-			AreaName          *string `json:"AreaName"`
-			AreaEnName        *string `json:"AreaEnName"`
-			AvailabilityZones []struct {
-				Code *string `json:"Code"`
-				Name *string `json:"Name"`
-			} `json:"AvailabilityZones"`
-		} `json:"Regions"`
-	} `json:"Data"`
-}
-
-func (r *DescribeDBInstanceRegionsResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DescribeDBInstanceRegionsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeDBInstancePackagesRequest struct {
-	*ksyunhttp.BaseRequest
-	RegionCode *string `json:"RegionCode,omitempty" name:"RegionCode"`
-}
-
-func (r *DescribeDBInstancePackagesRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DescribeDBInstancePackagesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeDBInstancePackagesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeDBInstancePackagesResponse struct {
-	*ksyunhttp.BaseResponse
-	Data struct {
-		Packages []struct {
-			Region struct {
-				Code *string `json:"Code"`
-				Name *string `json:"Name"`
-			} `json:"Region"`
-			PackageSet []struct {
-				Memory            *int    `json:"Memory"`
-				DataDiskMax       *int    `json:"DataDiskMax"`
-				DataDiskMin       *int    `json:"DataDiskMin"`
-				DateDiskStep      *int    `json:"DateDiskStep"`
-				PackageCode       *string `json:"PackageCode"`
-				DataDiskRecommend *string `json:"DataDiskRecommend"`
-			} `json:"PackageSet"`
-		} `json:"Packages"`
+		SecurityGroups []struct {
+			SecurityGroupId          *string   `json:"SecurityGroupId" name:"SecurityGroupId"`
+			SecurityGroupName        *string   `json:"SecurityGroupName" name:"SecurityGroupName"`
+			SecurityGroupDescription *string   `json:"SecurityGroupDescription" name:"SecurityGroupDescription"`
+			SecurityGroupType        *string   `json:"SecurityGroupType" name:"SecurityGroupType"`
+			Created                  *string   `json:"Created" name:"Created"`
+			Instances                []*string `json:"Instances" name:"Instances"`
+			SecurityGroupRules       []struct {
+				SecurityGroupRuleId       *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleName     *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
+				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
+				SecurityGroupRuleCidr     *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
+				Created                   *string `json:"Created" name:"Created"`
+			} `json:"SecurityGroupRules"`
+		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
-func (r *DescribeDBInstancePackagesResponse) ToJsonString() string {
+func (r *CreateSecurityGroupResponse) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
 }
 
-func (r *DescribeDBInstancePackagesResponse) FromJsonString(s string) error {
+func (r *CreateSecurityGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityGroupRequest struct {
+	*ksyunhttp.BaseRequest
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	Type            *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DescribeSecurityGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeSecurityGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeSecurityGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSecurityGroupResponse struct {
+	*ksyunhttp.BaseResponse
+	Data struct {
+		SecurityGroups []struct {
+			SecurityGroupId          *string   `json:"SecurityGroupId" name:"SecurityGroupId"`
+			SecurityGroupName        *string   `json:"SecurityGroupName" name:"SecurityGroupName"`
+			SecurityGroupDescription *string   `json:"SecurityGroupDescription" name:"SecurityGroupDescription"`
+			Created                  *string   `json:"Created" name:"Created"`
+			Instances                []*string `json:"Instances" name:"Instances"`
+			SecurityGroupRules       []struct {
+				SecurityGroupRuleId       *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleName     *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
+				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
+				Created                   *string `json:"Created" name:"Created"`
+			} `json:"SecurityGroupRules"`
+		} `json:"SecurityGroups" name:"SecurityGroups"`
+	} `json:"Data"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DescribeSecurityGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeSecurityGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSecurityGroupRequest struct {
+	*ksyunhttp.BaseRequest
+	SecurityGroupIdList *string `json:"SecurityGroupIdList,omitempty" name:"SecurityGroupIdList"`
+}
+
+func (r *DeleteSecurityGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteSecurityGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteSecurityGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSecurityGroupResponse struct {
+	*ksyunhttp.BaseResponse
+	Data struct {
+		SecurityGroups []struct {
+			SecurityGroupId          *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+			SecurityGroupName        *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+			SecurityGroupDescription *string `json:"SecurityGroupDescription" name:"SecurityGroupDescription"`
+			SecurityGroupType        *string `json:"SecurityGroupType" name:"SecurityGroupType"`
+			Created                  *string `json:"Created" name:"Created"`
+			Instances                []struct {
+				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+				DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+				Vip                  *string `json:"Vip" name:"Vip"`
+				Created              *string `json:"Created" name:"Created"`
+			} `json:"Instances"`
+			SecurityGroupRules []struct {
+				SecurityGroupRuleId       *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleName     *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
+				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
+				SecurityGroupRuleCidr     *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
+				Created                   *string `json:"Created" name:"Created"`
+			} `json:"SecurityGroupRules"`
+		} `json:"SecurityGroups" name:"SecurityGroups"`
+	} `json:"Data"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteSecurityGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteSecurityGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySecurityGroupRequest struct {
+	*ksyunhttp.BaseRequest
+	SecurityGroupId          *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	SecurityGroupName        *string `json:"SecurityGroupName,omitempty" name:"SecurityGroupName"`
+	SecurityGroupDescription *string `json:"SecurityGroupDescription,omitempty" name:"SecurityGroupDescription"`
+}
+
+func (r *ModifySecurityGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifySecurityGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifySecurityGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySecurityGroupResponse struct {
+	*ksyunhttp.BaseResponse
+	Data struct {
+		SecurityGroups []struct {
+			SecurityGroupId          *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+			SecurityGroupName        *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+			SecurityGroupDescription *string `json:"SecurityGroupDescription" name:"SecurityGroupDescription"`
+			SecurityGroupType        *string `json:"SecurityGroupType" name:"SecurityGroupType"`
+			Created                  *string `json:"Created" name:"Created"`
+			Instances                []struct {
+				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+				DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+				Vip                  *string `json:"Vip" name:"Vip"`
+				Created              *string `json:"Created" name:"Created"`
+			} `json:"Instances"`
+			SecurityGroupRules []struct {
+				SecurityGroupRuleId       *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleName     *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
+				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
+				SecurityGroupRuleCidr     *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
+				Created                   *string `json:"Created" name:"Created"`
+			} `json:"SecurityGroupRules"`
+		} `json:"SecurityGroups" name:"SecurityGroups"`
+	} `json:"Data"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifySecurityGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifySecurityGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CloneSecurityGroupRequest struct {
+	*ksyunhttp.BaseRequest
+	SecurityGroupId          *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	SecurityGroupName        *string `json:"SecurityGroupName,omitempty" name:"SecurityGroupName"`
+	SecurityGroupDescription *string `json:"SecurityGroupDescription,omitempty" name:"SecurityGroupDescription"`
+}
+
+func (r *CloneSecurityGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CloneSecurityGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CloneSecurityGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CloneSecurityGroupResponse struct {
+	*ksyunhttp.BaseResponse
+	Data struct {
+		SecurityGroups []struct {
+			SecurityGroupId          *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+			SecurityGroupName        *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+			SecurityGroupDescription *string `json:"SecurityGroupDescription" name:"SecurityGroupDescription"`
+			SecurityGroupType        *string `json:"SecurityGroupType" name:"SecurityGroupType"`
+			Created                  *string `json:"Created" name:"Created"`
+			Instances                []struct {
+				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+				DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+				Vip                  *string `json:"Vip" name:"Vip"`
+				Created              *string `json:"Created" name:"Created"`
+			} `json:"Instances"`
+			SecurityGroupRules []struct {
+				SecurityGroupRuleId       *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleName     *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
+				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
+				SecurityGroupRuleCidr     *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
+				Created                   *string `json:"Created" name:"Created"`
+			} `json:"SecurityGroupRules"`
+		} `json:"SecurityGroups" name:"SecurityGroups"`
+	} `json:"Data"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CloneSecurityGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CloneSecurityGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySecurityGroupRuleRequest struct {
+	*ksyunhttp.BaseRequest
+	SecurityGroupRuleAction                 *string `json:"SecurityGroupRuleAction,omitempty" name:"SecurityGroupRuleAction"`
+	SecurityGroupId                         *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	SecurityGroupRuleSecurityGroupRuleIdN   *string `json:"SecurityGroupRule.SecurityGroupRuleId.N,omitempty" name:"SecurityGroupRule.SecurityGroupRuleId.N"`
+	SecurityGroupRuleSecurityGroupRuleNameN *string `json:"SecurityGroupRule.SecurityGroupRuleName.N,omitempty" name:"SecurityGroupRule.SecurityGroupRuleName.N"`
+	SecurityGroupRuleSecurityGroupRuleCidrN *string `json:"SecurityGroupRule.SecurityGroupRuleCidr.N,omitempty" name:"SecurityGroupRule.SecurityGroupRuleCidr.N"`
+}
+
+func (r *ModifySecurityGroupRuleRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifySecurityGroupRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifySecurityGroupRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySecurityGroupRuleResponse struct {
+	*ksyunhttp.BaseResponse
+	Data struct {
+		SecurityGroups []struct {
+			SecurityGroupId          *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+			SecurityGroupName        *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+			SecurityGroupDescription *string `json:"SecurityGroupDescription" name:"SecurityGroupDescription"`
+			SecurityGroupType        *string `json:"SecurityGroupType" name:"SecurityGroupType"`
+			Created                  *string `json:"Created" name:"Created"`
+			Instances                []struct {
+				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+				DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+				Vip                  *string `json:"Vip" name:"Vip"`
+				Created              *string `json:"Created" name:"Created"`
+				DBInstanceType       *string `json:"DBInstanceType" name:"DBInstanceType"`
+			} `json:"Instances"`
+			SecurityGroupRules []struct {
+				SecurityGroupRuleId       *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleName     *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
+				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
+				SecurityGroupRuleCidr     *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
+				Created                   *string `json:"Created" name:"Created"`
+			} `json:"SecurityGroupRules"`
+		} `json:"SecurityGroups" name:"SecurityGroups"`
+	} `json:"Data"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifySecurityGroupRuleResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifySecurityGroupRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SecurityGroupRelationRequest struct {
+	*ksyunhttp.BaseRequest
+	SecurityGroupId      *string   `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	RelationAction       *string   `json:"RelationAction,omitempty" name:"RelationAction"`
+	DBInstanceIdentifier []*string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
+}
+
+func (r *SecurityGroupRelationRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SecurityGroupRelationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SecurityGroupRelationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SecurityGroupRelationResponse struct {
+	*ksyunhttp.BaseResponse
+	Data struct {
+		SecurityGroups []struct {
+			SecurityGroupId          *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+			SecurityGroupName        *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+			SecurityGroupDescription *string `json:"SecurityGroupDescription" name:"SecurityGroupDescription"`
+			SecurityGroupType        *string `json:"SecurityGroupType" name:"SecurityGroupType"`
+			Created                  *string `json:"Created" name:"Created"`
+			Instances                []struct {
+				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+				DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+				Vip                  *string `json:"Vip" name:"Vip"`
+				Created              *string `json:"Created" name:"Created"`
+			} `json:"Instances"`
+			SecurityGroupRules []struct {
+				SecurityGroupRuleId       *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleName     *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
+				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
+				SecurityGroupRuleCidr     *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
+				Created                   *string `json:"Created" name:"Created"`
+			} `json:"SecurityGroupRules"`
+		} `json:"SecurityGroups" name:"SecurityGroups"`
+	} `json:"Data"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *SecurityGroupRelationResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SecurityGroupRelationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySecurityGroupRuleNameRequest struct {
+	*ksyunhttp.BaseRequest
+	SecurityGroupRuleId   *string `json:"SecurityGroupRuleId,omitempty" name:"SecurityGroupRuleId"`
+	SecurityGroupRuleName *string `json:"SecurityGroupRuleName,omitempty" name:"SecurityGroupRuleName"`
+}
+
+func (r *ModifySecurityGroupRuleNameRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifySecurityGroupRuleNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifySecurityGroupRuleNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifySecurityGroupRuleNameResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifySecurityGroupRuleNameResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifySecurityGroupRuleNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2746,11 +3187,11 @@ type DescribeLastLogResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		LogFiles []struct {
-			LogFileName *string `json:"LogFileName"`
-			Size        *string `json:"Size"`
-			DBLogType   *string `json:"DBLogType"`
-			Status      *string `json:"Status"`
-		} `json:"LogFiles"`
+			LogFileName *string `json:"LogFileName" name:"LogFileName"`
+			Size        *string `json:"Size" name:"Size"`
+			DBLogType   *string `json:"DBLogType" name:"DBLogType"`
+			Status      *string `json:"Status" name:"Status"`
+		} `json:"LogFiles" name:"LogFiles"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2871,16 +3312,16 @@ func (r *ListAuditRequest) FromJsonString(s string) error {
 type ListAuditResponse struct {
 	*ksyunhttp.BaseResponse
 	AuditRows []struct {
-		Id                 *string `json:"Id"`
-		InstanceId         *string `json:"InstanceId"`
-		AccessUsername     *string `json:"AccessUsername"`
-		SourceIp           *string `json:"SourceIp"`
-		AccessSqlExt       *string `json:"AccessSqlExt"`
-		AccessSqlStatement *string `json:"AccessSqlStatement"`
-		AccessSqlLanguage  *string `json:"AccessSqlLanguage"`
-		AccessDBName       *string `json:"AccessDBName"`
-		RunResult          *bool   `json:"RunResult"`
-		Duration           *string `json:"Duration"`
+		Id                 *string `json:"Id" name:"Id"`
+		InstanceId         *string `json:"InstanceId" name:"InstanceId"`
+		AccessUsername     *string `json:"AccessUsername" name:"AccessUsername"`
+		SourceIp           *string `json:"SourceIp" name:"SourceIp"`
+		AccessSqlExt       *string `json:"AccessSqlExt" name:"AccessSqlExt"`
+		AccessSqlStatement *string `json:"AccessSqlStatement" name:"AccessSqlStatement"`
+		AccessSqlLanguage  *string `json:"AccessSqlLanguage" name:"AccessSqlLanguage"`
+		AccessDBName       *string `json:"AccessDBName" name:"AccessDBName"`
+		RunResult          *bool   `json:"RunResult" name:"RunResult"`
+		Duration           *string `json:"Duration" name:"Duration"`
 	} `json:"AuditRows"`
 }
 
@@ -2920,9 +3361,9 @@ type AuditStatisticResponse struct {
 	*ksyunhttp.BaseResponse
 	AuditStatistic struct {
 		AccessSqlLanguage struct {
-		} `json:"AccessSqlLanguage"`
+		} `json:"AccessSqlLanguage" name:"AccessSqlLanguage"`
 		AccessSqlStatement struct {
-		} `json:"AccessSqlStatement"`
+		} `json:"AccessSqlStatement" name:"AccessSqlStatement"`
 	} `json:"AuditStatistic"`
 }
 
@@ -2932,6 +3373,46 @@ func (r *AuditStatisticResponse) ToJsonString() string {
 }
 
 func (r *AuditStatisticResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetCurrentDatabaseInfoRequest struct {
+	*ksyunhttp.BaseRequest
+	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
+}
+
+func (r *GetCurrentDatabaseInfoRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetCurrentDatabaseInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetCurrentDatabaseInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetCurrentDatabaseInfoResponse struct {
+	*ksyunhttp.BaseResponse
+	Databases []struct {
+		DatabaseName *string `json:"DatabaseName" name:"DatabaseName"`
+		TableNames   []struct {
+		} `json:"TableNames" name:"TableNames"`
+	} `json:"Databases"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *GetCurrentDatabaseInfoResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetCurrentDatabaseInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2959,8 +3440,8 @@ func (r *GetTableRestorableTimeRequest) FromJsonString(s string) error {
 type GetTableRestorableTimeResponse struct {
 	*ksyunhttp.BaseResponse
 	RestorableTime struct {
-		Begin *string `json:"Begin"`
-		End   *string `json:"End"`
+		Begin *string `json:"Begin" name:"Begin"`
+		End   *string `json:"End" name:"End"`
 	} `json:"RestorableTime"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -3000,9 +3481,9 @@ func (r *GetHistoryDatabaseInfoRequest) FromJsonString(s string) error {
 type GetHistoryDatabaseInfoResponse struct {
 	*ksyunhttp.BaseResponse
 	Databases []struct {
-		DatabaseName *string `json:"DatabaseName"`
+		DatabaseName *string `json:"DatabaseName" name:"DatabaseName"`
 		TableNames   []struct {
-		} `json:"TableNames"`
+		} `json:"TableNames" name:"TableNames"`
 	} `json:"Databases"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -3159,8 +3640,8 @@ func (r *DescribeAuditHotCountRequest) FromJsonString(s string) error {
 type DescribeAuditHotCountResponse struct {
 	*ksyunhttp.BaseResponse
 	Data []struct {
-		DbName    *string `json:"DbName"`
-		TableName *string `json:"TableName"`
+		DbName    *string `json:"DbName" name:"DbName"`
+		TableName *string `json:"TableName" name:"TableName"`
 	} `json:"Data"`
 }
 
@@ -3200,8 +3681,8 @@ func (r *DescribeAuditHotDurationRequest) FromJsonString(s string) error {
 type DescribeAuditHotDurationResponse struct {
 	*ksyunhttp.BaseResponse
 	Data []struct {
-		DbName    *string `json:"DbName"`
-		TableName *string `json:"TableName"`
+		DbName    *string `json:"DbName" name:"DbName"`
+		TableName *string `json:"TableName" name:"TableName"`
 	} `json:"Data"`
 }
 
@@ -3246,8 +3727,8 @@ func (r *SqlAuditReportRequest) FromJsonString(s string) error {
 type SqlAuditReportResponse struct {
 	*ksyunhttp.BaseResponse
 	Data []struct {
-		DbName      *string `json:"DbName"`
-		SqlTemplate *string `json:"SqlTemplate"`
+		DbName      *string `json:"DbName" name:"DbName"`
+		SqlTemplate *string `json:"SqlTemplate" name:"SqlTemplate"`
 	} `json:"Data"`
 }
 
@@ -3287,7 +3768,7 @@ func (r *SqlAuditLineChartRequest) FromJsonString(s string) error {
 type SqlAuditLineChartResponse struct {
 	*ksyunhttp.BaseResponse
 	Data []struct {
-		ProductId *string `json:"ProductId"`
+		ProductId *string `json:"ProductId" name:"ProductId"`
 	} `json:"Data"`
 }
 
@@ -3331,23 +3812,23 @@ func (r *SlowLogReportRequest) FromJsonString(s string) error {
 type SlowLogReportResponse struct {
 	*ksyunhttp.BaseResponse
 	Data []struct {
-		ProcessingTime  *int    `json:"ProcessingTime"`
-		Id              *int    `json:"Id"`
-		Checksum        *string `json:"Checksum"`
-		Fingerprint     *string `json:"Fingerprint"`
-		QueryCount      *int    `json:"QueryCount"`
-		QueryTimeAvg    *int    `json:"QueryTimeAvg"`
-		QueryTimeMax    *int    `json:"QueryTimeMax"`
-		QueryTimeSum    *int    `json:"QueryTimeSum"`
-		LockTimeAvg     *int    `json:"LockTimeAvg"`
-		LockTimeMax     *int    `json:"LockTimeMax"`
-		LockTimeSum     *int    `json:"LockTimeSum"`
-		RowsExaminedAvg *int    `json:"RowsExaminedAvg"`
-		RowsExaminedMax *int    `json:"RowsExaminedMax"`
-		RowsExaminedSum *int    `json:"RowsExaminedSum"`
-		RowsSentAvg     *int    `json:"RowsSentAvg"`
-		RowsSentMax     *int    `json:"RowsSentMax"`
-		RowsSentSum     *int    `json:"RowsSentSum"`
+		ProcessingTime  *int    `json:"ProcessingTime" name:"ProcessingTime"`
+		Id              *int    `json:"Id" name:"Id"`
+		Checksum        *string `json:"Checksum" name:"Checksum"`
+		Fingerprint     *string `json:"Fingerprint" name:"Fingerprint"`
+		QueryCount      *int    `json:"QueryCount" name:"QueryCount"`
+		QueryTimeAvg    *int    `json:"QueryTimeAvg" name:"QueryTimeAvg"`
+		QueryTimeMax    *int    `json:"QueryTimeMax" name:"QueryTimeMax"`
+		QueryTimeSum    *int    `json:"QueryTimeSum" name:"QueryTimeSum"`
+		LockTimeAvg     *int    `json:"LockTimeAvg" name:"LockTimeAvg"`
+		LockTimeMax     *int    `json:"LockTimeMax" name:"LockTimeMax"`
+		LockTimeSum     *int    `json:"LockTimeSum" name:"LockTimeSum"`
+		RowsExaminedAvg *int    `json:"RowsExaminedAvg" name:"RowsExaminedAvg"`
+		RowsExaminedMax *int    `json:"RowsExaminedMax" name:"RowsExaminedMax"`
+		RowsExaminedSum *int    `json:"RowsExaminedSum" name:"RowsExaminedSum"`
+		RowsSentAvg     *int    `json:"RowsSentAvg" name:"RowsSentAvg"`
+		RowsSentMax     *int    `json:"RowsSentMax" name:"RowsSentMax"`
+		RowsSentSum     *int    `json:"RowsSentSum" name:"RowsSentSum"`
 	} `json:"Data"`
 	TotalCount *int `json:"TotalCount" name:"TotalCount"`
 	Marker     *int `json:"Marker" name:"Marker"`
@@ -3388,9 +3869,9 @@ func (r *SlowLogLineChartRequest) FromJsonString(s string) error {
 type SlowLogLineChartResponse struct {
 	*ksyunhttp.BaseResponse
 	Data []struct {
-		ReportTime  *int    `json:"ReportTime"`
-		ReportCount *int    `json:"ReportCount"`
-		Percentage  *string `json:"Percentage"`
+		ReportTime  *int    `json:"ReportTime" name:"ReportTime"`
+		ReportCount *int    `json:"ReportCount" name:"ReportCount"`
+		Percentage  *string `json:"Percentage" name:"Percentage"`
 	} `json:"Data"`
 	TotalCount *int `json:"TotalCount" name:"TotalCount"`
 	QuerySum   *int `json:"QuerySum" name:"QuerySum"`
@@ -3436,22 +3917,22 @@ func (r *SlowLogDetailRequest) FromJsonString(s string) error {
 type SlowLogDetailResponse struct {
 	*ksyunhttp.BaseResponse
 	Data []struct {
-		Id               *string `json:"Id"`
-		SqlExecTimeStamp *string `json:"SqlExecTimeStamp"`
-		AggTime          *string `json:"AggTime"`
-		AuthUser         *string `json:"AuthUser"`
-		CurrentUser      *string `json:"CurrentUser"`
-		Hostname         *string `json:"Hostname"`
-		QueryTime        *string `json:"QueryTime"`
-		LockTime         *string `json:"LockTime"`
-		RowsSent         *string `json:"RowsSent"`
-		RowsExamined     *string `json:"RowsExamined"`
-		SqlContent       *string `json:"SqlContent"`
-		ThreadId         *string `json:"ThreadId"`
-		ProductId        *string `json:"ProductId"`
-		TenantId         *string `json:"TenantId"`
-		Checksum         *string `json:"Checksum"`
-		Fingerprint      *string `json:"Fingerprint"`
+		Id               *string `json:"Id" name:"Id"`
+		SqlExecTimeStamp *string `json:"SqlExecTimeStamp" name:"SqlExecTimeStamp"`
+		AggTime          *string `json:"AggTime" name:"AggTime"`
+		AuthUser         *string `json:"AuthUser" name:"AuthUser"`
+		CurrentUser      *string `json:"CurrentUser" name:"CurrentUser"`
+		Hostname         *string `json:"Hostname" name:"Hostname"`
+		QueryTime        *string `json:"QueryTime" name:"QueryTime"`
+		LockTime         *string `json:"LockTime" name:"LockTime"`
+		RowsSent         *string `json:"RowsSent" name:"RowsSent"`
+		RowsExamined     *string `json:"RowsExamined" name:"RowsExamined"`
+		SqlContent       *string `json:"SqlContent" name:"SqlContent"`
+		ThreadId         *string `json:"ThreadId" name:"ThreadId"`
+		ProductId        *string `json:"ProductId" name:"ProductId"`
+		TenantId         *string `json:"TenantId" name:"TenantId"`
+		Checksum         *string `json:"Checksum" name:"Checksum"`
+		Fingerprint      *string `json:"Fingerprint" name:"Fingerprint"`
 	} `json:"Data"`
 	TotalCount *int `json:"TotalCount" name:"TotalCount"`
 	Marker     *int `json:"Marker" name:"Marker"`
@@ -3530,10 +4011,10 @@ func (r *ListAuditDetailExportTaskRequest) FromJsonString(s string) error {
 type ListAuditDetailExportTaskResponse struct {
 	*ksyunhttp.BaseResponse
 	TaskResps []struct {
-		StartTime   *string `json:"StartTime"`
-		EndTime     *string `json:"EndTime"`
+		StartTime   *string `json:"StartTime" name:"StartTime"`
+		EndTime     *string `json:"EndTime" name:"EndTime"`
 		S3FileNames []struct {
-		} `json:"S3FileNames"`
+		} `json:"S3FileNames" name:"S3FileNames"`
 	} `json:"TaskResps"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -3544,6 +4025,44 @@ func (r *ListAuditDetailExportTaskResponse) ToJsonString() string {
 }
 
 func (r *ListAuditDetailExportTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInstanceAccountRequest struct {
+	*ksyunhttp.BaseRequest
+	DBInstanceIdentifier       *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
+	InstanceAccountName        *string `json:"InstanceAccountName,omitempty" name:"InstanceAccountName"`
+	InstanceAccountPassword    *string `json:"InstanceAccountPassword,omitempty" name:"InstanceAccountPassword"`
+	InstanceAccountDescription *string `json:"InstanceAccountDescription,omitempty" name:"InstanceAccountDescription"`
+}
+
+func (r *CreateInstanceAccountRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateInstanceAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateInstanceAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateInstanceAccountResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateInstanceAccountResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateInstanceAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3573,15 +4092,15 @@ type DescribeInstanceAccountsResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		Accounts []struct {
-			InstanceAccountName        *string `json:"InstanceAccountName"`
-			InstanceAccountDescription *string `json:"InstanceAccountDescription"`
-			Created                    *string `json:"Created"`
-			InstanceAccountType        *string `json:"InstanceAccountType"`
+			InstanceAccountName        *string `json:"InstanceAccountName" name:"InstanceAccountName"`
+			InstanceAccountDescription *string `json:"InstanceAccountDescription" name:"InstanceAccountDescription"`
+			Created                    *string `json:"Created" name:"Created"`
+			InstanceAccountType        *string `json:"InstanceAccountType" name:"InstanceAccountType"`
 			InstanceAccountPrivileges  []struct {
-				InstanceDatabaseName *string `json:"InstanceDatabaseName"`
-				Privilege            *string `json:"Privilege"`
+				InstanceDatabaseName *string `json:"InstanceDatabaseName" name:"InstanceDatabaseName"`
+				Privilege            *string `json:"Privilege" name:"Privilege"`
 			} `json:"InstanceAccountPrivileges"`
-		} `json:"Accounts"`
+		} `json:"Accounts" name:"Accounts"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -3633,6 +4152,79 @@ func (r *ModifyInstanceAccountInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyInstanceAccountPrivilegesRequest struct {
+	*ksyunhttp.BaseRequest
+	DBInstanceIdentifier      *string                                                     `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
+	InstanceAccountName       *string                                                     `json:"InstanceAccountName,omitempty" name:"InstanceAccountName"`
+	InstanceAccountPrivileges []*ModifyInstanceAccountPrivilegesInstanceAccountPrivileges `json:"InstanceAccountPrivileges,omitempty" name:"InstanceAccountPrivileges"`
+}
+
+func (r *ModifyInstanceAccountPrivilegesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyInstanceAccountPrivilegesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyInstanceAccountPrivilegesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInstanceAccountPrivilegesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyInstanceAccountPrivilegesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyInstanceAccountPrivilegesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteInstanceAccountRequest struct {
+	*ksyunhttp.BaseRequest
+	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
+	InstanceAccountName  *string `json:"InstanceAccountName,omitempty" name:"InstanceAccountName"`
+}
+
+func (r *DeleteInstanceAccountRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteInstanceAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteInstanceAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteInstanceAccountResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteInstanceAccountResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteInstanceAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCollationsRequest struct {
 	*ksyunhttp.BaseRequest
 	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
@@ -3658,89 +4250,48 @@ type DescribeCollationsResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		Collations struct {
-			Utf8 []struct {
-			} `json:"Utf8"`
-			Gbk []struct {
-			} `json:"Gbk"`
-			Latin1 []struct {
-			} `json:"Latin1"`
-			Utf8mb4 []struct {
-			} `json:"Utf8mb4"`
-			Gb18030 []struct {
-			} `json:"Gb18030"`
-			Koi8u []struct {
-			} `json:"Koi8u"`
-			Koi8r []struct {
-			} `json:"Koi8r"`
-			Cp850 []struct {
-			} `json:"Cp850"`
-			Macce []struct {
-			} `json:"Macce"`
-			Ujis []struct {
-			} `json:"Ujis"`
-			Hebrew []struct {
-			} `json:"Hebrew"`
-			Cp932 []struct {
-			} `json:"Cp932"`
-			Ascii []struct {
-			} `json:"Ascii"`
-			Binary []struct {
-			} `json:"Binary"`
-			Sjis []struct {
-			} `json:"Sjis"`
-			Armscii8 []struct {
-			} `json:"Armscii8"`
-			Cp852 []struct {
-			} `json:"Cp852"`
-			Keybcs2 []struct {
-			} `json:"Keybcs2"`
-			Cp866 []struct {
-			} `json:"Cp866"`
-			Geostd8 []struct {
-			} `json:"Geostd8"`
-			Cp1257 []struct {
-			} `json:"Cp1257"`
-			Ucs2 []struct {
-			} `json:"Ucs2"`
-			Dec8 []struct {
-			} `json:"Dec8"`
-			Cp1250 []struct {
-			} `json:"Cp1250"`
-			Tis620 []struct {
-			} `json:"Tis620"`
-			Utf32 []struct {
-			} `json:"Utf32"`
-			Latin5 []struct {
-			} `json:"Latin5"`
-			Hp8 []struct {
-			} `json:"Hp8"`
-			Utf16le []struct {
-			} `json:"Utf16le"`
-			Latin2 []struct {
-			} `json:"Latin2"`
-			Macroman []struct {
-			} `json:"Macroman"`
-			Eucjpms []struct {
-			} `json:"Eucjpms"`
-			Gb2312 []struct {
-			} `json:"Gb2312"`
-			Cp1256 []struct {
-			} `json:"Cp1256"`
-			Big5 []struct {
-			} `json:"Big5"`
-			Greek []struct {
-			} `json:"Greek"`
-			Euckr []struct {
-			} `json:"Euckr"`
-			Cp1251 []struct {
-			} `json:"Cp1251"`
-			Utf16 []struct {
-			} `json:"Utf16"`
-			Swe7 []struct {
-			} `json:"Swe7"`
-			Latin7 []struct {
-			} `json:"Latin7"`
-		} `json:"Collations"`
+			Utf8     []*string `json:"Utf8" name:"Utf8"`
+			Gbk      []*string `json:"Gbk" name:"Gbk"`
+			Latin1   []*string `json:"Latin1" name:"Latin1"`
+			Utf8mb4  []*string `json:"Utf8mb4" name:"Utf8mb4"`
+			Gb18030  []*string `json:"Gb18030" name:"Gb18030"`
+			Koi8u    []*string `json:"Koi8u" name:"Koi8u"`
+			Koi8r    []*string `json:"Koi8r" name:"Koi8r"`
+			Cp850    []*string `json:"Cp850" name:"Cp850"`
+			Macce    []*string `json:"Macce" name:"Macce"`
+			Ujis     []*string `json:"Ujis" name:"Ujis"`
+			Hebrew   []*string `json:"Hebrew" name:"Hebrew"`
+			Cp932    []*string `json:"Cp932" name:"Cp932"`
+			Ascii    []*string `json:"Ascii" name:"Ascii"`
+			Binary   []*string `json:"Binary" name:"Binary"`
+			Sjis     []*string `json:"Sjis" name:"Sjis"`
+			Armscii8 []*string `json:"Armscii8" name:"Armscii8"`
+			Cp852    []*string `json:"Cp852" name:"Cp852"`
+			Keybcs2  []*string `json:"Keybcs2" name:"Keybcs2"`
+			Cp866    []*string `json:"Cp866" name:"Cp866"`
+			Geostd8  []*string `json:"Geostd8" name:"Geostd8"`
+			Cp1257   []*string `json:"Cp1257" name:"Cp1257"`
+			Ucs2     []*string `json:"Ucs2" name:"Ucs2"`
+			Dec8     []*string `json:"Dec8" name:"Dec8"`
+			Cp1250   []*string `json:"Cp1250" name:"Cp1250"`
+			Tis620   []*string `json:"Tis620" name:"Tis620"`
+			Utf32    []*string `json:"Utf32" name:"Utf32"`
+			Latin5   []*string `json:"Latin5" name:"Latin5"`
+			Hp8      []*string `json:"Hp8" name:"Hp8"`
+			Utf16le  []*string `json:"Utf16le" name:"Utf16le"`
+			Latin2   []*string `json:"Latin2" name:"Latin2"`
+			Macroman []*string `json:"Macroman" name:"Macroman"`
+			Eucjpms  []*string `json:"Eucjpms" name:"Eucjpms"`
+			Gb2312   []*string `json:"Gb2312" name:"Gb2312"`
+			Cp1256   []*string `json:"Cp1256" name:"Cp1256"`
+			Big5     []*string `json:"Big5" name:"Big5"`
+			Greek    []*string `json:"Greek" name:"Greek"`
+			Euckr    []*string `json:"Euckr" name:"Euckr"`
+			Cp1251   []*string `json:"Cp1251" name:"Cp1251"`
+			Utf16    []*string `json:"Utf16" name:"Utf16"`
+			Swe7     []*string `json:"Swe7" name:"Swe7"`
+			Latin7   []*string `json:"Latin7" name:"Latin7"`
+		} `json:"Collations" name:"Collations"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -3856,14 +4407,14 @@ type DescribeInstanceDatabasesResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
 		InstanceDatabases []struct {
-			InstanceDatabaseName         *string `json:"InstanceDatabaseName"`
-			InstanceDatabaseCollation    *string `json:"InstanceDatabaseCollation"`
-			InstanceDatabaseCollationSet *string `json:"InstanceDatabaseCollationSet"`
-			InstanceDatabaseDescription  *string `json:"InstanceDatabaseDescription"`
-			InstanceDatabaseStatus       *string `json:"InstanceDatabaseStatus"`
+			InstanceDatabaseName         *string `json:"InstanceDatabaseName" name:"InstanceDatabaseName"`
+			InstanceDatabaseCollation    *string `json:"InstanceDatabaseCollation" name:"InstanceDatabaseCollation"`
+			InstanceDatabaseCollationSet *string `json:"InstanceDatabaseCollationSet" name:"InstanceDatabaseCollationSet"`
+			InstanceDatabaseDescription  *string `json:"InstanceDatabaseDescription" name:"InstanceDatabaseDescription"`
+			InstanceDatabaseStatus       *string `json:"InstanceDatabaseStatus" name:"InstanceDatabaseStatus"`
 			InstanceDatabasePrivileges   struct {
 			} `json:"InstanceDatabasePrivileges"`
-		} `json:"InstanceDatabases"`
+		} `json:"InstanceDatabases" name:"InstanceDatabases"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -3978,15 +4529,15 @@ func (r *ListSlowLogDetailExportTaskRequest) FromJsonString(s string) error {
 type ListSlowLogDetailExportTaskResponse struct {
 	*ksyunhttp.BaseResponse
 	TaskResps []struct {
-		StartTime    *string `json:"StartTime"`
-		EndTime      *string `json:"EndTime"`
-		Status       *int    `json:"Status"`
-		CreateTime   *int    `json:"CreateTime"`
-		RecordNumber *int    `json:"RecordNumber"`
+		StartTime    *string `json:"StartTime" name:"StartTime"`
+		EndTime      *string `json:"EndTime" name:"EndTime"`
+		Status       *int    `json:"Status" name:"Status"`
+		CreateTime   *int    `json:"CreateTime" name:"CreateTime"`
+		RecordNumber *int    `json:"RecordNumber" name:"RecordNumber"`
 		S3FileNames  []struct {
-		} `json:"S3FileNames"`
+		} `json:"S3FileNames" name:"S3FileNames"`
 	} `json:"TaskResps"`
-	totalCount *int    `json:"totalCount" name:"totalCount"`
+	TotalCount *int    `json:"totalCount" name:"totalCount"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -4026,14 +4577,7 @@ func (r *CreateInstanceAccountActionRequest) FromJsonString(s string) error {
 
 type CreateInstanceAccountActionResponse struct {
 	*ksyunhttp.BaseResponse
-	DBInstanceIdentifier       *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-	InstanceAccountName        *string `json:"InstanceAccountName" name:"InstanceAccountName"`
-	InstanceAccountPassword    *string `json:"InstanceAccountPassword" name:"InstanceAccountPassword"`
-	InstanceAccountDescription *string `json:"InstanceAccountDescription" name:"InstanceAccountDescription"`
-	InstanceAccountPrivileges  []struct {
-		InstanceDatabaseName *string `json:"InstanceDatabaseName"`
-		Privilege            *string `json:"Privilege"`
-	} `json:"InstanceAccountPrivileges"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
 func (r *CreateInstanceAccountActionResponse) ToJsonString() string {
@@ -4195,6 +4739,80 @@ func (r *ModifyDBNetworkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDBInstanceMonitorPeriodRequest struct {
+	*ksyunhttp.BaseRequest
+	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
+}
+
+func (r *DescribeDBInstanceMonitorPeriodRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDBInstanceMonitorPeriodRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeDBInstanceMonitorPeriodRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDBInstanceMonitorPeriodResponse struct {
+	*ksyunhttp.BaseResponse
+	Data struct {
+		Period *int `json:"Period" name:"Period"`
+	} `json:"Data"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DescribeDBInstanceMonitorPeriodResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDBInstanceMonitorPeriodResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDBInstanceMonitorPeriodRequest struct {
+	*ksyunhttp.BaseRequest
+	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
+	Period               *string `json:"Period,omitempty" name:"Period"`
+}
+
+func (r *ModifyDBInstanceMonitorPeriodRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyDBInstanceMonitorPeriodRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyDBInstanceMonitorPeriodRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDBInstanceMonitorPeriodResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyDBInstanceMonitorPeriodResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyDBInstanceMonitorPeriodResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeEngineParametersModifyHistoryRequest struct {
 	*ksyunhttp.BaseRequest
 	DBParameterGroupId *string `json:"DBParameterGroupId,omitempty" name:"DBParameterGroupId"`
@@ -4221,13 +4839,13 @@ func (r *DescribeEngineParametersModifyHistoryRequest) FromJsonString(s string) 
 
 type DescribeEngineParametersModifyHistoryResponse struct {
 	*ksyunhttp.BaseResponse
-	request_id *string `json:"request_id" name:"request_id"`
-	History    []struct {
-		Id                *string `json:"Id"`
-		Configuration_key *string `json:"Configuration_key"`
-		Old_value         *string `json:"Old_value"`
-		New_value         *string `json:"New_value"`
-		Created           *string `json:"Created"`
+	RequestId *string `json:"request_id" name:"request_id"`
+	History   []struct {
+		Id               *string `json:"Id" name:"Id"`
+		ConfigurationKey *string `json:"ConfigurationKey" name:"ConfigurationKey"`
+		OldValue         *string `json:"OldValue" name:"OldValue"`
+		NewValue         *string `json:"NewValue" name:"NewValue"`
+		Created          *string `json:"Created" name:"Created"`
 	} `json:"History"`
 }
 
@@ -4237,5 +4855,444 @@ func (r *DescribeEngineParametersModifyHistoryResponse) ToJsonString() string {
 }
 
 func (r *DescribeEngineParametersModifyHistoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchApplyDBParameterGroupRequest struct {
+	*ksyunhttp.BaseRequest
+	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
+	DBParameterGroupId   *string `json:"DBParameterGroupId,omitempty" name:"DBParameterGroupId"`
+}
+
+func (r *BatchApplyDBParameterGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *BatchApplyDBParameterGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "BatchApplyDBParameterGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchApplyDBParameterGroupResponse struct {
+	*ksyunhttp.BaseResponse
+	SucceededCount *int      `json:"succeededCount" name:"succeededCount"`
+	FailedCount    *int      `json:"failedCount" name:"failedCount"`
+	Succeeded      []*string `json:"Succeeded" name:"Succeeded"`
+	Failed         []struct {
+		Result *string `json:"Result" name:"Result"`
+		Id     *string `json:"Id" name:"Id"`
+		Name   *string `json:"Name" name:"Name"`
+	} `json:"Failed"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *BatchApplyDBParameterGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *BatchApplyDBParameterGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeDBInstanceLatesVersionRequest struct {
+	*ksyunhttp.BaseRequest
+	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
+}
+
+func (r *UpgradeDBInstanceLatesVersionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpgradeDBInstanceLatesVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceLatesVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeDBInstanceLatesVersionResponse struct {
+	*ksyunhttp.BaseResponse
+	Data struct {
+		Instances []struct {
+			DBInstanceClass struct {
+				Id      *string `json:"Id" name:"Id"`
+				Iops    *int    `json:"Iops" name:"Iops"`
+				Vcpus   *int    `json:"Vcpus" name:"Vcpus"`
+				Disk    *int    `json:"Disk" name:"Disk"`
+				Ram     *int    `json:"Ram" name:"Ram"`
+				Mem     *int    `json:"Mem" name:"Mem"`
+				MaxConn *int    `json:"MaxConn" name:"MaxConn"`
+			} `json:"DBInstanceClass"`
+			MiniVersion          *string `json:"MiniVersion" name:"MiniVersion"`
+			DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus     *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType       *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId   *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime  *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId              *string `json:"GroupId" name:"GroupId"`
+			SecurityGroupId      *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+			Vip                  *string `json:"Vip" name:"Vip"`
+			Port                 *int    `json:"Port" name:"Port"`
+			Engine               *string `json:"Engine" name:"Engine"`
+		} `json:"Instances" name:"Instances"`
+	} `json:"Data"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *UpgradeDBInstanceLatesVersionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpgradeDBInstanceLatesVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProxyInstanceRequest struct {
+	*ksyunhttp.BaseRequest
+	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
+}
+
+func (r *DescribeProxyInstanceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeProxyInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeProxyInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeProxyInstanceResponse struct {
+	*ksyunhttp.BaseResponse
+	Data struct {
+		Instances []struct {
+			DBInstanceClass struct {
+				Id      *string `json:"Id" name:"Id"`
+				Iops    *int    `json:"Iops" name:"Iops"`
+				Vcpus   *int    `json:"Vcpus" name:"Vcpus"`
+				Disk    *int    `json:"Disk" name:"Disk"`
+				Ram     *int    `json:"Ram" name:"Ram"`
+				Mem     *int    `json:"Mem" name:"Mem"`
+				MaxConn *int    `json:"MaxConn" name:"MaxConn"`
+			} `json:"DBInstanceClass"`
+			DBInstanceIdentifier   *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName         *string `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus       *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType         *string `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId     *string `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime    *string `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId                *string `json:"GroupId" name:"GroupId"`
+			SecurityGroupId        *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+			Vip                    *string `json:"Vip" name:"Vip"`
+			Port                   *int    `json:"Port" name:"Port"`
+			Engine                 *string `json:"Engine" name:"Engine"`
+			EngineVersion          *string `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime     *string `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName         *string `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId     *string `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                  *string `json:"VpcId" name:"VpcId"`
+			SubnetId               *string `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible     *bool   `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType               *string `json:"BillType" name:"BillType"`
+			OrderType              *string `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone  *bool   `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone *string `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
+			AvailabilityZoneList   []struct {
+				MemberType *string `json:"MemberType" name:"MemberType"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
+			} `json:"AvailabilityZoneList"`
+			DiskUsed                         *int      `json:"DiskUsed" name:"DiskUsed"`
+			InnerAzCode                      *string   `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool     `json:"Audit" name:"Audit"`
+			ReadReplicaDBInstanceIdentifiers []*string `json:"ReadReplicaDBInstanceIdentifiers" name:"ReadReplicaDBInstanceIdentifiers"`
+			ProductId                        *string   `json:"ProductId" name:"ProductId"`
+			ProductWhat                      *int      `json:"ProductWhat" name:"ProductWhat"`
+			ProjectId                        *int      `json:"ProjectId" name:"ProjectId"`
+			ProjectName                      *string   `json:"ProjectName" name:"ProjectName"`
+			Region                           *string   `json:"Region" name:"Region"`
+			ServiceStartTime                 *string   `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId                       *string   `json:"SubOrderId" name:"SubOrderId"`
+			MiniVersion                      *string   `json:"MiniVersion" name:"MiniVersion"`
+			SecurityGroups                   []struct {
+				SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+				SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+				SecurityGroupType *string `json:"SecurityGroupType" name:"SecurityGroupType"`
+			} `json:"SecurityGroups"`
+			NetworkType   *int      `json:"NetworkType" name:"NetworkType"`
+			SupportIPV6   *bool     `json:"SupportIPV6" name:"SupportIPV6"`
+			BindInstances []*string `json:"BindInstances" name:"BindInstances"`
+			ProxyNodeInfo []*string `json:"ProxyNodeInfo" name:"ProxyNodeInfo"`
+			ProxyInfo     struct {
+			} `json:"ProxyInfo"`
+			AutoSwitch *int `json:"AutoSwitch" name:"AutoSwitch"`
+			BillTypeId *int `json:"BillTypeId" name:"BillTypeId"`
+		} `json:"Instances" name:"Instances"`
+	} `json:"Data"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DescribeProxyInstanceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeProxyInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetUpProxyInstanceRequest struct {
+	*ksyunhttp.BaseRequest
+	DBInstanceIdentifier *string                                   `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
+	ReadOnlyInstanceList []*SetUpProxyInstanceReadOnlyInstanceList `json:"ReadOnlyInstanceList,omitempty" name:"ReadOnlyInstanceList"`
+}
+
+func (r *SetUpProxyInstanceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetUpProxyInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetUpProxyInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetUpProxyInstanceResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *SetUpProxyInstanceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetUpProxyInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TemporaryCloseSwitchoverRequest struct {
+	*ksyunhttp.BaseRequest
+	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
+	AutoSwitch           *bool   `json:"AutoSwitch,omitempty" name:"AutoSwitch"`
+	ExpireTime           *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+}
+
+func (r *TemporaryCloseSwitchoverRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *TemporaryCloseSwitchoverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "TemporaryCloseSwitchoverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TemporaryCloseSwitchoverResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *TemporaryCloseSwitchoverResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *TemporaryCloseSwitchoverResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBackupOverviewRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *DescribeBackupOverviewRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeBackupOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeBackupOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBackupOverviewResponse struct {
+	*ksyunhttp.BaseResponse
+	BackupOverview struct {
+		Total struct {
+			Size        *string `json:"Size" name:"Size"`
+			Num         *string `json:"Num" name:"Num"`
+			FreeSize    *string `json:"FreeSize" name:"FreeSize"`
+			UsedSize    *string `json:"UsedSize" name:"UsedSize"`
+			ChargedSize *string `json:"ChargedSize" name:"ChargedSize"`
+		} `json:"Total" name:"Total"`
+		Backup struct {
+			Size             *string `json:"Size" name:"Size"`
+			Num              *string `json:"Num" name:"Num"`
+			AutoBackupSize   *string `json:"AutoBackupSize" name:"AutoBackupSize"`
+			AutoBackupNum    *string `json:"AutoBackupNum" name:"AutoBackupNum"`
+			ManualBackupSize *string `json:"ManualBackupSize" name:"ManualBackupSize"`
+			ManualBackupNum  *string `json:"ManualBackupNum" name:"ManualBackupNum"`
+		} `json:"Backup" name:"Backup"`
+		Binlog struct {
+			Size *string `json:"Size" name:"Size"`
+			Num  *string `json:"Num" name:"Num"`
+		} `json:"Binlog" name:"Binlog"`
+		Deleted struct {
+			Size *string `json:"Size" name:"Size"`
+			Num  *string `json:"Num" name:"Num"`
+		} `json:"Deleted" name:"Deleted"`
+	} `json:"BackupOverview"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DescribeBackupOverviewResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeBackupOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStatisticBackupDetailsRequest struct {
+	*ksyunhttp.BaseRequest
+	DataType   *string `json:"DataType,omitempty" name:"DataType"`
+	BackupType *string `json:"BackupType,omitempty" name:"BackupType"`
+	Marker     *int    `json:"Marker,omitempty" name:"Marker"`
+	MaxRecords *int    `json:"MaxRecords,omitempty" name:"MaxRecords"`
+}
+
+func (r *DescribeStatisticBackupDetailsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeStatisticBackupDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeStatisticBackupDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStatisticBackupDetailsResponse struct {
+	*ksyunhttp.BaseResponse
+	Data struct {
+		Backups []struct {
+			Name                 *string `json:"Name" name:"Name"`
+			DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			BackupSize           *int    `json:"BackupSize" name:"BackupSize"`
+			Type                 *string `json:"Type" name:"Type"`
+			Status               *string `json:"Status" name:"Status"`
+			DBBackupIdentifier   *string `json:"DBBackupIdentifier" name:"DBBackupIdentifier"`
+			BackupCreateTime     *string `json:"BackupCreateTime" name:"BackupCreateTime"`
+			BackupUpdatedTime    *string `json:"BackupUpdatedTime" name:"BackupUpdatedTime"`
+			RemotePath           *string `json:"RemotePath" name:"RemotePath"`
+			BackupLocationRef    *string `json:"BackupLocationRef" name:"BackupLocationRef"`
+			BackupSizeUnit       *string `json:"BackupSizeUnit" name:"BackupSizeUnit"`
+		} `json:"Backups" name:"Backups"`
+		BinlogTasks []struct {
+			BinlogName           *string `json:"BinlogName" name:"BinlogName"`
+			DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			FirstEventCtime      *string `json:"FirstEventCtime" name:"FirstEventCtime"`
+			LastEventCtime       *string `json:"LastEventCtime" name:"LastEventCtime"`
+			Size                 *int    `json:"Size" name:"Size"`
+			SyncStatus           *string `json:"SyncStatus" name:"SyncStatus"`
+			LogFileName          *string `json:"LogFileName" name:"LogFileName"`
+			SizeUnit             *string `json:"SizeUnit" name:"SizeUnit"`
+		} `json:"BinlogTasks" name:"BinlogTasks"`
+		TotalCount *int `json:"TotalCount" name:"TotalCount"`
+		MaxRecords *int `json:"MaxRecords" name:"MaxRecords"`
+		Marker     *int `json:"Marker" name:"Marker"`
+	} `json:"Data"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DescribeStatisticBackupDetailsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeStatisticBackupDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyMaintenanceTimeRequest struct {
+	*ksyunhttp.BaseRequest
+	DBInstanceIdentifier *string  `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
+	StartTime            *string  `json:"StartTime,omitempty" name:"StartTime"`
+	Duration             *float64 `json:"Duration,omitempty" name:"Duration"`
+}
+
+func (r *ModifyMaintenanceTimeRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyMaintenanceTimeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyMaintenanceTimeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyMaintenanceTimeResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyMaintenanceTimeResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyMaintenanceTimeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

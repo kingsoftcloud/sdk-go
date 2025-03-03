@@ -154,138 +154,6 @@ func (c *Client) DescribeCensWithContext(ctx context.Context, request *DescribeC
 	}
 	return msg
 }
-func NewAttachCenInstanceRequest() (request *AttachCenInstanceRequest) {
-	request = &AttachCenInstanceRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("cen", APIVersion, "AttachCenInstance")
-	return
-}
-
-func NewAttachCenInstanceResponse() (response *AttachCenInstanceResponse) {
-	response = &AttachCenInstanceResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) AttachCenInstance(request *AttachCenInstanceRequest) string {
-	return c.AttachCenInstanceWithContext(context.Background(), request)
-}
-
-func (c *Client) AttachCenInstanceWithContext(ctx context.Context, request *AttachCenInstanceRequest) string {
-	if request == nil {
-		request = NewAttachCenInstanceRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewAttachCenInstanceResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-func NewDetachCenInstanceRequest() (request *DetachCenInstanceRequest) {
-	request = &DetachCenInstanceRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("cen", APIVersion, "DetachCenInstance")
-	return
-}
-
-func NewDetachCenInstanceResponse() (response *DetachCenInstanceResponse) {
-	response = &DetachCenInstanceResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) DetachCenInstance(request *DetachCenInstanceRequest) string {
-	return c.DetachCenInstanceWithContext(context.Background(), request)
-}
-
-func (c *Client) DetachCenInstanceWithContext(ctx context.Context, request *DetachCenInstanceRequest) string {
-	if request == nil {
-		request = NewDetachCenInstanceRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDetachCenInstanceResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-func NewDescribeCenInstancesRequest() (request *DescribeCenInstancesRequest) {
-	request = &DescribeCenInstancesRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("cen", APIVersion, "DescribeCenInstances")
-	return
-}
-
-func NewDescribeCenInstancesResponse() (response *DescribeCenInstancesResponse) {
-	response = &DescribeCenInstancesResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) DescribeCenInstances(request *DescribeCenInstancesRequest) string {
-	return c.DescribeCenInstancesWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeCenInstancesWithContext(ctx context.Context, request *DescribeCenInstancesRequest) string {
-	if request == nil {
-		request = NewDescribeCenInstancesRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeCenInstancesResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-func NewCreatCenGrantRequest() (request *CreatCenGrantRequest) {
-	request = &CreatCenGrantRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("cen", APIVersion, "CreatCenGrant")
-	return
-}
-
-func NewCreatCenGrantResponse() (response *CreatCenGrantResponse) {
-	response = &CreatCenGrantResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) CreatCenGrant(request *CreatCenGrantRequest) string {
-	return c.CreatCenGrantWithContext(context.Background(), request)
-}
-
-func (c *Client) CreatCenGrantWithContext(ctx context.Context, request *CreatCenGrantRequest) string {
-	if request == nil {
-		request = NewCreatCenGrantRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewCreatCenGrantResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
 func NewDeleteCenGrantRequest() (request *DeleteCenGrantRequest) {
 	request = &DeleteCenGrantRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -346,39 +214,6 @@ func (c *Client) DescribeCenGrantsWithContext(ctx context.Context, request *Desc
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeCenGrantsResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-func NewDescribeRegionGroupsRequest() (request *DescribeRegionGroupsRequest) {
-	request = &DescribeRegionGroupsRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("cen", APIVersion, "DescribeRegionGroups")
-	return
-}
-
-func NewDescribeRegionGroupsResponse() (response *DescribeRegionGroupsResponse) {
-	response = &DescribeRegionGroupsResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) DescribeRegionGroups(request *DescribeRegionGroupsRequest) string {
-	return c.DescribeRegionGroupsWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeRegionGroupsWithContext(ctx context.Context, request *DescribeRegionGroupsRequest) string {
-	if request == nil {
-		request = NewDescribeRegionGroupsRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeRegionGroupsResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -574,7 +409,7 @@ func (c *Client) DescribeCenBandWidthPackagesWithContext(ctx context.Context, re
 		request = NewDescribeCenBandWidthPackagesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewDescribeCenBandWidthPackagesResponse()
 	err, msg := c.Send(request, response)
@@ -706,7 +541,7 @@ func (c *Client) DescribeCenRegionBandwidthsWithContext(ctx context.Context, req
 		request = NewDescribeCenRegionBandwidthsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewDescribeCenRegionBandwidthsResponse()
 	err, msg := c.Send(request, response)
@@ -748,39 +583,6 @@ func (c *Client) DescribeCenRoutesWithContext(ctx context.Context, request *Desc
 	}
 	return msg
 }
-func NewDescribeCenRegionsRequest() (request *DescribeCenRegionsRequest) {
-	request = &DescribeCenRegionsRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("cen", APIVersion, "DescribeCenRegions")
-	return
-}
-
-func NewDescribeCenRegionsResponse() (response *DescribeCenRegionsResponse) {
-	response = &DescribeCenRegionsResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) DescribeCenRegions(request *DescribeCenRegionsRequest) string {
-	return c.DescribeCenRegionsWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeCenRegionsWithContext(ctx context.Context, request *DescribeCenRegionsRequest) string {
-	if request == nil {
-		request = NewDescribeCenRegionsRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeCenRegionsResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
 func NewDescribeCenBandWidthPackageUsageRequest() (request *DescribeCenBandWidthPackageUsageRequest) {
 	request = &DescribeCenBandWidthPackageUsageRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -805,9 +607,273 @@ func (c *Client) DescribeCenBandWidthPackageUsageWithContext(ctx context.Context
 		request = NewDescribeCenBandWidthPackageUsageRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewDescribeCenBandWidthPackageUsageResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeNetworkInstancesRequest() (request *DescribeNetworkInstancesRequest) {
+	request = &DescribeNetworkInstancesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cen", APIVersion, "DescribeNetworkInstances")
+	return
+}
+
+func NewDescribeNetworkInstancesResponse() (response *DescribeNetworkInstancesResponse) {
+	response = &DescribeNetworkInstancesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeNetworkInstances(request *DescribeNetworkInstancesRequest) string {
+	return c.DescribeNetworkInstancesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeNetworkInstancesWithContext(ctx context.Context, request *DescribeNetworkInstancesRequest) string {
+	if request == nil {
+		request = NewDescribeNetworkInstancesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeNetworkInstancesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCreateCenGrantRequest() (request *CreateCenGrantRequest) {
+	request = &CreateCenGrantRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cen", APIVersion, "CreateCenGrant")
+	return
+}
+
+func NewCreateCenGrantResponse() (response *CreateCenGrantResponse) {
+	response = &CreateCenGrantResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateCenGrant(request *CreateCenGrantRequest) string {
+	return c.CreateCenGrantWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateCenGrantWithContext(ctx context.Context, request *CreateCenGrantRequest) string {
+	if request == nil {
+		request = NewCreateCenGrantRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateCenGrantResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeInterAreasRequest() (request *DescribeInterAreasRequest) {
+	request = &DescribeInterAreasRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cen", APIVersion, "DescribeInterAreas")
+	return
+}
+
+func NewDescribeInterAreasResponse() (response *DescribeInterAreasResponse) {
+	response = &DescribeInterAreasResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeInterAreas(request *DescribeInterAreasRequest) string {
+	return c.DescribeInterAreasWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeInterAreasWithContext(ctx context.Context, request *DescribeInterAreasRequest) string {
+	if request == nil {
+		request = NewDescribeInterAreasRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeInterAreasResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeInterRegionsRequest() (request *DescribeInterRegionsRequest) {
+	request = &DescribeInterRegionsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cen", APIVersion, "DescribeInterRegions")
+	return
+}
+
+func NewDescribeInterRegionsResponse() (response *DescribeInterRegionsResponse) {
+	response = &DescribeInterRegionsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeInterRegions(request *DescribeInterRegionsRequest) string {
+	return c.DescribeInterRegionsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeInterRegionsWithContext(ctx context.Context, request *DescribeInterRegionsRequest) string {
+	if request == nil {
+		request = NewDescribeInterRegionsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeInterRegionsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewAttachNetworkInstanceRequest() (request *AttachNetworkInstanceRequest) {
+	request = &AttachNetworkInstanceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cen", APIVersion, "AttachNetworkInstance")
+	return
+}
+
+func NewAttachNetworkInstanceResponse() (response *AttachNetworkInstanceResponse) {
+	response = &AttachNetworkInstanceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) AttachNetworkInstance(request *AttachNetworkInstanceRequest) string {
+	return c.AttachNetworkInstanceWithContext(context.Background(), request)
+}
+
+func (c *Client) AttachNetworkInstanceWithContext(ctx context.Context, request *AttachNetworkInstanceRequest) string {
+	if request == nil {
+		request = NewAttachNetworkInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAttachNetworkInstanceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDetachNetworkInstanceRequest() (request *DetachNetworkInstanceRequest) {
+	request = &DetachNetworkInstanceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cen", APIVersion, "DetachNetworkInstance")
+	return
+}
+
+func NewDetachNetworkInstanceResponse() (response *DetachNetworkInstanceResponse) {
+	response = &DetachNetworkInstanceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DetachNetworkInstance(request *DetachNetworkInstanceRequest) string {
+	return c.DetachNetworkInstanceWithContext(context.Background(), request)
+}
+
+func (c *Client) DetachNetworkInstanceWithContext(ctx context.Context, request *DetachNetworkInstanceRequest) string {
+	if request == nil {
+		request = NewDetachNetworkInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDetachNetworkInstanceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCenCidrPublishRequest() (request *CenCidrPublishRequest) {
+	request = &CenCidrPublishRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cen", APIVersion, "CenCidrPublish")
+	return
+}
+
+func NewCenCidrPublishResponse() (response *CenCidrPublishResponse) {
+	response = &CenCidrPublishResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CenCidrPublish(request *CenCidrPublishRequest) string {
+	return c.CenCidrPublishWithContext(context.Background(), request)
+}
+
+func (c *Client) CenCidrPublishWithContext(ctx context.Context, request *CenCidrPublishRequest) string {
+	if request == nil {
+		request = NewCenCidrPublishRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCenCidrPublishResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCenCidrDeleteRequest() (request *CenCidrDeleteRequest) {
+	request = &CenCidrDeleteRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cen", APIVersion, "CenCidrDelete")
+	return
+}
+
+func NewCenCidrDeleteResponse() (response *CenCidrDeleteResponse) {
+	response = &CenCidrDeleteResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CenCidrDelete(request *CenCidrDeleteRequest) string {
+	return c.CenCidrDeleteWithContext(context.Background(), request)
+}
+
+func (c *Client) CenCidrDeleteWithContext(ctx context.Context, request *CenCidrDeleteRequest) string {
+	if request == nil {
+		request = NewCenCidrDeleteRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCenCidrDeleteResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)

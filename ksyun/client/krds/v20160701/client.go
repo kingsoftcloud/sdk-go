@@ -781,6 +781,72 @@ func (c *Client) DescribeDBInstanceParametersWithContext(ctx context.Context, re
 	}
 	return msg
 }
+func NewModifyDBBackupPolicyRequest() (request *ModifyDBBackupPolicyRequest) {
+	request = &ModifyDBBackupPolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "ModifyDBBackupPolicy")
+	return
+}
+
+func NewModifyDBBackupPolicyResponse() (response *ModifyDBBackupPolicyResponse) {
+	response = &ModifyDBBackupPolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyDBBackupPolicy(request *ModifyDBBackupPolicyRequest) string {
+	return c.ModifyDBBackupPolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyDBBackupPolicyWithContext(ctx context.Context, request *ModifyDBBackupPolicyRequest) string {
+	if request == nil {
+		request = NewModifyDBBackupPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyDBBackupPolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeDBBackupPolicyRequest() (request *DescribeDBBackupPolicyRequest) {
+	request = &DescribeDBBackupPolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "DescribeDBBackupPolicy")
+	return
+}
+
+func NewDescribeDBBackupPolicyResponse() (response *DescribeDBBackupPolicyResponse) {
+	response = &DescribeDBBackupPolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeDBBackupPolicy(request *DescribeDBBackupPolicyRequest) string {
+	return c.DescribeDBBackupPolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDBBackupPolicyWithContext(ctx context.Context, request *DescribeDBBackupPolicyRequest) string {
+	if request == nil {
+		request = NewDescribeDBBackupPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeDBBackupPolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
 func NewDeleteDBBackupRequest() (request *DeleteDBBackupRequest) {
 	request = &DeleteDBBackupRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -847,39 +913,6 @@ func (c *Client) CreateDBBackupWithContext(ctx context.Context, request *CreateD
 	}
 	return msg
 }
-func NewRenewDBInstanceRequest() (request *RenewDBInstanceRequest) {
-	request = &RenewDBInstanceRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("krds", APIVersion, "RenewDBInstance")
-	return
-}
-
-func NewRenewDBInstanceResponse() (response *RenewDBInstanceResponse) {
-	response = &RenewDBInstanceResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) RenewDBInstance(request *RenewDBInstanceRequest) string {
-	return c.RenewDBInstanceWithContext(context.Background(), request)
-}
-
-func (c *Client) RenewDBInstanceWithContext(ctx context.Context, request *RenewDBInstanceRequest) string {
-	if request == nil {
-		request = NewRenewDBInstanceRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewRenewDBInstanceResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
 func NewSwitchDBInstanceHARequest() (request *SwitchDBInstanceHARequest) {
 	request = &SwitchDBInstanceHARequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -940,39 +973,6 @@ func (c *Client) GenerateDBAdminURLWithContext(ctx context.Context, request *Gen
 	request.SetContentType("application/json")
 
 	response := NewGenerateDBAdminURLResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-func NewStatisticDBInstancesRequest() (request *StatisticDBInstancesRequest) {
-	request = &StatisticDBInstancesRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("krds", APIVersion, "StatisticDBInstances")
-	return
-}
-
-func NewStatisticDBInstancesResponse() (response *StatisticDBInstancesResponse) {
-	response = &StatisticDBInstancesResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) StatisticDBInstances(request *StatisticDBInstancesRequest) string {
-	return c.StatisticDBInstancesWithContext(context.Background(), request)
-}
-
-func (c *Client) StatisticDBInstancesWithContext(ctx context.Context, request *StatisticDBInstancesRequest) string {
-	if request == nil {
-		request = NewStatisticDBInstancesRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewStatisticDBInstancesResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -1078,66 +1078,264 @@ func (c *Client) ModifyDBInstanceAvailabilityZoneWithContext(ctx context.Context
 	}
 	return msg
 }
-func NewDescribeDBInstanceRegionsRequest() (request *DescribeDBInstanceRegionsRequest) {
-	request = &DescribeDBInstanceRegionsRequest{
+func NewCreateSecurityGroupRequest() (request *CreateSecurityGroupRequest) {
+	request = &CreateSecurityGroupRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
 	}
-	request.Init().WithApiInfo("krds", APIVersion, "DescribeDBInstanceRegions")
+	request.Init().WithApiInfo("krds", APIVersion, "CreateSecurityGroup")
 	return
 }
 
-func NewDescribeDBInstanceRegionsResponse() (response *DescribeDBInstanceRegionsResponse) {
-	response = &DescribeDBInstanceRegionsResponse{
+func NewCreateSecurityGroupResponse() (response *CreateSecurityGroupResponse) {
+	response = &CreateSecurityGroupResponse{
 		BaseResponse: &ksyunhttp.BaseResponse{},
 	}
 	return
 }
 
-func (c *Client) DescribeDBInstanceRegions(request *DescribeDBInstanceRegionsRequest) string {
-	return c.DescribeDBInstanceRegionsWithContext(context.Background(), request)
+func (c *Client) CreateSecurityGroup(request *CreateSecurityGroupRequest) string {
+	return c.CreateSecurityGroupWithContext(context.Background(), request)
 }
 
-func (c *Client) DescribeDBInstanceRegionsWithContext(ctx context.Context, request *DescribeDBInstanceRegionsRequest) string {
+func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *CreateSecurityGroupRequest) string {
 	if request == nil {
-		request = NewDescribeDBInstanceRegionsRequest()
+		request = NewCreateSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
-	response := NewDescribeDBInstanceRegionsResponse()
+	response := NewCreateSecurityGroupResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
 }
-func NewDescribeDBInstancePackagesRequest() (request *DescribeDBInstancePackagesRequest) {
-	request = &DescribeDBInstancePackagesRequest{
+func NewDescribeSecurityGroupRequest() (request *DescribeSecurityGroupRequest) {
+	request = &DescribeSecurityGroupRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
 	}
-	request.Init().WithApiInfo("krds", APIVersion, "DescribeDBInstancePackages")
+	request.Init().WithApiInfo("krds", APIVersion, "DescribeSecurityGroup")
 	return
 }
 
-func NewDescribeDBInstancePackagesResponse() (response *DescribeDBInstancePackagesResponse) {
-	response = &DescribeDBInstancePackagesResponse{
+func NewDescribeSecurityGroupResponse() (response *DescribeSecurityGroupResponse) {
+	response = &DescribeSecurityGroupResponse{
 		BaseResponse: &ksyunhttp.BaseResponse{},
 	}
 	return
 }
 
-func (c *Client) DescribeDBInstancePackages(request *DescribeDBInstancePackagesRequest) string {
-	return c.DescribeDBInstancePackagesWithContext(context.Background(), request)
+func (c *Client) DescribeSecurityGroup(request *DescribeSecurityGroupRequest) string {
+	return c.DescribeSecurityGroupWithContext(context.Background(), request)
 }
 
-func (c *Client) DescribeDBInstancePackagesWithContext(ctx context.Context, request *DescribeDBInstancePackagesRequest) string {
+func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *DescribeSecurityGroupRequest) string {
 	if request == nil {
-		request = NewDescribeDBInstancePackagesRequest()
+		request = NewDescribeSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
-	response := NewDescribeDBInstancePackagesResponse()
+	response := NewDescribeSecurityGroupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeleteSecurityGroupRequest() (request *DeleteSecurityGroupRequest) {
+	request = &DeleteSecurityGroupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "DeleteSecurityGroup")
+	return
+}
+
+func NewDeleteSecurityGroupResponse() (response *DeleteSecurityGroupResponse) {
+	response = &DeleteSecurityGroupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteSecurityGroup(request *DeleteSecurityGroupRequest) string {
+	return c.DeleteSecurityGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *DeleteSecurityGroupRequest) string {
+	if request == nil {
+		request = NewDeleteSecurityGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteSecurityGroupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifySecurityGroupRequest() (request *ModifySecurityGroupRequest) {
+	request = &ModifySecurityGroupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "ModifySecurityGroup")
+	return
+}
+
+func NewModifySecurityGroupResponse() (response *ModifySecurityGroupResponse) {
+	response = &ModifySecurityGroupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifySecurityGroup(request *ModifySecurityGroupRequest) string {
+	return c.ModifySecurityGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifySecurityGroupWithContext(ctx context.Context, request *ModifySecurityGroupRequest) string {
+	if request == nil {
+		request = NewModifySecurityGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifySecurityGroupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCloneSecurityGroupRequest() (request *CloneSecurityGroupRequest) {
+	request = &CloneSecurityGroupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "CloneSecurityGroup")
+	return
+}
+
+func NewCloneSecurityGroupResponse() (response *CloneSecurityGroupResponse) {
+	response = &CloneSecurityGroupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CloneSecurityGroup(request *CloneSecurityGroupRequest) string {
+	return c.CloneSecurityGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) CloneSecurityGroupWithContext(ctx context.Context, request *CloneSecurityGroupRequest) string {
+	if request == nil {
+		request = NewCloneSecurityGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCloneSecurityGroupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifySecurityGroupRuleRequest() (request *ModifySecurityGroupRuleRequest) {
+	request = &ModifySecurityGroupRuleRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "ModifySecurityGroupRule")
+	return
+}
+
+func NewModifySecurityGroupRuleResponse() (response *ModifySecurityGroupRuleResponse) {
+	response = &ModifySecurityGroupRuleResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifySecurityGroupRule(request *ModifySecurityGroupRuleRequest) string {
+	return c.ModifySecurityGroupRuleWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifySecurityGroupRuleWithContext(ctx context.Context, request *ModifySecurityGroupRuleRequest) string {
+	if request == nil {
+		request = NewModifySecurityGroupRuleRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifySecurityGroupRuleResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewSecurityGroupRelationRequest() (request *SecurityGroupRelationRequest) {
+	request = &SecurityGroupRelationRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "SecurityGroupRelation")
+	return
+}
+
+func NewSecurityGroupRelationResponse() (response *SecurityGroupRelationResponse) {
+	response = &SecurityGroupRelationResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SecurityGroupRelation(request *SecurityGroupRelationRequest) string {
+	return c.SecurityGroupRelationWithContext(context.Background(), request)
+}
+
+func (c *Client) SecurityGroupRelationWithContext(ctx context.Context, request *SecurityGroupRelationRequest) string {
+	if request == nil {
+		request = NewSecurityGroupRelationRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSecurityGroupRelationResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifySecurityGroupRuleNameRequest() (request *ModifySecurityGroupRuleNameRequest) {
+	request = &ModifySecurityGroupRuleNameRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "ModifySecurityGroupRuleName")
+	return
+}
+
+func NewModifySecurityGroupRuleNameResponse() (response *ModifySecurityGroupRuleNameResponse) {
+	response = &ModifySecurityGroupRuleNameResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifySecurityGroupRuleName(request *ModifySecurityGroupRuleNameRequest) string {
+	return c.ModifySecurityGroupRuleNameWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifySecurityGroupRuleNameWithContext(ctx context.Context, request *ModifySecurityGroupRuleNameRequest) string {
+	if request == nil {
+		request = NewModifySecurityGroupRuleNameRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifySecurityGroupRuleNameResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -1303,6 +1501,39 @@ func (c *Client) AuditStatisticWithContext(ctx context.Context, request *AuditSt
 	request.SetContentType("application/json")
 
 	response := NewAuditStatisticResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewGetCurrentDatabaseInfoRequest() (request *GetCurrentDatabaseInfoRequest) {
+	request = &GetCurrentDatabaseInfoRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "GetCurrentDatabaseInfo")
+	return
+}
+
+func NewGetCurrentDatabaseInfoResponse() (response *GetCurrentDatabaseInfoResponse) {
+	response = &GetCurrentDatabaseInfoResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetCurrentDatabaseInfo(request *GetCurrentDatabaseInfoRequest) string {
+	return c.GetCurrentDatabaseInfoWithContext(context.Background(), request)
+}
+
+func (c *Client) GetCurrentDatabaseInfoWithContext(ctx context.Context, request *GetCurrentDatabaseInfoRequest) string {
+	if request == nil {
+		request = NewGetCurrentDatabaseInfoRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetCurrentDatabaseInfoResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -1771,6 +2002,39 @@ func (c *Client) ListAuditDetailExportTaskWithContext(ctx context.Context, reque
 	}
 	return msg
 }
+func NewCreateInstanceAccountRequest() (request *CreateInstanceAccountRequest) {
+	request = &CreateInstanceAccountRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "CreateInstanceAccount")
+	return
+}
+
+func NewCreateInstanceAccountResponse() (response *CreateInstanceAccountResponse) {
+	response = &CreateInstanceAccountResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateInstanceAccount(request *CreateInstanceAccountRequest) string {
+	return c.CreateInstanceAccountWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateInstanceAccountWithContext(ctx context.Context, request *CreateInstanceAccountRequest) string {
+	if request == nil {
+		request = NewCreateInstanceAccountRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateInstanceAccountResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
 func NewDescribeInstanceAccountsRequest() (request *DescribeInstanceAccountsRequest) {
 	request = &DescribeInstanceAccountsRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -1831,6 +2095,72 @@ func (c *Client) ModifyInstanceAccountInfoWithContext(ctx context.Context, reque
 	request.SetContentType("application/json")
 
 	response := NewModifyInstanceAccountInfoResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyInstanceAccountPrivilegesRequest() (request *ModifyInstanceAccountPrivilegesRequest) {
+	request = &ModifyInstanceAccountPrivilegesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "ModifyInstanceAccountPrivileges")
+	return
+}
+
+func NewModifyInstanceAccountPrivilegesResponse() (response *ModifyInstanceAccountPrivilegesResponse) {
+	response = &ModifyInstanceAccountPrivilegesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyInstanceAccountPrivileges(request *ModifyInstanceAccountPrivilegesRequest) string {
+	return c.ModifyInstanceAccountPrivilegesWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyInstanceAccountPrivilegesWithContext(ctx context.Context, request *ModifyInstanceAccountPrivilegesRequest) string {
+	if request == nil {
+		request = NewModifyInstanceAccountPrivilegesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyInstanceAccountPrivilegesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeleteInstanceAccountRequest() (request *DeleteInstanceAccountRequest) {
+	request = &DeleteInstanceAccountRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "DeleteInstanceAccount")
+	return
+}
+
+func NewDeleteInstanceAccountResponse() (response *DeleteInstanceAccountResponse) {
+	response = &DeleteInstanceAccountResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteInstanceAccount(request *DeleteInstanceAccountRequest) string {
+	return c.DeleteInstanceAccountWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteInstanceAccountWithContext(ctx context.Context, request *DeleteInstanceAccountRequest) string {
+	if request == nil {
+		request = NewDeleteInstanceAccountRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteInstanceAccountResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -2092,7 +2422,7 @@ func (c *Client) CreateInstanceAccountActionWithContext(ctx context.Context, req
 		request = NewCreateInstanceAccountActionRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewCreateInstanceAccountActionResponse()
 	err, msg := c.Send(request, response)
@@ -2125,7 +2455,7 @@ func (c *Client) ModifyInstanceAccountPrivilegesActionWithContext(ctx context.Co
 		request = NewModifyInstanceAccountPrivilegesActionRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewModifyInstanceAccountPrivilegesActionResponse()
 	err, msg := c.Send(request, response)
@@ -2158,7 +2488,7 @@ func (c *Client) DeleteInstanceAccountActionWithContext(ctx context.Context, req
 		request = NewDeleteInstanceAccountActionRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewDeleteInstanceAccountActionResponse()
 	err, msg := c.Send(request, response)
@@ -2191,7 +2521,7 @@ func (c *Client) DeleteInstanceDatabaseActionWithContext(ctx context.Context, re
 		request = NewDeleteInstanceDatabaseActionRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewDeleteInstanceDatabaseActionResponse()
 	err, msg := c.Send(request, response)
@@ -2224,9 +2554,75 @@ func (c *Client) ModifyDBNetworkWithContext(ctx context.Context, request *Modify
 		request = NewModifyDBNetworkRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewModifyDBNetworkResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeDBInstanceMonitorPeriodRequest() (request *DescribeDBInstanceMonitorPeriodRequest) {
+	request = &DescribeDBInstanceMonitorPeriodRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "DescribeDBInstanceMonitorPeriod")
+	return
+}
+
+func NewDescribeDBInstanceMonitorPeriodResponse() (response *DescribeDBInstanceMonitorPeriodResponse) {
+	response = &DescribeDBInstanceMonitorPeriodResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeDBInstanceMonitorPeriod(request *DescribeDBInstanceMonitorPeriodRequest) string {
+	return c.DescribeDBInstanceMonitorPeriodWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDBInstanceMonitorPeriodWithContext(ctx context.Context, request *DescribeDBInstanceMonitorPeriodRequest) string {
+	if request == nil {
+		request = NewDescribeDBInstanceMonitorPeriodRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeDBInstanceMonitorPeriodResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyDBInstanceMonitorPeriodRequest() (request *ModifyDBInstanceMonitorPeriodRequest) {
+	request = &ModifyDBInstanceMonitorPeriodRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "ModifyDBInstanceMonitorPeriod")
+	return
+}
+
+func NewModifyDBInstanceMonitorPeriodResponse() (response *ModifyDBInstanceMonitorPeriodResponse) {
+	response = &ModifyDBInstanceMonitorPeriodResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyDBInstanceMonitorPeriod(request *ModifyDBInstanceMonitorPeriodRequest) string {
+	return c.ModifyDBInstanceMonitorPeriodWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyDBInstanceMonitorPeriodWithContext(ctx context.Context, request *ModifyDBInstanceMonitorPeriodRequest) string {
+	if request == nil {
+		request = NewModifyDBInstanceMonitorPeriodRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyDBInstanceMonitorPeriodResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -2260,6 +2656,270 @@ func (c *Client) DescribeEngineParametersModifyHistoryWithContext(ctx context.Co
 	request.SetContentType("application/json")
 
 	response := NewDescribeEngineParametersModifyHistoryResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewBatchApplyDBParameterGroupRequest() (request *BatchApplyDBParameterGroupRequest) {
+	request = &BatchApplyDBParameterGroupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "BatchApplyDBParameterGroup")
+	return
+}
+
+func NewBatchApplyDBParameterGroupResponse() (response *BatchApplyDBParameterGroupResponse) {
+	response = &BatchApplyDBParameterGroupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) BatchApplyDBParameterGroup(request *BatchApplyDBParameterGroupRequest) string {
+	return c.BatchApplyDBParameterGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) BatchApplyDBParameterGroupWithContext(ctx context.Context, request *BatchApplyDBParameterGroupRequest) string {
+	if request == nil {
+		request = NewBatchApplyDBParameterGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewBatchApplyDBParameterGroupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewUpgradeDBInstanceLatesVersionRequest() (request *UpgradeDBInstanceLatesVersionRequest) {
+	request = &UpgradeDBInstanceLatesVersionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "UpgradeDBInstanceLatesVersion")
+	return
+}
+
+func NewUpgradeDBInstanceLatesVersionResponse() (response *UpgradeDBInstanceLatesVersionResponse) {
+	response = &UpgradeDBInstanceLatesVersionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpgradeDBInstanceLatesVersion(request *UpgradeDBInstanceLatesVersionRequest) string {
+	return c.UpgradeDBInstanceLatesVersionWithContext(context.Background(), request)
+}
+
+func (c *Client) UpgradeDBInstanceLatesVersionWithContext(ctx context.Context, request *UpgradeDBInstanceLatesVersionRequest) string {
+	if request == nil {
+		request = NewUpgradeDBInstanceLatesVersionRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpgradeDBInstanceLatesVersionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeProxyInstanceRequest() (request *DescribeProxyInstanceRequest) {
+	request = &DescribeProxyInstanceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "DescribeProxyInstance")
+	return
+}
+
+func NewDescribeProxyInstanceResponse() (response *DescribeProxyInstanceResponse) {
+	response = &DescribeProxyInstanceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeProxyInstance(request *DescribeProxyInstanceRequest) string {
+	return c.DescribeProxyInstanceWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeProxyInstanceWithContext(ctx context.Context, request *DescribeProxyInstanceRequest) string {
+	if request == nil {
+		request = NewDescribeProxyInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeProxyInstanceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewSetUpProxyInstanceRequest() (request *SetUpProxyInstanceRequest) {
+	request = &SetUpProxyInstanceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "SetUpProxyInstance")
+	return
+}
+
+func NewSetUpProxyInstanceResponse() (response *SetUpProxyInstanceResponse) {
+	response = &SetUpProxyInstanceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetUpProxyInstance(request *SetUpProxyInstanceRequest) string {
+	return c.SetUpProxyInstanceWithContext(context.Background(), request)
+}
+
+func (c *Client) SetUpProxyInstanceWithContext(ctx context.Context, request *SetUpProxyInstanceRequest) string {
+	if request == nil {
+		request = NewSetUpProxyInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetUpProxyInstanceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewTemporaryCloseSwitchoverRequest() (request *TemporaryCloseSwitchoverRequest) {
+	request = &TemporaryCloseSwitchoverRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "TemporaryCloseSwitchover")
+	return
+}
+
+func NewTemporaryCloseSwitchoverResponse() (response *TemporaryCloseSwitchoverResponse) {
+	response = &TemporaryCloseSwitchoverResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) TemporaryCloseSwitchover(request *TemporaryCloseSwitchoverRequest) string {
+	return c.TemporaryCloseSwitchoverWithContext(context.Background(), request)
+}
+
+func (c *Client) TemporaryCloseSwitchoverWithContext(ctx context.Context, request *TemporaryCloseSwitchoverRequest) string {
+	if request == nil {
+		request = NewTemporaryCloseSwitchoverRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewTemporaryCloseSwitchoverResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeBackupOverviewRequest() (request *DescribeBackupOverviewRequest) {
+	request = &DescribeBackupOverviewRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "DescribeBackupOverview")
+	return
+}
+
+func NewDescribeBackupOverviewResponse() (response *DescribeBackupOverviewResponse) {
+	response = &DescribeBackupOverviewResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeBackupOverview(request *DescribeBackupOverviewRequest) string {
+	return c.DescribeBackupOverviewWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeBackupOverviewWithContext(ctx context.Context, request *DescribeBackupOverviewRequest) string {
+	if request == nil {
+		request = NewDescribeBackupOverviewRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeBackupOverviewResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeStatisticBackupDetailsRequest() (request *DescribeStatisticBackupDetailsRequest) {
+	request = &DescribeStatisticBackupDetailsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "DescribeStatisticBackupDetails")
+	return
+}
+
+func NewDescribeStatisticBackupDetailsResponse() (response *DescribeStatisticBackupDetailsResponse) {
+	response = &DescribeStatisticBackupDetailsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeStatisticBackupDetails(request *DescribeStatisticBackupDetailsRequest) string {
+	return c.DescribeStatisticBackupDetailsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeStatisticBackupDetailsWithContext(ctx context.Context, request *DescribeStatisticBackupDetailsRequest) string {
+	if request == nil {
+		request = NewDescribeStatisticBackupDetailsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeStatisticBackupDetailsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyMaintenanceTimeRequest() (request *ModifyMaintenanceTimeRequest) {
+	request = &ModifyMaintenanceTimeRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("krds", APIVersion, "ModifyMaintenanceTime")
+	return
+}
+
+func NewModifyMaintenanceTimeResponse() (response *ModifyMaintenanceTimeResponse) {
+	response = &ModifyMaintenanceTimeResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyMaintenanceTime(request *ModifyMaintenanceTimeRequest) string {
+	return c.ModifyMaintenanceTimeWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyMaintenanceTimeWithContext(ctx context.Context, request *ModifyMaintenanceTimeRequest) string {
+	if request == nil {
+		request = NewModifyMaintenanceTimeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyMaintenanceTimeResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)

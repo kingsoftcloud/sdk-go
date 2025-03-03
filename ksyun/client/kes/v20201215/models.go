@@ -48,12 +48,12 @@ type DescribeClusterResponse struct {
 	ClusterType    *string `json:"ClusterType" name:"ClusterType"`
 	MainVersion    *string `json:"MainVersion" name:"MainVersion"`
 	InstanceGroups []struct {
-		Id                *string `json:"Id"`
-		InstanceGroupType *string `json:"InstanceGroupType"`
-		ResourceType      *string `json:"ResourceType"`
-		InstanceType      *string `json:"InstanceType"`
-		VolumeSize        *int    `json:"VolumeSize"`
-		VolumeType        *string `json:"VolumeType"`
+		Id                *string `json:"Id" name:"Id"`
+		InstanceGroupType *string `json:"InstanceGroupType" name:"InstanceGroupType"`
+		ResourceType      *string `json:"ResourceType" name:"ResourceType"`
+		InstanceType      *string `json:"InstanceType" name:"InstanceType"`
+		VolumeSize        *int    `json:"VolumeSize" name:"VolumeSize"`
+		VolumeType        *string `json:"VolumeType" name:"VolumeType"`
 	} `json:"InstanceGroups"`
 	EnableEip        *bool   `json:"EnableEip" name:"EnableEip"`
 	Region           *string `json:"Region" name:"Region"`
@@ -67,8 +67,8 @@ type DescribeClusterResponse struct {
 	ServingMinutes   *int    `json:"ServingMinutes" name:"ServingMinutes"`
 	ProxyPort        *int    `json:"ProxyPort" name:"ProxyPort"`
 	Tags             []struct {
-		TagKey   *string `json:"TagKey"`
-		TagValue *string `json:"TagValue"`
+		TagKey   *string `json:"TagKey" name:"TagKey"`
+		TagValue *string `json:"TagValue" name:"TagValue"`
 	} `json:"Tags"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	StatusCode *int    `json:"StatusCode" name:"StatusCode"`
@@ -107,25 +107,25 @@ func (r *ListClustersRequest) FromJsonString(s string) error {
 type ListClustersResponse struct {
 	*ksyunhttp.BaseResponse
 	Clusters []struct {
-		ClusterId      *string `json:"ClusterId"`
-		ClusterName    *string `json:"ClusterName"`
-		MainVersion    *string `json:"MainVersion"`
+		ClusterId      *string `json:"ClusterId" name:"ClusterId"`
+		ClusterName    *string `json:"ClusterName" name:"ClusterName"`
+		MainVersion    *string `json:"MainVersion" name:"MainVersion"`
 		InstanceGroups []struct {
-			Id                *string `json:"Id"`
-			InstanceGroupType *string `json:"InstanceGroupType"`
-			ResourceType      *string `json:"ResourceType"`
-			InstanceType      *string `json:"InstanceType"`
-		} `json:"InstanceGroups"`
-		EnableEip        *bool   `json:"EnableEip"`
-		Region           *string `json:"Region"`
-		AvailabilityZone *string `json:"AvailabilityZone"`
-		VpcDomainId      *string `json:"VpcDomainId"`
-		VpcSubnetId      *string `json:"VpcSubnetId"`
-		ChargeType       *string `json:"ChargeType"`
-		ClusterStatus    *string `json:"ClusterStatus"`
-		CreateTime       *string `json:"CreateTime"`
-		UpdateTime       *string `json:"UpdateTime"`
-		ServingMinutes   *int    `json:"ServingMinutes"`
+			Id                *string `json:"Id" name:"Id"`
+			InstanceGroupType *string `json:"InstanceGroupType" name:"InstanceGroupType"`
+			ResourceType      *string `json:"ResourceType" name:"ResourceType"`
+			InstanceType      *string `json:"InstanceType" name:"InstanceType"`
+		} `json:"InstanceGroups" name:"InstanceGroups"`
+		EnableEip        *bool   `json:"EnableEip" name:"EnableEip"`
+		Region           *string `json:"Region" name:"Region"`
+		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		VpcDomainId      *string `json:"VpcDomainId" name:"VpcDomainId"`
+		VpcSubnetId      *string `json:"VpcSubnetId" name:"VpcSubnetId"`
+		ChargeType       *string `json:"ChargeType" name:"ChargeType"`
+		ClusterStatus    *string `json:"ClusterStatus" name:"ClusterStatus"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime       *string `json:"UpdateTime" name:"UpdateTime"`
+		ServingMinutes   *int    `json:"ServingMinutes" name:"ServingMinutes"`
 	} `json:"Clusters"`
 	Total      *int    `json:"Total" name:"Total"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
@@ -251,27 +251,26 @@ func (r *ListInstanceGroupsRequest) FromJsonString(s string) error {
 type ListInstanceGroupsResponse struct {
 	*ksyunhttp.BaseResponse
 	InstanceGroups []struct {
-		Id                 *string `json:"Id"`
-		InstanceGroupType  *string `json:"InstanceGroupType"`
-		ResourceType       *string `json:"ResourceType"`
-		InstanceTypeCode   *string `json:"InstanceTypeCode"`
-		InstanceCount      *int    `json:"InstanceCount"`
-		VolumeType         *string `json:"VolumeType"`
-		VolumeSize         *int    `json:"VolumeSize"`
-		VolumeCount        *int    `json:"VolumeCount"`
-		VpcId              *string `json:"VpcId"`
-		VpcSubnetId        *string `json:"VpcSubnetId"`
-		AvalabilityZone    *string `json:"AvalabilityZone"`
-		MultiInstanceCount *int    `json:"MultiInstanceCount"`
+		Id                 *string `json:"Id" name:"Id"`
+		InstanceGroupType  *string `json:"InstanceGroupType" name:"InstanceGroupType"`
+		ResourceType       *string `json:"ResourceType" name:"ResourceType"`
+		InstanceTypeCode   *string `json:"InstanceTypeCode" name:"InstanceTypeCode"`
+		InstanceCount      *int    `json:"InstanceCount" name:"InstanceCount"`
+		VolumeType         *string `json:"VolumeType" name:"VolumeType"`
+		VolumeSize         *int    `json:"VolumeSize" name:"VolumeSize"`
+		VolumeCount        *int    `json:"VolumeCount" name:"VolumeCount"`
+		VpcId              *string `json:"VpcId" name:"VpcId"`
+		VpcSubnetId        *string `json:"VpcSubnetId" name:"VpcSubnetId"`
+		AvalabilityZone    *string `json:"AvalabilityZone" name:"AvalabilityZone"`
+		MultiInstanceCount *int    `json:"MultiInstanceCount" name:"MultiInstanceCount"`
 		Instances          []struct {
-			Id              *string `json:"Id"`
-			InstanceGroupId *string `json:"InstanceGroupId"`
-			InstanceId      *string `json:"InstanceId"`
-			InstanceName    *string `json:"InstanceName"`
-			InternalIp      *string `json:"InternalIp"`
-			Volumes         []struct {
-			} `json:"Volumes"`
-		} `json:"Instances"`
+			Id              *string   `json:"Id" name:"Id"`
+			InstanceGroupId *string   `json:"InstanceGroupId" name:"InstanceGroupId"`
+			InstanceId      *string   `json:"InstanceId" name:"InstanceId"`
+			InstanceName    *string   `json:"InstanceName" name:"InstanceName"`
+			InternalIp      *string   `json:"InternalIp" name:"InternalIp"`
+			Volumes         []*string `json:"Volumes" name:"Volumes"`
+		} `json:"Instances" name:"Instances"`
 	} `json:"InstanceGroups"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	StatusCode *int    `json:"StatusCode" name:"StatusCode"`
@@ -348,28 +347,28 @@ func (r *ClusterHealthStatisticRequest) FromJsonString(s string) error {
 
 type ClusterHealthStatisticResponse struct {
 	*ksyunhttp.BaseResponse
-	status *int `json:"status" name:"status"`
+	Status *int `json:"status" name:"status"`
 	Data   struct {
-		RequestId          *string `json:"RequestId"`
-		OperationId        *string `json:"OperationId"`
+		RequestId          *string `json:"RequestId" name:"RequestId"`
+		OperationId        *string `json:"OperationId" name:"OperationId"`
 		HealthCheckHistory []struct {
-			StartDate *string `json:"StartDate"`
-			Red       *int    `json:"Red"`
-			Green     *int    `json:"Green"`
-			Yellow    *int    `json:"Yellow"`
-			Failed    *int    `json:"Failed"`
-			Stage     *string `json:"Stage"`
+			StartDate *string `json:"StartDate" name:"StartDate"`
+			Red       *int    `json:"Red" name:"Red"`
+			Green     *int    `json:"Green" name:"Green"`
+			Yellow    *int    `json:"Yellow" name:"Yellow"`
+			Failed    *int    `json:"Failed" name:"Failed"`
+			Stage     *string `json:"Stage" name:"Stage"`
 			Status    []struct {
-				Item        *string `json:"Item"`
-				Flag        *string `json:"Flag"`
-				Description *string `json:"Description"`
-				Suggestion  *string `json:"Suggestion"`
-				Diagnosis   *string `json:"Diagnosis"`
+				Item        *string `json:"Item" name:"Item"`
+				Flag        *string `json:"Flag" name:"Flag"`
+				Description *string `json:"Description" name:"Description"`
+				Suggestion  *string `json:"Suggestion" name:"Suggestion"`
+				Diagnosis   *string `json:"Diagnosis" name:"Diagnosis"`
 			} `json:"Status"`
-		} `json:"HealthCheckHistory"`
-		StatusCode *int `json:"StatusCode"`
+		} `json:"HealthCheckHistory" name:"HealthCheckHistory"`
+		StatusCode *int `json:"StatusCode" name:"StatusCode"`
 	} `json:"Data"`
-	message *string `json:"message" name:"message"`
+	Message *string `json:"message" name:"message"`
 }
 
 func (r *ClusterHealthStatisticResponse) ToJsonString() string {

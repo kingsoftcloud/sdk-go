@@ -814,6 +814,39 @@ func (c *Client) DescribeNodePoolSummaryWithContext(ctx context.Context, request
 	}
 	return msg
 }
+func NewCreateLogRuleRequest() (request *CreateLogRuleRequest) {
+	request = &CreateLogRuleRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kce", APIVersion, "CreateLogRule")
+	return
+}
+
+func NewCreateLogRuleResponse() (response *CreateLogRuleResponse) {
+	response = &CreateLogRuleResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateLogRule(request *CreateLogRuleRequest) string {
+	return c.CreateLogRuleWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateLogRuleWithContext(ctx context.Context, request *CreateLogRuleRequest) string {
+	if request == nil {
+		request = NewCreateLogRuleRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateLogRuleResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
 func NewDescribeClusterSummaryRequest() (request *DescribeClusterSummaryRequest) {
 	request = &DescribeClusterSummaryRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -874,6 +907,39 @@ func (c *Client) GetScaleAPIServerConfigWithContext(ctx context.Context, request
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewGetScaleAPIServerConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewUpdateNodePoolDelProtectionRequest() (request *UpdateNodePoolDelProtectionRequest) {
+	request = &UpdateNodePoolDelProtectionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kce", APIVersion, "UpdateNodePoolDelProtection")
+	return
+}
+
+func NewUpdateNodePoolDelProtectionResponse() (response *UpdateNodePoolDelProtectionResponse) {
+	response = &UpdateNodePoolDelProtectionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateNodePoolDelProtection(request *UpdateNodePoolDelProtectionRequest) string {
+	return c.UpdateNodePoolDelProtectionWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateNodePoolDelProtectionWithContext(ctx context.Context, request *UpdateNodePoolDelProtectionRequest) string {
+	if request == nil {
+		request = NewUpdateNodePoolDelProtectionRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateNodePoolDelProtectionResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)

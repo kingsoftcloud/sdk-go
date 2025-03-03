@@ -143,14 +143,14 @@ func (r *ListAccountsForParentRequest) FromJsonString(s string) error {
 type ListAccountsForParentResponse struct {
 	*ksyunhttp.BaseResponse
 	Members []struct {
-		CreatedTime     *string `json:"CreatedTime"`
-		Name            *string `json:"Name"`
-		AdminPermission *int    `json:"AdminPermission"`
-		UserId          *int    `json:"UserId"`
-		UserName        *string `json:"UserName"`
-		UserType        *int    `json:"UserType"`
-		Phone           *string `json:"Phone"`
-		FolderId        *string `json:"FolderId"`
+		CreatedTime     *string `json:"CreatedTime" name:"CreatedTime"`
+		Name            *string `json:"Name" name:"Name"`
+		AdminPermission *int    `json:"AdminPermission" name:"AdminPermission"`
+		UserId          *int    `json:"UserId" name:"UserId"`
+		UserName        *string `json:"UserName" name:"UserName"`
+		UserType        *int    `json:"UserType" name:"UserType"`
+		Phone           *string `json:"Phone" name:"Phone"`
+		FolderId        *string `json:"FolderId" name:"FolderId"`
 	} `json:"Members"`
 	Count     *int    `json:"Count" name:"Count"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -265,16 +265,16 @@ func (r *ListAccountsRequest) FromJsonString(s string) error {
 type ListAccountsResponse struct {
 	*ksyunhttp.BaseResponse
 	Accounts []struct {
-		AccountId   *int    `json:"AccountId"`
-		AccountName *string `json:"AccountName"`
-		DisplayName *string `json:"DisplayName"`
-		Type        *string `json:"Type"`
-		JoinedTime  *string `json:"JoinedTime"`
+		AccountId   *int    `json:"AccountId" name:"AccountId"`
+		AccountName *string `json:"AccountName" name:"AccountName"`
+		DisplayName *string `json:"DisplayName" name:"DisplayName"`
+		Type        *string `json:"Type" name:"Type"`
+		JoinedTime  *string `json:"JoinedTime" name:"JoinedTime"`
 	} `json:"Accounts"`
 	Pagination struct {
-		TotalCount *int    `json:"TotalCount"`
-		PageNumber *string `json:"PageNumber"`
-		PageSize   *string `json:"PageSize"`
+		TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+		PageNumber *string `json:"PageNumber" name:"PageNumber"`
+		PageSize   *string `json:"PageSize" name:"PageSize"`
 	} `json:"Pagination"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -318,15 +318,15 @@ type ListFoldersResponse struct {
 	ParentId    *int    `json:"ParentId" name:"ParentId"`
 	Num         *int    `json:"Num" name:"Num"`
 	SonFolder   []struct {
-		Name        *string `json:"Name"`
-		Desc        *string `json:"Desc"`
-		Id          *string `json:"Id"`
-		CreatedTime *string `json:"CreatedTime"`
-		Level       *int    `json:"Level"`
-		ParentId    *string `json:"ParentId"`
-		Num         *int    `json:"Num"`
+		Name        *string `json:"Name" name:"Name"`
+		Desc        *string `json:"Desc" name:"Desc"`
+		Id          *string `json:"Id" name:"Id"`
+		CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+		Level       *int    `json:"Level" name:"Level"`
+		ParentId    *string `json:"ParentId" name:"ParentId"`
+		Num         *int    `json:"Num" name:"Num"`
 		SonFolder   []struct {
-		} `json:"SonFolder"`
+		} `json:"SonFolder" name:"SonFolder"`
 	} `json:"SonFolder"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }

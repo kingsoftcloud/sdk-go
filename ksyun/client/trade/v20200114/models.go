@@ -31,12 +31,12 @@ type DescribeInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      []struct {
-		BillType         *int    `json:"BillType"`
-		CreateTime       *string `json:"CreateTime"`
-		InstanceId       *string `json:"InstanceId"`
-		InstanceType     *int    `json:"InstanceType"`
-		ServiceBeginTime *string `json:"ServiceBeginTime"`
-		Status           *int    `json:"Status"`
+		BillType         *int    `json:"BillType" name:"BillType"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		InstanceId       *string `json:"InstanceId" name:"InstanceId"`
+		InstanceType     *int    `json:"InstanceType" name:"InstanceType"`
+		ServiceBeginTime *string `json:"ServiceBeginTime" name:"ServiceBeginTime"`
+		Status           *int    `json:"Status" name:"Status"`
 	} `json:"Data"`
 }
 

@@ -35,12 +35,12 @@ type GetDomainPidDimensionUsageDataResponse struct {
 	Areas     *string `json:"Areas" name:"Areas"`
 	Interval  *int    `json:"Interval" name:"Interval"`
 	Metric    []struct {
-		Time     *string `json:"Time"`
-		Value    *int    `json:"Value"`
+		Time     *string `json:"Time" name:"Time"`
+		Value    *int    `json:"Value" name:"Value"`
 		Projects []struct {
-			project *string `json:"project"`
-			Value   *int    `json:"Value"`
-		} `json:"Projects"`
+			Project *string `json:"project" name:"project"`
+			Value   *int    `json:"Value" name:"Value"`
+		} `json:"Projects" name:"Projects"`
 	} `json:"Metric"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	PeakTime  *string `json:"PeakTime" name:"PeakTime"`

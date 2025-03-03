@@ -1177,3 +1177,36 @@ func (c *Client) DescribeClusterForRestoreWithContext(ctx context.Context, reque
 	}
 	return msg
 }
+func NewDescribeInstanceParamsRequest() (request *DescribeInstanceParamsRequest) {
+	request = &DescribeInstanceParamsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("mongodb", APIVersion, "DescribeInstanceParams")
+	return
+}
+
+func NewDescribeInstanceParamsResponse() (response *DescribeInstanceParamsResponse) {
+	response = &DescribeInstanceParamsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeInstanceParams(request *DescribeInstanceParamsRequest) string {
+	return c.DescribeInstanceParamsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request *DescribeInstanceParamsRequest) string {
+	if request == nil {
+		request = NewDescribeInstanceParamsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeInstanceParamsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

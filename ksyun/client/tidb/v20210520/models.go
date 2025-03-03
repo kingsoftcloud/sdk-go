@@ -7,30 +7,36 @@ import (
 )
 
 type CreateInstanceModuleConfigs struct {
+	ModuleType  *string `json:"ModuleType,omitempty" name:"ModuleType"`
+	PackageCode *string `json:"PackageCode,omitempty" name:"PackageCode"`
+	Replicas    *int    `json:"Replicas,omitempty" name:"Replicas"`
+	Cpu         *int    `json:"Cpu,omitempty" name:"Cpu"`
+	Mem         *int    `json:"Mem,omitempty" name:"Mem"`
+	Tidisk      *int    `json:"Tidisk,omitempty" name:"Tidisk"`
 }
 
 type CreateInstanceRequest struct {
 	*ksyunhttp.BaseRequest
-	InstanceName                    *string                        `json:"InstanceName,omitempty" name:"InstanceName"`
-	EnableModules                   *string                        `json:"EnableModules,omitempty" name:"EnableModules"`
-	ModuleConfigs                   []*CreateInstanceModuleConfigs `json:"ModuleConfigs,omitempty" name:"ModuleConfigs"`
-	AdminUser                       *string                        `json:"AdminUser,omitempty" name:"AdminUser"`
-	AdminPassword                   *string                        `json:"AdminPassword,omitempty" name:"AdminPassword"`
-	VpcId                           *string                        `json:"VpcId,omitempty" name:"VpcId"`
-	SubnetId                        *string                        `json:"SubnetId,omitempty" name:"SubnetId"`
-	BillType                        *int                           `json:"BillType,omitempty" name:"BillType"`
-	Duration                        *string                        `json:"Duration,omitempty" name:"Duration"`
-	ProductType                     *int                           `json:"ProductType,omitempty" name:"ProductType"`
-	ProjectId                       *string                        `json:"ProjectId,omitempty" name:"ProjectId"`
-	BackupConfigMaxBackups          *int                           `json:"BackupConfig.MaxBackups,omitempty" name:"BackupConfig.MaxBackups"`
-	BackupConfigMaxReservedHours    *int                           `json:"BackupConfig.MaxReservedHours,omitempty" name:"BackupConfig.MaxReservedHours"`
-	BackupConfigPreferredBackupTime *string                        `json:"BackupConfig.PreferredBackupTime,omitempty" name:"BackupConfig.PreferredBackupTime"`
-	EnableAutoBackup                *bool                          `json:"EnableAutoBackup,omitempty" name:"EnableAutoBackup"`
-	Engine                          *string                        `json:"Engine,omitempty" name:"Engine"`
-	EngineVersion                   *string                        `json:"EngineVersion,omitempty" name:"EngineVersion"`
-	ClientPort                      *int                           `json:"ClientPort,omitempty" name:"ClientPort"`
-	Az                              *string                        `json:"Az,omitempty" name:"Az"`
-	SecurityGroupId                 *string                        `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	InstanceName            *string                        `json:"InstanceName,omitempty" name:"InstanceName"`
+	EnableModules           *string                        `json:"EnableModules,omitempty" name:"EnableModules"`
+	ModuleConfigs           []*CreateInstanceModuleConfigs `json:"ModuleConfigs,omitempty" name:"ModuleConfigs"`
+	AdminUser               *string                        `json:"AdminUser,omitempty" name:"AdminUser"`
+	AdminPassword           *string                        `json:"AdminPassword,omitempty" name:"AdminPassword"`
+	VpcId                   *string                        `json:"VpcId,omitempty" name:"VpcId"`
+	SubnetId                *string                        `json:"SubnetId,omitempty" name:"SubnetId"`
+	BillType                *int                           `json:"BillType,omitempty" name:"BillType"`
+	Duration                *string                        `json:"Duration,omitempty" name:"Duration"`
+	ProductType             *int                           `json:"ProductType,omitempty" name:"ProductType"`
+	ProjectId               *string                        `json:"ProjectId,omitempty" name:"ProjectId"`
+	EnableAutoBackup        *bool                          `json:"EnableAutoBackup,omitempty" name:"EnableAutoBackup"`
+	Engine                  *string                        `json:"Engine,omitempty" name:"Engine"`
+	EngineVersion           *string                        `json:"EngineVersion,omitempty" name:"EngineVersion"`
+	ClientPort              *int                           `json:"ClientPort,omitempty" name:"ClientPort"`
+	Az                      *string                        `json:"Az,omitempty" name:"Az"`
+	SecurityGroupId         *string                        `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	BackupId                *string                        `json:"backupId,omitempty" name:"backupId"`
+	BackupRestoreInstanceId *string                        `json:"backupRestoreInstanceId,omitempty" name:"backupRestoreInstanceId"`
+	BackupRestoreTime       *string                        `json:"backupRestoreTime,omitempty" name:"backupRestoreTime"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -55,13 +61,13 @@ type CreateInstanceResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		InstanceId   *string `json:"InstanceId"`
-		InstanceName *string `json:"InstanceName"`
-		InstanceType *string `json:"InstanceType"`
-		OrderId      *string `json:"OrderId"`
-		AccountId    *string `json:"AccountId"`
-		Region       *string `json:"Region"`
-		Az           *string `json:"Az"`
+		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName *string `json:"InstanceName" name:"InstanceName"`
+		InstanceType *string `json:"InstanceType" name:"InstanceType"`
+		OrderId      *string `json:"OrderId" name:"OrderId"`
+		AccountId    *string `json:"AccountId" name:"AccountId"`
+		Region       *string `json:"Region" name:"Region"`
+		Az           *string `json:"Az" name:"Az"`
 	} `json:"Data"`
 }
 
@@ -82,6 +88,7 @@ type ListInstanceRequest struct {
 	Offset         *int    `json:"Offset,omitempty" name:"Offset"`
 	Limit          *int    `json:"Limit,omitempty" name:"Limit"`
 	OrderBy        *string `json:"OrderBy,omitempty" name:"OrderBy"`
+	ProductType    *int    `json:"ProductType,omitempty" name:"ProductType"`
 }
 
 func (r *ListInstanceRequest) ToJsonString() string {
@@ -109,43 +116,43 @@ type ListInstanceResponse struct {
 	Limit     *int    `json:"Limit" name:"Limit"`
 	Total     *int    `json:"Total" name:"Total"`
 	Data      []struct {
-		InstanceId      *string `json:"InstanceId"`
-		InstanceName    *string `json:"InstanceName"`
-		AdminUser       *string `json:"AdminUser"`
-		StatusName      *string `json:"StatusName"`
-		Status          *string `json:"Status"`
-		VpcId           *string `json:"VpcId"`
-		SubnetId        *string `json:"SubnetId"`
-		Engine          *string `json:"Engine"`
-		EngineVersion   *string `json:"EngineVersion"`
-		ProjectId       *string `json:"ProjectId"`
-		ProjectName     *string `json:"ProjectName"`
-		BillType        *int    `json:"BillType"`
-		ProductId       *string `json:"ProductId"`
-		ProductType     *int    `json:"ProductType"`
-		ProductTypeName *string `json:"ProductTypeName"`
-		ProductWhat     *int    `json:"ProductWhat"`
-		CreateDate      *string `json:"CreateDate"`
-		UpdateDate      *string `json:"UpdateDate"`
-		Region          *string `json:"Region"`
-		RegionName      *string `json:"RegionName"`
-		Az              *string `json:"Az"`
-		AzName          *string `json:"AzName"`
-		UserId          *string `json:"UserId"`
-		SecurityGroupId *string `json:"SecurityGroupId"`
-		ClientIp        *string `json:"ClientIp"`
-		ClientPort      *int    `json:"ClientPort"`
-		EnableModules   *string `json:"EnableModules"`
+		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName    *string `json:"InstanceName" name:"InstanceName"`
+		AdminUser       *string `json:"AdminUser" name:"AdminUser"`
+		StatusName      *string `json:"StatusName" name:"StatusName"`
+		Status          *string `json:"Status" name:"Status"`
+		VpcId           *string `json:"VpcId" name:"VpcId"`
+		SubnetId        *string `json:"SubnetId" name:"SubnetId"`
+		Engine          *string `json:"Engine" name:"Engine"`
+		EngineVersion   *string `json:"EngineVersion" name:"EngineVersion"`
+		ProjectId       *string `json:"ProjectId" name:"ProjectId"`
+		ProjectName     *string `json:"ProjectName" name:"ProjectName"`
+		BillType        *int    `json:"BillType" name:"BillType"`
+		ProductId       *string `json:"ProductId" name:"ProductId"`
+		ProductType     *int    `json:"ProductType" name:"ProductType"`
+		ProductTypeName *string `json:"ProductTypeName" name:"ProductTypeName"`
+		ProductWhat     *int    `json:"ProductWhat" name:"ProductWhat"`
+		CreateDate      *string `json:"CreateDate" name:"CreateDate"`
+		UpdateDate      *string `json:"UpdateDate" name:"UpdateDate"`
+		Region          *string `json:"Region" name:"Region"`
+		RegionName      *string `json:"RegionName" name:"RegionName"`
+		Az              *string `json:"Az" name:"Az"`
+		AzName          *string `json:"AzName" name:"AzName"`
+		UserId          *string `json:"UserId" name:"UserId"`
+		SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		ClientIp        *string `json:"ClientIp" name:"ClientIp"`
+		ClientPort      *int    `json:"ClientPort" name:"ClientPort"`
+		EnableModules   *string `json:"EnableModules" name:"EnableModules"`
 		ModuleConfigs   []struct {
-			moduleType  *string `json:"moduleType"`
-			packageCode *string `json:"packageCode"`
-			replicas    *int    `json:"replicas"`
-			cpu         *int    `json:"cpu"`
-			mem         *int    `json:"mem"`
-			tidisk      *int    `json:"tidisk"`
-			createTime  *string `json:"createTime"`
-		} `json:"ModuleConfigs"`
-		EndTime *string `json:"EndTime"`
+			ModuleType  *string `json:"moduleType" name:"moduleType"`
+			PackageCode *string `json:"packageCode" name:"packageCode"`
+			Replicas    *int    `json:"replicas" name:"replicas"`
+			Cpu         *int    `json:"cpu" name:"cpu"`
+			Mem         *int    `json:"mem" name:"mem"`
+			Tidisk      *int    `json:"tidisk" name:"tidisk"`
+			CreateTime  *string `json:"createTime" name:"createTime"`
+		} `json:"ModuleConfigs" name:"ModuleConfigs"`
+		EndTime *string `json:"EndTime" name:"EndTime"`
 	} `json:"Data"`
 }
 
@@ -185,52 +192,53 @@ type DescribeInstanceResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		InstanceId    *string `json:"InstanceId"`
-		InstanceName  *string `json:"InstanceName"`
-		EnableModules *string `json:"EnableModules"`
+		InstanceId    *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName  *string `json:"InstanceName" name:"InstanceName"`
+		EnableModules *string `json:"EnableModules" name:"EnableModules"`
 		ModuleConfigs []struct {
-			moduleType  *string `json:"moduleType"`
-			packageCode *string `json:"packageCode"`
-			replicas    *int    `json:"replicas"`
-			cpu         *int    `json:"cpu"`
-			mem         *int    `json:"mem"`
-			tidisk      *int    `json:"tidisk"`
-			createTime  *string `json:"createTime"`
-		} `json:"ModuleConfigs"`
-		AdminUser         *string `json:"AdminUser"`
-		StatusName        *string `json:"StatusName"`
-		Status            *string `json:"Status"`
-		VpcId             *string `json:"VpcId"`
-		SubnetId          *string `json:"SubnetId"`
-		Engine            *string `json:"Engine"`
-		EngineVersion     *string `json:"EngineVersion"`
-		ProjectId         *string `json:"ProjectId"`
-		ProjectName       *string `json:"ProjectName"`
-		BillType          *int    `json:"BillType"`
-		ProductId         *string `json:"ProductId"`
-		ProductType       *int    `json:"ProductType"`
-		ProductTypeName   *string `json:"ProductTypeName"`
-		ProductWhat       *int    `json:"ProductWhat"`
-		CreateDate        *string `json:"CreateDate"`
-		Region            *string `json:"Region"`
-		RegionName        *string `json:"RegionName"`
-		Az                *string `json:"Az"`
-		AzName            *string `json:"AzName"`
-		UserId            *string `json:"UserId"`
-		SecurityGroupId   *string `json:"SecurityGroupId"`
-		SecurityGroupName *string `json:"SecurityGroupName"`
-		SecurityGroupDesc *string `json:"SecurityGroupDesc"`
+			ModuleType  *string `json:"moduleType" name:"moduleType"`
+			PackageCode *string `json:"packageCode" name:"packageCode"`
+			Replicas    *int    `json:"replicas" name:"replicas"`
+			Cpu         *int    `json:"cpu" name:"cpu"`
+			Mem         *int    `json:"mem" name:"mem"`
+			Tidisk      *int    `json:"tidisk" name:"tidisk"`
+			CreateTime  *string `json:"createTime" name:"createTime"`
+		} `json:"ModuleConfigs" name:"ModuleConfigs"`
+		AdminUser         *string `json:"AdminUser" name:"AdminUser"`
+		StatusName        *string `json:"StatusName" name:"StatusName"`
+		Status            *string `json:"Status" name:"Status"`
+		VpcId             *string `json:"VpcId" name:"VpcId"`
+		SubnetId          *string `json:"SubnetId" name:"SubnetId"`
+		Engine            *string `json:"Engine" name:"Engine"`
+		EngineVersion     *string `json:"EngineVersion" name:"EngineVersion"`
+		ProjectId         *string `json:"ProjectId" name:"ProjectId"`
+		ProjectName       *string `json:"ProjectName" name:"ProjectName"`
+		BillType          *int    `json:"BillType" name:"BillType"`
+		ProductId         *string `json:"ProductId" name:"ProductId"`
+		ProductType       *int    `json:"ProductType" name:"ProductType"`
+		ProductTypeName   *string `json:"ProductTypeName" name:"ProductTypeName"`
+		ProductWhat       *int    `json:"ProductWhat" name:"ProductWhat"`
+		CreateDate        *string `json:"CreateDate" name:"CreateDate"`
+		Region            *string `json:"Region" name:"Region"`
+		RegionName        *string `json:"RegionName" name:"RegionName"`
+		Az                *string `json:"Az" name:"Az"`
+		AzName            *string `json:"AzName" name:"AzName"`
+		UserId            *string `json:"UserId" name:"UserId"`
+		SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+		SecurityGroupDesc *string `json:"SecurityGroupDesc" name:"SecurityGroupDesc"`
 		BackupConfig      struct {
-			maxBackups          *int    `json:"maxBackups"`
-			maxReservedHours    *int    `json:"maxReservedHours"`
-			preferredBackupTime *string `json:"preferredBackupTime"`
-		} `json:"BackupConfig"`
-		ClientIp             *string `json:"ClientIp"`
-		ClientPort           *int    `json:"ClientPort"`
-		EndTime              *string `json:"EndTime"`
-		DashboardClientVip   *string `json:"DashboardClientVip"`
-		DashboardClientVport *int    `json:"DashboardClientVport"`
-		TimonitorURL         *string `json:"TimonitorURL"`
+			MaxBackups          *int    `json:"maxBackups" name:"maxBackups"`
+			MaxReservedHours    *int    `json:"maxReservedHours" name:"maxReservedHours"`
+			PreferredBackupTime *string `json:"preferredBackupTime" name:"preferredBackupTime"`
+			Increment           *string `json:"increment" name:"increment"`
+		} `json:"BackupConfig" name:"BackupConfig"`
+		ClientIp             *string `json:"ClientIp" name:"ClientIp"`
+		ClientPort           *int    `json:"ClientPort" name:"ClientPort"`
+		EndTime              *string `json:"EndTime" name:"EndTime"`
+		DashboardClientVip   *string `json:"DashboardClientVip" name:"DashboardClientVip"`
+		DashboardClientVport *int    `json:"DashboardClientVport" name:"DashboardClientVport"`
+		TimonitorURL         *string `json:"TimonitorURL" name:"TimonitorURL"`
 	} `json:"Data"`
 }
 
@@ -240,6 +248,48 @@ func (r *DescribeInstanceResponse) ToJsonString() string {
 }
 
 func (r *DescribeInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteInstanceRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceIds *string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+}
+
+func (r *DeleteInstanceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteInstanceResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      []struct {
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		OperStatus *string `json:"OperStatus" name:"OperStatus"`
+		Msg        *string `json:"Msg" name:"Msg"`
+	} `json:"Data"`
+}
+
+func (r *DeleteInstanceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -309,21 +359,21 @@ type ListRegionResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      []struct {
-		RegionId     *string `json:"RegionId"`
-		InnerCode    *string `json:"InnerCode"`
-		RegionCode   *string `json:"RegionCode"`
-		RegionName   *string `json:"RegionName"`
-		RegionEnName *string `json:"RegionEnName"`
-		Active       *bool   `json:"Active"`
-		RegionType   *int    `json:"RegionType"`
-		Overseas     *bool   `json:"Overseas"`
+		RegionId     *string `json:"RegionId" name:"RegionId"`
+		InnerCode    *string `json:"InnerCode" name:"InnerCode"`
+		RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+		RegionName   *string `json:"RegionName" name:"RegionName"`
+		RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
+		Active       *bool   `json:"Active" name:"Active"`
+		RegionType   *int    `json:"RegionType" name:"RegionType"`
+		Overseas     *bool   `json:"Overseas" name:"Overseas"`
 		AzList       []struct {
-			AzCode *string `json:"AzCode"`
-			AzName *string `json:"AzName"`
-		} `json:"AzList"`
-		AreaCode   *string `json:"AreaCode"`
-		AreaName   *string `json:"AreaName"`
-		AreaEnName *string `json:"AreaEnName"`
+			AzCode *string `json:"AzCode" name:"AzCode"`
+			AzName *string `json:"AzName" name:"AzName"`
+		} `json:"AzList" name:"AzList"`
+		AreaCode   *string `json:"AreaCode" name:"AreaCode"`
+		AreaName   *string `json:"AreaName" name:"AreaName"`
+		AreaEnName *string `json:"AreaEnName" name:"AreaEnName"`
 	} `json:"Data"`
 }
 
@@ -364,21 +414,21 @@ type DescRegionResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		RegionId     *string `json:"RegionId"`
-		InnerCode    *string `json:"InnerCode"`
-		RegionCode   *string `json:"RegionCode"`
-		RegionName   *string `json:"RegionName"`
-		RegionEnName *string `json:"RegionEnName"`
-		Active       *bool   `json:"Active"`
-		RegionType   *int    `json:"RegionType"`
-		Overseas     *bool   `json:"Overseas"`
+		RegionId     *string `json:"RegionId" name:"RegionId"`
+		InnerCode    *string `json:"InnerCode" name:"InnerCode"`
+		RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+		RegionName   *string `json:"RegionName" name:"RegionName"`
+		RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
+		Active       *bool   `json:"Active" name:"Active"`
+		RegionType   *int    `json:"RegionType" name:"RegionType"`
+		Overseas     *bool   `json:"Overseas" name:"Overseas"`
 		AzList       []struct {
-			AzCode *string `json:"AzCode"`
-			AzName *string `json:"AzName"`
-		} `json:"AzList"`
-		AreaCode   *string `json:"AreaCode"`
-		AreaName   *string `json:"AreaName"`
-		AreaEnName *string `json:"AreaEnName"`
+			AzCode *string `json:"AzCode" name:"AzCode"`
+			AzName *string `json:"AzName" name:"AzName"`
+		} `json:"AzList" name:"AzList"`
+		AreaCode   *string `json:"AreaCode" name:"AreaCode"`
+		AreaName   *string `json:"AreaName" name:"AreaName"`
+		AreaEnName *string `json:"AreaEnName" name:"AreaEnName"`
 	} `json:"Data"`
 }
 
@@ -421,17 +471,17 @@ type CreateSecurityGroupResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		SecurityGroupId   *string `json:"SecurityGroupId"`
-		SecurityGroupName *string `json:"SecurityGroupName"`
-		GroupType         *string `json:"GroupType"`
-		IpVersion         *string `json:"IpVersion"`
-		Description       *string `json:"Description"`
-		InstanceCount     *int    `json:"InstanceCount"`
-		CreateTime        *string `json:"CreateTime"`
-		UpdateTime        *string `json:"UpdateTime"`
-		Region            *string `json:"Region"`
-		Rules             *string `json:"Rules"`
-		Instances         *string `json:"Instances"`
+		SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+		GroupType         *string `json:"GroupType" name:"GroupType"`
+		IpVersion         *string `json:"IpVersion" name:"IpVersion"`
+		Description       *string `json:"Description" name:"Description"`
+		InstanceCount     *int    `json:"InstanceCount" name:"InstanceCount"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime        *string `json:"UpdateTime" name:"UpdateTime"`
+		Region            *string `json:"Region" name:"Region"`
+		Rules             *string `json:"Rules" name:"Rules"`
+		Instances         *string `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 }
 
@@ -477,15 +527,15 @@ type ListSecurityGroupResponse struct {
 	Limit     *int    `json:"Limit" name:"Limit"`
 	Total     *int    `json:"Total" name:"Total"`
 	Data      []struct {
-		SecurityGroupId   *string `json:"SecurityGroupId"`
-		SecurityGroupName *string `json:"SecurityGroupName"`
-		GroupType         *string `json:"GroupType"`
-		IpVersion         *string `json:"IpVersion"`
-		Description       *string `json:"Description"`
-		InstanceCount     *int    `json:"InstanceCount"`
-		CreateTime        *string `json:"CreateTime"`
-		UpdateTime        *string `json:"UpdateTime"`
-		Region            *string `json:"Region"`
+		SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+		GroupType         *string `json:"GroupType" name:"GroupType"`
+		IpVersion         *string `json:"IpVersion" name:"IpVersion"`
+		Description       *string `json:"Description" name:"Description"`
+		InstanceCount     *int    `json:"InstanceCount" name:"InstanceCount"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime        *string `json:"UpdateTime" name:"UpdateTime"`
+		Region            *string `json:"Region" name:"Region"`
 	} `json:"Data"`
 }
 
@@ -500,7 +550,9 @@ func (r *ListSecurityGroupResponse) FromJsonString(s string) error {
 
 type DescribeSecurityGroupRequest struct {
 	*ksyunhttp.BaseRequest
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	SecurityGroupId     *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	RuleFuzzySearch     *string `json:"RuleFuzzySearch,omitempty" name:"RuleFuzzySearch"`
+	InstanceFuzzySearch *string `json:"InstanceFuzzySearch,omitempty" name:"InstanceFuzzySearch"`
 }
 
 func (r *DescribeSecurityGroupRequest) ToJsonString() string {
@@ -525,17 +577,35 @@ type DescribeSecurityGroupResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		SecurityGroupId   *string `json:"SecurityGroupId"`
-		SecurityGroupName *string `json:"SecurityGroupName"`
-		GroupType         *string `json:"GroupType"`
-		IpVersion         *string `json:"IpVersion"`
-		Description       *string `json:"Description"`
-		InstanceCount     *int    `json:"InstanceCount"`
-		CreateTime        *string `json:"CreateTime"`
-		UpdateTime        *string `json:"UpdateTime"`
-		Region            *string `json:"Region"`
-		Rules             *string `json:"Rules"`
-		Instances         *string `json:"Instances"`
+		SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+		GroupType         *string `json:"GroupType" name:"GroupType"`
+		IpVersion         *string `json:"IpVersion" name:"IpVersion"`
+		Description       *string `json:"Description" name:"Description"`
+		InstanceCount     *int    `json:"InstanceCount" name:"InstanceCount"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime        *string `json:"UpdateTime" name:"UpdateTime"`
+		Rules             []struct {
+			IpVersion   *string `json:"ipVersion" name:"ipVersion"`
+			Protocol    *string `json:"protocol" name:"protocol"`
+			Action      *string `json:"action" name:"action"`
+			Priority    *int    `json:"priority" name:"priority"`
+			RuleId      *string `json:"RuleId" name:"RuleId"`
+			Cidr        *string `json:"Cidr" name:"Cidr"`
+			Description *string `json:"Description" name:"Description"`
+			CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+			UpdateTime  *string `json:"UpdateTime" name:"UpdateTime"`
+		} `json:"Rules" name:"Rules"`
+		Instances []struct {
+			InstanceId      *string `json:"InstanceId" name:"InstanceId"`
+			InstanceName    *string `json:"InstanceName" name:"InstanceName"`
+			ProductType     *int    `json:"ProductType" name:"ProductType"`
+			ProductTypeName *string `json:"ProductTypeName" name:"ProductTypeName"`
+			CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+			UpdateTime      *string `json:"UpdateTime" name:"UpdateTime"`
+			ClientIp        *string `json:"ClientIp" name:"ClientIp"`
+			ClientPort      *string `json:"ClientPort" name:"ClientPort"`
+		} `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 }
 
@@ -545,6 +615,48 @@ func (r *DescribeSecurityGroupResponse) ToJsonString() string {
 }
 
 func (r *DescribeSecurityGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSecurityGroupRequest struct {
+	*ksyunhttp.BaseRequest
+	SecurityGroupIds *string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+}
+
+func (r *DeleteSecurityGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteSecurityGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteSecurityGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSecurityGroupResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      []struct {
+		SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		OperStatus      *string `json:"OperStatus" name:"OperStatus"`
+		Msg             *string `json:"Msg" name:"Msg"`
+	} `json:"Data"`
+}
+
+func (r *DeleteSecurityGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteSecurityGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -577,17 +689,17 @@ type UpdateSecurityGroupResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		SecurityGroupId   *string `json:"SecurityGroupId"`
-		SecurityGroupName *string `json:"SecurityGroupName"`
-		GroupType         *string `json:"GroupType"`
-		IpVersion         *string `json:"IpVersion"`
-		Description       *string `json:"Description"`
-		InstanceCount     *int    `json:"InstanceCount"`
-		CreateTime        *string `json:"CreateTime"`
-		UpdateTime        *string `json:"UpdateTime"`
-		Region            *string `json:"Region"`
-		Rules             *string `json:"Rules"`
-		Instances         *string `json:"Instances"`
+		SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+		GroupType         *string `json:"GroupType" name:"GroupType"`
+		IpVersion         *string `json:"IpVersion" name:"IpVersion"`
+		Description       *string `json:"Description" name:"Description"`
+		InstanceCount     *int    `json:"InstanceCount" name:"InstanceCount"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime        *string `json:"UpdateTime" name:"UpdateTime"`
+		Region            *string `json:"Region" name:"Region"`
+		Rules             *string `json:"Rules" name:"Rules"`
+		Instances         *string `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 }
 
@@ -629,17 +741,26 @@ type CloneSecurityGroupResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		SecurityGroupId   *string `json:"SecurityGroupId"`
-		SecurityGroupName *string `json:"SecurityGroupName"`
-		GroupType         *string `json:"GroupType"`
-		IpVersion         *string `json:"IpVersion"`
-		Description       *string `json:"Description"`
-		InstanceCount     *int    `json:"InstanceCount"`
-		CreateTime        *string `json:"CreateTime"`
-		UpdateTime        *string `json:"UpdateTime"`
-		Region            *string `json:"Region"`
-		Rules             *string `json:"Rules"`
-		Instances         *string `json:"Instances"`
+		SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+		GroupType         *string `json:"GroupType" name:"GroupType"`
+		IpVersion         *string `json:"IpVersion" name:"IpVersion"`
+		Description       *string `json:"Description" name:"Description"`
+		InstanceCount     *int    `json:"InstanceCount" name:"InstanceCount"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime        *string `json:"UpdateTime" name:"UpdateTime"`
+		Rules             []struct {
+			IpVersion   *string `json:"ipVersion" name:"ipVersion"`
+			Protocol    *string `json:"protocol" name:"protocol"`
+			Action      *string `json:"action" name:"action"`
+			Priority    *int    `json:"priority" name:"priority"`
+			RuleId      *string `json:"RuleId" name:"RuleId"`
+			Cidr        *string `json:"Cidr" name:"Cidr"`
+			Description *string `json:"Description" name:"Description"`
+			CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+			UpdateTime  *string `json:"UpdateTime" name:"UpdateTime"`
+		} `json:"Rules" name:"Rules"`
+		Instances *string `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 }
 
@@ -771,8 +892,7 @@ func (r *RebindSecurityGroupResponse) FromJsonString(s string) error {
 
 type CreateSecurityRuleRequest struct {
 	*ksyunhttp.BaseRequest
-	Rules           []*string `json:"Rules,omitempty" name:"Rules"`
-	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 }
 
 func (r *CreateSecurityRuleRequest) ToJsonString() string {
@@ -848,6 +968,100 @@ func (r *UpdateSecurityRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteSecurityRuleRequest struct {
+	*ksyunhttp.BaseRequest
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	RuleIds         *string `json:"RuleIds,omitempty" name:"RuleIds"`
+}
+
+func (r *DeleteSecurityRuleRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteSecurityRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteSecurityRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSecurityRuleResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      *bool   `json:"Data" name:"Data"`
+}
+
+func (r *DeleteSecurityRuleResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteSecurityRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListSecuredInstanceRequest struct {
+	*ksyunhttp.BaseRequest
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	ProjectIds      *string `json:"ProjectIds,omitempty" name:"ProjectIds"`
+	FuzzySearch     *string `json:"FuzzySearch,omitempty" name:"FuzzySearch"`
+	Offset          *int    `json:"Offset,omitempty" name:"Offset"`
+	Limit           *int    `json:"Limit,omitempty" name:"Limit"`
+	OrderBy         *string `json:"OrderBy,omitempty" name:"OrderBy"`
+}
+
+func (r *ListSecuredInstanceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListSecuredInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListSecuredInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListSecuredInstanceResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Offset    *int    `json:"Offset" name:"Offset"`
+	Limit     *int    `json:"Limit" name:"Limit"`
+	Total     *int    `json:"Total" name:"Total"`
+	Data      []struct {
+		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName    *string `json:"InstanceName" name:"InstanceName"`
+		ProductType     *int    `json:"ProductType" name:"ProductType"`
+		ProductTypeName *string `json:"ProductTypeName" name:"ProductTypeName"`
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime      *string `json:"UpdateTime" name:"UpdateTime"`
+		ClientIp        *string `json:"ClientIp" name:"ClientIp"`
+		ClientPort      *int    `json:"ClientPort" name:"ClientPort"`
+	} `json:"Data"`
+}
+
+func (r *ListSecuredInstanceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListSecuredInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ListUnsecuredInstanceRequest struct {
 	*ksyunhttp.BaseRequest
 	ProjectIds  *string `json:"ProjectIds,omitempty" name:"ProjectIds"`
@@ -882,14 +1096,14 @@ type ListUnsecuredInstanceResponse struct {
 	Limit     *int    `json:"Limit" name:"Limit"`
 	Total     *int    `json:"Total" name:"Total"`
 	Data      []struct {
-		InstanceId      *string `json:"InstanceId"`
-		InstanceName    *string `json:"InstanceName"`
-		ProductType     *int    `json:"ProductType"`
-		ProductTypeName *string `json:"ProductTypeName"`
-		CreateTime      *string `json:"CreateTime"`
-		UpdateTime      *string `json:"UpdateTime"`
-		ClientIp        *string `json:"ClientIp"`
-		ClientPort      *int    `json:"ClientPort"`
+		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName    *string `json:"InstanceName" name:"InstanceName"`
+		ProductType     *int    `json:"ProductType" name:"ProductType"`
+		ProductTypeName *string `json:"ProductTypeName" name:"ProductTypeName"`
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime      *string `json:"UpdateTime" name:"UpdateTime"`
+		ClientIp        *string `json:"ClientIp" name:"ClientIp"`
+		ClientPort      *int    `json:"ClientPort" name:"ClientPort"`
 	} `json:"Data"`
 }
 
@@ -930,19 +1144,19 @@ type ListBackupResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      []struct {
-		BackupId           *string `json:"BackupId"`
-		InstanceId         *string `json:"InstanceId"`
-		BackupName         *string `json:"BackupName"`
-		BackupStatus       *string `json:"BackupStatus"`
-		BackupStatusName   *string `json:"BackupStatusName"`
-		BackupSizeReadable *string `json:"BackupSizeReadable"`
-		RunType            *int    `json:"RunType"`
-		RunTypeName        *string `json:"RunTypeName"`
-		IncreaseName       *string `json:"IncreaseName"`
-		StartTime          *string `json:"StartTime"`
-		ComplateTime       *string `json:"ComplateTime"`
-		Cost               *int    `json:"Cost"`
-		CreateTime         *string `json:"CreateTime"`
+		BackupId           *string `json:"BackupId" name:"BackupId"`
+		InstanceId         *string `json:"InstanceId" name:"InstanceId"`
+		BackupName         *string `json:"BackupName" name:"BackupName"`
+		BackupStatus       *string `json:"BackupStatus" name:"BackupStatus"`
+		BackupStatusName   *string `json:"BackupStatusName" name:"BackupStatusName"`
+		BackupSizeReadable *string `json:"BackupSizeReadable" name:"BackupSizeReadable"`
+		RunType            *int    `json:"RunType" name:"RunType"`
+		RunTypeName        *string `json:"RunTypeName" name:"RunTypeName"`
+		IncreaseName       *string `json:"IncreaseName" name:"IncreaseName"`
+		StartTime          *string `json:"StartTime" name:"StartTime"`
+		ComplateTime       *string `json:"ComplateTime" name:"ComplateTime"`
+		Cost               *int    `json:"Cost" name:"Cost"`
+		CreateTime         *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"Data"`
 }
 
@@ -952,5 +1166,773 @@ func (r *ListBackupResponse) ToJsonString() string {
 }
 
 func (r *ListBackupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBackupRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
+}
+
+func (r *CreateBackupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateBackupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateBackupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBackupResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      *bool   `json:"Data" name:"Data"`
+}
+
+func (r *CreateBackupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateBackupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateBackupRuleRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId          *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" name:"PreferredBackupTime"`
+	EnableAutobackup    *bool   `json:"EnableAutobackup,omitempty" name:"EnableAutobackup"`
+	EnableIncremental   *bool   `json:"EnableIncremental,omitempty" name:"EnableIncremental"`
+}
+
+func (r *UpdateBackupRuleRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateBackupRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpdateBackupRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateBackupRuleResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      *bool   `json:"Data" name:"Data"`
+}
+
+func (r *UpdateBackupRuleResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateBackupRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetPasswordRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId    *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	AdminPassword *string `json:"AdminPassword,omitempty" name:"AdminPassword"`
+}
+
+func (r *ResetPasswordRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ResetPasswordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ResetPasswordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResetPasswordResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      *string `json:"Data" name:"Data"`
+}
+
+func (r *ResetPasswordResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ResetPasswordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteBackupRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	BackupIds  *string `json:"BackupIds,omitempty" name:"BackupIds"`
+}
+
+func (r *DeleteBackupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteBackupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteBackupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteBackupResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      []struct {
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		OperStatus *string `json:"OperStatus" name:"OperStatus"`
+		Msg        *string `json:"Msg" name:"Msg"`
+	} `json:"Data"`
+}
+
+func (r *DeleteBackupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteBackupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRestoreRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	BackupId   *string `json:"BackupId,omitempty" name:"BackupId"`
+}
+
+func (r *CreateRestoreRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateRestoreRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateRestoreRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateRestoreResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      *bool   `json:"Data" name:"Data"`
+}
+
+func (r *CreateRestoreResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateRestoreResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type OpenTiMonitorRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *OpenTiMonitorRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *OpenTiMonitorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "OpenTiMonitorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type OpenTiMonitorResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      *string `json:"Data" name:"Data"`
+}
+
+func (r *OpenTiMonitorResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *OpenTiMonitorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTaskRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	TaskName   *string `json:"TaskName,omitempty" name:"TaskName"`
+	TargetId   *string `json:"TargetId,omitempty" name:"TargetId"`
+	VpcId      *string `json:"VpcId,omitempty" name:"VpcId"`
+	VnetId     *string `json:"VnetId,omitempty" name:"VnetId"`
+	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
+}
+
+func (r *CreateTaskRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTaskResponse struct {
+	*ksyunhttp.BaseResponse
+	TaskName   *string `json:"TaskName" name:"TaskName"`
+	OperStatus *string `json:"OperStatus" name:"OperStatus"`
+	Msg        struct {
+	} `json:"Msg"`
+}
+
+func (r *CreateTaskResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type OperationTasksRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	TaskList   *string `json:"TaskList,omitempty" name:"TaskList"`
+	Operation  *string `json:"Operation,omitempty" name:"Operation"`
+}
+
+func (r *OperationTasksRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *OperationTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "OperationTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type OperationTasksResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      []struct {
+		TaskName   *string `json:"TaskName" name:"TaskName"`
+		OperStatus *string `json:"OperStatus" name:"OperStatus"`
+		Msg        *string `json:"Msg" name:"Msg"`
+	} `json:"Data"`
+}
+
+func (r *OperationTasksResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *OperationTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckTaskNameRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *CheckTaskNameRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CheckTaskNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CheckTaskNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckTaskNameResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string   `json:"RequestId" name:"RequestId"`
+	Code      *string   `json:"Code" name:"Code"`
+	Message   *string   `json:"Message" name:"Message"`
+	Data      []*string `json:"Data" name:"Data"`
+}
+
+func (r *CheckTaskNameResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CheckTaskNameResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	TaskName   *string `json:"TaskName,omitempty" name:"TaskName"`
+}
+
+func (r *DescribeTaskRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTaskResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      struct {
+		TiCDCTaskBaseInfo struct {
+			InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+			TaskName     *string `json:"TaskName" name:"TaskName"`
+			TaskStatus   *string `json:"TaskStatus" name:"TaskStatus"`
+			CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+			CheckPointTs *string `json:"CheckPointTs" name:"CheckPointTs"`
+			ResolvedTs   *string `json:"ResolvedTs" name:"ResolvedTs"`
+			DelayTime    *string `json:"DelayTime" name:"DelayTime"`
+			PauseTime    *string `json:"PauseTime" name:"PauseTime"`
+			FinishTime   *string `json:"FinishTime" name:"FinishTime"`
+			TaskFailInfo *string `json:"TaskFailInfo" name:"TaskFailInfo"`
+		} `json:"TiCDCTaskBaseInfo" name:"TiCDCTaskBaseInfo"`
+		TiCDCTaskTargetInfo struct {
+			TargetId *string `json:"TargetId" name:"TargetId"`
+			SinkUri  *string `json:"SinkUri" name:"SinkUri"`
+		} `json:"TiCDCTaskTargetInfo" name:"TiCDCTaskTargetInfo"`
+	} `json:"Data"`
+}
+
+func (r *DescribeTaskResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTasksRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *ListTasksRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTasksResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      []struct {
+		TaskName      *string `json:"TaskName" name:"TaskName"`
+		TaskStatus    *string `json:"TaskStatus" name:"TaskStatus"`
+		TargetType    *string `json:"TargetType" name:"TargetType"`
+		TargetId      *string `json:"TargetId" name:"TargetId"`
+		TargetAddress *string `json:"TargetAddress" name:"TargetAddress"`
+		TargetPort    *string `json:"TargetPort" name:"TargetPort"`
+		VpcId         *string `json:"VpcId" name:"VpcId"`
+	} `json:"Data"`
+}
+
+func (r *ListTasksResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatabasesRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDatabasesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDatabasesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeDatabasesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatabasesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string   `json:"RequestId" name:"RequestId"`
+	Code      *string   `json:"Code" name:"Code"`
+	Message   *string   `json:"Message" name:"Message"`
+	Data      []*string `json:"Data" name:"Data"`
+}
+
+func (r *DescribeDatabasesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountsRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeAccountsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccountsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      []struct {
+		AccountName *string `json:"AccountName" name:"AccountName"`
+		AccountType *string `json:"AccountType" name:"AccountType"`
+		Describe    *string `json:"Describe" name:"Describe"`
+		Privileges  struct {
+			ALL *string `json:"ALL" name:"ALL"`
+		} `json:"Privileges" name:"Privileges"`
+	} `json:"Data"`
+}
+
+func (r *DescribeAccountsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAccountRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId      *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	AccountName     *string `json:"AccountName,omitempty" name:"AccountName"`
+	AccountPassword *string `json:"AccountPassword,omitempty" name:"AccountPassword"`
+	Describe        *string `json:"Describe,omitempty" name:"Describe"`
+	Privileges      *string `json:"Privileges,omitempty" name:"Privileges"`
+}
+
+func (r *CreateAccountRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAccountResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      struct {
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		OperStatus *string `json:"OperStatus" name:"OperStatus"`
+		Msg        *string `json:"Msg" name:"Msg"`
+	} `json:"Data"`
+}
+
+func (r *CreateAccountResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAccountRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId  *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
+}
+
+func (r *DeleteAccountRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAccountResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      struct {
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		OperStatus *string `json:"OperStatus" name:"OperStatus"`
+		Msg        *string `json:"Msg" name:"Msg"`
+	} `json:"Data"`
+}
+
+func (r *DeleteAccountResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAccountInfoRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId      *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	AccountName     *string `json:"AccountName,omitempty" name:"AccountName"`
+	AccountPassword *string `json:"AccountPassword,omitempty" name:"AccountPassword"`
+	AccountType     *string `json:"AccountType,omitempty" name:"AccountType"`
+}
+
+func (r *ModifyAccountInfoRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyAccountInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyAccountInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAccountInfoResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      struct {
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		OperStatus *string `json:"OperStatus" name:"OperStatus"`
+		Msg        *string `json:"Msg" name:"Msg"`
+	} `json:"Data"`
+}
+
+func (r *ModifyAccountInfoResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyAccountInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAccountPrivilegesRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId    *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	AccountName   *string `json:"AccountName,omitempty" name:"AccountName"`
+	OldPrivileges *string `json:"OldPrivileges,omitempty" name:"OldPrivileges"`
+	NewPrivileges *string `json:"NewPrivileges,omitempty" name:"NewPrivileges"`
+}
+
+func (r *ModifyAccountPrivilegesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyAccountPrivilegesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyAccountPrivilegesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAccountPrivilegesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      struct {
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		OperStatus *string `json:"OperStatus" name:"OperStatus"`
+		Msg        *string `json:"Msg" name:"Msg"`
+	} `json:"Data"`
+}
+
+func (r *ModifyAccountPrivilegesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyAccountPrivilegesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ConfigurationInstanceEipRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	Operation  *string `json:"Operation,omitempty" name:"Operation"`
+	EipPort    *int    `json:"EipPort,omitempty" name:"EipPort"`
+}
+
+func (r *ConfigurationInstanceEipRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ConfigurationInstanceEipRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ConfigurationInstanceEipRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ConfigurationInstanceEipResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      *bool   `json:"Data" name:"Data"`
+}
+
+func (r *ConfigurationInstanceEipResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ConfigurationInstanceEipResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

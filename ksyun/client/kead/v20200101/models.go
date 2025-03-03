@@ -6,14 +6,82 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 )
 
+type DescribeKeadRequest struct {
+	*ksyunhttp.BaseRequest
+	KeadId    []*string `json:"KeadId,omitempty" name:"KeadId"`
+	ProjectId []*int    `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *DescribeKeadRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeKeadRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeKeadRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKeadResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DescribeKeadResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeKeadResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKeadIpRequest struct {
+	*ksyunhttp.BaseRequest
+	Ip        *string `json:"Ip,omitempty" name:"Ip"`
+	ProjectId []*int  `json:"ProjectId,omitempty" name:"ProjectId"`
+	PageSize  *int    `json:"PageSize,omitempty" name:"PageSize"`
+	OffSet    *int    `json:"OffSet,omitempty" name:"OffSet"`
+}
+
+func (r *DescribeKeadIpRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeKeadIpRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeKeadIpRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKeadIpResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DescribeKeadIpResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeKeadIpResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeBlockIpRequest struct {
 	*ksyunhttp.BaseRequest
-	SearchStr    *string `json:"SearchStr,omitempty" name:"SearchStr"`
-	Status       *string `json:"Status,omitempty" name:"Status"`
-	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
-	RegionCode   *string `json:"RegionCode,omitempty" name:"RegionCode"`
-	StartTime    *string `json:"StartTime,omitempty" name:"StartTime"`
-	EndTime      *string `json:"endTime,omitempty" name:"endTime"`
 }
 
 func (r *DescribeBlockIpRequest) ToJsonString() string {
@@ -36,23 +104,23 @@ type DescribeBlockIpResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	BlockIpSet []struct {
-		Ip              *string `json:"Ip"`
-		InBps           *string `json:"InBps"`
-		AttackType      *string `json:"AttackType"`
-		InstanceType    *string `json:"InstanceType"`
-		InstanceName    *string `json:"InstanceName"`
-		RegionCode      *string `json:"RegionCode"`
-		RegionName      *string `json:"RegionName"`
-		RegionEnName    *string `json:"RegionEnName"`
-		Status          *string `json:"Status"`
-		BlockTime       *string `json:"BlockTime"`
-		UnblockTime     *string `json:"UnblockTime"`
-		PlanUnblockTime *string `json:"PlanUnblockTime"`
+		Ip              *string `json:"Ip" name:"Ip"`
+		InBps           *string `json:"InBps" name:"InBps"`
+		AttackType      *string `json:"AttackType" name:"AttackType"`
+		InstanceType    *string `json:"InstanceType" name:"InstanceType"`
+		InstanceName    *string `json:"InstanceName" name:"InstanceName"`
+		RegionCode      *string `json:"RegionCode" name:"RegionCode"`
+		RegionName      *string `json:"RegionName" name:"RegionName"`
+		RegionEnName    *string `json:"RegionEnName" name:"RegionEnName"`
+		Status          *string `json:"Status" name:"Status"`
+		BlockTime       *string `json:"BlockTime" name:"BlockTime"`
+		UnblockTime     *string `json:"UnblockTime" name:"UnblockTime"`
+		PlanUnblockTime *string `json:"PlanUnblockTime" name:"PlanUnblockTime"`
 	} `json:"BlockIpSet"`
 	RegionSet []struct {
-		RegionCode   *string `json:"RegionCode"`
-		RegionName   *string `json:"RegionName"`
-		RegionEnName *string `json:"RegionEnName"`
+		RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+		RegionName   *string `json:"RegionName" name:"RegionName"`
+		RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
 	} `json:"RegionSet"`
 	ResourceSet  []*string `json:"ResourceSet" name:"ResourceSet"`
 	BlockIpCount *string   `json:"BlockIpCount" name:"BlockIpCount"`

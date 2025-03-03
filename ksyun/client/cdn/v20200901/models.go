@@ -76,16 +76,16 @@ type GetUserUsageDataExportTaskResponse struct {
 	RequestId        *string `json:"RequestId" name:"RequestId"`
 	UsageDataPerPage struct {
 		DataItem []struct {
-			TaskId     *string `json:"TaskId"`
-			CreateTime *string `json:"CreateTime"`
-			UpdateTime *string `json:"UpdateTime"`
-			Status     *string `json:"Status"`
+			TaskId     *string `json:"TaskId" name:"TaskId"`
+			CreateTime *string `json:"CreateTime" name:"CreateTime"`
+			UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
+			Status     *string `json:"Status" name:"Status"`
 			TaskConfig struct {
-				StartTime *string `json:"StartTime"`
-				EndTime   *string `json:"EndTime"`
+				StartTime *string `json:"StartTime" name:"StartTime"`
+				EndTime   *string `json:"EndTime" name:"EndTime"`
 			} `json:"TaskConfig"`
-			DownloadUrl *string `json:"DownloadUrl"`
-		} `json:"DataItem"`
+			DownloadUrl *string `json:"DownloadUrl" name:"DownloadUrl"`
+		} `json:"DataItem" name:"DataItem"`
 	} `json:"UsageDataPerPage"`
 }
 
@@ -172,7 +172,7 @@ type GetDomainUsageDataResponse struct {
 	Domains   *string `json:"Domains" name:"Domains"`
 	Areas     *string `json:"Areas" name:"Areas"`
 	Metric    []struct {
-		Time *string `json:"Time"`
+		Time *string `json:"Time" name:"Time"`
 	} `json:"Metric"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	PeakTime  *string `json:"PeakTime" name:"PeakTime"`

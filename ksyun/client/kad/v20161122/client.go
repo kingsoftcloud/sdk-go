@@ -220,3 +220,69 @@ func (c *Client) DescribeForwardSourceWithContext(ctx context.Context, request *
 	}
 	return msg
 }
+func NewGetAttackLogRequest() (request *GetAttackLogRequest) {
+	request = &GetAttackLogRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kad", APIVersion, "GetAttackLog")
+	return
+}
+
+func NewGetAttackLogResponse() (response *GetAttackLogResponse) {
+	response = &GetAttackLogResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetAttackLog(request *GetAttackLogRequest) string {
+	return c.GetAttackLogWithContext(context.Background(), request)
+}
+
+func (c *Client) GetAttackLogWithContext(ctx context.Context, request *GetAttackLogRequest) string {
+	if request == nil {
+		request = NewGetAttackLogRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetAttackLogResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeOverviewRequest() (request *DescribeOverviewRequest) {
+	request = &DescribeOverviewRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kad", APIVersion, "DescribeOverview")
+	return
+}
+
+func NewDescribeOverviewResponse() (response *DescribeOverviewResponse) {
+	response = &DescribeOverviewResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeOverview(request *DescribeOverviewRequest) string {
+	return c.DescribeOverviewWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeOverviewWithContext(ctx context.Context, request *DescribeOverviewRequest) string {
+	if request == nil {
+		request = NewDescribeOverviewRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeOverviewResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

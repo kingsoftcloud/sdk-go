@@ -32,11 +32,11 @@ type DescribeCacheReadonlyNodeResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      []struct {
-		InstanceId *string `json:"InstanceId"`
-		Name       *string `json:"Name"`
-		Ip         *string `json:"Ip"`
-		Status     *string `json:"Status"`
-		CreateTime *string `json:"CreateTime"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		Name       *string `json:"Name" name:"Name"`
+		Ip         *string `json:"Ip" name:"Ip"`
+		Status     *string `json:"Status" name:"Status"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"Data"`
 }
 
@@ -76,7 +76,7 @@ type AddCacheSlaveNodeResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		NodeId *string `json:"NodeId"`
+		NodeId *string `json:"NodeId" name:"NodeId"`
 	} `json:"Data"`
 }
 

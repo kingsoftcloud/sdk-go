@@ -34,15 +34,15 @@ type AssumeRoleResponse struct {
 	*ksyunhttp.BaseResponse
 	AssumeRoleResult struct {
 		Credentials struct {
-			Expiration      *string `json:"Expiration"`
-			SecretAccessKey *string `json:"SecretAccessKey"`
-			AccessKeyId     *string `json:"AccessKeyId"`
-			SecurityToken   *string `json:"SecurityToken"`
-		} `json:"Credentials"`
+			Expiration      *string `json:"Expiration" name:"Expiration"`
+			SecretAccessKey *string `json:"SecretAccessKey" name:"SecretAccessKey"`
+			AccessKeyId     *string `json:"AccessKeyId" name:"AccessKeyId"`
+			SecurityToken   *string `json:"SecurityToken" name:"SecurityToken"`
+		} `json:"Credentials" name:"Credentials"`
 		AssumedRoleUser struct {
-			Krn           *string `json:"Krn"`
-			AssumedRoleId *string `json:"AssumedRoleId"`
-		} `json:"AssumedRoleUser"`
+			Krn           *string `json:"Krn" name:"Krn"`
+			AssumedRoleId *string `json:"AssumedRoleId" name:"AssumedRoleId"`
+		} `json:"AssumedRoleUser" name:"AssumedRoleUser"`
 	} `json:"AssumeRoleResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }

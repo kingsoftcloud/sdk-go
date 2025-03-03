@@ -34,17 +34,17 @@ type GetProjectInstanceListNewResponse struct {
 	*ksyunhttp.BaseResponse
 	ListInstanceResult struct {
 		Items []struct {
-			ProjectId    *int    `json:"ProjectId"`
-			InstanceId   *string `json:"InstanceId"`
-			ProductGroup *int    `json:"ProductGroup"`
-			ProductType  *int    `json:"ProductType"`
-			Region       *string `json:"Region"`
-			AccountId    *int    `json:"AccountId"`
-			Status       *int    `json:"Status"`
-		} `json:"Items"`
-		CurrentPage *int `json:"CurrentPage"`
-		PageSize    *int `json:"PageSize"`
-		Total       *int `json:"Total"`
+			ProjectId    *int    `json:"ProjectId" name:"ProjectId"`
+			InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+			ProductGroup *int    `json:"ProductGroup" name:"ProductGroup"`
+			ProductType  *int    `json:"ProductType" name:"ProductType"`
+			Region       *string `json:"Region" name:"Region"`
+			AccountId    *int    `json:"AccountId" name:"AccountId"`
+			Status       *int    `json:"Status" name:"Status"`
+		} `json:"Items" name:"Items"`
+		CurrentPage *int `json:"CurrentPage" name:"CurrentPage"`
+		PageSize    *int `json:"PageSize" name:"PageSize"`
+		Total       *int `json:"Total" name:"Total"`
 	} `json:"ListInstanceResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }

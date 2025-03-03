@@ -79,10 +79,10 @@ type DescribeNamespaceResponse struct {
 	MaxResults   *int    `json:"MaxResults" name:"MaxResults"`
 	Marker       *int    `json:"Marker" name:"Marker"`
 	NamespaceSet []struct {
-		Namespace  *string `json:"Namespace"`
-		Public     *bool   `json:"Public"`
-		RepoCount  *string `json:"RepoCount"`
-		CreateTime *string `json:"CreateTime"`
+		Namespace  *string `json:"Namespace" name:"Namespace"`
+		Public     *bool   `json:"Public" name:"Public"`
+		RepoCount  *string `json:"RepoCount" name:"RepoCount"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"NamespaceSet"`
 }
 
@@ -238,11 +238,11 @@ type DescribeImagesResponse struct {
 	Marker     *int    `json:"Marker" name:"Marker"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	ImageSet   struct {
-		ImageId    *string `json:"ImageId"`
-		Size       *int    `json:"Size"`
-		CreateTime *string `json:"CreateTime"`
+		ImageId    *string `json:"ImageId" name:"ImageId"`
+		Size       *int    `json:"Size" name:"Size"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		TagNames   []struct {
-		} `json:"TagNames"`
+		} `json:"TagNames" name:"TagNames"`
 	} `json:"ImageSet"`
 }
 
@@ -363,11 +363,11 @@ type DescribeRepositoryResponse struct {
 	Marker     *int    `json:"Marker" name:"Marker"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	RepoSet    []struct {
-		RepoName   *string `json:"RepoName"`
-		Public     *bool   `json:"Public"`
-		CreateTime *string `json:"CreateTime"`
-		UpdateTime *string `json:"UpdateTime"`
-		Desc       *string `json:"Desc"`
+		RepoName   *string `json:"RepoName" name:"RepoName"`
+		Public     *bool   `json:"Public" name:"Public"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
+		Desc       *string `json:"Desc" name:"Desc"`
 	} `json:"RepoSet"`
 }
 
@@ -523,20 +523,20 @@ type DescribeImageScanResponse struct {
 	Status     *string `json:"Status" name:"Status"`
 	FinishTime *string `json:"FinishTime" name:"FinishTime"`
 	Summary    struct {
-		High       *int `json:"High"`
-		Medium     *int `json:"Medium"`
-		Low        *int `json:"Low"`
-		Negligible *int `json:"Negligible"`
-		Unknown    *int `json:"Unknown"`
+		High       *int `json:"High" name:"High"`
+		Medium     *int `json:"Medium" name:"Medium"`
+		Low        *int `json:"Low" name:"Low"`
+		Negligible *int `json:"Negligible" name:"Negligible"`
+		Unknown    *int `json:"Unknown" name:"Unknown"`
 	} `json:"Summary"`
 	VulnerabilitySet struct {
-		CveName         *string `json:"CveName"`
-		CveLink         *string `json:"CveLink"`
-		Description     *string `json:"Description"`
-		Severity        *string `json:"Severity"`
-		Feature         *string `json:"Feature"`
-		CurrentVersion  *string `json:"CurrentVersion"`
-		RepairedVersion *string `json:"RepairedVersion"`
+		CveName         *string `json:"CveName" name:"CveName"`
+		CveLink         *string `json:"CveLink" name:"CveLink"`
+		Description     *string `json:"Description" name:"Description"`
+		Severity        *string `json:"Severity" name:"Severity"`
+		Feature         *string `json:"Feature" name:"Feature"`
+		CurrentVersion  *string `json:"CurrentVersion" name:"CurrentVersion"`
+		RepairedVersion *string `json:"RepairedVersion" name:"RepairedVersion"`
 	} `json:"VulnerabilitySet"`
 }
 
@@ -576,7 +576,7 @@ func (r *CreateInstanceTokenRequest) FromJsonString(s string) error {
 type CreateInstanceTokenResponse struct {
 	*ksyunhttp.BaseResponse
 	Username   *string `json:"Username" name:"Username"`
-	tokenId    *string `json:"tokenId" name:"tokenId"`
+	TokenId    *string `json:"tokenId" name:"tokenId"`
 	Token      *string `json:"Token" name:"Token"`
 	ExpireTime *string `json:"ExpireTime" name:"ExpireTime"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
@@ -616,10 +616,10 @@ type DescribeInternalEndpointResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	AccessVpcSet []struct {
-		VpcId    *string `json:"VpcId"`
-		SubnetId *string `json:"SubnetId"`
-		Status   *string `json:"Status"`
-		EniLBIp  *string `json:"EniLBIp"`
+		VpcId    *string `json:"VpcId" name:"VpcId"`
+		SubnetId *string `json:"SubnetId" name:"SubnetId"`
+		Status   *string `json:"Status" name:"Status"`
+		EniLBIp  *string `json:"EniLBIp" name:"EniLBIp"`
 	} `json:"AccessVpcSet"`
 }
 
@@ -662,11 +662,11 @@ type DescribeInstanceTokenResponse struct {
 	Marker     *int    `json:"Marker" name:"Marker"`
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
 	TokenSet   []struct {
-		TokenId    *string `json:"TokenId"`
-		Enable     *bool   `json:"Enable"`
-		Desc       *string `json:"Desc"`
-		CreateTime *string `json:"CreateTime"`
-		ExpireTime *string `json:"ExpireTime"`
+		TokenId    *string `json:"TokenId" name:"TokenId"`
+		Enable     *bool   `json:"Enable" name:"Enable"`
+		Desc       *string `json:"Desc" name:"Desc"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		ExpireTime *string `json:"ExpireTime" name:"ExpireTime"`
 	} `json:"TokenSet"`
 }
 
@@ -857,8 +857,8 @@ type DescribeInternalEndpointDnsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId              *string `json:"RequestId" name:"RequestId"`
 	InternalEndpointDnsSet []struct {
-		InternalEndpointDns *string `json:"InternalEndpointDns"`
-		Status              *string `json:"Status"`
+		InternalEndpointDns *string `json:"InternalEndpointDns" name:"InternalEndpointDns"`
+		Status              *string `json:"Status" name:"Status"`
 	} `json:"InternalEndpointDnsSet"`
 }
 
@@ -1126,15 +1126,15 @@ func (r *DescribeInstanceRequest) FromJsonString(s string) error {
 type DescribeInstanceResponse struct {
 	*ksyunhttp.BaseResponse
 	InstanceSet []struct {
-		InstanceId       *string `json:"InstanceId"`
-		InstanceName     *string `json:"InstanceName"`
-		InstanceType     *string `json:"InstanceType"`
-		InstanceStatus   *string `json:"InstanceStatus"`
-		InternalEndpoint *string `json:"InternalEndpoint"`
-		CreateTime       *string `json:"CreateTime"`
-		ExpiredTime      *string `json:"ExpiredTime"`
-		ChargeType       *string `json:"ChargeType"`
-		ProjectId        *string `json:"ProjectId"`
+		InstanceId       *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName     *string `json:"InstanceName" name:"InstanceName"`
+		InstanceType     *string `json:"InstanceType" name:"InstanceType"`
+		InstanceStatus   *string `json:"InstanceStatus" name:"InstanceStatus"`
+		InternalEndpoint *string `json:"InternalEndpoint" name:"InternalEndpoint"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		ExpiredTime      *string `json:"ExpiredTime" name:"ExpiredTime"`
+		ChargeType       *string `json:"ChargeType" name:"ChargeType"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
 	} `json:"InstanceSet"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1172,7 +1172,7 @@ func (r *CreateWebhookTriggerRequest) FromJsonString(s string) error {
 
 type CreateWebhookTriggerResponse struct {
 	*ksyunhttp.BaseResponse
-	requestId *string `json:"requestId" name:"requestId"`
+	RequestId *string `json:"requestId" name:"requestId"`
 }
 
 func (r *CreateWebhookTriggerResponse) ToJsonString() string {
@@ -1213,13 +1213,13 @@ type DescribeWebhookTriggerResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	TriggerSet []struct {
-		TriggerName *string `json:"TriggerName"`
+		TriggerName *string `json:"TriggerName" name:"TriggerName"`
 		EventType   []struct {
-		} `json:"EventType"`
-		TriggerUrl *string `json:"TriggerUrl"`
-		Enabled    *bool   `json:"Enabled"`
-		CreateTime *string `json:"CreateTime"`
-		UpdateTime *string `json:"UpdateTime"`
+		} `json:"EventType" name:"EventType"`
+		TriggerUrl *string `json:"TriggerUrl" name:"TriggerUrl"`
+		Enabled    *bool   `json:"Enabled" name:"Enabled"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
 	} `json:"TriggerSet"`
 }
 
@@ -1492,14 +1492,14 @@ type DescribeRetentionRuleResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		Id            *int    `json:"Id"`
-		Disabled      *bool   `json:"Disabled"`
-		RegistryScope *string `json:"RegistryScope"`
-		Type          *string `json:"Type"`
-		UnTagged      *bool   `json:"UnTagged"`
-		Template      *string `json:"Template"`
-		TagPatten     *string `json:"TagPatten"`
-		Param         *int    `json:"Param"`
+		Id            *int    `json:"Id" name:"Id"`
+		Disabled      *bool   `json:"Disabled" name:"Disabled"`
+		RegistryScope *string `json:"RegistryScope" name:"RegistryScope"`
+		Type          *string `json:"Type" name:"Type"`
+		UnTagged      *bool   `json:"UnTagged" name:"UnTagged"`
+		Template      *string `json:"Template" name:"Template"`
+		TagPatten     *string `json:"TagPatten" name:"TagPatten"`
+		Param         *int    `json:"Param" name:"Param"`
 	} `json:"Data"`
 }
 
@@ -1578,13 +1578,13 @@ type GetRetentionPolicyLogsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		Id        *string `json:"Id"`
-		EndTime   *string `json:"EndTime"`
-		StartTime *string `json:"StartTime"`
-		Status    *string `json:"Status"`
-		Trigger   *string `json:"Trigger"`
-		DryRun    *bool   `json:"DryRun"`
-		TakeTime  *int    `json:"TakeTime"`
+		Id        *string `json:"Id" name:"Id"`
+		EndTime   *string `json:"EndTime" name:"EndTime"`
+		StartTime *string `json:"StartTime" name:"StartTime"`
+		Status    *string `json:"Status" name:"Status"`
+		Trigger   *string `json:"Trigger" name:"Trigger"`
+		DryRun    *bool   `json:"DryRun" name:"DryRun"`
+		TakeTime  *int    `json:"TakeTime" name:"TakeTime"`
 	} `json:"Data"`
 	Page     *int `json:"Page" name:"Page"`
 	PageSize *int `json:"PageSize" name:"PageSize"`
@@ -1630,20 +1630,20 @@ type GetRetentionPolicyLogDetailResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
 		LogDetail struct {
-			ExecutionId *string `json:"ExecutionId"`
-			Id          *int    `json:"Id"`
-			EndTime     *string `json:"EndTime"`
-			StartTime   *string `json:"StartTime"`
-			Status      *string `json:"Status"`
-			StatusCode  *string `json:"StatusCode"`
-			Repository  *string `json:"Repository"`
-			Rentained   *int    `json:"Rentained"`
-			Total       *int    `json:"Total"`
-			TakeTime    *int    `json:"TakeTime"`
-		} `json:"LogDetail"`
-		Page     *int `json:"Page"`
-		PageSize *int `json:"PageSize"`
-		Total    *int `json:"Total"`
+			ExecutionId *string `json:"ExecutionId" name:"ExecutionId"`
+			Id          *int    `json:"Id" name:"Id"`
+			EndTime     *string `json:"EndTime" name:"EndTime"`
+			StartTime   *string `json:"StartTime" name:"StartTime"`
+			Status      *string `json:"Status" name:"Status"`
+			StatusCode  *string `json:"StatusCode" name:"StatusCode"`
+			Repository  *string `json:"Repository" name:"Repository"`
+			Rentained   *int    `json:"Rentained" name:"Rentained"`
+			Total       *int    `json:"Total" name:"Total"`
+			TakeTime    *int    `json:"TakeTime" name:"TakeTime"`
+		} `json:"LogDetail" name:"LogDetail"`
+		Page     *int `json:"Page" name:"Page"`
+		PageSize *int `json:"PageSize" name:"PageSize"`
+		Total    *int `json:"Total" name:"Total"`
 	} `json:"Data"`
 }
 
@@ -1720,10 +1720,10 @@ type GetRetentionTriggerResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		DisplayText *string `json:"DisplayText"`
-		Cron        *string `json:"Cron"`
+		DisplayText *string `json:"DisplayText" name:"DisplayText"`
+		Cron        *string `json:"Cron" name:"Cron"`
 		Optional    []struct {
-		} `json:"Optional"`
+		} `json:"Optional" name:"Optional"`
 	} `json:"Data"`
 }
 

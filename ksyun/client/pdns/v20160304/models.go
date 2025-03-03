@@ -21,6 +21,37 @@ type DescribeZoneRecordFilter struct {
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
+type UnbindFdZoneVpcBindVpcId struct {
+}
+
+type BindFdZoneVpcVpcId struct {
+}
+
+type DescribePdnsFdZoneFilter struct {
+}
+
+type ModifyPdnsFdZoneForwardIp struct {
+	Port *string `json:"Port,omitempty" name:"Port"`
+	Ip   *string `json:"Ip,omitempty" name:"Ip"`
+}
+
+type CreatePdnsFdZoneForwardIp struct {
+	Port *string `json:"Port,omitempty" name:"Port"`
+	Ip   *string `json:"Ip,omitempty" name:"Ip"`
+}
+
+type ModifyEndPointIpConfig struct {
+	AvailabilityZone *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	SubnetId         *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	IP               *string `json:"IP,omitempty" name:"IP"`
+}
+
+type CreateEndPointIpConfig struct {
+	AvailabilityZone *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	SubnetId         *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	IP               *string `json:"IP,omitempty" name:"IP"`
+}
+
 type CreatePrivateDnsRequest struct {
 	*ksyunhttp.BaseRequest
 	Action    *string `json:"Action,omitempty" name:"Action"`
@@ -409,7 +440,6 @@ func (r *DeleteRecordResponse) FromJsonString(s string) error {
 
 type ModifyRecordRequest struct {
 	*ksyunhttp.BaseRequest
-	RecordValue *string `json:"RecordValue,omitempty" name:"RecordValue"`
 }
 
 func (r *ModifyRecordRequest) ToJsonString() string {
@@ -682,17 +712,17 @@ type DescribePdnsZonesResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	NextToken *string `json:"NextToken" name:"NextToken"`
 	ZoneSet   []struct {
-		ZoneId     *string `json:"ZoneId"`
-		ZoneName   *string `json:"ZoneName"`
-		CreateTime *string `json:"CreateTime"`
-		ProjectId  *string `json:"ProjectId"`
-		ZoneTtl    *string `json:"ZoneTtl"`
+		ZoneId     *string `json:"ZoneId" name:"ZoneId"`
+		ZoneName   *string `json:"ZoneName" name:"ZoneName"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		ProjectId  *string `json:"ProjectId" name:"ProjectId"`
+		ZoneTtl    *string `json:"ZoneTtl" name:"ZoneTtl"`
 		BindVpcSet []struct {
-			RegionName *string `json:"RegionName"`
-			VpcId      *string `json:"VpcId"`
-			Status     *string `json:"Status"`
-			VpcName    *string `json:"VpcName"`
-		} `json:"BindVpcSet"`
+			RegionName *string `json:"RegionName" name:"RegionName"`
+			VpcId      *string `json:"VpcId" name:"VpcId"`
+			Status     *string `json:"Status" name:"Status"`
+			VpcName    *string `json:"VpcName" name:"VpcName"`
+		} `json:"BindVpcSet" name:"BindVpcSet"`
 	} `json:"ZoneSet"`
 }
 
@@ -861,10 +891,9 @@ func (r *DeleteZoneRecordResponse) FromJsonString(s string) error {
 
 type ModifyZoneRecordRequest struct {
 	*ksyunhttp.BaseRequest
-	ZoneId      *string `json:"ZoneId,omitempty" name:"ZoneId"`
-	RecordId    *string `json:"RecordId,omitempty" name:"RecordId"`
-	RecordValue *string `json:"RecordValue,omitempty" name:"RecordValue"`
-	RecordTtl   *int    `json:"RecordTtl,omitempty" name:"RecordTtl"`
+	ZoneId    *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	RecordId  *string `json:"RecordId,omitempty" name:"RecordId"`
+	RecordTtl *int    `json:"RecordTtl,omitempty" name:"RecordTtl"`
 }
 
 func (r *ModifyZoneRecordRequest) ToJsonString() string {
@@ -925,16 +954,16 @@ type DescribeZoneRecordResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	NextToken *string `json:"NextToken" name:"NextToken"`
 	RecordSet []struct {
-		RecordId      *string `json:"RecordId"`
-		RecordName    *string `json:"RecordName"`
-		Type          *string `json:"Type"`
-		RecordTtl     *int    `json:"RecordTtl"`
+		RecordId      *string `json:"RecordId" name:"RecordId"`
+		RecordName    *string `json:"RecordName" name:"RecordName"`
+		Type          *string `json:"Type" name:"Type"`
+		RecordTtl     *int    `json:"RecordTtl" name:"RecordTtl"`
 		RecordDataSet []struct {
-			RecordValue *string `json:"RecordValue"`
-			Priority    *int    `json:"Priority"`
-			Weight      *int    `json:"Weight"`
-			Port        *int    `json:"Port"`
-		} `json:"RecordDataSet"`
+			RecordValue *string `json:"RecordValue" name:"RecordValue"`
+			Priority    *int    `json:"Priority" name:"Priority"`
+			Weight      *int    `json:"Weight" name:"Weight"`
+			Port        *int    `json:"Port" name:"Port"`
+		} `json:"RecordDataSet" name:"RecordDataSet"`
 	} `json:"RecordSet"`
 }
 
@@ -944,5 +973,452 @@ func (r *DescribeZoneRecordResponse) ToJsonString() string {
 }
 
 func (r *DescribeZoneRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UnbindFdZoneVpcRequest struct {
+	*ksyunhttp.BaseRequest
+	BindVpcId []*UnbindFdZoneVpcBindVpcId `json:"BindVpcId,omitempty" name:"BindVpcId"`
+}
+
+func (r *UnbindFdZoneVpcRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UnbindFdZoneVpcRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UnbindFdZoneVpcRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UnbindFdZoneVpcResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *UnbindFdZoneVpcResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UnbindFdZoneVpcResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BindFdZoneVpcRequest struct {
+	*ksyunhttp.BaseRequest
+	FdZoneId   *string               `json:"FdZoneId,omitempty" name:"FdZoneId"`
+	RegionName *string               `json:"RegionName,omitempty" name:"RegionName"`
+	VpcId      []*BindFdZoneVpcVpcId `json:"VpcId,omitempty" name:"VpcId"`
+}
+
+func (r *BindFdZoneVpcRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *BindFdZoneVpcRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "BindFdZoneVpcRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BindFdZoneVpcResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	Return     *bool   `json:"Return" name:"Return"`
+	BindVpcSet []struct {
+		BindVpcId  *string `json:"BindVpcId" name:"BindVpcId"`
+		RegionName *string `json:"RegionName" name:"RegionName"`
+		VpcId      *string `json:"VpcId" name:"VpcId"`
+		FdZoneId   *string `json:"FdZoneId" name:"FdZoneId"`
+		Status     *string `json:"Status" name:"Status"`
+		Created    *string `json:"Created" name:"Created"`
+	} `json:"BindVpcSet"`
+}
+
+func (r *BindFdZoneVpcResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *BindFdZoneVpcResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePdnsFdZoneRequest struct {
+	*ksyunhttp.BaseRequest
+	FdZoneId []*string                   `json:"FdZoneId,omitempty" name:"FdZoneId"`
+	Filter   []*DescribePdnsFdZoneFilter `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *DescribePdnsFdZoneRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribePdnsFdZoneRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribePdnsFdZoneRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePdnsFdZoneResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	NextToken *string `json:"NextToken" name:"NextToken"`
+	FdZoneSet []struct {
+		Id          *string `json:"Id" name:"Id"`
+		ZoneName    *string `json:"ZoneName" name:"ZoneName"`
+		EndPointId  *string `json:"EndPointId" name:"EndPointId"`
+		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+		Description *string `json:"Description" name:"Description"`
+		BindVpcSet  []struct {
+			BindVpcId  *string `json:"BindVpcId" name:"BindVpcId"`
+			RegionName *string `json:"RegionName" name:"RegionName"`
+			VpcId      *string `json:"VpcId" name:"VpcId"`
+			FdZoneId   *string `json:"FdZoneId" name:"FdZoneId"`
+			Status     *string `json:"Status" name:"Status"`
+			Created    *string `json:"Created" name:"Created"`
+		} `json:"BindVpcSet" name:"BindVpcSet"`
+	} `json:"FdZoneSet"`
+}
+
+func (r *DescribePdnsFdZoneResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribePdnsFdZoneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePdnsFdZoneRequest struct {
+	*ksyunhttp.BaseRequest
+	FdZoneId *string `json:"FdZoneId,omitempty" name:"FdZoneId"`
+}
+
+func (r *DeletePdnsFdZoneRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeletePdnsFdZoneRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeletePdnsFdZoneRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePdnsFdZoneResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *DeletePdnsFdZoneResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeletePdnsFdZoneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPdnsFdZoneRequest struct {
+	*ksyunhttp.BaseRequest
+	FdZoneId    *string                      `json:"FdZoneId,omitempty" name:"FdZoneId"`
+	Description *string                      `json:"Description,omitempty" name:"Description"`
+	ForwardIp   []*ModifyPdnsFdZoneForwardIp `json:"ForwardIp,omitempty" name:"ForwardIp"`
+}
+
+func (r *ModifyPdnsFdZoneRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyPdnsFdZoneRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyPdnsFdZoneRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyPdnsFdZoneResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyPdnsFdZoneResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyPdnsFdZoneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePdnsFdZoneRequest struct {
+	*ksyunhttp.BaseRequest
+	EndPointId  *string                      `json:"EndPointId,omitempty" name:"EndPointId"`
+	FdZoneName  *string                      `json:"FdZoneName,omitempty" name:"FdZoneName"`
+	Description *string                      `json:"Description,omitempty" name:"Description"`
+	ForwardIp   []*CreatePdnsFdZoneForwardIp `json:"ForwardIp,omitempty" name:"ForwardIp"`
+}
+
+func (r *CreatePdnsFdZoneRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreatePdnsFdZoneRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreatePdnsFdZoneRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePdnsFdZoneResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreatePdnsFdZoneResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreatePdnsFdZoneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryEndPointRegionAZRequest struct {
+	*ksyunhttp.BaseRequest
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+func (r *QueryEndPointRegionAZRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *QueryEndPointRegionAZRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "QueryEndPointRegionAZRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryEndPointRegionAZResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string   `json:"RequestId" name:"RequestId"`
+	AvailableAz []*string `json:"AvailableAz" name:"AvailableAz"`
+}
+
+func (r *QueryEndPointRegionAZResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *QueryEndPointRegionAZResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEndPointsRequest struct {
+	*ksyunhttp.BaseRequest
+	EndPointId []*string `json:"EndPointId,omitempty" name:"EndPointId"`
+}
+
+func (r *DescribeEndPointsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeEndPointsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeEndPointsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeEndPointsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	EndPointSet []struct {
+		EndPointId      *string `json:"EndPointId" name:"EndPointId"`
+		Region          *string `json:"Region" name:"Region"`
+		EndPointName    *string `json:"EndPointName" name:"EndPointName"`
+		Type            *string `json:"Type" name:"Type"`
+		VpcId           *string `json:"VpcId" name:"VpcId"`
+		SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		FdZoneIds       []struct {
+		} `json:"FdZoneIds" name:"FdZoneIds"`
+		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+		Status      *string `json:"Status" name:"Status"`
+		Description *string `json:"Description" name:"Description"`
+		IpConfigSet []struct {
+			AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+			SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+			Ip               *string `json:"Ip" name:"Ip"`
+		} `json:"IpConfigSet" name:"IpConfigSet"`
+	} `json:"EndPointSet"`
+}
+
+func (r *DescribeEndPointsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeEndPointsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteEndPointRequest struct {
+	*ksyunhttp.BaseRequest
+	EndPointId *string `json:"EndPointId,omitempty" name:"EndPointId"`
+}
+
+func (r *DeleteEndPointRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteEndPointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteEndPointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteEndPointResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *DeleteEndPointResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteEndPointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyEndPointRequest struct {
+	*ksyunhttp.BaseRequest
+	EndPointId   *string                   `json:"EndPointId,omitempty" name:"EndPointId"`
+	EndPointName *string                   `json:"EndPointName,omitempty" name:"EndPointName"`
+	Description  *string                   `json:"Description,omitempty" name:"Description"`
+	IpConfig     []*ModifyEndPointIpConfig `json:"IpConfig,omitempty" name:"IpConfig"`
+}
+
+func (r *ModifyEndPointRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyEndPointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyEndPointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyEndPointResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyEndPointResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyEndPointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateEndPointRequest struct {
+	*ksyunhttp.BaseRequest
+	EndPointName *string                   `json:"EndPointName,omitempty" name:"EndPointName"`
+	Region       *string                   `json:"Region,omitempty" name:"Region"`
+	VpcId        *string                   `json:"VpcId,omitempty" name:"VpcId"`
+	Description  *string                   `json:"Description,omitempty" name:"Description"`
+	IpConfig     []*CreateEndPointIpConfig `json:"IpConfig,omitempty" name:"IpConfig"`
+}
+
+func (r *CreateEndPointRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateEndPointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateEndPointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateEndPointResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateEndPointResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateEndPointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

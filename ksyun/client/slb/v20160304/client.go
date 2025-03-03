@@ -2950,7 +2950,7 @@ func (c *Client) AddAlbRulesWithContext(ctx context.Context, request *AddAlbRule
 		request = NewAddAlbRulesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewAddAlbRulesResponse()
 	err, msg := c.Send(request, response)

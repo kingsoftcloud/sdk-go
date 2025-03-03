@@ -649,3 +649,201 @@ func (c *Client) DescribeCreateVolumePriceWithContext(ctx context.Context, reque
 	}
 	return msg
 }
+func NewModifySnapshotTypeRequest() (request *ModifySnapshotTypeRequest) {
+	request = &ModifySnapshotTypeRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ebs", APIVersion, "ModifySnapshotType")
+	return
+}
+
+func NewModifySnapshotTypeResponse() (response *ModifySnapshotTypeResponse) {
+	response = &ModifySnapshotTypeResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifySnapshotType(request *ModifySnapshotTypeRequest) string {
+	return c.ModifySnapshotTypeWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifySnapshotTypeWithContext(ctx context.Context, request *ModifySnapshotTypeRequest) string {
+	if request == nil {
+		request = NewModifySnapshotTypeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifySnapshotTypeResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyVolumeTypeRequest() (request *ModifyVolumeTypeRequest) {
+	request = &ModifyVolumeTypeRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ebs", APIVersion, "ModifyVolumeType")
+	return
+}
+
+func NewModifyVolumeTypeResponse() (response *ModifyVolumeTypeResponse) {
+	response = &ModifyVolumeTypeResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyVolumeType(request *ModifyVolumeTypeRequest) string {
+	return c.ModifyVolumeTypeWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyVolumeTypeWithContext(ctx context.Context, request *ModifyVolumeTypeRequest) string {
+	if request == nil {
+		request = NewModifyVolumeTypeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyVolumeTypeResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyDedicatedBlockStorageClusterAttributeRequest() (request *ModifyDedicatedBlockStorageClusterAttributeRequest) {
+	request = &ModifyDedicatedBlockStorageClusterAttributeRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ebs", APIVersion, "ModifyDedicatedBlockStorageClusterAttribute")
+	return
+}
+
+func NewModifyDedicatedBlockStorageClusterAttributeResponse() (response *ModifyDedicatedBlockStorageClusterAttributeResponse) {
+	response = &ModifyDedicatedBlockStorageClusterAttributeResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyDedicatedBlockStorageClusterAttribute(request *ModifyDedicatedBlockStorageClusterAttributeRequest) string {
+	return c.ModifyDedicatedBlockStorageClusterAttributeWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyDedicatedBlockStorageClusterAttributeWithContext(ctx context.Context, request *ModifyDedicatedBlockStorageClusterAttributeRequest) string {
+	if request == nil {
+		request = NewModifyDedicatedBlockStorageClusterAttributeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyDedicatedBlockStorageClusterAttributeResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewResizeDedicatedBlockStorageClustersRequest() (request *ResizeDedicatedBlockStorageClustersRequest) {
+	request = &ResizeDedicatedBlockStorageClustersRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ebs", APIVersion, "ResizeDedicatedBlockStorageClusters")
+	return
+}
+
+func NewResizeDedicatedBlockStorageClustersResponse() (response *ResizeDedicatedBlockStorageClustersResponse) {
+	response = &ResizeDedicatedBlockStorageClustersResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ResizeDedicatedBlockStorageClusters(request *ResizeDedicatedBlockStorageClustersRequest) string {
+	return c.ResizeDedicatedBlockStorageClustersWithContext(context.Background(), request)
+}
+
+func (c *Client) ResizeDedicatedBlockStorageClustersWithContext(ctx context.Context, request *ResizeDedicatedBlockStorageClustersRequest) string {
+	if request == nil {
+		request = NewResizeDedicatedBlockStorageClustersRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewResizeDedicatedBlockStorageClustersResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeDedicatedBlockStorageClustersRequest() (request *DescribeDedicatedBlockStorageClustersRequest) {
+	request = &DescribeDedicatedBlockStorageClustersRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ebs", APIVersion, "DescribeDedicatedBlockStorageClusters")
+	return
+}
+
+func NewDescribeDedicatedBlockStorageClustersResponse() (response *DescribeDedicatedBlockStorageClustersResponse) {
+	response = &DescribeDedicatedBlockStorageClustersResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeDedicatedBlockStorageClusters(request *DescribeDedicatedBlockStorageClustersRequest) string {
+	return c.DescribeDedicatedBlockStorageClustersWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDedicatedBlockStorageClustersWithContext(ctx context.Context, request *DescribeDedicatedBlockStorageClustersRequest) string {
+	if request == nil {
+		request = NewDescribeDedicatedBlockStorageClustersRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeDedicatedBlockStorageClustersResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCreateDedicatedBlockStorageClusterRequest() (request *CreateDedicatedBlockStorageClusterRequest) {
+	request = &CreateDedicatedBlockStorageClusterRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ebs", APIVersion, "CreateDedicatedBlockStorageCluster")
+	return
+}
+
+func NewCreateDedicatedBlockStorageClusterResponse() (response *CreateDedicatedBlockStorageClusterResponse) {
+	response = &CreateDedicatedBlockStorageClusterResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateDedicatedBlockStorageCluster(request *CreateDedicatedBlockStorageClusterRequest) string {
+	return c.CreateDedicatedBlockStorageClusterWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateDedicatedBlockStorageClusterWithContext(ctx context.Context, request *CreateDedicatedBlockStorageClusterRequest) string {
+	if request == nil {
+		request = NewCreateDedicatedBlockStorageClusterRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateDedicatedBlockStorageClusterResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

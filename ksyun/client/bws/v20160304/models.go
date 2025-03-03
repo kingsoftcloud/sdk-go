@@ -11,6 +11,11 @@ type DescribeBandWidthSharesFilter struct {
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
+type DescribeBandWidthSharesTagKV struct {
+	Name  *string `json:"Name,omitempty" name:"Name"`
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type CreateBandWidthShareRequest struct {
 	*ksyunhttp.BaseRequest
 	LineId             *string `json:"LineId,omitempty" name:"LineId"`
@@ -60,6 +65,9 @@ type DescribeBandWidthSharesRequest struct {
 	ProjectId        []*string                        `json:"ProjectId,omitempty" name:"ProjectId"`
 	BandWidthShareId []*string                        `json:"BandWidthShareId,omitempty" name:"BandWidthShareId"`
 	Filter           []*DescribeBandWidthSharesFilter `json:"Filter,omitempty" name:"Filter"`
+	IsContainTag     *bool                            `json:"IsContainTag,omitempty" name:"IsContainTag"`
+	TagKey           []*string                        `json:"TagKey,omitempty" name:"TagKey"`
+	TagKV            []*DescribeBandWidthSharesTagKV  `json:"TagKV,omitempty" name:"TagKV"`
 	MaxResults       *int                             `json:"MaxResults,omitempty" name:"MaxResults"`
 	NextToken        *string                          `json:"NextToken,omitempty" name:"NextToken"`
 }
@@ -85,18 +93,24 @@ type DescribeBandWidthSharesResponse struct {
 	RequestId         *string `json:"RequestId" name:"RequestId"`
 	NextToken         *string `json:"NextToken" name:"NextToken"`
 	BandWidthShareSet []struct {
-		BandWidthShareId               *string `json:"BandWidthShareId"`
-		BandWidth                      *int    `json:"BandWidth"`
-		BandWidthShareName             *string `json:"BandWidthShareName"`
-		CreateTime                     *string `json:"CreateTime"`
-		LineId                         *string `json:"LineId"`
-		ProjectId                      *string `json:"ProjectId"`
-		LineName                       *string `json:"LineName"`
+		BandWidthShareId               *string `json:"BandWidthShareId" name:"BandWidthShareId"`
+		BandWidth                      *int    `json:"BandWidth" name:"BandWidth"`
+		BandWidthShareName             *string `json:"BandWidthShareName" name:"BandWidthShareName"`
+		CreateTime                     *string `json:"CreateTime" name:"CreateTime"`
+		LineId                         *string `json:"LineId" name:"LineId"`
+		ProjectId                      *string `json:"ProjectId" name:"ProjectId"`
+		LineName                       *string `json:"LineName" name:"LineName"`
 		AssociateBandWidthShareInfoSet []struct {
-			AllocationId *string `json:"AllocationId"`
-		} `json:"AssociateBandWidthShareInfoSet"`
-		ChargeType     *string `json:"ChargeType"`
-		ServiceEndTime *string `json:"ServiceEndTime"`
+			AllocationId *string `json:"AllocationId" name:"AllocationId"`
+		} `json:"AssociateBandWidthShareInfoSet" name:"AssociateBandWidthShareInfoSet"`
+		ChargeType     *string `json:"ChargeType" name:"ChargeType"`
+		ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		TagSet         []struct {
+			ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
+			TagId        *string `json:"TagId" name:"TagId"`
+			TagKey       *string `json:"TagKey" name:"TagKey"`
+			TagValue     *string `json:"TagValue" name:"TagValue"`
+		} `json:"TagSet" name:"TagSet"`
 	} `json:"BandWidthShareSet"`
 }
 
@@ -286,11 +300,11 @@ type QueryBwsTopEipMonitorResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId          *string `json:"RequestId" name:"RequestId"`
 	BwsMonitorDataList []struct {
-		AllocationId *string `json:"AllocationId"`
-		PublicIp     *string `json:"PublicIp"`
-		InBound      *string `json:"InBound"`
-		OutBound     *string `json:"OutBound"`
-		Num          *string `json:"Num"`
+		AllocationId *string `json:"AllocationId" name:"AllocationId"`
+		PublicIp     *string `json:"PublicIp" name:"PublicIp"`
+		InBound      *string `json:"InBound" name:"InBound"`
+		OutBound     *string `json:"OutBound" name:"OutBound"`
+		Num          *string `json:"Num" name:"Num"`
 	} `json:"BwsMonitorDataList"`
 }
 
