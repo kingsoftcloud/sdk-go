@@ -1257,9 +1257,8 @@ func (r *DescribeEngineDefaultParametersResponse) FromJsonString(s string) error
 
 type ModifyDBParameterGroupRequest struct {
 	*ksyunhttp.BaseRequest
-	InstanceId *string                             `json:"InstanceId,omitempty" name:"InstanceId"`
-	Parameters []*ModifyDBParameterGroupParameters `json:"Parameters,omitempty" name:"Parameters"`
-	ConfigType *string                             `json:"ConfigType,omitempty" name:"ConfigType"`
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	ConfigType *string `json:"ConfigType,omitempty" name:"ConfigType"`
 }
 
 func (r *ModifyDBParameterGroupRequest) ToJsonString() string {

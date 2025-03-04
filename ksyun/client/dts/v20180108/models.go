@@ -6,6 +6,15 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 )
 
+type CreatePrecheckDTSParameter struct {
+	DBParameter            *string `json:"DBParameter,omitempty" name:"DBParameter"`
+	TargetDBParameterValue *string `json:"TargetDBParameterValue,omitempty" name:"TargetDBParameterValue"`
+}
+type CreatePrecheckSourceUser struct {
+	Username   *string `json:"Username,omitempty" name:"Username"`
+	SourceHost *string `json:"SourceHost,omitempty" name:"SourceHost"`
+}
+
 type SchemaStructRequest struct {
 	*ksyunhttp.BaseRequest
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" name:"SourceInstanceId"`
@@ -109,6 +118,19 @@ func (r *ConnectivityCheckResponse) FromJsonString(s string) error {
 
 type CreatePrecheckRequest struct {
 	*ksyunhttp.BaseRequest
+	SourceType       *string                       `json:"SourceType,omitempty" name:"SourceType"`
+	TargetType       *string                       `json:"TargetType,omitempty" name:"TargetType"`
+	TargetRegion     *string                       `json:"TargetRegion,omitempty" name:"TargetRegion"`
+	SourceRegion     *string                       `json:"SourceRegion,omitempty" name:"SourceRegion"`
+	DbSchema         *string                       `json:"DbSchema,omitempty" name:"DbSchema"`
+	SubTasks         *string                       `json:"SubTasks,omitempty" name:"SubTasks"`
+	SourceInstanceId *string                       `json:"SourceInstanceId,omitempty" name:"SourceInstanceId"`
+	TargetInstanceId *string                       `json:"TargetInstanceId,omitempty" name:"TargetInstanceId"`
+	SourceUsername   *string                       `json:"SourceUsername,omitempty" name:"SourceUsername"`
+	SourcePassword   *string                       `json:"SourcePassword,omitempty" name:"SourcePassword"`
+	Type             *string                       `json:"Type,omitempty" name:"Type"`
+	DTSParameter     []*CreatePrecheckDTSParameter `json:"DTSParameter,omitempty" name:"DTSParameter"`
+	SourceUser       []*CreatePrecheckSourceUser   `json:"SourceUser,omitempty" name:"SourceUser"`
 }
 
 func (r *CreatePrecheckRequest) ToJsonString() string {

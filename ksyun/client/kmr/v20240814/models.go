@@ -690,20 +690,20 @@ type ListRayJobRunsResponse struct {
 				RayLog         *string `json:"RayLog" name:"RayLog"`
 				ReleaseVersion *string `json:"ReleaseVersion" name:"ReleaseVersion"`
 				RaySubmitData  struct {
-					Name               *string `json:"Name" name:"Name"`
-					RayHeadCores       *int    `json:"RayHeadCores" name:"RayHeadCores"`
-					RayHeadMemory      *string `json:"RayHeadMemory" name:"RayHeadMemory"`
-					RayWorkerCores     *int    `json:"RayWorkerCores" name:"RayWorkerCores"`
-					RayWorkerMemory    *string `json:"RayWorkerMemory" name:"RayWorkerMemory"`
-					RayWorkerNum       *int    `json:"RayWorkerNum" name:"RayWorkerNum"`
-					RayWorkerGpus      *int    `json:"RayWorkerGpus" name:"RayWorkerGpus"`
-					EntrypointCmd      *string `json:"EntrypointCmd" name:"EntrypointCmd"`
-					EntrypointResource *string `json:"EntrypointResource" name:"EntrypointResource"`
-					RuntimeEnv         *string `json:"RuntimeEnv" name:"RuntimeEnv"`
-					Conf               *string `json:"Conf" name:"Conf"`
-					Image              *string `json:"Image" name:"Image"`
-					JuiceFs            *string `json:"JuiceFs" name:"JuiceFs"`
-					MountPath          *string `json:"MountPath" name:"MountPath"`
+					Name               *string   `json:"Name" name:"Name"`
+					RayHeadCores       *int      `json:"RayHeadCores" name:"RayHeadCores"`
+					RayHeadMemory      *string   `json:"RayHeadMemory" name:"RayHeadMemory"`
+					RayWorkerCores     *int      `json:"RayWorkerCores" name:"RayWorkerCores"`
+					RayWorkerMemory    *string   `json:"RayWorkerMemory" name:"RayWorkerMemory"`
+					RayWorkerNum       *int      `json:"RayWorkerNum" name:"RayWorkerNum"`
+					RayWorkerGpus      *int      `json:"RayWorkerGpus" name:"RayWorkerGpus"`
+					EntrypointCmd      *string   `json:"EntrypointCmd" name:"EntrypointCmd"`
+					EntrypointResource *string   `json:"EntrypointResource" name:"EntrypointResource"`
+					RuntimeEnv         *string   `json:"RuntimeEnv" name:"RuntimeEnv"`
+					Conf               []*string `json:"Conf" name:"Conf"`
+					Image              *string   `json:"Image" name:"Image"`
+					JuiceFs            *string   `json:"JuiceFs" name:"JuiceFs"`
+					MountPath          *string   `json:"MountPath" name:"MountPath"`
 				} `json:"RaySubmitData" name:"RaySubmitData"`
 				ResourceUsage *int `json:"ResourceUsage" name:"ResourceUsage"`
 			} `json:"JobRuns"`

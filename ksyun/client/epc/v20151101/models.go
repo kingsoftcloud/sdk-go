@@ -436,7 +436,8 @@ func (r *ModifySecurityGroupResponse) FromJsonString(s string) error {
 
 type CreateKeyRequest struct {
 	*ksyunhttp.BaseRequest
-	KeyName *string `json:"KeyName,omitempty" name:"KeyName"`
+	KeyName     *string `json:"KeyName,omitempty" name:"KeyName"`
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 func (r *CreateKeyRequest) ToJsonString() string {
@@ -459,7 +460,6 @@ type CreateKeyResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	PrivateKey *string `json:"PrivateKey" name:"PrivateKey"`
-	Key        *string `json:"Key" name:"Key"`
 }
 
 func (r *CreateKeyResponse) ToJsonString() string {

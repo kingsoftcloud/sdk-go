@@ -8,7 +8,11 @@ import (
 
 type CreateProjectRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	ProjectName    *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	Description    *string `json:"Description,omitempty" name:"Description"`
+	Region         *string `json:"Region,omitempty" name:"Region"`
+	IamProjectId   *int    `json:"IamProjectId,omitempty" name:"IamProjectId"`
+	IamProjectName *string `json:"IamProjectName,omitempty" name:"IamProjectName"`
 }
 
 func (r *CreateProjectRequest) ToJsonString() string {
@@ -43,7 +47,7 @@ func (r *CreateProjectResponse) FromJsonString(s string) error {
 
 type DescribeProjectRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 }
 
 func (r *DescribeProjectRequest) ToJsonString() string {
@@ -64,7 +68,12 @@ func (r *DescribeProjectRequest) FromJsonString(s string) error {
 
 type DescribeProjectResponse struct {
 	*ksyunhttp.BaseResponse
-	Res *string `json:"Res" name:"Res"`
+	CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+	Description    *string `json:"Description" name:"Description"`
+	UpdateTime     *string `json:"UpdateTime" name:"UpdateTime"`
+	ProjectName    *string `json:"ProjectName" name:"ProjectName"`
+	Region         *string `json:"Region" name:"Region"`
+	IamProjectName *string `json:"IamProjectName" name:"IamProjectName"`
 }
 
 func (r *DescribeProjectResponse) ToJsonString() string {
@@ -78,7 +87,9 @@ func (r *DescribeProjectResponse) FromJsonString(s string) error {
 
 type UpdateProjectRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	ProjectName  *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	Description  *string `json:"Description,omitempty" name:"Description"`
+	IamProjectId *int    `json:"IamProjectId,omitempty" name:"IamProjectId"`
 }
 
 func (r *UpdateProjectRequest) ToJsonString() string {
@@ -113,7 +124,7 @@ func (r *UpdateProjectResponse) FromJsonString(s string) error {
 
 type DeleteProjectRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 }
 
 func (r *DeleteProjectRequest) ToJsonString() string {
@@ -148,7 +159,8 @@ func (r *DeleteProjectResponse) FromJsonString(s string) error {
 
 type ListProjectsRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	Page *int `json:"Page,omitempty" name:"Page"`
+	Size *int `json:"Size,omitempty" name:"Size"`
 }
 
 func (r *ListProjectsRequest) ToJsonString() string {
@@ -183,6 +195,11 @@ func (r *ListProjectsResponse) FromJsonString(s string) error {
 
 type CreateLogPoolRequest struct {
 	*ksyunhttp.BaseRequest
+	ProjectName   *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	LogPoolName   *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
+	RetentionDays *int    `json:"RetentionDays,omitempty" name:"RetentionDays"`
+	Partitions    *int    `json:"Partitions,omitempty" name:"Partitions"`
+	Description   *string `json:"Description,omitempty" name:"Description"`
 }
 
 func (r *CreateLogPoolRequest) ToJsonString() string {
@@ -217,6 +234,8 @@ func (r *CreateLogPoolResponse) FromJsonString(s string) error {
 
 type DescribeLogPoolRequest struct {
 	*ksyunhttp.BaseRequest
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	LogPoolName *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
 }
 
 func (r *DescribeLogPoolRequest) ToJsonString() string {
@@ -251,6 +270,11 @@ func (r *DescribeLogPoolResponse) FromJsonString(s string) error {
 
 type UpdateLogPoolRequest struct {
 	*ksyunhttp.BaseRequest
+	ProjectName   *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	LogPoolName   *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
+	RetentionDays *int    `json:"RetentionDays,omitempty" name:"RetentionDays"`
+	Partitions    *int    `json:"Partitions,omitempty" name:"Partitions"`
+	Description   *string `json:"Description,omitempty" name:"Description"`
 }
 
 func (r *UpdateLogPoolRequest) ToJsonString() string {
@@ -285,6 +309,8 @@ func (r *UpdateLogPoolResponse) FromJsonString(s string) error {
 
 type DeleteLogPoolRequest struct {
 	*ksyunhttp.BaseRequest
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	LogPoolName *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
 }
 
 func (r *DeleteLogPoolRequest) ToJsonString() string {
@@ -319,7 +345,10 @@ func (r *DeleteLogPoolResponse) FromJsonString(s string) error {
 
 type ListLogPoolsRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	Page        *int    `json:"Page,omitempty" name:"Page"`
+	Size        *int    `json:"Size,omitempty" name:"Size"`
+	LogPoolName *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
 }
 
 func (r *ListLogPoolsRequest) ToJsonString() string {
@@ -397,8 +426,17 @@ func (r *PutLogsResponse) FromJsonString(s string) error {
 
 type GetLogsRequest struct {
 	*ksyunhttp.BaseRequest
-	Action    *string `json:"Action,omitempty" name:"Action"`
-	LogPoolId *string `json:"LogPoolId,omitempty" name:"LogPoolId"`
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	LogPoolName *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
+	From        *int    `json:"From,omitempty" name:"From"`
+	To          *int    `json:"To,omitempty" name:"To"`
+	Query       *string `json:"Query,omitempty" name:"Query"`
+	LogPoolId   *string `json:"LogPoolId,omitempty" name:"LogPoolId"`
+	HitsOpen    *bool   `json:"HitsOpen,omitempty" name:"HitsOpen"`
+	Interval    *string `json:"Interval,omitempty" name:"Interval"`
+	SortBy      *string `json:"SortBy,omitempty" name:"SortBy"`
+	Offset      *int    `json:"Offset,omitempty" name:"Offset"`
+	Size        *int    `json:"Size,omitempty" name:"Size"`
 }
 
 func (r *GetLogsRequest) ToJsonString() string {
@@ -433,7 +471,12 @@ func (r *GetLogsResponse) FromJsonString(s string) error {
 
 type CreateQuickSearchRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	ProjectName     *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	LogPoolName     *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
+	QuickSearchName *string `json:"QuickSearchName,omitempty" name:"QuickSearchName"`
+	Description     *string `json:"Description,omitempty" name:"Description"`
+	TimeRange       *string `json:"TimeRange,omitempty" name:"TimeRange"`
+	Query           *string `json:"Query,omitempty" name:"Query"`
 }
 
 func (r *CreateQuickSearchRequest) ToJsonString() string {
@@ -468,7 +511,11 @@ func (r *CreateQuickSearchResponse) FromJsonString(s string) error {
 
 type ListQuickSearchsRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	LogPoolName *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
+	Filter      *string `json:"Filter,omitempty" name:"Filter"`
+	Page        *int    `json:"Page,omitempty" name:"Page"`
+	Size        *int    `json:"Size,omitempty" name:"Size"`
 }
 
 func (r *ListQuickSearchsRequest) ToJsonString() string {
@@ -503,7 +550,9 @@ func (r *ListQuickSearchsResponse) FromJsonString(s string) error {
 
 type GetQuickSearchRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	ProjectName     *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	LogPoolName     *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
+	QuickSearchName *string `json:"QuickSearchName,omitempty" name:"QuickSearchName"`
 }
 
 func (r *GetQuickSearchRequest) ToJsonString() string {
@@ -538,7 +587,9 @@ func (r *GetQuickSearchResponse) FromJsonString(s string) error {
 
 type DeleteQuickSearchsRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	ProjectName     *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	LogPoolName     *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
+	QuickSearchName *string `json:"QuickSearchName,omitempty" name:"QuickSearchName"`
 }
 
 func (r *DeleteQuickSearchsRequest) ToJsonString() string {
@@ -573,7 +624,8 @@ func (r *DeleteQuickSearchsResponse) FromJsonString(s string) error {
 
 type CreateDashboardRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	ProjectName   *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	DashboardName *string `json:"DashboardName,omitempty" name:"DashboardName"`
 }
 
 func (r *CreateDashboardRequest) ToJsonString() string {
@@ -608,7 +660,7 @@ func (r *CreateDashboardResponse) FromJsonString(s string) error {
 
 type DeleteDashboardRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	DashboardId *string `json:"DashboardId,omitempty" name:"DashboardId"`
 }
 
 func (r *DeleteDashboardRequest) ToJsonString() string {
@@ -643,7 +695,7 @@ func (r *DeleteDashboardResponse) FromJsonString(s string) error {
 
 type DescribeDashboardRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	DashboardId *string `json:"DashboardId,omitempty" name:"DashboardId"`
 }
 
 func (r *DescribeDashboardRequest) ToJsonString() string {
@@ -678,7 +730,9 @@ func (r *DescribeDashboardResponse) FromJsonString(s string) error {
 
 type ListDashboardsRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	Page        *int    `json:"Page,omitempty" name:"Page"`
+	Size        *int    `json:"Size,omitempty" name:"Size"`
 }
 
 func (r *ListDashboardsRequest) ToJsonString() string {
@@ -755,7 +809,7 @@ func (r *CreateChartResponse) FromJsonString(s string) error {
 
 type DeleteChartRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	ChartId *string `json:"ChartId,omitempty" name:"ChartId"`
 }
 
 func (r *DeleteChartRequest) ToJsonString() string {
@@ -790,7 +844,8 @@ func (r *DeleteChartResponse) FromJsonString(s string) error {
 
 type GetDashboardNamesByIdsRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	ProjectName  *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	DashboardIds *string `json:"DashboardIds,omitempty" name:"DashboardIds"`
 }
 
 func (r *GetDashboardNamesByIdsRequest) ToJsonString() string {
@@ -825,7 +880,8 @@ func (r *GetDashboardNamesByIdsResponse) FromJsonString(s string) error {
 
 type GetChartNamesByIdsRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	ChartIds    *string `json:"ChartIds,omitempty" name:"ChartIds"`
 }
 
 func (r *GetChartNamesByIdsRequest) ToJsonString() string {
@@ -860,7 +916,8 @@ func (r *GetChartNamesByIdsResponse) FromJsonString(s string) error {
 
 type UpdateDashboardRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	DashboardId   *string `json:"DashboardId,omitempty" name:"DashboardId"`
+	DashboardName *string `json:"DashboardName,omitempty" name:"DashboardName"`
 }
 
 func (r *UpdateDashboardRequest) ToJsonString() string {
@@ -895,7 +952,10 @@ func (r *UpdateDashboardResponse) FromJsonString(s string) error {
 
 type GetUsageRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	Projects *string `json:"Projects,omitempty" name:"Projects"`
+	Metrics  *string `json:"Metrics,omitempty" name:"Metrics"`
+	From     *string `json:"From,omitempty" name:"From"`
+	To       *string `json:"To,omitempty" name:"To"`
 }
 
 func (r *GetUsageRequest) ToJsonString() string {
@@ -975,6 +1035,8 @@ func (r *SetIndexTemplateResponse) FromJsonString(s string) error {
 
 type GetIndexTemplateRequest struct {
 	*ksyunhttp.BaseRequest
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	LogPoolName *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
 }
 
 func (r *GetIndexTemplateRequest) ToJsonString() string {
@@ -1009,7 +1071,10 @@ func (r *GetIndexTemplateResponse) FromJsonString(s string) error {
 
 type CreateDownloadTaskRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	From        *string `json:"From,omitempty" name:"From"`
+	To          *string `json:"To,omitempty" name:"To"`
+	LogPoolName *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 }
 
 func (r *CreateDownloadTaskRequest) ToJsonString() string {
@@ -1044,7 +1109,9 @@ func (r *CreateDownloadTaskResponse) FromJsonString(s string) error {
 
 type ListDownloadTasksRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	Page        *string `json:"Page,omitempty" name:"Page"`
+	Size        *string `json:"Size,omitempty" name:"Size"`
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 }
 
 func (r *ListDownloadTasksRequest) ToJsonString() string {
@@ -1079,7 +1146,8 @@ func (r *ListDownloadTasksResponse) FromJsonString(s string) error {
 
 type GetDownloadUrlsRequest struct {
 	*ksyunhttp.BaseRequest
-	Action *string `json:"Action,omitempty" name:"Action"`
+	DownloadID  *string `json:"DownloadID,omitempty" name:"DownloadID"`
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 }
 
 func (r *GetDownloadUrlsRequest) ToJsonString() string {

@@ -1023,6 +1023,7 @@ type CenCidrPublishRequest struct {
 	NetworkInstanceId *string   `json:"NetworkInstanceId,omitempty" name:"NetworkInstanceId"`
 	InstanceType      *string   `json:"InstanceType,omitempty" name:"InstanceType"`
 	NetworkRouteId    []*string `json:"NetworkRouteId,omitempty" name:"NetworkRouteId"`
+	SelfDefineCidr    []*string `json:"SelfDefineCidr,omitempty" name:"SelfDefineCidr"`
 }
 
 func (r *CenCidrPublishRequest) ToJsonString() string {
@@ -1061,6 +1062,7 @@ type CenCidrDeleteRequest struct {
 	NetworkInstanceId *string   `json:"NetworkInstanceId,omitempty" name:"NetworkInstanceId"`
 	InstanceType      *string   `json:"InstanceType,omitempty" name:"InstanceType"`
 	NetworkRouteId    []*string `json:"NetworkRouteId,omitempty" name:"NetworkRouteId"`
+	SelfRouteId       []*string `json:"SelfRouteId,omitempty" name:"SelfRouteId"`
 }
 
 func (r *CenCidrDeleteRequest) ToJsonString() string {

@@ -963,7 +963,6 @@ func (r *DescribeZoneRecordResponse) FromJsonString(s string) error {
 
 type UnbindFdZoneVpcRequest struct {
 	*ksyunhttp.BaseRequest
-	BindVpcId []*UnbindFdZoneVpcBindVpcId `json:"BindVpcId,omitempty" name:"BindVpcId"`
 }
 
 func (r *UnbindFdZoneVpcRequest) ToJsonString() string {
@@ -999,9 +998,8 @@ func (r *UnbindFdZoneVpcResponse) FromJsonString(s string) error {
 
 type BindFdZoneVpcRequest struct {
 	*ksyunhttp.BaseRequest
-	FdZoneId   *string               `json:"FdZoneId,omitempty" name:"FdZoneId"`
-	RegionName *string               `json:"RegionName,omitempty" name:"RegionName"`
-	VpcId      []*BindFdZoneVpcVpcId `json:"VpcId,omitempty" name:"VpcId"`
+	FdZoneId   *string `json:"FdZoneId,omitempty" name:"FdZoneId"`
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 }
 
 func (r *BindFdZoneVpcRequest) ToJsonString() string {
@@ -1045,8 +1043,7 @@ func (r *BindFdZoneVpcResponse) FromJsonString(s string) error {
 
 type DescribePdnsFdZoneRequest struct {
 	*ksyunhttp.BaseRequest
-	FdZoneId []*string                   `json:"FdZoneId,omitempty" name:"FdZoneId"`
-	Filter   []*DescribePdnsFdZoneFilter `json:"Filter,omitempty" name:"Filter"`
+	FdZoneId []*string `json:"FdZoneId,omitempty" name:"FdZoneId"`
 }
 
 func (r *DescribePdnsFdZoneRequest) ToJsonString() string {
