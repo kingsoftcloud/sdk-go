@@ -10,37 +10,30 @@ type DescribeCenGrantsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeCenBandWidthPackagesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeCenBandWidthPackagesTagKV struct {
 	Name  *string `json:"Name,omitempty" name:"Name"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeCenRegionBandwidthsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeCenRoutesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeNetworkInstancesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeInterAreasFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeInterRegionsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
@@ -1030,7 +1023,6 @@ type CenCidrPublishRequest struct {
 	NetworkInstanceId *string   `json:"NetworkInstanceId,omitempty" name:"NetworkInstanceId"`
 	InstanceType      *string   `json:"InstanceType,omitempty" name:"InstanceType"`
 	NetworkRouteId    []*string `json:"NetworkRouteId,omitempty" name:"NetworkRouteId"`
-	SelfDefineCidr    []*string `json:"SelfDefineCidr,omitempty" name:"SelfDefineCidr"`
 }
 
 func (r *CenCidrPublishRequest) ToJsonString() string {
@@ -1069,7 +1061,6 @@ type CenCidrDeleteRequest struct {
 	NetworkInstanceId *string   `json:"NetworkInstanceId,omitempty" name:"NetworkInstanceId"`
 	InstanceType      *string   `json:"InstanceType,omitempty" name:"InstanceType"`
 	NetworkRouteId    []*string `json:"NetworkRouteId,omitempty" name:"NetworkRouteId"`
-	SelfRouteId       []*string `json:"SelfRouteId,omitempty" name:"SelfRouteId"`
 }
 
 func (r *CenCidrDeleteRequest) ToJsonString() string {

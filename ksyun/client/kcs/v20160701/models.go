@@ -10,12 +10,10 @@ type CreateCacheParameterGroupParameters struct {
 	ParameterName  *string `json:"ParameterName,omitempty" name:"ParameterName"`
 	ParameterValue *string `json:"ParameterValue,omitempty" name:"ParameterValue"`
 }
-
 type ModifyCacheParameterGroupParameters struct {
 	ParameterName  *string `json:"ParameterName,omitempty" name:"ParameterName"`
 	ParameterValue *string `json:"ParameterValue,omitempty" name:"ParameterValue"`
 }
-
 type InstallPluginsPlugins struct {
 	PluginName    *string `json:"PluginName,omitempty" name:"PluginName"`
 	PluginVersion *string `json:"PluginVersion,omitempty" name:"PluginVersion"`

@@ -6,6 +6,15 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 )
 
+type CreateDBParameterGroupParameters struct {
+	Name  *string `json:"Name,omitempty" name:"Name"`
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+type ModifyDBParameterGroupParameters struct {
+	Name  *string `json:"Name,omitempty" name:"Name"`
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type CreateSecurityGroupRequest struct {
 	*ksyunhttp.BaseRequest
 	SecurityGroupName                       *string   `json:"SecurityGroupName,omitempty" name:"SecurityGroupName"`
@@ -446,10 +455,11 @@ func (r *ModifySecurityGroupRuleNameResponse) FromJsonString(s string) error {
 
 type CreateDBParameterGroupRequest struct {
 	*ksyunhttp.BaseRequest
-	DBParameterGroupName *string `json:"DBParameterGroupName,omitempty" name:"DBParameterGroupName"`
-	Engine               *string `json:"Engine,omitempty" name:"Engine"`
-	EngineVersion        *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
-	Description          *string `json:"Description,omitempty" name:"Description"`
+	DBParameterGroupName *string                           `json:"DBParameterGroupName,omitempty" name:"DBParameterGroupName"`
+	Engine               *string                           `json:"Engine,omitempty" name:"Engine"`
+	EngineVersion        *string                           `json:"EngineVersion,omitempty" name:"EngineVersion"`
+	Description          *string                           `json:"Description,omitempty" name:"Description"`
+	Parameters           *CreateDBParameterGroupParameters `json:"Parameters,omitempty" name:"Parameters"`
 }
 
 func (r *CreateDBParameterGroupRequest) ToJsonString() string {
@@ -494,9 +504,10 @@ func (r *CreateDBParameterGroupResponse) FromJsonString(s string) error {
 
 type ModifyDBParameterGroupRequest struct {
 	*ksyunhttp.BaseRequest
-	DBParameterGroupId   *string `json:"DBParameterGroupId,omitempty" name:"DBParameterGroupId"`
-	DBParameterGroupName *string `json:"DBParameterGroupName,omitempty" name:"DBParameterGroupName"`
-	Description          *string `json:"Description,omitempty" name:"Description"`
+	DBParameterGroupId   *string                           `json:"DBParameterGroupId,omitempty" name:"DBParameterGroupId"`
+	DBParameterGroupName *string                           `json:"DBParameterGroupName,omitempty" name:"DBParameterGroupName"`
+	Description          *string                           `json:"Description,omitempty" name:"Description"`
+	Parameters           *ModifyDBParameterGroupParameters `json:"Parameters,omitempty" name:"Parameters"`
 }
 
 func (r *ModifyDBParameterGroupRequest) ToJsonString() string {

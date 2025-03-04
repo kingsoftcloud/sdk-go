@@ -6,9 +6,6 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 )
 
-type ModifyDBParameterGroupParameters struct {
-}
-
 type ModifyInstanceAccountPrivilegesInstanceAccountPrivileges struct {
 	InstanceDatabaseName *string `json:"InstanceDatabaseName,omitempty" name:"InstanceDatabaseName"`
 	Privilege            *string `json:"Privilege,omitempty" name:"Privilege"`

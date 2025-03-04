@@ -499,8 +499,7 @@ func (r *ModifyStorageTimeRequest) FromJsonString(s string) error {
 
 type ModifyStorageTimeResponse struct {
 	*ksyunhttp.BaseResponse
-	StorageTime *int    `json:"StorageTime" name:"StorageTime"`
-	RequestId   *string `json:"RequestId" name:"RequestId"`
+	StorageTime *int `json:"StorageTime" name:"StorageTime"`
 }
 
 func (r *ModifyStorageTimeResponse) ToJsonString() string {

@@ -10,18 +10,15 @@ type CreateSecurityGroupSecurityGroupRule struct {
 	SecurityGroupRuleName     *string `json:"SecurityGroupRuleName,omitempty" name:"SecurityGroupRuleName"`
 	SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol,omitempty" name:"SecurityGroupRuleProtocol"`
 }
-
 type ModifySecurityGroupRuleSecurityGroupRule struct {
 	SecurityGroupRuleId       *string `json:"SecurityGroupRuleId,omitempty" name:"SecurityGroupRuleId"`
 	SecurityGroupRuleName     *string `json:"SecurityGroupRuleName,omitempty" name:"SecurityGroupRuleName"`
 	SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol,omitempty" name:"SecurityGroupRuleProtocol"`
 }
-
 type CreateDBParameterGroupParameters struct {
 	Name  *string `json:"Name,omitempty" name:"Name"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
 type ModifyDBParameterGroupParameters struct {
 	Name  *string `json:"Name,omitempty" name:"Name"`
 	Value *string `json:"Value,omitempty" name:"Value"`

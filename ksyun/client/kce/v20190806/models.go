@@ -10,168 +10,353 @@ type DescribeClusterInstanceFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
-type AddClusterInstancesInstanceSet struct {
-	NodeRole *string   `json:"NodeRole,omitempty" name:"NodeRole"`
-	NodePara []*string `json:"NodePara,omitempty" name:"NodePara"`
+type ModifyClusterInfoControlPlaneLog struct {
+	ClusterId   *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	Enable      *bool   `json:"Enable,omitempty" name:"Enable"`
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	Items       *string `json:"Items,omitempty" name:"Items"`
 }
-
-type AddClusterInstancesLabel struct {
+type AddClusterInstancesInstanceSetAdvancedSettingDataDisk struct {
+	AutoFormatAndMount *bool   `json:"AutoFormatAndMount,omitempty" name:"AutoFormatAndMount"`
+	FileSystem         *string `json:"FileSystem,omitempty" name:"FileSystem"`
+	MountTarget        *string `json:"MountTarget,omitempty" name:"MountTarget"`
+}
+type AddClusterInstancesInstanceSetAdvancedSettingLabel struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
-type AddClusterInstancesKubelet struct {
+type AddClusterInstancesInstanceSetAdvancedSettingExtraArgKubelet struct {
 	CustomArg *string `json:"CustomArg,omitempty" name:"CustomArg"`
 }
-
-type AddClusterInstancesTaints struct {
+type AddClusterInstancesInstanceSetAdvancedSettingExtraArg struct {
+	Kubelet []*AddClusterInstancesInstanceSetAdvancedSettingExtraArgKubelet `json:"Kubelet,omitempty" name:"Kubelet"`
+}
+type AddClusterInstancesInstanceSetAdvancedSettingTaints struct {
 	Key    *string `json:"Key,omitempty" name:"Key"`
 	Value  *string `json:"Value,omitempty" name:"Value"`
 	Effect *string `json:"Effect,omitempty" name:"Effect"`
 }
-
+type AddClusterInstancesInstanceSetAdvancedSetting struct {
+	DataDisk             *AddClusterInstancesInstanceSetAdvancedSettingDataDisk `json:"DataDisk,omitempty" name:"DataDisk"`
+	ContainerRuntime     *string                                                `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
+	ContainerPath        *string                                                `json:"ContainerPath,omitempty" name:"ContainerPath"`
+	UserScript           *string                                                `json:"UserScript,omitempty" name:"UserScript"`
+	PreUserScript        *string                                                `json:"PreUserScript,omitempty" name:"PreUserScript"`
+	Schedulable          *bool                                                  `json:"Schedulable,omitempty" name:"Schedulable"`
+	Label                []*AddClusterInstancesInstanceSetAdvancedSettingLabel  `json:"Label,omitempty" name:"Label"`
+	ExtraArg             *AddClusterInstancesInstanceSetAdvancedSettingExtraArg `json:"ExtraArg,omitempty" name:"ExtraArg"`
+	ContainerLogMaxSize  *int                                                   `json:"ContainerLogMaxSize,omitempty" name:"ContainerLogMaxSize"`
+	ContainerLogMaxFiles *int                                                   `json:"ContainerLogMaxFiles,omitempty" name:"ContainerLogMaxFiles"`
+	Taints               []*AddClusterInstancesInstanceSetAdvancedSettingTaints `json:"Taints,omitempty" name:"Taints"`
+}
+type AddClusterInstancesInstanceSet struct {
+	NodeRole        *string                                        `json:"NodeRole,omitempty" name:"NodeRole"`
+	NodePara        []*string                                      `json:"NodePara,omitempty" name:"NodePara"`
+	AdvancedSetting *AddClusterInstancesInstanceSetAdvancedSetting `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
+}
 type DescribeEpcForClusterFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
-type AddClusterEpcInstancesLabel struct {
+type AddClusterEpcInstancesAdvancedSettingLabel struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
-type AddClusterEpcInstancesKubelet struct {
+type AddClusterEpcInstancesAdvancedSettingExtraArgKubelet struct {
 	CustomArg *string `json:"CustomArg,omitempty" name:"CustomArg"`
 }
-
-type AddClusterEpcInstancesTaints struct {
+type AddClusterEpcInstancesAdvancedSettingExtraArg struct {
+	Kubelet []*AddClusterEpcInstancesAdvancedSettingExtraArgKubelet `json:"Kubelet,omitempty" name:"Kubelet"`
+}
+type AddClusterEpcInstancesAdvancedSettingTaints struct {
 	Key    *string `json:"Key,omitempty" name:"Key"`
 	Value  *string `json:"Value,omitempty" name:"Value"`
 	Effect *string `json:"Effect,omitempty" name:"Effect"`
 }
-
+type AddClusterEpcInstancesAdvancedSetting struct {
+	ContainerRuntime     *string                                        `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
+	ContainerPath        *string                                        `json:"ContainerPath,omitempty" name:"ContainerPath"`
+	UserScript           *string                                        `json:"UserScript,omitempty" name:"UserScript"`
+	PreUserScript        *string                                        `json:"PreUserScript,omitempty" name:"PreUserScript"`
+	Schedulable          *bool                                          `json:"Schedulable,omitempty" name:"Schedulable"`
+	Label                []*AddClusterEpcInstancesAdvancedSettingLabel  `json:"Label,omitempty" name:"Label"`
+	ExtraArg             *AddClusterEpcInstancesAdvancedSettingExtraArg `json:"ExtraArg,omitempty" name:"ExtraArg"`
+	ContainerLogMaxSize  *int                                           `json:"ContainerLogMaxSize,omitempty" name:"ContainerLogMaxSize"`
+	ContainerLogMaxFiles *int                                           `json:"ContainerLogMaxFiles,omitempty" name:"ContainerLogMaxFiles"`
+	Taints               []*AddClusterEpcInstancesAdvancedSettingTaints `json:"Taints,omitempty" name:"Taints"`
+}
 type DescribeExistedInstancesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
-type AddExistedInstancesExistedInstanceKecSet struct {
-	NodeRole *string   `json:"NodeRole,omitempty" name:"NodeRole"`
-	KecPara  []*string `json:"KecPara,omitempty" name:"KecPara"`
+type AddExistedInstancesExistedInstanceKecSetAdvancedSettingDataDisk struct {
+	AutoFormatAndMount *bool   `json:"AutoFormatAndMount,omitempty" name:"AutoFormatAndMount"`
+	FileSystem         *string `json:"FileSystem,omitempty" name:"FileSystem"`
+	MountTarget        *string `json:"MountTarget,omitempty" name:"MountTarget"`
 }
-
-type AddExistedInstancesLabel struct {
+type AddExistedInstancesExistedInstanceKecSetAdvancedSettingLabel struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
-type AddExistedInstancesKubelet struct {
+type AddExistedInstancesExistedInstanceKecSetAdvancedSettingExtraArgKubelet struct {
 	CustomArg *string `json:"CustomArg,omitempty" name:"CustomArg"`
 }
-
-type AddExistedInstancesTaints struct {
+type AddExistedInstancesExistedInstanceKecSetAdvancedSettingExtraArg struct {
+	Kubelet []*AddExistedInstancesExistedInstanceKecSetAdvancedSettingExtraArgKubelet `json:"Kubelet,omitempty" name:"Kubelet"`
+}
+type AddExistedInstancesExistedInstanceKecSetAdvancedSettingTaints struct {
 	Key    *string `json:"Key,omitempty" name:"Key"`
 	Value  *string `json:"Value,omitempty" name:"Value"`
 	Effect *string `json:"Effect,omitempty" name:"Effect"`
 }
-
-type CreateNodePoolDataDisk struct {
+type AddExistedInstancesExistedInstanceKecSetAdvancedSetting struct {
+	DataDisk             *AddExistedInstancesExistedInstanceKecSetAdvancedSettingDataDisk `json:"DataDisk,omitempty" name:"DataDisk"`
+	ContainerRuntime     *string                                                          `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
+	ContainerPath        *string                                                          `json:"ContainerPath,omitempty" name:"ContainerPath"`
+	UserScript           *string                                                          `json:"UserScript,omitempty" name:"UserScript"`
+	PreUserScript        *string                                                          `json:"PreUserScript,omitempty" name:"PreUserScript"`
+	Schedulable          *bool                                                            `json:"Schedulable,omitempty" name:"Schedulable"`
+	Label                []*AddExistedInstancesExistedInstanceKecSetAdvancedSettingLabel  `json:"Label,omitempty" name:"Label"`
+	ExtraArg             *AddExistedInstancesExistedInstanceKecSetAdvancedSettingExtraArg `json:"ExtraArg,omitempty" name:"ExtraArg"`
+	ContainerLogMaxSize  *int                                                             `json:"ContainerLogMaxSize,omitempty" name:"ContainerLogMaxSize"`
+	ContainerLogMaxFiles *int                                                             `json:"ContainerLogMaxFiles,omitempty" name:"ContainerLogMaxFiles"`
+	Taints               []*AddExistedInstancesExistedInstanceKecSetAdvancedSettingTaints `json:"Taints,omitempty" name:"Taints"`
+}
+type AddExistedInstancesExistedInstanceKecSet struct {
+	NodeRole        *string                                                  `json:"NodeRole,omitempty" name:"NodeRole"`
+	KecPara         []*string                                                `json:"KecPara,omitempty" name:"KecPara"`
+	AdvancedSetting *AddExistedInstancesExistedInstanceKecSetAdvancedSetting `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
+}
+type CreateNodePoolNodeTemplateSystemDisk struct {
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+	DiskSize *int    `json:"DiskSize,omitempty" name:"DiskSize"`
+}
+type CreateNodePoolNodeTemplateDataDisk struct {
 	Type               *string `json:"Type,omitempty" name:"Type"`
 	Size               *int    `json:"Size,omitempty" name:"Size"`
 	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
 }
-
-type CreateNodePoolKubelet struct {
+type CreateNodePoolNodeTemplateAdvancedSettingDataDisk struct {
+	AutoFormatAndMount *bool   `json:"AutoFormatAndMount,omitempty" name:"AutoFormatAndMount"`
+	FileSystem         *string `json:"FileSystem,omitempty" name:"FileSystem"`
+	MountTarget        *string `json:"MountTarget,omitempty" name:"MountTarget"`
+}
+type CreateNodePoolNodeTemplateAdvancedSettingExtraArgKubelet struct {
 	CustomArg *string `json:"CustomArg,omitempty" name:"CustomArg"`
 }
-
-type CreateNodePoolEbsTag struct {
+type CreateNodePoolNodeTemplateAdvancedSettingExtraArg struct {
+	Kubelet []*CreateNodePoolNodeTemplateAdvancedSettingExtraArgKubelet `json:"Kubelet,omitempty" name:"Kubelet"`
+}
+type CreateNodePoolNodeTemplateAdvancedSetting struct {
+	DataDisk             *CreateNodePoolNodeTemplateAdvancedSettingDataDisk `json:"DataDisk,omitempty" name:"DataDisk"`
+	ContainerRuntime     *string                                            `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
+	ContainerPath        *string                                            `json:"ContainerPath,omitempty" name:"ContainerPath"`
+	UserScript           *string                                            `json:"UserScript,omitempty" name:"UserScript"`
+	PreUserScript        *string                                            `json:"PreUserScript,omitempty" name:"PreUserScript"`
+	Schedulable          *bool                                              `json:"Schedulable,omitempty" name:"Schedulable"`
+	ExtraArg             *CreateNodePoolNodeTemplateAdvancedSettingExtraArg `json:"ExtraArg,omitempty" name:"ExtraArg"`
+	ContainerLogMaxSize  *int                                               `json:"ContainerLogMaxSize,omitempty" name:"ContainerLogMaxSize"`
+	ContainerLogMaxFiles *int                                               `json:"ContainerLogMaxFiles,omitempty" name:"ContainerLogMaxFiles"`
+}
+type CreateNodePoolNodeTemplateEbsTag struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
-type CreateNodePoolInstanceTag struct {
+type CreateNodePoolNodeTemplateInstanceTag struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
+type CreateNodePoolNodeTemplate struct {
+	ChargeType         *string                                    `json:"ChargeType,omitempty" name:"ChargeType"`
+	InstanceType       *string                                    `json:"InstanceType,omitempty" name:"InstanceType"`
+	SystemDisk         *CreateNodePoolNodeTemplateSystemDisk      `json:"SystemDisk,omitempty" name:"SystemDisk"`
+	DataDiskGb         *int                                       `json:"DataDiskGb,omitempty" name:"DataDiskGb"`
+	DataDisk           []*CreateNodePoolNodeTemplateDataDisk      `json:"DataDisk,omitempty" name:"DataDisk"`
+	ImageId            *string                                    `json:"ImageId,omitempty" name:"ImageId"`
+	VpcId              *string                                    `json:"VpcId,omitempty" name:"VpcId"`
+	SubnetId           []*string                                  `json:"SubnetId,omitempty" name:"SubnetId"`
+	SubnetStrategy     *string                                    `json:"SubnetStrategy,omitempty" name:"SubnetStrategy"`
+	SecurityGroupId    *string                                    `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	ProjectId          *string                                    `json:"ProjectId,omitempty" name:"ProjectId"`
+	Password           *string                                    `json:"Password,omitempty" name:"Password"`
+	AdvancedSetting    *CreateNodePoolNodeTemplateAdvancedSetting `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
+	EbsTag             []*CreateNodePoolNodeTemplateEbsTag        `json:"EbsTag,omitempty" name:"EbsTag"`
+	InstanceTag        []*CreateNodePoolNodeTemplateInstanceTag   `json:"InstanceTag,omitempty" name:"InstanceTag"`
+	Cpu                *string                                    `json:"Cpu,omitempty" name:"Cpu"`
+	Mem                *string                                    `json:"Mem,omitempty" name:"Mem"`
+	KeyId              []*string                                  `json:"KeyId,omitempty" name:"KeyId"`
+	InstanceName       *string                                    `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceNameSuffix *int                                       `json:"InstanceNameSuffix,omitempty" name:"InstanceNameSuffix"`
+	DeleteDataDisk     *bool                                      `json:"DeleteDataDisk,omitempty" name:"DeleteDataDisk"`
+	DeleteInstanceTag  *bool                                      `json:"DeleteInstanceTag,omitempty" name:"DeleteInstanceTag"`
+	DeleteEbsTag       *bool                                      `json:"DeleteEbsTag,omitempty" name:"DeleteEbsTag"`
+}
 type CreateNodePoolLabel struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
 type CreateNodePoolTaint struct {
 	Key    *string `json:"Key,omitempty" name:"Key"`
 	Value  *string `json:"Value,omitempty" name:"Value"`
 	Effect *string `json:"Effect,omitempty" name:"Effect"`
 }
-
 type ModifyNodePoolLabel struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
 type ModifyNodePoolTaint struct {
 	Key    *string `json:"Key,omitempty" name:"Key"`
 	Value  *string `json:"Value,omitempty" name:"Value"`
 	Effect *string `json:"Effect,omitempty" name:"Effect"`
 }
-
-type ModifyNodeTemplateDataDisk struct {
+type ModifyNodeTemplateNodeTemplateSystemDisk struct {
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+	DiskSize *int    `json:"DiskSize,omitempty" name:"DiskSize"`
+}
+type ModifyNodeTemplateNodeTemplateDataDisk struct {
 	Type               *string `json:"Type,omitempty" name:"Type"`
 	Size               *int    `json:"Size,omitempty" name:"Size"`
 	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
 }
-
-type ModifyNodeTemplateLabel struct {
+type ModifyNodeTemplateNodeTemplateAdvancedSettingDataDisk struct {
+	AutoFormatAndMount *bool   `json:"AutoFormatAndMount,omitempty" name:"AutoFormatAndMount"`
+	FileSystem         *string `json:"FileSystem,omitempty" name:"FileSystem"`
+	MountTarget        *string `json:"MountTarget,omitempty" name:"MountTarget"`
+}
+type ModifyNodeTemplateNodeTemplateAdvancedSettingLabel struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
-type ModifyNodeTemplateKubelet struct {
+type ModifyNodeTemplateNodeTemplateAdvancedSettingExtraArgKubelet struct {
 	CustomArg *string `json:"CustomArg,omitempty" name:"CustomArg"`
 }
-
-type ModifyNodeTemplateTaints struct {
+type ModifyNodeTemplateNodeTemplateAdvancedSettingExtraArg struct {
+	Kubelet []*ModifyNodeTemplateNodeTemplateAdvancedSettingExtraArgKubelet `json:"Kubelet,omitempty" name:"Kubelet"`
+}
+type ModifyNodeTemplateNodeTemplateAdvancedSettingTaints struct {
 	Key    *string `json:"Key,omitempty" name:"Key"`
 	Value  *string `json:"Value,omitempty" name:"Value"`
 	Effect *string `json:"Effect,omitempty" name:"Effect"`
 }
-
-type ModifyNodeTemplateEbsTag struct {
+type ModifyNodeTemplateNodeTemplateAdvancedSetting struct {
+	DataDisk             *ModifyNodeTemplateNodeTemplateAdvancedSettingDataDisk `json:"DataDisk,omitempty" name:"DataDisk"`
+	ContainerRuntime     *string                                                `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
+	ContainerPath        *string                                                `json:"ContainerPath,omitempty" name:"ContainerPath"`
+	UserScript           *string                                                `json:"UserScript,omitempty" name:"UserScript"`
+	PreUserScript        *string                                                `json:"PreUserScript,omitempty" name:"PreUserScript"`
+	Schedulable          *bool                                                  `json:"Schedulable,omitempty" name:"Schedulable"`
+	Label                []*ModifyNodeTemplateNodeTemplateAdvancedSettingLabel  `json:"Label,omitempty" name:"Label"`
+	ExtraArg             *ModifyNodeTemplateNodeTemplateAdvancedSettingExtraArg `json:"ExtraArg,omitempty" name:"ExtraArg"`
+	ContainerLogMaxSize  *int                                                   `json:"ContainerLogMaxSize,omitempty" name:"ContainerLogMaxSize"`
+	ContainerLogMaxFiles *int                                                   `json:"ContainerLogMaxFiles,omitempty" name:"ContainerLogMaxFiles"`
+	Taints               []*ModifyNodeTemplateNodeTemplateAdvancedSettingTaints `json:"Taints,omitempty" name:"Taints"`
+}
+type ModifyNodeTemplateNodeTemplateEbsTag struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
-type ModifyNodeTemplateInstanceTag struct {
+type ModifyNodeTemplateNodeTemplateInstanceTag struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
-type CreateLogRuleNamespaceList struct {
-	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
-	AllContainer  *bool   `json:"AllContainer,omitempty" name:"AllContainer"`
-	Workload      []struct {
-		WorkloadType *string `json:"WorkloadType,omitempty" name:"WorkloadType"`
-		WorkloadName *string `json:"WorkloadName,omitempty" name:"WorkloadName"`
-	} `json:"Workload,omitempty" name:"Workload"`
+type ModifyNodeTemplateNodeTemplate struct {
+	ChargeType         *string                                        `json:"ChargeType,omitempty" name:"ChargeType"`
+	InstanceType       *string                                        `json:"InstanceType,omitempty" name:"InstanceType"`
+	InstanceName       *string                                        `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceNameSuffix *int                                           `json:"InstanceNameSuffix,omitempty" name:"InstanceNameSuffix"`
+	SystemDisk         *ModifyNodeTemplateNodeTemplateSystemDisk      `json:"SystemDisk,omitempty" name:"SystemDisk"`
+	DataDiskGb         *int                                           `json:"DataDiskGb,omitempty" name:"DataDiskGb"`
+	DataDisk           []*ModifyNodeTemplateNodeTemplateDataDisk      `json:"DataDisk,omitempty" name:"DataDisk"`
+	ImageId            *string                                        `json:"ImageId,omitempty" name:"ImageId"`
+	VpcId              *string                                        `json:"VpcId,omitempty" name:"VpcId"`
+	SubnetId           []*string                                      `json:"SubnetId,omitempty" name:"SubnetId"`
+	SubnetStrategy     *string                                        `json:"SubnetStrategy,omitempty" name:"SubnetStrategy"`
+	SecurityGroupId    *string                                        `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	ProjectId          *string                                        `json:"ProjectId,omitempty" name:"ProjectId"`
+	Password           *string                                        `json:"Password,omitempty" name:"Password"`
+	KeyId              []*string                                      `json:"KeyId,omitempty" name:"KeyId"`
+	AdvancedSetting    *ModifyNodeTemplateNodeTemplateAdvancedSetting `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
+	EbsTag             []*ModifyNodeTemplateNodeTemplateEbsTag        `json:"EbsTag,omitempty" name:"EbsTag"`
+	InstanceTag        []*ModifyNodeTemplateNodeTemplateInstanceTag   `json:"InstanceTag,omitempty" name:"InstanceTag"`
+	DeleteDataDisk     *bool                                          `json:"DeleteDataDisk,omitempty" name:"DeleteDataDisk"`
+	DeleteInstanceTag  *bool                                          `json:"DeleteInstanceTag,omitempty" name:"DeleteInstanceTag"`
+	DeleteEbsTag       *bool                                          `json:"DeleteEbsTag,omitempty" name:"DeleteEbsTag"`
+	Cpu                *string                                        `json:"Cpu,omitempty" name:"Cpu"`
+	Mem                *string                                        `json:"Mem,omitempty" name:"Mem"`
 }
-
-type CreateLogRuleWorkload struct {
+type CreateLogRuleInputConfigContainerStandoutSpecifiedWorkloadNamespaceListWorkload struct {
 	WorkloadType *string `json:"WorkloadType,omitempty" name:"WorkloadType"`
 	WorkloadName *string `json:"WorkloadName,omitempty" name:"WorkloadName"`
 }
-
-type CreateLogRuleContainerLabel struct {
+type CreateLogRuleInputConfigContainerStandoutSpecifiedWorkloadNamespaceList struct {
+	NamespaceName *string                                                                            `json:"NamespaceName,omitempty" name:"NamespaceName"`
+	AllContainer  *bool                                                                              `json:"AllContainer,omitempty" name:"AllContainer"`
+	Workload      []*CreateLogRuleInputConfigContainerStandoutSpecifiedWorkloadNamespaceListWorkload `json:"Workload,omitempty" name:"Workload"`
+}
+type CreateLogRuleInputConfigContainerStandoutSpecifiedWorkload struct {
+	NamespaceList []*CreateLogRuleInputConfigContainerStandoutSpecifiedWorkloadNamespaceList `json:"NamespaceList,omitempty" name:"NamespaceList"`
+}
+type CreateLogRuleInputConfigContainerStandoutSpecifiedPodLabelContainerLabel struct {
 	Key      *string `json:"Key,omitempty" name:"Key"`
 	Value    *string `json:"Value,omitempty" name:"Value"`
 	Operator *int    `json:"Operator,omitempty" name:"Operator"`
 }
-
-type CreateLogRuleLabel struct {
+type CreateLogRuleInputConfigContainerStandoutSpecifiedPodLabel struct {
+	NamespaceOperator     *int                                                                        `json:"NamespaceOperator,omitempty" name:"NamespaceOperator"`
+	Namespace             []*string                                                                   `json:"Namespace,omitempty" name:"Namespace"`
+	ContainerNameOperator *int                                                                        `json:"ContainerNameOperator,omitempty" name:"ContainerNameOperator"`
+	ContainerName         *string                                                                     `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerLabel        []*CreateLogRuleInputConfigContainerStandoutSpecifiedPodLabelContainerLabel `json:"ContainerLabel,omitempty" name:"ContainerLabel"`
+}
+type CreateLogRuleInputConfigContainerStandout struct {
+	AllContainer      *bool                                                       `json:"AllContainer,omitempty" name:"AllContainer"`
+	SpecifiedWorkload *CreateLogRuleInputConfigContainerStandoutSpecifiedWorkload `json:"SpecifiedWorkload,omitempty" name:"SpecifiedWorkload"`
+	SpecifiedPodLabel *CreateLogRuleInputConfigContainerStandoutSpecifiedPodLabel `json:"SpecifiedPodLabel,omitempty" name:"SpecifiedPodLabel"`
+}
+type CreateLogRuleInputConfigContainerFileSpecifiedContainer struct {
+	Namespace     *string `json:"Namespace,omitempty" name:"Namespace"`
+	WorkloadType  *string `json:"WorkloadType,omitempty" name:"WorkloadType"`
+	WorkloadName  *string `json:"WorkloadName,omitempty" name:"WorkloadName"`
+	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerPath *string `json:"ContainerPath,omitempty" name:"ContainerPath"`
+}
+type CreateLogRuleInputConfigContainerFileSpecifiedPodLabelContainerLabel struct {
+	Key      *string `json:"Key,omitempty" name:"Key"`
+	Value    *string `json:"Value,omitempty" name:"Value"`
+	Operator *int    `json:"Operator,omitempty" name:"Operator"`
+}
+type CreateLogRuleInputConfigContainerFileSpecifiedPodLabel struct {
+	NamespaceOperator     *int                                                                    `json:"NamespaceOperator,omitempty" name:"NamespaceOperator"`
+	Namespace             []*string                                                               `json:"Namespace,omitempty" name:"Namespace"`
+	ContainerNameOperator *int                                                                    `json:"ContainerNameOperator,omitempty" name:"ContainerNameOperator"`
+	ContainerName         *string                                                                 `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerPath         []*string                                                               `json:"ContainerPath,omitempty" name:"ContainerPath"`
+	ContainerLabel        []*CreateLogRuleInputConfigContainerFileSpecifiedPodLabelContainerLabel `json:"ContainerLabel,omitempty" name:"ContainerLabel"`
+}
+type CreateLogRuleInputConfigContainerFile struct {
+	SpecifiedContainer *CreateLogRuleInputConfigContainerFileSpecifiedContainer `json:"SpecifiedContainer,omitempty" name:"SpecifiedContainer"`
+	SpecifiedPodLabel  *CreateLogRuleInputConfigContainerFileSpecifiedPodLabel  `json:"SpecifiedPodLabel,omitempty" name:"SpecifiedPodLabel"`
+}
+type CreateLogRuleInputConfigHostFileLabel struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 	Key   *string `json:"Key,omitempty" name:"Key"`
+}
+type CreateLogRuleInputConfigHostFile struct {
+	Path  *string                                  `json:"Path,omitempty" name:"Path"`
+	Label []*CreateLogRuleInputConfigHostFileLabel `json:"Label,omitempty" name:"Label"`
+}
+type CreateLogRuleInputConfig struct {
+	InputType         *int                                       `json:"InputType,omitempty" name:"InputType"`
+	ContainerStandout *CreateLogRuleInputConfigContainerStandout `json:"ContainerStandout,omitempty" name:"ContainerStandout"`
+	ContainerFile     *CreateLogRuleInputConfigContainerFile     `json:"ContainerFile,omitempty" name:"ContainerFile"`
+	HostFile          *CreateLogRuleInputConfigHostFile          `json:"HostFile,omitempty" name:"HostFile"`
+}
+type CreateLogRuleOutputConfigKlog struct {
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	PoolName    *string `json:"PoolName,omitempty" name:"PoolName"`
+}
+type CreateLogRuleOutputConfig struct {
+	Klog *CreateLogRuleOutputConfigKlog `json:"Klog,omitempty" name:"Klog"`
 }
 
 type DescribeClusterInstanceRequest struct {
@@ -400,10 +585,11 @@ func (r *DownloadClusterConfigResponse) FromJsonString(s string) error {
 
 type ModifyClusterInfoRequest struct {
 	*ksyunhttp.BaseRequest
-	ClusterId   *string `json:"ClusterId,omitempty" name:"ClusterId"`
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
-	ClusterDesc *string `json:"ClusterDesc,omitempty" name:"ClusterDesc"`
-	EnableKMSE  *bool   `json:"EnableKMSE,omitempty" name:"EnableKMSE"`
+	ClusterId       *string                           `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterName     *string                           `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterDesc     *string                           `json:"ClusterDesc,omitempty" name:"ClusterDesc"`
+	EnableKMSE      *bool                             `json:"EnableKMSE,omitempty" name:"EnableKMSE"`
+	ControlPlaneLog *ModifyClusterInfoControlPlaneLog `json:"ControlPlaneLog,omitempty" name:"ControlPlaneLog"`
 }
 
 func (r *ModifyClusterInfoRequest) ToJsonString() string {
@@ -648,9 +834,10 @@ func (r *DescribeEpcForClusterResponse) FromJsonString(s string) error {
 
 type AddClusterEpcInstancesRequest struct {
 	*ksyunhttp.BaseRequest
-	ClusterId  *string   `json:"ClusterId,omitempty" name:"ClusterId"`
-	InstanceId []*string `json:"InstanceId,omitempty" name:"InstanceId"`
-	EpcPara    []*string `json:"EpcPara,omitempty" name:"EpcPara"`
+	ClusterId       *string                                `json:"ClusterId,omitempty" name:"ClusterId"`
+	InstanceId      []*string                              `json:"InstanceId,omitempty" name:"InstanceId"`
+	EpcPara         []*string                              `json:"EpcPara,omitempty" name:"EpcPara"`
+	AdvancedSetting *AddClusterEpcInstancesAdvancedSetting `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
 }
 
 func (r *AddClusterEpcInstancesRequest) ToJsonString() string {
@@ -782,15 +969,16 @@ func (r *AddExistedInstancesResponse) FromJsonString(s string) error {
 
 type CreateNodePoolRequest struct {
 	*ksyunhttp.BaseRequest
-	NodePoolName        *string                `json:"NodePoolName,omitempty" name:"NodePoolName"`
-	ClusterId           *string                `json:"ClusterId,omitempty" name:"ClusterId"`
-	EnableAutoScale     *bool                  `json:"EnableAutoScale,omitempty" name:"EnableAutoScale"`
-	Label               []*CreateNodePoolLabel `json:"Label,omitempty" name:"Label"`
-	Taint               []*CreateNodePoolTaint `json:"Taint,omitempty" name:"Taint"`
-	MinSize             *int                   `json:"MinSize,omitempty" name:"MinSize"`
-	MaxSize             *int                   `json:"MaxSize,omitempty" name:"MaxSize"`
-	DesiredCapacity     *int                   `json:"DesiredCapacity,omitempty" name:"DesiredCapacity"`
-	EnableDelProtection *bool                  `json:"EnableDelProtection,omitempty" name:"EnableDelProtection"`
+	NodePoolName        *string                     `json:"NodePoolName,omitempty" name:"NodePoolName"`
+	ClusterId           *string                     `json:"ClusterId,omitempty" name:"ClusterId"`
+	EnableAutoScale     *bool                       `json:"EnableAutoScale,omitempty" name:"EnableAutoScale"`
+	NodeTemplate        *CreateNodePoolNodeTemplate `json:"NodeTemplate,omitempty" name:"NodeTemplate"`
+	Label               []*CreateNodePoolLabel      `json:"Label,omitempty" name:"Label"`
+	Taint               []*CreateNodePoolTaint      `json:"Taint,omitempty" name:"Taint"`
+	MinSize             *int                        `json:"MinSize,omitempty" name:"MinSize"`
+	MaxSize             *int                        `json:"MaxSize,omitempty" name:"MaxSize"`
+	DesiredCapacity     *int                        `json:"DesiredCapacity,omitempty" name:"DesiredCapacity"`
+	EnableDelProtection *bool                       `json:"EnableDelProtection,omitempty" name:"EnableDelProtection"`
 }
 
 func (r *CreateNodePoolRequest) ToJsonString() string {
@@ -1053,8 +1241,9 @@ func (r *ModifyNodePoolResponse) FromJsonString(s string) error {
 
 type ModifyNodeTemplateRequest struct {
 	*ksyunhttp.BaseRequest
-	ClusterId  *string `json:"ClusterId,omitempty" name:"ClusterId"`
-	NodePoolId *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
+	ClusterId    *string                         `json:"ClusterId,omitempty" name:"ClusterId"`
+	NodePoolId   *string                         `json:"NodePoolId,omitempty" name:"NodePoolId"`
+	NodeTemplate *ModifyNodeTemplateNodeTemplate `json:"NodeTemplate,omitempty" name:"NodeTemplate"`
 }
 
 func (r *ModifyNodeTemplateRequest) ToJsonString() string {
@@ -1406,8 +1595,10 @@ func (r *DescribeNodePoolSummaryResponse) FromJsonString(s string) error {
 
 type CreateLogRuleRequest struct {
 	*ksyunhttp.BaseRequest
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-	RuleName  *string `json:"RuleName,omitempty" name:"RuleName"`
+	ClusterId    *string                    `json:"ClusterId,omitempty" name:"ClusterId"`
+	RuleName     *string                    `json:"RuleName,omitempty" name:"RuleName"`
+	InputConfig  *CreateLogRuleInputConfig  `json:"InputConfig,omitempty" name:"InputConfig"`
+	OutputConfig *CreateLogRuleOutputConfig `json:"OutputConfig,omitempty" name:"OutputConfig"`
 }
 
 func (r *CreateLogRuleRequest) ToJsonString() string {

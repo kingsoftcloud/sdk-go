@@ -10,97 +10,78 @@ type DescribeSubnetsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeRoutesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeNetworkAclsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeSecurityGroupsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeNatsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeNatsTagKV struct {
 	Name  *string `json:"Name,omitempty" name:"Name"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeInternetGatewaysFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeVpcPeeringConnectionsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeNetworkInterfacesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeSubnetAvailableAddressesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeDirectConnectGatewaysFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeVpnGatewaysFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeVpnTunnelsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeSubnetAllocatedIpAddressesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeRouteTablesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeNatRateLimitFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeHaVipFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeDirectConnectGatewayRouteFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeVpnGatewayRoutesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeFlowLogsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`

@@ -6,7 +6,15 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 )
 
-type Strategyrulecreatepolicies struct {
+type StrategyruleeditPolicies struct {
+	Description  *string `json:"description,omitempty" name:"description"`
+	Direction    *string `json:"direction,omitempty" name:"direction"`
+	CidrBlock    *string `json:"cidrBlock,omitempty" name:"cidrBlock"`
+	MaxPortRange *int    `json:"maxPortRange,omitempty" name:"maxPortRange"`
+	MinPortRange *int    `json:"minPortRange,omitempty" name:"minPortRange"`
+	Protocol     *string `json:"protocol,omitempty" name:"protocol"`
+}
+type StrategyrulecreatePolicies struct {
 	Description  *string `json:"description,omitempty" name:"description"`
 	Direction    *string `json:"direction,omitempty" name:"direction"`
 	CidrBlock    *string `json:"cidrBlock,omitempty" name:"cidrBlock"`
@@ -267,7 +275,8 @@ func (r *CloudDesklistResponse) FromJsonString(s string) error {
 
 type StrategyruleeditRequest struct {
 	*ksyunhttp.BaseRequest
-	SecurityGroupId *string `json:"securityGroupId,omitempty" name:"securityGroupId"`
+	Policies        *StrategyruleeditPolicies `json:"policies,omitempty" name:"policies"`
+	SecurityGroupId *string                   `json:"securityGroupId,omitempty" name:"securityGroupId"`
 }
 
 func (r *StrategyruleeditRequest) ToJsonString() string {
@@ -308,7 +317,7 @@ type StrategyrulecreateRequest struct {
 	*ksyunhttp.BaseRequest
 	Name        *string                       `json:"name,omitempty" name:"name"`
 	Description *string                       `json:"description,omitempty" name:"description"`
-	Policies    []*Strategyrulecreatepolicies `json:"policies,omitempty" name:"policies"`
+	Policies    []*StrategyrulecreatePolicies `json:"policies,omitempty" name:"policies"`
 }
 
 func (r *StrategyrulecreateRequest) ToJsonString() string {

@@ -6,9 +6,12 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 )
 
-type CreateJobspace_storages struct {
+type CreateJobSpace_storages struct {
 	Space_storage_id       *int    `json:"space_storage_id,omitempty" name:"space_storage_id"`
 	Space_storage_location *string `json:"space_storage_location,omitempty" name:"space_storage_location"`
+}
+type CreateJobEnv struct {
+	Key1 *string `json:"key1,omitempty" name:"key1"`
 }
 
 type GetImageRequest struct {
@@ -620,7 +623,8 @@ type CreateJobRequest struct {
 	Hanging_duration       *int                       `json:"hanging_duration,omitempty" name:"hanging_duration"`
 	Replicas               *int                       `json:"replicas,omitempty" name:"replicas"`
 	Device_name            *string                    `json:"device_name,omitempty" name:"device_name"`
-	Space_storages         []*CreateJobspace_storages `json:"space_storages,omitempty" name:"space_storages"`
+	Space_storages         []*CreateJobSpace_storages `json:"space_storages,omitempty" name:"space_storages"`
+	Env                    *CreateJobEnv              `json:"env,omitempty" name:"env"`
 }
 
 func (r *CreateJobRequest) ToJsonString() string {

@@ -10,56 +10,46 @@ type ModifyDBParameterGroupParameters struct {
 	Name  *string `json:"Name,omitempty" name:"Name"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
 type CreateSecurityGroupSecurityGroupRule struct {
 	SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol,omitempty" name:"SecurityGroupRuleProtocol"`
 	SecurityGroupRuleName     *string `json:"SecurityGroupRuleName,omitempty" name:"SecurityGroupRuleName"`
 }
-
 type RestoreToCurInstanceSrcDatabases struct {
 	DatabaseName  *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
 	WholeDatabase *string `json:"WholeDatabase,omitempty" name:"WholeDatabase"`
 	TableNames    *string `json:"TableNames,omitempty" name:"TableNames"`
 }
-
 type RestoreToCurInstanceDstDatabases struct {
 	TableNames    []*string `json:"TableNames,omitempty" name:"TableNames"`
 	WholeDatabase *string   `json:"WholeDatabase,omitempty" name:"WholeDatabase"`
 	DatabaseName  *string   `json:"DatabaseName,omitempty" name:"DatabaseName"`
 }
-
 type RestoreToSgInstanceSrcDatabases struct {
 	DatabaseName  *string   `json:"DatabaseName,omitempty" name:"DatabaseName"`
 	WholeDatabase *string   `json:"WholeDatabase,omitempty" name:"WholeDatabase"`
 	TableNames    []*string `json:"TableNames,omitempty" name:"TableNames"`
 }
-
 type RestoreToSgInstanceDstDatabases struct {
 	DatabaseName  *string   `json:"DatabaseName,omitempty" name:"DatabaseName"`
 	WholeDatabase *string   `json:"WholeDatabase,omitempty" name:"WholeDatabase"`
 	TableNames    []*string `json:"TableNames,omitempty" name:"TableNames"`
 }
-
 type ModifyInstanceAccountPrivilegesInstanceAccountPrivileges struct {
 	InstanceDatabaseName *string `json:"InstanceDatabaseName,omitempty" name:"InstanceDatabaseName"`
 	Privilege            *string `json:"Privilege,omitempty" name:"Privilege"`
 }
-
 type ModifyInstanceDatabasePrivilegesInstanceDatabasePrivileges struct {
 	InstanceAccountName *string `json:"InstanceAccountName,omitempty" name:"InstanceAccountName"`
 	Privilege           *string `json:"Privilege,omitempty" name:"Privilege"`
 }
-
 type CreateInstanceAccountActionInstanceAccountPrivileges struct {
 	InstanceDatabaseName *string `json:"InstanceDatabaseName,omitempty" name:"InstanceDatabaseName"`
 	Privilege            *string `json:"Privilege,omitempty" name:"Privilege"`
 }
-
 type ModifyInstanceAccountPrivilegesActionInstanceAccountPrivileges struct {
 	InstanceDatabaseName *string `json:"InstanceDatabaseName,omitempty" name:"InstanceDatabaseName"`
 	Privilege            *string `json:"Privilege,omitempty" name:"Privilege"`
 }
-
 type SetUpProxyInstanceReadOnlyInstanceList struct {
 	Id     *string `json:"Id,omitempty" name:"Id"`
 	Weight *int    `json:"Weight,omitempty" name:"Weight"`

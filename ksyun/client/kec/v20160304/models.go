@@ -10,72 +10,69 @@ type DescribeInstancesFilter struct {
 	Value []*string `json:"Value,omitempty" name:"Value"`
 	Name  []*string `json:"Name,omitempty" name:"Name"`
 }
-
 type RunInstancesDataDisk struct {
 	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
 	Type               *string `json:"Type,omitempty" name:"Type"`
 	Size               *int    `json:"Size,omitempty" name:"Size"`
 	SnapshotId         *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 }
-
 type RunInstancesNetworkInterface struct {
 	SubnetId         *string   `json:"SubnetId,omitempty" name:"SubnetId"`
 	SecurityGroupId  []*string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 	PrivateIpAddress *string   `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
 }
-
+type RunInstancesSystemDisk struct {
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+	DiskSize *int    `json:"DiskSize,omitempty" name:"DiskSize"`
+}
 type RunInstancesTag struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Id    *int    `json:"Id,omitempty" name:"Id"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
+type RunInstancesInstanceConfigure struct {
+	VCPU       *string `json:"VCPU,omitempty" name:"VCPU"`
+	MemoryGb   *string `json:"MemoryGb,omitempty" name:"MemoryGb"`
+	DataDiskGb *string `json:"DataDiskGb,omitempty" name:"DataDiskGb"`
+}
 type ModifyInstanceTypeDataDisk struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 	Size *string `json:"Size,omitempty" name:"Size"`
 }
-
 type CreateDedicatedHostsTag struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
 type CreateScalingConfigurationDataDisk struct {
 	Type               *string `json:"Type,omitempty" name:"Type"`
 	Size               *int    `json:"Size,omitempty" name:"Size"`
 	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
 	SnapshotId         *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 }
-
 type CreateScalingConfigurationTag struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
 type CreateScalingGroupSlb struct {
 	Id         *string `json:"Id,omitempty" name:"Id"`
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 	ServerPort []*int  `json:"ServerPort,omitempty" name:"ServerPort"`
 	Weight     *int    `json:"Weight,omitempty" name:"Weight"`
 }
-
 type ModifyScalingGroupSlb struct {
 	Id         *string   `json:"Id,omitempty" name:"Id"`
 	ListenerId *string   `json:"ListenerId,omitempty" name:"ListenerId"`
 	ServerPort []*string `json:"ServerPort,omitempty" name:"ServerPort"`
 	Weight     *int      `json:"Weight,omitempty" name:"Weight"`
 }
-
 type DescribeInstanceTypeConfigsFilter struct {
 	Name  []*string `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeFileSystemsFilter struct {
 	NameN  *string `json:"Name.N,omitempty" name:"Name.N"`
 	ValueN *string `json:"Value.N,omitempty" name:"Value.N"`
 }
-
 type CreateModelDataDisk struct {
 	Type               *string `json:"Type,omitempty" name:"Type"`
 	Size               *int    `json:"Size,omitempty" name:"Size"`
@@ -83,30 +80,29 @@ type CreateModelDataDisk struct {
 	SnapshotId         *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 	SnapshotName       *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
 }
-
+type CreateModelSystemDisk struct {
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+	DiskSize *string `json:"DiskSize,omitempty" name:"DiskSize"`
+}
 type CreateModelNetworkInterface struct {
 	SubnetId         *string   `json:"SubnetId,omitempty" name:"SubnetId"`
 	SecurityGroupId  []*string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 	PrivateIpAddress *string   `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
 }
-
 type CreateModelTag struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Id    *int    `json:"Id,omitempty" name:"Id"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
 type ModifyScalingConfigurationDataDisk struct {
 	Type               *string `json:"Type,omitempty" name:"Type"`
 	Size               *int    `json:"Size,omitempty" name:"Size"`
 	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
 }
-
 type ModifyScalingConfigurationTag struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribePriceDataDisk struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 	Size *int    `json:"Size,omitempty" name:"Size"`
@@ -284,6 +280,7 @@ type RunInstancesRequest struct {
 	DataDisk                   []*RunInstancesDataDisk         `json:"DataDisk,omitempty" name:"DataDisk"`
 	NetworkInterface           []*RunInstancesNetworkInterface `json:"NetworkInterface,omitempty" name:"NetworkInterface"`
 	UserData                   *string                         `json:"UserData,omitempty" name:"UserData"`
+	SystemDisk                 *RunInstancesSystemDisk         `json:"SystemDisk,omitempty" name:"SystemDisk"`
 	ModelId                    *string                         `json:"ModelId,omitempty" name:"ModelId"`
 	ModelVersion               *int                            `json:"ModelVersion,omitempty" name:"ModelVersion"`
 	AssembledImageDataDiskType *string                         `json:"AssembledImageDataDiskType,omitempty" name:"AssembledImageDataDiskType"`
@@ -301,6 +298,7 @@ type RunInstancesRequest struct {
 	FailureAutoDelete          *bool                           `json:"FailureAutoDelete,omitempty" name:"FailureAutoDelete"`
 	Tag                        []*RunInstancesTag              `json:"Tag,omitempty" name:"Tag"`
 	DataGuardId                *string                         `json:"DataGuardId,omitempty" name:"DataGuardId"`
+	InstanceConfigure          *RunInstancesInstanceConfigure  `json:"InstanceConfigure,omitempty" name:"InstanceConfigure"`
 	SriovNetSupport            *bool                           `json:"SriovNetSupport,omitempty" name:"SriovNetSupport"`
 	DistributeIpv6             *bool                           `json:"DistributeIpv6,omitempty" name:"DistributeIpv6"`
 	LocalVolumeSnapshotId      *string                         `json:"LocalVolumeSnapshotId,omitempty" name:"LocalVolumeSnapshotId"`
@@ -3590,6 +3588,7 @@ type CreateModelRequest struct {
 	AddressProjectId           *string                        `json:"AddressProjectId,omitempty" name:"AddressProjectId"`
 	ModelName                  *string                        `json:"ModelName,omitempty" name:"ModelName"`
 	FailureAutoDelete          *bool                          `json:"FailureAutoDelete,omitempty" name:"FailureAutoDelete"`
+	SystemDisk                 *CreateModelSystemDisk         `json:"SystemDisk,omitempty" name:"SystemDisk"`
 	HostName                   *string                        `json:"HostName,omitempty" name:"HostName"`
 	HostNameSuffix             *string                        `json:"HostNameSuffix,omitempty" name:"HostNameSuffix"`
 	UserData                   *string                        `json:"UserData,omitempty" name:"UserData"`

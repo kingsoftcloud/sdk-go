@@ -10,28 +10,27 @@ type DescribeEpcsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeInspectionsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeEpcStocksFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeEpcDeviceAttributesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeProcessesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeEpcRaidAttributesFilter struct {
+	Name  *string   `json:"Name,omitempty" name:"Name"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type DescribeUseHotStandbyRecordsFilterN struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
@@ -437,8 +436,7 @@ func (r *ModifySecurityGroupResponse) FromJsonString(s string) error {
 
 type CreateKeyRequest struct {
 	*ksyunhttp.BaseRequest
-	KeyName     *string `json:"KeyName,omitempty" name:"KeyName"`
-	Description *string `json:"Description,omitempty" name:"Description"`
+	KeyName *string `json:"KeyName,omitempty" name:"KeyName"`
 }
 
 func (r *CreateKeyRequest) ToJsonString() string {
@@ -461,6 +459,7 @@ type CreateKeyResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	PrivateKey *string `json:"PrivateKey" name:"PrivateKey"`
+	Key        *string `json:"Key" name:"Key"`
 }
 
 func (r *CreateKeyResponse) ToJsonString() string {
@@ -2887,8 +2886,9 @@ func (r *BatchCreateEpcResponse) FromJsonString(s string) error {
 
 type DescribeUseHotStandbyRecordsRequest struct {
 	*ksyunhttp.BaseRequest
-	MaxResults *int    `json:"MaxResults,omitempty" name:"MaxResults"`
-	NextToken  *string `json:"NextToken,omitempty" name:"NextToken"`
+	FilterN    *DescribeUseHotStandbyRecordsFilterN `json:"Filter.N,omitempty" name:"Filter.N"`
+	MaxResults *int                                 `json:"MaxResults,omitempty" name:"MaxResults"`
+	NextToken  *string                              `json:"NextToken,omitempty" name:"NextToken"`
 }
 
 func (r *DescribeUseHotStandbyRecordsRequest) ToJsonString() string {

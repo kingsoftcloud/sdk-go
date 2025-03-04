@@ -10,165 +10,145 @@ type DescribeListenersFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeInstancesWithListenerFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeHealthChecksFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeLoadBalancersFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeLoadBalancersTagKV struct {
 	Name  *string `json:"Name,omitempty" name:"Name"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeHostHeadersFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeRulesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeBackendServerGroupsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeBackendServersFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type ListPrivateLinkServerFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeAlbsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeAlbsTagKV struct {
 	Name  *string `json:"Name,omitempty" name:"Name"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
+type CreateAlbListenerFixedResponseConfig struct {
+	Content     *string `json:"Content,omitempty" name:"Content"`
+	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+	HttpCode    *string `json:"HttpCode,omitempty" name:"HttpCode"`
+}
+type CreateAlbListenerRewriteConfig struct {
+	HttpHost    *string `json:"HttpHost,omitempty" name:"HttpHost"`
+	Url         *string `json:"Url,omitempty" name:"Url"`
+	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+}
 type DescribeAlbListenersFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
+type CreateAlbRuleGroupAlbRuleSetHeaderValue struct {
+	Key   *string   `json:"Key,omitempty" name:"Key"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type CreateAlbRuleGroupAlbRuleSetQueryValue struct {
+	Key   *string   `json:"Key,omitempty" name:"Key"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type CreateAlbRuleGroupAlbRuleSetCookieValue struct {
+	Key   *string   `json:"Key,omitempty" name:"Key"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
 type CreateAlbRuleGroupAlbRuleSet struct {
-	AlbRuleType   *string   `json:"AlbRuleType,omitempty" name:"AlbRuleType"`
-	AlbRuleValue  *string   `json:"AlbRuleValue,omitempty" name:"AlbRuleValue"`
-	MethodValue   []*string `json:"MethodValue,omitempty" name:"MethodValue"`
-	SourceIpValue []*string `json:"SourceIpValue,omitempty" name:"SourceIpValue"`
-	HeaderValue   []struct {
-		Key   *string   `json:"Key,omitempty" name:"Key"`
-		Value []*string `json:"Value,omitempty" name:"Value"`
-	} `json:"HeaderValue,omitempty" name:"HeaderValue"`
-	QueryValue []struct {
-		Key   *string   `json:"Key,omitempty" name:"Key"`
-		Value []*string `json:"Value,omitempty" name:"Value"`
-	} `json:"QueryValue,omitempty" name:"QueryValue"`
-	CookieValue []struct {
-		Key   *string   `json:"Key,omitempty" name:"Key"`
-		Value []*string `json:"Value,omitempty" name:"Value"`
-	} `json:"CookieValue,omitempty" name:"CookieValue"`
+	AlbRuleType   *string                                    `json:"AlbRuleType,omitempty" name:"AlbRuleType"`
+	AlbRuleValue  *string                                    `json:"AlbRuleValue,omitempty" name:"AlbRuleValue"`
+	MethodValue   []*string                                  `json:"MethodValue,omitempty" name:"MethodValue"`
+	SourceIpValue []*string                                  `json:"SourceIpValue,omitempty" name:"SourceIpValue"`
+	HeaderValue   []*CreateAlbRuleGroupAlbRuleSetHeaderValue `json:"HeaderValue,omitempty" name:"HeaderValue"`
+	QueryValue    []*CreateAlbRuleGroupAlbRuleSetQueryValue  `json:"QueryValue,omitempty" name:"QueryValue"`
+	CookieValue   []*CreateAlbRuleGroupAlbRuleSetCookieValue `json:"CookieValue,omitempty" name:"CookieValue"`
 }
-
-type CreateAlbRuleGroupHeaderValue struct {
-	Key   *string   `json:"Key,omitempty" name:"Key"`
-	Value []*string `json:"Value,omitempty" name:"Value"`
+type CreateAlbRuleGroupFixedResponseConfig struct {
+	Content     *string `json:"Content,omitempty" name:"Content"`
+	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+	HttpCode    *string `json:"HttpCode,omitempty" name:"HttpCode"`
 }
-
-type CreateAlbRuleGroupQueryValue struct {
-	Key   *string   `json:"Key,omitempty" name:"Key"`
-	Value []*string `json:"Value,omitempty" name:"Value"`
+type CreateAlbRuleGroupRewriteConfig struct {
+	HttpHost    *string `json:"HttpHost,omitempty" name:"HttpHost"`
+	Url         *string `json:"Url,omitempty" name:"Url"`
+	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
 }
-
-type CreateAlbRuleGroupCookieValue struct {
-	Key   *string   `json:"Key,omitempty" name:"Key"`
-	Value []*string `json:"Value,omitempty" name:"Value"`
-}
-
 type DescribeAlbRuleGroupsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
+type ModifyAlbRuleGroupAlbRuleSetHeaderValue struct {
+	Key   *string   `json:"Key,omitempty" name:"Key"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type ModifyAlbRuleGroupAlbRuleSetQueryValue struct {
+	Key   *string   `json:"Key,omitempty" name:"Key"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type ModifyAlbRuleGroupAlbRuleSetCookieValue struct {
+	Key   *string   `json:"Key,omitempty" name:"Key"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
 type ModifyAlbRuleGroupAlbRuleSet struct {
-	AlbRuleType   *string   `json:"AlbRuleType,omitempty" name:"AlbRuleType"`
-	AlbRuleValue  *string   `json:"AlbRuleValue,omitempty" name:"AlbRuleValue"`
-	MethodValue   []*string `json:"MethodValue,omitempty" name:"MethodValue"`
-	SourceIpValue []*string `json:"SourceIpValue,omitempty" name:"SourceIpValue"`
-	HeaderValue   []struct {
-		Key   *string   `json:"Key,omitempty" name:"Key"`
-		Value []*string `json:"Value,omitempty" name:"Value"`
-	} `json:"HeaderValue,omitempty" name:"HeaderValue"`
-	QueryValue []struct {
-		Key   *string   `json:"Key,omitempty" name:"Key"`
-		Value []*string `json:"Value,omitempty" name:"Value"`
-	} `json:"QueryValue,omitempty" name:"QueryValue"`
-	CookieValue []struct {
-		Key   *string   `json:"Key,omitempty" name:"Key"`
-		Value []*string `json:"Value,omitempty" name:"Value"`
-	} `json:"CookieValue,omitempty" name:"CookieValue"`
+	AlbRuleType   *string                                    `json:"AlbRuleType,omitempty" name:"AlbRuleType"`
+	AlbRuleValue  *string                                    `json:"AlbRuleValue,omitempty" name:"AlbRuleValue"`
+	MethodValue   []*string                                  `json:"MethodValue,omitempty" name:"MethodValue"`
+	SourceIpValue []*string                                  `json:"SourceIpValue,omitempty" name:"SourceIpValue"`
+	HeaderValue   []*ModifyAlbRuleGroupAlbRuleSetHeaderValue `json:"HeaderValue,omitempty" name:"HeaderValue"`
+	QueryValue    []*ModifyAlbRuleGroupAlbRuleSetQueryValue  `json:"QueryValue,omitempty" name:"QueryValue"`
+	CookieValue   []*ModifyAlbRuleGroupAlbRuleSetCookieValue `json:"CookieValue,omitempty" name:"CookieValue"`
 }
-
-type ModifyAlbRuleGroupHeaderValue struct {
-	Key   *string   `json:"Key,omitempty" name:"Key"`
-	Value []*string `json:"Value,omitempty" name:"Value"`
+type ModifyAlbRuleGroupFixedResponseConfig struct {
+	Content     *string `json:"Content,omitempty" name:"Content"`
+	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+	HttpCode    *string `json:"HttpCode,omitempty" name:"HttpCode"`
 }
-
-type ModifyAlbRuleGroupQueryValue struct {
-	Key   *string   `json:"Key,omitempty" name:"Key"`
-	Value []*string `json:"Value,omitempty" name:"Value"`
-}
-
-type ModifyAlbRuleGroupCookieValue struct {
-	Key   *string   `json:"Key,omitempty" name:"Key"`
-	Value []*string `json:"Value,omitempty" name:"Value"`
-}
-
 type DescribeAlbListenerCertGroupsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeAlbBackendServerGroupsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type DescribeAlbBackendServersFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type AddAlbRulesHeaderValue struct {
 	Key   *string   `json:"Key,omitempty" name:"Key"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type AddAlbRulesQueryValue struct {
 	Key   *string   `json:"Key,omitempty" name:"Key"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type AddAlbRulesCookieValue struct {
 	Key   *string   `json:"Key,omitempty" name:"Key"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
@@ -2702,27 +2682,29 @@ func (r *DescribeAlbsResponse) FromJsonString(s string) error {
 
 type CreateAlbListenerRequest struct {
 	*ksyunhttp.BaseRequest
-	AlbId                    *string `json:"AlbId,omitempty" name:"AlbId"`
-	AlbListenerName          *string `json:"AlbListenerName,omitempty" name:"AlbListenerName"`
-	Method                   *string `json:"Method,omitempty" name:"Method"`
-	Protocol                 *string `json:"Protocol,omitempty" name:"Protocol"`
-	Port                     *int    `json:"Port,omitempty" name:"Port"`
-	CertificateId            *string `json:"CertificateId,omitempty" name:"CertificateId"`
-	TlsCipherPolicy          *string `json:"TlsCipherPolicy,omitempty" name:"TlsCipherPolicy"`
-	AlbListenerAclId         *string `json:"AlbListenerAclId,omitempty" name:"AlbListenerAclId"`
-	AlbListenerState         *string `json:"AlbListenerState,omitempty" name:"AlbListenerState"`
-	RedirectAlbListenerId    *string `json:"RedirectAlbListenerId,omitempty" name:"RedirectAlbListenerId"`
-	RedirectHttpCode         *string `json:"RedirectHttpCode,omitempty" name:"RedirectHttpCode"`
-	SessionState             *string `json:"SessionState,omitempty" name:"SessionState"`
-	SessionPersistencePeriod *int    `json:"SessionPersistencePeriod,omitempty" name:"SessionPersistencePeriod"`
-	CookieType               *string `json:"CookieType,omitempty" name:"CookieType"`
-	CookieName               *string `json:"CookieName,omitempty" name:"CookieName"`
-	EnableHttp2              *bool   `json:"EnableHttp2,omitempty" name:"EnableHttp2"`
-	BackendServerGroupId     *string `json:"BackendServerGroupId,omitempty" name:"BackendServerGroupId"`
-	CaEnabled                *bool   `json:"CaEnabled,omitempty" name:"CaEnabled"`
-	CaCertificateId          *string `json:"CaCertificateId,omitempty" name:"CaCertificateId"`
-	EnableQuicUpgrade        *bool   `json:"EnableQuicUpgrade,omitempty" name:"EnableQuicUpgrade"`
-	QuicListenerId           *string `json:"QuicListenerId,omitempty" name:"QuicListenerId"`
+	AlbId                    *string                               `json:"AlbId,omitempty" name:"AlbId"`
+	AlbListenerName          *string                               `json:"AlbListenerName,omitempty" name:"AlbListenerName"`
+	Method                   *string                               `json:"Method,omitempty" name:"Method"`
+	Protocol                 *string                               `json:"Protocol,omitempty" name:"Protocol"`
+	Port                     *int                                  `json:"Port,omitempty" name:"Port"`
+	CertificateId            *string                               `json:"CertificateId,omitempty" name:"CertificateId"`
+	TlsCipherPolicy          *string                               `json:"TlsCipherPolicy,omitempty" name:"TlsCipherPolicy"`
+	AlbListenerAclId         *string                               `json:"AlbListenerAclId,omitempty" name:"AlbListenerAclId"`
+	AlbListenerState         *string                               `json:"AlbListenerState,omitempty" name:"AlbListenerState"`
+	RedirectAlbListenerId    *string                               `json:"RedirectAlbListenerId,omitempty" name:"RedirectAlbListenerId"`
+	RedirectHttpCode         *string                               `json:"RedirectHttpCode,omitempty" name:"RedirectHttpCode"`
+	SessionState             *string                               `json:"SessionState,omitempty" name:"SessionState"`
+	SessionPersistencePeriod *int                                  `json:"SessionPersistencePeriod,omitempty" name:"SessionPersistencePeriod"`
+	CookieType               *string                               `json:"CookieType,omitempty" name:"CookieType"`
+	CookieName               *string                               `json:"CookieName,omitempty" name:"CookieName"`
+	EnableHttp2              *bool                                 `json:"EnableHttp2,omitempty" name:"EnableHttp2"`
+	BackendServerGroupId     *string                               `json:"BackendServerGroupId,omitempty" name:"BackendServerGroupId"`
+	FixedResponseConfig      *CreateAlbListenerFixedResponseConfig `json:"FixedResponseConfig,omitempty" name:"FixedResponseConfig"`
+	RewriteConfig            *CreateAlbListenerRewriteConfig       `json:"RewriteConfig,omitempty" name:"RewriteConfig"`
+	CaEnabled                *bool                                 `json:"CaEnabled,omitempty" name:"CaEnabled"`
+	CaCertificateId          *string                               `json:"CaCertificateId,omitempty" name:"CaCertificateId"`
+	EnableQuicUpgrade        *bool                                 `json:"EnableQuicUpgrade,omitempty" name:"EnableQuicUpgrade"`
+	QuicListenerId           *string                               `json:"QuicListenerId,omitempty" name:"QuicListenerId"`
 }
 
 func (r *CreateAlbListenerRequest) ToJsonString() string {
@@ -2904,26 +2886,28 @@ func (r *DescribeAlbListenersResponse) FromJsonString(s string) error {
 
 type CreateAlbRuleGroupRequest struct {
 	*ksyunhttp.BaseRequest
-	AlbRuleGroupName         *string                         `json:"AlbRuleGroupName,omitempty" name:"AlbRuleGroupName"`
-	AlbListenerId            *string                         `json:"AlbListenerId,omitempty" name:"AlbListenerId"`
-	BackendServerGroupId     *string                         `json:"BackendServerGroupId,omitempty" name:"BackendServerGroupId"`
-	ListenerSync             *string                         `json:"ListenerSync,omitempty" name:"ListenerSync"`
-	Method                   *string                         `json:"Method,omitempty" name:"Method"`
-	Type                     *string                         `json:"Type,omitempty" name:"Type"`
-	SessionState             *string                         `json:"SessionState,omitempty" name:"SessionState"`
-	SessionPersistencePeriod *int                            `json:"SessionPersistencePeriod,omitempty" name:"SessionPersistencePeriod"`
-	CookieType               *string                         `json:"CookieType,omitempty" name:"CookieType"`
-	CookieName               *string                         `json:"CookieName,omitempty" name:"CookieName"`
-	HealthCheckState         *string                         `json:"HealthCheckState,omitempty" name:"HealthCheckState"`
-	Timeout                  *int                            `json:"Timeout,omitempty" name:"Timeout"`
-	Interval                 *int                            `json:"Interval,omitempty" name:"Interval"`
-	HealthyThreshold         *int                            `json:"HealthyThreshold,omitempty" name:"HealthyThreshold"`
-	UnhealthyThreshold       *int                            `json:"UnhealthyThreshold,omitempty" name:"UnhealthyThreshold"`
-	UrlPath                  *string                         `json:"UrlPath,omitempty" name:"UrlPath"`
-	HostName                 *string                         `json:"HostName,omitempty" name:"HostName"`
-	AlbRuleSet               []*CreateAlbRuleGroupAlbRuleSet `json:"AlbRuleSet,omitempty" name:"AlbRuleSet"`
-	RedirectAlbListenerId    *string                         `json:"RedirectAlbListenerId,omitempty" name:"RedirectAlbListenerId"`
-	RedirectHttpCode         *string                         `json:"RedirectHttpCode,omitempty" name:"RedirectHttpCode"`
+	AlbRuleGroupName         *string                                `json:"AlbRuleGroupName,omitempty" name:"AlbRuleGroupName"`
+	AlbListenerId            *string                                `json:"AlbListenerId,omitempty" name:"AlbListenerId"`
+	BackendServerGroupId     *string                                `json:"BackendServerGroupId,omitempty" name:"BackendServerGroupId"`
+	ListenerSync             *string                                `json:"ListenerSync,omitempty" name:"ListenerSync"`
+	Method                   *string                                `json:"Method,omitempty" name:"Method"`
+	Type                     *string                                `json:"Type,omitempty" name:"Type"`
+	SessionState             *string                                `json:"SessionState,omitempty" name:"SessionState"`
+	SessionPersistencePeriod *int                                   `json:"SessionPersistencePeriod,omitempty" name:"SessionPersistencePeriod"`
+	CookieType               *string                                `json:"CookieType,omitempty" name:"CookieType"`
+	CookieName               *string                                `json:"CookieName,omitempty" name:"CookieName"`
+	HealthCheckState         *string                                `json:"HealthCheckState,omitempty" name:"HealthCheckState"`
+	Timeout                  *int                                   `json:"Timeout,omitempty" name:"Timeout"`
+	Interval                 *int                                   `json:"Interval,omitempty" name:"Interval"`
+	HealthyThreshold         *int                                   `json:"HealthyThreshold,omitempty" name:"HealthyThreshold"`
+	UnhealthyThreshold       *int                                   `json:"UnhealthyThreshold,omitempty" name:"UnhealthyThreshold"`
+	UrlPath                  *string                                `json:"UrlPath,omitempty" name:"UrlPath"`
+	HostName                 *string                                `json:"HostName,omitempty" name:"HostName"`
+	AlbRuleSet               []*CreateAlbRuleGroupAlbRuleSet        `json:"AlbRuleSet,omitempty" name:"AlbRuleSet"`
+	RedirectAlbListenerId    *string                                `json:"RedirectAlbListenerId,omitempty" name:"RedirectAlbListenerId"`
+	RedirectHttpCode         *string                                `json:"RedirectHttpCode,omitempty" name:"RedirectHttpCode"`
+	FixedResponseConfig      *CreateAlbRuleGroupFixedResponseConfig `json:"FixedResponseConfig,omitempty" name:"FixedResponseConfig"`
+	RewriteConfig            *CreateAlbRuleGroupRewriteConfig       `json:"RewriteConfig,omitempty" name:"RewriteConfig"`
 }
 
 func (r *CreateAlbRuleGroupRequest) ToJsonString() string {
@@ -3083,26 +3067,27 @@ func (r *DescribeAlbRuleGroupsResponse) FromJsonString(s string) error {
 
 type ModifyAlbRuleGroupRequest struct {
 	*ksyunhttp.BaseRequest
-	AlbRuleGroupId           *string                         `json:"AlbRuleGroupId,omitempty" name:"AlbRuleGroupId"`
-	AlbRuleGroupName         *string                         `json:"AlbRuleGroupName,omitempty" name:"AlbRuleGroupName"`
-	BackendServerGroupId     *string                         `json:"BackendServerGroupId,omitempty" name:"BackendServerGroupId"`
-	ListenerSync             *string                         `json:"ListenerSync,omitempty" name:"ListenerSync"`
-	Method                   *string                         `json:"Method,omitempty" name:"Method"`
-	Type                     *string                         `json:"Type,omitempty" name:"Type"`
-	SessionState             *string                         `json:"SessionState,omitempty" name:"SessionState"`
-	SessionPersistencePeriod *int                            `json:"SessionPersistencePeriod,omitempty" name:"SessionPersistencePeriod"`
-	CookieType               *string                         `json:"CookieType,omitempty" name:"CookieType"`
-	CookieName               *string                         `json:"CookieName,omitempty" name:"CookieName"`
-	HealthCheckState         *string                         `json:"HealthCheckState,omitempty" name:"HealthCheckState"`
-	Timeout                  *int                            `json:"Timeout,omitempty" name:"Timeout"`
-	Interval                 *int                            `json:"Interval,omitempty" name:"Interval"`
-	HealthyThreshold         *int                            `json:"HealthyThreshold,omitempty" name:"HealthyThreshold"`
-	UnhealthyThreshold       *int                            `json:"UnhealthyThreshold,omitempty" name:"UnhealthyThreshold"`
-	UrlPath                  *string                         `json:"UrlPath,omitempty" name:"UrlPath"`
-	HostName                 *string                         `json:"HostName,omitempty" name:"HostName"`
-	AlbRuleSet               []*ModifyAlbRuleGroupAlbRuleSet `json:"AlbRuleSet,omitempty" name:"AlbRuleSet"`
-	RedirectAlbListenerId    *string                         `json:"RedirectAlbListenerId,omitempty" name:"RedirectAlbListenerId"`
-	RedirectHttpCode         *string                         `json:"RedirectHttpCode,omitempty" name:"RedirectHttpCode"`
+	AlbRuleGroupId           *string                                `json:"AlbRuleGroupId,omitempty" name:"AlbRuleGroupId"`
+	AlbRuleGroupName         *string                                `json:"AlbRuleGroupName,omitempty" name:"AlbRuleGroupName"`
+	BackendServerGroupId     *string                                `json:"BackendServerGroupId,omitempty" name:"BackendServerGroupId"`
+	ListenerSync             *string                                `json:"ListenerSync,omitempty" name:"ListenerSync"`
+	Method                   *string                                `json:"Method,omitempty" name:"Method"`
+	Type                     *string                                `json:"Type,omitempty" name:"Type"`
+	SessionState             *string                                `json:"SessionState,omitempty" name:"SessionState"`
+	SessionPersistencePeriod *int                                   `json:"SessionPersistencePeriod,omitempty" name:"SessionPersistencePeriod"`
+	CookieType               *string                                `json:"CookieType,omitempty" name:"CookieType"`
+	CookieName               *string                                `json:"CookieName,omitempty" name:"CookieName"`
+	HealthCheckState         *string                                `json:"HealthCheckState,omitempty" name:"HealthCheckState"`
+	Timeout                  *int                                   `json:"Timeout,omitempty" name:"Timeout"`
+	Interval                 *int                                   `json:"Interval,omitempty" name:"Interval"`
+	HealthyThreshold         *int                                   `json:"HealthyThreshold,omitempty" name:"HealthyThreshold"`
+	UnhealthyThreshold       *int                                   `json:"UnhealthyThreshold,omitempty" name:"UnhealthyThreshold"`
+	UrlPath                  *string                                `json:"UrlPath,omitempty" name:"UrlPath"`
+	HostName                 *string                                `json:"HostName,omitempty" name:"HostName"`
+	AlbRuleSet               []*ModifyAlbRuleGroupAlbRuleSet        `json:"AlbRuleSet,omitempty" name:"AlbRuleSet"`
+	RedirectAlbListenerId    *string                                `json:"RedirectAlbListenerId,omitempty" name:"RedirectAlbListenerId"`
+	RedirectHttpCode         *string                                `json:"RedirectHttpCode,omitempty" name:"RedirectHttpCode"`
+	FixedResponseConfig      *ModifyAlbRuleGroupFixedResponseConfig `json:"FixedResponseConfig,omitempty" name:"FixedResponseConfig"`
 }
 
 func (r *ModifyAlbRuleGroupRequest) ToJsonString() string {

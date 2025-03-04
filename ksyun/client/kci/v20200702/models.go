@@ -6,83 +6,164 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 )
 
-type CreateContainerGroupOption struct {
+type CreateContainerGroupAdvanceSettingsSystemDisk struct {
+	Type *string `json:"Type,omitempty" name:"Type"`
+	Size *int    `json:"Size,omitempty" name:"Size"`
+}
+type CreateContainerGroupAdvanceSettings struct {
+	ImageId    *string                                        `json:"ImageId,omitempty" name:"ImageId"`
+	DataDiskGb *int                                           `json:"DataDiskGb,omitempty" name:"DataDiskGb"`
+	SystemDisk *CreateContainerGroupAdvanceSettingsSystemDisk `json:"SystemDisk,omitempty" name:"SystemDisk"`
+}
+type CreateContainerGroupMachineDnsConfigOption struct {
 	Name  *string `json:"Name,omitempty" name:"Name"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
+type CreateContainerGroupMachineDnsConfig struct {
+	NameServer []*string                                     `json:"NameServer,omitempty" name:"NameServer"`
+	Search     []*string                                     `json:"Search,omitempty" name:"Search"`
+	Option     []*CreateContainerGroupMachineDnsConfigOption `json:"Option,omitempty" name:"Option"`
+}
 type CreateContainerGroupMachineHostAliase struct {
 	Ip       *string   `json:"Ip,omitempty" name:"Ip"`
 	Hostname []*string `json:"Hostname,omitempty" name:"Hostname"`
 }
-
 type CreateContainerGroupImageRegistryCredential struct {
 	Server   *string `json:"Server,omitempty" name:"Server"`
 	Username *string `json:"Username,omitempty" name:"Username"`
 	Password *string `json:"Password,omitempty" name:"Password"`
 }
-
-type CreateContainerGroupVolume struct {
-	Type *string `json:"Type,omitempty" name:"Type"`
-	Name *string `json:"Name,omitempty" name:"Name"`
+type CreateContainerGroupVolumeNFSVolume struct {
+	Server   *string `json:"Server,omitempty" name:"Server"`
+	Path     *string `json:"Path,omitempty" name:"Path"`
+	ReadOnly *bool   `json:"ReadOnly,omitempty" name:"ReadOnly"`
 }
-
-type CreateContainerGroupConfigFileToPath struct {
+type CreateContainerGroupVolumeHostPathVolume struct {
+	Path *string `json:"Path,omitempty" name:"Path"`
+}
+type CreateContainerGroupVolumeEBSVolume struct {
+	FsType             *string `json:"FsType,omitempty" name:"FsType"`
+	VolumeId           *string `json:"VolumeId,omitempty" name:"VolumeId"`
+	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
+	Type               *string `json:"Type,omitempty" name:"Type"`
+	Size               *int    `json:"Size,omitempty" name:"Size"`
+	SnapshotId         *int    `json:"SnapshotId,omitempty" name:"SnapshotId"`
+}
+type CreateContainerGroupVolumeConfigFileVolumeConfigFileToPath struct {
 	Path    *string `json:"Path,omitempty" name:"Path"`
 	Content *string `json:"Content,omitempty" name:"Content"`
 	Mode    *int    `json:"mode,omitempty" name:"mode"`
 }
-
-type CreateContainerGroupContainer struct {
-	Name            *string   `json:"Name,omitempty" name:"Name"`
-	Command         []*string `json:"Command,omitempty" name:"Command"`
-	Arg             []*string `json:"Arg,omitempty" name:"Arg"`
-	Cpu             *float64  `json:"Cpu,omitempty" name:"Cpu"`
-	Memory          *string   `json:"Memory,omitempty" name:"Memory"`
-	Gpu             *float64  `json:"Gpu,omitempty" name:"Gpu"`
-	WorkingDir      *string   `json:"WorkingDir,omitempty" name:"WorkingDir"`
-	Image           *string   `json:"Image,omitempty" name:"Image"`
-	ImagePullPolicy *string   `json:"ImagePullPolicy,omitempty" name:"ImagePullPolicy"`
-	EnvironmentVar  []struct {
-		Key   *string `json:"Key,omitempty" name:"Key"`
-		Value *string `json:"Value,omitempty" name:"Value"`
-	} `json:"EnvironmentVar,omitempty" name:"EnvironmentVar"`
-	Port []struct {
-		Port     *int    `json:"Port,omitempty" name:"Port"`
-		Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
-	} `json:"Port,omitempty" name:"Port"`
-	VolumeMount []struct {
-		Name      *string `json:"Name,omitempty" name:"Name"`
-		MountPath *string `json:"MountPath,omitempty" name:"MountPath"`
-	} `json:"VolumeMount,omitempty" name:"VolumeMount"`
+type CreateContainerGroupVolumeConfigFileVolume struct {
+	DefaultMode      *int                                                          `json:"DefaultMode,omitempty" name:"DefaultMode"`
+	ConfigFileToPath []*CreateContainerGroupVolumeConfigFileVolumeConfigFileToPath `json:"ConfigFileToPath,omitempty" name:"ConfigFileToPath"`
 }
-
-type CreateContainerGroupEnvironmentVar struct {
-	Key   *string `json:"Key,omitempty" name:"Key"`
-	Value *string `json:"Value,omitempty" name:"Value"`
+type CreateContainerGroupVolume struct {
+	Type             *string                                     `json:"Type,omitempty" name:"Type"`
+	Name             *string                                     `json:"Name,omitempty" name:"Name"`
+	NFSVolume        *CreateContainerGroupVolumeNFSVolume        `json:"NFSVolume,omitempty" name:"NFSVolume"`
+	HostPathVolume   *CreateContainerGroupVolumeHostPathVolume   `json:"HostPathVolume,omitempty" name:"HostPathVolume"`
+	EBSVolume        *CreateContainerGroupVolumeEBSVolume        `json:"EBSVolume,omitempty" name:"EBSVolume"`
+	ConfigFileVolume *CreateContainerGroupVolumeConfigFileVolume `json:"ConfigFileVolume,omitempty" name:"ConfigFileVolume"`
 }
-
-type CreateContainerGroupPort struct {
+type CreateContainerGroupContainerLivenessProbeHttpGet struct {
+	Port   *int    `json:"Port,omitempty" name:"Port"`
+	Path   *string `json:"Path,omitempty" name:"Path"`
+	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
+}
+type CreateContainerGroupContainerLivenessProbeTcpSocket struct {
+	Port *int `json:"Port,omitempty" name:"Port"`
+}
+type CreateContainerGroupContainerLivenessProbeExec struct {
+	Command []*string `json:"Command,omitempty" name:"Command"`
+}
+type CreateContainerGroupContainerLivenessProbe struct {
+	InitialDelaySeconds *int                                                 `json:"InitialDelaySeconds,omitempty" name:"InitialDelaySeconds"`
+	PeriodSeconds       *int                                                 `json:"PeriodSeconds,omitempty" name:"PeriodSeconds"`
+	TimeoutSeconds      *int                                                 `json:"TimeoutSeconds,omitempty" name:"TimeoutSeconds"`
+	SuccessThreshold    *int                                                 `json:"SuccessThreshold,omitempty" name:"SuccessThreshold"`
+	FailureThreshold    *int                                                 `json:"FailureThreshold,omitempty" name:"FailureThreshold"`
+	HttpGet             *CreateContainerGroupContainerLivenessProbeHttpGet   `json:"HttpGet,omitempty" name:"HttpGet"`
+	TcpSocket           *CreateContainerGroupContainerLivenessProbeTcpSocket `json:"TcpSocket,omitempty" name:"TcpSocket"`
+	Exec                *CreateContainerGroupContainerLivenessProbeExec      `json:"Exec,omitempty" name:"Exec"`
+}
+type CreateContainerGroupContainerReadinessProbeHttpGet struct {
+	Port   *int    `json:"Port,omitempty" name:"Port"`
+	Path   *string `json:"Path,omitempty" name:"Path"`
+	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
+}
+type CreateContainerGroupContainerReadinessProbeExec struct {
+	Command []*string `json:"Command,omitempty" name:"Command"`
+}
+type CreateContainerGroupContainerReadinessProbeTcpSocket struct {
+	Port *int `json:"Port,omitempty" name:"Port"`
+}
+type CreateContainerGroupContainerReadinessProbe struct {
+	InitialDelaySeconds *int                                                  `json:"InitialDelaySeconds,omitempty" name:"InitialDelaySeconds"`
+	PeriodSeconds       *int                                                  `json:"PeriodSeconds,omitempty" name:"PeriodSeconds"`
+	TimeoutSeconds      *int                                                  `json:"TimeoutSeconds,omitempty" name:"TimeoutSeconds"`
+	SuccessThreshold    *int                                                  `json:"SuccessThreshold,omitempty" name:"SuccessThreshold"`
+	FailureThreshold    *int                                                  `json:"FailureThreshold,omitempty" name:"FailureThreshold"`
+	HttpGet             *CreateContainerGroupContainerReadinessProbeHttpGet   `json:"HttpGet,omitempty" name:"HttpGet"`
+	Exec                *CreateContainerGroupContainerReadinessProbeExec      `json:"Exec,omitempty" name:"Exec"`
+	TcpSocket           *CreateContainerGroupContainerReadinessProbeTcpSocket `json:"TcpSocket,omitempty" name:"TcpSocket"`
+}
+type CreateContainerGroupContainerEnvironmentVarValueFromFieldRef struct {
+	FieldPath *string `json:"FieldPath,omitempty" name:"FieldPath"`
+}
+type CreateContainerGroupContainerEnvironmentVarValueFrom struct {
+	FieldRef *CreateContainerGroupContainerEnvironmentVarValueFromFieldRef `json:"FieldRef,omitempty" name:"FieldRef"`
+}
+type CreateContainerGroupContainerEnvironmentVar struct {
+	Key       *string                                               `json:"Key,omitempty" name:"Key"`
+	Value     *string                                               `json:"Value,omitempty" name:"Value"`
+	ValueFrom *CreateContainerGroupContainerEnvironmentVarValueFrom `json:"ValueFrom,omitempty" name:"ValueFrom"`
+}
+type CreateContainerGroupContainerPort struct {
 	Port     *int    `json:"Port,omitempty" name:"Port"`
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 }
-
-type CreateContainerGroupVolumeMount struct {
+type CreateContainerGroupContainerVolumeMount struct {
 	Name      *string `json:"Name,omitempty" name:"Name"`
 	MountPath *string `json:"MountPath,omitempty" name:"MountPath"`
 	ReadOnly  *bool   `json:"ReadOnly,omitempty" name:"ReadOnly"`
 }
-
+type CreateContainerGroupContainer struct {
+	Name            *string                                        `json:"Name,omitempty" name:"Name"`
+	Command         []*string                                      `json:"Command,omitempty" name:"Command"`
+	Arg             []*string                                      `json:"Arg,omitempty" name:"Arg"`
+	Cpu             *float64                                       `json:"Cpu,omitempty" name:"Cpu"`
+	Memory          *string                                        `json:"Memory,omitempty" name:"Memory"`
+	Gpu             *float64                                       `json:"Gpu,omitempty" name:"Gpu"`
+	WorkingDir      *string                                        `json:"WorkingDir,omitempty" name:"WorkingDir"`
+	Image           *string                                        `json:"Image,omitempty" name:"Image"`
+	ImagePullPolicy *string                                        `json:"ImagePullPolicy,omitempty" name:"ImagePullPolicy"`
+	LivenessProbe   *CreateContainerGroupContainerLivenessProbe    `json:"LivenessProbe,omitempty" name:"LivenessProbe"`
+	ReadinessProbe  *CreateContainerGroupContainerReadinessProbe   `json:"ReadinessProbe,omitempty" name:"ReadinessProbe"`
+	EnvironmentVar  []*CreateContainerGroupContainerEnvironmentVar `json:"EnvironmentVar,omitempty" name:"EnvironmentVar"`
+	Port            []*CreateContainerGroupContainerPort           `json:"Port,omitempty" name:"Port"`
+	VolumeMount     []*CreateContainerGroupContainerVolumeMount    `json:"VolumeMount,omitempty" name:"VolumeMount"`
+}
+type CreateContainerGroupDnsConfigOption struct {
+	Name  *string `json:"Name,omitempty" name:"Name"`
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+type CreateContainerGroupDnsConfig struct {
+	NameServer []*string                              `json:"NameServer,omitempty" name:"NameServer"`
+	Search     []*string                              `json:"Search,omitempty" name:"Search"`
+	Option     []*CreateContainerGroupDnsConfigOption `json:"Option,omitempty" name:"Option"`
+}
 type CreateContainerGroupHostAliase struct {
 	Ip       *string   `json:"Ip,omitempty" name:"Ip"`
 	Hostname []*string `json:"Hostname,omitempty" name:"Hostname"`
 }
-
 type CreateContainerGroupLabel struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
+type CreateContainerGroupKubeProxy struct {
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+}
 type CreateContainerGroupDataDisk struct {
 	VolumeName         *string `json:"VolumeName,omitempty" name:"VolumeName"`
 	Type               *string `json:"Type,omitempty" name:"Type"`
@@ -90,25 +171,25 @@ type CreateContainerGroupDataDisk struct {
 	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
 	SnapshotId         *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 }
-
 type CreateContainerGroupContainerSpec struct {
 	RequestCpu *float64 `json:"RequestCpu,omitempty" name:"RequestCpu"`
 	RequestMem *float64 `json:"RequestMem,omitempty" name:"RequestMem"`
 	LimitCpu   *float64 `json:"LimitCpu,omitempty" name:"LimitCpu"`
 	LimitMem   *float64 `json:"LimitMem,omitempty" name:"LimitMem"`
 }
-
 type DescribeContainerGroupFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
+type DescribeContainerGroupCountLabel struct {
+	Key   *string   `json:"Key,omitempty" name:"Key"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
 type CreateImageCacheImageRegistryCredential struct {
 	Server   *string `json:"Server,omitempty" name:"Server"`
 	Username *string `json:"Username,omitempty" name:"Username"`
 	Password *string `json:"Password,omitempty" name:"Password"`
 }
-
 type UpdateImageCacheImageRegistryCredential struct {
 	Server   *string `json:"Server,omitempty" name:"Server"`
 	Username *string `json:"Username,omitempty" name:"Username"`
@@ -136,15 +217,19 @@ type CreateContainerGroupRequest struct {
 	EipAllocationId         *string                                        `json:"EipAllocationId,omitempty" name:"EipAllocationId"`
 	AutoMatchImageCache     *bool                                          `json:"AutoMatchImageCache,omitempty" name:"AutoMatchImageCache"`
 	ImageCacheId            *string                                        `json:"ImageCacheId,omitempty" name:"ImageCacheId"`
+	AdvanceSettings         *CreateContainerGroupAdvanceSettings           `json:"AdvanceSettings,omitempty" name:"AdvanceSettings"`
+	MachineDnsConfig        *CreateContainerGroupMachineDnsConfig          `json:"MachineDnsConfig,omitempty" name:"MachineDnsConfig"`
 	MachineHostAliase       []*CreateContainerGroupMachineHostAliase       `json:"MachineHostAliase,omitempty" name:"MachineHostAliase"`
 	RestartPolicy           *string                                        `json:"RestartPolicy,omitempty" name:"RestartPolicy"`
 	ImageRegistryCredential []*CreateContainerGroupImageRegistryCredential `json:"ImageRegistryCredential,omitempty" name:"ImageRegistryCredential"`
 	Volume                  []*CreateContainerGroupVolume                  `json:"Volume,omitempty" name:"Volume"`
 	Container               []*CreateContainerGroupContainer               `json:"Container,omitempty" name:"Container"`
+	DnsConfig               *CreateContainerGroupDnsConfig                 `json:"DnsConfig,omitempty" name:"DnsConfig"`
 	HostAliase              []*CreateContainerGroupHostAliase              `json:"HostAliase,omitempty" name:"HostAliase"`
 	ClusterDns              *string                                        `json:"ClusterDns,omitempty" name:"ClusterDns"`
 	ClusterDomain           *string                                        `json:"ClusterDomain,omitempty" name:"ClusterDomain"`
 	Label                   []*CreateContainerGroupLabel                   `json:"Label,omitempty" name:"Label"`
+	KubeProxy               *CreateContainerGroupKubeProxy                 `json:"KubeProxy,omitempty" name:"KubeProxy"`
 	KlogEnabled             *bool                                          `json:"KlogEnabled,omitempty" name:"KlogEnabled"`
 	DataDisk                []*CreateContainerGroupDataDisk                `json:"DataDisk,omitempty" name:"DataDisk"`
 	ContainerSpec           []*CreateContainerGroupContainerSpec           `json:"ContainerSpec,omitempty" name:"ContainerSpec"`
@@ -523,6 +608,7 @@ func (r *ExecContainerCommandResponse) FromJsonString(s string) error {
 
 type DescribeContainerGroupCountRequest struct {
 	*ksyunhttp.BaseRequest
+	Label *DescribeContainerGroupCountLabel `json:"Label,omitempty" name:"Label"`
 }
 
 func (r *DescribeContainerGroupCountRequest) ToJsonString() string {

@@ -8,18 +8,9 @@ import (
 
 type CreateCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
-	Name         *string `json:"Name,omitempty" name:"Name"`
-	Capacity     *string `json:"Capacity,omitempty" name:"Capacity"`
-	SlaveNum     *string `json:"SlaveNum,omitempty" name:"SlaveNum"`
-	NetType      *string `json:"NetType,omitempty" name:"NetType"`
-	VpcId        *string `json:"VpcId,omitempty" name:"VpcId"`
-	VnetId       *string `json:"VnetId,omitempty" name:"VnetId"`
-	BillType     *string `json:"BillType,omitempty" name:"BillType"`
-	Duration     *string `json:"Duration,omitempty" name:"Duration"`
-	DurationUnit *string `json:"DurationUnit,omitempty" name:"DurationUnit"`
-	PassWord     *string `json:"PassWord,omitempty" name:"PassWord"`
+	Action       *string `json:"Action,omitempty" name:"Action"`
+	Version      *string `json:"Version,omitempty" name:"Version"`
 	IamProjectId *string `json:"IamProjectId,omitempty" name:"IamProjectId"`
-	Engine       *string `json:"Engine,omitempty" name:"Engine"`
 }
 
 func (r *CreateCacheClusterRequest) ToJsonString() string {
@@ -40,14 +31,6 @@ func (r *CreateCacheClusterRequest) FromJsonString(s string) error {
 
 type CreateCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Data      struct {
-		CacheId    *string `json:"CacheId" name:"CacheId"`
-		Name       *string `json:"Name" name:"Name"`
-		Size       *string `json:"Size" name:"Size"`
-		Port       *string `json:"Port" name:"Port"`
-		SubOrderId *string `json:"SubOrderId" name:"SubOrderId"`
-	} `json:"Data"`
 }
 
 func (r *CreateCacheClusterResponse) ToJsonString() string {
@@ -61,6 +44,8 @@ func (r *CreateCacheClusterResponse) FromJsonString(s string) error {
 
 type DeleteCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *DeleteCacheClusterRequest) ToJsonString() string {
@@ -81,7 +66,6 @@ func (r *DeleteCacheClusterRequest) FromJsonString(s string) error {
 
 type DeleteCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
 func (r *DeleteCacheClusterResponse) ToJsonString() string {
@@ -95,9 +79,8 @@ func (r *DeleteCacheClusterResponse) FromJsonString(s string) error {
 
 type ResizeCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
-	CacheId  *string `json:"CacheId,omitempty" name:"CacheId"`
-	Capacity *string `json:"Capacity,omitempty" name:"Capacity"`
-	Engine   *string `json:"Engine,omitempty" name:"Engine"`
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *ResizeCacheClusterRequest) ToJsonString() string {
@@ -118,7 +101,6 @@ func (r *ResizeCacheClusterRequest) FromJsonString(s string) error {
 
 type ResizeCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
 func (r *ResizeCacheClusterResponse) ToJsonString() string {
@@ -132,15 +114,8 @@ func (r *ResizeCacheClusterResponse) FromJsonString(s string) error {
 
 type DescribeCacheClustersRequest struct {
 	*ksyunhttp.BaseRequest
-	Engine       *string `json:"Engine,omitempty" name:"Engine"`
-	CacheId      *string `json:"CacheId,omitempty" name:"CacheId"`
-	Name         *string `json:"Name,omitempty" name:"Name"`
-	Vip          *string `json:"Vip,omitempty" name:"Vip"`
-	VpcId        *string `json:"VpcId,omitempty" name:"VpcId"`
-	VnetId       *string `json:"VnetId,omitempty" name:"VnetId"`
-	Offset       *string `json:"Offset,omitempty" name:"Offset"`
-	Limit        *string `json:"Limit,omitempty" name:"Limit"`
-	OrderBy      *string `json:"OrderBy,omitempty" name:"OrderBy"`
+	Action       *string `json:"Action,omitempty" name:"Action"`
+	Version      *string `json:"Version,omitempty" name:"Version"`
 	IamProjectId *string `json:"IamProjectId,omitempty" name:"IamProjectId"`
 }
 
@@ -162,22 +137,6 @@ func (r *DescribeCacheClustersRequest) FromJsonString(s string) error {
 
 type DescribeCacheClustersResponse struct {
 	*ksyunhttp.BaseResponse
-	ReqId   *string `json:"reqId" name:"reqId"`
-	Message *string `json:"message" name:"message"`
-	Data    struct {
-		List []struct {
-			CacheId         *string `json:"cacheId" name:"cacheId"`
-			Name            *string `json:"name" name:"name"`
-			SecurityGroupId *string `json:"securityGroupId" name:"securityGroupId"`
-			Engine          *string `json:"engine" name:"engine"`
-			Vip             *string `json:"vip" name:"vip"`
-			CreateTime      *string `json:"createTime" name:"createTime"`
-			VpcId           *string `json:"vpcId" name:"vpcId"`
-			VnetId          *string `json:"vnetId" name:"vnetId"`
-			IamProjectId    *string `json:"iamProjectId" name:"iamProjectId"`
-			IamProjectName  *string `json:"iamProjectName" name:"iamProjectName"`
-		} `json:"List" name:"List"`
-	} `json:"Data"`
 }
 
 func (r *DescribeCacheClustersResponse) ToJsonString() string {
@@ -191,8 +150,8 @@ func (r *DescribeCacheClustersResponse) FromJsonString(s string) error {
 
 type DescribeCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
-	CacheId *string `json:"CacheId,omitempty" name:"CacheId"`
-	Engine  *string `json:"Engine,omitempty" name:"Engine"`
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *DescribeCacheClusterRequest) ToJsonString() string {
@@ -213,28 +172,6 @@ func (r *DescribeCacheClusterRequest) FromJsonString(s string) error {
 
 type DescribeCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Data      struct {
-		CacheId          *string `json:"CacheId" name:"CacheId"`
-		Az               *string `json:"Az" name:"Az"`
-		Name             *string `json:"Name" name:"Name"`
-		SecurityGroupId  *string `json:"SecurityGroupId" name:"SecurityGroupId"`
-		Engine           *string `json:"Engine" name:"Engine"`
-		Vip              *string `json:"Vip" name:"Vip"`
-		SlaveVip         *string `json:"SlaveVip" name:"SlaveVip"`
-		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
-		VpcId            *string `json:"VpcId" name:"VpcId"`
-		VnetId           *string `json:"VnetId" name:"VnetId"`
-		TimingSwitch     *string `json:"TimingSwitch" name:"TimingSwitch"`
-		Timezone         *string `json:"Timezone" name:"Timezone"`
-		SubOrderId       *string `json:"SubOrderId" name:"SubOrderId"`
-		ProductId        *string `json:"ProductId" name:"ProductId"`
-		ServiceBeginTime *string `json:"ServiceBeginTime" name:"ServiceBeginTime"`
-		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		IamProjectId     *string `json:"IamProjectId" name:"IamProjectId"`
-		IamProjectName   *string `json:"IamProjectName" name:"IamProjectName"`
-		Protocol         *string `json:"Protocol" name:"Protocol"`
-	} `json:"Data"`
 }
 
 func (r *DescribeCacheClusterResponse) ToJsonString() string {
@@ -248,6 +185,8 @@ func (r *DescribeCacheClusterResponse) FromJsonString(s string) error {
 
 type FlushCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *FlushCacheClusterRequest) ToJsonString() string {
@@ -268,7 +207,6 @@ func (r *FlushCacheClusterRequest) FromJsonString(s string) error {
 
 type FlushCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
 func (r *FlushCacheClusterResponse) ToJsonString() string {
@@ -282,9 +220,8 @@ func (r *FlushCacheClusterResponse) FromJsonString(s string) error {
 
 type RenameCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
-	CacheId *string `json:"CacheId,omitempty" name:"CacheId"`
-	Name    *string `json:"Name,omitempty" name:"Name"`
-	Engine  *string `json:"Engine,omitempty" name:"Engine"`
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *RenameCacheClusterRequest) ToJsonString() string {
@@ -318,9 +255,8 @@ func (r *RenameCacheClusterResponse) FromJsonString(s string) error {
 
 type UpdatePasswordRequest struct {
 	*ksyunhttp.BaseRequest
-	CacheId  *string `json:"CacheId,omitempty" name:"CacheId"`
-	Password *string `json:"Password,omitempty" name:"Password"`
-	Engine   *string `json:"Engine,omitempty" name:"Engine"`
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *UpdatePasswordRequest) ToJsonString() string {
@@ -341,7 +277,6 @@ func (r *UpdatePasswordRequest) FromJsonString(s string) error {
 
 type UpdatePasswordResponse struct {
 	*ksyunhttp.BaseResponse
-	ReqId *string `json:"reqId" name:"reqId"`
 }
 
 func (r *UpdatePasswordResponse) ToJsonString() string {
@@ -355,6 +290,8 @@ func (r *UpdatePasswordResponse) FromJsonString(s string) error {
 
 type DescribeCacheSecurityRulesRequest struct {
 	*ksyunhttp.BaseRequest
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *DescribeCacheSecurityRulesRequest) ToJsonString() string {
@@ -388,6 +325,8 @@ func (r *DescribeCacheSecurityRulesResponse) FromJsonString(s string) error {
 
 type DeleteCacheSecurityRuleRequest struct {
 	*ksyunhttp.BaseRequest
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *DeleteCacheSecurityRuleRequest) ToJsonString() string {
@@ -421,6 +360,8 @@ func (r *DeleteCacheSecurityRuleResponse) FromJsonString(s string) error {
 
 type SetCacheSecurityRulesRequest struct {
 	*ksyunhttp.BaseRequest
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *SetCacheSecurityRulesRequest) ToJsonString() string {
@@ -441,7 +382,6 @@ func (r *SetCacheSecurityRulesRequest) FromJsonString(s string) error {
 
 type SetCacheSecurityRulesResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
 func (r *SetCacheSecurityRulesResponse) ToJsonString() string {
@@ -455,6 +395,8 @@ func (r *SetCacheSecurityRulesResponse) FromJsonString(s string) error {
 
 type DescribeRegionsRequest struct {
 	*ksyunhttp.BaseRequest
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *DescribeRegionsRequest) ToJsonString() string {
@@ -475,11 +417,6 @@ func (r *DescribeRegionsRequest) FromJsonString(s string) error {
 
 type DescribeRegionsResponse struct {
 	*ksyunhttp.BaseResponse
-	RegionSet []struct {
-		RegionName *string `json:"RegionName" name:"RegionName"`
-		Region     *string `json:"Region" name:"Region"`
-	} `json:"RegionSet"`
-	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
 func (r *DescribeRegionsResponse) ToJsonString() string {
@@ -493,6 +430,8 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
 
 type DescribeAvailabilityZonesRequest struct {
 	*ksyunhttp.BaseRequest
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *DescribeAvailabilityZonesRequest) ToJsonString() string {
@@ -513,11 +452,6 @@ func (r *DescribeAvailabilityZonesRequest) FromJsonString(s string) error {
 
 type DescribeAvailabilityZonesResponse struct {
 	*ksyunhttp.BaseResponse
-	AvailabilityZoneSet []struct {
-		Region           *string `json:"Region" name:"Region"`
-		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
-	} `json:"AvailabilityZoneSet"`
-	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
 func (r *DescribeAvailabilityZonesResponse) ToJsonString() string {

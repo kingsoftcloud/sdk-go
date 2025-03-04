@@ -10,42 +10,27 @@ type BindZoneVpcVpcs struct {
 	RegionName *string   `json:"RegionName,omitempty" name:"RegionName"`
 	VpcId      []*string `json:"VpcId,omitempty" name:"VpcId"`
 }
-
 type UnbindZoneVpcVpcs struct {
 	RegionName *string   `json:"RegionName,omitempty" name:"RegionName"`
 	VpcId      []*string `json:"VpcId,omitempty" name:"VpcId"`
 }
-
 type DescribeZoneRecordFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
-type UnbindFdZoneVpcBindVpcId struct {
-}
-
-type BindFdZoneVpcVpcId struct {
-}
-
-type DescribePdnsFdZoneFilter struct {
-}
-
 type ModifyPdnsFdZoneForwardIp struct {
 	Port *string `json:"Port,omitempty" name:"Port"`
 	Ip   *string `json:"Ip,omitempty" name:"Ip"`
 }
-
 type CreatePdnsFdZoneForwardIp struct {
 	Port *string `json:"Port,omitempty" name:"Port"`
 	Ip   *string `json:"Ip,omitempty" name:"Ip"`
 }
-
 type ModifyEndPointIpConfig struct {
 	AvailabilityZone *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
 	SubnetId         *string `json:"SubnetId,omitempty" name:"SubnetId"`
 	IP               *string `json:"IP,omitempty" name:"IP"`
 }
-
 type CreateEndPointIpConfig struct {
 	AvailabilityZone *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
 	SubnetId         *string `json:"SubnetId,omitempty" name:"SubnetId"`

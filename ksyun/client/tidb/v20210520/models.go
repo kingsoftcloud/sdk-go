@@ -14,6 +14,32 @@ type CreateInstanceModuleConfigs struct {
 	Mem         *int    `json:"Mem,omitempty" name:"Mem"`
 	Tidisk      *int    `json:"Tidisk,omitempty" name:"Tidisk"`
 }
+type CreateInstanceBackupConfig struct {
+	MaxBackups          *string `json:"MaxBackups,omitempty" name:"MaxBackups"`
+	MaxReservedHours    *string `json:"MaxReservedHours,omitempty" name:"MaxReservedHours"`
+	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" name:"PreferredBackupTime"`
+}
+type CreateSecurityRuleRules struct {
+	Cidr []*string `json:"Cidr,omitempty" name:"Cidr"`
+	Desc []*string `json:"Desc,omitempty" name:"Desc"`
+}
+type CreateTaskTargetMySQL struct {
+	User        *string `json:"User,omitempty" name:"User"`
+	Passwd      *string `json:"Passwd,omitempty" name:"Passwd"`
+	WorkerCount *int    `json:"WorkerCount,omitempty" name:"WorkerCount"`
+	MaxTxnRow   *int    `json:"MaxTxnRow,omitempty" name:"MaxTxnRow"`
+}
+type CreateTaskTargetKafka struct {
+	KafkaVersion      *string   `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
+	TopicName         *string   `json:"TopicName,omitempty" name:"TopicName"`
+	Protocol          *string   `json:"Protocol,omitempty" name:"Protocol"`
+	PartitionNum      *int      `json:"PartitionNum,omitempty" name:"PartitionNum"`
+	MaxMessageBytes   *int      `json:"MaxMessageBytes,omitempty" name:"MaxMessageBytes"`
+	ReplicationFacter *int      `json:"ReplicationFacter,omitempty" name:"ReplicationFacter"`
+	MounterWorkerNum  *int      `json:"MounterWorkerNum,omitempty" name:"MounterWorkerNum"`
+	DomainList        []*string `json:"DomainList,omitempty" name:"DomainList"`
+	EndpointList      []*string `json:"EndpointList,omitempty" name:"EndpointList"`
+}
 
 type CreateInstanceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -34,6 +60,7 @@ type CreateInstanceRequest struct {
 	ClientPort              *int                           `json:"ClientPort,omitempty" name:"ClientPort"`
 	Az                      *string                        `json:"Az,omitempty" name:"Az"`
 	SecurityGroupId         *string                        `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	BackupConfig            *CreateInstanceBackupConfig    `json:"BackupConfig,omitempty" name:"BackupConfig"`
 	BackupId                *string                        `json:"backupId,omitempty" name:"backupId"`
 	BackupRestoreInstanceId *string                        `json:"backupRestoreInstanceId,omitempty" name:"backupRestoreInstanceId"`
 	BackupRestoreTime       *string                        `json:"backupRestoreTime,omitempty" name:"backupRestoreTime"`
@@ -892,7 +919,8 @@ func (r *RebindSecurityGroupResponse) FromJsonString(s string) error {
 
 type CreateSecurityRuleRequest struct {
 	*ksyunhttp.BaseRequest
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	SecurityGroupId *string                  `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	Rules           *CreateSecurityRuleRules `json:"Rules,omitempty" name:"Rules"`
 }
 
 func (r *CreateSecurityRuleRequest) ToJsonString() string {
@@ -1410,12 +1438,14 @@ func (r *OpenTiMonitorResponse) FromJsonString(s string) error {
 
 type CreateTaskRequest struct {
 	*ksyunhttp.BaseRequest
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-	TaskName   *string `json:"TaskName,omitempty" name:"TaskName"`
-	TargetId   *string `json:"TargetId,omitempty" name:"TargetId"`
-	VpcId      *string `json:"VpcId,omitempty" name:"VpcId"`
-	VnetId     *string `json:"VnetId,omitempty" name:"VnetId"`
-	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
+	InstanceId  *string                `json:"InstanceId,omitempty" name:"InstanceId"`
+	TaskName    *string                `json:"TaskName,omitempty" name:"TaskName"`
+	TargetId    *string                `json:"TargetId,omitempty" name:"TargetId"`
+	VpcId       *string                `json:"VpcId,omitempty" name:"VpcId"`
+	VnetId      *string                `json:"VnetId,omitempty" name:"VnetId"`
+	TargetType  *string                `json:"TargetType,omitempty" name:"TargetType"`
+	TargetMySQL *CreateTaskTargetMySQL `json:"TargetMySQL,omitempty" name:"TargetMySQL"`
+	TargetKafka *CreateTaskTargetKafka `json:"TargetKafka,omitempty" name:"TargetKafka"`
 }
 
 func (r *CreateTaskRequest) ToJsonString() string {

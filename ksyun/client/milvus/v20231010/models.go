@@ -10,7 +10,6 @@ type CreateSecurityRulesRules struct {
 	Cidr   *string `json:"Cidr,omitempty" name:"Cidr"`
 	Detail *string `json:"Detail,omitempty" name:"Detail"`
 }
-
 type CreateSecurityGroupRules struct {
 	Cidr   *string `json:"Cidr,omitempty" name:"Cidr"`
 	Detail *string `json:"Detail,omitempty" name:"Detail"`

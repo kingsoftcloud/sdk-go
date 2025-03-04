@@ -10,12 +10,10 @@ type DeleteTagTags struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
 type ListResourcesTagFilters struct {
 	Key   *string   `json:"Key,omitempty" name:"Key"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 type ReplaceResourcesTagsReplaceTags struct {
 	ResourceUuids *string `json:"ResourceUuids,omitempty" name:"ResourceUuids"`
 	TagIds        *string `json:"TagIds,omitempty" name:"TagIds"`

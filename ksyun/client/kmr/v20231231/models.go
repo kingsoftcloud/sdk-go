@@ -6,6 +6,10 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 )
 
+type CreateAutoScalePolicyExecuteRules struct {
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+}
+
 type ListInstancesRequest struct {
 	*ksyunhttp.BaseRequest
 	PageNumber       *int      `json:"PageNumber,omitempty" name:"PageNumber"`
@@ -239,10 +243,11 @@ func (r *ListAutoScaleHistoryResponse) FromJsonString(s string) error {
 
 type CreateAutoScalePolicyRequest struct {
 	*ksyunhttp.BaseRequest
-	InstanceId   *string `json:"InstanceId,omitempty" name:"InstanceId"`
-	PolicyName   *string `json:"PolicyName,omitempty" name:"PolicyName"`
-	ChargeType   *string `json:"ChargeType,omitempty" name:"ChargeType"`
-	ExecuteCycle *string `json:"ExecuteCycle,omitempty" name:"ExecuteCycle"`
+	InstanceId   *string                            `json:"InstanceId,omitempty" name:"InstanceId"`
+	PolicyName   *string                            `json:"PolicyName,omitempty" name:"PolicyName"`
+	ChargeType   *string                            `json:"ChargeType,omitempty" name:"ChargeType"`
+	ExecuteCycle *string                            `json:"ExecuteCycle,omitempty" name:"ExecuteCycle"`
+	ExecuteRules *CreateAutoScalePolicyExecuteRules `json:"ExecuteRules,omitempty" name:"ExecuteRules"`
 }
 
 func (r *CreateAutoScalePolicyRequest) ToJsonString() string {

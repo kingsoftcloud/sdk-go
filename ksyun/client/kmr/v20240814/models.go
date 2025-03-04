@@ -6,16 +6,66 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 )
 
+type StartJobRunSparkSubmitData struct {
+	Name                *string   `json:"Name,omitempty" name:"Name"`
+	SparkDriverCores    *int      `json:"SparkDriverCores,omitempty" name:"SparkDriverCores"`
+	SparkDriverMemory   *string   `json:"SparkDriverMemory,omitempty" name:"SparkDriverMemory"`
+	SparkExecutorCores  *int      `json:"SparkExecutorCores,omitempty" name:"SparkExecutorCores"`
+	SparkExecutorMemory *string   `json:"SparkExecutorMemory,omitempty" name:"SparkExecutorMemory"`
+	SparkNumExecutors   *int      `json:"SparkNumExecutors,omitempty" name:"SparkNumExecutors"`
+	Class               *string   `json:"Class,omitempty" name:"Class"`
+	AppResource         *string   `json:"AppResource,omitempty" name:"AppResource"`
+	ExtraArgs           []*string `json:"ExtraArgs,omitempty" name:"ExtraArgs"`
+	Conf                []*string `json:"Conf,omitempty" name:"Conf"`
+	Jars                []*string `json:"Jars,omitempty" name:"Jars"`
+	Files               []*string `json:"Files,omitempty" name:"Files"`
+	PyFiles             []*string `json:"PyFiles,omitempty" name:"PyFiles"`
+	Archives            []*string `json:"Archives,omitempty" name:"Archives"`
+	Packages            []*string `json:"Packages,omitempty" name:"Packages"`
+	CacheFile           []*string `json:"CacheFile,omitempty" name:"CacheFile"`
+	Image               *string   `json:"Image,omitempty" name:"Image"`
+	HighPriority        *bool     `json:"HighPriority,omitempty" name:"HighPriority"`
+}
 type CancelJobRunJobRunIds struct {
 	JobRunId *string `json:"JobRunId,omitempty" name:"JobRunId"`
 	JobType  *string `json:"JobType,omitempty" name:"JobType"`
 }
-
+type StartRayJobRunRaySubmitData struct {
+	Name               *string `json:"Name,omitempty" name:"Name"`
+	RayHeadCores       *int    `json:"RayHeadCores,omitempty" name:"RayHeadCores"`
+	RayHeadMemory      *string `json:"RayHeadMemory,omitempty" name:"RayHeadMemory"`
+	RayWorkerCores     *int    `json:"RayWorkerCores,omitempty" name:"RayWorkerCores"`
+	RayWorkerMemory    *string `json:"RayWorkerMemory,omitempty" name:"RayWorkerMemory"`
+	RayWorkerNum       *int    `json:"RayWorkerNum,omitempty" name:"RayWorkerNum"`
+	RayWorkerGpus      *int    `json:"RayWorkerGpus,omitempty" name:"RayWorkerGpus"`
+	EntrypointCmd      *string `json:"EntrypointCmd,omitempty" name:"EntrypointCmd"`
+	EntrypointResource *string `json:"EntrypointResource,omitempty" name:"EntrypointResource"`
+	Conf               *string `json:"Conf,omitempty" name:"Conf"`
+	Image              *string `json:"Image,omitempty" name:"Image"`
+	JuiceFs            *string `json:"JuiceFs,omitempty" name:"JuiceFs"`
+	MountPath          *string `json:"MountPath,omitempty" name:"MountPath"`
+	RuntimeEnv         *string `json:"RuntimeEnv,omitempty" name:"RuntimeEnv"`
+	HighPriority       *bool   `json:"HighPriority,omitempty" name:"HighPriority"`
+}
 type CancelRayJobRunJobRunIds struct {
 	JobRunId *string `json:"JobRunId,omitempty" name:"JobRunId"`
 	JobType  *string `json:"JobType,omitempty" name:"JobType"`
 }
-
+type StartFlinkJobRunSubmitData struct {
+	Name         *string   `json:"Name,omitempty" name:"Name"`
+	Image        *string   `json:"Image,omitempty" name:"Image"`
+	UpgradeMode  *string   `json:"UpgradeMode,omitempty" name:"UpgradeMode"`
+	JobCores     *int      `json:"JobCores,omitempty" name:"JobCores"`
+	JobMemory    *string   `json:"JobMemory,omitempty" name:"JobMemory"`
+	TaskCores    *int      `json:"TaskCores,omitempty" name:"TaskCores"`
+	TaskMemory   *string   `json:"TaskMemory,omitempty" name:"TaskMemory"`
+	NumTasks     *int      `json:"NumTasks,omitempty" name:"NumTasks"`
+	FlinkConf    []*string `json:"FlinkConf,omitempty" name:"FlinkConf"`
+	Dependencies []*string `json:"Dependencies,omitempty" name:"Dependencies"`
+	JarUri       *string   `json:"JarUri,omitempty" name:"JarUri"`
+	EntryClass   *string   `json:"EntryClass,omitempty" name:"EntryClass"`
+	MainArgs     []*string `json:"MainArgs,omitempty" name:"MainArgs"`
+}
 type CancelFlinkJobRunJobRunIds struct {
 	JobRunId *string `json:"JobRunId,omitempty" name:"JobRunId"`
 	JobType  *string `json:"JobType,omitempty" name:"JobType"`
@@ -147,10 +197,11 @@ func (r *ListWorkspacesResponse) FromJsonString(s string) error {
 
 type StartJobRunRequest struct {
 	*ksyunhttp.BaseRequest
-	WorkspaceId     *string `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
-	AccessKeyId     *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" name:"AccessKeySecret"`
-	ReleaseVersion  *string `json:"ReleaseVersion,omitempty" name:"ReleaseVersion"`
+	WorkspaceId     *string                     `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
+	AccessKeyId     *string                     `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeySecret *string                     `json:"AccessKeySecret,omitempty" name:"AccessKeySecret"`
+	ReleaseVersion  *string                     `json:"ReleaseVersion,omitempty" name:"ReleaseVersion"`
+	SparkSubmitData *StartJobRunSparkSubmitData `json:"SparkSubmitData,omitempty" name:"SparkSubmitData"`
 }
 
 func (r *StartJobRunRequest) ToJsonString() string {
@@ -458,10 +509,11 @@ func (r *ListExecutorResponse) FromJsonString(s string) error {
 
 type StartRayJobRunRequest struct {
 	*ksyunhttp.BaseRequest
-	WorkspaceId     *string `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
-	AccessKeyId     *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" name:"AccessKeySecret"`
-	ReleaseVersion  *string `json:"ReleaseVersion,omitempty" name:"ReleaseVersion"`
+	WorkspaceId     *string                      `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
+	AccessKeyId     *string                      `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeySecret *string                      `json:"AccessKeySecret,omitempty" name:"AccessKeySecret"`
+	ReleaseVersion  *string                      `json:"ReleaseVersion,omitempty" name:"ReleaseVersion"`
+	RaySubmitData   *StartRayJobRunRaySubmitData `json:"RaySubmitData,omitempty" name:"RaySubmitData"`
 }
 
 func (r *StartRayJobRunRequest) ToJsonString() string {
@@ -638,20 +690,20 @@ type ListRayJobRunsResponse struct {
 				RayLog         *string `json:"RayLog" name:"RayLog"`
 				ReleaseVersion *string `json:"ReleaseVersion" name:"ReleaseVersion"`
 				RaySubmitData  struct {
-					Name               *string   `json:"Name" name:"Name"`
-					RayHeadCores       *int      `json:"RayHeadCores" name:"RayHeadCores"`
-					RayHeadMemory      *string   `json:"RayHeadMemory" name:"RayHeadMemory"`
-					RayWorkerCores     *int      `json:"RayWorkerCores" name:"RayWorkerCores"`
-					RayWorkerMemory    *string   `json:"RayWorkerMemory" name:"RayWorkerMemory"`
-					RayWorkerNum       *int      `json:"RayWorkerNum" name:"RayWorkerNum"`
-					RayWorkerGpus      *int      `json:"RayWorkerGpus" name:"RayWorkerGpus"`
-					EntrypointCmd      *string   `json:"EntrypointCmd" name:"EntrypointCmd"`
-					EntrypointResource *string   `json:"EntrypointResource" name:"EntrypointResource"`
-					RuntimeEnv         *string   `json:"RuntimeEnv" name:"RuntimeEnv"`
-					Conf               []*string `json:"Conf" name:"Conf"`
-					Image              *string   `json:"Image" name:"Image"`
-					JuiceFs            *string   `json:"JuiceFs" name:"JuiceFs"`
-					MountPath          *string   `json:"MountPath" name:"MountPath"`
+					Name               *string `json:"Name" name:"Name"`
+					RayHeadCores       *int    `json:"RayHeadCores" name:"RayHeadCores"`
+					RayHeadMemory      *string `json:"RayHeadMemory" name:"RayHeadMemory"`
+					RayWorkerCores     *int    `json:"RayWorkerCores" name:"RayWorkerCores"`
+					RayWorkerMemory    *string `json:"RayWorkerMemory" name:"RayWorkerMemory"`
+					RayWorkerNum       *int    `json:"RayWorkerNum" name:"RayWorkerNum"`
+					RayWorkerGpus      *int    `json:"RayWorkerGpus" name:"RayWorkerGpus"`
+					EntrypointCmd      *string `json:"EntrypointCmd" name:"EntrypointCmd"`
+					EntrypointResource *string `json:"EntrypointResource" name:"EntrypointResource"`
+					RuntimeEnv         *string `json:"RuntimeEnv" name:"RuntimeEnv"`
+					Conf               *string `json:"Conf" name:"Conf"`
+					Image              *string `json:"Image" name:"Image"`
+					JuiceFs            *string `json:"JuiceFs" name:"JuiceFs"`
+					MountPath          *string `json:"MountPath" name:"MountPath"`
 				} `json:"RaySubmitData" name:"RaySubmitData"`
 				ResourceUsage *int `json:"ResourceUsage" name:"ResourceUsage"`
 			} `json:"JobRuns"`
@@ -710,10 +762,11 @@ func (r *CancelRayJobRunResponse) FromJsonString(s string) error {
 
 type StartFlinkJobRunRequest struct {
 	*ksyunhttp.BaseRequest
-	WorkspaceId     *string `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
-	AccessKeyId     *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" name:"AccessKeySecret"`
-	ReleaseVersion  *string `json:"ReleaseVersion,omitempty" name:"ReleaseVersion"`
+	WorkspaceId     *string                     `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
+	AccessKeyId     *string                     `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeySecret *string                     `json:"AccessKeySecret,omitempty" name:"AccessKeySecret"`
+	ReleaseVersion  *string                     `json:"ReleaseVersion,omitempty" name:"ReleaseVersion"`
+	SubmitData      *StartFlinkJobRunSubmitData `json:"SubmitData,omitempty" name:"SubmitData"`
 }
 
 func (r *StartFlinkJobRunRequest) ToJsonString() string {

@@ -10,39 +10,32 @@ type CreateSecurityGroupSecurityGroupRule struct {
 	SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol,omitempty" name:"SecurityGroupRuleProtocol"`
 	SecurityGroupRuleName     *string `json:"SecurityGroupRuleName,omitempty" name:"SecurityGroupRuleName"`
 }
-
 type ModifySecurityGroupRuleSecurityGroupRule struct {
 	SecurityGroupRuleId       *string `json:"SecurityGroupRuleId,omitempty" name:"SecurityGroupRuleId"`
 	SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol,omitempty" name:"SecurityGroupRuleProtocol"`
 	SecurityGroupRuleName     *string `json:"SecurityGroupRuleName,omitempty" name:"SecurityGroupRuleName"`
 }
-
 type CreateInstanceDatabaseInstanceDatabasePrivileges struct {
 	InstanceAccountName *string `json:"InstanceAccountName,omitempty" name:"InstanceAccountName"`
 	Privilege           *string `json:"Privilege,omitempty" name:"Privilege"`
 }
-
 type ModifyInstanceDatabasePrivilegesInstanceDatabasePrivileges struct {
 	InstanceAccountName *string `json:"InstanceAccountName,omitempty" name:"InstanceAccountName"`
 	Privilege           *string `json:"Privilege,omitempty" name:"Privilege"`
 }
-
 type CreateInstanceAccountInstanceAccountPrivileges struct {
 	InstanceDatabaseName *string `json:"InstanceDatabaseName,omitempty" name:"InstanceDatabaseName"`
 	Privilege            *string `json:"Privilege,omitempty" name:"Privilege"`
 }
-
 type ModifyInstanceAccountPrivilegesInstanceAccountPrivileges struct {
 	InstanceDatabaseName *string `json:"InstanceDatabaseName,omitempty" name:"InstanceDatabaseName"`
 	Privilege            *string `json:"Privilege,omitempty" name:"Privilege"`
 }
-
 type RestoreToCurInstanceSrcDatabases struct {
 	DatabaseName  *string   `json:"DatabaseName,omitempty" name:"DatabaseName"`
 	WholeDatabase *string   `json:"WholeDatabase,omitempty" name:"WholeDatabase"`
 	TableNames    []*string `json:"TableNames,omitempty" name:"TableNames"`
 }
-
 type RestoreToCurInstanceDstDatabases struct {
 	DatabaseName  *string   `json:"DatabaseName,omitempty" name:"DatabaseName"`
 	WholeDatabase *string   `json:"WholeDatabase,omitempty" name:"WholeDatabase"`

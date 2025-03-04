@@ -6,9 +6,36 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 )
 
-type CreateWebhookTriggerHeader struct {
+type CreateWebhookTriggerTriggerHeader struct {
 	Key   *string   `json:"Key,omitempty" name:"Key"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type CreateWebhookTriggerTrigger struct {
+	TriggerName *string                              `json:"TriggerName,omitempty" name:"TriggerName"`
+	TriggerUrl  *string                              `json:"TriggerUrl,omitempty" name:"TriggerUrl"`
+	Enabled     *bool                                `json:"Enabled,omitempty" name:"Enabled"`
+	EventType   []*string                            `json:"EventType,omitempty" name:"EventType"`
+	Header      []*CreateWebhookTriggerTriggerHeader `json:"Header,omitempty" name:"Header"`
+}
+type CreateRetentionRuleRule struct {
+	Scope    *string `json:"Scope,omitempty" name:"Scope"`
+	Template *string `json:"Template,omitempty" name:"Template"`
+	Tag      *string `json:"Tag,omitempty" name:"Tag"`
+	UnTagged *bool   `json:"UnTagged,omitempty" name:"UnTagged"`
+	Param    *string `json:"Param,omitempty" name:"Param"`
+	Disabled *bool   `json:"Disabled,omitempty" name:"Disabled"`
+}
+type UpdateRetentionRuleRule struct {
+	RuleId   *string `json:"RuleId,omitempty" name:"RuleId"`
+	Scope    *string `json:"Scope,omitempty" name:"Scope"`
+	Template *string `json:"Template,omitempty" name:"Template"`
+	Tag      *string `json:"Tag,omitempty" name:"Tag"`
+	UnTagged *bool   `json:"UnTagged,omitempty" name:"UnTagged"`
+	Param    *string `json:"Param,omitempty" name:"Param"`
+	Disabled *bool   `json:"Disabled,omitempty" name:"Disabled"`
+}
+type DeleteRetentionRuleRule struct {
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 }
 
 type CreateNamespaceRequest struct {
@@ -1150,8 +1177,9 @@ func (r *DescribeInstanceResponse) FromJsonString(s string) error {
 
 type CreateWebhookTriggerRequest struct {
 	*ksyunhttp.BaseRequest
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-	Namespace  *string `json:"Namespace,omitempty" name:"Namespace"`
+	InstanceId *string                      `json:"InstanceId,omitempty" name:"InstanceId"`
+	Namespace  *string                      `json:"Namespace,omitempty" name:"Namespace"`
+	Trigger    *CreateWebhookTriggerTrigger `json:"Trigger,omitempty" name:"Trigger"`
 }
 
 func (r *CreateWebhookTriggerRequest) ToJsonString() string {
@@ -1357,8 +1385,9 @@ func (r *DeleteWebhookTriggerResponse) FromJsonString(s string) error {
 
 type CreateRetentionRuleRequest struct {
 	*ksyunhttp.BaseRequest
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-	Namespace  *string `json:"Namespace,omitempty" name:"Namespace"`
+	InstanceId *string                  `json:"InstanceId,omitempty" name:"InstanceId"`
+	Namespace  *string                  `json:"Namespace,omitempty" name:"Namespace"`
+	Rule       *CreateRetentionRuleRule `json:"Rule,omitempty" name:"Rule"`
 }
 
 func (r *CreateRetentionRuleRequest) ToJsonString() string {
@@ -1394,8 +1423,9 @@ func (r *CreateRetentionRuleResponse) FromJsonString(s string) error {
 
 type UpdateRetentionRuleRequest struct {
 	*ksyunhttp.BaseRequest
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-	Namespace  *string `json:"Namespace,omitempty" name:"Namespace"`
+	InstanceId *string                  `json:"InstanceId,omitempty" name:"InstanceId"`
+	Namespace  *string                  `json:"Namespace,omitempty" name:"Namespace"`
+	Rule       *UpdateRetentionRuleRule `json:"Rule,omitempty" name:"Rule"`
 }
 
 func (r *UpdateRetentionRuleRequest) ToJsonString() string {
@@ -1431,8 +1461,9 @@ func (r *UpdateRetentionRuleResponse) FromJsonString(s string) error {
 
 type DeleteRetentionRuleRequest struct {
 	*ksyunhttp.BaseRequest
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-	Namespace  *string `json:"Namespace,omitempty" name:"Namespace"`
+	InstanceId *string                  `json:"InstanceId,omitempty" name:"InstanceId"`
+	Namespace  *string                  `json:"Namespace,omitempty" name:"Namespace"`
+	Rule       *DeleteRetentionRuleRule `json:"Rule,omitempty" name:"Rule"`
 }
 
 func (r *DeleteRetentionRuleRequest) ToJsonString() string {

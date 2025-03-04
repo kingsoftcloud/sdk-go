@@ -6,6 +6,13 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
 )
 
+type LaunchClusterDatabaseInfo struct {
+	Type          *string `json:"Type,omitempty" name:"Type"`
+	Endpoint      *string `json:"Endpoint,omitempty" name:"Endpoint"`
+	Username      *string `json:"Username,omitempty" name:"Username"`
+	Password      *string `json:"Password,omitempty" name:"Password"`
+	RdsInstanceId *string `json:"RdsInstanceId,omitempty" name:"RdsInstanceId"`
+}
 type LaunchClusterInstanceGroups struct {
 	InstanceGroupType     *string `json:"InstanceGroupType,omitempty" name:"InstanceGroupType"`
 	AvailabilityZone      *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
@@ -22,18 +29,13 @@ type LaunchClusterInstanceGroups struct {
 	AvailabilityZoneIndex *int    `json:"AvailabilityZoneIndex,omitempty" name:"AvailabilityZoneIndex"`
 	InstanceGroupIndex    *int    `json:"InstanceGroupIndex,omitempty" name:"InstanceGroupIndex"`
 }
-
-type ScaleInInstanceGroupsInstanceGroups struct {
-	Id        *string `json:"Id,omitempty" name:"Id"`
-	Instances []struct {
-		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-	} `json:"instances,omitempty" name:"instances"`
-}
-
-type ScaleInInstanceGroupsinstances struct {
+type ScaleInInstanceGroupsInstanceGroupsInstances struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
-
+type ScaleInInstanceGroupsInstanceGroups struct {
+	Id        *string                                         `json:"Id,omitempty" name:"Id"`
+	Instances []*ScaleInInstanceGroupsInstanceGroupsInstances `json:"instances,omitempty" name:"instances"`
+}
 type ScaleOutInstanceGroupsInstanceGroups struct {
 	InstanceGroupType     *string `json:"InstanceGroupType,omitempty" name:"InstanceGroupType"`
 	InstanceType          *string `json:"InstanceType,omitempty" name:"InstanceType"`
@@ -49,7 +51,6 @@ type ScaleOutInstanceGroupsInstanceGroups struct {
 	AvailabilityZoneIndex *int    `json:"AvailabilityZoneIndex,omitempty" name:"AvailabilityZoneIndex"`
 	InstanceGroupIndex    *int    `json:"InstanceGroupIndex,omitempty" name:"InstanceGroupIndex"`
 }
-
 type BindTagsTags struct {
 	TagKey   *string `json:"TagKey,omitempty" name:"TagKey"`
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
@@ -125,6 +126,7 @@ type LaunchClusterRequest struct {
 	Distribution    *string                        `json:"Distribution,omitempty" name:"Distribution"`
 	MainVersion     *string                        `json:"MainVersion,omitempty" name:"MainVersion"`
 	ChargeType      *string                        `json:"ChargeType,omitempty" name:"ChargeType"`
+	DatabaseInfo    *LaunchClusterDatabaseInfo     `json:"DatabaseInfo,omitempty" name:"DatabaseInfo"`
 	Services        []*string                      `json:"Services,omitempty" name:"Services"`
 	ProjectId       *int                           `json:"ProjectId,omitempty" name:"ProjectId"`
 	VpcDomainId     *string                        `json:"VpcDomainId,omitempty" name:"VpcDomainId"`

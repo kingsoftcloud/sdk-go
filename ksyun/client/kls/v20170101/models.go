@@ -8,12 +8,8 @@ import (
 
 type ListStreamDurationsRequest struct {
 	*ksyunhttp.BaseRequest
-	UniqueName    *string `json:"UniqueName,omitempty" name:"UniqueName"`
-	App           *string `json:"App,omitempty" name:"App"`
-	Pubdomain     *string `json:"Pubdomain,omitempty" name:"Pubdomain"`
-	Stream        *string `json:"Stream,omitempty" name:"Stream"`
-	StartUnixTime *int    `json:"StartUnixTime,omitempty" name:"StartUnixTime"`
-	EndUnixTime   *int    `json:"EndUnixTime,omitempty" name:"EndUnixTime"`
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *ListStreamDurationsRequest) ToJsonString() string {
@@ -48,15 +44,8 @@ func (r *ListStreamDurationsResponse) FromJsonString(s string) error {
 
 type ListHistoryPubStreamsErrInfoRequest struct {
 	*ksyunhttp.BaseRequest
-	UniqueName    *string `json:"UniqueName,omitempty" name:"UniqueName"`
-	App           *string `json:"App,omitempty" name:"App"`
-	Pubdomain     *string `json:"Pubdomain,omitempty" name:"Pubdomain"`
-	Stream        *string `json:"Stream,omitempty" name:"Stream"`
-	OrderTime     *int    `json:"OrderTime,omitempty" name:"OrderTime"`
-	Marker        *int    `json:"Marker,omitempty" name:"Marker"`
-	Limit         *int    `json:"Limit,omitempty" name:"Limit"`
-	StartUnixTime *int    `json:"StartUnixTime,omitempty" name:"StartUnixTime"`
-	EndUnixTime   *int    `json:"EndUnixTime,omitempty" name:"EndUnixTime"`
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *ListHistoryPubStreamsErrInfoRequest) ToJsonString() string {
@@ -77,19 +66,7 @@ func (r *ListHistoryPubStreamsErrInfoRequest) FromJsonString(s string) error {
 
 type ListHistoryPubStreamsErrInfoResponse struct {
 	*ksyunhttp.BaseResponse
-	Data struct {
-		App       *string `json:"App" name:"App"`
-		Pubdomain *string `json:"Pubdomain" name:"Pubdomain"`
-		Result    []struct {
-			Detail []struct {
-				Clientip      *string `json:"Clientip" name:"Clientip"`
-				StatusMessage *string `json:"StatusMessage" name:"StatusMessage"`
-			} `json:"Detail"`
-			Stream *string `json:"Stream" name:"Stream"`
-		} `json:"Result" name:"Result"`
-		RetMsg     *string `json:"RetMsg" name:"RetMsg"`
-		UniqueName *string `json:"UniqueName" name:"UniqueName"`
-	} `json:"Data"`
+	ListHistoryPubStreamsErrInfoResponse *string `json:"ListHistoryPubStreamsErrInfoResponse" name:"ListHistoryPubStreamsErrInfoResponse"`
 }
 
 func (r *ListHistoryPubStreamsErrInfoResponse) ToJsonString() string {
@@ -103,15 +80,8 @@ func (r *ListHistoryPubStreamsErrInfoResponse) FromJsonString(s string) error {
 
 type ListHistoryPubStreamsInfoRequest struct {
 	*ksyunhttp.BaseRequest
-	UniqueName    *string `json:"UniqueName,omitempty" name:"UniqueName"`
-	App           *string `json:"App,omitempty" name:"App"`
-	Pubdomain     *string `json:"Pubdomain,omitempty" name:"Pubdomain"`
-	Stream        *string `json:"Stream,omitempty" name:"Stream"`
-	OrderTime     *int    `json:"OrderTime,omitempty" name:"OrderTime"`
-	Marker        *int    `json:"Marker,omitempty" name:"Marker"`
-	Limit         *int    `json:"Limit,omitempty" name:"Limit"`
-	StartUnixTime *int    `json:"StartUnixTime,omitempty" name:"StartUnixTime"`
-	EndUnixTime   *int    `json:"EndUnixTime,omitempty" name:"EndUnixTime"`
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *ListHistoryPubStreamsInfoRequest) ToJsonString() string {
@@ -132,19 +102,7 @@ func (r *ListHistoryPubStreamsInfoRequest) FromJsonString(s string) error {
 
 type ListHistoryPubStreamsInfoResponse struct {
 	*ksyunhttp.BaseResponse
-	Data struct {
-		App       *string `json:"App" name:"App"`
-		Pubdomain *string `json:"Pubdomain" name:"Pubdomain"`
-		Result    []struct {
-			Detail []struct {
-				Clientip      *string `json:"Clientip" name:"Clientip"`
-				StatusMessage *string `json:"StatusMessage" name:"StatusMessage"`
-			} `json:"Detail"`
-			Stream *string `json:"Stream" name:"Stream"`
-		} `json:"Result" name:"Result"`
-		RetMsg     *string `json:"RetMsg" name:"RetMsg"`
-		UniqueName *string `json:"UniqueName" name:"UniqueName"`
-	} `json:"Data"`
+	ListHistoryPubStreamsInfoResponse *string `json:"ListHistoryPubStreamsInfoResponse" name:"ListHistoryPubStreamsInfoResponse"`
 }
 
 func (r *ListHistoryPubStreamsInfoResponse) ToJsonString() string {
@@ -199,10 +157,8 @@ func (r *ForbidStreamResponse) FromJsonString(s string) error {
 
 type ResumeStreamRequest struct {
 	*ksyunhttp.BaseRequest
-	UniqueName *string `json:"UniqueName,omitempty" name:"UniqueName"`
-	App        *string `json:"App,omitempty" name:"App"`
-	Pubdomain  *string `json:"Pubdomain,omitempty" name:"Pubdomain"`
-	Stream     *string `json:"Stream,omitempty" name:"Stream"`
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *ResumeStreamRequest) ToJsonString() string {
@@ -223,9 +179,7 @@ func (r *ResumeStreamRequest) FromJsonString(s string) error {
 
 type ResumeStreamResponse struct {
 	*ksyunhttp.BaseResponse
-	Data struct {
-		RetMsg *string `json:"RetMsg" name:"RetMsg"`
-	} `json:"Data"`
+	ResumeStreamResponse *string `json:"ResumeStreamResponse" name:"ResumeStreamResponse"`
 }
 
 func (r *ResumeStreamResponse) ToJsonString() string {
@@ -239,9 +193,8 @@ func (r *ResumeStreamResponse) FromJsonString(s string) error {
 
 type GetBlacklistRequest struct {
 	*ksyunhttp.BaseRequest
-	UniqueName *string `json:"UniqueName,omitempty" name:"UniqueName"`
-	App        *string `json:"App,omitempty" name:"App"`
-	Pubdomain  *string `json:"Pubdomain,omitempty" name:"Pubdomain"`
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *GetBlacklistRequest) ToJsonString() string {
@@ -262,16 +215,7 @@ func (r *GetBlacklistRequest) FromJsonString(s string) error {
 
 type GetBlacklistResponse struct {
 	*ksyunhttp.BaseResponse
-	Data struct {
-		App       *string `json:"App" name:"App"`
-		Pubdomain *string `json:"Pubdomain" name:"Pubdomain"`
-		Recs      []struct {
-			Stream *string `json:"Stream" name:"Stream"`
-		} `json:"Recs" name:"Recs"`
-		RetMsg     *string `json:"RetMsg" name:"RetMsg"`
-		UniqueName *string `json:"UniqueName" name:"UniqueName"`
-	} `json:"Data"`
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	GetBlacklistResponse *string `json:"GetBlacklistResponse" name:"GetBlacklistResponse"`
 }
 
 func (r *GetBlacklistResponse) ToJsonString() string {
@@ -285,10 +229,8 @@ func (r *GetBlacklistResponse) FromJsonString(s string) error {
 
 type CheckBlacklistRequest struct {
 	*ksyunhttp.BaseRequest
-	UniqueName *string `json:"UniqueName,omitempty" name:"UniqueName"`
-	App        *string `json:"App,omitempty" name:"App"`
-	Pubdomain  *string `json:"Pubdomain,omitempty" name:"Pubdomain"`
-	Stream     *string `json:"Stream,omitempty" name:"Stream"`
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *CheckBlacklistRequest) ToJsonString() string {
@@ -309,10 +251,7 @@ func (r *CheckBlacklistRequest) FromJsonString(s string) error {
 
 type CheckBlacklistResponse struct {
 	*ksyunhttp.BaseResponse
-	Data struct {
-		RetMsg *string `json:"RetMsg" name:"RetMsg"`
-	} `json:"Data"`
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	CheckBlacklistResponse *string `json:"CheckBlacklistResponse" name:"CheckBlacklistResponse"`
 }
 
 func (r *CheckBlacklistResponse) ToJsonString() string {
@@ -326,12 +265,8 @@ func (r *CheckBlacklistResponse) FromJsonString(s string) error {
 
 type ListRealtimeStreamsInfoRequest struct {
 	*ksyunhttp.BaseRequest
-	UniqueName   *string `json:"UniqueName,omitempty" name:"UniqueName"`
-	App          *string `json:"App,omitempty" name:"App"`
-	Stream       *string `json:"Stream,omitempty" name:"Stream"`
-	DomainIds    *string `json:"DomainIds,omitempty" name:"DomainIds"`
-	PullProtocol *string `json:"PullProtocol,omitempty" name:"PullProtocol"`
-	Type         *string `json:"Type,omitempty" name:"Type"`
+	Action  *string `json:"Action,omitempty" name:"Action"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 func (r *ListRealtimeStreamsInfoRequest) ToJsonString() string {

@@ -10,53 +10,91 @@ type CreateClusterManagedClusterMultiMaster struct {
 	SubnetId        *string `json:"SubnetId,omitempty" name:"SubnetId"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 }
-
-type CreateClusterInstanceForNode struct {
-	NodeRole   *string `json:"NodeRole,omitempty" name:"NodeRole"`
-	NodeConfig []struct {
-		Para *string `json:"Para,omitempty" name:"Para"`
-	} `json:"NodeConfig,omitempty" name:"NodeConfig"`
+type CreateClusterInstanceForNodeNodeConfigAdvancedSettingDataDisk struct {
+	AutoFormatAndMount *bool   `json:"AutoFormatAndMount,omitempty" name:"AutoFormatAndMount"`
+	FileSystem         *string `json:"FileSystem,omitempty" name:"FileSystem"`
+	MountTarget        *string `json:"MountTarget,omitempty" name:"MountTarget"`
 }
-
-type CreateClusterNodeConfig struct {
-	Para *string `json:"Para,omitempty" name:"Para"`
-}
-
-type CreateClusterLabel struct {
+type CreateClusterInstanceForNodeNodeConfigAdvancedSettingLabel struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
-type CreateClusterKubelet struct {
+type CreateClusterInstanceForNodeNodeConfigAdvancedSettingExtraArgKubelet struct {
 	CustomArg *string `json:"CustomArg,omitempty" name:"CustomArg"`
 }
-
-type CreateClusterTaints struct {
+type CreateClusterInstanceForNodeNodeConfigAdvancedSettingExtraArg struct {
+	Kubelet []*CreateClusterInstanceForNodeNodeConfigAdvancedSettingExtraArgKubelet `json:"Kubelet,omitempty" name:"Kubelet"`
+}
+type CreateClusterInstanceForNodeNodeConfigAdvancedSettingTaints struct {
 	Key    *string `json:"Key,omitempty" name:"Key"`
 	Value  *string `json:"Value,omitempty" name:"Value"`
 	Effect *string `json:"Effect,omitempty" name:"Effect"`
 }
-
+type CreateClusterInstanceForNodeNodeConfigAdvancedSetting struct {
+	DataDisk             *CreateClusterInstanceForNodeNodeConfigAdvancedSettingDataDisk `json:"DataDisk,omitempty" name:"DataDisk"`
+	ContainerRuntime     *string                                                        `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
+	ContainerPath        *string                                                        `json:"ContainerPath,omitempty" name:"ContainerPath"`
+	UserScript           *string                                                        `json:"UserScript,omitempty" name:"UserScript"`
+	PreUserScript        *string                                                        `json:"PreUserScript,omitempty" name:"PreUserScript"`
+	Schedulable          *bool                                                          `json:"Schedulable,omitempty" name:"Schedulable"`
+	Label                []*CreateClusterInstanceForNodeNodeConfigAdvancedSettingLabel  `json:"Label,omitempty" name:"Label"`
+	ExtraArg             *CreateClusterInstanceForNodeNodeConfigAdvancedSettingExtraArg `json:"ExtraArg,omitempty" name:"ExtraArg"`
+	ContainerLogMaxSize  *int                                                           `json:"ContainerLogMaxSize,omitempty" name:"ContainerLogMaxSize"`
+	ContainerLogMaxFiles *int                                                           `json:"ContainerLogMaxFiles,omitempty" name:"ContainerLogMaxFiles"`
+	Taints               []*CreateClusterInstanceForNodeNodeConfigAdvancedSettingTaints `json:"Taints,omitempty" name:"Taints"`
+}
+type CreateClusterInstanceForNodeNodeConfig struct {
+	Para            *string                                                `json:"Para,omitempty" name:"Para"`
+	AdvancedSetting *CreateClusterInstanceForNodeNodeConfigAdvancedSetting `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
+}
+type CreateClusterInstanceForNode struct {
+	NodeRole   *string                                   `json:"NodeRole,omitempty" name:"NodeRole"`
+	NodeConfig []*CreateClusterInstanceForNodeNodeConfig `json:"NodeConfig,omitempty" name:"NodeConfig"`
+}
+type CreateClusterExistedInstanceForEpcEpcConfigAdvancedSettingLabel struct {
+	Key   *string `json:"Key,omitempty" name:"Key"`
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+type CreateClusterExistedInstanceForEpcEpcConfigAdvancedSettingExtraArgKubelet struct {
+	CustomArg *string `json:"CustomArg,omitempty" name:"CustomArg"`
+}
+type CreateClusterExistedInstanceForEpcEpcConfigAdvancedSettingExtraArg struct {
+	Kubelet []*CreateClusterExistedInstanceForEpcEpcConfigAdvancedSettingExtraArgKubelet `json:"Kubelet,omitempty" name:"Kubelet"`
+}
+type CreateClusterExistedInstanceForEpcEpcConfigAdvancedSettingTaint struct {
+	Key    *string `json:"Key,omitempty" name:"Key"`
+	Value  *string `json:"Value,omitempty" name:"Value"`
+	Effect *string `json:"Effect,omitempty" name:"Effect"`
+}
+type CreateClusterExistedInstanceForEpcEpcConfigAdvancedSetting struct {
+	ContainerRuntime     *string                                                             `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
+	ContainerPath        *string                                                             `json:"ContainerPath,omitempty" name:"ContainerPath"`
+	UserScript           *string                                                             `json:"UserScript,omitempty" name:"UserScript"`
+	PreUserScript        *string                                                             `json:"PreUserScript,omitempty" name:"PreUserScript"`
+	Schedulable          *bool                                                               `json:"Schedulable,omitempty" name:"Schedulable"`
+	Label                []*CreateClusterExistedInstanceForEpcEpcConfigAdvancedSettingLabel  `json:"Label,omitempty" name:"Label"`
+	ExtraArg             *CreateClusterExistedInstanceForEpcEpcConfigAdvancedSettingExtraArg `json:"ExtraArg,omitempty" name:"ExtraArg"`
+	ContainerLogMaxSize  *int                                                                `json:"ContainerLogMaxSize,omitempty" name:"ContainerLogMaxSize"`
+	ContainerLogMaxFiles *int                                                                `json:"ContainerLogMaxFiles,omitempty" name:"ContainerLogMaxFiles"`
+	Taint                []*CreateClusterExistedInstanceForEpcEpcConfigAdvancedSettingTaint  `json:"Taint,omitempty" name:"Taint"`
+}
+type CreateClusterExistedInstanceForEpcEpcConfig struct {
+	Para            *string                                                     `json:"Para,omitempty" name:"Para"`
+	AdvancedSetting *CreateClusterExistedInstanceForEpcEpcConfigAdvancedSetting `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
+}
 type CreateClusterExistedInstanceForEpc struct {
-	NodeRole  *string `json:"NodeRole,omitempty" name:"NodeRole"`
-	EpcConfig []struct {
-		Para *string `json:"Para,omitempty" name:"Para"`
-	} `json:"EpcConfig,omitempty" name:"EpcConfig"`
+	NodeRole  *string                                        `json:"NodeRole,omitempty" name:"NodeRole"`
+	EpcConfig []*CreateClusterExistedInstanceForEpcEpcConfig `json:"EpcConfig,omitempty" name:"EpcConfig"`
 }
-
-type CreateClusterEpcConfig struct {
-	Para *string `json:"Para,omitempty" name:"Para"`
-}
-
-type CreateClusterTaint struct {
-	Key    *string `json:"Key,omitempty" name:"Key"`
-	Value  *string `json:"Value,omitempty" name:"Value"`
-	Effect *string `json:"Effect,omitempty" name:"Effect"`
-}
-
 type CreateClusterComponent struct {
 	Name   *string `json:"Name,omitempty" name:"Name"`
 	Config *string `json:"Config,omitempty" name:"Config"`
+}
+type CreateClusterControlPlaneLog struct {
+	ClusterId   *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	Enable      *bool   `json:"Enable,omitempty" name:"Enable"`
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	Items       *string `json:"Items,omitempty" name:"Items"`
 }
 
 type CreateClusterRequest struct {
@@ -79,6 +117,7 @@ type CreateClusterRequest struct {
 	InstanceForNode           []*CreateClusterInstanceForNode           `json:"InstanceForNode,omitempty" name:"InstanceForNode"`
 	ExistedInstanceForEpc     []*CreateClusterExistedInstanceForEpc     `json:"ExistedInstanceForEpc,omitempty" name:"ExistedInstanceForEpc"`
 	Component                 []*CreateClusterComponent                 `json:"Component,omitempty" name:"Component"`
+	ControlPlaneLog           *CreateClusterControlPlaneLog             `json:"ControlPlaneLog,omitempty" name:"ControlPlaneLog"`
 	EnableDelProtection       *bool                                     `json:"EnableDelProtection,omitempty" name:"EnableDelProtection"`
 }
 
