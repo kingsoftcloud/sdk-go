@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	bill "github.com/kingsoftcloud/sdk-go/ksyun/client/bill/v20180601"
-	"github.com/kingsoftcloud/sdk-go/ksyun/common"
-	"github.com/kingsoftcloud/sdk-go/ksyun/common/profile"
+	bill "github.com/kingsoftcloud/sdk-go/v2/ksyun/client/bill/v20180601"
+	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common"
+	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/profile"
 )
 
 func main() {

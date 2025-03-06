@@ -3,9 +3,9 @@ package v20201215
 import (
 	"context"
 	"fmt"
-	"github.com/kingsoftcloud/sdk-go/ksyun/common"
-	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
-	"github.com/kingsoftcloud/sdk-go/ksyun/common/profile"
+	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common"
+	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
+	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/profile"
 )
 
 const APIVersion = "2020-12-15"

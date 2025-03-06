@@ -2,8 +2,8 @@ package v20151101
 
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/ksyun/common/errors"
-	ksyunhttp "github.com/kingsoftcloud/sdk-go/ksyun/common/http"
+	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
+	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
 type DescribeEpcsFilter struct {

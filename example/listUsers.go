@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	iam "github.com/kingsoftcloud/sdk-go/ksyun/client/iam/v20151101"
-	"github.com/kingsoftcloud/sdk-go/ksyun/common"
-	_ "github.com/kingsoftcloud/sdk-go/ksyun/common/errors"
-	"github.com/kingsoftcloud/sdk-go/ksyun/common/profile"
+	iam "github.com/kingsoftcloud/sdk-go/v2/ksyun/client/iam/v20151101"
+	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common"
+	_ "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
+	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/profile"
 )
 
 func main() {

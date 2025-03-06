@@ -7,7 +7,7 @@ package common
 
 import (
 	"fmt"
-	"github.com/kingsoftcloud/sdk-go/ksyun/common/errors"
+	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	"strconv"
 )
 

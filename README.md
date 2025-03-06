@@ -20,7 +20,7 @@
 安装SDK包：
 
     ```bash
-    go get -v -u github.com/kingsoftcloud/sdk-go/ksyun/common
+    go get -v -u github.com/kingsoftcloud/sdk-go/v2/ksyun/common
     ```
 
 ## 通过源码安装
@@ -44,10 +44,10 @@ package main
 
 import (
 "fmt"
-"github.com/kingsoftcloud/sdk-go/ksyun/common"
-"github.com/kingsoftcloud/sdk-go/ksyun/common/errors"
-"github.com/kingsoftcloud/sdk-go/ksyun/common/profile"
-iam "github.com/kingsoftcloud/sdk-go/ksyun/iam/v20151101"
+"github.com/kingsoftcloud/sdk-go/v2/ksyun/common"
+"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
+"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/profile"
+iam "github.com/kingsoftcloud/sdk-go/v2/ksyun/iam/v20151101"
 )
 
 func main() {

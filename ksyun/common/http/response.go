@@ -8,7 +8,7 @@ package http
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/kingsoftcloud/sdk-go/ksyun/common/errors"
+	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	"io/ioutil"
 	"net/http"
 )
