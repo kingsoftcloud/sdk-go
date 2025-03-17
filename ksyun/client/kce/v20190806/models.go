@@ -659,28 +659,28 @@ type AddClusterEpcInstancesRequest struct {
 	InstanceId      []*string `json:"InstanceId,omitempty" name:"InstanceId"`
 	EpcPara         []*string `json:"EpcPara,omitempty" name:"EpcPara"`
 	AdvancedSetting struct {
-		ContainerRuntime *string `json:"ContainerRuntime"`
-		ContainerPath    *string `json:"ContainerPath"`
-		UserScript       *string `json:"UserScript"`
-		PreUserScript    *string `json:"PreUserScript"`
-		Schedulable      *bool   `json:"Schedulable"`
+		ContainerRuntime *string `json:"ContainerRuntime" name:"ContainerRuntime"`
+		ContainerPath    *string `json:"ContainerPath" name:"ContainerPath"`
+		UserScript       *string `json:"UserScript" name:"UserScript"`
+		PreUserScript    *string `json:"PreUserScript" name:"PreUserScript"`
+		Schedulable      *bool   `json:"Schedulable" name:"Schedulable"`
 		Label            struct {
-			Key   *string `json:"Key"`
-			Value *string `json:"Value"`
-		} `json:"Label"`
+			Key   *string `json:"Key" name:"Key"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"Label" name:"Label"`
 		ExtraArg struct {
 			Kubelet struct {
-				CustomArg *string `json:"CustomArg"`
-			} `json:"Kubelet"`
-		} `json:"ExtraArg"`
-		ContainerLogMaxSize  *int `json:"ContainerLogMaxSize"`
-		ContainerLogMaxFiles *int `json:"ContainerLogMaxFiles"`
+				CustomArg *string `json:"CustomArg" name:"CustomArg"`
+			} `json:"Kubelet" name:"Kubelet"`
+		} `json:"ExtraArg" name:"ExtraArg"`
+		ContainerLogMaxSize  *int `json:"ContainerLogMaxSize" name:"ContainerLogMaxSize"`
+		ContainerLogMaxFiles *int `json:"ContainerLogMaxFiles" name:"ContainerLogMaxFiles"`
 		Taints               struct {
-			Key    *string `json:"Key"`
-			Value  *string `json:"Value"`
-			Effect *string `json:"Effect"`
-		} `json:"Taints"`
-	} `json:"AdvancedSetting"`
+			Key    *string `json:"Key" name:"Key"`
+			Value  *string `json:"Value" name:"Value"`
+			Effect *string `json:"Effect" name:"Effect"`
+		} `json:"Taints" name:"Taints"`
+	} `json:"AdvancedSetting" name:"AdvancedSetting"`
 }
 
 func (r *AddClusterEpcInstancesRequest) ToJsonString() string {
