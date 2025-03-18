@@ -1024,6 +1024,7 @@ type CenCidrPublishRequest struct {
 	InstanceType      *string   `json:"InstanceType,omitempty" name:"InstanceType"`
 	NetworkRouteId    []*string `json:"NetworkRouteId,omitempty" name:"NetworkRouteId"`
 	SelfDefineCidr    []*string `json:"SelfDefineCidr,omitempty" name:"SelfDefineCidr"`
+	CenId             *string   `json:"CenId,omitempty" name:"CenId"`
 }
 
 func (r *CenCidrPublishRequest) ToJsonString() string {

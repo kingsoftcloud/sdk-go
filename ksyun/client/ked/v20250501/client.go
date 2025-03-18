@@ -178,7 +178,7 @@ func (c *Client) CloudDesklistWithContext(ctx context.Context, request *CloudDes
 		request = NewCloudDesklistRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCloudDesklistResponse()
 	err, msg := c.Send(request, response)
@@ -442,7 +442,7 @@ func (c *Client) StrategylistWithContext(ctx context.Context, request *Strategyl
 		request = NewStrategylistRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewStrategylistResponse()
 	err, msg := c.Send(request, response)
@@ -574,7 +574,7 @@ func (c *Client) RoleslistWithContext(ctx context.Context, request *RoleslistReq
 		request = NewRoleslistRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRoleslistResponse()
 	err, msg := c.Send(request, response)
@@ -706,7 +706,7 @@ func (c *Client) ImagelistWithContext(ctx context.Context, request *ImagelistReq
 		request = NewImagelistRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewImagelistResponse()
 	err, msg := c.Send(request, response)
@@ -772,7 +772,7 @@ func (c *Client) MonitorregionsWithContext(ctx context.Context, request *Monitor
 		request = NewMonitorregionsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewMonitorregionsResponse()
 	err, msg := c.Send(request, response)
@@ -970,42 +970,9 @@ func (c *Client) UserslistWithContext(ctx context.Context, request *UserslistReq
 		request = NewUserslistRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewUserslistResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-func NewQueryStrategyruledetailRequest() (request *QueryStrategyruledetailRequest) {
-	request = &QueryStrategyruledetailRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("ked", APIVersion, "QueryStrategyruledetail")
-	return
-}
-
-func NewQueryStrategyruledetailResponse() (response *QueryStrategyruledetailResponse) {
-	response = &QueryStrategyruledetailResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) QueryStrategyruledetail(request *QueryStrategyruledetailRequest) string {
-	return c.QueryStrategyruledetailWithContext(context.Background(), request)
-}
-
-func (c *Client) QueryStrategyruledetailWithContext(ctx context.Context, request *QueryStrategyruledetailRequest) string {
-	if request == nil {
-		request = NewQueryStrategyruledetailRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewQueryStrategyruledetailResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -1204,6 +1171,303 @@ func (c *Client) GetProxyConfigWithContext(ctx context.Context, request *GetProx
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewGetProxyConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewQueryRuledetailRequest() (request *QueryRuledetailRequest) {
+	request = &QueryRuledetailRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ked", APIVersion, "QueryRuledetail")
+	return
+}
+
+func NewQueryRuledetailResponse() (response *QueryRuledetailResponse) {
+	response = &QueryRuledetailResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) QueryRuledetail(request *QueryRuledetailRequest) string {
+	return c.QueryRuledetailWithContext(context.Background(), request)
+}
+
+func (c *Client) QueryRuledetailWithContext(ctx context.Context, request *QueryRuledetailRequest) string {
+	if request == nil {
+		request = NewQueryRuledetailRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewQueryRuledetailResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewQueryUsersinfoRequest() (request *QueryUsersinfoRequest) {
+	request = &QueryUsersinfoRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ked", APIVersion, "QueryUsersinfo")
+	return
+}
+
+func NewQueryUsersinfoResponse() (response *QueryUsersinfoResponse) {
+	response = &QueryUsersinfoResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) QueryUsersinfo(request *QueryUsersinfoRequest) string {
+	return c.QueryUsersinfoWithContext(context.Background(), request)
+}
+
+func (c *Client) QueryUsersinfoWithContext(ctx context.Context, request *QueryUsersinfoRequest) string {
+	if request == nil {
+		request = NewQueryUsersinfoRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewQueryUsersinfoResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewGetDetailRequest() (request *GetDetailRequest) {
+	request = &GetDetailRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ked", APIVersion, "GetDetail")
+	return
+}
+
+func NewGetDetailResponse() (response *GetDetailResponse) {
+	response = &GetDetailResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetDetail(request *GetDetailRequest) string {
+	return c.GetDetailWithContext(context.Background(), request)
+}
+
+func (c *Client) GetDetailWithContext(ctx context.Context, request *GetDetailRequest) string {
+	if request == nil {
+		request = NewGetDetailRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetDetailResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewListLabelRequest() (request *ListLabelRequest) {
+	request = &ListLabelRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ked", APIVersion, "ListLabel")
+	return
+}
+
+func NewListLabelResponse() (response *ListLabelResponse) {
+	response = &ListLabelResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ListLabel(request *ListLabelRequest) string {
+	return c.ListLabelWithContext(context.Background(), request)
+}
+
+func (c *Client) ListLabelWithContext(ctx context.Context, request *ListLabelRequest) string {
+	if request == nil {
+		request = NewListLabelRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewListLabelResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCancelInstanceLabelRequest() (request *CancelInstanceLabelRequest) {
+	request = &CancelInstanceLabelRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ked", APIVersion, "CancelInstanceLabel")
+	return
+}
+
+func NewCancelInstanceLabelResponse() (response *CancelInstanceLabelResponse) {
+	response = &CancelInstanceLabelResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CancelInstanceLabel(request *CancelInstanceLabelRequest) string {
+	return c.CancelInstanceLabelWithContext(context.Background(), request)
+}
+
+func (c *Client) CancelInstanceLabelWithContext(ctx context.Context, request *CancelInstanceLabelRequest) string {
+	if request == nil {
+		request = NewCancelInstanceLabelRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCancelInstanceLabelResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewUpdateInstanceLabelRequest() (request *UpdateInstanceLabelRequest) {
+	request = &UpdateInstanceLabelRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ked", APIVersion, "UpdateInstanceLabel")
+	return
+}
+
+func NewUpdateInstanceLabelResponse() (response *UpdateInstanceLabelResponse) {
+	response = &UpdateInstanceLabelResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateInstanceLabel(request *UpdateInstanceLabelRequest) string {
+	return c.UpdateInstanceLabelWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateInstanceLabelWithContext(ctx context.Context, request *UpdateInstanceLabelRequest) string {
+	if request == nil {
+		request = NewUpdateInstanceLabelRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateInstanceLabelResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeleteLabelRequest() (request *DeleteLabelRequest) {
+	request = &DeleteLabelRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ked", APIVersion, "DeleteLabel")
+	return
+}
+
+func NewDeleteLabelResponse() (response *DeleteLabelResponse) {
+	response = &DeleteLabelResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteLabel(request *DeleteLabelRequest) string {
+	return c.DeleteLabelWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteLabelWithContext(ctx context.Context, request *DeleteLabelRequest) string {
+	if request == nil {
+		request = NewDeleteLabelRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteLabelResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewUpdateLabelRequest() (request *UpdateLabelRequest) {
+	request = &UpdateLabelRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ked", APIVersion, "UpdateLabel")
+	return
+}
+
+func NewUpdateLabelResponse() (response *UpdateLabelResponse) {
+	response = &UpdateLabelResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateLabel(request *UpdateLabelRequest) string {
+	return c.UpdateLabelWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateLabelWithContext(ctx context.Context, request *UpdateLabelRequest) string {
+	if request == nil {
+		request = NewUpdateLabelRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateLabelResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCreateLabelRequest() (request *CreateLabelRequest) {
+	request = &CreateLabelRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ked", APIVersion, "CreateLabel")
+	return
+}
+
+func NewCreateLabelResponse() (response *CreateLabelResponse) {
+	response = &CreateLabelResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateLabel(request *CreateLabelRequest) string {
+	return c.CreateLabelWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateLabelWithContext(ctx context.Context, request *CreateLabelRequest) string {
+	if request == nil {
+		request = NewCreateLabelRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateLabelResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)

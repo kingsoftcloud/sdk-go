@@ -2299,6 +2299,72 @@ func (c *Client) ModifyPrivateIpAddressAttributeWithContext(ctx context.Context,
 	}
 	return msg
 }
+func NewDetachDirectConnectGatewayWithVpcRequest() (request *DetachDirectConnectGatewayWithVpcRequest) {
+	request = &DetachDirectConnectGatewayWithVpcRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "DetachDirectConnectGatewayWithVpc")
+	return
+}
+
+func NewDetachDirectConnectGatewayWithVpcResponse() (response *DetachDirectConnectGatewayWithVpcResponse) {
+	response = &DetachDirectConnectGatewayWithVpcResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DetachDirectConnectGatewayWithVpc(request *DetachDirectConnectGatewayWithVpcRequest) string {
+	return c.DetachDirectConnectGatewayWithVpcWithContext(context.Background(), request)
+}
+
+func (c *Client) DetachDirectConnectGatewayWithVpcWithContext(ctx context.Context, request *DetachDirectConnectGatewayWithVpcRequest) string {
+	if request == nil {
+		request = NewDetachDirectConnectGatewayWithVpcRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDetachDirectConnectGatewayWithVpcResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewAttachDirectConnectGatewayWithVpcRequest() (request *AttachDirectConnectGatewayWithVpcRequest) {
+	request = &AttachDirectConnectGatewayWithVpcRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "AttachDirectConnectGatewayWithVpc")
+	return
+}
+
+func NewAttachDirectConnectGatewayWithVpcResponse() (response *AttachDirectConnectGatewayWithVpcResponse) {
+	response = &AttachDirectConnectGatewayWithVpcResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) AttachDirectConnectGatewayWithVpc(request *AttachDirectConnectGatewayWithVpcRequest) string {
+	return c.AttachDirectConnectGatewayWithVpcWithContext(context.Background(), request)
+}
+
+func (c *Client) AttachDirectConnectGatewayWithVpcWithContext(ctx context.Context, request *AttachDirectConnectGatewayWithVpcRequest) string {
+	if request == nil {
+		request = NewAttachDirectConnectGatewayWithVpcRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAttachDirectConnectGatewayWithVpcResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
 func NewCreateRouteTableRequest() (request *CreateRouteTableRequest) {
 	request = &CreateRouteTableRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},

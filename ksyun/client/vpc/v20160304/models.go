@@ -3290,6 +3290,80 @@ func (r *ModifyPrivateIpAddressAttributeResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DetachDirectConnectGatewayWithVpcRequest struct {
+	*ksyunhttp.BaseRequest
+	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitempty" name:"DirectConnectGatewayId"`
+	VpcId                  *string `json:"VpcId,omitempty" name:"VpcId"`
+}
+
+func (r *DetachDirectConnectGatewayWithVpcRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DetachDirectConnectGatewayWithVpcRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DetachDirectConnectGatewayWithVpcRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DetachDirectConnectGatewayWithVpcResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *DetachDirectConnectGatewayWithVpcResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DetachDirectConnectGatewayWithVpcResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachDirectConnectGatewayWithVpcRequest struct {
+	*ksyunhttp.BaseRequest
+	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitempty" name:"DirectConnectGatewayId"`
+	VpcId                  *string `json:"VpcId,omitempty" name:"VpcId"`
+}
+
+func (r *AttachDirectConnectGatewayWithVpcRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *AttachDirectConnectGatewayWithVpcRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "AttachDirectConnectGatewayWithVpcRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AttachDirectConnectGatewayWithVpcResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *AttachDirectConnectGatewayWithVpcResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *AttachDirectConnectGatewayWithVpcResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateRouteTableRequest struct {
 	*ksyunhttp.BaseRequest
 	VpcId          *string `json:"VpcId,omitempty" name:"VpcId"`
