@@ -581,7 +581,7 @@ type DescribeEpcsResponse struct {
 		CabinetName                 *string `json:"CabinetName" name:"CabinetName"`
 		ProjectId                   *string `json:"ProjectId" name:"ProjectId"`
 		KeyId                       *string `json:"KeyId" name:"KeyId"`
-		AllowModifyHyperThreading   *string `json:"AllowModifyHyperThreading" name:"AllowModifyHyperThreading"`
+		AllowModifyHyperThreading   *bool `json:"AllowModifyHyperThreading" name:"AllowModifyHyperThreading"`
 		ReleasableTime              *string `json:"ReleasableTime" name:"ReleasableTime"`
 		RackName                    *string `json:"RackName" name:"RackName"`
 		KmrAgent                    *string `json:"KmrAgent" name:"KmrAgent"`
