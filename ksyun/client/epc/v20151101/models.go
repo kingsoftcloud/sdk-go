@@ -498,7 +498,7 @@ func (r *DescribeEpcsRequest) FromJsonString(s string) error {
 
 type DescribeEpcsResponse struct {
 	*ksyunhttp.BaseResponse
-	TotalCount *string `json:"TotalCount" name:"TotalCount"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	NextToken  *string `json:"NextToken" name:"NextToken"`
 	HostSet    []struct {
@@ -509,12 +509,12 @@ type DescribeEpcsResponse struct {
 		NvmeDataFileType *string `json:"NvmeDataFileType" name:"NvmeDataFileType"`
 		Memory           *string `json:"Memory" name:"Memory"`
 		Cpu              struct {
-			Model     *string `json:"Model" name:"Model"`
-			Count     *string `json:"Count" name:"Count"`
-			Frequence *string `json:"Frequence" name:"Frequence"`
-			CoreCount *string `json:"CoreCount" name:"CoreCount"`
-		} `json:"Cpu" name:"Cpu"`
-		Raid *string `json:"Raid" name:"Raid"`
+			Model     *string `json:"Model"`
+			Count     *int    `json:"Count"`
+			Frequence *string `json:"Frequence"`
+			CoreCount *int    `json:"CoreCount"`
+		} `json:"Cpu"`
+		Raid *string `json:"Raid"`
 		Gpu  struct {
 			Model     *string `json:"Model" name:"Model"`
 			GpuCount  *int    `json:"GpuCount" name:"GpuCount"`
@@ -560,38 +560,48 @@ type DescribeEpcsResponse struct {
 		ComputerName *string `json:"ComputerName" name:"ComputerName"`
 		CabinetId    *string `json:"CabinetId" name:"CabinetId"`
 		DiskSet      []struct {
-			DiskType        *string `json:"DiskType" name:"DiskType"`
-			Space           *string `json:"Space" name:"Space"`
-			DiskCount       *string `json:"DiskCount" name:"DiskCount"`
-			Raid            *string `json:"Raid" name:"Raid"`
-			DiskAttribute   *string `json:"DiskAttribute" name:"DiskAttribute"`
-			SystemDiskSpace *string `json:"SystemDiskSpace" name:"SystemDiskSpace"`
-		} `json:"DiskSet" name:"DiskSet"`
-		DataDiskCatalogueSuffix     *string `json:"DataDiskCatalogueSuffix" name:"DataDiskCatalogueSuffix"`
-		DataFileType                *string `json:"DataFileType" name:"DataFileType"`
-		HostType                    *string `json:"HostType" name:"HostType"`
-		SystemVolumeSize            *string `json:"SystemVolumeSize" name:"SystemVolumeSize"`
-		NvmeDataDiskCatalogue       *string `json:"NvmeDataDiskCatalogue" name:"NvmeDataDiskCatalogue"`
-		HostStatus                  *string `json:"HostStatus" name:"HostStatus"`
-		EnableContainer             *bool   `json:"EnableContainer" name:"EnableContainer"`
-		ClusterId                   *string `json:"ClusterId" name:"ClusterId"`
-		HyperThreading              *string `json:"HyperThreading" name:"HyperThreading"`
-		CreateTime                  *string `json:"CreateTime" name:"CreateTime"`
-		OsName                      *string `json:"OsName" name:"OsName"`
-		CabinetName                 *string `json:"CabinetName" name:"CabinetName"`
-		ProjectId                   *string `json:"ProjectId" name:"ProjectId"`
-		KeyId                       *string `json:"KeyId" name:"KeyId"`
-		AllowModifyHyperThreading   *bool `json:"AllowModifyHyperThreading" name:"AllowModifyHyperThreading"`
-		ReleasableTime              *string `json:"ReleasableTime" name:"ReleasableTime"`
-		RackName                    *string `json:"RackName" name:"RackName"`
-		KmrAgent                    *string `json:"KmrAgent" name:"KmrAgent"`
-		Sn                          *string `json:"Sn" name:"Sn"`
-		NvmeDataDiskCatalogueSuffix *string `json:"NvmeDataDiskCatalogueSuffix" name:"NvmeDataDiskCatalogueSuffix"`
-		SecurityAgent               *string `json:"SecurityAgent" name:"SecurityAgent"`
-		SupportEbs                  *string `json:"SupportEbs" name:"SupportEbs"`
-		KplAgent                    *string `json:"KplAgent" name:"KplAgent"`
-		ChargeType                  *string `json:"ChargeType" name:"ChargeType"`
-		TimedRegularizationTime     *string `json:"TimedRegularizationTime" name:"TimedRegularizationTime"`
+			DiskType        *string `json:"DiskType"`
+			Space           *string `json:"Space"`
+			DiskCount       *int    `json:"DiskCount"`
+			Raid            *string `json:"Raid"`
+			DiskAttribute   *string `json:"DiskAttribute"`
+			SystemDiskSpace *string `json:"SystemDiskSpace"`
+			DiskSpace       *string `json:"DiskSpace"`
+		} `json:"DiskSet"`
+		DataDiskCatalogueSuffix     *string `json:"DataDiskCatalogueSuffix"`
+		DataFileType                *string `json:"DataFileType"`
+		HostType                    *string `json:"HostType"`
+		SystemVolumeSize            *string `json:"SystemVolumeSize"`
+		NvmeDataDiskCatalogue       *string `json:"NvmeDataDiskCatalogue"`
+		HostStatus                  *string `json:"HostStatus"`
+		EnableContainer             *bool   `json:"EnableContainer"`
+		ClusterId                   *string `json:"ClusterId"`
+		HyperThreading              *string `json:"HyperThreading"`
+		CreateTime                  *string `json:"CreateTime"`
+		OsName                      *string `json:"OsName"`
+		CabinetName                 *string `json:"CabinetName"`
+		ProjectId                   *string `json:"ProjectId"`
+		KeyId                       *string `json:"KeyId"`
+		AllowModifyHyperThreading   *bool   `json:"AllowModifyHyperThreading"`
+		ReleasableTime              *string `json:"ReleasableTime"`
+		RackName                    *string `json:"RackName"`
+		KmrAgent                    *string `json:"KmrAgent"`
+		Sn                          *string `json:"Sn"`
+		NvmeDataDiskCatalogueSuffix *string `json:"NvmeDataDiskCatalogueSuffix"`
+		SecurityAgent               *string `json:"SecurityAgent"`
+		SupportEbs                  *string `json:"SupportEbs"`
+		KplAgent                    *string `json:"KplAgent"`
+		RackId                      *string `json:"RackId"`
+		ContainerAgent              *string `json:"ContainerAgent"`
+		Roces                       []struct {
+			Ip      *string `json:"Ip"`
+			Mask    *string `json:"Mask"`
+			GateWay *string `json:"GateWay"`
+			Type    *string `json:"Type"`
+		} `json:"Roces"`
+		ContractDueTime *string `json:"ContractDueTime"`
+		AutoDeleteTime  *string `json:"AutoDeleteTime"`
+		VpcTrust        *int    `json:"VpcTrust"`
 	} `json:"HostSet"`
 }
 
