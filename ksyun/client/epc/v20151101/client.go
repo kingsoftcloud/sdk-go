@@ -2035,3 +2035,36 @@ func (c *Client) DescribeUseHotStandbyRecordsWithContext(ctx context.Context, re
 	}
 	return msg
 }
+func NewDescribeGpuRoceTopologyRequest() (request *DescribeGpuRoceTopologyRequest) {
+	request = &DescribeGpuRoceTopologyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "DescribeGpuRoceTopology")
+	return
+}
+
+func NewDescribeGpuRoceTopologyResponse() (response *DescribeGpuRoceTopologyResponse) {
+	response = &DescribeGpuRoceTopologyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeGpuRoceTopology(request *DescribeGpuRoceTopologyRequest) string {
+	return c.DescribeGpuRoceTopologyWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeGpuRoceTopologyWithContext(ctx context.Context, request *DescribeGpuRoceTopologyRequest) string {
+	if request == nil {
+		request = NewDescribeGpuRoceTopologyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeGpuRoceTopologyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
