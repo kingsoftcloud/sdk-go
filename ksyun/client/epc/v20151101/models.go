@@ -499,7 +499,7 @@ func (r *DescribeEpcsRequest) FromJsonString(s string) error {
 
 type DescribeEpcsResponse struct {
 	*ksyunhttp.BaseResponse
-	TotalCount *string `json:"TotalCount" name:"TotalCount"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	NextToken  *string `json:"NextToken" name:"NextToken"`
 	HostSet    []struct {
@@ -511,9 +511,9 @@ type DescribeEpcsResponse struct {
 		Memory           *string `json:"Memory"`
 		Cpu              struct {
 			Model     *string `json:"Model"`
-			Count     *string `json:"Count"`
+			Count     *int    `json:"Count"`
 			Frequence *string `json:"Frequence"`
-			CoreCount *string `json:"CoreCount"`
+			CoreCount *int    `json:"CoreCount"`
 		} `json:"Cpu"`
 		Raid *string `json:"Raid"`
 		Gpu  struct {
@@ -523,11 +523,6 @@ type DescribeEpcsResponse struct {
 			Frequence *string `json:"Frequence"`
 			CoreCount *int    `json:"CoreCount"`
 		} `json:"Gpu"`
-		Roce struct {
-			RoceIp      *string `json:"RoceIp"`
-			RoceMask    *string `json:"RoceMask"`
-			RoceGateWay *string `json:"RoceGateWay"`
-		} `json:"Roce"`
 		CloudMonitorAgent    *string `json:"CloudMonitorAgent"`
 		DataDiskCatalogue    *string `json:"DataDiskCatalogue"`
 		NetworkInterfaceMode *string `json:"NetworkInterfaceMode"`
@@ -557,16 +552,18 @@ type DescribeEpcsResponse struct {
 			SubnetId           *string `json:"SubnetId"`
 			NetworkInterfaceId *string `json:"NetworkInterfaceId"`
 			Mac                *string `json:"Mac"`
+			VpcId              *string `json:"VpcId"`
 		} `json:"NetworkInterfaceAttributeSet"`
 		ComputerName *string `json:"ComputerName"`
 		CabinetId    *string `json:"CabinetId"`
 		DiskSet      []struct {
 			DiskType        *string `json:"DiskType"`
 			Space           *string `json:"Space"`
-			DiskCount       *string `json:"DiskCount"`
+			DiskCount       *int    `json:"DiskCount"`
 			Raid            *string `json:"Raid"`
 			DiskAttribute   *string `json:"DiskAttribute"`
 			SystemDiskSpace *string `json:"SystemDiskSpace"`
+			DiskSpace       *string `json:"DiskSpace"`
 		} `json:"DiskSet"`
 		DataDiskCatalogueSuffix     *string `json:"DataDiskCatalogueSuffix"`
 		DataFileType                *string `json:"DataFileType"`
@@ -591,8 +588,17 @@ type DescribeEpcsResponse struct {
 		SecurityAgent               *string `json:"SecurityAgent"`
 		SupportEbs                  *string `json:"SupportEbs"`
 		KplAgent                    *string `json:"KplAgent"`
-		ChargeType                  *string `json:"ChargeType"`
-		TimedRegularizationTime     *string `json:"TimedRegularizationTime"`
+		RackId                      *string `json:"RackId"`
+		ContainerAgent              *string `json:"ContainerAgent"`
+		Roces                       []struct {
+			Ip      *string `json:"Ip"`
+			Mask    *string `json:"Mask"`
+			GateWay *string `json:"GateWay"`
+			Type    *string `json:"Type"`
+		} `json:"Roces"`
+		ContractDueTime *string `json:"ContractDueTime"`
+		AutoDeleteTime  *string `json:"AutoDeleteTime"`
+		VpcTrust        *int    `json:"VpcTrust"`
 	} `json:"HostSet"`
 }
 
