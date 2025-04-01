@@ -521,10 +521,11 @@ func (r *DescribeSnapshotsResponse) FromJsonString(s string) error {
 
 type CreateSnapshotRequest struct {
 	*ksyunhttp.BaseRequest
-	VolumeId     *string `json:"VolumeId,omitempty" name:"VolumeId"`
-	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
-	SnapshotDesc *string `json:"SnapshotDesc,omitempty" name:"SnapshotDesc"`
-	SnapshotType *string `json:"SnapshotType,omitempty" name:"SnapshotType"`
+	VolumeId            *string `json:"VolumeId,omitempty" name:"VolumeId"`
+	SnapshotName        *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+	SnapshotDesc        *string `json:"SnapshotDesc,omitempty" name:"SnapshotDesc"`
+	SnapshotType        *string `json:"SnapshotType,omitempty" name:"SnapshotType"`
+	ScheduledDeleteTime *string `json:"ScheduledDeleteTime,omitempty" name:"ScheduledDeleteTime"`
 }
 
 func (r *CreateSnapshotRequest) ToJsonString() string {
