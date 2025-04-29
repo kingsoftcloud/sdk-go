@@ -2465,8 +2465,8 @@ type CreateAlbRequest struct {
 	PrivateIpAddress       *string `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
 	EnabledQuic            *bool   `json:"EnabledQuic,omitempty" name:"EnabledQuic"`
 	EnableHpa              *bool   `json:"EnableHpa,omitempty" name:"EnableHpa"`
-	DeleteProtection       *bool   `json:"DeleteProtection,omitempty" name:"DeleteProtection"`
-	ModificationProtection *bool   `json:"ModificationProtection,omitempty" name:"ModificationProtection"`
+	DeleteProtection       *string `json:"DeleteProtection,omitempty" name:"DeleteProtection"`
+	ModificationProtection *string `json:"ModificationProtection,omitempty" name:"ModificationProtection"`
 }
 
 func (r *CreateAlbRequest) ToJsonString() string {
@@ -2660,8 +2660,8 @@ type DescribeAlbsResponse struct {
 		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
 		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
 		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
-		DeleteProtection *bool   `json:"DeleteProtection" name:"DeleteProtection"`
-		ModifyProtection *bool   `json:"ModifyProtection" name:"ModifyProtection"`
+		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
+		ModifyProtection *string `json:"ModifyProtection" name:"ModifyProtection"`
 		TagSet           []struct {
 			ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
 			TagId        *string `json:"TagId" name:"TagId"`
