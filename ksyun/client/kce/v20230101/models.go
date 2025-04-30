@@ -101,9 +101,8 @@ type CreateAddonInstanceResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		ClusterId   *string `json:"ClusterId" name:"ClusterId"`
-		InstanceIds []struct {
-		} `json:"InstanceIds" name:"InstanceIds"`
+		ClusterId   *string   `json:"ClusterId" name:"ClusterId"`
+		InstanceIds []*string `json:"InstanceIds" name:"InstanceIds"`
 	} `json:"Data"`
 }
 

@@ -1,10 +1,10 @@
 package v20220101
-
 import (
 	"encoding/json"
 	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type CreateAlarmPolicyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -43,6 +43,7 @@ func (r *CreateAlarmPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteAlarmPolicyRequest struct {
 	*ksyunhttp.BaseRequest
 	PolicyIds []*int `json:"PolicyIds,omitempty" name:"PolicyIds"`
@@ -77,3 +78,4 @@ func (r *DeleteAlarmPolicyResponse) ToJsonString() string {
 func (r *DeleteAlarmPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

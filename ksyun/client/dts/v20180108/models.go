@@ -55,12 +55,11 @@ type SchemaStructResponse struct {
 					Renamable *bool   `json:"renamable" name:"renamable"`
 					IsFull    *bool   `json:"is_full" name:"is_full"`
 					Children  []struct {
-						Source    *string `json:"Source" name:"Source"`
-						Target    *string `json:"Target" name:"Target"`
-						Renamable *bool   `json:"Renamable" name:"Renamable"`
-						IsFull    *bool   `json:"IsFull" name:"IsFull"`
-						Children  []struct {
-						} `json:"Children" name:"Children"`
+						Source    *string   `json:"Source" name:"Source"`
+						Target    *string   `json:"Target" name:"Target"`
+						Renamable *bool     `json:"Renamable" name:"Renamable"`
+						IsFull    *bool     `json:"IsFull" name:"IsFull"`
+						Children  []*string `json:"Children" name:"Children"`
 					} `json:"Children"`
 				} `json:"Children" name:"Children"`
 			} `json:"Schema"`
@@ -463,8 +462,7 @@ func (r *DescribeSourceUserConfigRequest) FromJsonString(s string) error {
 type DescribeSourceUserConfigResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
-		SourceUserConfig []struct {
-		} `json:"SourceUserConfig" name:"SourceUserConfig"`
+		SourceUserConfig []*string `json:"SourceUserConfig" name:"SourceUserConfig"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -638,8 +636,7 @@ func (r *DescribeDTSParameterConfigRequest) FromJsonString(s string) error {
 type DescribeDTSParameterConfigResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
-		DTSParameterConfig []struct {
-		} `json:"DTSParameterConfig" name:"DTSParameterConfig"`
+		DTSParameterConfig []*string `json:"DTSParameterConfig" name:"DTSParameterConfig"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }

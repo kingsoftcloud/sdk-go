@@ -1,5 +1,4 @@
 package v20231231
-
 import (
 	"context"
 	"fmt"
@@ -46,7 +45,7 @@ func (c *Client) ListInstancesWithContext(ctx context.Context, request *ListInst
 		request = NewListInstancesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewListInstancesResponse()
 	err, msg := c.Send(request, response)
@@ -82,6 +81,39 @@ func (c *Client) GetInstanceDetailWithContext(ctx context.Context, request *GetI
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewGetInstanceDetailResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyHostsRequest() (request *ModifyHostsRequest) {
+	request = &ModifyHostsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kmr", APIVersion, "ModifyHosts")
+	return
+}
+
+func NewModifyHostsResponse() (response *ModifyHostsResponse) {
+	response = &ModifyHostsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyHosts(request *ModifyHostsRequest) string {
+	return c.ModifyHostsWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyHostsWithContext(ctx context.Context, request *ModifyHostsRequest) string {
+	if request == nil {
+		request = NewModifyHostsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyHostsResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -220,3 +252,5 @@ func (c *Client) DeleteAutoScalePolicyWithContext(ctx context.Context, request *
 	}
 	return msg
 }
+
+

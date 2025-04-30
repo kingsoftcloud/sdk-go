@@ -1,5 +1,4 @@
 package v20151101
-
 import (
 	"context"
 	"fmt"
@@ -2101,3 +2100,38 @@ func (c *Client) GetUserSsoSettingsWithContext(ctx context.Context, request *Get
 	}
 	return msg
 }
+func NewGetEffectivePoliciesRequest() (request *GetEffectivePoliciesRequest) {
+	request = &GetEffectivePoliciesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("iam", APIVersion, "GetEffectivePolicies")
+	return
+}
+
+func NewGetEffectivePoliciesResponse() (response *GetEffectivePoliciesResponse) {
+	response = &GetEffectivePoliciesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetEffectivePolicies(request *GetEffectivePoliciesRequest) string {
+	return c.GetEffectivePoliciesWithContext(context.Background(), request)
+}
+
+func (c *Client) GetEffectivePoliciesWithContext(ctx context.Context, request *GetEffectivePoliciesRequest) string {
+	if request == nil {
+		request = NewGetEffectivePoliciesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetEffectivePoliciesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+

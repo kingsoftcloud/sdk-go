@@ -1,10 +1,10 @@
 package v20100525
-
 import (
 	"encoding/json"
 	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type GetMetricStatisticsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -56,6 +56,7 @@ func (r *GetMetricStatisticsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListMetricsRequest struct {
 	*ksyunhttp.BaseRequest
 	Namespace  *string `json:"Namespace,omitempty" name:"Namespace"`
@@ -89,10 +90,10 @@ type ListMetricsResponse struct {
 				InstanceId *string `json:"InstanceId" name:"InstanceId"`
 				MetricName *string `json:"MetricName" name:"MetricName"`
 				MetricDesc *string `json:"MetricDesc" name:"MetricDesc"`
-				Namespace  *string `json:"Namespace" name:"Namespace"`
-				Interval   *string `json:"Interval" name:"Interval"`
-				Type       *string `json:"Type" name:"Type"`
-				Unit       *string `json:"Unit" name:"Unit"`
+				Namespace *string `json:"Namespace" name:"Namespace"`
+				Interval  *string `json:"Interval" name:"Interval"`
+				Type      *string `json:"Type" name:"Type"`
+				Unit      *string `json:"Unit" name:"Unit"`
 			} `json:"Member"`
 		} `json:"Metrics" name:"Metrics"`
 	} `json:"ListMetricsResult"`
@@ -109,3 +110,4 @@ func (r *ListMetricsResponse) ToJsonString() string {
 func (r *ListMetricsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

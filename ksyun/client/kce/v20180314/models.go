@@ -1,11 +1,9 @@
 package v20180314
-
 import (
 	"encoding/json"
 	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 type DescribeRepoNamespaceFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
@@ -22,6 +20,7 @@ type DescribeTagFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
+
 
 type CreateRepoNamespaceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -58,6 +57,7 @@ func (r *CreateRepoNamespaceResponse) ToJsonString() string {
 func (r *CreateRepoNamespaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeRepoNamespaceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -107,6 +107,7 @@ func (r *DescribeRepoNamespaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyRepoNamespaceTypeRequest struct {
 	*ksyunhttp.BaseRequest
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
@@ -142,6 +143,7 @@ func (r *ModifyRepoNamespaceTypeResponse) ToJsonString() string {
 func (r *ModifyRepoNamespaceTypeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type RepoNamespaceExistRequest struct {
 	*ksyunhttp.BaseRequest
@@ -179,6 +181,7 @@ func (r *RepoNamespaceExistResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type CreateRepositoryRequest struct {
 	*ksyunhttp.BaseRequest
 	RepoName    *string `json:"RepoName,omitempty" name:"RepoName"`
@@ -215,6 +218,7 @@ func (r *CreateRepositoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteRepositoryRequest struct {
 	*ksyunhttp.BaseRequest
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
@@ -250,6 +254,7 @@ func (r *DeleteRepositoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeRepositoryRequest struct {
 	*ksyunhttp.BaseRequest
 	RepoName   []*string                   `json:"RepoName,omitempty" name:"RepoName"`
@@ -281,12 +286,12 @@ type DescribeRepositoryResponse struct {
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	RepoSet    []struct {
-		RepoName    *string `json:"RepoName" name:"RepoName"`
-		Public      *bool   `json:"Public" name:"Public"`
-		FavorCount  *int    `json:"FavorCount" name:"FavorCount"`
-		PullCount   *int    `json:"PullCount" name:"PullCount"`
+		RepoName   *string `json:"RepoName" name:"RepoName"`
+		Public     *bool   `json:"Public" name:"Public"`
+		FavorCount *int    `json:"FavorCount" name:"FavorCount"`
+		PullCount  *int    `json:"PullCount" name:"PullCount"`
 		Description *string `json:"Description" name:"Description"`
-		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"RepoSet"`
 }
 
@@ -298,6 +303,7 @@ func (r *DescribeRepositoryResponse) ToJsonString() string {
 func (r *DescribeRepositoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribePublicRepositoryRequest struct {
 	*ksyunhttp.BaseRequest
@@ -330,12 +336,12 @@ type DescribePublicRepositoryResponse struct {
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	RepoSet    []struct {
-		RepoName    *string `json:"RepoName" name:"RepoName"`
-		Public      *bool   `json:"Public" name:"Public"`
-		FavorCount  *int    `json:"FavorCount" name:"FavorCount"`
-		PullCount   *int    `json:"PullCount" name:"PullCount"`
+		RepoName   *string `json:"RepoName" name:"RepoName"`
+		Public     *bool   `json:"Public" name:"Public"`
+		FavorCount *int    `json:"FavorCount" name:"FavorCount"`
+		PullCount  *int    `json:"PullCount" name:"PullCount"`
 		Description *string `json:"Description" name:"Description"`
-		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"RepoSet"`
 }
 
@@ -347,6 +353,7 @@ func (r *DescribePublicRepositoryResponse) ToJsonString() string {
 func (r *DescribePublicRepositoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type UpdateRepoDescRequest struct {
 	*ksyunhttp.BaseRequest
@@ -384,6 +391,7 @@ func (r *UpdateRepoDescResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeTagRequest struct {
 	*ksyunhttp.BaseRequest
 	RepoName   *string              `json:"RepoName,omitempty" name:"RepoName"`
@@ -415,15 +423,15 @@ type DescribeTagResponse struct {
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	TagSet     []struct {
-		RepoName      *string `json:"RepoName" name:"RepoName"`
-		TagName       *string `json:"TagName" name:"TagName"`
-		ImageId       *string `json:"ImageId" name:"ImageId"`
-		CreateTime    *string `json:"CreateTime" name:"CreateTime"`
-		SizeByte      *int    `json:"SizeByte" name:"SizeByte"`
-		Author        *string `json:"Author" name:"Author"`
+		RepoName     *string `json:"RepoName" name:"RepoName"`
+		TagName      *string `json:"TagName" name:"TagName"`
+		ImageId      *string `json:"ImageId" name:"ImageId"`
+		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		SizeByte     *int    `json:"SizeByte" name:"SizeByte"`
+		Author       *string `json:"Author" name:"Author"`
 		DockerVersion *string `json:"DockerVersion" name:"DockerVersion"`
-		Architecture  *string `json:"Architecture" name:"Architecture"`
-		Os            *string `json:"Os" name:"Os"`
+		Architecture *string `json:"Architecture" name:"Architecture"`
+		Os           *string `json:"Os" name:"Os"`
 	} `json:"TagSet"`
 }
 
@@ -435,6 +443,7 @@ func (r *DescribeTagResponse) ToJsonString() string {
 func (r *DescribeTagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DeleteTagsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -472,6 +481,7 @@ func (r *DeleteTagsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type AddFavorRequest struct {
 	*ksyunhttp.BaseRequest
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
@@ -508,6 +518,7 @@ func (r *AddFavorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteFavorRequest struct {
 	*ksyunhttp.BaseRequest
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
@@ -543,6 +554,7 @@ func (r *DeleteFavorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type GetFavorRequest struct {
 	*ksyunhttp.BaseRequest
 	MaxResults *int    `json:"MaxResults,omitempty" name:"MaxResults"`
@@ -573,8 +585,8 @@ type GetFavorResponse struct {
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	FavorSet   []struct {
-		RepoName   *string `json:"RepoName" name:"RepoName"`
-		RepoType   *string `json:"RepoType" name:"RepoType"`
+		RepoName *string `json:"RepoName" name:"RepoName"`
+		RepoType *string `json:"RepoType" name:"RepoType"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"FavorSet"`
 }
@@ -587,6 +599,7 @@ func (r *GetFavorResponse) ToJsonString() string {
 func (r *GetFavorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type RegisterRepositoryAccountRequest struct {
 	*ksyunhttp.BaseRequest
@@ -692,3 +705,4 @@ func (r *DeleteRepoNamespaceResponse) ToJsonString() string {
 func (r *DeleteRepoNamespaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

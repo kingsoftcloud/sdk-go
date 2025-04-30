@@ -854,8 +854,7 @@ func (r *DescribeCollationsRequest) FromJsonString(s string) error {
 type DescribeCollationsResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
-		Collations []struct {
-		} `json:"Collations" name:"Collations"`
+		Collations []*string `json:"Collations" name:"Collations"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2217,9 +2216,8 @@ func (r *GetHistoryDatabaseInfoRequest) FromJsonString(s string) error {
 type GetHistoryDatabaseInfoResponse struct {
 	*ksyunhttp.BaseResponse
 	Databases []struct {
-		DatabaseName *string `json:"DatabaseName" name:"DatabaseName"`
-		TableNames   []struct {
-		} `json:"TableNames" name:"TableNames"`
+		DatabaseName *string   `json:"DatabaseName" name:"DatabaseName"`
+		TableNames   []*string `json:"TableNames" name:"TableNames"`
 	} `json:"Databases"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }

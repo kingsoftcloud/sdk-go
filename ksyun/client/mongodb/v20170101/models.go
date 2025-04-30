@@ -1574,43 +1574,42 @@ type DescribeClusterForRestoreResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId             *string `json:"RequestId" name:"RequestId"`
 	MongoDBInstanceResult struct {
-		UserId          *string `json:"UserId" name:"UserId"`
-		Region          *string `json:"Region" name:"Region"`
-		Name            *string `json:"Name" name:"Name"`
-		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
-		Status          *string `json:"Status" name:"Status"`
-		IP              *string `json:"IP" name:"IP"`
-		InstanceType    *string `json:"InstanceType" name:"InstanceType"`
-		Version         *string `json:"Version" name:"Version"`
-		InstanceClass   *string `json:"InstanceClass" name:"InstanceClass"`
-		Storage         *int    `json:"Storage" name:"Storage"`
-		SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
-		Port            *int    `json:"Port" name:"Port"`
-		NetworkType     *string `json:"NetworkType" name:"NetworkType"`
-		VpcId           *string `json:"VpcId" name:"VpcId"`
-		VnetId          *string `json:"VnetId" name:"VnetId"`
-		TimingSwitch    *string `json:"TimingSwitch" name:"TimingSwitch"`
-		Timezone        *string `json:"Timezone" name:"Timezone"`
-		TimeCycle       *string `json:"TimeCycle" name:"TimeCycle"`
-		ProductId       *string `json:"ProductId" name:"ProductId"`
-		PayType         *string `json:"PayType" name:"PayType"`
-		ProductWhat     *int    `json:"ProductWhat" name:"ProductWhat"`
-		CreateDate      *string `json:"CreateDate" name:"CreateDate"`
-		ExpirationDate  *string `json:"ExpirationDate" name:"ExpirationDate"`
-		IamProjectId    *string `json:"IamProjectId" name:"IamProjectId"`
-		IamProjectName  *string `json:"IamProjectName" name:"IamProjectName"`
-		NodeNum         *int    `json:"NodeNum" name:"NodeNum"`
-		MongosNum       *string `json:"MongosNum" name:"MongosNum"`
-		ShardNum        *string `json:"ShardNum" name:"ShardNum"`
-		Mode            *string `json:"Mode" name:"Mode"`
-		Config          *string `json:"Config" name:"Config"`
-		Area            *string `json:"Area" name:"Area"`
-		SlbaclId        *string `json:"SlbaclId" name:"SlbaclId"`
-		Ipv6Vip         *string `json:"Ipv6Vip" name:"Ipv6Vip"`
-		IpVersion       *string `json:"IpVersion" name:"IpVersion"`
-		Tags            []struct {
-		} `json:"Tags" name:"Tags"`
-		Shards struct {
+		UserId          *string   `json:"UserId" name:"UserId"`
+		Region          *string   `json:"Region" name:"Region"`
+		Name            *string   `json:"Name" name:"Name"`
+		InstanceId      *string   `json:"InstanceId" name:"InstanceId"`
+		Status          *string   `json:"Status" name:"Status"`
+		IP              *string   `json:"IP" name:"IP"`
+		InstanceType    *string   `json:"InstanceType" name:"InstanceType"`
+		Version         *string   `json:"Version" name:"Version"`
+		InstanceClass   *string   `json:"InstanceClass" name:"InstanceClass"`
+		Storage         *int      `json:"Storage" name:"Storage"`
+		SecurityGroupId *string   `json:"SecurityGroupId" name:"SecurityGroupId"`
+		Port            *int      `json:"Port" name:"Port"`
+		NetworkType     *string   `json:"NetworkType" name:"NetworkType"`
+		VpcId           *string   `json:"VpcId" name:"VpcId"`
+		VnetId          *string   `json:"VnetId" name:"VnetId"`
+		TimingSwitch    *string   `json:"TimingSwitch" name:"TimingSwitch"`
+		Timezone        *string   `json:"Timezone" name:"Timezone"`
+		TimeCycle       *string   `json:"TimeCycle" name:"TimeCycle"`
+		ProductId       *string   `json:"ProductId" name:"ProductId"`
+		PayType         *string   `json:"PayType" name:"PayType"`
+		ProductWhat     *int      `json:"ProductWhat" name:"ProductWhat"`
+		CreateDate      *string   `json:"CreateDate" name:"CreateDate"`
+		ExpirationDate  *string   `json:"ExpirationDate" name:"ExpirationDate"`
+		IamProjectId    *string   `json:"IamProjectId" name:"IamProjectId"`
+		IamProjectName  *string   `json:"IamProjectName" name:"IamProjectName"`
+		NodeNum         *int      `json:"NodeNum" name:"NodeNum"`
+		MongosNum       *string   `json:"MongosNum" name:"MongosNum"`
+		ShardNum        *string   `json:"ShardNum" name:"ShardNum"`
+		Mode            *string   `json:"Mode" name:"Mode"`
+		Config          *string   `json:"Config" name:"Config"`
+		Area            *string   `json:"Area" name:"Area"`
+		SlbaclId        *string   `json:"SlbaclId" name:"SlbaclId"`
+		Ipv6Vip         *string   `json:"Ipv6Vip" name:"Ipv6Vip"`
+		IpVersion       *string   `json:"IpVersion" name:"IpVersion"`
+		Tags            []*string `json:"Tags" name:"Tags"`
+		Shards          struct {
 			Vcpu      *int `json:"vcpu" name:"vcpu"`
 			MemSize   *int `json:"mem_size" name:"mem_size"`
 			ShardsNum *int `json:"shards_num" name:"shards_num"`
@@ -1631,6 +1630,144 @@ func (r *DescribeClusterForRestoreResponse) ToJsonString() string {
 }
 
 func (r *DescribeClusterForRestoreResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDefaultParamsRequest struct {
+	*ksyunhttp.BaseRequest
+	DbVersion *string `json:"DbVersion,omitempty" name:"DbVersion"`
+}
+
+func (r *DescribeDefaultParamsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDefaultParamsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeDefaultParamsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDefaultParamsResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *DescribeDefaultParamsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDefaultParamsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateParamGroupRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *CreateParamGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateParamGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateParamGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateParamGroupResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *CreateParamGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateParamGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeParamGroupListRequest struct {
+	*ksyunhttp.BaseRequest
+	DbVersion  *string `json:"DbVersion,omitempty" name:"DbVersion"`
+	NameSearch *string `json:"NameSearch,omitempty" name:"NameSearch"`
+	Offset     *string `json:"Offset,omitempty" name:"Offset"`
+	Limit      *string `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeParamGroupListRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeParamGroupListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeParamGroupListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeParamGroupListResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *DescribeParamGroupListResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeParamGroupListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeParamGroupInfoRequest struct {
+	*ksyunhttp.BaseRequest
+	ParamGroupId *string `json:"ParamGroupId,omitempty" name:"ParamGroupId"`
+}
+
+func (r *DescribeParamGroupInfoRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeParamGroupInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeParamGroupInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeParamGroupInfoResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *DescribeParamGroupInfoResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeParamGroupInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1665,5 +1802,74 @@ func (r *DescribeInstanceParamsResponse) ToJsonString() string {
 }
 
 func (r *DescribeInstanceParamsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyParamGroupRequest struct {
+	*ksyunhttp.BaseRequest
+	NewParamGroupName *string `json:"NewParamGroupName,omitempty" name:"NewParamGroupName"`
+	NewDescription    *string `json:"NewDescription,omitempty" name:"NewDescription"`
+}
+
+func (r *ModifyParamGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyParamGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyParamGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyParamGroupResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *ModifyParamGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyParamGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteParamGroupRequest struct {
+	*ksyunhttp.BaseRequest
+	ParamGroupId *string `json:"ParamGroupId,omitempty" name:"ParamGroupId"`
+}
+
+func (r *DeleteParamGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteParamGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteParamGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteParamGroupResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *DeleteParamGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteParamGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

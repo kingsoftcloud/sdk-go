@@ -2299,6 +2299,39 @@ func (c *Client) ModifyPrivateIpAddressAttributeWithContext(ctx context.Context,
 	}
 	return msg
 }
+func NewDescribeDirectConnectRoutesRequest() (request *DescribeDirectConnectRoutesRequest) {
+	request = &DescribeDirectConnectRoutesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectRoutes")
+	return
+}
+
+func NewDescribeDirectConnectRoutesResponse() (response *DescribeDirectConnectRoutesResponse) {
+	response = &DescribeDirectConnectRoutesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeDirectConnectRoutes(request *DescribeDirectConnectRoutesRequest) string {
+	return c.DescribeDirectConnectRoutesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDirectConnectRoutesWithContext(ctx context.Context, request *DescribeDirectConnectRoutesRequest) string {
+	if request == nil {
+		request = NewDescribeDirectConnectRoutesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeDirectConnectRoutesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
 func NewDetachDirectConnectGatewayWithVpcRequest() (request *DetachDirectConnectGatewayWithVpcRequest) {
 	request = &DetachDirectConnectGatewayWithVpcRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},

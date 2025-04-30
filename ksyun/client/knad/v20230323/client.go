@@ -1,5 +1,4 @@
 package v20230323
-
 import (
 	"context"
 	"fmt"
@@ -616,3 +615,5 @@ func (c *Client) GetKnadPolicyWithContext(ctx context.Context, request *GetKnadP
 	}
 	return msg
 }
+
+

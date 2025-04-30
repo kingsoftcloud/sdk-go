@@ -1,5 +1,4 @@
 package v20180627
-
 import (
 	"context"
 	"fmt"
@@ -451,3 +450,5 @@ func (c *Client) DescribeAvailabilityZonesWithContext(ctx context.Context, reque
 	}
 	return msg
 }
+
+

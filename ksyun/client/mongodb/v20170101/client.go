@@ -1,5 +1,4 @@
 package v20170101
-
 import (
 	"context"
 	"fmt"
@@ -1177,6 +1176,138 @@ func (c *Client) DescribeClusterForRestoreWithContext(ctx context.Context, reque
 	}
 	return msg
 }
+func NewDescribeDefaultParamsRequest() (request *DescribeDefaultParamsRequest) {
+	request = &DescribeDefaultParamsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDefaultParams")
+	return
+}
+
+func NewDescribeDefaultParamsResponse() (response *DescribeDefaultParamsResponse) {
+	response = &DescribeDefaultParamsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeDefaultParams(request *DescribeDefaultParamsRequest) string {
+	return c.DescribeDefaultParamsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDefaultParamsWithContext(ctx context.Context, request *DescribeDefaultParamsRequest) string {
+	if request == nil {
+		request = NewDescribeDefaultParamsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeDefaultParamsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCreateParamGroupRequest() (request *CreateParamGroupRequest) {
+	request = &CreateParamGroupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("mongodb", APIVersion, "CreateParamGroup")
+	return
+}
+
+func NewCreateParamGroupResponse() (response *CreateParamGroupResponse) {
+	response = &CreateParamGroupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateParamGroup(request *CreateParamGroupRequest) string {
+	return c.CreateParamGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateParamGroupWithContext(ctx context.Context, request *CreateParamGroupRequest) string {
+	if request == nil {
+		request = NewCreateParamGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateParamGroupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeParamGroupListRequest() (request *DescribeParamGroupListRequest) {
+	request = &DescribeParamGroupListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("mongodb", APIVersion, "DescribeParamGroupList")
+	return
+}
+
+func NewDescribeParamGroupListResponse() (response *DescribeParamGroupListResponse) {
+	response = &DescribeParamGroupListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeParamGroupList(request *DescribeParamGroupListRequest) string {
+	return c.DescribeParamGroupListWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeParamGroupListWithContext(ctx context.Context, request *DescribeParamGroupListRequest) string {
+	if request == nil {
+		request = NewDescribeParamGroupListRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeParamGroupListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeParamGroupInfoRequest() (request *DescribeParamGroupInfoRequest) {
+	request = &DescribeParamGroupInfoRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("mongodb", APIVersion, "DescribeParamGroupInfo")
+	return
+}
+
+func NewDescribeParamGroupInfoResponse() (response *DescribeParamGroupInfoResponse) {
+	response = &DescribeParamGroupInfoResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeParamGroupInfo(request *DescribeParamGroupInfoRequest) string {
+	return c.DescribeParamGroupInfoWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeParamGroupInfoWithContext(ctx context.Context, request *DescribeParamGroupInfoRequest) string {
+	if request == nil {
+		request = NewDescribeParamGroupInfoRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeParamGroupInfoResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
 func NewDescribeInstanceParamsRequest() (request *DescribeInstanceParamsRequest) {
 	request = &DescribeInstanceParamsRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -1210,3 +1341,71 @@ func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request 
 	}
 	return msg
 }
+func NewModifyParamGroupRequest() (request *ModifyParamGroupRequest) {
+	request = &ModifyParamGroupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("mongodb", APIVersion, "ModifyParamGroup")
+	return
+}
+
+func NewModifyParamGroupResponse() (response *ModifyParamGroupResponse) {
+	response = &ModifyParamGroupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyParamGroup(request *ModifyParamGroupRequest) string {
+	return c.ModifyParamGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyParamGroupWithContext(ctx context.Context, request *ModifyParamGroupRequest) string {
+	if request == nil {
+		request = NewModifyParamGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyParamGroupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeleteParamGroupRequest() (request *DeleteParamGroupRequest) {
+	request = &DeleteParamGroupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("mongodb", APIVersion, "DeleteParamGroup")
+	return
+}
+
+func NewDeleteParamGroupResponse() (response *DeleteParamGroupResponse) {
+	response = &DeleteParamGroupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteParamGroup(request *DeleteParamGroupRequest) string {
+	return c.DeleteParamGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteParamGroupWithContext(ctx context.Context, request *DeleteParamGroupRequest) string {
+	if request == nil {
+		request = NewDeleteParamGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteParamGroupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+

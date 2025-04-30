@@ -484,3 +484,135 @@ func (c *Client) AllocateDBInstanceEipWithContext(ctx context.Context, request *
 	}
 	return msg
 }
+func NewListBackupRequest() (request *ListBackupRequest) {
+	request = &ListBackupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("milvus", APIVersion, "ListBackup")
+	return
+}
+
+func NewListBackupResponse() (response *ListBackupResponse) {
+	response = &ListBackupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ListBackup(request *ListBackupRequest) string {
+	return c.ListBackupWithContext(context.Background(), request)
+}
+
+func (c *Client) ListBackupWithContext(ctx context.Context, request *ListBackupRequest) string {
+	if request == nil {
+		request = NewListBackupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListBackupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCreateBackupRequest() (request *CreateBackupRequest) {
+	request = &CreateBackupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("milvus", APIVersion, "CreateBackup")
+	return
+}
+
+func NewCreateBackupResponse() (response *CreateBackupResponse) {
+	response = &CreateBackupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateBackup(request *CreateBackupRequest) string {
+	return c.CreateBackupWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateBackupWithContext(ctx context.Context, request *CreateBackupRequest) string {
+	if request == nil {
+		request = NewCreateBackupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateBackupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeleteBackupRequest() (request *DeleteBackupRequest) {
+	request = &DeleteBackupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("milvus", APIVersion, "DeleteBackup")
+	return
+}
+
+func NewDeleteBackupResponse() (response *DeleteBackupResponse) {
+	response = &DeleteBackupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteBackup(request *DeleteBackupRequest) string {
+	return c.DeleteBackupWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteBackupWithContext(ctx context.Context, request *DeleteBackupRequest) string {
+	if request == nil {
+		request = NewDeleteBackupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteBackupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewListCollectionsRequest() (request *ListCollectionsRequest) {
+	request = &ListCollectionsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("milvus", APIVersion, "ListCollections")
+	return
+}
+
+func NewListCollectionsResponse() (response *ListCollectionsResponse) {
+	response = &ListCollectionsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ListCollections(request *ListCollectionsRequest) string {
+	return c.ListCollectionsWithContext(context.Background(), request)
+}
+
+func (c *Client) ListCollectionsWithContext(ctx context.Context, request *ListCollectionsRequest) string {
+	if request == nil {
+		request = NewListCollectionsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListCollectionsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

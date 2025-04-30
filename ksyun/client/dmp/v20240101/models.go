@@ -208,9 +208,8 @@ type DescribeMonitorPanelResponse struct {
 			DatabaseType   *string `json:"DatabaseType" name:"DatabaseType"`
 			Mode           *string `json:"Mode" name:"Mode"`
 		} `json:"InstanceList" name:"InstanceList"`
-		MonitorItemList []struct {
-		} `json:"MonitorItemList" name:"MonitorItemList"`
-		PanelType *string `json:"PanelType" name:"PanelType"`
+		MonitorItemList []*string `json:"MonitorItemList" name:"MonitorItemList"`
+		PanelType       *string   `json:"PanelType" name:"PanelType"`
 	} `json:"Data"`
 }
 
@@ -641,5 +640,239 @@ func (r *DescribeDedicatedHostsResponse) ToJsonString() string {
 }
 
 func (r *DescribeDedicatedHostsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatabaseSchemaRequest struct {
+	*ksyunhttp.BaseRequest
+	DatabaseId *int `json:"DatabaseId,omitempty" name:"DatabaseId"`
+}
+
+func (r *DescribeDatabaseSchemaRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDatabaseSchemaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeDatabaseSchemaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatabaseSchemaResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      *string `json:"Data" name:"Data"`
+}
+
+func (r *DescribeDatabaseSchemaResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDatabaseSchemaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatabaseListRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *DescribeDatabaseListRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDatabaseListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeDatabaseListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatabaseListResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *DescribeDatabaseListResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDatabaseListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHistorySQLRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *DescribeHistorySQLRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeHistorySQLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeHistorySQLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeHistorySQLResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *DescribeHistorySQLResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeHistorySQLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StartExecuteSQLRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *StartExecuteSQLRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *StartExecuteSQLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "StartExecuteSQLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StartExecuteSQLResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *StartExecuteSQLResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *StartExecuteSQLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateInstanceDatabaseRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *UpdateInstanceDatabaseRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateInstanceDatabaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpdateInstanceDatabaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateInstanceDatabaseResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *UpdateInstanceDatabaseResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateInstanceDatabaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateDatabaseTableRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *UpdateDatabaseTableRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateDatabaseTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpdateDatabaseTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateDatabaseTableResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *UpdateDatabaseTableResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateDatabaseTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TestInstanceConnectionRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *TestInstanceConnectionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *TestInstanceConnectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "TestInstanceConnectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TestInstanceConnectionResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *TestInstanceConnectionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *TestInstanceConnectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

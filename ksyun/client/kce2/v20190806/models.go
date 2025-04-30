@@ -1,10 +1,10 @@
 package v20190806
-
 import (
 	"encoding/json"
 	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type QueryPodsByInformerRequest struct {
 	*ksyunhttp.BaseRequest
@@ -46,3 +46,4 @@ func (r *QueryPodsByInformerResponse) ToJsonString() string {
 func (r *QueryPodsByInformerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

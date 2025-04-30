@@ -1,5 +1,4 @@
 package v20200114
-
 import (
 	"context"
 	"fmt"
@@ -55,3 +54,5 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
 	}
 	return msg
 }
+
+

@@ -1,5 +1,4 @@
 package v20240814
-
 import (
 	"context"
 	"fmt"
@@ -583,3 +582,71 @@ func (c *Client) RestartFlinkJobRunWithContext(ctx context.Context, request *Res
 	}
 	return msg
 }
+func NewDescribeMetricListRequest() (request *DescribeMetricListRequest) {
+	request = &DescribeMetricListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kmr", APIVersion, "DescribeMetricList")
+	return
+}
+
+func NewDescribeMetricListResponse() (response *DescribeMetricListResponse) {
+	response = &DescribeMetricListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeMetricList(request *DescribeMetricListRequest) string {
+	return c.DescribeMetricListWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeMetricListWithContext(ctx context.Context, request *DescribeMetricListRequest) string {
+	if request == nil {
+		request = NewDescribeMetricListRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeMetricListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewQueryMetricsRequest() (request *QueryMetricsRequest) {
+	request = &QueryMetricsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kmr", APIVersion, "QueryMetrics")
+	return
+}
+
+func NewQueryMetricsResponse() (response *QueryMetricsResponse) {
+	response = &QueryMetricsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) QueryMetrics(request *QueryMetricsRequest) string {
+	return c.QueryMetricsWithContext(context.Background(), request)
+}
+
+func (c *Client) QueryMetricsWithContext(ctx context.Context, request *QueryMetricsRequest) string {
+	if request == nil {
+		request = NewQueryMetricsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewQueryMetricsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+

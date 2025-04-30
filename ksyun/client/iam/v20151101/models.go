@@ -18,6 +18,7 @@ type CreateUserRequest struct {
 	OpenLoginProtection    *int    `json:"OpenLoginProtection,omitempty" name:"OpenLoginProtection"`
 	OpenSecurityProtection *int    `json:"OpenSecurityProtection,omitempty" name:"OpenSecurityProtection"`
 	ViewAllProject         *int    `json:"ViewAllProject,omitempty" name:"ViewAllProject"`
+	AddProjectId           *int    `json:"AddProjectId,omitempty" name:"AddProjectId"`
 }
 
 func (r *CreateUserRequest) ToJsonString() string {
@@ -400,12 +401,11 @@ type ListPolicyVersionsResponse struct {
 	ListPolicyVersionsResult struct {
 		Versions struct {
 			Member []struct {
-				IsDefaultVersion *string `json:"IsDefaultVersion" name:"IsDefaultVersion"`
-				VersionId        *string `json:"VersionId" name:"VersionId"`
-				Document         *string `json:"Document" name:"Document"`
-				PolicyStruct     []struct {
-				} `json:"PolicyStruct" name:"PolicyStruct"`
-				CreateDate *string `json:"CreateDate" name:"CreateDate"`
+				IsDefaultVersion *string   `json:"IsDefaultVersion" name:"IsDefaultVersion"`
+				VersionId        *string   `json:"VersionId" name:"VersionId"`
+				Document         *string   `json:"Document" name:"Document"`
+				PolicyStruct     []*string `json:"PolicyStruct" name:"PolicyStruct"`
+				CreateDate       *string   `json:"CreateDate" name:"CreateDate"`
 			} `json:"Member"`
 		} `json:"Versions" name:"Versions"`
 	} `json:"ListPolicyVersionsResult"`
@@ -1451,18 +1451,17 @@ type ListRolesResponse struct {
 	ListRolesResult struct {
 		Roles struct {
 			Member []struct {
-				Path          *string `json:"Path" name:"Path"`
-				Krn           *string `json:"Krn" name:"Krn"`
-				RoleName      *string `json:"RoleName" name:"RoleName"`
-				Description   *string `json:"Description" name:"Description"`
-				TrustType     *int    `json:"TrustType" name:"TrustType"`
-				TrustAccounts *string `json:"TrustAccounts" name:"TrustAccounts"`
-				TrustServices []struct {
-				} `json:"TrustServices" name:"TrustServices"`
-				TrustProvider   *string `json:"TrustProvider" name:"TrustProvider"`
-				CreateDate      *string `json:"CreateDate" name:"CreateDate"`
-				RoleId          *string `json:"RoleId" name:"RoleId"`
-				ServiceRoleType *int    `json:"ServiceRoleType" name:"ServiceRoleType"`
+				Path            *string   `json:"Path" name:"Path"`
+				Krn             *string   `json:"Krn" name:"Krn"`
+				RoleName        *string   `json:"RoleName" name:"RoleName"`
+				Description     *string   `json:"Description" name:"Description"`
+				TrustType       *int      `json:"TrustType" name:"TrustType"`
+				TrustAccounts   *string   `json:"TrustAccounts" name:"TrustAccounts"`
+				TrustServices   []*string `json:"TrustServices" name:"TrustServices"`
+				TrustProvider   *string   `json:"TrustProvider" name:"TrustProvider"`
+				CreateDate      *string   `json:"CreateDate" name:"CreateDate"`
+				RoleId          *string   `json:"RoleId" name:"RoleId"`
+				ServiceRoleType *int      `json:"ServiceRoleType" name:"ServiceRoleType"`
 			} `json:"Member"`
 		} `json:"Roles" name:"Roles"`
 		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
@@ -2802,5 +2801,61 @@ func (r *GetUserSsoSettingsResponse) ToJsonString() string {
 }
 
 func (r *GetUserSsoSettingsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetEffectivePoliciesRequest struct {
+	*ksyunhttp.BaseRequest
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+	Page       *int    `json:"Page,omitempty" name:"Page"`
+	MaxItems   *int    `json:"MaxItems,omitempty" name:"MaxItems"`
+}
+
+func (r *GetEffectivePoliciesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetEffectivePoliciesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetEffectivePoliciesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetEffectivePoliciesResponse struct {
+	*ksyunhttp.BaseResponse
+	ListPoliciesResult struct {
+		Policies []struct {
+			CreateDate       *string `json:"CreateDate" name:"CreateDate"`
+			DefaultVersionId *string `json:"DefaultVersionId" name:"DefaultVersionId"`
+			Description      *string `json:"Description" name:"Description"`
+			Krn              *string `json:"Krn" name:"Krn"`
+			Path             *string `json:"Path" name:"Path"`
+			PolicyId         *string `json:"PolicyId" name:"PolicyId"`
+			PolicyName       *string `json:"PolicyName" name:"PolicyName"`
+			ServiceId        *int    `json:"ServiceId" name:"ServiceId"`
+			ServiceName      *string `json:"ServiceName" name:"ServiceName"`
+			ServiceViewName  *string `json:"ServiceViewName" name:"ServiceViewName"`
+			PolicyType       *int    `json:"PolicyType" name:"PolicyType"`
+			CreateMode       *int    `json:"CreateMode" name:"CreateMode"`
+			UpdateDate       *string `json:"UpdateDate" name:"UpdateDate"`
+			AttachmentCount  *int    `json:"AttachmentCount" name:"AttachmentCount"`
+			PolicyDocument   *string `json:"PolicyDocument" name:"PolicyDocument"`
+		} `json:"Policies" name:"Policies"`
+	} `json:"ListPoliciesResult"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *GetEffectivePoliciesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetEffectivePoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

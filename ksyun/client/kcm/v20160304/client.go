@@ -1,5 +1,4 @@
 package v20160304
-
 import (
 	"context"
 	"fmt"
@@ -49,6 +48,39 @@ func (c *Client) CreateCertificateWithContext(ctx context.Context, request *Crea
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCreateCertificateResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyCertificateRequest() (request *ModifyCertificateRequest) {
+	request = &ModifyCertificateRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcm", APIVersion, "ModifyCertificate")
+	return
+}
+
+func NewModifyCertificateResponse() (response *ModifyCertificateResponse) {
+	response = &ModifyCertificateResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyCertificate(request *ModifyCertificateRequest) string {
+	return c.ModifyCertificateWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyCertificateWithContext(ctx context.Context, request *ModifyCertificateRequest) string {
+	if request == nil {
+		request = NewModifyCertificateRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyCertificateResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -253,3 +285,5 @@ func (c *Client) GetCertificateDetailWithContext(ctx context.Context, request *G
 	}
 	return msg
 }
+
+

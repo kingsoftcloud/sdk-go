@@ -14,6 +14,11 @@ type CreateSecurityGroupRules struct {
 	Cidr   *string `json:"Cidr,omitempty" name:"Cidr"`
 	Detail *string `json:"Detail,omitempty" name:"Detail"`
 }
+type CreateBackupDBCollection struct {
+	DbName      *string   `json:"DbName,omitempty" name:"DbName"`
+	Description *string   `json:"Description,omitempty" name:"Description"`
+	Collections []*string `json:"Collections,omitempty" name:"Collections"`
+}
 
 type DeleteSecurityRulesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -481,16 +486,15 @@ type DescribeInstanceResponse struct {
 			IsAdmin   *bool   `json:"IsAdmin" name:"IsAdmin"`
 			CreatedAt *string `json:"CreatedAt" name:"CreatedAt"`
 		} `json:"Users" name:"Users"`
-		SecurityGroupList []struct {
-		} `json:"SecurityGroupList" name:"SecurityGroupList"`
-		ProjectId       *string `json:"ProjectId" name:"ProjectId"`
-		ProjectName     *string `json:"ProjectName" name:"ProjectName"`
-		BillType        *int    `json:"BillType" name:"BillType"`
-		ProductId       *string `json:"ProductId" name:"ProductId"`
-		ProductType     *int    `json:"ProductType" name:"ProductType"`
-		ProductWhat     *int    `json:"ProductWhat" name:"ProductWhat"`
-		CreateDateOrder *string `json:"CreateDateOrder" name:"CreateDateOrder"`
-		Region          *string `json:"Region" name:"Region"`
+		SecurityGroupList []*string `json:"SecurityGroupList" name:"SecurityGroupList"`
+		ProjectId         *string   `json:"ProjectId" name:"ProjectId"`
+		ProjectName       *string   `json:"ProjectName" name:"ProjectName"`
+		BillType          *int      `json:"BillType" name:"BillType"`
+		ProductId         *string   `json:"ProductId" name:"ProductId"`
+		ProductType       *int      `json:"ProductType" name:"ProductType"`
+		ProductWhat       *int      `json:"ProductWhat" name:"ProductWhat"`
+		CreateDateOrder   *string   `json:"CreateDateOrder" name:"CreateDateOrder"`
+		Region            *string   `json:"Region" name:"Region"`
 	} `json:"Data"`
 }
 
@@ -556,18 +560,16 @@ type ListInstanceResponse struct {
 				TypeName *string `json:"TypeName" name:"TypeName"`
 			} `json:"CU"`
 		} `json:"Resources" name:"Resources"`
-		Users []struct {
-		} `json:"Users" name:"Users"`
-		SecurityGroupList []struct {
-		} `json:"SecurityGroupList" name:"SecurityGroupList"`
-		ProjectId       *string `json:"ProjectId" name:"ProjectId"`
-		ProjectName     *string `json:"ProjectName" name:"ProjectName"`
-		BillType        *int    `json:"BillType" name:"BillType"`
-		ProductId       *string `json:"ProductId" name:"ProductId"`
-		ProductType     *int    `json:"ProductType" name:"ProductType"`
-		ProductWhat     *int    `json:"ProductWhat" name:"ProductWhat"`
-		CreateDateOrder *string `json:"CreateDateOrder" name:"CreateDateOrder"`
-		Region          *string `json:"Region" name:"Region"`
+		Users             []*string `json:"Users" name:"Users"`
+		SecurityGroupList []*string `json:"SecurityGroupList" name:"SecurityGroupList"`
+		ProjectId         *string   `json:"ProjectId" name:"ProjectId"`
+		ProjectName       *string   `json:"ProjectName" name:"ProjectName"`
+		BillType          *int      `json:"BillType" name:"BillType"`
+		ProductId         *string   `json:"ProductId" name:"ProductId"`
+		ProductType       *int      `json:"ProductType" name:"ProductType"`
+		ProductWhat       *int      `json:"ProductWhat" name:"ProductWhat"`
+		CreateDateOrder   *string   `json:"CreateDateOrder" name:"CreateDateOrder"`
+		Region            *string   `json:"Region" name:"Region"`
 	} `json:"Data"`
 }
 
@@ -711,5 +713,200 @@ func (r *AllocateDBInstanceEipResponse) ToJsonString() string {
 }
 
 func (r *AllocateDBInstanceEipResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListBackupRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
+	Offset     *int    `json:"Offset,omitempty" name:"Offset"`
+	Limit      *int    `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *ListBackupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListBackupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListBackupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListBackupResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Offset    *int    `json:"Offset" name:"Offset"`
+	Limit     *int    `json:"Limit" name:"Limit"`
+	Total     *int    `json:"Total" name:"Total"`
+	Data      []struct {
+		BackupId        *string `json:"BackupId" name:"BackupId"`
+		BackupName      *string `json:"BackupName" name:"BackupName"`
+		BackupState     *string `json:"BackupState" name:"BackupState"`
+		BackupMethod    *string `json:"BackupMethod" name:"BackupMethod"`
+		BackupDimension *string `json:"BackupDimension" name:"BackupDimension"`
+		BackupSize      *int    `json:"BackupSize" name:"BackupSize"`
+		RetentionDays   *int    `json:"RetentionDays" name:"RetentionDays"`
+		Collections     []struct {
+			DbName         *string `json:"DbName" name:"DbName"`
+			CollectionName *string `json:"CollectionName" name:"CollectionName"`
+			LoadState      *string `json:"LoadState" name:"LoadState"`
+			Size           *int    `json:"Size" name:"Size"`
+			Description    *string `json:"Description" name:"Description"`
+		} `json:"Collections" name:"Collections"`
+		CreatedAt *string `json:"CreatedAt" name:"CreatedAt"`
+	} `json:"Data"`
+}
+
+func (r *ListBackupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListBackupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBackupRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId   *string                     `json:"InstanceId,omitempty" name:"InstanceId"`
+	BackupName   *string                     `json:"BackupName,omitempty" name:"BackupName"`
+	DBCollection []*CreateBackupDBCollection `json:"DBCollection,omitempty" name:"DBCollection"`
+}
+
+func (r *CreateBackupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateBackupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateBackupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBackupResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      struct {
+		Id                *string   `json:"Id" name:"Id"`
+		Name              *string   `json:"Name" name:"Name"`
+		State             *string   `json:"State" name:"State"`
+		Method            *string   `json:"Method" name:"Method"`
+		Dimension         *string   `json:"Dimension" name:"Dimension"`
+		Size              *int      `json:"Size" name:"Size"`
+		RetentionDays     *int      `json:"RetentionDays" name:"RetentionDays"`
+		CreatedAt         *string   `json:"CreatedAt" name:"CreatedAt"`
+		CollectionBackups []*string `json:"CollectionBackups" name:"CollectionBackups"`
+	} `json:"Data"`
+}
+
+func (r *CreateBackupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateBackupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteBackupRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	BackupIds  *string `json:"BackupIds,omitempty" name:"BackupIds"`
+}
+
+func (r *DeleteBackupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteBackupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteBackupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteBackupResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string   `json:"RequestId" name:"RequestId"`
+	Code      *string   `json:"Code" name:"Code"`
+	Message   *string   `json:"Message" name:"Message"`
+	Data      []*string `json:"Data" name:"Data"`
+}
+
+func (r *DeleteBackupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteBackupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListCollectionsRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	Offset     *int    `json:"Offset,omitempty" name:"Offset"`
+	Limit      *int    `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *ListCollectionsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListCollectionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListCollectionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListCollectionsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Offset    *int    `json:"Offset" name:"Offset"`
+	Limit     *int    `json:"Limit" name:"Limit"`
+	Total     *int    `json:"Total" name:"Total"`
+	Data      []struct {
+		DbName      *string   `json:"DbName" name:"DbName"`
+		Collections []*string `json:"Collections" name:"Collections"`
+	} `json:"Data"`
+}
+
+func (r *ListCollectionsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListCollectionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

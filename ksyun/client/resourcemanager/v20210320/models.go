@@ -325,8 +325,6 @@ type ListFoldersResponse struct {
 		Level       *int    `json:"Level" name:"Level"`
 		ParentId    *string `json:"ParentId" name:"ParentId"`
 		Num         *int    `json:"Num" name:"Num"`
-		SonFolder   []struct {
-		} `json:"SonFolder" name:"SonFolder"`
 	} `json:"SonFolder"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }

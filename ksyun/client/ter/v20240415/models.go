@@ -1,10 +1,10 @@
 package v20240415
-
 import (
 	"encoding/json"
 	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type DescribeTemplatesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -35,15 +35,15 @@ type DescribeTemplatesResponse struct {
 	*ksyunhttp.BaseResponse
 	TemplateCount *int `json:"TemplateCount" name:"TemplateCount"`
 	Templates     []struct {
-		TemplateId          *string `json:"TemplateId" name:"TemplateId"`
-		TemplateType        *string `json:"TemplateType" name:"TemplateType"`
-		TemplateName        *string `json:"TemplateName" name:"TemplateName"`
+		TemplateId    *string `json:"TemplateId" name:"TemplateId"`
+		TemplateType  *string `json:"TemplateType" name:"TemplateType"`
+		TemplateName  *string `json:"TemplateName" name:"TemplateName"`
 		TemplateDescription *string `json:"TemplateDescription" name:"TemplateDescription"`
-		LatestVersion       *string `json:"LatestVersion" name:"LatestVersion"`
-		VersionCount        *int    `json:"VersionCount" name:"VersionCount"`
-		UsingCount          *int    `json:"UsingCount" name:"UsingCount"`
-		CreatTime           *string `json:"CreatTime" name:"CreatTime"`
-		UpdateTime          *string `json:"UpdateTime" name:"UpdateTime"`
+		LatestVersion *string `json:"LatestVersion" name:"LatestVersion"`
+		VersionCount  *int    `json:"VersionCount" name:"VersionCount"`
+		UsingCount    *int    `json:"UsingCount" name:"UsingCount"`
+		CreatTime     *string `json:"CreatTime" name:"CreatTime"`
+		UpdateTime    *string `json:"UpdateTime" name:"UpdateTime"`
 	} `json:"Templates"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -56,3 +56,4 @@ func (r *DescribeTemplatesResponse) ToJsonString() string {
 func (r *DescribeTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

@@ -42,13 +42,11 @@ type ListOperateLogsResponse struct {
 	*ksyunhttp.BaseResponse
 	Total  *int `json:"Total" name:"Total"`
 	Events []struct {
-		ErrorMessage      *string `json:"ErrorMessage" name:"ErrorMessage"`
-		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
-		ServiceName       *string `json:"ServiceName" name:"ServiceName"`
-		EventSource       *string `json:"EventSource" name:"EventSource"`
-		ApiVersion        *string `json:"ApiVersion" name:"ApiVersion"`
-		RequestParameters struct {
-		} `json:"RequestParameters" name:"RequestParameters"`
+		ErrorMessage    *string `json:"ErrorMessage" name:"ErrorMessage"`
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+		ServiceName     *string `json:"ServiceName" name:"ServiceName"`
+		EventSource     *string `json:"EventSource" name:"EventSource"`
+		ApiVersion      *string `json:"ApiVersion" name:"ApiVersion"`
 		SourceIpAddress *string `json:"SourceIpAddress" name:"SourceIpAddress"`
 		EventVersion    *string `json:"EventVersion" name:"EventVersion"`
 		EventType       *string `json:"EventType" name:"EventType"`

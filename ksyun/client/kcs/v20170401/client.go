@@ -1,5 +1,4 @@
 package v20170401
-
 import (
 	"context"
 	"fmt"
@@ -121,3 +120,5 @@ func (c *Client) DeleteCacheSlaveNodeWithContext(ctx context.Context, request *D
 	}
 	return msg
 }
+
+

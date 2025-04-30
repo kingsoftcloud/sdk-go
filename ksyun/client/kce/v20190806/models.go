@@ -446,8 +446,7 @@ type DescribeClusterInstanceResponse struct {
 				Value *string `json:"Value" name:"Value"`
 			} `json:"Label"`
 			ExtraArg struct {
-				Kubelet []struct {
-				} `json:"Kubelet" name:"Kubelet"`
+				Kubelet []*string `json:"Kubelet" name:"Kubelet"`
 			} `json:"ExtraArg"`
 			ContainerLogMaxSize  *int `json:"ContainerLogMaxSize" name:"ContainerLogMaxSize"`
 			ContainerLogMaxFiles *int `json:"ContainerLogMaxFiles" name:"ContainerLogMaxFiles"`
@@ -645,11 +644,10 @@ func (r *DescribeInstanceImageRequest) FromJsonString(s string) error {
 type DescribeInstanceImageResponse struct {
 	*ksyunhttp.BaseResponse
 	ImageSet []struct {
-		ImageId            *string `json:"ImageId" name:"ImageId"`
-		ImageName          *string `json:"ImageName" name:"ImageName"`
-		ImageType          *string `json:"ImageType" name:"ImageType"`
-		MatchedK8sVersions []struct {
-		} `json:"MatchedK8sVersions" name:"MatchedK8sVersions"`
+		ImageId            *string   `json:"ImageId" name:"ImageId"`
+		ImageName          *string   `json:"ImageName" name:"ImageName"`
+		ImageType          *string   `json:"ImageType" name:"ImageType"`
+		MatchedK8sVersions []*string `json:"MatchedK8sVersions" name:"MatchedK8sVersions"`
 	} `json:"ImageSet"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
@@ -1678,42 +1676,6 @@ func (r *DescribeClusterSummaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type GetScaleAPIServerConfigRequest struct {
-	*ksyunhttp.BaseRequest
-	ClusterId  *string `json:"ClusterId,omitempty" name:"ClusterId"`
-	InstanceIp *string `json:"InstanceIp,omitempty" name:"InstanceIp"`
-}
-
-func (r *GetScaleAPIServerConfigRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *GetScaleAPIServerConfigRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetScaleAPIServerConfigRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type GetScaleAPIServerConfigResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-}
-
-func (r *GetScaleAPIServerConfigResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *GetScaleAPIServerConfigResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type UpdateNodePoolDelProtectionRequest struct {
 	*ksyunhttp.BaseRequest
 	NodePoolId          *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
@@ -1747,5 +1709,324 @@ func (r *UpdateNodePoolDelProtectionResponse) ToJsonString() string {
 }
 
 func (r *UpdateNodePoolDelProtectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReleaseRequest struct {
+	*ksyunhttp.BaseRequest
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	Filter    *string `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *DescribeReleaseRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeReleaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeReleaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReleaseResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Releases  []struct {
+		ReleaseName    *string `json:"ReleaseName" name:"ReleaseName"`
+		StatusCode     *string `json:"StatusCode" name:"StatusCode"`
+		Namespace      *string `json:"Namespace" name:"Namespace"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+		ChartName      *string `json:"ChartName" name:"ChartName"`
+		ChartVersion   *string `json:"ChartVersion" name:"ChartVersion"`
+		ChartSource    *string `json:"ChartSource" name:"ChartSource"`
+		ChartNamespace *string `json:"ChartNamespace" name:"ChartNamespace"`
+	} `json:"Releases"`
+	ReleaseVersion *int `json:"ReleaseVersion" name:"ReleaseVersion"`
+}
+
+func (r *DescribeReleaseResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeReleaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReleaseHistoryRequest struct {
+	*ksyunhttp.BaseRequest
+	ClusterId   *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ReleaseName *string `json:"ReleaseName,omitempty" name:"ReleaseName"`
+	Namespace   *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *DescribeReleaseHistoryRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeReleaseHistoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeReleaseHistoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReleaseHistoryResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId       *string `json:"RequestId" name:"RequestId"`
+	ReleaseVersions []struct {
+		ReleaseName    *string `json:"ReleaseName" name:"ReleaseName"`
+		StatusCode     *string `json:"StatusCode" name:"StatusCode"`
+		ReleaseVersion *int    `json:"ReleaseVersion" name:"ReleaseVersion"`
+		DeployTime     *string `json:"DeployTime" name:"DeployTime"`
+		Description    *string `json:"Description" name:"Description"`
+		ChartName      *string `json:"ChartName" name:"ChartName"`
+		ChartVersion   *string `json:"ChartVersion" name:"ChartVersion"`
+	} `json:"ReleaseVersions"`
+}
+
+func (r *DescribeReleaseHistoryResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeReleaseHistoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReleaseDetailRequest struct {
+	*ksyunhttp.BaseRequest
+	ClusterId   *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ReleaseName *string `json:"ReleaseName,omitempty" name:"ReleaseName"`
+	Namespace   *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *DescribeReleaseDetailRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeReleaseDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeReleaseDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeReleaseDetailResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId     *string `json:"RequestId" name:"RequestId"`
+	ReleaseDetail struct {
+		ReleaseName     *string `json:"ReleaseName" name:"ReleaseName"`
+		StatusCode      *string `json:"StatusCode" name:"StatusCode"`
+		Namespace       *string `json:"Namespace" name:"Namespace"`
+		ReleaseVersion  *int    `json:"ReleaseVersion" name:"ReleaseVersion"`
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+		LastDeployTime  *string `json:"LastDeployTime" name:"LastDeployTime"`
+		ChartName       *string `json:"ChartName" name:"ChartName"`
+		ChartVersion    *string `json:"ChartVersion" name:"ChartVersion"`
+		ChartNamespace  *string `json:"ChartNamespace" name:"ChartNamespace"`
+		ChartSource     *string `json:"ChartSource" name:"ChartSource"`
+		DeployResources []struct {
+			Kind      *string `json:"Kind" name:"Kind"`
+			Content   *string `json:"Content" name:"Content"`
+			Name      *string `json:"Name" name:"Name"`
+			Namespace *string `json:"Namespace" name:"Namespace"`
+		} `json:"DeployResources" name:"DeployResources"`
+		Values       *string `json:"Values" name:"Values"`
+		CustomValues *string `json:"CustomValues" name:"CustomValues"`
+		Description  *string `json:"Description" name:"Description"`
+		ChartUrl     *string `json:"ChartUrl" name:"ChartUrl"`
+	} `json:"ReleaseDetail"`
+}
+
+func (r *DescribeReleaseDetailResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeReleaseDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteReleaseRequest struct {
+	*ksyunhttp.BaseRequest
+	ClusterId   *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ReleaseName *string `json:"ReleaseName,omitempty" name:"ReleaseName"`
+	Namespace   *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *DeleteReleaseRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteReleaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteReleaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteReleaseResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteReleaseResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteReleaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RollbackReleaseRequest struct {
+	*ksyunhttp.BaseRequest
+	ClusterId      *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ReleaseName    *string `json:"ReleaseName,omitempty" name:"ReleaseName"`
+	Namespace      *string `json:"Namespace,omitempty" name:"Namespace"`
+	ReleaseVersion *int    `json:"ReleaseVersion,omitempty" name:"ReleaseVersion"`
+}
+
+func (r *RollbackReleaseRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *RollbackReleaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "RollbackReleaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RollbackReleaseResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *RollbackReleaseResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *RollbackReleaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InstallReleaseRequest struct {
+	*ksyunhttp.BaseRequest
+	ClusterId         *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	Namespace         *string `json:"Namespace,omitempty" name:"Namespace"`
+	ReleaseName       *string `json:"ReleaseName,omitempty" name:"ReleaseName"`
+	ChartSource       *string `json:"ChartSource,omitempty" name:"ChartSource"`
+	ChartNamespace    *string `json:"ChartNamespace,omitempty" name:"ChartNamespace"`
+	ChartName         *string `json:"ChartName,omitempty" name:"ChartName"`
+	ChartVersion      *string `json:"ChartVersion,omitempty" name:"ChartVersion"`
+	ChartUrl          *string `json:"ChartUrl,omitempty" name:"ChartUrl"`
+	ChartRepoType     *string `json:"ChartRepoType,omitempty" name:"ChartRepoType"`
+	ChartRepoUsername *string `json:"ChartRepoUsername,omitempty" name:"ChartRepoUsername"`
+	ChartRepoPassword *string `json:"ChartRepoPassword,omitempty" name:"ChartRepoPassword"`
+	Values            *string `json:"Values,omitempty" name:"Values"`
+}
+
+func (r *InstallReleaseRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *InstallReleaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "InstallReleaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InstallReleaseResponse struct {
+	*ksyunhttp.BaseResponse
+	ReuestId *string `json:"ReuestId" name:"ReuestId"`
+}
+
+func (r *InstallReleaseResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *InstallReleaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeReleaseRequest struct {
+	*ksyunhttp.BaseRequest
+	ClusterId         *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	Namespace         *string `json:"Namespace,omitempty" name:"Namespace"`
+	ReleaseName       *string `json:"ReleaseName,omitempty" name:"ReleaseName"`
+	ChartSource       *string `json:"ChartSource,omitempty" name:"ChartSource"`
+	ChartNamespace    *string `json:"ChartNamespace,omitempty" name:"ChartNamespace"`
+	ChartName         *string `json:"ChartName,omitempty" name:"ChartName"`
+	ChartVersion      *string `json:"ChartVersion,omitempty" name:"ChartVersion"`
+	ChartUrl          *string `json:"ChartUrl,omitempty" name:"ChartUrl"`
+	ChartRepoType     *string `json:"ChartRepoType,omitempty" name:"ChartRepoType"`
+	ChartRepoUsername *string `json:"ChartRepoUsername,omitempty" name:"ChartRepoUsername"`
+	ChartRepoPassword *string `json:"ChartRepoPassword,omitempty" name:"ChartRepoPassword"`
+	Values            *string `json:"Values,omitempty" name:"Values"`
+}
+
+func (r *UpgradeReleaseRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpgradeReleaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpgradeReleaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpgradeReleaseResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *UpgradeReleaseResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpgradeReleaseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

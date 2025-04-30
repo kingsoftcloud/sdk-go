@@ -1,5 +1,4 @@
 package v20250101
-
 import (
 	"context"
 	"fmt"
@@ -55,3 +54,5 @@ func (c *Client) DescribeAlertingResourcesWithContext(ctx context.Context, reque
 	}
 	return msg
 }
+
+

@@ -70,6 +70,12 @@ type CancelFlinkJobRunJobRunIds struct {
 	JobRunId *string `json:"JobRunId,omitempty" name:"JobRunId"`
 	JobType  *string `json:"JobType,omitempty" name:"JobType"`
 }
+type QueryMetricsQueryData struct {
+	Query *string `json:"Query,omitempty" name:"Query"`
+	Start *string `json:"Start,omitempty" name:"Start"`
+	End   *string `json:"End,omitempty" name:"End"`
+	Step  *string `json:"Step,omitempty" name:"Step"`
+}
 
 type DetailWorkspaceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -809,20 +815,18 @@ type StartFlinkJobRunResponse struct {
 			JarUri              *string   `json:"JarUri" name:"JarUri"`
 			Dependencies        []*string `json:"Dependencies" name:"Dependencies"`
 			FlinkDeploymentData struct {
-				Name        *string `json:"Name" name:"Name"`
-				Image       *string `json:"Image" name:"Image"`
-				UpgradeMode *string `json:"UpgradeMode" name:"UpgradeMode"`
-				JobCores    *int    `json:"JobCores" name:"JobCores"`
-				JobMemory   *string `json:"JobMemory" name:"JobMemory"`
-				NumTasks    *int    `json:"NumTasks" name:"NumTasks"`
-				FlinkConf   []struct {
-				} `json:"FlinkConf" name:"FlinkConf"`
-				Dependencies []struct {
-				} `json:"Dependencies" name:"Dependencies"`
-				JarUri     *string `json:"JarUri" name:"JarUri"`
-				EntryClass *string `json:"EntryClass" name:"EntryClass"`
-				JarUri1    *string `json:"JarUri1" name:"JarUri1"`
-				MainArgs   *string `json:"MainArgs" name:"MainArgs"`
+				Name         *string   `json:"Name" name:"Name"`
+				Image        *string   `json:"Image" name:"Image"`
+				UpgradeMode  *string   `json:"UpgradeMode" name:"UpgradeMode"`
+				JobCores     *int      `json:"JobCores" name:"JobCores"`
+				JobMemory    *string   `json:"JobMemory" name:"JobMemory"`
+				NumTasks     *int      `json:"NumTasks" name:"NumTasks"`
+				FlinkConf    []*string `json:"FlinkConf" name:"FlinkConf"`
+				Dependencies []*string `json:"Dependencies" name:"Dependencies"`
+				JarUri       *string   `json:"JarUri" name:"JarUri"`
+				EntryClass   *string   `json:"EntryClass" name:"EntryClass"`
+				JarUri1      *string   `json:"JarUri1" name:"JarUri1"`
+				MainArgs     *string   `json:"MainArgs" name:"MainArgs"`
 			} `json:"FlinkDeploymentData"`
 		} `json:"FlinkDeploymentData" name:"FlinkDeploymentData"`
 	} `json:"Data"`
@@ -950,20 +954,18 @@ type ListFlinkJobRunsResponse struct {
 			FlinkLog            *string `json:"FlinkLog" name:"FlinkLog"`
 			ReleaseVersion      *string `json:"ReleaseVersion" name:"ReleaseVersion"`
 			FlinkDeploymentData struct {
-				Name        *string `json:"Name" name:"Name"`
-				Image       *string `json:"Image" name:"Image"`
-				UpgradeMode *string `json:"UpgradeMode" name:"UpgradeMode"`
-				JobCores    *int    `json:"JobCores" name:"JobCores"`
-				JobMemory   *string `json:"JobMemory" name:"JobMemory"`
-				TaskCores   *int    `json:"TaskCores" name:"TaskCores"`
-				TaskMemory  *string `json:"TaskMemory" name:"TaskMemory"`
-				NumTasks    *int    `json:"NumTasks" name:"NumTasks"`
-				EntryClass  *string `json:"EntryClass" name:"EntryClass"`
-				JarUri      *string `json:"JarUri" name:"JarUri"`
-				MainArgs    []struct {
-				} `json:"MainArgs" name:"MainArgs"`
-				FlinkConf []struct {
-				} `json:"FlinkConf" name:"FlinkConf"`
+				Name        *string   `json:"Name" name:"Name"`
+				Image       *string   `json:"Image" name:"Image"`
+				UpgradeMode *string   `json:"UpgradeMode" name:"UpgradeMode"`
+				JobCores    *int      `json:"JobCores" name:"JobCores"`
+				JobMemory   *string   `json:"JobMemory" name:"JobMemory"`
+				TaskCores   *int      `json:"TaskCores" name:"TaskCores"`
+				TaskMemory  *string   `json:"TaskMemory" name:"TaskMemory"`
+				NumTasks    *int      `json:"NumTasks" name:"NumTasks"`
+				EntryClass  *string   `json:"EntryClass" name:"EntryClass"`
+				JarUri      *string   `json:"JarUri" name:"JarUri"`
+				MainArgs    []*string `json:"MainArgs" name:"MainArgs"`
+				FlinkConf   []*string `json:"FlinkConf" name:"FlinkConf"`
 			} `json:"FlinkDeploymentData"`
 			ResourceUsage *int `json:"ResourceUsage" name:"ResourceUsage"`
 		} `json:"JobRuns" name:"JobRuns"`
@@ -1096,5 +1098,107 @@ func (r *RestartFlinkJobRunResponse) ToJsonString() string {
 }
 
 func (r *RestartFlinkJobRunResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMetricListRequest struct {
+	*ksyunhttp.BaseRequest
+	WorkspaceId *string `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
+	ProductType *string `json:"ProductType,omitempty" name:"ProductType"`
+}
+
+func (r *DescribeMetricListRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeMetricListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeMetricListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMetricListResponse struct {
+	*ksyunhttp.BaseResponse
+	Data struct {
+		Count   *int `json:"Count" name:"Count"`
+		Metrics []struct {
+			MetricName  *string `json:"MetricName" name:"MetricName"`
+			Unit        *string `json:"Unit" name:"Unit"`
+			Period      *int    `json:"Period" name:"Period"`
+			Statistics  *string `json:"Statistics" name:"Statistics"`
+			Dimensions  *string `json:"Dimensions" name:"Dimensions"`
+			Description *string `json:"Description" name:"Description"`
+		} `json:"Metrics" name:"Metrics"`
+	} `json:"Data"`
+	IsPartial *bool   `json:"isPartial" name:"isPartial"`
+	Status    *string `json:"status" name:"status"`
+}
+
+func (r *DescribeMetricListResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeMetricListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMetricsRequest struct {
+	*ksyunhttp.BaseRequest
+	WorkspaceId *string                `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
+	ProductType *string                `json:"ProductType,omitempty" name:"ProductType"`
+	QueryData   *QueryMetricsQueryData `json:"QueryData,omitempty" name:"QueryData"`
+}
+
+func (r *QueryMetricsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *QueryMetricsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "QueryMetricsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMetricsResponse struct {
+	*ksyunhttp.BaseResponse
+	Status    *string `json:"status" name:"status"`
+	IsPartial *bool   `json:"isPartial" name:"isPartial"`
+	Data      struct {
+		ResultType *string `json:"ResultType" name:"ResultType"`
+		Result     []struct {
+			Metric struct {
+				Name        *string `json:"Name" name:"Name"`
+				JobRunId    *string `json:"JobRunId" name:"JobRunId"`
+				Component   *string `json:"Component" name:"Component"`
+				WorkspaceId *string `json:"WorkspaceId" name:"WorkspaceId"`
+			} `json:"Metric"`
+			Values []*string `json:"Values" name:"Values"`
+		} `json:"Result" name:"Result"`
+	} `json:"Data"`
+	Stats struct {
+		SeriesFetched     *string `json:"SeriesFetched" name:"SeriesFetched"`
+		ExecutionTimeMsec *int    `json:"ExecutionTimeMsec" name:"ExecutionTimeMsec"`
+	} `json:"Stats"`
+}
+
+func (r *QueryMetricsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *QueryMetricsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

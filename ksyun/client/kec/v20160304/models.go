@@ -1543,23 +1543,22 @@ type DescribeDedicatedHostsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId        *string `json:"RequestId" name:"RequestId"`
 	DedicatedHostSet []struct {
-		DedicatedHostId   *string `json:"DedicatedHostId" name:"DedicatedHostId"`
-		DedicatedHostName *string `json:"DedicatedHostName" name:"DedicatedHostName"`
-		State             *string `json:"State" name:"State"`
-		TotalCpu          *int    `json:"TotalCpu" name:"TotalCpu"`
-		OriCpu            *int    `json:"OriCpu" name:"OriCpu"`
-		AvailableCpu      *int    `json:"AvailableCpu" name:"AvailableCpu"`
-		TotalMemory       *int    `json:"TotalMemory" name:"TotalMemory"`
-		AvailableMemory   *int    `json:"AvailableMemory" name:"AvailableMemory"`
-		TotalDatadisk     *int    `json:"TotalDatadisk" name:"TotalDatadisk"`
-		AvailableDatadisk *int    `json:"AvailableDatadisk" name:"AvailableDatadisk"`
-		Instances         []struct {
-		} `json:"Instances" name:"Instances"`
-		CreateDate           *string `json:"CreateDate" name:"CreateDate"`
-		AvailabilityZone     *string `json:"AvailabilityZone" name:"AvailabilityZone"`
-		AvailabilityZoneName *string `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
-		Model                *string `json:"Model" name:"Model"`
-		ProjectId            *int    `json:"ProjectId" name:"ProjectId"`
+		DedicatedHostId      *string   `json:"DedicatedHostId" name:"DedicatedHostId"`
+		DedicatedHostName    *string   `json:"DedicatedHostName" name:"DedicatedHostName"`
+		State                *string   `json:"State" name:"State"`
+		TotalCpu             *int      `json:"TotalCpu" name:"TotalCpu"`
+		OriCpu               *int      `json:"OriCpu" name:"OriCpu"`
+		AvailableCpu         *int      `json:"AvailableCpu" name:"AvailableCpu"`
+		TotalMemory          *int      `json:"TotalMemory" name:"TotalMemory"`
+		AvailableMemory      *int      `json:"AvailableMemory" name:"AvailableMemory"`
+		TotalDatadisk        *int      `json:"TotalDatadisk" name:"TotalDatadisk"`
+		AvailableDatadisk    *int      `json:"AvailableDatadisk" name:"AvailableDatadisk"`
+		Instances            []*string `json:"Instances" name:"Instances"`
+		CreateDate           *string   `json:"CreateDate" name:"CreateDate"`
+		AvailabilityZone     *string   `json:"AvailabilityZone" name:"AvailabilityZone"`
+		AvailabilityZoneName *string   `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
+		Model                *string   `json:"Model" name:"Model"`
+		ProjectId            *int      `json:"ProjectId" name:"ProjectId"`
 	} `json:"DedicatedHostSet"`
 }
 
@@ -1615,26 +1614,25 @@ type DescribeScalingConfigurationResponse struct {
 			ScalingGroupId   *string `json:"ScalingGroupId" name:"ScalingGroupId"`
 			ScalingGroupName *string `json:"ScalingGroupName" name:"ScalingGroupName"`
 		} `json:"ScalingGroupIdSet" name:"ScalingGroupIdSet"`
-		Cpu               *int    `json:"Cpu" name:"Cpu"`
-		Mem               *int    `json:"Mem" name:"Mem"`
-		StorageType       *string `json:"StorageType" name:"StorageType"`
-		StorageSize       *int    `json:"StorageSize" name:"StorageSize"`
-		RootSize          *int    `json:"RootSize" name:"RootSize"`
-		Gpu               *int    `json:"Gpu" name:"Gpu"`
-		ImageId           *string `json:"ImageId" name:"ImageId"`
-		NeedMonitorAgent  *int    `json:"NeedMonitorAgent" name:"NeedMonitorAgent"`
-		NeedSecurityAgent *int    `json:"NeedSecurityAgent" name:"NeedSecurityAgent"`
-		ChargeType        *string `json:"ChargeType" name:"ChargeType"`
-		InstanceType      *string `json:"InstanceType" name:"InstanceType"`
-		InstanceTypeSet   []struct {
-		} `json:"InstanceTypeSet" name:"InstanceTypeSet"`
-		Available      *int    `json:"Available" name:"Available"`
-		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
-		Password       *string `json:"Password" name:"Password"`
-		ProductLine    *string `json:"ProductLine" name:"ProductLine"`
-		ContainerParam *string `json:"ContainerParam" name:"ContainerParam"`
-		InstanceName   *string `json:"InstanceName" name:"InstanceName"`
-		Project        struct {
+		Cpu               *int      `json:"Cpu" name:"Cpu"`
+		Mem               *int      `json:"Mem" name:"Mem"`
+		StorageType       *string   `json:"StorageType" name:"StorageType"`
+		StorageSize       *int      `json:"StorageSize" name:"StorageSize"`
+		RootSize          *int      `json:"RootSize" name:"RootSize"`
+		Gpu               *int      `json:"Gpu" name:"Gpu"`
+		ImageId           *string   `json:"ImageId" name:"ImageId"`
+		NeedMonitorAgent  *int      `json:"NeedMonitorAgent" name:"NeedMonitorAgent"`
+		NeedSecurityAgent *int      `json:"NeedSecurityAgent" name:"NeedSecurityAgent"`
+		ChargeType        *string   `json:"ChargeType" name:"ChargeType"`
+		InstanceType      *string   `json:"InstanceType" name:"InstanceType"`
+		InstanceTypeSet   []*string `json:"InstanceTypeSet" name:"InstanceTypeSet"`
+		Available         *int      `json:"Available" name:"Available"`
+		CreateTime        *string   `json:"CreateTime" name:"CreateTime"`
+		Password          *string   `json:"Password" name:"Password"`
+		ProductLine       *string   `json:"ProductLine" name:"ProductLine"`
+		ContainerParam    *string   `json:"ContainerParam" name:"ContainerParam"`
+		InstanceName      *string   `json:"InstanceName" name:"InstanceName"`
+		Project           struct {
 			ProjectId   *int    `json:"ProjectId" name:"ProjectId"`
 			AccountId   *int    `json:"AccountId" name:"AccountId"`
 			ProjectName *string `json:"ProjectName" name:"ProjectName"`
@@ -1644,27 +1642,26 @@ type DescribeScalingConfigurationResponse struct {
 			CreateTime  *string `json:"CreateTime" name:"CreateTime"`
 			UpdateTime  *string `json:"UpdateTime" name:"UpdateTime"`
 		} `json:"Project" name:"Project"`
-		ProjectId                *int    `json:"ProjectId" name:"ProjectId"`
-		KeepImageLogin           *bool   `json:"KeepImageLogin" name:"KeepImageLogin"`
-		DataDiskEbsDetail        *string `json:"DataDiskEbsDetail" name:"DataDiskEbsDetail"`
-		SystemDiskType           *string `json:"SystemDiskType" name:"SystemDiskType"`
-		SystemDiskSize           *int    `json:"SystemDiskSize" name:"SystemDiskSize"`
-		AvailabilityZoneName     *string `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
-		InstanceNameTimeSuffix   *bool   `json:"InstanceNameTimeSuffix" name:"InstanceNameTimeSuffix"`
-		SupportAvailabilityZones []struct {
-		} `json:"SupportAvailabilityZones" name:"SupportAvailabilityZones"`
-		BillType                *int    `json:"BillType" name:"BillType"`
-		IsRunOptimised          *bool   `json:"IsRunOptimised" name:"IsRunOptimised"`
-		UserData                *string `json:"UserData" name:"UserData"`
-		AddressBandWidth        *int    `json:"AddressBandWidth" name:"AddressBandWidth"`
-		LineId                  *string `json:"LineId" name:"LineId"`
-		AddressProjectId        *int    `json:"AddressProjectId" name:"AddressProjectId"`
-		AddressChargeType       *string `json:"AddressChargeType" name:"AddressChargeType"`
-		BandWidthShareId        *string `json:"BandWidthShareId" name:"BandWidthShareId"`
-		LocalVolumeSnapshotId   *string `json:"LocalVolumeSnapshotId" name:"LocalVolumeSnapshotId"`
-		LocalVolumeSnapshotName *string `json:"LocalVolumeSnapshotName" name:"LocalVolumeSnapshotName"`
-		AddressProject          *string `json:"AddressProject" name:"AddressProject"`
-		TagSet                  []struct {
+		ProjectId                *int      `json:"ProjectId" name:"ProjectId"`
+		KeepImageLogin           *bool     `json:"KeepImageLogin" name:"KeepImageLogin"`
+		DataDiskEbsDetail        *string   `json:"DataDiskEbsDetail" name:"DataDiskEbsDetail"`
+		SystemDiskType           *string   `json:"SystemDiskType" name:"SystemDiskType"`
+		SystemDiskSize           *int      `json:"SystemDiskSize" name:"SystemDiskSize"`
+		AvailabilityZoneName     *string   `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
+		InstanceNameTimeSuffix   *bool     `json:"InstanceNameTimeSuffix" name:"InstanceNameTimeSuffix"`
+		SupportAvailabilityZones []*string `json:"SupportAvailabilityZones" name:"SupportAvailabilityZones"`
+		BillType                 *int      `json:"BillType" name:"BillType"`
+		IsRunOptimised           *bool     `json:"IsRunOptimised" name:"IsRunOptimised"`
+		UserData                 *string   `json:"UserData" name:"UserData"`
+		AddressBandWidth         *int      `json:"AddressBandWidth" name:"AddressBandWidth"`
+		LineId                   *string   `json:"LineId" name:"LineId"`
+		AddressProjectId         *int      `json:"AddressProjectId" name:"AddressProjectId"`
+		AddressChargeType        *string   `json:"AddressChargeType" name:"AddressChargeType"`
+		BandWidthShareId         *string   `json:"BandWidthShareId" name:"BandWidthShareId"`
+		LocalVolumeSnapshotId    *string   `json:"LocalVolumeSnapshotId" name:"LocalVolumeSnapshotId"`
+		LocalVolumeSnapshotName  *string   `json:"LocalVolumeSnapshotName" name:"LocalVolumeSnapshotName"`
+		AddressProject           *string   `json:"AddressProject" name:"AddressProject"`
+		TagSet                   []struct {
 			Key   *string `json:"Key" name:"Key"`
 			Value *string `json:"Value" name:"Value"`
 		} `json:"TagSet" name:"TagSet"`
@@ -1875,30 +1872,28 @@ type DescribeScalingGroupResponse struct {
 			Weight          *int    `json:"Weight" name:"Weight"`
 			HealthCheckType *string `json:"HealthCheckType" name:"HealthCheckType"`
 		} `json:"SlbConfigSet" name:"SlbConfigSet"`
-		ScalingGroupName         *string `json:"ScalingGroupName" name:"ScalingGroupName"`
-		ScalingConfigurationId   *string `json:"ScalingConfigurationId" name:"ScalingConfigurationId"`
-		ScalingConfigurationName *string `json:"ScalingConfigurationName" name:"ScalingConfigurationName"`
-		MinSize                  *int    `json:"MinSize" name:"MinSize"`
-		MaxSize                  *int    `json:"MaxSize" name:"MaxSize"`
-		InstanceNum              *int    `json:"InstanceNum" name:"InstanceNum"`
-		CreateTime               *string `json:"CreateTime" name:"CreateTime"`
-		RemovePolicy             *string `json:"RemovePolicy" name:"RemovePolicy"`
-		VpcId                    *string `json:"VpcId" name:"VpcId"`
-		SecurityGroupId          *string `json:"SecurityGroupId" name:"SecurityGroupId"`
-		SubnetId                 *string `json:"SubnetId" name:"SubnetId"`
-		Status                   *string `json:"Status" name:"Status"`
-		AvailabilityZone         *string `json:"AvailabilityZone" name:"AvailabilityZone"`
-		ProductLine              *string `json:"ProductLine" name:"ProductLine"`
-		AvailabilityZoneName     *string `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
-		DesiredCapacity          *int    `json:"DesiredCapacity" name:"DesiredCapacity"`
-		DistributeIpv6           *bool   `json:"DistributeIpv6" name:"DistributeIpv6"`
-		SubnetIdSet              []struct {
-		} `json:"SubnetIdSet" name:"SubnetIdSet"`
-		SubnetStrategy     *string `json:"SubnetStrategy" name:"SubnetStrategy"`
-		SecurityGroupIdSet []struct {
-		} `json:"SecurityGroupIdSet" name:"SecurityGroupIdSet"`
-		LockDesiredCapacity   *bool `json:"LockDesiredCapacity" name:"LockDesiredCapacity"`
-		AllowSlbScalingPolicy *bool `json:"AllowSlbScalingPolicy" name:"AllowSlbScalingPolicy"`
+		ScalingGroupName         *string   `json:"ScalingGroupName" name:"ScalingGroupName"`
+		ScalingConfigurationId   *string   `json:"ScalingConfigurationId" name:"ScalingConfigurationId"`
+		ScalingConfigurationName *string   `json:"ScalingConfigurationName" name:"ScalingConfigurationName"`
+		MinSize                  *int      `json:"MinSize" name:"MinSize"`
+		MaxSize                  *int      `json:"MaxSize" name:"MaxSize"`
+		InstanceNum              *int      `json:"InstanceNum" name:"InstanceNum"`
+		CreateTime               *string   `json:"CreateTime" name:"CreateTime"`
+		RemovePolicy             *string   `json:"RemovePolicy" name:"RemovePolicy"`
+		VpcId                    *string   `json:"VpcId" name:"VpcId"`
+		SecurityGroupId          *string   `json:"SecurityGroupId" name:"SecurityGroupId"`
+		SubnetId                 *string   `json:"SubnetId" name:"SubnetId"`
+		Status                   *string   `json:"Status" name:"Status"`
+		AvailabilityZone         *string   `json:"AvailabilityZone" name:"AvailabilityZone"`
+		ProductLine              *string   `json:"ProductLine" name:"ProductLine"`
+		AvailabilityZoneName     *string   `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
+		DesiredCapacity          *int      `json:"DesiredCapacity" name:"DesiredCapacity"`
+		DistributeIpv6           *bool     `json:"DistributeIpv6" name:"DistributeIpv6"`
+		SubnetIdSet              []*string `json:"SubnetIdSet" name:"SubnetIdSet"`
+		SubnetStrategy           *string   `json:"SubnetStrategy" name:"SubnetStrategy"`
+		SecurityGroupIdSet       []*string `json:"SecurityGroupIdSet" name:"SecurityGroupIdSet"`
+		LockDesiredCapacity      *bool     `json:"LockDesiredCapacity" name:"LockDesiredCapacity"`
+		AllowSlbScalingPolicy    *bool     `json:"AllowSlbScalingPolicy" name:"AllowSlbScalingPolicy"`
 	} `json:"ScalingGroupSet"`
 }
 
@@ -2156,19 +2151,17 @@ type DescribeScalingActivityResponse struct {
 	AvailabilityZone     *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 	ScalingActivityCount *int    `json:"ScalingActivityCount" name:"ScalingActivityCount"`
 	ScalingActivitySet   []struct {
-		ScalingGroupId    *string `json:"ScalingGroupId" name:"ScalingGroupId"`
-		Status            *int    `json:"Status" name:"Status"`
-		Cause             *string `json:"Cause" name:"Cause"`
-		Description       *string `json:"Description" name:"Description"`
-		StartTime         *string `json:"StartTime" name:"StartTime"`
-		ScalingActivityId *string `json:"ScalingActivityId" name:"ScalingActivityId"`
-		EndTime           *string `json:"EndTime" name:"EndTime"`
-		Type              *int    `json:"Type" name:"Type"`
-		SuccInsList       []struct {
-		} `json:"SuccInsList" name:"SuccInsList"`
-		FailInsList []struct {
-		} `json:"FailInsList" name:"FailInsList"`
-		ErrorCode *int `json:"ErrorCode" name:"ErrorCode"`
+		ScalingGroupId    *string   `json:"ScalingGroupId" name:"ScalingGroupId"`
+		Status            *int      `json:"Status" name:"Status"`
+		Cause             *string   `json:"Cause" name:"Cause"`
+		Description       *string   `json:"Description" name:"Description"`
+		StartTime         *string   `json:"StartTime" name:"StartTime"`
+		ScalingActivityId *string   `json:"ScalingActivityId" name:"ScalingActivityId"`
+		EndTime           *string   `json:"EndTime" name:"EndTime"`
+		Type              *int      `json:"Type" name:"Type"`
+		SuccInsList       []*string `json:"SuccInsList" name:"SuccInsList"`
+		FailInsList       []*string `json:"FailInsList" name:"FailInsList"`
+		ErrorCode         *int      `json:"ErrorCode" name:"ErrorCode"`
 	} `json:"ScalingActivitySet"`
 }
 
@@ -2324,12 +2317,11 @@ type DescribeScalingNotificationResponse struct {
 	RequestId                *string `json:"RequestId" name:"RequestId"`
 	ScalingNotificationCount *int    `json:"ScalingNotificationCount" name:"ScalingNotificationCount"`
 	ScalingNotificationSet   []struct {
-		ScalingNotificationId    *string `json:"ScalingNotificationId" name:"ScalingNotificationId"`
-		ScalingGroupId           *string `json:"ScalingGroupId" name:"ScalingGroupId"`
-		ScalingNotificationTypes []struct {
-		} `json:"ScalingNotificationTypes" name:"ScalingNotificationTypes"`
-		Description      *string `json:"Description" name:"Description"`
-		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		ScalingNotificationId    *string   `json:"ScalingNotificationId" name:"ScalingNotificationId"`
+		ScalingGroupId           *string   `json:"ScalingGroupId" name:"ScalingGroupId"`
+		ScalingNotificationTypes []*string `json:"ScalingNotificationTypes" name:"ScalingNotificationTypes"`
+		Description              *string   `json:"Description" name:"Description"`
+		AvailabilityZone         *string   `json:"AvailabilityZone" name:"AvailabilityZone"`
 	} `json:"ScalingNotificationSet"`
 }
 
@@ -4603,5 +4595,42 @@ func (r *SwitchImageTypeResponse) ToJsonString() string {
 }
 
 func (r *SwitchImageTypeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetInstanceResourceProtectRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId   []*string `json:"InstanceId,omitempty" name:"InstanceId"`
+	IsProtection *bool     `json:"IsProtection,omitempty" name:"IsProtection"`
+}
+
+func (r *SetInstanceResourceProtectRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetInstanceResourceProtectRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetInstanceResourceProtectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetInstanceResourceProtectResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *SetInstanceResourceProtectResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetInstanceResourceProtectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

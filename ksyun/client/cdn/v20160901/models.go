@@ -1,10 +1,10 @@
 package v20160901
-
 import (
 	"encoding/json"
 	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type GetDomainPidDimensionUsageDataRequest struct {
 	*ksyunhttp.BaseRequest
@@ -54,3 +54,4 @@ func (r *GetDomainPidDimensionUsageDataResponse) ToJsonString() string {
 func (r *GetDomainPidDimensionUsageDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

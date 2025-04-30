@@ -1,11 +1,9 @@
 package v20210902
-
 import (
 	"encoding/json"
 	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 type LaunchClusterDatabaseInfo struct {
 	Type          *string `json:"Type,omitempty" name:"Type"`
 	Endpoint      *string `json:"Endpoint,omitempty" name:"Endpoint"`
@@ -57,6 +55,7 @@ type BindTagsTags struct {
 	TagId    *int    `json:"TagId,omitempty" name:"TagId"`
 }
 
+
 type DescribeClusterRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -85,14 +84,13 @@ type DescribeClusterResponse struct {
 	ClusterType    *string `json:"ClusterType" name:"ClusterType"`
 	MainVersion    *string `json:"MainVersion" name:"MainVersion"`
 	InstanceGroups []struct {
-		Id                *string `json:"Id" name:"Id"`
+		Id           *string   `json:"Id" name:"Id"`
 		InstanceGroupType *string `json:"InstanceGroupType" name:"InstanceGroupType"`
-		ResourceType      *string `json:"ResourceType" name:"ResourceType"`
-		InstanceType      *string `json:"InstanceType" name:"InstanceType"`
-		VolumeSize        *int    `json:"VolumeSize" name:"VolumeSize"`
-		VolumeType        *string `json:"VolumeType" name:"VolumeType"`
-		InstanceIds       []struct {
-		} `json:"InstanceIds" name:"InstanceIds"`
+		ResourceType *string   `json:"ResourceType" name:"ResourceType"`
+		InstanceType *string   `json:"InstanceType" name:"InstanceType"`
+		VolumeSize   *int      `json:"VolumeSize" name:"VolumeSize"`
+		VolumeType   *string   `json:"VolumeType" name:"VolumeType"`
+		InstanceIds  []*string `json:"InstanceIds" name:"InstanceIds"`
 	} `json:"InstanceGroups"`
 	EnableEip      *bool   `json:"EnableEip" name:"EnableEip"`
 	Region         *string `json:"Region" name:"Region"`
@@ -105,8 +103,8 @@ type DescribeClusterResponse struct {
 	RequestId      *string `json:"RequestId" name:"RequestId"`
 	StatusCode     *int    `json:"StatusCode" name:"StatusCode"`
 	Tags           []struct {
-		TagId    *int    `json:"TagId" name:"TagId"`
-		TagKey   *string `json:"TagKey" name:"TagKey"`
+		TagId  *int    `json:"TagId" name:"TagId"`
+		TagKey *string `json:"TagKey" name:"TagKey"`
 		TagValue *string `json:"TagValue" name:"TagValue"`
 	} `json:"Tags"`
 }
@@ -119,6 +117,7 @@ func (r *DescribeClusterResponse) ToJsonString() string {
 func (r *DescribeClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type LaunchClusterRequest struct {
 	*ksyunhttp.BaseRequest
@@ -166,6 +165,7 @@ func (r *LaunchClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ScaleInInstanceGroupsRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId              *string                                `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -206,6 +206,7 @@ func (r *ScaleInInstanceGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ScaleOutInstanceGroupsRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId      *string                                 `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -244,6 +245,7 @@ func (r *ScaleOutInstanceGroupsResponse) ToJsonString() string {
 func (r *ScaleOutInstanceGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeClusterInfoRequest struct {
 	*ksyunhttp.BaseRequest
@@ -285,6 +287,7 @@ func (r *DescribeClusterInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListServiceStatusRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -310,21 +313,18 @@ type ListServiceStatusResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Services  []struct {
-		ClusterId     *string `json:"ClusterId" name:"ClusterId"`
-		ServiceId     *string `json:"ServiceId" name:"ServiceId"`
-		ServiceName   *string `json:"ServiceName" name:"ServiceName"`
-		Status        *int    `json:"Status" name:"Status"`
-		Steady        *bool   `json:"Steady" name:"Steady"`
-		Version       *string `json:"Version" name:"Version"`
-		AbnormalCount *int    `json:"AbnormalCount" name:"AbnormalCount"`
-		ComponentInfo []struct {
-		} `json:"ComponentInfo" name:"ComponentInfo"`
+		ClusterId     *string   `json:"ClusterId" name:"ClusterId"`
+		ServiceId     *string   `json:"ServiceId" name:"ServiceId"`
+		ServiceName   *string   `json:"ServiceName" name:"ServiceName"`
+		Status        *int      `json:"Status" name:"Status"`
+		Steady        *bool     `json:"Steady" name:"Steady"`
+		Version       *string   `json:"Version" name:"Version"`
+		AbnormalCount *int      `json:"AbnormalCount" name:"AbnormalCount"`
+		ComponentInfo []*string `json:"ComponentInfo" name:"ComponentInfo"`
 		LastStartTime *string `json:"LastStartTime" name:"LastStartTime"`
-		WebUrl        *string `json:"WebUrl" name:"WebUrl"`
-		Port          []struct {
-		} `json:"Port" name:"Port"`
-		WebInfo []struct {
-		} `json:"WebInfo" name:"WebInfo"`
+		WebUrl        *string   `json:"WebUrl" name:"WebUrl"`
+		Port          []*string `json:"Port" name:"Port"`
+		WebInfo       []*string `json:"WebInfo" name:"WebInfo"`
 	} `json:"Services"`
 	EnableEip      *bool `json:"EnableEip" name:"EnableEip"`
 	IsConfComplete *bool `json:"IsConfComplete" name:"IsConfComplete"`
@@ -339,6 +339,7 @@ func (r *ListServiceStatusResponse) ToJsonString() string {
 func (r *ListServiceStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListClustersRequest struct {
 	*ksyunhttp.BaseRequest
@@ -373,16 +374,16 @@ type ListClustersResponse struct {
 			ResourceType      *string `json:"ResourceType" name:"ResourceType"`
 			InstanceType      *string `json:"InstanceType" name:"InstanceType"`
 		} `json:"InstanceGroups" name:"InstanceGroups"`
-		EnableEip        *bool   `json:"EnableEip" name:"EnableEip"`
-		Region           *string `json:"Region" name:"Region"`
+		EnableEip      *bool   `json:"EnableEip" name:"EnableEip"`
+		Region         *string `json:"Region" name:"Region"`
 		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
-		VpcDomainId      *string `json:"VpcDomainId" name:"VpcDomainId"`
-		VpcSubnetId      *string `json:"VpcSubnetId" name:"VpcSubnetId"`
-		ChargeType       *string `json:"ChargeType" name:"ChargeType"`
-		ClusterStatus    *string `json:"ClusterStatus" name:"ClusterStatus"`
-		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
-		UpdateTime       *string `json:"UpdateTime" name:"UpdateTime"`
-		ServingMinutes   *int    `json:"ServingMinutes" name:"ServingMinutes"`
+		VpcDomainId    *string `json:"VpcDomainId" name:"VpcDomainId"`
+		VpcSubnetId    *string `json:"VpcSubnetId" name:"VpcSubnetId"`
+		ChargeType     *string `json:"ChargeType" name:"ChargeType"`
+		ClusterStatus  *string `json:"ClusterStatus" name:"ClusterStatus"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime     *string `json:"UpdateTime" name:"UpdateTime"`
+		ServingMinutes *int    `json:"ServingMinutes" name:"ServingMinutes"`
 	} `json:"Clusters"`
 	Total      *int    `json:"Total" name:"Total"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
@@ -397,6 +398,7 @@ func (r *ListClustersResponse) ToJsonString() string {
 func (r *ListClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListClusterVersionsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -454,6 +456,7 @@ func (r *ListClusterVersionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeServiceRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -480,26 +483,25 @@ type DescribeServiceResponse struct {
 	RequestId       *string `json:"RequestId" name:"RequestId"`
 	Services        *string `json:"Services" name:"Services"`
 	ComponentStatus []struct {
-		ClusterId             *string `json:"ClusterId" name:"ClusterId"`
-		ComponentId           *string `json:"ComponentId" name:"ComponentId"`
-		ComponentName         *string `json:"ComponentName" name:"ComponentName"`
-		Role                  *string `json:"Role" name:"Role"`
-		InstanceId            *string `json:"InstanceId" name:"InstanceId"`
-		InstanceName          *string `json:"InstanceName" name:"InstanceName"`
-		InternalIp            *string `json:"InternalIp" name:"InternalIp"`
-		InstanceGroupType     *string `json:"InstanceGroupType" name:"InstanceGroupType"`
-		InstanceGroupIndex    *int    `json:"InstanceGroupIndex" name:"InstanceGroupIndex"`
-		AvailabilityZoneIndex *int    `json:"AvailabilityZoneIndex" name:"AvailabilityZoneIndex"`
-		Installed             *bool   `json:"Installed" name:"Installed"`
-		State                 *int    `json:"State" name:"State"`
-		TargetState           *int    `json:"TargetState" name:"TargetState"`
-		Steady                *bool   `json:"Steady" name:"Steady"`
-		LastStartTime         *string `json:"LastStartTime" name:"LastStartTime"`
-		ErrorType             *int    `json:"ErrorType" name:"ErrorType"`
-		ErrorMsg              *string `json:"ErrorMsg" name:"ErrorMsg"`
-		RestartRequired       *bool   `json:"RestartRequired" name:"RestartRequired"`
-		ExtraInfo             []struct {
-		} `json:"ExtraInfo" name:"ExtraInfo"`
+		ClusterId             *string   `json:"ClusterId" name:"ClusterId"`
+		ComponentId           *string   `json:"ComponentId" name:"ComponentId"`
+		ComponentName         *string   `json:"ComponentName" name:"ComponentName"`
+		Role                  *string   `json:"Role" name:"Role"`
+		InstanceId            *string   `json:"InstanceId" name:"InstanceId"`
+		InstanceName          *string   `json:"InstanceName" name:"InstanceName"`
+		InternalIp            *string   `json:"InternalIp" name:"InternalIp"`
+		InstanceGroupType     *string   `json:"InstanceGroupType" name:"InstanceGroupType"`
+		InstanceGroupIndex    *int      `json:"InstanceGroupIndex" name:"InstanceGroupIndex"`
+		AvailabilityZoneIndex *int      `json:"AvailabilityZoneIndex" name:"AvailabilityZoneIndex"`
+		Installed             *bool     `json:"Installed" name:"Installed"`
+		State                 *int      `json:"State" name:"State"`
+		TargetState           *int      `json:"TargetState" name:"TargetState"`
+		Steady                *bool     `json:"Steady" name:"Steady"`
+		LastStartTime         *string   `json:"LastStartTime" name:"LastStartTime"`
+		ErrorType             *int      `json:"ErrorType" name:"ErrorType"`
+		ErrorMsg              *string   `json:"ErrorMsg" name:"ErrorMsg"`
+		RestartRequired       *bool     `json:"RestartRequired" name:"RestartRequired"`
+		ExtraInfo             []*string `json:"ExtraInfo" name:"ExtraInfo"`
 	} `json:"ComponentStatus"`
 	Total      *int `json:"Total" name:"Total"`
 	StatusCode *int `json:"StatusCode" name:"StatusCode"`
@@ -513,6 +515,7 @@ func (r *DescribeServiceResponse) ToJsonString() string {
 func (r *DescribeServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListConfigurationsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -542,17 +545,17 @@ type ListConfigurationsResponse struct {
 	ClusterId    *string `json:"ClusterId" name:"ClusterId"`
 	ServiceName  *string `json:"ServiceName" name:"ServiceName"`
 	ConfigGroups []struct {
-		Id              *string `json:"Id" name:"Id"`
+		Id         *string `json:"Id" name:"Id"`
 		InstanceGroupId *string `json:"InstanceGroupId" name:"InstanceGroupId"`
-		ConfigTags      []struct {
+		ConfigTags []struct {
 			Tag            *string `json:"Tag" name:"Tag"`
 			Configurations []struct {
-				Key         *string `json:"Key" name:"Key"`
-				Value       *string `json:"Value" name:"Value"`
-				Custom      *bool   `json:"Custom" name:"Custom"`
+				Key        *string `json:"Key" name:"Key"`
+				Value      *string `json:"Value" name:"Value"`
+				Custom     *bool   `json:"Custom" name:"Custom"`
 				Description *string `json:"Description" name:"Description"`
-				RelatedKey  *string `json:"RelatedKey" name:"RelatedKey"`
-				UpdateTime  *string `json:"UpdateTime" name:"UpdateTime"`
+				RelatedKey *string `json:"RelatedKey" name:"RelatedKey"`
+				UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
 			} `json:"Configurations"`
 		} `json:"ConfigTags" name:"ConfigTags"`
 	} `json:"ConfigGroups"`
@@ -567,6 +570,7 @@ func (r *ListConfigurationsResponse) ToJsonString() string {
 func (r *ListConfigurationsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListConfigurationHistoryRequest struct {
 	*ksyunhttp.BaseRequest
@@ -619,6 +623,7 @@ func (r *ListConfigurationHistoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListTagValuesRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -643,11 +648,11 @@ func (r *ListTagValuesRequest) FromJsonString(s string) error {
 type ListTagValuesResponse struct {
 	*ksyunhttp.BaseResponse
 	TagValues []struct {
-		Id         *int    `json:"Id" name:"Id"`
-		Key        *string `json:"Key" name:"Key"`
-		Value      *string `json:"Value" name:"Value"`
+		Id      *int    `json:"Id" name:"Id"`
+		Key     *string `json:"Key" name:"Key"`
+		Value   *string `json:"Value" name:"Value"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		BindNum    *int    `json:"BindNum" name:"BindNum"`
+		BindNum *int    `json:"BindNum" name:"BindNum"`
 	} `json:"TagValues"`
 	Page       *int    `json:"Page" name:"Page"`
 	PageSize   *int    `json:"PageSize" name:"PageSize"`
@@ -664,6 +669,7 @@ func (r *ListTagValuesResponse) ToJsonString() string {
 func (r *ListTagValuesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListTagKeysRequest struct {
 	*ksyunhttp.BaseRequest
@@ -705,6 +711,7 @@ func (r *ListTagKeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type BindTagsRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId *string         `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -743,6 +750,7 @@ func (r *BindTagsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type StartInstancesRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId   *string   `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -780,6 +788,7 @@ func (r *StartInstancesResponse) ToJsonString() string {
 func (r *StartInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type RestartInstancesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -822,6 +831,7 @@ func (r *RestartInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type StopInstancesRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId   *string   `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -859,6 +869,7 @@ func (r *StopInstancesResponse) ToJsonString() string {
 func (r *StopInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListScaleStrategyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -926,16 +937,16 @@ type ListScaleStrategyResponse struct {
 	} `json:"Strategies"`
 	ConflictStrategies  *string `json:"ConflictStrategies" name:"ConflictStrategies"`
 	LoadBasedStrategies []struct {
-		Id                 *string `json:"Id" name:"Id"`
-		ClusterId          *string `json:"ClusterId" name:"ClusterId"`
-		ActivateTime       *string `json:"ActivateTime" name:"ActivateTime"`
-		ChargeType         *string `json:"ChargeType" name:"ChargeType"`
-		Enabled            *bool   `json:"Enabled" name:"Enabled"`
-		ExpireTime         *string `json:"ExpireTime" name:"ExpireTime"`
-		NewTaskGroup       *bool   `json:"NewTaskGroup" name:"NewTaskGroup"`
-		InstanceGroupId    *string `json:"InstanceGroupId" name:"InstanceGroupId"`
+		Id                *string `json:"Id" name:"Id"`
+		ClusterId         *string `json:"ClusterId" name:"ClusterId"`
+		ActivateTime      *string `json:"ActivateTime" name:"ActivateTime"`
+		ChargeType        *string `json:"ChargeType" name:"ChargeType"`
+		Enabled           *bool   `json:"Enabled" name:"Enabled"`
+		ExpireTime        *string `json:"ExpireTime" name:"ExpireTime"`
+		NewTaskGroup      *bool   `json:"NewTaskGroup" name:"NewTaskGroup"`
+		InstanceGroupId   *string `json:"InstanceGroupId" name:"InstanceGroupId"`
 		InstanceGroupAlias *string `json:"InstanceGroupAlias" name:"InstanceGroupAlias"`
-		InstanceGroupInfo  struct {
+		InstanceGroupInfo struct {
 			SystemDiskType *string `json:"SystemDiskType" name:"SystemDiskType"`
 			SystemDiskSize *int    `json:"SystemDiskSize" name:"SystemDiskSize"`
 		} `json:"InstanceGroupInfo" name:"InstanceGroupInfo"`
@@ -983,6 +994,7 @@ func (r *ListScaleStrategyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyScaleStrategyRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -1020,6 +1032,7 @@ func (r *ModifyScaleStrategyResponse) ToJsonString() string {
 func (r *ModifyScaleStrategyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DeleteScaleStrategyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1190,3 +1203,4 @@ func (r *ModifyLoadBasedScaleStrategyResponse) ToJsonString() string {
 func (r *ModifyLoadBasedScaleStrategyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

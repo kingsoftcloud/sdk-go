@@ -1,5 +1,4 @@
 package v20210520
-
 import (
 	"context"
 	"fmt"
@@ -1342,3 +1341,5 @@ func (c *Client) ConfigurationInstanceEipWithContext(ctx context.Context, reques
 	}
 	return msg
 }
+
+

@@ -365,11 +365,10 @@ type DescribeEngineDefaultParametersResponse struct {
 				Type            *string `json:"Type" name:"Type"`
 			} `json:"ConnectTimeout"`
 			DelayKeyWrite struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"DelayKeyWrite"`
 			InnodbPurgeBatchSize struct {
 				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
@@ -400,12 +399,11 @@ type DescribeEngineDefaultParametersResponse struct {
 				Type            *string `json:"Type" name:"Type"`
 			} `json:"WaitTimeout"`
 			TxIsolation struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Alias           *string `json:"Alias" name:"Alias"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Alias           *string   `json:"Alias" name:"Alias"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"TxIsolation"`
 			TableDefinitionCache struct {
 				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
@@ -428,22 +426,20 @@ type DescribeEngineDefaultParametersResponse struct {
 				Type            *string `json:"Type" name:"Type"`
 			} `json:"InnodbStatsSamplePages"`
 			InnodbPrintAllDeadlocks struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"InnodbPrintAllDeadlocks"`
 			SyncBinlog struct {
 				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
 				Type            *string `json:"Type" name:"Type"`
 			} `json:"SyncBinlog"`
 			InnodbStatsMethod struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"InnodbStatsMethod"`
 			LockWaitTimeout struct {
 				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
@@ -478,29 +474,26 @@ type DescribeEngineDefaultParametersResponse struct {
 				Type            *string `json:"Type" name:"Type"`
 			} `json:"InnodbThreadConcurrency"`
 			InnodbStrictMode struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"InnodbStrictMode"`
 			InnodbFlushLogAtTrxCommit struct {
 				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
 				Type            *string `json:"Type" name:"Type"`
 			} `json:"InnodbFlushLogAtTrxCommit"`
 			DefaultTimeZone struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"DefaultTimeZone"`
 			PerformanceSchema struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"PerformanceSchema"`
 			InnodbWriteIoThreads struct {
 				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
@@ -519,83 +512,73 @@ type DescribeEngineDefaultParametersResponse struct {
 				Type            *string `json:"Type" name:"Type"`
 			} `json:"JoinBufferSize"`
 			RplSemiSyncSlaveEnabled struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"RplSemiSyncSlaveEnabled"`
 			InnodbRollbackOnTimeout struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"InnodbRollbackOnTimeout"`
 			OldAlterTable struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"OldAlterTable"`
 			BinlogRowImage struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"BinlogRowImage"`
 			KeyCacheBlockSize struct {
 				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
 				Type            *string `json:"Type" name:"Type"`
 			} `json:"KeyCacheBlockSize"`
 			QueryCacheType struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Ignore          *bool   `json:"Ignore" name:"Ignore"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Ignore          *bool     `json:"Ignore" name:"Ignore"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"QueryCacheType"`
 			InitConnect struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"InitConnect"`
 			LocalInfile struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"LocalInfile"`
 			BinlogFormat struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"BinlogFormat"`
 			LogSlaveUpdates struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"LogSlaveUpdates"`
 			SlowLaunchTime struct {
 				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
 				Type            *string `json:"Type" name:"Type"`
 			} `json:"SlowLaunchTime"`
 			InnodbTableLocks struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"InnodbTableLocks"`
 			NetWriteTimeout struct {
 				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
@@ -647,11 +630,10 @@ type DescribeEngineDefaultParametersResponse struct {
 				Type            *string `json:"Type" name:"Type"`
 			} `json:"BinlogCacheSize"`
 			LowPriorityUpdates struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"LowPriorityUpdates"`
 			AutoIncrementOffset struct {
 				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
@@ -674,22 +656,20 @@ type DescribeEngineDefaultParametersResponse struct {
 				Type            *string `json:"Type" name:"Type"`
 			} `json:"FtMinWordLen"`
 			ConcurrentInsert struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"ConcurrentInsert"`
 			IntQueryTime struct {
 				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
 				Type            *string `json:"Type" name:"Type"`
 			} `json:"IntQueryTime"`
 			SlowQueryLog struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"SlowQueryLog"`
 			SortBufferSize struct {
 				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
@@ -712,11 +692,10 @@ type DescribeEngineDefaultParametersResponse struct {
 				Type            *string `json:"Type" name:"Type"`
 			} `json:"MaxAllowedPacket"`
 			RplSemiSyncMasterEnabled struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"RplSemiSyncMasterEnabled"`
 			DelayedInsertLimit struct {
 				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
@@ -727,11 +706,10 @@ type DescribeEngineDefaultParametersResponse struct {
 				Type            *string `json:"Type" name:"Type"`
 			} `json:"InnodbOpenFiles"`
 			CharacterSetServer struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"CharacterSetServer"`
 			DelayedQueueSize struct {
 				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
@@ -750,32 +728,28 @@ type DescribeEngineDefaultParametersResponse struct {
 				Type            *string `json:"Type" name:"Type"`
 			} `json:"TableOpenCache"`
 			LogSlowAdminStatements struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"LogSlowAdminStatements"`
 			LogBinTrustFunctionCreators struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"LogBinTrustFunctionCreators"`
 			LogQueriesNotUsingIndexes struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"LogQueriesNotUsingIndexes"`
 			InnodbStatsOnMetadata struct {
-				Default         *string `json:"Default" name:"Default"`
-				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
-				Type            *string `json:"Type" name:"Type"`
-				Enums           []struct {
-				} `json:"Enums" name:"Enums"`
+				Default         *string   `json:"Default" name:"Default"`
+				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
+				Type            *string   `json:"Type" name:"Type"`
+				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"InnodbStatsOnMetadata"`
 			TableOpenCacheInstances struct {
 				RestartRequired *bool   `json:"RestartRequired" name:"RestartRequired"`
@@ -3390,9 +3364,8 @@ func (r *GetCurrentDatabaseInfoRequest) FromJsonString(s string) error {
 type GetCurrentDatabaseInfoResponse struct {
 	*ksyunhttp.BaseResponse
 	Databases []struct {
-		DatabaseName *string `json:"DatabaseName" name:"DatabaseName"`
-		TableNames   []struct {
-		} `json:"TableNames" name:"TableNames"`
+		DatabaseName *string   `json:"DatabaseName" name:"DatabaseName"`
+		TableNames   []*string `json:"TableNames" name:"TableNames"`
 	} `json:"Databases"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -3471,9 +3444,8 @@ func (r *GetHistoryDatabaseInfoRequest) FromJsonString(s string) error {
 type GetHistoryDatabaseInfoResponse struct {
 	*ksyunhttp.BaseResponse
 	Databases []struct {
-		DatabaseName *string `json:"DatabaseName" name:"DatabaseName"`
-		TableNames   []struct {
-		} `json:"TableNames" name:"TableNames"`
+		DatabaseName *string   `json:"DatabaseName" name:"DatabaseName"`
+		TableNames   []*string `json:"TableNames" name:"TableNames"`
 	} `json:"Databases"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -4001,10 +3973,9 @@ func (r *ListAuditDetailExportTaskRequest) FromJsonString(s string) error {
 type ListAuditDetailExportTaskResponse struct {
 	*ksyunhttp.BaseResponse
 	TaskResps []struct {
-		StartTime   *string `json:"StartTime" name:"StartTime"`
-		EndTime     *string `json:"EndTime" name:"EndTime"`
-		S3FileNames []struct {
-		} `json:"S3FileNames" name:"S3FileNames"`
+		StartTime   *string   `json:"StartTime" name:"StartTime"`
+		EndTime     *string   `json:"EndTime" name:"EndTime"`
+		S3FileNames []*string `json:"S3FileNames" name:"S3FileNames"`
 	} `json:"TaskResps"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -4519,13 +4490,12 @@ func (r *ListSlowLogDetailExportTaskRequest) FromJsonString(s string) error {
 type ListSlowLogDetailExportTaskResponse struct {
 	*ksyunhttp.BaseResponse
 	TaskResps []struct {
-		StartTime    *string `json:"StartTime" name:"StartTime"`
-		EndTime      *string `json:"EndTime" name:"EndTime"`
-		Status       *int    `json:"Status" name:"Status"`
-		CreateTime   *int    `json:"CreateTime" name:"CreateTime"`
-		RecordNumber *int    `json:"RecordNumber" name:"RecordNumber"`
-		S3FileNames  []struct {
-		} `json:"S3FileNames" name:"S3FileNames"`
+		StartTime    *string   `json:"StartTime" name:"StartTime"`
+		EndTime      *string   `json:"EndTime" name:"EndTime"`
+		Status       *int      `json:"Status" name:"Status"`
+		CreateTime   *int      `json:"CreateTime" name:"CreateTime"`
+		RecordNumber *int      `json:"RecordNumber" name:"RecordNumber"`
+		S3FileNames  []*string `json:"S3FileNames" name:"S3FileNames"`
 	} `json:"TaskResps"`
 	TotalCount *int    `json:"totalCount" name:"totalCount"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`

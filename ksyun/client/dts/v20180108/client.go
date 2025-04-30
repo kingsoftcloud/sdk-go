@@ -1,5 +1,4 @@
 package v20180108
-
 import (
 	"context"
 	"fmt"
@@ -649,3 +648,5 @@ func (c *Client) TaskBirdViewWithContext(ctx context.Context, request *TaskBirdV
 	}
 	return msg
 }
+
+

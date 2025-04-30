@@ -215,6 +215,7 @@ type CreateContainerGroupRequest struct {
 	RetainIp                *bool                                          `json:"RetainIp,omitempty" name:"RetainIp"`
 	RetainIpHours           *int                                           `json:"RetainIpHours,omitempty" name:"RetainIpHours"`
 	EipAllocationId         *string                                        `json:"EipAllocationId,omitempty" name:"EipAllocationId"`
+	MultiEipAllocationId    []*string                                      `json:"MultiEipAllocationId,omitempty" name:"MultiEipAllocationId"`
 	AutoMatchImageCache     *bool                                          `json:"AutoMatchImageCache,omitempty" name:"AutoMatchImageCache"`
 	ImageCacheId            *string                                        `json:"ImageCacheId,omitempty" name:"ImageCacheId"`
 	AdvanceSettings         *CreateContainerGroupAdvanceSettings           `json:"AdvanceSettings,omitempty" name:"AdvanceSettings"`
@@ -299,20 +300,21 @@ type DescribeContainerGroupResponse struct {
 	Marker          *int    `json:"Marker" name:"Marker"`
 	TotalCount      *int    `json:"TotalCount" name:"TotalCount"`
 	ContainerGroups []struct {
-		ContainerGroupId           *string `json:"ContainerGroupId" name:"ContainerGroupId"`
-		ContainerGroupName         *string `json:"ContainerGroupName" name:"ContainerGroupName"`
-		AvailabilityZone           *string `json:"AvailabilityZone" name:"AvailabilityZone"`
-		ChargeType                 *string `json:"ChargeType" name:"ChargeType"`
-		ProjectId                  *int    `json:"ProjectId" name:"ProjectId"`
-		KciType                    *string `json:"KciType" name:"KciType"`
-		KciMode                    *string `json:"KciMode" name:"KciMode"`
-		InstanceType               *string `json:"InstanceType" name:"InstanceType"`
-		Status                     *string `json:"Status" name:"Status"`
-		CreateTime                 *string `json:"CreateTime" name:"CreateTime"`
-		Cpu                        *int    `json:"Cpu" name:"Cpu"`
-		Memory                     *int    `json:"Memory" name:"Memory"`
-		RetainIp                   *bool   `json:"RetainIp" name:"RetainIp"`
-		RetainIpHours              *int    `json:"RetainIpHours" name:"RetainIpHours"`
+		ContainerGroupId           *string  `json:"ContainerGroupId" name:"ContainerGroupId"`
+		ContainerGroupName         *string  `json:"ContainerGroupName" name:"ContainerGroupName"`
+		AvailabilityZone           *string  `json:"AvailabilityZone" name:"AvailabilityZone"`
+		ChargeType                 *string  `json:"ChargeType" name:"ChargeType"`
+		ProjectId                  *int     `json:"ProjectId" name:"ProjectId"`
+		KciType                    *string  `json:"KciType" name:"KciType"`
+		KciMode                    *string  `json:"KciMode" name:"KciMode"`
+		InstanceType               *string  `json:"InstanceType" name:"InstanceType"`
+		Status                     *string  `json:"Status" name:"Status"`
+		CreateTime                 *string  `json:"CreateTime" name:"CreateTime"`
+		Cpu                        *int     `json:"Cpu" name:"Cpu"`
+		Memory                     *int     `json:"Memory" name:"Memory"`
+		Gpu                        *float64 `json:"Gpu" name:"Gpu"`
+		RetainIp                   *bool    `json:"RetainIp" name:"RetainIp"`
+		RetainIpHours              *int     `json:"RetainIpHours" name:"RetainIpHours"`
 		NetworkInterfaceAttributes []struct {
 			NetworkInterfaceId   *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
 			NetworkInterfaceType *string `json:"NetworkInterfaceType" name:"NetworkInterfaceType"`
@@ -377,10 +379,13 @@ type DescribeContainerGroupResponse struct {
 					} `json:"FieldRef"`
 				} `json:"ValueFrom" name:"ValueFrom"`
 			} `json:"EnvironmentVars"`
-			WorkingDir      *string `json:"WorkingDir" name:"WorkingDir"`
-			Image           *string `json:"Image" name:"Image"`
-			ImagePullPolicy *string `json:"ImagePullPolicy" name:"ImagePullPolicy"`
-			RestartCount    *int    `json:"RestartCount" name:"RestartCount"`
+			Cpu             *float64 `json:"Cpu" name:"Cpu"`
+			Memory          *float64 `json:"Memory" name:"Memory"`
+			Gpu             *float64 `json:"Gpu" name:"Gpu"`
+			WorkingDir      *string  `json:"WorkingDir" name:"WorkingDir"`
+			Image           *string  `json:"Image" name:"Image"`
+			ImagePullPolicy *string  `json:"ImagePullPolicy" name:"ImagePullPolicy"`
+			RestartCount    *int     `json:"RestartCount" name:"RestartCount"`
 			Ports           []struct {
 				Protocol *string `json:"Protocol" name:"Protocol"`
 				Port     *int    `json:"Port" name:"Port"`
@@ -551,10 +556,9 @@ type DescribeRegionsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Regions   []struct {
-		Region            *string `json:"Region" name:"Region"`
-		RegionName        *string `json:"RegionName" name:"RegionName"`
-		AvailabilityZones []struct {
-		} `json:"AvailabilityZones" name:"AvailabilityZones"`
+		Region            *string   `json:"Region" name:"Region"`
+		RegionName        *string   `json:"RegionName" name:"RegionName"`
+		AvailabilityZones []*string `json:"AvailabilityZones" name:"AvailabilityZones"`
 	} `json:"Regions"`
 }
 
@@ -715,8 +719,8 @@ type DescribeKciPackagesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Packages  []struct {
-		Mem []struct {
-		} `json:"Mem" name:"Mem"`
+		Cpu *float64   `json:"Cpu" name:"Cpu"`
+		Mem []*float64 `json:"Mem" name:"Mem"`
 	} `json:"Packages"`
 }
 
@@ -840,18 +844,17 @@ type DescribeImageCacheResponse struct {
 	Marker      *int    `json:"Marker" name:"Marker"`
 	TotalCount  *int    `json:"TotalCount" name:"TotalCount"`
 	ImageCaches []struct {
-		ImageCacheId     *string `json:"ImageCacheId" name:"ImageCacheId"`
-		ImageCacheName   *string `json:"ImageCacheName" name:"ImageCacheName"`
-		ExpireTime       *string `json:"ExpireTime" name:"ExpireTime"`
-		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
-		Status           *string `json:"Status" name:"Status"`
-		ImageCacheSize   *int    `json:"ImageCacheSize" name:"ImageCacheSize"`
-		SnapshotId       *string `json:"SnapshotId" name:"SnapshotId"`
-		ContainerGroupId *string `json:"ContainerGroupId" name:"ContainerGroupId"`
-		Images           []struct {
-		} `json:"Images" name:"Images"`
-		Reason         *string `json:"Reason" name:"Reason"`
-		ImageCacheType *string `json:"ImageCacheType" name:"ImageCacheType"`
+		ImageCacheId     *string   `json:"ImageCacheId" name:"ImageCacheId"`
+		ImageCacheName   *string   `json:"ImageCacheName" name:"ImageCacheName"`
+		ExpireTime       *string   `json:"ExpireTime" name:"ExpireTime"`
+		CreateTime       *string   `json:"CreateTime" name:"CreateTime"`
+		Status           *string   `json:"Status" name:"Status"`
+		ImageCacheSize   *int      `json:"ImageCacheSize" name:"ImageCacheSize"`
+		SnapshotId       *string   `json:"SnapshotId" name:"SnapshotId"`
+		ContainerGroupId *string   `json:"ContainerGroupId" name:"ContainerGroupId"`
+		Images           []*string `json:"Images" name:"Images"`
+		Reason           *string   `json:"Reason" name:"Reason"`
+		ImageCacheType   *string   `json:"ImageCacheType" name:"ImageCacheType"`
 	} `json:"ImageCaches"`
 }
 

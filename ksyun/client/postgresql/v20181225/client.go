@@ -1,5 +1,4 @@
 package v20181225
-
 import (
 	"context"
 	"fmt"
@@ -1540,3 +1539,38 @@ func (c *Client) ModifyDBNetworkWithContext(ctx context.Context, request *Modify
 	}
 	return msg
 }
+func NewUpdateDBInstanceVersionRequest() (request *UpdateDBInstanceVersionRequest) {
+	request = &UpdateDBInstanceVersionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("postgresql", APIVersion, "UpdateDBInstanceVersion")
+	return
+}
+
+func NewUpdateDBInstanceVersionResponse() (response *UpdateDBInstanceVersionResponse) {
+	response = &UpdateDBInstanceVersionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateDBInstanceVersion(request *UpdateDBInstanceVersionRequest) string {
+	return c.UpdateDBInstanceVersionWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateDBInstanceVersionWithContext(ctx context.Context, request *UpdateDBInstanceVersionRequest) string {
+	if request == nil {
+		request = NewUpdateDBInstanceVersionRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateDBInstanceVersionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+

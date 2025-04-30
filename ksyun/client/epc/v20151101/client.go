@@ -1,5 +1,4 @@
 package v20151101
-
 import (
 	"context"
 	"fmt"
@@ -2266,3 +2265,5 @@ func (c *Client) DescribeRoceEventDetailsWithContext(ctx context.Context, reques
 	}
 	return msg
 }
+
+

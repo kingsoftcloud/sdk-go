@@ -62,6 +62,10 @@ type DescribeSubnetAllocatedIpAddressesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
+type DescribeDirectConnectRoutesFilter struct {
+	Name  *string   `json:"Name,omitempty" name:"Name"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
 type DescribeRouteTablesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
@@ -2324,22 +2328,20 @@ type DescribeDirectConnectGatewaysResponse struct {
 	RequestId               *string `json:"RequestId" name:"RequestId"`
 	NextToken               *string `json:"NextToken" name:"NextToken"`
 	DirectConnectGatewaySet []struct {
-		CreateTime               *string `json:"CreateTime" name:"CreateTime"`
-		VpcId                    *string `json:"VpcId" name:"VpcId"`
-		DirectConnectGatewayId   *string `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
-		NatId                    *string `json:"NatId" name:"NatId"`
-		DirectConnectInterfaceId *string `json:"DirectConnectInterfaceId" name:"DirectConnectInterfaceId"`
-		DirectConnectGatewayName *string `json:"DirectConnectGatewayName" name:"DirectConnectGatewayName"`
-		BandWidth                *int    `json:"BandWidth" name:"BandWidth"`
-		AssociatedInstanceType   *string `json:"AssociatedInstanceType" name:"AssociatedInstanceType"`
-		CenAccountId             *string `json:"CenAccountId" name:"CenAccountId"`
-		Status                   *string `json:"Status" name:"Status"`
-		CenId                    *string `json:"CenId" name:"CenId"`
-		RemoteCidrSet            []struct {
-		} `json:"RemoteCidrSet" name:"RemoteCidrSet"`
-		ExtraCidrSet []struct {
-		} `json:"ExtraCidrSet" name:"ExtraCidrSet"`
-		Version                       *string `json:"Version" name:"Version"`
+		CreateTime                    *string   `json:"CreateTime" name:"CreateTime"`
+		VpcId                         *string   `json:"VpcId" name:"VpcId"`
+		DirectConnectGatewayId        *string   `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
+		NatId                         *string   `json:"NatId" name:"NatId"`
+		DirectConnectInterfaceId      *string   `json:"DirectConnectInterfaceId" name:"DirectConnectInterfaceId"`
+		DirectConnectGatewayName      *string   `json:"DirectConnectGatewayName" name:"DirectConnectGatewayName"`
+		BandWidth                     *int      `json:"BandWidth" name:"BandWidth"`
+		AssociatedInstanceType        *string   `json:"AssociatedInstanceType" name:"AssociatedInstanceType"`
+		CenAccountId                  *string   `json:"CenAccountId" name:"CenAccountId"`
+		Status                        *string   `json:"Status" name:"Status"`
+		CenId                         *string   `json:"CenId" name:"CenId"`
+		RemoteCidrSet                 []*string `json:"RemoteCidrSet" name:"RemoteCidrSet"`
+		ExtraCidrSet                  []*string `json:"ExtraCidrSet" name:"ExtraCidrSet"`
+		Version                       *string   `json:"Version" name:"Version"`
 		DirectConnectInterfaceInfoSet []struct {
 			DirectConnectInterfaceId *string `json:"DirectConnectInterfaceId" name:"DirectConnectInterfaceId"`
 		} `json:"DirectConnectInterfaceInfoSet" name:"DirectConnectInterfaceInfoSet"`
@@ -2825,36 +2827,35 @@ type DescribeVpnTunnelsResponse struct {
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	NextToken    *string `json:"NextToken" name:"NextToken"`
 	VpnTunnelSet []struct {
-		CreateTime           *string `json:"CreateTime" name:"CreateTime"`
-		OpenHealthCheck      *bool   `json:"OpenHealthCheck" name:"OpenHealthCheck"`
-		State                *string `json:"State" name:"State"`
-		VpnTunnelId          *string `json:"VpnTunnelId" name:"VpnTunnelId"`
-		VpnGreIp             *string `json:"VpnGreIp" name:"VpnGreIp"`
-		Type                 *string `json:"Type" name:"Type"`
-		HaMode               *string `json:"HaMode" name:"HaMode"`
-		IkeVersion           *string `json:"IkeVersion" name:"IkeVersion"`
-		LocalPeerIp          *string `json:"LocalPeerIp" name:"LocalPeerIp"`
-		CustomerPeerIp       *string `json:"CustomerPeerIp" name:"CustomerPeerIp"`
-		CustomerGreIp        *string `json:"CustomerGreIp" name:"CustomerGreIp"`
-		HaVpnGreIp           *string `json:"HaVpnGreIp" name:"HaVpnGreIp"`
-		HaCustomerGreIp      *string `json:"HaCustomerGreIp" name:"HaCustomerGreIp"`
-		VpnGatewayId         *string `json:"VpnGatewayId" name:"VpnGatewayId"`
-		VpnGatewayVersion    *string `json:"VpnGatewayVersion" name:"VpnGatewayVersion"`
-		CustomerGatewayId    *string `json:"CustomerGatewayId" name:"CustomerGatewayId"`
-		PreSharedKey         *string `json:"PreSharedKey" name:"PreSharedKey"`
-		IkeAuthenAlgorithm   *string `json:"IkeAuthenAlgorithm" name:"IkeAuthenAlgorithm"`
-		IkeDHGroup           *string `json:"IkeDHGroup" name:"IkeDHGroup"`
-		IkeEncryAlgorithm    *string `json:"IkeEncryAlgorithm" name:"IkeEncryAlgorithm"`
-		IpsecAuthenAlgorithm *string `json:"IpsecAuthenAlgorithm" name:"IpsecAuthenAlgorithm"`
-		IpsecEncryAlgorithm  *string `json:"IpsecEncryAlgorithm" name:"IpsecEncryAlgorithm"`
-		IpsecLifetimeSecond  *int    `json:"IpsecLifetimeSecond" name:"IpsecLifetimeSecond"`
-		IpsecLifetimeTraffic *int    `json:"IpsecLifetimeTraffic" name:"IpsecLifetimeTraffic"`
-		VpnTunnelName        *string `json:"VpnTunnelName" name:"VpnTunnelName"`
-		VpnGwlName           *string `json:"VpnGwlName" name:"VpnGwlName"`
-		ExtraCidrSet         []struct {
-		} `json:"ExtraCidrSet" name:"ExtraCidrSet"`
-		NatId              *string `json:"NatId" name:"NatId"`
-		EnableNatTraversal *bool   `json:"EnableNatTraversal" name:"EnableNatTraversal"`
+		CreateTime           *string   `json:"CreateTime" name:"CreateTime"`
+		OpenHealthCheck      *bool     `json:"OpenHealthCheck" name:"OpenHealthCheck"`
+		State                *string   `json:"State" name:"State"`
+		VpnTunnelId          *string   `json:"VpnTunnelId" name:"VpnTunnelId"`
+		VpnGreIp             *string   `json:"VpnGreIp" name:"VpnGreIp"`
+		Type                 *string   `json:"Type" name:"Type"`
+		HaMode               *string   `json:"HaMode" name:"HaMode"`
+		IkeVersion           *string   `json:"IkeVersion" name:"IkeVersion"`
+		LocalPeerIp          *string   `json:"LocalPeerIp" name:"LocalPeerIp"`
+		CustomerPeerIp       *string   `json:"CustomerPeerIp" name:"CustomerPeerIp"`
+		CustomerGreIp        *string   `json:"CustomerGreIp" name:"CustomerGreIp"`
+		HaVpnGreIp           *string   `json:"HaVpnGreIp" name:"HaVpnGreIp"`
+		HaCustomerGreIp      *string   `json:"HaCustomerGreIp" name:"HaCustomerGreIp"`
+		VpnGatewayId         *string   `json:"VpnGatewayId" name:"VpnGatewayId"`
+		VpnGatewayVersion    *string   `json:"VpnGatewayVersion" name:"VpnGatewayVersion"`
+		CustomerGatewayId    *string   `json:"CustomerGatewayId" name:"CustomerGatewayId"`
+		PreSharedKey         *string   `json:"PreSharedKey" name:"PreSharedKey"`
+		IkeAuthenAlgorithm   *string   `json:"IkeAuthenAlgorithm" name:"IkeAuthenAlgorithm"`
+		IkeDHGroup           *string   `json:"IkeDHGroup" name:"IkeDHGroup"`
+		IkeEncryAlgorithm    *string   `json:"IkeEncryAlgorithm" name:"IkeEncryAlgorithm"`
+		IpsecAuthenAlgorithm *string   `json:"IpsecAuthenAlgorithm" name:"IpsecAuthenAlgorithm"`
+		IpsecEncryAlgorithm  *string   `json:"IpsecEncryAlgorithm" name:"IpsecEncryAlgorithm"`
+		IpsecLifetimeSecond  *int      `json:"IpsecLifetimeSecond" name:"IpsecLifetimeSecond"`
+		IpsecLifetimeTraffic *int      `json:"IpsecLifetimeTraffic" name:"IpsecLifetimeTraffic"`
+		VpnTunnelName        *string   `json:"VpnTunnelName" name:"VpnTunnelName"`
+		VpnGwlName           *string   `json:"VpnGwlName" name:"VpnGwlName"`
+		ExtraCidrSet         []*string `json:"ExtraCidrSet" name:"ExtraCidrSet"`
+		NatId                *string   `json:"NatId" name:"NatId"`
+		EnableNatTraversal   *bool     `json:"EnableNatTraversal" name:"EnableNatTraversal"`
 	} `json:"VpnTunnelSet"`
 }
 
@@ -3287,6 +3288,58 @@ func (r *ModifyPrivateIpAddressAttributeResponse) ToJsonString() string {
 }
 
 func (r *ModifyPrivateIpAddressAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDirectConnectRoutesRequest struct {
+	*ksyunhttp.BaseRequest
+	DirectConnectRouteId []*string                            `json:"DirectConnectRouteId,omitempty" name:"DirectConnectRouteId"`
+	MaxResults           *int                                 `json:"MaxResults,omitempty" name:"MaxResults"`
+	Filter               []*DescribeDirectConnectRoutesFilter `json:"Filter,omitempty" name:"Filter"`
+	NextToken            *string                              `json:"NextToken,omitempty" name:"NextToken"`
+}
+
+func (r *DescribeDirectConnectRoutesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDirectConnectRoutesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeDirectConnectRoutesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDirectConnectRoutesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId             *string `json:"RequestId" name:"RequestId"`
+	NextToken             *string `json:"NextToken" name:"NextToken"`
+	DirectConnectRouteSet []struct {
+		CreateTime           *string `json:"CreateTime" name:"CreateTime"`
+		DirectConnectId      *string `json:"DirectConnectId" name:"DirectConnectId"`
+		CenStatus            *string `json:"CenStatus" name:"CenStatus"`
+		BgpStatus            *string `json:"BgpStatus" name:"BgpStatus"`
+		DirectConnectRouteId *string `json:"DirectConnectRouteId" name:"DirectConnectRouteId"`
+		DestinationCidrBlock *string `json:"DestinationCidrBlock" name:"DestinationCidrBlock"`
+		RouteType            *string `json:"RouteType" name:"RouteType"`
+		NextHopSet           []struct {
+			GatewayId   *string `json:"GatewayId" name:"GatewayId"`
+			GatewayName *string `json:"GatewayName" name:"GatewayName"`
+		} `json:"NextHopSet" name:"NextHopSet"`
+	} `json:"DirectConnectRouteSet"`
+}
+
+func (r *DescribeDirectConnectRoutesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDirectConnectRoutesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4004,15 +4057,14 @@ type DescribeHaVipResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	NextToken *string `json:"NextToken" name:"NextToken"`
 	HaVipSet  []struct {
-		HaVipId                    *string `json:"HaVipId" name:"HaVipId"`
-		SubnetId                   *string `json:"SubnetId" name:"SubnetId"`
-		MasterNetworkInterfaceId   *string `json:"MasterNetworkInterfaceId" name:"MasterNetworkInterfaceId"`
-		VpcId                      *string `json:"VpcId" name:"VpcId"`
-		AllocationId               *string `json:"AllocationId" name:"AllocationId"`
-		IpAddress                  *string `json:"IpAddress" name:"IpAddress"`
-		CreateTime                 *string `json:"CreateTime" name:"CreateTime"`
-		SlaveNetworkInterfaceIdSet []struct {
-		} `json:"SlaveNetworkInterfaceIdSet" name:"SlaveNetworkInterfaceIdSet"`
+		HaVipId                    *string   `json:"HaVipId" name:"HaVipId"`
+		SubnetId                   *string   `json:"SubnetId" name:"SubnetId"`
+		MasterNetworkInterfaceId   *string   `json:"MasterNetworkInterfaceId" name:"MasterNetworkInterfaceId"`
+		VpcId                      *string   `json:"VpcId" name:"VpcId"`
+		AllocationId               *string   `json:"AllocationId" name:"AllocationId"`
+		IpAddress                  *string   `json:"IpAddress" name:"IpAddress"`
+		CreateTime                 *string   `json:"CreateTime" name:"CreateTime"`
+		SlaveNetworkInterfaceIdSet []*string `json:"SlaveNetworkInterfaceIdSet" name:"SlaveNetworkInterfaceIdSet"`
 	} `json:"HaVipSet"`
 }
 

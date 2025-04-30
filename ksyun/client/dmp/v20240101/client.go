@@ -451,3 +451,234 @@ func (c *Client) DescribeDedicatedHostsWithContext(ctx context.Context, request 
 	}
 	return msg
 }
+func NewDescribeDatabaseSchemaRequest() (request *DescribeDatabaseSchemaRequest) {
+	request = &DescribeDatabaseSchemaRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("dmp", APIVersion, "DescribeDatabaseSchema")
+	return
+}
+
+func NewDescribeDatabaseSchemaResponse() (response *DescribeDatabaseSchemaResponse) {
+	response = &DescribeDatabaseSchemaResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeDatabaseSchema(request *DescribeDatabaseSchemaRequest) string {
+	return c.DescribeDatabaseSchemaWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDatabaseSchemaWithContext(ctx context.Context, request *DescribeDatabaseSchemaRequest) string {
+	if request == nil {
+		request = NewDescribeDatabaseSchemaRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeDatabaseSchemaResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeDatabaseListRequest() (request *DescribeDatabaseListRequest) {
+	request = &DescribeDatabaseListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("dmp", APIVersion, "DescribeDatabaseList")
+	return
+}
+
+func NewDescribeDatabaseListResponse() (response *DescribeDatabaseListResponse) {
+	response = &DescribeDatabaseListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeDatabaseList(request *DescribeDatabaseListRequest) string {
+	return c.DescribeDatabaseListWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDatabaseListWithContext(ctx context.Context, request *DescribeDatabaseListRequest) string {
+	if request == nil {
+		request = NewDescribeDatabaseListRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeDatabaseListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeHistorySQLRequest() (request *DescribeHistorySQLRequest) {
+	request = &DescribeHistorySQLRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("dmp", APIVersion, "DescribeHistorySQL")
+	return
+}
+
+func NewDescribeHistorySQLResponse() (response *DescribeHistorySQLResponse) {
+	response = &DescribeHistorySQLResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeHistorySQL(request *DescribeHistorySQLRequest) string {
+	return c.DescribeHistorySQLWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeHistorySQLWithContext(ctx context.Context, request *DescribeHistorySQLRequest) string {
+	if request == nil {
+		request = NewDescribeHistorySQLRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeHistorySQLResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewStartExecuteSQLRequest() (request *StartExecuteSQLRequest) {
+	request = &StartExecuteSQLRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("dmp", APIVersion, "StartExecuteSQL")
+	return
+}
+
+func NewStartExecuteSQLResponse() (response *StartExecuteSQLResponse) {
+	response = &StartExecuteSQLResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) StartExecuteSQL(request *StartExecuteSQLRequest) string {
+	return c.StartExecuteSQLWithContext(context.Background(), request)
+}
+
+func (c *Client) StartExecuteSQLWithContext(ctx context.Context, request *StartExecuteSQLRequest) string {
+	if request == nil {
+		request = NewStartExecuteSQLRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewStartExecuteSQLResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewUpdateInstanceDatabaseRequest() (request *UpdateInstanceDatabaseRequest) {
+	request = &UpdateInstanceDatabaseRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("dmp", APIVersion, "UpdateInstanceDatabase")
+	return
+}
+
+func NewUpdateInstanceDatabaseResponse() (response *UpdateInstanceDatabaseResponse) {
+	response = &UpdateInstanceDatabaseResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateInstanceDatabase(request *UpdateInstanceDatabaseRequest) string {
+	return c.UpdateInstanceDatabaseWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateInstanceDatabaseWithContext(ctx context.Context, request *UpdateInstanceDatabaseRequest) string {
+	if request == nil {
+		request = NewUpdateInstanceDatabaseRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateInstanceDatabaseResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewUpdateDatabaseTableRequest() (request *UpdateDatabaseTableRequest) {
+	request = &UpdateDatabaseTableRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("dmp", APIVersion, "UpdateDatabaseTable")
+	return
+}
+
+func NewUpdateDatabaseTableResponse() (response *UpdateDatabaseTableResponse) {
+	response = &UpdateDatabaseTableResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateDatabaseTable(request *UpdateDatabaseTableRequest) string {
+	return c.UpdateDatabaseTableWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateDatabaseTableWithContext(ctx context.Context, request *UpdateDatabaseTableRequest) string {
+	if request == nil {
+		request = NewUpdateDatabaseTableRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateDatabaseTableResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewTestInstanceConnectionRequest() (request *TestInstanceConnectionRequest) {
+	request = &TestInstanceConnectionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("dmp", APIVersion, "TestInstanceConnection")
+	return
+}
+
+func NewTestInstanceConnectionResponse() (response *TestInstanceConnectionResponse) {
+	response = &TestInstanceConnectionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) TestInstanceConnection(request *TestInstanceConnectionRequest) string {
+	return c.TestInstanceConnectionWithContext(context.Background(), request)
+}
+
+func (c *Client) TestInstanceConnectionWithContext(ctx context.Context, request *TestInstanceConnectionRequest) string {
+	if request == nil {
+		request = NewTestInstanceConnectionRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewTestInstanceConnectionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

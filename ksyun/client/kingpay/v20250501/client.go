@@ -1,5 +1,4 @@
 package v20250501
-
 import (
 	"context"
 	"fmt"
@@ -55,3 +54,5 @@ func (c *Client) QueryCashWalletActionWithContext(ctx context.Context, request *
 	}
 	return msg
 }
+
+

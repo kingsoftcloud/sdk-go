@@ -14,10 +14,6 @@ type UnbindZoneVpcVpcs struct {
 	RegionName *string   `json:"RegionName,omitempty" name:"RegionName"`
 	VpcId      []*string `json:"VpcId,omitempty" name:"VpcId"`
 }
-type DescribeZoneRecordFilter struct {
-	Name  *string   `json:"Name,omitempty" name:"Name"`
-	Value []*string `json:"Value,omitempty" name:"Value"`
-}
 type ModifyPdnsFdZoneForwardIp struct {
 	Port *string `json:"Port,omitempty" name:"Port"`
 	Ip   *string `json:"Ip,omitempty" name:"Ip"`
@@ -913,9 +909,9 @@ func (r *ModifyZoneRecordResponse) FromJsonString(s string) error {
 
 type DescribeZoneRecordRequest struct {
 	*ksyunhttp.BaseRequest
-	ZoneId   *string                     `json:"ZoneId,omitempty" name:"ZoneId"`
-	RecordId []*string                   `json:"RecordId,omitempty" name:"RecordId"`
-	Filter   []*DescribeZoneRecordFilter `json:"Filter,omitempty" name:"Filter"`
+    ZoneId   *string   `json:"ZoneId,omitempty" name:"ZoneId"`
+    RecordId []*string `json:"RecordId,omitempty" name:"RecordId"`
+    Filter   []*string `json:"Filter,omitempty" name:"Filter"`
 }
 
 func (r *DescribeZoneRecordRequest) ToJsonString() string {
@@ -1264,18 +1260,17 @@ type DescribeEndPointsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	EndPointSet []struct {
-		EndPointId      *string `json:"EndPointId" name:"EndPointId"`
-		Region          *string `json:"Region" name:"Region"`
-		EndPointName    *string `json:"EndPointName" name:"EndPointName"`
-		Type            *string `json:"Type" name:"Type"`
-		VpcId           *string `json:"VpcId" name:"VpcId"`
-		SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
-		FdZoneIds       []struct {
-		} `json:"FdZoneIds" name:"FdZoneIds"`
-		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
-		Status      *string `json:"Status" name:"Status"`
-		Description *string `json:"Description" name:"Description"`
-		IpConfigSet []struct {
+        EndPointId      *string   `json:"EndPointId" name:"EndPointId"`
+        Region          *string   `json:"Region" name:"Region"`
+        EndPointName    *string   `json:"EndPointName" name:"EndPointName"`
+        Type            *string   `json:"Type" name:"Type"`
+        VpcId           *string   `json:"VpcId" name:"VpcId"`
+        SecurityGroupId *string   `json:"SecurityGroupId" name:"SecurityGroupId"`
+        FdZoneIds       []*string `json:"FdZoneIds" name:"FdZoneIds"`
+        CreateTime      *string   `json:"CreateTime" name:"CreateTime"`
+        Status          *string   `json:"Status" name:"Status"`
+        Description     *string   `json:"Description" name:"Description"`
+        IpConfigSet     []struct {
 			AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 			SubnetId         *string `json:"SubnetId" name:"SubnetId"`
 			Ip               *string `json:"Ip" name:"Ip"`

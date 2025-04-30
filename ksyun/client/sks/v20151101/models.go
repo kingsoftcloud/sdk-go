@@ -1,15 +1,14 @@
 package v20151101
-
 import (
 	"encoding/json"
 	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 type DescribeKeysFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
+
 
 type CreateKeyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -45,6 +44,7 @@ func (r *CreateKeyResponse) ToJsonString() string {
 func (r *CreateKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ImportKeyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -84,6 +84,7 @@ func (r *ImportKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteKeyRequest struct {
 	*ksyunhttp.BaseRequest
 	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
@@ -119,6 +120,7 @@ func (r *DeleteKeyResponse) ToJsonString() string {
 func (r *DeleteKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ModifyKeyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -157,6 +159,7 @@ func (r *ModifyKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeKeysRequest struct {
 	*ksyunhttp.BaseRequest
 	MaxResults *int                  `json:"MaxResults,omitempty" name:"MaxResults"`
@@ -187,10 +190,10 @@ type DescribeKeysResponse struct {
 	NextToken  *string `json:"NextToken" name:"NextToken"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	KeySet     []struct {
-		KeyId      *string `json:"KeyId" name:"KeyId"`
-		PublicKey  *string `json:"PublicKey" name:"PublicKey"`
+		KeyId     *string `json:"KeyId" name:"KeyId"`
+		PublicKey *string `json:"PublicKey" name:"PublicKey"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		KeyName    *string `json:"KeyName" name:"KeyName"`
+		KeyName   *string `json:"KeyName" name:"KeyName"`
 	} `json:"KeySet"`
 }
 
@@ -202,3 +205,4 @@ func (r *DescribeKeysResponse) ToJsonString() string {
 func (r *DescribeKeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

@@ -154,6 +154,39 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
 	}
 	return msg
 }
+func NewRestartInstanceRequest() (request *RestartInstanceRequest) {
+	request = &RestartInstanceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("clickhouse", APIVersion, "RestartInstance")
+	return
+}
+
+func NewRestartInstanceResponse() (response *RestartInstanceResponse) {
+	response = &RestartInstanceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RestartInstance(request *RestartInstanceRequest) string {
+	return c.RestartInstanceWithContext(context.Background(), request)
+}
+
+func (c *Client) RestartInstanceWithContext(ctx context.Context, request *RestartInstanceRequest) string {
+	if request == nil {
+		request = NewRestartInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRestartInstanceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
 func NewRenameInstanceRequest() (request *RenameInstanceRequest) {
 	request = &RenameInstanceRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},

@@ -1,5 +1,4 @@
 package v20191010
-
 import (
 	"context"
 	"fmt"
@@ -913,3 +912,5 @@ func (c *Client) DescribeAccountDetailListWithContext(ctx context.Context, reque
 	}
 	return msg
 }
+
+

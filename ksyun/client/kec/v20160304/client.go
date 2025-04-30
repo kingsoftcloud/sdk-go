@@ -3223,3 +3223,36 @@ func (c *Client) SwitchImageTypeWithContext(ctx context.Context, request *Switch
 	}
 	return msg
 }
+func NewSetInstanceResourceProtectRequest() (request *SetInstanceResourceProtectRequest) {
+	request = &SetInstanceResourceProtectRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kec", APIVersion, "SetInstanceResourceProtect")
+	return
+}
+
+func NewSetInstanceResourceProtectResponse() (response *SetInstanceResourceProtectResponse) {
+	response = &SetInstanceResourceProtectResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetInstanceResourceProtect(request *SetInstanceResourceProtectRequest) string {
+	return c.SetInstanceResourceProtectWithContext(context.Background(), request)
+}
+
+func (c *Client) SetInstanceResourceProtectWithContext(ctx context.Context, request *SetInstanceResourceProtectRequest) string {
+	if request == nil {
+		request = NewSetInstanceResourceProtectRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetInstanceResourceProtectResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

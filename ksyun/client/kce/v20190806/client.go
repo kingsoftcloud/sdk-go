@@ -1,5 +1,4 @@
 package v20190806
-
 import (
 	"context"
 	"fmt"
@@ -880,39 +879,6 @@ func (c *Client) DescribeClusterSummaryWithContext(ctx context.Context, request 
 	}
 	return msg
 }
-func NewGetScaleAPIServerConfigRequest() (request *GetScaleAPIServerConfigRequest) {
-	request = &GetScaleAPIServerConfigRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("kce", APIVersion, "GetScaleAPIServerConfig")
-	return
-}
-
-func NewGetScaleAPIServerConfigResponse() (response *GetScaleAPIServerConfigResponse) {
-	response = &GetScaleAPIServerConfigResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) GetScaleAPIServerConfig(request *GetScaleAPIServerConfigRequest) string {
-	return c.GetScaleAPIServerConfigWithContext(context.Background(), request)
-}
-
-func (c *Client) GetScaleAPIServerConfigWithContext(ctx context.Context, request *GetScaleAPIServerConfigRequest) string {
-	if request == nil {
-		request = NewGetScaleAPIServerConfigRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewGetScaleAPIServerConfigResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
 func NewUpdateNodePoolDelProtectionRequest() (request *UpdateNodePoolDelProtectionRequest) {
 	request = &UpdateNodePoolDelProtectionRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -946,3 +912,236 @@ func (c *Client) UpdateNodePoolDelProtectionWithContext(ctx context.Context, req
 	}
 	return msg
 }
+func NewDescribeReleaseRequest() (request *DescribeReleaseRequest) {
+	request = &DescribeReleaseRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kce", APIVersion, "DescribeRelease")
+	return
+}
+
+func NewDescribeReleaseResponse() (response *DescribeReleaseResponse) {
+	response = &DescribeReleaseResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeRelease(request *DescribeReleaseRequest) string {
+	return c.DescribeReleaseWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeReleaseWithContext(ctx context.Context, request *DescribeReleaseRequest) string {
+	if request == nil {
+		request = NewDescribeReleaseRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeReleaseResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeReleaseHistoryRequest() (request *DescribeReleaseHistoryRequest) {
+	request = &DescribeReleaseHistoryRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kce", APIVersion, "DescribeReleaseHistory")
+	return
+}
+
+func NewDescribeReleaseHistoryResponse() (response *DescribeReleaseHistoryResponse) {
+	response = &DescribeReleaseHistoryResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeReleaseHistory(request *DescribeReleaseHistoryRequest) string {
+	return c.DescribeReleaseHistoryWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeReleaseHistoryWithContext(ctx context.Context, request *DescribeReleaseHistoryRequest) string {
+	if request == nil {
+		request = NewDescribeReleaseHistoryRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeReleaseHistoryResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeReleaseDetailRequest() (request *DescribeReleaseDetailRequest) {
+	request = &DescribeReleaseDetailRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kce", APIVersion, "DescribeReleaseDetail")
+	return
+}
+
+func NewDescribeReleaseDetailResponse() (response *DescribeReleaseDetailResponse) {
+	response = &DescribeReleaseDetailResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeReleaseDetail(request *DescribeReleaseDetailRequest) string {
+	return c.DescribeReleaseDetailWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeReleaseDetailWithContext(ctx context.Context, request *DescribeReleaseDetailRequest) string {
+	if request == nil {
+		request = NewDescribeReleaseDetailRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeReleaseDetailResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeleteReleaseRequest() (request *DeleteReleaseRequest) {
+	request = &DeleteReleaseRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kce", APIVersion, "DeleteRelease")
+	return
+}
+
+func NewDeleteReleaseResponse() (response *DeleteReleaseResponse) {
+	response = &DeleteReleaseResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteRelease(request *DeleteReleaseRequest) string {
+	return c.DeleteReleaseWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteReleaseWithContext(ctx context.Context, request *DeleteReleaseRequest) string {
+	if request == nil {
+		request = NewDeleteReleaseRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteReleaseResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewRollbackReleaseRequest() (request *RollbackReleaseRequest) {
+	request = &RollbackReleaseRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kce", APIVersion, "RollbackRelease")
+	return
+}
+
+func NewRollbackReleaseResponse() (response *RollbackReleaseResponse) {
+	response = &RollbackReleaseResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RollbackRelease(request *RollbackReleaseRequest) string {
+	return c.RollbackReleaseWithContext(context.Background(), request)
+}
+
+func (c *Client) RollbackReleaseWithContext(ctx context.Context, request *RollbackReleaseRequest) string {
+	if request == nil {
+		request = NewRollbackReleaseRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewRollbackReleaseResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewInstallReleaseRequest() (request *InstallReleaseRequest) {
+	request = &InstallReleaseRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kce", APIVersion, "InstallRelease")
+	return
+}
+
+func NewInstallReleaseResponse() (response *InstallReleaseResponse) {
+	response = &InstallReleaseResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) InstallRelease(request *InstallReleaseRequest) string {
+	return c.InstallReleaseWithContext(context.Background(), request)
+}
+
+func (c *Client) InstallReleaseWithContext(ctx context.Context, request *InstallReleaseRequest) string {
+	if request == nil {
+		request = NewInstallReleaseRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewInstallReleaseResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewUpgradeReleaseRequest() (request *UpgradeReleaseRequest) {
+	request = &UpgradeReleaseRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kce", APIVersion, "UpgradeRelease")
+	return
+}
+
+func NewUpgradeReleaseResponse() (response *UpgradeReleaseResponse) {
+	response = &UpgradeReleaseResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpgradeRelease(request *UpgradeReleaseRequest) string {
+	return c.UpgradeReleaseWithContext(context.Background(), request)
+}
+
+func (c *Client) UpgradeReleaseWithContext(ctx context.Context, request *UpgradeReleaseRequest) string {
+	if request == nil {
+		request = NewUpgradeReleaseRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpgradeReleaseResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+

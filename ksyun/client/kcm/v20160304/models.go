@@ -52,6 +52,52 @@ func (r *CreateCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyCertificateRequest struct {
+	*ksyunhttp.BaseRequest
+	CertificateId   *string `json:"CertificateId,omitempty" name:"CertificateId"`
+	CertificateName *string `json:"CertificateName,omitempty" name:"CertificateName"`
+	PrivateKey      *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+	PublicKey       *string `json:"PublicKey,omitempty" name:"PublicKey"`
+}
+
+func (r *ModifyCertificateRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyCertificateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyCertificateResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	Certificate struct {
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+		CertificateName *string `json:"CertificateName" name:"CertificateName"`
+		CertificateId   *string `json:"CertificateId" name:"CertificateId"`
+		ExpireTime      *string `json:"ExpireTime" name:"ExpireTime"`
+		CommonName      *string `json:"CommonName" name:"CommonName"`
+		CertAuthority   *string `json:"CertAuthority" name:"CertAuthority"`
+	} `json:"Certificate"`
+}
+
+func (r *ModifyCertificateResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ApplyCertificateRequest struct {
 	*ksyunhttp.BaseRequest
 	MainDomain      *string `json:"MainDomain,omitempty" name:"MainDomain"`

@@ -1,5 +1,4 @@
 package v20230101
-
 import (
 	"context"
 	"fmt"
@@ -148,72 +147,6 @@ func (c *Client) ModifyClusterWithContext(ctx context.Context, request *ModifyCl
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifyClusterResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-func NewDownloadClusterConfigRequest() (request *DownloadClusterConfigRequest) {
-	request = &DownloadClusterConfigRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("kce2", APIVersion, "DownloadClusterConfig")
-	return
-}
-
-func NewDownloadClusterConfigResponse() (response *DownloadClusterConfigResponse) {
-	response = &DownloadClusterConfigResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) DownloadClusterConfig(request *DownloadClusterConfigRequest) string {
-	return c.DownloadClusterConfigWithContext(context.Background(), request)
-}
-
-func (c *Client) DownloadClusterConfigWithContext(ctx context.Context, request *DownloadClusterConfigRequest) string {
-	if request == nil {
-		request = NewDownloadClusterConfigRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDownloadClusterConfigResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-func NewAddNodesRequest() (request *AddNodesRequest) {
-	request = &AddNodesRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("kce2", APIVersion, "AddNodes")
-	return
-}
-
-func NewAddNodesResponse() (response *AddNodesResponse) {
-	response = &AddNodesResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) AddNodes(request *AddNodesRequest) string {
-	return c.AddNodesWithContext(context.Background(), request)
-}
-
-func (c *Client) AddNodesWithContext(ctx context.Context, request *AddNodesRequest) string {
-	if request == nil {
-		request = NewAddNodesRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewAddNodesResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -649,3 +582,71 @@ func (c *Client) DescribeClusterVersionListWithContext(ctx context.Context, requ
 	}
 	return msg
 }
+func NewAddKecNodesRequest() (request *AddKecNodesRequest) {
+	request = &AddKecNodesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kce2", APIVersion, "AddKecNodes")
+	return
+}
+
+func NewAddKecNodesResponse() (response *AddKecNodesResponse) {
+	response = &AddKecNodesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) AddKecNodes(request *AddKecNodesRequest) string {
+	return c.AddKecNodesWithContext(context.Background(), request)
+}
+
+func (c *Client) AddKecNodesWithContext(ctx context.Context, request *AddKecNodesRequest) string {
+	if request == nil {
+		request = NewAddKecNodesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAddKecNodesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewAddEpcNodesRequest() (request *AddEpcNodesRequest) {
+	request = &AddEpcNodesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kce2", APIVersion, "AddEpcNodes")
+	return
+}
+
+func NewAddEpcNodesResponse() (response *AddEpcNodesResponse) {
+	response = &AddEpcNodesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) AddEpcNodes(request *AddEpcNodesRequest) string {
+	return c.AddEpcNodesWithContext(context.Background(), request)
+}
+
+func (c *Client) AddEpcNodesWithContext(ctx context.Context, request *AddEpcNodesRequest) string {
+	if request == nil {
+		request = NewAddEpcNodesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAddEpcNodesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+

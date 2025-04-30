@@ -1,10 +1,10 @@
 package v20221222
-
 import (
 	"encoding/json"
 	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type QueryInstanceConsumeRequest struct {
 	*ksyunhttp.BaseRequest
@@ -105,6 +105,7 @@ func (r *QueryInstanceConsumeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type QueryProjectConsumeRequest struct {
 	*ksyunhttp.BaseRequest
 	StartDay *string `json:"StartDay,omitempty" name:"StartDay"`
@@ -180,6 +181,7 @@ func (r *QueryProjectConsumeResponse) ToJsonString() string {
 func (r *QueryProjectConsumeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type QueryProductConsumeRequest struct {
 	*ksyunhttp.BaseRequest
@@ -257,6 +259,7 @@ func (r *QueryProductConsumeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type QueryFinanceUnitConsumeRequest struct {
 	*ksyunhttp.BaseRequest
 	StartDay *string `json:"StartDay,omitempty" name:"StartDay"`
@@ -332,6 +335,7 @@ func (r *QueryFinanceUnitConsumeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type QueryFinanceUnitConsumeOfMonthRequest struct {
 	*ksyunhttp.BaseRequest
 	CustomerBillMonth *string `json:"CustomerBillMonth,omitempty" name:"CustomerBillMonth"`
@@ -406,6 +410,7 @@ func (r *QueryFinanceUnitConsumeOfMonthResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type QueryUserConsumeRequest struct {
 	*ksyunhttp.BaseRequest
 	StartDay *string `json:"StartDay,omitempty" name:"StartDay"`
@@ -479,3 +484,4 @@ func (r *QueryUserConsumeResponse) ToJsonString() string {
 func (r *QueryUserConsumeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

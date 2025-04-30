@@ -1,60 +1,41 @@
 package v20230101
-
 import (
 	"encoding/json"
 	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
-type CreateClusterNetworkPublicApiServer struct {
-	EipId *string `json:"EipId,omitempty" name:"EipId"`
+type CreateClusterNetworkApiServer struct {
+	EipId                 *string `json:"EipId,omitempty" name:"EipId"`
+	PublicApiServerEnable *bool   `json:"PublicApiServerEnable,omitempty" name:"PublicApiServerEnable"`
+	ReserveSubnetId       *string `json:"ReserveSubnetId,omitempty" name:"ReserveSubnetId"`
+}
+type CreateClusterNetworkVpcCNI struct {
+	Enable        *bool     `json:"Enable,omitempty" name:"Enable"`
+	DaemonMode    *string   `json:"DaemonMode,omitempty" name:"DaemonMode"`
+	SubnetIds     []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
+	SecurityGroup *string   `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
 }
 type CreateClusterNetwork struct {
-	VpcId           *string                              `json:"VpcId,omitempty" name:"VpcId"`
-	ReserveSubnetId *string                              `json:"ReserveSubnetId,omitempty" name:"ReserveSubnetId"`
-	PublicApiServer *CreateClusterNetworkPublicApiServer `json:"PublicApiServer,omitempty" name:"PublicApiServer"`
-}
-type CreateClusterOrderInfo struct {
-	ChargeType   *string `json:"ChargeType,omitempty" name:"ChargeType"`
-	PurchaseTime *int    `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
-}
-type CreateClusterKubernetesComponents struct {
-	Type *string `json:"Type,omitempty" name:"Type"`
-	Args *string `json:"Args,omitempty" name:"Args"`
-}
-type CreateClusterKubernetesPrivateRegistries struct {
-	Url      *string `json:"Url,omitempty" name:"Url"`
-	User     *string `json:"User,omitempty" name:"User"`
-	Password *string `json:"Password,omitempty" name:"Password"`
-}
-type CreateClusterKubernetesContainer struct {
-	Runtime     *string `json:"Runtime,omitempty" name:"Runtime"`
-	Path        *string `json:"Path,omitempty" name:"Path"`
-	LogMaxSize  *int    `json:"LogMaxSize,omitempty" name:"LogMaxSize"`
-	LogMaxFiles *int    `json:"LogMaxFiles,omitempty" name:"LogMaxFiles"`
-}
-type CreateClusterKubernetes struct {
-	KubernetesVersion *string                                     `json:"KubernetesVersion,omitempty" name:"KubernetesVersion"`
-	Components        []*CreateClusterKubernetesComponents        `json:"Components,omitempty" name:"Components"`
-	PrivateRegistries []*CreateClusterKubernetesPrivateRegistries `json:"PrivateRegistries,omitempty" name:"PrivateRegistries"`
-	SANs              []*string                                   `json:"SANs,omitempty" name:"SANs"`
-	Container         *CreateClusterKubernetesContainer           `json:"Container,omitempty" name:"Container"`
-	ImageRepoReplace  *string                                     `json:"ImageRepoReplace,omitempty" name:"ImageRepoReplace"`
-	NodeNameMode      *string                                     `json:"NodeNameMode,omitempty" name:"NodeNameMode"`
+	VpcId               *string                        `json:"VpcId,omitempty" name:"VpcId"`
+	ApiServer           *CreateClusterNetworkApiServer `json:"ApiServer,omitempty" name:"ApiServer"`
+	NetworkPluginVeType *string                        `json:"NetworkPluginVeType,omitempty" name:"NetworkPluginVeType"`
+	VpcCNI              *CreateClusterNetworkVpcCNI    `json:"VpcCNI,omitempty" name:"VpcCNI"`
+	PodCidr             *string                        `json:"PodCidr,omitempty" name:"PodCidr"`
+	ServiceCidr         *string                        `json:"ServiceCidr,omitempty" name:"ServiceCidr"`
+	MaxPodPerNode       *int                           `json:"MaxPodPerNode,omitempty" name:"MaxPodPerNode"`
+	SANs                []*string                      `json:"SANs,omitempty" name:"SANs"`
 }
 type CreateClusterNodeInstanceSetBasicSettingSystemDisk struct {
-	Type *string `json:"Type,omitempty" name:"Type"`
-	Size *int    `json:"Size,omitempty" name:"Size"`
+	Type       *string `json:"Type,omitempty" name:"Type"`
+	Size       *int    `json:"Size,omitempty" name:"Size"`
+	FileSystem *string `json:"FileSystem,omitempty" name:"FileSystem"`
 }
 type CreateClusterNodeInstanceSetBasicSettingContainer struct {
 	Runtime     *string `json:"Runtime,omitempty" name:"Runtime"`
 	Path        *string `json:"Path,omitempty" name:"Path"`
 	LogMaxSize  *int    `json:"LogMaxSize,omitempty" name:"LogMaxSize"`
 	LogMaxFiles *int    `json:"LogMaxFiles,omitempty" name:"LogMaxFiles"`
-}
-type CreateClusterNodeInstanceSetBasicSettingOrderInfo struct {
-	ChargeType   *string `json:"ChargeType,omitempty" name:"ChargeType"`
-	PurchaseTime *int    `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
 }
 type CreateClusterNodeInstanceSetBasicSettingDataDisk struct {
 	Type               *string `json:"Type,omitempty" name:"Type"`
@@ -63,31 +44,35 @@ type CreateClusterNodeInstanceSetBasicSettingDataDisk struct {
 	AutoFormatAndMount *bool   `json:"AutoFormatAndMount,omitempty" name:"AutoFormatAndMount"`
 	FileSystem         *string `json:"FileSystem,omitempty" name:"FileSystem"`
 	MountTarget        *string `json:"MountTarget,omitempty" name:"MountTarget"`
-	ChargeType         *string `json:"ChargeType,omitempty" name:"ChargeType"`
-}
-type CreateClusterNodeInstanceSetBasicSettingLoginSettingSSHKey struct {
-	KeyIds *string `json:"KeyIds,omitempty" name:"KeyIds"`
+	Suffix             *string `json:"Suffix,omitempty" name:"Suffix"`
 }
 type CreateClusterNodeInstanceSetBasicSettingLoginSetting struct {
-	UserName *string                                                     `json:"UserName,omitempty" name:"UserName"`
-	Password *string                                                     `json:"Password,omitempty" name:"Password"`
-	SSHKey   *CreateClusterNodeInstanceSetBasicSettingLoginSettingSSHKey `json:"SSHKey,omitempty" name:"SSHKey"`
+	Password *string `json:"Password,omitempty" name:"Password"`
+	SSHKeyId *string `json:"SSHKeyId,omitempty" name:"SSHKeyId"`
 }
 type CreateClusterNodeInstanceSetBasicSetting struct {
-	Num                *int                                                  `json:"Num,omitempty" name:"Num"`
-	NodeNameMode       *string                                               `json:"NodeNameMode,omitempty" name:"NodeNameMode"`
-	ImageId            *string                                               `json:"ImageId,omitempty" name:"ImageId"`
-	SecurityGroupId    *string                                               `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
-	SubnetId           *string                                               `json:"SubnetId,omitempty" name:"SubnetId"`
-	InstanceType       *string                                               `json:"InstanceType,omitempty" name:"InstanceType"`
-	SystemDisk         *CreateClusterNodeInstanceSetBasicSettingSystemDisk   `json:"SystemDisk,omitempty" name:"SystemDisk"`
-	Container          *CreateClusterNodeInstanceSetBasicSettingContainer    `json:"Container,omitempty" name:"Container"`
-	InstanceName       *string                                               `json:"InstanceName,omitempty" name:"InstanceName"`
-	InstanceNameSuffix *int                                                  `json:"InstanceNameSuffix,omitempty" name:"InstanceNameSuffix"`
-	OrderInfo          *CreateClusterNodeInstanceSetBasicSettingOrderInfo    `json:"OrderInfo,omitempty" name:"OrderInfo"`
-	AvailabilityZone   *string                                               `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
-	DataDisk           *CreateClusterNodeInstanceSetBasicSettingDataDisk     `json:"DataDisk,omitempty" name:"DataDisk"`
-	LoginSetting       *CreateClusterNodeInstanceSetBasicSettingLoginSetting `json:"LoginSetting,omitempty" name:"LoginSetting"`
+	Num                  *int                                                  `json:"Num,omitempty" name:"Num"`
+	NodeNameMode         *string                                               `json:"NodeNameMode,omitempty" name:"NodeNameMode"`
+	ImageId              *string                                               `json:"ImageId,omitempty" name:"ImageId"`
+	SecurityGroupId      *string                                               `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	SubnetId             *string                                               `json:"SubnetId,omitempty" name:"SubnetId"`
+	InstanceType         *string                                               `json:"InstanceType,omitempty" name:"InstanceType"`
+	SystemDisk           *CreateClusterNodeInstanceSetBasicSettingSystemDisk   `json:"SystemDisk,omitempty" name:"SystemDisk"`
+	Container            *CreateClusterNodeInstanceSetBasicSettingContainer    `json:"Container,omitempty" name:"Container"`
+	InstanceName         *string                                               `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceNameSuffix   *int                                                  `json:"InstanceNameSuffix,omitempty" name:"InstanceNameSuffix"`
+	AvailabilityZone     *string                                               `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	DataDisk             *CreateClusterNodeInstanceSetBasicSettingDataDisk     `json:"DataDisk,omitempty" name:"DataDisk"`
+	LoginSetting         *CreateClusterNodeInstanceSetBasicSettingLoginSetting `json:"LoginSetting,omitempty" name:"LoginSetting"`
+	IsNew                *bool                                                 `json:"IsNew,omitempty" name:"IsNew"`
+	SecurityGroupID      *string                                               `json:"SecurityGroupID,omitempty" name:"SecurityGroupID"`
+	ChargeType           *string                                               `json:"ChargeType,omitempty" name:"ChargeType"`
+	Unit                 *string                                               `json:"Unit,omitempty" name:"Unit"`
+	PurchaseTime         *string                                               `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
+	Raid                 *string                                               `json:"Raid,omitempty" name:"Raid"`
+	NetworkInterfaceMode *string                                               `json:"NetworkInterfaceMode,omitempty" name:"NetworkInterfaceMode"`
+	BondName             *string                                               `json:"BondName,omitempty" name:"BondName"`
+	GpuImageDriverId     *string                                               `json:"GpuImageDriverId,omitempty" name:"GpuImageDriverId"`
 }
 type CreateClusterNodeInstanceSetAdvancedSettingLabels struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
@@ -98,114 +83,44 @@ type CreateClusterNodeInstanceSetAdvancedSettingTaints struct {
 	Value  *string `json:"Value,omitempty" name:"Value"`
 	Effect *string `json:"Effect,omitempty" name:"Effect"`
 }
+type CreateClusterNodeInstanceSetAdvancedSettingContainer struct {
+	Runtime *string `json:"Runtime,omitempty" name:"Runtime"`
+	Path    *string `json:"Path,omitempty" name:"Path"`
+}
 type CreateClusterNodeInstanceSetAdvancedSetting struct {
-	PostUserScript *string                                              `json:"PostUserScript,omitempty" name:"PostUserScript"`
-	PreUserScript  *string                                              `json:"PreUserScript,omitempty" name:"PreUserScript"`
-	Labels         []*CreateClusterNodeInstanceSetAdvancedSettingLabels `json:"Labels,omitempty" name:"Labels"`
-	Taints         []*CreateClusterNodeInstanceSetAdvancedSettingTaints `json:"Taints,omitempty" name:"Taints"`
-	Schedulable    *bool                                                `json:"Schedulable,omitempty" name:"Schedulable"`
+	PostUserScript *string                                               `json:"PostUserScript,omitempty" name:"PostUserScript"`
+	PreUserScript  *string                                               `json:"PreUserScript,omitempty" name:"PreUserScript"`
+	Labels         []*CreateClusterNodeInstanceSetAdvancedSettingLabels  `json:"Labels,omitempty" name:"Labels"`
+	Taints         []*CreateClusterNodeInstanceSetAdvancedSettingTaints  `json:"Taints,omitempty" name:"Taints"`
+	Container      *CreateClusterNodeInstanceSetAdvancedSettingContainer `json:"Container,omitempty" name:"Container"`
 }
 type CreateClusterNodeInstanceSetComponents struct {
-	Type *string `json:"Type,omitempty" name:"Type"`
-	Args *string `json:"Args,omitempty" name:"Args"`
+	Type        *string `json:"Type,omitempty" name:"Type"`
+	Args        *string `json:"Args,omitempty" name:"Args"`
+	LogMaxSize  *int    `json:"LogMaxSize,omitempty" name:"LogMaxSize"`
+	LogMaxFiles *int    `json:"LogMaxFiles,omitempty" name:"LogMaxFiles"`
 }
 type CreateClusterNodeInstanceSet struct {
 	BasicSetting    *CreateClusterNodeInstanceSetBasicSetting    `json:"BasicSetting,omitempty" name:"BasicSetting"`
 	AdvancedSetting *CreateClusterNodeInstanceSetAdvancedSetting `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
 	Components      []*CreateClusterNodeInstanceSetComponents    `json:"Components,omitempty" name:"Components"`
+	Provider        *string                                      `json:"Provider,omitempty" name:"Provider"`
 }
 type CreateClusterAddons struct {
-	Name         *string `json:"Name,omitempty" name:"Name"`
-	Type         *string `json:"Type,omitempty" name:"Type"`
-	AddonVersion *string `json:"AddonVersion,omitempty" name:"AddonVersion"`
-}
-type CreateClusterDefaultLoginSettingBastionHosts struct {
-	Address  *string `json:"Address,omitempty" name:"Address"`
-	Port     *string `json:"Port,omitempty" name:"Port"`
-	UserName *string `json:"UserName,omitempty" name:"UserName"`
-	Password *string `json:"Password,omitempty" name:"Password"`
-	Order    *int    `json:"Order,omitempty" name:"Order"`
-	Script   *string `json:"Script,omitempty" name:"Script"`
-}
-type CreateClusterDefaultLoginSetting struct {
-	UserName     *string                                         `json:"UserName,omitempty" name:"UserName"`
-	Password     *string                                         `json:"Password,omitempty" name:"Password"`
-	SecretKeyIds *string                                         `json:"SecretKeyIds,omitempty" name:"SecretKeyIds"`
-	BastionHosts []*CreateClusterDefaultLoginSettingBastionHosts `json:"BastionHosts,omitempty" name:"BastionHosts"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 type ModifyClusterPublicApiServer struct {
-	EipId *string `json:"EipId,omitempty" name:"EipId"`
+	EipId  *string `json:"EipId,omitempty" name:"EipId"`
+	Enable *bool   `json:"Enable,omitempty" name:"Enable"`
 }
-type AddNodesNodeInstanceSetBasicSettingInstanceLabel struct {
-	Key   *string `json:"Key,omitempty" name:"Key"`
-	Value *string `json:"Value,omitempty" name:"Value"`
+type ModifyClusterVpcCNI struct {
+	Enable        *bool     `json:"Enable,omitempty" name:"Enable"`
+	DaemonMode    *string   `json:"DaemonMode,omitempty" name:"DaemonMode"`
+	SubnetId      []*string `json:"SubnetId,omitempty" name:"SubnetId"`
+	SecurityGroup *string   `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
 }
-type AddNodesNodeInstanceSetBasicSettingOrderInfo struct {
-	ChargeType   *string `json:"ChargeType,omitempty" name:"ChargeType"`
-	PurchaseTime *int    `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
-}
-type AddNodesNodeInstanceSetBasicSettingSystemDisk struct {
+type ModifyNodeComponents struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
-	Size *int    `json:"Size,omitempty" name:"Size"`
-}
-type AddNodesNodeInstanceSetBasicSettingDataDisk struct {
-	Type               *string `json:"Type,omitempty" name:"Type"`
-	Size               *int    `json:"Size,omitempty" name:"Size"`
-	FileSystem         *string `json:"FileSystem,omitempty" name:"FileSystem"`
-	MountTarget        *string `json:"MountTarget,omitempty" name:"MountTarget"`
-	AutoFormatAndMount *bool   `json:"AutoFormatAndMount,omitempty" name:"AutoFormatAndMount"`
-	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
-}
-type AddNodesNodeInstanceSetBasicSettingLoginSettingSSHKey struct {
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
-}
-type AddNodesNodeInstanceSetBasicSettingLoginSetting struct {
-	UserName *string                                                `json:"UserName,omitempty" name:"UserName"`
-	Password *string                                                `json:"Password,omitempty" name:"Password"`
-	SSHKey   *AddNodesNodeInstanceSetBasicSettingLoginSettingSSHKey `json:"SSHKey,omitempty" name:"SSHKey"`
-}
-type AddNodesNodeInstanceSetBasicSetting struct {
-	Num                *int                                                `json:"Num,omitempty" name:"Num"`
-	ExistedInstances   []*string                                           `json:"ExistedInstances,omitempty" name:"ExistedInstances"`
-	ImageId            *string                                             `json:"ImageId,omitempty" name:"ImageId"`
-	SecurityGroupID    *string                                             `json:"SecurityGroupID,omitempty" name:"SecurityGroupID"`
-	SubnetId           *string                                             `json:"SubnetId,omitempty" name:"SubnetId"`
-	InstanceType       *string                                             `json:"InstanceType,omitempty" name:"InstanceType"`
-	InstanceLabel      []*AddNodesNodeInstanceSetBasicSettingInstanceLabel `json:"InstanceLabel,omitempty" name:"InstanceLabel"`
-	InstanceName       *string                                             `json:"InstanceName,omitempty" name:"InstanceName"`
-	InstanceNameSuffix *int                                                `json:"InstanceNameSuffix,omitempty" name:"InstanceNameSuffix"`
-	ProjectId          *string                                             `json:"ProjectId,omitempty" name:"ProjectId"`
-	HostName           *string                                             `json:"HostName,omitempty" name:"HostName"`
-	NodeNameMode       *string                                             `json:"NodeNameMode,omitempty" name:"NodeNameMode"`
-	OrderInfo          *AddNodesNodeInstanceSetBasicSettingOrderInfo       `json:"OrderInfo,omitempty" name:"OrderInfo"`
-	SystemDisk         *AddNodesNodeInstanceSetBasicSettingSystemDisk      `json:"SystemDisk,omitempty" name:"SystemDisk"`
-	DataDisk           *AddNodesNodeInstanceSetBasicSettingDataDisk        `json:"DataDisk,omitempty" name:"DataDisk"`
-	LoginSetting       *AddNodesNodeInstanceSetBasicSettingLoginSetting    `json:"LoginSetting,omitempty" name:"LoginSetting"`
-}
-type AddNodesNodeInstanceSetAdvancedSettingLabels struct {
-	Key   *string `json:"Key,omitempty" name:"Key"`
-	Value *string `json:"Value,omitempty" name:"Value"`
-}
-type AddNodesNodeInstanceSetAdvancedSettingTaints struct {
-	Key    *string `json:"Key,omitempty" name:"Key"`
-	Value  *string `json:"Value,omitempty" name:"Value"`
-	Effect *string `json:"Effect,omitempty" name:"Effect"`
-}
-type AddNodesNodeInstanceSetAdvancedSetting struct {
-	PreUserScript  *string                                         `json:"PreUserScript,omitempty" name:"PreUserScript"`
-	PostUserScript *string                                         `json:"PostUserScript,omitempty" name:"PostUserScript"`
-	Labels         []*AddNodesNodeInstanceSetAdvancedSettingLabels `json:"Labels,omitempty" name:"Labels"`
-	Taints         []*AddNodesNodeInstanceSetAdvancedSettingTaints `json:"Taints,omitempty" name:"Taints"`
-	Schedulable    *bool                                           `json:"Schedulable,omitempty" name:"Schedulable"`
-}
-type AddNodesNodeInstanceSetComponents struct {
-	Type *string `json:"Type,omitempty" name:"Type"`
-	Args *string `json:"Args,omitempty" name:"Args"`
-}
-type AddNodesNodeInstanceSet struct {
-	BasicSetting    *AddNodesNodeInstanceSetBasicSetting    `json:"BasicSetting,omitempty" name:"BasicSetting"`
-	AdvancedSetting *AddNodesNodeInstanceSetAdvancedSetting `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
-	Components      []*AddNodesNodeInstanceSetComponents    `json:"Components,omitempty" name:"Components"`
 }
 type DescribeComponentParamsComponents struct {
 	Type         *string `json:"Type,omitempty" name:"Type"`
@@ -217,19 +132,168 @@ type CreateAddonInstanceAddons struct {
 	Config       *string `json:"Config,omitempty" name:"Config"`
 	AddonVersion *string `json:"AddonVersion,omitempty" name:"AddonVersion"`
 }
+type AddKecNodesNodeInstanceSetComponents struct {
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+type AddKecNodesNodeInstanceSetAdvancedSettingContainer struct {
+	Runtime     *string `json:"Runtime,omitempty" name:"Runtime"`
+	Path        *string `json:"Path,omitempty" name:"Path"`
+	LogMaxSize  *int    `json:"LogMaxSize,omitempty" name:"LogMaxSize"`
+	LogMaxFiles *int    `json:"LogMaxFiles,omitempty" name:"LogMaxFiles"`
+}
+type AddKecNodesNodeInstanceSetAdvancedSetting struct {
+	PostUserScript *string                                             `json:"PostUserScript,omitempty" name:"PostUserScript"`
+	PreUserScript  *string                                             `json:"PreUserScript,omitempty" name:"PreUserScript"`
+	Container      *AddKecNodesNodeInstanceSetAdvancedSettingContainer `json:"Container,omitempty" name:"Container"`
+}
+type AddKecNodesNodeInstanceSetNodeInstanceSetComponents struct {
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+type AddKecNodesNodeInstanceSetNodeInstanceSetAdvancedSettingContainer struct {
+	Runtime     *string `json:"Runtime,omitempty" name:"Runtime"`
+	Path        *string `json:"Path,omitempty" name:"Path"`
+	LogMaxSize  *int    `json:"LogMaxSize,omitempty" name:"LogMaxSize"`
+	LogMaxFiles *int    `json:"LogMaxFiles,omitempty" name:"LogMaxFiles"`
+}
+type AddKecNodesNodeInstanceSetNodeInstanceSetAdvancedSettingLabels struct {
+	Key   *string `json:"Key,omitempty" name:"Key"`
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+type AddKecNodesNodeInstanceSetNodeInstanceSetAdvancedSettingTaints struct {
+	Key   *string `json:"Key,omitempty" name:"Key"`
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+type AddKecNodesNodeInstanceSetNodeInstanceSetAdvancedSetting struct {
+	PostUserScript *string                                                            `json:"PostUserScript,omitempty" name:"PostUserScript"`
+	PreUserScript  *string                                                            `json:"PreUserScript,omitempty" name:"PreUserScript"`
+	Container      *AddKecNodesNodeInstanceSetNodeInstanceSetAdvancedSettingContainer `json:"Container,omitempty" name:"Container"`
+	Labels         []*AddKecNodesNodeInstanceSetNodeInstanceSetAdvancedSettingLabels  `json:"Labels,omitempty" name:"Labels"`
+	Taints         *AddKecNodesNodeInstanceSetNodeInstanceSetAdvancedSettingTaints    `json:"Taints,omitempty" name:"Taints"`
+}
+type AddKecNodesNodeInstanceSetNodeInstanceSetBasicSettingSystemDisk struct {
+	Type *string `json:"Type,omitempty" name:"Type"`
+	Size *int    `json:"Size,omitempty" name:"Size"`
+}
+type AddKecNodesNodeInstanceSetNodeInstanceSetBasicSettingDataDisk struct {
+	Type               *string `json:"Type,omitempty" name:"Type"`
+	Size               *int    `json:"Size,omitempty" name:"Size"`
+	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
+	AutoFormatAndMount *bool   `json:"AutoFormatAndMount,omitempty" name:"AutoFormatAndMount"`
+}
+type AddKecNodesNodeInstanceSetNodeInstanceSetBasicSettingLoginSetting struct {
+	Password *string `json:"Password,omitempty" name:"Password"`
+	SSHKeyId *string `json:"SSHKeyId,omitempty" name:"SSHKeyId"`
+}
+type AddKecNodesNodeInstanceSetNodeInstanceSetBasicSetting struct {
+	IsNew            *bool                                                              `json:"IsNew,omitempty" name:"IsNew"`
+	AvailabilityZone *string                                                            `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	ExistedInstances []*string                                                          `json:"ExistedInstances,omitempty" name:"ExistedInstances"`
+	Num              *int                                                               `json:"Num,omitempty" name:"Num"`
+	InstanceType     *string                                                            `json:"InstanceType,omitempty" name:"InstanceType"`
+	ImageID          *string                                                            `json:"ImageID,omitempty" name:"ImageID"`
+	SystemDisk       *AddKecNodesNodeInstanceSetNodeInstanceSetBasicSettingSystemDisk   `json:"SystemDisk,omitempty" name:"SystemDisk"`
+	DataDisk         []*AddKecNodesNodeInstanceSetNodeInstanceSetBasicSettingDataDisk   `json:"DataDisk,omitempty" name:"DataDisk"`
+	InstanceName     *string                                                            `json:"InstanceName,omitempty" name:"InstanceName"`
+	SubnetID         *string                                                            `json:"SubnetID,omitempty" name:"SubnetID"`
+	NodeNameMode     *string                                                            `json:"NodeNameMode,omitempty" name:"NodeNameMode"`
+	LoginSetting     *AddKecNodesNodeInstanceSetNodeInstanceSetBasicSettingLoginSetting `json:"LoginSetting,omitempty" name:"LoginSetting"`
+	SecurityGroupID  *string                                                            `json:"SecurityGroupID,omitempty" name:"SecurityGroupID"`
+	ChargeType       *string                                                            `json:"ChargeType,omitempty" name:"ChargeType"`
+	Unit             *int                                                               `json:"Unit,omitempty" name:"Unit"`
+	PurchaseTime     *int                                                               `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
+}
+type AddKecNodesNodeInstanceSetNodeInstanceSet struct {
+	Provider        *string                                                   `json:"Provider,omitempty" name:"Provider"`
+	Components      []*AddKecNodesNodeInstanceSetNodeInstanceSetComponents    `json:"Components,omitempty" name:"Components"`
+	AdvancedSetting *AddKecNodesNodeInstanceSetNodeInstanceSetAdvancedSetting `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
+	BasicSetting    *AddKecNodesNodeInstanceSetNodeInstanceSetBasicSetting    `json:"BasicSetting,omitempty" name:"BasicSetting"`
+}
+type AddKecNodesNodeInstanceSet struct {
+	Provider        *string                                    `json:"Provider,omitempty" name:"Provider"`
+	Components      []*AddKecNodesNodeInstanceSetComponents    `json:"Components,omitempty" name:"Components"`
+	AdvancedSetting *AddKecNodesNodeInstanceSetAdvancedSetting `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
+	NodeInstanceSet *AddKecNodesNodeInstanceSetNodeInstanceSet `json:"NodeInstanceSet,omitempty" name:"NodeInstanceSet"`
+}
+type AddEpcNodesNodeInstanceSetComponents struct {
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+type AddEpcNodesNodeInstanceSetBasicSettingSystemDisk struct {
+	Type *string `json:"Type,omitempty" name:"Type"`
+	Size *string `json:"Size,omitempty" name:"Size"`
+}
+type AddEpcNodesNodeInstanceSetBasicSettingDataDisk struct {
+	FileSystem  *string `json:"FileSystem,omitempty" name:"FileSystem"`
+	MountTarget *string `json:"MountTarget,omitempty" name:"MountTarget"`
+	Suffix      *string `json:"Suffix,omitempty" name:"Suffix"`
+}
+type AddEpcNodesNodeInstanceSetBasicSettingLoginSetting struct {
+	Password *string `json:"Password,omitempty" name:"Password"`
+	SSHKeyId *string `json:"SSHKeyId,omitempty" name:"SSHKeyId"`
+}
+type AddEpcNodesNodeInstanceSetBasicSetting struct {
+	IsNew                *bool                                               `json:"IsNew,omitempty" name:"IsNew"`
+	AvailabilityZone     *string                                             `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	ExistedInstances     []*string                                           `json:"ExistedInstances,omitempty" name:"ExistedInstances"`
+	Num                  *int                                                `json:"Num,omitempty" name:"Num"`
+	InstanceType         *string                                             `json:"InstanceType,omitempty" name:"InstanceType"`
+	ImageID              *string                                             `json:"ImageID,omitempty" name:"ImageID"`
+	SystemDisk           *AddEpcNodesNodeInstanceSetBasicSettingSystemDisk   `json:"SystemDisk,omitempty" name:"SystemDisk"`
+	InstanceName         *string                                             `json:"InstanceName,omitempty" name:"InstanceName"`
+	SubnetID             *string                                             `json:"SubnetID,omitempty" name:"SubnetID"`
+	NodeNameMode         *string                                             `json:"NodeNameMode,omitempty" name:"NodeNameMode"`
+	DataDisk             []*AddEpcNodesNodeInstanceSetBasicSettingDataDisk   `json:"DataDisk,omitempty" name:"DataDisk"`
+	LoginSetting         *AddEpcNodesNodeInstanceSetBasicSettingLoginSetting `json:"LoginSetting,omitempty" name:"LoginSetting"`
+	Series               *string                                             `json:"Series,omitempty" name:"Series"`
+	ReInstall            *bool                                               `json:"ReInstall,omitempty" name:"ReInstall"`
+	SecurityGroupID      *string                                             `json:"SecurityGroupID,omitempty" name:"SecurityGroupID"`
+	Raid                 *string                                             `json:"Raid,omitempty" name:"Raid"`
+	NetworkInterfaceMode *string                                             `json:"NetworkInterfaceMode,omitempty" name:"NetworkInterfaceMode"`
+	BondName             *string                                             `json:"BondName,omitempty" name:"BondName"`
+	GpuImageDriverId     *string                                             `json:"GpuImageDriverId,omitempty" name:"GpuImageDriverId"`
+	ChargeType           *string                                             `json:"ChargeType,omitempty" name:"ChargeType"`
+	Unit                 *int                                                `json:"Unit,omitempty" name:"Unit"`
+	PurchaseTime         *int                                                `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
+}
+type AddEpcNodesNodeInstanceSetAdvancedSettingContainer struct {
+	Runtime     *string `json:"Runtime,omitempty" name:"Runtime"`
+	Path        *string `json:"Path,omitempty" name:"Path"`
+	LogMaxSize  *int    `json:"LogMaxSize,omitempty" name:"LogMaxSize"`
+	LogMaxFiles *int    `json:"LogMaxFiles,omitempty" name:"LogMaxFiles"`
+}
+type AddEpcNodesNodeInstanceSetAdvancedSettingLabels struct {
+	Key   *string `json:"Key,omitempty" name:"Key"`
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+type AddEpcNodesNodeInstanceSetAdvancedSettingTaint struct {
+	Key    *string `json:"Key,omitempty" name:"Key"`
+	Value  *string `json:"Value,omitempty" name:"Value"`
+	Effect *string `json:"Effect,omitempty" name:"Effect"`
+}
+type AddEpcNodesNodeInstanceSetAdvancedSetting struct {
+	PostUserScript *string                                             `json:"PostUserScript,omitempty" name:"PostUserScript"`
+	PreUserScript  *string                                             `json:"PreUserScript,omitempty" name:"PreUserScript"`
+	Container      *AddEpcNodesNodeInstanceSetAdvancedSettingContainer `json:"Container,omitempty" name:"Container"`
+	Labels         []*AddEpcNodesNodeInstanceSetAdvancedSettingLabels  `json:"Labels,omitempty" name:"Labels"`
+	Taint          *AddEpcNodesNodeInstanceSetAdvancedSettingTaint     `json:"Taint,omitempty" name:"Taint"`
+}
+type AddEpcNodesNodeInstanceSet struct {
+	Provider        *string                                    `json:"Provider,omitempty" name:"Provider"`
+	Components      []*AddEpcNodesNodeInstanceSetComponents    `json:"Components,omitempty" name:"Components"`
+	BasicSetting    *AddEpcNodesNodeInstanceSetBasicSetting    `json:"BasicSetting,omitempty" name:"BasicSetting"`
+	AdvancedSetting *AddEpcNodesNodeInstanceSetAdvancedSetting `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
+}
+
 
 type CreateClusterRequest struct {
 	*ksyunhttp.BaseRequest
-	ClusterName         *string                           `json:"ClusterName,omitempty" name:"ClusterName"`
-	ClusterDesc         *string                           `json:"ClusterDesc,omitempty" name:"ClusterDesc"`
-	ClusterManageMode   *string                           `json:"ClusterManageMode,omitempty" name:"ClusterManageMode"`
-	ProjectId           *string                           `json:"ProjectId,omitempty" name:"ProjectId"`
-	Network             *CreateClusterNetwork             `json:"Network,omitempty" name:"Network"`
-	OrderInfo           *CreateClusterOrderInfo           `json:"OrderInfo,omitempty" name:"OrderInfo"`
-	Kubernetes          *CreateClusterKubernetes          `json:"Kubernetes,omitempty" name:"Kubernetes"`
-	NodeInstanceSet     []*CreateClusterNodeInstanceSet   `json:"NodeInstanceSet,omitempty" name:"NodeInstanceSet"`
-	Addons              []*CreateClusterAddons            `json:"Addons,omitempty" name:"Addons"`
-	DefaultLoginSetting *CreateClusterDefaultLoginSetting `json:"DefaultLoginSetting,omitempty" name:"DefaultLoginSetting"`
+	ClusterName       *string                         `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterDesc       *string                         `json:"ClusterDesc,omitempty" name:"ClusterDesc"`
+	ClusterManageMode *string                         `json:"ClusterManageMode,omitempty" name:"ClusterManageMode"`
+	ProjectId         *string                         `json:"ProjectId,omitempty" name:"ProjectId"`
+	KubernetesVersion *string                         `json:"KubernetesVersion,omitempty" name:"KubernetesVersion"`
+	Network           *CreateClusterNetwork           `json:"Network,omitempty" name:"Network"`
+	NodeInstanceSet   []*CreateClusterNodeInstanceSet `json:"NodeInstanceSet,omitempty" name:"NodeInstanceSet"`
+	Addons            []*CreateClusterAddons          `json:"Addons,omitempty" name:"Addons"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -265,12 +329,12 @@ func (r *CreateClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeClustersRequest struct {
 	*ksyunhttp.BaseRequest
-	ClusterNames []*string `json:"ClusterNames,omitempty" name:"ClusterNames"`
-	ClusterIds   []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
-	MaxResults   *int      `json:"MaxResults,omitempty" name:"MaxResults"`
-	Marker       *int      `json:"Marker,omitempty" name:"Marker"`
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+	MaxResults *int      `json:"MaxResults,omitempty" name:"MaxResults"`
+	Marker     *int      `json:"Marker,omitempty" name:"Marker"`
 }
 
 func (r *DescribeClustersRequest) ToJsonString() string {
@@ -295,9 +359,39 @@ type DescribeClustersResponse struct {
 	Data      struct {
 		MaxResults *int `json:"MaxResults" name:"MaxResults"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
+		ClusterSet []struct {
+			ClusterId         *string `json:"ClusterId" name:"ClusterId"`
+			ClusterName       *string `json:"ClusterName" name:"ClusterName"`
+			ClusterManageMode *string `json:"ClusterManageMode" name:"ClusterManageMode"`
+			ProjectId         *string `json:"ProjectId" name:"ProjectId"`
+			KubernetesVersion *string `json:"KubernetesVersion" name:"KubernetesVersion"`
+			Network           struct {
+				NetworkPluginType *string `json:"NetworkPluginType" name:"NetworkPluginType"`
+				ApiServer         struct {
+					PublicApiServerEnable *bool   `json:"PublicApiServerEnable" name:"PublicApiServerEnable"`
+					EipId                 *string `json:"EipId" name:"EipId"`
+					ReserveSubnetId       *string `json:"ReserveSubnetId" name:"ReserveSubnetId"`
+				} `json:"ApiServer" name:"ApiServer"`
+				VpcCNI struct {
+					Enable        *bool     `json:"Enable" name:"Enable"`
+					DaemonMode    *string   `json:"DaemonMode" name:"DaemonMode"`
+					SubnetIds     []*string `json:"SubnetIds" name:"SubnetIds"`
+					SecurityGroup *string   `json:"SecurityGroup" name:"SecurityGroup"`
+				} `json:"VpcCNI" name:"VpcCNI"`
+				PodCidr       *string `json:"PodCidr" name:"PodCidr"`
+				ServiceCidr   *string `json:"ServiceCidr" name:"ServiceCidr"`
+				MaxPodPerNode *int    `json:"MaxPodPerNode" name:"MaxPodPerNode"`
+			} `json:"Network"`
+			Addons []struct {
+				Name *string `json:"Name" name:"Name"`
+			} `json:"Addons"`
+			ManagedClusterSpec struct {
+			} `json:"ManagedClusterSpec"`
+			Status struct {
+				Phase *string `json:"Phase" name:"Phase"`
+			} `json:"Status"`
+		} `json:"ClusterSet" name:"ClusterSet"`
 	} `json:"Data"`
-	ClusterSet []struct {
-	} `json:"ClusterSet"`
 }
 
 func (r *DescribeClustersResponse) ToJsonString() string {
@@ -309,9 +403,9 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteClusterRequest struct {
 	*ksyunhttp.BaseRequest
-	ClusterName    *string `json:"ClusterName,omitempty" name:"ClusterName"`
 	ClusterId      *string `json:"ClusterId,omitempty" name:"ClusterId"`
 	InstanceDelete *bool   `json:"InstanceDelete,omitempty" name:"InstanceDelete"`
 }
@@ -349,13 +443,14 @@ func (r *DeleteClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyClusterRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId       *string                       `json:"ClusterId,omitempty" name:"ClusterId"`
-	ClusterName     *string                       `json:"ClusterName,omitempty" name:"ClusterName"`
 	ClusterDesc     *string                       `json:"ClusterDesc,omitempty" name:"ClusterDesc"`
 	SANs            []*string                     `json:"SANs,omitempty" name:"SANs"`
 	PublicApiServer *ModifyClusterPublicApiServer `json:"PublicApiServer,omitempty" name:"PublicApiServer"`
+	VpcCNI          *ModifyClusterVpcCNI          `json:"VpcCNI,omitempty" name:"VpcCNI"`
 }
 
 func (r *ModifyClusterRequest) ToJsonString() string {
@@ -391,100 +486,14 @@ func (r *ModifyClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DownloadClusterConfigRequest struct {
-	*ksyunhttp.BaseRequest
-	ClusterId   *string `json:"ClusterId,omitempty" name:"ClusterId"`
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
-	Type        *string `json:"Type,omitempty" name:"Type"`
-}
-
-func (r *DownloadClusterConfigRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DownloadClusterConfigRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DownloadClusterConfigRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DownloadClusterConfigResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Data      struct {
-		ClusterId *string `json:"ClusterId" name:"ClusterId"`
-		Type      *string `json:"Type" name:"Type"`
-		Config    *string `json:"Config" name:"Config"`
-	} `json:"Data"`
-}
-
-func (r *DownloadClusterConfigResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DownloadClusterConfigResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type AddNodesRequest struct {
-	*ksyunhttp.BaseRequest
-	ClusterName     *string                    `json:"ClusterName,omitempty" name:"ClusterName"`
-	ClusterId       *string                    `json:"ClusterId,omitempty" name:"ClusterId"`
-	NodeInstanceSet []*AddNodesNodeInstanceSet `json:"NodeInstanceSet,omitempty" name:"NodeInstanceSet"`
-}
-
-func (r *AddNodesRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *AddNodesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "AddNodesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type AddNodesResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Data      struct {
-		InstanceSet []struct {
-			MachineId *string `json:"MachineId" name:"MachineId"`
-			Code      *int    `json:"Code" name:"Code"`
-		} `json:"InstanceSet" name:"InstanceSet"`
-	} `json:"Data"`
-}
-
-func (r *AddNodesResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *AddNodesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
 
 type DescribeNodesRequest struct {
 	*ksyunhttp.BaseRequest
-	ClusterName *string   `json:"ClusterName,omitempty" name:"ClusterName"`
 	ClusterId   *string   `json:"ClusterId,omitempty" name:"ClusterId"`
-	NodeNames   []*string `json:"NodeNames,omitempty" name:"NodeNames"`
-	NodeIds     []*string `json:"NodeIds,omitempty" name:"NodeIds"`
+	KceNodeIds  []*string `json:"KceNodeIds,omitempty" name:"KceNodeIds"`
 	Marker      *int      `json:"Marker,omitempty" name:"Marker"`
 	MaxResults  *int      `json:"MaxResults,omitempty" name:"MaxResults"`
-	Search      *string   `json:"Search,omitempty" name:"Search"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DescribeNodesRequest) ToJsonString() string {
@@ -508,7 +517,7 @@ type DescribeNodesResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
 		MaxResults *int `json:"MaxResults" name:"MaxResults"`
-		Marker     *int `json:"Marker" name:"Marker"`
+		Marker *int `json:"Marker" name:"Marker"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
 	} `json:"Data"`
 	InstanceSet struct {
@@ -524,13 +533,14 @@ func (r *DescribeNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteNodeRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId      *string   `json:"ClusterId,omitempty" name:"ClusterId"`
-	ClusterName    *string   `json:"ClusterName,omitempty" name:"ClusterName"`
 	NodeIds        []*string `json:"NodeIds,omitempty" name:"NodeIds"`
-	NodeNames      *string   `json:"NodeNames,omitempty" name:"NodeNames"`
 	InstanceDelete *bool     `json:"InstanceDelete,omitempty" name:"InstanceDelete"`
+	KceNodeIds     *string   `json:"KceNodeIds,omitempty" name:"KceNodeIds"`
+	InstanceIds    []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DeleteNodeRequest) ToJsonString() string {
@@ -553,8 +563,10 @@ type DeleteNodeResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		ClusterId   *string `json:"ClusterId" name:"ClusterId"`
-		DeleteCount *int    `json:"DeleteCount" name:"DeleteCount"`
+		InstanceSet []struct {
+			InstanceId *string `json:"InstanceId" name:"InstanceId"`
+			KceNodeId  *string `json:"KceNodeId" name:"KceNodeId"`
+		} `json:"InstanceSet" name:"InstanceSet"`
 	} `json:"Data"`
 }
 
@@ -567,13 +579,13 @@ func (r *DeleteNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyNodeRequest struct {
 	*ksyunhttp.BaseRequest
-	ClusteId    *string   `json:"ClusteId,omitempty" name:"ClusteId"`
-	ClusterName *string   `json:"ClusterName,omitempty" name:"ClusterName"`
-	NodeId      *string   `json:"NodeId,omitempty" name:"NodeId"`
-	NodeName    *string   `json:"NodeName,omitempty" name:"NodeName"`
-	Components  []*string `json:"Components,omitempty" name:"Components"`
+	ClusteId   *string                 `json:"ClusteId,omitempty" name:"ClusteId"`
+	KceNodeId  *string                 `json:"KceNodeId,omitempty" name:"KceNodeId"`
+	InstanceId *string                 `json:"InstanceId,omitempty" name:"InstanceId"`
+	Components []*ModifyNodeComponents `json:"Components,omitempty" name:"Components"`
 }
 
 func (r *ModifyNodeRequest) ToJsonString() string {
@@ -594,7 +606,11 @@ func (r *ModifyNodeRequest) FromJsonString(s string) error {
 
 type ModifyNodeResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	ClusterId  *string `json:"ClusterId" name:"ClusterId"`
+	InstanceId *string `json:"InstanceId" name:"InstanceId"`
+	Components []struct {
+		Type *string `json:"Type" name:"Type"`
+	} `json:"Components"`
 }
 
 func (r *ModifyNodeResponse) ToJsonString() string {
@@ -605,6 +621,7 @@ func (r *ModifyNodeResponse) ToJsonString() string {
 func (r *ModifyNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeComponentListRequest struct {
 	*ksyunhttp.BaseRequest
@@ -640,6 +657,7 @@ func (r *DescribeComponentListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeNodeComponentsRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId   *string   `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -674,8 +692,8 @@ type DescribeNodeComponentsResponse struct {
 		NodeComponents []struct {
 			NodeId          *string `json:"NodeId" name:"NodeId"`
 			ComponentStatus []struct {
-				Type        *string `json:"Type" name:"Type"`
-				CurVersion  *string `json:"CurVersion" name:"CurVersion"`
+				Type       *string `json:"Type" name:"Type"`
+				CurVersion *string `json:"CurVersion" name:"CurVersion"`
 				SpecVersion *string `json:"SpecVersion" name:"SpecVersion"`
 			} `json:"ComponentStatus"`
 		} `json:"NodeComponents" name:"NodeComponents"`
@@ -690,6 +708,7 @@ func (r *DescribeNodeComponentsResponse) ToJsonString() string {
 func (r *DescribeNodeComponentsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeNetworkRequest struct {
 	*ksyunhttp.BaseRequest
@@ -718,24 +737,24 @@ type DescribeNetworkResponse struct {
 	ClusterId *string `json:"ClusterId" name:"ClusterId"`
 	NetworkId *string `json:"NetworkId" name:"NetworkId"`
 	PublicSLB struct {
-		Phase  *string `json:"Phase" name:"Phase"`
+		Phase *string `json:"Phase" name:"Phase"`
 		Reason *string `json:"Reason" name:"Reason"`
 	} `json:"PublicSLB"`
 	PrivateSLB struct {
-		SLBId  *string `json:"SLBId" name:"SLBId"`
-		SLBIp  *string `json:"SLBIp" name:"SLBIp"`
-		Phase  *string `json:"Phase" name:"Phase"`
+		SLBId *string `json:"SLBId" name:"SLBId"`
+		SLBIp *string `json:"SLBIp" name:"SLBIp"`
+		Phase *string `json:"Phase" name:"Phase"`
 		Reason *string `json:"Reason" name:"Reason"`
 	} `json:"PrivateSLB"`
 	PrivateLink struct {
-		LinkIp   *string `json:"LinkIp" name:"LinkIp"`
+		LinkIp *string `json:"LinkIp" name:"LinkIp"`
 		LinkPort *string `json:"LinkPort" name:"LinkPort"`
-		Phase    *string `json:"Phase" name:"Phase"`
-		Reason   *string `json:"Reason" name:"Reason"`
+		Phase  *string `json:"Phase" name:"Phase"`
+		Reason *string `json:"Reason" name:"Reason"`
 	} `json:"PrivateLink"`
 	EIP struct {
-		EIPId  *string `json:"EIPId" name:"EIPId"`
-		Phase  *string `json:"Phase" name:"Phase"`
+		EIPId *string `json:"EIPId" name:"EIPId"`
+		Phase *string `json:"Phase" name:"Phase"`
 		Reason *string `json:"Reason" name:"Reason"`
 	} `json:"EIP"`
 	PublicAccess *bool   `json:"PublicAccess" name:"PublicAccess"`
@@ -751,6 +770,7 @@ func (r *DescribeNetworkResponse) ToJsonString() string {
 func (r *DescribeNetworkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeComponentParamsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -783,9 +803,9 @@ type DescribeComponentParamsResponse struct {
 		ClusterId *string `json:"ClusterId" name:"ClusterId"`
 	} `json:"Data"`
 	Components []struct {
-		Type    *string `json:"Type" name:"Type"`
+		Type *string `json:"Type" name:"Type"`
 		Version *string `json:"Version" name:"Version"`
-		Args    *string `json:"Args" name:"Args"`
+		Args *string `json:"Args" name:"Args"`
 	} `json:"Components"`
 }
 
@@ -797,6 +817,7 @@ func (r *DescribeComponentParamsResponse) ToJsonString() string {
 func (r *DescribeComponentParamsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeAddonListRequest struct {
 	*ksyunhttp.BaseRequest
@@ -851,6 +872,7 @@ func (r *DescribeAddonListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeAddonInstancesRequest struct {
 	*ksyunhttp.BaseRequest
 	CulsterId   *string   `json:"CulsterId,omitempty" name:"CulsterId"`
@@ -903,6 +925,7 @@ func (r *DescribeAddonInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteAddonInstanceRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
@@ -945,6 +968,7 @@ func (r *DeleteAddonInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type CreateAddonInstanceRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId *string                      `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -971,9 +995,8 @@ type CreateAddonInstanceResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		ClusterId   *string `json:"ClusterId" name:"ClusterId"`
-		InstanceIds []struct {
-		} `json:"InstanceIds" name:"InstanceIds"`
+		ClusterId   *string   `json:"ClusterId" name:"ClusterId"`
+		InstanceIds []*string `json:"InstanceIds" name:"InstanceIds"`
 	} `json:"Data"`
 }
 
@@ -1062,3 +1085,88 @@ func (r *DescribeClusterVersionListResponse) ToJsonString() string {
 func (r *DescribeClusterVersionListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type AddKecNodesRequest struct {
+	*ksyunhttp.BaseRequest
+	ClusterId       *string                     `json:"ClusterId,omitempty" name:"ClusterId"`
+	NodeInstanceSet *AddKecNodesNodeInstanceSet `json:"NodeInstanceSet,omitempty" name:"NodeInstanceSet"`
+}
+
+func (r *AddKecNodesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *AddKecNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "AddKecNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddKecNodesResponse struct {
+	*ksyunhttp.BaseResponse
+	Data struct {
+		RequestId   *string `json:"RequestId" name:"RequestId"`
+		InstanceSet []struct {
+			KceNodeId *string `json:"KceNodeId" name:"KceNodeId"`
+			Code      *int    `json:"Code" name:"Code"`
+		} `json:"InstanceSet" name:"InstanceSet"`
+	} `json:"Data"`
+}
+
+func (r *AddKecNodesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *AddKecNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddEpcNodesRequest struct {
+	*ksyunhttp.BaseRequest
+	ClusterId       *string                       `json:"ClusterId,omitempty" name:"ClusterId"`
+	NodeInstanceSet []*AddEpcNodesNodeInstanceSet `json:"NodeInstanceSet,omitempty" name:"NodeInstanceSet"`
+}
+
+func (r *AddEpcNodesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *AddEpcNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "AddEpcNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddEpcNodesResponse struct {
+	*ksyunhttp.BaseResponse
+	Data struct {
+		RequestId   *string `json:"RequestId" name:"RequestId"`
+		InstanceSet []struct {
+			KceNodeId *string `json:"KceNodeId" name:"KceNodeId"`
+			Code      *int    `json:"Code" name:"Code"`
+		} `json:"InstanceSet" name:"InstanceSet"`
+	} `json:"Data"`
+}
+
+func (r *AddEpcNodesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *AddEpcNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+

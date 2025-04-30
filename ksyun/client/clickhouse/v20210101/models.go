@@ -40,6 +40,7 @@ func (r *ListInstanceRequest) FromJsonString(s string) error {
 
 type ListInstanceResponse struct {
 	*ksyunhttp.BaseResponse
+	One *int `json:"1" name:"1"`
 }
 
 func (r *ListInstanceResponse) ToJsonString() string {
@@ -118,11 +119,10 @@ type DescribeInstanceResponse struct {
 			Id   *string `json:"id" name:"id"`
 			Name *string `json:"name" name:"name"`
 		} `json:"ShardList" name:"ShardList"`
-		Replicas             *int `json:"Replicas" name:"Replicas"`
-		DirectConnectionVips []struct {
-		} `json:"DirectConnectionVips" name:"DirectConnectionVips"`
-		MultiAz *int `json:"MultiAz" name:"MultiAz"`
-		Area    struct {
+		Replicas             *int      `json:"Replicas" name:"Replicas"`
+		DirectConnectionVips []*string `json:"DirectConnectionVips" name:"DirectConnectionVips"`
+		MultiAz              *int      `json:"MultiAz" name:"MultiAz"`
+		Area                 struct {
 			Master  *string `json:"Master" name:"Master"`
 			Standby *string `json:"Standby" name:"Standby"`
 		} `json:"Area" name:"Area"`
@@ -245,6 +245,48 @@ func (r *DeleteInstanceResponse) ToJsonString() string {
 }
 
 func (r *DeleteInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RestartInstanceRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceIds *string `json:"instanceIds,omitempty" name:"instanceIds"`
+}
+
+func (r *RestartInstanceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *RestartInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "RestartInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RestartInstanceResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Code      *string `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	Data      []struct {
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		OperStatus *string `json:"OperStatus" name:"OperStatus"`
+		Msg        *string `json:"Msg" name:"Msg"`
+	} `json:"Data"`
+}
+
+func (r *RestartInstanceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *RestartInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -441,17 +483,15 @@ type CreateSecurityGroupResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
-		SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
-		IpVersion         *string `json:"IpVersion" name:"IpVersion"`
-		Description       *string `json:"Description" name:"Description"`
-		InstanceCount     *int    `json:"InstanceCount" name:"InstanceCount"`
-		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
-		UpdateTime        *string `json:"UpdateTime" name:"UpdateTime"`
-		Rules             []struct {
-		} `json:"Rules" name:"Rules"`
-		Instances []struct {
-		} `json:"Instances" name:"Instances"`
+		SecurityGroupId   *string   `json:"SecurityGroupId" name:"SecurityGroupId"`
+		SecurityGroupName *string   `json:"SecurityGroupName" name:"SecurityGroupName"`
+		IpVersion         *string   `json:"IpVersion" name:"IpVersion"`
+		Description       *string   `json:"Description" name:"Description"`
+		InstanceCount     *int      `json:"InstanceCount" name:"InstanceCount"`
+		CreateTime        *string   `json:"CreateTime" name:"CreateTime"`
+		UpdateTime        *string   `json:"UpdateTime" name:"UpdateTime"`
+		Rules             []*string `json:"Rules" name:"Rules"`
+		Instances         []*string `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 }
 
@@ -537,17 +577,15 @@ type RenameSecurityGroupResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		SecurityGroupId   *string `json:"SecurityGroupId" name:"SecurityGroupId"`
-		SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
-		IpVersion         *string `json:"IpVersion" name:"IpVersion"`
-		Description       *string `json:"Description" name:"Description"`
-		InstanceCount     *int    `json:"InstanceCount" name:"InstanceCount"`
-		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
-		UpdateTime        *string `json:"UpdateTime" name:"UpdateTime"`
-		Rules             []struct {
-		} `json:"Rules" name:"Rules"`
-		Instances []struct {
-		} `json:"Instances" name:"Instances"`
+		SecurityGroupId   *string   `json:"SecurityGroupId" name:"SecurityGroupId"`
+		SecurityGroupName *string   `json:"SecurityGroupName" name:"SecurityGroupName"`
+		IpVersion         *string   `json:"IpVersion" name:"IpVersion"`
+		Description       *string   `json:"Description" name:"Description"`
+		InstanceCount     *int      `json:"InstanceCount" name:"InstanceCount"`
+		CreateTime        *string   `json:"CreateTime" name:"CreateTime"`
+		UpdateTime        *string   `json:"UpdateTime" name:"UpdateTime"`
+		Rules             []*string `json:"Rules" name:"Rules"`
+		Instances         []*string `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 }
 
@@ -603,8 +641,7 @@ type CloneSecurityGroupResponse struct {
 			CreateTime  *string `json:"CreateTime" name:"CreateTime"`
 			Description *string `json:"Description" name:"Description"`
 		} `json:"Rules" name:"Rules"`
-		Instances []struct {
-		} `json:"Instances" name:"Instances"`
+		Instances []*string `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 }
 

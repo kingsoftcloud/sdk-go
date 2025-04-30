@@ -578,10 +578,9 @@ type CreateCacheParameterGroupResponse struct {
 			DefaultValue *string `json:"defaultValue" name:"defaultValue"`
 			CurrentValue *string `json:"currentValue" name:"currentValue"`
 			Validity     struct {
-				Type     *string `json:"Type" name:"Type"`
-				DataType *string `json:"DataType" name:"DataType"`
-				Value    []struct {
-				} `json:"Value" name:"Value"`
+				Type     *string   `json:"Type" name:"Type"`
+				DataType *string   `json:"DataType" name:"DataType"`
+				Value    []*string `json:"Value" name:"Value"`
 			} `json:"Validity"`
 		} `json:"Parameters" name:"Parameters"`
 	} `json:"Data"`
@@ -675,13 +674,12 @@ type ModifyCacheParameterGroupResponse struct {
 			DefaultValue *string `json:"defaultValue" name:"defaultValue"`
 			CurrentValue *string `json:"currentValue" name:"currentValue"`
 			Validity     struct {
-				Type     *string `json:"Type" name:"Type"`
-				DataType *string `json:"DataType" name:"DataType"`
-				Value    *string `json:"Value" name:"Value"`
-				Values   []struct {
-				} `json:"Values" name:"Values"`
-				Min *string `json:"Min" name:"Min"`
-				Max *string `json:"Max" name:"Max"`
+				Type     *string   `json:"Type" name:"Type"`
+				DataType *string   `json:"DataType" name:"DataType"`
+				Value    *string   `json:"Value" name:"Value"`
+				Values   []*string `json:"Values" name:"Values"`
+				Min      *string   `json:"Min" name:"Min"`
+				Max      *string   `json:"Max" name:"Max"`
 			} `json:"Validity"`
 		} `json:"Parameters" name:"Parameters"`
 	} `json:"Data"`
@@ -2198,8 +2196,7 @@ type DownloadLevelSnapshotResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		DownloadUrl []struct {
-		} `json:"DownloadUrl" name:"DownloadUrl"`
+		DownloadUrl []*string `json:"DownloadUrl" name:"DownloadUrl"`
 	} `json:"Data"`
 }
 
@@ -2337,6 +2334,11 @@ type AnalyzeBigKeysResponse struct {
 			KeyType *string `json:"keyType" name:"keyType"`
 			Percent *string `json:"percent" name:"percent"`
 		} `json:"SORT" name:"SORT"`
+		Onek      *string `json:"1k" name:"1k"`
+		Onek10k   *string `json:"1k10k" name:"1k10k"`
+		Tenk1000k *string `json:"10k1000k" name:"10k1000k"`
+		OneMb10Mb *string `json:"1Mb10Mb" name:"1Mb10Mb"`
+		TenMb     *string `json:"10Mb" name:"10Mb"`
 	} `json:"Data"`
 }
 
