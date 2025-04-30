@@ -1408,6 +1408,39 @@ func (c *Client) DescribePriceWithContext(ctx context.Context, request *Describe
 	}
 	return msg
 }
+func NewUpdateConfirmRequest() (request *UpdateConfirmRequest) {
+	request = &UpdateConfirmRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "UpdateConfirm")
+	return
+}
+
+func NewUpdateConfirmResponse() (response *UpdateConfirmResponse) {
+	response = &UpdateConfirmResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateConfirm(request *UpdateConfirmRequest) string {
+	return c.UpdateConfirmWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateConfirmWithContext(ctx context.Context, request *UpdateConfirmRequest) string {
+	if request == nil {
+		request = NewUpdateConfirmRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateConfirmResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
 func NewModifyOverclockingAttributeRequest() (request *ModifyOverclockingAttributeRequest) {
 	request = &ModifyOverclockingAttributeRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -2062,6 +2095,171 @@ func (c *Client) DescribeGpuRoceTopologyWithContext(ctx context.Context, request
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeGpuRoceTopologyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyProcessRequest() (request *ModifyProcessRequest) {
+	request = &ModifyProcessRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "ModifyProcess")
+	return
+}
+
+func NewModifyProcessResponse() (response *ModifyProcessResponse) {
+	response = &ModifyProcessResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyProcess(request *ModifyProcessRequest) string {
+	return c.ModifyProcessWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyProcessWithContext(ctx context.Context, request *ModifyProcessRequest) string {
+	if request == nil {
+		request = NewModifyProcessRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyProcessResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewConfirmProcessRequest() (request *ConfirmProcessRequest) {
+	request = &ConfirmProcessRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "ConfirmProcess")
+	return
+}
+
+func NewConfirmProcessResponse() (response *ConfirmProcessResponse) {
+	response = &ConfirmProcessResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ConfirmProcess(request *ConfirmProcessRequest) string {
+	return c.ConfirmProcessWithContext(context.Background(), request)
+}
+
+func (c *Client) ConfirmProcessWithContext(ctx context.Context, request *ConfirmProcessRequest) string {
+	if request == nil {
+		request = NewConfirmProcessRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewConfirmProcessResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeModelConfigRequest() (request *DescribeModelConfigRequest) {
+	request = &DescribeModelConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "DescribeModelConfig")
+	return
+}
+
+func NewDescribeModelConfigResponse() (response *DescribeModelConfigResponse) {
+	response = &DescribeModelConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeModelConfig(request *DescribeModelConfigRequest) string {
+	return c.DescribeModelConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeModelConfigWithContext(ctx context.Context, request *DescribeModelConfigRequest) string {
+	if request == nil {
+		request = NewDescribeModelConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeModelConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeRoceEventRequest() (request *DescribeRoceEventRequest) {
+	request = &DescribeRoceEventRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "DescribeRoceEvent")
+	return
+}
+
+func NewDescribeRoceEventResponse() (response *DescribeRoceEventResponse) {
+	response = &DescribeRoceEventResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeRoceEvent(request *DescribeRoceEventRequest) string {
+	return c.DescribeRoceEventWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeRoceEventWithContext(ctx context.Context, request *DescribeRoceEventRequest) string {
+	if request == nil {
+		request = NewDescribeRoceEventRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeRoceEventResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeRoceEventDetailsRequest() (request *DescribeRoceEventDetailsRequest) {
+	request = &DescribeRoceEventDetailsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "DescribeRoceEventDetails")
+	return
+}
+
+func NewDescribeRoceEventDetailsResponse() (response *DescribeRoceEventDetailsResponse) {
+	response = &DescribeRoceEventDetailsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeRoceEventDetails(request *DescribeRoceEventDetailsRequest) string {
+	return c.DescribeRoceEventDetailsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeRoceEventDetailsWithContext(ctx context.Context, request *DescribeRoceEventDetailsRequest) string {
+	if request == nil {
+		request = NewDescribeRoceEventDetailsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeRoceEventDetailsResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)

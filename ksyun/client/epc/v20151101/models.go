@@ -34,6 +34,10 @@ type DescribeUseHotStandbyRecordsFilterN struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
+type DescribeRoceEventFilterN struct {
+	Name   *string `json:"Name,omitempty" name:"Name"`
+	ValueM *string `json:"Value.M,omitempty" name:"Value.M"`
+}
 
 type CreateEpcRequest struct {
 	*ksyunhttp.BaseRequest
@@ -91,6 +95,10 @@ type CreateEpcRequest struct {
 	PasswordInherit             *string   `json:"PasswordInherit,omitempty" name:"PasswordInherit"`
 	DataDiskMount               *string   `json:"DataDiskMount,omitempty" name:"DataDiskMount"`
 	StorageRoceNetworkCardName  *string   `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
+	AnacondaN                   *string   `json:"Anaconda.N,omitempty" name:"Anaconda.N"`
+	FrameworkN                  *string   `json:"Framework.N,omitempty" name:"Framework.N"`
+	EngineN                     *string   `json:"Engine.N,omitempty" name:"Engine.N"`
+	AiModelN                    *string   `json:"AiModel.N,omitempty" name:"AiModel.N"`
 }
 
 func (r *CreateEpcRequest) ToJsonString() string {
@@ -213,10 +221,14 @@ type CreateEpcResponse struct {
 			GateWay *string `json:"GateWay" name:"GateWay"`
 			Type    *string `json:"Type" name:"Type"`
 		} `json:"Roces" name:"Roces"`
-		ContractDueTime         *string `json:"ContractDueTime" name:"ContractDueTime"`
-		AutoDeleteTime          *string `json:"AutoDeleteTime" name:"AutoDeleteTime"`
-		VpcTrust                *int    `json:"VpcTrust" name:"VpcTrust"`
-		TimedRegularizationTime *string `json:"TimedRegularizationTime" name:"TimedRegularizationTime"`
+		ContractDueTime         *string   `json:"ContractDueTime" name:"ContractDueTime"`
+		AutoDeleteTime          *string   `json:"AutoDeleteTime" name:"AutoDeleteTime"`
+		VpcTrust                *int      `json:"VpcTrust" name:"VpcTrust"`
+		TimedRegularizationTime *string   `json:"TimedRegularizationTime" name:"TimedRegularizationTime"`
+		Anacondas               []*string `json:"Anacondas" name:"Anacondas"`
+		Frameworks              []*string `json:"Frameworks" name:"Frameworks"`
+		Engines                 []*string `json:"Engines" name:"Engines"`
+		AiModels                []*string `json:"AiModels" name:"AiModels"`
 	} `json:"Host"`
 }
 
@@ -367,6 +379,7 @@ type ReinstallEpcRequest struct {
 	ContainerAgent              *string `json:"ContainerAgent,omitempty" name:"ContainerAgent"`
 	PasswordInherit             *string `json:"PasswordInherit,omitempty" name:"PasswordInherit"`
 	DataDiskMount               *string `json:"DataDiskMount,omitempty" name:"DataDiskMount"`
+	StorageRoceNetworkCardName  *string `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
 }
 
 func (r *ReinstallEpcRequest) ToJsonString() string {
@@ -611,10 +624,14 @@ type DescribeEpcsResponse struct {
 			VolumeSize         *string `json:"VolumeSize" name:"VolumeSize"`
 			DeleteWithInstance *bool   `json:"DeleteWithInstance" name:"DeleteWithInstance"`
 		} `json:"DataVolumeSet" name:"DataVolumeSet"`
-		GpuImageDriverId *string `json:"GpuImageDriverId" name:"GpuImageDriverId"`
-		VpcTrust         *int    `json:"VpcTrust" name:"VpcTrust"`
-		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		ChargeType       *string `json:"ChargeType" name:"ChargeType"`
+		GpuImageDriverId *string   `json:"GpuImageDriverId" name:"GpuImageDriverId"`
+		VpcTrust         *int      `json:"VpcTrust" name:"VpcTrust"`
+		ServiceEndTime   *string   `json:"ServiceEndTime" name:"ServiceEndTime"`
+		ChargeType       *string   `json:"ChargeType" name:"ChargeType"`
+		Anacondas        []*string `json:"Anacondas" name:"Anacondas"`
+		Frameworks       []*string `json:"Frameworks" name:"Frameworks"`
+		Engines          []*string `json:"Engines" name:"Engines"`
+		AiModels         []*string `json:"AiModels" name:"AiModels"`
 	} `json:"HostSet"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
@@ -1698,22 +1715,24 @@ func (r *DescribeProcessesResponse) FromJsonString(s string) error {
 
 type CreateProcessRequest struct {
 	*ksyunhttp.BaseRequest
-	ProcessId        *string   `json:"ProcessId,omitempty" name:"ProcessId"`
-	InstanceId       *string   `json:"InstanceId,omitempty" name:"InstanceId"`
-	Sn               *string   `json:"Sn,omitempty" name:"Sn"`
-	AvailabilityZone *string   `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
-	CreateTime       *string   `json:"CreateTime,omitempty" name:"CreateTime"`
-	Attribute        *string   `json:"Attribute,omitempty" name:"Attribute"`
-	Content          *string   `json:"Content,omitempty" name:"Content"`
-	MachineCount     *int      `json:"MachineCount,omitempty" name:"MachineCount"`
-	Title            *string   `json:"Title,omitempty" name:"Title"`
-	Type             *string   `json:"Type,omitempty" name:"Type"`
-	Confirm          *string   `json:"Confirm,omitempty" name:"Confirm"`
-	ProcessSource    *int      `json:"ProcessSource,omitempty" name:"ProcessSource"`
-	AutoNocCase      *int      `json:"autoNocCase,omitempty" name:"autoNocCase"`
-	LogFileName      []*string `json:"LogFileName,omitempty" name:"LogFileName"`
-	LogFile          []*string `json:"LogFile,omitempty" name:"LogFile"`
-	LogUrl           []*string `json:"LogUrl,omitempty" name:"LogUrl"`
+	ProcessId             *string   `json:"ProcessId,omitempty" name:"ProcessId"`
+	InstanceId            *string   `json:"InstanceId,omitempty" name:"InstanceId"`
+	Sn                    *string   `json:"Sn,omitempty" name:"Sn"`
+	AvailabilityZone      *string   `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	CreateTime            *string   `json:"CreateTime,omitempty" name:"CreateTime"`
+	Attribute             *string   `json:"Attribute,omitempty" name:"Attribute"`
+	Content               *string   `json:"Content,omitempty" name:"Content"`
+	MachineCount          *int      `json:"MachineCount,omitempty" name:"MachineCount"`
+	Title                 *string   `json:"Title,omitempty" name:"Title"`
+	Type                  *string   `json:"Type,omitempty" name:"Type"`
+	Confirm               *string   `json:"Confirm,omitempty" name:"Confirm"`
+	ProcessSource         *int      `json:"ProcessSource,omitempty" name:"ProcessSource"`
+	AutoNocCase           *int      `json:"autoNocCase,omitempty" name:"autoNocCase"`
+	LogFileName           []*string `json:"LogFileName,omitempty" name:"LogFileName"`
+	LogFile               []*string `json:"LogFile,omitempty" name:"LogFile"`
+	LogUrl                []*string `json:"LogUrl,omitempty" name:"LogUrl"`
+	AuthorizeCableReplace *int      `json:"AuthorizeCableReplace,omitempty" name:"AuthorizeCableReplace"`
+	EventId               *string   `json:"EventId,omitempty" name:"EventId"`
 }
 
 func (r *CreateProcessRequest) ToJsonString() string {
@@ -2143,6 +2162,39 @@ func (r *DescribePriceResponse) ToJsonString() string {
 }
 
 func (r *DescribePriceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateConfirmRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *UpdateConfirmRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateConfirmRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpdateConfirmRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateConfirmResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *UpdateConfirmResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateConfirmResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3027,5 +3079,236 @@ func (r *DescribeGpuRoceTopologyResponse) ToJsonString() string {
 }
 
 func (r *DescribeGpuRoceTopologyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyProcessRequest struct {
+	*ksyunhttp.BaseRequest
+	OperationProcessId *string `json:"OperationProcessId,omitempty" name:"OperationProcessId"`
+	Confirm            *string `json:"Confirm,omitempty" name:"Confirm"`
+	Status             *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ModifyProcessRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyProcessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyProcessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyProcessResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	ConfirmTime *string `json:"ConfirmTime" name:"ConfirmTime"`
+	Status      *string `json:"Status" name:"Status"`
+	Return      *bool   `json:"Return" name:"Return"`
+}
+
+func (r *ModifyProcessResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyProcessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ConfirmProcessRequest struct {
+	*ksyunhttp.BaseRequest
+	OperationProcessId   *string `json:"OperationProcessId,omitempty" name:"OperationProcessId"`
+	UserConfirmAvailable *string `json:"UserConfirmAvailable,omitempty" name:"UserConfirmAvailable"`
+}
+
+func (r *ConfirmProcessRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ConfirmProcessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ConfirmProcessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ConfirmProcessResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId                *string `json:"RequestId" name:"RequestId"`
+	UserConfirmAvailable     *string `json:"UserConfirmAvailable" name:"UserConfirmAvailable"`
+	UserConfirmAvailableTime *string `json:"UserConfirmAvailableTime" name:"UserConfirmAvailableTime"`
+	Return                   *bool   `json:"Return" name:"Return"`
+}
+
+func (r *ConfirmProcessResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ConfirmProcessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeModelConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	MaxResults       *int    `json:"MaxResults,omitempty" name:"MaxResults"`
+	NextToken        *string `json:"NextToken,omitempty" name:"NextToken"`
+	ImageId          *string `json:"ImageId,omitempty" name:"ImageId"`
+	HostType         *string `json:"HostType,omitempty" name:"HostType"`
+	GpuImageDriverId *string `json:"GpuImageDriverId,omitempty" name:"GpuImageDriverId"`
+}
+
+func (r *DescribeModelConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeModelConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeModelConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeModelConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	TotalCount     *int    `json:"TotalCount" name:"TotalCount"`
+	NextToken      *string `json:"NextToken" name:"NextToken"`
+	ModelConfigSet []struct {
+		GpuImageDriverId *string `json:"GpuImageDriverId" name:"GpuImageDriverId"`
+		ImageName        *string `json:"ImageName" name:"ImageName"`
+		GpuModel         *string `json:"GpuModel" name:"GpuModel"`
+		Anaconda         *string `json:"Anaconda" name:"Anaconda"`
+		Framework        *string `json:"Framework" name:"Framework"`
+		Engine           *string `json:"Engine" name:"Engine"`
+		AiModel          *string `json:"AiModel" name:"AiModel"`
+	} `json:"ModelConfigSet"`
+}
+
+func (r *DescribeModelConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeModelConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRoceEventRequest struct {
+	*ksyunhttp.BaseRequest
+	MaxResults *int                      `json:"MaxResults,omitempty" name:"MaxResults"`
+	NextToken  *string                   `json:"NextToken,omitempty" name:"NextToken"`
+	FilterN    *DescribeRoceEventFilterN `json:"Filter.N,omitempty" name:"Filter.N"`
+	HostIdN    *string                   `json:"HostId.N,omitempty" name:"HostId.N"`
+}
+
+func (r *DescribeRoceEventRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeRoceEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeRoceEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRoceEventResponse struct {
+	*ksyunhttp.BaseResponse
+	RoceEventResponseSet []struct {
+		EventTime         *string `json:"EventTime" name:"EventTime"`
+		EventName         *string `json:"EventName" name:"EventName"`
+		EventStatus       *int    `json:"EventStatus" name:"EventStatus"`
+		EventId           *string `json:"EventId" name:"EventId"`
+		InstanceName      *string `json:"InstanceName" name:"InstanceName"`
+		InstanceId        *string `json:"InstanceId" name:"InstanceId"`
+		Sn                *string `json:"Sn" name:"Sn"`
+		EventDesc         *string `json:"EventDesc" name:"EventDesc"`
+		RoceIp            *string `json:"RoceIp" name:"RoceIp"`
+		RoceType          *string `json:"RoceType" name:"RoceType"`
+		RoceInterfaceName *string `json:"RoceInterfaceName" name:"RoceInterfaceName"`
+		AvailabilityZone  *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+	} `json:"RoceEventResponseSet"`
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	NextToken  *string `json:"NextToken" name:"NextToken"`
+}
+
+func (r *DescribeRoceEventResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeRoceEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRoceEventDetailsRequest struct {
+	*ksyunhttp.BaseRequest
+	EventId    *string `json:"EventId,omitempty" name:"EventId"`
+	MaxResults *int    `json:"MaxResults,omitempty" name:"MaxResults"`
+	NextToken  *string `json:"NextToken,omitempty" name:"NextToken"`
+}
+
+func (r *DescribeRoceEventDetailsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeRoceEventDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeRoceEventDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRoceEventDetailsResponse struct {
+	*ksyunhttp.BaseResponse
+	RoceEventDetailResponseSet []struct {
+		InstanceName *string `json:"InstanceName" name:"InstanceName"`
+		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+		Sn           *string `json:"Sn" name:"Sn"`
+		EventStatus  *string `json:"EventStatus" name:"EventStatus"`
+		EventTime    *string `json:"EventTime" name:"EventTime"`
+		EventName    *string `json:"EventName" name:"EventName"`
+		HostName     *string `json:"HostName" name:"HostName"`
+		PortName     *string `json:"PortName" name:"PortName"`
+	} `json:"RoceEventDetailResponseSet"`
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	NextToken  *string `json:"NextToken" name:"NextToken"`
+}
+
+func (r *DescribeRoceEventDetailsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeRoceEventDetailsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
