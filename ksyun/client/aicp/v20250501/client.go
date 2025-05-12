@@ -1,4 +1,5 @@
 package v20250501
+
 import (
 	"context"
 	"fmt"
@@ -813,5 +814,3 @@ func (c *Client) StopJobWithContext(ctx context.Context, request *StopJobRequest
 	}
 	return msg
 }
-
-

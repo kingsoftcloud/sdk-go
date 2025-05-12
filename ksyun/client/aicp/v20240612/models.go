@@ -160,7 +160,6 @@ type DescribeNotebooksRequest struct {
 	*ksyunhttp.BaseRequest
 	NotebookId []*string                  `json:"NotebookId,omitempty" name:"NotebookId"`
 	Name       *string                    `json:"Name,omitempty" name:"Name"`
-	Status     *string                    `json:"Status,omitempty" name:"Status"`
 	Marker     *int                       `json:"Marker,omitempty" name:"Marker"`
 	MaxResults *int                       `json:"MaxResults,omitempty" name:"MaxResults"`
 	State      *string                    `json:"State,omitempty" name:"State"`

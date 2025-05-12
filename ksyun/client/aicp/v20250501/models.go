@@ -220,13 +220,21 @@ type ListNodeMetricsResponse struct {
 	Code    *int    `json:"code" name:"code"`
 	Message *string `json:"message" name:"message"`
 	Result  []struct {
-		Ip       *string `json:"Ip" name:"Ip"`
-		GpuCount *int    `json:"GpuCount" name:"GpuCount"`
-		GpuUsed  *int    `json:"GpuUsed" name:"GpuUsed"`
-		GpuFree  *int    `json:"GpuFree" name:"GpuFree"`
+		Ip          *string  `json:"Ip" name:"Ip"`
+		GpuCount    *int     `json:"GpuCount" name:"GpuCount"`
+		GpuUsed     *int     `json:"GpuUsed" name:"GpuUsed"`
+		GpuFree     *int     `json:"GpuFree" name:"GpuFree"`
+		CpuSm       *float64 `json:"CpuSm" name:"CpuSm"`
+		MemorySm    *float64 `json:"MemorySm" name:"MemorySm"`
+		GpuSm       *float64 `json:"GpuSm" name:"GpuSm"`
+		GpuMemorySm *float64 `json:"GpuMemorySm" name:"GpuMemorySm"`
+		Temperature *float64 `json:"Temperature" name:"Temperature"`
 	} `json:"Result"`
 	GpuInfo []struct {
-		Index *int `json:"Index" name:"Index"`
+		Index       *int     `json:"Index" name:"Index"`
+		Sm          *float64 `json:"Sm" name:"Sm"`
+		MemorySm    *float64 `json:"MemorySm" name:"MemorySm"`
+		Temperature *float64 `json:"Temperature" name:"Temperature"`
 	} `json:"GpuInfo"`
 }
 
