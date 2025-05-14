@@ -1,4 +1,5 @@
 package v20221222
+
 import (
 	"context"
 	"fmt"
@@ -219,5 +220,3 @@ func (c *Client) QueryUserConsumeWithContext(ctx context.Context, request *Query
 	}
 	return msg
 }
-
-
