@@ -1,5 +1,4 @@
 package v20160304
-
 import (
 	"context"
 	"fmt"
@@ -2266,6 +2265,237 @@ func (c *Client) DeleteNatIpWithContext(ctx context.Context, request *DeleteNatI
 	}
 	return msg
 }
+func NewAssociateVpcCidrBlockRequest() (request *AssociateVpcCidrBlockRequest) {
+	request = &AssociateVpcCidrBlockRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "AssociateVpcCidrBlock")
+	return
+}
+
+func NewAssociateVpcCidrBlockResponse() (response *AssociateVpcCidrBlockResponse) {
+	response = &AssociateVpcCidrBlockResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) AssociateVpcCidrBlock(request *AssociateVpcCidrBlockRequest) string {
+	return c.AssociateVpcCidrBlockWithContext(context.Background(), request)
+}
+
+func (c *Client) AssociateVpcCidrBlockWithContext(ctx context.Context, request *AssociateVpcCidrBlockRequest) string {
+	if request == nil {
+		request = NewAssociateVpcCidrBlockRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAssociateVpcCidrBlockResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeIpv6PublicIpAddressesRequest() (request *DescribeIpv6PublicIpAddressesRequest) {
+	request = &DescribeIpv6PublicIpAddressesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "DescribeIpv6PublicIpAddresses")
+	return
+}
+
+func NewDescribeIpv6PublicIpAddressesResponse() (response *DescribeIpv6PublicIpAddressesResponse) {
+	response = &DescribeIpv6PublicIpAddressesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeIpv6PublicIpAddresses(request *DescribeIpv6PublicIpAddressesRequest) string {
+	return c.DescribeIpv6PublicIpAddressesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeIpv6PublicIpAddressesWithContext(ctx context.Context, request *DescribeIpv6PublicIpAddressesRequest) string {
+	if request == nil {
+		request = NewDescribeIpv6PublicIpAddressesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeIpv6PublicIpAddressesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeIpv6NetworkInterfacesRequest() (request *DescribeIpv6NetworkInterfacesRequest) {
+	request = &DescribeIpv6NetworkInterfacesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "DescribeIpv6NetworkInterfaces")
+	return
+}
+
+func NewDescribeIpv6NetworkInterfacesResponse() (response *DescribeIpv6NetworkInterfacesResponse) {
+	response = &DescribeIpv6NetworkInterfacesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeIpv6NetworkInterfaces(request *DescribeIpv6NetworkInterfacesRequest) string {
+	return c.DescribeIpv6NetworkInterfacesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeIpv6NetworkInterfacesWithContext(ctx context.Context, request *DescribeIpv6NetworkInterfacesRequest) string {
+	if request == nil {
+		request = NewDescribeIpv6NetworkInterfacesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeIpv6NetworkInterfacesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewCreateIpv6PublicIpRequest() (request *CreateIpv6PublicIpRequest) {
+	request = &CreateIpv6PublicIpRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "CreateIpv6PublicIp")
+	return
+}
+
+func NewCreateIpv6PublicIpResponse() (response *CreateIpv6PublicIpResponse) {
+	response = &CreateIpv6PublicIpResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateIpv6PublicIp(request *CreateIpv6PublicIpRequest) string {
+	return c.CreateIpv6PublicIpWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateIpv6PublicIpWithContext(ctx context.Context, request *CreateIpv6PublicIpRequest) string {
+	if request == nil {
+		request = NewCreateIpv6PublicIpRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateIpv6PublicIpResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewReleaseIpv6PublicIpRequest() (request *ReleaseIpv6PublicIpRequest) {
+	request = &ReleaseIpv6PublicIpRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "ReleaseIpv6PublicIp")
+	return
+}
+
+func NewReleaseIpv6PublicIpResponse() (response *ReleaseIpv6PublicIpResponse) {
+	response = &ReleaseIpv6PublicIpResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ReleaseIpv6PublicIp(request *ReleaseIpv6PublicIpRequest) string {
+	return c.ReleaseIpv6PublicIpWithContext(context.Background(), request)
+}
+
+func (c *Client) ReleaseIpv6PublicIpWithContext(ctx context.Context, request *ReleaseIpv6PublicIpRequest) string {
+	if request == nil {
+		request = NewReleaseIpv6PublicIpRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewReleaseIpv6PublicIpResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewAlterIpv6PublicIpStateRequest() (request *AlterIpv6PublicIpStateRequest) {
+	request = &AlterIpv6PublicIpStateRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "AlterIpv6PublicIpState")
+	return
+}
+
+func NewAlterIpv6PublicIpStateResponse() (response *AlterIpv6PublicIpStateResponse) {
+	response = &AlterIpv6PublicIpStateResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) AlterIpv6PublicIpState(request *AlterIpv6PublicIpStateRequest) string {
+	return c.AlterIpv6PublicIpStateWithContext(context.Background(), request)
+}
+
+func (c *Client) AlterIpv6PublicIpStateWithContext(ctx context.Context, request *AlterIpv6PublicIpStateRequest) string {
+	if request == nil {
+		request = NewAlterIpv6PublicIpStateRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAlterIpv6PublicIpStateResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyIpv6PublicIpRequest() (request *ModifyIpv6PublicIpRequest) {
+	request = &ModifyIpv6PublicIpRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "ModifyIpv6PublicIp")
+	return
+}
+
+func NewModifyIpv6PublicIpResponse() (response *ModifyIpv6PublicIpResponse) {
+	response = &ModifyIpv6PublicIpResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyIpv6PublicIp(request *ModifyIpv6PublicIpRequest) string {
+	return c.ModifyIpv6PublicIpWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyIpv6PublicIpWithContext(ctx context.Context, request *ModifyIpv6PublicIpRequest) string {
+	if request == nil {
+		request = NewModifyIpv6PublicIpRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyIpv6PublicIpResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
 func NewModifyPrivateIpAddressAttributeRequest() (request *ModifyPrivateIpAddressAttributeRequest) {
 	request = &ModifyPrivateIpAddressAttributeRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -2392,6 +2622,39 @@ func (c *Client) AttachDirectConnectGatewayWithVpcWithContext(ctx context.Contex
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewAttachDirectConnectGatewayWithVpcResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewAllocateSubnetIpv6CidrBlockRequest() (request *AllocateSubnetIpv6CidrBlockRequest) {
+	request = &AllocateSubnetIpv6CidrBlockRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "AllocateSubnetIpv6CidrBlock")
+	return
+}
+
+func NewAllocateSubnetIpv6CidrBlockResponse() (response *AllocateSubnetIpv6CidrBlockResponse) {
+	response = &AllocateSubnetIpv6CidrBlockResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) AllocateSubnetIpv6CidrBlock(request *AllocateSubnetIpv6CidrBlockRequest) string {
+	return c.AllocateSubnetIpv6CidrBlockWithContext(context.Background(), request)
+}
+
+func (c *Client) AllocateSubnetIpv6CidrBlockWithContext(ctx context.Context, request *AllocateSubnetIpv6CidrBlockRequest) string {
+	if request == nil {
+		request = NewAllocateSubnetIpv6CidrBlockRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAllocateSubnetIpv6CidrBlockResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -2788,6 +3051,72 @@ func (c *Client) DeleteNatRateLimitWithContext(ctx context.Context, request *Del
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteNatRateLimitResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewAssociateInstanceRequest() (request *AssociateInstanceRequest) {
+	request = &AssociateInstanceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "AssociateInstance")
+	return
+}
+
+func NewAssociateInstanceResponse() (response *AssociateInstanceResponse) {
+	response = &AssociateInstanceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) AssociateInstance(request *AssociateInstanceRequest) string {
+	return c.AssociateInstanceWithContext(context.Background(), request)
+}
+
+func (c *Client) AssociateInstanceWithContext(ctx context.Context, request *AssociateInstanceRequest) string {
+	if request == nil {
+		request = NewAssociateInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAssociateInstanceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDisassociateInstanceRequest() (request *DisassociateInstanceRequest) {
+	request = &DisassociateInstanceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "DisassociateInstance")
+	return
+}
+
+func NewDisassociateInstanceResponse() (response *DisassociateInstanceResponse) {
+	response = &DisassociateInstanceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DisassociateInstance(request *DisassociateInstanceRequest) string {
+	return c.DisassociateInstanceWithContext(context.Background(), request)
+}
+
+func (c *Client) DisassociateInstanceWithContext(ctx context.Context, request *DisassociateInstanceRequest) string {
+	if request == nil {
+		request = NewDisassociateInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDisassociateInstanceResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -3916,3 +4245,5 @@ func (c *Client) CreateFlowLogWithContext(ctx context.Context, request *CreateFl
 	}
 	return msg
 }
+
+

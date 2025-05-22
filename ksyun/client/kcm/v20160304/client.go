@@ -1,4 +1,5 @@
 package v20160304
+
 import (
 	"context"
 	"fmt"
@@ -54,6 +55,39 @@ func (c *Client) CreateCertificateWithContext(ctx context.Context, request *Crea
 	}
 	return msg
 }
+func NewDeleteCertificateRequest() (request *DeleteCertificateRequest) {
+	request = &DeleteCertificateRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcm", APIVersion, "DeleteCertificate")
+	return
+}
+
+func NewDeleteCertificateResponse() (response *DeleteCertificateResponse) {
+	response = &DeleteCertificateResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteCertificate(request *DeleteCertificateRequest) string {
+	return c.DeleteCertificateWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteCertificateWithContext(ctx context.Context, request *DeleteCertificateRequest) string {
+	if request == nil {
+		request = NewDeleteCertificateRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteCertificateResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
 func NewModifyCertificateRequest() (request *ModifyCertificateRequest) {
 	request = &ModifyCertificateRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -81,6 +115,39 @@ func (c *Client) ModifyCertificateWithContext(ctx context.Context, request *Modi
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifyCertificateResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeCertificatesRequest() (request *DescribeCertificatesRequest) {
+	request = &DescribeCertificatesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcm", APIVersion, "DescribeCertificates")
+	return
+}
+
+func NewDescribeCertificatesResponse() (response *DescribeCertificatesResponse) {
+	response = &DescribeCertificatesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeCertificates(request *DescribeCertificatesRequest) string {
+	return c.DescribeCertificatesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeCertificatesWithContext(ctx context.Context, request *DescribeCertificatesRequest) string {
+	if request == nil {
+		request = NewDescribeCertificatesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeCertificatesResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -285,5 +352,3 @@ func (c *Client) GetCertificateDetailWithContext(ctx context.Context, request *G
 	}
 	return msg
 }
-
-

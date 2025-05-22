@@ -52,6 +52,42 @@ func (r *CreateCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteCertificateRequest struct {
+	*ksyunhttp.BaseRequest
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+}
+
+func (r *DeleteCertificateRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteCertificateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteCertificateResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *DeleteCertificateResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyCertificateRequest struct {
 	*ksyunhttp.BaseRequest
 	CertificateId   *string `json:"CertificateId,omitempty" name:"CertificateId"`
@@ -95,6 +131,52 @@ func (r *ModifyCertificateResponse) ToJsonString() string {
 }
 
 func (r *ModifyCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCertificatesRequest struct {
+	*ksyunhttp.BaseRequest
+	CertificateId []*string `json:"CertificateId,omitempty" name:"CertificateId"`
+}
+
+func (r *DescribeCertificatesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeCertificatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeCertificatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCertificatesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId      *string `json:"RequestId" name:"RequestId"`
+	CertificateSet []struct {
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+		CertificateName *string `json:"CertificateName" name:"CertificateName"`
+		CertificateId   *string `json:"CertificateId" name:"CertificateId"`
+		ExpireTime      *string `json:"ExpireTime" name:"ExpireTime"`
+		CommonName      *string `json:"CommonName" name:"CommonName"`
+		CertAuthority   *string `json:"CertAuthority" name:"CertAuthority"`
+		CertType        *string `json:"CertType" name:"CertType"`
+		CertificateType *string `json:"CertificateType" name:"CertificateType"`
+		PublicKey       *string `json:"PublicKey" name:"PublicKey"`
+	} `json:"CertificateSet"`
+}
+
+func (r *DescribeCertificatesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeCertificatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
