@@ -63,13 +63,18 @@ func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksy
 		Credentials: credentials.NewStaticCredentials(c.credential.GetSecretId(), c.credential.GetSecretKey(), ""),
 	}))
 	signer := v4.NewSigner(sess.Config.Credentials)
-
+	customizeHeaders := request.GetHeaders()
 	var urlRe = ""
 	if request.GetHttpMethod() == "POST" && request.GetContentType() == "application/json" {
 		body, _ := json.Marshal(request)
 		request.SetBody(body)
 		urlRe = request.GetUrl() + "?Action=" + request.GetAction() + "&Version=" + request.GetVersion() + "&Service=" + request.GetService()
 		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
+		if len(customizeHeaders) > 0 {
+			for headerK, headerV := range customizeHeaders {
+				httpRequest.Header.Set(headerK, headerV)
+			}
+		}
 		httpRequest.Header.Set("Accept", "application/json")
 		httpRequest.Header.Set("X-Amz-Date", time.Now().UTC().Format("20060102T150405Z"))
 		httpRequest.Header.Set("Content-Type", request.GetContentType())
@@ -95,6 +100,11 @@ func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksy
 		formDataEncoded := formData.Encode()
 		urlRe = request.GetUrl() + "?Action=" + request.GetAction() + "&Version=" + request.GetVersion() + "&Service=" + request.GetService()
 		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
+		if len(customizeHeaders) > 0 {
+			for headerK, headerV := range customizeHeaders {
+				httpRequest.Header.Set(headerK, headerV)
+			}
+		}
 		httpRequest.Header.Set("Accept", "application/json")
 		httpRequest.Header.Set("X-Amz-Date", time.Now().UTC().Format("20060102T150405Z"))
 		httpRequest.Header.Set("Content-Type", request.GetContentType())
@@ -114,6 +124,11 @@ func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksy
 		}
 		urlRe = request.GetUrl()
 		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
+		if len(customizeHeaders) > 0 {
+			for headerK, headerV := range customizeHeaders {
+				httpRequest.Header.Set(headerK, headerV)
+			}
+		}
 		httpRequest.Header.Set("Accept", "application/json")
 		httpRequest.Header.Set("X-Amz-Date", time.Now().UTC().Format("20060102T150405Z"))
 		httpRequest.Header.Set("Content-Type", request.GetContentType())

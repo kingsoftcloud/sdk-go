@@ -20,7 +20,10 @@ func main() {
 	client, _ := bill.NewClient(credential, "cn-beijing-6", cpf)
 
 	request := bill.NewGetProductCodeRequest()
-
+	//支持设置自定义请求头
+	//request.SetHeaders(map[string]string{
+	//	"KEY": "VALUE",
+	//})
 	response := client.GetProductCode(request)
 
 	fmt.Printf("%s", response)

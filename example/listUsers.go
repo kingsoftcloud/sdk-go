@@ -33,6 +33,11 @@ func main() {
 	// 			Values: common.StringPtrs([]string{"ap-guangzhou-1"}),
 	// 		},
 	// 	}
+
+	//支持设置请求头
+	//request.SetHeaders(map[string]string{
+	//	"KEY": "VALUE",
+	//})
 	response := client.ListUsers(request)
 
 	fmt.Printf("%s", response)

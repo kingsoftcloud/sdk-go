@@ -48,6 +48,8 @@ type Request interface {
 	SetContentType(string)
 	SetBody([]byte)
 	SetContext(context.Context)
+	GetHeaders() map[string]string
+	SetHeaders(map[string]string)
 }
 
 type BaseRequest struct {
@@ -59,6 +61,7 @@ type BaseRequest struct {
 	path       string
 	params     map[string]string
 	formParams map[string]string
+	headers    map[string]string
 
 	service string
 	version string
@@ -137,6 +140,16 @@ func (r *BaseRequest) SetScheme(scheme string) {
 
 func (r *BaseRequest) SetRootDomain(rootDomain string) {
 	r.rootDomain = rootDomain
+}
+
+func (r *BaseRequest) SetHeaders(headers map[string]string) {
+	r.headers = headers
+}
+func (r *BaseRequest) GetHeaders() map[string]string {
+	if r.headers == nil {
+		r.headers = make(map[string]string)
+	}
+	return r.headers
 }
 
 func (r *BaseRequest) SetHttpMethod(method string) {
