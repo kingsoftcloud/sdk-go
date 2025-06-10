@@ -1439,6 +1439,9 @@ type CreateDedicatedHostsRequest struct {
 	InstanceNameSuffix *string                    `json:"InstanceNameSuffix,omitempty" name:"InstanceNameSuffix"`
 	DedicatedClusterId *string                    `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
 	Tag                []*CreateDedicatedHostsTag `json:"Tag,omitempty" name:"Tag"`
+	AvailabilityZone   *string                    `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	ProjectId          *int                       `json:"ProjectId,omitempty" name:"ProjectId"`
+	EbsClusterMode     *string                    `json:"EbsClusterMode,omitempty" name:"EbsClusterMode"`
 }
 
 func (r *CreateDedicatedHostsRequest) ToJsonString() string {
@@ -1559,6 +1562,7 @@ type DescribeDedicatedHostsResponse struct {
 		AvailabilityZoneName *string   `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
 		Model                *string   `json:"Model" name:"Model"`
 		ProjectId            *int      `json:"ProjectId" name:"ProjectId"`
+		EbsClusterMode       *string   `json:"EbsClusterMode" name:"EbsClusterMode"`
 	} `json:"DedicatedHostSet"`
 }
 
@@ -1669,8 +1673,9 @@ type DescribeScalingConfigurationResponse struct {
 			Key   *string `json:"Key" name:"Key"`
 			Value *string `json:"Value" name:"Value"`
 		} `json:"EbsTagSet" name:"EbsTagSet"`
-		SpotStrategy *string `json:"SpotStrategy" name:"SpotStrategy"`
-		SyncTag      *bool   `json:"SyncTag" name:"SyncTag"`
+		SpotStrategy   *string  `json:"SpotStrategy" name:"SpotStrategy"`
+		SpotPriceLimit *float64 `json:"SpotPriceLimit" name:"SpotPriceLimit"`
+		SyncTag        *bool    `json:"SyncTag" name:"SyncTag"`
 	} `json:"ScalingConfigurationSet"`
 }
 
@@ -3141,8 +3146,10 @@ type DescribeInstanceTypeConfigsResponse struct {
 			SystemDiskType *string `json:"SystemDiskType" name:"SystemDiskType"`
 		} `json:"SystemDiskQuotaSet" name:"SystemDiskQuotaSet"`
 		DataDiskQuotaSet []struct {
-			DataDiskType        *string `json:"DataDiskType" name:"DataDiskType"`
-			DataDiskCount       *int    `json:"DataDiskCount" name:"DataDiskCount"`
+			DataDiskType        *string  `json:"DataDiskType" name:"DataDiskType"`
+			DataDiskMinSize     *float64 `json:"DataDiskMinSize" name:"DataDiskMinSize"`
+			DataDiskMaxsize     *float64 `json:"DataDiskMaxsize" name:"DataDiskMaxsize"`
+			DataDiskCount       *int     `json:"DataDiskCount" name:"DataDiskCount"`
 			AvailabilityZoneSet []struct {
 				AzCode    *string `json:"AzCode" name:"AzCode"`
 				IsSellOut *bool   `json:"IsSellOut" name:"IsSellOut"`
@@ -4139,7 +4146,9 @@ type DescribeSpotPriceHistoryResponse struct {
 	InstanceType     *string `json:"InstanceType" name:"InstanceType"`
 	AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 	SpotPrices       []struct {
-		Timestamp *string `json:"Timestamp" name:"Timestamp"`
+		SpotPrice   *float64 `json:"SpotPrice" name:"SpotPrice"`
+		OriginPrice *float64 `json:"OriginPrice" name:"OriginPrice"`
+		Timestamp   *string  `json:"Timestamp" name:"Timestamp"`
 	} `json:"SpotPrices"`
 }
 
@@ -4186,10 +4195,18 @@ type DescribePriceResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	PriceInfo struct {
 		InstancePrice struct {
-			PriceUnit *string `json:"PriceUnit" name:"PriceUnit"`
+			DiscountPrice *float64 `json:"DiscountPrice" name:"DiscountPrice"`
+			OriginalPrice *float64 `json:"OriginalPrice" name:"OriginalPrice"`
+			TradePrice    *float64 `json:"TradePrice" name:"TradePrice"`
+			PriceUnit     *string  `json:"PriceUnit" name:"PriceUnit"`
+			UserDiscount  *float64 `json:"UserDiscount" name:"UserDiscount"`
 		} `json:"InstancePrice" name:"InstancePrice"`
 		EBSPrice struct {
-			PriceUnit *string `json:"PriceUnit" name:"PriceUnit"`
+			DiscountPrice *float64 `json:"DiscountPrice" name:"DiscountPrice"`
+			OriginalPrice *float64 `json:"OriginalPrice" name:"OriginalPrice"`
+			TradePrice    *float64 `json:"TradePrice" name:"TradePrice"`
+			PriceUnit     *string  `json:"PriceUnit" name:"PriceUnit"`
+			UserDiscount  *float64 `json:"UserDiscount" name:"UserDiscount"`
 		} `json:"EBSPrice" name:"EBSPrice"`
 	} `json:"PriceInfo"`
 }

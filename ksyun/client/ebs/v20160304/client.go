@@ -1,4 +1,5 @@
 package v20160304
+
 import (
 	"context"
 	"fmt"
@@ -846,5 +847,3 @@ func (c *Client) CreateDedicatedBlockStorageClusterWithContext(ctx context.Conte
 	}
 	return msg
 }
-
-
