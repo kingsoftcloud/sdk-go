@@ -1,5 +1,4 @@
 package v20160304
-
 import (
 	"context"
 	"fmt"
@@ -3256,3 +3255,5 @@ func (c *Client) SetInstanceResourceProtectWithContext(ctx context.Context, requ
 	}
 	return msg
 }
+
+

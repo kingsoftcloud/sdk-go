@@ -230,7 +230,7 @@ type DescribeListenersResponse struct {
 			BackendServerState     *string `json:"BackendServerState" name:"BackendServerState"`
 		} `json:"BackendServerSet" name:"BackendServerSet"`
 		CaCertificateId *string `json:"CaCertificateId" name:"CaCertificateId"`
-		CaEnabled         *bool   `json:"CaEnabled" name:"CaEnabled"`
+		CaEnabled *bool `json:"CaEnabled" name:"CaEnabled"`
 		UpstreamKeepalive *string `json:"UpstreamKeepalive" name:"UpstreamKeepalive"`
 	} `json:"ListenerSet"`
 }
@@ -340,15 +340,15 @@ type ModifyListenersResponse struct {
 	EnableHttp2        *bool   `json:"EnableHttp2" name:"EnableHttp2"`
 	RedirectListenerId *string `json:"RedirectListenerId" name:"RedirectListenerId"`
 	RealServer         []struct {
-		RegisterId      *string `json:"RegisterId" name:"RegisterId"`
+		RegisterId     *string `json:"RegisterId" name:"RegisterId"`
 		RealServerState *string `json:"RealServerState" name:"RealServerState"`
-		RealServerType  *string `json:"RealServerType" name:"RealServerType"`
-		ListenerId      *string `json:"ListenerId" name:"ListenerId"`
-		Weight          *int    `json:"Weight" name:"Weight"`
-		RealServerIp    *string `json:"RealServerIp" name:"RealServerIp"`
-		RealServerPort  *int    `json:"RealServerPort" name:"RealServerPort"`
-		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
-		Tag             *string `json:"Tag" name:"Tag"`
+		RealServerType *string `json:"RealServerType" name:"RealServerType"`
+		ListenerId     *string `json:"ListenerId" name:"ListenerId"`
+		Weight         *int    `json:"Weight" name:"Weight"`
+		RealServerIp   *string `json:"RealServerIp" name:"RealServerIp"`
+		RealServerPort *int    `json:"RealServerPort" name:"RealServerPort"`
+		InstanceId     *string `json:"InstanceId" name:"InstanceId"`
+		Tag            *string `json:"Tag" name:"Tag"`
 		MasterSlaveType *string `json:"MasterSlaveType" name:"MasterSlaveType"`
 		NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
 	} `json:"RealServer"`
@@ -609,16 +609,16 @@ type DescribeInstancesWithListenerResponse struct {
 	RequestId     *string `json:"RequestId" name:"RequestId"`
 	NextToken     *string `json:"NextToken" name:"NextToken"`
 	RealServerSet []struct {
-		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
-		RegisterId      *string `json:"RegisterId" name:"RegisterId"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+		RegisterId     *string `json:"RegisterId" name:"RegisterId"`
 		RealServerState *string `json:"RealServerState" name:"RealServerState"`
-		RealServerType  *string `json:"RealServerType" name:"RealServerType"`
-		ListenerId      *string `json:"ListenerId" name:"ListenerId"`
-		Weight          *int    `json:"Weight" name:"Weight"`
-		RealServerIp    *string `json:"RealServerIp" name:"RealServerIp"`
-		RealServerPort  *int    `json:"RealServerPort" name:"RealServerPort"`
-		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
-		Tag             *string `json:"Tag" name:"Tag"`
+		RealServerType *string `json:"RealServerType" name:"RealServerType"`
+		ListenerId     *string `json:"ListenerId" name:"ListenerId"`
+		Weight         *int    `json:"Weight" name:"Weight"`
+		RealServerIp   *string `json:"RealServerIp" name:"RealServerIp"`
+		RealServerPort *int    `json:"RealServerPort" name:"RealServerPort"`
+		InstanceId     *string `json:"InstanceId" name:"InstanceId"`
+		Tag            *string `json:"Tag" name:"Tag"`
 		MasterSlaveType *string `json:"MasterSlaveType" name:"MasterSlaveType"`
 		NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
 	} `json:"RealServerSet"`
@@ -882,26 +882,26 @@ type DescribeLoadBalancersResponse struct {
 	NextToken                *string `json:"NextToken" name:"NextToken"`
 	TotalCount               *int    `json:"TotalCount" name:"TotalCount"`
 	LoadBalancerDescriptions []struct {
-		LoadBalancerId   *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+		LoadBalancerId *string `json:"LoadBalancerId" name:"LoadBalancerId"`
 		LoadBalancerName *string `json:"LoadBalancerName" name:"LoadBalancerName"`
-		IsWaf            *bool   `json:"IsWaf" name:"IsWaf"`
-		Type             *string `json:"Type" name:"Type"`
-		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
-		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
-		VpcId            *string `json:"VpcId" name:"VpcId"`
-		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
-		State            *string `json:"State" name:"State"`
-		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		IsWaf          *bool   `json:"IsWaf" name:"IsWaf"`
+		Type           *string `json:"Type" name:"Type"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+		ProjectId      *string `json:"ProjectId" name:"ProjectId"`
+		VpcId          *string `json:"VpcId" name:"VpcId"`
+		ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		PublicIp       *string `json:"PublicIp" name:"PublicIp"`
+		State          *string `json:"State" name:"State"`
+		IpVersion      *string `json:"IpVersion" name:"IpVersion"`
 		LoadBalancerState *string `json:"LoadBalancerState" name:"LoadBalancerState"`
-		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
-		ChargeType       *string `json:"ChargeType" name:"ChargeType"`
-		LbType           *string `json:"LbType" name:"LbType"`
-		LbStatus         *string `json:"LbStatus" name:"LbStatus"`
-		VnetId           *string `json:"VnetId" name:"VnetId"`
+		ListenersCount *int    `json:"ListenersCount" name:"ListenersCount"`
+		ChargeType     *string `json:"ChargeType" name:"ChargeType"`
+		LbType         *string `json:"LbType" name:"LbType"`
+		LbStatus       *string `json:"LbStatus" name:"LbStatus"`
+		VnetId         *string `json:"VnetId" name:"VnetId"`
 		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
 		ModifyProtection *string `json:"ModifyProtection" name:"ModifyProtection"`
-		TagSet           []struct {
+		TagSet         []struct {
 			ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
 			TagId        *string `json:"TagId" name:"TagId"`
 			TagKey       *string `json:"TagKey" name:"TagKey"`
@@ -1198,11 +1198,11 @@ type DescribeHostHeadersResponse struct {
 	RequestId     *string `json:"RequestId" name:"RequestId"`
 	NextToken     *string `json:"NextToken" name:"NextToken"`
 	HostHeaderSet []struct {
-		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		HostHeaderId *string `json:"HostHeaderId" name:"HostHeaderId"`
-		ListenerId   *string `json:"ListenerId" name:"ListenerId"`
+		ListenerId *string `json:"ListenerId" name:"ListenerId"`
 		CertificateId *string `json:"CertificateId" name:"CertificateId"`
-		HostHeader   *string `json:"HostHeader" name:"HostHeader"`
+		HostHeader *string `json:"HostHeader" name:"HostHeader"`
 	} `json:"HostHeaderSet"`
 }
 
@@ -1460,16 +1460,16 @@ type DescribeBackendServerGroupsResponse struct {
 	RequestId             *string `json:"RequestId" name:"RequestId"`
 	NextToken             *string `json:"NextToken" name:"NextToken"`
 	BackendServerGroupSet []struct {
-		CreateTime           *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime          *string `json:"CreateTime" name:"CreateTime"`
 		BackendServerGroupId *string `json:"BackendServerGroupId" name:"BackendServerGroupId"`
-		VpcId                *string `json:"VpcId" name:"VpcId"`
-		Protocol             *string `json:"Protocol" name:"Protocol"`
+		VpcId               *string `json:"VpcId" name:"VpcId"`
+		Protocol            *string `json:"Protocol" name:"Protocol"`
 		BackendServerGroupName *string `json:"BackendServerGroupName" name:"BackendServerGroupName"`
-		BackendServerNumber  *int    `json:"BackendServerNumber" name:"BackendServerNumber"`
+		BackendServerNumber *int    `json:"BackendServerNumber" name:"BackendServerNumber"`
 		BackendServerGroupType *string `json:"BackendServerGroupType" name:"BackendServerGroupType"`
-		IpVersion            *string `json:"IpVersion" name:"IpVersion"`
-		Type                 *string `json:"Type" name:"Type"`
-		UpstreamKeepalive    *string `json:"UpstreamKeepalive" name:"UpstreamKeepalive"`
+		IpVersion           *string `json:"IpVersion" name:"IpVersion"`
+		Type                *string `json:"Type" name:"Type"`
+		UpstreamKeepalive   *string `json:"UpstreamKeepalive" name:"UpstreamKeepalive"`
 	} `json:"BackendServerGroupSet"`
 }
 
@@ -2091,15 +2091,15 @@ type DescribePrivateLinkServerResponse struct {
 	NextToken            *string `json:"NextToken" name:"NextToken"`
 	TotalCount           *int    `json:"TotalCount" name:"TotalCount"`
 	PrivateLinkServerSet []struct {
-		CreateTime          *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
 		PrivateLinkServerName *string `json:"PrivateLinkServerName" name:"PrivateLinkServerName"`
 		PrivateLinkServerId *string `json:"PrivateLinkServerId" name:"PrivateLinkServerId"`
-		ListenerId          *string `json:"ListenerId" name:"ListenerId"`
-		Description         *string `json:"Description" name:"Description"`
-		ProjectId           *string `json:"ProjectId" name:"ProjectId"`
-		PrivateLinkNum      *int    `json:"PrivateLinkNum" name:"PrivateLinkNum"`
-		ServiceEndTime      *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		DeleteProtection    *string `json:"DeleteProtection" name:"DeleteProtection"`
+		ListenerId       *string `json:"ListenerId" name:"ListenerId"`
+		Description      *string `json:"Description" name:"Description"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		PrivateLinkNum   *int    `json:"PrivateLinkNum" name:"PrivateLinkNum"`
+		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
 	} `json:"PrivateLinkServerSet"`
 }
 
@@ -2259,18 +2259,18 @@ type DescribePrivateLinkResponse struct {
 	NextToken      *string `json:"NextToken" name:"NextToken"`
 	TotalCount     *int    `json:"TotalCount" name:"TotalCount"`
 	PrivateLinkSet []struct {
-		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
-		PrivateLinkId    *string `json:"PrivateLinkId" name:"PrivateLinkId"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+		PrivateLinkId  *string `json:"PrivateLinkId" name:"PrivateLinkId"`
 		PrivateLinkServerId *string `json:"PrivateLinkServerId" name:"PrivateLinkServerId"`
-		AccountId        *string `json:"AccountId" name:"AccountId"`
-		ListenerId       *string `json:"ListenerId" name:"ListenerId"`
+		AccountId      *string `json:"AccountId" name:"AccountId"`
+		ListenerId     *string `json:"ListenerId" name:"ListenerId"`
 		ServiceAccountId *string `json:"ServiceAccountId" name:"ServiceAccountId"`
-		UpdateTime       *string `json:"UpdateTime" name:"UpdateTime"`
-		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		UpdateTime     *string `json:"UpdateTime" name:"UpdateTime"`
+		ProjectId      *string `json:"ProjectId" name:"ProjectId"`
 		ConnectionStatus *string `json:"ConnectionStatus" name:"ConnectionStatus"`
-		LoadBalancerId   *string `json:"LoadBalancerId" name:"LoadBalancerId"`
-		ListenerPort     *int    `json:"ListenerPort" name:"ListenerPort"`
-		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		LoadBalancerId *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+		ListenerPort   *int    `json:"ListenerPort" name:"ListenerPort"`
+		ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
 	} `json:"PrivateLinkSet"`
 }
 
@@ -2545,7 +2545,37 @@ func (r *CreateAlbRequest) FromJsonString(s string) error {
 
 type CreateAlbResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	RequestId               *string `json:"RequestId" name:"RequestId"`
+	ApplicationLoadBalancer struct {
+		AlbId            *string `json:"AlbId" name:"AlbId"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		AlbName          *string `json:"AlbName" name:"AlbName"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		AlbVersion       *string `json:"AlbVersion" name:"AlbVersion"`
+		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		AlbType          *string `json:"AlbType" name:"AlbType"`
+		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
+		VpcId            *string `json:"VpcId" name:"VpcId"`
+		State            *string `json:"State" name:"State"`
+		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status           *string `json:"Status" name:"Status"`
+		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
+		BillType         *int    `json:"BillType" name:"BillType"`
+		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
+		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
+		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
+		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
+		ModifyProtection *string `json:"ModifyProtection" name:"ModifyProtection"`
+		TagSet           []struct {
+			ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
+			TagId        *string `json:"TagId" name:"TagId"`
+			TagKey       *string `json:"TagKey" name:"TagKey"`
+			TagValue     *string `json:"TagValue" name:"TagValue"`
+		} `json:"TagSet" name:"TagSet"`
+	} `json:"ApplicationLoadBalancer"`
 }
 
 func (r *CreateAlbResponse) ToJsonString() string {
@@ -2619,7 +2649,37 @@ func (r *SetAlbNameRequest) FromJsonString(s string) error {
 
 type SetAlbNameResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	RequestId               *string `json:"RequestId" name:"RequestId"`
+	ApplicationLoadBalancer struct {
+		AlbId            *string `json:"AlbId" name:"AlbId"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		AlbName          *string `json:"AlbName" name:"AlbName"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		AlbVersion       *string `json:"AlbVersion" name:"AlbVersion"`
+		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		AlbType          *string `json:"AlbType" name:"AlbType"`
+		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
+		VpcId            *string `json:"VpcId" name:"VpcId"`
+		State            *string `json:"State" name:"State"`
+		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status           *string `json:"Status" name:"Status"`
+		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
+		BillType         *int    `json:"BillType" name:"BillType"`
+		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
+		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
+		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
+		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
+		ModifyProtection *string `json:"ModifyProtection" name:"ModifyProtection"`
+		TagSet           []struct {
+			ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
+			TagId        *string `json:"TagId" name:"TagId"`
+			TagKey       *string `json:"TagKey" name:"TagKey"`
+			TagValue     *string `json:"TagValue" name:"TagValue"`
+		} `json:"TagSet" name:"TagSet"`
+	} `json:"ApplicationLoadBalancer"`
 }
 
 func (r *SetAlbNameResponse) ToJsonString() string {
@@ -2656,7 +2716,37 @@ func (r *SetAlbStatusRequest) FromJsonString(s string) error {
 
 type SetAlbStatusResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	RequestId               *string `json:"RequestId" name:"RequestId"`
+	ApplicationLoadBalancer struct {
+		AlbId            *string `json:"AlbId" name:"AlbId"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		AlbName          *string `json:"AlbName" name:"AlbName"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		AlbVersion       *string `json:"AlbVersion" name:"AlbVersion"`
+		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		AlbType          *string `json:"AlbType" name:"AlbType"`
+		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
+		VpcId            *string `json:"VpcId" name:"VpcId"`
+		State            *string `json:"State" name:"State"`
+		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status           *string `json:"Status" name:"Status"`
+		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
+		BillType         *int    `json:"BillType" name:"BillType"`
+		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
+		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
+		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
+		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
+		ModifyProtection *string `json:"ModifyProtection" name:"ModifyProtection"`
+		TagSet           []struct {
+			ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
+			TagId        *string `json:"TagId" name:"TagId"`
+			TagKey       *string `json:"TagKey" name:"TagKey"`
+			TagValue     *string `json:"TagValue" name:"TagValue"`
+		} `json:"TagSet" name:"TagSet"`
+	} `json:"ApplicationLoadBalancer"`
 }
 
 func (r *SetAlbStatusResponse) ToJsonString() string {
@@ -2909,24 +2999,24 @@ type DescribeAlbListenersResponse struct {
 	RequestId      *string `json:"RequestId" name:"RequestId"`
 	NextToken      *string `json:"NextToken" name:"NextToken"`
 	AlbListenerSet []struct {
-		AlbListenerId         *string `json:"AlbListenerId" name:"AlbListenerId"`
-		AlbId                 *string `json:"AlbId" name:"AlbId"`
-		CreateTime            *string `json:"CreateTime" name:"CreateTime"`
-		AlbListenerName       *string `json:"AlbListenerName" name:"AlbListenerName"`
-		Protocol              *string `json:"Protocol" name:"Protocol"`
-		Port                  *int    `json:"Port" name:"Port"`
-		CertificateId         *string `json:"CertificateId" name:"CertificateId"`
-		TlsCipherPolicy       *string `json:"TlsCipherPolicy" name:"TlsCipherPolicy"`
+		AlbListenerId     *string `json:"AlbListenerId" name:"AlbListenerId"`
+		AlbId             *string `json:"AlbId" name:"AlbId"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		AlbListenerName   *string `json:"AlbListenerName" name:"AlbListenerName"`
+		Protocol          *string `json:"Protocol" name:"Protocol"`
+		Port              *int    `json:"Port" name:"Port"`
+		CertificateId     *string `json:"CertificateId" name:"CertificateId"`
+		TlsCipherPolicy   *string `json:"TlsCipherPolicy" name:"TlsCipherPolicy"`
 		DefaultBackendServerGroupId *string `json:"DefaultBackendServerGroupId" name:"DefaultBackendServerGroupId"`
-		AlbListenerAclId      *string `json:"AlbListenerAclId" name:"AlbListenerAclId"`
-		AlbListenerState      *string `json:"AlbListenerState" name:"AlbListenerState"`
+		AlbListenerAclId  *string `json:"AlbListenerAclId" name:"AlbListenerAclId"`
+		AlbListenerState  *string `json:"AlbListenerState" name:"AlbListenerState"`
 		RedirectAlbListenerId *string `json:"RedirectAlbListenerId" name:"RedirectAlbListenerId"`
-		HttpProtocol          *string `json:"HttpProtocol" name:"HttpProtocol"`
-		EnableHttp2           *bool   `json:"EnableHttp2" name:"EnableHttp2"`
-		CaCertificateId       *string `json:"CaCertificateId" name:"CaCertificateId"`
-		CaEnabled             *bool   `json:"CaEnabled" name:"CaEnabled"`
-		EnableQuicUpgrade     *bool   `json:"EnableQuicUpgrade" name:"EnableQuicUpgrade"`
-		QuicListenerId        *string `json:"QuicListenerId" name:"QuicListenerId"`
+		HttpProtocol      *string `json:"HttpProtocol" name:"HttpProtocol"`
+		EnableHttp2       *bool   `json:"EnableHttp2" name:"EnableHttp2"`
+		CaCertificateId   *string `json:"CaCertificateId" name:"CaCertificateId"`
+		CaEnabled         *bool   `json:"CaEnabled" name:"CaEnabled"`
+		EnableQuicUpgrade *bool   `json:"EnableQuicUpgrade" name:"EnableQuicUpgrade"`
+		QuicListenerId    *string `json:"QuicListenerId" name:"QuicListenerId"`
 	} `json:"AlbListenerSet"`
 }
 
@@ -3050,11 +3140,11 @@ type DescribeAlbRuleGroupsResponse struct {
 	RequestId       *string `json:"RequestId" name:"RequestId"`
 	NextToken       *string `json:"NextToken" name:"NextToken"`
 	AlbRuleGroupSet []struct {
-		AlbRuleGroupId   *string `json:"AlbRuleGroupId" name:"AlbRuleGroupId"`
-		AlbListenerId    *string `json:"AlbListenerId" name:"AlbListenerId"`
+		AlbRuleGroupId *string `json:"AlbRuleGroupId" name:"AlbRuleGroupId"`
+		AlbListenerId  *string `json:"AlbListenerId" name:"AlbListenerId"`
 		AlbRuleGroupName *string `json:"AlbRuleGroupName" name:"AlbRuleGroupName"`
 		BackendServerGroupId *string `json:"BackendServerGroupId" name:"BackendServerGroupId"`
-		AlbRuleSet       []struct {
+		AlbRuleSet     []struct {
 			AlbRuleType  *string   `json:"AlbRuleType" name:"AlbRuleType"`
 			AlbRuleValue *string   `json:"AlbRuleValue" name:"AlbRuleValue"`
 			MethodValue  []*string `json:"MethodValue" name:"MethodValue"`
@@ -3479,7 +3569,37 @@ func (r *SetAlbAccessLogRequest) FromJsonString(s string) error {
 
 type SetAlbAccessLogResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	RequestId               *string `json:"RequestId" name:"RequestId"`
+	ApplicationLoadBalancer struct {
+		AlbId            *string `json:"AlbId" name:"AlbId"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		AlbName          *string `json:"AlbName" name:"AlbName"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		AlbVersion       *string `json:"AlbVersion" name:"AlbVersion"`
+		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		AlbType          *string `json:"AlbType" name:"AlbType"`
+		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
+		VpcId            *string `json:"VpcId" name:"VpcId"`
+		State            *string `json:"State" name:"State"`
+		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status           *string `json:"Status" name:"Status"`
+		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
+		BillType         *int    `json:"BillType" name:"BillType"`
+		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
+		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
+		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
+		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
+		ModifyProtection *string `json:"ModifyProtection" name:"ModifyProtection"`
+		TagSet           []struct {
+			ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
+			TagId        *string `json:"TagId" name:"TagId"`
+			TagKey       *string `json:"TagKey" name:"TagKey"`
+			TagValue     *string `json:"TagValue" name:"TagValue"`
+		} `json:"TagSet" name:"TagSet"`
+	} `json:"ApplicationLoadBalancer"`
 }
 
 func (r *SetAlbAccessLogResponse) ToJsonString() string {
@@ -3658,6 +3778,7 @@ func (r *ModifyCertificateWithGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type CreateAlbBackendServerGroupRequest struct {
 	*ksyunhttp.BaseRequest
 	VpcId                    *string `json:"VpcId,omitempty" name:"VpcId"`
@@ -3713,6 +3834,7 @@ func (r *CreateAlbBackendServerGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteAlbBackendServerGroupRequest struct {
 	*ksyunhttp.BaseRequest
 	BackendServerGroupId *string `json:"BackendServerGroupId,omitempty" name:"BackendServerGroupId"`
@@ -3748,6 +3870,7 @@ func (r *DeleteAlbBackendServerGroupResponse) ToJsonString() string {
 func (r *DeleteAlbBackendServerGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ModifyAlbBackendServerGroupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -3802,6 +3925,7 @@ func (r *ModifyAlbBackendServerGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeAlbBackendServerGroupsRequest struct {
 	*ksyunhttp.BaseRequest
 	Filter     []*DescribeAlbBackendServerGroupsFilter `json:"Filter,omitempty" name:"Filter"`
@@ -3829,17 +3953,17 @@ type DescribeAlbBackendServerGroupsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId             *string `json:"RequestId" name:"RequestId"`
 	BackendServerGroupSet []struct {
-		CreateTime           *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime          *string `json:"CreateTime" name:"CreateTime"`
 		BackendServerGroupId *string `json:"BackendServerGroupId" name:"BackendServerGroupId"`
-		Name                 *string `json:"Name" name:"Name"`
-		BackendServerType    *string `json:"BackendServerType" name:"BackendServerType"`
+		Name                *string `json:"Name" name:"Name"`
+		BackendServerType   *string `json:"BackendServerType" name:"BackendServerType"`
 		BackendServerGroupType *string `json:"BackendServerGroupType" name:"BackendServerGroupType"`
-		VpcId                *string `json:"VpcId" name:"VpcId"`
-		Protocol             *string `json:"Protocol" name:"Protocol"`
-		BackendServerNumber  *int    `json:"BackendServerNumber" name:"BackendServerNumber"`
-		UpstreamKeepalive    *string `json:"UpstreamKeepalive" name:"UpstreamKeepalive"`
-		IpVersion            *string `json:"IpVersion" name:"IpVersion"`
-		Method               *string `json:"Method" name:"Method"`
+		VpcId               *string `json:"VpcId" name:"VpcId"`
+		Protocol            *string `json:"Protocol" name:"Protocol"`
+		BackendServerNumber *int    `json:"BackendServerNumber" name:"BackendServerNumber"`
+		UpstreamKeepalive   *string `json:"UpstreamKeepalive" name:"UpstreamKeepalive"`
+		IpVersion           *string `json:"IpVersion" name:"IpVersion"`
+		Method              *string `json:"Method" name:"Method"`
 	} `json:"BackendServerGroupSet"`
 }
 
@@ -3851,6 +3975,7 @@ func (r *DescribeAlbBackendServerGroupsResponse) ToJsonString() string {
 func (r *DescribeAlbBackendServerGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type RegisterAlbBackendServerRequest struct {
 	*ksyunhttp.BaseRequest
@@ -3892,6 +4017,7 @@ func (r *RegisterAlbBackendServerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeregisterAlbBackendServerRequest struct {
 	*ksyunhttp.BaseRequest
 	BackendServerId *string `json:"BackendServerId,omitempty" name:"BackendServerId"`
@@ -3927,6 +4053,7 @@ func (r *DeregisterAlbBackendServerResponse) ToJsonString() string {
 func (r *DeregisterAlbBackendServerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ModifyAlbBackendServerRequest struct {
 	*ksyunhttp.BaseRequest
@@ -3964,6 +4091,7 @@ func (r *ModifyAlbBackendServerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeAlbBackendServersRequest struct {
 	*ksyunhttp.BaseRequest
 	Filter     []*DescribeAlbBackendServersFilter `json:"Filter,omitempty" name:"Filter"`
@@ -3991,13 +4119,13 @@ type DescribeAlbBackendServersResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId        *string `json:"RequestId" name:"RequestId"`
 	BackendServerSet []struct {
-		CreateTime         *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
 		NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
 		BackendServerGroupId *string `json:"BackendServerGroupId" name:"BackendServerGroupId"`
-		BackendServerIp    *string `json:"BackendServerIp" name:"BackendServerIp"`
-		InstanceId         *string `json:"InstanceId" name:"InstanceId"`
-		BackendServerId    *string `json:"BackendServerId" name:"BackendServerId"`
-		Port               *string `json:"Port" name:"Port"`
+		BackendServerIp *string `json:"BackendServerIp" name:"BackendServerIp"`
+		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
+		BackendServerId *string `json:"BackendServerId" name:"BackendServerId"`
+		Port            *string `json:"Port" name:"Port"`
 	} `json:"BackendServerSet"`
 }
 
@@ -4009,6 +4137,7 @@ func (r *DescribeAlbBackendServersResponse) ToJsonString() string {
 func (r *DescribeAlbBackendServersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type SetPrivateLinkDeleteProtectionRequest struct {
 	*ksyunhttp.BaseRequest
@@ -4047,6 +4176,7 @@ func (r *SetPrivateLinkDeleteProtectionResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type SetAlbDeleteProtectionRequest struct {
 	*ksyunhttp.BaseRequest
 	AlbId            *string `json:"albId,omitempty" name:"albId"`
@@ -4083,6 +4213,7 @@ func (r *SetAlbDeleteProtectionResponse) ToJsonString() string {
 func (r *SetAlbDeleteProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type SetAlbModificationProtectionRequest struct {
 	*ksyunhttp.BaseRequest
