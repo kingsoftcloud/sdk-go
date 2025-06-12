@@ -1067,7 +1067,14 @@ func (r *CreateHostHeaderRequest) FromJsonString(s string) error {
 
 type CreateHostHeaderResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	HostHeader struct {
+		CreateTime    *string `json:"CreateTime" name:"CreateTime"`
+		HostHeaderId  *string `json:"HostHeaderId" name:"HostHeaderId"`
+		ListenerId    *string `json:"ListenerId" name:"ListenerId"`
+		CertificateId *string `json:"CertificateId" name:"CertificateId"`
+		HostHeader    *string `json:"HostHeader" name:"HostHeader"`
+	} `json:"HostHeader"`
 }
 
 func (r *CreateHostHeaderResponse) ToJsonString() string {
