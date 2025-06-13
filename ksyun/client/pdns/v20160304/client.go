@@ -1,4 +1,5 @@
 package v20160304
+
 import (
 	"context"
 	"fmt"
@@ -1209,5 +1210,3 @@ func (c *Client) CreateEndPointWithContext(ctx context.Context, request *CreateE
 	}
 	return msg
 }
-
-

@@ -1,4 +1,5 @@
 package v20151101
+
 import (
 	"context"
 	"fmt"
@@ -2265,5 +2266,36 @@ func (c *Client) DescribeRoceEventDetailsWithContext(ctx context.Context, reques
 	}
 	return msg
 }
+func NewBatchCreateProcessRequest() (request *BatchCreateProcessRequest) {
+	request = &BatchCreateProcessRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "BatchCreateProcess")
+	return
+}
 
+func NewBatchCreateProcessResponse() (response *BatchCreateProcessResponse) {
+	response = &BatchCreateProcessResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
 
+func (c *Client) BatchCreateProcess(request *BatchCreateProcessRequest) string {
+	return c.BatchCreateProcessWithContext(context.Background(), request)
+}
+
+func (c *Client) BatchCreateProcessWithContext(ctx context.Context, request *BatchCreateProcessRequest) string {
+	if request == nil {
+		request = NewBatchCreateProcessRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewBatchCreateProcessResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}

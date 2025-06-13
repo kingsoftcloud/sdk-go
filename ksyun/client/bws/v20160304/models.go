@@ -222,7 +222,21 @@ func (r *ModifyBandWidthShareRequest) FromJsonString(s string) error {
 
 type ModifyBandWidthShareResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	RequestId      *string `json:"RequestId" name:"RequestId"`
+	BandWidthShare struct {
+		BandWidthShareId               *string `json:"BandWidthShareId" name:"BandWidthShareId"`
+		BandWidth                      *int    `json:"BandWidth" name:"BandWidth"`
+		BandWidthShareName             *string `json:"BandWidthShareName" name:"BandWidthShareName"`
+		CreateTime                     *string `json:"CreateTime" name:"CreateTime"`
+		LineId                         *string `json:"LineId" name:"LineId"`
+		ProjectId                      *string `json:"ProjectId" name:"ProjectId"`
+		LineName                       *string `json:"LineName" name:"LineName"`
+		AssociateBandWidthShareInfoSet []struct {
+			AllocationId *string `json:"AllocationId" name:"AllocationId"`
+		} `json:"AssociateBandWidthShareInfoSet" name:"AssociateBandWidthShareInfoSet"`
+		ChargeType     *string `json:"ChargeType" name:"ChargeType"`
+		ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+	} `json:"BandWidthShare"`
 }
 
 func (r *ModifyBandWidthShareResponse) ToJsonString() string {

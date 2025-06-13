@@ -1,4 +1,5 @@
 package v20160304
+
 import (
 	"context"
 	"fmt"
@@ -3057,6 +3058,138 @@ func (c *Client) DeleteNatRateLimitWithContext(ctx context.Context, request *Del
 	}
 	return msg
 }
+func NewCreateDnatRequest() (request *CreateDnatRequest) {
+	request = &CreateDnatRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "CreateDnat")
+	return
+}
+
+func NewCreateDnatResponse() (response *CreateDnatResponse) {
+	response = &CreateDnatResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateDnat(request *CreateDnatRequest) string {
+	return c.CreateDnatWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateDnatWithContext(ctx context.Context, request *CreateDnatRequest) string {
+	if request == nil {
+		request = NewCreateDnatRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateDnatResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDeleteDnatRequest() (request *DeleteDnatRequest) {
+	request = &DeleteDnatRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "DeleteDnat")
+	return
+}
+
+func NewDeleteDnatResponse() (response *DeleteDnatResponse) {
+	response = &DeleteDnatResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteDnat(request *DeleteDnatRequest) string {
+	return c.DeleteDnatWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteDnatWithContext(ctx context.Context, request *DeleteDnatRequest) string {
+	if request == nil {
+		request = NewDeleteDnatRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteDnatResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewDescribeDnatsRequest() (request *DescribeDnatsRequest) {
+	request = &DescribeDnatsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "DescribeDnats")
+	return
+}
+
+func NewDescribeDnatsResponse() (response *DescribeDnatsResponse) {
+	response = &DescribeDnatsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeDnats(request *DescribeDnatsRequest) string {
+	return c.DescribeDnatsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDnatsWithContext(ctx context.Context, request *DescribeDnatsRequest) string {
+	if request == nil {
+		request = NewDescribeDnatsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeDnatsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+func NewModifyDnatRequest() (request *ModifyDnatRequest) {
+	request = &ModifyDnatRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "ModifyDnat")
+	return
+}
+
+func NewModifyDnatResponse() (response *ModifyDnatResponse) {
+	response = &ModifyDnatResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyDnat(request *ModifyDnatRequest) string {
+	return c.ModifyDnatWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyDnatWithContext(ctx context.Context, request *ModifyDnatRequest) string {
+	if request == nil {
+		request = NewModifyDnatRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyDnatResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
 func NewAssociateInstanceRequest() (request *AssociateInstanceRequest) {
 	request = &AssociateInstanceRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -4245,5 +4378,3 @@ func (c *Client) CreateFlowLogWithContext(ctx context.Context, request *CreateFl
 	}
 	return msg
 }
-
-

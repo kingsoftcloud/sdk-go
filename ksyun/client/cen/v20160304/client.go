@@ -1,4 +1,5 @@
 package v20160304
+
 import (
 	"context"
 	"fmt"
@@ -879,5 +880,3 @@ func (c *Client) CenCidrDeleteWithContext(ctx context.Context, request *CenCidrD
 	}
 	return msg
 }
-
-

@@ -581,6 +581,19 @@ func (r *CreatePdnsZoneRequest) FromJsonString(s string) error {
 type CreatePdnsZoneResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
+	ZoneVpc   struct {
+		ZoneId     *string `json:"ZoneId" name:"ZoneId"`
+		ZoneName   *string `json:"ZoneName" name:"ZoneName"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		ProjectId  *string `json:"ProjectId" name:"ProjectId"`
+		ZoneTtl    *string `json:"ZoneTtl" name:"ZoneTtl"`
+		BindVpcSet []struct {
+			RegionName *string `json:"RegionName" name:"RegionName"`
+			VpcId      *string `json:"VpcId" name:"VpcId"`
+			Status     *string `json:"Status" name:"Status"`
+			VpcName    *string `json:"VpcName" name:"VpcName"`
+		} `json:"BindVpcSet" name:"BindVpcSet"`
+	} `json:"ZoneVpc"`
 }
 
 func (r *CreatePdnsZoneResponse) ToJsonString() string {
@@ -818,6 +831,18 @@ func (r *CreateZoneRecordRequest) FromJsonString(s string) error {
 type CreateZoneRecordResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
+	Record    struct {
+		RecordId      *string `json:"RecordId" name:"RecordId"`
+		RecordName    *string `json:"RecordName" name:"RecordName"`
+		Type          *string `json:"Type" name:"Type"`
+		RecordTtl     *int    `json:"RecordTtl" name:"RecordTtl"`
+		RecordDataSet []struct {
+			RecordValue *string `json:"RecordValue" name:"RecordValue"`
+			Priority    *int    `json:"Priority" name:"Priority"`
+			Weight      *int    `json:"Weight" name:"Weight"`
+			Port        *int    `json:"Port" name:"Port"`
+		} `json:"RecordDataSet" name:"RecordDataSet"`
+	} `json:"Record"`
 }
 
 func (r *CreateZoneRecordResponse) ToJsonString() string {
@@ -896,6 +921,18 @@ func (r *ModifyZoneRecordRequest) FromJsonString(s string) error {
 type ModifyZoneRecordResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
+	Record    struct {
+		RecordId      *string `json:"RecordId" name:"RecordId"`
+		RecordName    *string `json:"RecordName" name:"RecordName"`
+		Type          *string `json:"Type" name:"Type"`
+		RecordTtl     *int    `json:"RecordTtl" name:"RecordTtl"`
+		RecordDataSet []struct {
+			RecordValue *string `json:"RecordValue" name:"RecordValue"`
+			Priority    *int    `json:"Priority" name:"Priority"`
+			Weight      *int    `json:"Weight" name:"Weight"`
+			Port        *int    `json:"Port" name:"Port"`
+		} `json:"RecordDataSet" name:"RecordDataSet"`
+	} `json:"Record"`
 }
 
 func (r *ModifyZoneRecordResponse) ToJsonString() string {
@@ -909,9 +946,9 @@ func (r *ModifyZoneRecordResponse) FromJsonString(s string) error {
 
 type DescribeZoneRecordRequest struct {
 	*ksyunhttp.BaseRequest
-    ZoneId   *string   `json:"ZoneId,omitempty" name:"ZoneId"`
-    RecordId []*string `json:"RecordId,omitempty" name:"RecordId"`
-    Filter   []*string `json:"Filter,omitempty" name:"Filter"`
+	ZoneId   *string   `json:"ZoneId,omitempty" name:"ZoneId"`
+	RecordId []*string `json:"RecordId,omitempty" name:"RecordId"`
+	Filter   []*string `json:"Filter,omitempty" name:"Filter"`
 }
 
 func (r *DescribeZoneRecordRequest) ToJsonString() string {
@@ -1150,6 +1187,21 @@ func (r *ModifyPdnsFdZoneRequest) FromJsonString(s string) error {
 type ModifyPdnsFdZoneResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
+	FdZone    struct {
+		Id          *string `json:"Id" name:"Id"`
+		ZoneName    *string `json:"ZoneName" name:"ZoneName"`
+		EndPointId  *string `json:"EndPointId" name:"EndPointId"`
+		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+		Description *string `json:"Description" name:"Description"`
+		BindVpcSet  []struct {
+			BindVpcId  *string `json:"BindVpcId" name:"BindVpcId"`
+			RegionName *string `json:"RegionName" name:"RegionName"`
+			VpcId      *string `json:"VpcId" name:"VpcId"`
+			FdZoneId   *string `json:"FdZoneId" name:"FdZoneId"`
+			Status     *string `json:"Status" name:"Status"`
+			Created    *string `json:"Created" name:"Created"`
+		} `json:"BindVpcSet" name:"BindVpcSet"`
+	} `json:"FdZone"`
 }
 
 func (r *ModifyPdnsFdZoneResponse) ToJsonString() string {
@@ -1188,6 +1240,21 @@ func (r *CreatePdnsFdZoneRequest) FromJsonString(s string) error {
 type CreatePdnsFdZoneResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
+	FdZone    struct {
+		Id          *string `json:"Id" name:"Id"`
+		ZoneName    *string `json:"ZoneName" name:"ZoneName"`
+		EndPointId  *string `json:"EndPointId" name:"EndPointId"`
+		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+		Description *string `json:"Description" name:"Description"`
+		BindVpcSet  []struct {
+			BindVpcId  *string `json:"BindVpcId" name:"BindVpcId"`
+			RegionName *string `json:"RegionName" name:"RegionName"`
+			VpcId      *string `json:"VpcId" name:"VpcId"`
+			FdZoneId   *string `json:"FdZoneId" name:"FdZoneId"`
+			Status     *string `json:"Status" name:"Status"`
+			Created    *string `json:"Created" name:"Created"`
+		} `json:"BindVpcSet" name:"BindVpcSet"`
+	} `json:"FdZone"`
 }
 
 func (r *CreatePdnsFdZoneResponse) ToJsonString() string {
@@ -1260,17 +1327,17 @@ type DescribeEndPointsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	EndPointSet []struct {
-        EndPointId      *string   `json:"EndPointId" name:"EndPointId"`
-        Region          *string   `json:"Region" name:"Region"`
-        EndPointName    *string   `json:"EndPointName" name:"EndPointName"`
-        Type            *string   `json:"Type" name:"Type"`
-        VpcId           *string   `json:"VpcId" name:"VpcId"`
-        SecurityGroupId *string   `json:"SecurityGroupId" name:"SecurityGroupId"`
-        FdZoneIds       []*string `json:"FdZoneIds" name:"FdZoneIds"`
-        CreateTime      *string   `json:"CreateTime" name:"CreateTime"`
-        Status          *string   `json:"Status" name:"Status"`
-        Description     *string   `json:"Description" name:"Description"`
-        IpConfigSet     []struct {
+		EndPointId      *string   `json:"EndPointId" name:"EndPointId"`
+		Region          *string   `json:"Region" name:"Region"`
+		EndPointName    *string   `json:"EndPointName" name:"EndPointName"`
+		Type            *string   `json:"Type" name:"Type"`
+		VpcId           *string   `json:"VpcId" name:"VpcId"`
+		SecurityGroupId *string   `json:"SecurityGroupId" name:"SecurityGroupId"`
+		FdZoneIds       []*string `json:"FdZoneIds" name:"FdZoneIds"`
+		CreateTime      *string   `json:"CreateTime" name:"CreateTime"`
+		Status          *string   `json:"Status" name:"Status"`
+		Description     *string   `json:"Description" name:"Description"`
+		IpConfigSet     []struct {
 			AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 			SubnetId         *string `json:"SubnetId" name:"SubnetId"`
 			Ip               *string `json:"Ip" name:"Ip"`
@@ -1350,6 +1417,23 @@ func (r *ModifyEndPointRequest) FromJsonString(s string) error {
 type ModifyEndPointResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
+	EndPoint  struct {
+		EndPointId      *string   `json:"EndPointId" name:"EndPointId"`
+		Region          *string   `json:"Region" name:"Region"`
+		EndPointName    *string   `json:"EndPointName" name:"EndPointName"`
+		Type            *string   `json:"Type" name:"Type"`
+		VpcId           *string   `json:"VpcId" name:"VpcId"`
+		SecurityGroupId *string   `json:"SecurityGroupId" name:"SecurityGroupId"`
+		FdZoneIds       []*string `json:"FdZoneIds" name:"FdZoneIds"`
+		CreateTime      *string   `json:"CreateTime" name:"CreateTime"`
+		Status          *string   `json:"Status" name:"Status"`
+		Description     *string   `json:"Description" name:"Description"`
+		IpConfigSet     []struct {
+			AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+			SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+			Ip               *string `json:"Ip" name:"Ip"`
+		} `json:"IpConfigSet" name:"IpConfigSet"`
+	} `json:"EndPoint"`
 }
 
 func (r *ModifyEndPointResponse) ToJsonString() string {
@@ -1389,6 +1473,23 @@ func (r *CreateEndPointRequest) FromJsonString(s string) error {
 type CreateEndPointResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
+	EndPoint  struct {
+		EndPointId      *string   `json:"EndPointId" name:"EndPointId"`
+		Region          *string   `json:"Region" name:"Region"`
+		EndPointName    *string   `json:"EndPointName" name:"EndPointName"`
+		Type            *string   `json:"Type" name:"Type"`
+		VpcId           *string   `json:"VpcId" name:"VpcId"`
+		SecurityGroupId *string   `json:"SecurityGroupId" name:"SecurityGroupId"`
+		FdZoneIds       []*string `json:"FdZoneIds" name:"FdZoneIds"`
+		CreateTime      *string   `json:"CreateTime" name:"CreateTime"`
+		Status          *string   `json:"Status" name:"Status"`
+		Description     *string   `json:"Description" name:"Description"`
+		IpConfigSet     []struct {
+			AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+			SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+			Ip               *string `json:"Ip" name:"Ip"`
+		} `json:"IpConfigSet" name:"IpConfigSet"`
+	} `json:"EndPoint"`
 }
 
 func (r *CreateEndPointResponse) ToJsonString() string {

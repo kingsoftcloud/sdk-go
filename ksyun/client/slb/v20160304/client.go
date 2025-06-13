@@ -2827,6 +2827,39 @@ func (c *Client) DescribeAlbBackendServersWithContext(ctx context.Context, reque
 	}
 	return msg
 }
+func NewRegisterBackendServerGroupWithListenerRequest() (request *RegisterBackendServerGroupWithListenerRequest) {
+	request = &RegisterBackendServerGroupWithListenerRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("slb", APIVersion, "RegisterBackendServerGroupWithListener")
+	return
+}
+
+func NewRegisterBackendServerGroupWithListenerResponse() (response *RegisterBackendServerGroupWithListenerResponse) {
+	response = &RegisterBackendServerGroupWithListenerResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RegisterBackendServerGroupWithListener(request *RegisterBackendServerGroupWithListenerRequest) string {
+	return c.RegisterBackendServerGroupWithListenerWithContext(context.Background(), request)
+}
+
+func (c *Client) RegisterBackendServerGroupWithListenerWithContext(ctx context.Context, request *RegisterBackendServerGroupWithListenerRequest) string {
+	if request == nil {
+		request = NewRegisterBackendServerGroupWithListenerRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewRegisterBackendServerGroupWithListenerResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
 func NewSetPrivateLinkDeleteProtectionRequest() (request *SetPrivateLinkDeleteProtectionRequest) {
 	request = &SetPrivateLinkDeleteProtectionRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
