@@ -484,7 +484,7 @@ type CreateKeyResponse struct {
 		PublicKey  *string `json:"PublicKey" name:"PublicKey"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		KeyName    *string `json:"KeyName" name:"KeyName"`
-	} `json:"Key"`
+	} `json:"Key" name:"Key"`
 }
 
 func (r *CreateKeyResponse) ToJsonString() string {
@@ -1236,7 +1236,12 @@ func (r *ModifyRemoteManagementRequest) FromJsonString(s string) error {
 
 type ModifyRemoteManagementResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	RequestId        *string `json:"RequestId" name:"RequestId"`
+	RemoteManagement struct {
+		RemoteManagementId *string `json:"RemoteManagementId" name:"RemoteManagementId"`
+		PhoneNumber        *string `json:"PhoneNumber" name:"PhoneNumber"`
+		Name               *string `json:"Name" name:"Name"`
+	} `json:"RemoteManagement"`
 }
 
 func (r *ModifyRemoteManagementResponse) ToJsonString() string {
@@ -1275,7 +1280,12 @@ func (r *CreateRemoteManagementRequest) FromJsonString(s string) error {
 
 type CreateRemoteManagementResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	RequestId        *string `json:"RequestId" name:"RequestId"`
+	RemoteManagement struct {
+		RemoteManagementId *string `json:"RemoteManagementId" name:"RemoteManagementId"`
+		PhoneNumber        *string `json:"PhoneNumber" name:"PhoneNumber"`
+		Name               *string `json:"Name" name:"Name"`
+	} `json:"RemoteManagement"`
 }
 
 func (r *CreateRemoteManagementResponse) ToJsonString() string {

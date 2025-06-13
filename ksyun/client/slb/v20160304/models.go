@@ -183,27 +183,48 @@ type DescribeListenersResponse struct {
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	NextToken   *string `json:"NextToken" name:"NextToken"`
 	ListenerSet []struct {
-		LoadBalancerId          *string `json:"LoadBalancerId" name:"LoadBalancerId"`
-		CreateTime              *string `json:"CreateTime" name:"CreateTime"`
-		ListenerName            *string `json:"ListenerName" name:"ListenerName"`
-		ListenerId              *string `json:"ListenerId" name:"ListenerId"`
-		ListenerState           *string `json:"ListenerState" name:"ListenerState"`
-		CertificateId           *string `json:"CertificateId" name:"CertificateId"`
-		ListenerProtocol        *string `json:"ListenerProtocol" name:"ListenerProtocol"`
-		ListenerPort            *int    `json:"ListenerPort" name:"ListenerPort"`
-		Method                  *string `json:"Method" name:"Method"`
-		BandWidthIn             *int    `json:"BandWidthIn" name:"BandWidthIn"`
-		BandWidthOut            *int    `json:"BandWidthOut" name:"BandWidthOut"`
-		LoadBalancerAclId       *string `json:"LoadBalancerAclId" name:"LoadBalancerAclId"`
-		HttpProtocol            *string `json:"HttpProtocol" name:"HttpProtocol"`
-		TlsCipherPolicy         *string `json:"TlsCipherPolicy" name:"TlsCipherPolicy"`
-		EnableHttp2             *bool   `json:"EnableHttp2" name:"EnableHttp2"`
-		RedirectListenerId      *string `json:"RedirectListenerId" name:"RedirectListenerId"`
-		IpVersion               *string `json:"IpVersion" name:"IpVersion"`
-		AsPrivateLinkServer     *bool   `json:"AsPrivateLinkServer" name:"AsPrivateLinkServer"`
-		AsPrivateLink           *bool   `json:"AsPrivateLink" name:"AsPrivateLink"`
-		HealthStatus            *bool   `json:"HealthStatus" name:"HealthStatus"`
-		BindType                *string `json:"BindType" name:"BindType"`
+		LoadBalancerId      *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+		CreateTime          *string `json:"CreateTime" name:"CreateTime"`
+		ListenerName        *string `json:"ListenerName" name:"ListenerName"`
+		ListenerId          *string `json:"ListenerId" name:"ListenerId"`
+		ListenerState       *string `json:"ListenerState" name:"ListenerState"`
+		CertificateId       *string `json:"CertificateId" name:"CertificateId"`
+		ListenerProtocol    *string `json:"ListenerProtocol" name:"ListenerProtocol"`
+		ListenerPort        *int    `json:"ListenerPort" name:"ListenerPort"`
+		Method              *string `json:"Method" name:"Method"`
+		BandWidthIn         *int    `json:"BandWidthIn" name:"BandWidthIn"`
+		BandWidthOut        *int    `json:"BandWidthOut" name:"BandWidthOut"`
+		LoadBalancerAclId   *string `json:"LoadBalancerAclId" name:"LoadBalancerAclId"`
+		HttpProtocol        *string `json:"HttpProtocol" name:"HttpProtocol"`
+		TlsCipherPolicy     *string `json:"TlsCipherPolicy" name:"TlsCipherPolicy"`
+		EnableHttp2         *bool   `json:"EnableHttp2" name:"EnableHttp2"`
+		RedirectListenerId  *string `json:"RedirectListenerId" name:"RedirectListenerId"`
+		IpVersion           *string `json:"IpVersion" name:"IpVersion"`
+		AsPrivateLinkServer *bool   `json:"AsPrivateLinkServer" name:"AsPrivateLinkServer"`
+		AsPrivateLink       *bool   `json:"AsPrivateLink" name:"AsPrivateLink"`
+		HealthStatus        *bool   `json:"HealthStatus" name:"HealthStatus"`
+		BindType            *string `json:"BindType" name:"BindType"`
+		HealthCheck         struct {
+			ListenerId             *string `json:"ListenerId" name:"ListenerId"`
+			HealthCheckState       *string `json:"HealthCheckState" name:"HealthCheckState"`
+			HealthCheckId          *string `json:"HealthCheckId" name:"HealthCheckId"`
+			HttpMethod             *string `json:"HttpMethod" name:"HttpMethod"`
+			HealthyThreshold       *int    `json:"HealthyThreshold" name:"HealthyThreshold"`
+			Interval               *int    `json:"Interval" name:"Interval"`
+			Timeout                *int    `json:"Timeout" name:"Timeout"`
+			UnhealthyThreshold     *int    `json:"UnhealthyThreshold" name:"UnhealthyThreshold"`
+			UrlPath                *string `json:"UrlPath" name:"UrlPath"`
+			HostName               *string `json:"HostName" name:"HostName"`
+			HealthCheckReq         *string `json:"HealthCheckReq" name:"HealthCheckReq"`
+			HealthCheckExp         *string `json:"HealthCheckExp" name:"HealthCheckExp"`
+			HealthCheckConnectPort *int    `json:"HealthCheckConnectPort" name:"HealthCheckConnectPort"`
+		} `json:"HealthCheck" name:"HealthCheck"`
+		Session struct {
+			SessionState             *string `json:"SessionState" name:"SessionState"`
+			SessionPersistencePeriod *int    `json:"SessionPersistencePeriod" name:"SessionPersistencePeriod"`
+			CookieType               *string `json:"CookieType" name:"CookieType"`
+			CookieName               *string `json:"CookieName" name:"CookieName"`
+		} `json:"Session" name:"Session"`
 		BackendServerGroupIdSet []struct {
 			BackendServerGroupId *string `json:"BackendServerGroupId" name:"BackendServerGroupId"`
 		} `json:"BackendServerGroupIdSet" name:"BackendServerGroupIdSet"`
@@ -338,7 +359,28 @@ type ModifyListenersResponse struct {
 	TlsCipherPolicy    *string `json:"TlsCipherPolicy" name:"TlsCipherPolicy"`
 	EnableHttp2        *bool   `json:"EnableHttp2" name:"EnableHttp2"`
 	RedirectListenerId *string `json:"RedirectListenerId" name:"RedirectListenerId"`
-	RealServer         []struct {
+	HealthCheck        struct {
+		ListenerId             *string `json:"ListenerId" name:"ListenerId"`
+		HealthCheckState       *string `json:"HealthCheckState" name:"HealthCheckState"`
+		HealthCheckId          *string `json:"HealthCheckId" name:"HealthCheckId"`
+		HttpMethod             *string `json:"HttpMethod" name:"HttpMethod"`
+		HealthyThreshold       *int    `json:"HealthyThreshold" name:"HealthyThreshold"`
+		Interval               *int    `json:"Interval" name:"Interval"`
+		Timeout                *int    `json:"Timeout" name:"Timeout"`
+		UnhealthyThreshold     *int    `json:"UnhealthyThreshold" name:"UnhealthyThreshold"`
+		UrlPath                *string `json:"UrlPath" name:"UrlPath"`
+		HostName               *string `json:"HostName" name:"HostName"`
+		HealthCheckReq         *string `json:"HealthCheckReq" name:"HealthCheckReq"`
+		HealthCheckExp         *string `json:"HealthCheckExp" name:"HealthCheckExp"`
+		HealthCheckConnectPort *int    `json:"HealthCheckConnectPort" name:"HealthCheckConnectPort"`
+	} `json:"HealthCheck"`
+	Session struct {
+		SessionState             *string `json:"SessionState" name:"SessionState"`
+		SessionPersistencePeriod *int    `json:"SessionPersistencePeriod" name:"SessionPersistencePeriod"`
+		CookieType               *string `json:"CookieType" name:"CookieType"`
+		CookieName               *string `json:"CookieName" name:"CookieName"`
+	} `json:"Session"`
+	RealServer []struct {
 		RegisterId         *string `json:"RegisterId" name:"RegisterId"`
 		RealServerState    *string `json:"RealServerState" name:"RealServerState"`
 		RealServerType     *string `json:"RealServerType" name:"RealServerType"`
@@ -426,6 +468,27 @@ type CreateListenersResponse struct {
 	RedirectListenerId *string `json:"RedirectListenerId" name:"RedirectListenerId"`
 	IpVersion          *string `json:"IpVersion" name:"IpVersion"`
 	UpstreamKeepalive  *string `json:"UpstreamKeepalive" name:"UpstreamKeepalive"`
+	HealthCheck        struct {
+		ListenerId             *string `json:"ListenerId" name:"ListenerId"`
+		HealthCheckState       *string `json:"HealthCheckState" name:"HealthCheckState"`
+		HealthCheckId          *string `json:"HealthCheckId" name:"HealthCheckId"`
+		HttpMethod             *string `json:"HttpMethod" name:"HttpMethod"`
+		HealthyThreshold       *int    `json:"HealthyThreshold" name:"HealthyThreshold"`
+		Interval               *int    `json:"Interval" name:"Interval"`
+		Timeout                *int    `json:"Timeout" name:"Timeout"`
+		UnhealthyThreshold     *int    `json:"UnhealthyThreshold" name:"UnhealthyThreshold"`
+		UrlPath                *string `json:"UrlPath" name:"UrlPath"`
+		HostName               *string `json:"HostName" name:"HostName"`
+		HealthCheckReq         *string `json:"HealthCheckReq" name:"HealthCheckReq"`
+		HealthCheckExp         *string `json:"HealthCheckExp" name:"HealthCheckExp"`
+		HealthCheckConnectPort *int    `json:"HealthCheckConnectPort" name:"HealthCheckConnectPort"`
+	} `json:"HealthCheck"`
+	Session struct {
+		SessionState             *string `json:"SessionState" name:"SessionState"`
+		SessionPersistencePeriod *int    `json:"SessionPersistencePeriod" name:"SessionPersistencePeriod"`
+		CookieType               *string `json:"CookieType" name:"CookieType"`
+		CookieName               *string `json:"CookieName" name:"CookieName"`
+	} `json:"Session"`
 }
 
 func (r *CreateListenersResponse) ToJsonString() string {
@@ -1441,7 +1504,24 @@ func (r *ModifyBackendServerGroupRequest) FromJsonString(s string) error {
 
 type ModifyBackendServerGroupResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	RequestId          *string `json:"RequestId" name:"RequestId"`
+	BackendServerGroup struct {
+		CreateTime             *string `json:"CreateTime" name:"CreateTime"`
+		BackendServerGroupId   *string `json:"BackendServerGroupId" name:"BackendServerGroupId"`
+		VpcId                  *string `json:"VpcId" name:"VpcId"`
+		BackendServerGroupName *string `json:"BackendServerGroupName" name:"BackendServerGroupName"`
+		BackendServerNumber    *int    `json:"BackendServerNumber" name:"BackendServerNumber"`
+		UpstreamKeepalive      *string `json:"UpstreamKeepalive" name:"UpstreamKeepalive"`
+		HealthCheck            struct {
+			HostName           *string `json:"HostName" name:"HostName"`
+			HealthCheckState   *string `json:"HealthCheckState" name:"HealthCheckState"`
+			HealthyThreshold   *int    `json:"HealthyThreshold" name:"HealthyThreshold"`
+			Interval           *int    `json:"Interval" name:"Interval"`
+			Timeout            *int    `json:"Timeout" name:"Timeout"`
+			UnhealthyThreshold *int    `json:"UnhealthyThreshold" name:"UnhealthyThreshold"`
+			UrlPath            *string `json:"UrlPath" name:"UrlPath"`
+		} `json:"HealthCheck" name:"HealthCheck"`
+	} `json:"BackendServerGroup"`
 }
 
 func (r *ModifyBackendServerGroupResponse) ToJsonString() string {
