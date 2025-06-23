@@ -1841,7 +1841,8 @@ func (r *UpdateInstanceProjectIdRequest) FromJsonString(s string) error {
 
 type UpdateInstanceProjectIdResponse struct {
 	*ksyunhttp.BaseResponse
-	UpdateInstanceProjectIdResponse *string `json:"UpdateInstanceProjectIdResponse" name:"UpdateInstanceProjectIdResponse"`
+	Result    *bool   `json:"Result" name:"Result"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
 func (r *UpdateInstanceProjectIdResponse) ToJsonString() string {
@@ -1899,12 +1900,31 @@ type ListEntitiesForPolicyResponse struct {
 			Member []struct {
 				GroupId          *string `json:"GroupId" name:"GroupId"`
 				GroupName        *string `json:"GroupName" name:"GroupName"`
-				GroupDescription *string `json:"GroupDescription" name:"GroupDescription"`
 				CreateDate       *string `json:"CreateDate" name:"CreateDate"`
+				GroupDescription *string `json:"GroupDescription" name:"GroupDescription"`
 			} `json:"Member"`
 		} `json:"PolicyGroups" name:"PolicyGroups"`
-		IsTruncated *string `json:"IsTruncated" name:"IsTruncated"`
+		PolicyAccounts struct {
+			Member []struct {
+				AccountId       *int    `json:"AccountId" name:"AccountId"`
+				AccountName     *string `json:"AccountName" name:"AccountName"`
+				AccountUsername *string `json:"AccountUsername" name:"AccountUsername"`
+				CreateDate      *string `json:"CreateDate" name:"CreateDate"`
+			} `json:"Member"`
+		} `json:"PolicyAccounts" name:"PolicyAccounts"`
+		PolicyResourceDirs struct {
+			Member []struct {
+				ResourceDirId          *string `json:"ResourceDirId" name:"ResourceDirId"`
+				ResourceDirName        *string `json:"ResourceDirName" name:"ResourceDirName"`
+				ResourceDirDescription *string `json:"ResourceDirDescription" name:"ResourceDirDescription"`
+				CreateDate             *string `json:"CreateDate" name:"CreateDate"`
+			} `json:"Member"`
+		} `json:"PolicyResourceDirs" name:"PolicyResourceDirs"`
+		IsTruncated *bool `json:"IsTruncated" name:"IsTruncated"`
 	} `json:"ListEntitiesForPolicyResult"`
+	ListPoliciesResult struct {
+		Marker *string `json:"Marker" name:"Marker"`
+	} `json:"ListPoliciesResult" name:"ListPoliciesResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 

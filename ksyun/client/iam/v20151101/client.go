@@ -1,4 +1,5 @@
 package v20151101
+
 import (
 	"context"
 	"fmt"
@@ -1398,7 +1399,7 @@ func (c *Client) ListEntitiesForPolicyWithContext(ctx context.Context, request *
 		request = NewListEntitiesForPolicyRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListEntitiesForPolicyResponse()
 	err, msg := c.Send(request, response)
@@ -2133,5 +2134,3 @@ func (c *Client) GetEffectivePoliciesWithContext(ctx context.Context, request *G
 	}
 	return msg
 }
-
-
