@@ -1903,6 +1903,39 @@ func (c *Client) RemoveUserFromGroupWithContext(ctx context.Context, request *Re
 	}
 	return msg
 }
+func NewListUsersForGroupRequest() (request *ListUsersForGroupRequest) {
+	request = &ListUsersForGroupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("iam", APIVersion, "ListUsersForGroup")
+	return
+}
+
+func NewListUsersForGroupResponse() (response *ListUsersForGroupResponse) {
+	response = &ListUsersForGroupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ListUsersForGroup(request *ListUsersForGroupRequest) string {
+	return c.ListUsersForGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) ListUsersForGroupWithContext(ctx context.Context, request *ListUsersForGroupRequest) string {
+	if request == nil {
+		request = NewListUsersForGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListUsersForGroupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
 func NewListAllUserAccessKeysRequest() (request *ListAllUserAccessKeysRequest) {
 	request = &ListAllUserAccessKeysRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},

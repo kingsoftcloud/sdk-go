@@ -1922,10 +1922,10 @@ type ListEntitiesForPolicyResponse struct {
 		} `json:"PolicyResourceDirs" name:"PolicyResourceDirs"`
 		IsTruncated *bool `json:"IsTruncated" name:"IsTruncated"`
 	} `json:"ListEntitiesForPolicyResult"`
+	RequestId          *string `json:"RequestId" name:"RequestId"`
 	ListPoliciesResult struct {
 		Marker *string `json:"Marker" name:"Marker"`
-	} `json:"ListPoliciesResult" name:"ListPoliciesResult"`
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	} `json:"ListPoliciesResult"`
 }
 
 func (r *ListEntitiesForPolicyResponse) ToJsonString() string {
@@ -2562,6 +2562,65 @@ func (r *RemoveUserFromGroupResponse) ToJsonString() string {
 }
 
 func (r *RemoveUserFromGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListUsersForGroupRequest struct {
+	*ksyunhttp.BaseRequest
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	MaxItems  *int    `json:"MaxItems,omitempty" name:"MaxItems"`
+	Page      *int    `json:"Page,omitempty" name:"Page"`
+}
+
+func (r *ListUsersForGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListUsersForGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListUsersForGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListUsersForGroupResponse struct {
+	*ksyunhttp.BaseResponse
+	ListUsersForGroupResult struct {
+		Users []struct {
+			UserId                *string `json:"UserId" name:"UserId"`
+			Path                  *string `json:"Path" name:"Path"`
+			UserName              *string `json:"UserName" name:"UserName"`
+			RealName              *string `json:"RealName" name:"RealName"`
+			CreateDate            *string `json:"CreateDate" name:"CreateDate"`
+			Phone                 *string `json:"Phone" name:"Phone"`
+			CountryMobileCode     *string `json:"CountryMobileCode" name:"CountryMobileCode"`
+			IsInternational       *int    `json:"isInternational" name:"isInternational"`
+			Email                 *string `json:"Email" name:"Email"`
+			PhoneVerified         *string `json:"PhoneVerified" name:"PhoneVerified"`
+			EmailVerified         *string `json:"EmailVerified" name:"EmailVerified"`
+			Remark                *string `json:"Remark" name:"Remark"`
+			Krn                   *string `json:"Krn" name:"Krn"`
+			PasswordResetRequired *bool   `json:"PasswordResetRequired" name:"PasswordResetRequired"`
+			UpdateDate            *string `json:"UpdateDate" name:"UpdateDate"`
+			Id                    *int    `json:"Id" name:"Id"`
+		} `json:"Users" name:"Users"`
+		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
+		Marker      *string `json:"Marker" name:"Marker"`
+	} `json:"ListUsersForGroupResult"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ListUsersForGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListUsersForGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
