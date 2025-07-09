@@ -24,7 +24,14 @@ func main() {
 	//request.SetHeaders(map[string]string{
 	//	"KEY": "VALUE",
 	//})
-	response := client.GetProductCode(request)
+	responseString := client.GetProductCode(request)
 
-	fmt.Printf("%s", response)
+	var respStruct bill.GetProductCodeResponse
+	err := respStruct.FromJsonString(responseString)
+	if err != nil {
+		fmt.Printf("Error parsing responseString: %s ,err：%s \n", responseString, err)
+		return
+	}
+
+	fmt.Printf("%+v\n", respStruct)
 }

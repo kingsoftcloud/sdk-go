@@ -63,19 +63,16 @@ func main() {
 
    request := iam.NewListUsersRequest()
    request.MaxItems = common.Int64Ptr(1)
-  
-   response, err := client.ListUsers(request)
-
-   if _, ok := err.(*errors.KsyunSDKError); ok {
-      fmt.Printf("An API error has returned: %s", err)
-      return
-   }
-
+   
+   responseString := client.ListUsers(request)
+   var respStruct iam.ListUsersResponse
+   err := respStruct.FromJsonString(responseString)
    if err != nil {
-      panic(err)
+	   fmt.Printf("Error parsing responseString: %s ,err：%s \n", responseString, err)
+	   return
    }
 
-   fmt.Printf("%s", response.ToJsonString())
+   fmt.Printf("%+v\n", respStruct)
 }
 
 ```

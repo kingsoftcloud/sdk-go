@@ -1,4 +1,5 @@
 package v20230323
+
 import (
 	"context"
 	"fmt"
@@ -210,7 +211,7 @@ func (c *Client) DescribeKnadIpWithContext(ctx context.Context, request *Describ
 		request = NewDescribeKnadIpRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeKnadIpResponse()
 	err, msg := c.Send(request, response)
@@ -342,7 +343,7 @@ func (c *Client) GetBWIpListWithContext(ctx context.Context, request *GetBWIpLis
 		request = NewGetBWIpListRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewGetBWIpListResponse()
 	err, msg := c.Send(request, response)
@@ -615,5 +616,3 @@ func (c *Client) GetKnadPolicyWithContext(ctx context.Context, request *GetKnadP
 	}
 	return msg
 }
-
-

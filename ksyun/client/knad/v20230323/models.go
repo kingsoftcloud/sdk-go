@@ -213,9 +213,14 @@ func (r *DisassociateIpResponse) FromJsonString(s string) error {
 
 type DescribeKnadIpRequest struct {
 	*ksyunhttp.BaseRequest
-	KnadId   *string `json:"KnadId,omitempty" name:"KnadId"`
-	PageSize *int    `json:"PageSize,omitempty" name:"PageSize"`
-	OffSet   *int    `json:"OffSet,omitempty" name:"OffSet"`
+	IpSort       *string `json:"IpSort,omitempty" name:"IpSort"`
+	IpStatusSort *string `json:"IpStatusSort,omitempty" name:"IpStatusSort"`
+	BandSort     *string `json:"BandSort,omitempty" name:"BandSort"`
+	Ip           *string `json:"Ip,omitempty" name:"Ip"`
+	KnadId       *string `json:"KnadId,omitempty" name:"KnadId"`
+	ProjectId    []*int  `json:"ProjectId,omitempty" name:"ProjectId"`
+	PageSize     *int    `json:"PageSize,omitempty" name:"PageSize"`
+	OffSet       *int    `json:"OffSet,omitempty" name:"OffSet"`
 }
 
 func (r *DescribeKnadIpRequest) ToJsonString() string {
@@ -236,6 +241,23 @@ func (r *DescribeKnadIpRequest) FromJsonString(s string) error {
 
 type DescribeKnadIpResponse struct {
 	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	KnadIpSet []struct {
+		KnadId       *string `json:"KnadId" name:"KnadId"`
+		KnadName     *string `json:"KnadName" name:"KnadName"`
+		EipId        *string `json:"EipId" name:"EipId"`
+		KnadIp       *string `json:"KnadIp" name:"KnadIp"`
+		StatusDesc   *string `json:"StatusDesc" name:"StatusDesc"`
+		ProjectId    *int    `json:"ProjectId" name:"ProjectId"`
+		Band         *int    `json:"Band" name:"Band"`
+		MaxBand      *int    `json:"MaxBand" name:"MaxBand"`
+		TemplateId   *int    `json:"TemplateId" name:"TemplateId"`
+		TemplateName *string `json:"TemplateName" name:"TemplateName"`
+		EipInfo      struct {
+			InstanceType *string `json:"InstanceType" name:"InstanceType"`
+		} `json:"EipInfo" name:"EipInfo"`
+	} `json:"KnadIpSet"`
+	KnadIpCount *int `json:"KnadIpCount" name:"KnadIpCount"`
 }
 
 func (r *DescribeKnadIpResponse) ToJsonString() string {
@@ -358,6 +380,8 @@ func (r *ModifyKnadNameRequest) FromJsonString(s string) error {
 
 type ModifyKnadNameResponse struct {
 	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *ModifyKnadNameResponse) ToJsonString() string {
@@ -396,6 +420,12 @@ func (r *GetBWIpListRequest) FromJsonString(s string) error {
 
 type GetBWIpListResponse struct {
 	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	IpList    []struct {
+		Id *string `json:"Id" name:"Id"`
+		Ip *string `json:"Ip" name:"Ip"`
+	} `json:"IpList"`
+	Total *int `json:"total" name:"total"`
 }
 
 func (r *GetBWIpListResponse) ToJsonString() string {
@@ -432,6 +462,8 @@ func (r *DeleteBWRequest) FromJsonString(s string) error {
 
 type DeleteBWResponse struct {
 	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DeleteBWResponse) ToJsonString() string {
@@ -468,6 +500,8 @@ func (r *AddBWIpListRequest) FromJsonString(s string) error {
 
 type AddBWIpListResponse struct {
 	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *AddBWIpListResponse) ToJsonString() string {
@@ -539,6 +573,8 @@ func (r *ModifyPolicyRequest) FromJsonString(s string) error {
 
 type ModifyPolicyResponse struct {
 	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *ModifyPolicyResponse) ToJsonString() string {
@@ -575,6 +611,8 @@ func (r *ModifyBlockLocationRequest) FromJsonString(s string) error {
 
 type ModifyBlockLocationResponse struct {
 	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *ModifyBlockLocationResponse) ToJsonString() string {
@@ -609,6 +647,12 @@ func (r *GetBlockLocationsRequest) FromJsonString(s string) error {
 
 type GetBlockLocationsResponse struct {
 	*ksyunhttp.BaseResponse
+	RequestId        *string `json:"RequestId" name:"RequestId"`
+	LocationBlock    *int    `json:"LocationBlock" name:"LocationBlock"`
+	BlockLocationSet []struct {
+		ZoneKey  *string `json:"ZoneKey" name:"ZoneKey"`
+		ZoneName *string `json:"ZoneName" name:"ZoneName"`
+	} `json:"BlockLocationSet"`
 }
 
 func (r *GetBlockLocationsResponse) ToJsonString() string {
@@ -647,6 +691,15 @@ func (r *GetAttackLogRequest) FromJsonString(s string) error {
 
 type GetAttackLogResponse struct {
 	*ksyunhttp.BaseResponse
+	RequestId    *string `json:"RequestId" name:"RequestId"`
+	AttackLogSet []struct {
+		Ip         *string `json:"Ip" name:"Ip"`
+		StartTime  *string `json:"StartTime" name:"StartTime"`
+		EndTime    *string `json:"EndTime" name:"EndTime"`
+		AttackType *string `json:"AttackType" name:"AttackType"`
+		MaxBps     *string `json:"MaxBps" name:"MaxBps"`
+	} `json:"AttackLogSet"`
+	LogCount *int `json:"LogCount" name:"LogCount"`
 }
 
 func (r *GetAttackLogResponse) ToJsonString() string {
@@ -681,6 +734,11 @@ func (r *GetKnadPolicyRequest) FromJsonString(s string) error {
 
 type GetKnadPolicyResponse struct {
 	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TemplateId *int    `json:"TemplateId" name:"TemplateId"`
+	UdpBlock   *int    `json:"UdpBlock" name:"UdpBlock"`
+	TcpBlock   *int    `json:"TcpBlock" name:"TcpBlock"`
+	IcmpBlock  *int    `json:"IcmpBlock" name:"IcmpBlock"`
 }
 
 func (r *GetKnadPolicyResponse) ToJsonString() string {
