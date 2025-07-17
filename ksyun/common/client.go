@@ -98,7 +98,7 @@ func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksy
 			formData.Set(key, value)
 		}
 		formDataEncoded := formData.Encode()
-		urlRe = request.GetUrl() + "?Action=" + request.GetAction() + "&Version=" + request.GetVersion() + "&Service=" + request.GetService()
+		urlRe = request.GetUrl()
 		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
 		if len(customizeHeaders) > 0 {
 			for headerK, headerV := range customizeHeaders {
