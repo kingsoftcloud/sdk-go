@@ -1,4 +1,5 @@
 package v20250501
+
 import (
 	"context"
 	"fmt"
@@ -177,7 +178,7 @@ func (c *Client) CloudDesklistWithContext(ctx context.Context, request *CloudDes
 		request = NewCloudDesklistRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewCloudDesklistResponse()
 	err, msg := c.Send(request, response)
@@ -441,7 +442,7 @@ func (c *Client) StrategylistWithContext(ctx context.Context, request *Strategyl
 		request = NewStrategylistRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewStrategylistResponse()
 	err, msg := c.Send(request, response)
@@ -705,7 +706,7 @@ func (c *Client) ImagelistWithContext(ctx context.Context, request *ImagelistReq
 		request = NewImagelistRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewImagelistResponse()
 	err, msg := c.Send(request, response)
@@ -771,7 +772,7 @@ func (c *Client) MonitorregionsWithContext(ctx context.Context, request *Monitor
 		request = NewMonitorregionsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewMonitorregionsResponse()
 	err, msg := c.Send(request, response)
@@ -969,7 +970,7 @@ func (c *Client) UserslistWithContext(ctx context.Context, request *UserslistReq
 		request = NewUserslistRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewUserslistResponse()
 	err, msg := c.Send(request, response)
@@ -1101,7 +1102,7 @@ func (c *Client) QueryShellStatusWithContext(ctx context.Context, request *Query
 		request = NewQueryShellStatusRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewQueryShellStatusResponse()
 	err, msg := c.Send(request, response)
@@ -1167,7 +1168,7 @@ func (c *Client) GetProxyConfigWithContext(ctx context.Context, request *GetProx
 		request = NewGetProxyConfigRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewGetProxyConfigResponse()
 	err, msg := c.Send(request, response)
@@ -1200,7 +1201,7 @@ func (c *Client) QueryRuledetailWithContext(ctx context.Context, request *QueryR
 		request = NewQueryRuledetailRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewQueryRuledetailResponse()
 	err, msg := c.Send(request, response)
@@ -1266,7 +1267,7 @@ func (c *Client) GetDetailWithContext(ctx context.Context, request *GetDetailReq
 		request = NewGetDetailRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewGetDetailResponse()
 	err, msg := c.Send(request, response)
@@ -1299,7 +1300,7 @@ func (c *Client) ListLabelWithContext(ctx context.Context, request *ListLabelReq
 		request = NewListLabelRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewListLabelResponse()
 	err, msg := c.Send(request, response)
@@ -1473,5 +1474,3 @@ func (c *Client) CreateLabelWithContext(ctx context.Context, request *CreateLabe
 	}
 	return msg
 }
-
-
