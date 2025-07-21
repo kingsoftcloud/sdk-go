@@ -574,7 +574,7 @@ func (c *Client) RoleslistWithContext(ctx context.Context, request *RoleslistReq
 		request = NewRoleslistRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewRoleslistResponse()
 	err, msg := c.Send(request, response)

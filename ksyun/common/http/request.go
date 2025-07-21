@@ -18,6 +18,8 @@ import (
 const (
 	POST       = "POST"
 	GET        = "GET"
+	PUT        = "PUT"
+	DELETE     = "DELETE"
 	HTTP       = "http"
 	HTTPS      = "https"
 	RootDomain = "api.ksyun.com"
@@ -162,6 +164,14 @@ func (r *BaseRequest) SetHttpMethod(method string) {
 		{
 			r.httpMethod = GET
 		}
+	case PUT:
+		{
+			r.httpMethod = PUT
+		}
+	case DELETE:
+		{
+			r.httpMethod = DELETE
+		}
 	default:
 		{
 			r.httpMethod = GET
@@ -181,6 +191,10 @@ func (r *BaseRequest) GetUrl() string {
 	if r.httpMethod == GET {
 		return r.GetScheme() + "://" + r.domain + r.path + "?" + GetUrlQueriesEncoded(r.params)
 	} else if r.httpMethod == POST {
+		return r.GetScheme() + "://" + r.domain + r.path
+	} else if r.httpMethod == PUT {
+		return r.GetScheme() + "://" + r.domain + r.path
+	} else if r.httpMethod == DELETE {
 		return r.GetScheme() + "://" + r.domain + r.path
 	} else {
 		return ""

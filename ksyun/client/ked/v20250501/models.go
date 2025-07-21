@@ -236,7 +236,7 @@ type CloudDesklistResponse struct {
 			Region       *string   `json:"region" name:"region"`
 			EcStatus     *string   `json:"ecStatus" name:"ecStatus"`
 			Vcpu         *int      `json:"vcpu" name:"vcpu"`
-			Vmemory      *int      `json:"vmemory" name:"vmemory"`
+			Vmemory      *string   `json:"vmemory" name:"vmemory"`
 			VdiskList    []*string `json:"VdiskList" name:"VdiskList"`
 			SysDisk      *string   `json:"sysDisk" name:"sysDisk"`
 			ServerVmType *string   `json:"serverVmType" name:"serverVmType"`

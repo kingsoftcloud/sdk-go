@@ -64,52 +64,79 @@ func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksy
 	}))
 	signer := v4.NewSigner(sess.Config.Credentials)
 	customizeHeaders := request.GetHeaders()
-	var urlRe = ""
-	if request.GetHttpMethod() == "POST" && request.GetContentType() == "application/json" {
+	method := request.GetHttpMethod()
+	contentType := request.GetContentType()
+	now := time.Now().UTC()
+	urlRe := request.GetUrl()
+
+	// 公共Header设置函数
+	setCommonHeaders := func(req *http.Request) {
+		req.Header.Set("Accept", "application/json")
+		req.Header.Set("X-Amz-Date", now.Format("20060102T150405Z"))
+		req.Header.Set("Content-Type", contentType)
+		req.Header.Set("Host", request.GetDomain())
+		req.Header.Set(SDKName, SDKVersion)
+		for headerK, headerV := range customizeHeaders {
+			req.Header.Set(headerK, headerV)
+		}
+	}
+
+	isJson := contentType == "application/json"
+	isForm := contentType == "application/x-www-form-urlencoded"
+	isBodyMethod := method == "POST" || method == "PUT" || method == "DELETE"
+
+	if isBodyMethod && isJson {
+		// JSON 请求
 		body, _ := json.Marshal(request)
 		request.SetBody(body)
-		urlRe = request.GetUrl() + "?Action=" + request.GetAction() + "&Version=" + request.GetVersion() + "&Service=" + request.GetService()
-		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
-		if len(customizeHeaders) > 0 {
-			for headerK, headerV := range customizeHeaders {
-				httpRequest.Header.Set(headerK, headerV)
-			}
+
+		urlRe = urlRe + "?Action=" + request.GetAction() + "&Version=" + request.GetVersion() + "&Service=" + request.GetService()
+
+		httpRequest, err := http.NewRequestWithContext(request.GetContext(), method, urlRe, request.GetBodyReader())
+		if err != nil {
+			return err, ""
 		}
-		httpRequest.Header.Set("Accept", "application/json")
-		httpRequest.Header.Set("X-Amz-Date", time.Now().UTC().Format("20060102T150405Z"))
-		httpRequest.Header.Set("Content-Type", request.GetContentType())
-		httpRequest.Header.Set("Host", request.GetDomain())
-		_, err = signer.Sign(httpRequest, bytes.NewReader(body), request.GetService(), c.GetRegion(), time.Now().UTC())
+		httpRequest.ContentLength = int64(len(body))
+		setCommonHeaders(httpRequest)
+
+		_, err = signer.Sign(httpRequest, bytes.NewReader(body), request.GetService(), c.GetRegion(), now)
+		if err != nil {
+			return err, ""
+		}
+
 		httpResponse, err := c.sendHttp(httpRequest)
 		if err != nil {
 			return err, ""
 		}
 		res := ksyunhttp.ParseFromHttpResponse(httpResponse, response)
 		return nil, res
-	} else if request.GetHttpMethod() == "POST" && request.GetContentType() == "application/x-www-form-urlencoded" {
+	} else if isBodyMethod && isForm {
+		// 表单请求
 		value := reflect.ValueOf(request).Elem()
 		err := ksyunhttp.FlatStructure(value, request, "")
 		if err != nil {
 			return err, ""
 		}
+
 		paramsM := request.GetParams()
 		formData := url.Values{}
 		for key, value := range paramsM {
 			formData.Set(key, value)
 		}
 		formDataEncoded := formData.Encode()
-		urlRe = request.GetUrl()
-		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
-		if len(customizeHeaders) > 0 {
-			for headerK, headerV := range customizeHeaders {
-				httpRequest.Header.Set(headerK, headerV)
-			}
+		request.SetBody([]byte(formDataEncoded))
+
+		httpRequest, err := http.NewRequestWithContext(request.GetContext(), method, urlRe, request.GetBodyReader())
+		if err != nil {
+			return err, ""
 		}
-		httpRequest.Header.Set("Accept", "application/json")
-		httpRequest.Header.Set("X-Amz-Date", time.Now().UTC().Format("20060102T150405Z"))
-		httpRequest.Header.Set("Content-Type", request.GetContentType())
-		httpRequest.Header.Set("Host", request.GetDomain())
-		_, err = signer.Sign(httpRequest, strings.NewReader(formDataEncoded), request.GetService(), c.GetRegion(), time.Now().UTC())
+		setCommonHeaders(httpRequest)
+
+		_, err = signer.Sign(httpRequest, strings.NewReader(formDataEncoded), request.GetService(), c.GetRegion(), now)
+		if err != nil {
+			return err, ""
+		}
+
 		httpResponse, err := c.sendHttp(httpRequest)
 		if err != nil {
 			return err, ""
@@ -122,18 +149,18 @@ func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksy
 		if err != nil {
 			return err, ""
 		}
-		urlRe = request.GetUrl()
-		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
-		if len(customizeHeaders) > 0 {
-			for headerK, headerV := range customizeHeaders {
-				httpRequest.Header.Set(headerK, headerV)
-			}
+
+		httpRequest, err := http.NewRequestWithContext(request.GetContext(), method, urlRe, request.GetBodyReader())
+		if err != nil {
+			return err, ""
 		}
-		httpRequest.Header.Set("Accept", "application/json")
-		httpRequest.Header.Set("X-Amz-Date", time.Now().UTC().Format("20060102T150405Z"))
-		httpRequest.Header.Set("Content-Type", request.GetContentType())
-		httpRequest.Header.Set("Host", request.GetDomain())
-		_, err = signer.Sign(httpRequest, nil, request.GetService(), c.GetRegion(), time.Now().UTC())
+		setCommonHeaders(httpRequest)
+
+		_, err = signer.Sign(httpRequest, nil, request.GetService(), c.GetRegion(), now)
+		if err != nil {
+			return err, ""
+		}
+
 		httpResponse, err := c.sendHttp(httpRequest)
 		if err != nil {
 			return err, ""
