@@ -1,4 +1,5 @@
 package v20160304
+
 import (
 	"context"
 	"fmt"
@@ -351,5 +352,3 @@ func (c *Client) GetCertificateDetailWithContext(ctx context.Context, request *G
 	}
 	return msg
 }
-
-

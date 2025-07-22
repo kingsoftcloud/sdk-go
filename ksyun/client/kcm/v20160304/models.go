@@ -1,10 +1,11 @@
 package v20160304
+
 import (
 	"encoding/json"
+
 	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type CreateCertificateRequest struct {
 	*ksyunhttp.BaseRequest
@@ -34,12 +35,12 @@ type CreateCertificateResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	Certificate struct {
-		CreateTime    *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
 		CertificateName *string `json:"CertificateName" name:"CertificateName"`
-		CertificateId *string `json:"CertificateId" name:"CertificateId"`
-		ExpireTime    *string `json:"ExpireTime" name:"ExpireTime"`
-		CommonName    *string `json:"CommonName" name:"CommonName"`
-		CertAuthority *string `json:"CertAuthority" name:"CertAuthority"`
+		CertificateId   *string `json:"CertificateId" name:"CertificateId"`
+		ExpireTime      *string `json:"ExpireTime" name:"ExpireTime"`
+		CommonName      *string `json:"CommonName" name:"CommonName"`
+		CertAuthority   *string `json:"CertAuthority" name:"CertAuthority"`
 	} `json:"Certificate"`
 }
 
@@ -51,7 +52,6 @@ func (r *CreateCertificateResponse) ToJsonString() string {
 func (r *CreateCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DeleteCertificateRequest struct {
 	*ksyunhttp.BaseRequest
@@ -89,7 +89,6 @@ func (r *DeleteCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ModifyCertificateRequest struct {
 	*ksyunhttp.BaseRequest
 	CertificateId   *string `json:"CertificateId,omitempty" name:"CertificateId"`
@@ -118,12 +117,12 @@ type ModifyCertificateResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	Certificate struct {
-		CreateTime    *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
 		CertificateName *string `json:"CertificateName" name:"CertificateName"`
-		CertificateId *string `json:"CertificateId" name:"CertificateId"`
-		ExpireTime    *string `json:"ExpireTime" name:"ExpireTime"`
-		CommonName    *string `json:"CommonName" name:"CommonName"`
-		CertAuthority *string `json:"CertAuthority" name:"CertAuthority"`
+		CertificateId   *string `json:"CertificateId" name:"CertificateId"`
+		ExpireTime      *string `json:"ExpireTime" name:"ExpireTime"`
+		CommonName      *string `json:"CommonName" name:"CommonName"`
+		CertAuthority   *string `json:"CertAuthority" name:"CertAuthority"`
 	} `json:"Certificate"`
 }
 
@@ -135,7 +134,6 @@ func (r *ModifyCertificateResponse) ToJsonString() string {
 func (r *ModifyCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeCertificatesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -162,15 +160,15 @@ type DescribeCertificatesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId      *string `json:"RequestId" name:"RequestId"`
 	CertificateSet []struct {
-		CreateTime    *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
 		CertificateName *string `json:"CertificateName" name:"CertificateName"`
-		CertificateId *string `json:"CertificateId" name:"CertificateId"`
-		ExpireTime    *string `json:"ExpireTime" name:"ExpireTime"`
-		CommonName    *string `json:"CommonName" name:"CommonName"`
-		CertAuthority *string `json:"CertAuthority" name:"CertAuthority"`
-		CertType      *string `json:"CertType" name:"CertType"`
+		CertificateId   *string `json:"CertificateId" name:"CertificateId"`
+		ExpireTime      *string `json:"ExpireTime" name:"ExpireTime"`
+		CommonName      *string `json:"CommonName" name:"CommonName"`
+		CertAuthority   *string `json:"CertAuthority" name:"CertAuthority"`
+		CertType        *string `json:"CertType" name:"CertType"`
 		CertificateType *string `json:"CertificateType" name:"CertificateType"`
-		PublicKey     *string `json:"PublicKey" name:"PublicKey"`
+		PublicKey       *string `json:"PublicKey" name:"PublicKey"`
 	} `json:"CertificateSet"`
 }
 
@@ -182,7 +180,6 @@ func (r *DescribeCertificatesResponse) ToJsonString() string {
 func (r *DescribeCertificatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ApplyCertificateRequest struct {
 	*ksyunhttp.BaseRequest
@@ -240,7 +237,6 @@ func (r *ApplyCertificateResponse) ToJsonString() string {
 func (r *ApplyCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type UpdateCertificateRequest struct {
 	*ksyunhttp.BaseRequest
@@ -327,7 +323,6 @@ func (r *UpdateCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ReIssueCertificateRequest struct {
 	*ksyunhttp.BaseRequest
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
@@ -363,7 +358,6 @@ func (r *ReIssueCertificateResponse) ToJsonString() string {
 func (r *ReIssueCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CancelTransactionRequest struct {
 	*ksyunhttp.BaseRequest
@@ -414,7 +408,6 @@ func (r *CancelTransactionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ListCertificatesRequest struct {
 	*ksyunhttp.BaseRequest
 	CertificateId []*string `json:"CertificateId,omitempty" name:"CertificateId"`
@@ -442,30 +435,26 @@ func (r *ListCertificatesRequest) FromJsonString(s string) error {
 
 type ListCertificatesResponse struct {
 	*ksyunhttp.BaseResponse
-	ListCertificatesResponse struct {
-		RequestId      *string `json:"RequestId" name:"RequestId"`
-		CertificateSet struct {
-			Item struct {
-				CertificateId     *string `json:"CertificateId" name:"CertificateId"`
-				MainDomain        *string `json:"MainDomain" name:"MainDomain"`
-				CertificateBrand  *string `json:"CertificateBrand" name:"CertificateBrand"`
-				CertificateLevel  *string `json:"CertificateLevel" name:"CertificateLevel"`
-				CertificateName   *string `json:"CertificateName" name:"CertificateName"`
-				CertificateCode   *string `json:"CertificateCode" name:"CertificateCode"`
-				CertificateStatus *int    `json:"CertificateStatus" name:"CertificateStatus"`
-				YearLength        *int    `json:"YearLength" name:"YearLength"`
-				DomainCount       *int    `json:"DomainCount" name:"DomainCount"`
-				WildcardCount     *int    `json:"WildcardCount" name:"WildcardCount"`
-				ExpireTime        *string `json:"ExpireTime" name:"ExpireTime"`
-				AuthMethod        *string `json:"AuthMethod" name:"AuthMethod"`
-				AuthContent       struct {
-					CheckName  *string `json:"CheckName" name:"CheckName"`
-					CheckValue *string `json:"CheckValue" name:"CheckValue"`
-					RecordType *string `json:"RecordType" name:"RecordType"`
-				} `json:"AuthContent" name:"AuthContent"`
-			} `json:"Item"`
-		} `json:"CertificateSet" name:"CertificateSet"`
-	} `json:"ListCertificatesResponse"`
+	RequestId      *string `json:"RequestId" name:"RequestId"`
+	CertificateSet []struct {
+		CertificateId     *string `json:"CertificateId" name:"CertificateId"`
+		MainDomain        *string `json:"MainDomain" name:"MainDomain"`
+		CertificateBrand  *string `json:"CertificateBrand" name:"CertificateBrand"`
+		CertificateLevel  *string `json:"CertificateLevel" name:"CertificateLevel"`
+		CertificateName   *string `json:"CertificateName" name:"CertificateName"`
+		CertificateCode   *string `json:"CertificateCode" name:"CertificateCode"`
+		CertificateStatus *int    `json:"CertificateStatus" name:"CertificateStatus"`
+		YearLength        *int    `json:"YearLength" name:"YearLength"`
+		DomainCount       *int    `json:"DomainCount" name:"DomainCount"`
+		WildcardCount     *int    `json:"WildcardCount" name:"WildcardCount"`
+		ExpireTime        *string `json:"ExpireTime" name:"ExpireTime"`
+		AuthMethod        *string `json:"AuthMethod" name:"AuthMethod"`
+		AuthContent       struct {
+			CheckName  *string `json:"CheckName" name:"CheckName"`
+			CheckValue *string `json:"CheckValue" name:"CheckValue"`
+			RecordType *string `json:"RecordType" name:"RecordType"`
+		} `json:"AuthContent" name:"AuthContent"`
+	} `json:"CertificateSet"`
 }
 
 func (r *ListCertificatesResponse) ToJsonString() string {
@@ -500,37 +489,42 @@ func (r *GetCertificateDetailRequest) FromJsonString(s string) error {
 
 type GetCertificateDetailResponse struct {
 	*ksyunhttp.BaseResponse
-	GetCertificateDetailResponse struct {
-		RequestId   *string `json:"RequestId" name:"RequestId"`
-		Certificate struct {
-			CertificateId     *string `json:"CertificateId" name:"CertificateId"`
-			MainDomain        *string `json:"MainDomain" name:"MainDomain"`
-			CertificateBrand  *string `json:"CertificateBrand" name:"CertificateBrand"`
-			CertificateLevel  *string `json:"CertificateLevel" name:"CertificateLevel"`
-			CertificateName   *string `json:"CertificateName" name:"CertificateName"`
-			CertificateCode   *string `json:"CertificateCode" name:"CertificateCode"`
-			CertificateStatus *int    `json:"CertificateStatus" name:"CertificateStatus"`
-			YearLength        *int    `json:"YearLength" name:"YearLength"`
-			DomainCount       *int    `json:"DomainCount" name:"DomainCount"`
-			WildcardCount     *int    `json:"WildcardCount" name:"WildcardCount"`
-			Department        *string `json:"Department" name:"Department"`
-			CSR               *string `json:"CSR" name:"CSR"`
-			State             *string `json:"State" name:"State"`
-			City              *string `json:"City" name:"City"`
-			Address           *string `json:"Address" name:"Address"`
-			CompanyPhone      *string `json:"CompanyPhone" name:"CompanyPhone"`
-			PostalCode        *string `json:"PostalCode" name:"PostalCode"`
-			AdditionalDomains *string `json:"AdditionalDomains" name:"AdditionalDomains"`
-			Wildcards         *string `json:"Wildcards" name:"Wildcards"`
-			Contact           struct {
-				FirstName *string `json:"FirstName" name:"FirstName"`
-				LastName *string `json:"LastName" name:"LastName"`
-				Phone    *string `json:"Phone" name:"Phone"`
-				Email    *string `json:"Email" name:"Email"`
-				Title    *string `json:"Title" name:"Title"`
-			} `json:"Contact"`
-		} `json:"Certificate" name:"Certificate"`
-	} `json:"GetCertificateDetailResponse"`
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	Certificate struct {
+		CertificateId     *string `json:"CertificateId" name:"CertificateId"`
+		MainDomain        *string `json:"MainDomain" name:"MainDomain"`
+		CertificateBrand  *string `json:"CertificateBrand" name:"CertificateBrand"`
+		CertificateLevel  *string `json:"CertificateLevel" name:"CertificateLevel"`
+		CertificateName   *string `json:"CertificateName" name:"CertificateName"`
+		CertificateCode   *string `json:"CertificateCode" name:"CertificateCode"`
+		CertificateStatus *int    `json:"CertificateStatus" name:"CertificateStatus"`
+		YearLength        *int    `json:"YearLength" name:"YearLength"`
+		DomainCount       *int    `json:"DomainCount" name:"DomainCount"`
+		WildcardCount     *int    `json:"WildcardCount" name:"WildcardCount"`
+		CompanyName       *string `json:"CompanyName" name:"CompanyName"`
+		CSR               *string `json:"CSR" name:"CSR"`
+		State             *string `json:"State" name:"State"`
+		City              *string `json:"City" name:"City"`
+		Address           *string `json:"Address" name:"Address"`
+		CompanyPhone      *string `json:"CompanyPhone" name:"CompanyPhone"`
+		PostalCode        *string `json:"PostalCode" name:"PostalCode"`
+		Department        *string `json:"Department" name:"Department"`
+		AdditionalDomains *string `json:"AdditionalDomains" name:"AdditionalDomains"`
+		Wildcards         *string `json:"Wildcards" name:"Wildcards"`
+		Contact           struct {
+			FirstName *string `json:"FirstName" name:"FirstName"`
+			LastName  *string `json:"LastName" name:"LastName"`
+			Name      *string `json:"Name" name:"Name"`
+			Phone     *string `json:"Phone" name:"Phone"`
+			Email     *string `json:"Email" name:"Email"`
+			Title     *string `json:"Title" name:"Title"`
+		} `json:"Contact" name:"Contact"`
+		AuthContent struct {
+			CheckName  *string `json:"CheckName" name:"CheckName"`
+			CheckValue *string `json:"CheckValue" name:"CheckValue"`
+			RecordType *string `json:"RecordType" name:"RecordType"`
+		} `json:"AuthContent" name:"AuthContent"`
+	} `json:"Certificate"`
 }
 
 func (r *GetCertificateDetailResponse) ToJsonString() string {
@@ -541,4 +535,3 @@ func (r *GetCertificateDetailResponse) ToJsonString() string {
 func (r *GetCertificateDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
