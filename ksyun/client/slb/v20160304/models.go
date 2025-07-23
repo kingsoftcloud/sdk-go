@@ -2776,6 +2776,7 @@ type CreateAlbRequest struct {
 	PrivateIpAddress       *string `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
 	EnabledQuic            *bool   `json:"EnabledQuic,omitempty" name:"EnabledQuic"`
 	EnableHpa              *bool   `json:"EnableHpa,omitempty" name:"EnableHpa"`
+	ProtocolLayers         *string `json:"ProtocolLayers,omitempty" name:"ProtocolLayers"`
 	DeleteProtection       *string `json:"DeleteProtection,omitempty" name:"DeleteProtection"`
 	ModificationProtection *string `json:"ModificationProtection,omitempty" name:"ModificationProtection"`
 }
@@ -2800,24 +2801,19 @@ type CreateAlbResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId               *string `json:"RequestId" name:"RequestId"`
 	ApplicationLoadBalancer struct {
-		AlbId          *string `json:"AlbId" name:"AlbId"`
-		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
-		AlbName        *string `json:"AlbName" name:"AlbName"`
-		ProjectId      *string `json:"ProjectId" name:"ProjectId"`
-		AlbVersion     *string `json:"AlbVersion" name:"AlbVersion"`
-		IpVersion      *string `json:"IpVersion" name:"IpVersion"`
-		AlbType        *string `json:"AlbType" name:"AlbType"`
-		PublicIp       *string `json:"PublicIp" name:"PublicIp"`
-		VpcId          *string `json:"VpcId" name:"VpcId"`
-		State          *string `json:"State" name:"State"`
-		ListenersCount *int    `json:"ListenersCount" name:"ListenersCount"`
-		Status         *string `json:"Status" name:"Status"`
-		EnabledLog     *bool   `json:"EnabledLog" name:"EnabledLog"`
-		KlogInfo       struct {
-			ProjectName *string `json:"ProjectName" name:"ProjectName"`
-			LogpoolName *string `json:"LogpoolName" name:"LogpoolName"`
-			AccountId   *string `json:"AccountId" name:"AccountId"`
-		} `json:"KlogInfo" name:"KlogInfo"`
+		AlbId            *string `json:"AlbId" name:"AlbId"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		AlbName          *string `json:"AlbName" name:"AlbName"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		AlbVersion       *string `json:"AlbVersion" name:"AlbVersion"`
+		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		AlbType          *string `json:"AlbType" name:"AlbType"`
+		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
+		VpcId            *string `json:"VpcId" name:"VpcId"`
+		State            *string `json:"State" name:"State"`
+		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status           *string `json:"Status" name:"Status"`
+		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
 		BillType         *int    `json:"BillType" name:"BillType"`
 		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
 		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
@@ -2825,6 +2821,15 @@ type CreateAlbResponse struct {
 		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
 		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
 		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
+		BindWafStatus    *string `json:"BindWafStatus" name:"BindWafStatus"`
+		WafInfo          struct {
+			WafId *string `json:"WafId" name:"WafId"`
+		} `json:"WafInfo" name:"WafInfo"`
+		ProtocolLayers *string `json:"ProtocolLayers" name:"ProtocolLayers"`
+		ResourceTags   []struct {
+			Name  *string `json:"Name" name:"Name"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"ResourceTags" name:"ResourceTags"`
 		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
 		ModifyProtection *string `json:"ModifyProtection" name:"ModifyProtection"`
 		TagSet           []struct {
@@ -2907,24 +2912,19 @@ type SetAlbNameResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId               *string `json:"RequestId" name:"RequestId"`
 	ApplicationLoadBalancer struct {
-		AlbId          *string `json:"AlbId" name:"AlbId"`
-		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
-		AlbName        *string `json:"AlbName" name:"AlbName"`
-		ProjectId      *string `json:"ProjectId" name:"ProjectId"`
-		AlbVersion     *string `json:"AlbVersion" name:"AlbVersion"`
-		IpVersion      *string `json:"IpVersion" name:"IpVersion"`
-		AlbType        *string `json:"AlbType" name:"AlbType"`
-		PublicIp       *string `json:"PublicIp" name:"PublicIp"`
-		VpcId          *string `json:"VpcId" name:"VpcId"`
-		State          *string `json:"State" name:"State"`
-		ListenersCount *int    `json:"ListenersCount" name:"ListenersCount"`
-		Status         *string `json:"Status" name:"Status"`
-		EnabledLog     *bool   `json:"EnabledLog" name:"EnabledLog"`
-		KlogInfo       struct {
-			ProjectName *string `json:"ProjectName" name:"ProjectName"`
-			LogpoolName *string `json:"LogpoolName" name:"LogpoolName"`
-			AccountId   *string `json:"AccountId" name:"AccountId"`
-		} `json:"KlogInfo" name:"KlogInfo"`
+		AlbId            *string `json:"AlbId" name:"AlbId"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		AlbName          *string `json:"AlbName" name:"AlbName"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		AlbVersion       *string `json:"AlbVersion" name:"AlbVersion"`
+		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		AlbType          *string `json:"AlbType" name:"AlbType"`
+		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
+		VpcId            *string `json:"VpcId" name:"VpcId"`
+		State            *string `json:"State" name:"State"`
+		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status           *string `json:"Status" name:"Status"`
+		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
 		BillType         *int    `json:"BillType" name:"BillType"`
 		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
 		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
@@ -2932,6 +2932,15 @@ type SetAlbNameResponse struct {
 		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
 		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
 		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
+		BindWafStatus    *string `json:"BindWafStatus" name:"BindWafStatus"`
+		WafInfo          struct {
+			WafId *string `json:"WafId" name:"WafId"`
+		} `json:"WafInfo" name:"WafInfo"`
+		ProtocolLayers *string `json:"ProtocolLayers" name:"ProtocolLayers"`
+		ResourceTags   []struct {
+			Name  *string `json:"Name" name:"Name"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"ResourceTags" name:"ResourceTags"`
 		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
 		ModifyProtection *string `json:"ModifyProtection" name:"ModifyProtection"`
 		TagSet           []struct {
@@ -2978,24 +2987,19 @@ type SetAlbStatusResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId               *string `json:"RequestId" name:"RequestId"`
 	ApplicationLoadBalancer struct {
-		AlbId          *string `json:"AlbId" name:"AlbId"`
-		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
-		AlbName        *string `json:"AlbName" name:"AlbName"`
-		ProjectId      *string `json:"ProjectId" name:"ProjectId"`
-		AlbVersion     *string `json:"AlbVersion" name:"AlbVersion"`
-		IpVersion      *string `json:"IpVersion" name:"IpVersion"`
-		AlbType        *string `json:"AlbType" name:"AlbType"`
-		PublicIp       *string `json:"PublicIp" name:"PublicIp"`
-		VpcId          *string `json:"VpcId" name:"VpcId"`
-		State          *string `json:"State" name:"State"`
-		ListenersCount *int    `json:"ListenersCount" name:"ListenersCount"`
-		Status         *string `json:"Status" name:"Status"`
-		EnabledLog     *bool   `json:"EnabledLog" name:"EnabledLog"`
-		KlogInfo       struct {
-			ProjectName *string `json:"ProjectName" name:"ProjectName"`
-			LogpoolName *string `json:"LogpoolName" name:"LogpoolName"`
-			AccountId   *string `json:"AccountId" name:"AccountId"`
-		} `json:"KlogInfo" name:"KlogInfo"`
+		AlbId            *string `json:"AlbId" name:"AlbId"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		AlbName          *string `json:"AlbName" name:"AlbName"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		AlbVersion       *string `json:"AlbVersion" name:"AlbVersion"`
+		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		AlbType          *string `json:"AlbType" name:"AlbType"`
+		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
+		VpcId            *string `json:"VpcId" name:"VpcId"`
+		State            *string `json:"State" name:"State"`
+		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status           *string `json:"Status" name:"Status"`
+		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
 		BillType         *int    `json:"BillType" name:"BillType"`
 		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
 		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
@@ -3003,6 +3007,15 @@ type SetAlbStatusResponse struct {
 		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
 		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
 		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
+		BindWafStatus    *string `json:"BindWafStatus" name:"BindWafStatus"`
+		WafInfo          struct {
+			WafId *string `json:"WafId" name:"WafId"`
+		} `json:"WafInfo" name:"WafInfo"`
+		ProtocolLayers *string `json:"ProtocolLayers" name:"ProtocolLayers"`
+		ResourceTags   []struct {
+			Name  *string `json:"Name" name:"Name"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"ResourceTags" name:"ResourceTags"`
 		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
 		ModifyProtection *string `json:"ModifyProtection" name:"ModifyProtection"`
 		TagSet           []struct {
@@ -3056,24 +3069,19 @@ type DescribeAlbsResponse struct {
 	RequestId                  *string `json:"RequestId" name:"RequestId"`
 	NextToken                  *string `json:"NextToken" name:"NextToken"`
 	ApplicationLoadBalancerSet []struct {
-		AlbId          *string `json:"AlbId" name:"AlbId"`
-		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
-		AlbName        *string `json:"AlbName" name:"AlbName"`
-		ProjectId      *string `json:"ProjectId" name:"ProjectId"`
-		AlbVersion     *string `json:"AlbVersion" name:"AlbVersion"`
-		IpVersion      *string `json:"IpVersion" name:"IpVersion"`
-		AlbType        *string `json:"AlbType" name:"AlbType"`
-		PublicIp       *string `json:"PublicIp" name:"PublicIp"`
-		VpcId          *string `json:"VpcId" name:"VpcId"`
-		State          *string `json:"State" name:"State"`
-		ListenersCount *int    `json:"ListenersCount" name:"ListenersCount"`
-		Status         *string `json:"Status" name:"Status"`
-		EnabledLog     *bool   `json:"EnabledLog" name:"EnabledLog"`
-		KlogInfo       struct {
-			ProjectName *string `json:"ProjectName" name:"ProjectName"`
-			LogpoolName *string `json:"LogpoolName" name:"LogpoolName"`
-			AccountId   *string `json:"AccountId" name:"AccountId"`
-		} `json:"KlogInfo" name:"KlogInfo"`
+		AlbId            *string `json:"AlbId" name:"AlbId"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		AlbName          *string `json:"AlbName" name:"AlbName"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		AlbVersion       *string `json:"AlbVersion" name:"AlbVersion"`
+		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		AlbType          *string `json:"AlbType" name:"AlbType"`
+		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
+		VpcId            *string `json:"VpcId" name:"VpcId"`
+		State            *string `json:"State" name:"State"`
+		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status           *string `json:"Status" name:"Status"`
+		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
 		BillType         *int    `json:"BillType" name:"BillType"`
 		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
 		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
@@ -3081,6 +3089,15 @@ type DescribeAlbsResponse struct {
 		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
 		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
 		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
+		BindWafStatus    *string `json:"BindWafStatus" name:"BindWafStatus"`
+		WafInfo          struct {
+			WafId *string `json:"WafId" name:"WafId"`
+		} `json:"WafInfo" name:"WafInfo"`
+		ProtocolLayers *string `json:"ProtocolLayers" name:"ProtocolLayers"`
+		ResourceTags   []struct {
+			Name  *string `json:"Name" name:"Name"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"ResourceTags" name:"ResourceTags"`
 		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
 		ModifyProtection *string `json:"ModifyProtection" name:"ModifyProtection"`
 		TagSet           []struct {
@@ -3121,6 +3138,7 @@ type CreateAlbListenerRequest struct {
 	CaCertificateId       *string                               `json:"CaCertificateId,omitempty" name:"CaCertificateId"`
 	EnableQuicUpgrade     *bool                                 `json:"EnableQuicUpgrade,omitempty" name:"EnableQuicUpgrade"`
 	QuicListenerId        *string                               `json:"QuicListenerId,omitempty" name:"QuicListenerId"`
+	ServerGroupId         *string                               `json:"ServerGroupId,omitempty" name:"ServerGroupId"`
 }
 
 func (r *CreateAlbListenerRequest) ToJsonString() string {
@@ -3155,12 +3173,14 @@ type CreateAlbListenerResponse struct {
 		AlbListenerAclId            *string `json:"AlbListenerAclId" name:"AlbListenerAclId"`
 		AlbListenerState            *string `json:"AlbListenerState" name:"AlbListenerState"`
 		RedirectAlbListenerId       *string `json:"RedirectAlbListenerId" name:"RedirectAlbListenerId"`
+		RedirectListenerName        *string `json:"RedirectListenerName" name:"RedirectListenerName"`
 		HttpProtocol                *string `json:"HttpProtocol" name:"HttpProtocol"`
 		EnableHttp2                 *bool   `json:"EnableHttp2" name:"EnableHttp2"`
 		CaCertificateId             *string `json:"CaCertificateId" name:"CaCertificateId"`
 		CaEnabled                   *bool   `json:"CaEnabled" name:"CaEnabled"`
 		EnableQuicUpgrade           *bool   `json:"EnableQuicUpgrade" name:"EnableQuicUpgrade"`
 		QuicListenerId              *string `json:"QuicListenerId" name:"QuicListenerId"`
+		ServerGroupId               *string `json:"ServerGroupId" name:"ServerGroupId"`
 	} `json:"AlbListener"`
 }
 
@@ -3187,6 +3207,7 @@ type ModifyAlbListenerRequest struct {
 	CaCertificateId   *string `json:"CaCertificateId,omitempty" name:"CaCertificateId"`
 	EnableQuicUpgrade *bool   `json:"EnableQuicUpgrade,omitempty" name:"EnableQuicUpgrade"`
 	QuicListenerId    *string `json:"QuicListenerId,omitempty" name:"QuicListenerId"`
+	ServerGroupId     *string `json:"ServerGroupId,omitempty" name:"ServerGroupId"`
 }
 
 func (r *ModifyAlbListenerRequest) ToJsonString() string {
@@ -3221,12 +3242,14 @@ type ModifyAlbListenerResponse struct {
 		AlbListenerAclId            *string `json:"AlbListenerAclId" name:"AlbListenerAclId"`
 		AlbListenerState            *string `json:"AlbListenerState" name:"AlbListenerState"`
 		RedirectAlbListenerId       *string `json:"RedirectAlbListenerId" name:"RedirectAlbListenerId"`
+		RedirectListenerName        *string `json:"RedirectListenerName" name:"RedirectListenerName"`
 		HttpProtocol                *string `json:"HttpProtocol" name:"HttpProtocol"`
 		EnableHttp2                 *bool   `json:"EnableHttp2" name:"EnableHttp2"`
 		CaCertificateId             *string `json:"CaCertificateId" name:"CaCertificateId"`
 		CaEnabled                   *bool   `json:"CaEnabled" name:"CaEnabled"`
 		EnableQuicUpgrade           *bool   `json:"EnableQuicUpgrade" name:"EnableQuicUpgrade"`
 		QuicListenerId              *string `json:"QuicListenerId" name:"QuicListenerId"`
+		ServerGroupId               *string `json:"ServerGroupId" name:"ServerGroupId"`
 	} `json:"AlbListener"`
 }
 
@@ -3316,12 +3339,14 @@ type DescribeAlbListenersResponse struct {
 		AlbListenerAclId            *string `json:"AlbListenerAclId" name:"AlbListenerAclId"`
 		AlbListenerState            *string `json:"AlbListenerState" name:"AlbListenerState"`
 		RedirectAlbListenerId       *string `json:"RedirectAlbListenerId" name:"RedirectAlbListenerId"`
+		RedirectListenerName        *string `json:"RedirectListenerName" name:"RedirectListenerName"`
 		HttpProtocol                *string `json:"HttpProtocol" name:"HttpProtocol"`
 		EnableHttp2                 *bool   `json:"EnableHttp2" name:"EnableHttp2"`
 		CaCertificateId             *string `json:"CaCertificateId" name:"CaCertificateId"`
 		CaEnabled                   *bool   `json:"CaEnabled" name:"CaEnabled"`
 		EnableQuicUpgrade           *bool   `json:"EnableQuicUpgrade" name:"EnableQuicUpgrade"`
 		QuicListenerId              *string `json:"QuicListenerId" name:"QuicListenerId"`
+		ServerGroupId               *string `json:"ServerGroupId" name:"ServerGroupId"`
 	} `json:"AlbListenerSet"`
 }
 
@@ -3907,8 +3932,46 @@ func (r *SetEnableAlbAccessLogRequest) FromJsonString(s string) error {
 
 type SetEnableAlbAccessLogResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Return    *bool   `json:"Return" name:"Return"`
+	RequestId               *string `json:"RequestId" name:"RequestId"`
+	ApplicationLoadBalancer struct {
+		AlbId            *string `json:"AlbId" name:"AlbId"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		AlbName          *string `json:"AlbName" name:"AlbName"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		AlbVersion       *string `json:"AlbVersion" name:"AlbVersion"`
+		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		AlbType          *string `json:"AlbType" name:"AlbType"`
+		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
+		VpcId            *string `json:"VpcId" name:"VpcId"`
+		State            *string `json:"State" name:"State"`
+		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status           *string `json:"Status" name:"Status"`
+		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
+		BillType         *int    `json:"BillType" name:"BillType"`
+		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
+		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
+		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
+		BindWafStatus    *string `json:"BindWafStatus" name:"BindWafStatus"`
+		WafInfo          struct {
+			WafId *string `json:"WafId" name:"WafId"`
+		} `json:"WafInfo" name:"WafInfo"`
+		ProtocolLayers *string `json:"ProtocolLayers" name:"ProtocolLayers"`
+		ResourceTags   []struct {
+			Name  *string `json:"Name" name:"Name"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"ResourceTags" name:"ResourceTags"`
+		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
+		ModifyProtection *string `json:"ModifyProtection" name:"ModifyProtection"`
+		TagSet           []struct {
+			ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
+			TagId        *string `json:"TagId" name:"TagId"`
+			TagKey       *string `json:"TagKey" name:"TagKey"`
+			TagValue     *string `json:"TagValue" name:"TagValue"`
+		} `json:"TagSet" name:"TagSet"`
+	} `json:"ApplicationLoadBalancer"`
 }
 
 func (r *SetEnableAlbAccessLogResponse) ToJsonString() string {
@@ -3947,24 +4010,19 @@ type SetAlbAccessLogResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId               *string `json:"RequestId" name:"RequestId"`
 	ApplicationLoadBalancer struct {
-		AlbId          *string `json:"AlbId" name:"AlbId"`
-		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
-		AlbName        *string `json:"AlbName" name:"AlbName"`
-		ProjectId      *string `json:"ProjectId" name:"ProjectId"`
-		AlbVersion     *string `json:"AlbVersion" name:"AlbVersion"`
-		IpVersion      *string `json:"IpVersion" name:"IpVersion"`
-		AlbType        *string `json:"AlbType" name:"AlbType"`
-		PublicIp       *string `json:"PublicIp" name:"PublicIp"`
-		VpcId          *string `json:"VpcId" name:"VpcId"`
-		State          *string `json:"State" name:"State"`
-		ListenersCount *int    `json:"ListenersCount" name:"ListenersCount"`
-		Status         *string `json:"Status" name:"Status"`
-		EnabledLog     *bool   `json:"EnabledLog" name:"EnabledLog"`
-		KlogInfo       struct {
-			ProjectName *string `json:"ProjectName" name:"ProjectName"`
-			LogpoolName *string `json:"LogpoolName" name:"LogpoolName"`
-			AccountId   *string `json:"AccountId" name:"AccountId"`
-		} `json:"KlogInfo" name:"KlogInfo"`
+		AlbId            *string `json:"AlbId" name:"AlbId"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		AlbName          *string `json:"AlbName" name:"AlbName"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		AlbVersion       *string `json:"AlbVersion" name:"AlbVersion"`
+		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		AlbType          *string `json:"AlbType" name:"AlbType"`
+		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
+		VpcId            *string `json:"VpcId" name:"VpcId"`
+		State            *string `json:"State" name:"State"`
+		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status           *string `json:"Status" name:"Status"`
+		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
 		BillType         *int    `json:"BillType" name:"BillType"`
 		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
 		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
@@ -3972,6 +4030,15 @@ type SetAlbAccessLogResponse struct {
 		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
 		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
 		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
+		BindWafStatus    *string `json:"BindWafStatus" name:"BindWafStatus"`
+		WafInfo          struct {
+			WafId *string `json:"WafId" name:"WafId"`
+		} `json:"WafInfo" name:"WafInfo"`
+		ProtocolLayers *string `json:"ProtocolLayers" name:"ProtocolLayers"`
+		ResourceTags   []struct {
+			Name  *string `json:"Name" name:"Name"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"ResourceTags" name:"ResourceTags"`
 		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
 		ModifyProtection *string `json:"ModifyProtection" name:"ModifyProtection"`
 		TagSet           []struct {
@@ -4177,6 +4244,8 @@ type CreateAlbBackendServerGroupRequest struct {
 	HealthCheckConnectPort   *int    `json:"HealthCheckConnectPort,omitempty" name:"HealthCheckConnectPort"`
 	HealthProtocol           *string `json:"HealthProtocol,omitempty" name:"HealthProtocol"`
 	HttpMethod               *string `json:"HttpMethod,omitempty" name:"HttpMethod"`
+	HealthCheckReq           *string `json:"HealthCheckReq,omitempty" name:"HealthCheckReq"`
+	HealthCheckExp           *string `json:"HealthCheckExp,omitempty" name:"HealthCheckExp"`
 	HealthCode               *string `json:"HealthCode,omitempty" name:"HealthCode"`
 }
 
@@ -4211,24 +4280,6 @@ type CreateAlbBackendServerGroupResponse struct {
 		UpstreamKeepalive      *string `json:"UpstreamKeepalive" name:"UpstreamKeepalive"`
 		IpVersion              *string `json:"IpVersion" name:"IpVersion"`
 		Method                 *string `json:"Method" name:"Method"`
-		HealthCheck            struct {
-			HealthCheckState       *string `json:"HealthCheckState" name:"HealthCheckState"`
-			HealthyThreshold       *int    `json:"HealthyThreshold" name:"HealthyThreshold"`
-			Interval               *int    `json:"Interval" name:"Interval"`
-			Timeout                *int    `json:"Timeout" name:"Timeout"`
-			UnhealthyThreshold     *int    `json:"UnhealthyThreshold" name:"UnhealthyThreshold"`
-			HostName               *string `json:"HostName" name:"HostName"`
-			UrlPath                *string `json:"UrlPath" name:"UrlPath"`
-			HealthProtocol         *string `json:"HealthProtocol" name:"HealthProtocol"`
-			HealthCheckConnectPort *int    `json:"HealthCheckConnectPort" name:"HealthCheckConnectPort"`
-			HealthCode             *string `json:"HealthCode" name:"HealthCode"`
-		} `json:"HealthCheck" name:"HealthCheck"`
-		Session struct {
-			SessionState             *string `json:"SessionState" name:"SessionState"`
-			SessionPersistencePeriod *int    `json:"SessionPersistencePeriod" name:"SessionPersistencePeriod"`
-			CookieType               *string `json:"CookieType" name:"CookieType"`
-			CookieName               *string `json:"CookieName" name:"CookieName"`
-		} `json:"Session" name:"Session"`
 	} `json:"BackendServerGroup"`
 }
 
@@ -4298,6 +4349,8 @@ type ModifyAlbBackendServerGroupRequest struct {
 	HealthProtocol           *string `json:"HealthProtocol,omitempty" name:"HealthProtocol"`
 	HttpMethod               *string `json:"HttpMethod,omitempty" name:"HttpMethod"`
 	HealthCode               *string `json:"HealthCode,omitempty" name:"HealthCode"`
+	HealthCheckReq           *string `json:"HealthCheckReq,omitempty" name:"HealthCheckReq"`
+	HealthCheckExp           *string `json:"HealthCheckExp,omitempty" name:"HealthCheckExp"`
 }
 
 func (r *ModifyAlbBackendServerGroupRequest) ToJsonString() string {
@@ -4331,24 +4384,6 @@ type ModifyAlbBackendServerGroupResponse struct {
 		UpstreamKeepalive      *string `json:"UpstreamKeepalive" name:"UpstreamKeepalive"`
 		IpVersion              *string `json:"IpVersion" name:"IpVersion"`
 		Method                 *string `json:"Method" name:"Method"`
-		HealthCheck            struct {
-			HealthCheckState       *string `json:"HealthCheckState" name:"HealthCheckState"`
-			HealthyThreshold       *int    `json:"HealthyThreshold" name:"HealthyThreshold"`
-			Interval               *int    `json:"Interval" name:"Interval"`
-			Timeout                *int    `json:"Timeout" name:"Timeout"`
-			UnhealthyThreshold     *int    `json:"UnhealthyThreshold" name:"UnhealthyThreshold"`
-			HostName               *string `json:"HostName" name:"HostName"`
-			UrlPath                *string `json:"UrlPath" name:"UrlPath"`
-			HealthProtocol         *string `json:"HealthProtocol" name:"HealthProtocol"`
-			HealthCheckConnectPort *int    `json:"HealthCheckConnectPort" name:"HealthCheckConnectPort"`
-			HealthCode             *string `json:"HealthCode" name:"HealthCode"`
-		} `json:"HealthCheck" name:"HealthCheck"`
-		Session struct {
-			SessionState             *string `json:"SessionState" name:"SessionState"`
-			SessionPersistencePeriod *int    `json:"SessionPersistencePeriod" name:"SessionPersistencePeriod"`
-			CookieType               *string `json:"CookieType" name:"CookieType"`
-			CookieName               *string `json:"CookieName" name:"CookieName"`
-		} `json:"Session" name:"Session"`
 	} `json:"BackendServerGroup"`
 }
 
@@ -4363,9 +4398,10 @@ func (r *ModifyAlbBackendServerGroupResponse) FromJsonString(s string) error {
 
 type DescribeAlbBackendServerGroupsRequest struct {
 	*ksyunhttp.BaseRequest
-	Filter     []*DescribeAlbBackendServerGroupsFilter `json:"Filter,omitempty" name:"Filter"`
-	MaxResults *int                                    `json:"MaxResults,omitempty" name:"MaxResults"`
-	NextToken  *string                                 `json:"NextToken,omitempty" name:"NextToken"`
+	Filter               []*DescribeAlbBackendServerGroupsFilter `json:"Filter,omitempty" name:"Filter"`
+	BackendServerGroupId []*string                               `json:"BackendServerGroupId,omitempty" name:"BackendServerGroupId"`
+	MaxResults           *int                                    `json:"MaxResults,omitempty" name:"MaxResults"`
+	NextToken            *string                                 `json:"NextToken,omitempty" name:"NextToken"`
 }
 
 func (r *DescribeAlbBackendServerGroupsRequest) ToJsonString() string {
@@ -4399,24 +4435,6 @@ type DescribeAlbBackendServerGroupsResponse struct {
 		UpstreamKeepalive      *string `json:"UpstreamKeepalive" name:"UpstreamKeepalive"`
 		IpVersion              *string `json:"IpVersion" name:"IpVersion"`
 		Method                 *string `json:"Method" name:"Method"`
-		HealthCheck            struct {
-			HealthCheckState       *string `json:"HealthCheckState" name:"HealthCheckState"`
-			HealthyThreshold       *int    `json:"HealthyThreshold" name:"HealthyThreshold"`
-			Interval               *int    `json:"Interval" name:"Interval"`
-			Timeout                *int    `json:"Timeout" name:"Timeout"`
-			UnhealthyThreshold     *int    `json:"UnhealthyThreshold" name:"UnhealthyThreshold"`
-			HostName               *string `json:"HostName" name:"HostName"`
-			UrlPath                *string `json:"UrlPath" name:"UrlPath"`
-			HealthProtocol         *string `json:"HealthProtocol" name:"HealthProtocol"`
-			HealthCheckConnectPort *int    `json:"HealthCheckConnectPort" name:"HealthCheckConnectPort"`
-			HealthCode             *string `json:"HealthCode" name:"HealthCode"`
-		} `json:"HealthCheck" name:"HealthCheck"`
-		Session struct {
-			SessionState             *string `json:"SessionState" name:"SessionState"`
-			SessionPersistencePeriod *int    `json:"SessionPersistencePeriod" name:"SessionPersistencePeriod"`
-			CookieType               *string `json:"CookieType" name:"CookieType"`
-			CookieName               *string `json:"CookieName" name:"CookieName"`
-		} `json:"Session" name:"Session"`
 	} `json:"BackendServerGroupSet"`
 }
 
@@ -4437,6 +4455,7 @@ type RegisterAlbBackendServerRequest struct {
 	Weight                 *int    `json:"Weight,omitempty" name:"Weight"`
 	NetworkInterfaceId     *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
 	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitempty" name:"DirectConnectGatewayId"`
+	MasterSlaveType        *string `json:"MasterSlaveType,omitempty" name:"MasterSlaveType"`
 }
 
 func (r *RegisterAlbBackendServerRequest) ToJsonString() string {
@@ -4466,6 +4485,8 @@ type RegisterAlbBackendServerResponse struct {
 		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
 		BackendServerId      *string `json:"BackendServerId" name:"BackendServerId"`
 		Port                 *string `json:"Port" name:"Port"`
+		MasterSlaveType      *string `json:"MasterSlaveType" name:"MasterSlaveType"`
+		BackendServerState   *string `json:"BackendServerState" name:"BackendServerState"`
 	} `json:"BackendServer"`
 }
 
@@ -4518,6 +4539,8 @@ type ModifyAlbBackendServerRequest struct {
 	*ksyunhttp.BaseRequest
 	BackendServerId *string `json:"BackendServerId,omitempty" name:"BackendServerId"`
 	Weight          *int    `json:"Weight,omitempty" name:"Weight"`
+	Port            *int    `json:"Port,omitempty" name:"Port"`
+	MasterSlaveType *string `json:"MasterSlaveType,omitempty" name:"MasterSlaveType"`
 }
 
 func (r *ModifyAlbBackendServerRequest) ToJsonString() string {
@@ -4547,6 +4570,8 @@ type ModifyAlbBackendServerResponse struct {
 		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
 		BackendServerId      *string `json:"BackendServerId" name:"BackendServerId"`
 		Port                 *string `json:"Port" name:"Port"`
+		MasterSlaveType      *string `json:"MasterSlaveType" name:"MasterSlaveType"`
+		BackendServerState   *string `json:"BackendServerState" name:"BackendServerState"`
 	} `json:"BackendServer"`
 }
 
@@ -4561,9 +4586,10 @@ func (r *ModifyAlbBackendServerResponse) FromJsonString(s string) error {
 
 type DescribeAlbBackendServersRequest struct {
 	*ksyunhttp.BaseRequest
-	Filter     []*DescribeAlbBackendServersFilter `json:"Filter,omitempty" name:"Filter"`
-	MaxResults *int                               `json:"MaxResults,omitempty" name:"MaxResults"`
-	NextToken  *string                            `json:"NextToken,omitempty" name:"NextToken"`
+	Filter          []*DescribeAlbBackendServersFilter `json:"Filter,omitempty" name:"Filter"`
+	BackendServerId []*string                          `json:"BackendServerId,omitempty" name:"BackendServerId"`
+	MaxResults      *int                               `json:"MaxResults,omitempty" name:"MaxResults"`
+	NextToken       *string                            `json:"NextToken,omitempty" name:"NextToken"`
 }
 
 func (r *DescribeAlbBackendServersRequest) ToJsonString() string {
@@ -4593,6 +4619,8 @@ type DescribeAlbBackendServersResponse struct {
 		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
 		BackendServerId      *string `json:"BackendServerId" name:"BackendServerId"`
 		Port                 *string `json:"Port" name:"Port"`
+		MasterSlaveType      *string `json:"MasterSlaveType" name:"MasterSlaveType"`
+		BackendServerState   *string `json:"BackendServerState" name:"BackendServerState"`
 	} `json:"BackendServerSet"`
 }
 
@@ -4810,5 +4838,80 @@ func (r *AddAlbRulesResponse) ToJsonString() string {
 }
 
 func (r *AddAlbRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetLbProtocolLayersRequest struct {
+	*ksyunhttp.BaseRequest
+	AlbId          *string `json:"AlbId,omitempty" name:"AlbId"`
+	ProtocolLayers *string `json:"ProtocolLayers,omitempty" name:"ProtocolLayers"`
+}
+
+func (r *SetLbProtocolLayersRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetLbProtocolLayersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	if len(f) > 0 {
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetLbProtocolLayersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetLbProtocolLayersResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId               *string `json:"RequestId" name:"RequestId"`
+	ApplicationLoadBalancer struct {
+		AlbId            *string `json:"AlbId" name:"AlbId"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		AlbName          *string `json:"AlbName" name:"AlbName"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		AlbVersion       *string `json:"AlbVersion" name:"AlbVersion"`
+		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		AlbType          *string `json:"AlbType" name:"AlbType"`
+		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
+		VpcId            *string `json:"VpcId" name:"VpcId"`
+		State            *string `json:"State" name:"State"`
+		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status           *string `json:"Status" name:"Status"`
+		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
+		BillType         *int    `json:"BillType" name:"BillType"`
+		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
+		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
+		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
+		BindWafStatus    *string `json:"BindWafStatus" name:"BindWafStatus"`
+		WafInfo          struct {
+			WafId *string `json:"WafId" name:"WafId"`
+		} `json:"WafInfo" name:"WafInfo"`
+		ProtocolLayers *string `json:"ProtocolLayers" name:"ProtocolLayers"`
+		ResourceTags   []struct {
+			Name  *string `json:"Name" name:"Name"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"ResourceTags" name:"ResourceTags"`
+		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
+		ModifyProtection *string `json:"ModifyProtection" name:"ModifyProtection"`
+		TagSet           []struct {
+			ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
+			TagId        *string `json:"TagId" name:"TagId"`
+			TagKey       *string `json:"TagKey" name:"TagKey"`
+			TagValue     *string `json:"TagValue" name:"TagValue"`
+		} `json:"TagSet" name:"TagSet"`
+	} `json:"ApplicationLoadBalancer"`
+}
+
+func (r *SetLbProtocolLayersResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetLbProtocolLayersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

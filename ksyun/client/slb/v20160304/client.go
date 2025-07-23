@@ -2992,3 +2992,36 @@ func (c *Client) AddAlbRulesWithContext(ctx context.Context, request *AddAlbRule
 	}
 	return msg
 }
+func NewSetLbProtocolLayersRequest() (request *SetLbProtocolLayersRequest) {
+	request = &SetLbProtocolLayersRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("slb", APIVersion, "SetLbProtocolLayers")
+	return
+}
+
+func NewSetLbProtocolLayersResponse() (response *SetLbProtocolLayersResponse) {
+	response = &SetLbProtocolLayersResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetLbProtocolLayers(request *SetLbProtocolLayersRequest) string {
+	return c.SetLbProtocolLayersWithContext(context.Background(), request)
+}
+
+func (c *Client) SetLbProtocolLayersWithContext(ctx context.Context, request *SetLbProtocolLayersRequest) string {
+	if request == nil {
+		request = NewSetLbProtocolLayersRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetLbProtocolLayersResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
