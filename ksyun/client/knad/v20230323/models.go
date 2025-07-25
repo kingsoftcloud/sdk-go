@@ -1,10 +1,10 @@
 package v20230323
-
 import (
 	"encoding/json"
 	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type CreateKnadRequest struct {
 	*ksyunhttp.BaseRequest
@@ -39,7 +39,7 @@ type CreateKnadResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Kid       *string `json:"kid" name:"kid"`
-	Return    *string `json:"Return" name:"Return"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *CreateKnadResponse) ToJsonString() string {
@@ -51,11 +51,12 @@ func (r *CreateKnadResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyKnadRequest struct {
 	*ksyunhttp.BaseRequest
+	KnadId    *string `json:"KnadId,omitempty" name:"KnadId"`
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
 	IpCount   *int    `json:"IpCount,omitempty" name:"IpCount"`
-	KnadId    *string `json:"KnadId,omitempty" name:"KnadId"`
 	Band      *int    `json:"Band,omitempty" name:"Band"`
 	MaxBand   *int    `json:"MaxBand,omitempty" name:"MaxBand"`
 	IdcBand   *int    `json:"IdcBand,omitempty" name:"IdcBand"`
@@ -80,7 +81,7 @@ func (r *ModifyKnadRequest) FromJsonString(s string) error {
 type ModifyKnadResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
-	Return    *string `json:"Return" name:"Return"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *ModifyKnadResponse) ToJsonString() string {
@@ -92,45 +93,46 @@ func (r *ModifyKnadResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type KnadIpListRequest struct {
+type UnbindIpListRequest struct {
 	*ksyunhttp.BaseRequest
-	KnadId *string `json:"KnadId,omitempty" name:"KnadId"`
 }
 
-func (r *KnadIpListRequest) ToJsonString() string {
+func (r *UnbindIpListRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
 }
 
-func (r *KnadIpListRequest) FromJsonString(s string) error {
+func (r *UnbindIpListRequest) FromJsonString(s string) error {
 	f := make(map[string]interface{})
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
 	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "KnadIpListRequest has unknown keys!", "")
+		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UnbindIpListRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type KnadIpListResponse struct {
+type UnbindIpListResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
+	EipCount  *int    `json:"EipCount" name:"EipCount"`
 	EipSet    []struct {
-		Ip           *string `json:"Ip" name:"Ip"`
-		EipId        *string `json:"EipId" name:"EipId"`
+		Ip    *string `json:"Ip" name:"Ip"`
+		EipId *string `json:"EipId" name:"EipId"`
 		InstanceType *string `json:"InstanceType" name:"InstanceType"`
 	} `json:"EipSet"`
 }
 
-func (r *KnadIpListResponse) ToJsonString() string {
+func (r *UnbindIpListResponse) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
 }
 
-func (r *KnadIpListResponse) FromJsonString(s string) error {
+func (r *UnbindIpListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type AssociateIpRequest struct {
 	*ksyunhttp.BaseRequest
@@ -169,6 +171,7 @@ func (r *AssociateIpResponse) ToJsonString() string {
 func (r *AssociateIpResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DisassociateIpRequest struct {
 	*ksyunhttp.BaseRequest
@@ -211,6 +214,7 @@ func (r *DisassociateIpResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeKnadIpRequest struct {
 	*ksyunhttp.BaseRequest
 	IpSort       *string `json:"IpSort,omitempty" name:"IpSort"`
@@ -243,17 +247,17 @@ type DescribeKnadIpResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	KnadIpSet []struct {
-		KnadId       *string `json:"KnadId" name:"KnadId"`
-		KnadName     *string `json:"KnadName" name:"KnadName"`
-		EipId        *string `json:"EipId" name:"EipId"`
-		KnadIp       *string `json:"KnadIp" name:"KnadIp"`
-		StatusDesc   *string `json:"StatusDesc" name:"StatusDesc"`
-		ProjectId    *int    `json:"ProjectId" name:"ProjectId"`
-		Band         *int    `json:"Band" name:"Band"`
-		MaxBand      *int    `json:"MaxBand" name:"MaxBand"`
-		TemplateId   *int    `json:"TemplateId" name:"TemplateId"`
+		KnadId     *string `json:"KnadId" name:"KnadId"`
+		KnadName   *string `json:"KnadName" name:"KnadName"`
+		EipId      *string `json:"EipId" name:"EipId"`
+		KnadIp     *string `json:"KnadIp" name:"KnadIp"`
+		StatusDesc *string `json:"StatusDesc" name:"StatusDesc"`
+		ProjectId  *int    `json:"ProjectId" name:"ProjectId"`
+		Band       *int    `json:"Band" name:"Band"`
+		MaxBand    *int    `json:"MaxBand" name:"MaxBand"`
+		TemplateId *int    `json:"TemplateId" name:"TemplateId"`
 		TemplateName *string `json:"TemplateName" name:"TemplateName"`
-		EipInfo      struct {
+		EipInfo    struct {
 			InstanceType *string `json:"InstanceType" name:"InstanceType"`
 		} `json:"EipInfo" name:"EipInfo"`
 	} `json:"KnadIpSet"`
@@ -268,6 +272,7 @@ func (r *DescribeKnadIpResponse) ToJsonString() string {
 func (r *DescribeKnadIpResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DeleteKnadRequest struct {
 	*ksyunhttp.BaseRequest
@@ -304,6 +309,7 @@ func (r *DeleteKnadResponse) ToJsonString() string {
 func (r *DeleteKnadResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeKnadRequest struct {
 	*ksyunhttp.BaseRequest
@@ -356,42 +362,6 @@ func (r *DescribeKnadResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type ModifyKnadNameRequest struct {
-	*ksyunhttp.BaseRequest
-	KnadId   *string `json:"KnadId,omitempty" name:"KnadId"`
-	KnadName *string `json:"KnadName,omitempty" name:"KnadName"`
-}
-
-func (r *ModifyKnadNameRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *ModifyKnadNameRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyKnadNameRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ModifyKnadNameResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Return    *bool   `json:"Return" name:"Return"`
-}
-
-func (r *ModifyKnadNameResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *ModifyKnadNameResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
 
 type GetBWIpListRequest struct {
 	*ksyunhttp.BaseRequest
@@ -437,6 +407,7 @@ func (r *GetBWIpListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteBWRequest struct {
 	*ksyunhttp.BaseRequest
 	KnadId *string   `json:"KnadId,omitempty" name:"KnadId"`
@@ -474,6 +445,7 @@ func (r *DeleteBWResponse) ToJsonString() string {
 func (r *DeleteBWResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type AddBWIpListRequest struct {
 	*ksyunhttp.BaseRequest
@@ -513,6 +485,7 @@ func (r *AddBWIpListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type GetZoneListRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -545,6 +518,7 @@ func (r *GetZoneListResponse) ToJsonString() string {
 func (r *GetZoneListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ModifyPolicyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -586,6 +560,7 @@ func (r *ModifyPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyBlockLocationRequest struct {
 	*ksyunhttp.BaseRequest
 	KnadId        *string   `json:"KnadId,omitempty" name:"KnadId"`
@@ -624,6 +599,7 @@ func (r *ModifyBlockLocationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type GetBlockLocationsRequest struct {
 	*ksyunhttp.BaseRequest
 	KnadId *string `json:"KnadId,omitempty" name:"KnadId"`
@@ -650,7 +626,7 @@ type GetBlockLocationsResponse struct {
 	RequestId        *string `json:"RequestId" name:"RequestId"`
 	LocationBlock    *int    `json:"LocationBlock" name:"LocationBlock"`
 	BlockLocationSet []struct {
-		ZoneKey  *string `json:"ZoneKey" name:"ZoneKey"`
+		ZoneKey *string `json:"ZoneKey" name:"ZoneKey"`
 		ZoneName *string `json:"ZoneName" name:"ZoneName"`
 	} `json:"BlockLocationSet"`
 }
@@ -664,52 +640,6 @@ func (r *GetBlockLocationsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type GetAttackLogRequest struct {
-	*ksyunhttp.BaseRequest
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
-	EndTime   *string `json:"EndTime,omitempty" name:"EndTime"`
-	Ip        *string `json:"Ip,omitempty" name:"Ip"`
-	PageSize  *int    `json:"PageSize,omitempty" name:"PageSize"`
-	OffSet    *int    `json:"OffSet,omitempty" name:"OffSet"`
-}
-
-func (r *GetAttackLogRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *GetAttackLogRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetAttackLogRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type GetAttackLogResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId    *string `json:"RequestId" name:"RequestId"`
-	AttackLogSet []struct {
-		Ip         *string `json:"Ip" name:"Ip"`
-		StartTime  *string `json:"StartTime" name:"StartTime"`
-		EndTime    *string `json:"EndTime" name:"EndTime"`
-		AttackType *string `json:"AttackType" name:"AttackType"`
-		MaxBps     *string `json:"MaxBps" name:"MaxBps"`
-	} `json:"AttackLogSet"`
-	LogCount *int `json:"LogCount" name:"LogCount"`
-}
-
-func (r *GetAttackLogResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *GetAttackLogResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
 
 type GetKnadPolicyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -749,3 +679,4 @@ func (r *GetKnadPolicyResponse) ToJsonString() string {
 func (r *GetKnadPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

@@ -1,5 +1,4 @@
 package v20230323
-
 import (
 	"context"
 	"fmt"
@@ -88,33 +87,33 @@ func (c *Client) ModifyKnadWithContext(ctx context.Context, request *ModifyKnadR
 	}
 	return msg
 }
-func NewKnadIpListRequest() (request *KnadIpListRequest) {
-	request = &KnadIpListRequest{
+func NewUnbindIpListRequest() (request *UnbindIpListRequest) {
+	request = &UnbindIpListRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
 	}
-	request.Init().WithApiInfo("knad", APIVersion, "KnadIpList")
+	request.Init().WithApiInfo("knad", APIVersion, "UnbindIpList")
 	return
 }
 
-func NewKnadIpListResponse() (response *KnadIpListResponse) {
-	response = &KnadIpListResponse{
+func NewUnbindIpListResponse() (response *UnbindIpListResponse) {
+	response = &UnbindIpListResponse{
 		BaseResponse: &ksyunhttp.BaseResponse{},
 	}
 	return
 }
 
-func (c *Client) KnadIpList(request *KnadIpListRequest) string {
-	return c.KnadIpListWithContext(context.Background(), request)
+func (c *Client) UnbindIpList(request *UnbindIpListRequest) string {
+	return c.UnbindIpListWithContext(context.Background(), request)
 }
 
-func (c *Client) KnadIpListWithContext(ctx context.Context, request *KnadIpListRequest) string {
+func (c *Client) UnbindIpListWithContext(ctx context.Context, request *UnbindIpListRequest) string {
 	if request == nil {
-		request = NewKnadIpListRequest()
+		request = NewUnbindIpListRequest()
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
-	response := NewKnadIpListResponse()
+	response := NewUnbindIpListResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -280,39 +279,6 @@ func (c *Client) DescribeKnadWithContext(ctx context.Context, request *DescribeK
 	request.SetContentType("application/json")
 
 	response := NewDescribeKnadResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-func NewModifyKnadNameRequest() (request *ModifyKnadNameRequest) {
-	request = &ModifyKnadNameRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("knad", APIVersion, "ModifyKnadName")
-	return
-}
-
-func NewModifyKnadNameResponse() (response *ModifyKnadNameResponse) {
-	response = &ModifyKnadNameResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) ModifyKnadName(request *ModifyKnadNameRequest) string {
-	return c.ModifyKnadNameWithContext(context.Background(), request)
-}
-
-func (c *Client) ModifyKnadNameWithContext(ctx context.Context, request *ModifyKnadNameRequest) string {
-	if request == nil {
-		request = NewModifyKnadNameRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewModifyKnadNameResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -550,39 +516,6 @@ func (c *Client) GetBlockLocationsWithContext(ctx context.Context, request *GetB
 	}
 	return msg
 }
-func NewGetAttackLogRequest() (request *GetAttackLogRequest) {
-	request = &GetAttackLogRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("knad", APIVersion, "GetAttackLog")
-	return
-}
-
-func NewGetAttackLogResponse() (response *GetAttackLogResponse) {
-	response = &GetAttackLogResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) GetAttackLog(request *GetAttackLogRequest) string {
-	return c.GetAttackLogWithContext(context.Background(), request)
-}
-
-func (c *Client) GetAttackLogWithContext(ctx context.Context, request *GetAttackLogRequest) string {
-	if request == nil {
-		request = NewGetAttackLogRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewGetAttackLogResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
 func NewGetKnadPolicyRequest() (request *GetKnadPolicyRequest) {
 	request = &GetKnadPolicyRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -616,3 +549,5 @@ func (c *Client) GetKnadPolicyWithContext(ctx context.Context, request *GetKnadP
 	}
 	return msg
 }
+
+
