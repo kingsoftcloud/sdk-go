@@ -2,7 +2,6 @@ package v20161122
 
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -16,17 +15,6 @@ type CreateForwardConfRequest struct {
 func (r *CreateForwardConfRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CreateForwardConfRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateForwardConfRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateForwardConfResponse struct {
@@ -51,17 +39,6 @@ type DeleteForwardConfRequest struct {
 func (r *DeleteForwardConfRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeleteForwardConfRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteForwardConfRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteForwardConfResponse struct {
@@ -96,17 +73,6 @@ type DescribeForwardConfRequest struct {
 func (r *DescribeForwardConfRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DescribeForwardConfRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeForwardConfRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeForwardConfResponse struct {
@@ -153,17 +119,6 @@ func (r *CreateForwardSourceRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateForwardSourceRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateForwardSourceRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateForwardSourceResponse struct {
 	*ksyunhttp.BaseResponse
 	Response struct {
@@ -196,17 +151,6 @@ func (r *DeleteForwardSourceRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DeleteForwardSourceRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteForwardSourceRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DeleteForwardSourceResponse struct {
 	*ksyunhttp.BaseResponse
 	DeleteForwardSourceResponse struct {
@@ -233,17 +177,6 @@ type DescribeForwardSourceRequest struct {
 func (r *DescribeForwardSourceRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DescribeForwardSourceRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeForwardSourceRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeForwardSourceResponse struct {
@@ -289,17 +222,6 @@ func (r *GetAttackLogRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetAttackLogRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetAttackLogRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetAttackLogResponse struct {
 	*ksyunhttp.BaseResponse
 }
@@ -323,17 +245,6 @@ type DescribeOverviewRequest struct {
 func (r *DescribeOverviewRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DescribeOverviewRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeOverviewRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeOverviewResponse struct {

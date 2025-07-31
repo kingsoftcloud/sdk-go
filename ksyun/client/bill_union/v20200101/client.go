@@ -1,5 +1,4 @@
 package v20200101
-
 import (
 	"context"
 	"fmt"
@@ -41,6 +40,23 @@ func (c *Client) DescribeBillSummaryByPayMode(request *DescribeBillSummaryByPayM
 	return c.DescribeBillSummaryByPayModeWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeBillSummaryByPayModeSend(request *DescribeBillSummaryByPayModeRequest) (*DescribeBillSummaryByPayModeResponse, error) {
+	statusCode, msg, err := c.DescribeBillSummaryByPayModeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeBillSummaryByPayModeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeBillSummaryByPayModeWithContext(ctx context.Context, request *DescribeBillSummaryByPayModeRequest) string {
 	if request == nil {
 		request = NewDescribeBillSummaryByPayModeRequest()
@@ -54,6 +70,21 @@ func (c *Client) DescribeBillSummaryByPayModeWithContext(ctx context.Context, re
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeBillSummaryByPayModeWithContextV2(ctx context.Context, request *DescribeBillSummaryByPayModeRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeBillSummaryByPayModeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeBillSummaryByPayModeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeBillSummaryByProductRequest() (request *DescribeBillSummaryByProductRequest) {
 	request = &DescribeBillSummaryByProductRequest{
@@ -74,6 +105,23 @@ func (c *Client) DescribeBillSummaryByProduct(request *DescribeBillSummaryByProd
 	return c.DescribeBillSummaryByProductWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeBillSummaryByProductSend(request *DescribeBillSummaryByProductRequest) (*DescribeBillSummaryByProductResponse, error) {
+	statusCode, msg, err := c.DescribeBillSummaryByProductWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeBillSummaryByProductResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeBillSummaryByProductWithContext(ctx context.Context, request *DescribeBillSummaryByProductRequest) string {
 	if request == nil {
 		request = NewDescribeBillSummaryByProductRequest()
@@ -87,6 +135,21 @@ func (c *Client) DescribeBillSummaryByProductWithContext(ctx context.Context, re
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeBillSummaryByProductWithContextV2(ctx context.Context, request *DescribeBillSummaryByProductRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeBillSummaryByProductRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeBillSummaryByProductResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeBillSummaryByProjectRequest() (request *DescribeBillSummaryByProjectRequest) {
 	request = &DescribeBillSummaryByProjectRequest{
@@ -107,6 +170,23 @@ func (c *Client) DescribeBillSummaryByProject(request *DescribeBillSummaryByProj
 	return c.DescribeBillSummaryByProjectWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeBillSummaryByProjectSend(request *DescribeBillSummaryByProjectRequest) (*DescribeBillSummaryByProjectResponse, error) {
+	statusCode, msg, err := c.DescribeBillSummaryByProjectWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeBillSummaryByProjectResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeBillSummaryByProjectWithContext(ctx context.Context, request *DescribeBillSummaryByProjectRequest) string {
 	if request == nil {
 		request = NewDescribeBillSummaryByProjectRequest()
@@ -120,6 +200,21 @@ func (c *Client) DescribeBillSummaryByProjectWithContext(ctx context.Context, re
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeBillSummaryByProjectWithContextV2(ctx context.Context, request *DescribeBillSummaryByProjectRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeBillSummaryByProjectRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeBillSummaryByProjectResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeInstanceSummaryBillsRequest() (request *DescribeInstanceSummaryBillsRequest) {
 	request = &DescribeInstanceSummaryBillsRequest{
@@ -140,6 +235,23 @@ func (c *Client) DescribeInstanceSummaryBills(request *DescribeInstanceSummaryBi
 	return c.DescribeInstanceSummaryBillsWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeInstanceSummaryBillsSend(request *DescribeInstanceSummaryBillsRequest) (*DescribeInstanceSummaryBillsResponse, error) {
+	statusCode, msg, err := c.DescribeInstanceSummaryBillsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeInstanceSummaryBillsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeInstanceSummaryBillsWithContext(ctx context.Context, request *DescribeInstanceSummaryBillsRequest) string {
 	if request == nil {
 		request = NewDescribeInstanceSummaryBillsRequest()
@@ -153,6 +265,21 @@ func (c *Client) DescribeInstanceSummaryBillsWithContext(ctx context.Context, re
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeInstanceSummaryBillsWithContextV2(ctx context.Context, request *DescribeInstanceSummaryBillsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeInstanceSummaryBillsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeInstanceSummaryBillsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeProductCodeRequest() (request *DescribeProductCodeRequest) {
 	request = &DescribeProductCodeRequest{
@@ -173,6 +300,23 @@ func (c *Client) DescribeProductCode(request *DescribeProductCodeRequest) string
 	return c.DescribeProductCodeWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeProductCodeSend(request *DescribeProductCodeRequest) (*DescribeProductCodeResponse, error) {
+	statusCode, msg, err := c.DescribeProductCodeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeProductCodeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeProductCodeWithContext(ctx context.Context, request *DescribeProductCodeRequest) string {
 	if request == nil {
 		request = NewDescribeProductCodeRequest()
@@ -186,6 +330,21 @@ func (c *Client) DescribeProductCodeWithContext(ctx context.Context, request *De
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeProductCodeWithContextV2(ctx context.Context, request *DescribeProductCodeRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeProductCodeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeProductCodeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeSplitItemBillDetailsRequest() (request *DescribeSplitItemBillDetailsRequest) {
 	request = &DescribeSplitItemBillDetailsRequest{
@@ -206,6 +365,23 @@ func (c *Client) DescribeSplitItemBillDetails(request *DescribeSplitItemBillDeta
 	return c.DescribeSplitItemBillDetailsWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeSplitItemBillDetailsSend(request *DescribeSplitItemBillDetailsRequest) (*DescribeSplitItemBillDetailsResponse, error) {
+	statusCode, msg, err := c.DescribeSplitItemBillDetailsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeSplitItemBillDetailsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeSplitItemBillDetailsWithContext(ctx context.Context, request *DescribeSplitItemBillDetailsRequest) string {
 	if request == nil {
 		request = NewDescribeSplitItemBillDetailsRequest()
@@ -219,6 +395,21 @@ func (c *Client) DescribeSplitItemBillDetailsWithContext(ctx context.Context, re
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeSplitItemBillDetailsWithContextV2(ctx context.Context, request *DescribeSplitItemBillDetailsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeSplitItemBillDetailsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeSplitItemBillDetailsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeMiItemBillsRequest() (request *DescribeMiItemBillsRequest) {
 	request = &DescribeMiItemBillsRequest{
@@ -239,6 +430,23 @@ func (c *Client) DescribeMiItemBills(request *DescribeMiItemBillsRequest) string
 	return c.DescribeMiItemBillsWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeMiItemBillsSend(request *DescribeMiItemBillsRequest) (*DescribeMiItemBillsResponse, error) {
+	statusCode, msg, err := c.DescribeMiItemBillsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeMiItemBillsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeMiItemBillsWithContext(ctx context.Context, request *DescribeMiItemBillsRequest) string {
 	if request == nil {
 		request = NewDescribeMiItemBillsRequest()
@@ -252,6 +460,21 @@ func (c *Client) DescribeMiItemBillsWithContext(ctx context.Context, request *De
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeMiItemBillsWithContextV2(ctx context.Context, request *DescribeMiItemBillsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeMiItemBillsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeMiItemBillsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeSplitItemDayBillDetailsRequest() (request *DescribeSplitItemDayBillDetailsRequest) {
 	request = &DescribeSplitItemDayBillDetailsRequest{
@@ -272,6 +495,23 @@ func (c *Client) DescribeSplitItemDayBillDetails(request *DescribeSplitItemDayBi
 	return c.DescribeSplitItemDayBillDetailsWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeSplitItemDayBillDetailsSend(request *DescribeSplitItemDayBillDetailsRequest) (*DescribeSplitItemDayBillDetailsResponse, error) {
+	statusCode, msg, err := c.DescribeSplitItemDayBillDetailsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeSplitItemDayBillDetailsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeSplitItemDayBillDetailsWithContext(ctx context.Context, request *DescribeSplitItemDayBillDetailsRequest) string {
 	if request == nil {
 		request = NewDescribeSplitItemDayBillDetailsRequest()
@@ -285,6 +525,21 @@ func (c *Client) DescribeSplitItemDayBillDetailsWithContext(ctx context.Context,
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeSplitItemDayBillDetailsWithContextV2(ctx context.Context, request *DescribeSplitItemDayBillDetailsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeSplitItemDayBillDetailsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeSplitItemDayBillDetailsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewListProductGroupsRequest() (request *ListProductGroupsRequest) {
 	request = &ListProductGroupsRequest{
@@ -305,6 +560,23 @@ func (c *Client) ListProductGroups(request *ListProductGroupsRequest) string {
 	return c.ListProductGroupsWithContext(context.Background(), request)
 }
 
+func (c *Client) ListProductGroupsSend(request *ListProductGroupsRequest) (*ListProductGroupsResponse, error) {
+	statusCode, msg, err := c.ListProductGroupsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ListProductGroupsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ListProductGroupsWithContext(ctx context.Context, request *ListProductGroupsRequest) string {
 	if request == nil {
 		request = NewListProductGroupsRequest()
@@ -319,3 +591,20 @@ func (c *Client) ListProductGroupsWithContext(ctx context.Context, request *List
 	}
 	return msg
 }
+
+func (c *Client) ListProductGroupsWithContextV2(ctx context.Context, request *ListProductGroupsRequest) (int, string, error) {
+	if request == nil {
+		request = NewListProductGroupsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListProductGroupsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+
+

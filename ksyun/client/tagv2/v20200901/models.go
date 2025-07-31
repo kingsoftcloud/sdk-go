@@ -1,7 +1,6 @@
 package v20200901
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 type DeleteTagTags struct {
@@ -27,17 +26,6 @@ type CreateTagRequest struct {
 func (r *CreateTagRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CreateTagRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateTagRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTagResponse struct {
@@ -67,17 +55,6 @@ func (r *DeleteTagRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DeleteTagRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteTagRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DeleteTagResponse struct {
 	*ksyunhttp.BaseResponse
 	Result    *bool   `json:"Result" name:"Result"`
@@ -105,17 +82,6 @@ type ListTagsRequest struct {
 func (r *ListTagsRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ListTagsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListTagsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListTagsResponse struct {
@@ -156,17 +122,6 @@ func (r *ListTagKeysRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListTagKeysRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListTagKeysRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListTagKeysResponse struct {
 	*ksyunhttp.BaseResponse
 	TagKeys   []*string `json:"TagKeys" name:"TagKeys"`
@@ -196,17 +151,6 @@ type ListTagValuesRequest struct {
 func (r *ListTagValuesRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ListTagValuesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListTagValuesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListTagValuesResponse struct {
@@ -251,17 +195,6 @@ func (r *ListResourcesRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListResourcesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListResourcesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListResourcesResponse struct {
 	*ksyunhttp.BaseResponse
 	Resources *string `json:"Resources" name:"Resources"`
@@ -292,23 +225,12 @@ func (r *ListTagsByResourceIdsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListTagsByResourceIdsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListTagsByResourceIdsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListTagsByResourceIdsResponse struct {
 	*ksyunhttp.BaseResponse
 	Tags []struct {
 		ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
-		TagId    *int    `json:"TagId" name:"TagId"`
-		TagKey   *string `json:"TagKey" name:"TagKey"`
+		TagId  *int    `json:"TagId" name:"TagId"`
+		TagKey *string `json:"TagKey" name:"TagKey"`
 		TagValue *string `json:"TagValue" name:"TagValue"`
 	} `json:"Tags"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -333,17 +255,6 @@ type ReplaceResourcesTagsRequest struct {
 func (r *ReplaceResourcesTagsRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ReplaceResourcesTagsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ReplaceResourcesTagsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ReplaceResourcesTagsResponse struct {
@@ -374,17 +285,6 @@ func (r *DetachResourceTagsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DetachResourceTagsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DetachResourceTagsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DetachResourceTagsResponse struct {
 	*ksyunhttp.BaseResponse
 	Result    *bool   `json:"Result" name:"Result"`
@@ -400,6 +300,7 @@ func (r *DetachResourceTagsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type CreateTagAndAttachResourceRequest struct {
 	*ksyunhttp.BaseRequest
 	TagKey       *string `json:"TagKey,omitempty" name:"TagKey"`
@@ -411,17 +312,6 @@ type CreateTagAndAttachResourceRequest struct {
 func (r *CreateTagAndAttachResourceRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CreateTagAndAttachResourceRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateTagAndAttachResourceRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTagAndAttachResourceResponse struct {

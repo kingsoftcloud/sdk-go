@@ -41,6 +41,23 @@ func (c *Client) GetMetricStatistics(request *GetMetricStatisticsRequest) string
 	return c.GetMetricStatisticsWithContext(context.Background(), request)
 }
 
+func (c *Client) GetMetricStatisticsSend(request *GetMetricStatisticsRequest) (*GetMetricStatisticsResponse, error) {
+	statusCode, msg, err := c.GetMetricStatisticsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetMetricStatisticsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) GetMetricStatisticsWithContext(ctx context.Context, request *GetMetricStatisticsRequest) string {
 	if request == nil {
 		request = NewGetMetricStatisticsRequest()
@@ -54,6 +71,21 @@ func (c *Client) GetMetricStatisticsWithContext(ctx context.Context, request *Ge
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) GetMetricStatisticsWithContextV2(ctx context.Context, request *GetMetricStatisticsRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetMetricStatisticsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetMetricStatisticsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewListMetricsRequest() (request *ListMetricsRequest) {
 	request = &ListMetricsRequest{
@@ -74,6 +106,23 @@ func (c *Client) ListMetrics(request *ListMetricsRequest) string {
 	return c.ListMetricsWithContext(context.Background(), request)
 }
 
+func (c *Client) ListMetricsSend(request *ListMetricsRequest) (*ListMetricsResponse, error) {
+	statusCode, msg, err := c.ListMetricsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ListMetricsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ListMetricsWithContext(ctx context.Context, request *ListMetricsRequest) string {
 	if request == nil {
 		request = NewListMetricsRequest()
@@ -87,4 +136,19 @@ func (c *Client) ListMetricsWithContext(ctx context.Context, request *ListMetric
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ListMetricsWithContextV2(ctx context.Context, request *ListMetricsRequest) (int, string, error) {
+	if request == nil {
+		request = NewListMetricsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListMetricsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }

@@ -41,6 +41,23 @@ func (c *Client) DescribeCluster(request *DescribeClusterRequest) string {
 	return c.DescribeClusterWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeClusterSend(request *DescribeClusterRequest) (*DescribeClusterResponse, error) {
+	statusCode, msg, err := c.DescribeClusterWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeClusterResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeClusterWithContext(ctx context.Context, request *DescribeClusterRequest) string {
 	if request == nil {
 		request = NewDescribeClusterRequest()
@@ -54,6 +71,21 @@ func (c *Client) DescribeClusterWithContext(ctx context.Context, request *Descri
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeClusterWithContextV2(ctx context.Context, request *DescribeClusterRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeClusterRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeClusterResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewListClustersRequest() (request *ListClustersRequest) {
 	request = &ListClustersRequest{
@@ -74,6 +106,23 @@ func (c *Client) ListClusters(request *ListClustersRequest) string {
 	return c.ListClustersWithContext(context.Background(), request)
 }
 
+func (c *Client) ListClustersSend(request *ListClustersRequest) (*ListClustersResponse, error) {
+	statusCode, msg, err := c.ListClustersWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ListClustersResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ListClustersWithContext(ctx context.Context, request *ListClustersRequest) string {
 	if request == nil {
 		request = NewListClustersRequest()
@@ -87,6 +136,21 @@ func (c *Client) ListClustersWithContext(ctx context.Context, request *ListClust
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ListClustersWithContextV2(ctx context.Context, request *ListClustersRequest) (int, string, error) {
+	if request == nil {
+		request = NewListClustersRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListClustersResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyClusterNameRequest() (request *ModifyClusterNameRequest) {
 	request = &ModifyClusterNameRequest{
@@ -107,6 +171,23 @@ func (c *Client) ModifyClusterName(request *ModifyClusterNameRequest) string {
 	return c.ModifyClusterNameWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyClusterNameSend(request *ModifyClusterNameRequest) (*ModifyClusterNameResponse, error) {
+	statusCode, msg, err := c.ModifyClusterNameWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyClusterNameResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyClusterNameWithContext(ctx context.Context, request *ModifyClusterNameRequest) string {
 	if request == nil {
 		request = NewModifyClusterNameRequest()
@@ -120,6 +201,21 @@ func (c *Client) ModifyClusterNameWithContext(ctx context.Context, request *Modi
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyClusterNameWithContextV2(ctx context.Context, request *ModifyClusterNameRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyClusterNameRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyClusterNameResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewLaunchClusterRequest() (request *LaunchClusterRequest) {
 	request = &LaunchClusterRequest{
@@ -140,6 +236,23 @@ func (c *Client) LaunchCluster(request *LaunchClusterRequest) string {
 	return c.LaunchClusterWithContext(context.Background(), request)
 }
 
+func (c *Client) LaunchClusterSend(request *LaunchClusterRequest) (*LaunchClusterResponse, error) {
+	statusCode, msg, err := c.LaunchClusterWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct LaunchClusterResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) LaunchClusterWithContext(ctx context.Context, request *LaunchClusterRequest) string {
 	if request == nil {
 		request = NewLaunchClusterRequest()
@@ -153,6 +266,21 @@ func (c *Client) LaunchClusterWithContext(ctx context.Context, request *LaunchCl
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) LaunchClusterWithContextV2(ctx context.Context, request *LaunchClusterRequest) (int, string, error) {
+	if request == nil {
+		request = NewLaunchClusterRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewLaunchClusterResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewListInstanceGroupsRequest() (request *ListInstanceGroupsRequest) {
 	request = &ListInstanceGroupsRequest{
@@ -173,6 +301,23 @@ func (c *Client) ListInstanceGroups(request *ListInstanceGroupsRequest) string {
 	return c.ListInstanceGroupsWithContext(context.Background(), request)
 }
 
+func (c *Client) ListInstanceGroupsSend(request *ListInstanceGroupsRequest) (*ListInstanceGroupsResponse, error) {
+	statusCode, msg, err := c.ListInstanceGroupsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ListInstanceGroupsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ListInstanceGroupsWithContext(ctx context.Context, request *ListInstanceGroupsRequest) string {
 	if request == nil {
 		request = NewListInstanceGroupsRequest()
@@ -186,6 +331,21 @@ func (c *Client) ListInstanceGroupsWithContext(ctx context.Context, request *Lis
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ListInstanceGroupsWithContextV2(ctx context.Context, request *ListInstanceGroupsRequest) (int, string, error) {
+	if request == nil {
+		request = NewListInstanceGroupsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListInstanceGroupsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewServiceControlRequest() (request *ServiceControlRequest) {
 	request = &ServiceControlRequest{
@@ -206,6 +366,23 @@ func (c *Client) ServiceControl(request *ServiceControlRequest) string {
 	return c.ServiceControlWithContext(context.Background(), request)
 }
 
+func (c *Client) ServiceControlSend(request *ServiceControlRequest) (*ServiceControlResponse, error) {
+	statusCode, msg, err := c.ServiceControlWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ServiceControlResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ServiceControlWithContext(ctx context.Context, request *ServiceControlRequest) string {
 	if request == nil {
 		request = NewServiceControlRequest()
@@ -219,6 +396,21 @@ func (c *Client) ServiceControlWithContext(ctx context.Context, request *Service
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ServiceControlWithContextV2(ctx context.Context, request *ServiceControlRequest) (int, string, error) {
+	if request == nil {
+		request = NewServiceControlRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewServiceControlResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewClusterHealthStatisticRequest() (request *ClusterHealthStatisticRequest) {
 	request = &ClusterHealthStatisticRequest{
@@ -239,6 +431,23 @@ func (c *Client) ClusterHealthStatistic(request *ClusterHealthStatisticRequest) 
 	return c.ClusterHealthStatisticWithContext(context.Background(), request)
 }
 
+func (c *Client) ClusterHealthStatisticSend(request *ClusterHealthStatisticRequest) (*ClusterHealthStatisticResponse, error) {
+	statusCode, msg, err := c.ClusterHealthStatisticWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ClusterHealthStatisticResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ClusterHealthStatisticWithContext(ctx context.Context, request *ClusterHealthStatisticRequest) string {
 	if request == nil {
 		request = NewClusterHealthStatisticRequest()
@@ -252,6 +461,21 @@ func (c *Client) ClusterHealthStatisticWithContext(ctx context.Context, request 
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ClusterHealthStatisticWithContextV2(ctx context.Context, request *ClusterHealthStatisticRequest) (int, string, error) {
+	if request == nil {
+		request = NewClusterHealthStatisticRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewClusterHealthStatisticResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCheckClusterHealthRequest() (request *CheckClusterHealthRequest) {
 	request = &CheckClusterHealthRequest{
@@ -272,6 +496,23 @@ func (c *Client) CheckClusterHealth(request *CheckClusterHealthRequest) string {
 	return c.CheckClusterHealthWithContext(context.Background(), request)
 }
 
+func (c *Client) CheckClusterHealthSend(request *CheckClusterHealthRequest) (*CheckClusterHealthResponse, error) {
+	statusCode, msg, err := c.CheckClusterHealthWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CheckClusterHealthResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CheckClusterHealthWithContext(ctx context.Context, request *CheckClusterHealthRequest) string {
 	if request == nil {
 		request = NewCheckClusterHealthRequest()
@@ -285,4 +526,19 @@ func (c *Client) CheckClusterHealthWithContext(ctx context.Context, request *Che
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CheckClusterHealthWithContextV2(ctx context.Context, request *CheckClusterHealthRequest) (int, string, error) {
+	if request == nil {
+		request = NewCheckClusterHealthRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCheckClusterHealthResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }

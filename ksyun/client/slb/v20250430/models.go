@@ -1,7 +1,6 @@
 package v20250430
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 type DescribeBackendServersFilter struct {
@@ -131,29 +130,18 @@ func (r *DescribeBackendServersRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeBackendServersRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeBackendServersRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeBackendServersResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId        *string `json:"RequestId" name:"RequestId"`
 	BackendServerSet []struct {
-		CreateTime         *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
 		NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
 		BackendServerGroupId *string `json:"BackendServerGroupId" name:"BackendServerGroupId"`
-		BackendServerIp    *string `json:"BackendServerIp" name:"BackendServerIp"`
-		InstanceId         *string `json:"InstanceId" name:"InstanceId"`
-		BackendServerId    *string `json:"BackendServerId" name:"BackendServerId"`
-		Port               *int    `json:"Port" name:"Port"`
-		MasterSlaveType    *string `json:"MasterSlaveType" name:"MasterSlaveType"`
+		BackendServerIp *string `json:"BackendServerIp" name:"BackendServerIp"`
+		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
+		BackendServerId *string `json:"BackendServerId" name:"BackendServerId"`
+		Port            *int    `json:"Port" name:"Port"`
+		MasterSlaveType *string `json:"MasterSlaveType" name:"MasterSlaveType"`
 		BackendServerState *string `json:"BackendServerState" name:"BackendServerState"`
 	} `json:"BackendServerSet"`
 }
@@ -181,29 +169,18 @@ func (r *ModifyBackendServerRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ModifyBackendServerRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyBackendServerRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyBackendServerResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId     *string `json:"RequestId" name:"RequestId"`
 	BackendServer struct {
-		CreateTime         *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
 		NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
 		BackendServerGroupId *string `json:"BackendServerGroupId" name:"BackendServerGroupId"`
-		BackendServerIp    *string `json:"BackendServerIp" name:"BackendServerIp"`
-		InstanceId         *string `json:"InstanceId" name:"InstanceId"`
-		BackendServerId    *string `json:"BackendServerId" name:"BackendServerId"`
-		Port               *int    `json:"Port" name:"Port"`
-		MasterSlaveType    *string `json:"MasterSlaveType" name:"MasterSlaveType"`
+		BackendServerIp *string `json:"BackendServerIp" name:"BackendServerIp"`
+		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
+		BackendServerId *string `json:"BackendServerId" name:"BackendServerId"`
+		Port            *int    `json:"Port" name:"Port"`
+		MasterSlaveType *string `json:"MasterSlaveType" name:"MasterSlaveType"`
 		BackendServerState *string `json:"BackendServerState" name:"BackendServerState"`
 	} `json:"BackendServer"`
 }
@@ -226,17 +203,6 @@ type DeregisterBackendServerRequest struct {
 func (r *DeregisterBackendServerRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeregisterBackendServerRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeregisterBackendServerRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeregisterBackendServerResponse struct {
@@ -271,29 +237,18 @@ func (r *RegisterBackendServerRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *RegisterBackendServerRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "RegisterBackendServerRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type RegisterBackendServerResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId     *string `json:"RequestId" name:"RequestId"`
 	BackendServer struct {
-		CreateTime         *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
 		NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
 		BackendServerGroupId *string `json:"BackendServerGroupId" name:"BackendServerGroupId"`
-		BackendServerIp    *string `json:"BackendServerIp" name:"BackendServerIp"`
-		InstanceId         *string `json:"InstanceId" name:"InstanceId"`
-		BackendServerId    *string `json:"BackendServerId" name:"BackendServerId"`
-		Port               *int    `json:"Port" name:"Port"`
-		MasterSlaveType    *string `json:"MasterSlaveType" name:"MasterSlaveType"`
+		BackendServerIp *string `json:"BackendServerIp" name:"BackendServerIp"`
+		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
+		BackendServerId *string `json:"BackendServerId" name:"BackendServerId"`
+		Port            *int    `json:"Port" name:"Port"`
+		MasterSlaveType *string `json:"MasterSlaveType" name:"MasterSlaveType"`
 		BackendServerState *string `json:"BackendServerState" name:"BackendServerState"`
 	} `json:"BackendServer"`
 }
@@ -321,34 +276,23 @@ func (r *DescribeBackendServerGroupsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeBackendServerGroupsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeBackendServerGroupsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeBackendServerGroupsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId             *string `json:"RequestId" name:"RequestId"`
 	BackendServerGroupSet []struct {
-		CreateTime           *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime          *string `json:"CreateTime" name:"CreateTime"`
 		BackendServerGroupId *string `json:"BackendServerGroupId" name:"BackendServerGroupId"`
-		Name                 *string `json:"Name" name:"Name"`
-		BackendServerType    *string `json:"BackendServerType" name:"BackendServerType"`
+		Name                *string `json:"Name" name:"Name"`
+		BackendServerType   *string `json:"BackendServerType" name:"BackendServerType"`
 		BackendServerGroupType *string `json:"BackendServerGroupType" name:"BackendServerGroupType"`
-		VpcId                *string `json:"VpcId" name:"VpcId"`
-		Protocol             *string `json:"Protocol" name:"Protocol"`
-		BackendServerNumber  *int    `json:"BackendServerNumber" name:"BackendServerNumber"`
-		UpstreamKeepalive    *string `json:"UpstreamKeepalive" name:"UpstreamKeepalive"`
-		IpVersion            *string `json:"IpVersion" name:"IpVersion"`
-		Method               *string `json:"Method" name:"Method"`
-		SlowStartEnabled     *bool   `json:"SlowStartEnabled" name:"SlowStartEnabled"`
-		SlowStartDuration    *int    `json:"SlowStartDuration" name:"SlowStartDuration"`
+		VpcId               *string `json:"VpcId" name:"VpcId"`
+		Protocol            *string `json:"Protocol" name:"Protocol"`
+		BackendServerNumber *int    `json:"BackendServerNumber" name:"BackendServerNumber"`
+		UpstreamKeepalive   *string `json:"UpstreamKeepalive" name:"UpstreamKeepalive"`
+		IpVersion           *string `json:"IpVersion" name:"IpVersion"`
+		Method              *string `json:"Method" name:"Method"`
+		SlowStartEnabled    *bool   `json:"SlowStartEnabled" name:"SlowStartEnabled"`
+		SlowStartDuration   *int    `json:"SlowStartDuration" name:"SlowStartDuration"`
 	} `json:"BackendServerGroupSet"`
 }
 
@@ -394,34 +338,23 @@ func (r *ModifyBackendServerGroupRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ModifyBackendServerGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyBackendServerGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyBackendServerGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId          *string `json:"RequestId" name:"RequestId"`
 	BackendServerGroup struct {
-		CreateTime           *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime          *string `json:"CreateTime" name:"CreateTime"`
 		BackendServerGroupId *string `json:"BackendServerGroupId" name:"BackendServerGroupId"`
-		Name                 *string `json:"Name" name:"Name"`
-		BackendServerType    *string `json:"BackendServerType" name:"BackendServerType"`
+		Name                *string `json:"Name" name:"Name"`
+		BackendServerType   *string `json:"BackendServerType" name:"BackendServerType"`
 		BackendServerGroupType *string `json:"BackendServerGroupType" name:"BackendServerGroupType"`
-		VpcId                *string `json:"VpcId" name:"VpcId"`
-		Protocol             *string `json:"Protocol" name:"Protocol"`
-		BackendServerNumber  *int    `json:"BackendServerNumber" name:"BackendServerNumber"`
-		UpstreamKeepalive    *string `json:"UpstreamKeepalive" name:"UpstreamKeepalive"`
-		IpVersion            *string `json:"IpVersion" name:"IpVersion"`
-		Method               *string `json:"Method" name:"Method"`
-		SlowStartEnabled     *bool   `json:"SlowStartEnabled" name:"SlowStartEnabled"`
-		SlowStartDuration    *int    `json:"SlowStartDuration" name:"SlowStartDuration"`
+		VpcId               *string `json:"VpcId" name:"VpcId"`
+		Protocol            *string `json:"Protocol" name:"Protocol"`
+		BackendServerNumber *int    `json:"BackendServerNumber" name:"BackendServerNumber"`
+		UpstreamKeepalive   *string `json:"UpstreamKeepalive" name:"UpstreamKeepalive"`
+		IpVersion           *string `json:"IpVersion" name:"IpVersion"`
+		Method              *string `json:"Method" name:"Method"`
+		SlowStartEnabled    *bool   `json:"SlowStartEnabled" name:"SlowStartEnabled"`
+		SlowStartDuration   *int    `json:"SlowStartDuration" name:"SlowStartDuration"`
 	} `json:"BackendServerGroup"`
 }
 
@@ -443,17 +376,6 @@ type DeleteBackendServerGroupRequest struct {
 func (r *DeleteBackendServerGroupRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeleteBackendServerGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteBackendServerGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteBackendServerGroupResponse struct {
@@ -506,34 +428,23 @@ func (r *CreateBackendServerGroupRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateBackendServerGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateBackendServerGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateBackendServerGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId          *string `json:"RequestId" name:"RequestId"`
 	BackendServerGroup struct {
-		CreateTime           *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime          *string `json:"CreateTime" name:"CreateTime"`
 		BackendServerGroupId *string `json:"BackendServerGroupId" name:"BackendServerGroupId"`
-		Name                 *string `json:"Name" name:"Name"`
-		BackendServerType    *string `json:"BackendServerType" name:"BackendServerType"`
+		Name                *string `json:"Name" name:"Name"`
+		BackendServerType   *string `json:"BackendServerType" name:"BackendServerType"`
 		BackendServerGroupType *string `json:"BackendServerGroupType" name:"BackendServerGroupType"`
-		VpcId                *string `json:"VpcId" name:"VpcId"`
-		Protocol             *string `json:"Protocol" name:"Protocol"`
-		BackendServerNumber  *int    `json:"BackendServerNumber" name:"BackendServerNumber"`
-		UpstreamKeepalive    *string `json:"UpstreamKeepalive" name:"UpstreamKeepalive"`
-		IpVersion            *string `json:"IpVersion" name:"IpVersion"`
-		Method               *string `json:"Method" name:"Method"`
-		SlowStartEnabled     *bool   `json:"SlowStartEnabled" name:"SlowStartEnabled"`
-		SlowStartDuration    *int    `json:"SlowStartDuration" name:"SlowStartDuration"`
+		VpcId               *string `json:"VpcId" name:"VpcId"`
+		Protocol            *string `json:"Protocol" name:"Protocol"`
+		BackendServerNumber *int    `json:"BackendServerNumber" name:"BackendServerNumber"`
+		UpstreamKeepalive   *string `json:"UpstreamKeepalive" name:"UpstreamKeepalive"`
+		IpVersion           *string `json:"IpVersion" name:"IpVersion"`
+		Method              *string `json:"Method" name:"Method"`
+		SlowStartEnabled    *bool   `json:"SlowStartEnabled" name:"SlowStartEnabled"`
+		SlowStartDuration   *int    `json:"SlowStartDuration" name:"SlowStartDuration"`
 	} `json:"BackendServerGroup"`
 }
 
@@ -560,42 +471,31 @@ func (r *DescribeListenersRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeListenersRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeListenersRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeListenersResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	NextToken   *string `json:"NextToken" name:"NextToken"`
 	ListenerSet []struct {
-		ListenerId           *string `json:"ListenerId" name:"ListenerId"`
-		LoadBalancerId       *string `json:"LoadBalancerId" name:"LoadBalancerId"`
-		CreateTime           *string `json:"CreateTime" name:"CreateTime"`
-		ListenerName         *string `json:"ListenerName" name:"ListenerName"`
-		Protocol             *string `json:"Protocol" name:"Protocol"`
-		Port                 *int    `json:"Port" name:"Port"`
-		CertificateId        *string `json:"CertificateId" name:"CertificateId"`
-		TlsCipherPolicy      *string `json:"TlsCipherPolicy" name:"TlsCipherPolicy"`
+		ListenerId         *string `json:"ListenerId" name:"ListenerId"`
+		LoadBalancerId     *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+		CreateTime         *string `json:"CreateTime" name:"CreateTime"`
+		ListenerName       *string `json:"ListenerName" name:"ListenerName"`
+		Protocol           *string `json:"Protocol" name:"Protocol"`
+		Port               *int    `json:"Port" name:"Port"`
+		CertificateId      *string `json:"CertificateId" name:"CertificateId"`
+		TlsCipherPolicy    *string `json:"TlsCipherPolicy" name:"TlsCipherPolicy"`
 		DefaultBackendServerGroupId *string `json:"DefaultBackendServerGroupId" name:"DefaultBackendServerGroupId"`
-		ListenerAclId        *string `json:"ListenerAclId" name:"ListenerAclId"`
-		ListenerState        *string `json:"ListenerState" name:"ListenerState"`
-		RedirectListenerId   *string `json:"RedirectListenerId" name:"RedirectListenerId"`
+		ListenerAclId      *string `json:"ListenerAclId" name:"ListenerAclId"`
+		ListenerState      *string `json:"ListenerState" name:"ListenerState"`
+		RedirectListenerId *string `json:"RedirectListenerId" name:"RedirectListenerId"`
 		RedirectListenerName *string `json:"RedirectListenerName" name:"RedirectListenerName"`
-		HttpProtocol         *string `json:"HttpProtocol" name:"HttpProtocol"`
-		EnableHttp2          *bool   `json:"EnableHttp2" name:"EnableHttp2"`
-		CaCertificateId      *string `json:"CaCertificateId" name:"CaCertificateId"`
-		CaEnabled            *bool   `json:"CaEnabled" name:"CaEnabled"`
-		EnableQuicUpgrade    *bool   `json:"EnableQuicUpgrade" name:"EnableQuicUpgrade"`
-		QuicListenerId       *string `json:"QuicListenerId" name:"QuicListenerId"`
-		ServerGroupId        *string `json:"ServerGroupId" name:"ServerGroupId"`
+		HttpProtocol       *string `json:"HttpProtocol" name:"HttpProtocol"`
+		EnableHttp2        *bool   `json:"EnableHttp2" name:"EnableHttp2"`
+		CaCertificateId    *string `json:"CaCertificateId" name:"CaCertificateId"`
+		CaEnabled          *bool   `json:"CaEnabled" name:"CaEnabled"`
+		EnableQuicUpgrade  *bool   `json:"EnableQuicUpgrade" name:"EnableQuicUpgrade"`
+		QuicListenerId     *string `json:"QuicListenerId" name:"QuicListenerId"`
+		ServerGroupId      *string `json:"ServerGroupId" name:"ServerGroupId"`
 	} `json:"ListenerSet"`
 }
 
@@ -631,41 +531,30 @@ func (r *ModifyListenerRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ModifyListenerRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyListenerRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyListenerResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Listener  struct {
-		ListenerId           *string `json:"ListenerId" name:"ListenerId"`
-		LoadBalancerId       *string `json:"LoadBalancerId" name:"LoadBalancerId"`
-		CreateTime           *string `json:"CreateTime" name:"CreateTime"`
-		ListenerName         *string `json:"ListenerName" name:"ListenerName"`
-		Protocol             *string `json:"Protocol" name:"Protocol"`
-		Port                 *int    `json:"Port" name:"Port"`
-		CertificateId        *string `json:"CertificateId" name:"CertificateId"`
-		TlsCipherPolicy      *string `json:"TlsCipherPolicy" name:"TlsCipherPolicy"`
+		ListenerId         *string `json:"ListenerId" name:"ListenerId"`
+		LoadBalancerId     *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+		CreateTime         *string `json:"CreateTime" name:"CreateTime"`
+		ListenerName       *string `json:"ListenerName" name:"ListenerName"`
+		Protocol           *string `json:"Protocol" name:"Protocol"`
+		Port               *int    `json:"Port" name:"Port"`
+		CertificateId      *string `json:"CertificateId" name:"CertificateId"`
+		TlsCipherPolicy    *string `json:"TlsCipherPolicy" name:"TlsCipherPolicy"`
 		DefaultBackendServerGroupId *string `json:"DefaultBackendServerGroupId" name:"DefaultBackendServerGroupId"`
-		ListenerAclId        *string `json:"ListenerAclId" name:"ListenerAclId"`
-		ListenerState        *string `json:"ListenerState" name:"ListenerState"`
-		RedirectListenerId   *string `json:"RedirectListenerId" name:"RedirectListenerId"`
+		ListenerAclId      *string `json:"ListenerAclId" name:"ListenerAclId"`
+		ListenerState      *string `json:"ListenerState" name:"ListenerState"`
+		RedirectListenerId *string `json:"RedirectListenerId" name:"RedirectListenerId"`
 		RedirectListenerName *string `json:"RedirectListenerName" name:"RedirectListenerName"`
-		HttpProtocol         *string `json:"HttpProtocol" name:"HttpProtocol"`
-		EnableHttp2          *bool   `json:"EnableHttp2" name:"EnableHttp2"`
-		CaCertificateId      *string `json:"CaCertificateId" name:"CaCertificateId"`
-		CaEnabled            *bool   `json:"CaEnabled" name:"CaEnabled"`
-		EnableQuicUpgrade    *bool   `json:"EnableQuicUpgrade" name:"EnableQuicUpgrade"`
-		QuicListenerId       *string `json:"QuicListenerId" name:"QuicListenerId"`
-		ServerGroupId        *string `json:"ServerGroupId" name:"ServerGroupId"`
+		HttpProtocol       *string `json:"HttpProtocol" name:"HttpProtocol"`
+		EnableHttp2        *bool   `json:"EnableHttp2" name:"EnableHttp2"`
+		CaCertificateId    *string `json:"CaCertificateId" name:"CaCertificateId"`
+		CaEnabled          *bool   `json:"CaEnabled" name:"CaEnabled"`
+		EnableQuicUpgrade  *bool   `json:"EnableQuicUpgrade" name:"EnableQuicUpgrade"`
+		QuicListenerId     *string `json:"QuicListenerId" name:"QuicListenerId"`
+		ServerGroupId      *string `json:"ServerGroupId" name:"ServerGroupId"`
 	} `json:"Listener"`
 }
 
@@ -687,17 +576,6 @@ type DeleteListenerRequest struct {
 func (r *DeleteListenerRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeleteListenerRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteListenerRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteListenerResponse struct {
@@ -744,41 +622,30 @@ func (r *CreateListenerRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateListenerRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateListenerRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateListenerResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Listener  struct {
-		ListenerId           *string `json:"ListenerId" name:"ListenerId"`
-		LoadBalancerId       *string `json:"LoadBalancerId" name:"LoadBalancerId"`
-		CreateTime           *string `json:"CreateTime" name:"CreateTime"`
-		ListenerName         *string `json:"ListenerName" name:"ListenerName"`
-		Protocol             *string `json:"Protocol" name:"Protocol"`
-		Port                 *int    `json:"Port" name:"Port"`
-		CertificateId        *string `json:"CertificateId" name:"CertificateId"`
-		TlsCipherPolicy      *string `json:"TlsCipherPolicy" name:"TlsCipherPolicy"`
+		ListenerId         *string `json:"ListenerId" name:"ListenerId"`
+		LoadBalancerId     *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+		CreateTime         *string `json:"CreateTime" name:"CreateTime"`
+		ListenerName       *string `json:"ListenerName" name:"ListenerName"`
+		Protocol           *string `json:"Protocol" name:"Protocol"`
+		Port               *int    `json:"Port" name:"Port"`
+		CertificateId      *string `json:"CertificateId" name:"CertificateId"`
+		TlsCipherPolicy    *string `json:"TlsCipherPolicy" name:"TlsCipherPolicy"`
 		DefaultBackendServerGroupId *string `json:"DefaultBackendServerGroupId" name:"DefaultBackendServerGroupId"`
-		ListenerAclId        *string `json:"ListenerAclId" name:"ListenerAclId"`
-		ListenerState        *string `json:"ListenerState" name:"ListenerState"`
-		RedirectListenerId   *string `json:"RedirectListenerId" name:"RedirectListenerId"`
+		ListenerAclId      *string `json:"ListenerAclId" name:"ListenerAclId"`
+		ListenerState      *string `json:"ListenerState" name:"ListenerState"`
+		RedirectListenerId *string `json:"RedirectListenerId" name:"RedirectListenerId"`
 		RedirectListenerName *string `json:"RedirectListenerName" name:"RedirectListenerName"`
-		HttpProtocol         *string `json:"HttpProtocol" name:"HttpProtocol"`
-		EnableHttp2          *bool   `json:"EnableHttp2" name:"EnableHttp2"`
-		CaCertificateId      *string `json:"CaCertificateId" name:"CaCertificateId"`
-		CaEnabled            *bool   `json:"CaEnabled" name:"CaEnabled"`
-		EnableQuicUpgrade    *bool   `json:"EnableQuicUpgrade" name:"EnableQuicUpgrade"`
-		QuicListenerId       *string `json:"QuicListenerId" name:"QuicListenerId"`
-		ServerGroupId        *string `json:"ServerGroupId" name:"ServerGroupId"`
+		HttpProtocol       *string `json:"HttpProtocol" name:"HttpProtocol"`
+		EnableHttp2        *bool   `json:"EnableHttp2" name:"EnableHttp2"`
+		CaCertificateId    *string `json:"CaCertificateId" name:"CaCertificateId"`
+		CaEnabled          *bool   `json:"CaEnabled" name:"CaEnabled"`
+		EnableQuicUpgrade  *bool   `json:"EnableQuicUpgrade" name:"EnableQuicUpgrade"`
+		QuicListenerId     *string `json:"QuicListenerId" name:"QuicListenerId"`
+		ServerGroupId      *string `json:"ServerGroupId" name:"ServerGroupId"`
 	} `json:"Listener"`
 }
 
@@ -804,43 +671,32 @@ func (r *SetAccessLogRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *SetAccessLogRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetAccessLogRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type SetAccessLogResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	LoadBalancer struct {
-		LoadBalancerId   *string `json:"LoadBalancerId" name:"LoadBalancerId"`
-		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		LoadBalancerId *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
 		LoadBalancerName *string `json:"LoadBalancerName" name:"LoadBalancerName"`
-		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		ProjectId      *string `json:"ProjectId" name:"ProjectId"`
 		LoadBalancerVersion *string `json:"LoadBalancerVersion" name:"LoadBalancerVersion"`
-		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		IpVersion      *string `json:"IpVersion" name:"IpVersion"`
 		LoadBalancerType *string `json:"LoadBalancerType" name:"LoadBalancerType"`
-		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
-		VpcId            *string `json:"VpcId" name:"VpcId"`
-		State            *string `json:"State" name:"State"`
-		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
-		Status           *string `json:"Status" name:"Status"`
-		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
-		BillType         *int    `json:"BillType" name:"BillType"`
-		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
-		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+		PublicIp       *string `json:"PublicIp" name:"PublicIp"`
+		VpcId          *string `json:"VpcId" name:"VpcId"`
+		State          *string `json:"State" name:"State"`
+		ListenersCount *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status         *string `json:"Status" name:"Status"`
+		EnabledLog     *bool   `json:"EnabledLog" name:"EnabledLog"`
+		BillType       *int    `json:"BillType" name:"BillType"`
+		ProductWhat    *int    `json:"ProductWhat" name:"ProductWhat"`
+		ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		SubnetId       *string `json:"SubnetId" name:"SubnetId"`
 		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
-		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
-		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
-		BindWafStatus    *string `json:"BindWafStatus" name:"BindWafStatus"`
-		WafInfo          struct {
+		EnabledQuic    *bool   `json:"EnabledQuic" name:"EnabledQuic"`
+		EnableHpa      *bool   `json:"EnableHpa" name:"EnableHpa"`
+		BindWafStatus  *string `json:"BindWafStatus" name:"BindWafStatus"`
+		WafInfo        struct {
 			WafId *string `json:"WafId" name:"WafId"`
 		} `json:"WafInfo" name:"WafInfo"`
 		ProtocolLayers *string `json:"ProtocolLayers" name:"ProtocolLayers"`
@@ -880,43 +736,32 @@ func (r *SetEnableAccessLogRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *SetEnableAccessLogRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetEnableAccessLogRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type SetEnableAccessLogResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	LoadBalancer struct {
-		LoadBalancerId   *string `json:"LoadBalancerId" name:"LoadBalancerId"`
-		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		LoadBalancerId *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
 		LoadBalancerName *string `json:"LoadBalancerName" name:"LoadBalancerName"`
-		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		ProjectId      *string `json:"ProjectId" name:"ProjectId"`
 		LoadBalancerVersion *string `json:"LoadBalancerVersion" name:"LoadBalancerVersion"`
-		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		IpVersion      *string `json:"IpVersion" name:"IpVersion"`
 		LoadBalancerType *string `json:"LoadBalancerType" name:"LoadBalancerType"`
-		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
-		VpcId            *string `json:"VpcId" name:"VpcId"`
-		State            *string `json:"State" name:"State"`
-		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
-		Status           *string `json:"Status" name:"Status"`
-		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
-		BillType         *int    `json:"BillType" name:"BillType"`
-		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
-		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+		PublicIp       *string `json:"PublicIp" name:"PublicIp"`
+		VpcId          *string `json:"VpcId" name:"VpcId"`
+		State          *string `json:"State" name:"State"`
+		ListenersCount *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status         *string `json:"Status" name:"Status"`
+		EnabledLog     *bool   `json:"EnabledLog" name:"EnabledLog"`
+		BillType       *int    `json:"BillType" name:"BillType"`
+		ProductWhat    *int    `json:"ProductWhat" name:"ProductWhat"`
+		ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		SubnetId       *string `json:"SubnetId" name:"SubnetId"`
 		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
-		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
-		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
-		BindWafStatus    *string `json:"BindWafStatus" name:"BindWafStatus"`
-		WafInfo          struct {
+		EnabledQuic    *bool   `json:"EnabledQuic" name:"EnabledQuic"`
+		EnableHpa      *bool   `json:"EnableHpa" name:"EnableHpa"`
+		BindWafStatus  *string `json:"BindWafStatus" name:"BindWafStatus"`
+		WafInfo        struct {
 			WafId *string `json:"WafId" name:"WafId"`
 		} `json:"WafInfo" name:"WafInfo"`
 		ProtocolLayers *string `json:"ProtocolLayers" name:"ProtocolLayers"`
@@ -956,43 +801,32 @@ func (r *SetLbProtocolLayersRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *SetLbProtocolLayersRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetLbProtocolLayersRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type SetLbProtocolLayersResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	LoadBalancer struct {
-		LoadBalancerId   *string `json:"LoadBalancerId" name:"LoadBalancerId"`
-		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		LoadBalancerId *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
 		LoadBalancerName *string `json:"LoadBalancerName" name:"LoadBalancerName"`
-		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		ProjectId      *string `json:"ProjectId" name:"ProjectId"`
 		LoadBalancerVersion *string `json:"LoadBalancerVersion" name:"LoadBalancerVersion"`
-		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		IpVersion      *string `json:"IpVersion" name:"IpVersion"`
 		LoadBalancerType *string `json:"LoadBalancerType" name:"LoadBalancerType"`
-		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
-		VpcId            *string `json:"VpcId" name:"VpcId"`
-		State            *string `json:"State" name:"State"`
-		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
-		Status           *string `json:"Status" name:"Status"`
-		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
-		BillType         *int    `json:"BillType" name:"BillType"`
-		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
-		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+		PublicIp       *string `json:"PublicIp" name:"PublicIp"`
+		VpcId          *string `json:"VpcId" name:"VpcId"`
+		State          *string `json:"State" name:"State"`
+		ListenersCount *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status         *string `json:"Status" name:"Status"`
+		EnabledLog     *bool   `json:"EnabledLog" name:"EnabledLog"`
+		BillType       *int    `json:"BillType" name:"BillType"`
+		ProductWhat    *int    `json:"ProductWhat" name:"ProductWhat"`
+		ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		SubnetId       *string `json:"SubnetId" name:"SubnetId"`
 		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
-		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
-		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
-		BindWafStatus    *string `json:"BindWafStatus" name:"BindWafStatus"`
-		WafInfo          struct {
+		EnabledQuic    *bool   `json:"EnabledQuic" name:"EnabledQuic"`
+		EnableHpa      *bool   `json:"EnableHpa" name:"EnableHpa"`
+		BindWafStatus  *string `json:"BindWafStatus" name:"BindWafStatus"`
+		WafInfo        struct {
 			WafId *string `json:"WafId" name:"WafId"`
 		} `json:"WafInfo" name:"WafInfo"`
 		ProtocolLayers *string `json:"ProtocolLayers" name:"ProtocolLayers"`
@@ -1021,40 +855,6 @@ func (r *SetLbProtocolLayersResponse) FromJsonString(s string) error {
 }
 
 
-type ModifyLoadBalancerRequest struct {
-	*ksyunhttp.BaseRequest
-}
-
-func (r *ModifyLoadBalancerRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *ModifyLoadBalancerRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyLoadBalancerRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ModifyLoadBalancerResponse struct {
-	*ksyunhttp.BaseResponse
-}
-
-func (r *ModifyLoadBalancerResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *ModifyLoadBalancerResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-
 type SetLoadBalancerStatusRequest struct {
 	*ksyunhttp.BaseRequest
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
@@ -1066,43 +866,32 @@ func (r *SetLoadBalancerStatusRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *SetLoadBalancerStatusRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetLoadBalancerStatusRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type SetLoadBalancerStatusResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	LoadBalancer struct {
-		LoadBalancerId   *string `json:"LoadBalancerId" name:"LoadBalancerId"`
-		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		LoadBalancerId *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
 		LoadBalancerName *string `json:"LoadBalancerName" name:"LoadBalancerName"`
-		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		ProjectId      *string `json:"ProjectId" name:"ProjectId"`
 		LoadBalancerVersion *string `json:"LoadBalancerVersion" name:"LoadBalancerVersion"`
-		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		IpVersion      *string `json:"IpVersion" name:"IpVersion"`
 		LoadBalancerType *string `json:"LoadBalancerType" name:"LoadBalancerType"`
-		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
-		VpcId            *string `json:"VpcId" name:"VpcId"`
-		State            *string `json:"State" name:"State"`
-		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
-		Status           *string `json:"Status" name:"Status"`
-		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
-		BillType         *int    `json:"BillType" name:"BillType"`
-		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
-		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+		PublicIp       *string `json:"PublicIp" name:"PublicIp"`
+		VpcId          *string `json:"VpcId" name:"VpcId"`
+		State          *string `json:"State" name:"State"`
+		ListenersCount *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status         *string `json:"Status" name:"Status"`
+		EnabledLog     *bool   `json:"EnabledLog" name:"EnabledLog"`
+		BillType       *int    `json:"BillType" name:"BillType"`
+		ProductWhat    *int    `json:"ProductWhat" name:"ProductWhat"`
+		ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		SubnetId       *string `json:"SubnetId" name:"SubnetId"`
 		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
-		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
-		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
-		BindWafStatus    *string `json:"BindWafStatus" name:"BindWafStatus"`
-		WafInfo          struct {
+		EnabledQuic    *bool   `json:"EnabledQuic" name:"EnabledQuic"`
+		EnableHpa      *bool   `json:"EnableHpa" name:"EnableHpa"`
+		BindWafStatus  *string `json:"BindWafStatus" name:"BindWafStatus"`
+		WafInfo        struct {
 			WafId *string `json:"WafId" name:"WafId"`
 		} `json:"WafInfo" name:"WafInfo"`
 		ProtocolLayers *string `json:"ProtocolLayers" name:"ProtocolLayers"`
@@ -1142,43 +931,32 @@ func (r *SetLoadBalancerNameRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *SetLoadBalancerNameRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetLoadBalancerNameRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type SetLoadBalancerNameResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	LoadBalancer struct {
-		LoadBalancerId   *string `json:"LoadBalancerId" name:"LoadBalancerId"`
-		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		LoadBalancerId *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
 		LoadBalancerName *string `json:"LoadBalancerName" name:"LoadBalancerName"`
-		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		ProjectId      *string `json:"ProjectId" name:"ProjectId"`
 		LoadBalancerVersion *string `json:"LoadBalancerVersion" name:"LoadBalancerVersion"`
-		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		IpVersion      *string `json:"IpVersion" name:"IpVersion"`
 		LoadBalancerType *string `json:"LoadBalancerType" name:"LoadBalancerType"`
-		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
-		VpcId            *string `json:"VpcId" name:"VpcId"`
-		State            *string `json:"State" name:"State"`
-		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
-		Status           *string `json:"Status" name:"Status"`
-		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
-		BillType         *int    `json:"BillType" name:"BillType"`
-		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
-		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+		PublicIp       *string `json:"PublicIp" name:"PublicIp"`
+		VpcId          *string `json:"VpcId" name:"VpcId"`
+		State          *string `json:"State" name:"State"`
+		ListenersCount *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status         *string `json:"Status" name:"Status"`
+		EnabledLog     *bool   `json:"EnabledLog" name:"EnabledLog"`
+		BillType       *int    `json:"BillType" name:"BillType"`
+		ProductWhat    *int    `json:"ProductWhat" name:"ProductWhat"`
+		ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		SubnetId       *string `json:"SubnetId" name:"SubnetId"`
 		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
-		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
-		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
-		BindWafStatus    *string `json:"BindWafStatus" name:"BindWafStatus"`
-		WafInfo          struct {
+		EnabledQuic    *bool   `json:"EnabledQuic" name:"EnabledQuic"`
+		EnableHpa      *bool   `json:"EnableHpa" name:"EnableHpa"`
+		BindWafStatus  *string `json:"BindWafStatus" name:"BindWafStatus"`
+		WafInfo        struct {
 			WafId *string `json:"WafId" name:"WafId"`
 		} `json:"WafInfo" name:"WafInfo"`
 		ProtocolLayers *string `json:"ProtocolLayers" name:"ProtocolLayers"`
@@ -1224,44 +1002,33 @@ func (r *DescribeLoadBalancersRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeLoadBalancersRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeLoadBalancersRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeLoadBalancersResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId       *string `json:"RequestId" name:"RequestId"`
 	NextToken       *string `json:"NextToken" name:"NextToken"`
 	LoadBalancerSet []struct {
-		LoadBalancerId   *string `json:"LoadBalancerId" name:"LoadBalancerId"`
-		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		LoadBalancerId *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
 		LoadBalancerName *string `json:"LoadBalancerName" name:"LoadBalancerName"`
-		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		ProjectId      *string `json:"ProjectId" name:"ProjectId"`
 		LoadBalancerVersion *string `json:"LoadBalancerVersion" name:"LoadBalancerVersion"`
-		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		IpVersion      *string `json:"IpVersion" name:"IpVersion"`
 		LoadBalancerType *string `json:"LoadBalancerType" name:"LoadBalancerType"`
-		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
-		VpcId            *string `json:"VpcId" name:"VpcId"`
-		State            *string `json:"State" name:"State"`
-		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
-		Status           *string `json:"Status" name:"Status"`
-		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
-		BillType         *int    `json:"BillType" name:"BillType"`
-		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
-		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+		PublicIp       *string `json:"PublicIp" name:"PublicIp"`
+		VpcId          *string `json:"VpcId" name:"VpcId"`
+		State          *string `json:"State" name:"State"`
+		ListenersCount *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status         *string `json:"Status" name:"Status"`
+		EnabledLog     *bool   `json:"EnabledLog" name:"EnabledLog"`
+		BillType       *int    `json:"BillType" name:"BillType"`
+		ProductWhat    *int    `json:"ProductWhat" name:"ProductWhat"`
+		ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		SubnetId       *string `json:"SubnetId" name:"SubnetId"`
 		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
-		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
-		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
-		BindWafStatus    *string `json:"BindWafStatus" name:"BindWafStatus"`
-		WafInfo          struct {
+		EnabledQuic    *bool   `json:"EnabledQuic" name:"EnabledQuic"`
+		EnableHpa      *bool   `json:"EnableHpa" name:"EnableHpa"`
+		BindWafStatus  *string `json:"BindWafStatus" name:"BindWafStatus"`
+		WafInfo        struct {
 			WafId *string `json:"WafId" name:"WafId"`
 		} `json:"WafInfo" name:"WafInfo"`
 		ProtocolLayers *string `json:"ProtocolLayers" name:"ProtocolLayers"`
@@ -1298,17 +1065,6 @@ type DeleteLoadBalancerRequest struct {
 func (r *DeleteLoadBalancerRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeleteLoadBalancerRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteLoadBalancerRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteLoadBalancerResponse struct {
@@ -1351,43 +1107,32 @@ func (r *CreateLoadBalancerRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateLoadBalancerRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateLoadBalancerRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateLoadBalancerResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	LoadBalancer struct {
-		LoadBalancerId   *string `json:"LoadBalancerId" name:"LoadBalancerId"`
-		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		LoadBalancerId *string `json:"LoadBalancerId" name:"LoadBalancerId"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
 		LoadBalancerName *string `json:"LoadBalancerName" name:"LoadBalancerName"`
-		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		ProjectId      *string `json:"ProjectId" name:"ProjectId"`
 		LoadBalancerVersion *string `json:"LoadBalancerVersion" name:"LoadBalancerVersion"`
-		IpVersion        *string `json:"IpVersion" name:"IpVersion"`
+		IpVersion      *string `json:"IpVersion" name:"IpVersion"`
 		LoadBalancerType *string `json:"LoadBalancerType" name:"LoadBalancerType"`
-		PublicIp         *string `json:"PublicIp" name:"PublicIp"`
-		VpcId            *string `json:"VpcId" name:"VpcId"`
-		State            *string `json:"State" name:"State"`
-		ListenersCount   *int    `json:"ListenersCount" name:"ListenersCount"`
-		Status           *string `json:"Status" name:"Status"`
-		EnabledLog       *bool   `json:"EnabledLog" name:"EnabledLog"`
-		BillType         *int    `json:"BillType" name:"BillType"`
-		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
-		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+		PublicIp       *string `json:"PublicIp" name:"PublicIp"`
+		VpcId          *string `json:"VpcId" name:"VpcId"`
+		State          *string `json:"State" name:"State"`
+		ListenersCount *int    `json:"ListenersCount" name:"ListenersCount"`
+		Status         *string `json:"Status" name:"Status"`
+		EnabledLog     *bool   `json:"EnabledLog" name:"EnabledLog"`
+		BillType       *int    `json:"BillType" name:"BillType"`
+		ProductWhat    *int    `json:"ProductWhat" name:"ProductWhat"`
+		ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		SubnetId       *string `json:"SubnetId" name:"SubnetId"`
 		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
-		EnabledQuic      *bool   `json:"EnabledQuic" name:"EnabledQuic"`
-		EnableHpa        *bool   `json:"EnableHpa" name:"EnableHpa"`
-		BindWafStatus    *string `json:"BindWafStatus" name:"BindWafStatus"`
-		WafInfo          struct {
+		EnabledQuic    *bool   `json:"EnabledQuic" name:"EnabledQuic"`
+		EnableHpa      *bool   `json:"EnableHpa" name:"EnableHpa"`
+		BindWafStatus  *string `json:"BindWafStatus" name:"BindWafStatus"`
+		WafInfo        struct {
 			WafId *string `json:"WafId" name:"WafId"`
 		} `json:"WafInfo" name:"WafInfo"`
 		ProtocolLayers *string `json:"ProtocolLayers" name:"ProtocolLayers"`
@@ -1428,17 +1173,6 @@ func (r *ModifyCertificateWithGroupRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ModifyCertificateWithGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyCertificateWithGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyCertificateWithGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -1464,17 +1198,6 @@ type DissociateCertificateWithGroupRequest struct {
 func (r *DissociateCertificateWithGroupRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DissociateCertificateWithGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DissociateCertificateWithGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DissociateCertificateWithGroupResponse struct {
@@ -1504,17 +1227,6 @@ func (r *AssociateCertificateWithGroupRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *AssociateCertificateWithGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "AssociateCertificateWithGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type AssociateCertificateWithGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -1542,17 +1254,6 @@ type DescribeListenerCertGroupsRequest struct {
 func (r *DescribeListenerCertGroupsRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DescribeListenerCertGroupsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeListenerCertGroupsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeListenerCertGroupsResponse struct {
@@ -1593,17 +1294,6 @@ func (r *DeleteListenerCertGroupRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DeleteListenerCertGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteListenerCertGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DeleteListenerCertGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -1628,17 +1318,6 @@ type CreateListenerCertGroupRequest struct {
 func (r *CreateListenerCertGroupRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CreateListenerCertGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateListenerCertGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateListenerCertGroupResponse struct {
@@ -1683,17 +1362,6 @@ type AddRulesRequest struct {
 func (r *AddRulesRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *AddRulesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "AddRulesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type AddRulesResponse struct {
@@ -1741,17 +1409,6 @@ func (r *DeleteRuleRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DeleteRuleRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteRuleRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DeleteRuleResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -1778,17 +1435,6 @@ type AddRuleRequest struct {
 func (r *AddRuleRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *AddRuleRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "AddRuleRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type AddRuleResponse struct {
@@ -1842,28 +1488,17 @@ func (r *ModifyRuleGroupRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ModifyRuleGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyRuleGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyRuleGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	RuleGroup struct {
-		RuleGroupId   *string `json:"RuleGroupId" name:"RuleGroupId"`
-		ListenerId    *string `json:"ListenerId" name:"ListenerId"`
+		RuleGroupId *string `json:"RuleGroupId" name:"RuleGroupId"`
+		ListenerId  *string `json:"ListenerId" name:"ListenerId"`
 		RuleGroupName *string `json:"RuleGroupName" name:"RuleGroupName"`
 		BackendServerGroupId *string `json:"BackendServerGroupId" name:"BackendServerGroupId"`
-		RuleSet       []struct {
-			RuleType    *string   `json:"RuleType" name:"RuleType"`
-			RuleValue   *string   `json:"RuleValue" name:"RuleValue"`
+		RuleSet     []struct {
+			RuleType    *string `json:"RuleType" name:"RuleType"`
+			RuleValue   *string `json:"RuleValue" name:"RuleValue"`
 			MethodValue []*string `json:"MethodValue" name:"MethodValue"`
 			SourceIpValue []*string `json:"SourceIpValue" name:"SourceIpValue"`
 			HeaderValue []struct {
@@ -1881,7 +1516,7 @@ type ModifyRuleGroupResponse struct {
 		} `json:"RuleSet" name:"RuleSet"`
 		RedirectListenerId *string `json:"RedirectListenerId" name:"RedirectListenerId"`
 		RedirectHttpCode *string `json:"RedirectHttpCode" name:"RedirectHttpCode"`
-		RewriteConfig    struct {
+		RewriteConfig struct {
 			HttpHost    *string `json:"HttpHost" name:"HttpHost"`
 			Url         *string `json:"Url" name:"Url"`
 			QueryString *string `json:"QueryString" name:"QueryString"`
@@ -1917,29 +1552,18 @@ func (r *DescribeRuleGroupsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeRuleGroupsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeRuleGroupsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeRuleGroupsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	NextToken    *string `json:"NextToken" name:"NextToken"`
 	RuleGroupSet []struct {
-		RuleGroupId   *string `json:"RuleGroupId" name:"RuleGroupId"`
-		ListenerId    *string `json:"ListenerId" name:"ListenerId"`
+		RuleGroupId *string `json:"RuleGroupId" name:"RuleGroupId"`
+		ListenerId  *string `json:"ListenerId" name:"ListenerId"`
 		RuleGroupName *string `json:"RuleGroupName" name:"RuleGroupName"`
 		BackendServerGroupId *string `json:"BackendServerGroupId" name:"BackendServerGroupId"`
-		RuleSet       []struct {
-			RuleType    *string   `json:"RuleType" name:"RuleType"`
-			RuleValue   *string   `json:"RuleValue" name:"RuleValue"`
+		RuleSet     []struct {
+			RuleType    *string `json:"RuleType" name:"RuleType"`
+			RuleValue   *string `json:"RuleValue" name:"RuleValue"`
 			MethodValue []*string `json:"MethodValue" name:"MethodValue"`
 			SourceIpValue []*string `json:"SourceIpValue" name:"SourceIpValue"`
 			HeaderValue []struct {
@@ -1957,7 +1581,7 @@ type DescribeRuleGroupsResponse struct {
 		} `json:"RuleSet" name:"RuleSet"`
 		RedirectListenerId *string `json:"RedirectListenerId" name:"RedirectListenerId"`
 		RedirectHttpCode *string `json:"RedirectHttpCode" name:"RedirectHttpCode"`
-		RewriteConfig    struct {
+		RewriteConfig struct {
 			HttpHost    *string `json:"HttpHost" name:"HttpHost"`
 			Url         *string `json:"Url" name:"Url"`
 			QueryString *string `json:"QueryString" name:"QueryString"`
@@ -1979,6 +1603,7 @@ func (r *DescribeRuleGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteRuleGroupRequest struct {
 	*ksyunhttp.BaseRequest
 	RuleGroupId *string `json:"RuleGroupId,omitempty" name:"RuleGroupId"`
@@ -1987,17 +1612,6 @@ type DeleteRuleGroupRequest struct {
 func (r *DeleteRuleGroupRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeleteRuleGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteRuleGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteRuleGroupResponse struct {
@@ -2014,6 +1628,7 @@ func (r *DeleteRuleGroupResponse) ToJsonString() string {
 func (r *DeleteRuleGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreateRuleGroupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -2033,28 +1648,17 @@ func (r *CreateRuleGroupRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateRuleGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateRuleGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateRuleGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	RuleGroup struct {
-		RuleGroupId   *string `json:"RuleGroupId" name:"RuleGroupId"`
-		ListenerId    *string `json:"ListenerId" name:"ListenerId"`
+		RuleGroupId *string `json:"RuleGroupId" name:"RuleGroupId"`
+		ListenerId  *string `json:"ListenerId" name:"ListenerId"`
 		RuleGroupName *string `json:"RuleGroupName" name:"RuleGroupName"`
 		BackendServerGroupId *string `json:"BackendServerGroupId" name:"BackendServerGroupId"`
-		RuleSet       []struct {
-			RuleType    *string   `json:"RuleType" name:"RuleType"`
-			RuleValue   *string   `json:"RuleValue" name:"RuleValue"`
+		RuleSet     []struct {
+			RuleType    *string `json:"RuleType" name:"RuleType"`
+			RuleValue   *string `json:"RuleValue" name:"RuleValue"`
 			MethodValue []*string `json:"MethodValue" name:"MethodValue"`
 			SourceIpValue []*string `json:"SourceIpValue" name:"SourceIpValue"`
 			HeaderValue []struct {
@@ -2072,7 +1676,7 @@ type CreateRuleGroupResponse struct {
 		} `json:"RuleSet" name:"RuleSet"`
 		RedirectListenerId *string `json:"RedirectListenerId" name:"RedirectListenerId"`
 		RedirectHttpCode *string `json:"RedirectHttpCode" name:"RedirectHttpCode"`
-		RewriteConfig    struct {
+		RewriteConfig struct {
 			HttpHost    *string `json:"HttpHost" name:"HttpHost"`
 			Url         *string `json:"Url" name:"Url"`
 			QueryString *string `json:"QueryString" name:"QueryString"`
@@ -2094,6 +1698,7 @@ func (r *CreateRuleGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type SetLBModificationProtectionRequest struct {
 	*ksyunhttp.BaseRequest
 	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
@@ -2103,17 +1708,6 @@ type SetLBModificationProtectionRequest struct {
 func (r *SetLBModificationProtectionRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *SetLBModificationProtectionRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetLBModificationProtectionRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type SetLBModificationProtectionResponse struct {
@@ -2131,6 +1725,7 @@ func (r *SetLBModificationProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type SetLBDeleteProtectionRequest struct {
 	*ksyunhttp.BaseRequest
 	LoadBalancerId   *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
@@ -2140,17 +1735,6 @@ type SetLBDeleteProtectionRequest struct {
 func (r *SetLBDeleteProtectionRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *SetLBDeleteProtectionRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetLBDeleteProtectionRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type SetLBDeleteProtectionResponse struct {

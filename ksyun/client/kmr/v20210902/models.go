@@ -1,7 +1,6 @@
 package v20210902
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 type LaunchClusterDatabaseInfo struct {
@@ -66,17 +65,6 @@ func (r *DescribeClusterRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeClusterRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeClusterRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeClusterResponse struct {
 	*ksyunhttp.BaseResponse
 	ClusterId      *string `json:"ClusterId" name:"ClusterId"`
@@ -103,7 +91,7 @@ type DescribeClusterResponse struct {
 	RequestId      *string `json:"RequestId" name:"RequestId"`
 	StatusCode     *int    `json:"StatusCode" name:"StatusCode"`
 	Tags           []struct {
-		TagId  *int    `json:"TagId" name:"TagId"`
+		TagId *int `json:"TagId" name:"TagId"`
 		TagKey *string `json:"TagKey" name:"TagKey"`
 		TagValue *string `json:"TagValue" name:"TagValue"`
 	} `json:"Tags"`
@@ -138,17 +126,6 @@ func (r *LaunchClusterRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *LaunchClusterRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "LaunchClusterRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type LaunchClusterResponse struct {
 	*ksyunhttp.BaseResponse
 	ClusterId  *string `json:"ClusterId" name:"ClusterId"`
@@ -177,17 +154,6 @@ type ScaleInInstanceGroupsRequest struct {
 func (r *ScaleInInstanceGroupsRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ScaleInInstanceGroupsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ScaleInInstanceGroupsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ScaleInInstanceGroupsResponse struct {
@@ -219,17 +185,6 @@ func (r *ScaleOutInstanceGroupsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ScaleOutInstanceGroupsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ScaleOutInstanceGroupsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ScaleOutInstanceGroupsResponse struct {
 	*ksyunhttp.BaseResponse
 	ClusterId  *string `json:"ClusterId" name:"ClusterId"`
@@ -255,17 +210,6 @@ type DescribeClusterInfoRequest struct {
 func (r *DescribeClusterInfoRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DescribeClusterInfoRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeClusterInfoRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeClusterInfoResponse struct {
@@ -296,17 +240,6 @@ type ListServiceStatusRequest struct {
 func (r *ListServiceStatusRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ListServiceStatusRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListServiceStatusRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListServiceStatusResponse struct {
@@ -349,17 +282,6 @@ type ListClustersRequest struct {
 func (r *ListClustersRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ListClustersRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListClustersRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListClustersResponse struct {
@@ -410,17 +332,6 @@ func (r *ListClusterVersionsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListClusterVersionsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListClusterVersionsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListClusterVersionsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -465,17 +376,6 @@ type DescribeServiceRequest struct {
 func (r *DescribeServiceRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DescribeServiceRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeServiceRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeServiceResponse struct {
@@ -528,17 +428,6 @@ func (r *ListConfigurationsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListConfigurationsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListConfigurationsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListConfigurationsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
@@ -550,9 +439,9 @@ type ListConfigurationsResponse struct {
 		ConfigTags []struct {
 			Tag            *string `json:"Tag" name:"Tag"`
 			Configurations []struct {
-				Key        *string `json:"Key" name:"Key"`
-				Value      *string `json:"Value" name:"Value"`
-				Custom     *bool   `json:"Custom" name:"Custom"`
+				Key    *string `json:"Key" name:"Key"`
+				Value  *string `json:"Value" name:"Value"`
+				Custom *bool   `json:"Custom" name:"Custom"`
 				Description *string `json:"Description" name:"Description"`
 				RelatedKey *string `json:"RelatedKey" name:"RelatedKey"`
 				UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
@@ -582,17 +471,6 @@ type ListConfigurationHistoryRequest struct {
 func (r *ListConfigurationHistoryRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ListConfigurationHistoryRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListConfigurationHistoryRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListConfigurationHistoryResponse struct {
@@ -634,17 +512,6 @@ func (r *ListTagValuesRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListTagValuesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListTagValuesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListTagValuesResponse struct {
 	*ksyunhttp.BaseResponse
 	TagValues []struct {
@@ -681,17 +548,6 @@ func (r *ListTagKeysRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListTagKeysRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListTagKeysRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListTagKeysResponse struct {
 	*ksyunhttp.BaseResponse
 	TagKeys    []*string `json:"TagKeys" name:"TagKeys"`
@@ -723,17 +579,6 @@ func (r *BindTagsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *BindTagsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "BindTagsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type BindTagsResponse struct {
 	*ksyunhttp.BaseResponse
 	ClusterId  *string `json:"ClusterId" name:"ClusterId"`
@@ -760,17 +605,6 @@ type StartInstancesRequest struct {
 func (r *StartInstancesRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *StartInstancesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "StartInstancesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type StartInstancesResponse struct {
@@ -804,17 +638,6 @@ func (r *RestartInstancesRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *RestartInstancesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "RestartInstancesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type RestartInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	ClusterId  *string `json:"ClusterId" name:"ClusterId"`
@@ -843,17 +666,6 @@ func (r *StopInstancesRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *StopInstancesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "StopInstancesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type StopInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	ClusterId  *string `json:"ClusterId" name:"ClusterId"`
@@ -879,17 +691,6 @@ type ListScaleStrategyRequest struct {
 func (r *ListScaleStrategyRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ListScaleStrategyRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListScaleStrategyRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListScaleStrategyResponse struct {
@@ -1005,17 +806,6 @@ func (r *ModifyScaleStrategyRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ModifyScaleStrategyRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyScaleStrategyRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyScaleStrategyResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId  *string `json:"RequestId" name:"RequestId"`
@@ -1046,17 +836,6 @@ func (r *DeleteScaleStrategyRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DeleteScaleStrategyRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteScaleStrategyRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DeleteScaleStrategyResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId  *string `json:"RequestId" name:"RequestId"`
@@ -1074,6 +853,7 @@ func (r *DeleteScaleStrategyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListScaleHistoryRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -1082,17 +862,6 @@ type ListScaleHistoryRequest struct {
 func (r *ListScaleHistoryRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ListScaleHistoryRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListScaleHistoryRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListScaleHistoryResponse struct {
@@ -1128,6 +897,7 @@ func (r *ListScaleHistoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type AddLoadBasedScaleStrategyRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -1136,17 +906,6 @@ type AddLoadBasedScaleStrategyRequest struct {
 func (r *AddLoadBasedScaleStrategyRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *AddLoadBasedScaleStrategyRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "AddLoadBasedScaleStrategyRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type AddLoadBasedScaleStrategyResponse struct {
@@ -1166,6 +925,7 @@ func (r *AddLoadBasedScaleStrategyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyLoadBasedScaleStrategyRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -1174,17 +934,6 @@ type ModifyLoadBasedScaleStrategyRequest struct {
 func (r *ModifyLoadBasedScaleStrategyRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ModifyLoadBasedScaleStrategyRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyLoadBasedScaleStrategyRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyLoadBasedScaleStrategyResponse struct {

@@ -1,7 +1,6 @@
 package v20200825
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 type CreateDBParameterGroupParameters struct {
@@ -29,17 +28,6 @@ func (r *CreateSecurityGroupRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateSecurityGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateSecurityGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateSecurityGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
@@ -52,11 +40,11 @@ type CreateSecurityGroupResponse struct {
 			Instances                struct {
 			} `json:"Instances"`
 			SecurityGroupRules []struct {
-				SecurityGroupRuleId   *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleId *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
 				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
 				SecurityGroupRuleCidr *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
-				Created               *string `json:"Created" name:"Created"`
+				Created             *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -84,17 +72,6 @@ func (r *DescribeSecurityGroupRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeSecurityGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeSecurityGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeSecurityGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
@@ -107,15 +84,15 @@ type DescribeSecurityGroupResponse struct {
 			Instances                []struct {
 				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
 				DBInstanceName *string `json:"DBInstanceName" name:"DBInstanceName"`
-				Vip            *string `json:"Vip" name:"Vip"`
-				Created        *string `json:"Created" name:"Created"`
+				Vip     *string `json:"Vip" name:"Vip"`
+				Created *string `json:"Created" name:"Created"`
 			} `json:"Instances"`
 			SecurityGroupRules []struct {
-				SecurityGroupRuleId   *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleId *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
 				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
 				SecurityGroupRuleCidr *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
-				Created               *string `json:"Created" name:"Created"`
+				Created             *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -142,17 +119,6 @@ func (r *DeleteSecurityGroupRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DeleteSecurityGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteSecurityGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DeleteSecurityGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
@@ -165,14 +131,14 @@ type DeleteSecurityGroupResponse struct {
 			Instances                []struct {
 				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
 				DBInstanceName *string `json:"DBInstanceName" name:"DBInstanceName"`
-				Vip            *string `json:"Vip" name:"Vip"`
-				Created        *string `json:"Created" name:"Created"`
+				Vip     *string `json:"Vip" name:"Vip"`
+				Created *string `json:"Created" name:"Created"`
 			} `json:"Instances"`
 			SecurityGroupRules []struct {
-				SecurityGroupRuleId   *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleId *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
 				SecurityGroupRuleCidr *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
-				Created               *string `json:"Created" name:"Created"`
+				Created             *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -201,17 +167,6 @@ func (r *ModifySecurityGroupRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ModifySecurityGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifySecurityGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifySecurityGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
@@ -224,16 +179,16 @@ type ModifySecurityGroupResponse struct {
 			Instances                []struct {
 				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
 				DBInstanceName *string `json:"DBInstanceName" name:"DBInstanceName"`
-				Vip            *string `json:"Vip" name:"Vip"`
-				Created        *string `json:"Created" name:"Created"`
+				Vip     *string `json:"Vip" name:"Vip"`
+				Created *string `json:"Created" name:"Created"`
 				DBInstanceType *string `json:"DBInstanceType" name:"DBInstanceType"`
 			} `json:"Instances"`
 			SecurityGroupRules []struct {
-				SecurityGroupRuleId   *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleId *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
 				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
 				SecurityGroupRuleCidr *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
-				Created               *string `json:"Created" name:"Created"`
+				Created             *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -262,17 +217,6 @@ func (r *CloneSecurityGroupRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CloneSecurityGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CloneSecurityGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CloneSecurityGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
@@ -285,10 +229,10 @@ type CloneSecurityGroupResponse struct {
 			Instances                struct {
 			} `json:"Instances"`
 			SecurityGroupRules []struct {
-				SecurityGroupRuleId   *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleId *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
 				SecurityGroupRuleCidr *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
-				Created               *string `json:"Created" name:"Created"`
+				Created             *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -319,17 +263,6 @@ func (r *ModifySecurityGroupRuleRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ModifySecurityGroupRuleRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifySecurityGroupRuleRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifySecurityGroupRuleResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
@@ -342,16 +275,16 @@ type ModifySecurityGroupRuleResponse struct {
 			Instances                []struct {
 				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
 				DBInstanceName *string `json:"DBInstanceName" name:"DBInstanceName"`
-				Vip            *string `json:"Vip" name:"Vip"`
-				Created        *string `json:"Created" name:"Created"`
+				Vip     *string `json:"Vip" name:"Vip"`
+				Created *string `json:"Created" name:"Created"`
 				DBInstanceType *string `json:"DBInstanceType" name:"DBInstanceType"`
 			} `json:"Instances"`
 			SecurityGroupRules []struct {
-				SecurityGroupRuleId   *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleId *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
 				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
 				SecurityGroupRuleCidr *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
-				Created               *string `json:"Created" name:"Created"`
+				Created             *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -381,17 +314,6 @@ func (r *SecurityGroupRelationRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *SecurityGroupRelationRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SecurityGroupRelationRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type SecurityGroupRelationResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
@@ -402,10 +324,10 @@ type SecurityGroupRelationResponse struct {
 			Created                  *string   `json:"Created" name:"Created"`
 			Instances                []*string `json:"Instances" name:"Instances"`
 			SecurityGroupRules       []struct {
-				SecurityGroupRuleId   *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleId *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
 				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
-				Created               *string `json:"Created" name:"Created"`
+				Created             *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -432,17 +354,6 @@ type ModifySecurityGroupRuleNameRequest struct {
 func (r *ModifySecurityGroupRuleNameRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ModifySecurityGroupRuleNameRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifySecurityGroupRuleNameRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifySecurityGroupRuleNameResponse struct {
@@ -472,17 +383,6 @@ type CreateDBParameterGroupRequest struct {
 func (r *CreateDBParameterGroupRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CreateDBParameterGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateDBParameterGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateDBParameterGroupResponse struct {
@@ -521,17 +421,6 @@ type ModifyDBParameterGroupRequest struct {
 func (r *ModifyDBParameterGroupRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ModifyDBParameterGroupRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyDBParameterGroupRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyDBParameterGroupResponse struct {

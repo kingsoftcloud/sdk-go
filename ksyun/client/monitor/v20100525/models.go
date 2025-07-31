@@ -1,7 +1,6 @@
 package v20100525
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -20,17 +19,6 @@ type GetMetricStatisticsRequest struct {
 func (r *GetMetricStatisticsRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *GetMetricStatisticsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetMetricStatisticsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetMetricStatisticsResponse struct {
@@ -71,17 +59,6 @@ func (r *ListMetricsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListMetricsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListMetricsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListMetricsResponse struct {
 	*ksyunhttp.BaseResponse
 	ListMetricsResult struct {
@@ -91,9 +68,9 @@ type ListMetricsResponse struct {
 				MetricName *string `json:"MetricName" name:"MetricName"`
 				MetricDesc *string `json:"MetricDesc" name:"MetricDesc"`
 				Namespace *string `json:"Namespace" name:"Namespace"`
-				Interval  *string `json:"Interval" name:"Interval"`
-				Type      *string `json:"Type" name:"Type"`
-				Unit      *string `json:"Unit" name:"Unit"`
+				Interval *string `json:"Interval" name:"Interval"`
+				Type     *string `json:"Type" name:"Type"`
+				Unit     *string `json:"Unit" name:"Unit"`
 			} `json:"Member"`
 		} `json:"Metrics" name:"Metrics"`
 	} `json:"ListMetricsResult"`

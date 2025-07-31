@@ -2,7 +2,6 @@ package v20240814
 
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -87,17 +86,6 @@ func (r *DetailWorkspaceRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DetailWorkspaceRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DetailWorkspaceRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DetailWorkspaceResponse struct {
 	*ksyunhttp.BaseResponse
 	Code      *int    `json:"Code" name:"Code"`
@@ -153,17 +141,6 @@ func (r *ListWorkspacesRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListWorkspacesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListWorkspacesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListWorkspacesResponse struct {
 	*ksyunhttp.BaseResponse
 	Code      *int    `json:"Code" name:"Code"`
@@ -213,17 +190,6 @@ type StartJobRunRequest struct {
 func (r *StartJobRunRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *StartJobRunRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "StartJobRunRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type StartJobRunResponse struct {
@@ -289,17 +255,6 @@ func (r *GetJobRunRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetJobRunRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetJobRunRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetJobRunResponse struct {
 	*ksyunhttp.BaseResponse
 	Code      *int    `json:"Code" name:"Code"`
@@ -363,17 +318,6 @@ func (r *ListJobRunsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListJobRunsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListJobRunsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListJobRunsResponse struct {
 	*ksyunhttp.BaseResponse
 	Code      *int    `json:"Code" name:"Code"`
@@ -416,17 +360,6 @@ func (r *CancelJobRunRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CancelJobRunRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CancelJobRunRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CancelJobRunResponse struct {
 	*ksyunhttp.BaseResponse
 	Code      *int    `json:"Code" name:"Code"`
@@ -456,17 +389,6 @@ type ListExecutorRequest struct {
 func (r *ListExecutorRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ListExecutorRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListExecutorRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListExecutorResponse struct {
@@ -527,17 +449,6 @@ func (r *StartRayJobRunRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *StartRayJobRunRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "StartRayJobRunRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type StartRayJobRunResponse struct {
 	*ksyunhttp.BaseResponse
 	Code      *int    `json:"Code" name:"Code"`
@@ -587,17 +498,6 @@ type GetRayJobRunRequest struct {
 func (r *GetRayJobRunRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *GetRayJobRunRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetRayJobRunRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetRayJobRunResponse struct {
@@ -661,17 +561,6 @@ func (r *ListRayJobRunsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListRayJobRunsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListRayJobRunsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListRayJobRunsResponse struct {
 	*ksyunhttp.BaseResponse
 	Status *int `json:"status" name:"status"`
@@ -696,20 +585,20 @@ type ListRayJobRunsResponse struct {
 				RayLog         *string `json:"RayLog" name:"RayLog"`
 				ReleaseVersion *string `json:"ReleaseVersion" name:"ReleaseVersion"`
 				RaySubmitData  struct {
-					Name               *string   `json:"Name" name:"Name"`
-					RayHeadCores       *int      `json:"RayHeadCores" name:"RayHeadCores"`
-					RayHeadMemory      *string   `json:"RayHeadMemory" name:"RayHeadMemory"`
-					RayWorkerCores     *int      `json:"RayWorkerCores" name:"RayWorkerCores"`
-					RayWorkerMemory    *string   `json:"RayWorkerMemory" name:"RayWorkerMemory"`
-					RayWorkerNum       *int      `json:"RayWorkerNum" name:"RayWorkerNum"`
-					RayWorkerGpus      *int      `json:"RayWorkerGpus" name:"RayWorkerGpus"`
-					EntrypointCmd      *string   `json:"EntrypointCmd" name:"EntrypointCmd"`
-					EntrypointResource *string   `json:"EntrypointResource" name:"EntrypointResource"`
-					RuntimeEnv         *string   `json:"RuntimeEnv" name:"RuntimeEnv"`
-					Conf               []*string `json:"Conf" name:"Conf"`
-					Image              *string   `json:"Image" name:"Image"`
-					JuiceFs            *string   `json:"JuiceFs" name:"JuiceFs"`
-					MountPath          *string   `json:"MountPath" name:"MountPath"`
+					Name               *string `json:"Name" name:"Name"`
+					RayHeadCores       *int    `json:"RayHeadCores" name:"RayHeadCores"`
+					RayHeadMemory      *string `json:"RayHeadMemory" name:"RayHeadMemory"`
+					RayWorkerCores     *int    `json:"RayWorkerCores" name:"RayWorkerCores"`
+					RayWorkerMemory    *string `json:"RayWorkerMemory" name:"RayWorkerMemory"`
+					RayWorkerNum       *int    `json:"RayWorkerNum" name:"RayWorkerNum"`
+					RayWorkerGpus      *int    `json:"RayWorkerGpus" name:"RayWorkerGpus"`
+					EntrypointCmd      *string `json:"EntrypointCmd" name:"EntrypointCmd"`
+					EntrypointResource *string `json:"EntrypointResource" name:"EntrypointResource"`
+					RuntimeEnv         *string `json:"RuntimeEnv" name:"RuntimeEnv"`
+					Conf               *string `json:"Conf" name:"Conf"`
+					Image              *string `json:"Image" name:"Image"`
+					JuiceFs            *string `json:"JuiceFs" name:"JuiceFs"`
+					MountPath          *string `json:"MountPath" name:"MountPath"`
 				} `json:"RaySubmitData" name:"RaySubmitData"`
 				ResourceUsage *int `json:"ResourceUsage" name:"ResourceUsage"`
 			} `json:"JobRuns"`
@@ -735,17 +624,6 @@ type CancelRayJobRunRequest struct {
 func (r *CancelRayJobRunRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CancelRayJobRunRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CancelRayJobRunRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CancelRayJobRunResponse struct {
@@ -778,17 +656,6 @@ type StartFlinkJobRunRequest struct {
 func (r *StartFlinkJobRunRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *StartFlinkJobRunRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "StartFlinkJobRunRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type StartFlinkJobRunResponse struct {
@@ -852,17 +719,6 @@ func (r *GetFlinkJobRunRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetFlinkJobRunRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetFlinkJobRunRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetFlinkJobRunResponse struct {
 	*ksyunhttp.BaseResponse
 	Code      *int    `json:"Code" name:"Code"`
@@ -919,17 +775,6 @@ type ListFlinkJobRunsRequest struct {
 func (r *ListFlinkJobRunsRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ListFlinkJobRunsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListFlinkJobRunsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListFlinkJobRunsResponse struct {
@@ -992,17 +837,6 @@ func (r *CancelFlinkJobRunRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CancelFlinkJobRunRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CancelFlinkJobRunRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CancelFlinkJobRunResponse struct {
 	*ksyunhttp.BaseResponse
 	Code      *int    `json:"Code" name:"Code"`
@@ -1030,17 +864,6 @@ type SuspendFlinkJobRunRequest struct {
 func (r *SuspendFlinkJobRunRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *SuspendFlinkJobRunRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SuspendFlinkJobRunRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type SuspendFlinkJobRunResponse struct {
@@ -1072,17 +895,6 @@ func (r *RestartFlinkJobRunRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *RestartFlinkJobRunRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "RestartFlinkJobRunRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type RestartFlinkJobRunResponse struct {
 	*ksyunhttp.BaseResponse
 	Code      *int    `json:"Code" name:"Code"`
@@ -1110,17 +922,6 @@ type DescribeMetricListRequest struct {
 func (r *DescribeMetricListRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DescribeMetricListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeMetricListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeMetricListResponse struct {
@@ -1159,17 +960,6 @@ type QueryMetricsRequest struct {
 func (r *QueryMetricsRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *QueryMetricsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "QueryMetricsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryMetricsResponse struct {

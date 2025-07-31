@@ -40,6 +40,23 @@ func (c *Client) SchemaStruct(request *SchemaStructRequest) string {
 	return c.SchemaStructWithContext(context.Background(), request)
 }
 
+func (c *Client) SchemaStructSend(request *SchemaStructRequest) (*SchemaStructResponse, error) {
+	statusCode, msg, err := c.SchemaStructWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct SchemaStructResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) SchemaStructWithContext(ctx context.Context, request *SchemaStructRequest) string {
 	if request == nil {
 		request = NewSchemaStructRequest()
@@ -53,6 +70,21 @@ func (c *Client) SchemaStructWithContext(ctx context.Context, request *SchemaStr
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) SchemaStructWithContextV2(ctx context.Context, request *SchemaStructRequest) (int, string, error) {
+	if request == nil {
+		request = NewSchemaStructRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSchemaStructResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewConnectivityCheckRequest() (request *ConnectivityCheckRequest) {
 	request = &ConnectivityCheckRequest{
@@ -73,6 +105,23 @@ func (c *Client) ConnectivityCheck(request *ConnectivityCheckRequest) string {
 	return c.ConnectivityCheckWithContext(context.Background(), request)
 }
 
+func (c *Client) ConnectivityCheckSend(request *ConnectivityCheckRequest) (*ConnectivityCheckResponse, error) {
+	statusCode, msg, err := c.ConnectivityCheckWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ConnectivityCheckResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ConnectivityCheckWithContext(ctx context.Context, request *ConnectivityCheckRequest) string {
 	if request == nil {
 		request = NewConnectivityCheckRequest()
@@ -86,6 +135,21 @@ func (c *Client) ConnectivityCheckWithContext(ctx context.Context, request *Conn
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ConnectivityCheckWithContextV2(ctx context.Context, request *ConnectivityCheckRequest) (int, string, error) {
+	if request == nil {
+		request = NewConnectivityCheckRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewConnectivityCheckResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreatePrecheckRequest() (request *CreatePrecheckRequest) {
 	request = &CreatePrecheckRequest{
@@ -106,6 +170,23 @@ func (c *Client) CreatePrecheck(request *CreatePrecheckRequest) string {
 	return c.CreatePrecheckWithContext(context.Background(), request)
 }
 
+func (c *Client) CreatePrecheckSend(request *CreatePrecheckRequest) (*CreatePrecheckResponse, error) {
+	statusCode, msg, err := c.CreatePrecheckWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreatePrecheckResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreatePrecheckWithContext(ctx context.Context, request *CreatePrecheckRequest) string {
 	if request == nil {
 		request = NewCreatePrecheckRequest()
@@ -119,6 +200,21 @@ func (c *Client) CreatePrecheckWithContext(ctx context.Context, request *CreateP
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreatePrecheckWithContextV2(ctx context.Context, request *CreatePrecheckRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreatePrecheckRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreatePrecheckResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateTaskRequest() (request *CreateTaskRequest) {
 	request = &CreateTaskRequest{
@@ -139,6 +235,23 @@ func (c *Client) CreateTask(request *CreateTaskRequest) string {
 	return c.CreateTaskWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateTaskSend(request *CreateTaskRequest) (*CreateTaskResponse, error) {
+	statusCode, msg, err := c.CreateTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskRequest) string {
 	if request == nil {
 		request = NewCreateTaskRequest()
@@ -152,6 +265,21 @@ func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskR
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateTaskWithContextV2(ctx context.Context, request *CreateTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateTaskRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
 	request = &DescribeTaskRequest{
@@ -172,6 +300,23 @@ func (c *Client) DescribeTask(request *DescribeTaskRequest) string {
 	return c.DescribeTaskWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeTaskSend(request *DescribeTaskRequest) (*DescribeTaskResponse, error) {
+	statusCode, msg, err := c.DescribeTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeTaskRequest) string {
 	if request == nil {
 		request = NewDescribeTaskRequest()
@@ -185,6 +330,21 @@ func (c *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeT
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeTaskWithContextV2(ctx context.Context, request *DescribeTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeTaskRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewOperateTaskRequest() (request *OperateTaskRequest) {
 	request = &OperateTaskRequest{
@@ -205,6 +365,23 @@ func (c *Client) OperateTask(request *OperateTaskRequest) string {
 	return c.OperateTaskWithContext(context.Background(), request)
 }
 
+func (c *Client) OperateTaskSend(request *OperateTaskRequest) (*OperateTaskResponse, error) {
+	statusCode, msg, err := c.OperateTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct OperateTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) OperateTaskWithContext(ctx context.Context, request *OperateTaskRequest) string {
 	if request == nil {
 		request = NewOperateTaskRequest()
@@ -218,6 +395,21 @@ func (c *Client) OperateTaskWithContext(ctx context.Context, request *OperateTas
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) OperateTaskWithContextV2(ctx context.Context, request *OperateTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewOperateTaskRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewOperateTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeConnConfigRequest() (request *DescribeConnConfigRequest) {
 	request = &DescribeConnConfigRequest{
@@ -238,6 +430,23 @@ func (c *Client) DescribeConnConfig(request *DescribeConnConfigRequest) string {
 	return c.DescribeConnConfigWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeConnConfigSend(request *DescribeConnConfigRequest) (*DescribeConnConfigResponse, error) {
+	statusCode, msg, err := c.DescribeConnConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeConnConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeConnConfigWithContext(ctx context.Context, request *DescribeConnConfigRequest) string {
 	if request == nil {
 		request = NewDescribeConnConfigRequest()
@@ -251,6 +460,21 @@ func (c *Client) DescribeConnConfigWithContext(ctx context.Context, request *Des
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeConnConfigWithContextV2(ctx context.Context, request *DescribeConnConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeConnConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeConnConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribePrecheckRequest() (request *DescribePrecheckRequest) {
 	request = &DescribePrecheckRequest{
@@ -271,6 +495,23 @@ func (c *Client) DescribePrecheck(request *DescribePrecheckRequest) string {
 	return c.DescribePrecheckWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribePrecheckSend(request *DescribePrecheckRequest) (*DescribePrecheckResponse, error) {
+	statusCode, msg, err := c.DescribePrecheckWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribePrecheckResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribePrecheckWithContext(ctx context.Context, request *DescribePrecheckRequest) string {
 	if request == nil {
 		request = NewDescribePrecheckRequest()
@@ -284,6 +525,21 @@ func (c *Client) DescribePrecheckWithContext(ctx context.Context, request *Descr
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribePrecheckWithContextV2(ctx context.Context, request *DescribePrecheckRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribePrecheckRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribePrecheckResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeSourceUserConfigRequest() (request *DescribeSourceUserConfigRequest) {
 	request = &DescribeSourceUserConfigRequest{
@@ -304,6 +560,23 @@ func (c *Client) DescribeSourceUserConfig(request *DescribeSourceUserConfigReque
 	return c.DescribeSourceUserConfigWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeSourceUserConfigSend(request *DescribeSourceUserConfigRequest) (*DescribeSourceUserConfigResponse, error) {
+	statusCode, msg, err := c.DescribeSourceUserConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeSourceUserConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeSourceUserConfigWithContext(ctx context.Context, request *DescribeSourceUserConfigRequest) string {
 	if request == nil {
 		request = NewDescribeSourceUserConfigRequest()
@@ -317,6 +590,21 @@ func (c *Client) DescribeSourceUserConfigWithContext(ctx context.Context, reques
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeSourceUserConfigWithContextV2(ctx context.Context, request *DescribeSourceUserConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeSourceUserConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeSourceUserConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewSetConsistencyCheckRequest() (request *SetConsistencyCheckRequest) {
 	request = &SetConsistencyCheckRequest{
@@ -337,6 +625,23 @@ func (c *Client) SetConsistencyCheck(request *SetConsistencyCheckRequest) string
 	return c.SetConsistencyCheckWithContext(context.Background(), request)
 }
 
+func (c *Client) SetConsistencyCheckSend(request *SetConsistencyCheckRequest) (*SetConsistencyCheckResponse, error) {
+	statusCode, msg, err := c.SetConsistencyCheckWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct SetConsistencyCheckResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) SetConsistencyCheckWithContext(ctx context.Context, request *SetConsistencyCheckRequest) string {
 	if request == nil {
 		request = NewSetConsistencyCheckRequest()
@@ -350,6 +655,21 @@ func (c *Client) SetConsistencyCheckWithContext(ctx context.Context, request *Se
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) SetConsistencyCheckWithContextV2(ctx context.Context, request *SetConsistencyCheckRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetConsistencyCheckRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetConsistencyCheckResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeConsistencyCheckRequest() (request *DescribeConsistencyCheckRequest) {
 	request = &DescribeConsistencyCheckRequest{
@@ -370,6 +690,23 @@ func (c *Client) DescribeConsistencyCheck(request *DescribeConsistencyCheckReque
 	return c.DescribeConsistencyCheckWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeConsistencyCheckSend(request *DescribeConsistencyCheckRequest) (*DescribeConsistencyCheckResponse, error) {
+	statusCode, msg, err := c.DescribeConsistencyCheckWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeConsistencyCheckResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeConsistencyCheckWithContext(ctx context.Context, request *DescribeConsistencyCheckRequest) string {
 	if request == nil {
 		request = NewDescribeConsistencyCheckRequest()
@@ -383,6 +720,21 @@ func (c *Client) DescribeConsistencyCheckWithContext(ctx context.Context, reques
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeConsistencyCheckWithContextV2(ctx context.Context, request *DescribeConsistencyCheckRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeConsistencyCheckRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeConsistencyCheckResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeDTSParameterRequest() (request *DescribeDTSParameterRequest) {
 	request = &DescribeDTSParameterRequest{
@@ -403,6 +755,23 @@ func (c *Client) DescribeDTSParameter(request *DescribeDTSParameterRequest) stri
 	return c.DescribeDTSParameterWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeDTSParameterSend(request *DescribeDTSParameterRequest) (*DescribeDTSParameterResponse, error) {
+	statusCode, msg, err := c.DescribeDTSParameterWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeDTSParameterResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeDTSParameterWithContext(ctx context.Context, request *DescribeDTSParameterRequest) string {
 	if request == nil {
 		request = NewDescribeDTSParameterRequest()
@@ -416,6 +785,21 @@ func (c *Client) DescribeDTSParameterWithContext(ctx context.Context, request *D
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeDTSParameterWithContextV2(ctx context.Context, request *DescribeDTSParameterRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeDTSParameterRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeDTSParameterResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeDTSParameterConfigRequest() (request *DescribeDTSParameterConfigRequest) {
 	request = &DescribeDTSParameterConfigRequest{
@@ -436,6 +820,23 @@ func (c *Client) DescribeDTSParameterConfig(request *DescribeDTSParameterConfigR
 	return c.DescribeDTSParameterConfigWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeDTSParameterConfigSend(request *DescribeDTSParameterConfigRequest) (*DescribeDTSParameterConfigResponse, error) {
+	statusCode, msg, err := c.DescribeDTSParameterConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeDTSParameterConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeDTSParameterConfigWithContext(ctx context.Context, request *DescribeDTSParameterConfigRequest) string {
 	if request == nil {
 		request = NewDescribeDTSParameterConfigRequest()
@@ -449,6 +850,21 @@ func (c *Client) DescribeDTSParameterConfigWithContext(ctx context.Context, requ
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeDTSParameterConfigWithContextV2(ctx context.Context, request *DescribeDTSParameterConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeDTSParameterConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeDTSParameterConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeSourceUserRequest() (request *DescribeSourceUserRequest) {
 	request = &DescribeSourceUserRequest{
@@ -469,6 +885,23 @@ func (c *Client) DescribeSourceUser(request *DescribeSourceUserRequest) string {
 	return c.DescribeSourceUserWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeSourceUserSend(request *DescribeSourceUserRequest) (*DescribeSourceUserResponse, error) {
+	statusCode, msg, err := c.DescribeSourceUserWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeSourceUserResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeSourceUserWithContext(ctx context.Context, request *DescribeSourceUserRequest) string {
 	if request == nil {
 		request = NewDescribeSourceUserRequest()
@@ -482,6 +915,21 @@ func (c *Client) DescribeSourceUserWithContext(ctx context.Context, request *Des
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeSourceUserWithContextV2(ctx context.Context, request *DescribeSourceUserRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeSourceUserRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeSourceUserResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeSubTaskRequest() (request *DescribeSubTaskRequest) {
 	request = &DescribeSubTaskRequest{
@@ -502,6 +950,23 @@ func (c *Client) DescribeSubTask(request *DescribeSubTaskRequest) string {
 	return c.DescribeSubTaskWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeSubTaskSend(request *DescribeSubTaskRequest) (*DescribeSubTaskResponse, error) {
+	statusCode, msg, err := c.DescribeSubTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeSubTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeSubTaskWithContext(ctx context.Context, request *DescribeSubTaskRequest) string {
 	if request == nil {
 		request = NewDescribeSubTaskRequest()
@@ -515,6 +980,21 @@ func (c *Client) DescribeSubTaskWithContext(ctx context.Context, request *Descri
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeSubTaskWithContextV2(ctx context.Context, request *DescribeSubTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeSubTaskRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeSubTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateConsistencyCheckRequest() (request *CreateConsistencyCheckRequest) {
 	request = &CreateConsistencyCheckRequest{
@@ -535,6 +1015,23 @@ func (c *Client) CreateConsistencyCheck(request *CreateConsistencyCheckRequest) 
 	return c.CreateConsistencyCheckWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateConsistencyCheckSend(request *CreateConsistencyCheckRequest) (*CreateConsistencyCheckResponse, error) {
+	statusCode, msg, err := c.CreateConsistencyCheckWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateConsistencyCheckResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateConsistencyCheckWithContext(ctx context.Context, request *CreateConsistencyCheckRequest) string {
 	if request == nil {
 		request = NewCreateConsistencyCheckRequest()
@@ -548,6 +1045,21 @@ func (c *Client) CreateConsistencyCheckWithContext(ctx context.Context, request 
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateConsistencyCheckWithContextV2(ctx context.Context, request *CreateConsistencyCheckRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateConsistencyCheckRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateConsistencyCheckResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewStopConsistencyCheckRequest() (request *StopConsistencyCheckRequest) {
 	request = &StopConsistencyCheckRequest{
@@ -568,6 +1080,23 @@ func (c *Client) StopConsistencyCheck(request *StopConsistencyCheckRequest) stri
 	return c.StopConsistencyCheckWithContext(context.Background(), request)
 }
 
+func (c *Client) StopConsistencyCheckSend(request *StopConsistencyCheckRequest) (*StopConsistencyCheckResponse, error) {
+	statusCode, msg, err := c.StopConsistencyCheckWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct StopConsistencyCheckResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) StopConsistencyCheckWithContext(ctx context.Context, request *StopConsistencyCheckRequest) string {
 	if request == nil {
 		request = NewStopConsistencyCheckRequest()
@@ -581,6 +1110,21 @@ func (c *Client) StopConsistencyCheckWithContext(ctx context.Context, request *S
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) StopConsistencyCheckWithContextV2(ctx context.Context, request *StopConsistencyCheckRequest) (int, string, error) {
+	if request == nil {
+		request = NewStopConsistencyCheckRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewStopConsistencyCheckResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeRegionConfigRequest() (request *DescribeRegionConfigRequest) {
 	request = &DescribeRegionConfigRequest{
@@ -601,6 +1145,23 @@ func (c *Client) DescribeRegionConfig(request *DescribeRegionConfigRequest) stri
 	return c.DescribeRegionConfigWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeRegionConfigSend(request *DescribeRegionConfigRequest) (*DescribeRegionConfigResponse, error) {
+	statusCode, msg, err := c.DescribeRegionConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeRegionConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeRegionConfigWithContext(ctx context.Context, request *DescribeRegionConfigRequest) string {
 	if request == nil {
 		request = NewDescribeRegionConfigRequest()
@@ -614,6 +1175,21 @@ func (c *Client) DescribeRegionConfigWithContext(ctx context.Context, request *D
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeRegionConfigWithContextV2(ctx context.Context, request *DescribeRegionConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeRegionConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeRegionConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewTaskBirdViewRequest() (request *TaskBirdViewRequest) {
 	request = &TaskBirdViewRequest{
@@ -634,6 +1210,23 @@ func (c *Client) TaskBirdView(request *TaskBirdViewRequest) string {
 	return c.TaskBirdViewWithContext(context.Background(), request)
 }
 
+func (c *Client) TaskBirdViewSend(request *TaskBirdViewRequest) (*TaskBirdViewResponse, error) {
+	statusCode, msg, err := c.TaskBirdViewWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct TaskBirdViewResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) TaskBirdViewWithContext(ctx context.Context, request *TaskBirdViewRequest) string {
 	if request == nil {
 		request = NewTaskBirdViewRequest()
@@ -647,6 +1240,21 @@ func (c *Client) TaskBirdViewWithContext(ctx context.Context, request *TaskBirdV
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) TaskBirdViewWithContextV2(ctx context.Context, request *TaskBirdViewRequest) (int, string, error) {
+	if request == nil {
+		request = NewTaskBirdViewRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewTaskBirdViewResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 
 

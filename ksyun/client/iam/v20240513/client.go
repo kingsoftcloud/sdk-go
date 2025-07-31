@@ -41,6 +41,23 @@ func (c *Client) GetProjectInstanceListNew(request *GetProjectInstanceListNewReq
 	return c.GetProjectInstanceListNewWithContext(context.Background(), request)
 }
 
+func (c *Client) GetProjectInstanceListNewSend(request *GetProjectInstanceListNewRequest) (*GetProjectInstanceListNewResponse, error) {
+	statusCode, msg, err := c.GetProjectInstanceListNewWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetProjectInstanceListNewResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) GetProjectInstanceListNewWithContext(ctx context.Context, request *GetProjectInstanceListNewRequest) string {
 	if request == nil {
 		request = NewGetProjectInstanceListNewRequest()
@@ -54,4 +71,19 @@ func (c *Client) GetProjectInstanceListNewWithContext(ctx context.Context, reque
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) GetProjectInstanceListNewWithContextV2(ctx context.Context, request *GetProjectInstanceListNewRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetProjectInstanceListNewRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetProjectInstanceListNewResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }

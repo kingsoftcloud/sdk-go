@@ -41,6 +41,23 @@ func (c *Client) DeleteSecurityRules(request *DeleteSecurityRulesRequest) string
 	return c.DeleteSecurityRulesWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteSecurityRulesSend(request *DeleteSecurityRulesRequest) (*DeleteSecurityRulesResponse, error) {
+	statusCode, msg, err := c.DeleteSecurityRulesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteSecurityRulesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteSecurityRulesWithContext(ctx context.Context, request *DeleteSecurityRulesRequest) string {
 	if request == nil {
 		request = NewDeleteSecurityRulesRequest()
@@ -54,6 +71,21 @@ func (c *Client) DeleteSecurityRulesWithContext(ctx context.Context, request *De
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteSecurityRulesWithContextV2(ctx context.Context, request *DeleteSecurityRulesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteSecurityRulesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteSecurityRulesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateSecurityRulesRequest() (request *CreateSecurityRulesRequest) {
 	request = &CreateSecurityRulesRequest{
@@ -74,6 +106,23 @@ func (c *Client) CreateSecurityRules(request *CreateSecurityRulesRequest) string
 	return c.CreateSecurityRulesWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateSecurityRulesSend(request *CreateSecurityRulesRequest) (*CreateSecurityRulesResponse, error) {
+	statusCode, msg, err := c.CreateSecurityRulesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateSecurityRulesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateSecurityRulesWithContext(ctx context.Context, request *CreateSecurityRulesRequest) string {
 	if request == nil {
 		request = NewCreateSecurityRulesRequest()
@@ -87,6 +136,21 @@ func (c *Client) CreateSecurityRulesWithContext(ctx context.Context, request *Cr
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateSecurityRulesWithContextV2(ctx context.Context, request *CreateSecurityRulesRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateSecurityRulesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateSecurityRulesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewUnbindSecurityGroupInstancesRequest() (request *UnbindSecurityGroupInstancesRequest) {
 	request = &UnbindSecurityGroupInstancesRequest{
@@ -107,6 +171,23 @@ func (c *Client) UnbindSecurityGroupInstances(request *UnbindSecurityGroupInstan
 	return c.UnbindSecurityGroupInstancesWithContext(context.Background(), request)
 }
 
+func (c *Client) UnbindSecurityGroupInstancesSend(request *UnbindSecurityGroupInstancesRequest) (*UnbindSecurityGroupInstancesResponse, error) {
+	statusCode, msg, err := c.UnbindSecurityGroupInstancesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct UnbindSecurityGroupInstancesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) UnbindSecurityGroupInstancesWithContext(ctx context.Context, request *UnbindSecurityGroupInstancesRequest) string {
 	if request == nil {
 		request = NewUnbindSecurityGroupInstancesRequest()
@@ -120,6 +201,21 @@ func (c *Client) UnbindSecurityGroupInstancesWithContext(ctx context.Context, re
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) UnbindSecurityGroupInstancesWithContextV2(ctx context.Context, request *UnbindSecurityGroupInstancesRequest) (int, string, error) {
+	if request == nil {
+		request = NewUnbindSecurityGroupInstancesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUnbindSecurityGroupInstancesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewBindSecurityGroupInstancesRequest() (request *BindSecurityGroupInstancesRequest) {
 	request = &BindSecurityGroupInstancesRequest{
@@ -140,6 +236,23 @@ func (c *Client) BindSecurityGroupInstances(request *BindSecurityGroupInstancesR
 	return c.BindSecurityGroupInstancesWithContext(context.Background(), request)
 }
 
+func (c *Client) BindSecurityGroupInstancesSend(request *BindSecurityGroupInstancesRequest) (*BindSecurityGroupInstancesResponse, error) {
+	statusCode, msg, err := c.BindSecurityGroupInstancesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct BindSecurityGroupInstancesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) BindSecurityGroupInstancesWithContext(ctx context.Context, request *BindSecurityGroupInstancesRequest) string {
 	if request == nil {
 		request = NewBindSecurityGroupInstancesRequest()
@@ -153,6 +266,21 @@ func (c *Client) BindSecurityGroupInstancesWithContext(ctx context.Context, requ
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) BindSecurityGroupInstancesWithContextV2(ctx context.Context, request *BindSecurityGroupInstancesRequest) (int, string, error) {
+	if request == nil {
+		request = NewBindSecurityGroupInstancesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewBindSecurityGroupInstancesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteSecurityGroupRequest() (request *DeleteSecurityGroupRequest) {
 	request = &DeleteSecurityGroupRequest{
@@ -173,6 +301,23 @@ func (c *Client) DeleteSecurityGroup(request *DeleteSecurityGroupRequest) string
 	return c.DeleteSecurityGroupWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteSecurityGroupSend(request *DeleteSecurityGroupRequest) (*DeleteSecurityGroupResponse, error) {
+	statusCode, msg, err := c.DeleteSecurityGroupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteSecurityGroupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *DeleteSecurityGroupRequest) string {
 	if request == nil {
 		request = NewDeleteSecurityGroupRequest()
@@ -186,6 +331,21 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteSecurityGroupWithContextV2(ctx context.Context, request *DeleteSecurityGroupRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteSecurityGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteSecurityGroupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeSecurityGroupRequest() (request *DescribeSecurityGroupRequest) {
 	request = &DescribeSecurityGroupRequest{
@@ -206,6 +366,23 @@ func (c *Client) DescribeSecurityGroup(request *DescribeSecurityGroupRequest) st
 	return c.DescribeSecurityGroupWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeSecurityGroupSend(request *DescribeSecurityGroupRequest) (*DescribeSecurityGroupResponse, error) {
+	statusCode, msg, err := c.DescribeSecurityGroupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeSecurityGroupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *DescribeSecurityGroupRequest) string {
 	if request == nil {
 		request = NewDescribeSecurityGroupRequest()
@@ -219,6 +396,21 @@ func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeSecurityGroupWithContextV2(ctx context.Context, request *DescribeSecurityGroupRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeSecurityGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeSecurityGroupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateSecurityGroupRequest() (request *CreateSecurityGroupRequest) {
 	request = &CreateSecurityGroupRequest{
@@ -239,6 +431,23 @@ func (c *Client) CreateSecurityGroup(request *CreateSecurityGroupRequest) string
 	return c.CreateSecurityGroupWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateSecurityGroupSend(request *CreateSecurityGroupRequest) (*CreateSecurityGroupResponse, error) {
+	statusCode, msg, err := c.CreateSecurityGroupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateSecurityGroupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *CreateSecurityGroupRequest) string {
 	if request == nil {
 		request = NewCreateSecurityGroupRequest()
@@ -252,6 +461,21 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateSecurityGroupWithContextV2(ctx context.Context, request *CreateSecurityGroupRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateSecurityGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateSecurityGroupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewListSecurityGroupRequest() (request *ListSecurityGroupRequest) {
 	request = &ListSecurityGroupRequest{
@@ -272,6 +496,23 @@ func (c *Client) ListSecurityGroup(request *ListSecurityGroupRequest) string {
 	return c.ListSecurityGroupWithContext(context.Background(), request)
 }
 
+func (c *Client) ListSecurityGroupSend(request *ListSecurityGroupRequest) (*ListSecurityGroupResponse, error) {
+	statusCode, msg, err := c.ListSecurityGroupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ListSecurityGroupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ListSecurityGroupWithContext(ctx context.Context, request *ListSecurityGroupRequest) string {
 	if request == nil {
 		request = NewListSecurityGroupRequest()
@@ -285,6 +526,21 @@ func (c *Client) ListSecurityGroupWithContext(ctx context.Context, request *List
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ListSecurityGroupWithContextV2(ctx context.Context, request *ListSecurityGroupRequest) (int, string, error) {
+	if request == nil {
+		request = NewListSecurityGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListSecurityGroupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteInstanceRequest() (request *DeleteInstanceRequest) {
 	request = &DeleteInstanceRequest{
@@ -305,6 +561,23 @@ func (c *Client) DeleteInstance(request *DeleteInstanceRequest) string {
 	return c.DeleteInstanceWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteInstanceSend(request *DeleteInstanceRequest) (*DeleteInstanceResponse, error) {
+	statusCode, msg, err := c.DeleteInstanceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteInstanceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteInstanceRequest) string {
 	if request == nil {
 		request = NewDeleteInstanceRequest()
@@ -318,6 +591,21 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteInstanceWithContextV2(ctx context.Context, request *DeleteInstanceRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteInstanceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeInstanceRequest() (request *DescribeInstanceRequest) {
 	request = &DescribeInstanceRequest{
@@ -338,6 +626,23 @@ func (c *Client) DescribeInstance(request *DescribeInstanceRequest) string {
 	return c.DescribeInstanceWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeInstanceSend(request *DescribeInstanceRequest) (*DescribeInstanceResponse, error) {
+	statusCode, msg, err := c.DescribeInstanceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeInstanceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *DescribeInstanceRequest) string {
 	if request == nil {
 		request = NewDescribeInstanceRequest()
@@ -351,6 +656,21 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeInstanceWithContextV2(ctx context.Context, request *DescribeInstanceRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeInstanceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewListInstanceRequest() (request *ListInstanceRequest) {
 	request = &ListInstanceRequest{
@@ -371,6 +691,23 @@ func (c *Client) ListInstance(request *ListInstanceRequest) string {
 	return c.ListInstanceWithContext(context.Background(), request)
 }
 
+func (c *Client) ListInstanceSend(request *ListInstanceRequest) (*ListInstanceResponse, error) {
+	statusCode, msg, err := c.ListInstanceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ListInstanceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ListInstanceWithContext(ctx context.Context, request *ListInstanceRequest) string {
 	if request == nil {
 		request = NewListInstanceRequest()
@@ -384,6 +721,21 @@ func (c *Client) ListInstanceWithContext(ctx context.Context, request *ListInsta
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ListInstanceWithContextV2(ctx context.Context, request *ListInstanceRequest) (int, string, error) {
+	if request == nil {
+		request = NewListInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListInstanceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateInstanceRequest() (request *CreateInstanceRequest) {
 	request = &CreateInstanceRequest{
@@ -404,6 +756,23 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) string {
 	return c.CreateInstanceWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateInstanceSend(request *CreateInstanceRequest) (*CreateInstanceResponse, error) {
+	statusCode, msg, err := c.CreateInstanceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateInstanceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest) string {
 	if request == nil {
 		request = NewCreateInstanceRequest()
@@ -417,6 +786,21 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateInstanceWithContextV2(ctx context.Context, request *CreateInstanceRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateInstanceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewReleaseDBInstanceEipRequest() (request *ReleaseDBInstanceEipRequest) {
 	request = &ReleaseDBInstanceEipRequest{
@@ -437,6 +821,23 @@ func (c *Client) ReleaseDBInstanceEip(request *ReleaseDBInstanceEipRequest) stri
 	return c.ReleaseDBInstanceEipWithContext(context.Background(), request)
 }
 
+func (c *Client) ReleaseDBInstanceEipSend(request *ReleaseDBInstanceEipRequest) (*ReleaseDBInstanceEipResponse, error) {
+	statusCode, msg, err := c.ReleaseDBInstanceEipWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ReleaseDBInstanceEipResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ReleaseDBInstanceEipWithContext(ctx context.Context, request *ReleaseDBInstanceEipRequest) string {
 	if request == nil {
 		request = NewReleaseDBInstanceEipRequest()
@@ -450,6 +851,21 @@ func (c *Client) ReleaseDBInstanceEipWithContext(ctx context.Context, request *R
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ReleaseDBInstanceEipWithContextV2(ctx context.Context, request *ReleaseDBInstanceEipRequest) (int, string, error) {
+	if request == nil {
+		request = NewReleaseDBInstanceEipRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewReleaseDBInstanceEipResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewAllocateDBInstanceEipRequest() (request *AllocateDBInstanceEipRequest) {
 	request = &AllocateDBInstanceEipRequest{
@@ -470,6 +886,23 @@ func (c *Client) AllocateDBInstanceEip(request *AllocateDBInstanceEipRequest) st
 	return c.AllocateDBInstanceEipWithContext(context.Background(), request)
 }
 
+func (c *Client) AllocateDBInstanceEipSend(request *AllocateDBInstanceEipRequest) (*AllocateDBInstanceEipResponse, error) {
+	statusCode, msg, err := c.AllocateDBInstanceEipWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct AllocateDBInstanceEipResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) AllocateDBInstanceEipWithContext(ctx context.Context, request *AllocateDBInstanceEipRequest) string {
 	if request == nil {
 		request = NewAllocateDBInstanceEipRequest()
@@ -483,6 +916,21 @@ func (c *Client) AllocateDBInstanceEipWithContext(ctx context.Context, request *
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) AllocateDBInstanceEipWithContextV2(ctx context.Context, request *AllocateDBInstanceEipRequest) (int, string, error) {
+	if request == nil {
+		request = NewAllocateDBInstanceEipRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewAllocateDBInstanceEipResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewListBackupRequest() (request *ListBackupRequest) {
 	request = &ListBackupRequest{
@@ -503,6 +951,23 @@ func (c *Client) ListBackup(request *ListBackupRequest) string {
 	return c.ListBackupWithContext(context.Background(), request)
 }
 
+func (c *Client) ListBackupSend(request *ListBackupRequest) (*ListBackupResponse, error) {
+	statusCode, msg, err := c.ListBackupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ListBackupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ListBackupWithContext(ctx context.Context, request *ListBackupRequest) string {
 	if request == nil {
 		request = NewListBackupRequest()
@@ -516,6 +981,21 @@ func (c *Client) ListBackupWithContext(ctx context.Context, request *ListBackupR
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ListBackupWithContextV2(ctx context.Context, request *ListBackupRequest) (int, string, error) {
+	if request == nil {
+		request = NewListBackupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListBackupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateBackupRequest() (request *CreateBackupRequest) {
 	request = &CreateBackupRequest{
@@ -536,6 +1016,23 @@ func (c *Client) CreateBackup(request *CreateBackupRequest) string {
 	return c.CreateBackupWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateBackupSend(request *CreateBackupRequest) (*CreateBackupResponse, error) {
+	statusCode, msg, err := c.CreateBackupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateBackupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateBackupWithContext(ctx context.Context, request *CreateBackupRequest) string {
 	if request == nil {
 		request = NewCreateBackupRequest()
@@ -549,6 +1046,21 @@ func (c *Client) CreateBackupWithContext(ctx context.Context, request *CreateBac
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateBackupWithContextV2(ctx context.Context, request *CreateBackupRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateBackupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateBackupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteBackupRequest() (request *DeleteBackupRequest) {
 	request = &DeleteBackupRequest{
@@ -569,6 +1081,23 @@ func (c *Client) DeleteBackup(request *DeleteBackupRequest) string {
 	return c.DeleteBackupWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteBackupSend(request *DeleteBackupRequest) (*DeleteBackupResponse, error) {
+	statusCode, msg, err := c.DeleteBackupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteBackupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteBackupWithContext(ctx context.Context, request *DeleteBackupRequest) string {
 	if request == nil {
 		request = NewDeleteBackupRequest()
@@ -582,6 +1111,21 @@ func (c *Client) DeleteBackupWithContext(ctx context.Context, request *DeleteBac
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteBackupWithContextV2(ctx context.Context, request *DeleteBackupRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteBackupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteBackupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewListCollectionsRequest() (request *ListCollectionsRequest) {
 	request = &ListCollectionsRequest{
@@ -602,6 +1146,23 @@ func (c *Client) ListCollections(request *ListCollectionsRequest) string {
 	return c.ListCollectionsWithContext(context.Background(), request)
 }
 
+func (c *Client) ListCollectionsSend(request *ListCollectionsRequest) (*ListCollectionsResponse, error) {
+	statusCode, msg, err := c.ListCollectionsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ListCollectionsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ListCollectionsWithContext(ctx context.Context, request *ListCollectionsRequest) string {
 	if request == nil {
 		request = NewListCollectionsRequest()
@@ -615,4 +1176,19 @@ func (c *Client) ListCollectionsWithContext(ctx context.Context, request *ListCo
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ListCollectionsWithContextV2(ctx context.Context, request *ListCollectionsRequest) (int, string, error) {
+	if request == nil {
+		request = NewListCollectionsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListCollectionsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }

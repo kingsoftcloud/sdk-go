@@ -2,7 +2,6 @@ package v20170101
 
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -19,17 +18,6 @@ type ListStreamDurationsRequest struct {
 func (r *ListStreamDurationsRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ListStreamDurationsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListStreamDurationsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListStreamDurationsResponse struct {
@@ -64,32 +52,9 @@ func (r *ListHistoryPubStreamsErrInfoRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListHistoryPubStreamsErrInfoRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListHistoryPubStreamsErrInfoRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListHistoryPubStreamsErrInfoResponse struct {
 	*ksyunhttp.BaseResponse
-	Data struct {
-		App       *string `json:"App" name:"App"`
-		Pubdomain *string `json:"Pubdomain" name:"Pubdomain"`
-		Result    []struct {
-			Detail []struct {
-				Clientip      *string `json:"Clientip" name:"Clientip"`
-				StatusMessage *string `json:"StatusMessage" name:"StatusMessage"`
-			} `json:"Detail"`
-			Stream *string `json:"Stream" name:"Stream"`
-		} `json:"Result" name:"Result"`
-		RetMsg     *string `json:"RetMsg" name:"RetMsg"`
-		UniqueName *string `json:"UniqueName" name:"UniqueName"`
-	} `json:"Data"`
+	ListHistoryPubStreamsErrInfoResponse *string `json:"ListHistoryPubStreamsErrInfoResponse" name:"ListHistoryPubStreamsErrInfoResponse"`
 }
 
 func (r *ListHistoryPubStreamsErrInfoResponse) ToJsonString() string {
@@ -119,32 +84,9 @@ func (r *ListHistoryPubStreamsInfoRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListHistoryPubStreamsInfoRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListHistoryPubStreamsInfoRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListHistoryPubStreamsInfoResponse struct {
 	*ksyunhttp.BaseResponse
-	Data struct {
-		App       *string `json:"App" name:"App"`
-		Pubdomain *string `json:"Pubdomain" name:"Pubdomain"`
-		Result    []struct {
-			Detail []struct {
-				Clientip      *string `json:"Clientip" name:"Clientip"`
-				StatusMessage *string `json:"StatusMessage" name:"StatusMessage"`
-			} `json:"Detail"`
-			Stream *string `json:"Stream" name:"Stream"`
-		} `json:"Result" name:"Result"`
-		RetMsg     *string `json:"RetMsg" name:"RetMsg"`
-		UniqueName *string `json:"UniqueName" name:"UniqueName"`
-	} `json:"Data"`
+	ListHistoryPubStreamsInfoResponse *string `json:"ListHistoryPubStreamsInfoResponse" name:"ListHistoryPubStreamsInfoResponse"`
 }
 
 func (r *ListHistoryPubStreamsInfoResponse) ToJsonString() string {
@@ -168,17 +110,6 @@ type ForbidStreamRequest struct {
 func (r *ForbidStreamRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ForbidStreamRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ForbidStreamRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ForbidStreamResponse struct {
@@ -210,22 +141,9 @@ func (r *ResumeStreamRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ResumeStreamRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ResumeStreamRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ResumeStreamResponse struct {
 	*ksyunhttp.BaseResponse
-	Data struct {
-		RetMsg *string `json:"RetMsg" name:"RetMsg"`
-	} `json:"Data"`
+	ResumeStreamResponse *string `json:"ResumeStreamResponse" name:"ResumeStreamResponse"`
 }
 
 func (r *ResumeStreamResponse) ToJsonString() string {
@@ -249,29 +167,9 @@ func (r *GetBlacklistRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetBlacklistRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetBlacklistRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetBlacklistResponse struct {
 	*ksyunhttp.BaseResponse
-	Data struct {
-		App       *string `json:"App" name:"App"`
-		Pubdomain *string `json:"Pubdomain" name:"Pubdomain"`
-		Recs      []struct {
-			Stream *string `json:"Stream" name:"Stream"`
-		} `json:"Recs" name:"Recs"`
-		RetMsg     *string `json:"RetMsg" name:"RetMsg"`
-		UniqueName *string `json:"UniqueName" name:"UniqueName"`
-	} `json:"Data"`
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	GetBlacklistResponse *string `json:"GetBlacklistResponse" name:"GetBlacklistResponse"`
 }
 
 func (r *GetBlacklistResponse) ToJsonString() string {
@@ -296,23 +194,9 @@ func (r *CheckBlacklistRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CheckBlacklistRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CheckBlacklistRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CheckBlacklistResponse struct {
 	*ksyunhttp.BaseResponse
-	Data struct {
-		RetMsg *string `json:"RetMsg" name:"RetMsg"`
-	} `json:"Data"`
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	CheckBlacklistResponse *string `json:"CheckBlacklistResponse" name:"CheckBlacklistResponse"`
 }
 
 func (r *CheckBlacklistResponse) ToJsonString() string {
@@ -337,17 +221,6 @@ type ListRealtimeStreamsInfoRequest struct {
 func (r *ListRealtimeStreamsInfoRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ListRealtimeStreamsInfoRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListRealtimeStreamsInfoRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListRealtimeStreamsInfoResponse struct {

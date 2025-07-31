@@ -40,6 +40,23 @@ func (c *Client) CreateKey(request *CreateKeyRequest) string {
 	return c.CreateKeyWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateKeySend(request *CreateKeyRequest) (*CreateKeyResponse, error) {
+	statusCode, msg, err := c.CreateKeyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateKeyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateKeyWithContext(ctx context.Context, request *CreateKeyRequest) string {
 	if request == nil {
 		request = NewCreateKeyRequest()
@@ -53,6 +70,21 @@ func (c *Client) CreateKeyWithContext(ctx context.Context, request *CreateKeyReq
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateKeyWithContextV2(ctx context.Context, request *CreateKeyRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateKeyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateKeyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewImportKeyRequest() (request *ImportKeyRequest) {
 	request = &ImportKeyRequest{
@@ -73,6 +105,23 @@ func (c *Client) ImportKey(request *ImportKeyRequest) string {
 	return c.ImportKeyWithContext(context.Background(), request)
 }
 
+func (c *Client) ImportKeySend(request *ImportKeyRequest) (*ImportKeyResponse, error) {
+	statusCode, msg, err := c.ImportKeyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ImportKeyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ImportKeyWithContext(ctx context.Context, request *ImportKeyRequest) string {
 	if request == nil {
 		request = NewImportKeyRequest()
@@ -86,6 +135,21 @@ func (c *Client) ImportKeyWithContext(ctx context.Context, request *ImportKeyReq
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ImportKeyWithContextV2(ctx context.Context, request *ImportKeyRequest) (int, string, error) {
+	if request == nil {
+		request = NewImportKeyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewImportKeyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteKeyRequest() (request *DeleteKeyRequest) {
 	request = &DeleteKeyRequest{
@@ -106,6 +170,23 @@ func (c *Client) DeleteKey(request *DeleteKeyRequest) string {
 	return c.DeleteKeyWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteKeySend(request *DeleteKeyRequest) (*DeleteKeyResponse, error) {
+	statusCode, msg, err := c.DeleteKeyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteKeyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteKeyWithContext(ctx context.Context, request *DeleteKeyRequest) string {
 	if request == nil {
 		request = NewDeleteKeyRequest()
@@ -119,6 +200,21 @@ func (c *Client) DeleteKeyWithContext(ctx context.Context, request *DeleteKeyReq
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteKeyWithContextV2(ctx context.Context, request *DeleteKeyRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteKeyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteKeyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyKeyRequest() (request *ModifyKeyRequest) {
 	request = &ModifyKeyRequest{
@@ -139,6 +235,23 @@ func (c *Client) ModifyKey(request *ModifyKeyRequest) string {
 	return c.ModifyKeyWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyKeySend(request *ModifyKeyRequest) (*ModifyKeyResponse, error) {
+	statusCode, msg, err := c.ModifyKeyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyKeyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyKeyWithContext(ctx context.Context, request *ModifyKeyRequest) string {
 	if request == nil {
 		request = NewModifyKeyRequest()
@@ -152,6 +265,21 @@ func (c *Client) ModifyKeyWithContext(ctx context.Context, request *ModifyKeyReq
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyKeyWithContextV2(ctx context.Context, request *ModifyKeyRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyKeyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyKeyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeKeysRequest() (request *DescribeKeysRequest) {
 	request = &DescribeKeysRequest{
@@ -172,6 +300,23 @@ func (c *Client) DescribeKeys(request *DescribeKeysRequest) string {
 	return c.DescribeKeysWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeKeysSend(request *DescribeKeysRequest) (*DescribeKeysResponse, error) {
+	statusCode, msg, err := c.DescribeKeysWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeKeysResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeKeysWithContext(ctx context.Context, request *DescribeKeysRequest) string {
 	if request == nil {
 		request = NewDescribeKeysRequest()
@@ -185,6 +330,21 @@ func (c *Client) DescribeKeysWithContext(ctx context.Context, request *DescribeK
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeKeysWithContextV2(ctx context.Context, request *DescribeKeysRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeKeysRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeKeysResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 
 

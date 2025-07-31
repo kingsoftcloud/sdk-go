@@ -40,6 +40,23 @@ func (c *Client) SetRenewal(request *SetRenewalRequest) string {
 	return c.SetRenewalWithContext(context.Background(), request)
 }
 
+func (c *Client) SetRenewalSend(request *SetRenewalRequest) (*SetRenewalResponse, error) {
+	statusCode, msg, err := c.SetRenewalWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct SetRenewalResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) SetRenewalWithContext(ctx context.Context, request *SetRenewalRequest) string {
 	if request == nil {
 		request = NewSetRenewalRequest()
@@ -53,6 +70,21 @@ func (c *Client) SetRenewalWithContext(ctx context.Context, request *SetRenewalR
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) SetRenewalWithContextV2(ctx context.Context, request *SetRenewalRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetRenewalRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetRenewalResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 
 

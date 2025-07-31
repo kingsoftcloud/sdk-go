@@ -2,7 +2,6 @@ package v20240612
 
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -10,6 +9,11 @@ type ModifyNotebookStorageConfigs struct {
 	StorageConfigId   *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
 	MountPath         *string `json:"MountPath,omitempty" name:"MountPath"`
 	StorageConfigType *string `json:"StorageConfigType,omitempty" name:"StorageConfigType"`
+}
+type ModifyNotebookServiceConfigs struct {
+	Service             *string `json:"Service,omitempty" name:"Service"`
+	Port                *int    `json:"Port,omitempty" name:"Port"`
+	EnablePublicNetwork *bool   `json:"EnablePublicNetwork,omitempty" name:"EnablePublicNetwork"`
 }
 type DescribeNotebooksFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
@@ -19,6 +23,11 @@ type CreateNotebookStorageConfigs struct {
 	StorageConfigId   *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
 	MountPath         *string `json:"MountPath,omitempty" name:"MountPath"`
 	StorageConfigType *string `json:"StorageConfigType,omitempty" name:"StorageConfigType"`
+}
+type CreateNotebookServiceConfigs struct {
+	Service             *string `json:"Service,omitempty" name:"Service"`
+	Port                *int    `json:"Port,omitempty" name:"Port"`
+	EnablePublicNetwork *bool   `json:"EnablePublicNetwork,omitempty" name:"EnablePublicNetwork"`
 }
 
 type SaveNotebookImageRequest struct {
@@ -41,17 +50,6 @@ type SaveNotebookImageRequest struct {
 func (r *SaveNotebookImageRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *SaveNotebookImageRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SaveNotebookImageRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type SaveNotebookImageResponse struct {
@@ -87,22 +85,12 @@ type ModifyNotebookRequest struct {
 	CpuNum                 *int                            `json:"CpuNum,omitempty" name:"CpuNum"`
 	Memory                 *int                            `json:"Memory,omitempty" name:"Memory"`
 	StorageConfigs         []*ModifyNotebookStorageConfigs `json:"StorageConfigs,omitempty" name:"StorageConfigs"`
+	ServiceConfigs         []*ModifyNotebookServiceConfigs `json:"ServiceConfigs,omitempty" name:"ServiceConfigs"`
 }
 
 func (r *ModifyNotebookRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ModifyNotebookRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyNotebookRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyNotebookResponse struct {
@@ -130,17 +118,6 @@ func (r *DeleteNotebookRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DeleteNotebookRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteNotebookRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DeleteNotebookResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId  *string `json:"RequestId" name:"RequestId"`
@@ -164,22 +141,12 @@ type DescribeNotebooksRequest struct {
 	MaxResults *int                       `json:"MaxResults,omitempty" name:"MaxResults"`
 	State      *string                    `json:"State,omitempty" name:"State"`
 	Filter     []*DescribeNotebooksFilter `json:"Filter,omitempty" name:"Filter"`
+	QueueId    *string                    `json:"QueueId,omitempty" name:"QueueId"`
 }
 
 func (r *DescribeNotebooksRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DescribeNotebooksRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeNotebooksRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeNotebooksResponse struct {
@@ -221,6 +188,9 @@ type DescribeNotebooksResponse struct {
 			MountPath         *string `json:"MountPath" name:"MountPath"`
 			StorageConfigType *string `json:"StorageConfigType" name:"StorageConfigType"`
 		} `json:"StorageConfigs" name:"StorageConfigs"`
+		Label struct {
+			TerminatePolicyId *string `json:"TerminatePolicyId" name:"TerminatePolicyId"`
+		} `json:"Label" name:"Label"`
 	} `json:"Notebooks"`
 }
 
@@ -251,22 +221,13 @@ type CreateNotebookRequest struct {
 	SshPort                *int                            `json:"SshPort,omitempty" name:"SshPort"`
 	StorageConfigs         []*CreateNotebookStorageConfigs `json:"StorageConfigs,omitempty" name:"StorageConfigs"`
 	ResourcePoolId         *string                         `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	AutoSave               *bool                           `json:"AutoSave,omitempty" name:"AutoSave"`
+	ServiceConfigs         []*CreateNotebookServiceConfigs `json:"ServiceConfigs,omitempty" name:"ServiceConfigs"`
 }
 
 func (r *CreateNotebookRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CreateNotebookRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateNotebookRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateNotebookResponse struct {
@@ -284,195 +245,6 @@ func (r *CreateNotebookResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type ListDatasetHostnameRequest struct {
-	*ksyunhttp.BaseRequest
-}
-
-func (r *ListDatasetHostnameRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *ListDatasetHostnameRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListDatasetHostnameRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ListDatasetHostnameResponse struct {
-	*ksyunhttp.BaseResponse
-	Hostnames []*string `json:"Hostnames" name:"Hostnames"`
-	RequestId *string   `json:"RequestId" name:"RequestId"`
-}
-
-func (r *ListDatasetHostnameResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *ListDatasetHostnameResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ListDatasetTopicRequest struct {
-	*ksyunhttp.BaseRequest
-}
-
-func (r *ListDatasetTopicRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *ListDatasetTopicRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListDatasetTopicRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ListDatasetTopicResponse struct {
-	*ksyunhttp.BaseResponse
-}
-
-func (r *ListDatasetTopicResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *ListDatasetTopicResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ListDatasetRequest struct {
-	*ksyunhttp.BaseRequest
-	Page        *int    `json:"Page,omitempty" name:"Page"`
-	PageSize    *int    `json:"PageSize,omitempty" name:"PageSize"`
-	DatasetName *string `json:"DatasetName,omitempty" name:"DatasetName"`
-	Topic       *string `json:"Topic,omitempty" name:"Topic"`
-	HostName    *string `json:"HostName,omitempty" name:"HostName"`
-	Keywords    *string `json:"Keywords,omitempty" name:"Keywords"`
-	Source      *string `json:"Source,omitempty" name:"Source"`
-}
-
-func (r *ListDatasetRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *ListDatasetRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListDatasetRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ListDatasetResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	DatasetList []struct {
-		DatasetId   *string   `json:"DatasetId" name:"DatasetId"`
-		DatasetName *string   `json:"DatasetName" name:"DatasetName"`
-		DatasetDesc *string   `json:"DatasetDesc" name:"DatasetDesc"`
-		Topic       *string   `json:"Topic" name:"Topic"`
-		TagList     []*string `json:"TagList" name:"TagList"`
-		HostName    *string   `json:"HostName" name:"HostName"`
-		Keywords    *string   `json:"Keywords" name:"Keywords"`
-		CreateTime  *string   `json:"CreateTime" name:"CreateTime"`
-	} `json:"DatasetList"`
-}
-
-func (r *ListDatasetResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *ListDatasetResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeDatasetRequest struct {
-	*ksyunhttp.BaseRequest
-}
-
-func (r *DescribeDatasetRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DescribeDatasetRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeDatasetRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeDatasetResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Dataset   struct {
-		DatasetId *string `json:"DatasetId" name:"DatasetId"`
-	} `json:"Dataset"`
-}
-
-func (r *DescribeDatasetResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DescribeDatasetResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ImportDatasetRequest struct {
-	*ksyunhttp.BaseRequest
-}
-
-func (r *ImportDatasetRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *ImportDatasetRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ImportDatasetRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ImportDatasetResponse struct {
-	*ksyunhttp.BaseResponse
-}
-
-func (r *ImportDatasetResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *ImportDatasetResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type StopNotebookRequest struct {
 	*ksyunhttp.BaseRequest
 	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
@@ -481,17 +253,6 @@ type StopNotebookRequest struct {
 func (r *StopNotebookRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *StopNotebookRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "StopNotebookRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type StopNotebookResponse struct {
@@ -511,23 +272,11 @@ func (r *StopNotebookResponse) FromJsonString(s string) error {
 
 type StartNotebookRequest struct {
 	*ksyunhttp.BaseRequest
-	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
 }
 
 func (r *StartNotebookRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *StartNotebookRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "StartNotebookRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type StartNotebookResponse struct {
@@ -554,17 +303,6 @@ type GetWebIdeUrlRequest struct {
 func (r *GetWebIdeUrlRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *GetWebIdeUrlRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetWebIdeUrlRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetWebIdeUrlResponse struct {
@@ -594,17 +332,6 @@ func (r *DescribeNotebookEventsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeNotebookEventsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeNotebookEventsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeNotebookEventsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -631,5 +358,29 @@ func (r *DescribeNotebookEventsResponse) ToJsonString() string {
 }
 
 func (r *DescribeNotebookEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNotebookLogRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *DescribeNotebookLogRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeNotebookLogResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	PodLogs   *string `json:"PodLogs" name:"PodLogs"`
+}
+
+func (r *DescribeNotebookLogResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeNotebookLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

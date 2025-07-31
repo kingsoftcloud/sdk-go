@@ -2,8 +2,6 @@ package v20160304
 
 import (
 	"encoding/json"
-
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -18,17 +16,6 @@ type CreateCertificateRequest struct {
 func (r *CreateCertificateRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CreateCertificateRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateCertificateRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateCertificateResponse struct {
@@ -63,17 +50,6 @@ func (r *DeleteCertificateRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DeleteCertificateRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteCertificateRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DeleteCertificateResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -100,17 +76,6 @@ type ModifyCertificateRequest struct {
 func (r *ModifyCertificateRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ModifyCertificateRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyCertificateRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ModifyCertificateResponse struct {
@@ -143,17 +108,6 @@ type DescribeCertificatesRequest struct {
 func (r *DescribeCertificatesRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DescribeCertificatesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeCertificatesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCertificatesResponse struct {
@@ -197,17 +151,6 @@ type ApplyCertificateRequest struct {
 func (r *ApplyCertificateRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ApplyCertificateRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ApplyCertificateRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ApplyCertificateResponse struct {
@@ -268,17 +211,6 @@ func (r *UpdateCertificateRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *UpdateCertificateRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpdateCertificateRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type UpdateCertificateResponse struct {
 	*ksyunhttp.BaseResponse
 	UpdateCertificateResponse struct {
@@ -334,17 +266,6 @@ func (r *ReIssueCertificateRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ReIssueCertificateRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ReIssueCertificateRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ReIssueCertificateResponse struct {
 	*ksyunhttp.BaseResponse
 	ReIssueCertificateResponse *string `json:"ReIssueCertificateResponse" name:"ReIssueCertificateResponse"`
@@ -367,17 +288,6 @@ type CancelTransactionRequest struct {
 func (r *CancelTransactionRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CancelTransactionRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CancelTransactionRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CancelTransactionResponse struct {
@@ -422,17 +332,6 @@ func (r *ListCertificatesRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListCertificatesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListCertificatesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListCertificatesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId      *string `json:"RequestId" name:"RequestId"`
@@ -474,17 +373,6 @@ type GetCertificateDetailRequest struct {
 func (r *GetCertificateDetailRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *GetCertificateDetailRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetCertificateDetailRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetCertificateDetailResponse struct {

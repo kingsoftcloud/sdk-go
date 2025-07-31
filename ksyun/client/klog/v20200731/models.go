@@ -2,7 +2,6 @@ package v20200731
 
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -19,14 +18,6 @@ type ListLogPoolsTags struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-type CreateDownloadTaskConfig struct {
-	From   *int    `json:"From,omitempty" name:"From"`
-	To     *int    `json:"To,omitempty" name:"To"`
-	Query  *string `json:"Query,omitempty" name:"Query"`
-	Format *string `json:"Format,omitempty" name:"Format"`
-	Order  *string `json:"Order,omitempty" name:"Order"`
-	Count  *int    `json:"Count,omitempty" name:"Count"`
-}
 
 type CreateProjectRequest struct {
 	*ksyunhttp.BaseRequest
@@ -38,17 +29,6 @@ type CreateProjectRequest struct {
 func (r *CreateProjectRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CreateProjectRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateProjectRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateProjectResponse struct {
@@ -77,17 +57,6 @@ func (r *UpdateProjectRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *UpdateProjectRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpdateProjectRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type UpdateProjectResponse struct {
 	*ksyunhttp.BaseResponse
 	Res *string `json:"Res" name:"Res"`
@@ -109,17 +78,6 @@ type DeleteProjectRequest struct {
 func (r *DeleteProjectRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeleteProjectRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteProjectRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteProjectResponse struct {
@@ -145,17 +103,6 @@ type ListProjectsRequest struct {
 func (r *ListProjectsRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ListProjectsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListProjectsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListProjectsResponse struct {
@@ -202,17 +149,6 @@ func (r *CreateLogPoolRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateLogPoolRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateLogPoolRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateLogPoolResponse struct {
 	*ksyunhttp.BaseResponse
 	Res *string `json:"Res" name:"Res"`
@@ -236,17 +172,6 @@ type DescribeLogPoolRequest struct {
 func (r *DescribeLogPoolRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DescribeLogPoolRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeLogPoolRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeLogPoolResponse struct {
@@ -278,17 +203,6 @@ func (r *UpdateLogPoolRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *UpdateLogPoolRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpdateLogPoolRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type UpdateLogPoolResponse struct {
 	*ksyunhttp.BaseResponse
 	Res *string `json:"Res" name:"Res"`
@@ -305,22 +219,13 @@ func (r *UpdateLogPoolResponse) FromJsonString(s string) error {
 
 type DeleteLogPoolRequest struct {
 	*ksyunhttp.BaseRequest
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	LogPoolName *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
 }
 
 func (r *DeleteLogPoolRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeleteLogPoolRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteLogPoolRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteLogPoolResponse struct {
@@ -349,17 +254,6 @@ type ListLogPoolsRequest struct {
 func (r *ListLogPoolsRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ListLogPoolsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListLogPoolsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListLogPoolsResponse struct {
@@ -397,31 +291,11 @@ func (r *ListLogPoolsResponse) FromJsonString(s string) error {
 
 type GetLogsRequest struct {
 	*ksyunhttp.BaseRequest
-	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
-	LogPoolName *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
-	From        *int    `json:"From,omitempty" name:"From"`
-	To          *int    `json:"To,omitempty" name:"To"`
-	Query       *string `json:"Query,omitempty" name:"Query"`
-	Offset      *int    `json:"Offset,omitempty" name:"Offset"`
-	Size        *int    `json:"Size,omitempty" name:"Size"`
-	HitsOpen *bool   `json:"HitsOpen,omitempty" name:"HitsOpen"`
-	Interval *string `json:"Interval,omitempty" name:"Interval"`
 }
 
 func (r *GetLogsRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *GetLogsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetLogsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetLogsResponse struct {
@@ -430,13 +304,12 @@ type GetLogsResponse struct {
 	Count  *int  `json:"Count" name:"Count"`
 	HasSql *bool `json:"HasSql" name:"HasSql"`
 	Logs   []struct {
-		Timestamp_ *int    `json:"_timestamp_" name:"Timestamp"`
-		Id         *string `json:"__id__" name:"Id"`
-		Source     *string `json:"__source__" name:"Source"`
-		Path       *string `json:"__path__" name:"Path"`
-		Timestamp  *string `json:"Timestamp" name:"Timestamp"`
-		Field1     *string `json:"Field1" name:"Field1"`
-		Field2     *string `json:"Field2" name:"Field2"`
+		Id        *string `json:"Id" name:"Id"`
+		Source    *string `json:"Source" name:"Source"`
+		Path      *string `json:"Path" name:"Path"`
+		Timestamp *string `json:"Timestamp" name:"Timestamp"`
+		Field1    *string `json:"Field1" name:"Field1"`
+		Field2    *string `json:"Field2" name:"Field2"`
 	} `json:"Logs"`
 	Histogram []struct {
 		Key      *string `json:"Key" name:"Key"`
@@ -459,7 +332,7 @@ type CreateQuickSearchRequest struct {
 	ProjectName     *string `json:"ProjectName,omitempty" name:"ProjectName"`
 	LogPoolName     *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
 	QuickSearchName *string `json:"QuickSearchName,omitempty" name:"QuickSearchName"`
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query           *string `json:"Query,omitempty" name:"Query"`
 	Description     *string `json:"Description,omitempty" name:"Description"`
 	TimeRange       *string `json:"TimeRange,omitempty" name:"TimeRange"`
 }
@@ -467,17 +340,6 @@ type CreateQuickSearchRequest struct {
 func (r *CreateQuickSearchRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CreateQuickSearchRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateQuickSearchRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateQuickSearchResponse struct {
@@ -508,17 +370,6 @@ func (r *ListQuickSearchsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListQuickSearchsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListQuickSearchsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListQuickSearchsResponse struct {
 	*ksyunhttp.BaseResponse
 	Res *string `json:"Res" name:"Res"`
@@ -545,17 +396,6 @@ func (r *DeleteQuickSearchsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DeleteQuickSearchsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteQuickSearchsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DeleteQuickSearchsResponse struct {
 	*ksyunhttp.BaseResponse
 	Res *string `json:"Res" name:"Res"`
@@ -572,25 +412,11 @@ func (r *DeleteQuickSearchsResponse) FromJsonString(s string) error {
 
 type CreateDownloadTaskRequest struct {
 	*ksyunhttp.BaseRequest
-	ProjectName  *string                   `json:"ProjectName,omitempty" name:"ProjectName"`
-	LogPoolNames *string                   `json:"LogPoolNames,omitempty" name:"LogPoolNames"`
-	Config       *CreateDownloadTaskConfig `json:"Config,omitempty" name:"Config"`
 }
 
 func (r *CreateDownloadTaskRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CreateDownloadTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateDownloadTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateDownloadTaskResponse struct {
@@ -604,5 +430,46 @@ func (r *CreateDownloadTaskResponse) ToJsonString() string {
 }
 
 func (r *CreateDownloadTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListDownloadTasksRequest struct {
+	*ksyunhttp.BaseRequest
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	Page        *string `json:"Page,omitempty" name:"Page"`
+	Size        *string `json:"Size,omitempty" name:"Size"`
+}
+
+func (r *ListDownloadTasksRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ListDownloadTasksResponse struct {
+	*ksyunhttp.BaseResponse
+	Total *int `json:"Total" name:"Total"`
+	Count *int `json:"Count" name:"Count"`
+	Data  []struct {
+		ProjectName    *string `json:"ProjectName" name:"ProjectName"`
+		DownloadTaskId *string `json:"DownloadTaskId" name:"DownloadTaskId"`
+		LogPoolNames   *string `json:"LogPoolNames" name:"LogPoolNames"`
+		Status         *string `json:"Status" name:"Status"`
+		AccountId      *string `json:"AccountId" name:"AccountId"`
+		From           *string `json:"From" name:"From"`
+		To             *string `json:"To" name:"To"`
+		Count          *string `json:"Count" name:"Count"`
+		Size           *int    `json:"Size" name:"Size"`
+		DownloadUrl    *string `json:"DownloadUrl" name:"DownloadUrl"`
+		Query          *string `json:"Query" name:"Query"`
+		CreatedAt      *int    `json:"CreatedAt" name:"CreatedAt"`
+	} `json:"Data"`
+}
+
+func (r *ListDownloadTasksResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListDownloadTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

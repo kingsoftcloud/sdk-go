@@ -40,6 +40,23 @@ func (c *Client) GetMonthBill(request *GetMonthBillRequest) string {
 	return c.GetMonthBillWithContext(context.Background(), request)
 }
 
+func (c *Client) GetMonthBillSend(request *GetMonthBillRequest) (*GetMonthBillResponse, error) {
+	statusCode, msg, err := c.GetMonthBillWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetMonthBillResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) GetMonthBillWithContext(ctx context.Context, request *GetMonthBillRequest) string {
 	if request == nil {
 		request = NewGetMonthBillRequest()
@@ -53,6 +70,21 @@ func (c *Client) GetMonthBillWithContext(ctx context.Context, request *GetMonthB
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) GetMonthBillWithContextV2(ctx context.Context, request *GetMonthBillRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetMonthBillRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetMonthBillResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewGetPostpayDetailBillRequest() (request *GetPostpayDetailBillRequest) {
 	request = &GetPostpayDetailBillRequest{
@@ -73,6 +105,23 @@ func (c *Client) GetPostpayDetailBill(request *GetPostpayDetailBillRequest) stri
 	return c.GetPostpayDetailBillWithContext(context.Background(), request)
 }
 
+func (c *Client) GetPostpayDetailBillSend(request *GetPostpayDetailBillRequest) (*GetPostpayDetailBillResponse, error) {
+	statusCode, msg, err := c.GetPostpayDetailBillWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetPostpayDetailBillResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) GetPostpayDetailBillWithContext(ctx context.Context, request *GetPostpayDetailBillRequest) string {
 	if request == nil {
 		request = NewGetPostpayDetailBillRequest()
@@ -86,6 +135,21 @@ func (c *Client) GetPostpayDetailBillWithContext(ctx context.Context, request *G
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) GetPostpayDetailBillWithContextV2(ctx context.Context, request *GetPostpayDetailBillRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetPostpayDetailBillRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetPostpayDetailBillResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewGetProductCodeRequest() (request *GetProductCodeRequest) {
 	request = &GetProductCodeRequest{
@@ -106,6 +170,23 @@ func (c *Client) GetProductCode(request *GetProductCodeRequest) string {
 	return c.GetProductCodeWithContext(context.Background(), request)
 }
 
+func (c *Client) GetProductCodeSend(request *GetProductCodeRequest) (*GetProductCodeResponse, error) {
+	statusCode, msg, err := c.GetProductCodeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetProductCodeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) GetProductCodeWithContext(ctx context.Context, request *GetProductCodeRequest) string {
 	if request == nil {
 		request = NewGetProductCodeRequest()
@@ -119,6 +200,21 @@ func (c *Client) GetProductCodeWithContext(ctx context.Context, request *GetProd
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) GetProductCodeWithContextV2(ctx context.Context, request *GetProductCodeRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetProductCodeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetProductCodeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 
 

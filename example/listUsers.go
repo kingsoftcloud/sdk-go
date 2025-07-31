@@ -38,13 +38,10 @@ func main() {
 	//request.SetHeaders(map[string]string{
 	//	"KEY": "VALUE",
 	//})
-	responseString := client.ListUsers(request)
-	var respStruct iam.ListUsersResponse
-	err := respStruct.FromJsonString(responseString)
+	responseStruct, err := client.ListUsersSend(request)
 	if err != nil {
-		fmt.Printf("Error parsing responseString: %s ,err：%s \n", responseString, err)
+		fmt.Printf("%s\n", err)
 		return
 	}
-
-	fmt.Printf("%+v\n", respStruct)
+	fmt.Printf("%s\n", responseStruct.ToJsonString())
 }

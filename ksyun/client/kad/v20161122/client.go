@@ -40,6 +40,23 @@ func (c *Client) CreateForwardConf(request *CreateForwardConfRequest) string {
 	return c.CreateForwardConfWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateForwardConfSend(request *CreateForwardConfRequest) (*CreateForwardConfResponse, error) {
+	statusCode, msg, err := c.CreateForwardConfWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateForwardConfResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateForwardConfWithContext(ctx context.Context, request *CreateForwardConfRequest) string {
 	if request == nil {
 		request = NewCreateForwardConfRequest()
@@ -53,6 +70,21 @@ func (c *Client) CreateForwardConfWithContext(ctx context.Context, request *Crea
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateForwardConfWithContextV2(ctx context.Context, request *CreateForwardConfRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateForwardConfRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateForwardConfResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteForwardConfRequest() (request *DeleteForwardConfRequest) {
 	request = &DeleteForwardConfRequest{
@@ -73,6 +105,23 @@ func (c *Client) DeleteForwardConf(request *DeleteForwardConfRequest) string {
 	return c.DeleteForwardConfWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteForwardConfSend(request *DeleteForwardConfRequest) (*DeleteForwardConfResponse, error) {
+	statusCode, msg, err := c.DeleteForwardConfWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteForwardConfResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteForwardConfWithContext(ctx context.Context, request *DeleteForwardConfRequest) string {
 	if request == nil {
 		request = NewDeleteForwardConfRequest()
@@ -86,6 +135,21 @@ func (c *Client) DeleteForwardConfWithContext(ctx context.Context, request *Dele
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteForwardConfWithContextV2(ctx context.Context, request *DeleteForwardConfRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteForwardConfRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteForwardConfResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeForwardConfRequest() (request *DescribeForwardConfRequest) {
 	request = &DescribeForwardConfRequest{
@@ -106,6 +170,23 @@ func (c *Client) DescribeForwardConf(request *DescribeForwardConfRequest) string
 	return c.DescribeForwardConfWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeForwardConfSend(request *DescribeForwardConfRequest) (*DescribeForwardConfResponse, error) {
+	statusCode, msg, err := c.DescribeForwardConfWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeForwardConfResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeForwardConfWithContext(ctx context.Context, request *DescribeForwardConfRequest) string {
 	if request == nil {
 		request = NewDescribeForwardConfRequest()
@@ -119,6 +200,21 @@ func (c *Client) DescribeForwardConfWithContext(ctx context.Context, request *De
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeForwardConfWithContextV2(ctx context.Context, request *DescribeForwardConfRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeForwardConfRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeForwardConfResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateForwardSourceRequest() (request *CreateForwardSourceRequest) {
 	request = &CreateForwardSourceRequest{
@@ -139,6 +235,23 @@ func (c *Client) CreateForwardSource(request *CreateForwardSourceRequest) string
 	return c.CreateForwardSourceWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateForwardSourceSend(request *CreateForwardSourceRequest) (*CreateForwardSourceResponse, error) {
+	statusCode, msg, err := c.CreateForwardSourceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateForwardSourceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateForwardSourceWithContext(ctx context.Context, request *CreateForwardSourceRequest) string {
 	if request == nil {
 		request = NewCreateForwardSourceRequest()
@@ -152,6 +265,21 @@ func (c *Client) CreateForwardSourceWithContext(ctx context.Context, request *Cr
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateForwardSourceWithContextV2(ctx context.Context, request *CreateForwardSourceRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateForwardSourceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateForwardSourceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteForwardSourceRequest() (request *DeleteForwardSourceRequest) {
 	request = &DeleteForwardSourceRequest{
@@ -172,6 +300,23 @@ func (c *Client) DeleteForwardSource(request *DeleteForwardSourceRequest) string
 	return c.DeleteForwardSourceWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteForwardSourceSend(request *DeleteForwardSourceRequest) (*DeleteForwardSourceResponse, error) {
+	statusCode, msg, err := c.DeleteForwardSourceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteForwardSourceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteForwardSourceWithContext(ctx context.Context, request *DeleteForwardSourceRequest) string {
 	if request == nil {
 		request = NewDeleteForwardSourceRequest()
@@ -185,6 +330,21 @@ func (c *Client) DeleteForwardSourceWithContext(ctx context.Context, request *De
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteForwardSourceWithContextV2(ctx context.Context, request *DeleteForwardSourceRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteForwardSourceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteForwardSourceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeForwardSourceRequest() (request *DescribeForwardSourceRequest) {
 	request = &DescribeForwardSourceRequest{
@@ -205,6 +365,23 @@ func (c *Client) DescribeForwardSource(request *DescribeForwardSourceRequest) st
 	return c.DescribeForwardSourceWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeForwardSourceSend(request *DescribeForwardSourceRequest) (*DescribeForwardSourceResponse, error) {
+	statusCode, msg, err := c.DescribeForwardSourceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeForwardSourceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeForwardSourceWithContext(ctx context.Context, request *DescribeForwardSourceRequest) string {
 	if request == nil {
 		request = NewDescribeForwardSourceRequest()
@@ -218,6 +395,21 @@ func (c *Client) DescribeForwardSourceWithContext(ctx context.Context, request *
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeForwardSourceWithContextV2(ctx context.Context, request *DescribeForwardSourceRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeForwardSourceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeForwardSourceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewGetAttackLogRequest() (request *GetAttackLogRequest) {
 	request = &GetAttackLogRequest{
@@ -238,6 +430,23 @@ func (c *Client) GetAttackLog(request *GetAttackLogRequest) string {
 	return c.GetAttackLogWithContext(context.Background(), request)
 }
 
+func (c *Client) GetAttackLogSend(request *GetAttackLogRequest) (*GetAttackLogResponse, error) {
+	statusCode, msg, err := c.GetAttackLogWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetAttackLogResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) GetAttackLogWithContext(ctx context.Context, request *GetAttackLogRequest) string {
 	if request == nil {
 		request = NewGetAttackLogRequest()
@@ -251,6 +460,21 @@ func (c *Client) GetAttackLogWithContext(ctx context.Context, request *GetAttack
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) GetAttackLogWithContextV2(ctx context.Context, request *GetAttackLogRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetAttackLogRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetAttackLogResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeOverviewRequest() (request *DescribeOverviewRequest) {
 	request = &DescribeOverviewRequest{
@@ -271,6 +495,23 @@ func (c *Client) DescribeOverview(request *DescribeOverviewRequest) string {
 	return c.DescribeOverviewWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeOverviewSend(request *DescribeOverviewRequest) (*DescribeOverviewResponse, error) {
+	statusCode, msg, err := c.DescribeOverviewWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeOverviewResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeOverviewWithContext(ctx context.Context, request *DescribeOverviewRequest) string {
 	if request == nil {
 		request = NewDescribeOverviewRequest()
@@ -284,6 +525,21 @@ func (c *Client) DescribeOverviewWithContext(ctx context.Context, request *Descr
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeOverviewWithContextV2(ctx context.Context, request *DescribeOverviewRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeOverviewRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeOverviewResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 
 

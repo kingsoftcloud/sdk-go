@@ -41,6 +41,23 @@ func (c *Client) SaveNotebookImage(request *SaveNotebookImageRequest) string {
 	return c.SaveNotebookImageWithContext(context.Background(), request)
 }
 
+func (c *Client) SaveNotebookImageSend(request *SaveNotebookImageRequest) (*SaveNotebookImageResponse, error) {
+	statusCode, msg, err := c.SaveNotebookImageWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct SaveNotebookImageResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) SaveNotebookImageWithContext(ctx context.Context, request *SaveNotebookImageRequest) string {
 	if request == nil {
 		request = NewSaveNotebookImageRequest()
@@ -54,6 +71,21 @@ func (c *Client) SaveNotebookImageWithContext(ctx context.Context, request *Save
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) SaveNotebookImageWithContextV2(ctx context.Context, request *SaveNotebookImageRequest) (int, string, error) {
+	if request == nil {
+		request = NewSaveNotebookImageRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSaveNotebookImageResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyNotebookRequest() (request *ModifyNotebookRequest) {
 	request = &ModifyNotebookRequest{
@@ -74,6 +106,23 @@ func (c *Client) ModifyNotebook(request *ModifyNotebookRequest) string {
 	return c.ModifyNotebookWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyNotebookSend(request *ModifyNotebookRequest) (*ModifyNotebookResponse, error) {
+	statusCode, msg, err := c.ModifyNotebookWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyNotebookResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyNotebookWithContext(ctx context.Context, request *ModifyNotebookRequest) string {
 	if request == nil {
 		request = NewModifyNotebookRequest()
@@ -87,6 +136,21 @@ func (c *Client) ModifyNotebookWithContext(ctx context.Context, request *ModifyN
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyNotebookWithContextV2(ctx context.Context, request *ModifyNotebookRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyNotebookRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyNotebookResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteNotebookRequest() (request *DeleteNotebookRequest) {
 	request = &DeleteNotebookRequest{
@@ -107,6 +171,23 @@ func (c *Client) DeleteNotebook(request *DeleteNotebookRequest) string {
 	return c.DeleteNotebookWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteNotebookSend(request *DeleteNotebookRequest) (*DeleteNotebookResponse, error) {
+	statusCode, msg, err := c.DeleteNotebookWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteNotebookResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteNotebookWithContext(ctx context.Context, request *DeleteNotebookRequest) string {
 	if request == nil {
 		request = NewDeleteNotebookRequest()
@@ -120,6 +201,21 @@ func (c *Client) DeleteNotebookWithContext(ctx context.Context, request *DeleteN
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteNotebookWithContextV2(ctx context.Context, request *DeleteNotebookRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteNotebookRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteNotebookResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeNotebooksRequest() (request *DescribeNotebooksRequest) {
 	request = &DescribeNotebooksRequest{
@@ -140,6 +236,23 @@ func (c *Client) DescribeNotebooks(request *DescribeNotebooksRequest) string {
 	return c.DescribeNotebooksWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeNotebooksSend(request *DescribeNotebooksRequest) (*DescribeNotebooksResponse, error) {
+	statusCode, msg, err := c.DescribeNotebooksWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeNotebooksResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeNotebooksWithContext(ctx context.Context, request *DescribeNotebooksRequest) string {
 	if request == nil {
 		request = NewDescribeNotebooksRequest()
@@ -153,6 +266,21 @@ func (c *Client) DescribeNotebooksWithContext(ctx context.Context, request *Desc
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeNotebooksWithContextV2(ctx context.Context, request *DescribeNotebooksRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeNotebooksRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeNotebooksResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateNotebookRequest() (request *CreateNotebookRequest) {
 	request = &CreateNotebookRequest{
@@ -173,6 +301,23 @@ func (c *Client) CreateNotebook(request *CreateNotebookRequest) string {
 	return c.CreateNotebookWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateNotebookSend(request *CreateNotebookRequest) (*CreateNotebookResponse, error) {
+	statusCode, msg, err := c.CreateNotebookWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateNotebookResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateNotebookWithContext(ctx context.Context, request *CreateNotebookRequest) string {
 	if request == nil {
 		request = NewCreateNotebookRequest()
@@ -187,170 +332,20 @@ func (c *Client) CreateNotebookWithContext(ctx context.Context, request *CreateN
 	}
 	return msg
 }
-func NewListDatasetHostnameRequest() (request *ListDatasetHostnameRequest) {
-	request = &ListDatasetHostnameRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("aicp", APIVersion, "ListDatasetHostname")
-	return
-}
 
-func NewListDatasetHostnameResponse() (response *ListDatasetHostnameResponse) {
-	response = &ListDatasetHostnameResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) ListDatasetHostname(request *ListDatasetHostnameRequest) string {
-	return c.ListDatasetHostnameWithContext(context.Background(), request)
-}
-
-func (c *Client) ListDatasetHostnameWithContext(ctx context.Context, request *ListDatasetHostnameRequest) string {
+func (c *Client) CreateNotebookWithContextV2(ctx context.Context, request *CreateNotebookRequest) (int, string, error) {
 	if request == nil {
-		request = NewListDatasetHostnameRequest()
+		request = NewCreateNotebookRequest()
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
-	response := NewListDatasetHostnameResponse()
-	err, msg := c.Send(request, response)
+	response := NewCreateNotebookResponse()
+	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
+		return statusCode, "", err
 	}
-	return msg
-}
-func NewListDatasetTopicRequest() (request *ListDatasetTopicRequest) {
-	request = &ListDatasetTopicRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("aicp", APIVersion, "ListDatasetTopic")
-	return
-}
-
-func NewListDatasetTopicResponse() (response *ListDatasetTopicResponse) {
-	response = &ListDatasetTopicResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) ListDatasetTopic(request *ListDatasetTopicRequest) string {
-	return c.ListDatasetTopicWithContext(context.Background(), request)
-}
-
-func (c *Client) ListDatasetTopicWithContext(ctx context.Context, request *ListDatasetTopicRequest) string {
-	if request == nil {
-		request = NewListDatasetTopicRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewListDatasetTopicResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-func NewListDatasetRequest() (request *ListDatasetRequest) {
-	request = &ListDatasetRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("aicp", APIVersion, "ListDataset")
-	return
-}
-
-func NewListDatasetResponse() (response *ListDatasetResponse) {
-	response = &ListDatasetResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) ListDataset(request *ListDatasetRequest) string {
-	return c.ListDatasetWithContext(context.Background(), request)
-}
-
-func (c *Client) ListDatasetWithContext(ctx context.Context, request *ListDatasetRequest) string {
-	if request == nil {
-		request = NewListDatasetRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewListDatasetResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-func NewDescribeDatasetRequest() (request *DescribeDatasetRequest) {
-	request = &DescribeDatasetRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("aicp", APIVersion, "DescribeDataset")
-	return
-}
-
-func NewDescribeDatasetResponse() (response *DescribeDatasetResponse) {
-	response = &DescribeDatasetResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) DescribeDataset(request *DescribeDatasetRequest) string {
-	return c.DescribeDatasetWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeDatasetWithContext(ctx context.Context, request *DescribeDatasetRequest) string {
-	if request == nil {
-		request = NewDescribeDatasetRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewDescribeDatasetResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-func NewImportDatasetRequest() (request *ImportDatasetRequest) {
-	request = &ImportDatasetRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("aicp", APIVersion, "ImportDataset")
-	return
-}
-
-func NewImportDatasetResponse() (response *ImportDatasetResponse) {
-	response = &ImportDatasetResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) ImportDataset(request *ImportDatasetRequest) string {
-	return c.ImportDatasetWithContext(context.Background(), request)
-}
-
-func (c *Client) ImportDatasetWithContext(ctx context.Context, request *ImportDatasetRequest) string {
-	if request == nil {
-		request = NewImportDatasetRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewImportDatasetResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
+	return statusCode, msg, nil
 }
 func NewStopNotebookRequest() (request *StopNotebookRequest) {
 	request = &StopNotebookRequest{
@@ -371,6 +366,23 @@ func (c *Client) StopNotebook(request *StopNotebookRequest) string {
 	return c.StopNotebookWithContext(context.Background(), request)
 }
 
+func (c *Client) StopNotebookSend(request *StopNotebookRequest) (*StopNotebookResponse, error) {
+	statusCode, msg, err := c.StopNotebookWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct StopNotebookResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) StopNotebookWithContext(ctx context.Context, request *StopNotebookRequest) string {
 	if request == nil {
 		request = NewStopNotebookRequest()
@@ -384,6 +396,21 @@ func (c *Client) StopNotebookWithContext(ctx context.Context, request *StopNoteb
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) StopNotebookWithContextV2(ctx context.Context, request *StopNotebookRequest) (int, string, error) {
+	if request == nil {
+		request = NewStopNotebookRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewStopNotebookResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewStartNotebookRequest() (request *StartNotebookRequest) {
 	request = &StartNotebookRequest{
@@ -404,6 +431,23 @@ func (c *Client) StartNotebook(request *StartNotebookRequest) string {
 	return c.StartNotebookWithContext(context.Background(), request)
 }
 
+func (c *Client) StartNotebookSend(request *StartNotebookRequest) (*StartNotebookResponse, error) {
+	statusCode, msg, err := c.StartNotebookWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct StartNotebookResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) StartNotebookWithContext(ctx context.Context, request *StartNotebookRequest) string {
 	if request == nil {
 		request = NewStartNotebookRequest()
@@ -417,6 +461,21 @@ func (c *Client) StartNotebookWithContext(ctx context.Context, request *StartNot
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) StartNotebookWithContextV2(ctx context.Context, request *StartNotebookRequest) (int, string, error) {
+	if request == nil {
+		request = NewStartNotebookRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewStartNotebookResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewGetWebIdeUrlRequest() (request *GetWebIdeUrlRequest) {
 	request = &GetWebIdeUrlRequest{
@@ -437,12 +496,29 @@ func (c *Client) GetWebIdeUrl(request *GetWebIdeUrlRequest) string {
 	return c.GetWebIdeUrlWithContext(context.Background(), request)
 }
 
+func (c *Client) GetWebIdeUrlSend(request *GetWebIdeUrlRequest) (*GetWebIdeUrlResponse, error) {
+	statusCode, msg, err := c.GetWebIdeUrlWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetWebIdeUrlResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) GetWebIdeUrlWithContext(ctx context.Context, request *GetWebIdeUrlRequest) string {
 	if request == nil {
 		request = NewGetWebIdeUrlRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewGetWebIdeUrlResponse()
 	err, msg := c.Send(request, response)
@@ -450,6 +526,21 @@ func (c *Client) GetWebIdeUrlWithContext(ctx context.Context, request *GetWebIde
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) GetWebIdeUrlWithContextV2(ctx context.Context, request *GetWebIdeUrlRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetWebIdeUrlRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetWebIdeUrlResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeNotebookEventsRequest() (request *DescribeNotebookEventsRequest) {
 	request = &DescribeNotebookEventsRequest{
@@ -470,12 +561,29 @@ func (c *Client) DescribeNotebookEvents(request *DescribeNotebookEventsRequest) 
 	return c.DescribeNotebookEventsWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeNotebookEventsSend(request *DescribeNotebookEventsRequest) (*DescribeNotebookEventsResponse, error) {
+	statusCode, msg, err := c.DescribeNotebookEventsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeNotebookEventsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeNotebookEventsWithContext(ctx context.Context, request *DescribeNotebookEventsRequest) string {
 	if request == nil {
 		request = NewDescribeNotebookEventsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeNotebookEventsResponse()
 	err, msg := c.Send(request, response)
@@ -483,4 +591,84 @@ func (c *Client) DescribeNotebookEventsWithContext(ctx context.Context, request 
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeNotebookEventsWithContextV2(ctx context.Context, request *DescribeNotebookEventsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeNotebookEventsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeNotebookEventsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeNotebookLogRequest() (request *DescribeNotebookLogRequest) {
+	request = &DescribeNotebookLogRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeNotebookLog")
+	return
+}
+
+func NewDescribeNotebookLogResponse() (response *DescribeNotebookLogResponse) {
+	response = &DescribeNotebookLogResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeNotebookLog(request *DescribeNotebookLogRequest) string {
+	return c.DescribeNotebookLogWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeNotebookLogSend(request *DescribeNotebookLogRequest) (*DescribeNotebookLogResponse, error) {
+	statusCode, msg, err := c.DescribeNotebookLogWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeNotebookLogResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeNotebookLogWithContext(ctx context.Context, request *DescribeNotebookLogRequest) string {
+	if request == nil {
+		request = NewDescribeNotebookLogRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeNotebookLogResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeNotebookLogWithContextV2(ctx context.Context, request *DescribeNotebookLogRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeNotebookLogRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeNotebookLogResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }

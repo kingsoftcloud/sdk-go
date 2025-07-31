@@ -8,6 +8,7 @@ package common
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -19,6 +20,7 @@ import (
 	"net/http/httputil"
 	"net/url"
 	"reflect"
+	"runtime"
 	"strings"
 	"time"
 )
@@ -57,6 +59,29 @@ func (c *Client) Send(request ksyunhttp.Request, response ksyunhttp.Response) (e
 	return err, msg
 }
 
+func (c *Client) SendV2(request ksyunhttp.Request, response ksyunhttp.Response) (int, string, error) {
+	if request.GetScheme() == "" {
+		request.SetScheme(c.httpProfile.Scheme)
+	}
+
+	if request.GetDomain() == "" {
+		domain := c.httpProfile.Endpoint
+		if domain == "" {
+			domain = request.GetServiceDomain(request.GetService())
+		}
+		request.SetDomain(domain)
+	}
+
+	if request.GetHttpMethod() == "" {
+		request.SetHttpMethod(c.httpProfile.ReqMethod)
+	}
+
+	ksyunhttp.HandleCommonParams(request, c.GetRegion())
+
+	statusCode, msg, err := c.sendWithSampleSignatureV2(request, response)
+	return statusCode, msg, err
+}
+
 func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksyunhttp.Response) (error, string) {
 	sess := session.Must(session.NewSession(&aws.Config{
 		Region:      aws.String(c.GetRegion()),
@@ -64,6 +89,14 @@ func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksy
 	}))
 	signer := v4.NewSigner(sess.Config.Credentials)
 	customizeHeaders := request.GetHeaders()
+	userAgent := fmt.Sprintf(
+		"%s/%s (%s; %s/%s)",
+		SDKName,
+		SDKVersion,
+		runtime.Version(),
+		runtime.GOOS,
+		runtime.GOARCH,
+	)
 	var urlRe = ""
 	isBodyMethod := request.GetHttpMethod() == "POST" || request.GetHttpMethod() == "PUT" || request.GetHttpMethod() == "DELETE"
 	if isBodyMethod && request.GetContentType() == "application/json" {
@@ -80,6 +113,7 @@ func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksy
 		httpRequest.Header.Set("X-Amz-Date", time.Now().UTC().Format("20060102T150405Z"))
 		httpRequest.Header.Set("Content-Type", request.GetContentType())
 		httpRequest.Header.Set("Host", request.GetDomain())
+		httpRequest.Header.Set("User-Agent", userAgent)
 		httpRequest.ContentLength = int64(len(body))
 		_, err = signer.Sign(httpRequest, bytes.NewReader(body), request.GetService(), c.GetRegion(), time.Now().UTC())
 		httpResponse, err := c.sendHttp(httpRequest)
@@ -111,6 +145,7 @@ func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksy
 		httpRequest.Header.Set("X-Amz-Date", time.Now().UTC().Format("20060102T150405Z"))
 		httpRequest.Header.Set("Content-Type", request.GetContentType())
 		httpRequest.Header.Set("Host", request.GetDomain())
+		httpRequest.Header.Set("User-Agent", userAgent)
 		_, err = signer.Sign(httpRequest, strings.NewReader(formDataEncoded), request.GetService(), c.GetRegion(), time.Now().UTC())
 		httpResponse, err := c.sendHttp(httpRequest)
 		if err != nil {
@@ -135,6 +170,7 @@ func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksy
 		httpRequest.Header.Set("X-Amz-Date", time.Now().UTC().Format("20060102T150405Z"))
 		httpRequest.Header.Set("Content-Type", request.GetContentType())
 		httpRequest.Header.Set("Host", request.GetDomain())
+		httpRequest.Header.Set("User-Agent", userAgent)
 		_, err = signer.Sign(httpRequest, nil, request.GetService(), c.GetRegion(), time.Now().UTC())
 		httpResponse, err := c.sendHttp(httpRequest)
 		if err != nil {
@@ -142,6 +178,105 @@ func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksy
 		}
 		res := ksyunhttp.ParseFromHttpResponse(httpResponse, response)
 		return nil, res
+	}
+}
+
+func (c *Client) sendWithSampleSignatureV2(request ksyunhttp.Request, response ksyunhttp.Response) (int, string, error) {
+	sess := session.Must(session.NewSession(&aws.Config{
+		Region:      aws.String(c.GetRegion()),
+		Credentials: credentials.NewStaticCredentials(c.credential.GetSecretId(), c.credential.GetSecretKey(), ""),
+	}))
+	signer := v4.NewSigner(sess.Config.Credentials)
+	customizeHeaders := request.GetHeaders()
+	userAgent := fmt.Sprintf(
+		"%s/%s (%s; %s/%s)",
+		SDKName,
+		SDKVersion,
+		runtime.Version(),
+		runtime.GOOS,
+		runtime.GOARCH,
+	)
+	var urlRe = ""
+	isBodyMethod := request.GetHttpMethod() == "POST" || request.GetHttpMethod() == "PUT" || request.GetHttpMethod() == "DELETE"
+	if isBodyMethod && request.GetContentType() == "application/json" {
+		body, _ := json.Marshal(request)
+		request.SetBody(body)
+		urlRe = request.GetUrl() + "?Action=" + request.GetAction() + "&Version=" + request.GetVersion() + "&Service=" + request.GetService()
+		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
+		if len(customizeHeaders) > 0 {
+			for headerK, headerV := range customizeHeaders {
+				httpRequest.Header.Set(headerK, headerV)
+			}
+		}
+		httpRequest.Header.Set("Accept", "application/json")
+		httpRequest.Header.Set("X-Amz-Date", time.Now().UTC().Format("20060102T150405Z"))
+		httpRequest.Header.Set("Content-Type", request.GetContentType())
+		httpRequest.Header.Set("Host", request.GetDomain())
+		httpRequest.Header.Set("User-Agent", userAgent)
+		httpRequest.ContentLength = int64(len(body))
+		_, err = signer.Sign(httpRequest, bytes.NewReader(body), request.GetService(), c.GetRegion(), time.Now().UTC())
+		httpResponse, err := c.sendHttp(httpRequest)
+		if err != nil {
+			return 0, "", err
+		}
+		res := ksyunhttp.ParseFromHttpResponse(httpResponse, response)
+		return httpResponse.StatusCode, res, nil
+	} else if isBodyMethod && request.GetContentType() == "application/x-www-form-urlencoded" {
+		value := reflect.ValueOf(request).Elem()
+		err := ksyunhttp.FlatStructure(value, request, "")
+		if err != nil {
+			return 0, "", err
+		}
+		paramsM := request.GetParams()
+		formData := url.Values{}
+		for key, value := range paramsM {
+			formData.Set(key, value)
+		}
+		formDataEncoded := formData.Encode()
+		urlRe = request.GetUrl()
+		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
+		if len(customizeHeaders) > 0 {
+			for headerK, headerV := range customizeHeaders {
+				httpRequest.Header.Set(headerK, headerV)
+			}
+		}
+		httpRequest.Header.Set("Accept", "application/json")
+		httpRequest.Header.Set("X-Amz-Date", time.Now().UTC().Format("20060102T150405Z"))
+		httpRequest.Header.Set("Content-Type", request.GetContentType())
+		httpRequest.Header.Set("Host", request.GetDomain())
+		httpRequest.Header.Set("User-Agent", userAgent)
+		_, err = signer.Sign(httpRequest, strings.NewReader(formDataEncoded), request.GetService(), c.GetRegion(), time.Now().UTC())
+		httpResponse, err := c.sendHttp(httpRequest)
+		if err != nil {
+			return 0, "", err
+		}
+		res := ksyunhttp.ParseFromHttpResponse(httpResponse, response)
+		return httpResponse.StatusCode, res, nil
+	} else {
+		value := reflect.ValueOf(request).Elem()
+		err := ksyunhttp.FlatStructure(value, request, "")
+		if err != nil {
+			return 0, "", err
+		}
+		urlRe = request.GetUrl()
+		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
+		if len(customizeHeaders) > 0 {
+			for headerK, headerV := range customizeHeaders {
+				httpRequest.Header.Set(headerK, headerV)
+			}
+		}
+		httpRequest.Header.Set("Accept", "application/json")
+		httpRequest.Header.Set("X-Amz-Date", time.Now().UTC().Format("20060102T150405Z"))
+		httpRequest.Header.Set("Content-Type", request.GetContentType())
+		httpRequest.Header.Set("Host", request.GetDomain())
+		httpRequest.Header.Set("User-Agent", userAgent)
+		_, err = signer.Sign(httpRequest, nil, request.GetService(), c.GetRegion(), time.Now().UTC())
+		httpResponse, err := c.sendHttp(httpRequest)
+		if err != nil {
+			return 0, "", err
+		}
+		res := ksyunhttp.ParseFromHttpResponse(httpResponse, response)
+		return httpResponse.StatusCode, res, nil
 	}
 }
 

@@ -22,6 +22,136 @@ func NewClient(credential common.Credentials, region string, clientProfile *prof
 	return
 }
 
+func NewGetRefreshOrPreloadTaskRequest() (request *GetRefreshOrPreloadTaskRequest) {
+	request = &GetRefreshOrPreloadTaskRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "GetRefreshOrPreloadTask")
+	return
+}
+
+func NewGetRefreshOrPreloadTaskResponse() (response *GetRefreshOrPreloadTaskResponse) {
+	response = &GetRefreshOrPreloadTaskResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetRefreshOrPreloadTask(request *GetRefreshOrPreloadTaskRequest) string {
+	return c.GetRefreshOrPreloadTaskWithContext(context.Background(), request)
+}
+
+func (c *Client) GetRefreshOrPreloadTaskSend(request *GetRefreshOrPreloadTaskRequest) (*GetRefreshOrPreloadTaskResponse, error) {
+	statusCode, msg, err := c.GetRefreshOrPreloadTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetRefreshOrPreloadTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetRefreshOrPreloadTaskWithContext(ctx context.Context, request *GetRefreshOrPreloadTaskRequest) string {
+	if request == nil {
+		request = NewGetRefreshOrPreloadTaskRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetRefreshOrPreloadTaskResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetRefreshOrPreloadTaskWithContextV2(ctx context.Context, request *GetRefreshOrPreloadTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetRefreshOrPreloadTaskRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetRefreshOrPreloadTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewRefreshCachesRequest() (request *RefreshCachesRequest) {
+	request = &RefreshCachesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "RefreshCaches")
+	return
+}
+
+func NewRefreshCachesResponse() (response *RefreshCachesResponse) {
+	response = &RefreshCachesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RefreshCaches(request *RefreshCachesRequest) string {
+	return c.RefreshCachesWithContext(context.Background(), request)
+}
+
+func (c *Client) RefreshCachesSend(request *RefreshCachesRequest) (*RefreshCachesResponse, error) {
+	statusCode, msg, err := c.RefreshCachesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct RefreshCachesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) RefreshCachesWithContext(ctx context.Context, request *RefreshCachesRequest) string {
+	if request == nil {
+		request = NewRefreshCachesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRefreshCachesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) RefreshCachesWithContextV2(ctx context.Context, request *RefreshCachesRequest) (int, string, error) {
+	if request == nil {
+		request = NewRefreshCachesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRefreshCachesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewGetDomainPidDimensionUsageDataRequest() (request *GetDomainPidDimensionUsageDataRequest) {
 	request = &GetDomainPidDimensionUsageDataRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -41,6 +171,23 @@ func (c *Client) GetDomainPidDimensionUsageData(request *GetDomainPidDimensionUs
 	return c.GetDomainPidDimensionUsageDataWithContext(context.Background(), request)
 }
 
+func (c *Client) GetDomainPidDimensionUsageDataSend(request *GetDomainPidDimensionUsageDataRequest) (*GetDomainPidDimensionUsageDataResponse, error) {
+	statusCode, msg, err := c.GetDomainPidDimensionUsageDataWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetDomainPidDimensionUsageDataResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) GetDomainPidDimensionUsageDataWithContext(ctx context.Context, request *GetDomainPidDimensionUsageDataRequest) string {
 	if request == nil {
 		request = NewGetDomainPidDimensionUsageDataRequest()
@@ -54,4 +201,19 @@ func (c *Client) GetDomainPidDimensionUsageDataWithContext(ctx context.Context, 
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) GetDomainPidDimensionUsageDataWithContextV2(ctx context.Context, request *GetDomainPidDimensionUsageDataRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetDomainPidDimensionUsageDataRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetDomainPidDimensionUsageDataResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }

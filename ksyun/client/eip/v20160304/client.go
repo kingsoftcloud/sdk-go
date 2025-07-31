@@ -41,6 +41,23 @@ func (c *Client) GetLines(request *GetLinesRequest) string {
 	return c.GetLinesWithContext(context.Background(), request)
 }
 
+func (c *Client) GetLinesSend(request *GetLinesRequest) (*GetLinesResponse, error) {
+	statusCode, msg, err := c.GetLinesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetLinesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) GetLinesWithContext(ctx context.Context, request *GetLinesRequest) string {
 	if request == nil {
 		request = NewGetLinesRequest()
@@ -54,6 +71,21 @@ func (c *Client) GetLinesWithContext(ctx context.Context, request *GetLinesReque
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) GetLinesWithContextV2(ctx context.Context, request *GetLinesRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetLinesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetLinesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeAddressesRequest() (request *DescribeAddressesRequest) {
 	request = &DescribeAddressesRequest{
@@ -74,6 +106,23 @@ func (c *Client) DescribeAddresses(request *DescribeAddressesRequest) string {
 	return c.DescribeAddressesWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeAddressesSend(request *DescribeAddressesRequest) (*DescribeAddressesResponse, error) {
+	statusCode, msg, err := c.DescribeAddressesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeAddressesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeAddressesWithContext(ctx context.Context, request *DescribeAddressesRequest) string {
 	if request == nil {
 		request = NewDescribeAddressesRequest()
@@ -87,6 +136,21 @@ func (c *Client) DescribeAddressesWithContext(ctx context.Context, request *Desc
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeAddressesWithContextV2(ctx context.Context, request *DescribeAddressesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeAddressesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAddressesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewAllocateAddressRequest() (request *AllocateAddressRequest) {
 	request = &AllocateAddressRequest{
@@ -107,6 +171,23 @@ func (c *Client) AllocateAddress(request *AllocateAddressRequest) string {
 	return c.AllocateAddressWithContext(context.Background(), request)
 }
 
+func (c *Client) AllocateAddressSend(request *AllocateAddressRequest) (*AllocateAddressResponse, error) {
+	statusCode, msg, err := c.AllocateAddressWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct AllocateAddressResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) AllocateAddressWithContext(ctx context.Context, request *AllocateAddressRequest) string {
 	if request == nil {
 		request = NewAllocateAddressRequest()
@@ -120,6 +201,21 @@ func (c *Client) AllocateAddressWithContext(ctx context.Context, request *Alloca
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) AllocateAddressWithContextV2(ctx context.Context, request *AllocateAddressRequest) (int, string, error) {
+	if request == nil {
+		request = NewAllocateAddressRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAllocateAddressResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewReleaseAddressRequest() (request *ReleaseAddressRequest) {
 	request = &ReleaseAddressRequest{
@@ -140,6 +236,23 @@ func (c *Client) ReleaseAddress(request *ReleaseAddressRequest) string {
 	return c.ReleaseAddressWithContext(context.Background(), request)
 }
 
+func (c *Client) ReleaseAddressSend(request *ReleaseAddressRequest) (*ReleaseAddressResponse, error) {
+	statusCode, msg, err := c.ReleaseAddressWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ReleaseAddressResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ReleaseAddressWithContext(ctx context.Context, request *ReleaseAddressRequest) string {
 	if request == nil {
 		request = NewReleaseAddressRequest()
@@ -153,6 +266,21 @@ func (c *Client) ReleaseAddressWithContext(ctx context.Context, request *Release
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ReleaseAddressWithContextV2(ctx context.Context, request *ReleaseAddressRequest) (int, string, error) {
+	if request == nil {
+		request = NewReleaseAddressRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewReleaseAddressResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewAssociateAddressRequest() (request *AssociateAddressRequest) {
 	request = &AssociateAddressRequest{
@@ -173,6 +301,23 @@ func (c *Client) AssociateAddress(request *AssociateAddressRequest) string {
 	return c.AssociateAddressWithContext(context.Background(), request)
 }
 
+func (c *Client) AssociateAddressSend(request *AssociateAddressRequest) (*AssociateAddressResponse, error) {
+	statusCode, msg, err := c.AssociateAddressWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct AssociateAddressResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) AssociateAddressWithContext(ctx context.Context, request *AssociateAddressRequest) string {
 	if request == nil {
 		request = NewAssociateAddressRequest()
@@ -186,6 +331,21 @@ func (c *Client) AssociateAddressWithContext(ctx context.Context, request *Assoc
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) AssociateAddressWithContextV2(ctx context.Context, request *AssociateAddressRequest) (int, string, error) {
+	if request == nil {
+		request = NewAssociateAddressRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAssociateAddressResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDisassociateAddressRequest() (request *DisassociateAddressRequest) {
 	request = &DisassociateAddressRequest{
@@ -206,6 +366,23 @@ func (c *Client) DisassociateAddress(request *DisassociateAddressRequest) string
 	return c.DisassociateAddressWithContext(context.Background(), request)
 }
 
+func (c *Client) DisassociateAddressSend(request *DisassociateAddressRequest) (*DisassociateAddressResponse, error) {
+	statusCode, msg, err := c.DisassociateAddressWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DisassociateAddressResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DisassociateAddressWithContext(ctx context.Context, request *DisassociateAddressRequest) string {
 	if request == nil {
 		request = NewDisassociateAddressRequest()
@@ -219,6 +396,21 @@ func (c *Client) DisassociateAddressWithContext(ctx context.Context, request *Di
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DisassociateAddressWithContextV2(ctx context.Context, request *DisassociateAddressRequest) (int, string, error) {
+	if request == nil {
+		request = NewDisassociateAddressRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDisassociateAddressResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyAddressRequest() (request *ModifyAddressRequest) {
 	request = &ModifyAddressRequest{
@@ -239,6 +431,23 @@ func (c *Client) ModifyAddress(request *ModifyAddressRequest) string {
 	return c.ModifyAddressWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyAddressSend(request *ModifyAddressRequest) (*ModifyAddressResponse, error) {
+	statusCode, msg, err := c.ModifyAddressWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyAddressResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyAddressWithContext(ctx context.Context, request *ModifyAddressRequest) string {
 	if request == nil {
 		request = NewModifyAddressRequest()
@@ -252,6 +461,21 @@ func (c *Client) ModifyAddressWithContext(ctx context.Context, request *ModifyAd
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyAddressWithContextV2(ctx context.Context, request *ModifyAddressRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyAddressRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyAddressResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateEipPoolRequest() (request *CreateEipPoolRequest) {
 	request = &CreateEipPoolRequest{
@@ -272,6 +496,23 @@ func (c *Client) CreateEipPool(request *CreateEipPoolRequest) string {
 	return c.CreateEipPoolWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateEipPoolSend(request *CreateEipPoolRequest) (*CreateEipPoolResponse, error) {
+	statusCode, msg, err := c.CreateEipPoolWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateEipPoolResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateEipPoolWithContext(ctx context.Context, request *CreateEipPoolRequest) string {
 	if request == nil {
 		request = NewCreateEipPoolRequest()
@@ -285,6 +526,21 @@ func (c *Client) CreateEipPoolWithContext(ctx context.Context, request *CreateEi
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateEipPoolWithContextV2(ctx context.Context, request *CreateEipPoolRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateEipPoolRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateEipPoolResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteEipPoolRequest() (request *DeleteEipPoolRequest) {
 	request = &DeleteEipPoolRequest{
@@ -305,6 +561,23 @@ func (c *Client) DeleteEipPool(request *DeleteEipPoolRequest) string {
 	return c.DeleteEipPoolWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteEipPoolSend(request *DeleteEipPoolRequest) (*DeleteEipPoolResponse, error) {
+	statusCode, msg, err := c.DeleteEipPoolWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteEipPoolResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteEipPoolWithContext(ctx context.Context, request *DeleteEipPoolRequest) string {
 	if request == nil {
 		request = NewDeleteEipPoolRequest()
@@ -318,6 +591,21 @@ func (c *Client) DeleteEipPoolWithContext(ctx context.Context, request *DeleteEi
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteEipPoolWithContextV2(ctx context.Context, request *DeleteEipPoolRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteEipPoolRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteEipPoolResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyEipPoolRequest() (request *ModifyEipPoolRequest) {
 	request = &ModifyEipPoolRequest{
@@ -338,6 +626,23 @@ func (c *Client) ModifyEipPool(request *ModifyEipPoolRequest) string {
 	return c.ModifyEipPoolWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyEipPoolSend(request *ModifyEipPoolRequest) (*ModifyEipPoolResponse, error) {
+	statusCode, msg, err := c.ModifyEipPoolWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyEipPoolResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyEipPoolWithContext(ctx context.Context, request *ModifyEipPoolRequest) string {
 	if request == nil {
 		request = NewModifyEipPoolRequest()
@@ -351,6 +656,21 @@ func (c *Client) ModifyEipPoolWithContext(ctx context.Context, request *ModifyEi
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyEipPoolWithContextV2(ctx context.Context, request *ModifyEipPoolRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyEipPoolRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyEipPoolResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeEipPoolsRequest() (request *DescribeEipPoolsRequest) {
 	request = &DescribeEipPoolsRequest{
@@ -371,6 +691,23 @@ func (c *Client) DescribeEipPools(request *DescribeEipPoolsRequest) string {
 	return c.DescribeEipPoolsWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeEipPoolsSend(request *DescribeEipPoolsRequest) (*DescribeEipPoolsResponse, error) {
+	statusCode, msg, err := c.DescribeEipPoolsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeEipPoolsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeEipPoolsWithContext(ctx context.Context, request *DescribeEipPoolsRequest) string {
 	if request == nil {
 		request = NewDescribeEipPoolsRequest()
@@ -384,6 +721,21 @@ func (c *Client) DescribeEipPoolsWithContext(ctx context.Context, request *Descr
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeEipPoolsWithContextV2(ctx context.Context, request *DescribeEipPoolsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeEipPoolsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeEipPoolsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeIpExistEipPoolUseRequest() (request *DescribeIpExistEipPoolUseRequest) {
 	request = &DescribeIpExistEipPoolUseRequest{
@@ -404,6 +756,23 @@ func (c *Client) DescribeIpExistEipPoolUse(request *DescribeIpExistEipPoolUseReq
 	return c.DescribeIpExistEipPoolUseWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeIpExistEipPoolUseSend(request *DescribeIpExistEipPoolUseRequest) (*DescribeIpExistEipPoolUseResponse, error) {
+	statusCode, msg, err := c.DescribeIpExistEipPoolUseWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeIpExistEipPoolUseResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeIpExistEipPoolUseWithContext(ctx context.Context, request *DescribeIpExistEipPoolUseRequest) string {
 	if request == nil {
 		request = NewDescribeIpExistEipPoolUseRequest()
@@ -417,4 +786,19 @@ func (c *Client) DescribeIpExistEipPoolUseWithContext(ctx context.Context, reque
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeIpExistEipPoolUseWithContextV2(ctx context.Context, request *DescribeIpExistEipPoolUseRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeIpExistEipPoolUseRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeIpExistEipPoolUseResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }

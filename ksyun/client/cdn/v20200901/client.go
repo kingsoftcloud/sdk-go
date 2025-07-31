@@ -40,6 +40,23 @@ func (c *Client) CreateUserUsageDataExportTask(request *CreateUserUsageDataExpor
 	return c.CreateUserUsageDataExportTaskWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateUserUsageDataExportTaskSend(request *CreateUserUsageDataExportTaskRequest) (*CreateUserUsageDataExportTaskResponse, error) {
+	statusCode, msg, err := c.CreateUserUsageDataExportTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateUserUsageDataExportTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateUserUsageDataExportTaskWithContext(ctx context.Context, request *CreateUserUsageDataExportTaskRequest) string {
 	if request == nil {
 		request = NewCreateUserUsageDataExportTaskRequest()
@@ -53,6 +70,21 @@ func (c *Client) CreateUserUsageDataExportTaskWithContext(ctx context.Context, r
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateUserUsageDataExportTaskWithContextV2(ctx context.Context, request *CreateUserUsageDataExportTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateUserUsageDataExportTaskRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateUserUsageDataExportTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewGetUserUsageDataExportTaskRequest() (request *GetUserUsageDataExportTaskRequest) {
 	request = &GetUserUsageDataExportTaskRequest{
@@ -73,6 +105,23 @@ func (c *Client) GetUserUsageDataExportTask(request *GetUserUsageDataExportTaskR
 	return c.GetUserUsageDataExportTaskWithContext(context.Background(), request)
 }
 
+func (c *Client) GetUserUsageDataExportTaskSend(request *GetUserUsageDataExportTaskRequest) (*GetUserUsageDataExportTaskResponse, error) {
+	statusCode, msg, err := c.GetUserUsageDataExportTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetUserUsageDataExportTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) GetUserUsageDataExportTaskWithContext(ctx context.Context, request *GetUserUsageDataExportTaskRequest) string {
 	if request == nil {
 		request = NewGetUserUsageDataExportTaskRequest()
@@ -86,6 +135,21 @@ func (c *Client) GetUserUsageDataExportTaskWithContext(ctx context.Context, requ
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) GetUserUsageDataExportTaskWithContextV2(ctx context.Context, request *GetUserUsageDataExportTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetUserUsageDataExportTaskRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetUserUsageDataExportTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteUserUsageDataExportTaskRequest() (request *DeleteUserUsageDataExportTaskRequest) {
 	request = &DeleteUserUsageDataExportTaskRequest{
@@ -106,6 +170,23 @@ func (c *Client) DeleteUserUsageDataExportTask(request *DeleteUserUsageDataExpor
 	return c.DeleteUserUsageDataExportTaskWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteUserUsageDataExportTaskSend(request *DeleteUserUsageDataExportTaskRequest) (*DeleteUserUsageDataExportTaskResponse, error) {
+	statusCode, msg, err := c.DeleteUserUsageDataExportTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteUserUsageDataExportTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteUserUsageDataExportTaskWithContext(ctx context.Context, request *DeleteUserUsageDataExportTaskRequest) string {
 	if request == nil {
 		request = NewDeleteUserUsageDataExportTaskRequest()
@@ -119,6 +200,21 @@ func (c *Client) DeleteUserUsageDataExportTaskWithContext(ctx context.Context, r
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteUserUsageDataExportTaskWithContextV2(ctx context.Context, request *DeleteUserUsageDataExportTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteUserUsageDataExportTaskRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteUserUsageDataExportTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewGetDomainUsageDataRequest() (request *GetDomainUsageDataRequest) {
 	request = &GetDomainUsageDataRequest{
@@ -139,6 +235,23 @@ func (c *Client) GetDomainUsageData(request *GetDomainUsageDataRequest) string {
 	return c.GetDomainUsageDataWithContext(context.Background(), request)
 }
 
+func (c *Client) GetDomainUsageDataSend(request *GetDomainUsageDataRequest) (*GetDomainUsageDataResponse, error) {
+	statusCode, msg, err := c.GetDomainUsageDataWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetDomainUsageDataResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) GetDomainUsageDataWithContext(ctx context.Context, request *GetDomainUsageDataRequest) string {
 	if request == nil {
 		request = NewGetDomainUsageDataRequest()
@@ -152,6 +265,21 @@ func (c *Client) GetDomainUsageDataWithContext(ctx context.Context, request *Get
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) GetDomainUsageDataWithContextV2(ctx context.Context, request *GetDomainUsageDataRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetDomainUsageDataRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetDomainUsageDataResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateUsageDetailDataExportTaskRequest() (request *CreateUsageDetailDataExportTaskRequest) {
 	request = &CreateUsageDetailDataExportTaskRequest{
@@ -172,6 +300,23 @@ func (c *Client) CreateUsageDetailDataExportTask(request *CreateUsageDetailDataE
 	return c.CreateUsageDetailDataExportTaskWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateUsageDetailDataExportTaskSend(request *CreateUsageDetailDataExportTaskRequest) (*CreateUsageDetailDataExportTaskResponse, error) {
+	statusCode, msg, err := c.CreateUsageDetailDataExportTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateUsageDetailDataExportTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateUsageDetailDataExportTaskWithContext(ctx context.Context, request *CreateUsageDetailDataExportTaskRequest) string {
 	if request == nil {
 		request = NewCreateUsageDetailDataExportTaskRequest()
@@ -185,6 +330,21 @@ func (c *Client) CreateUsageDetailDataExportTaskWithContext(ctx context.Context,
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateUsageDetailDataExportTaskWithContextV2(ctx context.Context, request *CreateUsageDetailDataExportTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateUsageDetailDataExportTaskRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateUsageDetailDataExportTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewGetUsageDetailDataExportTaskRequest() (request *GetUsageDetailDataExportTaskRequest) {
 	request = &GetUsageDetailDataExportTaskRequest{
@@ -205,6 +365,23 @@ func (c *Client) GetUsageDetailDataExportTask(request *GetUsageDetailDataExportT
 	return c.GetUsageDetailDataExportTaskWithContext(context.Background(), request)
 }
 
+func (c *Client) GetUsageDetailDataExportTaskSend(request *GetUsageDetailDataExportTaskRequest) (*GetUsageDetailDataExportTaskResponse, error) {
+	statusCode, msg, err := c.GetUsageDetailDataExportTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetUsageDetailDataExportTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) GetUsageDetailDataExportTaskWithContext(ctx context.Context, request *GetUsageDetailDataExportTaskRequest) string {
 	if request == nil {
 		request = NewGetUsageDetailDataExportTaskRequest()
@@ -218,6 +395,21 @@ func (c *Client) GetUsageDetailDataExportTaskWithContext(ctx context.Context, re
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) GetUsageDetailDataExportTaskWithContextV2(ctx context.Context, request *GetUsageDetailDataExportTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetUsageDetailDataExportTaskRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetUsageDetailDataExportTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteUsageDetailDataExportTaskRequest() (request *DeleteUsageDetailDataExportTaskRequest) {
 	request = &DeleteUsageDetailDataExportTaskRequest{
@@ -238,6 +430,23 @@ func (c *Client) DeleteUsageDetailDataExportTask(request *DeleteUsageDetailDataE
 	return c.DeleteUsageDetailDataExportTaskWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteUsageDetailDataExportTaskSend(request *DeleteUsageDetailDataExportTaskRequest) (*DeleteUsageDetailDataExportTaskResponse, error) {
+	statusCode, msg, err := c.DeleteUsageDetailDataExportTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteUsageDetailDataExportTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteUsageDetailDataExportTaskWithContext(ctx context.Context, request *DeleteUsageDetailDataExportTaskRequest) string {
 	if request == nil {
 		request = NewDeleteUsageDetailDataExportTaskRequest()
@@ -251,6 +460,21 @@ func (c *Client) DeleteUsageDetailDataExportTaskWithContext(ctx context.Context,
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteUsageDetailDataExportTaskWithContextV2(ctx context.Context, request *DeleteUsageDetailDataExportTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteUsageDetailDataExportTaskRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteUsageDetailDataExportTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 
 

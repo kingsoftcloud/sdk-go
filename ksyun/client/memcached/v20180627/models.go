@@ -1,7 +1,6 @@
 package v20180627
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -27,27 +26,8 @@ func (r *CreateCacheClusterRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateCacheClusterRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateCacheClusterRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Data      struct {
-		CacheId *string `json:"CacheId" name:"CacheId"`
-		Name    *string `json:"Name" name:"Name"`
-		Size    *string `json:"Size" name:"Size"`
-		Port    *string `json:"Port" name:"Port"`
-		SubOrderId *string `json:"SubOrderId" name:"SubOrderId"`
-	} `json:"Data"`
 }
 
 func (r *CreateCacheClusterResponse) ToJsonString() string {
@@ -69,20 +49,8 @@ func (r *DeleteCacheClusterRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DeleteCacheClusterRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteCacheClusterRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DeleteCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
 func (r *DeleteCacheClusterResponse) ToJsonString() string {
@@ -107,20 +75,8 @@ func (r *ResizeCacheClusterRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ResizeCacheClusterRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ResizeCacheClusterRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ResizeCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
 func (r *ResizeCacheClusterResponse) ToJsonString() string {
@@ -152,35 +108,8 @@ func (r *DescribeCacheClustersRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeCacheClustersRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeCacheClustersRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeCacheClustersResponse struct {
 	*ksyunhttp.BaseResponse
-	ReqId   *string `json:"reqId" name:"reqId"`
-	Message *string `json:"message" name:"message"`
-	Data    struct {
-		List []struct {
-			CacheId         *string `json:"cacheId" name:"cacheId"`
-			Name            *string `json:"name" name:"name"`
-			SecurityGroupId *string `json:"securityGroupId" name:"securityGroupId"`
-			Engine          *string `json:"engine" name:"engine"`
-			Vip             *string `json:"vip" name:"vip"`
-			CreateTime      *string `json:"createTime" name:"createTime"`
-			VpcId           *string `json:"vpcId" name:"vpcId"`
-			VnetId          *string `json:"vnetId" name:"vnetId"`
-			IamProjectId    *string `json:"iamProjectId" name:"iamProjectId"`
-			IamProjectName  *string `json:"iamProjectName" name:"iamProjectName"`
-		} `json:"List" name:"List"`
-	} `json:"Data"`
 }
 
 func (r *DescribeCacheClustersResponse) ToJsonString() string {
@@ -204,41 +133,8 @@ func (r *DescribeCacheClusterRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeCacheClusterRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeCacheClusterRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Data      struct {
-		CacheId         *string `json:"CacheId" name:"CacheId"`
-		Az              *string `json:"Az" name:"Az"`
-		Name            *string `json:"Name" name:"Name"`
-		SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
-		Engine          *string `json:"Engine" name:"Engine"`
-		Vip             *string `json:"Vip" name:"Vip"`
-		SlaveVip        *string `json:"SlaveVip" name:"SlaveVip"`
-		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
-		VpcId           *string `json:"VpcId" name:"VpcId"`
-		VnetId          *string `json:"VnetId" name:"VnetId"`
-		TimingSwitch    *string `json:"TimingSwitch" name:"TimingSwitch"`
-		Timezone        *string `json:"Timezone" name:"Timezone"`
-		SubOrderId      *string `json:"SubOrderId" name:"SubOrderId"`
-		ProductId       *string `json:"ProductId" name:"ProductId"`
-		ServiceBeginTime *string `json:"ServiceBeginTime" name:"ServiceBeginTime"`
-		ServiceEndTime  *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		IamProjectId    *string `json:"IamProjectId" name:"IamProjectId"`
-		IamProjectName  *string `json:"IamProjectName" name:"IamProjectName"`
-		Protocol        *string `json:"Protocol" name:"Protocol"`
-	} `json:"Data"`
 }
 
 func (r *DescribeCacheClusterResponse) ToJsonString() string {
@@ -260,20 +156,8 @@ func (r *FlushCacheClusterRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *FlushCacheClusterRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "FlushCacheClusterRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type FlushCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
 func (r *FlushCacheClusterResponse) ToJsonString() string {
@@ -296,17 +180,6 @@ type RenameCacheClusterRequest struct {
 func (r *RenameCacheClusterRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *RenameCacheClusterRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "RenameCacheClusterRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type RenameCacheClusterResponse struct {
@@ -335,20 +208,8 @@ func (r *UpdatePasswordRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *UpdatePasswordRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpdatePasswordRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type UpdatePasswordResponse struct {
 	*ksyunhttp.BaseResponse
-	ReqId *string `json:"reqId" name:"reqId"`
 }
 
 func (r *UpdatePasswordResponse) ToJsonString() string {
@@ -368,17 +229,6 @@ type DescribeCacheSecurityRulesRequest struct {
 func (r *DescribeCacheSecurityRulesRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DescribeCacheSecurityRulesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeCacheSecurityRulesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeCacheSecurityRulesResponse struct {
@@ -404,17 +254,6 @@ func (r *DeleteCacheSecurityRuleRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DeleteCacheSecurityRuleRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteCacheSecurityRuleRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DeleteCacheSecurityRuleResponse struct {
 	*ksyunhttp.BaseResponse
 }
@@ -438,20 +277,8 @@ func (r *SetCacheSecurityRulesRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *SetCacheSecurityRulesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "SetCacheSecurityRulesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type SetCacheSecurityRulesResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
 func (r *SetCacheSecurityRulesResponse) ToJsonString() string {
@@ -473,24 +300,8 @@ func (r *DescribeRegionsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeRegionsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeRegionsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeRegionsResponse struct {
 	*ksyunhttp.BaseResponse
-	RegionSet []struct {
-		RegionName *string `json:"RegionName" name:"RegionName"`
-		Region *string `json:"Region" name:"Region"`
-	} `json:"RegionSet"`
-	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
 func (r *DescribeRegionsResponse) ToJsonString() string {
@@ -502,6 +313,7 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeAvailabilityZonesRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -511,24 +323,8 @@ func (r *DescribeAvailabilityZonesRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeAvailabilityZonesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeAvailabilityZonesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeAvailabilityZonesResponse struct {
 	*ksyunhttp.BaseResponse
-	AvailabilityZoneSet []struct {
-		Region *string `json:"Region" name:"Region"`
-		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
-	} `json:"AvailabilityZoneSet"`
-	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
 func (r *DescribeAvailabilityZonesResponse) ToJsonString() string {

@@ -1,5 +1,4 @@
 package v20160304
-
 import (
 	"context"
 	"fmt"
@@ -41,6 +40,23 @@ func (c *Client) CreateVolume(request *CreateVolumeRequest) string {
 	return c.CreateVolumeWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateVolumeSend(request *CreateVolumeRequest) (*CreateVolumeResponse, error) {
+	statusCode, msg, err := c.CreateVolumeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateVolumeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateVolumeWithContext(ctx context.Context, request *CreateVolumeRequest) string {
 	if request == nil {
 		request = NewCreateVolumeRequest()
@@ -54,6 +70,21 @@ func (c *Client) CreateVolumeWithContext(ctx context.Context, request *CreateVol
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateVolumeWithContextV2(ctx context.Context, request *CreateVolumeRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateVolumeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateVolumeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewAttachVolumeRequest() (request *AttachVolumeRequest) {
 	request = &AttachVolumeRequest{
@@ -74,6 +105,23 @@ func (c *Client) AttachVolume(request *AttachVolumeRequest) string {
 	return c.AttachVolumeWithContext(context.Background(), request)
 }
 
+func (c *Client) AttachVolumeSend(request *AttachVolumeRequest) (*AttachVolumeResponse, error) {
+	statusCode, msg, err := c.AttachVolumeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct AttachVolumeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) AttachVolumeWithContext(ctx context.Context, request *AttachVolumeRequest) string {
 	if request == nil {
 		request = NewAttachVolumeRequest()
@@ -87,6 +135,21 @@ func (c *Client) AttachVolumeWithContext(ctx context.Context, request *AttachVol
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) AttachVolumeWithContextV2(ctx context.Context, request *AttachVolumeRequest) (int, string, error) {
+	if request == nil {
+		request = NewAttachVolumeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewAttachVolumeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDetachVolumeRequest() (request *DetachVolumeRequest) {
 	request = &DetachVolumeRequest{
@@ -107,6 +170,23 @@ func (c *Client) DetachVolume(request *DetachVolumeRequest) string {
 	return c.DetachVolumeWithContext(context.Background(), request)
 }
 
+func (c *Client) DetachVolumeSend(request *DetachVolumeRequest) (*DetachVolumeResponse, error) {
+	statusCode, msg, err := c.DetachVolumeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DetachVolumeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DetachVolumeWithContext(ctx context.Context, request *DetachVolumeRequest) string {
 	if request == nil {
 		request = NewDetachVolumeRequest()
@@ -120,6 +200,21 @@ func (c *Client) DetachVolumeWithContext(ctx context.Context, request *DetachVol
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DetachVolumeWithContextV2(ctx context.Context, request *DetachVolumeRequest) (int, string, error) {
+	if request == nil {
+		request = NewDetachVolumeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDetachVolumeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteVolumeRequest() (request *DeleteVolumeRequest) {
 	request = &DeleteVolumeRequest{
@@ -140,6 +235,23 @@ func (c *Client) DeleteVolume(request *DeleteVolumeRequest) string {
 	return c.DeleteVolumeWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteVolumeSend(request *DeleteVolumeRequest) (*DeleteVolumeResponse, error) {
+	statusCode, msg, err := c.DeleteVolumeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteVolumeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteVolumeWithContext(ctx context.Context, request *DeleteVolumeRequest) string {
 	if request == nil {
 		request = NewDeleteVolumeRequest()
@@ -153,6 +265,21 @@ func (c *Client) DeleteVolumeWithContext(ctx context.Context, request *DeleteVol
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteVolumeWithContextV2(ctx context.Context, request *DeleteVolumeRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteVolumeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteVolumeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewResizeVolumeRequest() (request *ResizeVolumeRequest) {
 	request = &ResizeVolumeRequest{
@@ -173,6 +300,23 @@ func (c *Client) ResizeVolume(request *ResizeVolumeRequest) string {
 	return c.ResizeVolumeWithContext(context.Background(), request)
 }
 
+func (c *Client) ResizeVolumeSend(request *ResizeVolumeRequest) (*ResizeVolumeResponse, error) {
+	statusCode, msg, err := c.ResizeVolumeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ResizeVolumeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ResizeVolumeWithContext(ctx context.Context, request *ResizeVolumeRequest) string {
 	if request == nil {
 		request = NewResizeVolumeRequest()
@@ -186,6 +330,21 @@ func (c *Client) ResizeVolumeWithContext(ctx context.Context, request *ResizeVol
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ResizeVolumeWithContextV2(ctx context.Context, request *ResizeVolumeRequest) (int, string, error) {
+	if request == nil {
+		request = NewResizeVolumeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewResizeVolumeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeVolumesRequest() (request *DescribeVolumesRequest) {
 	request = &DescribeVolumesRequest{
@@ -206,6 +365,23 @@ func (c *Client) DescribeVolumes(request *DescribeVolumesRequest) string {
 	return c.DescribeVolumesWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeVolumesSend(request *DescribeVolumesRequest) (*DescribeVolumesResponse, error) {
+	statusCode, msg, err := c.DescribeVolumesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeVolumesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeVolumesWithContext(ctx context.Context, request *DescribeVolumesRequest) string {
 	if request == nil {
 		request = NewDescribeVolumesRequest()
@@ -219,6 +395,21 @@ func (c *Client) DescribeVolumesWithContext(ctx context.Context, request *Descri
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeVolumesWithContextV2(ctx context.Context, request *DescribeVolumesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeVolumesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeVolumesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyVolumeRequest() (request *ModifyVolumeRequest) {
 	request = &ModifyVolumeRequest{
@@ -239,6 +430,23 @@ func (c *Client) ModifyVolume(request *ModifyVolumeRequest) string {
 	return c.ModifyVolumeWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyVolumeSend(request *ModifyVolumeRequest) (*ModifyVolumeResponse, error) {
+	statusCode, msg, err := c.ModifyVolumeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyVolumeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyVolumeWithContext(ctx context.Context, request *ModifyVolumeRequest) string {
 	if request == nil {
 		request = NewModifyVolumeRequest()
@@ -252,6 +460,21 @@ func (c *Client) ModifyVolumeWithContext(ctx context.Context, request *ModifyVol
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyVolumeWithContextV2(ctx context.Context, request *ModifyVolumeRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyVolumeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyVolumeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeEbsInstancesRequest() (request *DescribeEbsInstancesRequest) {
 	request = &DescribeEbsInstancesRequest{
@@ -272,6 +495,23 @@ func (c *Client) DescribeEbsInstances(request *DescribeEbsInstancesRequest) stri
 	return c.DescribeEbsInstancesWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeEbsInstancesSend(request *DescribeEbsInstancesRequest) (*DescribeEbsInstancesResponse, error) {
+	statusCode, msg, err := c.DescribeEbsInstancesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeEbsInstancesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeEbsInstancesWithContext(ctx context.Context, request *DescribeEbsInstancesRequest) string {
 	if request == nil {
 		request = NewDescribeEbsInstancesRequest()
@@ -285,6 +525,21 @@ func (c *Client) DescribeEbsInstancesWithContext(ctx context.Context, request *D
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeEbsInstancesWithContextV2(ctx context.Context, request *DescribeEbsInstancesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeEbsInstancesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeEbsInstancesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeInstanceVolumesRequest() (request *DescribeInstanceVolumesRequest) {
 	request = &DescribeInstanceVolumesRequest{
@@ -305,6 +560,23 @@ func (c *Client) DescribeInstanceVolumes(request *DescribeInstanceVolumesRequest
 	return c.DescribeInstanceVolumesWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeInstanceVolumesSend(request *DescribeInstanceVolumesRequest) (*DescribeInstanceVolumesResponse, error) {
+	statusCode, msg, err := c.DescribeInstanceVolumesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeInstanceVolumesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeInstanceVolumesWithContext(ctx context.Context, request *DescribeInstanceVolumesRequest) string {
 	if request == nil {
 		request = NewDescribeInstanceVolumesRequest()
@@ -318,6 +590,21 @@ func (c *Client) DescribeInstanceVolumesWithContext(ctx context.Context, request
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeInstanceVolumesWithContextV2(ctx context.Context, request *DescribeInstanceVolumesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeInstanceVolumesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeInstanceVolumesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewRenewVolumeRequest() (request *RenewVolumeRequest) {
 	request = &RenewVolumeRequest{
@@ -338,6 +625,23 @@ func (c *Client) RenewVolume(request *RenewVolumeRequest) string {
 	return c.RenewVolumeWithContext(context.Background(), request)
 }
 
+func (c *Client) RenewVolumeSend(request *RenewVolumeRequest) (*RenewVolumeResponse, error) {
+	statusCode, msg, err := c.RenewVolumeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct RenewVolumeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) RenewVolumeWithContext(ctx context.Context, request *RenewVolumeRequest) string {
 	if request == nil {
 		request = NewRenewVolumeRequest()
@@ -351,6 +655,21 @@ func (c *Client) RenewVolumeWithContext(ctx context.Context, request *RenewVolum
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) RenewVolumeWithContextV2(ctx context.Context, request *RenewVolumeRequest) (int, string, error) {
+	if request == nil {
+		request = NewRenewVolumeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRenewVolumeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewUpdateVolumeProjectRequest() (request *UpdateVolumeProjectRequest) {
 	request = &UpdateVolumeProjectRequest{
@@ -371,6 +690,23 @@ func (c *Client) UpdateVolumeProject(request *UpdateVolumeProjectRequest) string
 	return c.UpdateVolumeProjectWithContext(context.Background(), request)
 }
 
+func (c *Client) UpdateVolumeProjectSend(request *UpdateVolumeProjectRequest) (*UpdateVolumeProjectResponse, error) {
+	statusCode, msg, err := c.UpdateVolumeProjectWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct UpdateVolumeProjectResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) UpdateVolumeProjectWithContext(ctx context.Context, request *UpdateVolumeProjectRequest) string {
 	if request == nil {
 		request = NewUpdateVolumeProjectRequest()
@@ -384,6 +720,21 @@ func (c *Client) UpdateVolumeProjectWithContext(ctx context.Context, request *Up
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) UpdateVolumeProjectWithContextV2(ctx context.Context, request *UpdateVolumeProjectRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdateVolumeProjectRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateVolumeProjectResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeSnapshotsRequest() (request *DescribeSnapshotsRequest) {
 	request = &DescribeSnapshotsRequest{
@@ -404,6 +755,23 @@ func (c *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) string {
 	return c.DescribeSnapshotsWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeSnapshotsSend(request *DescribeSnapshotsRequest) (*DescribeSnapshotsResponse, error) {
+	statusCode, msg, err := c.DescribeSnapshotsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeSnapshotsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, request *DescribeSnapshotsRequest) string {
 	if request == nil {
 		request = NewDescribeSnapshotsRequest()
@@ -417,6 +785,21 @@ func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, request *Desc
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeSnapshotsWithContextV2(ctx context.Context, request *DescribeSnapshotsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeSnapshotsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeSnapshotsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateSnapshotRequest() (request *CreateSnapshotRequest) {
 	request = &CreateSnapshotRequest{
@@ -437,6 +820,23 @@ func (c *Client) CreateSnapshot(request *CreateSnapshotRequest) string {
 	return c.CreateSnapshotWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateSnapshotSend(request *CreateSnapshotRequest) (*CreateSnapshotResponse, error) {
+	statusCode, msg, err := c.CreateSnapshotWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateSnapshotResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateSnapshotWithContext(ctx context.Context, request *CreateSnapshotRequest) string {
 	if request == nil {
 		request = NewCreateSnapshotRequest()
@@ -450,6 +850,21 @@ func (c *Client) CreateSnapshotWithContext(ctx context.Context, request *CreateS
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateSnapshotWithContextV2(ctx context.Context, request *CreateSnapshotRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateSnapshotRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateSnapshotResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteSnapshotRequest() (request *DeleteSnapshotRequest) {
 	request = &DeleteSnapshotRequest{
@@ -470,6 +885,23 @@ func (c *Client) DeleteSnapshot(request *DeleteSnapshotRequest) string {
 	return c.DeleteSnapshotWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteSnapshotSend(request *DeleteSnapshotRequest) (*DeleteSnapshotResponse, error) {
+	statusCode, msg, err := c.DeleteSnapshotWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteSnapshotResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteSnapshotWithContext(ctx context.Context, request *DeleteSnapshotRequest) string {
 	if request == nil {
 		request = NewDeleteSnapshotRequest()
@@ -483,6 +915,21 @@ func (c *Client) DeleteSnapshotWithContext(ctx context.Context, request *DeleteS
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteSnapshotWithContextV2(ctx context.Context, request *DeleteSnapshotRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteSnapshotRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteSnapshotResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewRollbackSnapshotRequest() (request *RollbackSnapshotRequest) {
 	request = &RollbackSnapshotRequest{
@@ -503,6 +950,23 @@ func (c *Client) RollbackSnapshot(request *RollbackSnapshotRequest) string {
 	return c.RollbackSnapshotWithContext(context.Background(), request)
 }
 
+func (c *Client) RollbackSnapshotSend(request *RollbackSnapshotRequest) (*RollbackSnapshotResponse, error) {
+	statusCode, msg, err := c.RollbackSnapshotWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct RollbackSnapshotResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) RollbackSnapshotWithContext(ctx context.Context, request *RollbackSnapshotRequest) string {
 	if request == nil {
 		request = NewRollbackSnapshotRequest()
@@ -516,6 +980,21 @@ func (c *Client) RollbackSnapshotWithContext(ctx context.Context, request *Rollb
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) RollbackSnapshotWithContextV2(ctx context.Context, request *RollbackSnapshotRequest) (int, string, error) {
+	if request == nil {
+		request = NewRollbackSnapshotRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRollbackSnapshotResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifySnapshotRequest() (request *ModifySnapshotRequest) {
 	request = &ModifySnapshotRequest{
@@ -536,6 +1015,23 @@ func (c *Client) ModifySnapshot(request *ModifySnapshotRequest) string {
 	return c.ModifySnapshotWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifySnapshotSend(request *ModifySnapshotRequest) (*ModifySnapshotResponse, error) {
+	statusCode, msg, err := c.ModifySnapshotWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifySnapshotResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifySnapshotWithContext(ctx context.Context, request *ModifySnapshotRequest) string {
 	if request == nil {
 		request = NewModifySnapshotRequest()
@@ -549,6 +1045,21 @@ func (c *Client) ModifySnapshotWithContext(ctx context.Context, request *ModifyS
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifySnapshotWithContextV2(ctx context.Context, request *ModifySnapshotRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifySnapshotRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifySnapshotResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewRecoveryVolumeRequest() (request *RecoveryVolumeRequest) {
 	request = &RecoveryVolumeRequest{
@@ -569,6 +1080,23 @@ func (c *Client) RecoveryVolume(request *RecoveryVolumeRequest) string {
 	return c.RecoveryVolumeWithContext(context.Background(), request)
 }
 
+func (c *Client) RecoveryVolumeSend(request *RecoveryVolumeRequest) (*RecoveryVolumeResponse, error) {
+	statusCode, msg, err := c.RecoveryVolumeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct RecoveryVolumeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) RecoveryVolumeWithContext(ctx context.Context, request *RecoveryVolumeRequest) string {
 	if request == nil {
 		request = NewRecoveryVolumeRequest()
@@ -582,6 +1110,21 @@ func (c *Client) RecoveryVolumeWithContext(ctx context.Context, request *Recover
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) RecoveryVolumeWithContextV2(ctx context.Context, request *RecoveryVolumeRequest) (int, string, error) {
+	if request == nil {
+		request = NewRecoveryVolumeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRecoveryVolumeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewValidateAttachInstanceRequest() (request *ValidateAttachInstanceRequest) {
 	request = &ValidateAttachInstanceRequest{
@@ -602,6 +1145,23 @@ func (c *Client) ValidateAttachInstance(request *ValidateAttachInstanceRequest) 
 	return c.ValidateAttachInstanceWithContext(context.Background(), request)
 }
 
+func (c *Client) ValidateAttachInstanceSend(request *ValidateAttachInstanceRequest) (*ValidateAttachInstanceResponse, error) {
+	statusCode, msg, err := c.ValidateAttachInstanceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ValidateAttachInstanceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ValidateAttachInstanceWithContext(ctx context.Context, request *ValidateAttachInstanceRequest) string {
 	if request == nil {
 		request = NewValidateAttachInstanceRequest()
@@ -615,6 +1175,21 @@ func (c *Client) ValidateAttachInstanceWithContext(ctx context.Context, request 
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ValidateAttachInstanceWithContextV2(ctx context.Context, request *ValidateAttachInstanceRequest) (int, string, error) {
+	if request == nil {
+		request = NewValidateAttachInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewValidateAttachInstanceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeCreateVolumePriceRequest() (request *DescribeCreateVolumePriceRequest) {
 	request = &DescribeCreateVolumePriceRequest{
@@ -635,6 +1210,23 @@ func (c *Client) DescribeCreateVolumePrice(request *DescribeCreateVolumePriceReq
 	return c.DescribeCreateVolumePriceWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeCreateVolumePriceSend(request *DescribeCreateVolumePriceRequest) (*DescribeCreateVolumePriceResponse, error) {
+	statusCode, msg, err := c.DescribeCreateVolumePriceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeCreateVolumePriceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeCreateVolumePriceWithContext(ctx context.Context, request *DescribeCreateVolumePriceRequest) string {
 	if request == nil {
 		request = NewDescribeCreateVolumePriceRequest()
@@ -648,6 +1240,21 @@ func (c *Client) DescribeCreateVolumePriceWithContext(ctx context.Context, reque
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeCreateVolumePriceWithContextV2(ctx context.Context, request *DescribeCreateVolumePriceRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeCreateVolumePriceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeCreateVolumePriceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifySnapshotTypeRequest() (request *ModifySnapshotTypeRequest) {
 	request = &ModifySnapshotTypeRequest{
@@ -668,6 +1275,23 @@ func (c *Client) ModifySnapshotType(request *ModifySnapshotTypeRequest) string {
 	return c.ModifySnapshotTypeWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifySnapshotTypeSend(request *ModifySnapshotTypeRequest) (*ModifySnapshotTypeResponse, error) {
+	statusCode, msg, err := c.ModifySnapshotTypeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifySnapshotTypeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifySnapshotTypeWithContext(ctx context.Context, request *ModifySnapshotTypeRequest) string {
 	if request == nil {
 		request = NewModifySnapshotTypeRequest()
@@ -681,6 +1305,21 @@ func (c *Client) ModifySnapshotTypeWithContext(ctx context.Context, request *Mod
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifySnapshotTypeWithContextV2(ctx context.Context, request *ModifySnapshotTypeRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifySnapshotTypeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifySnapshotTypeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyVolumeTypeRequest() (request *ModifyVolumeTypeRequest) {
 	request = &ModifyVolumeTypeRequest{
@@ -701,6 +1340,23 @@ func (c *Client) ModifyVolumeType(request *ModifyVolumeTypeRequest) string {
 	return c.ModifyVolumeTypeWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyVolumeTypeSend(request *ModifyVolumeTypeRequest) (*ModifyVolumeTypeResponse, error) {
+	statusCode, msg, err := c.ModifyVolumeTypeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyVolumeTypeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyVolumeTypeWithContext(ctx context.Context, request *ModifyVolumeTypeRequest) string {
 	if request == nil {
 		request = NewModifyVolumeTypeRequest()
@@ -714,6 +1370,21 @@ func (c *Client) ModifyVolumeTypeWithContext(ctx context.Context, request *Modif
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyVolumeTypeWithContextV2(ctx context.Context, request *ModifyVolumeTypeRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyVolumeTypeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyVolumeTypeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyDedicatedBlockStorageClusterAttributeRequest() (request *ModifyDedicatedBlockStorageClusterAttributeRequest) {
 	request = &ModifyDedicatedBlockStorageClusterAttributeRequest{
@@ -734,6 +1405,23 @@ func (c *Client) ModifyDedicatedBlockStorageClusterAttribute(request *ModifyDedi
 	return c.ModifyDedicatedBlockStorageClusterAttributeWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyDedicatedBlockStorageClusterAttributeSend(request *ModifyDedicatedBlockStorageClusterAttributeRequest) (*ModifyDedicatedBlockStorageClusterAttributeResponse, error) {
+	statusCode, msg, err := c.ModifyDedicatedBlockStorageClusterAttributeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyDedicatedBlockStorageClusterAttributeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyDedicatedBlockStorageClusterAttributeWithContext(ctx context.Context, request *ModifyDedicatedBlockStorageClusterAttributeRequest) string {
 	if request == nil {
 		request = NewModifyDedicatedBlockStorageClusterAttributeRequest()
@@ -747,6 +1435,21 @@ func (c *Client) ModifyDedicatedBlockStorageClusterAttributeWithContext(ctx cont
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyDedicatedBlockStorageClusterAttributeWithContextV2(ctx context.Context, request *ModifyDedicatedBlockStorageClusterAttributeRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyDedicatedBlockStorageClusterAttributeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyDedicatedBlockStorageClusterAttributeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewResizeDedicatedBlockStorageClustersRequest() (request *ResizeDedicatedBlockStorageClustersRequest) {
 	request = &ResizeDedicatedBlockStorageClustersRequest{
@@ -767,6 +1470,23 @@ func (c *Client) ResizeDedicatedBlockStorageClusters(request *ResizeDedicatedBlo
 	return c.ResizeDedicatedBlockStorageClustersWithContext(context.Background(), request)
 }
 
+func (c *Client) ResizeDedicatedBlockStorageClustersSend(request *ResizeDedicatedBlockStorageClustersRequest) (*ResizeDedicatedBlockStorageClustersResponse, error) {
+	statusCode, msg, err := c.ResizeDedicatedBlockStorageClustersWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ResizeDedicatedBlockStorageClustersResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ResizeDedicatedBlockStorageClustersWithContext(ctx context.Context, request *ResizeDedicatedBlockStorageClustersRequest) string {
 	if request == nil {
 		request = NewResizeDedicatedBlockStorageClustersRequest()
@@ -780,6 +1500,21 @@ func (c *Client) ResizeDedicatedBlockStorageClustersWithContext(ctx context.Cont
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ResizeDedicatedBlockStorageClustersWithContextV2(ctx context.Context, request *ResizeDedicatedBlockStorageClustersRequest) (int, string, error) {
+	if request == nil {
+		request = NewResizeDedicatedBlockStorageClustersRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewResizeDedicatedBlockStorageClustersResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeDedicatedBlockStorageClustersRequest() (request *DescribeDedicatedBlockStorageClustersRequest) {
 	request = &DescribeDedicatedBlockStorageClustersRequest{
@@ -800,6 +1535,23 @@ func (c *Client) DescribeDedicatedBlockStorageClusters(request *DescribeDedicate
 	return c.DescribeDedicatedBlockStorageClustersWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeDedicatedBlockStorageClustersSend(request *DescribeDedicatedBlockStorageClustersRequest) (*DescribeDedicatedBlockStorageClustersResponse, error) {
+	statusCode, msg, err := c.DescribeDedicatedBlockStorageClustersWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeDedicatedBlockStorageClustersResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeDedicatedBlockStorageClustersWithContext(ctx context.Context, request *DescribeDedicatedBlockStorageClustersRequest) string {
 	if request == nil {
 		request = NewDescribeDedicatedBlockStorageClustersRequest()
@@ -813,6 +1565,21 @@ func (c *Client) DescribeDedicatedBlockStorageClustersWithContext(ctx context.Co
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeDedicatedBlockStorageClustersWithContextV2(ctx context.Context, request *DescribeDedicatedBlockStorageClustersRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeDedicatedBlockStorageClustersRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeDedicatedBlockStorageClustersResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateDedicatedBlockStorageClusterRequest() (request *CreateDedicatedBlockStorageClusterRequest) {
 	request = &CreateDedicatedBlockStorageClusterRequest{
@@ -833,6 +1600,23 @@ func (c *Client) CreateDedicatedBlockStorageCluster(request *CreateDedicatedBloc
 	return c.CreateDedicatedBlockStorageClusterWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateDedicatedBlockStorageClusterSend(request *CreateDedicatedBlockStorageClusterRequest) (*CreateDedicatedBlockStorageClusterResponse, error) {
+	statusCode, msg, err := c.CreateDedicatedBlockStorageClusterWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateDedicatedBlockStorageClusterResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateDedicatedBlockStorageClusterWithContext(ctx context.Context, request *CreateDedicatedBlockStorageClusterRequest) string {
 	if request == nil {
 		request = NewCreateDedicatedBlockStorageClusterRequest()
@@ -847,3 +1631,85 @@ func (c *Client) CreateDedicatedBlockStorageClusterWithContext(ctx context.Conte
 	}
 	return msg
 }
+
+func (c *Client) CreateDedicatedBlockStorageClusterWithContextV2(ctx context.Context, request *CreateDedicatedBlockStorageClusterRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateDedicatedBlockStorageClusterRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateDedicatedBlockStorageClusterResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyVolumePresetRequest() (request *ModifyVolumePresetRequest) {
+	request = &ModifyVolumePresetRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ebs", APIVersion, "ModifyVolumePreset")
+	return
+}
+
+func NewModifyVolumePresetResponse() (response *ModifyVolumePresetResponse) {
+	response = &ModifyVolumePresetResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyVolumePreset(request *ModifyVolumePresetRequest) string {
+	return c.ModifyVolumePresetWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyVolumePresetSend(request *ModifyVolumePresetRequest) (*ModifyVolumePresetResponse, error) {
+	statusCode, msg, err := c.ModifyVolumePresetWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyVolumePresetResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyVolumePresetWithContext(ctx context.Context, request *ModifyVolumePresetRequest) string {
+	if request == nil {
+		request = NewModifyVolumePresetRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyVolumePresetResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyVolumePresetWithContextV2(ctx context.Context, request *ModifyVolumePresetRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyVolumePresetRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyVolumePresetResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+
+

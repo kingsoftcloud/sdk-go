@@ -2,7 +2,6 @@ package v20190401
 
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -27,26 +26,17 @@ func (r *ListOperateLogsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListOperateLogsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListOperateLogsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListOperateLogsResponse struct {
 	*ksyunhttp.BaseResponse
 	Total  *int `json:"Total" name:"Total"`
 	Events []struct {
-		ErrorMessage    *string `json:"ErrorMessage" name:"ErrorMessage"`
-		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
-		ServiceName     *string `json:"ServiceName" name:"ServiceName"`
-		EventSource     *string `json:"EventSource" name:"EventSource"`
-		ApiVersion      *string `json:"ApiVersion" name:"ApiVersion"`
+		ErrorMessage      *string `json:"ErrorMessage" name:"ErrorMessage"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		ServiceName       *string `json:"ServiceName" name:"ServiceName"`
+		EventSource       *string `json:"EventSource" name:"EventSource"`
+		ApiVersion        *string `json:"ApiVersion" name:"ApiVersion"`
+		RequestParameters struct {
+		} `json:"RequestParameters" name:"RequestParameters"`
 		SourceIpAddress *string `json:"SourceIpAddress" name:"SourceIpAddress"`
 		EventVersion    *string `json:"EventVersion" name:"EventVersion"`
 		EventType       *string `json:"EventType" name:"EventType"`

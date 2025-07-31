@@ -1,7 +1,6 @@
 package v20200630
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -27,17 +26,6 @@ func (r *GetClientRequestDataRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetClientRequestDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetClientRequestDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetClientRequestDataResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime  *string `json:"StartTime" name:"StartTime"`
@@ -55,7 +43,8 @@ type GetClientRequestDataResponse struct {
 		Condition struct {
 		} `json:"Condition" name:"Condition"`
 		Data []struct {
-			Time *string `json:"Time" name:"Time"`
+			Time *string  `json:"Time" name:"Time"`
+			Flow *float64 `json:"Flow" name:"Flow"`
 		} `json:"Data" name:"Data"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -90,17 +79,6 @@ func (r *GetServerDataRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetServerDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetServerDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetServerDataResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime  *string `json:"StartTime" name:"StartTime"`
@@ -117,7 +95,8 @@ type GetServerDataResponse struct {
 			DataType *string `json:"DataType" name:"DataType"`
 		} `json:"Condition" name:"Condition"`
 		Data []struct {
-			Time *string `json:"Time" name:"Time"`
+			Time *string  `json:"Time" name:"Time"`
+			Flow *float64 `json:"Flow" name:"Flow"`
 		} `json:"Data" name:"Data"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -146,17 +125,6 @@ func (r *GetDomainRankingListDataRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetDomainRankingListDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetDomainRankingListDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetDomainRankingListDataResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime *string `json:"StartTime" name:"StartTime"`
@@ -165,7 +133,9 @@ type GetDomainRankingListDataResponse struct {
 	SortBy    *string `json:"SortBy" name:"SortBy"`
 	Datas     []struct {
 		Domain *string `json:"Domain" name:"Domain"`
+		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
 		PeakTime *string `json:"PeakTime" name:"PeakTime"`
+		PvProportion   *float64 `json:"PvProportion" name:"PvProportion"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -193,17 +163,6 @@ func (r *GetAreaIspDataRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetAreaIspDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetAreaIspDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetAreaIspDataResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime *string `json:"StartTime" name:"StartTime"`
@@ -212,8 +171,12 @@ type GetAreaIspDataResponse struct {
 	Domains   *string `json:"Domains" name:"Domains"`
 	Datas     []struct {
 		Area *string `json:"Area" name:"Area"`
+		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
+		PvProportion   *float64 `json:"PvProportion" name:"PvProportion"`
 		Isps []struct {
-			Isp *string `json:"Isp" name:"Isp"`
+			Isp            *string  `json:"Isp" name:"Isp"`
+			FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
+			PvProportion   *float64 `json:"PvProportion" name:"PvProportion"`
 		} `json:"Isps" name:"Isps"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -244,17 +207,6 @@ func (r *GetTopReferDataRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetTopReferDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetTopReferDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetTopReferDataResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime *string `json:"StartTime" name:"StartTime"`
@@ -264,6 +216,8 @@ type GetTopReferDataResponse struct {
 	SortBy    *string `json:"SortBy" name:"SortBy"`
 	Datas     []struct {
 		Refer *string `json:"Refer" name:"Refer"`
+		PvProportion   *float64 `json:"PvProportion" name:"PvProportion"`
+		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -293,17 +247,6 @@ func (r *GetTopUrlDataRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetTopUrlDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetTopUrlDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetTopUrlDataResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime *string `json:"StartTime" name:"StartTime"`
@@ -313,6 +256,8 @@ type GetTopUrlDataResponse struct {
 	SortBy    *string `json:"SortBy" name:"SortBy"`
 	Datas     []struct {
 		Url *string `json:"Url" name:"Url"`
+		PvProportion   *float64 `json:"PvProportion" name:"PvProportion"`
+		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -342,17 +287,6 @@ func (r *GetRealTimeHitRateDataRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetRealTimeHitRateDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetRealTimeHitRateDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetRealTimeHitRateDataResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime   *string `json:"StartTime" name:"StartTime"`
@@ -366,6 +300,8 @@ type GetRealTimeHitRateDataResponse struct {
 		Condition struct {
 		} `json:"Condition" name:"Condition"`
 		DetailData struct {
+			MissFlowProportion *float64 `json:"MissFlowProportion" name:"MissFlowProportion"`
+			HitFlowProportion  *float64 `json:"HitFlowProportion" name:"HitFlowProportion"`
 		} `json:"DetailData" name:"DetailData"`
 	} `json:"Datas"`
 }
@@ -395,17 +331,6 @@ func (r *GetReqHitRateDataRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetReqHitRateDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetReqHitRateDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetReqHitRateDataResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime  *string `json:"StartTime" name:"StartTime"`
@@ -418,7 +343,9 @@ type GetReqHitRateDataResponse struct {
 		Condition struct {
 		} `json:"Condition" name:"Condition"`
 		DetailData []struct {
-			Time *string `json:"Time" name:"Time"`
+			Time               *string  `json:"Time" name:"Time"`
+			MissFlowProportion *float64 `json:"MissFlowProportion" name:"MissFlowProportion"`
+			HitFlowProportion  *float64 `json:"HitFlowProportion" name:"HitFlowProportion"`
 		} `json:"DetailData" name:"DetailData"`
 	} `json:"Datas"`
 }
@@ -448,17 +375,6 @@ func (r *GetFlowHitRateDataRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetFlowHitRateDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetFlowHitRateDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetFlowHitRateDataResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime  *string `json:"StartTime" name:"StartTime"`
@@ -471,7 +387,9 @@ type GetFlowHitRateDataResponse struct {
 		Condition struct {
 		} `json:"Condition" name:"Condition"`
 		DetailData []struct {
-			Time *string `json:"Time" name:"Time"`
+			Time               *string  `json:"Time" name:"Time"`
+			MissFlowProportion *float64 `json:"MissFlowProportion" name:"MissFlowProportion"`
+			HitFlowProportion  *float64 `json:"HitFlowProportion" name:"HitFlowProportion"`
 		} `json:"DetailData" name:"DetailData"`
 	} `json:"Datas"`
 }
@@ -509,17 +427,6 @@ func (r *GetDomainRequestPeriodRatioDataRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetDomainRequestPeriodRatioDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetDomainRequestPeriodRatioDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetDomainRequestPeriodRatioDataResponse struct {
 	*ksyunhttp.BaseResponse
 	CurrentPeriodStartTime *string `json:"CurrentPeriodStartTime" name:"CurrentPeriodStartTime"`
@@ -540,8 +447,9 @@ type GetDomainRequestPeriodRatioDataResponse struct {
 		Condition struct {
 		} `json:"Condition" name:"Condition"`
 		Data []struct {
-			CurrentPeriodTime *string `json:"CurrentPeriodTime" name:"CurrentPeriodTime"`
-			PriorPeriodTime   *string `json:"PriorPeriodTime" name:"PriorPeriodTime"`
+			CurrentPeriodTime *string  `json:"CurrentPeriodTime" name:"CurrentPeriodTime"`
+			PriorPeriodTime   *string  `json:"PriorPeriodTime" name:"PriorPeriodTime"`
+			PeriodRatio       *float64 `json:"PeriodRatio" name:"PeriodRatio"`
 		} `json:"Data" name:"Data"`
 	} `json:"Datas"`
 }
@@ -569,17 +477,6 @@ type GetUvDataRequest struct {
 func (r *GetUvDataRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *GetUvDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetUvDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetUvDataResponse struct {
@@ -623,17 +520,6 @@ func (r *GetTopIpDataRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetTopIpDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetTopIpDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetTopIpDataResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime *string `json:"StartTime" name:"StartTime"`
@@ -674,17 +560,6 @@ func (r *GetSrcDomainHttpCodeDetailedDataRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetSrcDomainHttpCodeDetailedDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetSrcDomainHttpCodeDetailedDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetSrcDomainHttpCodeDetailedDataResponse struct {
 	*ksyunhttp.BaseResponse
 }
@@ -714,17 +589,6 @@ func (r *GetSrcDomainHttpCodeDataRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetSrcDomainHttpCodeDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetSrcDomainHttpCodeDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetSrcDomainHttpCodeDataResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime  *string `json:"StartTime" name:"StartTime"`
@@ -738,7 +602,8 @@ type GetSrcDomainHttpCodeDataResponse struct {
 			Domains *string `json:"Domains" name:"Domains"`
 		} `json:"Condition" name:"Condition"`
 		HttpcodeData []struct {
-			CodeType *string `json:"CodeType" name:"CodeType"`
+			CodeType   *string  `json:"CodeType" name:"CodeType"`
+			Proportion *float64 `json:"Proportion" name:"Proportion"`
 		} `json:"HttpcodeData" name:"HttpcodeData"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -775,17 +640,6 @@ func (r *GetDomainHttpCodeDetailedDataRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetDomainHttpCodeDetailedDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetDomainHttpCodeDetailedDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetDomainHttpCodeDetailedDataResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime *string `json:"StartTime" name:"StartTime"`
@@ -799,6 +653,7 @@ func (r *GetDomainHttpCodeDetailedDataResponse) ToJsonString() string {
 func (r *GetDomainHttpCodeDetailedDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type GetDomainHttpCodeDataRequest struct {
 	*ksyunhttp.BaseRequest
@@ -819,17 +674,6 @@ func (r *GetDomainHttpCodeDataRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetDomainHttpCodeDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetDomainHttpCodeDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetDomainHttpCodeDataResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime  *string `json:"StartTime" name:"StartTime"`
@@ -847,7 +691,8 @@ type GetDomainHttpCodeDataResponse struct {
 			Domains *string `json:"Domains" name:"Domains"`
 		} `json:"Condition" name:"Condition"`
 		HttpcodeData []struct {
-			CodeType *string `json:"CodeType" name:"CodeType"`
+			CodeType   *string  `json:"CodeType" name:"CodeType"`
+			Proportion *float64 `json:"Proportion" name:"Proportion"`
 		} `json:"HttpcodeData" name:"HttpcodeData"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -862,6 +707,7 @@ func (r *GetDomainHttpCodeDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type GetEntryRateDataRequest struct {
 	*ksyunhttp.BaseRequest
 	Domains   *string `json:"Domains,omitempty" name:"Domains"`
@@ -874,17 +720,6 @@ type GetEntryRateDataRequest struct {
 func (r *GetEntryRateDataRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *GetEntryRateDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetEntryRateDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetEntryRateDataResponse struct {

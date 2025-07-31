@@ -41,6 +41,23 @@ func (c *Client) CreateSecurityGroup(request *CreateSecurityGroupRequest) string
 	return c.CreateSecurityGroupWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateSecurityGroupSend(request *CreateSecurityGroupRequest) (*CreateSecurityGroupResponse, error) {
+	statusCode, msg, err := c.CreateSecurityGroupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateSecurityGroupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *CreateSecurityGroupRequest) string {
 	if request == nil {
 		request = NewCreateSecurityGroupRequest()
@@ -54,6 +71,21 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateSecurityGroupWithContextV2(ctx context.Context, request *CreateSecurityGroupRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateSecurityGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateSecurityGroupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeSecurityGroupRequest() (request *DescribeSecurityGroupRequest) {
 	request = &DescribeSecurityGroupRequest{
@@ -74,6 +106,23 @@ func (c *Client) DescribeSecurityGroup(request *DescribeSecurityGroupRequest) st
 	return c.DescribeSecurityGroupWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeSecurityGroupSend(request *DescribeSecurityGroupRequest) (*DescribeSecurityGroupResponse, error) {
+	statusCode, msg, err := c.DescribeSecurityGroupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeSecurityGroupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *DescribeSecurityGroupRequest) string {
 	if request == nil {
 		request = NewDescribeSecurityGroupRequest()
@@ -87,6 +136,21 @@ func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeSecurityGroupWithContextV2(ctx context.Context, request *DescribeSecurityGroupRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeSecurityGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeSecurityGroupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteSecurityGroupRequest() (request *DeleteSecurityGroupRequest) {
 	request = &DeleteSecurityGroupRequest{
@@ -107,6 +171,23 @@ func (c *Client) DeleteSecurityGroup(request *DeleteSecurityGroupRequest) string
 	return c.DeleteSecurityGroupWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteSecurityGroupSend(request *DeleteSecurityGroupRequest) (*DeleteSecurityGroupResponse, error) {
+	statusCode, msg, err := c.DeleteSecurityGroupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteSecurityGroupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *DeleteSecurityGroupRequest) string {
 	if request == nil {
 		request = NewDeleteSecurityGroupRequest()
@@ -120,6 +201,21 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteSecurityGroupWithContextV2(ctx context.Context, request *DeleteSecurityGroupRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteSecurityGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteSecurityGroupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifySecurityGroupRequest() (request *ModifySecurityGroupRequest) {
 	request = &ModifySecurityGroupRequest{
@@ -140,6 +236,23 @@ func (c *Client) ModifySecurityGroup(request *ModifySecurityGroupRequest) string
 	return c.ModifySecurityGroupWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifySecurityGroupSend(request *ModifySecurityGroupRequest) (*ModifySecurityGroupResponse, error) {
+	statusCode, msg, err := c.ModifySecurityGroupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifySecurityGroupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifySecurityGroupWithContext(ctx context.Context, request *ModifySecurityGroupRequest) string {
 	if request == nil {
 		request = NewModifySecurityGroupRequest()
@@ -153,6 +266,21 @@ func (c *Client) ModifySecurityGroupWithContext(ctx context.Context, request *Mo
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifySecurityGroupWithContextV2(ctx context.Context, request *ModifySecurityGroupRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifySecurityGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifySecurityGroupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCloneSecurityGroupRequest() (request *CloneSecurityGroupRequest) {
 	request = &CloneSecurityGroupRequest{
@@ -173,6 +301,23 @@ func (c *Client) CloneSecurityGroup(request *CloneSecurityGroupRequest) string {
 	return c.CloneSecurityGroupWithContext(context.Background(), request)
 }
 
+func (c *Client) CloneSecurityGroupSend(request *CloneSecurityGroupRequest) (*CloneSecurityGroupResponse, error) {
+	statusCode, msg, err := c.CloneSecurityGroupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CloneSecurityGroupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CloneSecurityGroupWithContext(ctx context.Context, request *CloneSecurityGroupRequest) string {
 	if request == nil {
 		request = NewCloneSecurityGroupRequest()
@@ -186,6 +331,21 @@ func (c *Client) CloneSecurityGroupWithContext(ctx context.Context, request *Clo
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CloneSecurityGroupWithContextV2(ctx context.Context, request *CloneSecurityGroupRequest) (int, string, error) {
+	if request == nil {
+		request = NewCloneSecurityGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCloneSecurityGroupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifySecurityGroupRuleRequest() (request *ModifySecurityGroupRuleRequest) {
 	request = &ModifySecurityGroupRuleRequest{
@@ -206,6 +366,23 @@ func (c *Client) ModifySecurityGroupRule(request *ModifySecurityGroupRuleRequest
 	return c.ModifySecurityGroupRuleWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifySecurityGroupRuleSend(request *ModifySecurityGroupRuleRequest) (*ModifySecurityGroupRuleResponse, error) {
+	statusCode, msg, err := c.ModifySecurityGroupRuleWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifySecurityGroupRuleResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifySecurityGroupRuleWithContext(ctx context.Context, request *ModifySecurityGroupRuleRequest) string {
 	if request == nil {
 		request = NewModifySecurityGroupRuleRequest()
@@ -219,6 +396,21 @@ func (c *Client) ModifySecurityGroupRuleWithContext(ctx context.Context, request
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifySecurityGroupRuleWithContextV2(ctx context.Context, request *ModifySecurityGroupRuleRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifySecurityGroupRuleRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifySecurityGroupRuleResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewSecurityGroupRelationRequest() (request *SecurityGroupRelationRequest) {
 	request = &SecurityGroupRelationRequest{
@@ -239,6 +431,23 @@ func (c *Client) SecurityGroupRelation(request *SecurityGroupRelationRequest) st
 	return c.SecurityGroupRelationWithContext(context.Background(), request)
 }
 
+func (c *Client) SecurityGroupRelationSend(request *SecurityGroupRelationRequest) (*SecurityGroupRelationResponse, error) {
+	statusCode, msg, err := c.SecurityGroupRelationWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct SecurityGroupRelationResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) SecurityGroupRelationWithContext(ctx context.Context, request *SecurityGroupRelationRequest) string {
 	if request == nil {
 		request = NewSecurityGroupRelationRequest()
@@ -252,6 +461,21 @@ func (c *Client) SecurityGroupRelationWithContext(ctx context.Context, request *
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) SecurityGroupRelationWithContextV2(ctx context.Context, request *SecurityGroupRelationRequest) (int, string, error) {
+	if request == nil {
+		request = NewSecurityGroupRelationRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSecurityGroupRelationResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifySecurityGroupRuleNameRequest() (request *ModifySecurityGroupRuleNameRequest) {
 	request = &ModifySecurityGroupRuleNameRequest{
@@ -272,6 +496,23 @@ func (c *Client) ModifySecurityGroupRuleName(request *ModifySecurityGroupRuleNam
 	return c.ModifySecurityGroupRuleNameWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifySecurityGroupRuleNameSend(request *ModifySecurityGroupRuleNameRequest) (*ModifySecurityGroupRuleNameResponse, error) {
+	statusCode, msg, err := c.ModifySecurityGroupRuleNameWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifySecurityGroupRuleNameResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifySecurityGroupRuleNameWithContext(ctx context.Context, request *ModifySecurityGroupRuleNameRequest) string {
 	if request == nil {
 		request = NewModifySecurityGroupRuleNameRequest()
@@ -285,6 +526,21 @@ func (c *Client) ModifySecurityGroupRuleNameWithContext(ctx context.Context, req
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifySecurityGroupRuleNameWithContextV2(ctx context.Context, request *ModifySecurityGroupRuleNameRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifySecurityGroupRuleNameRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifySecurityGroupRuleNameResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateDBParameterGroupRequest() (request *CreateDBParameterGroupRequest) {
 	request = &CreateDBParameterGroupRequest{
@@ -305,6 +561,23 @@ func (c *Client) CreateDBParameterGroup(request *CreateDBParameterGroupRequest) 
 	return c.CreateDBParameterGroupWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateDBParameterGroupSend(request *CreateDBParameterGroupRequest) (*CreateDBParameterGroupResponse, error) {
+	statusCode, msg, err := c.CreateDBParameterGroupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateDBParameterGroupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateDBParameterGroupWithContext(ctx context.Context, request *CreateDBParameterGroupRequest) string {
 	if request == nil {
 		request = NewCreateDBParameterGroupRequest()
@@ -318,6 +591,21 @@ func (c *Client) CreateDBParameterGroupWithContext(ctx context.Context, request 
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateDBParameterGroupWithContextV2(ctx context.Context, request *CreateDBParameterGroupRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateDBParameterGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateDBParameterGroupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyDBParameterGroupRequest() (request *ModifyDBParameterGroupRequest) {
 	request = &ModifyDBParameterGroupRequest{
@@ -338,6 +626,23 @@ func (c *Client) ModifyDBParameterGroup(request *ModifyDBParameterGroupRequest) 
 	return c.ModifyDBParameterGroupWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyDBParameterGroupSend(request *ModifyDBParameterGroupRequest) (*ModifyDBParameterGroupResponse, error) {
+	statusCode, msg, err := c.ModifyDBParameterGroupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyDBParameterGroupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyDBParameterGroupWithContext(ctx context.Context, request *ModifyDBParameterGroupRequest) string {
 	if request == nil {
 		request = NewModifyDBParameterGroupRequest()
@@ -351,4 +656,19 @@ func (c *Client) ModifyDBParameterGroupWithContext(ctx context.Context, request 
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyDBParameterGroupWithContextV2(ctx context.Context, request *ModifyDBParameterGroupRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyDBParameterGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyDBParameterGroupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }

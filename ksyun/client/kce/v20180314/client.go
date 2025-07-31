@@ -40,6 +40,23 @@ func (c *Client) CreateRepoNamespace(request *CreateRepoNamespaceRequest) string
 	return c.CreateRepoNamespaceWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateRepoNamespaceSend(request *CreateRepoNamespaceRequest) (*CreateRepoNamespaceResponse, error) {
+	statusCode, msg, err := c.CreateRepoNamespaceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateRepoNamespaceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateRepoNamespaceWithContext(ctx context.Context, request *CreateRepoNamespaceRequest) string {
 	if request == nil {
 		request = NewCreateRepoNamespaceRequest()
@@ -53,6 +70,21 @@ func (c *Client) CreateRepoNamespaceWithContext(ctx context.Context, request *Cr
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateRepoNamespaceWithContextV2(ctx context.Context, request *CreateRepoNamespaceRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateRepoNamespaceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateRepoNamespaceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeRepoNamespaceRequest() (request *DescribeRepoNamespaceRequest) {
 	request = &DescribeRepoNamespaceRequest{
@@ -73,6 +105,23 @@ func (c *Client) DescribeRepoNamespace(request *DescribeRepoNamespaceRequest) st
 	return c.DescribeRepoNamespaceWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeRepoNamespaceSend(request *DescribeRepoNamespaceRequest) (*DescribeRepoNamespaceResponse, error) {
+	statusCode, msg, err := c.DescribeRepoNamespaceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeRepoNamespaceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeRepoNamespaceWithContext(ctx context.Context, request *DescribeRepoNamespaceRequest) string {
 	if request == nil {
 		request = NewDescribeRepoNamespaceRequest()
@@ -86,6 +135,21 @@ func (c *Client) DescribeRepoNamespaceWithContext(ctx context.Context, request *
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeRepoNamespaceWithContextV2(ctx context.Context, request *DescribeRepoNamespaceRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeRepoNamespaceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeRepoNamespaceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyRepoNamespaceTypeRequest() (request *ModifyRepoNamespaceTypeRequest) {
 	request = &ModifyRepoNamespaceTypeRequest{
@@ -106,6 +170,23 @@ func (c *Client) ModifyRepoNamespaceType(request *ModifyRepoNamespaceTypeRequest
 	return c.ModifyRepoNamespaceTypeWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyRepoNamespaceTypeSend(request *ModifyRepoNamespaceTypeRequest) (*ModifyRepoNamespaceTypeResponse, error) {
+	statusCode, msg, err := c.ModifyRepoNamespaceTypeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyRepoNamespaceTypeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyRepoNamespaceTypeWithContext(ctx context.Context, request *ModifyRepoNamespaceTypeRequest) string {
 	if request == nil {
 		request = NewModifyRepoNamespaceTypeRequest()
@@ -119,6 +200,21 @@ func (c *Client) ModifyRepoNamespaceTypeWithContext(ctx context.Context, request
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyRepoNamespaceTypeWithContextV2(ctx context.Context, request *ModifyRepoNamespaceTypeRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyRepoNamespaceTypeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyRepoNamespaceTypeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewRepoNamespaceExistRequest() (request *RepoNamespaceExistRequest) {
 	request = &RepoNamespaceExistRequest{
@@ -139,6 +235,23 @@ func (c *Client) RepoNamespaceExist(request *RepoNamespaceExistRequest) string {
 	return c.RepoNamespaceExistWithContext(context.Background(), request)
 }
 
+func (c *Client) RepoNamespaceExistSend(request *RepoNamespaceExistRequest) (*RepoNamespaceExistResponse, error) {
+	statusCode, msg, err := c.RepoNamespaceExistWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct RepoNamespaceExistResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) RepoNamespaceExistWithContext(ctx context.Context, request *RepoNamespaceExistRequest) string {
 	if request == nil {
 		request = NewRepoNamespaceExistRequest()
@@ -152,6 +265,21 @@ func (c *Client) RepoNamespaceExistWithContext(ctx context.Context, request *Rep
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) RepoNamespaceExistWithContextV2(ctx context.Context, request *RepoNamespaceExistRequest) (int, string, error) {
+	if request == nil {
+		request = NewRepoNamespaceExistRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewRepoNamespaceExistResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateRepositoryRequest() (request *CreateRepositoryRequest) {
 	request = &CreateRepositoryRequest{
@@ -172,6 +300,23 @@ func (c *Client) CreateRepository(request *CreateRepositoryRequest) string {
 	return c.CreateRepositoryWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateRepositorySend(request *CreateRepositoryRequest) (*CreateRepositoryResponse, error) {
+	statusCode, msg, err := c.CreateRepositoryWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateRepositoryResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateRepositoryWithContext(ctx context.Context, request *CreateRepositoryRequest) string {
 	if request == nil {
 		request = NewCreateRepositoryRequest()
@@ -185,6 +330,21 @@ func (c *Client) CreateRepositoryWithContext(ctx context.Context, request *Creat
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateRepositoryWithContextV2(ctx context.Context, request *CreateRepositoryRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateRepositoryRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateRepositoryResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteRepositoryRequest() (request *DeleteRepositoryRequest) {
 	request = &DeleteRepositoryRequest{
@@ -205,6 +365,23 @@ func (c *Client) DeleteRepository(request *DeleteRepositoryRequest) string {
 	return c.DeleteRepositoryWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteRepositorySend(request *DeleteRepositoryRequest) (*DeleteRepositoryResponse, error) {
+	statusCode, msg, err := c.DeleteRepositoryWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteRepositoryResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteRepositoryWithContext(ctx context.Context, request *DeleteRepositoryRequest) string {
 	if request == nil {
 		request = NewDeleteRepositoryRequest()
@@ -218,6 +395,21 @@ func (c *Client) DeleteRepositoryWithContext(ctx context.Context, request *Delet
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteRepositoryWithContextV2(ctx context.Context, request *DeleteRepositoryRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteRepositoryRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteRepositoryResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeRepositoryRequest() (request *DescribeRepositoryRequest) {
 	request = &DescribeRepositoryRequest{
@@ -238,6 +430,23 @@ func (c *Client) DescribeRepository(request *DescribeRepositoryRequest) string {
 	return c.DescribeRepositoryWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeRepositorySend(request *DescribeRepositoryRequest) (*DescribeRepositoryResponse, error) {
+	statusCode, msg, err := c.DescribeRepositoryWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeRepositoryResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeRepositoryWithContext(ctx context.Context, request *DescribeRepositoryRequest) string {
 	if request == nil {
 		request = NewDescribeRepositoryRequest()
@@ -251,6 +460,21 @@ func (c *Client) DescribeRepositoryWithContext(ctx context.Context, request *Des
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeRepositoryWithContextV2(ctx context.Context, request *DescribeRepositoryRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeRepositoryRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeRepositoryResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribePublicRepositoryRequest() (request *DescribePublicRepositoryRequest) {
 	request = &DescribePublicRepositoryRequest{
@@ -271,6 +495,23 @@ func (c *Client) DescribePublicRepository(request *DescribePublicRepositoryReque
 	return c.DescribePublicRepositoryWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribePublicRepositorySend(request *DescribePublicRepositoryRequest) (*DescribePublicRepositoryResponse, error) {
+	statusCode, msg, err := c.DescribePublicRepositoryWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribePublicRepositoryResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribePublicRepositoryWithContext(ctx context.Context, request *DescribePublicRepositoryRequest) string {
 	if request == nil {
 		request = NewDescribePublicRepositoryRequest()
@@ -284,6 +525,21 @@ func (c *Client) DescribePublicRepositoryWithContext(ctx context.Context, reques
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribePublicRepositoryWithContextV2(ctx context.Context, request *DescribePublicRepositoryRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribePublicRepositoryRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribePublicRepositoryResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewUpdateRepoDescRequest() (request *UpdateRepoDescRequest) {
 	request = &UpdateRepoDescRequest{
@@ -304,6 +560,23 @@ func (c *Client) UpdateRepoDesc(request *UpdateRepoDescRequest) string {
 	return c.UpdateRepoDescWithContext(context.Background(), request)
 }
 
+func (c *Client) UpdateRepoDescSend(request *UpdateRepoDescRequest) (*UpdateRepoDescResponse, error) {
+	statusCode, msg, err := c.UpdateRepoDescWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct UpdateRepoDescResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) UpdateRepoDescWithContext(ctx context.Context, request *UpdateRepoDescRequest) string {
 	if request == nil {
 		request = NewUpdateRepoDescRequest()
@@ -317,6 +590,21 @@ func (c *Client) UpdateRepoDescWithContext(ctx context.Context, request *UpdateR
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) UpdateRepoDescWithContextV2(ctx context.Context, request *UpdateRepoDescRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdateRepoDescRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateRepoDescResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeTagRequest() (request *DescribeTagRequest) {
 	request = &DescribeTagRequest{
@@ -337,6 +625,23 @@ func (c *Client) DescribeTag(request *DescribeTagRequest) string {
 	return c.DescribeTagWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeTagSend(request *DescribeTagRequest) (*DescribeTagResponse, error) {
+	statusCode, msg, err := c.DescribeTagWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeTagResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeTagWithContext(ctx context.Context, request *DescribeTagRequest) string {
 	if request == nil {
 		request = NewDescribeTagRequest()
@@ -350,6 +655,21 @@ func (c *Client) DescribeTagWithContext(ctx context.Context, request *DescribeTa
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeTagWithContextV2(ctx context.Context, request *DescribeTagRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeTagRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeTagResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteTagsRequest() (request *DeleteTagsRequest) {
 	request = &DeleteTagsRequest{
@@ -370,6 +690,23 @@ func (c *Client) DeleteTags(request *DeleteTagsRequest) string {
 	return c.DeleteTagsWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteTagsSend(request *DeleteTagsRequest) (*DeleteTagsResponse, error) {
+	statusCode, msg, err := c.DeleteTagsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteTagsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteTagsWithContext(ctx context.Context, request *DeleteTagsRequest) string {
 	if request == nil {
 		request = NewDeleteTagsRequest()
@@ -383,6 +720,21 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, request *DeleteTagsR
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteTagsWithContextV2(ctx context.Context, request *DeleteTagsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteTagsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteTagsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewAddFavorRequest() (request *AddFavorRequest) {
 	request = &AddFavorRequest{
@@ -403,6 +755,23 @@ func (c *Client) AddFavor(request *AddFavorRequest) string {
 	return c.AddFavorWithContext(context.Background(), request)
 }
 
+func (c *Client) AddFavorSend(request *AddFavorRequest) (*AddFavorResponse, error) {
+	statusCode, msg, err := c.AddFavorWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct AddFavorResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) AddFavorWithContext(ctx context.Context, request *AddFavorRequest) string {
 	if request == nil {
 		request = NewAddFavorRequest()
@@ -416,6 +785,21 @@ func (c *Client) AddFavorWithContext(ctx context.Context, request *AddFavorReque
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) AddFavorWithContextV2(ctx context.Context, request *AddFavorRequest) (int, string, error) {
+	if request == nil {
+		request = NewAddFavorRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAddFavorResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteFavorRequest() (request *DeleteFavorRequest) {
 	request = &DeleteFavorRequest{
@@ -436,6 +820,23 @@ func (c *Client) DeleteFavor(request *DeleteFavorRequest) string {
 	return c.DeleteFavorWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteFavorSend(request *DeleteFavorRequest) (*DeleteFavorResponse, error) {
+	statusCode, msg, err := c.DeleteFavorWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteFavorResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteFavorWithContext(ctx context.Context, request *DeleteFavorRequest) string {
 	if request == nil {
 		request = NewDeleteFavorRequest()
@@ -449,6 +850,21 @@ func (c *Client) DeleteFavorWithContext(ctx context.Context, request *DeleteFavo
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteFavorWithContextV2(ctx context.Context, request *DeleteFavorRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteFavorRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteFavorResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewGetFavorRequest() (request *GetFavorRequest) {
 	request = &GetFavorRequest{
@@ -469,6 +885,23 @@ func (c *Client) GetFavor(request *GetFavorRequest) string {
 	return c.GetFavorWithContext(context.Background(), request)
 }
 
+func (c *Client) GetFavorSend(request *GetFavorRequest) (*GetFavorResponse, error) {
+	statusCode, msg, err := c.GetFavorWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetFavorResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) GetFavorWithContext(ctx context.Context, request *GetFavorRequest) string {
 	if request == nil {
 		request = NewGetFavorRequest()
@@ -482,6 +915,21 @@ func (c *Client) GetFavorWithContext(ctx context.Context, request *GetFavorReque
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) GetFavorWithContextV2(ctx context.Context, request *GetFavorRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetFavorRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetFavorResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewRegisterRepositoryAccountRequest() (request *RegisterRepositoryAccountRequest) {
 	request = &RegisterRepositoryAccountRequest{
@@ -502,6 +950,23 @@ func (c *Client) RegisterRepositoryAccount(request *RegisterRepositoryAccountReq
 	return c.RegisterRepositoryAccountWithContext(context.Background(), request)
 }
 
+func (c *Client) RegisterRepositoryAccountSend(request *RegisterRepositoryAccountRequest) (*RegisterRepositoryAccountResponse, error) {
+	statusCode, msg, err := c.RegisterRepositoryAccountWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct RegisterRepositoryAccountResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) RegisterRepositoryAccountWithContext(ctx context.Context, request *RegisterRepositoryAccountRequest) string {
 	if request == nil {
 		request = NewRegisterRepositoryAccountRequest()
@@ -515,6 +980,21 @@ func (c *Client) RegisterRepositoryAccountWithContext(ctx context.Context, reque
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) RegisterRepositoryAccountWithContextV2(ctx context.Context, request *RegisterRepositoryAccountRequest) (int, string, error) {
+	if request == nil {
+		request = NewRegisterRepositoryAccountRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewRegisterRepositoryAccountResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyPasswordRequest() (request *ModifyPasswordRequest) {
 	request = &ModifyPasswordRequest{
@@ -535,6 +1015,23 @@ func (c *Client) ModifyPassword(request *ModifyPasswordRequest) string {
 	return c.ModifyPasswordWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyPasswordSend(request *ModifyPasswordRequest) (*ModifyPasswordResponse, error) {
+	statusCode, msg, err := c.ModifyPasswordWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyPasswordResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyPasswordWithContext(ctx context.Context, request *ModifyPasswordRequest) string {
 	if request == nil {
 		request = NewModifyPasswordRequest()
@@ -548,6 +1045,21 @@ func (c *Client) ModifyPasswordWithContext(ctx context.Context, request *ModifyP
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyPasswordWithContextV2(ctx context.Context, request *ModifyPasswordRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyPasswordRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyPasswordResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteRepoNamespaceRequest() (request *DeleteRepoNamespaceRequest) {
 	request = &DeleteRepoNamespaceRequest{
@@ -568,6 +1080,23 @@ func (c *Client) DeleteRepoNamespace(request *DeleteRepoNamespaceRequest) string
 	return c.DeleteRepoNamespaceWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteRepoNamespaceSend(request *DeleteRepoNamespaceRequest) (*DeleteRepoNamespaceResponse, error) {
+	statusCode, msg, err := c.DeleteRepoNamespaceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteRepoNamespaceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteRepoNamespaceWithContext(ctx context.Context, request *DeleteRepoNamespaceRequest) string {
 	if request == nil {
 		request = NewDeleteRepoNamespaceRequest()
@@ -581,6 +1110,21 @@ func (c *Client) DeleteRepoNamespaceWithContext(ctx context.Context, request *De
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteRepoNamespaceWithContextV2(ctx context.Context, request *DeleteRepoNamespaceRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteRepoNamespaceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteRepoNamespaceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 
 

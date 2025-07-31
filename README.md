@@ -2,8 +2,7 @@
 
 # 简介
 
-欢迎使用金山云开发者工具套件（SDK），此SDK是金山云API平台的配套开发工具。</br>
-当前SDK版本 1.0.6
+欢迎使用金山云开发者工具套件（SDK），此SDK是金山云API平台的配套开发工具。
 
 # 依赖环境
 
@@ -12,8 +11,8 @@
 
 # 获取安装
 
-注意：此安装方式仅支持使用 **Go Modules** 模式进行依赖管理，即环境变量 `GO111MODULE=auto`或者`GO111MODULE=on`,
-并且在您的项目中执行了 `go mod init xxx`.
+注意：此安装方式仅支持使用 **Go Modules** 模式进行依赖管理，即环境变量 `GO111MODULE=auto`或者`GO111MODULE=on`, 并且在您的项目中执行了
+`go mod init xxx`.
 
 如果您使用 GOPATH, 请参考下节： 全部安装
 
@@ -43,36 +42,31 @@ Demo
 package main
 
 import (
-"fmt"
-"github.com/kingsoftcloud/sdk-go/v2/ksyun/common"
-"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
-"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/profile"
-iam "github.com/kingsoftcloud/sdk-go/v2/ksyun/iam/v20151101"
+	"fmt"
+	"github.com/kingsoftcloud/sdk-go/ksyun/common"
+	"github.com/kingsoftcloud/sdk-go/ksyun/common/errors"
+	"github.com/kingsoftcloud/sdk-go/ksyun/common/profile"
+	iam "github.com/kingsoftcloud/sdk-go/ksyun/iam/v20151101"
 )
 
 func main() {
-   credential := common.NewCredential("AccessKey", "SecretKey")
+	credential := common.NewCredential("AccessKey", "SecretKey")
 
-   cpf := profile.NewClientProfile()
-   cpf.HttpProfile.ReqMethod = "POST"
-   //设置超时时间  可不设置
-   cpf.HttpProfile.ReqTimeout = 10
-   //请求域名
-   cpf.HttpProfile.Endpoint = "iam.api.ksyun.com"
-   client, _ := iam.NewClient(credential, "cn-beijing-6", cpf)
+	cpf := profile.NewClientProfile()
+	cpf.HttpProfile.ReqMethod = "POST"
+	//设置超时时间  可不设置
+	cpf.HttpProfile.ReqTimeout = 10
+	//请求域名
+	cpf.HttpProfile.Endpoint = "iam.api.ksyun.com"
+	client, _ := iam.NewClient(credential, "cn-beijing-6", cpf)
 
-   request := iam.NewListUsersRequest()
-   request.MaxItems = common.Int64Ptr(1)
-   
-   responseString := client.ListUsers(request)
-   var respStruct iam.ListUsersResponse
-   err := respStruct.FromJsonString(responseString)
-   if err != nil {
-	   fmt.Printf("Error parsing responseString: %s ,err：%s \n", responseString, err)
-	   return
-   }
-
-   fmt.Printf("%+v\n", respStruct)
+	request := iam.NewListUsersRequest()
+	responseStruct, err := client.ListUsersSend(request)
+	if err != nil {
+		fmt.Printf("%s\n", err)
+		return
+	}
+	fmt.Printf("%s\n", responseStruct.ToJsonString())
 }
 
 ```

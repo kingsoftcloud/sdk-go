@@ -40,6 +40,23 @@ func (c *Client) GetMetricStatisticsBatch(request *GetMetricStatisticsBatchReque
     return c.GetMetricStatisticsBatchWithContext(context.Background(), request)
 }
 
+func (c *Client) GetMetricStatisticsBatchSend(request *GetMetricStatisticsBatchRequest) (*GetMetricStatisticsBatchResponse, error) {
+	statusCode, msg, err := c.GetMetricStatisticsBatchWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetMetricStatisticsBatchResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) GetMetricStatisticsBatchWithContext(ctx context.Context, request *GetMetricStatisticsBatchRequest) string {
     if request == nil {
         request = NewGetMetricStatisticsBatchRequest()
@@ -53,6 +70,21 @@ func (c *Client) GetMetricStatisticsBatchWithContext(ctx context.Context, reques
         return fmt.Sprintf("%+v\n", err)
     }
     return msg
+}
+
+func (c *Client) GetMetricStatisticsBatchWithContextV2(ctx context.Context, request *GetMetricStatisticsBatchRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetMetricStatisticsBatchRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetMetricStatisticsBatchResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 
 

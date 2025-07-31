@@ -1,10 +1,9 @@
 package v20210320
-
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type CreateFolderRequest struct {
 	*ksyunhttp.BaseRequest
@@ -16,17 +15,6 @@ type CreateFolderRequest struct {
 func (r *CreateFolderRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CreateFolderRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateFolderRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateFolderResponse struct {
@@ -43,6 +31,7 @@ func (r *CreateFolderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteFolderRequest struct {
 	*ksyunhttp.BaseRequest
 	FolderId *string `json:"FolderId,omitempty" name:"FolderId"`
@@ -51,17 +40,6 @@ type DeleteFolderRequest struct {
 func (r *DeleteFolderRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeleteFolderRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteFolderRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteFolderResponse struct {
@@ -78,6 +56,7 @@ func (r *DeleteFolderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type UpdateFolderRequest struct {
 	*ksyunhttp.BaseRequest
 	FolderId *string `json:"FolderId,omitempty" name:"FolderId"`
@@ -89,17 +68,6 @@ type UpdateFolderRequest struct {
 func (r *UpdateFolderRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *UpdateFolderRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpdateFolderRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateFolderResponse struct {
@@ -116,6 +84,7 @@ func (r *UpdateFolderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListAccountsForParentRequest struct {
 	*ksyunhttp.BaseRequest
 	FolderId *string `json:"FolderId,omitempty" name:"FolderId"`
@@ -127,17 +96,6 @@ type ListAccountsForParentRequest struct {
 func (r *ListAccountsForParentRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ListAccountsForParentRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListAccountsForParentRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListAccountsForParentResponse struct {
@@ -165,6 +123,7 @@ func (r *ListAccountsForParentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type MoveAccountRequest struct {
 	*ksyunhttp.BaseRequest
 	Ids          *string `json:"Ids,omitempty" name:"Ids"`
@@ -175,17 +134,6 @@ type MoveAccountRequest struct {
 func (r *MoveAccountRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *MoveAccountRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "MoveAccountRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type MoveAccountResponse struct {
@@ -202,6 +150,7 @@ func (r *MoveAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type UpdateAccountRequest struct {
 	*ksyunhttp.BaseRequest
 	MemberId       *int    `json:"MemberId,omitempty" name:"MemberId"`
@@ -212,17 +161,6 @@ type UpdateAccountRequest struct {
 func (r *UpdateAccountRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *UpdateAccountRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpdateAccountRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateAccountResponse struct {
@@ -239,6 +177,7 @@ func (r *UpdateAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListAccountsRequest struct {
 	*ksyunhttp.BaseRequest
 	PageNumber *int `json:"PageNumber,omitempty" name:"PageNumber"`
@@ -251,25 +190,14 @@ func (r *ListAccountsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListAccountsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListAccountsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListAccountsResponse struct {
 	*ksyunhttp.BaseResponse
 	Accounts []struct {
-		AccountId   *int    `json:"AccountId" name:"AccountId"`
+		AccountId  *int    `json:"AccountId" name:"AccountId"`
 		AccountName *string `json:"AccountName" name:"AccountName"`
 		DisplayName *string `json:"DisplayName" name:"DisplayName"`
-		Type        *string `json:"Type" name:"Type"`
-		JoinedTime  *string `json:"JoinedTime" name:"JoinedTime"`
+		Type       *string `json:"Type" name:"Type"`
+		JoinedTime *string `json:"JoinedTime" name:"JoinedTime"`
 	} `json:"Accounts"`
 	Pagination struct {
 		TotalCount *int    `json:"TotalCount" name:"TotalCount"`
@@ -297,17 +225,6 @@ func (r *ListFoldersRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ListFoldersRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListFoldersRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ListFoldersResponse struct {
 	*ksyunhttp.BaseResponse
 	Name        *string `json:"Name" name:"Name"`
@@ -318,13 +235,15 @@ type ListFoldersResponse struct {
 	ParentId    *int    `json:"ParentId" name:"ParentId"`
 	Num         *int    `json:"Num" name:"Num"`
 	SonFolder   []struct {
-		Name        *string `json:"Name" name:"Name"`
-		Desc        *string `json:"Desc" name:"Desc"`
-		Id          *string `json:"Id" name:"Id"`
+		Name      *string `json:"Name" name:"Name"`
+		Desc      *string `json:"Desc" name:"Desc"`
+		Id        *string `json:"Id" name:"Id"`
 		CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
-		Level       *int    `json:"Level" name:"Level"`
-		ParentId    *string `json:"ParentId" name:"ParentId"`
-		Num         *int    `json:"Num" name:"Num"`
+		Level     *int    `json:"Level" name:"Level"`
+		ParentId  *string `json:"ParentId" name:"ParentId"`
+		Num       *int    `json:"Num" name:"Num"`
+		SonFolder []struct {
+		} `json:"SonFolder" name:"SonFolder"`
 	} `json:"SonFolder"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -337,3 +256,4 @@ func (r *ListFoldersResponse) ToJsonString() string {
 func (r *ListFoldersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

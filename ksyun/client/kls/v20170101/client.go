@@ -41,6 +41,23 @@ func (c *Client) ListStreamDurations(request *ListStreamDurationsRequest) string
 	return c.ListStreamDurationsWithContext(context.Background(), request)
 }
 
+func (c *Client) ListStreamDurationsSend(request *ListStreamDurationsRequest) (*ListStreamDurationsResponse, error) {
+	statusCode, msg, err := c.ListStreamDurationsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ListStreamDurationsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ListStreamDurationsWithContext(ctx context.Context, request *ListStreamDurationsRequest) string {
 	if request == nil {
 		request = NewListStreamDurationsRequest()
@@ -54,6 +71,21 @@ func (c *Client) ListStreamDurationsWithContext(ctx context.Context, request *Li
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ListStreamDurationsWithContextV2(ctx context.Context, request *ListStreamDurationsRequest) (int, string, error) {
+	if request == nil {
+		request = NewListStreamDurationsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListStreamDurationsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewListHistoryPubStreamsErrInfoRequest() (request *ListHistoryPubStreamsErrInfoRequest) {
 	request = &ListHistoryPubStreamsErrInfoRequest{
@@ -74,6 +106,23 @@ func (c *Client) ListHistoryPubStreamsErrInfo(request *ListHistoryPubStreamsErrI
 	return c.ListHistoryPubStreamsErrInfoWithContext(context.Background(), request)
 }
 
+func (c *Client) ListHistoryPubStreamsErrInfoSend(request *ListHistoryPubStreamsErrInfoRequest) (*ListHistoryPubStreamsErrInfoResponse, error) {
+	statusCode, msg, err := c.ListHistoryPubStreamsErrInfoWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ListHistoryPubStreamsErrInfoResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ListHistoryPubStreamsErrInfoWithContext(ctx context.Context, request *ListHistoryPubStreamsErrInfoRequest) string {
 	if request == nil {
 		request = NewListHistoryPubStreamsErrInfoRequest()
@@ -87,6 +136,21 @@ func (c *Client) ListHistoryPubStreamsErrInfoWithContext(ctx context.Context, re
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ListHistoryPubStreamsErrInfoWithContextV2(ctx context.Context, request *ListHistoryPubStreamsErrInfoRequest) (int, string, error) {
+	if request == nil {
+		request = NewListHistoryPubStreamsErrInfoRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListHistoryPubStreamsErrInfoResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewListHistoryPubStreamsInfoRequest() (request *ListHistoryPubStreamsInfoRequest) {
 	request = &ListHistoryPubStreamsInfoRequest{
@@ -107,6 +171,23 @@ func (c *Client) ListHistoryPubStreamsInfo(request *ListHistoryPubStreamsInfoReq
 	return c.ListHistoryPubStreamsInfoWithContext(context.Background(), request)
 }
 
+func (c *Client) ListHistoryPubStreamsInfoSend(request *ListHistoryPubStreamsInfoRequest) (*ListHistoryPubStreamsInfoResponse, error) {
+	statusCode, msg, err := c.ListHistoryPubStreamsInfoWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ListHistoryPubStreamsInfoResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ListHistoryPubStreamsInfoWithContext(ctx context.Context, request *ListHistoryPubStreamsInfoRequest) string {
 	if request == nil {
 		request = NewListHistoryPubStreamsInfoRequest()
@@ -120,6 +201,21 @@ func (c *Client) ListHistoryPubStreamsInfoWithContext(ctx context.Context, reque
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ListHistoryPubStreamsInfoWithContextV2(ctx context.Context, request *ListHistoryPubStreamsInfoRequest) (int, string, error) {
+	if request == nil {
+		request = NewListHistoryPubStreamsInfoRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListHistoryPubStreamsInfoResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewForbidStreamRequest() (request *ForbidStreamRequest) {
 	request = &ForbidStreamRequest{
@@ -140,6 +236,23 @@ func (c *Client) ForbidStream(request *ForbidStreamRequest) string {
 	return c.ForbidStreamWithContext(context.Background(), request)
 }
 
+func (c *Client) ForbidStreamSend(request *ForbidStreamRequest) (*ForbidStreamResponse, error) {
+	statusCode, msg, err := c.ForbidStreamWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ForbidStreamResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ForbidStreamWithContext(ctx context.Context, request *ForbidStreamRequest) string {
 	if request == nil {
 		request = NewForbidStreamRequest()
@@ -153,6 +266,21 @@ func (c *Client) ForbidStreamWithContext(ctx context.Context, request *ForbidStr
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ForbidStreamWithContextV2(ctx context.Context, request *ForbidStreamRequest) (int, string, error) {
+	if request == nil {
+		request = NewForbidStreamRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewForbidStreamResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewResumeStreamRequest() (request *ResumeStreamRequest) {
 	request = &ResumeStreamRequest{
@@ -173,6 +301,23 @@ func (c *Client) ResumeStream(request *ResumeStreamRequest) string {
 	return c.ResumeStreamWithContext(context.Background(), request)
 }
 
+func (c *Client) ResumeStreamSend(request *ResumeStreamRequest) (*ResumeStreamResponse, error) {
+	statusCode, msg, err := c.ResumeStreamWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ResumeStreamResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ResumeStreamWithContext(ctx context.Context, request *ResumeStreamRequest) string {
 	if request == nil {
 		request = NewResumeStreamRequest()
@@ -186,6 +331,21 @@ func (c *Client) ResumeStreamWithContext(ctx context.Context, request *ResumeStr
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ResumeStreamWithContextV2(ctx context.Context, request *ResumeStreamRequest) (int, string, error) {
+	if request == nil {
+		request = NewResumeStreamRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewResumeStreamResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewGetBlacklistRequest() (request *GetBlacklistRequest) {
 	request = &GetBlacklistRequest{
@@ -206,6 +366,23 @@ func (c *Client) GetBlacklist(request *GetBlacklistRequest) string {
 	return c.GetBlacklistWithContext(context.Background(), request)
 }
 
+func (c *Client) GetBlacklistSend(request *GetBlacklistRequest) (*GetBlacklistResponse, error) {
+	statusCode, msg, err := c.GetBlacklistWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetBlacklistResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) GetBlacklistWithContext(ctx context.Context, request *GetBlacklistRequest) string {
 	if request == nil {
 		request = NewGetBlacklistRequest()
@@ -219,6 +396,21 @@ func (c *Client) GetBlacklistWithContext(ctx context.Context, request *GetBlackl
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) GetBlacklistWithContextV2(ctx context.Context, request *GetBlacklistRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetBlacklistRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetBlacklistResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCheckBlacklistRequest() (request *CheckBlacklistRequest) {
 	request = &CheckBlacklistRequest{
@@ -239,6 +431,23 @@ func (c *Client) CheckBlacklist(request *CheckBlacklistRequest) string {
 	return c.CheckBlacklistWithContext(context.Background(), request)
 }
 
+func (c *Client) CheckBlacklistSend(request *CheckBlacklistRequest) (*CheckBlacklistResponse, error) {
+	statusCode, msg, err := c.CheckBlacklistWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CheckBlacklistResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CheckBlacklistWithContext(ctx context.Context, request *CheckBlacklistRequest) string {
 	if request == nil {
 		request = NewCheckBlacklistRequest()
@@ -252,6 +461,21 @@ func (c *Client) CheckBlacklistWithContext(ctx context.Context, request *CheckBl
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CheckBlacklistWithContextV2(ctx context.Context, request *CheckBlacklistRequest) (int, string, error) {
+	if request == nil {
+		request = NewCheckBlacklistRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCheckBlacklistResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewListRealtimeStreamsInfoRequest() (request *ListRealtimeStreamsInfoRequest) {
 	request = &ListRealtimeStreamsInfoRequest{
@@ -272,6 +496,23 @@ func (c *Client) ListRealtimeStreamsInfo(request *ListRealtimeStreamsInfoRequest
 	return c.ListRealtimeStreamsInfoWithContext(context.Background(), request)
 }
 
+func (c *Client) ListRealtimeStreamsInfoSend(request *ListRealtimeStreamsInfoRequest) (*ListRealtimeStreamsInfoResponse, error) {
+	statusCode, msg, err := c.ListRealtimeStreamsInfoWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ListRealtimeStreamsInfoResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ListRealtimeStreamsInfoWithContext(ctx context.Context, request *ListRealtimeStreamsInfoRequest) string {
 	if request == nil {
 		request = NewListRealtimeStreamsInfoRequest()
@@ -285,4 +526,19 @@ func (c *Client) ListRealtimeStreamsInfoWithContext(ctx context.Context, request
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ListRealtimeStreamsInfoWithContextV2(ctx context.Context, request *ListRealtimeStreamsInfoRequest) (int, string, error) {
+	if request == nil {
+		request = NewListRealtimeStreamsInfoRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListRealtimeStreamsInfoResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }

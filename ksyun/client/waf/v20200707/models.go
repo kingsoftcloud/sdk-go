@@ -1,7 +1,6 @@
 package v20200707
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -22,17 +21,6 @@ func (r *CreateWafRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateWafRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateWafRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateWafResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -45,6 +33,30 @@ func (r *CreateWafResponse) ToJsonString() string {
 }
 
 func (r *CreateWafResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteWafRequest struct {
+	*ksyunhttp.BaseRequest
+	Action *string `json:"Action,omitempty" name:"Action"`
+}
+
+func (r *DeleteWafRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteWafResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteWafResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteWafResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -72,17 +84,6 @@ func (r *CreateDomainRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateDomainRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateDomainRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateDomainResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -106,17 +107,6 @@ type DescribeDomainsRequest struct {
 func (r *DescribeDomainsRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DescribeDomainsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeDomainsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeDomainsResponse struct {
@@ -157,17 +147,6 @@ func (r *ModifyDomainRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ModifyDomainRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyDomainRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyDomainResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -191,17 +170,6 @@ type DeleteDomainRequest struct {
 func (r *DeleteDomainRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeleteDomainRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteDomainRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteDomainResponse struct {
@@ -237,17 +205,6 @@ func (r *CreateAccessControlRuleRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateAccessControlRuleRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateAccessControlRuleRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateAccessControlRuleResponse struct {
 	*ksyunhttp.BaseResponse
 }
@@ -272,17 +229,6 @@ type DescribeAccessControlRulesRequest struct {
 func (r *DescribeAccessControlRulesRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DescribeAccessControlRulesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeAccessControlRulesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAccessControlRulesResponse struct {
@@ -318,17 +264,6 @@ func (r *ModifyAccessControlRuleRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ModifyAccessControlRuleRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyAccessControlRuleRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyAccessControlRuleResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -352,17 +287,6 @@ type DeleteAccessControlRuleRequest struct {
 func (r *DeleteAccessControlRuleRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeleteAccessControlRuleRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteAccessControlRuleRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteAccessControlRuleResponse struct {
@@ -390,17 +314,6 @@ func (r *DescribeCertificatesRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeCertificatesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeCertificatesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeCertificatesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -424,17 +337,6 @@ type CreateIpv6ProtectionRequest struct {
 func (r *CreateIpv6ProtectionRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CreateIpv6ProtectionRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateIpv6ProtectionRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateIpv6ProtectionResponse struct {
@@ -462,17 +364,6 @@ func (r *DeleteIpv6ProtectionRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DeleteIpv6ProtectionRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteIpv6ProtectionRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DeleteIpv6ProtectionResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -498,21 +389,9 @@ func (r *ModifyStorageTimeRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ModifyStorageTimeRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyStorageTimeRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyStorageTimeResponse struct {
 	*ksyunhttp.BaseResponse
-	StorageTime *int    `json:"StorageTime" name:"StorageTime"`
-	RequestId   *string `json:"RequestId" name:"RequestId"`
+	StorageTime *int `json:"StorageTime" name:"StorageTime"`
 }
 
 func (r *ModifyStorageTimeResponse) ToJsonString() string {
@@ -546,17 +425,6 @@ type CreateAlbDomainRequest struct {
 func (r *CreateAlbDomainRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CreateAlbDomainRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateAlbDomainRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateAlbDomainResponse struct {
@@ -597,17 +465,6 @@ func (r *ModifyAlbDomainRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ModifyAlbDomainRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyAlbDomainRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyAlbDomainResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -633,17 +490,6 @@ func (r *DeleteAlbDomainRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DeleteAlbDomainRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteAlbDomainRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DeleteAlbDomainResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -665,8 +511,8 @@ type CreateAlbWafRequest struct {
 	BillType     *int    `json:"BillType,omitempty" name:"BillType"`
 	ProjectId    *int    `json:"ProjectId,omitempty" name:"ProjectId"`
 	AlbNumber    *int    `json:"AlbNumber,omitempty" name:"AlbNumber"`
-	QpsBag       *int    `json:"QpsBag,omitempty" name:"QpsBag"`
 	DomainBag    *int    `json:"DomainBag,omitempty" name:"DomainBag"`
+	QpsBag       *int    `json:"QpsBag,omitempty" name:"QpsBag"`
 	PurchaseTime *int    `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
 }
 
@@ -675,19 +521,10 @@ func (r *CreateAlbWafRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateAlbWafRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateAlbWafRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateAlbWafResponse struct {
 	*ksyunhttp.BaseResponse
+	WafInfo struct {
+	} `json:"WafInfo"`
 }
 
 func (r *CreateAlbWafResponse) ToJsonString() string {
@@ -713,17 +550,6 @@ func (r *ModifyAlbWafRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ModifyAlbWafRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyAlbWafRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyAlbWafResponse struct {
 	*ksyunhttp.BaseResponse
 }
@@ -737,40 +563,6 @@ func (r *ModifyAlbWafResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeAlbCertificatesRequest struct {
-	*ksyunhttp.BaseRequest
-	Request *string `json:"Request,omitempty" name:"Request"`
-}
-
-func (r *DescribeAlbCertificatesRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DescribeAlbCertificatesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeAlbCertificatesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeAlbCertificatesResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-}
-
-func (r *DescribeAlbCertificatesResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DescribeAlbCertificatesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
 
 type DescribeAlbDomainsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -780,17 +572,6 @@ type DescribeAlbDomainsRequest struct {
 func (r *DescribeAlbDomainsRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DescribeAlbDomainsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeAlbDomainsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeAlbDomainsResponse struct {

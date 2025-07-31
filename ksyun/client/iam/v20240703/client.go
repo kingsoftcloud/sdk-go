@@ -41,6 +41,23 @@ func (c *Client) ProjectsInfoByInstanceIds(request *ProjectsInfoByInstanceIdsReq
 	return c.ProjectsInfoByInstanceIdsWithContext(context.Background(), request)
 }
 
+func (c *Client) ProjectsInfoByInstanceIdsSend(request *ProjectsInfoByInstanceIdsRequest) (*ProjectsInfoByInstanceIdsResponse, error) {
+	statusCode, msg, err := c.ProjectsInfoByInstanceIdsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ProjectsInfoByInstanceIdsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ProjectsInfoByInstanceIdsWithContext(ctx context.Context, request *ProjectsInfoByInstanceIdsRequest) string {
 	if request == nil {
 		request = NewProjectsInfoByInstanceIdsRequest()
@@ -54,4 +71,19 @@ func (c *Client) ProjectsInfoByInstanceIdsWithContext(ctx context.Context, reque
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ProjectsInfoByInstanceIdsWithContextV2(ctx context.Context, request *ProjectsInfoByInstanceIdsRequest) (int, string, error) {
+	if request == nil {
+		request = NewProjectsInfoByInstanceIdsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewProjectsInfoByInstanceIdsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }

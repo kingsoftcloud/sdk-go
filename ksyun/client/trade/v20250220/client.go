@@ -40,6 +40,23 @@ func (c *Client) ListInstanceSupportBillTypes(request *ListInstanceSupportBillTy
 	return c.ListInstanceSupportBillTypesWithContext(context.Background(), request)
 }
 
+func (c *Client) ListInstanceSupportBillTypesSend(request *ListInstanceSupportBillTypesRequest) (*ListInstanceSupportBillTypesResponse, error) {
+	statusCode, msg, err := c.ListInstanceSupportBillTypesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ListInstanceSupportBillTypesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ListInstanceSupportBillTypesWithContext(ctx context.Context, request *ListInstanceSupportBillTypesRequest) string {
 	if request == nil {
 		request = NewListInstanceSupportBillTypesRequest()
@@ -53,6 +70,21 @@ func (c *Client) ListInstanceSupportBillTypesWithContext(ctx context.Context, re
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ListInstanceSupportBillTypesWithContextV2(ctx context.Context, request *ListInstanceSupportBillTypesRequest) (int, string, error) {
+	if request == nil {
+		request = NewListInstanceSupportBillTypesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListInstanceSupportBillTypesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewAddTrialToBuyTaskRequest() (request *AddTrialToBuyTaskRequest) {
 	request = &AddTrialToBuyTaskRequest{
@@ -73,6 +105,23 @@ func (c *Client) AddTrialToBuyTask(request *AddTrialToBuyTaskRequest) string {
 	return c.AddTrialToBuyTaskWithContext(context.Background(), request)
 }
 
+func (c *Client) AddTrialToBuyTaskSend(request *AddTrialToBuyTaskRequest) (*AddTrialToBuyTaskResponse, error) {
+	statusCode, msg, err := c.AddTrialToBuyTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct AddTrialToBuyTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) AddTrialToBuyTaskWithContext(ctx context.Context, request *AddTrialToBuyTaskRequest) string {
 	if request == nil {
 		request = NewAddTrialToBuyTaskRequest()
@@ -86,6 +135,21 @@ func (c *Client) AddTrialToBuyTaskWithContext(ctx context.Context, request *AddT
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) AddTrialToBuyTaskWithContextV2(ctx context.Context, request *AddTrialToBuyTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewAddTrialToBuyTaskRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewAddTrialToBuyTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteTrialToBuyTaskRequest() (request *DeleteTrialToBuyTaskRequest) {
 	request = &DeleteTrialToBuyTaskRequest{
@@ -106,6 +170,23 @@ func (c *Client) DeleteTrialToBuyTask(request *DeleteTrialToBuyTaskRequest) stri
 	return c.DeleteTrialToBuyTaskWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteTrialToBuyTaskSend(request *DeleteTrialToBuyTaskRequest) (*DeleteTrialToBuyTaskResponse, error) {
+	statusCode, msg, err := c.DeleteTrialToBuyTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteTrialToBuyTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteTrialToBuyTaskWithContext(ctx context.Context, request *DeleteTrialToBuyTaskRequest) string {
 	if request == nil {
 		request = NewDeleteTrialToBuyTaskRequest()
@@ -119,6 +200,21 @@ func (c *Client) DeleteTrialToBuyTaskWithContext(ctx context.Context, request *D
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteTrialToBuyTaskWithContextV2(ctx context.Context, request *DeleteTrialToBuyTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteTrialToBuyTaskRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteTrialToBuyTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateTrialToBuyNowRequest() (request *CreateTrialToBuyNowRequest) {
 	request = &CreateTrialToBuyNowRequest{
@@ -139,6 +235,23 @@ func (c *Client) CreateTrialToBuyNow(request *CreateTrialToBuyNowRequest) string
 	return c.CreateTrialToBuyNowWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateTrialToBuyNowSend(request *CreateTrialToBuyNowRequest) (*CreateTrialToBuyNowResponse, error) {
+	statusCode, msg, err := c.CreateTrialToBuyNowWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateTrialToBuyNowResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateTrialToBuyNowWithContext(ctx context.Context, request *CreateTrialToBuyNowRequest) string {
 	if request == nil {
 		request = NewCreateTrialToBuyNowRequest()
@@ -152,6 +265,21 @@ func (c *Client) CreateTrialToBuyNowWithContext(ctx context.Context, request *Cr
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateTrialToBuyNowWithContextV2(ctx context.Context, request *CreateTrialToBuyNowRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateTrialToBuyNowRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateTrialToBuyNowResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 
 

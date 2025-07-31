@@ -1,5 +1,4 @@
 package v20240117
-
 import (
 	"context"
 	"fmt"
@@ -41,6 +40,23 @@ func (c *Client) GetDwsuMetric(request *GetDwsuMetricRequest) string {
 	return c.GetDwsuMetricWithContext(context.Background(), request)
 }
 
+func (c *Client) GetDwsuMetricSend(request *GetDwsuMetricRequest) (*GetDwsuMetricResponse, error) {
+	statusCode, msg, err := c.GetDwsuMetricWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetDwsuMetricResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) GetDwsuMetricWithContext(ctx context.Context, request *GetDwsuMetricRequest) string {
 	if request == nil {
 		request = NewGetDwsuMetricRequest()
@@ -55,3 +71,20 @@ func (c *Client) GetDwsuMetricWithContext(ctx context.Context, request *GetDwsuM
 	}
 	return msg
 }
+
+func (c *Client) GetDwsuMetricWithContextV2(ctx context.Context, request *GetDwsuMetricRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetDwsuMetricRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetDwsuMetricResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+
+

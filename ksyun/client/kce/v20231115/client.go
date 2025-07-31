@@ -41,6 +41,23 @@ func (c *Client) DescribeCluster(request *DescribeClusterRequest) string {
 	return c.DescribeClusterWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeClusterSend(request *DescribeClusterRequest) (*DescribeClusterResponse, error) {
+	statusCode, msg, err := c.DescribeClusterWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeClusterResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeClusterWithContext(ctx context.Context, request *DescribeClusterRequest) string {
 	if request == nil {
 		request = NewDescribeClusterRequest()
@@ -54,6 +71,21 @@ func (c *Client) DescribeClusterWithContext(ctx context.Context, request *Descri
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeClusterWithContextV2(ctx context.Context, request *DescribeClusterRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeClusterRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeClusterResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewUpdateClusterDelProtectionRequest() (request *UpdateClusterDelProtectionRequest) {
 	request = &UpdateClusterDelProtectionRequest{
@@ -74,6 +106,23 @@ func (c *Client) UpdateClusterDelProtection(request *UpdateClusterDelProtectionR
 	return c.UpdateClusterDelProtectionWithContext(context.Background(), request)
 }
 
+func (c *Client) UpdateClusterDelProtectionSend(request *UpdateClusterDelProtectionRequest) (*UpdateClusterDelProtectionResponse, error) {
+	statusCode, msg, err := c.UpdateClusterDelProtectionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct UpdateClusterDelProtectionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) UpdateClusterDelProtectionWithContext(ctx context.Context, request *UpdateClusterDelProtectionRequest) string {
 	if request == nil {
 		request = NewUpdateClusterDelProtectionRequest()
@@ -87,4 +136,19 @@ func (c *Client) UpdateClusterDelProtectionWithContext(ctx context.Context, requ
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) UpdateClusterDelProtectionWithContextV2(ctx context.Context, request *UpdateClusterDelProtectionRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdateClusterDelProtectionRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateClusterDelProtectionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }

@@ -1,7 +1,6 @@
 package v20200901
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -18,17 +17,6 @@ type CreateUserUsageDataExportTaskRequest struct {
 func (r *CreateUserUsageDataExportTaskRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CreateUserUsageDataExportTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateUserUsageDataExportTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateUserUsageDataExportTaskResponse struct {
@@ -59,17 +47,6 @@ type GetUserUsageDataExportTaskRequest struct {
 func (r *GetUserUsageDataExportTaskRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *GetUserUsageDataExportTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetUserUsageDataExportTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetUserUsageDataExportTaskResponse struct {
@@ -110,17 +87,6 @@ func (r *DeleteUserUsageDataExportTaskRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DeleteUserUsageDataExportTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteUserUsageDataExportTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DeleteUserUsageDataExportTaskResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -154,17 +120,6 @@ type GetDomainUsageDataRequest struct {
 func (r *GetDomainUsageDataRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *GetDomainUsageDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetDomainUsageDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetDomainUsageDataResponse struct {
@@ -207,17 +162,6 @@ func (r *CreateUsageDetailDataExportTaskRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateUsageDetailDataExportTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateUsageDetailDataExportTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateUsageDetailDataExportTaskResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime *string `json:"StartTime" name:"StartTime"`
@@ -246,17 +190,6 @@ func (r *GetUsageDetailDataExportTaskRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetUsageDetailDataExportTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetUsageDetailDataExportTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetUsageDetailDataExportTaskResponse struct {
 	*ksyunhttp.BaseResponse
 }
@@ -270,6 +203,7 @@ func (r *GetUsageDetailDataExportTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteUsageDetailDataExportTaskRequest struct {
 	*ksyunhttp.BaseRequest
 	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
@@ -278,17 +212,6 @@ type DeleteUsageDetailDataExportTaskRequest struct {
 func (r *DeleteUsageDetailDataExportTaskRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeleteUsageDetailDataExportTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteUsageDetailDataExportTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteUsageDetailDataExportTaskResponse struct {

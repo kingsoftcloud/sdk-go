@@ -1,5 +1,4 @@
 package v20160304
-
 import (
 	"context"
 	"fmt"
@@ -41,6 +40,23 @@ func (c *Client) CreateBandWidthShare(request *CreateBandWidthShareRequest) stri
 	return c.CreateBandWidthShareWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateBandWidthShareSend(request *CreateBandWidthShareRequest) (*CreateBandWidthShareResponse, error) {
+	statusCode, msg, err := c.CreateBandWidthShareWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateBandWidthShareResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateBandWidthShareWithContext(ctx context.Context, request *CreateBandWidthShareRequest) string {
 	if request == nil {
 		request = NewCreateBandWidthShareRequest()
@@ -54,6 +70,21 @@ func (c *Client) CreateBandWidthShareWithContext(ctx context.Context, request *C
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateBandWidthShareWithContextV2(ctx context.Context, request *CreateBandWidthShareRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateBandWidthShareRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateBandWidthShareResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeBandWidthSharesRequest() (request *DescribeBandWidthSharesRequest) {
 	request = &DescribeBandWidthSharesRequest{
@@ -74,6 +105,23 @@ func (c *Client) DescribeBandWidthShares(request *DescribeBandWidthSharesRequest
 	return c.DescribeBandWidthSharesWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeBandWidthSharesSend(request *DescribeBandWidthSharesRequest) (*DescribeBandWidthSharesResponse, error) {
+	statusCode, msg, err := c.DescribeBandWidthSharesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeBandWidthSharesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeBandWidthSharesWithContext(ctx context.Context, request *DescribeBandWidthSharesRequest) string {
 	if request == nil {
 		request = NewDescribeBandWidthSharesRequest()
@@ -87,6 +135,21 @@ func (c *Client) DescribeBandWidthSharesWithContext(ctx context.Context, request
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeBandWidthSharesWithContextV2(ctx context.Context, request *DescribeBandWidthSharesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeBandWidthSharesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeBandWidthSharesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewAssociateBandWidthShareRequest() (request *AssociateBandWidthShareRequest) {
 	request = &AssociateBandWidthShareRequest{
@@ -107,6 +170,23 @@ func (c *Client) AssociateBandWidthShare(request *AssociateBandWidthShareRequest
 	return c.AssociateBandWidthShareWithContext(context.Background(), request)
 }
 
+func (c *Client) AssociateBandWidthShareSend(request *AssociateBandWidthShareRequest) (*AssociateBandWidthShareResponse, error) {
+	statusCode, msg, err := c.AssociateBandWidthShareWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct AssociateBandWidthShareResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) AssociateBandWidthShareWithContext(ctx context.Context, request *AssociateBandWidthShareRequest) string {
 	if request == nil {
 		request = NewAssociateBandWidthShareRequest()
@@ -120,6 +200,21 @@ func (c *Client) AssociateBandWidthShareWithContext(ctx context.Context, request
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) AssociateBandWidthShareWithContextV2(ctx context.Context, request *AssociateBandWidthShareRequest) (int, string, error) {
+	if request == nil {
+		request = NewAssociateBandWidthShareRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAssociateBandWidthShareResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDisassociateBandWidthShareRequest() (request *DisassociateBandWidthShareRequest) {
 	request = &DisassociateBandWidthShareRequest{
@@ -140,6 +235,23 @@ func (c *Client) DisassociateBandWidthShare(request *DisassociateBandWidthShareR
 	return c.DisassociateBandWidthShareWithContext(context.Background(), request)
 }
 
+func (c *Client) DisassociateBandWidthShareSend(request *DisassociateBandWidthShareRequest) (*DisassociateBandWidthShareResponse, error) {
+	statusCode, msg, err := c.DisassociateBandWidthShareWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DisassociateBandWidthShareResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DisassociateBandWidthShareWithContext(ctx context.Context, request *DisassociateBandWidthShareRequest) string {
 	if request == nil {
 		request = NewDisassociateBandWidthShareRequest()
@@ -153,6 +265,21 @@ func (c *Client) DisassociateBandWidthShareWithContext(ctx context.Context, requ
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DisassociateBandWidthShareWithContextV2(ctx context.Context, request *DisassociateBandWidthShareRequest) (int, string, error) {
+	if request == nil {
+		request = NewDisassociateBandWidthShareRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDisassociateBandWidthShareResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyBandWidthShareRequest() (request *ModifyBandWidthShareRequest) {
 	request = &ModifyBandWidthShareRequest{
@@ -173,6 +300,23 @@ func (c *Client) ModifyBandWidthShare(request *ModifyBandWidthShareRequest) stri
 	return c.ModifyBandWidthShareWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyBandWidthShareSend(request *ModifyBandWidthShareRequest) (*ModifyBandWidthShareResponse, error) {
+	statusCode, msg, err := c.ModifyBandWidthShareWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyBandWidthShareResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyBandWidthShareWithContext(ctx context.Context, request *ModifyBandWidthShareRequest) string {
 	if request == nil {
 		request = NewModifyBandWidthShareRequest()
@@ -186,6 +330,21 @@ func (c *Client) ModifyBandWidthShareWithContext(ctx context.Context, request *M
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyBandWidthShareWithContextV2(ctx context.Context, request *ModifyBandWidthShareRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyBandWidthShareRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyBandWidthShareResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteBandWidthShareRequest() (request *DeleteBandWidthShareRequest) {
 	request = &DeleteBandWidthShareRequest{
@@ -206,6 +365,23 @@ func (c *Client) DeleteBandWidthShare(request *DeleteBandWidthShareRequest) stri
 	return c.DeleteBandWidthShareWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteBandWidthShareSend(request *DeleteBandWidthShareRequest) (*DeleteBandWidthShareResponse, error) {
+	statusCode, msg, err := c.DeleteBandWidthShareWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteBandWidthShareResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteBandWidthShareWithContext(ctx context.Context, request *DeleteBandWidthShareRequest) string {
 	if request == nil {
 		request = NewDeleteBandWidthShareRequest()
@@ -219,6 +395,21 @@ func (c *Client) DeleteBandWidthShareWithContext(ctx context.Context, request *D
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteBandWidthShareWithContextV2(ctx context.Context, request *DeleteBandWidthShareRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteBandWidthShareRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteBandWidthShareResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewQueryBwsTopEipMonitorRequest() (request *QueryBwsTopEipMonitorRequest) {
 	request = &QueryBwsTopEipMonitorRequest{
@@ -239,6 +430,23 @@ func (c *Client) QueryBwsTopEipMonitor(request *QueryBwsTopEipMonitorRequest) st
 	return c.QueryBwsTopEipMonitorWithContext(context.Background(), request)
 }
 
+func (c *Client) QueryBwsTopEipMonitorSend(request *QueryBwsTopEipMonitorRequest) (*QueryBwsTopEipMonitorResponse, error) {
+	statusCode, msg, err := c.QueryBwsTopEipMonitorWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct QueryBwsTopEipMonitorResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) QueryBwsTopEipMonitorWithContext(ctx context.Context, request *QueryBwsTopEipMonitorRequest) string {
 	if request == nil {
 		request = NewQueryBwsTopEipMonitorRequest()
@@ -253,3 +461,20 @@ func (c *Client) QueryBwsTopEipMonitorWithContext(ctx context.Context, request *
 	}
 	return msg
 }
+
+func (c *Client) QueryBwsTopEipMonitorWithContextV2(ctx context.Context, request *QueryBwsTopEipMonitorRequest) (int, string, error) {
+	if request == nil {
+		request = NewQueryBwsTopEipMonitorRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewQueryBwsTopEipMonitorResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+
+

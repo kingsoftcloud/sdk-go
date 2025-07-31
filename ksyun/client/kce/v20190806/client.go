@@ -40,6 +40,23 @@ func (c *Client) DescribeClusterInstance(request *DescribeClusterInstanceRequest
 	return c.DescribeClusterInstanceWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeClusterInstanceSend(request *DescribeClusterInstanceRequest) (*DescribeClusterInstanceResponse, error) {
+	statusCode, msg, err := c.DescribeClusterInstanceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeClusterInstanceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeClusterInstanceWithContext(ctx context.Context, request *DescribeClusterInstanceRequest) string {
 	if request == nil {
 		request = NewDescribeClusterInstanceRequest()
@@ -53,6 +70,21 @@ func (c *Client) DescribeClusterInstanceWithContext(ctx context.Context, request
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeClusterInstanceWithContextV2(ctx context.Context, request *DescribeClusterInstanceRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeClusterInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeClusterInstanceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
 	request = &DeleteClusterRequest{
@@ -73,6 +105,23 @@ func (c *Client) DeleteCluster(request *DeleteClusterRequest) string {
 	return c.DeleteClusterWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteClusterSend(request *DeleteClusterRequest) (*DeleteClusterResponse, error) {
+	statusCode, msg, err := c.DeleteClusterWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteClusterResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteClusterWithContext(ctx context.Context, request *DeleteClusterRequest) string {
 	if request == nil {
 		request = NewDeleteClusterRequest()
@@ -86,6 +135,21 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, request *DeleteCl
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteClusterWithContextV2(ctx context.Context, request *DeleteClusterRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteClusterRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteClusterResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDownloadClusterConfigRequest() (request *DownloadClusterConfigRequest) {
 	request = &DownloadClusterConfigRequest{
@@ -106,6 +170,23 @@ func (c *Client) DownloadClusterConfig(request *DownloadClusterConfigRequest) st
 	return c.DownloadClusterConfigWithContext(context.Background(), request)
 }
 
+func (c *Client) DownloadClusterConfigSend(request *DownloadClusterConfigRequest) (*DownloadClusterConfigResponse, error) {
+	statusCode, msg, err := c.DownloadClusterConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DownloadClusterConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DownloadClusterConfigWithContext(ctx context.Context, request *DownloadClusterConfigRequest) string {
 	if request == nil {
 		request = NewDownloadClusterConfigRequest()
@@ -119,6 +200,21 @@ func (c *Client) DownloadClusterConfigWithContext(ctx context.Context, request *
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DownloadClusterConfigWithContextV2(ctx context.Context, request *DownloadClusterConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewDownloadClusterConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDownloadClusterConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyClusterInfoRequest() (request *ModifyClusterInfoRequest) {
 	request = &ModifyClusterInfoRequest{
@@ -139,6 +235,23 @@ func (c *Client) ModifyClusterInfo(request *ModifyClusterInfoRequest) string {
 	return c.ModifyClusterInfoWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyClusterInfoSend(request *ModifyClusterInfoRequest) (*ModifyClusterInfoResponse, error) {
+	statusCode, msg, err := c.ModifyClusterInfoWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyClusterInfoResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyClusterInfoWithContext(ctx context.Context, request *ModifyClusterInfoRequest) string {
 	if request == nil {
 		request = NewModifyClusterInfoRequest()
@@ -152,6 +265,21 @@ func (c *Client) ModifyClusterInfoWithContext(ctx context.Context, request *Modi
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyClusterInfoWithContextV2(ctx context.Context, request *ModifyClusterInfoRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyClusterInfoRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyClusterInfoResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeInstanceImageRequest() (request *DescribeInstanceImageRequest) {
 	request = &DescribeInstanceImageRequest{
@@ -172,6 +300,23 @@ func (c *Client) DescribeInstanceImage(request *DescribeInstanceImageRequest) st
 	return c.DescribeInstanceImageWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeInstanceImageSend(request *DescribeInstanceImageRequest) (*DescribeInstanceImageResponse, error) {
+	statusCode, msg, err := c.DescribeInstanceImageWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeInstanceImageResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeInstanceImageWithContext(ctx context.Context, request *DescribeInstanceImageRequest) string {
 	if request == nil {
 		request = NewDescribeInstanceImageRequest()
@@ -185,6 +330,21 @@ func (c *Client) DescribeInstanceImageWithContext(ctx context.Context, request *
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeInstanceImageWithContextV2(ctx context.Context, request *DescribeInstanceImageRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeInstanceImageRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeInstanceImageResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewAddClusterInstancesRequest() (request *AddClusterInstancesRequest) {
 	request = &AddClusterInstancesRequest{
@@ -205,6 +365,23 @@ func (c *Client) AddClusterInstances(request *AddClusterInstancesRequest) string
 	return c.AddClusterInstancesWithContext(context.Background(), request)
 }
 
+func (c *Client) AddClusterInstancesSend(request *AddClusterInstancesRequest) (*AddClusterInstancesResponse, error) {
+	statusCode, msg, err := c.AddClusterInstancesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct AddClusterInstancesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) AddClusterInstancesWithContext(ctx context.Context, request *AddClusterInstancesRequest) string {
 	if request == nil {
 		request = NewAddClusterInstancesRequest()
@@ -218,6 +395,21 @@ func (c *Client) AddClusterInstancesWithContext(ctx context.Context, request *Ad
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) AddClusterInstancesWithContextV2(ctx context.Context, request *AddClusterInstancesRequest) (int, string, error) {
+	if request == nil {
+		request = NewAddClusterInstancesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAddClusterInstancesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteClusterInstancesRequest() (request *DeleteClusterInstancesRequest) {
 	request = &DeleteClusterInstancesRequest{
@@ -238,6 +430,23 @@ func (c *Client) DeleteClusterInstances(request *DeleteClusterInstancesRequest) 
 	return c.DeleteClusterInstancesWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteClusterInstancesSend(request *DeleteClusterInstancesRequest) (*DeleteClusterInstancesResponse, error) {
+	statusCode, msg, err := c.DeleteClusterInstancesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteClusterInstancesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteClusterInstancesWithContext(ctx context.Context, request *DeleteClusterInstancesRequest) string {
 	if request == nil {
 		request = NewDeleteClusterInstancesRequest()
@@ -251,6 +460,21 @@ func (c *Client) DeleteClusterInstancesWithContext(ctx context.Context, request 
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteClusterInstancesWithContextV2(ctx context.Context, request *DeleteClusterInstancesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteClusterInstancesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteClusterInstancesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeEpcForClusterRequest() (request *DescribeEpcForClusterRequest) {
 	request = &DescribeEpcForClusterRequest{
@@ -271,6 +495,23 @@ func (c *Client) DescribeEpcForCluster(request *DescribeEpcForClusterRequest) st
 	return c.DescribeEpcForClusterWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeEpcForClusterSend(request *DescribeEpcForClusterRequest) (*DescribeEpcForClusterResponse, error) {
+	statusCode, msg, err := c.DescribeEpcForClusterWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeEpcForClusterResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeEpcForClusterWithContext(ctx context.Context, request *DescribeEpcForClusterRequest) string {
 	if request == nil {
 		request = NewDescribeEpcForClusterRequest()
@@ -284,6 +525,21 @@ func (c *Client) DescribeEpcForClusterWithContext(ctx context.Context, request *
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeEpcForClusterWithContextV2(ctx context.Context, request *DescribeEpcForClusterRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeEpcForClusterRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeEpcForClusterResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewAddClusterEpcInstancesRequest() (request *AddClusterEpcInstancesRequest) {
 	request = &AddClusterEpcInstancesRequest{
@@ -304,6 +560,23 @@ func (c *Client) AddClusterEpcInstances(request *AddClusterEpcInstancesRequest) 
 	return c.AddClusterEpcInstancesWithContext(context.Background(), request)
 }
 
+func (c *Client) AddClusterEpcInstancesSend(request *AddClusterEpcInstancesRequest) (*AddClusterEpcInstancesResponse, error) {
+	statusCode, msg, err := c.AddClusterEpcInstancesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct AddClusterEpcInstancesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) AddClusterEpcInstancesWithContext(ctx context.Context, request *AddClusterEpcInstancesRequest) string {
 	if request == nil {
 		request = NewAddClusterEpcInstancesRequest()
@@ -317,6 +590,21 @@ func (c *Client) AddClusterEpcInstancesWithContext(ctx context.Context, request 
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) AddClusterEpcInstancesWithContextV2(ctx context.Context, request *AddClusterEpcInstancesRequest) (int, string, error) {
+	if request == nil {
+		request = NewAddClusterEpcInstancesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAddClusterEpcInstancesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeExistedInstancesRequest() (request *DescribeExistedInstancesRequest) {
 	request = &DescribeExistedInstancesRequest{
@@ -337,6 +625,23 @@ func (c *Client) DescribeExistedInstances(request *DescribeExistedInstancesReque
 	return c.DescribeExistedInstancesWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeExistedInstancesSend(request *DescribeExistedInstancesRequest) (*DescribeExistedInstancesResponse, error) {
+	statusCode, msg, err := c.DescribeExistedInstancesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeExistedInstancesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeExistedInstancesWithContext(ctx context.Context, request *DescribeExistedInstancesRequest) string {
 	if request == nil {
 		request = NewDescribeExistedInstancesRequest()
@@ -350,6 +655,21 @@ func (c *Client) DescribeExistedInstancesWithContext(ctx context.Context, reques
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeExistedInstancesWithContextV2(ctx context.Context, request *DescribeExistedInstancesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeExistedInstancesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeExistedInstancesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewAddExistedInstancesRequest() (request *AddExistedInstancesRequest) {
 	request = &AddExistedInstancesRequest{
@@ -370,6 +690,23 @@ func (c *Client) AddExistedInstances(request *AddExistedInstancesRequest) string
 	return c.AddExistedInstancesWithContext(context.Background(), request)
 }
 
+func (c *Client) AddExistedInstancesSend(request *AddExistedInstancesRequest) (*AddExistedInstancesResponse, error) {
+	statusCode, msg, err := c.AddExistedInstancesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct AddExistedInstancesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) AddExistedInstancesWithContext(ctx context.Context, request *AddExistedInstancesRequest) string {
 	if request == nil {
 		request = NewAddExistedInstancesRequest()
@@ -383,6 +720,21 @@ func (c *Client) AddExistedInstancesWithContext(ctx context.Context, request *Ad
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) AddExistedInstancesWithContextV2(ctx context.Context, request *AddExistedInstancesRequest) (int, string, error) {
+	if request == nil {
+		request = NewAddExistedInstancesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAddExistedInstancesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateNodePoolRequest() (request *CreateNodePoolRequest) {
 	request = &CreateNodePoolRequest{
@@ -403,6 +755,23 @@ func (c *Client) CreateNodePool(request *CreateNodePoolRequest) string {
 	return c.CreateNodePoolWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateNodePoolSend(request *CreateNodePoolRequest) (*CreateNodePoolResponse, error) {
+	statusCode, msg, err := c.CreateNodePoolWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateNodePoolResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateNodePoolWithContext(ctx context.Context, request *CreateNodePoolRequest) string {
 	if request == nil {
 		request = NewCreateNodePoolRequest()
@@ -416,6 +785,21 @@ func (c *Client) CreateNodePoolWithContext(ctx context.Context, request *CreateN
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateNodePoolWithContextV2(ctx context.Context, request *CreateNodePoolRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateNodePoolRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateNodePoolResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeNodePoolRequest() (request *DescribeNodePoolRequest) {
 	request = &DescribeNodePoolRequest{
@@ -436,6 +820,23 @@ func (c *Client) DescribeNodePool(request *DescribeNodePoolRequest) string {
 	return c.DescribeNodePoolWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeNodePoolSend(request *DescribeNodePoolRequest) (*DescribeNodePoolResponse, error) {
+	statusCode, msg, err := c.DescribeNodePoolWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeNodePoolResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeNodePoolWithContext(ctx context.Context, request *DescribeNodePoolRequest) string {
 	if request == nil {
 		request = NewDescribeNodePoolRequest()
@@ -449,6 +850,21 @@ func (c *Client) DescribeNodePoolWithContext(ctx context.Context, request *Descr
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeNodePoolWithContextV2(ctx context.Context, request *DescribeNodePoolRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeNodePoolRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeNodePoolResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteNodePoolRequest() (request *DeleteNodePoolRequest) {
 	request = &DeleteNodePoolRequest{
@@ -469,6 +885,23 @@ func (c *Client) DeleteNodePool(request *DeleteNodePoolRequest) string {
 	return c.DeleteNodePoolWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteNodePoolSend(request *DeleteNodePoolRequest) (*DeleteNodePoolResponse, error) {
+	statusCode, msg, err := c.DeleteNodePoolWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteNodePoolResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteNodePoolWithContext(ctx context.Context, request *DeleteNodePoolRequest) string {
 	if request == nil {
 		request = NewDeleteNodePoolRequest()
@@ -482,6 +915,21 @@ func (c *Client) DeleteNodePoolWithContext(ctx context.Context, request *DeleteN
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteNodePoolWithContextV2(ctx context.Context, request *DeleteNodePoolRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteNodePoolRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteNodePoolResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyNodePoolRequest() (request *ModifyNodePoolRequest) {
 	request = &ModifyNodePoolRequest{
@@ -502,6 +950,23 @@ func (c *Client) ModifyNodePool(request *ModifyNodePoolRequest) string {
 	return c.ModifyNodePoolWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyNodePoolSend(request *ModifyNodePoolRequest) (*ModifyNodePoolResponse, error) {
+	statusCode, msg, err := c.ModifyNodePoolWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyNodePoolResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyNodePoolWithContext(ctx context.Context, request *ModifyNodePoolRequest) string {
 	if request == nil {
 		request = NewModifyNodePoolRequest()
@@ -515,6 +980,21 @@ func (c *Client) ModifyNodePoolWithContext(ctx context.Context, request *ModifyN
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyNodePoolWithContextV2(ctx context.Context, request *ModifyNodePoolRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyNodePoolRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyNodePoolResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyNodeTemplateRequest() (request *ModifyNodeTemplateRequest) {
 	request = &ModifyNodeTemplateRequest{
@@ -535,6 +1015,23 @@ func (c *Client) ModifyNodeTemplate(request *ModifyNodeTemplateRequest) string {
 	return c.ModifyNodeTemplateWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyNodeTemplateSend(request *ModifyNodeTemplateRequest) (*ModifyNodeTemplateResponse, error) {
+	statusCode, msg, err := c.ModifyNodeTemplateWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyNodeTemplateResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyNodeTemplateWithContext(ctx context.Context, request *ModifyNodeTemplateRequest) string {
 	if request == nil {
 		request = NewModifyNodeTemplateRequest()
@@ -548,6 +1045,21 @@ func (c *Client) ModifyNodeTemplateWithContext(ctx context.Context, request *Mod
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyNodeTemplateWithContextV2(ctx context.Context, request *ModifyNodeTemplateRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyNodeTemplateRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyNodeTemplateResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyNodePoolScaleUpPolicyRequest() (request *ModifyNodePoolScaleUpPolicyRequest) {
 	request = &ModifyNodePoolScaleUpPolicyRequest{
@@ -568,6 +1080,23 @@ func (c *Client) ModifyNodePoolScaleUpPolicy(request *ModifyNodePoolScaleUpPolic
 	return c.ModifyNodePoolScaleUpPolicyWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyNodePoolScaleUpPolicySend(request *ModifyNodePoolScaleUpPolicyRequest) (*ModifyNodePoolScaleUpPolicyResponse, error) {
+	statusCode, msg, err := c.ModifyNodePoolScaleUpPolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyNodePoolScaleUpPolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyNodePoolScaleUpPolicyWithContext(ctx context.Context, request *ModifyNodePoolScaleUpPolicyRequest) string {
 	if request == nil {
 		request = NewModifyNodePoolScaleUpPolicyRequest()
@@ -581,6 +1110,21 @@ func (c *Client) ModifyNodePoolScaleUpPolicyWithContext(ctx context.Context, req
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyNodePoolScaleUpPolicyWithContextV2(ctx context.Context, request *ModifyNodePoolScaleUpPolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyNodePoolScaleUpPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyNodePoolScaleUpPolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyNodePoolScaleDownPolicyRequest() (request *ModifyNodePoolScaleDownPolicyRequest) {
 	request = &ModifyNodePoolScaleDownPolicyRequest{
@@ -601,6 +1145,23 @@ func (c *Client) ModifyNodePoolScaleDownPolicy(request *ModifyNodePoolScaleDownP
 	return c.ModifyNodePoolScaleDownPolicyWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyNodePoolScaleDownPolicySend(request *ModifyNodePoolScaleDownPolicyRequest) (*ModifyNodePoolScaleDownPolicyResponse, error) {
+	statusCode, msg, err := c.ModifyNodePoolScaleDownPolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyNodePoolScaleDownPolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyNodePoolScaleDownPolicyWithContext(ctx context.Context, request *ModifyNodePoolScaleDownPolicyRequest) string {
 	if request == nil {
 		request = NewModifyNodePoolScaleDownPolicyRequest()
@@ -614,6 +1175,21 @@ func (c *Client) ModifyNodePoolScaleDownPolicyWithContext(ctx context.Context, r
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyNodePoolScaleDownPolicyWithContextV2(ctx context.Context, request *ModifyNodePoolScaleDownPolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyNodePoolScaleDownPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyNodePoolScaleDownPolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewAddClusterInstanceToNodePoolRequest() (request *AddClusterInstanceToNodePoolRequest) {
 	request = &AddClusterInstanceToNodePoolRequest{
@@ -634,6 +1210,23 @@ func (c *Client) AddClusterInstanceToNodePool(request *AddClusterInstanceToNodeP
 	return c.AddClusterInstanceToNodePoolWithContext(context.Background(), request)
 }
 
+func (c *Client) AddClusterInstanceToNodePoolSend(request *AddClusterInstanceToNodePoolRequest) (*AddClusterInstanceToNodePoolResponse, error) {
+	statusCode, msg, err := c.AddClusterInstanceToNodePoolWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct AddClusterInstanceToNodePoolResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) AddClusterInstanceToNodePoolWithContext(ctx context.Context, request *AddClusterInstanceToNodePoolRequest) string {
 	if request == nil {
 		request = NewAddClusterInstanceToNodePoolRequest()
@@ -647,6 +1240,21 @@ func (c *Client) AddClusterInstanceToNodePoolWithContext(ctx context.Context, re
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) AddClusterInstanceToNodePoolWithContextV2(ctx context.Context, request *AddClusterInstanceToNodePoolRequest) (int, string, error) {
+	if request == nil {
+		request = NewAddClusterInstanceToNodePoolRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAddClusterInstanceToNodePoolResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewProtectedFromScaleDownRequest() (request *ProtectedFromScaleDownRequest) {
 	request = &ProtectedFromScaleDownRequest{
@@ -667,6 +1275,23 @@ func (c *Client) ProtectedFromScaleDown(request *ProtectedFromScaleDownRequest) 
 	return c.ProtectedFromScaleDownWithContext(context.Background(), request)
 }
 
+func (c *Client) ProtectedFromScaleDownSend(request *ProtectedFromScaleDownRequest) (*ProtectedFromScaleDownResponse, error) {
+	statusCode, msg, err := c.ProtectedFromScaleDownWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ProtectedFromScaleDownResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ProtectedFromScaleDownWithContext(ctx context.Context, request *ProtectedFromScaleDownRequest) string {
 	if request == nil {
 		request = NewProtectedFromScaleDownRequest()
@@ -680,6 +1305,21 @@ func (c *Client) ProtectedFromScaleDownWithContext(ctx context.Context, request 
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ProtectedFromScaleDownWithContextV2(ctx context.Context, request *ProtectedFromScaleDownRequest) (int, string, error) {
+	if request == nil {
+		request = NewProtectedFromScaleDownRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewProtectedFromScaleDownResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteClusterInstancesFromNodePoolRequest() (request *DeleteClusterInstancesFromNodePoolRequest) {
 	request = &DeleteClusterInstancesFromNodePoolRequest{
@@ -700,6 +1340,23 @@ func (c *Client) DeleteClusterInstancesFromNodePool(request *DeleteClusterInstan
 	return c.DeleteClusterInstancesFromNodePoolWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteClusterInstancesFromNodePoolSend(request *DeleteClusterInstancesFromNodePoolRequest) (*DeleteClusterInstancesFromNodePoolResponse, error) {
+	statusCode, msg, err := c.DeleteClusterInstancesFromNodePoolWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteClusterInstancesFromNodePoolResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteClusterInstancesFromNodePoolWithContext(ctx context.Context, request *DeleteClusterInstancesFromNodePoolRequest) string {
 	if request == nil {
 		request = NewDeleteClusterInstancesFromNodePoolRequest()
@@ -713,6 +1370,21 @@ func (c *Client) DeleteClusterInstancesFromNodePoolWithContext(ctx context.Conte
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteClusterInstancesFromNodePoolWithContextV2(ctx context.Context, request *DeleteClusterInstancesFromNodePoolRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteClusterInstancesFromNodePoolRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteClusterInstancesFromNodePoolResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeEpcImageRequest() (request *DescribeEpcImageRequest) {
 	request = &DescribeEpcImageRequest{
@@ -733,6 +1405,23 @@ func (c *Client) DescribeEpcImage(request *DescribeEpcImageRequest) string {
 	return c.DescribeEpcImageWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeEpcImageSend(request *DescribeEpcImageRequest) (*DescribeEpcImageResponse, error) {
+	statusCode, msg, err := c.DescribeEpcImageWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeEpcImageResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeEpcImageWithContext(ctx context.Context, request *DescribeEpcImageRequest) string {
 	if request == nil {
 		request = NewDescribeEpcImageRequest()
@@ -746,6 +1435,21 @@ func (c *Client) DescribeEpcImageWithContext(ctx context.Context, request *Descr
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeEpcImageWithContextV2(ctx context.Context, request *DescribeEpcImageRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeEpcImageRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeEpcImageResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewEditEventCollectingRequest() (request *EditEventCollectingRequest) {
 	request = &EditEventCollectingRequest{
@@ -766,6 +1470,23 @@ func (c *Client) EditEventCollecting(request *EditEventCollectingRequest) string
 	return c.EditEventCollectingWithContext(context.Background(), request)
 }
 
+func (c *Client) EditEventCollectingSend(request *EditEventCollectingRequest) (*EditEventCollectingResponse, error) {
+	statusCode, msg, err := c.EditEventCollectingWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct EditEventCollectingResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) EditEventCollectingWithContext(ctx context.Context, request *EditEventCollectingRequest) string {
 	if request == nil {
 		request = NewEditEventCollectingRequest()
@@ -779,6 +1500,21 @@ func (c *Client) EditEventCollectingWithContext(ctx context.Context, request *Ed
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) EditEventCollectingWithContextV2(ctx context.Context, request *EditEventCollectingRequest) (int, string, error) {
+	if request == nil {
+		request = NewEditEventCollectingRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewEditEventCollectingResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeNodePoolSummaryRequest() (request *DescribeNodePoolSummaryRequest) {
 	request = &DescribeNodePoolSummaryRequest{
@@ -799,6 +1535,23 @@ func (c *Client) DescribeNodePoolSummary(request *DescribeNodePoolSummaryRequest
 	return c.DescribeNodePoolSummaryWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeNodePoolSummarySend(request *DescribeNodePoolSummaryRequest) (*DescribeNodePoolSummaryResponse, error) {
+	statusCode, msg, err := c.DescribeNodePoolSummaryWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeNodePoolSummaryResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeNodePoolSummaryWithContext(ctx context.Context, request *DescribeNodePoolSummaryRequest) string {
 	if request == nil {
 		request = NewDescribeNodePoolSummaryRequest()
@@ -812,6 +1565,21 @@ func (c *Client) DescribeNodePoolSummaryWithContext(ctx context.Context, request
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeNodePoolSummaryWithContextV2(ctx context.Context, request *DescribeNodePoolSummaryRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeNodePoolSummaryRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeNodePoolSummaryResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateLogRuleRequest() (request *CreateLogRuleRequest) {
 	request = &CreateLogRuleRequest{
@@ -832,6 +1600,23 @@ func (c *Client) CreateLogRule(request *CreateLogRuleRequest) string {
 	return c.CreateLogRuleWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateLogRuleSend(request *CreateLogRuleRequest) (*CreateLogRuleResponse, error) {
+	statusCode, msg, err := c.CreateLogRuleWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateLogRuleResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateLogRuleWithContext(ctx context.Context, request *CreateLogRuleRequest) string {
 	if request == nil {
 		request = NewCreateLogRuleRequest()
@@ -845,6 +1630,21 @@ func (c *Client) CreateLogRuleWithContext(ctx context.Context, request *CreateLo
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateLogRuleWithContextV2(ctx context.Context, request *CreateLogRuleRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateLogRuleRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateLogRuleResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeClusterSummaryRequest() (request *DescribeClusterSummaryRequest) {
 	request = &DescribeClusterSummaryRequest{
@@ -865,6 +1665,23 @@ func (c *Client) DescribeClusterSummary(request *DescribeClusterSummaryRequest) 
 	return c.DescribeClusterSummaryWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeClusterSummarySend(request *DescribeClusterSummaryRequest) (*DescribeClusterSummaryResponse, error) {
+	statusCode, msg, err := c.DescribeClusterSummaryWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeClusterSummaryResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeClusterSummaryWithContext(ctx context.Context, request *DescribeClusterSummaryRequest) string {
 	if request == nil {
 		request = NewDescribeClusterSummaryRequest()
@@ -878,6 +1695,21 @@ func (c *Client) DescribeClusterSummaryWithContext(ctx context.Context, request 
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeClusterSummaryWithContextV2(ctx context.Context, request *DescribeClusterSummaryRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeClusterSummaryRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeClusterSummaryResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewUpdateNodePoolDelProtectionRequest() (request *UpdateNodePoolDelProtectionRequest) {
 	request = &UpdateNodePoolDelProtectionRequest{
@@ -898,6 +1730,23 @@ func (c *Client) UpdateNodePoolDelProtection(request *UpdateNodePoolDelProtectio
 	return c.UpdateNodePoolDelProtectionWithContext(context.Background(), request)
 }
 
+func (c *Client) UpdateNodePoolDelProtectionSend(request *UpdateNodePoolDelProtectionRequest) (*UpdateNodePoolDelProtectionResponse, error) {
+	statusCode, msg, err := c.UpdateNodePoolDelProtectionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct UpdateNodePoolDelProtectionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) UpdateNodePoolDelProtectionWithContext(ctx context.Context, request *UpdateNodePoolDelProtectionRequest) string {
 	if request == nil {
 		request = NewUpdateNodePoolDelProtectionRequest()
@@ -911,6 +1760,21 @@ func (c *Client) UpdateNodePoolDelProtectionWithContext(ctx context.Context, req
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) UpdateNodePoolDelProtectionWithContextV2(ctx context.Context, request *UpdateNodePoolDelProtectionRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdateNodePoolDelProtectionRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateNodePoolDelProtectionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeReleaseRequest() (request *DescribeReleaseRequest) {
 	request = &DescribeReleaseRequest{
@@ -931,6 +1795,23 @@ func (c *Client) DescribeRelease(request *DescribeReleaseRequest) string {
 	return c.DescribeReleaseWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeReleaseSend(request *DescribeReleaseRequest) (*DescribeReleaseResponse, error) {
+	statusCode, msg, err := c.DescribeReleaseWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeReleaseResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeReleaseWithContext(ctx context.Context, request *DescribeReleaseRequest) string {
 	if request == nil {
 		request = NewDescribeReleaseRequest()
@@ -944,6 +1825,21 @@ func (c *Client) DescribeReleaseWithContext(ctx context.Context, request *Descri
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeReleaseWithContextV2(ctx context.Context, request *DescribeReleaseRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeReleaseRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeReleaseResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeReleaseHistoryRequest() (request *DescribeReleaseHistoryRequest) {
 	request = &DescribeReleaseHistoryRequest{
@@ -964,6 +1860,23 @@ func (c *Client) DescribeReleaseHistory(request *DescribeReleaseHistoryRequest) 
 	return c.DescribeReleaseHistoryWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeReleaseHistorySend(request *DescribeReleaseHistoryRequest) (*DescribeReleaseHistoryResponse, error) {
+	statusCode, msg, err := c.DescribeReleaseHistoryWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeReleaseHistoryResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeReleaseHistoryWithContext(ctx context.Context, request *DescribeReleaseHistoryRequest) string {
 	if request == nil {
 		request = NewDescribeReleaseHistoryRequest()
@@ -977,6 +1890,21 @@ func (c *Client) DescribeReleaseHistoryWithContext(ctx context.Context, request 
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeReleaseHistoryWithContextV2(ctx context.Context, request *DescribeReleaseHistoryRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeReleaseHistoryRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeReleaseHistoryResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeReleaseDetailRequest() (request *DescribeReleaseDetailRequest) {
 	request = &DescribeReleaseDetailRequest{
@@ -997,6 +1925,23 @@ func (c *Client) DescribeReleaseDetail(request *DescribeReleaseDetailRequest) st
 	return c.DescribeReleaseDetailWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeReleaseDetailSend(request *DescribeReleaseDetailRequest) (*DescribeReleaseDetailResponse, error) {
+	statusCode, msg, err := c.DescribeReleaseDetailWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeReleaseDetailResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeReleaseDetailWithContext(ctx context.Context, request *DescribeReleaseDetailRequest) string {
 	if request == nil {
 		request = NewDescribeReleaseDetailRequest()
@@ -1010,6 +1955,21 @@ func (c *Client) DescribeReleaseDetailWithContext(ctx context.Context, request *
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeReleaseDetailWithContextV2(ctx context.Context, request *DescribeReleaseDetailRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeReleaseDetailRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeReleaseDetailResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteReleaseRequest() (request *DeleteReleaseRequest) {
 	request = &DeleteReleaseRequest{
@@ -1030,6 +1990,23 @@ func (c *Client) DeleteRelease(request *DeleteReleaseRequest) string {
 	return c.DeleteReleaseWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteReleaseSend(request *DeleteReleaseRequest) (*DeleteReleaseResponse, error) {
+	statusCode, msg, err := c.DeleteReleaseWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteReleaseResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteReleaseWithContext(ctx context.Context, request *DeleteReleaseRequest) string {
 	if request == nil {
 		request = NewDeleteReleaseRequest()
@@ -1043,6 +2020,21 @@ func (c *Client) DeleteReleaseWithContext(ctx context.Context, request *DeleteRe
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteReleaseWithContextV2(ctx context.Context, request *DeleteReleaseRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteReleaseRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteReleaseResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewRollbackReleaseRequest() (request *RollbackReleaseRequest) {
 	request = &RollbackReleaseRequest{
@@ -1063,6 +2055,23 @@ func (c *Client) RollbackRelease(request *RollbackReleaseRequest) string {
 	return c.RollbackReleaseWithContext(context.Background(), request)
 }
 
+func (c *Client) RollbackReleaseSend(request *RollbackReleaseRequest) (*RollbackReleaseResponse, error) {
+	statusCode, msg, err := c.RollbackReleaseWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct RollbackReleaseResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) RollbackReleaseWithContext(ctx context.Context, request *RollbackReleaseRequest) string {
 	if request == nil {
 		request = NewRollbackReleaseRequest()
@@ -1076,6 +2085,21 @@ func (c *Client) RollbackReleaseWithContext(ctx context.Context, request *Rollba
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) RollbackReleaseWithContextV2(ctx context.Context, request *RollbackReleaseRequest) (int, string, error) {
+	if request == nil {
+		request = NewRollbackReleaseRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewRollbackReleaseResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewInstallReleaseRequest() (request *InstallReleaseRequest) {
 	request = &InstallReleaseRequest{
@@ -1096,6 +2120,23 @@ func (c *Client) InstallRelease(request *InstallReleaseRequest) string {
 	return c.InstallReleaseWithContext(context.Background(), request)
 }
 
+func (c *Client) InstallReleaseSend(request *InstallReleaseRequest) (*InstallReleaseResponse, error) {
+	statusCode, msg, err := c.InstallReleaseWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct InstallReleaseResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) InstallReleaseWithContext(ctx context.Context, request *InstallReleaseRequest) string {
 	if request == nil {
 		request = NewInstallReleaseRequest()
@@ -1109,6 +2150,21 @@ func (c *Client) InstallReleaseWithContext(ctx context.Context, request *Install
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) InstallReleaseWithContextV2(ctx context.Context, request *InstallReleaseRequest) (int, string, error) {
+	if request == nil {
+		request = NewInstallReleaseRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewInstallReleaseResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewUpgradeReleaseRequest() (request *UpgradeReleaseRequest) {
 	request = &UpgradeReleaseRequest{
@@ -1129,6 +2185,23 @@ func (c *Client) UpgradeRelease(request *UpgradeReleaseRequest) string {
 	return c.UpgradeReleaseWithContext(context.Background(), request)
 }
 
+func (c *Client) UpgradeReleaseSend(request *UpgradeReleaseRequest) (*UpgradeReleaseResponse, error) {
+	statusCode, msg, err := c.UpgradeReleaseWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct UpgradeReleaseResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) UpgradeReleaseWithContext(ctx context.Context, request *UpgradeReleaseRequest) string {
 	if request == nil {
 		request = NewUpgradeReleaseRequest()
@@ -1142,6 +2215,21 @@ func (c *Client) UpgradeReleaseWithContext(ctx context.Context, request *Upgrade
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) UpgradeReleaseWithContextV2(ctx context.Context, request *UpgradeReleaseRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpgradeReleaseRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpgradeReleaseResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 
 

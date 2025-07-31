@@ -1,15 +1,13 @@
 package v20240930
-
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 type UpdatePerformanceOnePosixAclFileSystemList struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 	VolumePath   *string `json:"VolumePath,omitempty" name:"VolumePath"`
 }
+
 
 type UpdatePerformanceOnePosixAclRequest struct {
 	*ksyunhttp.BaseRequest
@@ -23,17 +21,6 @@ type UpdatePerformanceOnePosixAclRequest struct {
 func (r *UpdatePerformanceOnePosixAclRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *UpdatePerformanceOnePosixAclRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpdatePerformanceOnePosixAclRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdatePerformanceOnePosixAclResponse struct {
@@ -50,6 +37,7 @@ func (r *UpdatePerformanceOnePosixAclResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribePerformanceOnePosixAclListRequest struct {
 	*ksyunhttp.BaseRequest
 	PosixAclId     *string `json:"PosixAclId,omitempty" name:"PosixAclId"`
@@ -63,17 +51,6 @@ type DescribePerformanceOnePosixAclListRequest struct {
 func (r *DescribePerformanceOnePosixAclListRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DescribePerformanceOnePosixAclListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribePerformanceOnePosixAclListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribePerformanceOnePosixAclListResponse struct {
@@ -103,3 +80,4 @@ func (r *DescribePerformanceOnePosixAclListResponse) ToJsonString() string {
 func (r *DescribePerformanceOnePosixAclListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

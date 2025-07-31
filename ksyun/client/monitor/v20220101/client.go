@@ -40,6 +40,23 @@ func (c *Client) CreateAlarmPolicy(request *CreateAlarmPolicyRequest) string {
 	return c.CreateAlarmPolicyWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateAlarmPolicySend(request *CreateAlarmPolicyRequest) (*CreateAlarmPolicyResponse, error) {
+	statusCode, msg, err := c.CreateAlarmPolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateAlarmPolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateAlarmPolicyWithContext(ctx context.Context, request *CreateAlarmPolicyRequest) string {
 	if request == nil {
 		request = NewCreateAlarmPolicyRequest()
@@ -53,6 +70,21 @@ func (c *Client) CreateAlarmPolicyWithContext(ctx context.Context, request *Crea
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateAlarmPolicyWithContextV2(ctx context.Context, request *CreateAlarmPolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateAlarmPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateAlarmPolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteAlarmPolicyRequest() (request *DeleteAlarmPolicyRequest) {
 	request = &DeleteAlarmPolicyRequest{
@@ -73,6 +105,23 @@ func (c *Client) DeleteAlarmPolicy(request *DeleteAlarmPolicyRequest) string {
 	return c.DeleteAlarmPolicyWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteAlarmPolicySend(request *DeleteAlarmPolicyRequest) (*DeleteAlarmPolicyResponse, error) {
+	statusCode, msg, err := c.DeleteAlarmPolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteAlarmPolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteAlarmPolicyWithContext(ctx context.Context, request *DeleteAlarmPolicyRequest) string {
 	if request == nil {
 		request = NewDeleteAlarmPolicyRequest()
@@ -86,6 +135,21 @@ func (c *Client) DeleteAlarmPolicyWithContext(ctx context.Context, request *Dele
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteAlarmPolicyWithContextV2(ctx context.Context, request *DeleteAlarmPolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteAlarmPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteAlarmPolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 
 

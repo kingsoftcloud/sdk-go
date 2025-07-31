@@ -40,6 +40,23 @@ func (c *Client) DescribeKead(request *DescribeKeadRequest) string {
 	return c.DescribeKeadWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeKeadSend(request *DescribeKeadRequest) (*DescribeKeadResponse, error) {
+	statusCode, msg, err := c.DescribeKeadWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeKeadResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeKeadWithContext(ctx context.Context, request *DescribeKeadRequest) string {
 	if request == nil {
 		request = NewDescribeKeadRequest()
@@ -53,6 +70,21 @@ func (c *Client) DescribeKeadWithContext(ctx context.Context, request *DescribeK
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeKeadWithContextV2(ctx context.Context, request *DescribeKeadRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeKeadRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeKeadResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeKeadIpRequest() (request *DescribeKeadIpRequest) {
 	request = &DescribeKeadIpRequest{
@@ -73,6 +105,23 @@ func (c *Client) DescribeKeadIp(request *DescribeKeadIpRequest) string {
 	return c.DescribeKeadIpWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeKeadIpSend(request *DescribeKeadIpRequest) (*DescribeKeadIpResponse, error) {
+	statusCode, msg, err := c.DescribeKeadIpWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeKeadIpResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeKeadIpWithContext(ctx context.Context, request *DescribeKeadIpRequest) string {
 	if request == nil {
 		request = NewDescribeKeadIpRequest()
@@ -86,6 +135,21 @@ func (c *Client) DescribeKeadIpWithContext(ctx context.Context, request *Describ
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeKeadIpWithContextV2(ctx context.Context, request *DescribeKeadIpRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeKeadIpRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeKeadIpResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeBlockIpRequest() (request *DescribeBlockIpRequest) {
 	request = &DescribeBlockIpRequest{
@@ -106,6 +170,23 @@ func (c *Client) DescribeBlockIp(request *DescribeBlockIpRequest) string {
 	return c.DescribeBlockIpWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeBlockIpSend(request *DescribeBlockIpRequest) (*DescribeBlockIpResponse, error) {
+	statusCode, msg, err := c.DescribeBlockIpWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeBlockIpResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeBlockIpWithContext(ctx context.Context, request *DescribeBlockIpRequest) string {
 	if request == nil {
 		request = NewDescribeBlockIpRequest()
@@ -119,6 +200,21 @@ func (c *Client) DescribeBlockIpWithContext(ctx context.Context, request *Descri
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeBlockIpWithContextV2(ctx context.Context, request *DescribeBlockIpRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeBlockIpRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeBlockIpResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 
 

@@ -1,10 +1,9 @@
 package v20221222
-
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type QueryInstanceConsumeRequest struct {
 	*ksyunhttp.BaseRequest
@@ -18,17 +17,6 @@ type QueryInstanceConsumeRequest struct {
 func (r *QueryInstanceConsumeRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *QueryInstanceConsumeRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "QueryInstanceConsumeRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryInstanceConsumeResponse struct {
@@ -105,6 +93,7 @@ func (r *QueryInstanceConsumeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type QueryProjectConsumeRequest struct {
 	*ksyunhttp.BaseRequest
 	StartDay *string `json:"StartDay,omitempty" name:"StartDay"`
@@ -116,17 +105,6 @@ type QueryProjectConsumeRequest struct {
 func (r *QueryProjectConsumeRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *QueryProjectConsumeRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "QueryProjectConsumeRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryProjectConsumeResponse struct {
@@ -181,6 +159,7 @@ func (r *QueryProjectConsumeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type QueryProductConsumeRequest struct {
 	*ksyunhttp.BaseRequest
 	StartDay *string `json:"StartDay,omitempty" name:"StartDay"`
@@ -192,17 +171,6 @@ type QueryProductConsumeRequest struct {
 func (r *QueryProductConsumeRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *QueryProductConsumeRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "QueryProductConsumeRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryProductConsumeResponse struct {
@@ -257,6 +225,7 @@ func (r *QueryProductConsumeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type QueryFinanceUnitConsumeRequest struct {
 	*ksyunhttp.BaseRequest
 	StartDay *string `json:"StartDay,omitempty" name:"StartDay"`
@@ -268,17 +237,6 @@ type QueryFinanceUnitConsumeRequest struct {
 func (r *QueryFinanceUnitConsumeRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *QueryFinanceUnitConsumeRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "QueryFinanceUnitConsumeRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryFinanceUnitConsumeResponse struct {
@@ -332,6 +290,7 @@ func (r *QueryFinanceUnitConsumeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type QueryFinanceUnitConsumeOfMonthRequest struct {
 	*ksyunhttp.BaseRequest
 	CustomerBillMonth *string `json:"CustomerBillMonth,omitempty" name:"CustomerBillMonth"`
@@ -342,17 +301,6 @@ type QueryFinanceUnitConsumeOfMonthRequest struct {
 func (r *QueryFinanceUnitConsumeOfMonthRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *QueryFinanceUnitConsumeOfMonthRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "QueryFinanceUnitConsumeOfMonthRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryFinanceUnitConsumeOfMonthResponse struct {
@@ -406,6 +354,7 @@ func (r *QueryFinanceUnitConsumeOfMonthResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type QueryUserConsumeRequest struct {
 	*ksyunhttp.BaseRequest
 	StartDay *string `json:"StartDay,omitempty" name:"StartDay"`
@@ -417,17 +366,6 @@ type QueryUserConsumeRequest struct {
 func (r *QueryUserConsumeRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *QueryUserConsumeRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "QueryUserConsumeRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type QueryUserConsumeResponse struct {
@@ -479,3 +417,4 @@ func (r *QueryUserConsumeResponse) ToJsonString() string {
 func (r *QueryUserConsumeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

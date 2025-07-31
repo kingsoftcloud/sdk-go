@@ -1,5 +1,4 @@
 package v20160304
-
 import (
 	"context"
 	"fmt"
@@ -41,6 +40,23 @@ func (c *Client) CreateCen(request *CreateCenRequest) string {
 	return c.CreateCenWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateCenSend(request *CreateCenRequest) (*CreateCenResponse, error) {
+	statusCode, msg, err := c.CreateCenWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateCenResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateCenWithContext(ctx context.Context, request *CreateCenRequest) string {
 	if request == nil {
 		request = NewCreateCenRequest()
@@ -54,6 +70,21 @@ func (c *Client) CreateCenWithContext(ctx context.Context, request *CreateCenReq
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateCenWithContextV2(ctx context.Context, request *CreateCenRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateCenRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateCenResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyCenRequest() (request *ModifyCenRequest) {
 	request = &ModifyCenRequest{
@@ -74,6 +105,23 @@ func (c *Client) ModifyCen(request *ModifyCenRequest) string {
 	return c.ModifyCenWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyCenSend(request *ModifyCenRequest) (*ModifyCenResponse, error) {
+	statusCode, msg, err := c.ModifyCenWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyCenResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyCenWithContext(ctx context.Context, request *ModifyCenRequest) string {
 	if request == nil {
 		request = NewModifyCenRequest()
@@ -87,6 +135,21 @@ func (c *Client) ModifyCenWithContext(ctx context.Context, request *ModifyCenReq
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyCenWithContextV2(ctx context.Context, request *ModifyCenRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyCenRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyCenResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteCenRequest() (request *DeleteCenRequest) {
 	request = &DeleteCenRequest{
@@ -107,6 +170,23 @@ func (c *Client) DeleteCen(request *DeleteCenRequest) string {
 	return c.DeleteCenWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteCenSend(request *DeleteCenRequest) (*DeleteCenResponse, error) {
+	statusCode, msg, err := c.DeleteCenWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteCenResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteCenWithContext(ctx context.Context, request *DeleteCenRequest) string {
 	if request == nil {
 		request = NewDeleteCenRequest()
@@ -120,6 +200,21 @@ func (c *Client) DeleteCenWithContext(ctx context.Context, request *DeleteCenReq
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteCenWithContextV2(ctx context.Context, request *DeleteCenRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteCenRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteCenResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeCensRequest() (request *DescribeCensRequest) {
 	request = &DescribeCensRequest{
@@ -140,6 +235,23 @@ func (c *Client) DescribeCens(request *DescribeCensRequest) string {
 	return c.DescribeCensWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeCensSend(request *DescribeCensRequest) (*DescribeCensResponse, error) {
+	statusCode, msg, err := c.DescribeCensWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeCensResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeCensWithContext(ctx context.Context, request *DescribeCensRequest) string {
 	if request == nil {
 		request = NewDescribeCensRequest()
@@ -153,6 +265,21 @@ func (c *Client) DescribeCensWithContext(ctx context.Context, request *DescribeC
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeCensWithContextV2(ctx context.Context, request *DescribeCensRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeCensRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeCensResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteCenGrantRequest() (request *DeleteCenGrantRequest) {
 	request = &DeleteCenGrantRequest{
@@ -173,6 +300,23 @@ func (c *Client) DeleteCenGrant(request *DeleteCenGrantRequest) string {
 	return c.DeleteCenGrantWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteCenGrantSend(request *DeleteCenGrantRequest) (*DeleteCenGrantResponse, error) {
+	statusCode, msg, err := c.DeleteCenGrantWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteCenGrantResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteCenGrantWithContext(ctx context.Context, request *DeleteCenGrantRequest) string {
 	if request == nil {
 		request = NewDeleteCenGrantRequest()
@@ -186,6 +330,21 @@ func (c *Client) DeleteCenGrantWithContext(ctx context.Context, request *DeleteC
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteCenGrantWithContextV2(ctx context.Context, request *DeleteCenGrantRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteCenGrantRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteCenGrantResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeCenGrantsRequest() (request *DescribeCenGrantsRequest) {
 	request = &DescribeCenGrantsRequest{
@@ -206,6 +365,23 @@ func (c *Client) DescribeCenGrants(request *DescribeCenGrantsRequest) string {
 	return c.DescribeCenGrantsWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeCenGrantsSend(request *DescribeCenGrantsRequest) (*DescribeCenGrantsResponse, error) {
+	statusCode, msg, err := c.DescribeCenGrantsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeCenGrantsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeCenGrantsWithContext(ctx context.Context, request *DescribeCenGrantsRequest) string {
 	if request == nil {
 		request = NewDescribeCenGrantsRequest()
@@ -219,6 +395,21 @@ func (c *Client) DescribeCenGrantsWithContext(ctx context.Context, request *Desc
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeCenGrantsWithContextV2(ctx context.Context, request *DescribeCenGrantsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeCenGrantsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeCenGrantsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateCenBandWidthPackageRequest() (request *CreateCenBandWidthPackageRequest) {
 	request = &CreateCenBandWidthPackageRequest{
@@ -239,6 +430,23 @@ func (c *Client) CreateCenBandWidthPackage(request *CreateCenBandWidthPackageReq
 	return c.CreateCenBandWidthPackageWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateCenBandWidthPackageSend(request *CreateCenBandWidthPackageRequest) (*CreateCenBandWidthPackageResponse, error) {
+	statusCode, msg, err := c.CreateCenBandWidthPackageWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateCenBandWidthPackageResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateCenBandWidthPackageWithContext(ctx context.Context, request *CreateCenBandWidthPackageRequest) string {
 	if request == nil {
 		request = NewCreateCenBandWidthPackageRequest()
@@ -252,6 +460,21 @@ func (c *Client) CreateCenBandWidthPackageWithContext(ctx context.Context, reque
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateCenBandWidthPackageWithContextV2(ctx context.Context, request *CreateCenBandWidthPackageRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateCenBandWidthPackageRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateCenBandWidthPackageResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyCenBandWidthPackageRequest() (request *ModifyCenBandWidthPackageRequest) {
 	request = &ModifyCenBandWidthPackageRequest{
@@ -272,6 +495,23 @@ func (c *Client) ModifyCenBandWidthPackage(request *ModifyCenBandWidthPackageReq
 	return c.ModifyCenBandWidthPackageWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyCenBandWidthPackageSend(request *ModifyCenBandWidthPackageRequest) (*ModifyCenBandWidthPackageResponse, error) {
+	statusCode, msg, err := c.ModifyCenBandWidthPackageWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyCenBandWidthPackageResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyCenBandWidthPackageWithContext(ctx context.Context, request *ModifyCenBandWidthPackageRequest) string {
 	if request == nil {
 		request = NewModifyCenBandWidthPackageRequest()
@@ -285,6 +525,21 @@ func (c *Client) ModifyCenBandWidthPackageWithContext(ctx context.Context, reque
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyCenBandWidthPackageWithContextV2(ctx context.Context, request *ModifyCenBandWidthPackageRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyCenBandWidthPackageRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyCenBandWidthPackageResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteCenBandWidthPackageRequest() (request *DeleteCenBandWidthPackageRequest) {
 	request = &DeleteCenBandWidthPackageRequest{
@@ -305,6 +560,23 @@ func (c *Client) DeleteCenBandWidthPackage(request *DeleteCenBandWidthPackageReq
 	return c.DeleteCenBandWidthPackageWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteCenBandWidthPackageSend(request *DeleteCenBandWidthPackageRequest) (*DeleteCenBandWidthPackageResponse, error) {
+	statusCode, msg, err := c.DeleteCenBandWidthPackageWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteCenBandWidthPackageResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteCenBandWidthPackageWithContext(ctx context.Context, request *DeleteCenBandWidthPackageRequest) string {
 	if request == nil {
 		request = NewDeleteCenBandWidthPackageRequest()
@@ -318,6 +590,21 @@ func (c *Client) DeleteCenBandWidthPackageWithContext(ctx context.Context, reque
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteCenBandWidthPackageWithContextV2(ctx context.Context, request *DeleteCenBandWidthPackageRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteCenBandWidthPackageRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteCenBandWidthPackageResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewAttachCenBandWidthPackageRequest() (request *AttachCenBandWidthPackageRequest) {
 	request = &AttachCenBandWidthPackageRequest{
@@ -338,6 +625,23 @@ func (c *Client) AttachCenBandWidthPackage(request *AttachCenBandWidthPackageReq
 	return c.AttachCenBandWidthPackageWithContext(context.Background(), request)
 }
 
+func (c *Client) AttachCenBandWidthPackageSend(request *AttachCenBandWidthPackageRequest) (*AttachCenBandWidthPackageResponse, error) {
+	statusCode, msg, err := c.AttachCenBandWidthPackageWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct AttachCenBandWidthPackageResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) AttachCenBandWidthPackageWithContext(ctx context.Context, request *AttachCenBandWidthPackageRequest) string {
 	if request == nil {
 		request = NewAttachCenBandWidthPackageRequest()
@@ -351,6 +655,21 @@ func (c *Client) AttachCenBandWidthPackageWithContext(ctx context.Context, reque
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) AttachCenBandWidthPackageWithContextV2(ctx context.Context, request *AttachCenBandWidthPackageRequest) (int, string, error) {
+	if request == nil {
+		request = NewAttachCenBandWidthPackageRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAttachCenBandWidthPackageResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDetachCenBandWidthPackageRequest() (request *DetachCenBandWidthPackageRequest) {
 	request = &DetachCenBandWidthPackageRequest{
@@ -371,6 +690,23 @@ func (c *Client) DetachCenBandWidthPackage(request *DetachCenBandWidthPackageReq
 	return c.DetachCenBandWidthPackageWithContext(context.Background(), request)
 }
 
+func (c *Client) DetachCenBandWidthPackageSend(request *DetachCenBandWidthPackageRequest) (*DetachCenBandWidthPackageResponse, error) {
+	statusCode, msg, err := c.DetachCenBandWidthPackageWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DetachCenBandWidthPackageResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DetachCenBandWidthPackageWithContext(ctx context.Context, request *DetachCenBandWidthPackageRequest) string {
 	if request == nil {
 		request = NewDetachCenBandWidthPackageRequest()
@@ -384,6 +720,21 @@ func (c *Client) DetachCenBandWidthPackageWithContext(ctx context.Context, reque
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DetachCenBandWidthPackageWithContextV2(ctx context.Context, request *DetachCenBandWidthPackageRequest) (int, string, error) {
+	if request == nil {
+		request = NewDetachCenBandWidthPackageRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDetachCenBandWidthPackageResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeCenBandWidthPackagesRequest() (request *DescribeCenBandWidthPackagesRequest) {
 	request = &DescribeCenBandWidthPackagesRequest{
@@ -404,6 +755,23 @@ func (c *Client) DescribeCenBandWidthPackages(request *DescribeCenBandWidthPacka
 	return c.DescribeCenBandWidthPackagesWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeCenBandWidthPackagesSend(request *DescribeCenBandWidthPackagesRequest) (*DescribeCenBandWidthPackagesResponse, error) {
+	statusCode, msg, err := c.DescribeCenBandWidthPackagesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeCenBandWidthPackagesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeCenBandWidthPackagesWithContext(ctx context.Context, request *DescribeCenBandWidthPackagesRequest) string {
 	if request == nil {
 		request = NewDescribeCenBandWidthPackagesRequest()
@@ -417,6 +785,21 @@ func (c *Client) DescribeCenBandWidthPackagesWithContext(ctx context.Context, re
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeCenBandWidthPackagesWithContextV2(ctx context.Context, request *DescribeCenBandWidthPackagesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeCenBandWidthPackagesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeCenBandWidthPackagesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateCenRegionBandwidthRequest() (request *CreateCenRegionBandwidthRequest) {
 	request = &CreateCenRegionBandwidthRequest{
@@ -437,6 +820,23 @@ func (c *Client) CreateCenRegionBandwidth(request *CreateCenRegionBandwidthReque
 	return c.CreateCenRegionBandwidthWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateCenRegionBandwidthSend(request *CreateCenRegionBandwidthRequest) (*CreateCenRegionBandwidthResponse, error) {
+	statusCode, msg, err := c.CreateCenRegionBandwidthWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateCenRegionBandwidthResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateCenRegionBandwidthWithContext(ctx context.Context, request *CreateCenRegionBandwidthRequest) string {
 	if request == nil {
 		request = NewCreateCenRegionBandwidthRequest()
@@ -450,6 +850,21 @@ func (c *Client) CreateCenRegionBandwidthWithContext(ctx context.Context, reques
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateCenRegionBandwidthWithContextV2(ctx context.Context, request *CreateCenRegionBandwidthRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateCenRegionBandwidthRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateCenRegionBandwidthResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDeleteCenRegionBandwidthRequest() (request *DeleteCenRegionBandwidthRequest) {
 	request = &DeleteCenRegionBandwidthRequest{
@@ -470,6 +885,23 @@ func (c *Client) DeleteCenRegionBandwidth(request *DeleteCenRegionBandwidthReque
 	return c.DeleteCenRegionBandwidthWithContext(context.Background(), request)
 }
 
+func (c *Client) DeleteCenRegionBandwidthSend(request *DeleteCenRegionBandwidthRequest) (*DeleteCenRegionBandwidthResponse, error) {
+	statusCode, msg, err := c.DeleteCenRegionBandwidthWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteCenRegionBandwidthResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DeleteCenRegionBandwidthWithContext(ctx context.Context, request *DeleteCenRegionBandwidthRequest) string {
 	if request == nil {
 		request = NewDeleteCenRegionBandwidthRequest()
@@ -483,6 +915,21 @@ func (c *Client) DeleteCenRegionBandwidthWithContext(ctx context.Context, reques
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DeleteCenRegionBandwidthWithContextV2(ctx context.Context, request *DeleteCenRegionBandwidthRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteCenRegionBandwidthRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteCenRegionBandwidthResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewModifyCenRegionBandwidthRequest() (request *ModifyCenRegionBandwidthRequest) {
 	request = &ModifyCenRegionBandwidthRequest{
@@ -503,6 +950,23 @@ func (c *Client) ModifyCenRegionBandwidth(request *ModifyCenRegionBandwidthReque
 	return c.ModifyCenRegionBandwidthWithContext(context.Background(), request)
 }
 
+func (c *Client) ModifyCenRegionBandwidthSend(request *ModifyCenRegionBandwidthRequest) (*ModifyCenRegionBandwidthResponse, error) {
+	statusCode, msg, err := c.ModifyCenRegionBandwidthWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyCenRegionBandwidthResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) ModifyCenRegionBandwidthWithContext(ctx context.Context, request *ModifyCenRegionBandwidthRequest) string {
 	if request == nil {
 		request = NewModifyCenRegionBandwidthRequest()
@@ -516,6 +980,21 @@ func (c *Client) ModifyCenRegionBandwidthWithContext(ctx context.Context, reques
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) ModifyCenRegionBandwidthWithContextV2(ctx context.Context, request *ModifyCenRegionBandwidthRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyCenRegionBandwidthRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyCenRegionBandwidthResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeCenRegionBandwidthsRequest() (request *DescribeCenRegionBandwidthsRequest) {
 	request = &DescribeCenRegionBandwidthsRequest{
@@ -536,6 +1015,23 @@ func (c *Client) DescribeCenRegionBandwidths(request *DescribeCenRegionBandwidth
 	return c.DescribeCenRegionBandwidthsWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeCenRegionBandwidthsSend(request *DescribeCenRegionBandwidthsRequest) (*DescribeCenRegionBandwidthsResponse, error) {
+	statusCode, msg, err := c.DescribeCenRegionBandwidthsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeCenRegionBandwidthsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeCenRegionBandwidthsWithContext(ctx context.Context, request *DescribeCenRegionBandwidthsRequest) string {
 	if request == nil {
 		request = NewDescribeCenRegionBandwidthsRequest()
@@ -549,6 +1045,21 @@ func (c *Client) DescribeCenRegionBandwidthsWithContext(ctx context.Context, req
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeCenRegionBandwidthsWithContextV2(ctx context.Context, request *DescribeCenRegionBandwidthsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeCenRegionBandwidthsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeCenRegionBandwidthsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeCenRoutesRequest() (request *DescribeCenRoutesRequest) {
 	request = &DescribeCenRoutesRequest{
@@ -569,6 +1080,23 @@ func (c *Client) DescribeCenRoutes(request *DescribeCenRoutesRequest) string {
 	return c.DescribeCenRoutesWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeCenRoutesSend(request *DescribeCenRoutesRequest) (*DescribeCenRoutesResponse, error) {
+	statusCode, msg, err := c.DescribeCenRoutesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeCenRoutesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeCenRoutesWithContext(ctx context.Context, request *DescribeCenRoutesRequest) string {
 	if request == nil {
 		request = NewDescribeCenRoutesRequest()
@@ -582,6 +1110,21 @@ func (c *Client) DescribeCenRoutesWithContext(ctx context.Context, request *Desc
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeCenRoutesWithContextV2(ctx context.Context, request *DescribeCenRoutesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeCenRoutesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeCenRoutesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeCenBandWidthPackageUsageRequest() (request *DescribeCenBandWidthPackageUsageRequest) {
 	request = &DescribeCenBandWidthPackageUsageRequest{
@@ -602,6 +1145,23 @@ func (c *Client) DescribeCenBandWidthPackageUsage(request *DescribeCenBandWidthP
 	return c.DescribeCenBandWidthPackageUsageWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeCenBandWidthPackageUsageSend(request *DescribeCenBandWidthPackageUsageRequest) (*DescribeCenBandWidthPackageUsageResponse, error) {
+	statusCode, msg, err := c.DescribeCenBandWidthPackageUsageWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeCenBandWidthPackageUsageResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeCenBandWidthPackageUsageWithContext(ctx context.Context, request *DescribeCenBandWidthPackageUsageRequest) string {
 	if request == nil {
 		request = NewDescribeCenBandWidthPackageUsageRequest()
@@ -615,6 +1175,21 @@ func (c *Client) DescribeCenBandWidthPackageUsageWithContext(ctx context.Context
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeCenBandWidthPackageUsageWithContextV2(ctx context.Context, request *DescribeCenBandWidthPackageUsageRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeCenBandWidthPackageUsageRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeCenBandWidthPackageUsageResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeNetworkInstancesRequest() (request *DescribeNetworkInstancesRequest) {
 	request = &DescribeNetworkInstancesRequest{
@@ -635,6 +1210,23 @@ func (c *Client) DescribeNetworkInstances(request *DescribeNetworkInstancesReque
 	return c.DescribeNetworkInstancesWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeNetworkInstancesSend(request *DescribeNetworkInstancesRequest) (*DescribeNetworkInstancesResponse, error) {
+	statusCode, msg, err := c.DescribeNetworkInstancesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeNetworkInstancesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeNetworkInstancesWithContext(ctx context.Context, request *DescribeNetworkInstancesRequest) string {
 	if request == nil {
 		request = NewDescribeNetworkInstancesRequest()
@@ -648,6 +1240,21 @@ func (c *Client) DescribeNetworkInstancesWithContext(ctx context.Context, reques
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeNetworkInstancesWithContextV2(ctx context.Context, request *DescribeNetworkInstancesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeNetworkInstancesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeNetworkInstancesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCreateCenGrantRequest() (request *CreateCenGrantRequest) {
 	request = &CreateCenGrantRequest{
@@ -668,6 +1275,23 @@ func (c *Client) CreateCenGrant(request *CreateCenGrantRequest) string {
 	return c.CreateCenGrantWithContext(context.Background(), request)
 }
 
+func (c *Client) CreateCenGrantSend(request *CreateCenGrantRequest) (*CreateCenGrantResponse, error) {
+	statusCode, msg, err := c.CreateCenGrantWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateCenGrantResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CreateCenGrantWithContext(ctx context.Context, request *CreateCenGrantRequest) string {
 	if request == nil {
 		request = NewCreateCenGrantRequest()
@@ -681,6 +1305,21 @@ func (c *Client) CreateCenGrantWithContext(ctx context.Context, request *CreateC
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CreateCenGrantWithContextV2(ctx context.Context, request *CreateCenGrantRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateCenGrantRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateCenGrantResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeInterAreasRequest() (request *DescribeInterAreasRequest) {
 	request = &DescribeInterAreasRequest{
@@ -701,6 +1340,23 @@ func (c *Client) DescribeInterAreas(request *DescribeInterAreasRequest) string {
 	return c.DescribeInterAreasWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeInterAreasSend(request *DescribeInterAreasRequest) (*DescribeInterAreasResponse, error) {
+	statusCode, msg, err := c.DescribeInterAreasWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeInterAreasResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeInterAreasWithContext(ctx context.Context, request *DescribeInterAreasRequest) string {
 	if request == nil {
 		request = NewDescribeInterAreasRequest()
@@ -714,6 +1370,21 @@ func (c *Client) DescribeInterAreasWithContext(ctx context.Context, request *Des
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeInterAreasWithContextV2(ctx context.Context, request *DescribeInterAreasRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeInterAreasRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeInterAreasResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDescribeInterRegionsRequest() (request *DescribeInterRegionsRequest) {
 	request = &DescribeInterRegionsRequest{
@@ -734,6 +1405,23 @@ func (c *Client) DescribeInterRegions(request *DescribeInterRegionsRequest) stri
 	return c.DescribeInterRegionsWithContext(context.Background(), request)
 }
 
+func (c *Client) DescribeInterRegionsSend(request *DescribeInterRegionsRequest) (*DescribeInterRegionsResponse, error) {
+	statusCode, msg, err := c.DescribeInterRegionsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeInterRegionsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DescribeInterRegionsWithContext(ctx context.Context, request *DescribeInterRegionsRequest) string {
 	if request == nil {
 		request = NewDescribeInterRegionsRequest()
@@ -747,6 +1435,21 @@ func (c *Client) DescribeInterRegionsWithContext(ctx context.Context, request *D
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DescribeInterRegionsWithContextV2(ctx context.Context, request *DescribeInterRegionsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeInterRegionsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeInterRegionsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewAttachNetworkInstanceRequest() (request *AttachNetworkInstanceRequest) {
 	request = &AttachNetworkInstanceRequest{
@@ -767,6 +1470,23 @@ func (c *Client) AttachNetworkInstance(request *AttachNetworkInstanceRequest) st
 	return c.AttachNetworkInstanceWithContext(context.Background(), request)
 }
 
+func (c *Client) AttachNetworkInstanceSend(request *AttachNetworkInstanceRequest) (*AttachNetworkInstanceResponse, error) {
+	statusCode, msg, err := c.AttachNetworkInstanceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct AttachNetworkInstanceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) AttachNetworkInstanceWithContext(ctx context.Context, request *AttachNetworkInstanceRequest) string {
 	if request == nil {
 		request = NewAttachNetworkInstanceRequest()
@@ -780,6 +1500,21 @@ func (c *Client) AttachNetworkInstanceWithContext(ctx context.Context, request *
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) AttachNetworkInstanceWithContextV2(ctx context.Context, request *AttachNetworkInstanceRequest) (int, string, error) {
+	if request == nil {
+		request = NewAttachNetworkInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAttachNetworkInstanceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewDetachNetworkInstanceRequest() (request *DetachNetworkInstanceRequest) {
 	request = &DetachNetworkInstanceRequest{
@@ -800,6 +1535,23 @@ func (c *Client) DetachNetworkInstance(request *DetachNetworkInstanceRequest) st
 	return c.DetachNetworkInstanceWithContext(context.Background(), request)
 }
 
+func (c *Client) DetachNetworkInstanceSend(request *DetachNetworkInstanceRequest) (*DetachNetworkInstanceResponse, error) {
+	statusCode, msg, err := c.DetachNetworkInstanceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DetachNetworkInstanceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) DetachNetworkInstanceWithContext(ctx context.Context, request *DetachNetworkInstanceRequest) string {
 	if request == nil {
 		request = NewDetachNetworkInstanceRequest()
@@ -813,6 +1565,21 @@ func (c *Client) DetachNetworkInstanceWithContext(ctx context.Context, request *
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) DetachNetworkInstanceWithContextV2(ctx context.Context, request *DetachNetworkInstanceRequest) (int, string, error) {
+	if request == nil {
+		request = NewDetachNetworkInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDetachNetworkInstanceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCenCidrPublishRequest() (request *CenCidrPublishRequest) {
 	request = &CenCidrPublishRequest{
@@ -833,6 +1600,23 @@ func (c *Client) CenCidrPublish(request *CenCidrPublishRequest) string {
 	return c.CenCidrPublishWithContext(context.Background(), request)
 }
 
+func (c *Client) CenCidrPublishSend(request *CenCidrPublishRequest) (*CenCidrPublishResponse, error) {
+	statusCode, msg, err := c.CenCidrPublishWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CenCidrPublishResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CenCidrPublishWithContext(ctx context.Context, request *CenCidrPublishRequest) string {
 	if request == nil {
 		request = NewCenCidrPublishRequest()
@@ -846,6 +1630,21 @@ func (c *Client) CenCidrPublishWithContext(ctx context.Context, request *CenCidr
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) CenCidrPublishWithContextV2(ctx context.Context, request *CenCidrPublishRequest) (int, string, error) {
+	if request == nil {
+		request = NewCenCidrPublishRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCenCidrPublishResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewCenCidrDeleteRequest() (request *CenCidrDeleteRequest) {
 	request = &CenCidrDeleteRequest{
@@ -866,6 +1665,23 @@ func (c *Client) CenCidrDelete(request *CenCidrDeleteRequest) string {
 	return c.CenCidrDeleteWithContext(context.Background(), request)
 }
 
+func (c *Client) CenCidrDeleteSend(request *CenCidrDeleteRequest) (*CenCidrDeleteResponse, error) {
+	statusCode, msg, err := c.CenCidrDeleteWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CenCidrDeleteResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) CenCidrDeleteWithContext(ctx context.Context, request *CenCidrDeleteRequest) string {
 	if request == nil {
 		request = NewCenCidrDeleteRequest()
@@ -880,3 +1696,20 @@ func (c *Client) CenCidrDeleteWithContext(ctx context.Context, request *CenCidrD
 	}
 	return msg
 }
+
+func (c *Client) CenCidrDeleteWithContextV2(ctx context.Context, request *CenCidrDeleteRequest) (int, string, error) {
+	if request == nil {
+		request = NewCenCidrDeleteRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCenCidrDeleteResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+
+

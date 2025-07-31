@@ -2,7 +2,6 @@ package v20250220
 
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -14,17 +13,6 @@ type ListInstanceSupportBillTypesRequest struct {
 func (r *ListInstanceSupportBillTypesRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *ListInstanceSupportBillTypesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ListInstanceSupportBillTypesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ListInstanceSupportBillTypesResponse struct {
@@ -63,17 +51,6 @@ func (r *AddTrialToBuyTaskRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *AddTrialToBuyTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "AddTrialToBuyTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type AddTrialToBuyTaskResponse struct {
 	*ksyunhttp.BaseResponse
 	Error struct {
@@ -101,17 +78,6 @@ type DeleteTrialToBuyTaskRequest struct {
 func (r *DeleteTrialToBuyTaskRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeleteTrialToBuyTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteTrialToBuyTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteTrialToBuyTaskResponse struct {
@@ -143,17 +109,6 @@ type CreateTrialToBuyNowRequest struct {
 func (r *CreateTrialToBuyNowRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CreateTrialToBuyNowRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateTrialToBuyNowRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateTrialToBuyNowResponse struct {

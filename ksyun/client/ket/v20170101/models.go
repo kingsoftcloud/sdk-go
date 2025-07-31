@@ -2,7 +2,6 @@ package v20170101
 
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -24,17 +23,6 @@ type PresetRequest struct {
 func (r *PresetRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *PresetRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "PresetRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type PresetResponse struct {
@@ -66,17 +54,6 @@ func (r *UpdatePresetRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *UpdatePresetRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "UpdatePresetRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type UpdatePresetResponse struct {
 	*ksyunhttp.BaseResponse
 	UpdatePresetResponse *string `json:"UpdatePresetResponse" name:"UpdatePresetResponse"`
@@ -103,17 +80,6 @@ func (r *DelPresetRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DelPresetRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DelPresetRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DelPresetResponse struct {
 	*ksyunhttp.BaseResponse
 	DelPresetResponse *string `json:"DelPresetResponse" name:"DelPresetResponse"`
@@ -137,17 +103,6 @@ type GetPresetListRequest struct {
 func (r *GetPresetListRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *GetPresetListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetPresetListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetPresetListResponse struct {
@@ -176,17 +131,6 @@ func (r *GetPresetDetailRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *GetPresetDetailRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetPresetDetailRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetPresetDetailResponse struct {
 	*ksyunhttp.BaseResponse
 	GetPresetDetailResponse *string `json:"GetPresetDetailResponse" name:"GetPresetDetailResponse"`
@@ -211,17 +155,6 @@ type GetStreamTranListRequest struct {
 func (r *GetStreamTranListRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *GetStreamTranListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "GetStreamTranListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type GetStreamTranListResponse struct {
@@ -256,17 +189,6 @@ func (r *StartLoopRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *StartLoopRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "StartLoopRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type StartLoopResponse struct {
 	*ksyunhttp.BaseResponse
 	ErrNum *int    `json:"ErrNum" name:"ErrNum"`
@@ -296,17 +218,6 @@ type StopLoopRequest struct {
 func (r *StopLoopRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *StopLoopRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "StopLoopRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type StopLoopResponse struct {

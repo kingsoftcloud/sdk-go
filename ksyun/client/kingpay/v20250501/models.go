@@ -1,7 +1,6 @@
 package v20250501
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -16,27 +15,16 @@ func (r *QueryCashWalletActionRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *QueryCashWalletActionRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "QueryCashWalletActionRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type QueryCashWalletActionResponse struct {
 	*ksyunhttp.BaseResponse
 	Status    *int    `json:"status" name:"status"`
 	RequestId *string `json:"request_id" name:"request_id"`
 	Data      struct {
-		CustomerId   *int    `json:"CustomerId" name:"CustomerId"`
+		CustomerId *int    `json:"CustomerId" name:"CustomerId"`
 		AvailableAmount *string `json:"AvailableAmount" name:"AvailableAmount"`
 		RewardAmount *string `json:"RewardAmount" name:"RewardAmount"`
 		FrozenAmount *string `json:"FrozenAmount" name:"FrozenAmount"`
-		Currency     *string `json:"Currency" name:"Currency"`
+		Currency   *string `json:"Currency" name:"Currency"`
 	} `json:"Data"`
 }
 

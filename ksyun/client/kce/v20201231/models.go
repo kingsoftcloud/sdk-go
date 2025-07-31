@@ -2,7 +2,6 @@ package v20201231
 
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -30,18 +29,24 @@ type CreateClusterInstanceForNodeNodeConfigAdvancedSettingTaints struct {
 	Value  *string `json:"Value,omitempty" name:"Value"`
 	Effect *string `json:"Effect,omitempty" name:"Effect"`
 }
+type CreateClusterInstanceForNodeNodeConfigAdvancedSettingMultiDataDisk struct {
+	AutoFormatAndMount *bool   `json:"AutoFormatAndMount,omitempty" name:"AutoFormatAndMount"`
+	FileSystem         *string `json:"FileSystem,omitempty" name:"FileSystem"`
+	MountTarget        *string `json:"MountTarget,omitempty" name:"MountTarget"`
+}
 type CreateClusterInstanceForNodeNodeConfigAdvancedSetting struct {
-	DataDisk             *CreateClusterInstanceForNodeNodeConfigAdvancedSettingDataDisk `json:"DataDisk,omitempty" name:"DataDisk"`
-	ContainerRuntime     *string                                                        `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
-	ContainerPath        *string                                                        `json:"ContainerPath,omitempty" name:"ContainerPath"`
-	UserScript           *string                                                        `json:"UserScript,omitempty" name:"UserScript"`
-	PreUserScript        *string                                                        `json:"PreUserScript,omitempty" name:"PreUserScript"`
-	Schedulable          *bool                                                          `json:"Schedulable,omitempty" name:"Schedulable"`
-	Label                []*CreateClusterInstanceForNodeNodeConfigAdvancedSettingLabel  `json:"Label,omitempty" name:"Label"`
-	ExtraArg             *CreateClusterInstanceForNodeNodeConfigAdvancedSettingExtraArg `json:"ExtraArg,omitempty" name:"ExtraArg"`
-	ContainerLogMaxSize  *int                                                           `json:"ContainerLogMaxSize,omitempty" name:"ContainerLogMaxSize"`
-	ContainerLogMaxFiles *int                                                           `json:"ContainerLogMaxFiles,omitempty" name:"ContainerLogMaxFiles"`
-	Taints               []*CreateClusterInstanceForNodeNodeConfigAdvancedSettingTaints `json:"Taints,omitempty" name:"Taints"`
+	DataDisk             *CreateClusterInstanceForNodeNodeConfigAdvancedSettingDataDisk        `json:"DataDisk,omitempty" name:"DataDisk"`
+	ContainerRuntime     *string                                                               `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
+	ContainerPath        *string                                                               `json:"ContainerPath,omitempty" name:"ContainerPath"`
+	UserScript           *string                                                               `json:"UserScript,omitempty" name:"UserScript"`
+	PreUserScript        *string                                                               `json:"PreUserScript,omitempty" name:"PreUserScript"`
+	Schedulable          *bool                                                                 `json:"Schedulable,omitempty" name:"Schedulable"`
+	Label                []*CreateClusterInstanceForNodeNodeConfigAdvancedSettingLabel         `json:"Label,omitempty" name:"Label"`
+	ExtraArg             *CreateClusterInstanceForNodeNodeConfigAdvancedSettingExtraArg        `json:"ExtraArg,omitempty" name:"ExtraArg"`
+	ContainerLogMaxSize  *int                                                                  `json:"ContainerLogMaxSize,omitempty" name:"ContainerLogMaxSize"`
+	ContainerLogMaxFiles *int                                                                  `json:"ContainerLogMaxFiles,omitempty" name:"ContainerLogMaxFiles"`
+	Taints               []*CreateClusterInstanceForNodeNodeConfigAdvancedSettingTaints        `json:"Taints,omitempty" name:"Taints"`
+	MultiDataDisk        []*CreateClusterInstanceForNodeNodeConfigAdvancedSettingMultiDataDisk `json:"MultiDataDisk,omitempty" name:"MultiDataDisk"`
 }
 type CreateClusterInstanceForNodeNodeConfig struct {
 	Para            *string                                                `json:"Para,omitempty" name:"Para"`
@@ -124,17 +129,6 @@ type CreateClusterRequest struct {
 func (r *CreateClusterRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *CreateClusterRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type CreateClusterResponse struct {

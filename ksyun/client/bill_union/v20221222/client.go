@@ -1,5 +1,4 @@
 package v20221222
-
 import (
 	"context"
 	"fmt"
@@ -41,6 +40,23 @@ func (c *Client) QueryInstanceConsume(request *QueryInstanceConsumeRequest) stri
 	return c.QueryInstanceConsumeWithContext(context.Background(), request)
 }
 
+func (c *Client) QueryInstanceConsumeSend(request *QueryInstanceConsumeRequest) (*QueryInstanceConsumeResponse, error) {
+	statusCode, msg, err := c.QueryInstanceConsumeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct QueryInstanceConsumeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) QueryInstanceConsumeWithContext(ctx context.Context, request *QueryInstanceConsumeRequest) string {
 	if request == nil {
 		request = NewQueryInstanceConsumeRequest()
@@ -54,6 +70,21 @@ func (c *Client) QueryInstanceConsumeWithContext(ctx context.Context, request *Q
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) QueryInstanceConsumeWithContextV2(ctx context.Context, request *QueryInstanceConsumeRequest) (int, string, error) {
+	if request == nil {
+		request = NewQueryInstanceConsumeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewQueryInstanceConsumeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewQueryProjectConsumeRequest() (request *QueryProjectConsumeRequest) {
 	request = &QueryProjectConsumeRequest{
@@ -74,6 +105,23 @@ func (c *Client) QueryProjectConsume(request *QueryProjectConsumeRequest) string
 	return c.QueryProjectConsumeWithContext(context.Background(), request)
 }
 
+func (c *Client) QueryProjectConsumeSend(request *QueryProjectConsumeRequest) (*QueryProjectConsumeResponse, error) {
+	statusCode, msg, err := c.QueryProjectConsumeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct QueryProjectConsumeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) QueryProjectConsumeWithContext(ctx context.Context, request *QueryProjectConsumeRequest) string {
 	if request == nil {
 		request = NewQueryProjectConsumeRequest()
@@ -87,6 +135,21 @@ func (c *Client) QueryProjectConsumeWithContext(ctx context.Context, request *Qu
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) QueryProjectConsumeWithContextV2(ctx context.Context, request *QueryProjectConsumeRequest) (int, string, error) {
+	if request == nil {
+		request = NewQueryProjectConsumeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewQueryProjectConsumeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewQueryProductConsumeRequest() (request *QueryProductConsumeRequest) {
 	request = &QueryProductConsumeRequest{
@@ -107,6 +170,23 @@ func (c *Client) QueryProductConsume(request *QueryProductConsumeRequest) string
 	return c.QueryProductConsumeWithContext(context.Background(), request)
 }
 
+func (c *Client) QueryProductConsumeSend(request *QueryProductConsumeRequest) (*QueryProductConsumeResponse, error) {
+	statusCode, msg, err := c.QueryProductConsumeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct QueryProductConsumeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) QueryProductConsumeWithContext(ctx context.Context, request *QueryProductConsumeRequest) string {
 	if request == nil {
 		request = NewQueryProductConsumeRequest()
@@ -120,6 +200,21 @@ func (c *Client) QueryProductConsumeWithContext(ctx context.Context, request *Qu
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) QueryProductConsumeWithContextV2(ctx context.Context, request *QueryProductConsumeRequest) (int, string, error) {
+	if request == nil {
+		request = NewQueryProductConsumeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewQueryProductConsumeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewQueryFinanceUnitConsumeRequest() (request *QueryFinanceUnitConsumeRequest) {
 	request = &QueryFinanceUnitConsumeRequest{
@@ -140,6 +235,23 @@ func (c *Client) QueryFinanceUnitConsume(request *QueryFinanceUnitConsumeRequest
 	return c.QueryFinanceUnitConsumeWithContext(context.Background(), request)
 }
 
+func (c *Client) QueryFinanceUnitConsumeSend(request *QueryFinanceUnitConsumeRequest) (*QueryFinanceUnitConsumeResponse, error) {
+	statusCode, msg, err := c.QueryFinanceUnitConsumeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct QueryFinanceUnitConsumeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) QueryFinanceUnitConsumeWithContext(ctx context.Context, request *QueryFinanceUnitConsumeRequest) string {
 	if request == nil {
 		request = NewQueryFinanceUnitConsumeRequest()
@@ -153,6 +265,21 @@ func (c *Client) QueryFinanceUnitConsumeWithContext(ctx context.Context, request
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) QueryFinanceUnitConsumeWithContextV2(ctx context.Context, request *QueryFinanceUnitConsumeRequest) (int, string, error) {
+	if request == nil {
+		request = NewQueryFinanceUnitConsumeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewQueryFinanceUnitConsumeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewQueryFinanceUnitConsumeOfMonthRequest() (request *QueryFinanceUnitConsumeOfMonthRequest) {
 	request = &QueryFinanceUnitConsumeOfMonthRequest{
@@ -173,6 +300,23 @@ func (c *Client) QueryFinanceUnitConsumeOfMonth(request *QueryFinanceUnitConsume
 	return c.QueryFinanceUnitConsumeOfMonthWithContext(context.Background(), request)
 }
 
+func (c *Client) QueryFinanceUnitConsumeOfMonthSend(request *QueryFinanceUnitConsumeOfMonthRequest) (*QueryFinanceUnitConsumeOfMonthResponse, error) {
+	statusCode, msg, err := c.QueryFinanceUnitConsumeOfMonthWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct QueryFinanceUnitConsumeOfMonthResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) QueryFinanceUnitConsumeOfMonthWithContext(ctx context.Context, request *QueryFinanceUnitConsumeOfMonthRequest) string {
 	if request == nil {
 		request = NewQueryFinanceUnitConsumeOfMonthRequest()
@@ -186,6 +330,21 @@ func (c *Client) QueryFinanceUnitConsumeOfMonthWithContext(ctx context.Context, 
 		return fmt.Sprintf("%+v\n", err)
 	}
 	return msg
+}
+
+func (c *Client) QueryFinanceUnitConsumeOfMonthWithContextV2(ctx context.Context, request *QueryFinanceUnitConsumeOfMonthRequest) (int, string, error) {
+	if request == nil {
+		request = NewQueryFinanceUnitConsumeOfMonthRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewQueryFinanceUnitConsumeOfMonthResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
 }
 func NewQueryUserConsumeRequest() (request *QueryUserConsumeRequest) {
 	request = &QueryUserConsumeRequest{
@@ -206,6 +365,23 @@ func (c *Client) QueryUserConsume(request *QueryUserConsumeRequest) string {
 	return c.QueryUserConsumeWithContext(context.Background(), request)
 }
 
+func (c *Client) QueryUserConsumeSend(request *QueryUserConsumeRequest) (*QueryUserConsumeResponse, error) {
+	statusCode, msg, err := c.QueryUserConsumeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct QueryUserConsumeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
 func (c *Client) QueryUserConsumeWithContext(ctx context.Context, request *QueryUserConsumeRequest) string {
 	if request == nil {
 		request = NewQueryUserConsumeRequest()
@@ -220,3 +396,20 @@ func (c *Client) QueryUserConsumeWithContext(ctx context.Context, request *Query
 	}
 	return msg
 }
+
+func (c *Client) QueryUserConsumeWithContextV2(ctx context.Context, request *QueryUserConsumeRequest) (int, string, error) {
+	if request == nil {
+		request = NewQueryUserConsumeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewQueryUserConsumeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+
+

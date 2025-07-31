@@ -1,11 +1,8 @@
 package v20160304
-
 import (
 	"encoding/json"
-	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 type DescribeCenGrantsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
@@ -39,6 +36,7 @@ type DescribeInterRegionsFilter struct {
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
+
 type CreateCenRequest struct {
 	*ksyunhttp.BaseRequest
 	CenName     *string `json:"CenName,omitempty" name:"CenName"`
@@ -50,24 +48,13 @@ func (r *CreateCenRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateCenRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateCenRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateCenResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Cen       struct {
-		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
-		CenId       *string `json:"CenId" name:"CenId"`
-		CenName     *string `json:"CenName" name:"CenName"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		CenId      *string `json:"CenId" name:"CenId"`
+		CenName    *string `json:"CenName" name:"CenName"`
 		Description *string `json:"Description" name:"Description"`
 	} `json:"Cen"`
 }
@@ -81,6 +68,7 @@ func (r *CreateCenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyCenRequest struct {
 	*ksyunhttp.BaseRequest
 	CenId       *string `json:"CenId,omitempty" name:"CenId"`
@@ -93,24 +81,13 @@ func (r *ModifyCenRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ModifyCenRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyCenRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyCenResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Cen       struct {
-		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
-		CenId       *string `json:"CenId" name:"CenId"`
-		CenName     *string `json:"CenName" name:"CenName"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		CenId      *string `json:"CenId" name:"CenId"`
+		CenName    *string `json:"CenName" name:"CenName"`
 		Description *string `json:"Description" name:"Description"`
 	} `json:"Cen"`
 }
@@ -124,6 +101,7 @@ func (r *ModifyCenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteCenRequest struct {
 	*ksyunhttp.BaseRequest
 	CenId *string `json:"CenId,omitempty" name:"CenId"`
@@ -132,17 +110,6 @@ type DeleteCenRequest struct {
 func (r *DeleteCenRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeleteCenRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteCenRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCenResponse struct {
@@ -160,6 +127,7 @@ func (r *DeleteCenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeCensRequest struct {
 	*ksyunhttp.BaseRequest
 	CenId      []*string `json:"CenId,omitempty" name:"CenId"`
@@ -172,25 +140,14 @@ func (r *DescribeCensRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeCensRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeCensRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeCensResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	NextToken *string `json:"NextToken" name:"NextToken"`
 	CenSet    []struct {
-		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
-		CenId       *string `json:"CenId" name:"CenId"`
-		CenName     *string `json:"CenName" name:"CenName"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		CenId      *string `json:"CenId" name:"CenId"`
+		CenName    *string `json:"CenName" name:"CenName"`
 		Description *string `json:"Description" name:"Description"`
 	} `json:"CenSet"`
 }
@@ -204,6 +161,7 @@ func (r *DescribeCensResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteCenGrantRequest struct {
 	*ksyunhttp.BaseRequest
 	CenGrantId *string `json:"CenGrantId,omitempty" name:"CenGrantId"`
@@ -212,17 +170,6 @@ type DeleteCenGrantRequest struct {
 func (r *DeleteCenGrantRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeleteCenGrantRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteCenGrantRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCenGrantResponse struct {
@@ -240,6 +187,7 @@ func (r *DeleteCenGrantResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeCenGrantsRequest struct {
 	*ksyunhttp.BaseRequest
 	CenGrantId []*string                  `json:"CenGrantId,omitempty" name:"CenGrantId"`
@@ -253,28 +201,17 @@ func (r *DescribeCenGrantsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeCenGrantsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeCenGrantsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeCenGrantsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	NextToken   *string `json:"NextToken" name:"NextToken"`
 	CenGrantSet []struct {
-		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
-		CenGrantId        *string `json:"CenGrantId" name:"CenGrantId"`
-		CenId             *string `json:"CenId" name:"CenId"`
+		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		CenGrantId   *string `json:"CenGrantId" name:"CenGrantId"`
+		CenId        *string `json:"CenId" name:"CenId"`
 		NetworkInstanceId *string `json:"NetworkInstanceId" name:"NetworkInstanceId"`
-		InstanceType      *string `json:"InstanceType" name:"InstanceType"`
-		CenAccountId      *string `json:"CenAccountId" name:"CenAccountId"`
+		InstanceType *string `json:"InstanceType" name:"InstanceType"`
+		CenAccountId *string `json:"CenAccountId" name:"CenAccountId"`
 	} `json:"CenGrantSet"`
 }
 
@@ -286,6 +223,7 @@ func (r *DescribeCenGrantsResponse) ToJsonString() string {
 func (r *DescribeCenGrantsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreateCenBandWidthPackageRequest struct {
 	*ksyunhttp.BaseRequest
@@ -304,29 +242,18 @@ func (r *CreateCenBandWidthPackageRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateCenBandWidthPackageRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateCenBandWidthPackageRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateCenBandWidthPackageResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId           *string `json:"RequestId" name:"RequestId"`
 	CenBandWidthPackage struct {
-		CreateTime              *string `json:"CreateTime" name:"CreateTime"`
-		CenBandWidthPackageId   *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
+		CreateTime            *string `json:"CreateTime" name:"CreateTime"`
+		CenBandWidthPackageId *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
 		CenBandWidthPackageName *string `json:"CenBandWidthPackageName" name:"CenBandWidthPackageName"`
-		CenId                   *string `json:"CenId" name:"CenId"`
-		ProjectId               *string `json:"ProjectId" name:"ProjectId"`
-		PackageBandWidth        *int    `json:"PackageBandWidth" name:"PackageBandWidth"`
-		LocalAreaId             *string `json:"LocalAreaId" name:"LocalAreaId"`
-		RemoteAreaId            *string `json:"RemoteAreaId" name:"RemoteAreaId"`
+		CenId                 *string `json:"CenId" name:"CenId"`
+		ProjectId             *string `json:"ProjectId" name:"ProjectId"`
+		PackageBandWidth      *int    `json:"PackageBandWidth" name:"PackageBandWidth"`
+		LocalAreaId           *string `json:"LocalAreaId" name:"LocalAreaId"`
+		RemoteAreaId          *string `json:"RemoteAreaId" name:"RemoteAreaId"`
 	} `json:"CenBandWidthPackage"`
 }
 
@@ -338,6 +265,7 @@ func (r *CreateCenBandWidthPackageResponse) ToJsonString() string {
 func (r *CreateCenBandWidthPackageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ModifyCenBandWidthPackageRequest struct {
 	*ksyunhttp.BaseRequest
@@ -351,29 +279,18 @@ func (r *ModifyCenBandWidthPackageRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ModifyCenBandWidthPackageRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyCenBandWidthPackageRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyCenBandWidthPackageResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId           *string `json:"RequestId" name:"RequestId"`
 	CenBandWidthPackage struct {
-		CreateTime              *string `json:"CreateTime" name:"CreateTime"`
-		CenBandWidthPackageId   *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
+		CreateTime            *string `json:"CreateTime" name:"CreateTime"`
+		CenBandWidthPackageId *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
 		CenBandWidthPackageName *string `json:"CenBandWidthPackageName" name:"CenBandWidthPackageName"`
-		CenId                   *string `json:"CenId" name:"CenId"`
-		ProjectId               *string `json:"ProjectId" name:"ProjectId"`
-		PackageBandWidth        *int    `json:"PackageBandWidth" name:"PackageBandWidth"`
-		LocalAreaId             *string `json:"LocalAreaId" name:"LocalAreaId"`
-		RemoteAreaId            *string `json:"RemoteAreaId" name:"RemoteAreaId"`
+		CenId                 *string `json:"CenId" name:"CenId"`
+		ProjectId             *string `json:"ProjectId" name:"ProjectId"`
+		PackageBandWidth      *int    `json:"PackageBandWidth" name:"PackageBandWidth"`
+		LocalAreaId           *string `json:"LocalAreaId" name:"LocalAreaId"`
+		RemoteAreaId          *string `json:"RemoteAreaId" name:"RemoteAreaId"`
 	} `json:"CenBandWidthPackage"`
 }
 
@@ -386,6 +303,7 @@ func (r *ModifyCenBandWidthPackageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteCenBandWidthPackageRequest struct {
 	*ksyunhttp.BaseRequest
 	CenBandWidthPackageId *string `json:"CenBandWidthPackageId,omitempty" name:"CenBandWidthPackageId"`
@@ -394,17 +312,6 @@ type DeleteCenBandWidthPackageRequest struct {
 func (r *DeleteCenBandWidthPackageRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeleteCenBandWidthPackageRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteCenBandWidthPackageRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCenBandWidthPackageResponse struct {
@@ -422,6 +329,7 @@ func (r *DeleteCenBandWidthPackageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type AttachCenBandWidthPackageRequest struct {
 	*ksyunhttp.BaseRequest
 	CenBandWidthPackageId *string `json:"CenBandWidthPackageId,omitempty" name:"CenBandWidthPackageId"`
@@ -431,17 +339,6 @@ type AttachCenBandWidthPackageRequest struct {
 func (r *AttachCenBandWidthPackageRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *AttachCenBandWidthPackageRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "AttachCenBandWidthPackageRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type AttachCenBandWidthPackageResponse struct {
@@ -459,6 +356,7 @@ func (r *AttachCenBandWidthPackageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DetachCenBandWidthPackageRequest struct {
 	*ksyunhttp.BaseRequest
 	CenBandWidthPackageId *string `json:"CenBandWidthPackageId,omitempty" name:"CenBandWidthPackageId"`
@@ -468,17 +366,6 @@ type DetachCenBandWidthPackageRequest struct {
 func (r *DetachCenBandWidthPackageRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DetachCenBandWidthPackageRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DetachCenBandWidthPackageRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetachCenBandWidthPackageResponse struct {
@@ -496,6 +383,7 @@ func (r *DetachCenBandWidthPackageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeCenBandWidthPackagesRequest struct {
 	*ksyunhttp.BaseRequest
 	ProjectId             []*string                             `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -512,34 +400,23 @@ func (r *DescribeCenBandWidthPackagesRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeCenBandWidthPackagesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeCenBandWidthPackagesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeCenBandWidthPackagesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId              *string `json:"RequestId" name:"RequestId"`
 	NextToken              *string `json:"NextToken" name:"NextToken"`
 	CenBandWidthPackageSet []struct {
-		CreateTime              *string `json:"CreateTime" name:"CreateTime"`
-		CenBandWidthPackageId   *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
+		CreateTime            *string `json:"CreateTime" name:"CreateTime"`
+		CenBandWidthPackageId *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
 		CenBandWidthPackageName *string `json:"CenBandWidthPackageName" name:"CenBandWidthPackageName"`
-		CenId                   *string `json:"CenId" name:"CenId"`
-		ProjectId               *string `json:"ProjectId" name:"ProjectId"`
-		PackageBandWidth        *int    `json:"PackageBandWidth" name:"PackageBandWidth"`
-		LocalAreaId             *string `json:"LocalAreaId" name:"LocalAreaId"`
-		RemoteAreaId            *string `json:"RemoteAreaId" name:"RemoteAreaId"`
-		BillType                *int    `json:"BillType" name:"BillType"`
-		ProductWhat             *int    `json:"ProductWhat" name:"ProductWhat"`
-		ServiceEndTime          *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		TagSet                  []struct {
+		CenId                 *string `json:"CenId" name:"CenId"`
+		ProjectId             *string `json:"ProjectId" name:"ProjectId"`
+		PackageBandWidth      *int    `json:"PackageBandWidth" name:"PackageBandWidth"`
+		LocalAreaId           *string `json:"LocalAreaId" name:"LocalAreaId"`
+		RemoteAreaId          *string `json:"RemoteAreaId" name:"RemoteAreaId"`
+		BillType              *int    `json:"BillType" name:"BillType"`
+		ProductWhat           *int    `json:"ProductWhat" name:"ProductWhat"`
+		ServiceEndTime        *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		TagSet                []struct {
 			TagId        *int    `json:"TagId" name:"TagId"`
 			ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
 			TagKey       *string `json:"TagKey" name:"TagKey"`
@@ -557,6 +434,7 @@ func (r *DescribeCenBandWidthPackagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type CreateCenRegionBandwidthRequest struct {
 	*ksyunhttp.BaseRequest
 	LocalRegion           *string `json:"LocalRegion,omitempty" name:"LocalRegion"`
@@ -570,27 +448,16 @@ func (r *CreateCenRegionBandwidthRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateCenRegionBandwidthRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateCenRegionBandwidthRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateCenRegionBandwidthResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId          *string `json:"RequestId" name:"RequestId"`
 	CenRegionBandwidth struct {
 		CenBandWidthPackageId *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
-		CenId                 *string `json:"CenId" name:"CenId"`
-		LocalRegion           *string `json:"LocalRegion" name:"LocalRegion"`
-		RemoteRegion          *string `json:"RemoteRegion" name:"RemoteRegion"`
-		InterBandWidth        *int    `json:"InterBandWidth" name:"InterBandWidth"`
-		CenRegionBandwidthId  *string `json:"CenRegionBandwidthId" name:"CenRegionBandwidthId"`
+		CenId                *string `json:"CenId" name:"CenId"`
+		LocalRegion          *string `json:"LocalRegion" name:"LocalRegion"`
+		RemoteRegion         *string `json:"RemoteRegion" name:"RemoteRegion"`
+		InterBandWidth       *int    `json:"InterBandWidth" name:"InterBandWidth"`
+		CenRegionBandwidthId *string `json:"CenRegionBandwidthId" name:"CenRegionBandwidthId"`
 	} `json:"CenRegionBandwidth"`
 }
 
@@ -603,6 +470,7 @@ func (r *CreateCenRegionBandwidthResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteCenRegionBandwidthRequest struct {
 	*ksyunhttp.BaseRequest
 	CenRegionBandwidthId *string `json:"CenRegionBandwidthId,omitempty" name:"CenRegionBandwidthId"`
@@ -611,17 +479,6 @@ type DeleteCenRegionBandwidthRequest struct {
 func (r *DeleteCenRegionBandwidthRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DeleteCenRegionBandwidthRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DeleteCenRegionBandwidthRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeleteCenRegionBandwidthResponse struct {
@@ -639,6 +496,7 @@ func (r *DeleteCenRegionBandwidthResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyCenRegionBandwidthRequest struct {
 	*ksyunhttp.BaseRequest
 	CenRegionBandwidthId *string `json:"CenRegionBandwidthId,omitempty" name:"CenRegionBandwidthId"`
@@ -650,27 +508,16 @@ func (r *ModifyCenRegionBandwidthRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *ModifyCenRegionBandwidthRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "ModifyCenRegionBandwidthRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ModifyCenRegionBandwidthResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId          *string `json:"RequestId" name:"RequestId"`
 	CenRegionBandwidth struct {
 		CenBandWidthPackageId *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
-		CenId                 *string `json:"CenId" name:"CenId"`
-		LocalRegion           *string `json:"LocalRegion" name:"LocalRegion"`
-		RemoteRegion          *string `json:"RemoteRegion" name:"RemoteRegion"`
-		InterBandWidth        *int    `json:"InterBandWidth" name:"InterBandWidth"`
-		CenRegionBandwidthId  *string `json:"CenRegionBandwidthId" name:"CenRegionBandwidthId"`
+		CenId                *string `json:"CenId" name:"CenId"`
+		LocalRegion          *string `json:"LocalRegion" name:"LocalRegion"`
+		RemoteRegion         *string `json:"RemoteRegion" name:"RemoteRegion"`
+		InterBandWidth       *int    `json:"InterBandWidth" name:"InterBandWidth"`
+		CenRegionBandwidthId *string `json:"CenRegionBandwidthId" name:"CenRegionBandwidthId"`
 	} `json:"CenRegionBandwidth"`
 }
 
@@ -682,6 +529,7 @@ func (r *ModifyCenRegionBandwidthResponse) ToJsonString() string {
 func (r *ModifyCenRegionBandwidthResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeCenRegionBandwidthsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -696,28 +544,17 @@ func (r *DescribeCenRegionBandwidthsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeCenRegionBandwidthsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeCenRegionBandwidthsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeCenRegionBandwidthsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId             *string `json:"RequestId" name:"RequestId"`
 	NextToken             *string `json:"NextToken" name:"NextToken"`
 	CenRegionBandwidthSet []struct {
 		CenBandWidthPackageId *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
-		CenId                 *string `json:"CenId" name:"CenId"`
-		LocalRegion           *string `json:"LocalRegion" name:"LocalRegion"`
-		RemoteRegion          *string `json:"RemoteRegion" name:"RemoteRegion"`
-		InterBandWidth        *int    `json:"InterBandWidth" name:"InterBandWidth"`
-		CenRegionBandwidthId  *string `json:"CenRegionBandwidthId" name:"CenRegionBandwidthId"`
+		CenId                *string `json:"CenId" name:"CenId"`
+		LocalRegion          *string `json:"LocalRegion" name:"LocalRegion"`
+		RemoteRegion         *string `json:"RemoteRegion" name:"RemoteRegion"`
+		InterBandWidth       *int    `json:"InterBandWidth" name:"InterBandWidth"`
+		CenRegionBandwidthId *string `json:"CenRegionBandwidthId" name:"CenRegionBandwidthId"`
 	} `json:"CenRegionBandwidthSet"`
 }
 
@@ -729,6 +566,7 @@ func (r *DescribeCenRegionBandwidthsResponse) ToJsonString() string {
 func (r *DescribeCenRegionBandwidthsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeCenRoutesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -743,33 +581,22 @@ func (r *DescribeCenRoutesRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeCenRoutesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeCenRoutesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeCenRoutesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	NextToken   *string `json:"NextToken" name:"NextToken"`
 	CenRouteSet []struct {
-		CreateTime           *string `json:"CreateTime" name:"CreateTime"`
-		CenRouteId           *string `json:"CenRouteId" name:"CenRouteId"`
-		CenId                *string `json:"CenId" name:"CenId"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		CenRouteId        *string `json:"CenRouteId" name:"CenRouteId"`
+		CenId             *string `json:"CenId" name:"CenId"`
 		DestinationCidrBlock *string `json:"DestinationCidrBlock" name:"DestinationCidrBlock"`
-		NetworkInstanceId    *string `json:"NetworkInstanceId" name:"NetworkInstanceId"`
-		InstanceType         *string `json:"InstanceType" name:"InstanceType"`
-		InstanceRegion       *string `json:"InstanceRegion" name:"InstanceRegion"`
-		InstanceAccountId    *string `json:"InstanceAccountId" name:"InstanceAccountId"`
-		NetworkRouteId       *string `json:"NetworkRouteId" name:"NetworkRouteId"`
-		SelfRouteId          *string `json:"SelfRouteId" name:"SelfRouteId"`
-		InstanceRouteType    *string `json:"InstanceRouteType" name:"InstanceRouteType"`
+		NetworkInstanceId *string `json:"NetworkInstanceId" name:"NetworkInstanceId"`
+		InstanceType      *string `json:"InstanceType" name:"InstanceType"`
+		InstanceRegion    *string `json:"InstanceRegion" name:"InstanceRegion"`
+		InstanceAccountId *string `json:"InstanceAccountId" name:"InstanceAccountId"`
+		NetworkRouteId    *string `json:"NetworkRouteId" name:"NetworkRouteId"`
+		SelfRouteId       *string `json:"SelfRouteId" name:"SelfRouteId"`
+		InstanceRouteType *string `json:"InstanceRouteType" name:"InstanceRouteType"`
 	} `json:"CenRouteSet"`
 }
 
@@ -782,6 +609,7 @@ func (r *DescribeCenRoutesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeCenBandWidthPackageUsageRequest struct {
 	*ksyunhttp.BaseRequest
 	CenBandWidthPackageId *string `json:"CenBandWidthPackageId,omitempty" name:"CenBandWidthPackageId"`
@@ -792,22 +620,11 @@ func (r *DescribeCenBandWidthPackageUsageRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeCenBandWidthPackageUsageRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeCenBandWidthPackageUsageRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeCenBandWidthPackageUsageResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId                *string `json:"RequestId" name:"RequestId"`
 	CenBandWidthPackageUsage struct {
-		PackageUsage          *int    `json:"PackageUsage" name:"PackageUsage"`
+		PackageUsage *int `json:"PackageUsage" name:"PackageUsage"`
 		CenBandWidthPackageId *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
 	} `json:"CenBandWidthPackageUsage"`
 }
@@ -820,6 +637,7 @@ func (r *DescribeCenBandWidthPackageUsageResponse) ToJsonString() string {
 func (r *DescribeCenBandWidthPackageUsageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeNetworkInstancesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -834,28 +652,17 @@ func (r *DescribeNetworkInstancesRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeNetworkInstancesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeNetworkInstancesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeNetworkInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId          *string `json:"RequestId" name:"RequestId"`
 	NextToken          *string `json:"NextToken" name:"NextToken"`
 	NetworkInstanceSet []struct {
-		CenId             *string `json:"CenId" name:"CenId"`
+		CenId          *string `json:"CenId" name:"CenId"`
 		NetworkInstanceId *string `json:"NetworkInstanceId" name:"NetworkInstanceId"`
-		InstanceType      *string `json:"InstanceType" name:"InstanceType"`
-		InstanceRegion    *string `json:"InstanceRegion" name:"InstanceRegion"`
+		InstanceType   *string `json:"InstanceType" name:"InstanceType"`
+		InstanceRegion *string `json:"InstanceRegion" name:"InstanceRegion"`
 		InstanceAccountId *string `json:"InstanceAccountId" name:"InstanceAccountId"`
-		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"NetworkInstanceSet"`
 }
 
@@ -867,6 +674,7 @@ func (r *DescribeNetworkInstancesResponse) ToJsonString() string {
 func (r *DescribeNetworkInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreateCenGrantRequest struct {
 	*ksyunhttp.BaseRequest
@@ -881,27 +689,16 @@ func (r *CreateCenGrantRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CreateCenGrantRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CreateCenGrantRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CreateCenGrantResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	CenGrant  struct {
-		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
-		CenGrantId        *string `json:"CenGrantId" name:"CenGrantId"`
-		CenId             *string `json:"CenId" name:"CenId"`
+		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		CenGrantId   *string `json:"CenGrantId" name:"CenGrantId"`
+		CenId        *string `json:"CenId" name:"CenId"`
 		NetworkInstanceId *string `json:"NetworkInstanceId" name:"NetworkInstanceId"`
-		InstanceType      *string `json:"InstanceType" name:"InstanceType"`
-		CenAccountId      *string `json:"CenAccountId" name:"CenAccountId"`
+		InstanceType *string `json:"InstanceType" name:"InstanceType"`
+		CenAccountId *string `json:"CenAccountId" name:"CenAccountId"`
 	} `json:"CenGrant"`
 }
 
@@ -913,6 +710,7 @@ func (r *CreateCenGrantResponse) ToJsonString() string {
 func (r *CreateCenGrantResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeInterAreasRequest struct {
 	*ksyunhttp.BaseRequest
@@ -927,23 +725,12 @@ func (r *DescribeInterAreasRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeInterAreasRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeInterAreasRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeInterAreasResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	NextToken    *string `json:"NextToken" name:"NextToken"`
 	InterAreaSet []struct {
-		InterAreaId   *string `json:"InterAreaId" name:"InterAreaId"`
+		InterAreaId *string `json:"InterAreaId" name:"InterAreaId"`
 		InterAreaName *string `json:"InterAreaName" name:"InterAreaName"`
 	} `json:"InterAreaSet"`
 }
@@ -956,6 +743,7 @@ func (r *DescribeInterAreasResponse) ToJsonString() string {
 func (r *DescribeInterAreasResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeInterRegionsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -970,24 +758,13 @@ func (r *DescribeInterRegionsRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *DescribeInterRegionsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DescribeInterRegionsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeInterRegionsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId      *string `json:"RequestId" name:"RequestId"`
 	NextToken      *string `json:"NextToken" name:"NextToken"`
 	InterRegionSet []struct {
-		InterAreaId     *string `json:"InterAreaId" name:"InterAreaId"`
-		InterRegionId   *string `json:"InterRegionId" name:"InterRegionId"`
+		InterAreaId   *string `json:"InterAreaId" name:"InterAreaId"`
+		InterRegionId *string `json:"InterRegionId" name:"InterRegionId"`
 		InterRegionName *string `json:"InterRegionName" name:"InterRegionName"`
 	} `json:"InterRegionSet"`
 }
@@ -1015,17 +792,6 @@ func (r *AttachNetworkInstanceRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *AttachNetworkInstanceRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "AttachNetworkInstanceRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type AttachNetworkInstanceResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -1050,17 +816,6 @@ type DetachNetworkInstanceRequest struct {
 func (r *DetachNetworkInstanceRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
-}
-
-func (r *DetachNetworkInstanceRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "DetachNetworkInstanceRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type DetachNetworkInstanceResponse struct {
@@ -1092,17 +847,6 @@ func (r *CenCidrPublishRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CenCidrPublishRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CenCidrPublishRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CenCidrPublishResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -1132,17 +876,6 @@ func (r *CenCidrDeleteRequest) ToJsonString() string {
 	return string(b)
 }
 
-func (r *CenCidrDeleteRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	if len(f) > 0 {
-		return errors.NewKsyunSDKError("ClientError.BuildRequestError", "CenCidrDeleteRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CenCidrDeleteResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -1157,3 +890,4 @@ func (r *CenCidrDeleteResponse) ToJsonString() string {
 func (r *CenCidrDeleteResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
