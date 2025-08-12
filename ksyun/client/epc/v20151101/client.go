@@ -1,4 +1,5 @@
 package v20151101
+
 import (
 	"context"
 	"fmt"
@@ -4521,7 +4522,7 @@ func NewCreateInspectHostResponse() (response *CreateInspectHostResponse) {
 	return
 }
 
-func (c *Client) CreateInspectHost(request *CreateInspectHostRequest) (string) {
+func (c *Client) CreateInspectHost(request *CreateInspectHostRequest) string {
 	return c.CreateInspectHostWithContext(context.Background(), request)
 }
 
@@ -4542,7 +4543,7 @@ func (c *Client) CreateInspectHostSend(request *CreateInspectHostRequest) (*Crea
 	return &respStruct, nil
 }
 
-func (c *Client) CreateInspectHostWithContext(ctx context.Context, request *CreateInspectHostRequest) (string) {
+func (c *Client) CreateInspectHostWithContext(ctx context.Context, request *CreateInspectHostRequest) string {
 	if request == nil {
 		request = NewCreateInspectHostRequest()
 	}
@@ -4586,7 +4587,7 @@ func NewDescribeInspectHostResultsResponse() (response *DescribeInspectHostResul
 	return
 }
 
-func (c *Client) DescribeInspectHostResults(request *DescribeInspectHostResultsRequest) (string) {
+func (c *Client) DescribeInspectHostResults(request *DescribeInspectHostResultsRequest) string {
 	return c.DescribeInspectHostResultsWithContext(context.Background(), request)
 }
 
@@ -4607,7 +4608,7 @@ func (c *Client) DescribeInspectHostResultsSend(request *DescribeInspectHostResu
 	return &respStruct, nil
 }
 
-func (c *Client) DescribeInspectHostResultsWithContext(ctx context.Context, request *DescribeInspectHostResultsRequest) (string) {
+func (c *Client) DescribeInspectHostResultsWithContext(ctx context.Context, request *DescribeInspectHostResultsRequest) string {
 	if request == nil {
 		request = NewDescribeInspectHostResultsRequest()
 	}
@@ -4651,7 +4652,7 @@ func NewDescribeXidDetailsResponse() (response *DescribeXidDetailsResponse) {
 	return
 }
 
-func (c *Client) DescribeXidDetails(request *DescribeXidDetailsRequest) (string) {
+func (c *Client) DescribeXidDetails(request *DescribeXidDetailsRequest) string {
 	return c.DescribeXidDetailsWithContext(context.Background(), request)
 }
 
@@ -4672,7 +4673,7 @@ func (c *Client) DescribeXidDetailsSend(request *DescribeXidDetailsRequest) (*De
 	return &respStruct, nil
 }
 
-func (c *Client) DescribeXidDetailsWithContext(ctx context.Context, request *DescribeXidDetailsRequest) (string) {
+func (c *Client) DescribeXidDetailsWithContext(ctx context.Context, request *DescribeXidDetailsRequest) string {
 	if request == nil {
 		request = NewDescribeXidDetailsRequest()
 	}
@@ -4716,7 +4717,7 @@ func NewDescribeSoImagesResponse() (response *DescribeSoImagesResponse) {
 	return
 }
 
-func (c *Client) DescribeSoImages(request *DescribeSoImagesRequest) (string) {
+func (c *Client) DescribeSoImages(request *DescribeSoImagesRequest) string {
 	return c.DescribeSoImagesWithContext(context.Background(), request)
 }
 
@@ -4737,7 +4738,7 @@ func (c *Client) DescribeSoImagesSend(request *DescribeSoImagesRequest) (*Descri
 	return &respStruct, nil
 }
 
-func (c *Client) DescribeSoImagesWithContext(ctx context.Context, request *DescribeSoImagesRequest) (string) {
+func (c *Client) DescribeSoImagesWithContext(ctx context.Context, request *DescribeSoImagesRequest) string {
 	if request == nil {
 		request = NewDescribeSoImagesRequest()
 	}
@@ -4781,7 +4782,7 @@ func NewRebootSoInstanceResponse() (response *RebootSoInstanceResponse) {
 	return
 }
 
-func (c *Client) RebootSoInstance(request *RebootSoInstanceRequest) (string) {
+func (c *Client) RebootSoInstance(request *RebootSoInstanceRequest) string {
 	return c.RebootSoInstanceWithContext(context.Background(), request)
 }
 
@@ -4802,7 +4803,7 @@ func (c *Client) RebootSoInstanceSend(request *RebootSoInstanceRequest) (*Reboot
 	return &respStruct, nil
 }
 
-func (c *Client) RebootSoInstanceWithContext(ctx context.Context, request *RebootSoInstanceRequest) (string) {
+func (c *Client) RebootSoInstanceWithContext(ctx context.Context, request *RebootSoInstanceRequest) string {
 	if request == nil {
 		request = NewRebootSoInstanceRequest()
 	}
@@ -4846,7 +4847,7 @@ func NewDeleteSoImagesResponse() (response *DeleteSoImagesResponse) {
 	return
 }
 
-func (c *Client) DeleteSoImages(request *DeleteSoImagesRequest) (string) {
+func (c *Client) DeleteSoImages(request *DeleteSoImagesRequest) string {
 	return c.DeleteSoImagesWithContext(context.Background(), request)
 }
 
@@ -4867,7 +4868,7 @@ func (c *Client) DeleteSoImagesSend(request *DeleteSoImagesRequest) (*DeleteSoIm
 	return &respStruct, nil
 }
 
-func (c *Client) DeleteSoImagesWithContext(ctx context.Context, request *DeleteSoImagesRequest) (string) {
+func (c *Client) DeleteSoImagesWithContext(ctx context.Context, request *DeleteSoImagesRequest) string {
 	if request == nil {
 		request = NewDeleteSoImagesRequest()
 	}
@@ -4911,7 +4912,7 @@ func NewDeleteSoVpcResponse() (response *DeleteSoVpcResponse) {
 	return
 }
 
-func (c *Client) DeleteSoVpc(request *DeleteSoVpcRequest) (string) {
+func (c *Client) DeleteSoVpc(request *DeleteSoVpcRequest) string {
 	return c.DeleteSoVpcWithContext(context.Background(), request)
 }
 
@@ -4932,7 +4933,7 @@ func (c *Client) DeleteSoVpcSend(request *DeleteSoVpcRequest) (*DeleteSoVpcRespo
 	return &respStruct, nil
 }
 
-func (c *Client) DeleteSoVpcWithContext(ctx context.Context, request *DeleteSoVpcRequest) (string) {
+func (c *Client) DeleteSoVpcWithContext(ctx context.Context, request *DeleteSoVpcRequest) string {
 	if request == nil {
 		request = NewDeleteSoVpcRequest()
 	}
@@ -4961,71 +4962,6 @@ func (c *Client) DeleteSoVpcWithContextV2(ctx context.Context, request *DeleteSo
 	}
 	return statusCode, msg, nil
 }
-func NewDescribeSoInstanceTypeRequest() (request *DescribeSoInstanceTypeRequest) {
-	request = &DescribeSoInstanceTypeRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("epc", APIVersion, "DescribeSoInstanceType")
-	return
-}
-
-func NewDescribeSoInstanceTypeResponse() (response *DescribeSoInstanceTypeResponse) {
-	response = &DescribeSoInstanceTypeResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) DescribeSoInstanceType(request *DescribeSoInstanceTypeRequest) (string) {
-	return c.DescribeSoInstanceTypeWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeSoInstanceTypeSend(request *DescribeSoInstanceTypeRequest) (*DescribeSoInstanceTypeResponse, error) {
-	statusCode, msg, err := c.DescribeSoInstanceTypeWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	var respStruct DescribeSoInstanceTypeResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) DescribeSoInstanceTypeWithContext(ctx context.Context, request *DescribeSoInstanceTypeRequest) (string) {
-	if request == nil {
-		request = NewDescribeSoInstanceTypeRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeSoInstanceTypeResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) DescribeSoInstanceTypeWithContextV2(ctx context.Context, request *DescribeSoInstanceTypeRequest) (int, string, error) {
-	if request == nil {
-		request = NewDescribeSoInstanceTypeRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeSoInstanceTypeResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}
 func NewDescribeSoAvailableResourceRequest() (request *DescribeSoAvailableResourceRequest) {
 	request = &DescribeSoAvailableResourceRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -5041,7 +4977,7 @@ func NewDescribeSoAvailableResourceResponse() (response *DescribeSoAvailableReso
 	return
 }
 
-func (c *Client) DescribeSoAvailableResource(request *DescribeSoAvailableResourceRequest) (string) {
+func (c *Client) DescribeSoAvailableResource(request *DescribeSoAvailableResourceRequest) string {
 	return c.DescribeSoAvailableResourceWithContext(context.Background(), request)
 }
 
@@ -5062,7 +4998,7 @@ func (c *Client) DescribeSoAvailableResourceSend(request *DescribeSoAvailableRes
 	return &respStruct, nil
 }
 
-func (c *Client) DescribeSoAvailableResourceWithContext(ctx context.Context, request *DescribeSoAvailableResourceRequest) (string) {
+func (c *Client) DescribeSoAvailableResourceWithContext(ctx context.Context, request *DescribeSoAvailableResourceRequest) string {
 	if request == nil {
 		request = NewDescribeSoAvailableResourceRequest()
 	}
@@ -5106,7 +5042,7 @@ func NewDescribeSoInstancesResponse() (response *DescribeSoInstancesResponse) {
 	return
 }
 
-func (c *Client) DescribeSoInstances(request *DescribeSoInstancesRequest) (string) {
+func (c *Client) DescribeSoInstances(request *DescribeSoInstancesRequest) string {
 	return c.DescribeSoInstancesWithContext(context.Background(), request)
 }
 
@@ -5127,7 +5063,7 @@ func (c *Client) DescribeSoInstancesSend(request *DescribeSoInstancesRequest) (*
 	return &respStruct, nil
 }
 
-func (c *Client) DescribeSoInstancesWithContext(ctx context.Context, request *DescribeSoInstancesRequest) (string) {
+func (c *Client) DescribeSoInstancesWithContext(ctx context.Context, request *DescribeSoInstancesRequest) string {
 	if request == nil {
 		request = NewDescribeSoInstancesRequest()
 	}
@@ -5171,7 +5107,7 @@ func NewDeleteSoInstanceResponse() (response *DeleteSoInstanceResponse) {
 	return
 }
 
-func (c *Client) DeleteSoInstance(request *DeleteSoInstanceRequest) (string) {
+func (c *Client) DeleteSoInstance(request *DeleteSoInstanceRequest) string {
 	return c.DeleteSoInstanceWithContext(context.Background(), request)
 }
 
@@ -5192,7 +5128,7 @@ func (c *Client) DeleteSoInstanceSend(request *DeleteSoInstanceRequest) (*Delete
 	return &respStruct, nil
 }
 
-func (c *Client) DeleteSoInstanceWithContext(ctx context.Context, request *DeleteSoInstanceRequest) (string) {
+func (c *Client) DeleteSoInstanceWithContext(ctx context.Context, request *DeleteSoInstanceRequest) string {
 	if request == nil {
 		request = NewDeleteSoInstanceRequest()
 	}
@@ -5236,7 +5172,7 @@ func NewDescribeSoSecurityGroupsResponse() (response *DescribeSoSecurityGroupsRe
 	return
 }
 
-func (c *Client) DescribeSoSecurityGroups(request *DescribeSoSecurityGroupsRequest) (string) {
+func (c *Client) DescribeSoSecurityGroups(request *DescribeSoSecurityGroupsRequest) string {
 	return c.DescribeSoSecurityGroupsWithContext(context.Background(), request)
 }
 
@@ -5257,7 +5193,7 @@ func (c *Client) DescribeSoSecurityGroupsSend(request *DescribeSoSecurityGroupsR
 	return &respStruct, nil
 }
 
-func (c *Client) DescribeSoSecurityGroupsWithContext(ctx context.Context, request *DescribeSoSecurityGroupsRequest) (string) {
+func (c *Client) DescribeSoSecurityGroupsWithContext(ctx context.Context, request *DescribeSoSecurityGroupsRequest) string {
 	if request == nil {
 		request = NewDescribeSoSecurityGroupsRequest()
 	}
@@ -5301,7 +5237,7 @@ func NewCreateSoVpcResponse() (response *CreateSoVpcResponse) {
 	return
 }
 
-func (c *Client) CreateSoVpc(request *CreateSoVpcRequest) (string) {
+func (c *Client) CreateSoVpc(request *CreateSoVpcRequest) string {
 	return c.CreateSoVpcWithContext(context.Background(), request)
 }
 
@@ -5322,7 +5258,7 @@ func (c *Client) CreateSoVpcSend(request *CreateSoVpcRequest) (*CreateSoVpcRespo
 	return &respStruct, nil
 }
 
-func (c *Client) CreateSoVpcWithContext(ctx context.Context, request *CreateSoVpcRequest) (string) {
+func (c *Client) CreateSoVpcWithContext(ctx context.Context, request *CreateSoVpcRequest) string {
 	if request == nil {
 		request = NewCreateSoVpcRequest()
 	}
@@ -5366,7 +5302,7 @@ func NewDeleteSoSubnetResponse() (response *DeleteSoSubnetResponse) {
 	return
 }
 
-func (c *Client) DeleteSoSubnet(request *DeleteSoSubnetRequest) (string) {
+func (c *Client) DeleteSoSubnet(request *DeleteSoSubnetRequest) string {
 	return c.DeleteSoSubnetWithContext(context.Background(), request)
 }
 
@@ -5387,7 +5323,7 @@ func (c *Client) DeleteSoSubnetSend(request *DeleteSoSubnetRequest) (*DeleteSoSu
 	return &respStruct, nil
 }
 
-func (c *Client) DeleteSoSubnetWithContext(ctx context.Context, request *DeleteSoSubnetRequest) (string) {
+func (c *Client) DeleteSoSubnetWithContext(ctx context.Context, request *DeleteSoSubnetRequest) string {
 	if request == nil {
 		request = NewDeleteSoSubnetRequest()
 	}
@@ -5431,7 +5367,7 @@ func NewDescribeSoKeyPairsResponse() (response *DescribeSoKeyPairsResponse) {
 	return
 }
 
-func (c *Client) DescribeSoKeyPairs(request *DescribeSoKeyPairsRequest) (string) {
+func (c *Client) DescribeSoKeyPairs(request *DescribeSoKeyPairsRequest) string {
 	return c.DescribeSoKeyPairsWithContext(context.Background(), request)
 }
 
@@ -5452,7 +5388,7 @@ func (c *Client) DescribeSoKeyPairsSend(request *DescribeSoKeyPairsRequest) (*De
 	return &respStruct, nil
 }
 
-func (c *Client) DescribeSoKeyPairsWithContext(ctx context.Context, request *DescribeSoKeyPairsRequest) (string) {
+func (c *Client) DescribeSoKeyPairsWithContext(ctx context.Context, request *DescribeSoKeyPairsRequest) string {
 	if request == nil {
 		request = NewDescribeSoKeyPairsRequest()
 	}
@@ -5496,7 +5432,7 @@ func NewStartSoInstanceResponse() (response *StartSoInstanceResponse) {
 	return
 }
 
-func (c *Client) StartSoInstance(request *StartSoInstanceRequest) (string) {
+func (c *Client) StartSoInstance(request *StartSoInstanceRequest) string {
 	return c.StartSoInstanceWithContext(context.Background(), request)
 }
 
@@ -5517,7 +5453,7 @@ func (c *Client) StartSoInstanceSend(request *StartSoInstanceRequest) (*StartSoI
 	return &respStruct, nil
 }
 
-func (c *Client) StartSoInstanceWithContext(ctx context.Context, request *StartSoInstanceRequest) (string) {
+func (c *Client) StartSoInstanceWithContext(ctx context.Context, request *StartSoInstanceRequest) string {
 	if request == nil {
 		request = NewStartSoInstanceRequest()
 	}
@@ -5561,7 +5497,7 @@ func NewDescribeSoInstanceTypesResponse() (response *DescribeSoInstanceTypesResp
 	return
 }
 
-func (c *Client) DescribeSoInstanceTypes(request *DescribeSoInstanceTypesRequest) (string) {
+func (c *Client) DescribeSoInstanceTypes(request *DescribeSoInstanceTypesRequest) string {
 	return c.DescribeSoInstanceTypesWithContext(context.Background(), request)
 }
 
@@ -5582,7 +5518,7 @@ func (c *Client) DescribeSoInstanceTypesSend(request *DescribeSoInstanceTypesReq
 	return &respStruct, nil
 }
 
-func (c *Client) DescribeSoInstanceTypesWithContext(ctx context.Context, request *DescribeSoInstanceTypesRequest) (string) {
+func (c *Client) DescribeSoInstanceTypesWithContext(ctx context.Context, request *DescribeSoInstanceTypesRequest) string {
 	if request == nil {
 		request = NewDescribeSoInstanceTypesRequest()
 	}
@@ -5626,7 +5562,7 @@ func NewModifySoSubnetAttributesResponse() (response *ModifySoSubnetAttributesRe
 	return
 }
 
-func (c *Client) ModifySoSubnetAttributes(request *ModifySoSubnetAttributesRequest) (string) {
+func (c *Client) ModifySoSubnetAttributes(request *ModifySoSubnetAttributesRequest) string {
 	return c.ModifySoSubnetAttributesWithContext(context.Background(), request)
 }
 
@@ -5647,7 +5583,7 @@ func (c *Client) ModifySoSubnetAttributesSend(request *ModifySoSubnetAttributesR
 	return &respStruct, nil
 }
 
-func (c *Client) ModifySoSubnetAttributesWithContext(ctx context.Context, request *ModifySoSubnetAttributesRequest) (string) {
+func (c *Client) ModifySoSubnetAttributesWithContext(ctx context.Context, request *ModifySoSubnetAttributesRequest) string {
 	if request == nil {
 		request = NewModifySoSubnetAttributesRequest()
 	}
@@ -5691,7 +5627,7 @@ func NewDescribeSoSubnetResponse() (response *DescribeSoSubnetResponse) {
 	return
 }
 
-func (c *Client) DescribeSoSubnet(request *DescribeSoSubnetRequest) (string) {
+func (c *Client) DescribeSoSubnet(request *DescribeSoSubnetRequest) string {
 	return c.DescribeSoSubnetWithContext(context.Background(), request)
 }
 
@@ -5712,7 +5648,7 @@ func (c *Client) DescribeSoSubnetSend(request *DescribeSoSubnetRequest) (*Descri
 	return &respStruct, nil
 }
 
-func (c *Client) DescribeSoSubnetWithContext(ctx context.Context, request *DescribeSoSubnetRequest) (string) {
+func (c *Client) DescribeSoSubnetWithContext(ctx context.Context, request *DescribeSoSubnetRequest) string {
 	if request == nil {
 		request = NewDescribeSoSubnetRequest()
 	}
@@ -5756,7 +5692,7 @@ func NewModifySoKeyPairAttributeResponse() (response *ModifySoKeyPairAttributeRe
 	return
 }
 
-func (c *Client) ModifySoKeyPairAttribute(request *ModifySoKeyPairAttributeRequest) (string) {
+func (c *Client) ModifySoKeyPairAttribute(request *ModifySoKeyPairAttributeRequest) string {
 	return c.ModifySoKeyPairAttributeWithContext(context.Background(), request)
 }
 
@@ -5777,7 +5713,7 @@ func (c *Client) ModifySoKeyPairAttributeSend(request *ModifySoKeyPairAttributeR
 	return &respStruct, nil
 }
 
-func (c *Client) ModifySoKeyPairAttributeWithContext(ctx context.Context, request *ModifySoKeyPairAttributeRequest) (string) {
+func (c *Client) ModifySoKeyPairAttributeWithContext(ctx context.Context, request *ModifySoKeyPairAttributeRequest) string {
 	if request == nil {
 		request = NewModifySoKeyPairAttributeRequest()
 	}
@@ -5821,7 +5757,7 @@ func NewModifySoImageAttributeResponse() (response *ModifySoImageAttributeRespon
 	return
 }
 
-func (c *Client) ModifySoImageAttribute(request *ModifySoImageAttributeRequest) (string) {
+func (c *Client) ModifySoImageAttribute(request *ModifySoImageAttributeRequest) string {
 	return c.ModifySoImageAttributeWithContext(context.Background(), request)
 }
 
@@ -5842,7 +5778,7 @@ func (c *Client) ModifySoImageAttributeSend(request *ModifySoImageAttributeReque
 	return &respStruct, nil
 }
 
-func (c *Client) ModifySoImageAttributeWithContext(ctx context.Context, request *ModifySoImageAttributeRequest) (string) {
+func (c *Client) ModifySoImageAttributeWithContext(ctx context.Context, request *ModifySoImageAttributeRequest) string {
 	if request == nil {
 		request = NewModifySoImageAttributeRequest()
 	}
@@ -5886,7 +5822,7 @@ func NewModifySoVpcAttributesResponse() (response *ModifySoVpcAttributesResponse
 	return
 }
 
-func (c *Client) ModifySoVpcAttributes(request *ModifySoVpcAttributesRequest) (string) {
+func (c *Client) ModifySoVpcAttributes(request *ModifySoVpcAttributesRequest) string {
 	return c.ModifySoVpcAttributesWithContext(context.Background(), request)
 }
 
@@ -5907,7 +5843,7 @@ func (c *Client) ModifySoVpcAttributesSend(request *ModifySoVpcAttributesRequest
 	return &respStruct, nil
 }
 
-func (c *Client) ModifySoVpcAttributesWithContext(ctx context.Context, request *ModifySoVpcAttributesRequest) (string) {
+func (c *Client) ModifySoVpcAttributesWithContext(ctx context.Context, request *ModifySoVpcAttributesRequest) string {
 	if request == nil {
 		request = NewModifySoVpcAttributesRequest()
 	}
@@ -5951,7 +5887,7 @@ func NewReplaceSoSystemVolumeResponse() (response *ReplaceSoSystemVolumeResponse
 	return
 }
 
-func (c *Client) ReplaceSoSystemVolume(request *ReplaceSoSystemVolumeRequest) (string) {
+func (c *Client) ReplaceSoSystemVolume(request *ReplaceSoSystemVolumeRequest) string {
 	return c.ReplaceSoSystemVolumeWithContext(context.Background(), request)
 }
 
@@ -5972,7 +5908,7 @@ func (c *Client) ReplaceSoSystemVolumeSend(request *ReplaceSoSystemVolumeRequest
 	return &respStruct, nil
 }
 
-func (c *Client) ReplaceSoSystemVolumeWithContext(ctx context.Context, request *ReplaceSoSystemVolumeRequest) (string) {
+func (c *Client) ReplaceSoSystemVolumeWithContext(ctx context.Context, request *ReplaceSoSystemVolumeRequest) string {
 	if request == nil {
 		request = NewReplaceSoSystemVolumeRequest()
 	}
@@ -6016,7 +5952,7 @@ func NewCreateSoSubnetResponse() (response *CreateSoSubnetResponse) {
 	return
 }
 
-func (c *Client) CreateSoSubnet(request *CreateSoSubnetRequest) (string) {
+func (c *Client) CreateSoSubnet(request *CreateSoSubnetRequest) string {
 	return c.CreateSoSubnetWithContext(context.Background(), request)
 }
 
@@ -6037,7 +5973,7 @@ func (c *Client) CreateSoSubnetSend(request *CreateSoSubnetRequest) (*CreateSoSu
 	return &respStruct, nil
 }
 
-func (c *Client) CreateSoSubnetWithContext(ctx context.Context, request *CreateSoSubnetRequest) (string) {
+func (c *Client) CreateSoSubnetWithContext(ctx context.Context, request *CreateSoSubnetRequest) string {
 	if request == nil {
 		request = NewCreateSoSubnetRequest()
 	}
@@ -6456,5 +6392,3 @@ func (c *Client) CreateSoKeyPairWithContextV2(ctx context.Context, request *Crea
 	}
 	return statusCode, msg, nil
 }
-
-
