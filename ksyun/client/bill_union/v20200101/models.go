@@ -1,9 +1,9 @@
 package v20200101
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type DescribeBillSummaryByPayModeRequest struct {
 	*ksyunhttp.BaseRequest
@@ -23,9 +23,9 @@ type DescribeBillSummaryByPayModeResponse struct {
 	Currency        *string `json:"Currency" name:"Currency"`
 	RealTotalCost   *string `json:"RealTotalCost" name:"RealTotalCost"`
 	SummaryOverview []struct {
-		PayMode   *string `json:"PayMode" name:"PayMode"`
+		PayMode       *string `json:"PayMode" name:"PayMode"`
 		RealTotalCost *string `json:"RealTotalCost" name:"RealTotalCost"`
-		BillMonth *string `json:"BillMonth" name:"BillMonth"`
+		BillMonth     *string `json:"BillMonth" name:"BillMonth"`
 	} `json:"SummaryOverview"`
 }
 
@@ -37,7 +37,6 @@ func (r *DescribeBillSummaryByPayModeResponse) ToJsonString() string {
 func (r *DescribeBillSummaryByPayModeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeBillSummaryByProductRequest struct {
 	*ksyunhttp.BaseRequest
@@ -58,10 +57,10 @@ type DescribeBillSummaryByProductResponse struct {
 	Currency        *string `json:"Currency" name:"Currency"`
 	RealTotalCost   *string `json:"RealTotalCost" name:"RealTotalCost"`
 	SummaryOverview []struct {
-		ProductCode *string `json:"ProductCode" name:"ProductCode"`
-		ProductName *string `json:"ProductName" name:"ProductName"`
+		ProductCode   *string `json:"ProductCode" name:"ProductCode"`
+		ProductName   *string `json:"ProductName" name:"ProductName"`
 		RealTotalCost *string `json:"RealTotalCost" name:"RealTotalCost"`
-		BillMonth   *string `json:"BillMonth" name:"BillMonth"`
+		BillMonth     *string `json:"BillMonth" name:"BillMonth"`
 	} `json:"SummaryOverview"`
 }
 
@@ -73,7 +72,6 @@ func (r *DescribeBillSummaryByProductResponse) ToJsonString() string {
 func (r *DescribeBillSummaryByProductResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeBillSummaryByProjectRequest struct {
 	*ksyunhttp.BaseRequest
@@ -93,10 +91,10 @@ type DescribeBillSummaryByProjectResponse struct {
 	Currency        *string `json:"Currency" name:"Currency"`
 	RealTotalCost   *string `json:"RealTotalCost" name:"RealTotalCost"`
 	SummaryOverview []struct {
-		ProjectId   *string `json:"ProjectId" name:"ProjectId"`
-		ProjectName *string `json:"ProjectName" name:"ProjectName"`
+		ProjectId     *string `json:"ProjectId" name:"ProjectId"`
+		ProjectName   *string `json:"ProjectName" name:"ProjectName"`
 		RealTotalCost *string `json:"RealTotalCost" name:"RealTotalCost"`
-		BillMonth   *string `json:"BillMonth" name:"BillMonth"`
+		BillMonth     *string `json:"BillMonth" name:"BillMonth"`
 	} `json:"SummaryOverview"`
 }
 
@@ -108,7 +106,6 @@ func (r *DescribeBillSummaryByProjectResponse) ToJsonString() string {
 func (r *DescribeBillSummaryByProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeInstanceSummaryBillsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -132,27 +129,27 @@ type DescribeInstanceSummaryBillsResponse struct {
 	TotalCount      *int    `json:"TotalCount" name:"TotalCount"`
 	CustomerId      *int    `json:"CustomerId" name:"CustomerId"`
 	SummaryOverview []struct {
-		BillsNo             *string `json:"BillsNo" name:"BillsNo"`
-		CustomerBillMonth   *string `json:"CustomerBillMonth" name:"CustomerBillMonth"`
-		BillMonth           *string `json:"BillMonth" name:"BillMonth"`
-		ProductName         *string `json:"ProductName" name:"ProductName"`
-		ProductSubTyeName   *string `json:"ProductSubTyeName" name:"ProductSubTyeName"`
-		InstanceId          *string `json:"InstanceId" name:"InstanceId"`
-		InstanceName        *string `json:"InstanceName" name:"InstanceName"`
-		Currency            *string `json:"Currency" name:"Currency"`
-		DetailBillStartTime *string `json:"DetailBillStartTime" name:"DetailBillStartTime"`
-		DetailBillEndTime   *string `json:"DetailBillEndTime" name:"DetailBillEndTime"`
+		BillsNo              *string `json:"BillsNo" name:"BillsNo"`
+		CustomerBillMonth    *string `json:"CustomerBillMonth" name:"CustomerBillMonth"`
+		BillMonth            *string `json:"BillMonth" name:"BillMonth"`
+		ProductName          *string `json:"ProductName" name:"ProductName"`
+		ProductSubTyeName    *string `json:"ProductSubTyeName" name:"ProductSubTyeName"`
+		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName         *string `json:"InstanceName" name:"InstanceName"`
+		Currency             *string `json:"Currency" name:"Currency"`
+		DetailBillStartTime  *string `json:"DetailBillStartTime" name:"DetailBillStartTime"`
+		DetailBillEndTime    *string `json:"DetailBillEndTime" name:"DetailBillEndTime"`
 		ServiceBillStartTime *string `json:"ServiceBillStartTime" name:"ServiceBillStartTime"`
-		PayMode             *string `json:"PayMode" name:"PayMode"`
-		BillTypeName        *string `json:"BillTypeName" name:"BillTypeName"`
-		RegionName          *string `json:"RegionName" name:"RegionName"`
-		ZoneName            *string `json:"ZoneName" name:"ZoneName"`
-		ProjectName         *string `json:"ProjectName" name:"ProjectName"`
-		Duration            *string `json:"Duration" name:"Duration"`
-		Remark              *string `json:"Remark" name:"Remark"`
-		Cost                *string `json:"Cost" name:"Cost"`
-		RealCost            *string `json:"RealCost" name:"RealCost"`
-		ConfigSet           []struct {
+		PayMode              *string `json:"PayMode" name:"PayMode"`
+		BillTypeName         *string `json:"BillTypeName" name:"BillTypeName"`
+		RegionName           *string `json:"RegionName" name:"RegionName"`
+		ZoneName             *string `json:"ZoneName" name:"ZoneName"`
+		ProjectName          *string `json:"ProjectName" name:"ProjectName"`
+		Duration             *string `json:"Duration" name:"Duration"`
+		Remark               *string `json:"Remark" name:"Remark"`
+		Cost                 *string `json:"Cost" name:"Cost"`
+		RealCost             *string `json:"RealCost" name:"RealCost"`
+		ConfigSet            []struct {
 			Key   *string `json:"Key" name:"Key"`
 			Code  *string `json:"Code" name:"Code"`
 			Value *string `json:"Value" name:"Value"`
@@ -184,7 +181,6 @@ func (r *DescribeInstanceSummaryBillsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeProductCodeRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -198,7 +194,7 @@ type DescribeProductCodeResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId       *string `json:"RequestId" name:"RequestId"`
 	ProductGroupSet []struct {
-		Key *string `json:"Key" name:"Key"`
+		Key   *string `json:"Key" name:"Key"`
 		Value *string `json:"Value" name:"Value"`
 	} `json:"ProductGroupSet"`
 }
@@ -211,7 +207,6 @@ func (r *DescribeProductCodeResponse) ToJsonString() string {
 func (r *DescribeProductCodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeSplitItemBillDetailsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -288,7 +283,6 @@ func (r *DescribeSplitItemBillDetailsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeMiItemBillsRequest struct {
 	*ksyunhttp.BaseRequest
 	BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
@@ -304,7 +298,7 @@ type DescribeMiItemBillsResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Url       *string `json:"url" name:"url"`
 	Error     struct {
-		Code *string `json:"Code" name:"Code"`
+		Code    *string `json:"Code" name:"Code"`
 		Message *string `json:"Message" name:"Message"`
 	} `json:"Error"`
 }
@@ -317,7 +311,6 @@ func (r *DescribeMiItemBillsResponse) ToJsonString() string {
 func (r *DescribeMiItemBillsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeSplitItemDayBillDetailsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -364,9 +357,9 @@ type ListProductGroupsResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Success   *bool   `json:"Success" name:"Success"`
 	Data      []struct {
-		Id   *int    `json:"Id" name:"Id"`
-		Code *string `json:"Code" name:"Code"`
-		Name *string `json:"Name" name:"Name"`
+		Id     *int    `json:"Id" name:"Id"`
+		Code   *string `json:"Code" name:"Code"`
+		Name   *string `json:"Name" name:"Name"`
 		EnName *string `json:"EnName" name:"EnName"`
 	} `json:"Data"`
 }
@@ -379,4 +372,3 @@ func (r *ListProductGroupsResponse) ToJsonString() string {
 func (r *ListProductGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

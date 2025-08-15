@@ -1,4 +1,5 @@
 package v20200901
+
 import (
 	"context"
 	"fmt"
@@ -671,5 +672,3 @@ func (c *Client) CreateTagAndAttachResourceWithContextV2(ctx context.Context, re
 	}
 	return statusCode, msg, nil
 }
-
-

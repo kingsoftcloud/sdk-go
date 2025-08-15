@@ -1,9 +1,9 @@
 package v20180627
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type CreateCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
@@ -39,7 +39,6 @@ func (r *CreateCacheClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -61,7 +60,6 @@ func (r *DeleteCacheClusterResponse) ToJsonString() string {
 func (r *DeleteCacheClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ResizeCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
@@ -87,7 +85,6 @@ func (r *ResizeCacheClusterResponse) ToJsonString() string {
 func (r *ResizeCacheClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeCacheClustersRequest struct {
 	*ksyunhttp.BaseRequest
@@ -121,7 +118,6 @@ func (r *DescribeCacheClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
 	CacheId *string `json:"CacheId,omitempty" name:"CacheId"`
@@ -146,7 +142,6 @@ func (r *DescribeCacheClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type FlushCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -168,7 +163,6 @@ func (r *FlushCacheClusterResponse) ToJsonString() string {
 func (r *FlushCacheClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type RenameCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
@@ -195,7 +189,6 @@ func (r *RenameCacheClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type UpdatePasswordRequest struct {
 	*ksyunhttp.BaseRequest
 	CacheId  *string `json:"CacheId,omitempty" name:"CacheId"`
@@ -221,7 +214,6 @@ func (r *UpdatePasswordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeCacheSecurityRulesRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -243,7 +235,6 @@ func (r *DescribeCacheSecurityRulesResponse) ToJsonString() string {
 func (r *DescribeCacheSecurityRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DeleteCacheSecurityRuleRequest struct {
 	*ksyunhttp.BaseRequest
@@ -267,7 +258,6 @@ func (r *DeleteCacheSecurityRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type SetCacheSecurityRulesRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -289,7 +279,6 @@ func (r *SetCacheSecurityRulesResponse) ToJsonString() string {
 func (r *SetCacheSecurityRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeRegionsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -313,7 +302,6 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeAvailabilityZonesRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -335,4 +323,3 @@ func (r *DescribeAvailabilityZonesResponse) ToJsonString() string {
 func (r *DescribeAvailabilityZonesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

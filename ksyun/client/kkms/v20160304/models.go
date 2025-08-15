@@ -1,9 +1,9 @@
 package v20160304
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type CreateKeyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -33,7 +33,6 @@ func (r *CreateKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ModifyKeyRequest struct {
 	*ksyunhttp.BaseRequest
 	KeyId       *string `json:"KeyId,omitempty" name:"KeyId"`
@@ -60,7 +59,6 @@ func (r *ModifyKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ModifyKeyStateRequest struct {
 	*ksyunhttp.BaseRequest
 	KeyId    *string `json:"KeyId,omitempty" name:"KeyId"`
@@ -85,7 +83,6 @@ func (r *ModifyKeyStateResponse) ToJsonString() string {
 func (r *ModifyKeyStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DeleteKeyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -112,7 +109,6 @@ func (r *DeleteKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeKeysRequest struct {
 	*ksyunhttp.BaseRequest
 	KeyId []*string `json:"KeyId,omitempty" name:"KeyId"`
@@ -136,7 +132,6 @@ func (r *DescribeKeysResponse) ToJsonString() string {
 func (r *DescribeKeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type EncryptRequest struct {
 	*ksyunhttp.BaseRequest
@@ -164,7 +159,6 @@ func (r *EncryptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DecryptRequest struct {
 	*ksyunhttp.BaseRequest
 	KeyId          *string `json:"KeyId,omitempty" name:"KeyId"`
@@ -190,7 +184,6 @@ func (r *DecryptResponse) ToJsonString() string {
 func (r *DecryptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GenerateDataKeyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -219,4 +212,3 @@ func (r *GenerateDataKeyResponse) ToJsonString() string {
 func (r *GenerateDataKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

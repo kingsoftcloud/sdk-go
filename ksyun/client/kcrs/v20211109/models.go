@@ -1,8 +1,10 @@
 package v20211109
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 type CreateWebhookTriggerTriggerHeader struct {
 	Key   *string   `json:"Key,omitempty" name:"Key"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
@@ -35,7 +37,6 @@ type DeleteRetentionRuleRule struct {
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 }
 
-
 type CreateNamespaceRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -62,7 +63,6 @@ func (r *CreateNamespaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeNamespaceRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -83,9 +83,9 @@ type DescribeNamespaceResponse struct {
 	MaxResults   *int    `json:"MaxResults" name:"MaxResults"`
 	Marker       *int    `json:"Marker" name:"Marker"`
 	NamespaceSet []struct {
-		Namespace *string `json:"Namespace" name:"Namespace"`
-		Public *bool `json:"Public" name:"Public"`
-		RepoCount *string `json:"RepoCount" name:"RepoCount"`
+		Namespace  *string `json:"Namespace" name:"Namespace"`
+		Public     *bool   `json:"Public" name:"Public"`
+		RepoCount  *string `json:"RepoCount" name:"RepoCount"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"NamespaceSet"`
 }
@@ -98,7 +98,6 @@ func (r *DescribeNamespaceResponse) ToJsonString() string {
 func (r *DescribeNamespaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifyNamespaceTypeRequest struct {
 	*ksyunhttp.BaseRequest
@@ -126,7 +125,6 @@ func (r *ModifyNamespaceTypeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeNamespaceExistRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -153,7 +151,6 @@ func (r *DescribeNamespaceExistResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteNamespaceRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -179,7 +176,6 @@ func (r *DeleteNamespaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeImagesRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -202,10 +198,10 @@ type DescribeImagesResponse struct {
 	Marker     *int    `json:"Marker" name:"Marker"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	ImageSet   struct {
-		ImageId  *string   `json:"ImageId" name:"ImageId"`
-		Size     *int      `json:"Size" name:"Size"`
-		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		TagNames []*string `json:"TagNames" name:"TagNames"`
+		ImageId    *string   `json:"ImageId" name:"ImageId"`
+		Size       *int      `json:"Size" name:"Size"`
+		CreateTime *string   `json:"CreateTime" name:"CreateTime"`
+		TagNames   []*string `json:"TagNames" name:"TagNames"`
 	} `json:"ImageSet"`
 }
 
@@ -217,7 +213,6 @@ func (r *DescribeImagesResponse) ToJsonString() string {
 func (r *DescribeImagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DeleteImagesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -246,7 +241,6 @@ func (r *DeleteImagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteRepoTagRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -274,7 +268,6 @@ func (r *DeleteRepoTagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeRepositoryRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string   `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -296,11 +289,11 @@ type DescribeRepositoryResponse struct {
 	Marker     *int    `json:"Marker" name:"Marker"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	RepoSet    []struct {
-		RepoName *string `json:"RepoName" name:"RepoName"`
-		Public *bool   `json:"Public" name:"Public"`
+		RepoName   *string `json:"RepoName" name:"RepoName"`
+		Public     *bool   `json:"Public" name:"Public"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
-		Desc   *string `json:"Desc" name:"Desc"`
+		Desc       *string `json:"Desc" name:"Desc"`
 	} `json:"RepoSet"`
 }
 
@@ -312,7 +305,6 @@ func (r *DescribeRepositoryResponse) ToJsonString() string {
 func (r *DescribeRepositoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifyRepoDescRequest struct {
 	*ksyunhttp.BaseRequest
@@ -341,7 +333,6 @@ func (r *ModifyRepoDescResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteRepositoryRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -367,7 +358,6 @@ func (r *DeleteRepositoryResponse) ToJsonString() string {
 func (r *DeleteRepositoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type StartImageScanRequest struct {
 	*ksyunhttp.BaseRequest
@@ -396,7 +386,6 @@ func (r *StartImageScanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeImageScanRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -416,19 +405,19 @@ type DescribeImageScanResponse struct {
 	Status     *string `json:"Status" name:"Status"`
 	FinishTime *string `json:"FinishTime" name:"FinishTime"`
 	Summary    struct {
-		High   *int `json:"High" name:"High"`
-		Medium *int `json:"Medium" name:"Medium"`
-		Low    *int `json:"Low" name:"Low"`
+		High       *int `json:"High" name:"High"`
+		Medium     *int `json:"Medium" name:"Medium"`
+		Low        *int `json:"Low" name:"Low"`
 		Negligible *int `json:"Negligible" name:"Negligible"`
-		Unknown *int `json:"Unknown" name:"Unknown"`
+		Unknown    *int `json:"Unknown" name:"Unknown"`
 	} `json:"Summary"`
 	VulnerabilitySet struct {
-		CveName     *string `json:"CveName" name:"CveName"`
-		CveLink     *string `json:"CveLink" name:"CveLink"`
-		Description *string `json:"Description" name:"Description"`
-		Severity    *string `json:"Severity" name:"Severity"`
-		Feature     *string `json:"Feature" name:"Feature"`
-		CurrentVersion *string `json:"CurrentVersion" name:"CurrentVersion"`
+		CveName         *string `json:"CveName" name:"CveName"`
+		CveLink         *string `json:"CveLink" name:"CveLink"`
+		Description     *string `json:"Description" name:"Description"`
+		Severity        *string `json:"Severity" name:"Severity"`
+		Feature         *string `json:"Feature" name:"Feature"`
+		CurrentVersion  *string `json:"CurrentVersion" name:"CurrentVersion"`
 		RepairedVersion *string `json:"RepairedVersion" name:"RepairedVersion"`
 	} `json:"VulnerabilitySet"`
 }
@@ -441,7 +430,6 @@ func (r *DescribeImageScanResponse) ToJsonString() string {
 func (r *DescribeImageScanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateInstanceTokenRequest struct {
 	*ksyunhttp.BaseRequest
@@ -474,7 +462,6 @@ func (r *CreateInstanceTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeInternalEndpointRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -489,10 +476,10 @@ type DescribeInternalEndpointResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	AccessVpcSet []struct {
-		VpcId  *string `json:"VpcId" name:"VpcId"`
+		VpcId    *string `json:"VpcId" name:"VpcId"`
 		SubnetId *string `json:"SubnetId" name:"SubnetId"`
-		Status *string `json:"Status" name:"Status"`
-		EniLBIp *string `json:"EniLBIp" name:"EniLBIp"`
+		Status   *string `json:"Status" name:"Status"`
+		EniLBIp  *string `json:"EniLBIp" name:"EniLBIp"`
 	} `json:"AccessVpcSet"`
 }
 
@@ -504,7 +491,6 @@ func (r *DescribeInternalEndpointResponse) ToJsonString() string {
 func (r *DescribeInternalEndpointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeInstanceTokenRequest struct {
 	*ksyunhttp.BaseRequest
@@ -525,9 +511,9 @@ type DescribeInstanceTokenResponse struct {
 	Marker     *int    `json:"Marker" name:"Marker"`
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
 	TokenSet   []struct {
-		TokenId *string `json:"TokenId" name:"TokenId"`
-		Enable *bool   `json:"Enable" name:"Enable"`
-		Desc   *string `json:"Desc" name:"Desc"`
+		TokenId    *string `json:"TokenId" name:"TokenId"`
+		Enable     *bool   `json:"Enable" name:"Enable"`
+		Desc       *string `json:"Desc" name:"Desc"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		ExpireTime *string `json:"ExpireTime" name:"ExpireTime"`
 	} `json:"TokenSet"`
@@ -541,7 +527,6 @@ func (r *DescribeInstanceTokenResponse) ToJsonString() string {
 func (r *DescribeInstanceTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateInternalEndpointRequest struct {
 	*ksyunhttp.BaseRequest
@@ -569,7 +554,6 @@ func (r *CreateInternalEndpointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ModifyInstanceTokenStatusRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -596,7 +580,6 @@ func (r *ModifyInstanceTokenStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteInternalEndpointRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -622,7 +605,6 @@ func (r *DeleteInternalEndpointResponse) ToJsonString() string {
 func (r *DeleteInternalEndpointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifyInstanceTokenInformationRequest struct {
 	*ksyunhttp.BaseRequest
@@ -652,7 +634,6 @@ func (r *ModifyInstanceTokenInformationResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeInternalEndpointDnsRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId          *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -668,10 +649,10 @@ func (r *DescribeInternalEndpointDnsRequest) ToJsonString() string {
 
 type DescribeInternalEndpointDnsResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	RequestId              *string `json:"RequestId" name:"RequestId"`
 	InternalEndpointDnsSet []struct {
 		InternalEndpointDns *string `json:"InternalEndpointDns" name:"InternalEndpointDns"`
-		Status *string `json:"Status" name:"Status"`
+		Status              *string `json:"Status" name:"Status"`
 	} `json:"InternalEndpointDnsSet"`
 }
 
@@ -683,7 +664,6 @@ func (r *DescribeInternalEndpointDnsResponse) ToJsonString() string {
 func (r *DescribeInternalEndpointDnsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DeleteInstanceTokenRequest struct {
 	*ksyunhttp.BaseRequest
@@ -709,7 +689,6 @@ func (r *DeleteInstanceTokenResponse) ToJsonString() string {
 func (r *DeleteInstanceTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateInternalEndpointDnsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -738,7 +717,6 @@ func (r *CreateInternalEndpointDnsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteInternalEndpointDnsRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId          *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -765,7 +743,6 @@ func (r *DeleteInternalEndpointDnsResponse) ToJsonString() string {
 func (r *DeleteInternalEndpointDnsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateInstanceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -796,7 +773,6 @@ func (r *CreateInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteInstanceRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId   *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -821,7 +797,6 @@ func (r *DeleteInstanceResponse) ToJsonString() string {
 func (r *DeleteInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeInstanceUsageRequest struct {
 	*ksyunhttp.BaseRequest
@@ -851,7 +826,6 @@ func (r *DescribeInstanceUsageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeInstanceRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId   []*string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -869,15 +843,15 @@ func (r *DescribeInstanceRequest) ToJsonString() string {
 type DescribeInstanceResponse struct {
 	*ksyunhttp.BaseResponse
 	InstanceSet []struct {
-		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
-		InstanceName *string `json:"InstanceName" name:"InstanceName"`
-		InstanceType *string `json:"InstanceType" name:"InstanceType"`
-		InstanceStatus *string `json:"InstanceStatus" name:"InstanceStatus"`
+		InstanceId       *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName     *string `json:"InstanceName" name:"InstanceName"`
+		InstanceType     *string `json:"InstanceType" name:"InstanceType"`
+		InstanceStatus   *string `json:"InstanceStatus" name:"InstanceStatus"`
 		InternalEndpoint *string `json:"InternalEndpoint" name:"InternalEndpoint"`
-		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
-		ExpiredTime  *string `json:"ExpiredTime" name:"ExpiredTime"`
-		ChargeType   *string `json:"ChargeType" name:"ChargeType"`
-		ProjectId    *string `json:"ProjectId" name:"ProjectId"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		ExpiredTime      *string `json:"ExpiredTime" name:"ExpiredTime"`
+		ChargeType       *string `json:"ChargeType" name:"ChargeType"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
 	} `json:"InstanceSet"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -890,7 +864,6 @@ func (r *DescribeInstanceResponse) ToJsonString() string {
 func (r *DescribeInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateWebhookTriggerRequest struct {
 	*ksyunhttp.BaseRequest
@@ -918,7 +891,6 @@ func (r *CreateWebhookTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeWebhookTriggerRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -937,12 +909,12 @@ type DescribeWebhookTriggerResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	TriggerSet []struct {
-		TriggerName *string `json:"TriggerName" name:"TriggerName"`
-		EventType []*string `json:"EventType" name:"EventType"`
-		TriggerUrl *string `json:"TriggerUrl" name:"TriggerUrl"`
-		Enabled   *bool     `json:"Enabled" name:"Enabled"`
-		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
+		TriggerName *string   `json:"TriggerName" name:"TriggerName"`
+		EventType   []*string `json:"EventType" name:"EventType"`
+		TriggerUrl  *string   `json:"TriggerUrl" name:"TriggerUrl"`
+		Enabled     *bool     `json:"Enabled" name:"Enabled"`
+		CreateTime  *string   `json:"CreateTime" name:"CreateTime"`
+		UpdateTime  *string   `json:"UpdateTime" name:"UpdateTime"`
 	} `json:"TriggerSet"`
 }
 
@@ -954,7 +926,6 @@ func (r *DescribeWebhookTriggerResponse) ToJsonString() string {
 func (r *DescribeWebhookTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifyWebhookTriggerRequest struct {
 	*ksyunhttp.BaseRequest
@@ -990,7 +961,6 @@ func (r *ModifyWebhookTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeWebhookTriggerLogRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -1021,7 +991,6 @@ func (r *DescribeWebhookTriggerLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteWebhookTriggerRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -1047,7 +1016,6 @@ func (r *DeleteWebhookTriggerResponse) ToJsonString() string {
 func (r *DeleteWebhookTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateRetentionRuleRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1076,7 +1044,6 @@ func (r *CreateRetentionRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type UpdateRetentionRuleRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string                  `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -1103,7 +1070,6 @@ func (r *UpdateRetentionRuleResponse) ToJsonString() string {
 func (r *UpdateRetentionRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DeleteRetentionRuleRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1132,7 +1098,6 @@ func (r *DeleteRetentionRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeRetentionRuleRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -1148,14 +1113,14 @@ type DescribeRetentionRuleResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		Id       *int    `json:"Id" name:"Id"`
-		Disabled *bool   `json:"Disabled" name:"Disabled"`
+		Id            *int    `json:"Id" name:"Id"`
+		Disabled      *bool   `json:"Disabled" name:"Disabled"`
 		RegistryScope *string `json:"RegistryScope" name:"RegistryScope"`
-		Type     *string `json:"Type" name:"Type"`
-		UnTagged *bool   `json:"UnTagged" name:"UnTagged"`
-		Template *string `json:"Template" name:"Template"`
-		TagPatten *string `json:"TagPatten" name:"TagPatten"`
-		Param    *int    `json:"Param" name:"Param"`
+		Type          *string `json:"Type" name:"Type"`
+		UnTagged      *bool   `json:"UnTagged" name:"UnTagged"`
+		Template      *string `json:"Template" name:"Template"`
+		TagPatten     *string `json:"TagPatten" name:"TagPatten"`
+		Param         *int    `json:"Param" name:"Param"`
 	} `json:"Data"`
 }
 
@@ -1167,7 +1132,6 @@ func (r *DescribeRetentionRuleResponse) ToJsonString() string {
 func (r *DescribeRetentionRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type RunRetentionPolicyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1196,7 +1160,6 @@ func (r *RunRetentionPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetRetentionPolicyLogsRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -1214,13 +1177,13 @@ type GetRetentionPolicyLogsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		Id       *string `json:"Id" name:"Id"`
-		EndTime  *string `json:"EndTime" name:"EndTime"`
+		Id        *string `json:"Id" name:"Id"`
+		EndTime   *string `json:"EndTime" name:"EndTime"`
 		StartTime *string `json:"StartTime" name:"StartTime"`
-		Status   *string `json:"Status" name:"Status"`
-		Trigger  *string `json:"Trigger" name:"Trigger"`
-		DryRun   *bool   `json:"DryRun" name:"DryRun"`
-		TakeTime *int    `json:"TakeTime" name:"TakeTime"`
+		Status    *string `json:"Status" name:"Status"`
+		Trigger   *string `json:"Trigger" name:"Trigger"`
+		DryRun    *bool   `json:"DryRun" name:"DryRun"`
+		TakeTime  *int    `json:"TakeTime" name:"TakeTime"`
 	} `json:"Data"`
 	Page     *int `json:"Page" name:"Page"`
 	PageSize *int `json:"PageSize" name:"PageSize"`
@@ -1235,7 +1198,6 @@ func (r *GetRetentionPolicyLogsResponse) ToJsonString() string {
 func (r *GetRetentionPolicyLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetRetentionPolicyLogDetailRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1267,9 +1229,9 @@ type GetRetentionPolicyLogDetailResponse struct {
 			Total       *int    `json:"Total" name:"Total"`
 			TakeTime    *int    `json:"TakeTime" name:"TakeTime"`
 		} `json:"LogDetail" name:"LogDetail"`
-		Page *int `json:"Page" name:"Page"`
+		Page     *int `json:"Page" name:"Page"`
 		PageSize *int `json:"PageSize" name:"PageSize"`
-		Total *int `json:"Total" name:"Total"`
+		Total    *int `json:"Total" name:"Total"`
 	} `json:"Data"`
 }
 
@@ -1281,7 +1243,6 @@ func (r *GetRetentionPolicyLogDetailResponse) ToJsonString() string {
 func (r *GetRetentionPolicyLogDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetRetentionPolicyLogRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1310,7 +1271,6 @@ func (r *GetRetentionPolicyLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetRetentionTriggerRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -1326,9 +1286,9 @@ type GetRetentionTriggerResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		DisplayText *string `json:"DisplayText" name:"DisplayText"`
-		Cron     *string   `json:"Cron" name:"Cron"`
-		Optional []*string `json:"Optional" name:"Optional"`
+		DisplayText *string   `json:"DisplayText" name:"DisplayText"`
+		Cron        *string   `json:"Cron" name:"Cron"`
+		Optional    []*string `json:"Optional" name:"Optional"`
 	} `json:"Data"`
 }
 
@@ -1340,7 +1300,6 @@ func (r *GetRetentionTriggerResponse) ToJsonString() string {
 func (r *GetRetentionTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type UpdateRetentionTriggerRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1369,7 +1328,6 @@ func (r *UpdateRetentionTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ScheduleRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -1395,4 +1353,3 @@ func (r *ScheduleResponse) ToJsonString() string {
 func (r *ScheduleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

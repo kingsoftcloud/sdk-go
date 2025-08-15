@@ -1,4 +1,5 @@
 package v20200101
+
 import (
 	"context"
 	"fmt"
@@ -606,5 +607,3 @@ func (c *Client) ListProductGroupsWithContextV2(ctx context.Context, request *Li
 	}
 	return statusCode, msg, nil
 }
-
-

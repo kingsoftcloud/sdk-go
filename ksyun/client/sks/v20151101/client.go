@@ -1,4 +1,5 @@
 package v20151101
+
 import (
 	"context"
 	"fmt"
@@ -346,5 +347,3 @@ func (c *Client) DescribeKeysWithContextV2(ctx context.Context, request *Describ
 	}
 	return statusCode, msg, nil
 }
-
-

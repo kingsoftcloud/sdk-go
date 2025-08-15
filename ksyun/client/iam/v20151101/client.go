@@ -3662,6 +3662,71 @@ func (c *Client) RemoveUserFromGroupWithContextV2(ctx context.Context, request *
 	}
 	return statusCode, msg, nil
 }
+func NewUpdateGroupRequest() (request *UpdateGroupRequest) {
+	request = &UpdateGroupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("iam", APIVersion, "UpdateGroup")
+	return
+}
+
+func NewUpdateGroupResponse() (response *UpdateGroupResponse) {
+	response = &UpdateGroupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateGroup(request *UpdateGroupRequest) string {
+	return c.UpdateGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateGroupSend(request *UpdateGroupRequest) (*UpdateGroupResponse, error) {
+	statusCode, msg, err := c.UpdateGroupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct UpdateGroupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) UpdateGroupWithContext(ctx context.Context, request *UpdateGroupRequest) string {
+	if request == nil {
+		request = NewUpdateGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateGroupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) UpdateGroupWithContextV2(ctx context.Context, request *UpdateGroupRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdateGroupRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateGroupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewListUsersForGroupRequest() (request *ListUsersForGroupRequest) {
 	request = &ListUsersForGroupRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},

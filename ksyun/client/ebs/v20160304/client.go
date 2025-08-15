@@ -1,4 +1,5 @@
 package v20160304
+
 import (
 	"context"
 	"fmt"
@@ -1711,5 +1712,3 @@ func (c *Client) ModifyVolumePresetWithContextV2(ctx context.Context, request *M
 	}
 	return statusCode, msg, nil
 }
-
-

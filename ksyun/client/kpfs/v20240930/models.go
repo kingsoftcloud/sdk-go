@@ -1,13 +1,14 @@
 package v20240930
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 type UpdatePerformanceOnePosixAclFileSystemList struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 	VolumePath   *string `json:"VolumePath,omitempty" name:"VolumePath"`
 }
-
 
 type UpdatePerformanceOnePosixAclRequest struct {
 	*ksyunhttp.BaseRequest
@@ -36,7 +37,6 @@ func (r *UpdatePerformanceOnePosixAclResponse) ToJsonString() string {
 func (r *UpdatePerformanceOnePosixAclResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribePerformanceOnePosixAclListRequest struct {
 	*ksyunhttp.BaseRequest
@@ -80,4 +80,3 @@ func (r *DescribePerformanceOnePosixAclListResponse) ToJsonString() string {
 func (r *DescribePerformanceOnePosixAclListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

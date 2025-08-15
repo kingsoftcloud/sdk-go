@@ -1,4 +1,5 @@
 package v20210320
+
 import (
 	"context"
 	"fmt"
@@ -541,5 +542,3 @@ func (c *Client) ListFoldersWithContextV2(ctx context.Context, request *ListFold
 	}
 	return statusCode, msg, nil
 }
-
-

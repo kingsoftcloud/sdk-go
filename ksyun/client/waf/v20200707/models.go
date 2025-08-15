@@ -1,9 +1,9 @@
 package v20200707
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type CreateWafRequest struct {
 	*ksyunhttp.BaseRequest
@@ -60,7 +60,6 @@ func (r *DeleteWafResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type CreateDomainRequest struct {
 	*ksyunhttp.BaseRequest
 	ResourceRecord    *string   `json:"ResourceRecord,omitempty" name:"ResourceRecord"`
@@ -98,7 +97,6 @@ func (r *CreateDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeDomainsRequest struct {
 	*ksyunhttp.BaseRequest
 	ResourceRecord *string `json:"ResourceRecord,omitempty" name:"ResourceRecord"`
@@ -122,7 +120,6 @@ func (r *DescribeDomainsResponse) ToJsonString() string {
 func (r *DescribeDomainsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifyDomainRequest struct {
 	*ksyunhttp.BaseRequest
@@ -161,7 +158,6 @@ func (r *ModifyDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteDomainRequest struct {
 	*ksyunhttp.BaseRequest
 	ResourceRecordId *string `json:"ResourceRecordId,omitempty" name:"ResourceRecordId"`
@@ -185,7 +181,6 @@ func (r *DeleteDomainResponse) ToJsonString() string {
 func (r *DeleteDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateAccessControlRuleRequest struct {
 	*ksyunhttp.BaseRequest
@@ -218,7 +213,6 @@ func (r *CreateAccessControlRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeAccessControlRulesRequest struct {
 	*ksyunhttp.BaseRequest
 	RuleId           *string `json:"RuleId,omitempty" name:"RuleId"`
@@ -244,7 +238,6 @@ func (r *DescribeAccessControlRulesResponse) ToJsonString() string {
 func (r *DescribeAccessControlRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifyAccessControlRuleRequest struct {
 	*ksyunhttp.BaseRequest
@@ -278,7 +271,6 @@ func (r *ModifyAccessControlRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteAccessControlRuleRequest struct {
 	*ksyunhttp.BaseRequest
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
@@ -302,7 +294,6 @@ func (r *DeleteAccessControlRuleResponse) ToJsonString() string {
 func (r *DeleteAccessControlRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeCertificatesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -328,7 +319,6 @@ func (r *DescribeCertificatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type CreateIpv6ProtectionRequest struct {
 	*ksyunhttp.BaseRequest
 	ResourceRecordId []*string `json:"ResourceRecordId,omitempty" name:"ResourceRecordId"`
@@ -352,7 +342,6 @@ func (r *CreateIpv6ProtectionResponse) ToJsonString() string {
 func (r *CreateIpv6ProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DeleteIpv6ProtectionRequest struct {
 	*ksyunhttp.BaseRequest
@@ -378,7 +367,6 @@ func (r *DeleteIpv6ProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ModifyStorageTimeRequest struct {
 	*ksyunhttp.BaseRequest
 	StorageTime *int `json:"StorageTime,omitempty" name:"StorageTime"`
@@ -402,7 +390,6 @@ func (r *ModifyStorageTimeResponse) ToJsonString() string {
 func (r *ModifyStorageTimeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateAlbDomainRequest struct {
 	*ksyunhttp.BaseRequest
@@ -441,7 +428,6 @@ func (r *CreateAlbDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ModifyAlbDomainRequest struct {
 	*ksyunhttp.BaseRequest
 	ResourceRecordId  *string   `json:"ResourceRecordId,omitempty" name:"ResourceRecordId"`
@@ -479,7 +465,6 @@ func (r *ModifyAlbDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteAlbDomainRequest struct {
 	*ksyunhttp.BaseRequest
 	ResourceRecordId *string `json:"ResourceRecordId,omitempty" name:"ResourceRecordId"`
@@ -503,7 +488,6 @@ func (r *DeleteAlbDomainResponse) ToJsonString() string {
 func (r *DeleteAlbDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateAlbWafRequest struct {
 	*ksyunhttp.BaseRequest
@@ -536,7 +520,6 @@ func (r *CreateAlbWafResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ModifyAlbWafRequest struct {
 	*ksyunhttp.BaseRequest
 	WafType   *string `json:"WafType,omitempty" name:"WafType"`
@@ -563,7 +546,6 @@ func (r *ModifyAlbWafResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeAlbDomainsRequest struct {
 	*ksyunhttp.BaseRequest
 	ResourceRecord *string `json:"ResourceRecord,omitempty" name:"ResourceRecord"`
@@ -587,4 +569,3 @@ func (r *DescribeAlbDomainsResponse) ToJsonString() string {
 func (r *DescribeAlbDomainsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

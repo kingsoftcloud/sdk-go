@@ -1547,6 +1547,7 @@ type UpdatePolicyRequest struct {
 	*ksyunhttp.BaseRequest
 	PolicyKrn      *string `json:"PolicyKrn,omitempty" name:"PolicyKrn"`
 	NewDescription *string `json:"NewDescription,omitempty" name:"NewDescription"`
+	NewPolicyName  *string `json:"NewPolicyName,omitempty" name:"NewPolicyName"`
 }
 
 func (r *UpdatePolicyRequest) ToJsonString() string {
@@ -1573,8 +1574,9 @@ func (r *UpdatePolicyResponse) FromJsonString(s string) error {
 
 type CreateGroupRequest struct {
 	*ksyunhttp.BaseRequest
-	GroupName   *string `json:"GroupName,omitempty" name:"GroupName"`
-	Description *string `json:"Description,omitempty" name:"Description"`
+	GroupName     *string `json:"GroupName,omitempty" name:"GroupName"`
+	Description   *string `json:"Description,omitempty" name:"Description"`
+	GroupRealName *string `json:"GroupRealName,omitempty" name:"GroupRealName"`
 }
 
 func (r *CreateGroupRequest) ToJsonString() string {
@@ -1586,12 +1588,13 @@ type CreateGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	CreateGroupResult struct {
 		Group struct {
-			GroupId     *string `json:"GroupId" name:"GroupId"`
-			Path        *string `json:"Path" name:"Path"`
-			GroupName   *string `json:"GroupName" name:"GroupName"`
-			Description *string `json:"Description" name:"Description"`
-			CreateDate  *string `json:"CreateDate" name:"CreateDate"`
-			Krn         *string `json:"Krn" name:"Krn"`
+			GroupId       *string `json:"GroupId" name:"GroupId"`
+			Path          *string `json:"Path" name:"Path"`
+			GroupName     *string `json:"GroupName" name:"GroupName"`
+			GroupRealName *string `json:"GroupRealName" name:"GroupRealName"`
+			Description   *string `json:"Description" name:"Description"`
+			CreateDate    *string `json:"CreateDate" name:"CreateDate"`
+			Krn           *string `json:"Krn" name:"Krn"`
 		} `json:"Group" name:"Group"`
 	} `json:"CreateGroupResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -1766,12 +1769,13 @@ type GetGroupResponse struct {
 	GetGroupResult struct {
 		Group struct {
 			Group struct {
-				GroupId     *string `json:"GroupId" name:"GroupId"`
-				Path        *string `json:"Path" name:"Path"`
-				GroupName   *string `json:"GroupName" name:"GroupName"`
-				Description *string `json:"Description" name:"Description"`
-				CreateDate  *string `json:"CreateDate" name:"CreateDate"`
-				Krn         *string `json:"Krn" name:"Krn"`
+				GroupId       *string `json:"GroupId" name:"GroupId"`
+				Path          *string `json:"Path" name:"Path"`
+				GroupName     *string `json:"GroupName" name:"GroupName"`
+				Description   *string `json:"Description" name:"Description"`
+				CreateDate    *string `json:"CreateDate" name:"CreateDate"`
+				Krn           *string `json:"Krn" name:"Krn"`
+				GroupRealName *string `json:"GroupRealName" name:"GroupRealName"`
 			} `json:"Group"`
 		} `json:"Group" name:"Group"`
 	} `json:"GetGroupResult"`
@@ -1804,18 +1808,20 @@ type ListGroupsForUserResponse struct {
 	ListGroupsForUserResult struct {
 		Groups struct {
 			Member []struct {
-				Id          *int    `json:"Id" name:"Id"`
-				GroupId     *string `json:"GroupId" name:"GroupId"`
-				Path        *string `json:"Path" name:"Path"`
-				GroupName   *string `json:"GroupName" name:"GroupName"`
-				Description *string `json:"Description" name:"Description"`
-				CreateDate  *string `json:"CreateDate" name:"CreateDate"`
-				Krn         *string `json:"Krn" name:"Krn"`
-				PolicyCount *int    `json:"PolicyCount" name:"PolicyCount"`
+				Id            *int    `json:"Id" name:"Id"`
+				GroupId       *string `json:"GroupId" name:"GroupId"`
+				Path          *string `json:"Path" name:"Path"`
+				GroupName     *string `json:"GroupName" name:"GroupName"`
+				Description   *string `json:"Description" name:"Description"`
+				CreateDate    *string `json:"CreateDate" name:"CreateDate"`
+				Krn           *string `json:"Krn" name:"Krn"`
+				PolicyCount   *int    `json:"PolicyCount" name:"PolicyCount"`
+				GroupRealName *string `json:"GroupRealName" name:"GroupRealName"`
 			} `json:"Member"`
 		} `json:"Groups" name:"Groups"`
 		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
 		Marker      *string `json:"Marker" name:"Marker"`
+		Total       *int    `json:"Total" name:"Total"`
 	} `json:"ListGroupsForUserResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1845,18 +1851,20 @@ type ListGroupsResponse struct {
 	ListGroupsResult struct {
 		Groups struct {
 			Member []struct {
-				GroupId     *string `json:"GroupId" name:"GroupId"`
-				Path        *string `json:"Path" name:"Path"`
-				GroupName   *string `json:"GroupName" name:"GroupName"`
-				Description *string `json:"Description" name:"Description"`
-				CreateDate  *string `json:"CreateDate" name:"CreateDate"`
-				Krn         *string `json:"Krn" name:"Krn"`
-				UserCount   *int    `json:"UserCount" name:"UserCount"`
-				PolicyCount *int    `json:"PolicyCount" name:"PolicyCount"`
+				GroupId       *string `json:"GroupId" name:"GroupId"`
+				Path          *string `json:"Path" name:"Path"`
+				GroupName     *string `json:"GroupName" name:"GroupName"`
+				Description   *string `json:"Description" name:"Description"`
+				CreateDate    *string `json:"CreateDate" name:"CreateDate"`
+				Krn           *string `json:"Krn" name:"Krn"`
+				UserCount     *int    `json:"UserCount" name:"UserCount"`
+				PolicyCount   *int    `json:"PolicyCount" name:"PolicyCount"`
+				GroupRealName *string `json:"GroupRealName" name:"GroupRealName"`
 			} `json:"Member"`
 		} `json:"Groups" name:"Groups"`
 		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
 		Marker      *string `json:"Marker" name:"Marker"`
+		Total       *int    `json:"Total" name:"Total"`
 	} `json:"ListGroupsResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1893,6 +1901,33 @@ func (r *RemoveUserFromGroupResponse) ToJsonString() string {
 }
 
 func (r *RemoveUserFromGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateGroupRequest struct {
+	*ksyunhttp.BaseRequest
+	GroupName     *string `json:"GroupName,omitempty" name:"GroupName"`
+	Description   *string `json:"Description,omitempty" name:"Description"`
+	GroupRealName *string `json:"GroupRealName,omitempty" name:"GroupRealName"`
+}
+
+func (r *UpdateGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type UpdateGroupResponse struct {
+	*ksyunhttp.BaseResponse
+	Result    *bool   `json:"result" name:"result"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *UpdateGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

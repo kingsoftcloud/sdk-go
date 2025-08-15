@@ -1,4 +1,5 @@
 package v20210520
+
 import (
 	"context"
 	"fmt"
@@ -2621,5 +2622,3 @@ func (c *Client) ConfigurationInstanceEipWithContextV2(ctx context.Context, requ
 	}
 	return statusCode, msg, nil
 }
-
-

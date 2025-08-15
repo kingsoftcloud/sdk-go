@@ -1,4 +1,5 @@
 package v20200831
+
 import (
 	"context"
 	"fmt"
@@ -86,5 +87,3 @@ func (c *Client) SetRenewalWithContextV2(ctx context.Context, request *SetRenewa
 	}
 	return statusCode, msg, nil
 }
-
-

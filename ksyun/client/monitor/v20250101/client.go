@@ -1,4 +1,5 @@
 package v20250101
+
 import (
 	"context"
 	"fmt"
@@ -151,5 +152,3 @@ func (c *Client) DescribeSystemEventAttributesWithContextV2(ctx context.Context,
 	}
 	return statusCode, msg, nil
 }
-
-

@@ -1,4 +1,5 @@
 package v20160701
+
 import (
 	"context"
 	"fmt"
@@ -5806,5 +5807,3 @@ func (c *Client) ModifyInstanceDatabasePrivilegesActionWithContextV2(ctx context
 	}
 	return statusCode, msg, nil
 }
-
-

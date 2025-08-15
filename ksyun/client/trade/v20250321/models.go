@@ -1,9 +1,9 @@
 package v20250321
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type QueryUnPayOrdersRequest struct {
 	*ksyunhttp.BaseRequest
@@ -35,7 +35,7 @@ type QueryUnPayOrdersResponse struct {
 			ProductGroupName *string `json:"productGroupName" name:"productGroupName"`
 			ProductId        *string `json:"productId" name:"productId"`
 			ProductItems     []struct {
-				Key *string `json:"Key" name:"Key"`
+				Key   *string `json:"Key" name:"Key"`
 				Value *string `json:"Value" name:"Value"`
 			} `json:"ProductItems"`
 			ProductType     *int    `json:"productType" name:"productType"`
@@ -70,7 +70,6 @@ func (r *QueryUnPayOrdersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type QueryOrderInfoRequest struct {
 	*ksyunhttp.BaseRequest
 	OrderId *string `json:"orderId,omitempty" name:"orderId"`
@@ -89,22 +88,22 @@ type QueryOrderInfoResponse struct {
 	HasRefund      *int    `json:"hasRefund" name:"hasRefund"`
 	OrderId        *string `json:"orderId" name:"orderId"`
 	OrderList      []struct {
-		BillType     *int    `json:"BillType" name:"BillType"`
-		IamProjectId *int    `json:"IamProjectId" name:"IamProjectId"`
-		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
-		Num          *int    `json:"Num" name:"Num"`
-		OrderId      *string `json:"OrderId" name:"OrderId"`
-		Price        *int    `json:"Price" name:"Price"`
-		ProductGroup *int    `json:"ProductGroup" name:"ProductGroup"`
+		BillType         *int    `json:"BillType" name:"BillType"`
+		IamProjectId     *int    `json:"IamProjectId" name:"IamProjectId"`
+		InstanceId       *string `json:"InstanceId" name:"InstanceId"`
+		Num              *int    `json:"Num" name:"Num"`
+		OrderId          *string `json:"OrderId" name:"OrderId"`
+		Price            *int    `json:"Price" name:"Price"`
+		ProductGroup     *int    `json:"ProductGroup" name:"ProductGroup"`
 		ProductGroupName *string `json:"ProductGroupName" name:"ProductGroupName"`
-		ProductId    *string `json:"ProductId" name:"ProductId"`
-		ProductItems []struct {
+		ProductId        *string `json:"ProductId" name:"ProductId"`
+		ProductItems     []struct {
 			Key   *string `json:"key" name:"key"`
 			Value *string `json:"value" name:"value"`
 		} `json:"ProductItems" name:"ProductItems"`
-		ProductType   *int `json:"ProductType" name:"ProductType"`
+		ProductType     *int    `json:"ProductType" name:"ProductType"`
 		ProductTypeName *string `json:"ProductTypeName" name:"ProductTypeName"`
-		PromotionItem struct {
+		PromotionItem   struct {
 			Name *string `json:"name" name:"name"`
 			Type *string `json:"type" name:"type"`
 		} `json:"PromotionItem" name:"PromotionItem"`
@@ -134,7 +133,6 @@ func (r *QueryOrderInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type CancelOrderRequest struct {
 	*ksyunhttp.BaseRequest
 	OrderId *string `json:"orderId,omitempty" name:"orderId"`
@@ -160,7 +158,6 @@ func (r *CancelOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type LaunchPayOrderRequest struct {
 	*ksyunhttp.BaseRequest
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
@@ -173,11 +170,11 @@ func (r *LaunchPayOrderRequest) ToJsonString() string {
 
 type LaunchPayOrderResponse struct {
 	*ksyunhttp.BaseResponse
-	OrderId    *string `json:"OrderId" name:"OrderId"`
-	RealMoney  *int    `json:"RealMoney" name:"RealMoney"`
-	RequestId  *string `json:"RequestId" name:"RequestId"`
+	OrderId     *string   `json:"OrderId" name:"OrderId"`
+	RealMoney   *int      `json:"RealMoney" name:"RealMoney"`
+	RequestId   *string   `json:"RequestId" name:"RequestId"`
 	SubOrderIds []*string `json:"SubOrderIds" name:"SubOrderIds"`
-	TotalMoney *int    `json:"TotalMoney" name:"TotalMoney"`
+	TotalMoney  *int      `json:"TotalMoney" name:"TotalMoney"`
 }
 
 func (r *LaunchPayOrderResponse) ToJsonString() string {
@@ -188,4 +185,3 @@ func (r *LaunchPayOrderResponse) ToJsonString() string {
 func (r *LaunchPayOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

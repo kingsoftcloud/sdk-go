@@ -1,4 +1,5 @@
 package v20181225
+
 import (
 	"context"
 	"fmt"
@@ -3141,5 +3142,3 @@ func (c *Client) ModifyDBInstanceAvailabilityZoneWithContextV2(ctx context.Conte
 	}
 	return statusCode, msg, nil
 }
-
-

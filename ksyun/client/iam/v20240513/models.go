@@ -1,9 +1,9 @@
 package v20240513
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type GetProjectInstanceListNewRequest struct {
 	*ksyunhttp.BaseRequest
@@ -31,8 +31,8 @@ type GetProjectInstanceListNewResponse struct {
 			Status       *int    `json:"Status" name:"Status"`
 		} `json:"Items" name:"Items"`
 		CurrentPage *int `json:"CurrentPage" name:"CurrentPage"`
-		PageSize *int `json:"PageSize" name:"PageSize"`
-		Total    *int `json:"Total" name:"Total"`
+		PageSize    *int `json:"PageSize" name:"PageSize"`
+		Total       *int `json:"Total" name:"Total"`
 	} `json:"ListInstanceResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -45,4 +45,3 @@ func (r *GetProjectInstanceListNewResponse) ToJsonString() string {
 func (r *GetProjectInstanceListNewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

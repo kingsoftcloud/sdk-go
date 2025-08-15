@@ -1,9 +1,9 @@
 package v20200101
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type DescribeKeadRequest struct {
 	*ksyunhttp.BaseRequest
@@ -29,7 +29,6 @@ func (r *DescribeKeadResponse) ToJsonString() string {
 func (r *DescribeKeadResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeKeadIpRequest struct {
 	*ksyunhttp.BaseRequest
@@ -58,7 +57,6 @@ func (r *DescribeKeadIpResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeBlockIpRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -72,22 +70,22 @@ type DescribeBlockIpResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	BlockIpSet []struct {
-		Ip          *string `json:"Ip" name:"Ip"`
-		InBps       *string `json:"InBps" name:"InBps"`
-		AttackType  *string `json:"AttackType" name:"AttackType"`
-		InstanceType *string `json:"InstanceType" name:"InstanceType"`
-		InstanceName *string `json:"InstanceName" name:"InstanceName"`
-		RegionCode  *string `json:"RegionCode" name:"RegionCode"`
-		RegionName  *string `json:"RegionName" name:"RegionName"`
-		RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
-		Status      *string `json:"Status" name:"Status"`
-		BlockTime   *string `json:"BlockTime" name:"BlockTime"`
-		UnblockTime *string `json:"UnblockTime" name:"UnblockTime"`
+		Ip              *string `json:"Ip" name:"Ip"`
+		InBps           *string `json:"InBps" name:"InBps"`
+		AttackType      *string `json:"AttackType" name:"AttackType"`
+		InstanceType    *string `json:"InstanceType" name:"InstanceType"`
+		InstanceName    *string `json:"InstanceName" name:"InstanceName"`
+		RegionCode      *string `json:"RegionCode" name:"RegionCode"`
+		RegionName      *string `json:"RegionName" name:"RegionName"`
+		RegionEnName    *string `json:"RegionEnName" name:"RegionEnName"`
+		Status          *string `json:"Status" name:"Status"`
+		BlockTime       *string `json:"BlockTime" name:"BlockTime"`
+		UnblockTime     *string `json:"UnblockTime" name:"UnblockTime"`
 		PlanUnblockTime *string `json:"PlanUnblockTime" name:"PlanUnblockTime"`
 	} `json:"BlockIpSet"`
 	RegionSet []struct {
-		RegionCode *string `json:"RegionCode" name:"RegionCode"`
-		RegionName *string `json:"RegionName" name:"RegionName"`
+		RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+		RegionName   *string `json:"RegionName" name:"RegionName"`
 		RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
 	} `json:"RegionSet"`
 	ResourceSet  []*string `json:"ResourceSet" name:"ResourceSet"`
@@ -102,4 +100,3 @@ func (r *DescribeBlockIpResponse) ToJsonString() string {
 func (r *DescribeBlockIpResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
