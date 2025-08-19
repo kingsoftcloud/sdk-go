@@ -526,9 +526,6 @@ type DescribeEpcsResponse struct {
 			Num       *int    `json:"Num" name:"Num"`
 			Kind      *string `json:"Kind" name:"Kind"`
 		} `json:"NetworkCardSet" name:"NetworkCardSet"`
-		Tags struct {
-			ResourceId *string `json:"ResourceId" name:"ResourceId"`
-		} `json:"Tags" name:"Tags"`
 		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
 		CabinetName      *string `json:"CabinetName" name:"CabinetName"`
 		RackName         *string `json:"RackName" name:"RackName"`
@@ -556,6 +553,12 @@ type DescribeEpcsResponse struct {
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	NextToken  *string `json:"NextToken" name:"NextToken"`
+	Tags       []struct {
+		ResourceId *string `json:"ResourceId" name:"ResourceId"`
+		TagId      *string `json:"TagId" name:"TagId"`
+		Key        *string `json:"Key" name:"Key"`
+		Value      *string `json:"Value" name:"Value"`
+	} `json:"Tags"`
 }
 
 func (r *DescribeEpcsResponse) ToJsonString() string {
