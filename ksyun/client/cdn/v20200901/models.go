@@ -2,6 +2,7 @@ package v20200901
 
 import (
 	"encoding/json"
+
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -52,7 +53,10 @@ type GetUserUsageDataExportTaskResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId        *string `json:"RequestId" name:"RequestId"`
 	UsageDataPerPage struct {
-		DataItem []struct {
+		TotalCount *int `json:"TotalCount" name:"TotalCount"`
+		PageSize   *int `json:"PageSize" name:"PageSize"`
+		PageNumber *int `json:"PageNumber" name:"PageNumber"`
+		DataItem   []struct {
 			TaskId     *string `json:"TaskId" name:"TaskId"`
 			CreateTime *string `json:"CreateTime" name:"CreateTime"`
 			UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
@@ -126,8 +130,10 @@ type GetDomainUsageDataResponse struct {
 	CdnType   *string `json:"CdnType" name:"CdnType"`
 	Domains   *string `json:"Domains" name:"Domains"`
 	Areas     *string `json:"Areas" name:"Areas"`
+	Interval  *int    `json:"Interval" name:"Interval"`
 	Metric    []struct {
-		Time *string `json:"Time" name:"Time"`
+		Time  *string `json:"Time" name:"Time"`
+		Value *int    `json:"Value" name:"Value"`
 	} `json:"Metric"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	PeakTime  *string `json:"PeakTime" name:"PeakTime"`
@@ -162,6 +168,7 @@ type CreateUsageDetailDataExportTaskResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime *string `json:"StartTime" name:"StartTime"`
 	EndTime   *string `json:"EndTime" name:"EndTime"`
+	TaskId    *int    `json:"TaskId" name:"TaskId"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 

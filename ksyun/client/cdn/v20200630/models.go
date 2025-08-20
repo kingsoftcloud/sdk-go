@@ -2,6 +2,7 @@ package v20200630
 
 import (
 	"encoding/json"
+
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -31,6 +32,7 @@ type GetClientRequestDataResponse struct {
 	StartTime  *string `json:"StartTime" name:"StartTime"`
 	EndTime    *string `json:"EndTime" name:"EndTime"`
 	Metric     *string `json:"Metric" name:"Metric"`
+	Interval   *int    `json:"Interval" name:"Interval"`
 	CdnType    *string `json:"CdnType" name:"CdnType"`
 	Domains    *string `json:"Domains" name:"Domains"`
 	Areas      *string `json:"Areas" name:"Areas"`
@@ -84,6 +86,7 @@ type GetServerDataResponse struct {
 	EndTime    *string `json:"EndTime" name:"EndTime"`
 	Metric     *string `json:"Metric" name:"Metric"`
 	DataType   *string `json:"DataType" name:"DataType"`
+	Interval   *int    `json:"Interval" name:"Interval"`
 	CdnType    *string `json:"CdnType" name:"CdnType"`
 	Domains    *string `json:"Domains" name:"Domains"`
 	Regions    *string `json:"Regions" name:"Regions"`
@@ -131,8 +134,12 @@ type GetDomainRankingListDataResponse struct {
 	SortBy    *string `json:"SortBy" name:"SortBy"`
 	Datas     []struct {
 		Domain         *string  `json:"Domain" name:"Domain"`
+		Rank           *int     `json:"Rank" name:"Rank"`
+		Flow           *int     `json:"Flow" name:"Flow"`
 		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
+		Bw             *int     `json:"Bw" name:"Bw"`
 		PeakTime       *string  `json:"PeakTime" name:"PeakTime"`
+		Pv             *int     `json:"Pv" name:"Pv"`
 		PvProportion   *float64 `json:"PvProportion" name:"PvProportion"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -168,10 +175,14 @@ type GetAreaIspDataResponse struct {
 	Domains   *string `json:"Domains" name:"Domains"`
 	Datas     []struct {
 		Area           *string  `json:"Area" name:"Area"`
+		Flow           *int     `json:"Flow" name:"Flow"`
+		Pv             *int     `json:"Pv" name:"Pv"`
 		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
 		PvProportion   *float64 `json:"PvProportion" name:"PvProportion"`
 		Isps           []struct {
 			Isp            *string  `json:"Isp" name:"Isp"`
+			Flow           *int     `json:"Flow" name:"Flow"`
+			Pv             *int     `json:"Pv" name:"Pv"`
 			FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
 			PvProportion   *float64 `json:"PvProportion" name:"PvProportion"`
 		} `json:"Isps" name:"Isps"`
@@ -209,10 +220,14 @@ type GetTopReferDataResponse struct {
 	EndTime   *string `json:"EndTime" name:"EndTime"`
 	CdnType   *string `json:"CdnType" name:"CdnType"`
 	Domains   *string `json:"Domains" name:"Domains"`
+	LimitN    *int    `json:"LimitN" name:"LimitN"`
 	SortBy    *string `json:"SortBy" name:"SortBy"`
 	Datas     []struct {
 		Refer          *string  `json:"Refer" name:"Refer"`
+		Rank           *int     `json:"Rank" name:"Rank"`
+		Pv             *int     `json:"Pv" name:"Pv"`
 		PvProportion   *float64 `json:"PvProportion" name:"PvProportion"`
+		Flow           *int     `json:"Flow" name:"Flow"`
 		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -248,10 +263,14 @@ type GetTopUrlDataResponse struct {
 	EndTime   *string `json:"EndTime" name:"EndTime"`
 	CdnType   *string `json:"CdnType" name:"CdnType"`
 	Domains   *string `json:"Domains" name:"Domains"`
+	LimitN    *int    `json:"LimitN" name:"LimitN"`
 	SortBy    *string `json:"SortBy" name:"SortBy"`
 	Datas     []struct {
 		Url            *string  `json:"Url" name:"Url"`
+		Rank           *int     `json:"Rank" name:"Rank"`
+		Pv             *int     `json:"Pv" name:"Pv"`
 		PvProportion   *float64 `json:"PvProportion" name:"PvProportion"`
+		Flow           *int     `json:"Flow" name:"Flow"`
 		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -294,6 +313,8 @@ type GetRealTimeHitRateDataResponse struct {
 		Condition struct {
 		} `json:"Condition" name:"Condition"`
 		DetailData struct {
+			HitFlow            *int     `json:"HitFlow" name:"HitFlow"`
+			MissFlow           *int     `json:"MissFlow" name:"MissFlow"`
 			MissFlowProportion *float64 `json:"MissFlowProportion" name:"MissFlowProportion"`
 			HitFlowProportion  *float64 `json:"HitFlowProportion" name:"HitFlowProportion"`
 		} `json:"DetailData" name:"DetailData"`
@@ -328,6 +349,7 @@ type GetReqHitRateDataResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime  *string `json:"StartTime" name:"StartTime"`
 	EndTime    *string `json:"EndTime" name:"EndTime"`
+	Interval   *int    `json:"Interval" name:"Interval"`
 	CdnType    *string `json:"CdnType" name:"CdnType"`
 	Domains    *string `json:"Domains" name:"Domains"`
 	ResultType *string `json:"ResultType" name:"ResultType"`
@@ -337,6 +359,8 @@ type GetReqHitRateDataResponse struct {
 		} `json:"Condition" name:"Condition"`
 		DetailData []struct {
 			Time               *string  `json:"Time" name:"Time"`
+			HitFlow            *int     `json:"HitFlow" name:"HitFlow"`
+			MissFlow           *int     `json:"MissFlow" name:"MissFlow"`
 			MissFlowProportion *float64 `json:"MissFlowProportion" name:"MissFlowProportion"`
 			HitFlowProportion  *float64 `json:"HitFlowProportion" name:"HitFlowProportion"`
 		} `json:"DetailData" name:"DetailData"`
@@ -371,6 +395,7 @@ type GetFlowHitRateDataResponse struct {
 	*ksyunhttp.BaseResponse
 	StartTime  *string `json:"StartTime" name:"StartTime"`
 	EndTime    *string `json:"EndTime" name:"EndTime"`
+	Interval   *int    `json:"Interval" name:"Interval"`
 	CdnType    *string `json:"CdnType" name:"CdnType"`
 	Domains    *string `json:"Domains" name:"Domains"`
 	ResultType *string `json:"ResultType" name:"ResultType"`
@@ -380,6 +405,8 @@ type GetFlowHitRateDataResponse struct {
 		} `json:"Condition" name:"Condition"`
 		DetailData []struct {
 			Time               *string  `json:"Time" name:"Time"`
+			HitFlow            *int     `json:"HitFlow" name:"HitFlow"`
+			MissFlow           *int     `json:"MissFlow" name:"MissFlow"`
 			MissFlowProportion *float64 `json:"MissFlowProportion" name:"MissFlowProportion"`
 			HitFlowProportion  *float64 `json:"HitFlowProportion" name:"HitFlowProportion"`
 		} `json:"DetailData" name:"DetailData"`
@@ -425,6 +452,7 @@ type GetDomainRequestPeriodRatioDataResponse struct {
 	PriorPeriodStartTime   *string `json:"PriorPeriodStartTime" name:"PriorPeriodStartTime"`
 	PriorPeriodEndTime     *string `json:"PriorPeriodEndTime" name:"PriorPeriodEndTime"`
 	Metric                 *string `json:"Metric" name:"Metric"`
+	Interval               *int    `json:"Interval" name:"Interval"`
 	CdnType                *string `json:"CdnType" name:"CdnType"`
 	Domains                *string `json:"Domains" name:"Domains"`
 	Areas                  *string `json:"Areas" name:"Areas"`
@@ -438,9 +466,11 @@ type GetDomainRequestPeriodRatioDataResponse struct {
 		Condition struct {
 		} `json:"Condition" name:"Condition"`
 		Data []struct {
-			CurrentPeriodTime *string  `json:"CurrentPeriodTime" name:"CurrentPeriodTime"`
-			PriorPeriodTime   *string  `json:"PriorPeriodTime" name:"PriorPeriodTime"`
-			PeriodRatio       *float64 `json:"PeriodRatio" name:"PeriodRatio"`
+			CurrentPeriodTime  *string  `json:"CurrentPeriodTime" name:"CurrentPeriodTime"`
+			PriorPeriodTime    *string  `json:"PriorPeriodTime" name:"PriorPeriodTime"`
+			CurrentPeriodValue *int     `json:"CurrentPeriodValue" name:"CurrentPeriodValue"`
+			PriorPeriodValue   *int     `json:"PriorPeriodValue" name:"PriorPeriodValue"`
+			PeriodRatio        *float64 `json:"PeriodRatio" name:"PeriodRatio"`
 		} `json:"Data" name:"Data"`
 	} `json:"Datas"`
 }
@@ -475,12 +505,15 @@ type GetUvDataResponse struct {
 	EndTime    *string `json:"EndTime" name:"EndTime"`
 	CdnType    *string `json:"CdnType" name:"CdnType"`
 	Domains    *string `json:"Domains" name:"Domains"`
+	Interval   *int    `json:"Interval" name:"Interval"`
 	ResultType *string `json:"ResultType" name:"ResultType"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	Datas      []struct {
 		Time    *string `json:"Time" name:"Time"`
+		Uv      *int    `json:"Uv" name:"Uv"`
 		Domains []struct {
 			Domain *string `json:"Domain" name:"Domain"`
+			Uv     *int    `json:"Uv" name:"Uv"`
 		} `json:"Domains" name:"Domains"`
 	} `json:"Datas"`
 }
@@ -514,8 +547,11 @@ type GetTopIpDataResponse struct {
 	StartTime *string `json:"StartTime" name:"StartTime"`
 	EndTime   *string `json:"EndTime" name:"EndTime"`
 	CdnType   *string `json:"CdnType" name:"CdnType"`
+	LimitN    *int    `json:"LimitN" name:"LimitN"`
 	Datas     []struct {
-		Ip *string `json:"Ip" name:"Ip"`
+		Ip   *string `json:"Ip" name:"Ip"`
+		Pv   *int    `json:"Pv" name:"Pv"`
+		Flow *int    `json:"Flow" name:"Flow"`
 	} `json:"Datas"`
 	Domains   *string `json:"Domains" name:"Domains"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -590,6 +626,7 @@ type GetSrcDomainHttpCodeDataResponse struct {
 		} `json:"Condition" name:"Condition"`
 		HttpcodeData []struct {
 			CodeType   *string  `json:"CodeType" name:"CodeType"`
+			PV         *int     `json:"PV" name:"PV"`
 			Proportion *float64 `json:"Proportion" name:"Proportion"`
 		} `json:"HttpcodeData" name:"HttpcodeData"`
 	} `json:"Datas"`
@@ -677,6 +714,7 @@ type GetDomainHttpCodeDataResponse struct {
 		} `json:"Condition" name:"Condition"`
 		HttpcodeData []struct {
 			CodeType   *string  `json:"CodeType" name:"CodeType"`
+			PV         *int     `json:"PV" name:"PV"`
 			Proportion *float64 `json:"Proportion" name:"Proportion"`
 		} `json:"HttpcodeData" name:"HttpcodeData"`
 	} `json:"Datas"`
