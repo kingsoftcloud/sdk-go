@@ -519,6 +519,15 @@ type DescribeEpcsResponse struct {
 			SecurityGroupSet     []struct {
 				SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
 			} `json:"SecurityGroupSet"`
+			EipAddress struct {
+				BandWidth      *int    `json:"BandWidth" name:"BandWidth"`
+				CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+				AllocationId   *string `json:"AllocationId" name:"AllocationId"`
+				PublicIp       *string `json:"PublicIp" name:"PublicIp"`
+				IpState        *string `json:"IpState" name:"IpState"`
+				ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+				IpVersion      *string `json:"IpVersion" name:"IpVersion"`
+			} `json:"EipAddress"`
 		} `json:"NetworkInterfaceAttributeSet" name:"NetworkInterfaceAttributeSet"`
 		NetworkCardSet []struct {
 			Type      *string `json:"Type" name:"Type"`
@@ -719,6 +728,7 @@ type DescribeImagesRequest struct {
 	*ksyunhttp.BaseRequest
 	MaxResults *int    `json:"MaxResults,omitempty" name:"MaxResults"`
 	NextToken  *string `json:"NextToken,omitempty" name:"NextToken"`
+	ImageIdN   *string `json:"ImageId.N,omitempty" name:"ImageId.N"`
 }
 
 func (r *DescribeImagesRequest) ToJsonString() string {
@@ -1313,6 +1323,48 @@ type DescribeEpcDeviceAttributesResponse struct {
 		PriceSet []struct {
 			MonthlylistPrice *string `json:"MonthlylistPrice" name:"MonthlylistPrice"`
 		} `json:"PriceSet" name:"PriceSet"`
+		IsGroup                  *bool `json:"IsGroup" name:"IsGroup"`
+		SubEpcDeviceAttributeSet []struct {
+			DeviceAttributeId *string `json:"DeviceAttributeId" name:"DeviceAttributeId"`
+			HostType          *string `json:"HostType" name:"HostType"`
+			HostTypeName      *string `json:"HostTypeName" name:"HostTypeName"`
+			Memory            *string `json:"Memory" name:"Memory"`
+			CpuDeviceSet      []struct {
+				CpuSpec *string `json:"CpuSpec" name:"CpuSpec"`
+			} `json:"CpuDeviceSet"`
+			GpuDeviceSet []struct {
+				GpuModel *string `json:"GpuModel" name:"GpuModel"`
+				GpuCount *string `json:"GpuCount" name:"GpuCount"`
+			} `json:"GpuDeviceSet"`
+			PhysicalDiskDeviceSet []struct {
+				DiskAttribute *string `json:"DiskAttribute" name:"DiskAttribute"`
+				DiskCount     *string `json:"DiskCount" name:"DiskCount"`
+				Space         *string `json:"Space" name:"Space"`
+			} `json:"PhysicalDiskDeviceSet"`
+			SubHostType     *string `json:"SubHostType" name:"SubHostType"`
+			SubHostTypeName *string `json:"SubHostTypeName" name:"SubHostTypeName"`
+			IsGroup         *bool   `json:"IsGroup" name:"IsGroup"`
+			VpcNetworkCard  []struct {
+				Type *string `json:"Type" name:"Type"`
+				Num  *int    `json:"Num" name:"Num"`
+			} `json:"VpcNetworkCard"`
+			RdmaNetworkCard []struct {
+				Type    *string `json:"Type" name:"Type"`
+				Num     *int    `json:"Num" name:"Num"`
+				Kind    *string `json:"Kind" name:"Kind"`
+				UseType *string `json:"UseType" name:"UseType"`
+			} `json:"RdmaNetworkCard"`
+		} `json:"SubEpcDeviceAttributeSet" name:"SubEpcDeviceAttributeSet"`
+		VpcNetworkCard []struct {
+			Type *string `json:"Type" name:"Type"`
+			Num  *int    `json:"Num" name:"Num"`
+		} `json:"VpcNetworkCard" name:"VpcNetworkCard"`
+		RdmaNetworkCard []struct {
+			Type    *string `json:"Type" name:"Type"`
+			Num     *int    `json:"Num" name:"Num"`
+			Kind    *string `json:"Kind" name:"Kind"`
+			UseType *string `json:"UseType" name:"UseType"`
+		} `json:"RdmaNetworkCard" name:"RdmaNetworkCard"`
 	} `json:"EpcDeviceAttributeSet"`
 }
 
