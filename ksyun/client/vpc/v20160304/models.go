@@ -228,6 +228,7 @@ type CreateSubnetRequest struct {
 	GatewayIp             *string `json:"GatewayIp,omitempty" name:"GatewayIp"`
 	SecondaryCidrId       *string `json:"SecondaryCidrId,omitempty" name:"SecondaryCidrId"`
 	AvailabilityZone      *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	VisitInternet         *bool   `json:"VisitInternet,omitempty" name:"VisitInternet"`
 }
 
 func (r *CreateSubnetRequest) ToJsonString() string {
@@ -238,28 +239,6 @@ func (r *CreateSubnetRequest) ToJsonString() string {
 type CreateSubnetResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
-	Subnet    struct {
-		CreateTime                  *string `json:"CreateTime" name:"CreateTime"`
-		SubnetId                    *string `json:"SubnetId" name:"SubnetId"`
-		VpcId                       *string `json:"VpcId" name:"VpcId"`
-		SubnetName                  *string `json:"SubnetName" name:"SubnetName"`
-		CidrBlock                   *string `json:"CidrBlock" name:"CidrBlock"`
-		SubnetType                  *string `json:"SubnetType" name:"SubnetType"`
-		DhcpIpFrom                  *string `json:"DhcpIpFrom" name:"DhcpIpFrom"`
-		DhcpIpTo                    *string `json:"DhcpIpTo" name:"DhcpIpTo"`
-		Dns1                        *string `json:"Dns1" name:"Dns1"`
-		Dns2                        *string `json:"Dns2" name:"Dns2"`
-		GatewayIp                   *string `json:"GatewayIp" name:"GatewayIp"`
-		AvailabilityZoneName        *string `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
-		ProvidedIpv6CidrBlock       *bool   `json:"ProvidedIpv6CidrBlock" name:"ProvidedIpv6CidrBlock"`
-		SecondaryCidrId             *string `json:"SecondaryCidrId" name:"SecondaryCidrId"`
-		NetworkAclId                *string `json:"NetworkAclId" name:"NetworkAclId"`
-		NatId                       *string `json:"NatId" name:"NatId"`
-		RouteTableId                *string `json:"RouteTableId" name:"RouteTableId"`
-		Ipv6CidrBlockAssociationSet []struct {
-			Ipv6CidrBlock *string `json:"Ipv6CidrBlock" name:"Ipv6CidrBlock"`
-		} `json:"Ipv6CidrBlockAssociationSet" name:"Ipv6CidrBlockAssociationSet"`
-	} `json:"Subnet"`
 }
 
 func (r *CreateSubnetResponse) ToJsonString() string {
@@ -328,13 +307,14 @@ type DescribeSubnetsResponse struct {
 		AvailabilityZoneName        *string `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
 		ProvidedIpv6CidrBlock       *bool   `json:"ProvidedIpv6CidrBlock" name:"ProvidedIpv6CidrBlock"`
 		SecondaryCidrId             *string `json:"SecondaryCidrId" name:"SecondaryCidrId"`
-		AvailableIpNumber           *string `json:"AvailableIpNumber" name:"AvailableIpNumber"`
+		AvailableIpNumber           *int    `json:"AvailableIpNumber" name:"AvailableIpNumber"`
 		NetworkAclId                *string `json:"NetworkAclId" name:"NetworkAclId"`
 		NatId                       *string `json:"NatId" name:"NatId"`
 		RouteTableId                *string `json:"RouteTableId" name:"RouteTableId"`
 		Ipv6CidrBlockAssociationSet []struct {
 			Ipv6CidrBlock *string `json:"Ipv6CidrBlock" name:"Ipv6CidrBlock"`
 		} `json:"Ipv6CidrBlockAssociationSet" name:"Ipv6CidrBlockAssociationSet"`
+		VisitInternet *bool `json:"VisitInternet" name:"VisitInternet"`
 	} `json:"SubnetSet"`
 }
 

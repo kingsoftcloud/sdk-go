@@ -4702,6 +4702,71 @@ func (c *Client) DescribeXidDetailsWithContextV2(ctx context.Context, request *D
 	}
 	return statusCode, msg, nil
 }
+func NewRunSoInstancesRequest() (request *RunSoInstancesRequest) {
+	request = &RunSoInstancesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "RunSoInstances")
+	return
+}
+
+func NewRunSoInstancesResponse() (response *RunSoInstancesResponse) {
+	response = &RunSoInstancesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RunSoInstances(request *RunSoInstancesRequest) string {
+	return c.RunSoInstancesWithContext(context.Background(), request)
+}
+
+func (c *Client) RunSoInstancesSend(request *RunSoInstancesRequest) (*RunSoInstancesResponse, error) {
+	statusCode, msg, err := c.RunSoInstancesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct RunSoInstancesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) RunSoInstancesWithContext(ctx context.Context, request *RunSoInstancesRequest) string {
+	if request == nil {
+		request = NewRunSoInstancesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewRunSoInstancesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) RunSoInstancesWithContextV2(ctx context.Context, request *RunSoInstancesRequest) (int, string, error) {
+	if request == nil {
+		request = NewRunSoInstancesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewRunSoInstancesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewDescribeSoImagesRequest() (request *DescribeSoImagesRequest) {
 	request = &DescribeSoImagesRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},

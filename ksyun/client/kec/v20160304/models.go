@@ -555,6 +555,7 @@ type DescribeImagesResponse struct {
 		RealImageId           *string `json:"RealImageId" name:"RealImageId"`
 		OnlineExpansion       *bool   `json:"OnlineExpansion" name:"OnlineExpansion"`
 		ImageMode             *string `json:"ImageMode" name:"ImageMode"`
+		BootMode              *string `json:"BootMode" name:"BootMode"`
 	} `json:"ImagesSet"`
 }
 
