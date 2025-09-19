@@ -2846,22 +2846,24 @@ func (r *DescribeXidDetailsResponse) FromJsonString(s string) error {
 
 type RunSoInstancesRequest struct {
 	*ksyunhttp.BaseRequest
-	ImageId             *string                `json:"ImageId,omitempty" name:"ImageId"`
-	InstanceName        *string                `json:"InstanceName,omitempty" name:"InstanceName"`
-	InstanceTypeId      *string                `json:"InstanceTypeId,omitempty" name:"InstanceTypeId"`
-	SecurityGroupId     []*string              `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
-	SubnetId            *string                `json:"SubnetId,omitempty" name:"SubnetId"`
-	Volumes             *RunSoInstancesVolumes `json:"Volumes,omitempty" name:"Volumes"`
-	ZoneId              *string                `json:"ZoneId,omitempty" name:"ZoneId"`
-	Description         *string                `json:"Description,omitempty" name:"Description"`
-	HostName            *string                `json:"HostName,omitempty" name:"HostName"`
-	InstanceChargeType  *string                `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
-	KeepImageCredential *bool                  `json:"KeepImageCredential,omitempty" name:"KeepImageCredential"`
-	KeyPairName         *string                `json:"KeyPairName,omitempty" name:"KeyPairName"`
-	Password            *string                `json:"Password,omitempty" name:"Password"`
-	Period              *int                   `json:"Period,omitempty" name:"Period"`
-	SuffixIndex         *int                   `json:"SuffixIndex,omitempty" name:"SuffixIndex"`
-	UniqueSuffix        *bool                  `json:"UniqueSuffix,omitempty" name:"UniqueSuffix"`
+	ImageId                *string                `json:"ImageId,omitempty" name:"ImageId"`
+	InstanceName           *string                `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceTypeId         *string                `json:"InstanceTypeId,omitempty" name:"InstanceTypeId"`
+	SecurityGroupId        []*string              `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	SubnetId               *string                `json:"SubnetId,omitempty" name:"SubnetId"`
+	Volumes                *RunSoInstancesVolumes `json:"Volumes,omitempty" name:"Volumes"`
+	ZoneId                 *string                `json:"ZoneId,omitempty" name:"ZoneId"`
+	Description            *string                `json:"Description,omitempty" name:"Description"`
+	HostName               *string                `json:"HostName,omitempty" name:"HostName"`
+	InstanceChargeType     *string                `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+	KeepImageCredential    *bool                  `json:"KeepImageCredential,omitempty" name:"KeepImageCredential"`
+	KeyPairName            *string                `json:"KeyPairName,omitempty" name:"KeyPairName"`
+	Password               *string                `json:"Password,omitempty" name:"Password"`
+	Period                 *int                   `json:"Period,omitempty" name:"Period"`
+	SuffixIndex            *int                   `json:"SuffixIndex,omitempty" name:"SuffixIndex"`
+	UniqueSuffix           *bool                  `json:"UniqueSuffix,omitempty" name:"UniqueSuffix"`
+	InstallRunCommandAgent *bool                  `json:"InstallRunCommandAgent,omitempty" name:"InstallRunCommandAgent"`
+	Count                  *int                   `json:"Count,omitempty" name:"Count"`
 }
 
 func (r *RunSoInstancesRequest) ToJsonString() string {
