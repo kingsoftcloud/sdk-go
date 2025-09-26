@@ -2451,6 +2451,7 @@ type DescribeInstanceTypeConfigsResponse struct {
 				IsSellOut *bool   `json:"IsSellOut" name:"IsSellOut"`
 			} `json:"AvailabilityZoneSet"`
 		} `json:"DataDiskQuotaSet" name:"DataDiskQuotaSet"`
+		GPUspec *string `json:"GPUspec" name:"GPUspec"`
 	} `json:"InstanceTypeConfigSet"`
 }
 
