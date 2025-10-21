@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	iam "github.com/kingsoftcloud/sdk-go/v2/ksyun/client/iam/v20151101"
 	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common"
 	_ "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/errors"
@@ -33,6 +34,11 @@ func main() {
 	// 			Values: common.StringPtrs([]string{"ap-guangzhou-1"}),
 	// 		},
 	// 	}
+
+	// 支持指定哪些参数可以放在URL中，其他参数会放到body
+	// 默认情况下，所有参数都会添加到URL或body（取决于请求方法）
+	// 如果设置了PathParams，则只有指定的参数会添加到URL，其他参数放到body
+	// request.SetPathParams([]string{"Action", "Version", "Service"})
 
 	//支持设置请求头
 	//request.SetHeaders(map[string]string{

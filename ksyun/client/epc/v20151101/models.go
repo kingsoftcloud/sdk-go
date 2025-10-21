@@ -2864,6 +2864,7 @@ type RunSoInstancesRequest struct {
 	UniqueSuffix           *bool                  `json:"UniqueSuffix,omitempty" name:"UniqueSuffix"`
 	InstallRunCommandAgent *bool                  `json:"InstallRunCommandAgent,omitempty" name:"InstallRunCommandAgent"`
 	Count                  *int                   `json:"Count,omitempty" name:"Count"`
+	SoZoneId               *string                `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *RunSoInstancesRequest) ToJsonString() string {
@@ -2898,6 +2899,7 @@ type DescribeSoImagesRequest struct {
 	Platform           *string   `json:"Platform,omitempty" name:"Platform"`
 	Status             []*string `json:"Status,omitempty" name:"Status"`
 	Visibility         *string   `json:"Visibility,omitempty" name:"Visibility"`
+	SoZoneId           *string   `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *DescribeSoImagesRequest) ToJsonString() string {
@@ -2943,6 +2945,7 @@ type RebootSoInstanceRequest struct {
 	*ksyunhttp.BaseRequest
 	ForceStop   *bool     `json:"ForceStop,omitempty" name:"ForceStop"`
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	SoZoneId    *string   `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *RebootSoInstanceRequest) ToJsonString() string {
@@ -2969,6 +2972,7 @@ func (r *RebootSoInstanceResponse) FromJsonString(s string) error {
 type DeleteSoImagesRequest struct {
 	*ksyunhttp.BaseRequest
 	ImageIds []*string `json:"ImageIds,omitempty" name:"ImageIds"`
+	SoZoneId *string   `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *DeleteSoImagesRequest) ToJsonString() string {
@@ -3000,7 +3004,8 @@ func (r *DeleteSoImagesResponse) FromJsonString(s string) error {
 
 type DeleteSoVpcRequest struct {
 	*ksyunhttp.BaseRequest
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId    *string `json:"VpcId,omitempty" name:"VpcId"`
+	SoZoneId *string `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *DeleteSoVpcRequest) ToJsonString() string {
@@ -3028,6 +3033,7 @@ type DescribeSoAvailableResourceRequest struct {
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 	InstanceTypeId     *string `json:"InstanceTypeId,omitempty" name:"InstanceTypeId"`
 	ZoneId             *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	SoZoneId           *string `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *DescribeSoAvailableResourceRequest) ToJsonString() string {
@@ -3072,6 +3078,7 @@ type DescribeSoInstancesRequest struct {
 	VpcId              *string   `json:"VpcId,omitempty" name:"VpcId"`
 	ZoneId             *string   `json:"ZoneId,omitempty" name:"ZoneId"`
 	InstanceIds        []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	SoZoneId           *string   `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *DescribeSoInstancesRequest) ToJsonString() string {
@@ -3140,6 +3147,7 @@ func (r *DescribeSoInstancesResponse) FromJsonString(s string) error {
 type DeleteSoInstanceRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	SoZoneId    *string   `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *DeleteSoInstanceRequest) ToJsonString() string {
@@ -3173,6 +3181,7 @@ type DescribeSoSecurityGroupsRequest struct {
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 	NextToken        *string   `json:"NextToken,omitempty" name:"NextToken"`
 	MaxResults       *int      `json:"MaxResults,omitempty" name:"MaxResults"`
+	SoZoneId         *string   `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *DescribeSoSecurityGroupsRequest) ToJsonString() string {
@@ -3212,6 +3221,7 @@ type CreateSoVpcRequest struct {
 	CidrBlock   *string   `json:"CidrBlock,omitempty" name:"CidrBlock"`
 	DnsServers  []*string `json:"DnsServers,omitempty" name:"DnsServers"`
 	AttachVpcId *string   `json:"AttachVpcId,omitempty" name:"AttachVpcId"`
+	SoZoneId    *string   `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *CreateSoVpcRequest) ToJsonString() string {
@@ -3238,6 +3248,7 @@ func (r *CreateSoVpcResponse) FromJsonString(s string) error {
 type DeleteSoSubnetRequest struct {
 	*ksyunhttp.BaseRequest
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	SoZoneId *string `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *DeleteSoSubnetRequest) ToJsonString() string {
@@ -3267,6 +3278,7 @@ type DescribeSoKeyPairsRequest struct {
 	KeyPairNames []*string `json:"KeyPairNames,omitempty" name:"KeyPairNames"`
 	MaxResults   *int      `json:"MaxResults,omitempty" name:"MaxResults"`
 	NextToken    *string   `json:"NextToken,omitempty" name:"NextToken"`
+	SoZoneId     *string   `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *DescribeSoKeyPairsRequest) ToJsonString() string {
@@ -3301,6 +3313,7 @@ func (r *DescribeSoKeyPairsResponse) FromJsonString(s string) error {
 type StartSoInstanceRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	SoZoneId    *string   `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *StartSoInstanceRequest) ToJsonString() string {
@@ -3332,6 +3345,7 @@ type DescribeSoInstanceTypesRequest struct {
 	*ksyunhttp.BaseRequest
 	ImageId        *string   `json:"ImageId,omitempty" name:"ImageId"`
 	InstanceTypeId []*string `json:"InstanceTypeId,omitempty" name:"InstanceTypeId"`
+	SoZoneId       *string   `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *DescribeSoInstanceTypesRequest) ToJsonString() string {
@@ -3376,6 +3390,7 @@ type ModifySoSubnetAttributesRequest struct {
 	SubnetId    *string `json:"SubnetId,omitempty" name:"SubnetId"`
 	SubnetName  *string `json:"SubnetName,omitempty" name:"SubnetName"`
 	Description *string `json:"Description,omitempty" name:"Description"`
+	SoZoneId    *string `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *ModifySoSubnetAttributesRequest) ToJsonString() string {
@@ -3406,6 +3421,7 @@ type DescribeSoSubnetRequest struct {
 	SubnetIds  []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 	NextToken  *string   `json:"NextToken,omitempty" name:"NextToken"`
 	MaxResults *int      `json:"MaxResults,omitempty" name:"MaxResults"`
+	SoZoneId   *string   `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *DescribeSoSubnetRequest) ToJsonString() string {
@@ -3445,6 +3461,7 @@ type ModifySoKeyPairAttributeRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 	KeyPairId   *string `json:"KeyPairId,omitempty" name:"KeyPairId"`
 	KeyPairName *string `json:"KeyPairName,omitempty" name:"KeyPairName"`
+	SoZoneId    *string `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *ModifySoKeyPairAttributeRequest) ToJsonString() string {
@@ -3474,6 +3491,7 @@ type ModifySoImageAttributeRequest struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 	ImageId     *string `json:"ImageId,omitempty" name:"ImageId"`
 	ImageName   *string `json:"ImageName,omitempty" name:"ImageName"`
+	SoZoneId    *string `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *ModifySoImageAttributeRequest) ToJsonString() string {
@@ -3502,6 +3520,7 @@ type ModifySoVpcAttributesRequest struct {
 	Description *string   `json:"Description,omitempty" name:"Description"`
 	DnsServers  []*string `json:"DnsServers,omitempty" name:"DnsServers"`
 	VpcName     *string   `json:"VpcName,omitempty" name:"VpcName"`
+	SoZoneId    *string   `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *ModifySoVpcAttributesRequest) ToJsonString() string {
@@ -3531,6 +3550,7 @@ type ReplaceSoSystemVolumeRequest struct {
 	KeepImageCredential *bool   `json:"KeepImageCredential,omitempty" name:"KeepImageCredential"`
 	KeyPairName         *string `json:"KeyPairName,omitempty" name:"KeyPairName"`
 	Password            *string `json:"Password,omitempty" name:"Password"`
+	SoZoneId            *string `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *ReplaceSoSystemVolumeRequest) ToJsonString() string {
@@ -3560,6 +3580,7 @@ type CreateSoSubnetRequest struct {
 	SubnetName  *string `json:"SubnetName,omitempty" name:"SubnetName"`
 	Description *string `json:"Description,omitempty" name:"Description"`
 	CidrBlock   *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+	SoZoneId    *string `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *CreateSoSubnetRequest) ToJsonString() string {
@@ -3589,6 +3610,7 @@ type DescribeSoVpcsRequest struct {
 	VpcIds     []*string `json:"VpcIds,omitempty" name:"VpcIds"`
 	NextToken  *string   `json:"NextToken,omitempty" name:"NextToken"`
 	MaxResults *int      `json:"MaxResults,omitempty" name:"MaxResults"`
+	SoZoneId   *string   `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *DescribeSoVpcsRequest) ToJsonString() string {
@@ -3630,6 +3652,7 @@ type StopSoInstanceRequest struct {
 	*ksyunhttp.BaseRequest
 	ForceStop   *bool     `json:"ForceStop,omitempty" name:"ForceStop"`
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	SoZoneId    *string   `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *StopSoInstanceRequest) ToJsonString() string {
@@ -3660,6 +3683,7 @@ func (r *StopSoInstanceResponse) FromJsonString(s string) error {
 type DeleteSoKeyPairsRequest struct {
 	*ksyunhttp.BaseRequest
 	KeyPairNames []*string `json:"KeyPairNames,omitempty" name:"KeyPairNames"`
+	SoZoneId     *string   `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *DeleteSoKeyPairsRequest) ToJsonString() string {
@@ -3693,6 +3717,7 @@ type CreateSoImageRequest struct {
 	*ksyunhttp.BaseRequest
 	ForceStop   *bool     `json:"ForceStop,omitempty" name:"ForceStop"`
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	SoZoneId    *string   `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *CreateSoImageRequest) ToJsonString() string {
@@ -3724,6 +3749,7 @@ type ModifySoInstanceAttributeRequest struct {
 	InstanceId         *string `json:"InstanceId,omitempty" name:"InstanceId"`
 	InstanceName       *string `json:"InstanceName,omitempty" name:"InstanceName"`
 	Password           *string `json:"Password,omitempty" name:"Password"`
+	SoZoneId           *string `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *ModifySoInstanceAttributeRequest) ToJsonString() string {
@@ -3750,6 +3776,7 @@ type CreateSoKeyPairRequest struct {
 	*ksyunhttp.BaseRequest
 	KeyPairName *string `json:"KeyPairName,omitempty" name:"KeyPairName"`
 	Description *string `json:"Description,omitempty" name:"Description"`
+	SoZoneId    *string `json:"SoZoneId,omitempty" name:"SoZoneId"`
 }
 
 func (r *CreateSoKeyPairRequest) ToJsonString() string {

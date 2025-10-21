@@ -180,6 +180,10 @@ func (r *BaseRequest) SetHttpMethod(method string) {
 }
 
 func (r *BaseRequest) SetPath(path string) {
+	// 如果路径中包含查询参数（?后面的部分），自动清理掉
+	if idx := strings.Index(path, "?"); idx != -1 {
+		path = path[:idx]
+	}
 	r.path = path
 }
 
@@ -188,14 +192,21 @@ func (r *BaseRequest) GetService() string {
 }
 
 func (r *BaseRequest) GetUrl() string {
+	// 规范化 domain 和 path 的拼接，避免双斜杠
+	domain := strings.TrimSuffix(r.domain, "/")
+	path := r.path
+	if path != "" && !strings.HasPrefix(path, "/") {
+		path = "/" + path
+	}
+
 	if r.httpMethod == GET {
-		return r.GetScheme() + "://" + r.domain + r.path + "?" + GetUrlQueriesEncoded(r.params)
+		return r.GetScheme() + "://" + domain + path + "?" + GetUrlQueriesEncoded(r.params)
 	} else if r.httpMethod == POST {
-		return r.GetScheme() + "://" + r.domain + r.path
+		return r.GetScheme() + "://" + domain + path
 	} else if r.httpMethod == PUT {
-		return r.GetScheme() + "://" + r.domain + r.path
+		return r.GetScheme() + "://" + domain + path
 	} else if r.httpMethod == DELETE {
-		return r.GetScheme() + "://" + r.domain + r.path
+		return r.GetScheme() + "://" + domain + path
 	} else {
 		return ""
 	}
