@@ -63,7 +63,7 @@ func (c *Client) DescribeBillSummaryByPayModeWithContext(ctx context.Context, re
 		request = NewDescribeBillSummaryByPayModeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeBillSummaryByPayModeResponse()
 	err, msg := c.Send(request, response)
@@ -78,7 +78,7 @@ func (c *Client) DescribeBillSummaryByPayModeWithContextV2(ctx context.Context, 
 		request = NewDescribeBillSummaryByPayModeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeBillSummaryByPayModeResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -193,7 +193,7 @@ func (c *Client) DescribeBillSummaryByProjectWithContext(ctx context.Context, re
 		request = NewDescribeBillSummaryByProjectRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeBillSummaryByProjectResponse()
 	err, msg := c.Send(request, response)
@@ -208,7 +208,7 @@ func (c *Client) DescribeBillSummaryByProjectWithContextV2(ctx context.Context, 
 		request = NewDescribeBillSummaryByProjectRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeBillSummaryByProjectResponse()
 	statusCode, msg, err := c.SendV2(request, response)

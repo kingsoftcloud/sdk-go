@@ -7,9 +7,10 @@ import (
 
 type DescribeBillSummaryByPayModeRequest struct {
 	*ksyunhttp.BaseRequest
-	BillBeginMonth *string `json:"BillBeginMonth,omitempty" name:"BillBeginMonth"`
-	BillEndMonth   *string `json:"BillEndMonth,omitempty" name:"BillEndMonth"`
-	SubAccount     *int    `json:"SubAccount,omitempty" name:"SubAccount"`
+	BillBeginMonth              *string `json:"BillBeginMonth,omitempty" name:"BillBeginMonth"`
+	BillEndMonth                *string `json:"BillEndMonth,omitempty" name:"BillEndMonth"`
+	SubAccount                  *int    `json:"SubAccount,omitempty" name:"SubAccount"`
+	FetchAllFinanceRelationData *bool   `json:"FetchAllFinanceRelationData,omitempty" name:"FetchAllFinanceRelationData"`
 }
 
 func (r *DescribeBillSummaryByPayModeRequest) ToJsonString() string {
@@ -75,9 +76,10 @@ func (r *DescribeBillSummaryByProductResponse) FromJsonString(s string) error {
 
 type DescribeBillSummaryByProjectRequest struct {
 	*ksyunhttp.BaseRequest
-	BillBeginMonth *string `json:"BillBeginMonth,omitempty" name:"BillBeginMonth"`
-	BillEndMonth   *string `json:"BillEndMonth,omitempty" name:"BillEndMonth"`
-	SubAccount     *int    `json:"SubAccount,omitempty" name:"SubAccount"`
+	BillBeginMonth              *string `json:"BillBeginMonth,omitempty" name:"BillBeginMonth"`
+	BillEndMonth                *string `json:"BillEndMonth,omitempty" name:"BillEndMonth"`
+	SubAccount                  *int    `json:"SubAccount,omitempty" name:"SubAccount"`
+	FetchAllFinanceRelationData *bool   `json:"FetchAllFinanceRelationData,omitempty" name:"FetchAllFinanceRelationData"`
 }
 
 func (r *DescribeBillSummaryByProjectRequest) ToJsonString() string {
