@@ -86,6 +86,18 @@ type ModifyNotebookRequest struct {
 	Memory                 *int                            `json:"Memory,omitempty" name:"Memory"`
 	StorageConfigs         []*ModifyNotebookStorageConfigs `json:"StorageConfigs,omitempty" name:"StorageConfigs"`
 	ServiceConfigs         []*ModifyNotebookServiceConfigs `json:"ServiceConfigs,omitempty" name:"ServiceConfigs"`
+	AutoSave               *bool                           `json:"AutoSave,omitempty" name:"AutoSave"`
+	RunOnCPU               *string                         `json:"RunOnCPU,omitempty" name:"RunOnCPU"`
+	NotebookName           *string                         `json:"NotebookName,omitempty" name:"NotebookName"`
+	SSHPort                *int                            `json:"SSHPort,omitempty" name:"SSHPort"`
+	SSHAuthorizedKeys      *string                         `json:"SSHAuthorizedKeys,omitempty" name:"SSHAuthorizedKeys"`
+	CPUNum                 *int                            `json:"CPUNum,omitempty" name:"CPUNum"`
+	ImageTagId             *string                         `json:"ImageTagId,omitempty" name:"ImageTagId"`
+	ImageSource            *string                         `json:"ImageSource,omitempty" name:"ImageSource"`
+	ImageRepoId            *string                         `json:"ImageRepoId,omitempty" name:"ImageRepoId"`
+	ImageRegistryId        *string                         `json:"ImageRegistryId,omitempty" name:"ImageRegistryId"`
+	EnableSSH              *string                         `json:"EnableSSH,omitempty" name:"EnableSSH"`
+	EnablePublicNetworkSSH *bool                           `json:"EnablePublicNetworkSSH,omitempty" name:"EnablePublicNetworkSSH"`
 }
 
 func (r *ModifyNotebookRequest) ToJsonString() string {
@@ -153,10 +165,10 @@ type DescribeNotebooksResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Notebooks []struct {
-		NotebookId  *string `json:"NotebookId" name:"NotebookId"`
-		Name        *string `json:"Name" name:"Name"`
-		Description *string `json:"Description" name:"Description"`
-		Status      struct {
+		NotebookId   *string `json:"NotebookId" name:"NotebookId"`
+		NotebookName *string `json:"NotebookName" name:"NotebookName"`
+		Description  *string `json:"Description" name:"Description"`
+		Status       struct {
 			State         *string `json:"State" name:"State"`
 			SubmitTime    *string `json:"SubmitTime" name:"SubmitTime"`
 			StartTime     *string `json:"StartTime" name:"StartTime"`
@@ -164,34 +176,56 @@ type DescribeNotebooksResponse struct {
 			Message       *string `json:"Message" name:"Message"`
 			ExecutionTime *string `json:"ExecutionTime" name:"ExecutionTime"`
 		} `json:"Status" name:"Status"`
-		ClusterId              *string `json:"ClusterId" name:"ClusterId"`
+		AutoSave               *bool   `json:"AutoSave" name:"AutoSave"`
+		ImageSaveStatus        *string `json:"ImageSaveStatus" name:"ImageSaveStatus"`
 		ImageId                *string `json:"ImageId" name:"ImageId"`
 		GPUType                *string `json:"GPUType" name:"GPUType"`
 		GPUNumber              *int    `json:"GPUNumber" name:"GPUNumber"`
 		CreateUser             *string `json:"CreateUser" name:"CreateUser"`
+		Namespace              *string `json:"Namespace" name:"Namespace"`
 		ResourcePoolId         *string `json:"ResourcePoolId" name:"ResourcePoolId"`
 		QueueName              *string `json:"QueueName" name:"QueueName"`
 		AccessType             *string `json:"AccessType" name:"AccessType"`
 		CreateTime             *string `json:"CreateTime" name:"CreateTime"`
 		UpdateTime             *string `json:"UpdateTime" name:"UpdateTime"`
 		AllocationId           *string `json:"AllocationId" name:"AllocationId"`
-		EnableSsh              *bool   `json:"EnableSsh" name:"EnableSsh"`
-		EnablePublicNetworkSsh *bool   `json:"EnablePublicNetworkSsh" name:"EnablePublicNetworkSsh"`
-		SshPort                *int    `json:"SshPort" name:"SshPort"`
-		SshAuthorizedKeys      *string `json:"SshAuthorizedKeys" name:"SshAuthorizedKeys"`
+		EnableSSH              *bool   `json:"EnableSSH" name:"EnableSSH"`
+		EnablePublicNetworkSSH *bool   `json:"EnablePublicNetworkSSH" name:"EnablePublicNetworkSSH"`
+		SSHPort                *int    `json:"SSHPort" name:"SSHPort"`
+		SSHAuthorizedKeys      *string `json:"SSHAuthorizedKeys" name:"SSHAuthorizedKeys"`
 		PodIp                  *string `json:"PodIp" name:"PodIp"`
 		ExternalIp             *string `json:"ExternalIp" name:"ExternalIp"`
-		CpuNum                 *int    `json:"CpuNum" name:"CpuNum"`
+		CPUNum                 *int    `json:"CPUNum" name:"CPUNum"`
 		Memory                 *int    `json:"Memory" name:"Memory"`
+		ImageUrl               *string `json:"ImageUrl" name:"ImageUrl"`
+		ImageSource            *string `json:"ImageSource" name:"ImageSource"`
+		ImageRegistryId        *string `json:"ImageRegistryId" name:"ImageRegistryId"`
+		ImageRepoId            *string `json:"ImageRepoId" name:"ImageRepoId"`
+		ImageTagId             *string `json:"ImageTagId" name:"ImageTagId"`
+		ImageRegistryName      *string `json:"ImageRegistryName" name:"ImageRegistryName"`
+		ImageRepoName          *string `json:"ImageRepoName" name:"ImageRepoName"`
+		ImageTagName           *string `json:"ImageTagName" name:"ImageTagName"`
 		StorageConfigs         []struct {
 			StorageConfigId   *string `json:"StorageConfigId" name:"StorageConfigId"`
 			MountPath         *string `json:"MountPath" name:"MountPath"`
 			StorageConfigType *string `json:"StorageConfigType" name:"StorageConfigType"`
 		} `json:"StorageConfigs" name:"StorageConfigs"`
+		ServiceConfigs []struct {
+			Service             *string `json:"Service" name:"Service"`
+			Port                *int    `json:"Port" name:"Port"`
+			EnablePublicNetwork *bool   `json:"EnablePublicNetwork" name:"EnablePublicNetwork"`
+		} `json:"ServiceConfigs" name:"ServiceConfigs"`
 		Label struct {
 			TerminatePolicyId *string `json:"TerminatePolicyId" name:"TerminatePolicyId"`
 		} `json:"Label" name:"Label"`
+		Version            *string  `json:"Version" name:"Version"`
+		EstimatedImageSize *float64 `json:"EstimatedImageSize" name:"EstimatedImageSize"`
+		ComputeStatus      *string  `json:"ComputeStatus" name:"ComputeStatus"`
+		RunOnCPU           *bool    `json:"RunOnCPU" name:"RunOnCPU"`
 	} `json:"Notebooks"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+	Marker     *int `json:"Marker" name:"Marker"`
+	MaxResults *int `json:"MaxResults" name:"MaxResults"`
 }
 
 func (r *DescribeNotebooksResponse) ToJsonString() string {
@@ -223,6 +257,17 @@ type CreateNotebookRequest struct {
 	ResourcePoolId         *string                         `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
 	AutoSave               *bool                           `json:"AutoSave,omitempty" name:"AutoSave"`
 	ServiceConfigs         []*CreateNotebookServiceConfigs `json:"ServiceConfigs,omitempty" name:"ServiceConfigs"`
+	ImageRegistryId        *string                         `json:"ImageRegistryId,omitempty" name:"ImageRegistryId"`
+	ImageRepoId            *string                         `json:"ImageRepoId,omitempty" name:"ImageRepoId"`
+	ImageSource            *string                         `json:"ImageSource,omitempty" name:"ImageSource"`
+	ImageTagId             *string                         `json:"ImageTagId,omitempty" name:"ImageTagId"`
+	CPUNum                 *int                            `json:"CPUNum,omitempty" name:"CPUNum"`
+	EnableSSH              *bool                           `json:"EnableSSH,omitempty" name:"EnableSSH"`
+	NotebookName           *string                         `json:"NotebookName,omitempty" name:"NotebookName"`
+	SSHAuthorizedKeys      *string                         `json:"SSHAuthorizedKeys,omitempty" name:"SSHAuthorizedKeys"`
+	RunOnCPU               *string                         `json:"RunOnCPU,omitempty" name:"RunOnCPU"`
+	SSHPort                *int                            `json:"SSHPort,omitempty" name:"SSHPort"`
+	EnablePublicNetworkSSH *bool                           `json:"EnablePublicNetworkSSH,omitempty" name:"EnablePublicNetworkSSH"`
 }
 
 func (r *CreateNotebookRequest) ToJsonString() string {
@@ -382,5 +427,30 @@ func (r *DescribeNotebookLogResponse) ToJsonString() string {
 }
 
 func (r *DescribeNotebookLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StopNotebookSavingImageRequest struct {
+	*ksyunhttp.BaseRequest
+	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
+}
+
+func (r *StopNotebookSavingImageRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type StopNotebookSavingImageResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	NotebookId *string `json:"NotebookId" name:"NotebookId"`
+}
+
+func (r *StopNotebookSavingImageResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *StopNotebookSavingImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

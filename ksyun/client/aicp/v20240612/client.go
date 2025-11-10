@@ -672,3 +672,68 @@ func (c *Client) DescribeNotebookLogWithContextV2(ctx context.Context, request *
 	}
 	return statusCode, msg, nil
 }
+func NewStopNotebookSavingImageRequest() (request *StopNotebookSavingImageRequest) {
+	request = &StopNotebookSavingImageRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "StopNotebookSavingImage")
+	return
+}
+
+func NewStopNotebookSavingImageResponse() (response *StopNotebookSavingImageResponse) {
+	response = &StopNotebookSavingImageResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) StopNotebookSavingImage(request *StopNotebookSavingImageRequest) string {
+	return c.StopNotebookSavingImageWithContext(context.Background(), request)
+}
+
+func (c *Client) StopNotebookSavingImageSend(request *StopNotebookSavingImageRequest) (*StopNotebookSavingImageResponse, error) {
+	statusCode, msg, err := c.StopNotebookSavingImageWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct StopNotebookSavingImageResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) StopNotebookSavingImageWithContext(ctx context.Context, request *StopNotebookSavingImageRequest) string {
+	if request == nil {
+		request = NewStopNotebookSavingImageRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewStopNotebookSavingImageResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) StopNotebookSavingImageWithContextV2(ctx context.Context, request *StopNotebookSavingImageRequest) (int, string, error) {
+	if request == nil {
+		request = NewStopNotebookSavingImageRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewStopNotebookSavingImageResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
