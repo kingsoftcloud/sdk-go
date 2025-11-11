@@ -87,6 +87,71 @@ func (c *Client) CreateProjectWithContextV2(ctx context.Context, request *Create
 	}
 	return statusCode, msg, nil
 }
+func NewDescribeProjectRequest() (request *DescribeProjectRequest) {
+	request = &DescribeProjectRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("klog", APIVersion, "DescribeProject")
+	return
+}
+
+func NewDescribeProjectResponse() (response *DescribeProjectResponse) {
+	response = &DescribeProjectResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeProject(request *DescribeProjectRequest) string {
+	return c.DescribeProjectWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeProjectSend(request *DescribeProjectRequest) (*DescribeProjectResponse, error) {
+	statusCode, msg, err := c.DescribeProjectWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeProjectResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeProjectWithContext(ctx context.Context, request *DescribeProjectRequest) string {
+	if request == nil {
+		request = NewDescribeProjectRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeProjectResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeProjectWithContextV2(ctx context.Context, request *DescribeProjectRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeProjectRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeProjectResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewUpdateProjectRequest() (request *UpdateProjectRequest) {
 	request = &UpdateProjectRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
