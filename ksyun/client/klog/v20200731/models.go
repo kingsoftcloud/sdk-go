@@ -140,8 +140,10 @@ func (r *DeleteProjectResponse) FromJsonString(s string) error {
 
 type ListProjectsRequest struct {
 	*ksyunhttp.BaseRequest
-	Page *int `json:"Page,omitempty" name:"Page"`
-	Size *int `json:"Size,omitempty" name:"Size"`
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	Description *string `json:"Description,omitempty" name:"Description"`
+	Page        *int    `json:"Page,omitempty" name:"Page"`
+	Size        *int    `json:"Size,omitempty" name:"Size"`
 }
 
 func (r *ListProjectsRequest) ToJsonString() string {
@@ -359,13 +361,10 @@ type GetLogsResponse struct {
 	Count  *int  `json:"Count" name:"Count"`
 	HasSql *bool `json:"HasSql" name:"HasSql"`
 	Logs   []struct {
-		Timestamp *int    `json:"Timestamp" name:"Timestamp"`
 		Id        *string `json:"Id" name:"Id"`
 		Source    *string `json:"Source" name:"Source"`
 		Path      *string `json:"Path" name:"Path"`
 		Timestamp *string `json:"Timestamp" name:"Timestamp"`
-		Field1    *string `json:"Field1" name:"Field1"`
-		Field2    *string `json:"Field2" name:"Field2"`
 	} `json:"Logs"`
 	Histogram []struct {
 		Key      *string `json:"Key" name:"Key"`
