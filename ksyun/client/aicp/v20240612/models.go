@@ -29,6 +29,30 @@ type CreateNotebookServiceConfigs struct {
 	Port                *int    `json:"Port,omitempty" name:"Port"`
 	EnablePublicNetwork *bool   `json:"EnablePublicNetwork,omitempty" name:"EnablePublicNetwork"`
 }
+type CreateTrainJobFrameworkReplicas struct {
+	Master    *int `json:"Master,omitempty" name:"Master"`
+	Worker    *int `json:"Worker,omitempty" name:"Worker"`
+	Chief     *int `json:"Chief,omitempty" name:"Chief"`
+	Evaluator *int `json:"Evaluator,omitempty" name:"Evaluator"`
+	PS        *int `json:"PS,omitempty" name:"PS"`
+}
+type CreateTrainJobEnvs struct {
+	Name  *string `json:"Name,omitempty" name:"Name"`
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+type CreateTrainJobStorageConfigs struct {
+	StorageConfigId   *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
+	StorageConfigType *string `json:"StorageConfigType,omitempty" name:"StorageConfigType"`
+	MountPath         *string `json:"MountPath,omitempty" name:"MountPath"`
+}
+type DescribeTrainJobFilter struct {
+	Name  *string   `json:"Name,omitempty" name:"Name"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type DescribeTrainJobPodsFilter struct {
+	Name  *string   `json:"Name,omitempty" name:"Name"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
 
 type SaveNotebookImageRequest struct {
 	*ksyunhttp.BaseRequest
@@ -70,34 +94,30 @@ func (r *SaveNotebookImageResponse) FromJsonString(s string) error {
 type ModifyNotebookRequest struct {
 	*ksyunhttp.BaseRequest
 	NotebookId             *string                         `json:"NotebookId,omitempty" name:"NotebookId"`
-	DisplayName            *string                         `json:"DisplayName,omitempty" name:"DisplayName"`
+	NotebookName           *string                         `json:"NotebookName,omitempty" name:"NotebookName"`
 	Description            *string                         `json:"Description,omitempty" name:"Description"`
 	ImageId                *string                         `json:"ImageId,omitempty" name:"ImageId"`
 	QueueName              *string                         `json:"QueueName,omitempty" name:"QueueName"`
 	GPUType                *string                         `json:"GPUType,omitempty" name:"GPUType"`
 	GPUNumber              *int                            `json:"GPUNumber,omitempty" name:"GPUNumber"`
+	CPUNum                 *int                            `json:"CPUNum,omitempty" name:"CPUNum"`
+	Memory                 *int                            `json:"Memory,omitempty" name:"Memory"`
 	AccessType             *string                         `json:"AccessType,omitempty" name:"AccessType"`
-	AllocationId           *string                         `json:"AllocationId,omitempty" name:"AllocationId"`
-	EnableSsh              *string                         `json:"EnableSsh,omitempty" name:"EnableSsh"`
-	SshPort                *int                            `json:"SshPort,omitempty" name:"SshPort"`
 	EnablePublicNetworkSsh *bool                           `json:"EnablePublicNetworkSsh,omitempty" name:"EnablePublicNetworkSsh"`
 	SshAuthorizedKeys      *string                         `json:"SshAuthorizedKeys,omitempty" name:"SshAuthorizedKeys"`
-	CpuNum                 *int                            `json:"CpuNum,omitempty" name:"CpuNum"`
-	Memory                 *int                            `json:"Memory,omitempty" name:"Memory"`
 	StorageConfigs         []*ModifyNotebookStorageConfigs `json:"StorageConfigs,omitempty" name:"StorageConfigs"`
 	ServiceConfigs         []*ModifyNotebookServiceConfigs `json:"ServiceConfigs,omitempty" name:"ServiceConfigs"`
 	AutoSave               *bool                           `json:"AutoSave,omitempty" name:"AutoSave"`
 	RunOnCPU               *string                         `json:"RunOnCPU,omitempty" name:"RunOnCPU"`
-	NotebookName           *string                         `json:"NotebookName,omitempty" name:"NotebookName"`
+	EnableSSH              *string                         `json:"EnableSSH,omitempty" name:"EnableSSH"`
 	SSHPort                *int                            `json:"SSHPort,omitempty" name:"SSHPort"`
 	SSHAuthorizedKeys      *string                         `json:"SSHAuthorizedKeys,omitempty" name:"SSHAuthorizedKeys"`
-	CPUNum                 *int                            `json:"CPUNum,omitempty" name:"CPUNum"`
+	EnablePublicNetworkSSH *bool                           `json:"EnablePublicNetworkSSH,omitempty" name:"EnablePublicNetworkSSH"`
+	AllocationId           *string                         `json:"AllocationId,omitempty" name:"AllocationId"`
 	ImageTagId             *string                         `json:"ImageTagId,omitempty" name:"ImageTagId"`
 	ImageSource            *string                         `json:"ImageSource,omitempty" name:"ImageSource"`
 	ImageRepoId            *string                         `json:"ImageRepoId,omitempty" name:"ImageRepoId"`
 	ImageRegistryId        *string                         `json:"ImageRegistryId,omitempty" name:"ImageRegistryId"`
-	EnableSSH              *string                         `json:"EnableSSH,omitempty" name:"EnableSSH"`
-	EnablePublicNetworkSSH *bool                           `json:"EnablePublicNetworkSSH,omitempty" name:"EnablePublicNetworkSSH"`
 }
 
 func (r *ModifyNotebookRequest) ToJsonString() string {
@@ -239,35 +259,29 @@ func (r *DescribeNotebooksResponse) FromJsonString(s string) error {
 
 type CreateNotebookRequest struct {
 	*ksyunhttp.BaseRequest
-	DisplayName            *string                         `json:"DisplayName,omitempty" name:"DisplayName"`
+	NotebookName           *string                         `json:"NotebookName,omitempty" name:"NotebookName"`
 	Description            *string                         `json:"Description,omitempty" name:"Description"`
-	ImageId                *string                         `json:"ImageId,omitempty" name:"ImageId"`
+	ResourcePoolId         *string                         `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
 	QueueName              *string                         `json:"QueueName,omitempty" name:"QueueName"`
 	GPUType                *string                         `json:"GPUType,omitempty" name:"GPUType"`
 	GPUNumber              *int                            `json:"GPUNumber,omitempty" name:"GPUNumber"`
-	AccessType             *string                         `json:"AccessType,omitempty" name:"AccessType"`
-	EnablePublicNetworkSsh *bool                           `json:"EnablePublicNetworkSsh,omitempty" name:"EnablePublicNetworkSsh"`
-	AllocationId           *string                         `json:"AllocationId,omitempty" name:"AllocationId"`
-	CpuNum                 *int                            `json:"CpuNum,omitempty" name:"CpuNum"`
+	CPUNum                 *int                            `json:"CPUNum,omitempty" name:"CPUNum"`
 	Memory                 *int                            `json:"Memory,omitempty" name:"Memory"`
-	EnableSsh              *bool                           `json:"EnableSsh,omitempty" name:"EnableSsh"`
-	SshAuthorizedKeys      *string                         `json:"SshAuthorizedKeys,omitempty" name:"SshAuthorizedKeys"`
-	SshPort                *int                            `json:"SshPort,omitempty" name:"SshPort"`
+	AccessType             *string                         `json:"AccessType,omitempty" name:"AccessType"`
 	StorageConfigs         []*CreateNotebookStorageConfigs `json:"StorageConfigs,omitempty" name:"StorageConfigs"`
-	ResourcePoolId         *string                         `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
 	AutoSave               *bool                           `json:"AutoSave,omitempty" name:"AutoSave"`
 	ServiceConfigs         []*CreateNotebookServiceConfigs `json:"ServiceConfigs,omitempty" name:"ServiceConfigs"`
+	ImageSource            *string                         `json:"ImageSource,omitempty" name:"ImageSource"`
+	ImageId                *string                         `json:"ImageId,omitempty" name:"ImageId"`
 	ImageRegistryId        *string                         `json:"ImageRegistryId,omitempty" name:"ImageRegistryId"`
 	ImageRepoId            *string                         `json:"ImageRepoId,omitempty" name:"ImageRepoId"`
-	ImageSource            *string                         `json:"ImageSource,omitempty" name:"ImageSource"`
 	ImageTagId             *string                         `json:"ImageTagId,omitempty" name:"ImageTagId"`
-	CPUNum                 *int                            `json:"CPUNum,omitempty" name:"CPUNum"`
 	EnableSSH              *bool                           `json:"EnableSSH,omitempty" name:"EnableSSH"`
-	NotebookName           *string                         `json:"NotebookName,omitempty" name:"NotebookName"`
 	SSHAuthorizedKeys      *string                         `json:"SSHAuthorizedKeys,omitempty" name:"SSHAuthorizedKeys"`
-	RunOnCPU               *string                         `json:"RunOnCPU,omitempty" name:"RunOnCPU"`
 	SSHPort                *int                            `json:"SSHPort,omitempty" name:"SSHPort"`
 	EnablePublicNetworkSSH *bool                           `json:"EnablePublicNetworkSSH,omitempty" name:"EnablePublicNetworkSSH"`
+	AllocationId           *string                         `json:"AllocationId,omitempty" name:"AllocationId"`
+	RunOnCPU               *string                         `json:"RunOnCPU,omitempty" name:"RunOnCPU"`
 }
 
 func (r *CreateNotebookRequest) ToJsonString() string {
@@ -317,6 +331,7 @@ func (r *StopNotebookResponse) FromJsonString(s string) error {
 
 type StartNotebookRequest struct {
 	*ksyunhttp.BaseRequest
+	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
 }
 
 func (r *StartNotebookRequest) ToJsonString() string {
@@ -452,5 +467,353 @@ func (r *StopNotebookSavingImageResponse) ToJsonString() string {
 }
 
 func (r *StopNotebookSavingImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTrainJobRequest struct {
+	*ksyunhttp.BaseRequest
+	TrainJobName       *string                          `json:"TrainJobName,omitempty" name:"TrainJobName"`
+	Description        *string                          `json:"Description,omitempty" name:"Description"`
+	ResourcePoolId     *string                          `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	QueueName          *string                          `json:"QueueName,omitempty" name:"QueueName"`
+	Priority           *string                          `json:"Priority,omitempty" name:"Priority"`
+	Command            *string                          `json:"Command,omitempty" name:"Command"`
+	Framework          *string                          `json:"Framework,omitempty" name:"Framework"`
+	ImageSource        *string                          `json:"ImageSource,omitempty" name:"ImageSource"`
+	FrameworkReplicas  *CreateTrainJobFrameworkReplicas `json:"FrameworkReplicas,omitempty" name:"FrameworkReplicas"`
+	Envs               []*CreateTrainJobEnvs            `json:"Envs,omitempty" name:"Envs"`
+	SupportTensorboard *bool                            `json:"SupportTensorboard,omitempty" name:"SupportTensorboard"`
+	ImageId            *string                          `json:"ImageId,omitempty" name:"ImageId"`
+	ImageRegistryId    *string                          `json:"ImageRegistryId,omitempty" name:"ImageRegistryId"`
+	ImageRepoId        *string                          `json:"ImageRepoId,omitempty" name:"ImageRepoId"`
+	ImageTagId         *string                          `json:"ImageTagId,omitempty" name:"ImageTagId"`
+	GPUType            *string                          `json:"GPUType,omitempty" name:"GPUType"`
+	GPUNumber          *int                             `json:"GPUNumber,omitempty" name:"GPUNumber"`
+	CpuNum             *int                             `json:"CpuNum,omitempty" name:"CpuNum"`
+	Memory             *int                             `json:"Memory,omitempty" name:"Memory"`
+	StorageConfigs     []*CreateTrainJobStorageConfigs  `json:"StorageConfigs,omitempty" name:"StorageConfigs"`
+	AccessType         *string                          `json:"AccessType,omitempty" name:"AccessType"`
+	MaxRuntime         *int                             `json:"MaxRuntime,omitempty" name:"MaxRuntime"`
+	SelfHealing        *bool                            `json:"SelfHealing,omitempty" name:"SelfHealing"`
+	RunOnCpu           *bool                            `json:"RunOnCpu,omitempty" name:"RunOnCpu"`
+}
+
+func (r *CreateTrainJobRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateTrainJobResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TrainJobId *string `json:"TrainJobId" name:"TrainJobId"`
+}
+
+func (r *CreateTrainJobResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateTrainJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTrainJobEventsRequest struct {
+	*ksyunhttp.BaseRequest
+	ResourcePoolId *string `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	TrainJobId     *string `json:"TrainJobId,omitempty" name:"TrainJobId"`
+}
+
+func (r *DescribeTrainJobEventsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeTrainJobEventsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	DataSet   []struct {
+		FirstSeen *string `json:"FirstSeen" name:"FirstSeen"`
+		LastSeen  *string `json:"LastSeen" name:"LastSeen"`
+		Type      *string `json:"Type" name:"Type"`
+		Object    *string `json:"Object" name:"Object"`
+		Reason    *string `json:"Reason" name:"Reason"`
+		Message   *string `json:"Message" name:"Message"`
+		Source    struct {
+			Component *string `json:"component" name:"component"`
+			Host      *string `json:"host" name:"host"`
+		} `json:"Source" name:"Source"`
+		Count *int `json:"Count" name:"Count"`
+	} `json:"DataSet"`
+}
+
+func (r *DescribeTrainJobEventsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeTrainJobEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StopTrainJobRequest struct {
+	*ksyunhttp.BaseRequest
+	TrainJobId *string `json:"TrainJobId,omitempty" name:"TrainJobId"`
+}
+
+func (r *StopTrainJobRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type StopTrainJobResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TrainJobId *string `json:"TrainJobId" name:"TrainJobId"`
+}
+
+func (r *StopTrainJobResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *StopTrainJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTrainJobRequest struct {
+	*ksyunhttp.BaseRequest
+	TrainJobId []*string                 `json:"TrainJobId,omitempty" name:"TrainJobId"`
+	Filter     []*DescribeTrainJobFilter `json:"Filter,omitempty" name:"Filter"`
+	Marker     *int                      `json:"Marker,omitempty" name:"Marker"`
+	MaxResults *int                      `json:"MaxResults,omitempty" name:"MaxResults"`
+}
+
+func (r *DescribeTrainJobRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeTrainJobResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	TotalCount  *int    `json:"TotalCount" name:"TotalCount"`
+	Marker      *int    `json:"Marker" name:"Marker"`
+	MaxResults  *int    `json:"MaxResults" name:"MaxResults"`
+	TrainJobSet []struct {
+		TrainJobName      *string `json:"TrainJobName" name:"TrainJobName"`
+		TrainJobId        *string `json:"TrainJobId" name:"TrainJobId"`
+		ResourcePoolName  *string `json:"ResourcePoolName" name:"ResourcePoolName"`
+		ResourcePoolId    *string `json:"ResourcePoolId" name:"ResourcePoolId"`
+		ResourcePoolType  *string `json:"ResourcePoolType" name:"ResourcePoolType"`
+		Namespace         *string `json:"Namespace" name:"Namespace"`
+		QueueName         *string `json:"QueueName" name:"QueueName"`
+		Description       *string `json:"Description" name:"Description"`
+		Priority          *string `json:"Priority" name:"Priority"`
+		Framework         *string `json:"Framework" name:"Framework"`
+		AccessType        *string `json:"AccessType" name:"AccessType"`
+		ImageId           *string `json:"ImageId" name:"ImageId"`
+		ImageSource       *string `json:"ImageSource" name:"ImageSource"`
+		ImageRegistryId   *string `json:"ImageRegistryId" name:"ImageRegistryId"`
+		ImageRepoId       *string `json:"ImageRepoId" name:"ImageRepoId"`
+		ImageTagId        *string `json:"ImageTagId" name:"ImageTagId"`
+		CreateUserName    *string `json:"CreateUserName" name:"CreateUserName"`
+		FrameworkReplicas struct {
+			Master    *int `json:"Master" name:"Master"`
+			Worker    *int `json:"Worker" name:"Worker"`
+			Chief     *int `json:"Chief" name:"Chief"`
+			Evaluator *int `json:"Evaluator" name:"Evaluator"`
+			PS        *int `json:"PS" name:"PS"`
+		} `json:"FrameworkReplicas" name:"FrameworkReplicas"`
+		GPUType       *string `json:"GPUType" name:"GPUType"`
+		GPUNumber     *int    `json:"GPUNumber" name:"GPUNumber"`
+		CPUNum        *int    `json:"CPUNum" name:"CPUNum"`
+		Memory        *int    `json:"Memory" name:"Memory"`
+		RestartPolicy *string `json:"RestartPolicy" name:"RestartPolicy"`
+		Status        struct {
+			State         *string `json:"State" name:"State"`
+			PodSucceedNum *int    `json:"PodSucceedNum" name:"PodSucceedNum"`
+			PodFailedNum  *int    `json:"PodFailedNum" name:"PodFailedNum"`
+			SubmitTime    *string `json:"SubmitTime" name:"SubmitTime"`
+			StartTime     *string `json:"StartTime" name:"StartTime"`
+			QueueTime     *int    `json:"QueueTime" name:"QueueTime"`
+			EndTime       *string `json:"EndTime" name:"EndTime"`
+			Message       *string `json:"Message" name:"Message"`
+		} `json:"Status" name:"Status"`
+		CreateUserId   *string `json:"CreateUserId" name:"CreateUserId"`
+		SelfHealing    *bool   `json:"SelfHealing" name:"SelfHealing"`
+		StorageConfigs struct {
+		} `json:"StorageConfigs" name:"StorageConfigs"`
+		Envs []struct {
+			Name  *string `json:"Name" name:"Name"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"Envs" name:"Envs"`
+		Command            *string `json:"Command" name:"Command"`
+		MaxRuntime         *int    `json:"MaxRuntime" name:"MaxRuntime"`
+		EnableHostNetwork  *bool   `json:"EnableHostNetwork" name:"EnableHostNetwork"`
+		RunOnCPU           *bool   `json:"RunOnCPU" name:"RunOnCPU"`
+		SupportTensorboard *bool   `json:"SupportTensorboard" name:"SupportTensorboard"`
+	} `json:"TrainJobSet"`
+}
+
+func (r *DescribeTrainJobResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeTrainJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StartTrainJobRequest struct {
+	*ksyunhttp.BaseRequest
+	TrainJobId *string `json:"TrainJobId,omitempty" name:"TrainJobId"`
+}
+
+func (r *StartTrainJobRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type StartTrainJobResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TrainJobId *string `json:"TrainJobId" name:"TrainJobId"`
+}
+
+func (r *StartTrainJobResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *StartTrainJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTrainJobRequest struct {
+	*ksyunhttp.BaseRequest
+	TrainJobId *string `json:"TrainJobId,omitempty" name:"TrainJobId"`
+}
+
+func (r *DeleteTrainJobRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteTrainJobResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TrainJobId *string `json:"TrainJobId" name:"TrainJobId"`
+}
+
+func (r *DeleteTrainJobResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteTrainJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTrainJobRequest struct {
+	*ksyunhttp.BaseRequest
+	TrainJobId *string `json:"TrainJobId,omitempty" name:"TrainJobId"`
+	Priority   *string `json:"Priority,omitempty" name:"Priority"`
+}
+
+func (r *ModifyTrainJobRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyTrainJobResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TrainJobId *string `json:"TrainJobId" name:"TrainJobId"`
+}
+
+func (r *ModifyTrainJobResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyTrainJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTrainJobPodLogsRequest struct {
+	*ksyunhttp.BaseRequest
+	ResourcePoolId *string `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	TrainJobId     *string `json:"TrainJobId,omitempty" name:"TrainJobId"`
+	PodName        *string `json:"PodName,omitempty" name:"PodName"`
+	SinceSeconds   *int    `json:"SinceSeconds,omitempty" name:"SinceSeconds"`
+	TailLines      *int    `json:"TailLines,omitempty" name:"TailLines"`
+}
+
+func (r *DescribeTrainJobPodLogsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeTrainJobPodLogsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	PodLogs   *string `json:"PodLogs" name:"PodLogs"`
+}
+
+func (r *DescribeTrainJobPodLogsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeTrainJobPodLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTrainJobPodsRequest struct {
+	*ksyunhttp.BaseRequest
+	Marker     *string                       `json:"Marker,omitempty" name:"Marker"`
+	MaxResults *string                       `json:"MaxResults,omitempty" name:"MaxResults"`
+	TrainJobId *string                       `json:"TrainJobId,omitempty" name:"TrainJobId"`
+	Filter     []*DescribeTrainJobPodsFilter `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *DescribeTrainJobPodsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeTrainJobPodsResponse struct {
+	*ksyunhttp.BaseResponse
+	MaxResults     *int `json:"MaxResults" name:"MaxResults"`
+	TrainJobPodSet []struct {
+		TrainJobId *string `json:"TrainJobId" name:"TrainJobId"`
+		Role       *string `json:"Role" name:"Role"`
+		StartTimes *int    `json:"StartTimes" name:"StartTimes"`
+		PodName    *string `json:"PodName" name:"PodName"`
+		Status     struct {
+			State          *string `json:"State" name:"State"`
+			ContainerState *string `json:"ContainerState" name:"ContainerState"`
+			SubmitTime     *string `json:"SubmitTime" name:"SubmitTime"`
+			StartTime      *string `json:"StartTime" name:"StartTime"`
+			EndTime        *string `json:"EndTime" name:"EndTime"`
+			Ip             *string `json:"Ip" name:"Ip"`
+			RestartCount   *int    `json:"RestartCount" name:"RestartCount"`
+		} `json:"Status" name:"Status"`
+		ContainerName *string `json:"ContainerName" name:"ContainerName"`
+		Kind          *string `json:"Kind" name:"Kind"`
+		NameSpace     *string `json:"NameSpace" name:"NameSpace"`
+	} `json:"TrainJobPodSet"`
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	Marker     *int    `json:"Marker" name:"Marker"`
+}
+
+func (r *DescribeTrainJobPodsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeTrainJobPodsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

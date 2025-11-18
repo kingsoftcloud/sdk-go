@@ -453,7 +453,7 @@ func (c *Client) StartNotebookWithContext(ctx context.Context, request *StartNot
 		request = NewStartNotebookRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewStartNotebookResponse()
 	err, msg := c.Send(request, response)
@@ -468,7 +468,7 @@ func (c *Client) StartNotebookWithContextV2(ctx context.Context, request *StartN
 		request = NewStartNotebookRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewStartNotebookResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -731,6 +731,591 @@ func (c *Client) StopNotebookSavingImageWithContextV2(ctx context.Context, reque
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewStopNotebookSavingImageResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateTrainJobRequest() (request *CreateTrainJobRequest) {
+	request = &CreateTrainJobRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateTrainJob")
+	return
+}
+
+func NewCreateTrainJobResponse() (response *CreateTrainJobResponse) {
+	response = &CreateTrainJobResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateTrainJob(request *CreateTrainJobRequest) string {
+	return c.CreateTrainJobWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateTrainJobSend(request *CreateTrainJobRequest) (*CreateTrainJobResponse, error) {
+	statusCode, msg, err := c.CreateTrainJobWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateTrainJobResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateTrainJobWithContext(ctx context.Context, request *CreateTrainJobRequest) string {
+	if request == nil {
+		request = NewCreateTrainJobRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateTrainJobResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateTrainJobWithContextV2(ctx context.Context, request *CreateTrainJobRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateTrainJobRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateTrainJobResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeTrainJobEventsRequest() (request *DescribeTrainJobEventsRequest) {
+	request = &DescribeTrainJobEventsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobEvents")
+	return
+}
+
+func NewDescribeTrainJobEventsResponse() (response *DescribeTrainJobEventsResponse) {
+	response = &DescribeTrainJobEventsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeTrainJobEvents(request *DescribeTrainJobEventsRequest) string {
+	return c.DescribeTrainJobEventsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeTrainJobEventsSend(request *DescribeTrainJobEventsRequest) (*DescribeTrainJobEventsResponse, error) {
+	statusCode, msg, err := c.DescribeTrainJobEventsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeTrainJobEventsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeTrainJobEventsWithContext(ctx context.Context, request *DescribeTrainJobEventsRequest) string {
+	if request == nil {
+		request = NewDescribeTrainJobEventsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeTrainJobEventsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeTrainJobEventsWithContextV2(ctx context.Context, request *DescribeTrainJobEventsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeTrainJobEventsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeTrainJobEventsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewStopTrainJobRequest() (request *StopTrainJobRequest) {
+	request = &StopTrainJobRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "StopTrainJob")
+	return
+}
+
+func NewStopTrainJobResponse() (response *StopTrainJobResponse) {
+	response = &StopTrainJobResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) StopTrainJob(request *StopTrainJobRequest) string {
+	return c.StopTrainJobWithContext(context.Background(), request)
+}
+
+func (c *Client) StopTrainJobSend(request *StopTrainJobRequest) (*StopTrainJobResponse, error) {
+	statusCode, msg, err := c.StopTrainJobWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct StopTrainJobResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) StopTrainJobWithContext(ctx context.Context, request *StopTrainJobRequest) string {
+	if request == nil {
+		request = NewStopTrainJobRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewStopTrainJobResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) StopTrainJobWithContextV2(ctx context.Context, request *StopTrainJobRequest) (int, string, error) {
+	if request == nil {
+		request = NewStopTrainJobRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewStopTrainJobResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeTrainJobRequest() (request *DescribeTrainJobRequest) {
+	request = &DescribeTrainJobRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJob")
+	return
+}
+
+func NewDescribeTrainJobResponse() (response *DescribeTrainJobResponse) {
+	response = &DescribeTrainJobResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeTrainJob(request *DescribeTrainJobRequest) string {
+	return c.DescribeTrainJobWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeTrainJobSend(request *DescribeTrainJobRequest) (*DescribeTrainJobResponse, error) {
+	statusCode, msg, err := c.DescribeTrainJobWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeTrainJobResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeTrainJobWithContext(ctx context.Context, request *DescribeTrainJobRequest) string {
+	if request == nil {
+		request = NewDescribeTrainJobRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeTrainJobResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeTrainJobWithContextV2(ctx context.Context, request *DescribeTrainJobRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeTrainJobRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeTrainJobResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewStartTrainJobRequest() (request *StartTrainJobRequest) {
+	request = &StartTrainJobRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "StartTrainJob")
+	return
+}
+
+func NewStartTrainJobResponse() (response *StartTrainJobResponse) {
+	response = &StartTrainJobResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) StartTrainJob(request *StartTrainJobRequest) string {
+	return c.StartTrainJobWithContext(context.Background(), request)
+}
+
+func (c *Client) StartTrainJobSend(request *StartTrainJobRequest) (*StartTrainJobResponse, error) {
+	statusCode, msg, err := c.StartTrainJobWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct StartTrainJobResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) StartTrainJobWithContext(ctx context.Context, request *StartTrainJobRequest) string {
+	if request == nil {
+		request = NewStartTrainJobRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewStartTrainJobResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) StartTrainJobWithContextV2(ctx context.Context, request *StartTrainJobRequest) (int, string, error) {
+	if request == nil {
+		request = NewStartTrainJobRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewStartTrainJobResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteTrainJobRequest() (request *DeleteTrainJobRequest) {
+	request = &DeleteTrainJobRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeleteTrainJob")
+	return
+}
+
+func NewDeleteTrainJobResponse() (response *DeleteTrainJobResponse) {
+	response = &DeleteTrainJobResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteTrainJob(request *DeleteTrainJobRequest) string {
+	return c.DeleteTrainJobWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteTrainJobSend(request *DeleteTrainJobRequest) (*DeleteTrainJobResponse, error) {
+	statusCode, msg, err := c.DeleteTrainJobWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteTrainJobResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteTrainJobWithContext(ctx context.Context, request *DeleteTrainJobRequest) string {
+	if request == nil {
+		request = NewDeleteTrainJobRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteTrainJobResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteTrainJobWithContextV2(ctx context.Context, request *DeleteTrainJobRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteTrainJobRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteTrainJobResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyTrainJobRequest() (request *ModifyTrainJobRequest) {
+	request = &ModifyTrainJobRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ModifyTrainJob")
+	return
+}
+
+func NewModifyTrainJobResponse() (response *ModifyTrainJobResponse) {
+	response = &ModifyTrainJobResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyTrainJob(request *ModifyTrainJobRequest) string {
+	return c.ModifyTrainJobWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyTrainJobSend(request *ModifyTrainJobRequest) (*ModifyTrainJobResponse, error) {
+	statusCode, msg, err := c.ModifyTrainJobWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyTrainJobResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyTrainJobWithContext(ctx context.Context, request *ModifyTrainJobRequest) string {
+	if request == nil {
+		request = NewModifyTrainJobRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyTrainJobResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyTrainJobWithContextV2(ctx context.Context, request *ModifyTrainJobRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyTrainJobRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyTrainJobResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeTrainJobPodLogsRequest() (request *DescribeTrainJobPodLogsRequest) {
+	request = &DescribeTrainJobPodLogsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobPodLogs")
+	return
+}
+
+func NewDescribeTrainJobPodLogsResponse() (response *DescribeTrainJobPodLogsResponse) {
+	response = &DescribeTrainJobPodLogsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeTrainJobPodLogs(request *DescribeTrainJobPodLogsRequest) string {
+	return c.DescribeTrainJobPodLogsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeTrainJobPodLogsSend(request *DescribeTrainJobPodLogsRequest) (*DescribeTrainJobPodLogsResponse, error) {
+	statusCode, msg, err := c.DescribeTrainJobPodLogsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeTrainJobPodLogsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeTrainJobPodLogsWithContext(ctx context.Context, request *DescribeTrainJobPodLogsRequest) string {
+	if request == nil {
+		request = NewDescribeTrainJobPodLogsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeTrainJobPodLogsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeTrainJobPodLogsWithContextV2(ctx context.Context, request *DescribeTrainJobPodLogsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeTrainJobPodLogsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeTrainJobPodLogsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeTrainJobPodsRequest() (request *DescribeTrainJobPodsRequest) {
+	request = &DescribeTrainJobPodsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobPods")
+	return
+}
+
+func NewDescribeTrainJobPodsResponse() (response *DescribeTrainJobPodsResponse) {
+	response = &DescribeTrainJobPodsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeTrainJobPods(request *DescribeTrainJobPodsRequest) string {
+	return c.DescribeTrainJobPodsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeTrainJobPodsSend(request *DescribeTrainJobPodsRequest) (*DescribeTrainJobPodsResponse, error) {
+	statusCode, msg, err := c.DescribeTrainJobPodsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeTrainJobPodsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeTrainJobPodsWithContext(ctx context.Context, request *DescribeTrainJobPodsRequest) string {
+	if request == nil {
+		request = NewDescribeTrainJobPodsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeTrainJobPodsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeTrainJobPodsWithContextV2(ctx context.Context, request *DescribeTrainJobPodsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeTrainJobPodsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeTrainJobPodsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
