@@ -30,11 +30,11 @@ type CreateNotebookServiceConfigs struct {
 	EnablePublicNetwork *bool   `json:"EnablePublicNetwork,omitempty" name:"EnablePublicNetwork"`
 }
 type CreateTrainJobFrameworkReplicas struct {
-	Master    *int `json:"Master,omitempty" name:"Master"`
 	Worker    *int `json:"Worker,omitempty" name:"Worker"`
 	Chief     *int `json:"Chief,omitempty" name:"Chief"`
 	Evaluator *int `json:"Evaluator,omitempty" name:"Evaluator"`
 	PS        *int `json:"PS,omitempty" name:"PS"`
+	Master    *int `json:"Master,omitempty" name:"Master"`
 }
 type CreateTrainJobEnvs struct {
 	Name  *string `json:"Name,omitempty" name:"Name"`
@@ -481,6 +481,7 @@ type CreateTrainJobRequest struct {
 	Framework          *string                          `json:"Framework,omitempty" name:"Framework"`
 	ImageSource        *string                          `json:"ImageSource,omitempty" name:"ImageSource"`
 	FrameworkReplicas  *CreateTrainJobFrameworkReplicas `json:"FrameworkReplicas,omitempty" name:"FrameworkReplicas"`
+	RestartPolicy      *string                          `json:"RestartPolicy,omitempty" name:"RestartPolicy"`
 	Envs               []*CreateTrainJobEnvs            `json:"Envs,omitempty" name:"Envs"`
 	SupportTensorboard *bool                            `json:"SupportTensorboard,omitempty" name:"SupportTensorboard"`
 	ImageId            *string                          `json:"ImageId,omitempty" name:"ImageId"`
@@ -489,13 +490,13 @@ type CreateTrainJobRequest struct {
 	ImageTagId         *string                          `json:"ImageTagId,omitempty" name:"ImageTagId"`
 	GPUType            *string                          `json:"GPUType,omitempty" name:"GPUType"`
 	GPUNumber          *int                             `json:"GPUNumber,omitempty" name:"GPUNumber"`
-	CpuNum             *int                             `json:"CpuNum,omitempty" name:"CpuNum"`
+	CPUNum             *int                             `json:"CPUNum,omitempty" name:"CPUNum"`
 	Memory             *int                             `json:"Memory,omitempty" name:"Memory"`
 	StorageConfigs     []*CreateTrainJobStorageConfigs  `json:"StorageConfigs,omitempty" name:"StorageConfigs"`
 	AccessType         *string                          `json:"AccessType,omitempty" name:"AccessType"`
 	MaxRuntime         *int                             `json:"MaxRuntime,omitempty" name:"MaxRuntime"`
 	SelfHealing        *bool                            `json:"SelfHealing,omitempty" name:"SelfHealing"`
-	RunOnCpu           *bool                            `json:"RunOnCpu,omitempty" name:"RunOnCpu"`
+	RunOnCPU           *bool                            `json:"RunOnCPU,omitempty" name:"RunOnCPU"`
 }
 
 func (r *CreateTrainJobRequest) ToJsonString() string {
@@ -536,10 +537,18 @@ type DescribeTrainJobEventsResponse struct {
 		FirstSeen *string `json:"FirstSeen" name:"FirstSeen"`
 		LastSeen  *string `json:"LastSeen" name:"LastSeen"`
 		Type      *string `json:"Type" name:"Type"`
-		Object    *string `json:"Object" name:"Object"`
-		Reason    *string `json:"Reason" name:"Reason"`
-		Message   *string `json:"Message" name:"Message"`
-		Source    struct {
+		Object    struct {
+			Kind            *string `json:"Kind" name:"Kind"`
+			Namespace       *string `json:"Namespace" name:"Namespace"`
+			Name            *string `json:"Name" name:"Name"`
+			UID             *string `json:"UID" name:"UID"`
+			APIVersion      *string `json:"APIVersion" name:"APIVersion"`
+			ResourceVersion *string `json:"ResourceVersion" name:"ResourceVersion"`
+			FieldPath       *string `json:"FieldPath" name:"FieldPath"`
+		} `json:"Object" name:"Object"`
+		Reason  *string `json:"Reason" name:"Reason"`
+		Message *string `json:"Message" name:"Message"`
+		Source  struct {
 			Component *string `json:"component" name:"component"`
 			Host      *string `json:"host" name:"host"`
 		} `json:"Source" name:"Source"`
@@ -643,6 +652,9 @@ type DescribeTrainJobResponse struct {
 		CreateUserId   *string `json:"CreateUserId" name:"CreateUserId"`
 		SelfHealing    *bool   `json:"SelfHealing" name:"SelfHealing"`
 		StorageConfigs struct {
+			StorageConfigId   *string `json:"StorageConfigId" name:"StorageConfigId"`
+			MountPath         *string `json:"MountPath" name:"MountPath"`
+			StorageConfigType *string `json:"StorageConfigType" name:"StorageConfigType"`
 		} `json:"StorageConfigs" name:"StorageConfigs"`
 		Envs []struct {
 			Name  *string `json:"Name" name:"Name"`
