@@ -649,14 +649,9 @@ type DescribeTrainJobResponse struct {
 			EndTime       *string `json:"EndTime" name:"EndTime"`
 			Message       *string `json:"Message" name:"Message"`
 		} `json:"Status" name:"Status"`
-		CreateUserId   *string `json:"CreateUserId" name:"CreateUserId"`
-		SelfHealing    *bool   `json:"SelfHealing" name:"SelfHealing"`
-		StorageConfigs struct {
-			StorageConfigId   *string `json:"StorageConfigId" name:"StorageConfigId"`
-			MountPath         *string `json:"MountPath" name:"MountPath"`
-			StorageConfigType *string `json:"StorageConfigType" name:"StorageConfigType"`
-		} `json:"StorageConfigs" name:"StorageConfigs"`
-		Envs []struct {
+		CreateUserId *string `json:"CreateUserId" name:"CreateUserId"`
+		SelfHealing  *bool   `json:"SelfHealing" name:"SelfHealing"`
+		Envs         []struct {
 			Name  *string `json:"Name" name:"Name"`
 			Value *string `json:"Value" name:"Value"`
 		} `json:"Envs" name:"Envs"`
@@ -665,6 +660,11 @@ type DescribeTrainJobResponse struct {
 		EnableHostNetwork  *bool   `json:"EnableHostNetwork" name:"EnableHostNetwork"`
 		RunOnCPU           *bool   `json:"RunOnCPU" name:"RunOnCPU"`
 		SupportTensorboard *bool   `json:"SupportTensorboard" name:"SupportTensorboard"`
+		StorageConfigs     []struct {
+			StorageConfigId   *string `json:"StorageConfigId" name:"StorageConfigId"`
+			StorageConfigType *string `json:"StorageConfigType" name:"StorageConfigType"`
+			MountPath         *string `json:"MountPath" name:"MountPath"`
+		} `json:"StorageConfigs" name:"StorageConfigs"`
 	} `json:"TrainJobSet"`
 }
 
