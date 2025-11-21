@@ -1322,3 +1322,133 @@ func (c *Client) DescribeTrainJobPodsWithContextV2(ctx context.Context, request 
 	}
 	return statusCode, msg, nil
 }
+func NewDescribeResourcePoolsRequest() (request *DescribeResourcePoolsRequest) {
+	request = &DescribeResourcePoolsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeResourcePools")
+	return
+}
+
+func NewDescribeResourcePoolsResponse() (response *DescribeResourcePoolsResponse) {
+	response = &DescribeResourcePoolsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeResourcePools(request *DescribeResourcePoolsRequest) string {
+	return c.DescribeResourcePoolsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeResourcePoolsSend(request *DescribeResourcePoolsRequest) (*DescribeResourcePoolsResponse, error) {
+	statusCode, msg, err := c.DescribeResourcePoolsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeResourcePoolsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeResourcePoolsWithContext(ctx context.Context, request *DescribeResourcePoolsRequest) string {
+	if request == nil {
+		request = NewDescribeResourcePoolsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeResourcePoolsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeResourcePoolsWithContextV2(ctx context.Context, request *DescribeResourcePoolsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeResourcePoolsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeResourcePoolsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeResourcePoolInstancesRequest() (request *DescribeResourcePoolInstancesRequest) {
+	request = &DescribeResourcePoolInstancesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeResourcePoolInstances")
+	return
+}
+
+func NewDescribeResourcePoolInstancesResponse() (response *DescribeResourcePoolInstancesResponse) {
+	response = &DescribeResourcePoolInstancesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeResourcePoolInstances(request *DescribeResourcePoolInstancesRequest) string {
+	return c.DescribeResourcePoolInstancesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeResourcePoolInstancesSend(request *DescribeResourcePoolInstancesRequest) (*DescribeResourcePoolInstancesResponse, error) {
+	statusCode, msg, err := c.DescribeResourcePoolInstancesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeResourcePoolInstancesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeResourcePoolInstancesWithContext(ctx context.Context, request *DescribeResourcePoolInstancesRequest) string {
+	if request == nil {
+		request = NewDescribeResourcePoolInstancesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeResourcePoolInstancesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeResourcePoolInstancesWithContextV2(ctx context.Context, request *DescribeResourcePoolInstancesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeResourcePoolInstancesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeResourcePoolInstancesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}

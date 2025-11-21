@@ -30,7 +30,6 @@ type CreateNotebookServiceConfigs struct {
 	EnablePublicNetwork *bool   `json:"EnablePublicNetwork,omitempty" name:"EnablePublicNetwork"`
 }
 type CreateTrainJobFrameworkReplicas struct {
-	Worker    *int `json:"Worker,omitempty" name:"Worker"`
 	Chief     *int `json:"Chief,omitempty" name:"Chief"`
 	Evaluator *int `json:"Evaluator,omitempty" name:"Evaluator"`
 	PS        *int `json:"PS,omitempty" name:"PS"`
@@ -42,14 +41,22 @@ type CreateTrainJobEnvs struct {
 }
 type CreateTrainJobStorageConfigs struct {
 	StorageConfigId   *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
-	StorageConfigType *string `json:"StorageConfigType,omitempty" name:"StorageConfigType"`
 	MountPath         *string `json:"MountPath,omitempty" name:"MountPath"`
+	StorageConfigType *string `json:"StorageConfigType,omitempty" name:"StorageConfigType"`
 }
 type DescribeTrainJobFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 type DescribeTrainJobPodsFilter struct {
+	Name  *string   `json:"Name,omitempty" name:"Name"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type DescribeResourcePoolsFilter struct {
+	Name  *string   `json:"Name,omitempty" name:"Name"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type DescribeResourcePoolInstancesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
@@ -827,5 +834,134 @@ func (r *DescribeTrainJobPodsResponse) ToJsonString() string {
 }
 
 func (r *DescribeTrainJobPodsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourcePoolsRequest struct {
+	*ksyunhttp.BaseRequest
+	Sort             *string                        `json:"Sort,omitempty" name:"Sort"`
+	Page             *int                           `json:"Page,omitempty" name:"Page"`
+	PageSize         *int                           `json:"PageSize,omitempty" name:"PageSize"`
+	ResourcePoolName *string                        `json:"ResourcePoolName,omitempty" name:"ResourcePoolName"`
+	Component        *string                        `json:"Component,omitempty" name:"Component"`
+	ResourcePoolId   []*string                      `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	Filter           []*DescribeResourcePoolsFilter `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *DescribeResourcePoolsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeResourcePoolsResponse struct {
+	*ksyunhttp.BaseResponse
+	ResourcePoolSet []struct {
+		ResourcePoolId        *string   `json:"ResourcePoolId" name:"ResourcePoolId"`
+		ResourcePoolName      *string   `json:"ResourcePoolName" name:"ResourcePoolName"`
+		Description           *string   `json:"Description" name:"Description"`
+		ResourcePoolType      *string   `json:"ResourcePoolType" name:"ResourcePoolType"`
+		VpcId                 *string   `json:"VpcId" name:"VpcId"`
+		Status                *string   `json:"Status" name:"Status"`
+		CreateTime            *string   `json:"CreateTime" name:"CreateTime"`
+		GpuNodeNum            *int      `json:"GpuNodeNum" name:"GpuNodeNum"`
+		AvailableGpuNodeNum   *int      `json:"AvailableGpuNodeNum" name:"AvailableGpuNodeNum"`
+		GpuNum                *int      `json:"GpuNum" name:"GpuNum"`
+		AvailableGpuNum       *int      `json:"AvailableGpuNum" name:"AvailableGpuNum"`
+		PrometheusId          *string   `json:"PrometheusId" name:"PrometheusId"`
+		ClusterId             *string   `json:"ClusterId" name:"ClusterId"`
+		Purpose               *string   `json:"Purpose" name:"Purpose"`
+		Components            []*string `json:"Components" name:"Components"`
+		LogProjectName        *string   `json:"LogProjectName" name:"LogProjectName"`
+		LogPoolName           *string   `json:"LogPoolName" name:"LogPoolName"`
+		FileSystemId          *string   `json:"FileSystemId" name:"FileSystemId"`
+		EnableKPFSPerformance *bool     `json:"EnableKPFSPerformance" name:"EnableKPFSPerformance"`
+		EnableKlog            *bool     `json:"EnableKlog" name:"EnableKlog"`
+	} `json:"ResourcePoolSet"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	PageSize   *int    `json:"PageSize" name:"PageSize"`
+	Page       *int    `json:"Page" name:"Page"`
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DescribeResourcePoolsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeResourcePoolsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeResourcePoolInstancesRequest struct {
+	*ksyunhttp.BaseRequest
+	ResourcePoolId *string                                `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	PageSize       *int                                   `json:"PageSize,omitempty" name:"PageSize"`
+	Page           *int                                   `json:"Page,omitempty" name:"Page"`
+	InstanceName   *string                                `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceId     []*string                              `json:"InstanceId,omitempty" name:"InstanceId"`
+	ProjectId      []*string                              `json:"ProjectId,omitempty" name:"ProjectId"`
+	Filter         []*DescribeResourcePoolInstancesFilter `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *DescribeResourcePoolInstancesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeResourcePoolInstancesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId               *string `json:"RequestId" name:"RequestId"`
+	PageSize                *int    `json:"PageSize" name:"PageSize"`
+	Page                    *int    `json:"Page" name:"Page"`
+	TotalCount              *int    `json:"TotalCount" name:"TotalCount"`
+	ResourcePoolInstanceSet []struct {
+		ResourcePoolId      *string `json:"ResourcePoolId" name:"ResourcePoolId"`
+		InstanceId          *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName        *string `json:"InstanceName" name:"InstanceName"`
+		K8sRole             *string `json:"K8sRole" name:"K8sRole"`
+		InstanceStatus      *string `json:"InstanceStatus" name:"InstanceStatus"`
+		InstanceType        *string `json:"InstanceType" name:"InstanceType"`
+		NodeType            *string `json:"NodeType" name:"NodeType"`
+		InstanceIp          *string `json:"InstanceIp" name:"InstanceIp"`
+		VpcId               *string `json:"VpcId" name:"VpcId"`
+		AvailabilityZone    *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		ChargeType          *string `json:"ChargeType" name:"ChargeType"`
+		ProjectId           *string `json:"ProjectId" name:"ProjectId"`
+		NodeIcon            *string `json:"NodeIcon" name:"NodeIcon"`
+		ServiceEndTime      *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		CreateTime          *string `json:"CreateTime" name:"CreateTime"`
+		IsTrial             *bool   `json:"IsTrial" name:"IsTrial"`
+		IsGpu               *bool   `json:"IsGpu" name:"IsGpu"`
+		ResourcePoolType    *string `json:"ResourcePoolType" name:"ResourcePoolType"`
+		GpuType             *string `json:"GpuType" name:"GpuType"`
+		NetworkInterfaceSet []struct {
+			VpcId                *string `json:"VpcId" name:"VpcId"`
+			SubnetId             *string `json:"SubnetId" name:"SubnetId"`
+			PrivateIpAddress     *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+			NetworkInterfaceId   *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+			NetworkInterfaceType *string `json:"NetworkInterfaceType" name:"NetworkInterfaceType"`
+		} `json:"NetworkInterfaceSet" name:"NetworkInterfaceSet"`
+		Cpu struct {
+			Allocated   *int `json:"Allocated" name:"Allocated"`
+			Allocatable *int `json:"Allocatable" name:"Allocatable"`
+		} `json:"Cpu" name:"Cpu"`
+		Gpu struct {
+			Allocated   *int `json:"Allocated" name:"Allocated"`
+			Allocatable *int `json:"Allocatable" name:"Allocatable"`
+		} `json:"Gpu" name:"Gpu"`
+		Memory struct {
+			Allocated   *int `json:"Allocated" name:"Allocated"`
+			Allocatable *int `json:"Allocatable" name:"Allocatable"`
+		} `json:"Memory" name:"Memory"`
+		UnSchedulable *bool `json:"UnSchedulable" name:"UnSchedulable"`
+	} `json:"ResourcePoolInstanceSet"`
+}
+
+func (r *DescribeResourcePoolInstancesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeResourcePoolInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
