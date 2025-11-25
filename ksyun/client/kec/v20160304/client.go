@@ -5482,6 +5482,71 @@ func (c *Client) ModifyInstanceAutoDeleteTimeWithContextV2(ctx context.Context, 
 	}
 	return statusCode, msg, nil
 }
+func NewDescribeKecInventoryRequest() (request *DescribeKecInventoryRequest) {
+	request = &DescribeKecInventoryRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kec", APIVersion, "DescribeKecInventory")
+	return
+}
+
+func NewDescribeKecInventoryResponse() (response *DescribeKecInventoryResponse) {
+	response = &DescribeKecInventoryResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeKecInventory(request *DescribeKecInventoryRequest) string {
+	return c.DescribeKecInventoryWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeKecInventorySend(request *DescribeKecInventoryRequest) (*DescribeKecInventoryResponse, error) {
+	statusCode, msg, err := c.DescribeKecInventoryWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeKecInventoryResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeKecInventoryWithContext(ctx context.Context, request *DescribeKecInventoryRequest) string {
+	if request == nil {
+		request = NewDescribeKecInventoryRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeKecInventoryResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeKecInventoryWithContextV2(ctx context.Context, request *DescribeKecInventoryRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeKecInventoryRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeKecInventoryResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewModifyScalingConfigurationRequest() (request *ModifyScalingConfigurationRequest) {
 	request = &ModifyScalingConfigurationRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
