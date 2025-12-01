@@ -249,6 +249,7 @@ type DescribeNotebooksResponse struct {
 		EstimatedImageSize *float64 `json:"EstimatedImageSize" name:"EstimatedImageSize"`
 		ComputeStatus      *string  `json:"ComputeStatus" name:"ComputeStatus"`
 		RunOnCPU           *bool    `json:"RunOnCPU" name:"RunOnCPU"`
+		NodeIp             *string  `json:"NodeIp" name:"NodeIp"`
 	} `json:"Notebooks"`
 	TotalCount *int `json:"TotalCount" name:"TotalCount"`
 	Marker     *int `json:"Marker" name:"Marker"`
@@ -963,5 +964,42 @@ func (r *DescribeResourcePoolInstancesResponse) ToJsonString() string {
 }
 
 func (r *DescribeResourcePoolInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeModelChatsRequest struct {
+	*ksyunhttp.BaseRequest
+	ChatId          *string `json:"ChatId,omitempty" name:"ChatId"`
+	CreateTimeStart *int    `json:"CreateTimeStart,omitempty" name:"CreateTimeStart"`
+	CreateTimeEnd   *int    `json:"CreateTimeEnd,omitempty" name:"CreateTimeEnd"`
+	Marker          *int    `json:"Marker,omitempty" name:"Marker"`
+	MaxResults      *int    `json:"MaxResults,omitempty" name:"MaxResults"`
+}
+
+func (r *DescribeModelChatsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeModelChatsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	Marker     *int    `json:"Marker" name:"Marker"`
+	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
+	Data       []struct {
+		ChatId     *string `json:"ChatId" name:"ChatId"`
+		Title      *string `json:"Title" name:"Title"`
+		CreateTime *int    `json:"CreateTime" name:"CreateTime"`
+		UpdateTime *int    `json:"UpdateTime" name:"UpdateTime"`
+	} `json:"Data"`
+}
+
+func (r *DescribeModelChatsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeModelChatsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -1273,6 +1273,191 @@ func (r *DescribeDedicatedHostsResponse) FromJsonString(s string) error {
 }
 
 
+type CreateAutoSnapshotPolicyRequest struct {
+    *ksyunhttp.BaseRequest
+    AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
+AutoSnapshotTime *string `json:"AutoSnapshotTime,omitempty" name:"AutoSnapshotTime"`
+AutoSnapshotDate []*string `json:"AutoSnapshotDate,omitempty" name:"AutoSnapshotDate"`
+SnapshotType *string `json:"SnapshotType,omitempty" name:"SnapshotType"`
+RetentionTime *int `json:"RetentionTime,omitempty" name:"RetentionTime"`
+}
+
+func (r *CreateAutoSnapshotPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+type CreateAutoSnapshotPolicyResponse struct {
+    *ksyunhttp.BaseResponse
+		RequestId *string `json:"RequestId" name:"RequestId"`
+		AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId" name:"AutoSnapshotPolicyId"`
+}
+
+func (r *CreateAutoSnapshotPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CreateAutoSnapshotPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+
+type DeleteAutoSnapshotPolicyRequest struct {
+    *ksyunhttp.BaseRequest
+    AutoSnapshotPolicyId []*string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+}
+
+func (r *DeleteAutoSnapshotPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+type DeleteAutoSnapshotPolicyResponse struct {
+    *ksyunhttp.BaseResponse
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	AutoSnapshotPolicySet []*string `json:"AutoSnapshotPolicySet" name:"AutoSnapshotPolicySet"`
+}
+
+func (r *DeleteAutoSnapshotPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DeleteAutoSnapshotPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+
+type ModifyAutoSnapshotPolicyRequest struct {
+    *ksyunhttp.BaseRequest
+    AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
+AutoSnapshotTime *string `json:"AutoSnapshotTime,omitempty" name:"AutoSnapshotTime"`
+AutoSnapshotDate []*string `json:"AutoSnapshotDate,omitempty" name:"AutoSnapshotDate"`
+SnapshotType *string `json:"SnapshotType,omitempty" name:"SnapshotType"`
+RetentionTime *int `json:"RetentionTime,omitempty" name:"RetentionTime"`
+}
+
+func (r *ModifyAutoSnapshotPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+type ModifyAutoSnapshotPolicyResponse struct {
+    *ksyunhttp.BaseResponse
+		RequestId *string `json:"RequestId" name:"RequestId"`
+		Return *bool `json:"Return" name:"Return"`
+}
+
+func (r *ModifyAutoSnapshotPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ModifyAutoSnapshotPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+
+type DescribeAutoSnapshotPolicyRequest struct {
+    *ksyunhttp.BaseRequest
+    AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
+AutoSnapshotPolicyId []*string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+}
+
+func (r *DescribeAutoSnapshotPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+type DescribeAutoSnapshotPolicyResponse struct {
+    *ksyunhttp.BaseResponse
+		RequestId *string `json:"RequestId" name:"RequestId"`
+		AutoSnapshotPolicySize *int `json:"AutoSnapshotPolicySize" name:"AutoSnapshotPolicySize"`
+	AutoSnapshotPolicySet []struct {
+		AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId" name:"AutoSnapshotPolicyId"`
+		AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName" name:"AutoSnapshotPolicyName"`
+	AutoSnapshotTime []*string `json:"AutoSnapshotTime" name:"AutoSnapshotTime"`
+	AutoSnapshotDate []*string `json:"AutoSnapshotDate" name:"AutoSnapshotDate"`
+		AttachLocalVolumeNum *int `json:"AttachLocalVolumeNum" name:"AttachLocalVolumeNum"`
+		AttachEBSVolumeNum *int `json:"AttachEBSVolumeNum" name:"AttachEBSVolumeNum"`
+		CreationDate *string `json:"CreationDate" name:"CreationDate"`
+		RetentionTime *int `json:"RetentionTime" name:"RetentionTime"`
+		SnapshotType *string `json:"SnapshotType" name:"SnapshotType"`
+	} `json:"AutoSnapshotPolicySet"`
+}
+
+func (r *DescribeAutoSnapshotPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *DescribeAutoSnapshotPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+
+type ApplyAutoSnapshotPolicyRequest struct {
+    *ksyunhttp.BaseRequest
+    AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+AttachVolumeId []*string `json:"AttachVolumeId,omitempty" name:"AttachVolumeId"`
+}
+
+func (r *ApplyAutoSnapshotPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+type ApplyAutoSnapshotPolicyResponse struct {
+    *ksyunhttp.BaseResponse
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	ReturnSet struct {
+		AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId" name:"AutoSnapshotPolicyId"`
+	AttachVolumeIdSuccess []*string `json:"AttachVolumeIdSuccess" name:"AttachVolumeIdSuccess"`
+	} `json:"ReturnSet"`
+}
+
+func (r *ApplyAutoSnapshotPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *ApplyAutoSnapshotPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+
+type CancelAutoSnapshotPolicyRequest struct {
+    *ksyunhttp.BaseRequest
+    AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+AttachVolumeId []*string `json:"AttachVolumeId,omitempty" name:"AttachVolumeId"`
+}
+
+func (r *CancelAutoSnapshotPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+type CancelAutoSnapshotPolicyResponse struct {
+    *ksyunhttp.BaseResponse
+		RequestId *string `json:"RequestId" name:"RequestId"`
+	ReturnSet struct {
+		AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId" name:"AutoSnapshotPolicyId"`
+	AttachVolumeIdSuccess []*string `json:"AttachVolumeIdSuccess" name:"AttachVolumeIdSuccess"`
+	} `json:"ReturnSet"`
+}
+
+func (r *CancelAutoSnapshotPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+func (r *CancelAutoSnapshotPolicyResponse) FromJsonString(s string) error {
+    return json.Unmarshal([]byte(s), &r)
+}
+
+
 type DescribeScalingConfigurationRequest struct {
     *ksyunhttp.BaseRequest
     ScalingConfigurationName *string `json:"ScalingConfigurationName,omitempty" name:"ScalingConfigurationName"`

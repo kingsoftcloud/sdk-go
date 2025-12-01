@@ -1972,6 +1972,396 @@ func (c *Client) DescribeDedicatedHostsWithContextV2(ctx context.Context, reques
 	}
 	return statusCode, msg, nil
 }
+func NewCreateAutoSnapshotPolicyRequest() (request *CreateAutoSnapshotPolicyRequest) {
+	request = &CreateAutoSnapshotPolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kec", APIVersion, "CreateAutoSnapshotPolicy")
+	return
+}
+
+func NewCreateAutoSnapshotPolicyResponse() (response *CreateAutoSnapshotPolicyResponse) {
+	response = &CreateAutoSnapshotPolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateAutoSnapshotPolicy(request *CreateAutoSnapshotPolicyRequest) string {
+	return c.CreateAutoSnapshotPolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateAutoSnapshotPolicySend(request *CreateAutoSnapshotPolicyRequest) (*CreateAutoSnapshotPolicyResponse, error) {
+	statusCode, msg, err := c.CreateAutoSnapshotPolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CreateAutoSnapshotPolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateAutoSnapshotPolicyWithContext(ctx context.Context, request *CreateAutoSnapshotPolicyRequest) string {
+	if request == nil {
+		request = NewCreateAutoSnapshotPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateAutoSnapshotPolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateAutoSnapshotPolicyWithContextV2(ctx context.Context, request *CreateAutoSnapshotPolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateAutoSnapshotPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateAutoSnapshotPolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteAutoSnapshotPolicyRequest() (request *DeleteAutoSnapshotPolicyRequest) {
+	request = &DeleteAutoSnapshotPolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kec", APIVersion, "DeleteAutoSnapshotPolicy")
+	return
+}
+
+func NewDeleteAutoSnapshotPolicyResponse() (response *DeleteAutoSnapshotPolicyResponse) {
+	response = &DeleteAutoSnapshotPolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteAutoSnapshotPolicy(request *DeleteAutoSnapshotPolicyRequest) string {
+	return c.DeleteAutoSnapshotPolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteAutoSnapshotPolicySend(request *DeleteAutoSnapshotPolicyRequest) (*DeleteAutoSnapshotPolicyResponse, error) {
+	statusCode, msg, err := c.DeleteAutoSnapshotPolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DeleteAutoSnapshotPolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteAutoSnapshotPolicyWithContext(ctx context.Context, request *DeleteAutoSnapshotPolicyRequest) string {
+	if request == nil {
+		request = NewDeleteAutoSnapshotPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteAutoSnapshotPolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteAutoSnapshotPolicyWithContextV2(ctx context.Context, request *DeleteAutoSnapshotPolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteAutoSnapshotPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteAutoSnapshotPolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyAutoSnapshotPolicyRequest() (request *ModifyAutoSnapshotPolicyRequest) {
+	request = &ModifyAutoSnapshotPolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kec", APIVersion, "ModifyAutoSnapshotPolicy")
+	return
+}
+
+func NewModifyAutoSnapshotPolicyResponse() (response *ModifyAutoSnapshotPolicyResponse) {
+	response = &ModifyAutoSnapshotPolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyAutoSnapshotPolicy(request *ModifyAutoSnapshotPolicyRequest) string {
+	return c.ModifyAutoSnapshotPolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyAutoSnapshotPolicySend(request *ModifyAutoSnapshotPolicyRequest) (*ModifyAutoSnapshotPolicyResponse, error) {
+	statusCode, msg, err := c.ModifyAutoSnapshotPolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ModifyAutoSnapshotPolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyAutoSnapshotPolicyWithContext(ctx context.Context, request *ModifyAutoSnapshotPolicyRequest) string {
+	if request == nil {
+		request = NewModifyAutoSnapshotPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyAutoSnapshotPolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyAutoSnapshotPolicyWithContextV2(ctx context.Context, request *ModifyAutoSnapshotPolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyAutoSnapshotPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyAutoSnapshotPolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeAutoSnapshotPolicyRequest() (request *DescribeAutoSnapshotPolicyRequest) {
+	request = &DescribeAutoSnapshotPolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kec", APIVersion, "DescribeAutoSnapshotPolicy")
+	return
+}
+
+func NewDescribeAutoSnapshotPolicyResponse() (response *DescribeAutoSnapshotPolicyResponse) {
+	response = &DescribeAutoSnapshotPolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeAutoSnapshotPolicy(request *DescribeAutoSnapshotPolicyRequest) string {
+	return c.DescribeAutoSnapshotPolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAutoSnapshotPolicySend(request *DescribeAutoSnapshotPolicyRequest) (*DescribeAutoSnapshotPolicyResponse, error) {
+	statusCode, msg, err := c.DescribeAutoSnapshotPolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeAutoSnapshotPolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeAutoSnapshotPolicyWithContext(ctx context.Context, request *DescribeAutoSnapshotPolicyRequest) string {
+	if request == nil {
+		request = NewDescribeAutoSnapshotPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAutoSnapshotPolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeAutoSnapshotPolicyWithContextV2(ctx context.Context, request *DescribeAutoSnapshotPolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeAutoSnapshotPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAutoSnapshotPolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewApplyAutoSnapshotPolicyRequest() (request *ApplyAutoSnapshotPolicyRequest) {
+	request = &ApplyAutoSnapshotPolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kec", APIVersion, "ApplyAutoSnapshotPolicy")
+	return
+}
+
+func NewApplyAutoSnapshotPolicyResponse() (response *ApplyAutoSnapshotPolicyResponse) {
+	response = &ApplyAutoSnapshotPolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ApplyAutoSnapshotPolicy(request *ApplyAutoSnapshotPolicyRequest) string {
+	return c.ApplyAutoSnapshotPolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) ApplyAutoSnapshotPolicySend(request *ApplyAutoSnapshotPolicyRequest) (*ApplyAutoSnapshotPolicyResponse, error) {
+	statusCode, msg, err := c.ApplyAutoSnapshotPolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct ApplyAutoSnapshotPolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ApplyAutoSnapshotPolicyWithContext(ctx context.Context, request *ApplyAutoSnapshotPolicyRequest) string {
+	if request == nil {
+		request = NewApplyAutoSnapshotPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewApplyAutoSnapshotPolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ApplyAutoSnapshotPolicyWithContextV2(ctx context.Context, request *ApplyAutoSnapshotPolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewApplyAutoSnapshotPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewApplyAutoSnapshotPolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCancelAutoSnapshotPolicyRequest() (request *CancelAutoSnapshotPolicyRequest) {
+	request = &CancelAutoSnapshotPolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kec", APIVersion, "CancelAutoSnapshotPolicy")
+	return
+}
+
+func NewCancelAutoSnapshotPolicyResponse() (response *CancelAutoSnapshotPolicyResponse) {
+	response = &CancelAutoSnapshotPolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CancelAutoSnapshotPolicy(request *CancelAutoSnapshotPolicyRequest) string {
+	return c.CancelAutoSnapshotPolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) CancelAutoSnapshotPolicySend(request *CancelAutoSnapshotPolicyRequest) (*CancelAutoSnapshotPolicyResponse, error) {
+	statusCode, msg, err := c.CancelAutoSnapshotPolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CancelAutoSnapshotPolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CancelAutoSnapshotPolicyWithContext(ctx context.Context, request *CancelAutoSnapshotPolicyRequest) string {
+	if request == nil {
+		request = NewCancelAutoSnapshotPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCancelAutoSnapshotPolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CancelAutoSnapshotPolicyWithContextV2(ctx context.Context, request *CancelAutoSnapshotPolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewCancelAutoSnapshotPolicyRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCancelAutoSnapshotPolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewDescribeScalingConfigurationRequest() (request *DescribeScalingConfigurationRequest) {
 	request = &DescribeScalingConfigurationRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
