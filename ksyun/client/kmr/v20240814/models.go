@@ -1,8 +1,11 @@
 package v20240814
+
 import (
 	"encoding/json"
+
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 type StartJobRunSparkSubmitData struct {
 	Name                *string   `json:"Name,omitempty" name:"Name"`
 	SparkDriverCores    *int      `json:"SparkDriverCores,omitempty" name:"SparkDriverCores"`
@@ -74,7 +77,6 @@ type QueryMetricsQueryData struct {
 	Step  *string `json:"Step,omitempty" name:"Step"`
 }
 
-
 type DetailWorkspaceRequest struct {
 	*ksyunhttp.BaseRequest
 	WorkspaceId *string `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
@@ -91,30 +93,30 @@ type DetailWorkspaceResponse struct {
 	Message   *string `json:"Message" name:"Message"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		WorkspaceId           *string `json:"WorkspaceId" name:"WorkspaceId"`
-		WorkspaceName         *string `json:"WorkspaceName" name:"WorkspaceName"`
-		Status                *string `json:"Status" name:"Status"`
-		PaymentType           *string `json:"PaymentType" name:"PaymentType"`
-		CreateTime            *string `json:"CreateTime" name:"CreateTime"`
-		RunningTime           *int    `json:"RunningTime" name:"RunningTime"`
-		AccountId             *string `json:"AccountId" name:"AccountId"`
-		Region                *string `json:"Region" name:"Region"`
-		ResourceSpec          *int    `json:"ResourceSpec" name:"ResourceSpec"`
-		FixedResourceSpec     *int    `json:"FixedResourceSpec" name:"FixedResourceSpec"`
-		ElasticResourceSpec   *int    `json:"ElasticResourceSpec" name:"ElasticResourceSpec"`
+		WorkspaceId               *string `json:"WorkspaceId" name:"WorkspaceId"`
+		WorkspaceName             *string `json:"WorkspaceName" name:"WorkspaceName"`
+		Status                    *string `json:"Status" name:"Status"`
+		PaymentType               *string `json:"PaymentType" name:"PaymentType"`
+		CreateTime                *string `json:"CreateTime" name:"CreateTime"`
+		RunningTime               *int    `json:"RunningTime" name:"RunningTime"`
+		AccountId                 *string `json:"AccountId" name:"AccountId"`
+		Region                    *string `json:"Region" name:"Region"`
+		ResourceSpec              *int    `json:"ResourceSpec" name:"ResourceSpec"`
+		FixedResourceSpec         *int    `json:"FixedResourceSpec" name:"FixedResourceSpec"`
+		ElasticResourceSpec       *int    `json:"ElasticResourceSpec" name:"ElasticResourceSpec"`
 		ElasticResourceInstanceId *string `json:"ElasticResourceInstanceId" name:"ElasticResourceInstanceId"`
-		ElasticResourceStatus *string `json:"ElasticResourceStatus" name:"ElasticResourceStatus"`
-		ComputeUnit           *string `json:"ComputeUnit" name:"ComputeUnit"`
-		HistoryServer         *string `json:"HistoryServer" name:"HistoryServer"`
-		AllocatedResources    *int    `json:"AllocatedResources" name:"AllocatedResources"`
-		EndPoint              *string `json:"EndPoint" name:"EndPoint"`
-		UsedResources         *int    `json:"UsedResources" name:"UsedResources"`
-		MaxCu                 *int    `json:"MaxCu" name:"MaxCu"`
-		MinCu                 *int    `json:"MinCu" name:"MinCu"`
-		RunningJob            *bool   `json:"RunningJob" name:"RunningJob"`
-		GrafanaDashboard      *string `json:"GrafanaDashboard" name:"GrafanaDashboard"`
-		FlinkHistoryServer    *string `json:"FlinkHistoryServer" name:"FlinkHistoryServer"`
-		FlinkGrafanaDashboard *string `json:"FlinkGrafanaDashboard" name:"FlinkGrafanaDashboard"`
+		ElasticResourceStatus     *string `json:"ElasticResourceStatus" name:"ElasticResourceStatus"`
+		ComputeUnit               *string `json:"ComputeUnit" name:"ComputeUnit"`
+		HistoryServer             *string `json:"HistoryServer" name:"HistoryServer"`
+		AllocatedResources        *int    `json:"AllocatedResources" name:"AllocatedResources"`
+		EndPoint                  *string `json:"EndPoint" name:"EndPoint"`
+		UsedResources             *int    `json:"UsedResources" name:"UsedResources"`
+		MaxCu                     *int    `json:"MaxCu" name:"MaxCu"`
+		MinCu                     *int    `json:"MinCu" name:"MinCu"`
+		RunningJob                *bool   `json:"RunningJob" name:"RunningJob"`
+		GrafanaDashboard          *string `json:"GrafanaDashboard" name:"GrafanaDashboard"`
+		FlinkHistoryServer        *string `json:"FlinkHistoryServer" name:"FlinkHistoryServer"`
+		FlinkGrafanaDashboard     *string `json:"FlinkGrafanaDashboard" name:"FlinkGrafanaDashboard"`
 	} `json:"Data"`
 }
 
@@ -126,7 +128,6 @@ func (r *DetailWorkspaceResponse) ToJsonString() string {
 func (r *DetailWorkspaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ListWorkspacesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -177,7 +178,6 @@ func (r *ListWorkspacesResponse) ToJsonString() string {
 func (r *ListWorkspacesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type StartJobRunRequest struct {
 	*ksyunhttp.BaseRequest
@@ -245,7 +245,6 @@ func (r *StartJobRunResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetJobRunRequest struct {
 	*ksyunhttp.BaseRequest
 	WorkspaceId *string `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
@@ -309,7 +308,6 @@ func (r *GetJobRunResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ListJobRunsRequest struct {
 	*ksyunhttp.BaseRequest
 	WorkspaceId *string `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
@@ -352,7 +350,6 @@ func (r *ListJobRunsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type CancelJobRunRequest struct {
 	*ksyunhttp.BaseRequest
 	WorkspaceId *string                  `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
@@ -382,7 +379,6 @@ func (r *CancelJobRunResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ListExecutorRequest struct {
 	*ksyunhttp.BaseRequest
 	WorkspaceId *string `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
@@ -400,31 +396,31 @@ type ListExecutorResponse struct {
 	*ksyunhttp.BaseResponse
 	Status *int `json:"status" name:"status"`
 	Data   struct {
-		Code    *int    `json:"Code" name:"Code"`
-		Message *string `json:"Message" name:"Message"`
+		Code      *int    `json:"Code" name:"Code"`
+		Message   *string `json:"Message" name:"Message"`
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Data    struct {
+		Data      struct {
 			Count *int `json:"Count" name:"Count"`
 			Total *int `json:"Total" name:"Total"`
 			List  []struct {
-				Id               *string `json:"Id" name:"Id"`
-				Address          *string `json:"Address" name:"Address"`
-				Status           *string `json:"Status" name:"Status"`
-				RddBlocks        *int    `json:"RddBlocks" name:"RddBlocks"`
-				StorageMemory    *string `json:"StorageMemory" name:"StorageMemory"`
-				MaxMemory        *string `json:"MaxMemory" name:"MaxMemory"`
-				DiskUsed         *string `json:"DiskUsed" name:"DiskUsed"`
-				Cores            *int    `json:"Cores" name:"Cores"`
-				ActiveTasks      *int    `json:"ActiveTasks" name:"ActiveTasks"`
-				FailedTasks      *int    `json:"FailedTasks" name:"FailedTasks"`
-				CompletedTasks   *int    `json:"CompletedTasks" name:"CompletedTasks"`
-				TotalTasks       *int    `json:"TotalTasks" name:"TotalTasks"`
-				TasksTime        *string `json:"TasksTime" name:"TasksTime"`
-				TotalGCTime      *string `json:"TotalGCTime" name:"TotalGCTime"`
-				TotalInputBytes  *string `json:"TotalInputBytes" name:"TotalInputBytes"`
-				TotalShuffleRead *string `json:"TotalShuffleRead" name:"TotalShuffleRead"`
+				Id                *string `json:"Id" name:"Id"`
+				Address           *string `json:"Address" name:"Address"`
+				Status            *string `json:"Status" name:"Status"`
+				RddBlocks         *int    `json:"RddBlocks" name:"RddBlocks"`
+				StorageMemory     *string `json:"StorageMemory" name:"StorageMemory"`
+				MaxMemory         *string `json:"MaxMemory" name:"MaxMemory"`
+				DiskUsed          *string `json:"DiskUsed" name:"DiskUsed"`
+				Cores             *int    `json:"Cores" name:"Cores"`
+				ActiveTasks       *int    `json:"ActiveTasks" name:"ActiveTasks"`
+				FailedTasks       *int    `json:"FailedTasks" name:"FailedTasks"`
+				CompletedTasks    *int    `json:"CompletedTasks" name:"CompletedTasks"`
+				TotalTasks        *int    `json:"TotalTasks" name:"TotalTasks"`
+				TasksTime         *string `json:"TasksTime" name:"TasksTime"`
+				TotalGCTime       *string `json:"TotalGCTime" name:"TotalGCTime"`
+				TotalInputBytes   *string `json:"TotalInputBytes" name:"TotalInputBytes"`
+				TotalShuffleRead  *string `json:"TotalShuffleRead" name:"TotalShuffleRead"`
 				TotalShuffleWrite *string `json:"TotalShuffleWrite" name:"TotalShuffleWrite"`
-				PodName          *string `json:"PodName" name:"PodName"`
+				PodName           *string `json:"PodName" name:"PodName"`
 			} `json:"List"`
 		} `json:"Data" name:"Data"`
 	} `json:"Data"`
@@ -439,7 +435,6 @@ func (r *ListExecutorResponse) ToJsonString() string {
 func (r *ListExecutorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type StartRayJobRunRequest struct {
 	*ksyunhttp.BaseRequest
@@ -495,7 +490,6 @@ func (r *StartRayJobRunResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetRayJobRunRequest struct {
 	*ksyunhttp.BaseRequest
 	WorkspaceId *string `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
@@ -513,19 +507,19 @@ type GetRayJobRunResponse struct {
 	Message   *string `json:"Message" name:"Message"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		JobRunId      *string `json:"JobRunId" name:"JobRunId"`
-		WorkspaceId   *string `json:"WorkspaceId" name:"WorkspaceId"`
-		Name          *string `json:"Name" name:"Name"`
-		State         *string `json:"State" name:"State"`
-		ErrorReason   *string `json:"ErrorReason" name:"ErrorReason"`
-		SubmitTime    *string `json:"SubmitTime" name:"SubmitTime"`
-		StartTime     *string `json:"StartTime" name:"StartTime"`
-		EndTime       *string `json:"EndTime" name:"EndTime"`
-		RunningTime   *int    `json:"RunningTime" name:"RunningTime"`
-		WebUI         *string `json:"WebUI" name:"WebUI"`
-		RayLog        *string `json:"RayLog" name:"RayLog"`
+		JobRunId       *string `json:"JobRunId" name:"JobRunId"`
+		WorkspaceId    *string `json:"WorkspaceId" name:"WorkspaceId"`
+		Name           *string `json:"Name" name:"Name"`
+		State          *string `json:"State" name:"State"`
+		ErrorReason    *string `json:"ErrorReason" name:"ErrorReason"`
+		SubmitTime     *string `json:"SubmitTime" name:"SubmitTime"`
+		StartTime      *string `json:"StartTime" name:"StartTime"`
+		EndTime        *string `json:"EndTime" name:"EndTime"`
+		RunningTime    *int    `json:"RunningTime" name:"RunningTime"`
+		WebUI          *string `json:"WebUI" name:"WebUI"`
+		RayLog         *string `json:"RayLog" name:"RayLog"`
 		ReleaseVersion *string `json:"ReleaseVersion" name:"ReleaseVersion"`
-		RaySubmitData struct {
+		RaySubmitData  struct {
 			Name               *string `json:"Name" name:"Name"`
 			RayHeadCores       *int    `json:"RayHeadCores" name:"RayHeadCores"`
 			RayHeadMemory      *string `json:"RayHeadMemory" name:"RayHeadMemory"`
@@ -554,7 +548,6 @@ func (r *GetRayJobRunResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ListRayJobRunsRequest struct {
 	*ksyunhttp.BaseRequest
 	WorkspaceId *string   `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
@@ -573,26 +566,26 @@ type ListRayJobRunsResponse struct {
 	*ksyunhttp.BaseResponse
 	Status *int `json:"status" name:"status"`
 	Data   struct {
-		Code    *int    `json:"Code" name:"Code"`
-		Message *string `json:"Message" name:"Message"`
+		Code      *int    `json:"Code" name:"Code"`
+		Message   *string `json:"Message" name:"Message"`
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Data    struct {
+		Data      struct {
 			MaxResults *int `json:"MaxResults" name:"MaxResults"`
 			TotalCount *int `json:"TotalCount" name:"TotalCount"`
 			JobRuns    []struct {
-				JobRunId      *string `json:"JobRunId" name:"JobRunId"`
-				WorkspaceId   *string `json:"WorkspaceId" name:"WorkspaceId"`
-				Name          *string `json:"Name" name:"Name"`
-				State         *string `json:"State" name:"State"`
-				ErrorReason   *string `json:"ErrorReason" name:"ErrorReason"`
-				SubmitTime    *string `json:"SubmitTime" name:"SubmitTime"`
-				StartTime     *string `json:"StartTime" name:"StartTime"`
-				EndTime       *string `json:"EndTime" name:"EndTime"`
-				RunningTime   *int    `json:"RunningTime" name:"RunningTime"`
-				WebUI         *string `json:"WebUI" name:"WebUI"`
-				RayLog        *string `json:"RayLog" name:"RayLog"`
+				JobRunId       *string `json:"JobRunId" name:"JobRunId"`
+				WorkspaceId    *string `json:"WorkspaceId" name:"WorkspaceId"`
+				Name           *string `json:"Name" name:"Name"`
+				State          *string `json:"State" name:"State"`
+				ErrorReason    *string `json:"ErrorReason" name:"ErrorReason"`
+				SubmitTime     *string `json:"SubmitTime" name:"SubmitTime"`
+				StartTime      *string `json:"StartTime" name:"StartTime"`
+				EndTime        *string `json:"EndTime" name:"EndTime"`
+				RunningTime    *int    `json:"RunningTime" name:"RunningTime"`
+				WebUI          *string `json:"WebUI" name:"WebUI"`
+				RayLog         *string `json:"RayLog" name:"RayLog"`
 				ReleaseVersion *string `json:"ReleaseVersion" name:"ReleaseVersion"`
-				RaySubmitData struct {
+				RaySubmitData  struct {
 					Name               *string `json:"Name" name:"Name"`
 					RayHeadCores       *int    `json:"RayHeadCores" name:"RayHeadCores"`
 					RayHeadMemory      *string `json:"RayHeadMemory" name:"RayHeadMemory"`
@@ -623,7 +616,6 @@ func (r *ListRayJobRunsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type CancelRayJobRunRequest struct {
 	*ksyunhttp.BaseRequest
 	WorkspaceId *string                     `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
@@ -652,7 +644,6 @@ func (r *CancelRayJobRunResponse) ToJsonString() string {
 func (r *CancelRayJobRunResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type StartFlinkJobRunRequest struct {
 	*ksyunhttp.BaseRequest
@@ -718,7 +709,6 @@ func (r *StartFlinkJobRunResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetFlinkJobRunRequest struct {
 	*ksyunhttp.BaseRequest
 	WorkspaceId *string `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
@@ -749,19 +739,18 @@ type GetFlinkJobRunResponse struct {
 		FlinkLog            *string `json:"FlinkLog" name:"FlinkLog"`
 		ReleaseVersion      *string `json:"ReleaseVersion" name:"ReleaseVersion"`
 		FlinkDeploymentData struct {
-			Name        *string   `json:"Name" name:"Name"`
-			Image       *string   `json:"Image" name:"Image"`
-			UpgradeMode *string   `json:"UpgradeMode" name:"UpgradeMode"`
-			JobCores    *int      `json:"JobCores" name:"JobCores"`
-			JobMemory   *string   `json:"JobMemory" name:"JobMemory"`
-			TaskCores   *int      `json:"TaskCores" name:"TaskCores"`
-			TaskMemory  *string   `json:"TaskMemory" name:"TaskMemory"`
-			NumTasks    *int      `json:"NumTasks" name:"NumTasks"`
-			FlinkConf   []*string `json:"FlinkConf" name:"FlinkConf"`
+			Name         *string   `json:"Name" name:"Name"`
+			Image        *string   `json:"Image" name:"Image"`
+			UpgradeMode  *string   `json:"UpgradeMode" name:"UpgradeMode"`
+			JobCores     *int      `json:"JobCores" name:"JobCores"`
+			JobMemory    *string   `json:"JobMemory" name:"JobMemory"`
+			TaskCores    *int      `json:"TaskCores" name:"TaskCores"`
+			TaskMemory   *string   `json:"TaskMemory" name:"TaskMemory"`
+			NumTasks     *int      `json:"NumTasks" name:"NumTasks"`
+			FlinkConf    []*string `json:"FlinkConf" name:"FlinkConf"`
 			Dependencies []*string `json:"Dependencies" name:"Dependencies"`
-			JarUri      *string   `json:"JarUri" name:"JarUri"`
+			JarUri       *string   `json:"JarUri" name:"JarUri"`
 		} `json:"FlinkDeploymentData" name:"FlinkDeploymentData"`
-		ResourceUsage *int `json:"ResourceUsage" name:"ResourceUsage"`
 		ResourceUsage *int `json:"ResourceUsage" name:"ResourceUsage"`
 	} `json:"Data"`
 }
@@ -774,7 +763,6 @@ func (r *GetFlinkJobRunResponse) ToJsonString() string {
 func (r *GetFlinkJobRunResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ListFlinkJobRunsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -798,7 +786,7 @@ type ListFlinkJobRunsResponse struct {
 	Data      struct {
 		MaxResults *int `json:"MaxResults" name:"MaxResults"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
-		JobRuns []struct {
+		JobRuns    []struct {
 			JobRunId            *string `json:"JobRunId" name:"JobRunId"`
 			WorkspaceId         *string `json:"WorkspaceId" name:"WorkspaceId"`
 			Name                *string `json:"Name" name:"Name"`
@@ -839,7 +827,6 @@ func (r *ListFlinkJobRunsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type CancelFlinkJobRunRequest struct {
 	*ksyunhttp.BaseRequest
 	WorkspaceId *string                       `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
@@ -869,7 +856,6 @@ func (r *CancelFlinkJobRunResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type SuspendFlinkJobRunRequest struct {
 	*ksyunhttp.BaseRequest
 	WorkspaceId *string `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
@@ -898,7 +884,6 @@ func (r *SuspendFlinkJobRunResponse) ToJsonString() string {
 func (r *SuspendFlinkJobRunResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type RestartFlinkJobRunRequest struct {
 	*ksyunhttp.BaseRequest
@@ -984,11 +969,11 @@ type QueryMetricsResponse struct {
 	IsPartial *bool   `json:"isPartial" name:"isPartial"`
 	Data      struct {
 		ResultType *string `json:"ResultType" name:"ResultType"`
-		Result []struct {
+		Result     []struct {
 			Metric struct {
-				Name      *string `json:"Name" name:"Name"`
-				JobRunId  *string `json:"JobRunId" name:"JobRunId"`
-				Component *string `json:"Component" name:"Component"`
+				Name        *string `json:"Name" name:"Name"`
+				JobRunId    *string `json:"JobRunId" name:"JobRunId"`
+				Component   *string `json:"Component" name:"Component"`
 				WorkspaceId *string `json:"WorkspaceId" name:"WorkspaceId"`
 			} `json:"Metric"`
 			Values []*string `json:"Values" name:"Values"`
@@ -1008,4 +993,3 @@ func (r *QueryMetricsResponse) ToJsonString() string {
 func (r *QueryMetricsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
