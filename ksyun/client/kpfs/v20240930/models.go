@@ -1,14 +1,13 @@
 package v20240930
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 type UpdatePerformanceOnePosixAclFileSystemList struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 	VolumePath   *string `json:"VolumePath,omitempty" name:"VolumePath"`
 }
+
 
 type UpdatePerformanceOnePosixAclRequest struct {
 	*ksyunhttp.BaseRequest
@@ -37,6 +36,7 @@ func (r *UpdatePerformanceOnePosixAclResponse) ToJsonString() string {
 func (r *UpdatePerformanceOnePosixAclResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribePerformanceOnePosixAclListRequest struct {
 	*ksyunhttp.BaseRequest
@@ -80,3 +80,165 @@ func (r *DescribePerformanceOnePosixAclListResponse) ToJsonString() string {
 func (r *DescribePerformanceOnePosixAclListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type ManageDataFlowTaskRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *ManageDataFlowTaskRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ManageDataFlowTaskResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *ManageDataFlowTaskResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ManageDataFlowTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDataFlowStrategyRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *CreateDataFlowStrategyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateDataFlowStrategyResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *CreateDataFlowStrategyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateDataFlowStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDataFlowTaskRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *ModifyDataFlowTaskRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyDataFlowTaskResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *ModifyDataFlowTaskResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyDataFlowTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDataFlowTaskListRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *DescribeDataFlowTaskListRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeDataFlowTaskListResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *DescribeDataFlowTaskListResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDataFlowTaskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ActivateDataFlowTaskRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *ActivateDataFlowTaskRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ActivateDataFlowTaskResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *ActivateDataFlowTaskResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ActivateDataFlowTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteDataFlowStrategyRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *DeleteDataFlowStrategyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteDataFlowStrategyResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *DeleteDataFlowStrategyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteDataFlowStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDataFlowStrategyListRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *DescribeDataFlowStrategyListRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeDataFlowStrategyListResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *DescribeDataFlowStrategyListResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDataFlowStrategyListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+

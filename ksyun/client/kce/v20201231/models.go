@@ -1,10 +1,8 @@
 package v20201231
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 type CreateClusterManagedClusterMultiMaster struct {
 	SubnetId        *string `json:"SubnetId,omitempty" name:"SubnetId"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
@@ -102,6 +100,7 @@ type CreateClusterControlPlaneLog struct {
 	Items       *string `json:"Items,omitempty" name:"Items"`
 }
 
+
 type CreateClusterRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterName               *string                                   `json:"ClusterName,omitempty" name:"ClusterName"`
@@ -145,3 +144,4 @@ func (r *CreateClusterResponse) ToJsonString() string {
 func (r *CreateClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

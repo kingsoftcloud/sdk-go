@@ -336,7 +336,7 @@ type StartInstancesResponse struct {
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	InstancesSet []struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
-		Return *bool `json:"Return" name:"Return"`
+		ReturnField *bool `json:"ReturnField" name:"ReturnField"`
 		Message *string `json:"Message" name:"Message"`
 	} `json:"InstancesSet"`
 }
@@ -368,7 +368,7 @@ type StopInstancesResponse struct {
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	InstancesSet []struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
-		Return *bool `json:"Return" name:"Return"`
+		ReturnField *bool `json:"ReturnField" name:"ReturnField"`
 		Messgae *string `json:"Messgae" name:"Messgae"`
 	} `json:"InstancesSet"`
 }
@@ -399,7 +399,7 @@ type RebootInstancesResponse struct {
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	InstancesSet []struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
-		Return *bool `json:"Return" name:"Return"`
+		ReturnField *bool `json:"ReturnField" name:"ReturnField"`
 	} `json:"InstancesSet"`
 }
 
@@ -430,7 +430,7 @@ func (r *ModifyInstanceAttributeRequest) ToJsonString() string {
 type ModifyInstanceAttributeResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *ModifyInstanceAttributeResponse) ToJsonString() string {
@@ -468,7 +468,7 @@ func (r *ModifyInstanceTypeRequest) ToJsonString() string {
 type ModifyInstanceTypeResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *ModifyInstanceTypeResponse) ToJsonString() string {
@@ -497,7 +497,7 @@ type TerminateInstancesResponse struct {
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	InstancesSet []struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
-		Return *bool `json:"Return" name:"Return"`
+		ReturnField *bool `json:"ReturnField" name:"ReturnField"`
 		Message *string `json:"Message" name:"Message"`
 	} `json:"InstancesSet"`
 }
@@ -534,13 +534,13 @@ type DescribeImagesResponse struct {
 				SnapshotId *string `json:"SnapshotId" name:"SnapshotId"`
 				DiskType *string `json:"DiskType" name:"DiskType"`
 				DiskSize *int `json:"DiskSize" name:"DiskSize"`
-				Type *string `json:"Type" name:"Type"`
+			TypeField *string `json:"Type" name:"Type"`
 				VolumeType *string `json:"VolumeType" name:"VolumeType"`
 		} `json:"SnapshotSet" name:"SnapshotSet"`
 		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 		ExportingStatus *string `json:"ExportingStatus" name:"ExportingStatus"`
 		ExportingFinishedTime *string `json:"ExportingFinishedTime" name:"ExportingFinishedTime"`
-		Type *string `json:"Type" name:"Type"`
+		TypeField *string `json:"TypeField" name:"TypeField"`
 		Name *string `json:"Name" name:"Name"`
 		ImageState *string `json:"ImageState" name:"ImageState"`
 		CreationDate *string `json:"CreationDate" name:"CreationDate"`
@@ -592,7 +592,7 @@ func (r *ModifyImageAttributeRequest) ToJsonString() string {
 type ModifyImageAttributeResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *ModifyImageAttributeResponse) ToJsonString() string {
@@ -626,7 +626,7 @@ func (r *ModifyInstanceImageRequest) ToJsonString() string {
 type ModifyInstanceImageResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *ModifyInstanceImageResponse) ToJsonString() string {
@@ -684,7 +684,7 @@ type RemoveImagesResponse struct {
     *ksyunhttp.BaseResponse
 	ReturnSet []struct {
 		ImageId *string `json:"ImageId" name:"ImageId"`
-		Return *bool `json:"Return" name:"Return"`
+		ReturnField *bool `json:"ReturnField" name:"ReturnField"`
 	} `json:"ReturnSet"`
 		RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -718,7 +718,7 @@ func (r *ModifyNetworkInterfaceAttributeRequest) ToJsonString() string {
 type ModifyNetworkInterfaceAttributeResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *ModifyNetworkInterfaceAttributeResponse) ToJsonString() string {
@@ -749,7 +749,7 @@ func (r *AttachNetworkInterfaceRequest) ToJsonString() string {
 type AttachNetworkInterfaceResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *AttachNetworkInterfaceResponse) ToJsonString() string {
@@ -776,7 +776,7 @@ func (r *DetachNetworkInterfaceRequest) ToJsonString() string {
 type DetachNetworkInterfaceResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 		Message *string `json:"Message" name:"Message"`
 }
 
@@ -930,7 +930,7 @@ func (r *RollbackLocalVolumeRequest) ToJsonString() string {
 type RollbackLocalVolumeResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *RollbackLocalVolumeResponse) ToJsonString() string {
@@ -958,7 +958,7 @@ type DeleteLocalVolumeSnapshotResponse struct {
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet []struct {
 		LocalVolumeSnapshotId *string `json:"LocalVolumeSnapshotId" name:"LocalVolumeSnapshotId"`
-		Return *bool `json:"Return" name:"Return"`
+		ReturnField *bool `json:"ReturnField" name:"ReturnField"`
 		Reason *string `json:"Reason" name:"Reason"`
 		ErrorCode *string `json:"ErrorCode" name:"ErrorCode"`
 	} `json:"ReturnSet"`
@@ -988,7 +988,7 @@ func (r *ModifyDataGuardGroupsRequest) ToJsonString() string {
 type ModifyDataGuardGroupsResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *ModifyDataGuardGroupsResponse) ToJsonString() string {
@@ -1074,7 +1074,7 @@ type DeleteDataGuardGroupsResponse struct {
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet []struct {
 		DataGuardId *string `json:"DataGuardId" name:"DataGuardId"`
-		Return *bool `json:"Return" name:"Return"`
+		ReturnField *bool `json:"ReturnField" name:"ReturnField"`
 	} `json:"ReturnSet"`
 }
 
@@ -1143,7 +1143,7 @@ type RemoveVmFromDataGuardResponse struct {
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet []struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
-		Return *bool `json:"Return" name:"Return"`
+		ReturnField *bool `json:"ReturnField" name:"ReturnField"`
 	} `json:"ReturnSet"`
 }
 
@@ -1212,7 +1212,7 @@ type DeleteDedicatedHostResponse struct {
 		RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet struct {
 		DedicatedHostId *string `json:"DedicatedHostId" name:"DedicatedHostId"`
-		Return *bool `json:"Return" name:"Return"`
+		ReturnField *bool `json:"ReturnField" name:"ReturnField"`
 		Message *string `json:"Message" name:"Message"`
 	} `json:"ReturnSet"`
 }
@@ -1347,7 +1347,7 @@ func (r *ModifyAutoSnapshotPolicyRequest) ToJsonString() string {
 type ModifyAutoSnapshotPolicyResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *ModifyAutoSnapshotPolicyResponse) ToJsonString() string {
@@ -1767,7 +1767,7 @@ func (r *ModifyScalingGroupRequest) ToJsonString() string {
 type ModifyScalingGroupResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 	ReturnSet struct {
 		ScalingGroupId *string `json:"ScalingGroupId" name:"ScalingGroupId"`
 	} `json:"ReturnSet"`
@@ -1798,7 +1798,7 @@ func (r *SetKvmProtectedDetachRequest) ToJsonString() string {
 type SetKvmProtectedDetachResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *SetKvmProtectedDetachResponse) ToJsonString() string {
@@ -1867,7 +1867,7 @@ func (r *AttachInstanceRequest) ToJsonString() string {
 type AttachInstanceResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *AttachInstanceResponse) ToJsonString() string {
@@ -1894,7 +1894,7 @@ func (r *DetachInstanceRequest) ToJsonString() string {
 type DetachInstanceResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *DetachInstanceResponse) ToJsonString() string {
@@ -1935,7 +1935,7 @@ type DescribeScalingActivityResponse struct {
 		StartTime *string `json:"StartTime" name:"StartTime"`
 		ScalingActivityId *string `json:"ScalingActivityId" name:"ScalingActivityId"`
 		EndTime *string `json:"EndTime" name:"EndTime"`
-		Type *int `json:"Type" name:"Type"`
+		TypeField *int `json:"TypeField" name:"TypeField"`
 	SuccInsList []*string `json:"SuccInsList" name:"SuccInsList"`
 	FailInsList []*string `json:"FailInsList" name:"FailInsList"`
 		ErrorCode *int `json:"ErrorCode" name:"ErrorCode"`
@@ -2115,7 +2115,7 @@ func (r *ModifyScalingNotificationRequest) ToJsonString() string {
 type ModifyScalingNotificationResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 		ScalingNotificationId *string `json:"ScalingNotificationId" name:"ScalingNotificationId"`
 }
 
@@ -2224,7 +2224,7 @@ func (r *ModifyScheduledTaskRequest) ToJsonString() string {
 type ModifyScheduledTaskResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 	ReturnSet struct {
 		ScalingScheduleTaskId *string `json:"ScalingScheduleTaskId" name:"ScalingScheduleTaskId"`
 	} `json:"ReturnSet"`
@@ -2371,7 +2371,7 @@ func (r *ModifyScalingPolicyRequest) ToJsonString() string {
 type ModifyScalingPolicyResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *string `json:"Return" name:"Return"`
+	ReturnField *string `json:"Return" name:"Return"`
 	ReturnSet struct {
 		ScalingPolicyId *string `json:"ScalingPolicyId" name:"ScalingPolicyId"`
 	} `json:"ReturnSet"`
@@ -2464,7 +2464,7 @@ func (r *CopyImageRequest) ToJsonString() string {
 type CopyImageResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 		Message *string `json:"Message" name:"Message"`
 }
 
@@ -2492,7 +2492,7 @@ func (r *ModifyImageSharePermissionRequest) ToJsonString() string {
 
 type ModifyImageSharePermissionResponse struct {
     *ksyunhttp.BaseResponse
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 		RequestId *string `json:"RequestId" name:"RequestId"`
 		Message *string `json:"Message" name:"Message"`
 }
@@ -2581,7 +2581,7 @@ type AttachKeyResponse struct {
 	InstancesSet []struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 		Message *string `json:"Message" name:"Message"`
-		Return *bool `json:"Return" name:"Return"`
+		ReturnField *bool `json:"ReturnField" name:"ReturnField"`
 	} `json:"InstancesSet"`
 }
 
@@ -2613,7 +2613,7 @@ type DetachKeyResponse struct {
 	InstancesSet []struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 		Message *string `json:"Message" name:"Message"`
-		Return *bool `json:"Return" name:"Return"`
+		ReturnField *bool `json:"ReturnField" name:"ReturnField"`
 	} `json:"InstancesSet"`
 }
 
@@ -2761,7 +2761,7 @@ type AddVmIntoDataGuardResponse struct {
 		Message *string `json:"Message" name:"Message"`
 	} `json:"DataGuardResult"`
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *AddVmIntoDataGuardResponse) ToJsonString() string {
@@ -2821,7 +2821,7 @@ type DeleteFileSystemResponse struct {
     *ksyunhttp.BaseResponse
 	DeleteFileSystemResponse struct {
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *string `json:"Return" name:"Return"`
+		ReturnField *string `json:"ReturnField" name:"ReturnField"`
 	} `json:"DeleteFileSystemResponse"`
 }
 
@@ -2902,7 +2902,7 @@ type ModifyFileSystemResponse struct {
     *ksyunhttp.BaseResponse
 	ModifyFileSystemResponse struct {
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *string `json:"Return" name:"Return"`
+		ReturnField *string `json:"ReturnField" name:"ReturnField"`
 	} `json:"ModifyFileSystemResponse"`
 }
 
@@ -2961,7 +2961,7 @@ type DeleteMountTargetResponse struct {
     *ksyunhttp.BaseResponse
 	DeleteMountTargetResponse struct {
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *string `json:"Return" name:"Return"`
+		ReturnField *string `json:"ReturnField" name:"ReturnField"`
 	} `json:"DeleteMountTargetResponse"`
 }
 
@@ -3093,7 +3093,7 @@ func (r *TerminateModelsRequest) ToJsonString() string {
 type TerminateModelsResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *TerminateModelsResponse) ToJsonString() string {
@@ -3236,7 +3236,7 @@ type DeleteDedicatedClusterResponse struct {
     *ksyunhttp.BaseResponse
 	DedicatedClustersSet []struct {
 		DedicatedClusterId *string `json:"DedicatedClusterId" name:"DedicatedClusterId"`
-		Return *string `json:"Return" name:"Return"`
+		ReturnField *string `json:"ReturnField" name:"ReturnField"`
 		Message *string `json:"Message" name:"Message"`
 	} `json:"DedicatedClustersSet"`
 		RequestId *string `json:"RequestId" name:"RequestId"`
@@ -3267,7 +3267,7 @@ type SetvCPUResponse struct {
     *ksyunhttp.BaseResponse
 	ReturnSet []struct {
 		DedicatedHostId *string `json:"DedicatedHostId" name:"DedicatedHostId"`
-		Return *bool `json:"Return" name:"Return"`
+		ReturnField *bool `json:"ReturnField" name:"ReturnField"`
 		Message *string `json:"Message" name:"Message"`
 	} `json:"ReturnSet"`
 		RequestId *string `json:"RequestId" name:"RequestId"`
@@ -3298,7 +3298,7 @@ type DedicatedHostMigrateResponse struct {
     *ksyunhttp.BaseResponse
 	ReturnSet []struct {
 		DedicatedHostId *string `json:"DedicatedHostId" name:"DedicatedHostId"`
-		Return *string `json:"Return" name:"Return"`
+		ReturnField *string `json:"ReturnField" name:"ReturnField"`
 		Message *string `json:"Message" name:"Message"`
 	} `json:"ReturnSet"`
 		RequestId *string `json:"RequestId" name:"RequestId"`
@@ -3328,7 +3328,7 @@ func (r *ModifyDedicatedClusterNameRequest) ToJsonString() string {
 type ModifyDedicatedClusterNameResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *string `json:"Return" name:"Return"`
+	ReturnField *string `json:"Return" name:"Return"`
 }
 
 func (r *ModifyDedicatedClusterNameResponse) ToJsonString() string {
@@ -3357,7 +3357,7 @@ func (r *InstanceMigrateRequest) ToJsonString() string {
 type InstanceMigrateResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *InstanceMigrateResponse) ToJsonString() string {
@@ -3385,7 +3385,7 @@ func (r *ModifyInstanceAutoDeleteTimeRequest) ToJsonString() string {
 type ModifyInstanceAutoDeleteTimeResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *ModifyInstanceAutoDeleteTimeResponse) ToJsonString() string {
@@ -3414,7 +3414,7 @@ func (r *DescribeKecInventoryRequest) ToJsonString() string {
 
 type DescribeKecInventoryResponse struct {
     *ksyunhttp.BaseResponse
-		1 *string `json:"1" name:"1"`
+	Field1 *string `json:"1" name:"1"`
 }
 
 func (r *DescribeKecInventoryResponse) ToJsonString() string {
@@ -3466,7 +3466,7 @@ func (r *ModifyScalingConfigurationRequest) ToJsonString() string {
 type ModifyScalingConfigurationResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *ModifyScalingConfigurationResponse) ToJsonString() string {
@@ -3576,7 +3576,7 @@ func (r *EnableImageCachingRequest) ToJsonString() string {
 type EnableImageCachingResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *EnableImageCachingResponse) ToJsonString() string {
@@ -3602,7 +3602,7 @@ func (r *DisableImageCachingRequest) ToJsonString() string {
 type DisableImageCachingResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *string `json:"Return" name:"Return"`
+	ReturnField *string `json:"Return" name:"Return"`
 		Message *string `json:"Message" name:"Message"`
 }
 
@@ -3630,7 +3630,7 @@ type ModifyLoadBalancersResponse struct {
     *ksyunhttp.BaseResponse
 	ModifyLoadBalancersResponse struct {
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *string `json:"Return" name:"Return"`
+		ReturnField *string `json:"ReturnField" name:"ReturnField"`
 	} `json:"ModifyLoadBalancersResponse"`
 }
 
@@ -3723,7 +3723,7 @@ func (r *CopySnapshotRequest) ToJsonString() string {
 
 type CopySnapshotResponse struct {
     *ksyunhttp.BaseResponse
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 		RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
@@ -3754,7 +3754,7 @@ func (r *PreMigrateInstanceRequest) ToJsonString() string {
 type PreMigrateInstanceResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *PreMigrateInstanceResponse) ToJsonString() string {
@@ -3780,7 +3780,7 @@ func (r *CancelPreMigrateInstanceRequest) ToJsonString() string {
 type CancelPreMigrateInstanceResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *CancelPreMigrateInstanceResponse) ToJsonString() string {
@@ -3837,7 +3837,7 @@ func (r *SetInstanceResourceProtectRequest) ToJsonString() string {
 type SetInstanceResourceProtectResponse struct {
     *ksyunhttp.BaseResponse
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Return *bool `json:"Return" name:"Return"`
+	ReturnField *bool `json:"Return" name:"Return"`
 }
 
 func (r *SetInstanceResourceProtectResponse) ToJsonString() string {

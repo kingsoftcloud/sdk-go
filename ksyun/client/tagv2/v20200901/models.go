@@ -1,10 +1,8 @@
 package v20200901
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 type DeleteTagTags struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
@@ -17,6 +15,7 @@ type ReplaceResourcesTagsReplaceTags struct {
 	ResourceUuids *string `json:"ResourceUuids,omitempty" name:"ResourceUuids"`
 	TagIds        *string `json:"TagIds,omitempty" name:"TagIds"`
 }
+
 
 type CreateTagRequest struct {
 	*ksyunhttp.BaseRequest
@@ -45,6 +44,7 @@ func (r *CreateTagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteTagRequest struct {
 	*ksyunhttp.BaseRequest
 	Tags []*DeleteTagTags `json:"Tags,omitempty" name:"Tags"`
@@ -70,6 +70,7 @@ func (r *DeleteTagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListTagsRequest struct {
 	*ksyunhttp.BaseRequest
 	Page     *int    `json:"Page,omitempty" name:"Page"`
@@ -86,12 +87,12 @@ func (r *ListTagsRequest) ToJsonString() string {
 type ListTagsResponse struct {
 	*ksyunhttp.BaseResponse
 	Tags []struct {
-		Id         *int    `json:"Id" name:"Id"`
-		Key        *string `json:"Key" name:"Key"`
-		Value      *string `json:"Value" name:"Value"`
+		Id        *int    `json:"Id" name:"Id"`
+		Key       *string `json:"Key" name:"Key"`
+		Value     *string `json:"Value" name:"Value"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		CanDelete  *int    `json:"CanDelete" name:"CanDelete"`
-		IsBillTag  *int    `json:"IsBillTag" name:"IsBillTag"`
+		CanDelete *int    `json:"CanDelete" name:"CanDelete"`
+		IsBillTag *int    `json:"IsBillTag" name:"IsBillTag"`
 	} `json:"Tags"`
 	Page      *int    `json:"Page" name:"Page"`
 	PageSize  *int    `json:"PageSize" name:"PageSize"`
@@ -107,6 +108,7 @@ func (r *ListTagsResponse) ToJsonString() string {
 func (r *ListTagsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListTagKeysRequest struct {
 	*ksyunhttp.BaseRequest
@@ -138,6 +140,7 @@ func (r *ListTagKeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListTagValuesRequest struct {
 	*ksyunhttp.BaseRequest
 	TagKeys  *string `json:"TagKeys,omitempty" name:"TagKeys"`
@@ -153,11 +156,11 @@ func (r *ListTagValuesRequest) ToJsonString() string {
 type ListTagValuesResponse struct {
 	*ksyunhttp.BaseResponse
 	TagValues []struct {
-		ID         *string `json:"ID" name:"ID"`
-		Key        *string `json:"Key" name:"Key"`
-		Value      *string `json:"Value" name:"Value"`
+		ID      *string `json:"ID" name:"ID"`
+		Key     *string `json:"Key" name:"Key"`
+		Value   *string `json:"Value" name:"Value"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		BindNum    *int    `json:"BindNum" name:"BindNum"`
+		BindNum *int    `json:"BindNum" name:"BindNum"`
 	} `json:"TagValues"`
 	Page      *int    `json:"Page" name:"Page"`
 	PageSize  *int    `json:"PageSize" name:"PageSize"`
@@ -173,6 +176,7 @@ func (r *ListTagValuesResponse) ToJsonString() string {
 func (r *ListTagValuesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListResourcesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -209,6 +213,7 @@ func (r *ListResourcesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListTagsByResourceIdsRequest struct {
 	*ksyunhttp.BaseRequest
 	ResourceType  *string `json:"ResourceType,omitempty" name:"ResourceType"`
@@ -224,9 +229,9 @@ type ListTagsByResourceIdsResponse struct {
 	*ksyunhttp.BaseResponse
 	Tags []struct {
 		ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
-		TagId        *int    `json:"TagId" name:"TagId"`
-		TagKey       *string `json:"TagKey" name:"TagKey"`
-		TagValue     *string `json:"TagValue" name:"TagValue"`
+		TagId    *int    `json:"TagId" name:"TagId"`
+		TagKey   *string `json:"TagKey" name:"TagKey"`
+		TagValue *string `json:"TagValue" name:"TagValue"`
 	} `json:"Tags"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -239,6 +244,7 @@ func (r *ListTagsByResourceIdsResponse) ToJsonString() string {
 func (r *ListTagsByResourceIdsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ReplaceResourcesTagsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -265,6 +271,7 @@ func (r *ReplaceResourcesTagsResponse) ToJsonString() string {
 func (r *ReplaceResourcesTagsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DetachResourceTagsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -320,3 +327,4 @@ func (r *CreateTagAndAttachResourceResponse) ToJsonString() string {
 func (r *CreateTagAndAttachResourceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

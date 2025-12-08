@@ -1,5 +1,4 @@
 package v20250430
-
 import (
 	"context"
 	"fmt"
@@ -648,7 +647,7 @@ func (c *Client) ModifyListenerWithContext(ctx context.Context, request *ModifyL
 		request = NewModifyListenerRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewModifyListenerResponse()
 	err, msg := c.Send(request, response)
@@ -663,7 +662,7 @@ func (c *Client) ModifyListenerWithContextV2(ctx context.Context, request *Modif
 		request = NewModifyListenerRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewModifyListenerResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -778,7 +777,7 @@ func (c *Client) CreateListenerWithContext(ctx context.Context, request *CreateL
 		request = NewCreateListenerRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewCreateListenerResponse()
 	err, msg := c.Send(request, response)
@@ -793,7 +792,7 @@ func (c *Client) CreateListenerWithContextV2(ctx context.Context, request *Creat
 		request = NewCreateListenerRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewCreateListenerResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1753,7 +1752,7 @@ func (c *Client) AddRulesWithContext(ctx context.Context, request *AddRulesReque
 		request = NewAddRulesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewAddRulesResponse()
 	err, msg := c.Send(request, response)
@@ -1768,7 +1767,7 @@ func (c *Client) AddRulesWithContextV2(ctx context.Context, request *AddRulesReq
 		request = NewAddRulesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewAddRulesResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1948,7 +1947,7 @@ func (c *Client) ModifyRuleGroupWithContext(ctx context.Context, request *Modify
 		request = NewModifyRuleGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewModifyRuleGroupResponse()
 	err, msg := c.Send(request, response)
@@ -1963,7 +1962,7 @@ func (c *Client) ModifyRuleGroupWithContextV2(ctx context.Context, request *Modi
 		request = NewModifyRuleGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewModifyRuleGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -2143,7 +2142,7 @@ func (c *Client) CreateRuleGroupWithContext(ctx context.Context, request *Create
 		request = NewCreateRuleGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewCreateRuleGroupResponse()
 	err, msg := c.Send(request, response)
@@ -2158,7 +2157,7 @@ func (c *Client) CreateRuleGroupWithContextV2(ctx context.Context, request *Crea
 		request = NewCreateRuleGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewCreateRuleGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -2297,3 +2296,5 @@ func (c *Client) SetLBDeleteProtectionWithContextV2(ctx context.Context, request
 	}
 	return statusCode, msg, nil
 }
+
+

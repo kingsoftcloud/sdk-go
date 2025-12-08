@@ -1,5 +1,4 @@
 package v20240701
-
 import (
 	"context"
 	"fmt"
@@ -63,7 +62,7 @@ func (c *Client) DescribeCacheByRoleWithContext(ctx context.Context, request *De
 		request = NewDescribeCacheByRoleRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeCacheByRoleResponse()
 	err, msg := c.Send(request, response)
@@ -78,7 +77,7 @@ func (c *Client) DescribeCacheByRoleWithContextV2(ctx context.Context, request *
 		request = NewDescribeCacheByRoleRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeCacheByRoleResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -87,3 +86,5 @@ func (c *Client) DescribeCacheByRoleWithContextV2(ctx context.Context, request *
 	}
 	return statusCode, msg, nil
 }
+
+

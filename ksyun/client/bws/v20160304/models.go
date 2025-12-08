@@ -1,10 +1,8 @@
 package v20160304
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 type DescribeBandWidthSharesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
@@ -13,6 +11,7 @@ type DescribeBandWidthSharesTagKV struct {
 	Name  *string `json:"Name,omitempty" name:"Name"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
+
 
 type CreateBandWidthShareRequest struct {
 	*ksyunhttp.BaseRequest
@@ -47,6 +46,7 @@ func (r *CreateBandWidthShareResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeBandWidthSharesRequest struct {
 	*ksyunhttp.BaseRequest
 	ProjectId        []*string                        `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -79,9 +79,9 @@ type DescribeBandWidthSharesResponse struct {
 		AssociateBandWidthShareInfoSet []struct {
 			AllocationId *string `json:"AllocationId" name:"AllocationId"`
 		} `json:"AssociateBandWidthShareInfoSet" name:"AssociateBandWidthShareInfoSet"`
-		ChargeType     *string `json:"ChargeType" name:"ChargeType"`
+		ChargeType *string `json:"ChargeType" name:"ChargeType"`
 		ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		TagSet         []struct {
+		TagSet     []struct {
 			ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
 			TagId        *string `json:"TagId" name:"TagId"`
 			TagKey       *string `json:"TagKey" name:"TagKey"`
@@ -99,6 +99,7 @@ func (r *DescribeBandWidthSharesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type AssociateBandWidthShareRequest struct {
 	*ksyunhttp.BaseRequest
 	BandWidthShareId *string `json:"BandWidthShareId,omitempty" name:"BandWidthShareId"`
@@ -112,8 +113,8 @@ func (r *AssociateBandWidthShareRequest) ToJsonString() string {
 
 type AssociateBandWidthShareResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Return    *bool   `json:"Return" name:"Return"`
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	ReturnField *bool   `json:"Return" name:"Return"`
 }
 
 func (r *AssociateBandWidthShareResponse) ToJsonString() string {
@@ -124,6 +125,7 @@ func (r *AssociateBandWidthShareResponse) ToJsonString() string {
 func (r *AssociateBandWidthShareResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DisassociateBandWidthShareRequest struct {
 	*ksyunhttp.BaseRequest
@@ -139,8 +141,8 @@ func (r *DisassociateBandWidthShareRequest) ToJsonString() string {
 
 type DisassociateBandWidthShareResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Return    *bool   `json:"Return" name:"Return"`
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	ReturnField *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DisassociateBandWidthShareResponse) ToJsonString() string {
@@ -151,6 +153,7 @@ func (r *DisassociateBandWidthShareResponse) ToJsonString() string {
 func (r *DisassociateBandWidthShareResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ModifyBandWidthShareRequest struct {
 	*ksyunhttp.BaseRequest
@@ -178,7 +181,7 @@ type ModifyBandWidthShareResponse struct {
 		AssociateBandWidthShareInfoSet []struct {
 			AllocationId *string `json:"AllocationId" name:"AllocationId"`
 		} `json:"AssociateBandWidthShareInfoSet" name:"AssociateBandWidthShareInfoSet"`
-		ChargeType     *string `json:"ChargeType" name:"ChargeType"`
+		ChargeType *string `json:"ChargeType" name:"ChargeType"`
 		ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
 	} `json:"BandWidthShare"`
 }
@@ -192,6 +195,7 @@ func (r *ModifyBandWidthShareResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteBandWidthShareRequest struct {
 	*ksyunhttp.BaseRequest
 	BandWidthShareId *string `json:"BandWidthShareId,omitempty" name:"BandWidthShareId"`
@@ -204,8 +208,8 @@ func (r *DeleteBandWidthShareRequest) ToJsonString() string {
 
 type DeleteBandWidthShareResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Return    *bool   `json:"Return" name:"Return"`
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	ReturnField *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DeleteBandWidthShareResponse) ToJsonString() string {
@@ -236,10 +240,10 @@ type QueryBwsTopEipMonitorResponse struct {
 	RequestId          *string `json:"RequestId" name:"RequestId"`
 	BwsMonitorDataList []struct {
 		AllocationId *string `json:"AllocationId" name:"AllocationId"`
-		PublicIp     *string `json:"PublicIp" name:"PublicIp"`
-		InBound      *string `json:"InBound" name:"InBound"`
-		OutBound     *string `json:"OutBound" name:"OutBound"`
-		Num          *string `json:"Num" name:"Num"`
+		PublicIp *string `json:"PublicIp" name:"PublicIp"`
+		InBound  *string `json:"InBound" name:"InBound"`
+		OutBound *string `json:"OutBound" name:"OutBound"`
+		Num      *string `json:"Num" name:"Num"`
 	} `json:"BwsMonitorDataList"`
 }
 
@@ -251,3 +255,4 @@ func (r *QueryBwsTopEipMonitorResponse) ToJsonString() string {
 func (r *QueryBwsTopEipMonitorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

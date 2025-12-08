@@ -1,5 +1,4 @@
 package v20231010
-
 import (
 	"context"
 	"fmt"
@@ -1192,3 +1191,70 @@ func (c *Client) ListCollectionsWithContextV2(ctx context.Context, request *List
 	}
 	return statusCode, msg, nil
 }
+func NewUpdateInstanceTrialOrderRequest() (request *UpdateInstanceTrialOrderRequest) {
+	request = &UpdateInstanceTrialOrderRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("milvus", APIVersion, "UpdateInstanceTrialOrder")
+	return
+}
+
+func NewUpdateInstanceTrialOrderResponse() (response *UpdateInstanceTrialOrderResponse) {
+	response = &UpdateInstanceTrialOrderResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateInstanceTrialOrder(request *UpdateInstanceTrialOrderRequest) string {
+	return c.UpdateInstanceTrialOrderWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateInstanceTrialOrderSend(request *UpdateInstanceTrialOrderRequest) (*UpdateInstanceTrialOrderResponse, error) {
+	statusCode, msg, err := c.UpdateInstanceTrialOrderWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct UpdateInstanceTrialOrderResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) UpdateInstanceTrialOrderWithContext(ctx context.Context, request *UpdateInstanceTrialOrderRequest) string {
+	if request == nil {
+		request = NewUpdateInstanceTrialOrderRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateInstanceTrialOrderResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) UpdateInstanceTrialOrderWithContextV2(ctx context.Context, request *UpdateInstanceTrialOrderRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdateInstanceTrialOrderRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateInstanceTrialOrderResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+
+

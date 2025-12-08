@@ -1,9 +1,9 @@
 package v20200831
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type SetRenewalRequest struct {
 	*ksyunhttp.BaseRequest
@@ -31,3 +31,4 @@ func (r *SetRenewalResponse) ToJsonString() string {
 func (r *SetRenewalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

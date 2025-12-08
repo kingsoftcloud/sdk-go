@@ -1,5 +1,4 @@
 package v20160304
-
 import (
 	"context"
 	"fmt"
@@ -63,7 +62,7 @@ func (c *Client) CreateVolumeWithContext(ctx context.Context, request *CreateVol
 		request = NewCreateVolumeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCreateVolumeResponse()
 	err, msg := c.Send(request, response)
@@ -78,7 +77,7 @@ func (c *Client) CreateVolumeWithContextV2(ctx context.Context, request *CreateV
 		request = NewCreateVolumeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCreateVolumeResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -128,7 +127,7 @@ func (c *Client) AttachVolumeWithContext(ctx context.Context, request *AttachVol
 		request = NewAttachVolumeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewAttachVolumeResponse()
 	err, msg := c.Send(request, response)
@@ -143,7 +142,7 @@ func (c *Client) AttachVolumeWithContextV2(ctx context.Context, request *AttachV
 		request = NewAttachVolumeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewAttachVolumeResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -193,7 +192,7 @@ func (c *Client) DetachVolumeWithContext(ctx context.Context, request *DetachVol
 		request = NewDetachVolumeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDetachVolumeResponse()
 	err, msg := c.Send(request, response)
@@ -208,7 +207,7 @@ func (c *Client) DetachVolumeWithContextV2(ctx context.Context, request *DetachV
 		request = NewDetachVolumeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDetachVolumeResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -258,7 +257,7 @@ func (c *Client) DeleteVolumeWithContext(ctx context.Context, request *DeleteVol
 		request = NewDeleteVolumeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteVolumeResponse()
 	err, msg := c.Send(request, response)
@@ -273,7 +272,7 @@ func (c *Client) DeleteVolumeWithContextV2(ctx context.Context, request *DeleteV
 		request = NewDeleteVolumeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteVolumeResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -323,7 +322,7 @@ func (c *Client) ResizeVolumeWithContext(ctx context.Context, request *ResizeVol
 		request = NewResizeVolumeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewResizeVolumeResponse()
 	err, msg := c.Send(request, response)
@@ -338,7 +337,7 @@ func (c *Client) ResizeVolumeWithContextV2(ctx context.Context, request *ResizeV
 		request = NewResizeVolumeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewResizeVolumeResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -388,7 +387,7 @@ func (c *Client) DescribeVolumesWithContext(ctx context.Context, request *Descri
 		request = NewDescribeVolumesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeVolumesResponse()
 	err, msg := c.Send(request, response)
@@ -403,7 +402,7 @@ func (c *Client) DescribeVolumesWithContextV2(ctx context.Context, request *Desc
 		request = NewDescribeVolumesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeVolumesResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -453,7 +452,7 @@ func (c *Client) ModifyVolumeWithContext(ctx context.Context, request *ModifyVol
 		request = NewModifyVolumeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifyVolumeResponse()
 	err, msg := c.Send(request, response)
@@ -468,7 +467,7 @@ func (c *Client) ModifyVolumeWithContextV2(ctx context.Context, request *ModifyV
 		request = NewModifyVolumeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifyVolumeResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -518,7 +517,7 @@ func (c *Client) DescribeEbsInstancesWithContext(ctx context.Context, request *D
 		request = NewDescribeEbsInstancesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeEbsInstancesResponse()
 	err, msg := c.Send(request, response)
@@ -533,7 +532,7 @@ func (c *Client) DescribeEbsInstancesWithContextV2(ctx context.Context, request 
 		request = NewDescribeEbsInstancesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeEbsInstancesResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -583,7 +582,7 @@ func (c *Client) DescribeInstanceVolumesWithContext(ctx context.Context, request
 		request = NewDescribeInstanceVolumesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeInstanceVolumesResponse()
 	err, msg := c.Send(request, response)
@@ -598,7 +597,7 @@ func (c *Client) DescribeInstanceVolumesWithContextV2(ctx context.Context, reque
 		request = NewDescribeInstanceVolumesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeInstanceVolumesResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -648,7 +647,7 @@ func (c *Client) RenewVolumeWithContext(ctx context.Context, request *RenewVolum
 		request = NewRenewVolumeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRenewVolumeResponse()
 	err, msg := c.Send(request, response)
@@ -663,7 +662,7 @@ func (c *Client) RenewVolumeWithContextV2(ctx context.Context, request *RenewVol
 		request = NewRenewVolumeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRenewVolumeResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -778,7 +777,7 @@ func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, request *Desc
 		request = NewDescribeSnapshotsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeSnapshotsResponse()
 	err, msg := c.Send(request, response)
@@ -793,7 +792,7 @@ func (c *Client) DescribeSnapshotsWithContextV2(ctx context.Context, request *De
 		request = NewDescribeSnapshotsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeSnapshotsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -843,7 +842,7 @@ func (c *Client) CreateSnapshotWithContext(ctx context.Context, request *CreateS
 		request = NewCreateSnapshotRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCreateSnapshotResponse()
 	err, msg := c.Send(request, response)
@@ -858,7 +857,7 @@ func (c *Client) CreateSnapshotWithContextV2(ctx context.Context, request *Creat
 		request = NewCreateSnapshotRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCreateSnapshotResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -908,7 +907,7 @@ func (c *Client) DeleteSnapshotWithContext(ctx context.Context, request *DeleteS
 		request = NewDeleteSnapshotRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteSnapshotResponse()
 	err, msg := c.Send(request, response)
@@ -923,7 +922,7 @@ func (c *Client) DeleteSnapshotWithContextV2(ctx context.Context, request *Delet
 		request = NewDeleteSnapshotRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteSnapshotResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -973,7 +972,7 @@ func (c *Client) RollbackSnapshotWithContext(ctx context.Context, request *Rollb
 		request = NewRollbackSnapshotRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRollbackSnapshotResponse()
 	err, msg := c.Send(request, response)
@@ -988,7 +987,7 @@ func (c *Client) RollbackSnapshotWithContextV2(ctx context.Context, request *Rol
 		request = NewRollbackSnapshotRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRollbackSnapshotResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1038,7 +1037,7 @@ func (c *Client) ModifySnapshotWithContext(ctx context.Context, request *ModifyS
 		request = NewModifySnapshotRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifySnapshotResponse()
 	err, msg := c.Send(request, response)
@@ -1053,7 +1052,7 @@ func (c *Client) ModifySnapshotWithContextV2(ctx context.Context, request *Modif
 		request = NewModifySnapshotRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifySnapshotResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1103,7 +1102,7 @@ func (c *Client) RecoveryVolumeWithContext(ctx context.Context, request *Recover
 		request = NewRecoveryVolumeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRecoveryVolumeResponse()
 	err, msg := c.Send(request, response)
@@ -1118,7 +1117,7 @@ func (c *Client) RecoveryVolumeWithContextV2(ctx context.Context, request *Recov
 		request = NewRecoveryVolumeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRecoveryVolumeResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1168,7 +1167,7 @@ func (c *Client) ValidateAttachInstanceWithContext(ctx context.Context, request 
 		request = NewValidateAttachInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewValidateAttachInstanceResponse()
 	err, msg := c.Send(request, response)
@@ -1183,9 +1182,74 @@ func (c *Client) ValidateAttachInstanceWithContextV2(ctx context.Context, reques
 		request = NewValidateAttachInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewValidateAttachInstanceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeAvailabilityZonesRequest() (request *DescribeAvailabilityZonesRequest) {
+	request = &DescribeAvailabilityZonesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ebs", APIVersion, "DescribeAvailabilityZones")
+	return
+}
+
+func NewDescribeAvailabilityZonesResponse() (response *DescribeAvailabilityZonesResponse) {
+	response = &DescribeAvailabilityZonesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeAvailabilityZones(request *DescribeAvailabilityZonesRequest) string {
+	return c.DescribeAvailabilityZonesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAvailabilityZonesSend(request *DescribeAvailabilityZonesRequest) (*DescribeAvailabilityZonesResponse, error) {
+	statusCode, msg, err := c.DescribeAvailabilityZonesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeAvailabilityZonesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeAvailabilityZonesWithContext(ctx context.Context, request *DescribeAvailabilityZonesRequest) string {
+	if request == nil {
+		request = NewDescribeAvailabilityZonesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAvailabilityZonesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeAvailabilityZonesWithContextV2(ctx context.Context, request *DescribeAvailabilityZonesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeAvailabilityZonesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAvailabilityZonesResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
@@ -1233,7 +1297,7 @@ func (c *Client) DescribeCreateVolumePriceWithContext(ctx context.Context, reque
 		request = NewDescribeCreateVolumePriceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeCreateVolumePriceResponse()
 	err, msg := c.Send(request, response)
@@ -1248,7 +1312,7 @@ func (c *Client) DescribeCreateVolumePriceWithContextV2(ctx context.Context, req
 		request = NewDescribeCreateVolumePriceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeCreateVolumePriceResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1298,7 +1362,7 @@ func (c *Client) ModifySnapshotTypeWithContext(ctx context.Context, request *Mod
 		request = NewModifySnapshotTypeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifySnapshotTypeResponse()
 	err, msg := c.Send(request, response)
@@ -1313,7 +1377,7 @@ func (c *Client) ModifySnapshotTypeWithContextV2(ctx context.Context, request *M
 		request = NewModifySnapshotTypeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifySnapshotTypeResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1363,7 +1427,7 @@ func (c *Client) ModifyVolumeTypeWithContext(ctx context.Context, request *Modif
 		request = NewModifyVolumeTypeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifyVolumeTypeResponse()
 	err, msg := c.Send(request, response)
@@ -1378,7 +1442,7 @@ func (c *Client) ModifyVolumeTypeWithContextV2(ctx context.Context, request *Mod
 		request = NewModifyVolumeTypeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifyVolumeTypeResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1712,3 +1776,70 @@ func (c *Client) ModifyVolumePresetWithContextV2(ctx context.Context, request *M
 	}
 	return statusCode, msg, nil
 }
+func NewGetUpgradeVolumeTypeProcessInfoRequest() (request *GetUpgradeVolumeTypeProcessInfoRequest) {
+	request = &GetUpgradeVolumeTypeProcessInfoRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("ebs", APIVersion, "GetUpgradeVolumeTypeProcessInfo")
+	return
+}
+
+func NewGetUpgradeVolumeTypeProcessInfoResponse() (response *GetUpgradeVolumeTypeProcessInfoResponse) {
+	response = &GetUpgradeVolumeTypeProcessInfoResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetUpgradeVolumeTypeProcessInfo(request *GetUpgradeVolumeTypeProcessInfoRequest) string {
+	return c.GetUpgradeVolumeTypeProcessInfoWithContext(context.Background(), request)
+}
+
+func (c *Client) GetUpgradeVolumeTypeProcessInfoSend(request *GetUpgradeVolumeTypeProcessInfoRequest) (*GetUpgradeVolumeTypeProcessInfoResponse, error) {
+	statusCode, msg, err := c.GetUpgradeVolumeTypeProcessInfoWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetUpgradeVolumeTypeProcessInfoResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetUpgradeVolumeTypeProcessInfoWithContext(ctx context.Context, request *GetUpgradeVolumeTypeProcessInfoRequest) string {
+	if request == nil {
+		request = NewGetUpgradeVolumeTypeProcessInfoRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetUpgradeVolumeTypeProcessInfoResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetUpgradeVolumeTypeProcessInfoWithContextV2(ctx context.Context, request *GetUpgradeVolumeTypeProcessInfoRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetUpgradeVolumeTypeProcessInfoRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetUpgradeVolumeTypeProcessInfoResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+
+

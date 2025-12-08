@@ -1,5 +1,4 @@
 package v20160304
-
 import (
 	"context"
 	"fmt"
@@ -542,3 +541,5 @@ func (c *Client) GenerateDataKeyWithContextV2(ctx context.Context, request *Gene
 	}
 	return statusCode, msg, nil
 }
+
+

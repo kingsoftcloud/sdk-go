@@ -1,5 +1,4 @@
 package v20200630
-
 import (
 	"context"
 	"fmt"
@@ -1127,3 +1126,5 @@ func (c *Client) GetEntryRateDataWithContextV2(ctx context.Context, request *Get
 	}
 	return statusCode, msg, nil
 }
+
+

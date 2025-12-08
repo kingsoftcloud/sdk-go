@@ -1,14 +1,13 @@
 package v20181114
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 type GetMetricStatisticsBatchMetrics struct {
 	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 }
+
 
 type GetMetricStatisticsBatchRequest struct {
 	*ksyunhttp.BaseRequest
@@ -37,7 +36,7 @@ type GetMetricStatisticsBatchResponse struct {
 				Min           *string `json:"Min" name:"Min"`
 			} `json:"Member"`
 		} `json:"Datapoints" name:"Datapoints"`
-		Label    *string `json:"Label" name:"Label"`
+		Label *string `json:"Label" name:"Label"`
 		Instance *string `json:"Instance" name:"Instance"`
 	} `json:"GetMetricStatisticsBatchResults"`
 	ResponseMetadata struct {
@@ -54,3 +53,4 @@ func (r *GetMetricStatisticsBatchResponse) ToJsonString() string {
 func (r *GetMetricStatisticsBatchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

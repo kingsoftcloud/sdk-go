@@ -1,5 +1,4 @@
 package v20151101
-
 import (
 	"context"
 	"fmt"
@@ -6457,3 +6456,265 @@ func (c *Client) CreateSoKeyPairWithContextV2(ctx context.Context, request *Crea
 	}
 	return statusCode, msg, nil
 }
+func NewInstallAgentRequest() (request *InstallAgentRequest) {
+	request = &InstallAgentRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "InstallAgent")
+	return
+}
+
+func NewInstallAgentResponse() (response *InstallAgentResponse) {
+	response = &InstallAgentResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) InstallAgent(request *InstallAgentRequest) string {
+	return c.InstallAgentWithContext(context.Background(), request)
+}
+
+func (c *Client) InstallAgentSend(request *InstallAgentRequest) (*InstallAgentResponse, error) {
+	statusCode, msg, err := c.InstallAgentWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct InstallAgentResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) InstallAgentWithContext(ctx context.Context, request *InstallAgentRequest) string {
+	if request == nil {
+		request = NewInstallAgentRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewInstallAgentResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) InstallAgentWithContextV2(ctx context.Context, request *InstallAgentRequest) (int, string, error) {
+	if request == nil {
+		request = NewInstallAgentRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewInstallAgentResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeAgentRequest() (request *DescribeAgentRequest) {
+	request = &DescribeAgentRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "DescribeAgent")
+	return
+}
+
+func NewDescribeAgentResponse() (response *DescribeAgentResponse) {
+	response = &DescribeAgentResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeAgent(request *DescribeAgentRequest) string {
+	return c.DescribeAgentWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAgentSend(request *DescribeAgentRequest) (*DescribeAgentResponse, error) {
+	statusCode, msg, err := c.DescribeAgentWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeAgentResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeAgentWithContext(ctx context.Context, request *DescribeAgentRequest) string {
+	if request == nil {
+		request = NewDescribeAgentRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAgentResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeAgentWithContextV2(ctx context.Context, request *DescribeAgentRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeAgentRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAgentResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeAgentInstallStatusRequest() (request *DescribeAgentInstallStatusRequest) {
+	request = &DescribeAgentInstallStatusRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "DescribeAgentInstallStatus")
+	return
+}
+
+func NewDescribeAgentInstallStatusResponse() (response *DescribeAgentInstallStatusResponse) {
+	response = &DescribeAgentInstallStatusResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeAgentInstallStatus(request *DescribeAgentInstallStatusRequest) string {
+	return c.DescribeAgentInstallStatusWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAgentInstallStatusSend(request *DescribeAgentInstallStatusRequest) (*DescribeAgentInstallStatusResponse, error) {
+	statusCode, msg, err := c.DescribeAgentInstallStatusWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeAgentInstallStatusResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeAgentInstallStatusWithContext(ctx context.Context, request *DescribeAgentInstallStatusRequest) string {
+	if request == nil {
+		request = NewDescribeAgentInstallStatusRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAgentInstallStatusResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeAgentInstallStatusWithContextV2(ctx context.Context, request *DescribeAgentInstallStatusRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeAgentInstallStatusRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAgentInstallStatusResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeSoUserDataRequest() (request *DescribeSoUserDataRequest) {
+	request = &DescribeSoUserDataRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "DescribeSoUserData")
+	return
+}
+
+func NewDescribeSoUserDataResponse() (response *DescribeSoUserDataResponse) {
+	response = &DescribeSoUserDataResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeSoUserData(request *DescribeSoUserDataRequest) string {
+	return c.DescribeSoUserDataWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeSoUserDataSend(request *DescribeSoUserDataRequest) (*DescribeSoUserDataResponse, error) {
+	statusCode, msg, err := c.DescribeSoUserDataWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct DescribeSoUserDataResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeSoUserDataWithContext(ctx context.Context, request *DescribeSoUserDataRequest) string {
+	if request == nil {
+		request = NewDescribeSoUserDataRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeSoUserDataResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeSoUserDataWithContextV2(ctx context.Context, request *DescribeSoUserDataRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeSoUserDataRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeSoUserDataResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+
+

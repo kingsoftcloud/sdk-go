@@ -1,5 +1,4 @@
 package v20191010
-
 import (
 	"context"
 	"fmt"
@@ -1777,3 +1776,5 @@ func (c *Client) DescribeAccountDetailListWithContextV2(ctx context.Context, req
 	}
 	return statusCode, msg, nil
 }
+
+

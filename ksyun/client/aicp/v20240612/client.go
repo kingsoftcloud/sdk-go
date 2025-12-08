@@ -1,5 +1,4 @@
 package v20240612
-
 import (
 	"context"
 	"fmt"
@@ -1452,68 +1451,5 @@ func (c *Client) DescribeResourcePoolInstancesWithContextV2(ctx context.Context,
 	}
 	return statusCode, msg, nil
 }
-func NewDescribeModelChatsRequest() (request *DescribeModelChatsRequest) {
-	request = &DescribeModelChatsRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("aicp", APIVersion, "DescribeModelChats")
-	return
-}
 
-func NewDescribeModelChatsResponse() (response *DescribeModelChatsResponse) {
-	response = &DescribeModelChatsResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
 
-func (c *Client) DescribeModelChats(request *DescribeModelChatsRequest) string {
-	return c.DescribeModelChatsWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeModelChatsSend(request *DescribeModelChatsRequest) (*DescribeModelChatsResponse, error) {
-	statusCode, msg, err := c.DescribeModelChatsWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	var respStruct DescribeModelChatsResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) DescribeModelChatsWithContext(ctx context.Context, request *DescribeModelChatsRequest) string {
-	if request == nil {
-		request = NewDescribeModelChatsRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeModelChatsResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) DescribeModelChatsWithContextV2(ctx context.Context, request *DescribeModelChatsRequest) (int, string, error) {
-	if request == nil {
-		request = NewDescribeModelChatsRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeModelChatsResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}

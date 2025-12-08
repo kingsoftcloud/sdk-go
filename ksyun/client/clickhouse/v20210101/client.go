@@ -1,5 +1,4 @@
 package v20210101
-
 import (
 	"context"
 	"fmt"
@@ -63,7 +62,7 @@ func (c *Client) ListInstanceWithContext(ctx context.Context, request *ListInsta
 		request = NewListInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListInstanceResponse()
 	err, msg := c.Send(request, response)
@@ -78,7 +77,7 @@ func (c *Client) ListInstanceWithContextV2(ctx context.Context, request *ListIns
 		request = NewListInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListInstanceResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -128,7 +127,7 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
 		request = NewDescribeInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeInstanceResponse()
 	err, msg := c.Send(request, response)
@@ -143,7 +142,7 @@ func (c *Client) DescribeInstanceWithContextV2(ctx context.Context, request *Des
 		request = NewDescribeInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeInstanceResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -193,7 +192,7 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
 		request = NewCreateInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCreateInstanceResponse()
 	err, msg := c.Send(request, response)
@@ -208,7 +207,7 @@ func (c *Client) CreateInstanceWithContextV2(ctx context.Context, request *Creat
 		request = NewCreateInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCreateInstanceResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -258,7 +257,7 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
 		request = NewDeleteInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteInstanceResponse()
 	err, msg := c.Send(request, response)
@@ -273,7 +272,7 @@ func (c *Client) DeleteInstanceWithContextV2(ctx context.Context, request *Delet
 		request = NewDeleteInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteInstanceResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -323,7 +322,7 @@ func (c *Client) RestartInstanceWithContext(ctx context.Context, request *Restar
 		request = NewRestartInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRestartInstanceResponse()
 	err, msg := c.Send(request, response)
@@ -338,7 +337,7 @@ func (c *Client) RestartInstanceWithContextV2(ctx context.Context, request *Rest
 		request = NewRestartInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRestartInstanceResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -388,7 +387,7 @@ func (c *Client) RenameInstanceWithContext(ctx context.Context, request *RenameI
 		request = NewRenameInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRenameInstanceResponse()
 	err, msg := c.Send(request, response)
@@ -403,7 +402,7 @@ func (c *Client) RenameInstanceWithContextV2(ctx context.Context, request *Renam
 		request = NewRenameInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRenameInstanceResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -453,7 +452,7 @@ func (c *Client) ListSecurityGroupWithContext(ctx context.Context, request *List
 		request = NewListSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListSecurityGroupResponse()
 	err, msg := c.Send(request, response)
@@ -468,7 +467,7 @@ func (c *Client) ListSecurityGroupWithContextV2(ctx context.Context, request *Li
 		request = NewListSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListSecurityGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -518,7 +517,7 @@ func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *
 		request = NewDescribeSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeSecurityGroupResponse()
 	err, msg := c.Send(request, response)
@@ -533,7 +532,7 @@ func (c *Client) DescribeSecurityGroupWithContextV2(ctx context.Context, request
 		request = NewDescribeSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeSecurityGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -583,7 +582,7 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
 		request = NewCreateSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCreateSecurityGroupResponse()
 	err, msg := c.Send(request, response)
@@ -598,7 +597,7 @@ func (c *Client) CreateSecurityGroupWithContextV2(ctx context.Context, request *
 		request = NewCreateSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCreateSecurityGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -648,7 +647,7 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
 		request = NewDeleteSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteSecurityGroupResponse()
 	err, msg := c.Send(request, response)
@@ -663,7 +662,7 @@ func (c *Client) DeleteSecurityGroupWithContextV2(ctx context.Context, request *
 		request = NewDeleteSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteSecurityGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -713,7 +712,7 @@ func (c *Client) RenameSecurityGroupWithContext(ctx context.Context, request *Re
 		request = NewRenameSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRenameSecurityGroupResponse()
 	err, msg := c.Send(request, response)
@@ -728,7 +727,7 @@ func (c *Client) RenameSecurityGroupWithContextV2(ctx context.Context, request *
 		request = NewRenameSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRenameSecurityGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -778,7 +777,7 @@ func (c *Client) CloneSecurityGroupWithContext(ctx context.Context, request *Clo
 		request = NewCloneSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCloneSecurityGroupResponse()
 	err, msg := c.Send(request, response)
@@ -793,7 +792,7 @@ func (c *Client) CloneSecurityGroupWithContextV2(ctx context.Context, request *C
 		request = NewCloneSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCloneSecurityGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -843,7 +842,7 @@ func (c *Client) BindSecurityGroupWithContext(ctx context.Context, request *Bind
 		request = NewBindSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewBindSecurityGroupResponse()
 	err, msg := c.Send(request, response)
@@ -858,7 +857,7 @@ func (c *Client) BindSecurityGroupWithContextV2(ctx context.Context, request *Bi
 		request = NewBindSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewBindSecurityGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -908,7 +907,7 @@ func (c *Client) UnbindSecurityGroupWithContext(ctx context.Context, request *Un
 		request = NewUnbindSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewUnbindSecurityGroupResponse()
 	err, msg := c.Send(request, response)
@@ -923,7 +922,7 @@ func (c *Client) UnbindSecurityGroupWithContextV2(ctx context.Context, request *
 		request = NewUnbindSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewUnbindSecurityGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1038,7 +1037,7 @@ func (c *Client) DeleteSecurityRuleWithContext(ctx context.Context, request *Del
 		request = NewDeleteSecurityRuleRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteSecurityRuleResponse()
 	err, msg := c.Send(request, response)
@@ -1053,7 +1052,7 @@ func (c *Client) DeleteSecurityRuleWithContextV2(ctx context.Context, request *D
 		request = NewDeleteSecurityRuleRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteSecurityRuleResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1103,7 +1102,7 @@ func (c *Client) ListSecuredInstanceWithContext(ctx context.Context, request *Li
 		request = NewListSecuredInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListSecuredInstanceResponse()
 	err, msg := c.Send(request, response)
@@ -1118,7 +1117,7 @@ func (c *Client) ListSecuredInstanceWithContextV2(ctx context.Context, request *
 		request = NewListSecuredInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListSecuredInstanceResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1168,7 +1167,7 @@ func (c *Client) ListUnsecuredInstanceWithContext(ctx context.Context, request *
 		request = NewListUnsecuredInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListUnsecuredInstanceResponse()
 	err, msg := c.Send(request, response)
@@ -1183,7 +1182,7 @@ func (c *Client) ListUnsecuredInstanceWithContextV2(ctx context.Context, request
 		request = NewListUnsecuredInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListUnsecuredInstanceResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1233,7 +1232,7 @@ func (c *Client) ListRecycledInstanceWithContext(ctx context.Context, request *L
 		request = NewListRecycledInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListRecycledInstanceResponse()
 	err, msg := c.Send(request, response)
@@ -1248,7 +1247,7 @@ func (c *Client) ListRecycledInstanceWithContextV2(ctx context.Context, request 
 		request = NewListRecycledInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListRecycledInstanceResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1298,7 +1297,7 @@ func (c *Client) RecoverRecycledInstanceWithContext(ctx context.Context, request
 		request = NewRecoverRecycledInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRecoverRecycledInstanceResponse()
 	err, msg := c.Send(request, response)
@@ -1313,7 +1312,7 @@ func (c *Client) RecoverRecycledInstanceWithContextV2(ctx context.Context, reque
 		request = NewRecoverRecycledInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRecoverRecycledInstanceResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1363,7 +1362,7 @@ func (c *Client) DropRecycledInstanceWithContext(ctx context.Context, request *D
 		request = NewDropRecycledInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDropRecycledInstanceResponse()
 	err, msg := c.Send(request, response)
@@ -1378,7 +1377,7 @@ func (c *Client) DropRecycledInstanceWithContextV2(ctx context.Context, request 
 		request = NewDropRecycledInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDropRecycledInstanceResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1428,7 +1427,7 @@ func (c *Client) ListRegionWithContext(ctx context.Context, request *ListRegionR
 		request = NewListRegionRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListRegionResponse()
 	err, msg := c.Send(request, response)
@@ -1443,7 +1442,7 @@ func (c *Client) ListRegionWithContextV2(ctx context.Context, request *ListRegio
 		request = NewListRegionRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListRegionResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1493,7 +1492,7 @@ func (c *Client) DescRegionWithContext(ctx context.Context, request *DescRegionR
 		request = NewDescRegionRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescRegionResponse()
 	err, msg := c.Send(request, response)
@@ -1508,7 +1507,7 @@ func (c *Client) DescRegionWithContextV2(ctx context.Context, request *DescRegio
 		request = NewDescRegionRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescRegionResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1558,7 +1557,7 @@ func (c *Client) UpdateSecurityRuleWithContext(ctx context.Context, request *Upd
 		request = NewUpdateSecurityRuleRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewUpdateSecurityRuleResponse()
 	err, msg := c.Send(request, response)
@@ -1573,7 +1572,7 @@ func (c *Client) UpdateSecurityRuleWithContextV2(ctx context.Context, request *U
 		request = NewUpdateSecurityRuleRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewUpdateSecurityRuleResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1623,7 +1622,7 @@ func (c *Client) RebindSecurityGroupWithContext(ctx context.Context, request *Re
 		request = NewRebindSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRebindSecurityGroupResponse()
 	err, msg := c.Send(request, response)
@@ -1638,7 +1637,7 @@ func (c *Client) RebindSecurityGroupWithContextV2(ctx context.Context, request *
 		request = NewRebindSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRebindSecurityGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1688,7 +1687,7 @@ func (c *Client) DescribeEngineDefaultParametersWithContext(ctx context.Context,
 		request = NewDescribeEngineDefaultParametersRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeEngineDefaultParametersResponse()
 	err, msg := c.Send(request, response)
@@ -1703,7 +1702,7 @@ func (c *Client) DescribeEngineDefaultParametersWithContextV2(ctx context.Contex
 		request = NewDescribeEngineDefaultParametersRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeEngineDefaultParametersResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1818,7 +1817,7 @@ func (c *Client) DescribeDBInstanceParametersWithContext(ctx context.Context, re
 		request = NewDescribeDBInstanceParametersRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeDBInstanceParametersResponse()
 	err, msg := c.Send(request, response)
@@ -1833,7 +1832,7 @@ func (c *Client) DescribeDBInstanceParametersWithContextV2(ctx context.Context, 
 		request = NewDescribeDBInstanceParametersRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeDBInstanceParametersResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1883,7 +1882,7 @@ func (c *Client) ResetDBParameterWithContext(ctx context.Context, request *Reset
 		request = NewResetDBParameterRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewResetDBParameterResponse()
 	err, msg := c.Send(request, response)
@@ -1898,7 +1897,7 @@ func (c *Client) ResetDBParameterWithContextV2(ctx context.Context, request *Res
 		request = NewResetDBParameterRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewResetDBParameterResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -2468,7 +2467,7 @@ func (c *Client) DescribeInstanceShardInfoWithContext(ctx context.Context, reque
 		request = NewDescribeInstanceShardInfoRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeInstanceShardInfoResponse()
 	err, msg := c.Send(request, response)
@@ -2483,7 +2482,7 @@ func (c *Client) DescribeInstanceShardInfoWithContextV2(ctx context.Context, req
 		request = NewDescribeInstanceShardInfoRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeInstanceShardInfoResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -2492,3 +2491,70 @@ func (c *Client) DescribeInstanceShardInfoWithContextV2(ctx context.Context, req
 	}
 	return statusCode, msg, nil
 }
+func NewUpdateInstanceTrialOrderRequest() (request *UpdateInstanceTrialOrderRequest) {
+	request = &UpdateInstanceTrialOrderRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("clickhouse", APIVersion, "UpdateInstanceTrialOrder")
+	return
+}
+
+func NewUpdateInstanceTrialOrderResponse() (response *UpdateInstanceTrialOrderResponse) {
+	response = &UpdateInstanceTrialOrderResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateInstanceTrialOrder(request *UpdateInstanceTrialOrderRequest) string {
+	return c.UpdateInstanceTrialOrderWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateInstanceTrialOrderSend(request *UpdateInstanceTrialOrderRequest) (*UpdateInstanceTrialOrderResponse, error) {
+	statusCode, msg, err := c.UpdateInstanceTrialOrderWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct UpdateInstanceTrialOrderResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) UpdateInstanceTrialOrderWithContext(ctx context.Context, request *UpdateInstanceTrialOrderRequest) string {
+	if request == nil {
+		request = NewUpdateInstanceTrialOrderRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateInstanceTrialOrderResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) UpdateInstanceTrialOrderWithContextV2(ctx context.Context, request *UpdateInstanceTrialOrderRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdateInstanceTrialOrderRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateInstanceTrialOrderResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+
+

@@ -1,9 +1,9 @@
 package v20151101
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type CreateUserRequest struct {
 	*ksyunhttp.BaseRequest
@@ -60,6 +60,7 @@ func (r *CreateUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListUsersRequest struct {
 	*ksyunhttp.BaseRequest
 	Marker    *string `json:"Marker,omitempty" name:"Marker"`
@@ -112,6 +113,7 @@ func (r *ListUsersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type UpdateUserRequest struct {
 	*ksyunhttp.BaseRequest
 	UserName        *string `json:"UserName,omitempty" name:"UserName"`
@@ -163,6 +165,7 @@ func (r *UpdateUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type GetUserRequest struct {
 	*ksyunhttp.BaseRequest
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
@@ -176,23 +179,23 @@ func (r *GetUserRequest) ToJsonString() string {
 type GetUserResponse struct {
 	*ksyunhttp.BaseResponse
 	GetUserResult struct {
-		UserId                *string `json:"UserId" name:"UserId"`
-		Path                  *string `json:"Path" name:"Path"`
-		UserName              *string `json:"UserName" name:"UserName"`
-		CreateDate            *string `json:"CreateDate" name:"CreateDate"`
-		Phone                 *int    `json:"Phone" name:"Phone"`
-		CountryMobileCode     *int    `json:"CountryMobileCode" name:"CountryMobileCode"`
-		IsInternational       *int    `json:"IsInternational" name:"IsInternational"`
-		Email                 *string `json:"Email" name:"Email"`
-		PhoneVerified         *string `json:"PhoneVerified" name:"PhoneVerified"`
-		EmailVerified         *string `json:"EmailVerified" name:"EmailVerified"`
-		Remark                *string `json:"Remark" name:"Remark"`
+		UserId            *string `json:"UserId" name:"UserId"`
+		Path              *string `json:"Path" name:"Path"`
+		UserName          *string `json:"UserName" name:"UserName"`
+		CreateDate        *string `json:"CreateDate" name:"CreateDate"`
+		Phone             *int    `json:"Phone" name:"Phone"`
+		CountryMobileCode *int    `json:"CountryMobileCode" name:"CountryMobileCode"`
+		IsInternational   *int    `json:"IsInternational" name:"IsInternational"`
+		Email             *string `json:"Email" name:"Email"`
+		PhoneVerified     *string `json:"PhoneVerified" name:"PhoneVerified"`
+		EmailVerified     *string `json:"EmailVerified" name:"EmailVerified"`
+		Remark            *string `json:"Remark" name:"Remark"`
 		PasswordResetRequired *string `json:"PasswordResetRequired" name:"PasswordResetRequired"`
-		EnableMFA             *int    `json:"EnableMFA" name:"EnableMFA"`
-		NeedBindMfa           *int    `json:"NeedBindMfa" name:"NeedBindMfa"`
-		UpdateDate            *string `json:"UpdateDate" name:"UpdateDate"`
-		ViewAllProject        *string `json:"ViewAllProject" name:"ViewAllProject"`
-		Id                    *int    `json:"Id" name:"Id"`
+		EnableMFA         *int    `json:"EnableMFA" name:"EnableMFA"`
+		NeedBindMfa       *int    `json:"NeedBindMfa" name:"NeedBindMfa"`
+		UpdateDate        *string `json:"UpdateDate" name:"UpdateDate"`
+		ViewAllProject    *string `json:"ViewAllProject" name:"ViewAllProject"`
+		Id                *int    `json:"Id" name:"Id"`
 	} `json:"GetUserResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -205,6 +208,7 @@ func (r *GetUserResponse) ToJsonString() string {
 func (r *GetUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DeleteUserRequest struct {
 	*ksyunhttp.BaseRequest
@@ -230,6 +234,7 @@ func (r *DeleteUserResponse) ToJsonString() string {
 func (r *DeleteUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DetachUserPolicyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -257,6 +262,7 @@ func (r *DetachUserPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListAttachedUserPoliciesRequest struct {
 	*ksyunhttp.BaseRequest
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
@@ -274,12 +280,12 @@ type ListAttachedUserPoliciesResponse struct {
 	ListAttachedUserPoliciesResult struct {
 		AttachedPolicies struct {
 			Member []struct {
-				PolicyKrn     *string `json:"PolicyKrn" name:"PolicyKrn"`
-				PolicyName    *string `json:"PolicyName" name:"PolicyName"`
-				CreateTime    *string `json:"CreateTime" name:"CreateTime"`
-				Description   *string `json:"Description" name:"Description"`
+				PolicyKrn   *string `json:"PolicyKrn" name:"PolicyKrn"`
+				PolicyName  *string `json:"PolicyName" name:"PolicyName"`
+				CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+				Description *string `json:"Description" name:"Description"`
 				DescriptionEn *string `json:"DescriptionEn" name:"DescriptionEn"`
-				Type          *int    `json:"Type" name:"Type"`
+				TypeField   *int    `json:"TypeField" name:"TypeField"`
 			} `json:"Member"`
 		} `json:"AttachedPolicies" name:"AttachedPolicies"`
 		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
@@ -296,6 +302,7 @@ func (r *ListAttachedUserPoliciesResponse) ToJsonString() string {
 func (r *ListAttachedUserPoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListPolicyVersionsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -332,6 +339,7 @@ func (r *ListPolicyVersionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type SetDefaultPolicyVersionRequest struct {
 	*ksyunhttp.BaseRequest
 	PolicyKrn *string `json:"PolicyKrn,omitempty" name:"PolicyKrn"`
@@ -357,6 +365,7 @@ func (r *SetDefaultPolicyVersionResponse) ToJsonString() string {
 func (r *SetDefaultPolicyVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type AttachUserPolicyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -384,6 +393,7 @@ func (r *AttachUserPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeletePolicyVersionRequest struct {
 	*ksyunhttp.BaseRequest
 	PolicyKrn *string `json:"PolicyKrn,omitempty" name:"PolicyKrn"`
@@ -409,6 +419,7 @@ func (r *DeletePolicyVersionResponse) ToJsonString() string {
 func (r *DeletePolicyVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type GetPolicyVersionRequest struct {
 	*ksyunhttp.BaseRequest
@@ -444,6 +455,7 @@ func (r *GetPolicyVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type CreatePolicyVersionRequest struct {
 	*ksyunhttp.BaseRequest
 	PolicyKrn      *string `json:"PolicyKrn,omitempty" name:"PolicyKrn"`
@@ -478,6 +490,7 @@ func (r *CreatePolicyVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListPoliciesRequest struct {
 	*ksyunhttp.BaseRequest
 	Marker       *string `json:"Marker,omitempty" name:"Marker"`
@@ -496,20 +509,20 @@ type ListPoliciesResponse struct {
 	ListPoliciesResult struct {
 		Policies struct {
 			Member []struct {
-				CreateDate       *string `json:"CreateDate" name:"CreateDate"`
+				CreateDate      *string `json:"CreateDate" name:"CreateDate"`
 				DefaultVersionId *string `json:"DefaultVersionId" name:"DefaultVersionId"`
-				Description      *string `json:"Description" name:"Description"`
-				Krn              *string `json:"Krn" name:"Krn"`
-				Path             *string `json:"Path" name:"Path"`
-				PolicyId         *string `json:"PolicyId" name:"PolicyId"`
-				PolicyName       *string `json:"PolicyName" name:"PolicyName"`
-				ServiceId        *int    `json:"ServiceId" name:"ServiceId"`
-				ServiceName      *string `json:"ServiceName" name:"ServiceName"`
-				ServiceViewName  *string `json:"ServiceViewName" name:"ServiceViewName"`
-				PolicyType       *int    `json:"PolicyType" name:"PolicyType"`
-				CreateMode       *int    `json:"CreateMode" name:"CreateMode"`
-				UpdateDate       *string `json:"UpdateDate" name:"UpdateDate"`
-				AttachmentCount  *int    `json:"AttachmentCount" name:"AttachmentCount"`
+				Description     *string `json:"Description" name:"Description"`
+				Krn             *string `json:"Krn" name:"Krn"`
+				Path            *string `json:"Path" name:"Path"`
+				PolicyId        *string `json:"PolicyId" name:"PolicyId"`
+				PolicyName      *string `json:"PolicyName" name:"PolicyName"`
+				ServiceId       *int    `json:"ServiceId" name:"ServiceId"`
+				ServiceName     *string `json:"ServiceName" name:"ServiceName"`
+				ServiceViewName *string `json:"ServiceViewName" name:"ServiceViewName"`
+				PolicyType      *int    `json:"PolicyType" name:"PolicyType"`
+				CreateMode      *int    `json:"CreateMode" name:"CreateMode"`
+				UpdateDate      *string `json:"UpdateDate" name:"UpdateDate"`
+				AttachmentCount *int    `json:"AttachmentCount" name:"AttachmentCount"`
 			} `json:"Member"`
 		} `json:"Policies" name:"Policies"`
 		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
@@ -526,6 +539,7 @@ func (r *ListPoliciesResponse) ToJsonString() string {
 func (r *ListPoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type GetPolicyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -565,6 +579,7 @@ func (r *GetPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeletePolicyRequest struct {
 	*ksyunhttp.BaseRequest
 	PolicyKrn *string `json:"PolicyKrn,omitempty" name:"PolicyKrn"`
@@ -589,6 +604,7 @@ func (r *DeletePolicyResponse) ToJsonString() string {
 func (r *DeletePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreatePolicyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -631,6 +647,7 @@ func (r *CreatePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ChangePasswordRequest struct {
 	*ksyunhttp.BaseRequest
 	OldPassword *string `json:"OldPassword,omitempty" name:"OldPassword"`
@@ -656,6 +673,7 @@ func (r *ChangePasswordResponse) ToJsonString() string {
 func (r *ChangePasswordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type UpdateLoginProfileRequest struct {
 	*ksyunhttp.BaseRequest
@@ -696,6 +714,7 @@ func (r *UpdateLoginProfileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type GetLoginProfileRequest struct {
 	*ksyunhttp.BaseRequest
 	UserName         *string `json:"UserName,omitempty" name:"UserName"`
@@ -735,6 +754,7 @@ func (r *GetLoginProfileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type CreateAccessKeyRequest struct {
 	*ksyunhttp.BaseRequest
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
@@ -768,6 +788,7 @@ func (r *CreateAccessKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListAccessKeysRequest struct {
 	*ksyunhttp.BaseRequest
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
@@ -783,10 +804,10 @@ type ListAccessKeysResponse struct {
 	ListAccessKeyResult struct {
 		AccessKeyMetadata struct {
 			Member []struct {
-				UserName       *string `json:"UserName" name:"UserName"`
-				AccessKeyId    *string `json:"AccessKeyId" name:"AccessKeyId"`
-				Status         *string `json:"Status" name:"Status"`
-				CreateDate     *string `json:"CreateDate" name:"CreateDate"`
+				UserName    *string `json:"UserName" name:"UserName"`
+				AccessKeyId *string `json:"AccessKeyId" name:"AccessKeyId"`
+				Status      *string `json:"Status" name:"Status"`
+				CreateDate  *string `json:"CreateDate" name:"CreateDate"`
 				AkLastUsedTime *string `json:"AkLastUsedTime" name:"AkLastUsedTime"`
 			} `json:"Member"`
 		} `json:"AccessKeyMetadata" name:"AccessKeyMetadata"`
@@ -802,6 +823,7 @@ func (r *ListAccessKeysResponse) ToJsonString() string {
 func (r *ListAccessKeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type UpdateAccessKeyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -830,6 +852,7 @@ func (r *UpdateAccessKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteAccessKeyRequest struct {
 	*ksyunhttp.BaseRequest
 	UserName    *string `json:"UserName,omitempty" name:"UserName"`
@@ -856,6 +879,7 @@ func (r *DeleteAccessKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListVirtualMFADevicesRequest struct {
 	*ksyunhttp.BaseRequest
 	AssignmentStatus *string `json:"AssignmentStatus,omitempty" name:"AssignmentStatus"`
@@ -874,8 +898,8 @@ type ListVirtualMFADevicesResponse struct {
 		VirtualMFADevices struct {
 			Member []struct {
 				SerialNumber *string `json:"SerialNumber" name:"SerialNumber"`
-				EnableDate   *string `json:"EnableDate" name:"EnableDate"`
-				User         struct {
+				EnableDate *string `json:"EnableDate" name:"EnableDate"`
+				User       struct {
 					Uuid        *string `json:"Uuid" name:"Uuid"`
 					Name        *string `json:"Name" name:"Name"`
 					RealName    *string `json:"RealName" name:"RealName"`
@@ -899,6 +923,7 @@ func (r *ListVirtualMFADevicesResponse) ToJsonString() string {
 func (r *ListVirtualMFADevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type EnableMFADeviceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -927,6 +952,7 @@ func (r *EnableMFADeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeactivateMFADeviceRequest struct {
 	*ksyunhttp.BaseRequest
 	SerialNumber *string `json:"SerialNumber,omitempty" name:"SerialNumber"`
@@ -952,6 +978,7 @@ func (r *DeactivateMFADeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type GetVirtualMFADeviceRequest struct {
 	*ksyunhttp.BaseRequest
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
@@ -967,7 +994,7 @@ type GetVirtualMFADeviceResponse struct {
 	RequestId        *string `json:"RequestId" name:"RequestId"`
 	VirtualMFADevice struct {
 		SerialNumber *string `json:"SerialNumber" name:"SerialNumber"`
-		EnableDate   *string `json:"EnableDate" name:"EnableDate"`
+		EnableDate *string `json:"EnableDate" name:"EnableDate"`
 	} `json:"VirtualMFADevice"`
 }
 
@@ -979,6 +1006,7 @@ func (r *GetVirtualMFADeviceResponse) ToJsonString() string {
 func (r *GetVirtualMFADeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreateRoleRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1017,6 +1045,7 @@ func (r *CreateRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteRoleRequest struct {
 	*ksyunhttp.BaseRequest
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
@@ -1041,6 +1070,7 @@ func (r *DeleteRoleResponse) ToJsonString() string {
 func (r *DeleteRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type GetRoleRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1081,6 +1111,7 @@ func (r *GetRoleResponse) ToJsonString() string {
 func (r *GetRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListRolesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1126,6 +1157,7 @@ func (r *ListRolesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type AttachRolePolicyRequest struct {
 	*ksyunhttp.BaseRequest
 	RoleName  *string `json:"RoleName,omitempty" name:"RoleName"`
@@ -1151,6 +1183,7 @@ func (r *AttachRolePolicyResponse) ToJsonString() string {
 func (r *AttachRolePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DetachRolePolicyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1178,6 +1211,7 @@ func (r *DetachRolePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListAttachedRolePoliciesRequest struct {
 	*ksyunhttp.BaseRequest
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
@@ -1195,12 +1229,12 @@ type ListAttachedRolePoliciesResponse struct {
 	ListAttachedRolePoliciesResult struct {
 		AttachedPolicies struct {
 			Member []struct {
-				PolicyKrn     *string `json:"PolicyKrn" name:"PolicyKrn"`
-				PolicyName    *string `json:"PolicyName" name:"PolicyName"`
-				CreateTime    *string `json:"CreateTime" name:"CreateTime"`
-				Description   *string `json:"Description" name:"Description"`
+				PolicyKrn   *string `json:"PolicyKrn" name:"PolicyKrn"`
+				PolicyName  *string `json:"PolicyName" name:"PolicyName"`
+				CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+				Description *string `json:"Description" name:"Description"`
 				DescriptionEn *string `json:"DescriptionEn" name:"DescriptionEn"`
-				Type          *int    `json:"Type" name:"Type"`
+				TypeField   *int    `json:"TypeField" name:"TypeField"`
 			} `json:"Member"`
 		} `json:"AttachedPolicies" name:"AttachedPolicies"`
 		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
@@ -1217,6 +1251,7 @@ func (r *ListAttachedRolePoliciesResponse) ToJsonString() string {
 func (r *ListAttachedRolePoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type UpdateRoleTrustAccountsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1244,6 +1279,7 @@ func (r *UpdateRoleTrustAccountsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type CreateProjectRequest struct {
 	*ksyunhttp.BaseRequest
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
@@ -1269,6 +1305,7 @@ func (r *CreateProjectResponse) ToJsonString() string {
 func (r *CreateProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type UpdateProjectInfoRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1296,6 +1333,7 @@ func (r *UpdateProjectInfoResponse) ToJsonString() string {
 func (r *UpdateProjectInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type GetAccountAllProjectListRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1333,6 +1371,7 @@ func (r *GetAccountAllProjectListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type UpdateInstanceProjectIdRequest struct {
 	*ksyunhttp.BaseRequest
 	ProjectId  *int    `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -1361,6 +1400,7 @@ func (r *UpdateInstanceProjectIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListEntitiesForPolicyRequest struct {
 	*ksyunhttp.BaseRequest
 	PolicyKrn *string `json:"PolicyKrn,omitempty" name:"PolicyKrn"`
@@ -1378,47 +1418,47 @@ type ListEntitiesForPolicyResponse struct {
 	ListEntitiesForPolicyResult struct {
 		PolicyUsers struct {
 			Member []struct {
-				UserId       *string `json:"UserId" name:"UserId"`
-				UserName     *string `json:"UserName" name:"UserName"`
+				UserId     *string `json:"UserId" name:"UserId"`
+				UserName   *string `json:"UserName" name:"UserName"`
 				UserRealName *string `json:"UserRealName" name:"UserRealName"`
-				CreateDate   *string `json:"CreateDate" name:"CreateDate"`
+				CreateDate *string `json:"CreateDate" name:"CreateDate"`
 			} `json:"Member"`
 		} `json:"PolicyUsers" name:"PolicyUsers"`
 		PolicyRoles struct {
 			Member []struct {
-				RoleId          *string `json:"RoleId" name:"RoleId"`
-				RoleName        *string `json:"RoleName" name:"RoleName"`
+				RoleId     *string `json:"RoleId" name:"RoleId"`
+				RoleName   *string `json:"RoleName" name:"RoleName"`
 				RoleDescription *string `json:"RoleDescription" name:"RoleDescription"`
-				CreateDate      *string `json:"CreateDate" name:"CreateDate"`
+				CreateDate *string `json:"CreateDate" name:"CreateDate"`
 			} `json:"Member"`
 		} `json:"PolicyRoles" name:"PolicyRoles"`
 		PolicyGroups struct {
 			Member []struct {
-				GroupId          *string `json:"GroupId" name:"GroupId"`
-				GroupName        *string `json:"GroupName" name:"GroupName"`
-				CreateDate       *string `json:"CreateDate" name:"CreateDate"`
+				GroupId    *string `json:"GroupId" name:"GroupId"`
+				GroupName  *string `json:"GroupName" name:"GroupName"`
+				CreateDate *string `json:"CreateDate" name:"CreateDate"`
 				GroupDescription *string `json:"GroupDescription" name:"GroupDescription"`
 			} `json:"Member"`
 		} `json:"PolicyGroups" name:"PolicyGroups"`
 		PolicyAccounts struct {
 			Member []struct {
-				AccountId       *int    `json:"AccountId" name:"AccountId"`
-				AccountName     *string `json:"AccountName" name:"AccountName"`
+				AccountId   *int    `json:"AccountId" name:"AccountId"`
+				AccountName *string `json:"AccountName" name:"AccountName"`
 				AccountUsername *string `json:"AccountUsername" name:"AccountUsername"`
-				CreateDate      *string `json:"CreateDate" name:"CreateDate"`
+				CreateDate  *string `json:"CreateDate" name:"CreateDate"`
 			} `json:"Member"`
 		} `json:"PolicyAccounts" name:"PolicyAccounts"`
 		PolicyResourceDirs struct {
 			Member []struct {
-				ResourceDirId          *string `json:"ResourceDirId" name:"ResourceDirId"`
-				ResourceDirName        *string `json:"ResourceDirName" name:"ResourceDirName"`
+				ResourceDirId   *string `json:"ResourceDirId" name:"ResourceDirId"`
+				ResourceDirName *string `json:"ResourceDirName" name:"ResourceDirName"`
 				ResourceDirDescription *string `json:"ResourceDirDescription" name:"ResourceDirDescription"`
-				CreateDate             *string `json:"CreateDate" name:"CreateDate"`
+				CreateDate      *string `json:"CreateDate" name:"CreateDate"`
 			} `json:"Member"`
 		} `json:"PolicyResourceDirs" name:"PolicyResourceDirs"`
 		IsTruncated *bool `json:"IsTruncated" name:"IsTruncated"`
 	} `json:"ListEntitiesForPolicyResult"`
-	RequestId          *string `json:"RequestId" name:"RequestId"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
 	ListPoliciesResult struct {
 		Marker *string `json:"Marker" name:"Marker"`
 	} `json:"ListPoliciesResult"`
@@ -1432,6 +1472,7 @@ func (r *ListEntitiesForPolicyResponse) ToJsonString() string {
 func (r *ListEntitiesForPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListProjectMemberRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1464,6 +1505,7 @@ func (r *ListProjectMemberResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteProjectMemberRequest struct {
 	*ksyunhttp.BaseRequest
 	ProjectId *int    `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -1489,6 +1531,7 @@ func (r *DeleteProjectMemberResponse) ToJsonString() string {
 func (r *DeleteProjectMemberResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type AddProjectMemberRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1517,6 +1560,7 @@ func (r *AddProjectMemberResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type UpdateRoleRequest struct {
 	*ksyunhttp.BaseRequest
 	RoleName       *string `json:"RoleName,omitempty" name:"RoleName"`
@@ -1542,6 +1586,7 @@ func (r *UpdateRoleResponse) ToJsonString() string {
 func (r *UpdateRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type UpdatePolicyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1571,6 +1616,7 @@ func (r *UpdatePolicyResponse) ToJsonString() string {
 func (r *UpdatePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreateGroupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1609,6 +1655,7 @@ func (r *CreateGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteGroupRequest struct {
 	*ksyunhttp.BaseRequest
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
@@ -1633,6 +1680,7 @@ func (r *DeleteGroupResponse) ToJsonString() string {
 func (r *DeleteGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DetachGroupPolicyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1660,6 +1708,7 @@ func (r *DetachGroupPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type AttachGroupPolicyRequest struct {
 	*ksyunhttp.BaseRequest
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
@@ -1686,6 +1735,7 @@ func (r *AttachGroupPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListGroupPoliciesRequest struct {
 	*ksyunhttp.BaseRequest
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
@@ -1703,12 +1753,12 @@ type ListGroupPoliciesResponse struct {
 	ListGroupPoliciesResult struct {
 		AttachedPolicies struct {
 			Member []struct {
-				PolicyKrn     *string `json:"PolicyKrn" name:"PolicyKrn"`
-				PolicyName    *string `json:"PolicyName" name:"PolicyName"`
-				CreateTime    *string `json:"CreateTime" name:"CreateTime"`
-				Description   *string `json:"Description" name:"Description"`
+				PolicyKrn   *string `json:"PolicyKrn" name:"PolicyKrn"`
+				PolicyName  *string `json:"PolicyName" name:"PolicyName"`
+				CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+				Description *string `json:"Description" name:"Description"`
 				DescriptionEn *string `json:"DescriptionEn" name:"DescriptionEn"`
-				Type          *int    `json:"Type" name:"Type"`
+				TypeField   *int    `json:"TypeField" name:"TypeField"`
 			} `json:"Member"`
 		} `json:"AttachedPolicies" name:"AttachedPolicies"`
 		IsTruncated *bool   `json:"IsTruncated" name:"IsTruncated"`
@@ -1725,6 +1775,7 @@ func (r *ListGroupPoliciesResponse) ToJsonString() string {
 func (r *ListGroupPoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type AddUserToGroupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1752,6 +1803,7 @@ func (r *AddUserToGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type GetGroupRequest struct {
 	*ksyunhttp.BaseRequest
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
@@ -1769,12 +1821,12 @@ type GetGroupResponse struct {
 	GetGroupResult struct {
 		Group struct {
 			Group struct {
-				GroupId       *string `json:"GroupId" name:"GroupId"`
-				Path          *string `json:"Path" name:"Path"`
-				GroupName     *string `json:"GroupName" name:"GroupName"`
-				Description   *string `json:"Description" name:"Description"`
-				CreateDate    *string `json:"CreateDate" name:"CreateDate"`
-				Krn           *string `json:"Krn" name:"Krn"`
+				GroupId     *string `json:"GroupId" name:"GroupId"`
+				Path        *string `json:"Path" name:"Path"`
+				GroupName   *string `json:"GroupName" name:"GroupName"`
+				Description *string `json:"Description" name:"Description"`
+				CreateDate  *string `json:"CreateDate" name:"CreateDate"`
+				Krn         *string `json:"Krn" name:"Krn"`
 				GroupRealName *string `json:"GroupRealName" name:"GroupRealName"`
 			} `json:"Group"`
 		} `json:"Group" name:"Group"`
@@ -1790,6 +1842,7 @@ func (r *GetGroupResponse) ToJsonString() string {
 func (r *GetGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListGroupsForUserRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1808,14 +1861,14 @@ type ListGroupsForUserResponse struct {
 	ListGroupsForUserResult struct {
 		Groups struct {
 			Member []struct {
-				Id            *int    `json:"Id" name:"Id"`
-				GroupId       *string `json:"GroupId" name:"GroupId"`
-				Path          *string `json:"Path" name:"Path"`
-				GroupName     *string `json:"GroupName" name:"GroupName"`
-				Description   *string `json:"Description" name:"Description"`
-				CreateDate    *string `json:"CreateDate" name:"CreateDate"`
-				Krn           *string `json:"Krn" name:"Krn"`
-				PolicyCount   *int    `json:"PolicyCount" name:"PolicyCount"`
+				Id          *int    `json:"Id" name:"Id"`
+				GroupId     *string `json:"GroupId" name:"GroupId"`
+				Path        *string `json:"Path" name:"Path"`
+				GroupName   *string `json:"GroupName" name:"GroupName"`
+				Description *string `json:"Description" name:"Description"`
+				CreateDate  *string `json:"CreateDate" name:"CreateDate"`
+				Krn         *string `json:"Krn" name:"Krn"`
+				PolicyCount *int    `json:"PolicyCount" name:"PolicyCount"`
 				GroupRealName *string `json:"GroupRealName" name:"GroupRealName"`
 			} `json:"Member"`
 		} `json:"Groups" name:"Groups"`
@@ -1835,6 +1888,7 @@ func (r *ListGroupsForUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListGroupsRequest struct {
 	*ksyunhttp.BaseRequest
 	MaxItems *string `json:"MaxItems,omitempty" name:"MaxItems"`
@@ -1851,14 +1905,14 @@ type ListGroupsResponse struct {
 	ListGroupsResult struct {
 		Groups struct {
 			Member []struct {
-				GroupId       *string `json:"GroupId" name:"GroupId"`
-				Path          *string `json:"Path" name:"Path"`
-				GroupName     *string `json:"GroupName" name:"GroupName"`
-				Description   *string `json:"Description" name:"Description"`
-				CreateDate    *string `json:"CreateDate" name:"CreateDate"`
-				Krn           *string `json:"Krn" name:"Krn"`
-				UserCount     *int    `json:"UserCount" name:"UserCount"`
-				PolicyCount   *int    `json:"PolicyCount" name:"PolicyCount"`
+				GroupId     *string `json:"GroupId" name:"GroupId"`
+				Path        *string `json:"Path" name:"Path"`
+				GroupName   *string `json:"GroupName" name:"GroupName"`
+				Description *string `json:"Description" name:"Description"`
+				CreateDate  *string `json:"CreateDate" name:"CreateDate"`
+				Krn         *string `json:"Krn" name:"Krn"`
+				UserCount   *int    `json:"UserCount" name:"UserCount"`
+				PolicyCount *int    `json:"PolicyCount" name:"PolicyCount"`
 				GroupRealName *string `json:"GroupRealName" name:"GroupRealName"`
 			} `json:"Member"`
 		} `json:"Groups" name:"Groups"`
@@ -1877,6 +1931,7 @@ func (r *ListGroupsResponse) ToJsonString() string {
 func (r *ListGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type RemoveUserFromGroupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1903,6 +1958,7 @@ func (r *RemoveUserFromGroupResponse) ToJsonString() string {
 func (r *RemoveUserFromGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type UpdateGroupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1991,9 +2047,9 @@ func (r *ListAllUserAccessKeysRequest) ToJsonString() string {
 type ListAllUserAccessKeysResponse struct {
 	*ksyunhttp.BaseResponse
 	AccessKeyList []struct {
-		UserName       *string `json:"UserName" name:"UserName"`
-		AccessKey      *string `json:"AccessKey" name:"AccessKey"`
-		LastLoginTime  *string `json:"LastLoginTime" name:"LastLoginTime"`
+		UserName      *string `json:"UserName" name:"UserName"`
+		AccessKey     *string `json:"AccessKey" name:"AccessKey"`
+		LastLoginTime *string `json:"LastLoginTime" name:"LastLoginTime"`
 		AkLastUsedTime *string `json:"AkLastUsedTime" name:"AkLastUsedTime"`
 	} `json:"AccessKeyList"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -2028,9 +2084,9 @@ type InsertInstanceToESResponse struct {
 	*ksyunhttp.BaseResponse
 	Data []struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
-		Status     *int    `json:"Status" name:"Status"`
-		Result     *string `json:"Result" name:"Result"`
-		Reason     *string `json:"Reason" name:"Reason"`
+		Status *int    `json:"Status" name:"Status"`
+		Result *string `json:"Result" name:"Result"`
+		Reason *string `json:"Reason" name:"Reason"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2059,9 +2115,9 @@ type DelInstanceFromESResponse struct {
 	*ksyunhttp.BaseResponse
 	Data []struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
-		Status     *int    `json:"Status" name:"Status"`
-		Result     *string `json:"Result" name:"Result"`
-		Reason     *string `json:"Reason" name:"Reason"`
+		Status *int    `json:"Status" name:"Status"`
+		Result *string `json:"Result" name:"Result"`
+		Reason *string `json:"Reason" name:"Reason"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2129,9 +2185,9 @@ type SetUserSsoSettingsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId       *string `json:"RequestId" name:"RequestId"`
 	UserSsoSettings struct {
-		Status   *int    `json:"Status" name:"Status"`
+		Status *int    `json:"Status" name:"Status"`
 		Metadata *string `json:"Metadata" name:"Metadata"`
-		Domain   *string `json:"Domain" name:"Domain"`
+		Domain *string `json:"Domain" name:"Domain"`
 	} `json:"UserSsoSettings"`
 }
 
@@ -2157,9 +2213,9 @@ type GetUserSsoSettingsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId       *string `json:"RequestId" name:"RequestId"`
 	UserSsoSettings struct {
-		Status   *int    `json:"Status" name:"Status"`
+		Status *int    `json:"Status" name:"Status"`
 		Metadata *string `json:"Metadata" name:"Metadata"`
-		Domain   *string `json:"Domain" name:"Domain"`
+		Domain *string `json:"Domain" name:"Domain"`
 	} `json:"UserSsoSettings"`
 }
 
@@ -2216,3 +2272,4 @@ func (r *GetEffectivePoliciesResponse) ToJsonString() string {
 func (r *GetEffectivePoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

@@ -1,9 +1,9 @@
 package v20160304
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type DescribeCfwAvRequest struct {
 	*ksyunhttp.BaseRequest
@@ -18,11 +18,11 @@ type DescribeCfwAvResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	CfwAvs    []struct {
-		AvId        *string `json:"AvId" name:"AvId"`
-		Protocol    *string `json:"Protocol" name:"Protocol"`
+		AvId       *string `json:"AvId" name:"AvId"`
+		Protocol   *string `json:"Protocol" name:"Protocol"`
 		ProtectType *string `json:"ProtectType" name:"ProtectType"`
-		Status      *string `json:"Status" name:"Status"`
-		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+		Status     *string `json:"Status" name:"Status"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"CfwAvs"`
 }
 
@@ -35,38 +35,29 @@ func (r *DescribeCfwAvResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeCloudFireWallInstanceRequest struct {
+type DeleteBatchCfwAddrbookRequest struct {
 	*ksyunhttp.BaseRequest
-	CfwInstanceIds []*string `json:"CfwInstanceIds,omitempty" name:"CfwInstanceIds"`
+	AddrbookIds   []*string `json:"AddrbookIds,omitempty" name:"AddrbookIds"`
+	CfwInstanceId *string   `json:"CfwInstanceId,omitempty" name:"CfwInstanceId"`
 }
 
-func (r *DescribeCloudFireWallInstanceRequest) ToJsonString() string {
+func (r *DeleteBatchCfwAddrbookRequest) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
 }
 
-type DescribeCloudFireWallInstanceResponse struct {
+type DeleteBatchCfwAddrbookResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId                 *string `json:"requestId" name:"requestId"`
-	CloudFireWallInstanceList []struct {
-		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
-		InstanceName *string `json:"InstanceName" name:"InstanceName"`
-		InstanceType *string `json:"InstanceType" name:"InstanceType"`
-		Bandwidth    *int    `json:"Bandwidth" name:"Bandwidth"`
-		Status       *int    `json:"Status" name:"Status"`
-		TotalEipNum  *int    `json:"TotalEipNum" name:"TotalEipNum"`
-		UsedEipNum   *int    `json:"UsedEipNum" name:"UsedEipNum"`
-		IpsStatus    *int    `json:"IpsStatus" name:"IpsStatus"`
-		AvStatus     *int    `json:"AvStatus" name:"AvStatus"`
-		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
-	} `json:"CloudFireWallInstanceList"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Result    *bool   `json:"Result" name:"Result"`
 }
 
-func (r *DescribeCloudFireWallInstanceResponse) ToJsonString() string {
+func (r *DeleteBatchCfwAddrbookResponse) ToJsonString() string {
 	b, _ := json.Marshal(r)
 	return string(b)
 }
 
-func (r *DescribeCloudFireWallInstanceResponse) FromJsonString(s string) error {
+func (r *DeleteBatchCfwAddrbookResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

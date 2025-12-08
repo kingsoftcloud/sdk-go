@@ -1,9 +1,9 @@
 package v20250101
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type DescribeAlertingResourcesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -32,23 +32,23 @@ type DescribeAlertingResourcesResponse struct {
 			InstanceIP   *string `json:"InstanceIP" name:"InstanceIP"`
 			InstanceTags []struct {
 				ResourceType *string `json:"ResourceType" name:"ResourceType"`
-				ResourceId   *string `json:"ResourceId" name:"ResourceId"`
-				Key          *string `json:"Key" name:"Key"`
-				Value        *string `json:"Value" name:"Value"`
+				ResourceId *string `json:"ResourceId" name:"ResourceId"`
+				Key        *string `json:"Key" name:"Key"`
+				Value      *string `json:"Value" name:"Value"`
 			} `json:"InstanceTags"`
 			ProjectID *int    `json:"ProjectID" name:"ProjectID"`
 			Region    *string `json:"Region" name:"Region"`
 			Policies  []struct {
-				PolicyId    *int    `json:"PolicyId" name:"PolicyId"`
-				PolicyName  *string `json:"PolicyName" name:"PolicyName"`
-				PolicyRule  *string `json:"PolicyRule" name:"PolicyRule"`
-				CurValue    *int    `json:"CurValue" name:"CurValue"`
-				AlarmState  *int    `json:"AlarmState" name:"AlarmState"`
+				PolicyId   *int    `json:"PolicyId" name:"PolicyId"`
+				PolicyName *string `json:"PolicyName" name:"PolicyName"`
+				PolicyRule *string `json:"PolicyRule" name:"PolicyRule"`
+				CurValue   *int    `json:"CurValue" name:"CurValue"`
+				AlarmState *int    `json:"AlarmState" name:"AlarmState"`
 				TriggerTime *string `json:"TriggerTime" name:"TriggerTime"`
-				Duration    *string `json:"Duration" name:"Duration"`
+				Duration   *string `json:"Duration" name:"Duration"`
 			} `json:"Policies"`
 			RelatedResourceSet []struct {
-				Namespace  *string `json:"Namespace" name:"Namespace"`
+				Namespace *string `json:"Namespace" name:"Namespace"`
 				InstanceID *string `json:"InstanceID" name:"InstanceID"`
 			} `json:"RelatedResourceSet"`
 		} `json:"ResourceSet" name:"ResourceSet"`
@@ -63,6 +63,7 @@ func (r *DescribeAlertingResourcesResponse) ToJsonString() string {
 func (r *DescribeAlertingResourcesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeSystemEventAttributesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -111,3 +112,4 @@ func (r *DescribeSystemEventAttributesResponse) ToJsonString() string {
 func (r *DescribeSystemEventAttributesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

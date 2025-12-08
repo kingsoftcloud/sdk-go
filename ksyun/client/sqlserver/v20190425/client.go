@@ -1,5 +1,4 @@
 package v20190425
-
 import (
 	"context"
 	"fmt"
@@ -258,7 +257,7 @@ func (c *Client) ModifyDBInstanceWithContext(ctx context.Context, request *Modif
 		request = NewModifyDBInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifyDBInstanceResponse()
 	err, msg := c.Send(request, response)
@@ -273,7 +272,7 @@ func (c *Client) ModifyDBInstanceWithContextV2(ctx context.Context, request *Mod
 		request = NewModifyDBInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifyDBInstanceResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -2882,3 +2881,135 @@ func (c *Client) DescribeDBBackupPolicyWithContextV2(ctx context.Context, reques
 	}
 	return statusCode, msg, nil
 }
+func NewUpdateDBInstanceOrderRequest() (request *UpdateDBInstanceOrderRequest) {
+	request = &UpdateDBInstanceOrderRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("sqlserver", APIVersion, "UpdateDBInstanceOrder")
+	return
+}
+
+func NewUpdateDBInstanceOrderResponse() (response *UpdateDBInstanceOrderResponse) {
+	response = &UpdateDBInstanceOrderResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateDBInstanceOrder(request *UpdateDBInstanceOrderRequest) string {
+	return c.UpdateDBInstanceOrderWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateDBInstanceOrderSend(request *UpdateDBInstanceOrderRequest) (*UpdateDBInstanceOrderResponse, error) {
+	statusCode, msg, err := c.UpdateDBInstanceOrderWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct UpdateDBInstanceOrderResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) UpdateDBInstanceOrderWithContext(ctx context.Context, request *UpdateDBInstanceOrderRequest) string {
+	if request == nil {
+		request = NewUpdateDBInstanceOrderRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateDBInstanceOrderResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) UpdateDBInstanceOrderWithContextV2(ctx context.Context, request *UpdateDBInstanceOrderRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdateDBInstanceOrderRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateDBInstanceOrderResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewUpdateResourceProtectionRequest() (request *UpdateResourceProtectionRequest) {
+	request = &UpdateResourceProtectionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("sqlserver", APIVersion, "UpdateResourceProtection")
+	return
+}
+
+func NewUpdateResourceProtectionResponse() (response *UpdateResourceProtectionResponse) {
+	response = &UpdateResourceProtectionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateResourceProtection(request *UpdateResourceProtectionRequest) string {
+	return c.UpdateResourceProtectionWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateResourceProtectionSend(request *UpdateResourceProtectionRequest) (*UpdateResourceProtectionResponse, error) {
+	statusCode, msg, err := c.UpdateResourceProtectionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct UpdateResourceProtectionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) UpdateResourceProtectionWithContext(ctx context.Context, request *UpdateResourceProtectionRequest) string {
+	if request == nil {
+		request = NewUpdateResourceProtectionRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateResourceProtectionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) UpdateResourceProtectionWithContextV2(ctx context.Context, request *UpdateResourceProtectionRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdateResourceProtectionRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewUpdateResourceProtectionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+
+

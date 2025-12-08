@@ -1,5 +1,4 @@
 package v20180627
-
 import (
 	"context"
 	"fmt"
@@ -128,7 +127,7 @@ func (c *Client) DeleteCacheClusterWithContext(ctx context.Context, request *Del
 		request = NewDeleteCacheClusterRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteCacheClusterResponse()
 	err, msg := c.Send(request, response)
@@ -143,7 +142,7 @@ func (c *Client) DeleteCacheClusterWithContextV2(ctx context.Context, request *D
 		request = NewDeleteCacheClusterRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteCacheClusterResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -193,7 +192,7 @@ func (c *Client) ResizeCacheClusterWithContext(ctx context.Context, request *Res
 		request = NewResizeCacheClusterRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewResizeCacheClusterResponse()
 	err, msg := c.Send(request, response)
@@ -208,7 +207,7 @@ func (c *Client) ResizeCacheClusterWithContextV2(ctx context.Context, request *R
 		request = NewResizeCacheClusterRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewResizeCacheClusterResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -867,3 +866,5 @@ func (c *Client) DescribeAvailabilityZonesWithContextV2(ctx context.Context, req
 	}
 	return statusCode, msg, nil
 }
+
+

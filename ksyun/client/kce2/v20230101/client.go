@@ -1,5 +1,4 @@
 package v20230101
-
 import (
 	"context"
 	"fmt"
@@ -737,71 +736,6 @@ func (c *Client) DescribeComponentParamsWithContextV2(ctx context.Context, reque
 	}
 	return statusCode, msg, nil
 }
-func NewDescribeAddonInstancesRequest() (request *DescribeAddonInstancesRequest) {
-	request = &DescribeAddonInstancesRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("kce2", APIVersion, "DescribeAddonInstances")
-	return
-}
-
-func NewDescribeAddonInstancesResponse() (response *DescribeAddonInstancesResponse) {
-	response = &DescribeAddonInstancesResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) DescribeAddonInstances(request *DescribeAddonInstancesRequest) string {
-	return c.DescribeAddonInstancesWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeAddonInstancesSend(request *DescribeAddonInstancesRequest) (*DescribeAddonInstancesResponse, error) {
-	statusCode, msg, err := c.DescribeAddonInstancesWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	var respStruct DescribeAddonInstancesResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) DescribeAddonInstancesWithContext(ctx context.Context, request *DescribeAddonInstancesRequest) string {
-	if request == nil {
-		request = NewDescribeAddonInstancesRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeAddonInstancesResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) DescribeAddonInstancesWithContextV2(ctx context.Context, request *DescribeAddonInstancesRequest) (int, string, error) {
-	if request == nil {
-		request = NewDescribeAddonInstancesRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeAddonInstancesResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}
 func NewDescribeEventLogsRequest() (request *DescribeEventLogsRequest) {
 	request = &DescribeEventLogsRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -1062,3 +996,5 @@ func (c *Client) AddEpcNodesWithContextV2(ctx context.Context, request *AddEpcNo
 	}
 	return statusCode, msg, nil
 }
+
+

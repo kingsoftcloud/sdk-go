@@ -1,5 +1,4 @@
 package v20240101
-
 import (
 	"context"
 	"fmt"
@@ -63,7 +62,7 @@ func (c *Client) DescribeDefaultMonitorItemsWithContext(ctx context.Context, req
 		request = NewDescribeDefaultMonitorItemsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeDefaultMonitorItemsResponse()
 	err, msg := c.Send(request, response)
@@ -78,7 +77,7 @@ func (c *Client) DescribeDefaultMonitorItemsWithContextV2(ctx context.Context, r
 		request = NewDescribeDefaultMonitorItemsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeDefaultMonitorItemsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -258,7 +257,7 @@ func (c *Client) DescribeMonitorPanelWithContext(ctx context.Context, request *D
 		request = NewDescribeMonitorPanelRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeMonitorPanelResponse()
 	err, msg := c.Send(request, response)
@@ -273,7 +272,7 @@ func (c *Client) DescribeMonitorPanelWithContextV2(ctx context.Context, request 
 		request = NewDescribeMonitorPanelRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeMonitorPanelResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -518,7 +517,7 @@ func (c *Client) InstanceStatisticsWithContext(ctx context.Context, request *Ins
 		request = NewInstanceStatisticsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewInstanceStatisticsResponse()
 	err, msg := c.Send(request, response)
@@ -533,7 +532,7 @@ func (c *Client) InstanceStatisticsWithContextV2(ctx context.Context, request *I
 		request = NewInstanceStatisticsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewInstanceStatisticsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -583,7 +582,7 @@ func (c *Client) DescribeMonitorPanelListWithContext(ctx context.Context, reques
 		request = NewDescribeMonitorPanelListRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeMonitorPanelListResponse()
 	err, msg := c.Send(request, response)
@@ -598,7 +597,7 @@ func (c *Client) DescribeMonitorPanelListWithContextV2(ctx context.Context, requ
 		request = NewDescribeMonitorPanelListRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeMonitorPanelListResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -843,7 +842,7 @@ func (c *Client) DescribeDedicatedHostsWithContext(ctx context.Context, request 
 		request = NewDescribeDedicatedHostsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeDedicatedHostsResponse()
 	err, msg := c.Send(request, response)
@@ -858,7 +857,7 @@ func (c *Client) DescribeDedicatedHostsWithContextV2(ctx context.Context, reques
 		request = NewDescribeDedicatedHostsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeDedicatedHostsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1322,3 +1321,5 @@ func (c *Client) TestInstanceConnectionWithContextV2(ctx context.Context, reques
 	}
 	return statusCode, msg, nil
 }
+
+

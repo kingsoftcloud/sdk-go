@@ -1,9 +1,9 @@
 package v20250220
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type ListInstanceSupportBillTypesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -18,14 +18,14 @@ func (r *ListInstanceSupportBillTypesRequest) ToJsonString() string {
 type ListInstanceSupportBillTypesResponse struct {
 	*ksyunhttp.BaseResponse
 	Error struct {
-		Code    *string `json:"Code" name:"Code"`
+		Code *string `json:"Code" name:"Code"`
 		Message *string `json:"Message" name:"Message"`
 	} `json:"Error"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      []struct {
 		BillTypeEnName *string `json:"BillTypeEnName" name:"BillTypeEnName"`
-		BillTypeId     *int    `json:"BillTypeId" name:"BillTypeId"`
-		BillTypeName   *string `json:"BillTypeName" name:"BillTypeName"`
+		BillTypeId   *int    `json:"BillTypeId" name:"BillTypeId"`
+		BillTypeName *string `json:"BillTypeName" name:"BillTypeName"`
 	} `json:"Data"`
 }
 
@@ -37,6 +37,7 @@ func (r *ListInstanceSupportBillTypesResponse) ToJsonString() string {
 func (r *ListInstanceSupportBillTypesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type AddTrialToBuyTaskRequest struct {
 	*ksyunhttp.BaseRequest
@@ -54,7 +55,7 @@ func (r *AddTrialToBuyTaskRequest) ToJsonString() string {
 type AddTrialToBuyTaskResponse struct {
 	*ksyunhttp.BaseResponse
 	Error struct {
-		Code    *string `json:"Code" name:"Code"`
+		Code *string `json:"Code" name:"Code"`
 		Message *string `json:"Message" name:"Message"`
 	} `json:"Error"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -70,6 +71,7 @@ func (r *AddTrialToBuyTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteTrialToBuyTaskRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"instanceId,omitempty" name:"instanceId"`
@@ -83,7 +85,7 @@ func (r *DeleteTrialToBuyTaskRequest) ToJsonString() string {
 type DeleteTrialToBuyTaskResponse struct {
 	*ksyunhttp.BaseResponse
 	Error struct {
-		Code    *string `json:"Code" name:"Code"`
+		Code *string `json:"Code" name:"Code"`
 		Message *string `json:"Message" name:"Message"`
 	} `json:"Error"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -98,6 +100,7 @@ func (r *DeleteTrialToBuyTaskResponse) ToJsonString() string {
 func (r *DeleteTrialToBuyTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreateTrialToBuyNowRequest struct {
 	*ksyunhttp.BaseRequest
@@ -114,7 +117,7 @@ func (r *CreateTrialToBuyNowRequest) ToJsonString() string {
 type CreateTrialToBuyNowResponse struct {
 	*ksyunhttp.BaseResponse
 	Error struct {
-		Code    *string `json:"Code" name:"Code"`
+		Code *string `json:"Code" name:"Code"`
 		Message *string `json:"Message" name:"Message"`
 	} `json:"Error"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -129,3 +132,4 @@ func (r *CreateTrialToBuyNowResponse) ToJsonString() string {
 func (r *CreateTrialToBuyNowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

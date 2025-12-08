@@ -1,10 +1,8 @@
 package v20211215
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 type CreateFunctionCode struct {
 	SourceUrl     *string `json:"SourceUrl,omitempty" name:"SourceUrl"`
 	Ks3BucketName *string `json:"Ks3BucketName,omitempty" name:"Ks3BucketName"`
@@ -99,6 +97,7 @@ type ModifyFunctionReadinessProbeConfig struct {
 	HTTPGet *ModifyFunctionReadinessProbeConfigHTTPGet `json:"HTTPGet,omitempty" name:"HTTPGet"`
 }
 
+
 type GetLogDateRequest struct {
 	*ksyunhttp.BaseRequest
 	Id *int `json:"id,omitempty" name:"id"`
@@ -122,6 +121,7 @@ func (r *GetLogDateResponse) ToJsonString() string {
 func (r *GetLogDateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreateFunctionRequest struct {
 	*ksyunhttp.BaseRequest
@@ -154,7 +154,7 @@ type CreateFunctionResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		ID   *string `json:"ID" name:"ID"`
+		ID *string `json:"ID" name:"ID"`
 		Name struct {
 		} `json:"Name" name:"Name"`
 	} `json:"Data"`
@@ -168,6 +168,7 @@ func (r *CreateFunctionResponse) ToJsonString() string {
 func (r *CreateFunctionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CheckFunctionServiceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -193,6 +194,7 @@ func (r *CheckFunctionServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type OpenFunctionServiceRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -215,6 +217,7 @@ func (r *OpenFunctionServiceResponse) ToJsonString() string {
 func (r *OpenFunctionServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DeleteFunctionRequest struct {
 	*ksyunhttp.BaseRequest
@@ -239,6 +242,7 @@ func (r *DeleteFunctionResponse) ToJsonString() string {
 func (r *DeleteFunctionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreateTriggerRequest struct {
 	*ksyunhttp.BaseRequest
@@ -268,6 +272,7 @@ func (r *CreateTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteTriggerRequest struct {
 	*ksyunhttp.BaseRequest
 	Id *string `json:"Id,omitempty" name:"Id"`
@@ -291,6 +296,7 @@ func (r *DeleteTriggerResponse) ToJsonString() string {
 func (r *DeleteTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ModifyFunctionRequest struct {
 	*ksyunhttp.BaseRequest
@@ -345,13 +351,13 @@ type DescribeTriggersResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
 		MaxRecords *int `json:"MaxRecords" name:"MaxRecords"`
-		Marker     *int `json:"Marker" name:"Marker"`
+		Marker   *int `json:"Marker" name:"Marker"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
-		Triggers   []struct {
+		Triggers []struct {
 			Id          *string `json:"Id" name:"Id"`
 			FunctionId  *string `json:"FunctionId" name:"FunctionId"`
 			TriggerName *string `json:"TriggerName" name:"TriggerName"`
-			Type        *string `json:"Type" name:"Type"`
+			TypeField   *string `json:"Type" name:"Type"`
 			UrlInternet *string `json:"UrlInternet" name:"UrlInternet"`
 			UrlIntranet *string `json:"UrlIntranet" name:"UrlIntranet"`
 			TriggerDesc struct {
@@ -370,3 +376,4 @@ func (r *DescribeTriggersResponse) ToJsonString() string {
 func (r *DescribeTriggersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

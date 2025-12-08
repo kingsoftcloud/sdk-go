@@ -1,9 +1,9 @@
 package v20160304
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type CreateKeyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -33,6 +33,7 @@ func (r *CreateKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyKeyRequest struct {
 	*ksyunhttp.BaseRequest
 	KeyId       *string `json:"KeyId,omitempty" name:"KeyId"`
@@ -59,6 +60,7 @@ func (r *ModifyKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyKeyStateRequest struct {
 	*ksyunhttp.BaseRequest
 	KeyId    *string `json:"KeyId,omitempty" name:"KeyId"`
@@ -84,6 +86,7 @@ func (r *ModifyKeyStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteKeyRequest struct {
 	*ksyunhttp.BaseRequest
 	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
@@ -96,8 +99,8 @@ func (r *DeleteKeyRequest) ToJsonString() string {
 
 type DeleteKeyResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Return    *bool   `json:"Return" name:"Return"`
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	ReturnField *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DeleteKeyResponse) ToJsonString() string {
@@ -108,6 +111,7 @@ func (r *DeleteKeyResponse) ToJsonString() string {
 func (r *DeleteKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeKeysRequest struct {
 	*ksyunhttp.BaseRequest
@@ -132,6 +136,7 @@ func (r *DescribeKeysResponse) ToJsonString() string {
 func (r *DescribeKeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type EncryptRequest struct {
 	*ksyunhttp.BaseRequest
@@ -158,6 +163,7 @@ func (r *EncryptResponse) ToJsonString() string {
 func (r *EncryptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DecryptRequest struct {
 	*ksyunhttp.BaseRequest
@@ -212,3 +218,4 @@ func (r *GenerateDataKeyResponse) ToJsonString() string {
 func (r *GenerateDataKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

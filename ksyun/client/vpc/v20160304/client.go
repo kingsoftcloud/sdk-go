@@ -1,5 +1,4 @@
 package v20160304
-
 import (
 	"context"
 	"fmt"
@@ -5027,6 +5026,136 @@ func (c *Client) DescribeDirectConnectRoutesWithContextV2(ctx context.Context, r
 	}
 	return statusCode, msg, nil
 }
+func NewPublishDirectConnectRouteToBgpRequest() (request *PublishDirectConnectRouteToBgpRequest) {
+	request = &PublishDirectConnectRouteToBgpRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "PublishDirectConnectRouteToBgp")
+	return
+}
+
+func NewPublishDirectConnectRouteToBgpResponse() (response *PublishDirectConnectRouteToBgpResponse) {
+	response = &PublishDirectConnectRouteToBgpResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) PublishDirectConnectRouteToBgp(request *PublishDirectConnectRouteToBgpRequest) (string) {
+	return c.PublishDirectConnectRouteToBgpWithContext(context.Background(), request)
+}
+
+func (c *Client) PublishDirectConnectRouteToBgpSend(request *PublishDirectConnectRouteToBgpRequest) (*PublishDirectConnectRouteToBgpResponse, error) {
+	statusCode, msg, err := c.PublishDirectConnectRouteToBgpWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct PublishDirectConnectRouteToBgpResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) PublishDirectConnectRouteToBgpWithContext(ctx context.Context, request *PublishDirectConnectRouteToBgpRequest) (string) {
+	if request == nil {
+		request = NewPublishDirectConnectRouteToBgpRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewPublishDirectConnectRouteToBgpResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) PublishDirectConnectRouteToBgpWithContextV2(ctx context.Context, request *PublishDirectConnectRouteToBgpRequest) (int, string, error) {
+	if request == nil {
+		request = NewPublishDirectConnectRouteToBgpRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewPublishDirectConnectRouteToBgpResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCancelDirectConnectRouteToBgpRequest() (request *CancelDirectConnectRouteToBgpRequest) {
+	request = &CancelDirectConnectRouteToBgpRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "CancelDirectConnectRouteToBgp")
+	return
+}
+
+func NewCancelDirectConnectRouteToBgpResponse() (response *CancelDirectConnectRouteToBgpResponse) {
+	response = &CancelDirectConnectRouteToBgpResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CancelDirectConnectRouteToBgp(request *CancelDirectConnectRouteToBgpRequest) (string) {
+	return c.CancelDirectConnectRouteToBgpWithContext(context.Background(), request)
+}
+
+func (c *Client) CancelDirectConnectRouteToBgpSend(request *CancelDirectConnectRouteToBgpRequest) (*CancelDirectConnectRouteToBgpResponse, error) {
+	statusCode, msg, err := c.CancelDirectConnectRouteToBgpWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct CancelDirectConnectRouteToBgpResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CancelDirectConnectRouteToBgpWithContext(ctx context.Context, request *CancelDirectConnectRouteToBgpRequest) (string) {
+	if request == nil {
+		request = NewCancelDirectConnectRouteToBgpRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCancelDirectConnectRouteToBgpResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CancelDirectConnectRouteToBgpWithContextV2(ctx context.Context, request *CancelDirectConnectRouteToBgpRequest) (int, string, error) {
+	if request == nil {
+		request = NewCancelDirectConnectRouteToBgpRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCancelDirectConnectRouteToBgpResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewDetachDirectConnectGatewayWithVpcRequest() (request *DetachDirectConnectGatewayWithVpcRequest) {
 	request = &DetachDirectConnectGatewayWithVpcRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -8472,3 +8601,5 @@ func (c *Client) CreateFlowLogWithContextV2(ctx context.Context, request *Create
 	}
 	return statusCode, msg, nil
 }
+
+

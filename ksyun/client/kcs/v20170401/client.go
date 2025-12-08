@@ -1,5 +1,4 @@
 package v20170401
-
 import (
 	"context"
 	"fmt"
@@ -63,7 +62,7 @@ func (c *Client) DeleteCacheSlaveNodeWithContext(ctx context.Context, request *D
 		request = NewDeleteCacheSlaveNodeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteCacheSlaveNodeResponse()
 	err, msg := c.Send(request, response)
@@ -78,7 +77,7 @@ func (c *Client) DeleteCacheSlaveNodeWithContextV2(ctx context.Context, request 
 		request = NewDeleteCacheSlaveNodeRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteCacheSlaveNodeResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -87,3 +86,5 @@ func (c *Client) DeleteCacheSlaveNodeWithContextV2(ctx context.Context, request 
 	}
 	return statusCode, msg, nil
 }
+
+

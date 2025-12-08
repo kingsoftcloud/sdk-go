@@ -1,10 +1,8 @@
 package v20190806
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 type DescribeClusterInstanceFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
@@ -367,6 +365,7 @@ type CreateLogRuleOutputConfig struct {
 	Klog *CreateLogRuleOutputConfigKlog `json:"Klog,omitempty" name:"Klog"`
 }
 
+
 type DescribeClusterInstanceRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId  *string                          `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -392,16 +391,16 @@ type DescribeClusterInstanceResponse struct {
 			ProjectId         *int    `json:"ProjectId" name:"ProjectId"`
 			InstanceType      *string `json:"InstanceType" name:"InstanceType"`
 			InstanceConfigure struct {
-				VCPU         *int    `json:"VCPU" name:"VCPU"`
-				MemoryGb     *int    `json:"MemoryGb" name:"MemoryGb"`
-				GPU          *int    `json:"GPU" name:"GPU"`
-				DataDiskGb   *int    `json:"DataDiskGb" name:"DataDiskGb"`
-				RootDiskGb   *int    `json:"RootDiskGb" name:"RootDiskGb"`
+				VCPU       *int `json:"VCPU" name:"VCPU"`
+				MemoryGb   *int `json:"MemoryGb" name:"MemoryGb"`
+				GPU        *int `json:"GPU" name:"GPU"`
+				DataDiskGb *int `json:"DataDiskGb" name:"DataDiskGb"`
+				RootDiskGb *int `json:"RootDiskGb" name:"RootDiskGb"`
 				DataDiskType *string `json:"DataDiskType" name:"DataDiskType"`
 			} `json:"InstanceConfigure"`
 			SystemDisk struct {
 				DiskType *string `json:"DiskType" name:"DiskType"`
-				DiskSize *int    `json:"DiskSize" name:"DiskSize"`
+				DiskSize *int `json:"DiskSize" name:"DiskSize"`
 			} `json:"SystemDisk"`
 			ImageId             *string `json:"ImageId" name:"ImageId"`
 			PrivateIpAddress    *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
@@ -411,12 +410,12 @@ type DescribeClusterInstanceResponse struct {
 			SubnetId            *string `json:"SubnetId" name:"SubnetId"`
 			VpcId               *string `json:"VpcId" name:"VpcId"`
 			NetworkInterfaceSet []struct {
-				NetworkInterfaceId   *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+				NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
 				NetworkInterfaceType *string `json:"NetworkInterfaceType" name:"NetworkInterfaceType"`
-				SubnetId             *string `json:"SubnetId" name:"SubnetId"`
-				PrivateIpAddress     *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
-				MacAddress           *string `json:"MacAddress" name:"MacAddress"`
-				SecurityGroupSet     []struct {
+				SubnetId           *string `json:"SubnetId" name:"SubnetId"`
+				PrivateIpAddress   *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+				MacAddress         *string `json:"MacAddress" name:"MacAddress"`
+				SecurityGroupSet   []struct {
 					SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
 				} `json:"SecurityGroupSet" name:"SecurityGroupSet"`
 			} `json:"NetworkInterfaceSet"`
@@ -439,7 +438,7 @@ type DescribeClusterInstanceResponse struct {
 			PreUserScript    *string `json:"PreUserScript" name:"PreUserScript"`
 			Schedulable      *bool   `json:"Schedulable" name:"Schedulable"`
 			Label            []struct {
-				Key   *string `json:"Key" name:"Key"`
+				Key *string `json:"Key" name:"Key"`
 				Value *string `json:"Value" name:"Value"`
 			} `json:"Label"`
 			ExtraArg struct {
@@ -466,29 +465,29 @@ type DescribeClusterInstanceResponse struct {
 			} `json:"Gpu"`
 			DiskSet []struct {
 				DiskType *string `json:"DiskType" name:"DiskType"`
-				Raid     *string `json:"Raid" name:"Raid"`
-				Space    *string `json:"Space" name:"Space"`
+				Raid  *string `json:"Raid" name:"Raid"`
+				Space *string `json:"Space" name:"Space"`
 			} `json:"DiskSet"`
 			OsName              *string `json:"OsName" name:"OsName"`
 			ImageId             *string `json:"ImageId" name:"ImageId"`
 			CreateTime          *string `json:"CreateTime" name:"CreateTime"`
 			AvailabilityZone    *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 			NetworkInterfaceSet []struct {
-				NetworkInterfaceId   *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+				NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
 				NetworkInterfaceType *string `json:"NetworkInterfaceType" name:"NetworkInterfaceType"`
-				SubnetId             *string `json:"SubnetId" name:"SubnetId"`
-				PrivateIpAddress     *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
-				MacAddress           *string `json:"MacAddress" name:"MacAddress"`
-				SecurityGroupSet     []struct {
+				SubnetId           *string `json:"SubnetId" name:"SubnetId"`
+				PrivateIpAddress   *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+				MacAddress         *string `json:"MacAddress" name:"MacAddress"`
+				SecurityGroupSet   []struct {
 					SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
 				} `json:"SecurityGroupSet" name:"SecurityGroupSet"`
 			} `json:"NetworkInterfaceSet"`
 			EnableContainer *bool   `json:"EnableContainer" name:"EnableContainer"`
 			ProductType     *string `json:"ProductType" name:"ProductType"`
 		} `json:"EpcInstancePara" name:"EpcInstancePara"`
-		Type         *string `json:"Type" name:"Type"`
+		TypeField *string `json:"TypeField" name:"TypeField"`
 		ErrorMessage *string `json:"ErrorMessage" name:"ErrorMessage"`
-		NodeName     *string `json:"NodeName" name:"NodeName"`
+		NodeName  *string `json:"NodeName" name:"NodeName"`
 	} `json:"InstanceSet"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
@@ -504,6 +503,7 @@ func (r *DescribeClusterInstanceResponse) ToJsonString() string {
 func (r *DescribeClusterInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DeleteClusterRequest struct {
 	*ksyunhttp.BaseRequest
@@ -529,6 +529,7 @@ func (r *DeleteClusterResponse) ToJsonString() string {
 func (r *DeleteClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DownloadClusterConfigRequest struct {
 	*ksyunhttp.BaseRequest
@@ -557,6 +558,7 @@ func (r *DownloadClusterConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyClusterInfoRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId       *string                           `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -584,6 +586,7 @@ func (r *ModifyClusterInfoResponse) ToJsonString() string {
 func (r *ModifyClusterInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeInstanceImageRequest struct {
 	*ksyunhttp.BaseRequest
@@ -615,6 +618,7 @@ func (r *DescribeInstanceImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type AddClusterInstancesRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId   *string                           `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -630,7 +634,7 @@ type AddClusterInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	InstanceSet []struct {
-		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 		InstanceName *string `json:"InstanceName" name:"InstanceName"`
 	} `json:"InstanceSet"`
 }
@@ -643,6 +647,7 @@ func (r *AddClusterInstancesResponse) ToJsonString() string {
 func (r *AddClusterInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DeleteClusterInstancesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -660,8 +665,8 @@ type DeleteClusterInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	InstanceSet []struct {
-		Message    *string `json:"Message" name:"Message"`
-		Return     *bool   `json:"Return" name:"Return"`
+		Message     *string `json:"Message" name:"Message"`
+		ReturnField *bool   `json:"ReturnField" name:"ReturnField"`
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 	} `json:"InstanceSet"`
 }
@@ -674,6 +679,7 @@ func (r *DeleteClusterInstancesResponse) ToJsonString() string {
 func (r *DeleteClusterInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeEpcForClusterRequest struct {
 	*ksyunhttp.BaseRequest
@@ -717,26 +723,26 @@ type DescribeEpcForClusterResponse struct {
 			} `json:"Gpu"`
 			DiskSet []struct {
 				DiskType *string `json:"DiskType" name:"DiskType"`
-				Raid     *string `json:"Raid" name:"Raid"`
-				Space    *string `json:"Space" name:"Space"`
+				Raid  *string `json:"Raid" name:"Raid"`
+				Space *string `json:"Space" name:"Space"`
 			} `json:"DiskSet"`
 			ImageId             *string `json:"ImageId" name:"ImageId"`
 			OsName              *string `json:"OsName" name:"OsName"`
 			AvailabilityZone    *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 			NetworkInterfaceSet []struct {
-				NetworkInterfaceId   *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+				NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
 				NetworkInterfaceType *string `json:"NetworkInterfaceType" name:"NetworkInterfaceType"`
-				SubnetId             *string `json:"SubnetId" name:"SubnetId"`
-				PrivateIpAddress     *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
-				MacAddress           *string `json:"MacAddress" name:"MacAddress"`
-				SecurityGroupSet     []struct {
+				SubnetId           *string `json:"SubnetId" name:"SubnetId"`
+				PrivateIpAddress   *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+				MacAddress         *string `json:"MacAddress" name:"MacAddress"`
+				SecurityGroupSet   []struct {
 					SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
 				} `json:"SecurityGroupSet" name:"SecurityGroupSet"`
 			} `json:"NetworkInterfaceSet"`
 			ProductType     *string `json:"ProductType" name:"ProductType"`
 			EnableContainer *bool   `json:"EnableContainer" name:"EnableContainer"`
 		} `json:"EpcInstancePara" name:"EpcInstancePara"`
-		Type           *string `json:"Type" name:"Type"`
+		TypeField *string `json:"TypeField" name:"TypeField"`
 		InstanceStatus *string `json:"InstanceStatus" name:"InstanceStatus"`
 	} `json:"InstanceSet"`
 }
@@ -749,6 +755,7 @@ func (r *DescribeEpcForClusterResponse) ToJsonString() string {
 func (r *DescribeEpcForClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type AddClusterEpcInstancesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -767,7 +774,7 @@ type AddClusterEpcInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	InstanceSet []struct {
-		Return     *bool   `json:"Return" name:"Return"`
+		ReturnField *bool `json:"ReturnField" name:"ReturnField"`
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 	} `json:"InstanceSet"`
 }
@@ -780,6 +787,7 @@ func (r *AddClusterEpcInstancesResponse) ToJsonString() string {
 func (r *AddClusterEpcInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeExistedInstancesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -799,13 +807,13 @@ func (r *DescribeExistedInstancesRequest) ToJsonString() string {
 type DescribeExistedInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	InstanceSet []struct {
-		InstanceId        *string `json:"InstanceId" name:"InstanceId"`
-		InstanceName      *string `json:"InstanceName" name:"InstanceName"`
-		InstanceType      *string `json:"InstanceType" name:"InstanceType"`
-		PrivateIpAddress  *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
-		Available         *bool   `json:"Available" name:"Available"`
+		InstanceId       *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName     *string `json:"InstanceName" name:"InstanceName"`
+		InstanceType     *string `json:"InstanceType" name:"InstanceType"`
+		PrivateIpAddress *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+		Available        *bool   `json:"Available" name:"Available"`
 		UnavailableReason *string `json:"UnavailableReason" name:"UnavailableReason"`
-		ClusterId         *string `json:"ClusterId" name:"ClusterId"`
+		ClusterId        *string `json:"ClusterId" name:"ClusterId"`
 	} `json:"InstanceSet"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
@@ -822,6 +830,7 @@ func (r *DescribeExistedInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type AddExistedInstancesRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId             *string                                     `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -837,8 +846,8 @@ type AddExistedInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	InstanceSet []struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
-		Return     *bool   `json:"Return" name:"Return"`
-		Reason     *string `json:"Reason" name:"Reason"`
+		ReturnField *bool   `json:"ReturnField" name:"ReturnField"`
+		Reason      *string `json:"Reason" name:"Reason"`
 	} `json:"InstanceSet"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -852,6 +861,7 @@ func (r *AddExistedInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type CreateNodePoolRequest struct {
 	*ksyunhttp.BaseRequest
 	NodePoolName        *string                     `json:"NodePoolName,omitempty" name:"NodePoolName"`
@@ -864,6 +874,7 @@ type CreateNodePoolRequest struct {
 	MaxSize             *int                        `json:"MaxSize,omitempty" name:"MaxSize"`
 	DesiredCapacity     *int                        `json:"DesiredCapacity,omitempty" name:"DesiredCapacity"`
 	EnableDelProtection *bool                       `json:"EnableDelProtection,omitempty" name:"EnableDelProtection"`
+	FailureAutoDelete   *bool                       `json:"FailureAutoDelete,omitempty" name:"FailureAutoDelete"`
 }
 
 func (r *CreateNodePoolRequest) ToJsonString() string {
@@ -885,6 +896,7 @@ func (r *CreateNodePoolResponse) ToJsonString() string {
 func (r *CreateNodePoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeNodePoolRequest struct {
 	*ksyunhttp.BaseRequest
@@ -918,7 +930,7 @@ type DescribeNodePoolResponse struct {
 			InstanceNameSuffix *int    `json:"InstanceNameSuffix" name:"InstanceNameSuffix"`
 			SystemDisk         struct {
 				DiskType *string `json:"DiskType" name:"DiskType"`
-				DiskSize *int    `json:"DiskSize" name:"DiskSize"`
+				DiskSize *int `json:"DiskSize" name:"DiskSize"`
 			} `json:"SystemDisk"`
 			DataDiskGb *int `json:"DataDiskGb" name:"DataDiskGb"`
 			DataDisk   struct {
@@ -941,12 +953,12 @@ type DescribeNodePoolResponse struct {
 					MountTarget        *string `json:"MountTarget" name:"MountTarget"`
 				} `json:"DataDisk" name:"DataDisk"`
 				ContainerRuntime *string `json:"ContainerRuntime" name:"ContainerRuntime"`
-				DockerPath       *string `json:"DockerPath" name:"DockerPath"`
-				ContainerPath    *string `json:"ContainerPath" name:"ContainerPath"`
-				UserScript       *string `json:"UserScript" name:"UserScript"`
-				PreUserScript    *string `json:"PreUserScript" name:"PreUserScript"`
-				Schedulable      *bool   `json:"Schedulable" name:"Schedulable"`
-				Label            []struct {
+				DockerPath    *string `json:"DockerPath" name:"DockerPath"`
+				ContainerPath *string `json:"ContainerPath" name:"ContainerPath"`
+				UserScript    *string `json:"UserScript" name:"UserScript"`
+				PreUserScript *string `json:"PreUserScript" name:"PreUserScript"`
+				Schedulable   *bool   `json:"Schedulable" name:"Schedulable"`
+				Label         []struct {
 					Key   *string `json:"Key" name:"Key"`
 					Value *string `json:"Value" name:"Value"`
 				} `json:"Label" name:"Label"`
@@ -955,16 +967,16 @@ type DescribeNodePoolResponse struct {
 						CustomArg *string `json:"CustomArg" name:"CustomArg"`
 					} `json:"Kubelet"`
 				} `json:"ExtraArg" name:"ExtraArg"`
-				ContainerLogMaxSize  *string `json:"ContainerLogMaxSize" name:"ContainerLogMaxSize"`
+				ContainerLogMaxSize *string `json:"ContainerLogMaxSize" name:"ContainerLogMaxSize"`
 				ContainerLogMaxFiles *string `json:"ContainerLogMaxFiles" name:"ContainerLogMaxFiles"`
-				Taints               []struct {
+				Taints              []struct {
 					Key    *string `json:"Key" name:"Key"`
 					Value  *string `json:"Value" name:"Value"`
 					Effect *string `json:"Effect" name:"Effect"`
 				} `json:"Taints" name:"Taints"`
 			} `json:"AdvancedSetting"`
 			EbsTags []struct {
-				Key   *string `json:"Key" name:"Key"`
+				Key *string `json:"Key" name:"Key"`
 				Value *string `json:"Value" name:"Value"`
 			} `json:"EbsTags"`
 			ScalingConfigurationId   *string `json:"ScalingConfigurationId" name:"ScalingConfigurationId"`
@@ -972,7 +984,7 @@ type DescribeNodePoolResponse struct {
 			Mem                      *string `json:"Mem" name:"Mem"`
 			RemovePolicy             *string `json:"RemovePolicy" name:"RemovePolicy"`
 			InstanceTags             []struct {
-				Key   *string `json:"Key" name:"Key"`
+				Key *string `json:"Key" name:"Key"`
 				Value *string `json:"Value" name:"Value"`
 			} `json:"InstanceTags"`
 			DeleteDataDisk    *bool   `json:"DeleteDataDisk" name:"DeleteDataDisk"`
@@ -989,13 +1001,14 @@ type DescribeNodePoolResponse struct {
 			Value  *string `json:"Value" name:"Value"`
 			Effect *string `json:"Effect" name:"Effect"`
 		} `json:"Taints" name:"Taints"`
-		MinSize            *int    `json:"MinSize" name:"MinSize"`
-		MaxSize            *int    `json:"MaxSize" name:"MaxSize"`
-		DesiredCapacity    *int    `json:"DesiredCapacity" name:"DesiredCapacity"`
-		InstanceCount      *int    `json:"InstanceCount" name:"InstanceCount"`
-		CreateTime         *string `json:"CreateTime" name:"CreateTime"`
-		ClusterId          *string `json:"ClusterId" name:"ClusterId"`
+		MinSize           *int    `json:"MinSize" name:"MinSize"`
+		MaxSize           *int    `json:"MaxSize" name:"MaxSize"`
+		DesiredCapacity   *int    `json:"DesiredCapacity" name:"DesiredCapacity"`
+		InstanceCount     *int    `json:"InstanceCount" name:"InstanceCount"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		ClusterId         *string `json:"ClusterId" name:"ClusterId"`
 		ErrorStatusMessage *string `json:"ErrorStatusMessage" name:"ErrorStatusMessage"`
+		FailureAutoDelete *bool   `json:"FailureAutoDelete" name:"FailureAutoDelete"`
 	} `json:"NodePoolSet"`
 	ScaleUpPolicy   *string `json:"ScaleUpPolicy" name:"ScaleUpPolicy"`
 	ScaleDownPolicy struct {
@@ -1016,11 +1029,12 @@ func (r *DescribeNodePoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteNodePoolRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId          *string   `json:"ClusterId,omitempty" name:"ClusterId"`
 	NodePoolId         []*string `json:"NodePoolId,omitempty" name:"NodePoolId"`
-	InstanceDeleteMode *bool     `json:"InstanceDeleteMode,omitempty" name:"InstanceDeleteMode"`
+	InstanceDeleteMode *string   `json:"InstanceDeleteMode,omitempty" name:"InstanceDeleteMode"`
 }
 
 func (r *DeleteNodePoolRequest) ToJsonString() string {
@@ -1033,8 +1047,8 @@ type DeleteNodePoolResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	ReturnSet []struct {
 		ScalingGroupId *string `json:"ScalingGroupId" name:"ScalingGroupId"`
-		Message        *string `json:"Message" name:"Message"`
-		Return         *bool   `json:"Return" name:"Return"`
+		Message     *string `json:"Message" name:"Message"`
+		ReturnField *bool   `json:"ReturnField" name:"ReturnField"`
 	} `json:"ReturnSet"`
 }
 
@@ -1046,6 +1060,7 @@ func (r *DeleteNodePoolResponse) ToJsonString() string {
 func (r *DeleteNodePoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ModifyNodePoolRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1080,6 +1095,7 @@ func (r *ModifyNodePoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyNodeTemplateRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId    *string                         `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -1106,6 +1122,7 @@ func (r *ModifyNodeTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyNodePoolScaleUpPolicyRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId     *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -1130,6 +1147,7 @@ func (r *ModifyNodePoolScaleUpPolicyResponse) ToJsonString() string {
 func (r *ModifyNodePoolScaleUpPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ModifyNodePoolScaleDownPolicyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1160,6 +1178,7 @@ func (r *ModifyNodePoolScaleDownPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type AddClusterInstanceToNodePoolRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId   *string   `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -1177,8 +1196,8 @@ type AddClusterInstanceToNodePoolResponse struct {
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	InstanceSet []struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
-		Return     *bool   `json:"Return" name:"Return"`
-		Message    *string `json:"Message" name:"Message"`
+		ReturnField *bool   `json:"ReturnField" name:"ReturnField"`
+		Message     *string `json:"Message" name:"Message"`
 	} `json:"InstanceSet"`
 }
 
@@ -1190,6 +1209,7 @@ func (r *AddClusterInstanceToNodePoolResponse) ToJsonString() string {
 func (r *AddClusterInstanceToNodePoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ProtectedFromScaleDownRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1207,8 +1227,8 @@ func (r *ProtectedFromScaleDownRequest) ToJsonString() string {
 type ProtectedFromScaleDownResponse struct {
 	*ksyunhttp.BaseResponse
 	SucceedInstanceIds []*string `json:"SucceedInstanceIds" name:"SucceedInstanceIds"`
-	FailedInstanceIds  []*string `json:"FailedInstanceIds" name:"FailedInstanceIds"`
-	RequestId          *string   `json:"RequestId" name:"RequestId"`
+	FailedInstanceIds []*string `json:"FailedInstanceIds" name:"FailedInstanceIds"`
+	RequestId         *string   `json:"RequestId" name:"RequestId"`
 }
 
 func (r *ProtectedFromScaleDownResponse) ToJsonString() string {
@@ -1219,6 +1239,7 @@ func (r *ProtectedFromScaleDownResponse) ToJsonString() string {
 func (r *ProtectedFromScaleDownResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DeleteClusterInstancesFromNodePoolRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1238,8 +1259,8 @@ type DeleteClusterInstancesFromNodePoolResponse struct {
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	InstanceSet []struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
-		Return     *bool   `json:"Return" name:"Return"`
-		Message    *string `json:"Message" name:"Message"`
+		ReturnField *bool   `json:"ReturnField" name:"ReturnField"`
+		Message     *string `json:"Message" name:"Message"`
 	} `json:"InstanceSet"`
 }
 
@@ -1251,6 +1272,7 @@ func (r *DeleteClusterInstancesFromNodePoolResponse) ToJsonString() string {
 func (r *DeleteClusterInstancesFromNodePoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeEpcImageRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1265,7 +1287,7 @@ func (r *DescribeEpcImageRequest) ToJsonString() string {
 type DescribeEpcImageResponse struct {
 	*ksyunhttp.BaseResponse
 	ImageSet []struct {
-		ImageId   *string `json:"ImageId" name:"ImageId"`
+		ImageId *string `json:"ImageId" name:"ImageId"`
 		ImageName *string `json:"ImageName" name:"ImageName"`
 		ImageType *string `json:"ImageType" name:"ImageType"`
 	} `json:"ImageSet"`
@@ -1281,6 +1303,7 @@ func (r *DescribeEpcImageResponse) ToJsonString() string {
 func (r *DescribeEpcImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type EditEventCollectingRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1307,6 +1330,7 @@ func (r *EditEventCollectingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeNodePoolSummaryRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -1321,7 +1345,7 @@ type DescribeNodePoolSummaryResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	NodePools []struct {
-		NodePoolId   *string `json:"NodePoolId" name:"NodePoolId"`
+		NodePoolId *string `json:"NodePoolId" name:"NodePoolId"`
 		NodePoolName *string `json:"NodePoolName" name:"NodePoolName"`
 	} `json:"NodePools"`
 }
@@ -1334,6 +1358,7 @@ func (r *DescribeNodePoolSummaryResponse) ToJsonString() string {
 func (r *DescribeNodePoolSummaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreateLogRuleRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1362,6 +1387,7 @@ func (r *CreateLogRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeClusterSummaryRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -1375,17 +1401,17 @@ type DescribeClusterSummaryResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	ClusterSet struct {
-		ClusterId         *string `json:"ClusterId" name:"ClusterId"`
-		ClusterName       *string `json:"ClusterName" name:"ClusterName"`
+		ClusterId   *string `json:"ClusterId" name:"ClusterId"`
+		ClusterName *string `json:"ClusterName" name:"ClusterName"`
 		ClusterManageMode *string `json:"ClusterManageMode" name:"ClusterManageMode"`
-		K8sVersion        *string `json:"K8sVersion" name:"K8sVersion"`
-		PodCidr           *string `json:"PodCidr" name:"PodCidr"`
-		ServiceCidr       *string `json:"ServiceCidr" name:"ServiceCidr"`
-		VpcId             *string `json:"VpcId" name:"VpcId"`
-		VpcCidr           *string `json:"VpcCidr" name:"VpcCidr"`
-		NetworkType       *string `json:"NetworkType" name:"NetworkType"`
-		Status            *string `json:"Status" name:"Status"`
-		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		K8sVersion  *string `json:"K8sVersion" name:"K8sVersion"`
+		PodCidr     *string `json:"PodCidr" name:"PodCidr"`
+		ServiceCidr *string `json:"ServiceCidr" name:"ServiceCidr"`
+		VpcId       *string `json:"VpcId" name:"VpcId"`
+		VpcCidr     *string `json:"VpcCidr" name:"VpcCidr"`
+		NetworkType *string `json:"NetworkType" name:"NetworkType"`
+		Status      *string `json:"Status" name:"Status"`
+		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"ClusterSet"`
 }
 
@@ -1397,6 +1423,7 @@ func (r *DescribeClusterSummaryResponse) ToJsonString() string {
 func (r *DescribeClusterSummaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type UpdateNodePoolDelProtectionRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1423,6 +1450,7 @@ func (r *UpdateNodePoolDelProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeReleaseRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -1438,13 +1466,13 @@ type DescribeReleaseResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Releases  []struct {
-		ReleaseName    *string `json:"ReleaseName" name:"ReleaseName"`
-		StatusCode     *string `json:"StatusCode" name:"StatusCode"`
-		Namespace      *string `json:"Namespace" name:"Namespace"`
-		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
-		ChartName      *string `json:"ChartName" name:"ChartName"`
-		ChartVersion   *string `json:"ChartVersion" name:"ChartVersion"`
-		ChartSource    *string `json:"ChartSource" name:"ChartSource"`
+		ReleaseName  *string `json:"ReleaseName" name:"ReleaseName"`
+		StatusCode   *string `json:"StatusCode" name:"StatusCode"`
+		Namespace    *string `json:"Namespace" name:"Namespace"`
+		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		ChartName    *string `json:"ChartName" name:"ChartName"`
+		ChartVersion *string `json:"ChartVersion" name:"ChartVersion"`
+		ChartSource  *string `json:"ChartSource" name:"ChartSource"`
 		ChartNamespace *string `json:"ChartNamespace" name:"ChartNamespace"`
 	} `json:"Releases"`
 	ReleaseVersion *int `json:"ReleaseVersion" name:"ReleaseVersion"`
@@ -1458,6 +1486,7 @@ func (r *DescribeReleaseResponse) ToJsonString() string {
 func (r *DescribeReleaseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeReleaseHistoryRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1526,10 +1555,10 @@ type DescribeReleaseDetailResponse struct {
 			Name      *string `json:"Name" name:"Name"`
 			Namespace *string `json:"Namespace" name:"Namespace"`
 		} `json:"DeployResources" name:"DeployResources"`
-		Values       *string `json:"Values" name:"Values"`
+		Values      *string `json:"Values" name:"Values"`
 		CustomValues *string `json:"CustomValues" name:"CustomValues"`
-		Description  *string `json:"Description" name:"Description"`
-		ChartUrl     *string `json:"ChartUrl" name:"ChartUrl"`
+		Description *string `json:"Description" name:"Description"`
+		ChartUrl    *string `json:"ChartUrl" name:"ChartUrl"`
 	} `json:"ReleaseDetail"`
 }
 
@@ -1664,3 +1693,4 @@ func (r *UpgradeReleaseResponse) ToJsonString() string {
 func (r *UpgradeReleaseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

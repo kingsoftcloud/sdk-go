@@ -1,5 +1,4 @@
 package v20220601
-
 import (
 	"context"
 	"fmt"
@@ -152,3 +151,5 @@ func (c *Client) GetPostpayDetailConsumeWithContextV2(ctx context.Context, reque
 	}
 	return statusCode, msg, nil
 }
+
+

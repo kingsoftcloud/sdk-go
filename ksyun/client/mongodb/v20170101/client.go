@@ -1,5 +1,4 @@
 package v20170101
-
 import (
 	"context"
 	"fmt"
@@ -193,7 +192,7 @@ func (c *Client) DescribeMongoDBInstanceWithContext(ctx context.Context, request
 		request = NewDescribeMongoDBInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeMongoDBInstanceResponse()
 	err, msg := c.Send(request, response)
@@ -208,7 +207,7 @@ func (c *Client) DescribeMongoDBInstanceWithContextV2(ctx context.Context, reque
 		request = NewDescribeMongoDBInstanceRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeMongoDBInstanceResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -713,7 +712,7 @@ func (c *Client) DescribeMongoDBSnapshotWithContext(ctx context.Context, request
 		request = NewDescribeMongoDBSnapshotRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeMongoDBSnapshotResponse()
 	err, msg := c.Send(request, response)
@@ -728,7 +727,7 @@ func (c *Client) DescribeMongoDBSnapshotWithContextV2(ctx context.Context, reque
 		request = NewDescribeMongoDBSnapshotRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeMongoDBSnapshotResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -778,7 +777,7 @@ func (c *Client) DeleteMongoDBSnapshotWithContext(ctx context.Context, request *
 		request = NewDeleteMongoDBSnapshotRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteMongoDBSnapshotResponse()
 	err, msg := c.Send(request, response)
@@ -793,7 +792,7 @@ func (c *Client) DeleteMongoDBSnapshotWithContextV2(ctx context.Context, request
 		request = NewDeleteMongoDBSnapshotRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteMongoDBSnapshotResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -973,7 +972,7 @@ func (c *Client) DeleteSecurityGroupRulesWithContext(ctx context.Context, reques
 		request = NewDeleteSecurityGroupRulesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteSecurityGroupRulesResponse()
 	err, msg := c.Send(request, response)
@@ -988,7 +987,7 @@ func (c *Client) DeleteSecurityGroupRulesWithContextV2(ctx context.Context, requ
 		request = NewDeleteSecurityGroupRulesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteSecurityGroupRulesResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -2533,7 +2532,7 @@ func (c *Client) DescribeParamGroupListWithContext(ctx context.Context, request 
 		request = NewDescribeParamGroupListRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeParamGroupListResponse()
 	err, msg := c.Send(request, response)
@@ -2548,7 +2547,7 @@ func (c *Client) DescribeParamGroupListWithContextV2(ctx context.Context, reques
 		request = NewDescribeParamGroupListRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeParamGroupListResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -2598,7 +2597,7 @@ func (c *Client) DescribeParamGroupInfoWithContext(ctx context.Context, request 
 		request = NewDescribeParamGroupInfoRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeParamGroupInfoResponse()
 	err, msg := c.Send(request, response)
@@ -2613,7 +2612,7 @@ func (c *Client) DescribeParamGroupInfoWithContextV2(ctx context.Context, reques
 		request = NewDescribeParamGroupInfoRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeParamGroupInfoResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -2663,7 +2662,7 @@ func (c *Client) DescribeModifyHistoryWithContext(ctx context.Context, request *
 		request = NewDescribeModifyHistoryRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeModifyHistoryResponse()
 	err, msg := c.Send(request, response)
@@ -2678,7 +2677,7 @@ func (c *Client) DescribeModifyHistoryWithContextV2(ctx context.Context, request
 		request = NewDescribeModifyHistoryRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeModifyHistoryResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -2728,7 +2727,7 @@ func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request 
 		request = NewDescribeInstanceParamsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeInstanceParamsResponse()
 	err, msg := c.Send(request, response)
@@ -2743,7 +2742,7 @@ func (c *Client) DescribeInstanceParamsWithContextV2(ctx context.Context, reques
 		request = NewDescribeInstanceParamsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeInstanceParamsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -2882,3 +2881,5 @@ func (c *Client) DeleteParamGroupWithContextV2(ctx context.Context, request *Del
 	}
 	return statusCode, msg, nil
 }
+
+

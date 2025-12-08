@@ -1,9 +1,9 @@
 package v20200901
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type CreateUserUsageDataExportTaskRequest struct {
 	*ksyunhttp.BaseRequest
@@ -37,6 +37,7 @@ func (r *CreateUserUsageDataExportTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type GetUserUsageDataExportTaskRequest struct {
 	*ksyunhttp.BaseRequest
 	PageSize   *string `json:"PageSize,omitempty" name:"PageSize"`
@@ -53,16 +54,16 @@ type GetUserUsageDataExportTaskResponse struct {
 	RequestId        *string `json:"RequestId" name:"RequestId"`
 	UsageDataPerPage struct {
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
-		PageSize   *int `json:"PageSize" name:"PageSize"`
+		PageSize *int `json:"PageSize" name:"PageSize"`
 		PageNumber *int `json:"PageNumber" name:"PageNumber"`
-		DataItem   []struct {
+		DataItem []struct {
 			TaskId     *string `json:"TaskId" name:"TaskId"`
 			CreateTime *string `json:"CreateTime" name:"CreateTime"`
 			UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
 			Status     *string `json:"Status" name:"Status"`
 			TaskConfig struct {
 				StartTime *string `json:"StartTime" name:"StartTime"`
-				EndTime   *string `json:"EndTime" name:"EndTime"`
+				EndTime *string `json:"EndTime" name:"EndTime"`
 			} `json:"TaskConfig"`
 			DownloadUrl *string `json:"DownloadUrl" name:"DownloadUrl"`
 		} `json:"DataItem" name:"DataItem"`
@@ -77,6 +78,7 @@ func (r *GetUserUsageDataExportTaskResponse) ToJsonString() string {
 func (r *GetUserUsageDataExportTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DeleteUserUsageDataExportTaskRequest struct {
 	*ksyunhttp.BaseRequest
@@ -101,6 +103,7 @@ func (r *DeleteUserUsageDataExportTaskResponse) ToJsonString() string {
 func (r *DeleteUserUsageDataExportTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type GetDomainUsageDataRequest struct {
 	*ksyunhttp.BaseRequest
@@ -147,6 +150,7 @@ func (r *GetDomainUsageDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type CreateUsageDetailDataExportTaskRequest struct {
 	*ksyunhttp.BaseRequest
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -179,6 +183,7 @@ func (r *CreateUsageDetailDataExportTaskResponse) ToJsonString() string {
 func (r *CreateUsageDetailDataExportTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type GetUsageDetailDataExportTaskRequest struct {
 	*ksyunhttp.BaseRequest
@@ -227,3 +232,4 @@ func (r *DeleteUsageDetailDataExportTaskResponse) ToJsonString() string {
 func (r *DeleteUsageDetailDataExportTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

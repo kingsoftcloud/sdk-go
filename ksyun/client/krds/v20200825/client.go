@@ -1,5 +1,4 @@
 package v20200825
-
 import (
 	"context"
 	"fmt"
@@ -63,7 +62,7 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
 		request = NewCreateSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCreateSecurityGroupResponse()
 	err, msg := c.Send(request, response)
@@ -78,7 +77,7 @@ func (c *Client) CreateSecurityGroupWithContextV2(ctx context.Context, request *
 		request = NewCreateSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCreateSecurityGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -193,7 +192,7 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
 		request = NewDeleteSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteSecurityGroupResponse()
 	err, msg := c.Send(request, response)
@@ -208,7 +207,7 @@ func (c *Client) DeleteSecurityGroupWithContextV2(ctx context.Context, request *
 		request = NewDeleteSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteSecurityGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -258,7 +257,7 @@ func (c *Client) ModifySecurityGroupWithContext(ctx context.Context, request *Mo
 		request = NewModifySecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifySecurityGroupResponse()
 	err, msg := c.Send(request, response)
@@ -273,7 +272,7 @@ func (c *Client) ModifySecurityGroupWithContextV2(ctx context.Context, request *
 		request = NewModifySecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifySecurityGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -323,7 +322,7 @@ func (c *Client) CloneSecurityGroupWithContext(ctx context.Context, request *Clo
 		request = NewCloneSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCloneSecurityGroupResponse()
 	err, msg := c.Send(request, response)
@@ -338,7 +337,7 @@ func (c *Client) CloneSecurityGroupWithContextV2(ctx context.Context, request *C
 		request = NewCloneSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCloneSecurityGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -388,7 +387,7 @@ func (c *Client) ModifySecurityGroupRuleWithContext(ctx context.Context, request
 		request = NewModifySecurityGroupRuleRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifySecurityGroupRuleResponse()
 	err, msg := c.Send(request, response)
@@ -403,7 +402,7 @@ func (c *Client) ModifySecurityGroupRuleWithContextV2(ctx context.Context, reque
 		request = NewModifySecurityGroupRuleRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifySecurityGroupRuleResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -453,7 +452,7 @@ func (c *Client) SecurityGroupRelationWithContext(ctx context.Context, request *
 		request = NewSecurityGroupRelationRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewSecurityGroupRelationResponse()
 	err, msg := c.Send(request, response)
@@ -468,7 +467,7 @@ func (c *Client) SecurityGroupRelationWithContextV2(ctx context.Context, request
 		request = NewSecurityGroupRelationRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewSecurityGroupRelationResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -518,7 +517,7 @@ func (c *Client) ModifySecurityGroupRuleNameWithContext(ctx context.Context, req
 		request = NewModifySecurityGroupRuleNameRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifySecurityGroupRuleNameResponse()
 	err, msg := c.Send(request, response)
@@ -533,7 +532,7 @@ func (c *Client) ModifySecurityGroupRuleNameWithContextV2(ctx context.Context, r
 		request = NewModifySecurityGroupRuleNameRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewModifySecurityGroupRuleNameResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -672,3 +671,5 @@ func (c *Client) ModifyDBParameterGroupWithContextV2(ctx context.Context, reques
 	}
 	return statusCode, msg, nil
 }
+
+

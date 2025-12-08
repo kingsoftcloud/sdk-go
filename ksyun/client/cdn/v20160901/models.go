@@ -1,32 +1,9 @@
 package v20160901
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
-type GetDomainLogsRequest struct {
-	*ksyunhttp.BaseRequest
-}
-
-func (r *GetDomainLogsRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type GetDomainLogsResponse struct {
-	*ksyunhttp.BaseResponse
-	GetDomainLogsResponse *string `json:"GetDomainLogsResponse" name:"GetDomainLogsResponse"`
-}
-
-func (r *GetDomainLogsResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *GetDomainLogsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
 
 type GetRefreshOrPreloadTaskRequest struct {
 	*ksyunhttp.BaseRequest
@@ -52,6 +29,7 @@ func (r *GetRefreshOrPreloadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type RefreshCachesRequest struct {
 	*ksyunhttp.BaseRequest
 	Files *string `json:"Files,omitempty" name:"Files"`
@@ -76,6 +54,7 @@ func (r *RefreshCachesResponse) ToJsonString() string {
 func (r *RefreshCachesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type GetDomainPidDimensionUsageDataRequest struct {
 	*ksyunhttp.BaseRequest
@@ -114,3 +93,4 @@ func (r *GetDomainPidDimensionUsageDataResponse) ToJsonString() string {
 func (r *GetDomainPidDimensionUsageDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

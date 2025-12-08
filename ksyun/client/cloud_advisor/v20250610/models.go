@@ -1,9 +1,9 @@
 package v20250610
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type GetReportRequest struct {
 	*ksyunhttp.BaseRequest
@@ -23,12 +23,12 @@ type GetReportResponse struct {
 	Msg       *string `json:"msg" name:"msg"`
 	RequestId *string `json:"requestId" name:"requestId"`
 	Data      []struct {
-		TaskId       *string `json:"TaskId" name:"TaskId"`
-		FilePdfUrl   *string `json:"FilePdfUrl" name:"FilePdfUrl"`
+		TaskId     *string `json:"TaskId" name:"TaskId"`
+		FilePdfUrl *string `json:"FilePdfUrl" name:"FilePdfUrl"`
 		FileExcelUrl *string `json:"FileExcelUrl" name:"FileExcelUrl"`
-		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
-		Status       *int    `json:"Status" name:"Status"`
-		StatusName   *string `json:"StatusName" name:"StatusName"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		Status     *int    `json:"Status" name:"Status"`
+		StatusName *string `json:"StatusName" name:"StatusName"`
 	} `json:"Data"`
 }
 
@@ -40,6 +40,7 @@ func (r *GetReportResponse) ToJsonString() string {
 func (r *GetReportResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreateTaskRequest struct {
 	*ksyunhttp.BaseRequest
@@ -72,6 +73,7 @@ func (r *CreateTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListInspectionItemRequest struct {
 	*ksyunhttp.BaseRequest
 	PageNum  *int `json:"pageNum,omitempty" name:"pageNum"`
@@ -95,7 +97,7 @@ type ListInspectionItemResponse struct {
 			InspectionItemName *string `json:"inspectionItemName" name:"inspectionItemName"`
 			ProductGroupId     *int    `json:"productGroupId" name:"productGroupId"`
 			ProductGroupName   *string `json:"productGroupName" name:"productGroupName"`
-			Type               *int    `json:"type" name:"type"`
+			TypeField          *int    `json:"type" name:"type"`
 			TypeName           *string `json:"typeName" name:"typeName"`
 			Status             *int    `json:"status" name:"status"`
 			StatusName         *string `json:"StatusName" name:"StatusName"`
@@ -104,8 +106,8 @@ type ListInspectionItemResponse struct {
 			RiskDetails        *string `json:"riskDetails" name:"riskDetails"`
 		} `json:"Items" name:"Items"`
 		Total *int `json:"Total" name:"Total"`
-		Page  *int `json:"Page" name:"Page"`
-		Size  *int `json:"Size" name:"Size"`
+		Page *int `json:"Page" name:"Page"`
+		Size *int `json:"Size" name:"Size"`
 	} `json:"Data"`
 }
 
@@ -117,3 +119,4 @@ func (r *ListInspectionItemResponse) ToJsonString() string {
 func (r *ListInspectionItemResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

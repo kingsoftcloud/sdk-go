@@ -1,9 +1,9 @@
 package v20170101
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type ListStreamDurationsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -33,6 +33,7 @@ func (r *ListStreamDurationsResponse) ToJsonString() string {
 func (r *ListStreamDurationsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListHistoryPubStreamsErrInfoRequest struct {
 	*ksyunhttp.BaseRequest
@@ -66,6 +67,7 @@ func (r *ListHistoryPubStreamsErrInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListHistoryPubStreamsInfoRequest struct {
 	*ksyunhttp.BaseRequest
 	UniqueName    *string `json:"UniqueName,omitempty" name:"UniqueName"`
@@ -98,6 +100,7 @@ func (r *ListHistoryPubStreamsInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ForbidStreamRequest struct {
 	*ksyunhttp.BaseRequest
 	UniqueName         *string `json:"UniqueName,omitempty" name:"UniqueName"`
@@ -115,6 +118,7 @@ func (r *ForbidStreamRequest) ToJsonString() string {
 type ForbidStreamResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
+		RetCode *int `json:"RetCode" name:"RetCode"`
 		RetMsg *string `json:"RetMsg" name:"RetMsg"`
 	} `json:"Data"`
 }
@@ -127,6 +131,7 @@ func (r *ForbidStreamResponse) ToJsonString() string {
 func (r *ForbidStreamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ResumeStreamRequest struct {
 	*ksyunhttp.BaseRequest
@@ -155,6 +160,7 @@ func (r *ResumeStreamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type GetBlacklistRequest struct {
 	*ksyunhttp.BaseRequest
 	UniqueName *string `json:"UniqueName,omitempty" name:"UniqueName"`
@@ -180,6 +186,7 @@ func (r *GetBlacklistResponse) ToJsonString() string {
 func (r *GetBlacklistResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CheckBlacklistRequest struct {
 	*ksyunhttp.BaseRequest
@@ -236,3 +243,4 @@ func (r *ListRealtimeStreamsInfoResponse) ToJsonString() string {
 func (r *ListRealtimeStreamsInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

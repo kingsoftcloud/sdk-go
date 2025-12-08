@@ -1,9 +1,9 @@
 package v20190401
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type ListOperateLogsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -30,20 +30,20 @@ type ListOperateLogsResponse struct {
 	*ksyunhttp.BaseResponse
 	Total  *int `json:"Total" name:"Total"`
 	Events []struct {
-		ErrorMessage      *string `json:"ErrorMessage" name:"ErrorMessage"`
-		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
-		ServiceName       *string `json:"ServiceName" name:"ServiceName"`
-		EventSource       *string `json:"EventSource" name:"EventSource"`
-		ApiVersion        *string `json:"ApiVersion" name:"ApiVersion"`
+		ErrorMessage *string `json:"ErrorMessage" name:"ErrorMessage"`
+		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		ServiceName  *string `json:"ServiceName" name:"ServiceName"`
+		EventSource  *string `json:"EventSource" name:"EventSource"`
+		ApiVersion   *string `json:"ApiVersion" name:"ApiVersion"`
 		RequestParameters struct {
 		} `json:"RequestParameters" name:"RequestParameters"`
 		SourceIpAddress *string `json:"SourceIpAddress" name:"SourceIpAddress"`
-		EventVersion    *string `json:"EventVersion" name:"EventVersion"`
-		EventType       *string `json:"EventType" name:"EventType"`
-		EventId         *string `json:"EventId" name:"EventId"`
-		EventRw         *string `json:"EventRw" name:"EventRw"`
-		EventName       *string `json:"EventName" name:"EventName"`
-		UserIdentity    struct {
+		EventVersion *string `json:"EventVersion" name:"EventVersion"`
+		EventType    *string `json:"EventType" name:"EventType"`
+		EventId      *string `json:"EventId" name:"EventId"`
+		EventRw      *string `json:"EventRw" name:"EventRw"`
+		EventName    *string `json:"EventName" name:"EventName"`
+		UserIdentity struct {
 			RoleName  *string `json:"RoleName" name:"RoleName"`
 			AccountId *string `json:"AccountId" name:"AccountId"`
 			UserName  *string `json:"UserName" name:"UserName"`
@@ -51,14 +51,14 @@ type ListOperateLogsResponse struct {
 		} `json:"UserIdentity" name:"UserIdentity"`
 		ReferencedResources []struct {
 		} `json:"ReferencedResources" name:"ReferencedResources"`
-		ErrorCode    *string `json:"ErrorCode" name:"ErrorCode"`
-		Region       *string `json:"Region" name:"Region"`
-		RequestId    *string `json:"RequestId" name:"RequestId"`
-		EventTime    *string `json:"EventTime" name:"EventTime"`
-		UserAgent    *string `json:"UserAgent" name:"UserAgent"`
+		ErrorCode *string `json:"ErrorCode" name:"ErrorCode"`
+		Region    *string `json:"Region" name:"Region"`
+		RequestId *string `json:"RequestId" name:"RequestId"`
+		EventTime *string `json:"EventTime" name:"EventTime"`
+		UserAgent *string `json:"UserAgent" name:"UserAgent"`
 		ResourceType *string `json:"ResourceType" name:"ResourceType"`
 		ResourceName *string `json:"ResourceName" name:"ResourceName"`
-		RegionCn     *string `json:"RegionCn" name:"RegionCn"`
+		RegionCn  *string `json:"RegionCn" name:"RegionCn"`
 	} `json:"Events"`
 	SearchAfter *int    `json:"SearchAfter" name:"SearchAfter"`
 	RequestId   *string `json:"RequestId" name:"RequestId"`
@@ -72,3 +72,4 @@ func (r *ListOperateLogsResponse) ToJsonString() string {
 func (r *ListOperateLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

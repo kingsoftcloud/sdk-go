@@ -1,5 +1,4 @@
 package v20160701
-
 import (
 	"context"
 	"fmt"
@@ -193,7 +192,7 @@ func (c *Client) DescribeCacheClusterWithContext(ctx context.Context, request *D
 		request = NewDescribeCacheClusterRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeCacheClusterResponse()
 	err, msg := c.Send(request, response)
@@ -208,7 +207,7 @@ func (c *Client) DescribeCacheClusterWithContextV2(ctx context.Context, request 
 		request = NewDescribeCacheClusterRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeCacheClusterResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -258,7 +257,7 @@ func (c *Client) DescribeCacheClustersWithContext(ctx context.Context, request *
 		request = NewDescribeCacheClustersRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeCacheClustersResponse()
 	err, msg := c.Send(request, response)
@@ -273,7 +272,7 @@ func (c *Client) DescribeCacheClustersWithContextV2(ctx context.Context, request
 		request = NewDescribeCacheClustersRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeCacheClustersResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -648,7 +647,7 @@ func (c *Client) DescribeCacheDefaultParametersWithContext(ctx context.Context, 
 		request = NewDescribeCacheDefaultParametersRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeCacheDefaultParametersResponse()
 	err, msg := c.Send(request, response)
@@ -663,7 +662,7 @@ func (c *Client) DescribeCacheDefaultParametersWithContextV2(ctx context.Context
 		request = NewDescribeCacheDefaultParametersRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeCacheDefaultParametersResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -2078,7 +2077,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
 		request = NewDescribeInstancesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeInstancesResponse()
 	err, msg := c.Send(request, response)
@@ -2093,7 +2092,7 @@ func (c *Client) DescribeInstancesWithContextV2(ctx context.Context, request *De
 		request = NewDescribeInstancesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeInstancesResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -2403,7 +2402,7 @@ func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *
 		request = NewDescribeSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeSecurityGroupResponse()
 	err, msg := c.Send(request, response)
@@ -2418,7 +2417,7 @@ func (c *Client) DescribeSecurityGroupWithContextV2(ctx context.Context, request
 		request = NewDescribeSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeSecurityGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -2468,7 +2467,7 @@ func (c *Client) DescribeSecurityGroupsWithContext(ctx context.Context, request 
 		request = NewDescribeSecurityGroupsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeSecurityGroupsResponse()
 	err, msg := c.Send(request, response)
@@ -2483,7 +2482,7 @@ func (c *Client) DescribeSecurityGroupsWithContextV2(ctx context.Context, reques
 		request = NewDescribeSecurityGroupsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeSecurityGroupsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -2923,7 +2922,7 @@ func (c *Client) DescribeHotKeysWithContext(ctx context.Context, request *Descri
 		request = NewDescribeHotKeysRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeHotKeysResponse()
 	err, msg := c.Send(request, response)
@@ -2938,7 +2937,7 @@ func (c *Client) DescribeHotKeysWithContextV2(ctx context.Context, request *Desc
 		request = NewDescribeHotKeysRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeHotKeysResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -2988,7 +2987,7 @@ func (c *Client) AnalyzeHotKeysWithContext(ctx context.Context, request *Analyze
 		request = NewAnalyzeHotKeysRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewAnalyzeHotKeysResponse()
 	err, msg := c.Send(request, response)
@@ -3003,7 +3002,7 @@ func (c *Client) AnalyzeHotKeysWithContextV2(ctx context.Context, request *Analy
 		request = NewAnalyzeHotKeysRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewAnalyzeHotKeysResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -3053,7 +3052,7 @@ func (c *Client) CloseDirectAccessToClusterWithContext(ctx context.Context, requ
 		request = NewCloseDirectAccessToClusterRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCloseDirectAccessToClusterResponse()
 	err, msg := c.Send(request, response)
@@ -3068,7 +3067,7 @@ func (c *Client) CloseDirectAccessToClusterWithContextV2(ctx context.Context, re
 		request = NewCloseDirectAccessToClusterRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCloseDirectAccessToClusterResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -3118,7 +3117,7 @@ func (c *Client) OpenDirectAccessToClusterWithContext(ctx context.Context, reque
 		request = NewOpenDirectAccessToClusterRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewOpenDirectAccessToClusterResponse()
 	err, msg := c.Send(request, response)
@@ -3133,7 +3132,7 @@ func (c *Client) OpenDirectAccessToClusterWithContextV2(ctx context.Context, req
 		request = NewOpenDirectAccessToClusterRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewOpenDirectAccessToClusterResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -3183,7 +3182,7 @@ func (c *Client) DescribeParentBackUpsSnapshotsWithContext(ctx context.Context, 
 		request = NewDescribeParentBackUpsSnapshotsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeParentBackUpsSnapshotsResponse()
 	err, msg := c.Send(request, response)
@@ -3198,7 +3197,7 @@ func (c *Client) DescribeParentBackUpsSnapshotsWithContextV2(ctx context.Context
 		request = NewDescribeParentBackUpsSnapshotsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeParentBackUpsSnapshotsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -3248,7 +3247,7 @@ func (c *Client) DescribeBackUpsSnapshotsDetailWithContext(ctx context.Context, 
 		request = NewDescribeBackUpsSnapshotsDetailRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeBackUpsSnapshotsDetailResponse()
 	err, msg := c.Send(request, response)
@@ -3263,7 +3262,7 @@ func (c *Client) DescribeBackUpsSnapshotsDetailWithContextV2(ctx context.Context
 		request = NewDescribeBackUpsSnapshotsDetailRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeBackUpsSnapshotsDetailResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -3313,7 +3312,7 @@ func (c *Client) DeleteLevelSnapshotsWithContext(ctx context.Context, request *D
 		request = NewDeleteLevelSnapshotsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteLevelSnapshotsResponse()
 	err, msg := c.Send(request, response)
@@ -3328,7 +3327,7 @@ func (c *Client) DeleteLevelSnapshotsWithContextV2(ctx context.Context, request 
 		request = NewDeleteLevelSnapshotsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteLevelSnapshotsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -3443,7 +3442,7 @@ func (c *Client) DescribeBigKeysWithContext(ctx context.Context, request *Descri
 		request = NewDescribeBigKeysRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeBigKeysResponse()
 	err, msg := c.Send(request, response)
@@ -3458,7 +3457,7 @@ func (c *Client) DescribeBigKeysWithContextV2(ctx context.Context, request *Desc
 		request = NewDescribeBigKeysRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeBigKeysResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -3508,7 +3507,7 @@ func (c *Client) DeleteBigKeysAnalyseResultWithContext(ctx context.Context, requ
 		request = NewDeleteBigKeysAnalyseResultRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteBigKeysAnalyseResultResponse()
 	err, msg := c.Send(request, response)
@@ -3523,7 +3522,7 @@ func (c *Client) DeleteBigKeysAnalyseResultWithContextV2(ctx context.Context, re
 		request = NewDeleteBigKeysAnalyseResultRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteBigKeysAnalyseResultResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -3573,7 +3572,7 @@ func (c *Client) AnalyzeBigKeysWithContext(ctx context.Context, request *Analyze
 		request = NewAnalyzeBigKeysRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewAnalyzeBigKeysResponse()
 	err, msg := c.Send(request, response)
@@ -3588,7 +3587,7 @@ func (c *Client) AnalyzeBigKeysWithContextV2(ctx context.Context, request *Analy
 		request = NewAnalyzeBigKeysRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewAnalyzeBigKeysResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -3638,7 +3637,7 @@ func (c *Client) DescribeCreateSnapshotStatusWithContext(ctx context.Context, re
 		request = NewDescribeCreateSnapshotStatusRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeCreateSnapshotStatusResponse()
 	err, msg := c.Send(request, response)
@@ -3653,7 +3652,7 @@ func (c *Client) DescribeCreateSnapshotStatusWithContextV2(ctx context.Context, 
 		request = NewDescribeCreateSnapshotStatusRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeCreateSnapshotStatusResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -4028,7 +4027,7 @@ func (c *Client) DescribeRestoreTimePointsWithContext(ctx context.Context, reque
 		request = NewDescribeRestoreTimePointsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeRestoreTimePointsResponse()
 	err, msg := c.Send(request, response)
@@ -4043,7 +4042,7 @@ func (c *Client) DescribeRestoreTimePointsWithContextV2(ctx context.Context, req
 		request = NewDescribeRestoreTimePointsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeRestoreTimePointsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -4093,7 +4092,7 @@ func (c *Client) DescribeBigHotKeysWithContext(ctx context.Context, request *Des
 		request = NewDescribeBigHotKeysRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeBigHotKeysResponse()
 	err, msg := c.Send(request, response)
@@ -4108,7 +4107,7 @@ func (c *Client) DescribeBigHotKeysWithContextV2(ctx context.Context, request *D
 		request = NewDescribeBigHotKeysRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeBigHotKeysResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -4158,7 +4157,7 @@ func (c *Client) DescribePluginsWithContext(ctx context.Context, request *Descri
 		request = NewDescribePluginsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribePluginsResponse()
 	err, msg := c.Send(request, response)
@@ -4173,7 +4172,7 @@ func (c *Client) DescribePluginsWithContextV2(ctx context.Context, request *Desc
 		request = NewDescribePluginsRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribePluginsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -4312,3 +4311,5 @@ func (c *Client) UninstallPluginsWithContextV2(ctx context.Context, request *Uni
 	}
 	return statusCode, msg, nil
 }
+
+

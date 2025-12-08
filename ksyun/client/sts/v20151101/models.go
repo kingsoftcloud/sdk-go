@@ -1,9 +1,9 @@
 package v20151101
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type AssumeRoleRequest struct {
 	*ksyunhttp.BaseRequest
@@ -44,6 +44,7 @@ func (r *AssumeRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type AssumeRoleTemporarySAMLRequest struct {
 	*ksyunhttp.BaseRequest
 	RoleKrn         *string `json:"RoleKrn,omitempty" name:"RoleKrn"`
@@ -82,3 +83,4 @@ func (r *AssumeRoleTemporarySAMLResponse) ToJsonString() string {
 func (r *AssumeRoleTemporarySAMLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

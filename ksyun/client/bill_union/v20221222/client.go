@@ -1,5 +1,4 @@
 package v20221222
-
 import (
 	"context"
 	"fmt"
@@ -412,3 +411,5 @@ func (c *Client) QueryUserConsumeWithContextV2(ctx context.Context, request *Que
 	}
 	return statusCode, msg, nil
 }
+
+

@@ -1,5 +1,4 @@
 package v20200901
-
 import (
 	"context"
 	"fmt"
@@ -388,7 +387,7 @@ func (c *Client) ListResourcesWithContext(ctx context.Context, request *ListReso
 		request = NewListResourcesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewListResourcesResponse()
 	err, msg := c.Send(request, response)
@@ -403,7 +402,7 @@ func (c *Client) ListResourcesWithContextV2(ctx context.Context, request *ListRe
 		request = NewListResourcesRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewListResourcesResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -672,3 +671,5 @@ func (c *Client) CreateTagAndAttachResourceWithContextV2(ctx context.Context, re
 	}
 	return statusCode, msg, nil
 }
+
+

@@ -1,5 +1,4 @@
 package v20180108
-
 import (
 	"context"
 	"fmt"
@@ -63,7 +62,7 @@ func (c *Client) SchemaStructWithContext(ctx context.Context, request *SchemaStr
 		request = NewSchemaStructRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewSchemaStructResponse()
 	err, msg := c.Send(request, response)
@@ -78,7 +77,7 @@ func (c *Client) SchemaStructWithContextV2(ctx context.Context, request *SchemaS
 		request = NewSchemaStructRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewSchemaStructResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -128,7 +127,7 @@ func (c *Client) ConnectivityCheckWithContext(ctx context.Context, request *Conn
 		request = NewConnectivityCheckRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewConnectivityCheckResponse()
 	err, msg := c.Send(request, response)
@@ -143,7 +142,7 @@ func (c *Client) ConnectivityCheckWithContextV2(ctx context.Context, request *Co
 		request = NewConnectivityCheckRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewConnectivityCheckResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -258,7 +257,7 @@ func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskR
 		request = NewCreateTaskRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCreateTaskResponse()
 	err, msg := c.Send(request, response)
@@ -273,7 +272,7 @@ func (c *Client) CreateTaskWithContextV2(ctx context.Context, request *CreateTas
 		request = NewCreateTaskRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewCreateTaskResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -388,7 +387,7 @@ func (c *Client) OperateTaskWithContext(ctx context.Context, request *OperateTas
 		request = NewOperateTaskRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewOperateTaskResponse()
 	err, msg := c.Send(request, response)
@@ -403,7 +402,7 @@ func (c *Client) OperateTaskWithContextV2(ctx context.Context, request *OperateT
 		request = NewOperateTaskRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewOperateTaskResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -453,7 +452,7 @@ func (c *Client) DescribeConnConfigWithContext(ctx context.Context, request *Des
 		request = NewDescribeConnConfigRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeConnConfigResponse()
 	err, msg := c.Send(request, response)
@@ -468,7 +467,7 @@ func (c *Client) DescribeConnConfigWithContextV2(ctx context.Context, request *D
 		request = NewDescribeConnConfigRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeConnConfigResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -518,7 +517,7 @@ func (c *Client) DescribePrecheckWithContext(ctx context.Context, request *Descr
 		request = NewDescribePrecheckRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribePrecheckResponse()
 	err, msg := c.Send(request, response)
@@ -533,7 +532,7 @@ func (c *Client) DescribePrecheckWithContextV2(ctx context.Context, request *Des
 		request = NewDescribePrecheckRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribePrecheckResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1168,7 +1167,7 @@ func (c *Client) DescribeRegionConfigWithContext(ctx context.Context, request *D
 		request = NewDescribeRegionConfigRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeRegionConfigResponse()
 	err, msg := c.Send(request, response)
@@ -1183,7 +1182,7 @@ func (c *Client) DescribeRegionConfigWithContextV2(ctx context.Context, request 
 		request = NewDescribeRegionConfigRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeRegionConfigResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1257,3 +1256,5 @@ func (c *Client) TaskBirdViewWithContextV2(ctx context.Context, request *TaskBir
 	}
 	return statusCode, msg, nil
 }
+
+

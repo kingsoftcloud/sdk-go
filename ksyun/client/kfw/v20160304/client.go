@@ -1,5 +1,4 @@
 package v20160304
-
 import (
 	"context"
 	"fmt"
@@ -87,27 +86,27 @@ func (c *Client) DescribeCfwAvWithContextV2(ctx context.Context, request *Descri
 	}
 	return statusCode, msg, nil
 }
-func NewDescribeCloudFireWallInstanceRequest() (request *DescribeCloudFireWallInstanceRequest) {
-	request = &DescribeCloudFireWallInstanceRequest{
+func NewDeleteBatchCfwAddrbookRequest() (request *DeleteBatchCfwAddrbookRequest) {
+	request = &DeleteBatchCfwAddrbookRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
 	}
-	request.Init().WithApiInfo("kfw", APIVersion, "DescribeCloudFireWallInstance")
+	request.Init().WithApiInfo("kfw", APIVersion, "DeleteBatchCfwAddrbook")
 	return
 }
 
-func NewDescribeCloudFireWallInstanceResponse() (response *DescribeCloudFireWallInstanceResponse) {
-	response = &DescribeCloudFireWallInstanceResponse{
+func NewDeleteBatchCfwAddrbookResponse() (response *DeleteBatchCfwAddrbookResponse) {
+	response = &DeleteBatchCfwAddrbookResponse{
 		BaseResponse: &ksyunhttp.BaseResponse{},
 	}
 	return
 }
 
-func (c *Client) DescribeCloudFireWallInstance(request *DescribeCloudFireWallInstanceRequest) string {
-	return c.DescribeCloudFireWallInstanceWithContext(context.Background(), request)
+func (c *Client) DeleteBatchCfwAddrbook(request *DeleteBatchCfwAddrbookRequest) string {
+	return c.DeleteBatchCfwAddrbookWithContext(context.Background(), request)
 }
 
-func (c *Client) DescribeCloudFireWallInstanceSend(request *DescribeCloudFireWallInstanceRequest) (*DescribeCloudFireWallInstanceResponse, error) {
-	statusCode, msg, err := c.DescribeCloudFireWallInstanceWithContextV2(context.Background(), request)
+func (c *Client) DeleteBatchCfwAddrbookSend(request *DeleteBatchCfwAddrbookRequest) (*DeleteBatchCfwAddrbookResponse, error) {
+	statusCode, msg, err := c.DeleteBatchCfwAddrbookWithContextV2(context.Background(), request)
 	if err != nil {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
 	}
@@ -115,7 +114,7 @@ func (c *Client) DescribeCloudFireWallInstanceSend(request *DescribeCloudFireWal
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
-	var respStruct DescribeCloudFireWallInstanceResponse
+	var respStruct DeleteBatchCfwAddrbookResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
@@ -123,14 +122,14 @@ func (c *Client) DescribeCloudFireWallInstanceSend(request *DescribeCloudFireWal
 	return &respStruct, nil
 }
 
-func (c *Client) DescribeCloudFireWallInstanceWithContext(ctx context.Context, request *DescribeCloudFireWallInstanceRequest) string {
+func (c *Client) DeleteBatchCfwAddrbookWithContext(ctx context.Context, request *DeleteBatchCfwAddrbookRequest) string {
 	if request == nil {
-		request = NewDescribeCloudFireWallInstanceRequest()
+		request = NewDeleteBatchCfwAddrbookRequest()
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
-	response := NewDescribeCloudFireWallInstanceResponse()
+	response := NewDeleteBatchCfwAddrbookResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -138,17 +137,19 @@ func (c *Client) DescribeCloudFireWallInstanceWithContext(ctx context.Context, r
 	return msg
 }
 
-func (c *Client) DescribeCloudFireWallInstanceWithContextV2(ctx context.Context, request *DescribeCloudFireWallInstanceRequest) (int, string, error) {
+func (c *Client) DeleteBatchCfwAddrbookWithContextV2(ctx context.Context, request *DeleteBatchCfwAddrbookRequest) (int, string, error) {
 	if request == nil {
-		request = NewDescribeCloudFireWallInstanceRequest()
+		request = NewDeleteBatchCfwAddrbookRequest()
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
-	response := NewDescribeCloudFireWallInstanceResponse()
+	response := NewDeleteBatchCfwAddrbookResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
 	}
 	return statusCode, msg, nil
 }
+
+

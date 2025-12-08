@@ -1,16 +1,19 @@
 package v20160304
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
+
 type CreateCertificateRequest struct {
 	*ksyunhttp.BaseRequest
-	CertificateName *string `json:"CertificateName,omitempty" name:"CertificateName"`
-	PrivateKey      *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
-	PublicKey       *string `json:"PublicKey,omitempty" name:"PublicKey"`
-	CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
+	CertificateName  *string `json:"CertificateName,omitempty" name:"CertificateName"`
+	PrivateKey       *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+	PublicKey        *string `json:"PublicKey,omitempty" name:"PublicKey"`
+	CertificateType  *string `json:"CertificateType,omitempty" name:"CertificateType"`
+	Source           *string `json:"Source,omitempty" name:"Source"`
+	SslCertificateId *string `json:"SslCertificateId,omitempty" name:"SslCertificateId"`
+	Description      *string `json:"Description,omitempty" name:"Description"`
 }
 
 func (r *CreateCertificateRequest) ToJsonString() string {
@@ -22,12 +25,12 @@ type CreateCertificateResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	Certificate struct {
-		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime    *string `json:"CreateTime" name:"CreateTime"`
 		CertificateName *string `json:"CertificateName" name:"CertificateName"`
-		CertificateId   *string `json:"CertificateId" name:"CertificateId"`
-		ExpireTime      *string `json:"ExpireTime" name:"ExpireTime"`
-		CommonName      *string `json:"CommonName" name:"CommonName"`
-		CertAuthority   *string `json:"CertAuthority" name:"CertAuthority"`
+		CertificateId *string `json:"CertificateId" name:"CertificateId"`
+		ExpireTime    *string `json:"ExpireTime" name:"ExpireTime"`
+		CommonName    *string `json:"CommonName" name:"CommonName"`
+		CertAuthority *string `json:"CertAuthority" name:"CertAuthority"`
 	} `json:"Certificate"`
 }
 
@@ -39,6 +42,7 @@ func (r *CreateCertificateResponse) ToJsonString() string {
 func (r *CreateCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DeleteCertificateRequest struct {
 	*ksyunhttp.BaseRequest
@@ -52,8 +56,8 @@ func (r *DeleteCertificateRequest) ToJsonString() string {
 
 type DeleteCertificateResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Return    *bool   `json:"Return" name:"Return"`
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	ReturnField *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DeleteCertificateResponse) ToJsonString() string {
@@ -64,6 +68,7 @@ func (r *DeleteCertificateResponse) ToJsonString() string {
 func (r *DeleteCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ModifyCertificateRequest struct {
 	*ksyunhttp.BaseRequest
@@ -82,12 +87,12 @@ type ModifyCertificateResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	Certificate struct {
-		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime    *string `json:"CreateTime" name:"CreateTime"`
 		CertificateName *string `json:"CertificateName" name:"CertificateName"`
-		CertificateId   *string `json:"CertificateId" name:"CertificateId"`
-		ExpireTime      *string `json:"ExpireTime" name:"ExpireTime"`
-		CommonName      *string `json:"CommonName" name:"CommonName"`
-		CertAuthority   *string `json:"CertAuthority" name:"CertAuthority"`
+		CertificateId *string `json:"CertificateId" name:"CertificateId"`
+		ExpireTime    *string `json:"ExpireTime" name:"ExpireTime"`
+		CommonName    *string `json:"CommonName" name:"CommonName"`
+		CertAuthority *string `json:"CertAuthority" name:"CertAuthority"`
 	} `json:"Certificate"`
 }
 
@@ -99,6 +104,7 @@ func (r *ModifyCertificateResponse) ToJsonString() string {
 func (r *ModifyCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeCertificatesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -114,15 +120,15 @@ type DescribeCertificatesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId      *string `json:"RequestId" name:"RequestId"`
 	CertificateSet []struct {
-		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime    *string `json:"CreateTime" name:"CreateTime"`
 		CertificateName *string `json:"CertificateName" name:"CertificateName"`
-		CertificateId   *string `json:"CertificateId" name:"CertificateId"`
-		ExpireTime      *string `json:"ExpireTime" name:"ExpireTime"`
-		CommonName      *string `json:"CommonName" name:"CommonName"`
-		CertAuthority   *string `json:"CertAuthority" name:"CertAuthority"`
-		CertType        *string `json:"CertType" name:"CertType"`
+		CertificateId *string `json:"CertificateId" name:"CertificateId"`
+		ExpireTime    *string `json:"ExpireTime" name:"ExpireTime"`
+		CommonName    *string `json:"CommonName" name:"CommonName"`
+		CertAuthority *string `json:"CertAuthority" name:"CertAuthority"`
+		CertType      *string `json:"CertType" name:"CertType"`
 		CertificateType *string `json:"CertificateType" name:"CertificateType"`
-		PublicKey       *string `json:"PublicKey" name:"PublicKey"`
+		PublicKey     *string `json:"PublicKey" name:"PublicKey"`
 	} `json:"CertificateSet"`
 }
 
@@ -134,6 +140,7 @@ func (r *DescribeCertificatesResponse) ToJsonString() string {
 func (r *DescribeCertificatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ApplyCertificateRequest struct {
 	*ksyunhttp.BaseRequest
@@ -180,6 +187,7 @@ func (r *ApplyCertificateResponse) ToJsonString() string {
 func (r *ApplyCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type UpdateCertificateRequest struct {
 	*ksyunhttp.BaseRequest
@@ -255,6 +263,7 @@ func (r *UpdateCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ReIssueCertificateRequest struct {
 	*ksyunhttp.BaseRequest
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
@@ -279,6 +288,7 @@ func (r *ReIssueCertificateResponse) ToJsonString() string {
 func (r *ReIssueCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CancelTransactionRequest struct {
 	*ksyunhttp.BaseRequest
@@ -317,6 +327,7 @@ func (r *CancelTransactionResponse) ToJsonString() string {
 func (r *CancelTransactionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListCertificatesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -423,3 +434,4 @@ func (r *GetCertificateDetailResponse) ToJsonString() string {
 func (r *GetCertificateDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

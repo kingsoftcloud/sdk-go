@@ -1,5 +1,4 @@
 package v20170101
-
 import (
 	"context"
 	"fmt"
@@ -542,3 +541,5 @@ func (c *Client) StopLoopWithContextV2(ctx context.Context, request *StopLoopReq
 	}
 	return statusCode, msg, nil
 }
+
+

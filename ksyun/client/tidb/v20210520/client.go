@@ -1,5 +1,4 @@
 package v20210520
-
 import (
 	"context"
 	"fmt"
@@ -388,7 +387,7 @@ func (c *Client) ListRegionWithContext(ctx context.Context, request *ListRegionR
 		request = NewListRegionRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListRegionResponse()
 	err, msg := c.Send(request, response)
@@ -403,7 +402,7 @@ func (c *Client) ListRegionWithContextV2(ctx context.Context, request *ListRegio
 		request = NewListRegionRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListRegionResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -453,7 +452,7 @@ func (c *Client) DescRegionWithContext(ctx context.Context, request *DescRegionR
 		request = NewDescRegionRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescRegionResponse()
 	err, msg := c.Send(request, response)
@@ -468,7 +467,7 @@ func (c *Client) DescRegionWithContextV2(ctx context.Context, request *DescRegio
 		request = NewDescRegionRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescRegionResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -648,7 +647,7 @@ func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *
 		request = NewDescribeSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeSecurityGroupResponse()
 	err, msg := c.Send(request, response)
@@ -663,7 +662,7 @@ func (c *Client) DescribeSecurityGroupWithContextV2(ctx context.Context, request
 		request = NewDescribeSecurityGroupRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeSecurityGroupResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1576,71 +1575,6 @@ func (c *Client) UpdateBackupRuleWithContextV2(ctx context.Context, request *Upd
 	request.SetContentType("application/json")
 
 	response := NewUpdateBackupRuleResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}
-func NewResetPasswordRequest() (request *ResetPasswordRequest) {
-	request = &ResetPasswordRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("tidb", APIVersion, "ResetPassword")
-	return
-}
-
-func NewResetPasswordResponse() (response *ResetPasswordResponse) {
-	response = &ResetPasswordResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) ResetPassword(request *ResetPasswordRequest) string {
-	return c.ResetPasswordWithContext(context.Background(), request)
-}
-
-func (c *Client) ResetPasswordSend(request *ResetPasswordRequest) (*ResetPasswordResponse, error) {
-	statusCode, msg, err := c.ResetPasswordWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	var respStruct ResetPasswordResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) ResetPasswordWithContext(ctx context.Context, request *ResetPasswordRequest) string {
-	if request == nil {
-		request = NewResetPasswordRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewResetPasswordResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) ResetPasswordWithContextV2(ctx context.Context, request *ResetPasswordRequest) (int, string, error) {
-	if request == nil {
-		request = NewResetPasswordRequest()
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewResetPasswordResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
@@ -2622,3 +2556,70 @@ func (c *Client) ConfigurationInstanceEipWithContextV2(ctx context.Context, requ
 	}
 	return statusCode, msg, nil
 }
+func NewUpdateInstanceTrialOrderRequest() (request *UpdateInstanceTrialOrderRequest) {
+	request = &UpdateInstanceTrialOrderRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("tidb", APIVersion, "UpdateInstanceTrialOrder")
+	return
+}
+
+func NewUpdateInstanceTrialOrderResponse() (response *UpdateInstanceTrialOrderResponse) {
+	response = &UpdateInstanceTrialOrderResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateInstanceTrialOrder(request *UpdateInstanceTrialOrderRequest) string {
+	return c.UpdateInstanceTrialOrderWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateInstanceTrialOrderSend(request *UpdateInstanceTrialOrderRequest) (*UpdateInstanceTrialOrderResponse, error) {
+	statusCode, msg, err := c.UpdateInstanceTrialOrderWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct UpdateInstanceTrialOrderResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) UpdateInstanceTrialOrderWithContext(ctx context.Context, request *UpdateInstanceTrialOrderRequest) string {
+	if request == nil {
+		request = NewUpdateInstanceTrialOrderRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateInstanceTrialOrderResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) UpdateInstanceTrialOrderWithContextV2(ctx context.Context, request *UpdateInstanceTrialOrderRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdateInstanceTrialOrderRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateInstanceTrialOrderResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+
+

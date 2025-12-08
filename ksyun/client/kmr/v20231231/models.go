@@ -1,13 +1,12 @@
 package v20231231
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 type CreateAutoScalePolicyExecuteRules struct {
 	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
 }
+
 
 type ListInstancesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -29,7 +28,7 @@ type ListInstancesResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
 		Total *int `json:"Total" name:"Total"`
-		List  []struct {
+		List []struct {
 			InstanceId       *string `json:"InstanceId" name:"InstanceId"`
 			InstanceName     *string `json:"InstanceName" name:"InstanceName"`
 			InstanceStatus   *string `json:"InstanceStatus" name:"InstanceStatus"`
@@ -62,6 +61,7 @@ func (r *ListInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type GetInstanceDetailRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -78,39 +78,39 @@ type GetInstanceDetailResponse struct {
 	Message   *string `json:"Message" name:"Message"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		InstanceId       *string `json:"InstanceId" name:"InstanceId"`
-		RunningTime      *int    `json:"RunningTime" name:"RunningTime"`
-		InstanceName     *string `json:"InstanceName" name:"InstanceName"`
-		AccountId        *string `json:"AccountId" name:"AccountId"`
-		TenantId         *string `json:"TenantId" name:"TenantId"`
-		Status           *string `json:"Status" name:"Status"`
+		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
+		RunningTime     *int    `json:"RunningTime" name:"RunningTime"`
+		InstanceName    *string `json:"InstanceName" name:"InstanceName"`
+		AccountId       *string `json:"AccountId" name:"AccountId"`
+		TenantId        *string `json:"TenantId" name:"TenantId"`
+		Status          *string `json:"Status" name:"Status"`
 		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
-		BeginTime        *string `json:"BeginTime" name:"BeginTime"`
-		ChargeType       *string `json:"ChargeType" name:"ChargeType"`
-		SlbId            *string `json:"SlbId" name:"SlbId"`
-		SlbIp            *string `json:"SlbIp" name:"SlbIp"`
+		BeginTime       *string `json:"BeginTime" name:"BeginTime"`
+		ChargeType      *string `json:"ChargeType" name:"ChargeType"`
+		SlbId           *string `json:"SlbId" name:"SlbId"`
+		SlbIp           *string `json:"SlbIp" name:"SlbIp"`
 		TerminalSubnetId *string `json:"TerminalSubnetId" name:"TerminalSubnetId"`
-		OrderId          *string `json:"OrderId" name:"OrderId"`
-		PackageType      *string `json:"PackageType" name:"PackageType"`
-		Region           *string `json:"Region" name:"Region"`
-		VpcId            *string `json:"VpcId" name:"VpcId"`
-		VpcCidr          *string `json:"VpcCidr" name:"VpcCidr"`
-		VpcSubnetId      *string `json:"VpcSubnetId" name:"VpcSubnetId"`
-		SecurityGroupId  *string `json:"SecurityGroupId" name:"SecurityGroupId"`
-		InstanceInfo     struct {
+		OrderId         *string `json:"OrderId" name:"OrderId"`
+		PackageType     *string `json:"PackageType" name:"PackageType"`
+		Region          *string `json:"Region" name:"Region"`
+		VpcId           *string `json:"VpcId" name:"VpcId"`
+		VpcCidr         *string `json:"VpcCidr" name:"VpcCidr"`
+		VpcSubnetId     *string `json:"VpcSubnetId" name:"VpcSubnetId"`
+		SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		InstanceInfo    struct {
 			RunMode          *string `json:"RunMode" name:"RunMode"`
 			Product          *string `json:"Product" name:"Product"`
 			Version          *string `json:"Version" name:"Version"`
 			HighAvailability *bool   `json:"HighAvailability" name:"HighAvailability"`
 			FeEndpoints      struct {
-				FeQueryPort    *int    `json:"FeQueryPort" name:"FeQueryPort"`
-				FeHttpPort     *int    `json:"FeHttpPort" name:"FeHttpPort"`
+				FeQueryPort   *int    `json:"FeQueryPort" name:"FeQueryPort"`
+				FeHttpPort    *int    `json:"FeHttpPort" name:"FeHttpPort"`
 				FePrivateSlbIP *string `json:"FePrivateSlbIP" name:"FePrivateSlbIP"`
-				FePublicSlbIP  *string `json:"FePublicSlbIP" name:"FePublicSlbIP"`
-				FePublicAClId  *string `json:"FePublicAClId" name:"FePublicAClId"`
+				FePublicSlbIP *string `json:"FePublicSlbIP" name:"FePublicSlbIP"`
+				FePublicAClId *string `json:"FePublicAClId" name:"FePublicAClId"`
 			} `json:"FeEndpoints"`
 			CnEndpoints struct {
-				CnHttpPort    *int    `json:"CnHttpPort" name:"CnHttpPort"`
+				CnHttpPort *int `json:"CnHttpPort" name:"CnHttpPort"`
 				CnPublicSlbIP *string `json:"CnPublicSlbIP" name:"CnPublicSlbIP"`
 				CnPublicAClId *string `json:"CnPublicAClId" name:"CnPublicAClId"`
 			} `json:"CnEndpoints"`
@@ -154,6 +154,7 @@ func (r *GetInstanceDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyHostsRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string   `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -169,10 +170,10 @@ type ModifyHostsResponse struct {
 	*ksyunhttp.BaseResponse
 	Status *int `json:"status" name:"status"`
 	Data   struct {
-		Code      *int    `json:"Code" name:"Code"`
-		Message   *string `json:"Message" name:"Message"`
+		Code    *int    `json:"Code" name:"Code"`
+		Message *string `json:"Message" name:"Message"`
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Data      struct {
+		Data    struct {
 		} `json:"Data" name:"Data"`
 	} `json:"Data"`
 	Message *string `json:"message" name:"message"`
@@ -186,6 +187,7 @@ func (r *ModifyHostsResponse) ToJsonString() string {
 func (r *ModifyHostsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListAutoScaleHistoryRequest struct {
 	*ksyunhttp.BaseRequest
@@ -209,7 +211,7 @@ type ListAutoScaleHistoryResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
 		Total *int `json:"Total" name:"Total"`
-		List  []struct {
+		List []struct {
 			Id                     *int    `json:"Id" name:"Id"`
 			ScaleHistoryId         *string `json:"ScaleHistoryId" name:"ScaleHistoryId"`
 			InstanceId             *string `json:"InstanceId" name:"InstanceId"`
@@ -238,6 +240,7 @@ func (r *ListAutoScaleHistoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type CreateAutoScalePolicyRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId   *string                            `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -260,8 +263,8 @@ type CreateAutoScalePolicyResponse struct {
 	ExecuteCycle *string `json:"ExecuteCycle" name:"ExecuteCycle"`
 	ExecuteRules struct {
 		StartTime *string `json:"StartTime" name:"StartTime"`
-		EndTime   *string `json:"EndTime" name:"EndTime"`
-		ScaleNum  *int    `json:"ScaleNum" name:"ScaleNum"`
+		EndTime  *string `json:"EndTime" name:"EndTime"`
+		ScaleNum *int    `json:"ScaleNum" name:"ScaleNum"`
 	} `json:"ExecuteRules"`
 	NodeType *string `json:"NodeType" name:"NodeType"`
 }
@@ -274,6 +277,7 @@ func (r *CreateAutoScalePolicyResponse) ToJsonString() string {
 func (r *CreateAutoScalePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListAutoScalePolicyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -289,10 +293,10 @@ type ListAutoScalePolicyResponse struct {
 	*ksyunhttp.BaseResponse
 	Status *int `json:"status" name:"status"`
 	Data   struct {
-		Code      *int    `json:"Code" name:"Code"`
-		Message   *string `json:"Message" name:"Message"`
+		Code    *int    `json:"Code" name:"Code"`
+		Message *string `json:"Message" name:"Message"`
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Data      []struct {
+		Data    []struct {
 			Id           *int    `json:"Id" name:"Id"`
 			InstanceId   *string `json:"InstanceId" name:"InstanceId"`
 			PolicyId     *string `json:"PolicyId" name:"PolicyId"`
@@ -303,8 +307,8 @@ type ListAutoScalePolicyResponse struct {
 			Status       *int    `json:"Status" name:"Status"`
 			ExecuteRules struct {
 				StartTime *string `json:"StartTime" name:"StartTime"`
-				EndTime   *string `json:"EndTime" name:"EndTime"`
-				ScaleNum  *int    `json:"ScaleNum" name:"ScaleNum"`
+				EndTime  *string `json:"EndTime" name:"EndTime"`
+				ScaleNum *int    `json:"ScaleNum" name:"ScaleNum"`
 			} `json:"ExecuteRules"`
 			CreatedAt *string `json:"CreatedAt" name:"CreatedAt"`
 			UpdatedAt *string `json:"UpdatedAt" name:"UpdatedAt"`
@@ -322,6 +326,7 @@ func (r *ListAutoScalePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteAutoScalePolicyRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -337,10 +342,10 @@ type DeleteAutoScalePolicyResponse struct {
 	*ksyunhttp.BaseResponse
 	Status *int `json:"status" name:"status"`
 	Data   struct {
-		Code      *int    `json:"Code" name:"Code"`
-		Message   *string `json:"Message" name:"Message"`
+		Code    *int    `json:"Code" name:"Code"`
+		Message *string `json:"Message" name:"Message"`
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Data      struct {
+		Data    struct {
 			InstanceId *string `json:"InstanceId" name:"InstanceId"`
 			PolicyId   *string `json:"PolicyId" name:"PolicyId"`
 		} `json:"Data" name:"Data"`
@@ -356,3 +361,4 @@ func (r *DeleteAutoScalePolicyResponse) ToJsonString() string {
 func (r *DeleteAutoScalePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
