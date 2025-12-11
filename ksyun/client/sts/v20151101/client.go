@@ -1,4 +1,5 @@
 package v20151101
+
 import (
 	"context"
 	"fmt"
@@ -151,5 +152,3 @@ func (c *Client) AssumeRoleTemporarySAMLWithContextV2(ctx context.Context, reque
 	}
 	return statusCode, msg, nil
 }
-
-

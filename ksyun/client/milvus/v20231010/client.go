@@ -1,4 +1,5 @@
 package v20231010
+
 import (
 	"context"
 	"fmt"
@@ -1256,5 +1257,3 @@ func (c *Client) UpdateInstanceTrialOrderWithContextV2(ctx context.Context, requ
 	}
 	return statusCode, msg, nil
 }
-
-

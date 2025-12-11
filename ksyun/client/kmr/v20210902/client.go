@@ -1,4 +1,5 @@
 package v20210902
+
 import (
 	"context"
 	"fmt"
@@ -1516,5 +1517,3 @@ func (c *Client) ModifyLoadBasedScaleStrategyWithContextV2(ctx context.Context, 
 	}
 	return statusCode, msg, nil
 }
-
-

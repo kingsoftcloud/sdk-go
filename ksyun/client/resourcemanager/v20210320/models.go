@@ -193,10 +193,10 @@ func (r *ListAccountsRequest) ToJsonString() string {
 type ListAccountsResponse struct {
 	*ksyunhttp.BaseResponse
 	Accounts []struct {
-		AccountId  *int    `json:"AccountId" name:"AccountId"`
+		AccountId *int    `json:"AccountId" name:"AccountId"`
 		AccountName *string `json:"AccountName" name:"AccountName"`
 		DisplayName *string `json:"DisplayName" name:"DisplayName"`
-		TypeField  *string `json:"TypeField" name:"TypeField"`
+		Type      *string `json:"Type" name:"Type"`
 		JoinedTime *string `json:"JoinedTime" name:"JoinedTime"`
 	} `json:"Accounts"`
 	Pagination struct {
@@ -215,6 +215,7 @@ func (r *ListAccountsResponse) ToJsonString() string {
 func (r *ListAccountsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ListFoldersRequest struct {
 	*ksyunhttp.BaseRequest
@@ -235,13 +236,13 @@ type ListFoldersResponse struct {
 	ParentId    *int    `json:"ParentId" name:"ParentId"`
 	Num         *int    `json:"Num" name:"Num"`
 	SonFolder   []struct {
-		Name      *string `json:"Name" name:"Name"`
-		Desc      *string `json:"Desc" name:"Desc"`
-		Id        *string `json:"Id" name:"Id"`
+		Name     *string `json:"Name" name:"Name"`
+		Desc     *string `json:"Desc" name:"Desc"`
+		Id       *string `json:"Id" name:"Id"`
 		CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
-		Level     *int    `json:"Level" name:"Level"`
-		ParentId  *string `json:"ParentId" name:"ParentId"`
-		Num       *int    `json:"Num" name:"Num"`
+		Level    *int    `json:"Level" name:"Level"`
+		ParentId *string `json:"ParentId" name:"ParentId"`
+		Num      *int    `json:"Num" name:"Num"`
 		SonFolder []struct {
 		} `json:"SonFolder" name:"SonFolder"`
 	} `json:"SonFolder"`

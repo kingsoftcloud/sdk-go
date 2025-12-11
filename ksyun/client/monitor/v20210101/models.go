@@ -1,9 +1,9 @@
 package v20210101
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type ListAlarmPolicyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -44,7 +44,6 @@ func (r *ListAlarmPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeAlarmPolicyRequest struct {
 	*ksyunhttp.BaseRequest
 	PolicyId *int `json:"PolicyId,omitempty" name:"PolicyId"`
@@ -66,26 +65,26 @@ type DescribeAlarmPolicyResponse struct {
 			Enabled           *int    `json:"enabled" name:"enabled"`
 			InstanceInfoCount *int    `json:"InstanceInfoCount" name:"InstanceInfoCount"`
 			TriggerRuleList   []struct {
-				TriggerId *int    `json:"TriggerId" name:"TriggerId"`
-				Period    *string `json:"Period" name:"Period"`
-				Method    *string `json:"Method" name:"Method"`
-				Compare   *string `json:"Compare" name:"Compare"`
+				TriggerId    *int    `json:"TriggerId" name:"TriggerId"`
+				Period       *string `json:"Period" name:"Period"`
+				Method       *string `json:"Method" name:"Method"`
+				Compare      *string `json:"Compare" name:"Compare"`
 				TriggerValue *string `json:"TriggerValue" name:"TriggerValue"`
-				ItemName  *string `json:"ItemName" name:"ItemName"`
-				ItemKey   *string `json:"ItemKey" name:"ItemKey"`
-				Units     *string `json:"Units" name:"Units"`
-				EffectBT  *string `json:"EffectBT" name:"EffectBT"`
-				EffectET  *string `json:"EffectET" name:"EffectET"`
-				Tags      *string `json:"Tags" name:"Tags"`
-				Interval  *string `json:"Interval" name:"Interval"`
-				Points    *int    `json:"Points" name:"Points"`
-				MaxCount  *int    `json:"MaxCount" name:"MaxCount"`
+				ItemName     *string `json:"ItemName" name:"ItemName"`
+				ItemKey      *string `json:"ItemKey" name:"ItemKey"`
+				Units        *string `json:"Units" name:"Units"`
+				EffectBT     *string `json:"EffectBT" name:"EffectBT"`
+				EffectET     *string `json:"EffectET" name:"EffectET"`
+				Tags         *string `json:"Tags" name:"Tags"`
+				Interval     *string `json:"Interval" name:"Interval"`
+				Points       *int    `json:"Points" name:"Points"`
+				MaxCount     *int    `json:"MaxCount" name:"MaxCount"`
 			} `json:"TriggerRuleList"`
 			ContactInfoList []struct {
-				ContactId   *int `json:"ContactId" name:"ContactId"`
+				ContactId   *int    `json:"ContactId" name:"ContactId"`
 				ContactName *string `json:"ContactName" name:"ContactName"`
-				ContactWay  *int `json:"ContactWay" name:"ContactWay"`
-				ContactFlag *int `json:"ContactFlag" name:"ContactFlag"`
+				ContactWay  *int    `json:"ContactWay" name:"ContactWay"`
+				ContactFlag *int    `json:"ContactFlag" name:"ContactFlag"`
 			} `json:"ContactInfoList"`
 			CallbackUrl *string `json:"callbackUrl" name:"callbackUrl"`
 		} `json:"AlarmPolicyList" name:"AlarmPolicyList"`
@@ -102,7 +101,6 @@ func (r *DescribeAlarmPolicyResponse) ToJsonString() string {
 func (r *DescribeAlarmPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribePolicyObjectRequest struct {
 	*ksyunhttp.BaseRequest
@@ -139,7 +137,6 @@ func (r *DescribePolicyObjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeAlarmReceivesRequest struct {
 	*ksyunhttp.BaseRequest
 	PolicyId *int `json:"PolicyId,omitempty" name:"PolicyId"`
@@ -155,10 +152,10 @@ type DescribeAlarmReceivesResponse struct {
 	Data struct {
 	} `json:"Data"`
 	ContactInfoList []struct {
-		ContactId   *int `json:"ContactId" name:"ContactId"`
+		ContactId   *int    `json:"ContactId" name:"ContactId"`
 		ContactName *string `json:"ContactName" name:"ContactName"`
-		ContactWay  *int `json:"ContactWay" name:"ContactWay"`
-		ContactFlag *int `json:"ContactFlag" name:"ContactFlag"`
+		ContactWay  *int    `json:"ContactWay" name:"ContactWay"`
+		ContactFlag *int    `json:"ContactFlag" name:"ContactFlag"`
 	} `json:"ContactInfoList"`
 	TotalCount *int    `json:"totalCount" name:"totalCount"`
 	RequestId  *string `json:"requestId" name:"requestId"`
@@ -172,7 +169,6 @@ func (r *DescribeAlarmReceivesResponse) ToJsonString() string {
 func (r *DescribeAlarmReceivesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type AddAlarmReceivesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -201,7 +197,6 @@ func (r *AddAlarmReceivesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteAlarmReceivesRequest struct {
 	*ksyunhttp.BaseRequest
 	PolicyId    *int   `json:"PolicyId,omitempty" name:"PolicyId"`
@@ -227,7 +222,6 @@ func (r *DeleteAlarmReceivesResponse) ToJsonString() string {
 func (r *DeleteAlarmReceivesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetUserGroupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -260,7 +254,6 @@ func (r *GetUserGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetAlertUserRequest struct {
 	*ksyunhttp.BaseRequest
 	UserGrpId []*int `json:"UserGrpId,omitempty" name:"UserGrpId"`
@@ -280,7 +273,7 @@ type GetAlertUserResponse struct {
 			UserEmail  *string `json:"userEmail" name:"userEmail"`
 			UserPhone  *string `json:"userPhone" name:"userPhone"`
 			UserGroups []struct {
-				UserGrpId *int `json:"UserGrpId" name:"UserGrpId"`
+				UserGrpId *int    `json:"UserGrpId" name:"UserGrpId"`
 				GroupName *string `json:"GroupName" name:"GroupName"`
 			} `json:"UserGroups"`
 			UserStatus *int `json:"userStatus" name:"userStatus"`
@@ -298,7 +291,6 @@ func (r *GetAlertUserResponse) ToJsonString() string {
 func (r *GetAlertUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type UpdateAlertUserStatusRequest struct {
 	*ksyunhttp.BaseRequest
@@ -336,7 +328,6 @@ func (r *UpdateAlertUserStatusResponse) ToJsonString() string {
 func (r *UpdateAlertUserStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeSysEventGroupListRequest struct {
 	*ksyunhttp.BaseRequest
@@ -405,4 +396,3 @@ func (r *DescribeMonitorProductListResponse) ToJsonString() string {
 func (r *DescribeMonitorProductListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

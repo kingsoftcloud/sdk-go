@@ -1,4 +1,5 @@
 package v20250220
+
 import (
 	"context"
 	"fmt"
@@ -281,5 +282,3 @@ func (c *Client) CreateTrialToBuyNowWithContextV2(ctx context.Context, request *
 	}
 	return statusCode, msg, nil
 }
-
-

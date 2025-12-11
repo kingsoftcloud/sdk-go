@@ -30,10 +30,10 @@ type CreateCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		CacheId    *string `json:"CacheId" name:"CacheId"`
-		Name       *string `json:"Name" name:"Name"`
-		Size       *string `json:"Size" name:"Size"`
-		Port       *string `json:"Port" name:"Port"`
+		CacheId *string `json:"CacheId" name:"CacheId"`
+		Name    *string `json:"Name" name:"Name"`
+		Size    *string `json:"Size" name:"Size"`
+		Port    *string `json:"Port" name:"Port"`
 		SubOrderId *string `json:"SubOrderId" name:"SubOrderId"`
 	} `json:"Data"`
 }
@@ -144,8 +144,8 @@ type DescribeCacheClustersResponse struct {
 			IamProjectName  *string `json:"iamProjectName" name:"iamProjectName"`
 		} `json:"List" name:"List"`
 		Offset *int `json:"Offset" name:"Offset"`
-		Limit  *int `json:"Limit" name:"Limit"`
-		Total  *int `json:"Total" name:"Total"`
+		Limit *int `json:"Limit" name:"Limit"`
+		Total *int `json:"Total" name:"Total"`
 	} `json:"Data"`
 }
 
@@ -174,35 +174,35 @@ type DescribeCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		CacheId          *string `json:"CacheId" name:"CacheId"`
-		Az               *string `json:"Az" name:"Az"`
-		Name             *string `json:"Name" name:"Name"`
-		SecurityGroupId  *string `json:"SecurityGroupId" name:"SecurityGroupId"`
-		Engine           *string `json:"Engine" name:"Engine"`
-		Mode             *int    `json:"Mode" name:"Mode"`
-		Size             *int    `json:"Size" name:"Size"`
-		Port             *int    `json:"Port" name:"Port"`
-		Vip              *string `json:"Vip" name:"Vip"`
-		SlaveVip         *string `json:"SlaveVip" name:"SlaveVip"`
-		SlaveNum         *int    `json:"SlaveNum" name:"SlaveNum"`
-		Status           *int    `json:"Status" name:"Status"`
-		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
-		NetType          *int    `json:"NetType" name:"NetType"`
-		VpcId            *string `json:"VpcId" name:"VpcId"`
-		VnetId           *string `json:"VnetId" name:"VnetId"`
-		TimingSwitch     *string `json:"TimingSwitch" name:"TimingSwitch"`
-		Timezone         *string `json:"Timezone" name:"Timezone"`
-		UsedMemory       *int    `json:"UsedMemory" name:"UsedMemory"`
-		SubOrderId       *string `json:"SubOrderId" name:"SubOrderId"`
-		ProductId        *string `json:"ProductId" name:"ProductId"`
-		BillType         *int    `json:"BillType" name:"BillType"`
-		OrderType        *int    `json:"OrderType" name:"OrderType"`
-		OrderUse         *int    `json:"OrderUse" name:"OrderUse"`
+		CacheId         *string `json:"CacheId" name:"CacheId"`
+		Az              *string `json:"Az" name:"Az"`
+		Name            *string `json:"Name" name:"Name"`
+		SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		Engine          *string `json:"Engine" name:"Engine"`
+		Mode            *int    `json:"Mode" name:"Mode"`
+		Size            *int    `json:"Size" name:"Size"`
+		Port            *int    `json:"Port" name:"Port"`
+		Vip             *string `json:"Vip" name:"Vip"`
+		SlaveVip        *string `json:"SlaveVip" name:"SlaveVip"`
+		SlaveNum        *int    `json:"SlaveNum" name:"SlaveNum"`
+		Status          *int    `json:"Status" name:"Status"`
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+		NetType         *int    `json:"NetType" name:"NetType"`
+		VpcId           *string `json:"VpcId" name:"VpcId"`
+		VnetId          *string `json:"VnetId" name:"VnetId"`
+		TimingSwitch    *string `json:"TimingSwitch" name:"TimingSwitch"`
+		Timezone        *string `json:"Timezone" name:"Timezone"`
+		UsedMemory      *int    `json:"UsedMemory" name:"UsedMemory"`
+		SubOrderId      *string `json:"SubOrderId" name:"SubOrderId"`
+		ProductId       *string `json:"ProductId" name:"ProductId"`
+		BillType        *int    `json:"BillType" name:"BillType"`
+		OrderType       *int    `json:"OrderType" name:"OrderType"`
+		OrderUse        *int    `json:"OrderUse" name:"OrderUse"`
 		ServiceBeginTime *string `json:"ServiceBeginTime" name:"ServiceBeginTime"`
-		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		IamProjectId     *string `json:"IamProjectId" name:"IamProjectId"`
-		IamProjectName   *string `json:"IamProjectName" name:"IamProjectName"`
-		Protocol         *string `json:"Protocol" name:"Protocol"`
+		ServiceEndTime  *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		IamProjectId    *string `json:"IamProjectId" name:"IamProjectId"`
+		IamProjectName  *string `json:"IamProjectName" name:"IamProjectName"`
+		Protocol        *string `json:"Protocol" name:"Protocol"`
 	} `json:"Data"`
 }
 
@@ -375,6 +375,7 @@ func (r *SetCacheSecurityRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeRegionsRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -388,7 +389,7 @@ type DescribeRegionsResponse struct {
 	*ksyunhttp.BaseResponse
 	RegionSet []struct {
 		RegionName *string `json:"RegionName" name:"RegionName"`
-		Region     *string `json:"Region" name:"Region"`
+		Region *string `json:"Region" name:"Region"`
 	} `json:"RegionSet"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -402,6 +403,7 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeAvailabilityZonesRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -414,7 +416,7 @@ func (r *DescribeAvailabilityZonesRequest) ToJsonString() string {
 type DescribeAvailabilityZonesResponse struct {
 	*ksyunhttp.BaseResponse
 	AvailabilityZoneSet []struct {
-		Region           *string `json:"Region" name:"Region"`
+		Region *string `json:"Region" name:"Region"`
 		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 	} `json:"AvailabilityZoneSet"`
 	RequestId *string `json:"RequestId" name:"RequestId"`

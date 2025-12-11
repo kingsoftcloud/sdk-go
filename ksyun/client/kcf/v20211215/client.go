@@ -1,4 +1,5 @@
 package v20211215
+
 import (
 	"context"
 	"fmt"
@@ -606,5 +607,3 @@ func (c *Client) DescribeTriggersWithContextV2(ctx context.Context, request *Des
 	}
 	return statusCode, msg, nil
 }
-
-

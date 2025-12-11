@@ -1,9 +1,9 @@
 package v20170401
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type DeleteCacheSlaveNodeRequest struct {
 	*ksyunhttp.BaseRequest
@@ -30,4 +30,3 @@ func (r *DeleteCacheSlaveNodeResponse) ToJsonString() string {
 func (r *DeleteCacheSlaveNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

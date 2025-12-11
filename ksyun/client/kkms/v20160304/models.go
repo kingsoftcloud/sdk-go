@@ -99,8 +99,8 @@ func (r *DeleteKeyRequest) ToJsonString() string {
 
 type DeleteKeyResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DeleteKeyResponse) ToJsonString() string {
@@ -190,6 +190,7 @@ func (r *DecryptResponse) ToJsonString() string {
 func (r *DecryptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type GenerateDataKeyRequest struct {
 	*ksyunhttp.BaseRequest

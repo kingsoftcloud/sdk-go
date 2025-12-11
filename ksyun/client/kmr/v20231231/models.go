@@ -78,33 +78,33 @@ type GetInstanceDetailResponse struct {
 	Message   *string `json:"Message" name:"Message"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
-		RunningTime     *int    `json:"RunningTime" name:"RunningTime"`
-		InstanceName    *string `json:"InstanceName" name:"InstanceName"`
-		AccountId       *string `json:"AccountId" name:"AccountId"`
-		TenantId        *string `json:"TenantId" name:"TenantId"`
-		Status          *string `json:"Status" name:"Status"`
+		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+		RunningTime  *int    `json:"RunningTime" name:"RunningTime"`
+		InstanceName *string `json:"InstanceName" name:"InstanceName"`
+		AccountId    *string `json:"AccountId" name:"AccountId"`
+		TenantId     *string `json:"TenantId" name:"TenantId"`
+		Status       *string `json:"Status" name:"Status"`
 		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
-		BeginTime       *string `json:"BeginTime" name:"BeginTime"`
-		ChargeType      *string `json:"ChargeType" name:"ChargeType"`
-		SlbId           *string `json:"SlbId" name:"SlbId"`
-		SlbIp           *string `json:"SlbIp" name:"SlbIp"`
+		BeginTime    *string `json:"BeginTime" name:"BeginTime"`
+		ChargeType   *string `json:"ChargeType" name:"ChargeType"`
+		SlbId        *string `json:"SlbId" name:"SlbId"`
+		SlbIp        *string `json:"SlbIp" name:"SlbIp"`
 		TerminalSubnetId *string `json:"TerminalSubnetId" name:"TerminalSubnetId"`
-		OrderId         *string `json:"OrderId" name:"OrderId"`
-		PackageType     *string `json:"PackageType" name:"PackageType"`
-		Region          *string `json:"Region" name:"Region"`
-		VpcId           *string `json:"VpcId" name:"VpcId"`
-		VpcCidr         *string `json:"VpcCidr" name:"VpcCidr"`
-		VpcSubnetId     *string `json:"VpcSubnetId" name:"VpcSubnetId"`
+		OrderId      *string `json:"OrderId" name:"OrderId"`
+		PackageType  *string `json:"PackageType" name:"PackageType"`
+		Region       *string `json:"Region" name:"Region"`
+		VpcId        *string `json:"VpcId" name:"VpcId"`
+		VpcCidr      *string `json:"VpcCidr" name:"VpcCidr"`
+		VpcSubnetId  *string `json:"VpcSubnetId" name:"VpcSubnetId"`
 		SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
-		InstanceInfo    struct {
+		InstanceInfo struct {
 			RunMode          *string `json:"RunMode" name:"RunMode"`
 			Product          *string `json:"Product" name:"Product"`
 			Version          *string `json:"Version" name:"Version"`
 			HighAvailability *bool   `json:"HighAvailability" name:"HighAvailability"`
 			FeEndpoints      struct {
-				FeQueryPort   *int    `json:"FeQueryPort" name:"FeQueryPort"`
-				FeHttpPort    *int    `json:"FeHttpPort" name:"FeHttpPort"`
+				FeQueryPort *int `json:"FeQueryPort" name:"FeQueryPort"`
+				FeHttpPort  *int `json:"FeHttpPort" name:"FeHttpPort"`
 				FePrivateSlbIP *string `json:"FePrivateSlbIP" name:"FePrivateSlbIP"`
 				FePublicSlbIP *string `json:"FePublicSlbIP" name:"FePublicSlbIP"`
 				FePublicAClId *string `json:"FePublicAClId" name:"FePublicAClId"`
@@ -170,10 +170,10 @@ type ModifyHostsResponse struct {
 	*ksyunhttp.BaseResponse
 	Status *int `json:"status" name:"status"`
 	Data   struct {
-		Code    *int    `json:"Code" name:"Code"`
+		Code *int `json:"Code" name:"Code"`
 		Message *string `json:"Message" name:"Message"`
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Data    struct {
+		Data struct {
 		} `json:"Data" name:"Data"`
 	} `json:"Data"`
 	Message *string `json:"message" name:"message"`
@@ -293,10 +293,10 @@ type ListAutoScalePolicyResponse struct {
 	*ksyunhttp.BaseResponse
 	Status *int `json:"status" name:"status"`
 	Data   struct {
-		Code    *int    `json:"Code" name:"Code"`
+		Code *int `json:"Code" name:"Code"`
 		Message *string `json:"Message" name:"Message"`
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Data    []struct {
+		Data []struct {
 			Id           *int    `json:"Id" name:"Id"`
 			InstanceId   *string `json:"InstanceId" name:"InstanceId"`
 			PolicyId     *string `json:"PolicyId" name:"PolicyId"`
@@ -342,10 +342,10 @@ type DeleteAutoScalePolicyResponse struct {
 	*ksyunhttp.BaseResponse
 	Status *int `json:"status" name:"status"`
 	Data   struct {
-		Code    *int    `json:"Code" name:"Code"`
+		Code *int `json:"Code" name:"Code"`
 		Message *string `json:"Message" name:"Message"`
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		Data    struct {
+		Data struct {
 			InstanceId *string `json:"InstanceId" name:"InstanceId"`
 			PolicyId   *string `json:"PolicyId" name:"PolicyId"`
 		} `json:"Data" name:"Data"`

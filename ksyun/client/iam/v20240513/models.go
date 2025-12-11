@@ -32,7 +32,7 @@ type GetProjectInstanceListNewResponse struct {
 		} `json:"Items" name:"Items"`
 		CurrentPage *int `json:"CurrentPage" name:"CurrentPage"`
 		PageSize *int `json:"PageSize" name:"PageSize"`
-		Total    *int `json:"Total" name:"Total"`
+		Total *int `json:"Total" name:"Total"`
 	} `json:"ListInstanceResult"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }

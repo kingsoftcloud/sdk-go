@@ -1,9 +1,9 @@
 package v20160304
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type DescribeCfwAvRequest struct {
 	*ksyunhttp.BaseRequest
@@ -18,11 +18,11 @@ type DescribeCfwAvResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	CfwAvs    []struct {
-		AvId       *string `json:"AvId" name:"AvId"`
-		Protocol   *string `json:"Protocol" name:"Protocol"`
+		AvId        *string `json:"AvId" name:"AvId"`
+		Protocol    *string `json:"Protocol" name:"Protocol"`
 		ProtectType *string `json:"ProtectType" name:"ProtectType"`
-		Status     *string `json:"Status" name:"Status"`
-		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		Status      *string `json:"Status" name:"Status"`
+		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"CfwAvs"`
 }
 
@@ -60,4 +60,3 @@ func (r *DeleteBatchCfwAddrbookResponse) ToJsonString() string {
 func (r *DeleteBatchCfwAddrbookResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

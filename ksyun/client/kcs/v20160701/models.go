@@ -52,9 +52,9 @@ type CreateCacheClusterResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
 		CacheId *string `json:"CacheId" name:"CacheId"`
-		Name    *string `json:"Name" name:"Name"`
-		Size    *string `json:"Size" name:"Size"`
-		Port    *string `json:"Port" name:"Port"`
+		Name *string `json:"Name" name:"Name"`
+		Size *string `json:"Size" name:"Size"`
+		Port *string `json:"Port" name:"Port"`
 		SubOrderId *string `json:"SubOrderId" name:"SubOrderId"`
 	} `json:"Data"`
 }
@@ -110,35 +110,35 @@ type DescribeCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		CacheId         *string `json:"CacheId" name:"CacheId"`
-		Az              *string `json:"Az" name:"Az"`
-		Name            *string `json:"Name" name:"Name"`
+		CacheId        *string `json:"CacheId" name:"CacheId"`
+		Az             *string `json:"Az" name:"Az"`
+		Name           *string `json:"Name" name:"Name"`
 		SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
-		Engine          *string `json:"Engine" name:"Engine"`
-		Mode            *int    `json:"Mode" name:"Mode"`
-		Size            *int    `json:"Size" name:"Size"`
-		Port            *int    `json:"Port" name:"Port"`
-		Vip             *string `json:"Vip" name:"Vip"`
-		SlaveVip        *string `json:"SlaveVip" name:"SlaveVip"`
-		SlaveNum        *int    `json:"SlaveNum" name:"SlaveNum"`
-		Status          *int    `json:"Status" name:"Status"`
-		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
-		NetType         *int    `json:"NetType" name:"NetType"`
-		VpcId           *string `json:"VpcId" name:"VpcId"`
-		VnetId          *string `json:"VnetId" name:"VnetId"`
-		TimingSwitch    *string `json:"TimingSwitch" name:"TimingSwitch"`
-		Timezone        *string `json:"Timezone" name:"Timezone"`
-		UsedMemory      *int    `json:"UsedMemory" name:"UsedMemory"`
-		SubOrderId      *string `json:"SubOrderId" name:"SubOrderId"`
-		ProductId       *string `json:"ProductId" name:"ProductId"`
-		BillType        *int    `json:"BillType" name:"BillType"`
-		OrderType       *int    `json:"OrderType" name:"OrderType"`
-		OrderUse        *int    `json:"OrderUse" name:"OrderUse"`
+		Engine         *string `json:"Engine" name:"Engine"`
+		Mode           *int    `json:"Mode" name:"Mode"`
+		Size           *int    `json:"Size" name:"Size"`
+		Port           *int    `json:"Port" name:"Port"`
+		Vip            *string `json:"Vip" name:"Vip"`
+		SlaveVip       *string `json:"SlaveVip" name:"SlaveVip"`
+		SlaveNum       *int    `json:"SlaveNum" name:"SlaveNum"`
+		Status         *int    `json:"Status" name:"Status"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+		NetType        *int    `json:"NetType" name:"NetType"`
+		VpcId          *string `json:"VpcId" name:"VpcId"`
+		VnetId         *string `json:"VnetId" name:"VnetId"`
+		TimingSwitch   *string `json:"TimingSwitch" name:"TimingSwitch"`
+		Timezone       *string `json:"Timezone" name:"Timezone"`
+		UsedMemory     *int    `json:"UsedMemory" name:"UsedMemory"`
+		SubOrderId     *string `json:"SubOrderId" name:"SubOrderId"`
+		ProductId      *string `json:"ProductId" name:"ProductId"`
+		BillType       *int    `json:"BillType" name:"BillType"`
+		OrderType      *int    `json:"OrderType" name:"OrderType"`
+		OrderUse       *int    `json:"OrderUse" name:"OrderUse"`
 		ServiceBeginTime *string `json:"ServiceBeginTime" name:"ServiceBeginTime"`
-		ServiceEndTime  *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		IamProjectId    *string `json:"IamProjectId" name:"IamProjectId"`
-		IamProjectName  *string `json:"IamProjectName" name:"IamProjectName"`
-		Protocol        *string `json:"Protocol" name:"Protocol"`
+		ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		IamProjectId   *string `json:"IamProjectId" name:"IamProjectId"`
+		IamProjectName *string `json:"IamProjectName" name:"IamProjectName"`
+		Protocol       *string `json:"Protocol" name:"Protocol"`
 	} `json:"Data"`
 }
 
@@ -214,8 +214,8 @@ type DescribeCacheClustersResponse struct {
 			DirectConnEnabled *int    `json:"directConnEnabled" name:"directConnEnabled"`
 		} `json:"List" name:"List"`
 		Offset *int `json:"Offset" name:"Offset"`
-		Limit  *int `json:"Limit" name:"Limit"`
-		Total  *int `json:"Total" name:"Total"`
+		Limit *int `json:"Limit" name:"Limit"`
+		Total *int `json:"Total" name:"Total"`
 	} `json:"Data"`
 }
 
@@ -332,12 +332,12 @@ type DescribeCacheParametersResponse struct {
 		DefaultValue *string `json:"DefaultValue" name:"DefaultValue"`
 		CurrentValue *string `json:"CurrentValue" name:"CurrentValue"`
 		Validity struct {
-			TypeField *string   `json:"type" name:"type"`
-			DataType  *string   `json:"dataType" name:"dataType"`
-			Value     *string   `json:"value" name:"value"`
-			Values    []*string `json:"Values" name:"Values"`
-			Min       *string   `json:"min" name:"min"`
-			Max       *string   `json:"max" name:"max"`
+			Type     *string   `json:"type" name:"type"`
+			DataType *string   `json:"dataType" name:"dataType"`
+			Value    *string   `json:"value" name:"value"`
+			Values   []*string `json:"Values" name:"Values"`
+			Min      *string   `json:"min" name:"min"`
+			Max      *string   `json:"max" name:"max"`
 		} `json:"Validity" name:"Validity"`
 	} `json:"Data"`
 }
@@ -403,9 +403,9 @@ type DescribeCacheDefaultParametersResponse struct {
 		DefaultValue *string `json:"DefaultValue" name:"DefaultValue"`
 		CurrentValue *string `json:"CurrentValue" name:"CurrentValue"`
 		Validity struct {
-			TypeField *string   `json:"type" name:"type"`
-			DataType  *string   `json:"dataType" name:"dataType"`
-			Value     []*string `json:"Value" name:"Value"`
+			Type     *string   `json:"type" name:"type"`
+			DataType *string   `json:"dataType" name:"dataType"`
+			Value    []*string `json:"Value" name:"Value"`
 		} `json:"Validity" name:"Validity"`
 	} `json:"Data"`
 }
@@ -477,9 +477,9 @@ type CreateCacheParameterGroupResponse struct {
 			DefaultValue *string `json:"defaultValue" name:"defaultValue"`
 			CurrentValue *string `json:"currentValue" name:"currentValue"`
 			Validity     struct {
-				TypeField *string   `json:"TypeField" name:"TypeField"`
-				DataType  *string   `json:"DataType" name:"DataType"`
-				Value     []*string `json:"Value" name:"Value"`
+				Type     *string   `json:"Type" name:"Type"`
+				DataType *string   `json:"DataType" name:"DataType"`
+				Value    []*string `json:"Value" name:"Value"`
 			} `json:"Validity"`
 		} `json:"Parameters" name:"Parameters"`
 	} `json:"Data"`
@@ -540,25 +540,25 @@ type ModifyCacheParameterGroupResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		Id          *string `json:"Id" name:"Id"`
-		Name        *string `json:"Name" name:"Name"`
+		Id         *string `json:"Id" name:"Id"`
+		Name       *string `json:"Name" name:"Name"`
 		Description *string `json:"Description" name:"Description"`
 		ParamVersion *string `json:"ParamVersion" name:"ParamVersion"`
-		Engine      *string `json:"Engine" name:"Engine"`
-		Created     *string `json:"Created" name:"Created"`
-		Updated     *string `json:"Updated" name:"Updated"`
-		Parameters  []struct {
+		Engine     *string `json:"Engine" name:"Engine"`
+		Created    *string `json:"Created" name:"Created"`
+		Updated    *string `json:"Updated" name:"Updated"`
+		Parameters []struct {
 			Name         *string `json:"name" name:"name"`
 			Desc         *string `json:"desc" name:"desc"`
 			DefaultValue *string `json:"defaultValue" name:"defaultValue"`
 			CurrentValue *string `json:"currentValue" name:"currentValue"`
 			Validity     struct {
-				TypeField *string   `json:"TypeField" name:"TypeField"`
-				DataType  *string   `json:"DataType" name:"DataType"`
-				Value     *string   `json:"Value" name:"Value"`
-				Values    []*string `json:"Values" name:"Values"`
-				Min       *string   `json:"Min" name:"Min"`
-				Max       *string   `json:"Max" name:"Max"`
+				Type     *string   `json:"Type" name:"Type"`
+				DataType *string   `json:"DataType" name:"DataType"`
+				Value    *string   `json:"Value" name:"Value"`
+				Values   []*string `json:"Values" name:"Values"`
+				Min      *string   `json:"Min" name:"Min"`
+				Max      *string   `json:"Max" name:"Max"`
 			} `json:"Validity"`
 		} `json:"Parameters" name:"Parameters"`
 	} `json:"Data"`
@@ -636,10 +636,10 @@ type DescribeCacheParameterGroupResponse struct {
 			DefaultValue *string `json:"defaultValue" name:"defaultValue"`
 			CurrentValue *string `json:"currentValue" name:"currentValue"`
 			Validity     struct {
-				TypeField *string `json:"TypeField" name:"TypeField"`
+				Type *string `json:"Type" name:"Type"`
 				DataType *string `json:"DataType" name:"DataType"`
-				Min       *string `json:"Min" name:"Min"`
-				Max       *string `json:"Max" name:"Max"`
+				Min  *string `json:"Min" name:"Min"`
+				Max  *string `json:"Max" name:"Max"`
 			} `json:"Validity"`
 		} `json:"Parameters" name:"Parameters"`
 	} `json:"Data"`
@@ -783,11 +783,11 @@ type DescribeSnapshotsResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      []struct {
 		SnapshotId *string `json:"SnapshotId" name:"SnapshotId"`
-		Name       *string `json:"Name" name:"Name"`
-		CacheId    *string `json:"CacheId" name:"CacheId"`
-		TypeField  *string `json:"TypeField" name:"TypeField"`
-		Status     *string `json:"Status" name:"Status"`
-		ShardId    *string `json:"ShardId" name:"ShardId"`
+		Name    *string `json:"Name" name:"Name"`
+		CacheId *string `json:"CacheId" name:"CacheId"`
+		Type    *string `json:"Type" name:"Type"`
+		Status  *string `json:"Status" name:"Status"`
+		ShardId *string `json:"ShardId" name:"ShardId"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		ResourceSize *string `json:"ResourceSize" name:"ResourceSize"`
 	} `json:"Data"`
@@ -935,13 +935,13 @@ type DescribeCacheByRoleResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      []struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
-		Name   *string `json:"Name" name:"Name"`
-		Port   *int    `json:"Port" name:"Port"`
-		Ip     *string `json:"Ip" name:"Ip"`
+		Name  *string `json:"Name" name:"Name"`
+		Port  *int    `json:"Port" name:"Port"`
+		Ip    *string `json:"Ip" name:"Ip"`
 		Status *string `json:"Status" name:"Status"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		Proxy  *string `json:"Proxy" name:"Proxy"`
-		Area   *string `json:"Area" name:"Area"`
+		Proxy *string `json:"Proxy" name:"Proxy"`
+		Area  *string `json:"Area" name:"Area"`
 	} `json:"Data"`
 }
 
@@ -1072,7 +1072,7 @@ type AllocateEipResponse struct {
 	Data      struct {
 		Master *string `json:"Master" name:"Master"`
 		Readonly *string `json:"Readonly" name:"Readonly"`
-		Proxy  *string `json:"Proxy" name:"Proxy"`
+		Proxy *string `json:"Proxy" name:"Proxy"`
 	} `json:"Data"`
 }
 
@@ -1348,8 +1348,8 @@ type DescribeSecurityGroupsResponse struct {
 			Updated         *string `json:"updated" name:"updated"`
 		} `json:"List" name:"List"`
 		Offset *int `json:"Offset" name:"Offset"`
-		Limit  *int `json:"Limit" name:"Limit"`
-		Total  *int `json:"Total" name:"Total"`
+		Limit *int `json:"Limit" name:"Limit"`
+		Total *int `json:"Total" name:"Total"`
 	} `json:"Data"`
 }
 
@@ -1507,13 +1507,13 @@ type DescribeCacheReadonlyNodeResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      []struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
-		Name    *string `json:"Name" name:"Name"`
-		Port    *int    `json:"Port" name:"Port"`
-		Ip      *string `json:"Ip" name:"Ip"`
-		Status  *string `json:"Status" name:"Status"`
+		Name   *string `json:"Name" name:"Name"`
+		Port   *int    `json:"Port" name:"Port"`
+		Ip     *string `json:"Ip" name:"Ip"`
+		Status *string `json:"Status" name:"Status"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		Proxy   *string `json:"Proxy" name:"Proxy"`
-		Area    *string `json:"Area" name:"Area"`
+		Proxy  *string `json:"Proxy" name:"Proxy"`
+		Area   *string `json:"Area" name:"Area"`
 		ShardId *string `json:"ShardId" name:"ShardId"`
 	} `json:"Data"`
 }
@@ -1576,8 +1576,8 @@ type DescribeHotKeysResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		Count   *int    `json:"Count" name:"Count"`
-		Total   *int    `json:"Total" name:"Total"`
+		Count   *int `json:"Count" name:"Count"`
+		Total   *int `json:"Total" name:"Total"`
 		Updated *string `json:"Updated" name:"Updated"`
 		TaskStatus *string `json:"TaskStatus" name:"TaskStatus"`
 		Hotkeys []struct {
@@ -1585,7 +1585,7 @@ type DescribeHotKeysResponse struct {
 			Elements          *string `json:"elements" name:"elements"`
 			Key               *string `json:"key" name:"key"`
 			Encoding          *string `json:"encoding" name:"encoding"`
-			TypeField         *string `json:"type" name:"type"`
+			Type              *string `json:"type" name:"type"`
 			Expiry            *int    `json:"expiry" name:"expiry"`
 			Db                *int    `json:"db" name:"db"`
 			LenLargestElement *string `json:"len_largest_element" name:"len_largest_element"`
@@ -1826,7 +1826,7 @@ type DescribeBigKeysResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      []struct {
-		Id       *string `json:"Id" name:"Id"`
+		Id *string `json:"Id" name:"Id"`
 		ResourceId *string `json:"ResourceId" name:"ResourceId"`
 		UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
 		TaskType *string `json:"TaskType" name:"TaskType"`
@@ -1917,11 +1917,11 @@ type AnalyzeBigKeysResponse struct {
 			TotalUsedMemory *int    `json:"totalUsedMemory" name:"totalUsedMemory"`
 			Percent         *string `json:"percent" name:"percent"`
 		} `json:"SORT" name:"SORT"`
-		Field1k       *string `json:"Field1k" name:"Field1k"`
-		Field1k10k    *string `json:"Field1k10k" name:"Field1k10k"`
+		Field1k      *string `json:"Field1k" name:"Field1k"`
+		Field1k10k   *string `json:"Field1k10k" name:"Field1k10k"`
 		Field10k1000k *string `json:"Field10k1000k" name:"Field10k1000k"`
-		Field1Mb10Mb  *string `json:"Field1Mb10Mb" name:"Field1Mb10Mb"`
-		Field10Mb     *string `json:"Field10Mb" name:"Field10Mb"`
+		Field1Mb10Mb *string `json:"Field1Mb10Mb" name:"Field1Mb10Mb"`
+		Field10Mb    *string `json:"Field10Mb" name:"Field10Mb"`
 	} `json:"Data"`
 }
 
@@ -1971,6 +1971,7 @@ func (r *DescribeCreateSnapshotStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type GetDailyAnalyzeSwitchStateRequest struct {
 	*ksyunhttp.BaseRequest
 	CacheId *string `json:"CacheId,omitempty" name:"CacheId"`
@@ -1998,6 +1999,7 @@ func (r *GetDailyAnalyzeSwitchStateResponse) ToJsonString() string {
 func (r *GetDailyAnalyzeSwitchStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type AnalyzeDailyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -2029,6 +2031,7 @@ func (r *AnalyzeDailyResponse) ToJsonString() string {
 func (r *AnalyzeDailyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type AnalyzeSlowDailyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -2063,6 +2066,7 @@ func (r *AnalyzeSlowDailyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type AnalyzeDailySwitchRequest struct {
 	*ksyunhttp.BaseRequest
 	CacheId    *string `json:"CacheId,omitempty" name:"CacheId"`
@@ -2090,6 +2094,7 @@ func (r *AnalyzeDailySwitchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type RestoreByTimePointSwitchRequest struct {
 	*ksyunhttp.BaseRequest
 	CacheId       *string `json:"CacheId,omitempty" name:"CacheId"`
@@ -2116,6 +2121,7 @@ func (r *RestoreByTimePointSwitchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeRestoreTimePointsRequest struct {
 	*ksyunhttp.BaseRequest
 	CacheId *string `json:"CacheId,omitempty" name:"CacheId"`
@@ -2140,6 +2146,7 @@ func (r *DescribeRestoreTimePointsResponse) ToJsonString() string {
 func (r *DescribeRestoreTimePointsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeBigHotKeysRequest struct {
 	*ksyunhttp.BaseRequest
@@ -2172,9 +2179,9 @@ type DescribeBigHotKeysResponse struct {
 			CreateTime     *string `json:"CreateTime" name:"CreateTime"`
 		} `json:"KeyInfos" name:"KeyInfos"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
-		TotalPage  *int `json:"TotalPage" name:"TotalPage"`
+		TotalPage *int `json:"TotalPage" name:"TotalPage"`
 		CurrentPage *int `json:"CurrentPage" name:"CurrentPage"`
-		PageSize   *int `json:"PageSize" name:"PageSize"`
+		PageSize  *int `json:"PageSize" name:"PageSize"`
 	} `json:"Data"`
 }
 
@@ -2186,6 +2193,7 @@ func (r *DescribeBigHotKeysResponse) ToJsonString() string {
 func (r *DescribeBigHotKeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribePluginsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -2223,6 +2231,7 @@ func (r *DescribePluginsResponse) ToJsonString() string {
 func (r *DescribePluginsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type InstallPluginsRequest struct {
 	*ksyunhttp.BaseRequest

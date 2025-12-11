@@ -1,4 +1,5 @@
 package v20160304
+
 import (
 	"context"
 	"fmt"
@@ -801,5 +802,3 @@ func (c *Client) DescribeIpExistEipPoolUseWithContextV2(ctx context.Context, req
 	}
 	return statusCode, msg, nil
 }
-
-

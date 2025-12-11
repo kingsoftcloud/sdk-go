@@ -1,9 +1,9 @@
 package v20240101
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type DescribeDefaultMonitorItemsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -88,7 +88,6 @@ func (r *DescribeDefaultMonitorItemsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteMonitorPanelRequest struct {
 	*ksyunhttp.BaseRequest
 	PanelId *string `json:"PanelId,omitempty" name:"PanelId"`
@@ -113,7 +112,6 @@ func (r *DeleteMonitorPanelResponse) ToJsonString() string {
 func (r *DeleteMonitorPanelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type OperateMonitorPanelRequest struct {
 	*ksyunhttp.BaseRequest
@@ -143,7 +141,6 @@ func (r *OperateMonitorPanelResponse) ToJsonString() string {
 func (r *OperateMonitorPanelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeMonitorPanelRequest struct {
 	*ksyunhttp.BaseRequest
@@ -180,7 +177,6 @@ func (r *DescribeMonitorPanelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ModifyMonitorPanelInfoRequest struct {
 	*ksyunhttp.BaseRequest
 	PanelId   *string `json:"PanelId,omitempty" name:"PanelId"`
@@ -196,11 +192,11 @@ type ModifyMonitorPanelInfoResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		PanelId    *string `json:"PanelId" name:"PanelId"`
-		PanelName  *string `json:"PanelName" name:"PanelName"`
-		PanelType  *string `json:"PanelType" name:"PanelType"`
+		PanelId     *string `json:"PanelId" name:"PanelId"`
+		PanelName   *string `json:"PanelName" name:"PanelName"`
+		PanelType   *string `json:"PanelType" name:"PanelType"`
 		Description *string `json:"Description" name:"Description"`
-		UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
+		UpdateTime  *string `json:"UpdateTime" name:"UpdateTime"`
 	} `json:"Data"`
 }
 
@@ -212,7 +208,6 @@ func (r *ModifyMonitorPanelInfoResponse) ToJsonString() string {
 func (r *ModifyMonitorPanelInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateMonitorPanelRequest struct {
 	*ksyunhttp.BaseRequest
@@ -229,10 +224,10 @@ type CreateMonitorPanelResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		PanelId    *string `json:"PanelId" name:"PanelId"`
-		PanelName  *string `json:"PanelName" name:"PanelName"`
+		PanelId      *string `json:"PanelId" name:"PanelId"`
+		PanelName    *string `json:"PanelName" name:"PanelName"`
 		DatabaseType *string `json:"DatabaseType" name:"DatabaseType"`
-		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"Data"`
 }
 
@@ -244,7 +239,6 @@ func (r *CreateMonitorPanelResponse) ToJsonString() string {
 func (r *CreateMonitorPanelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DeleteBatchInstancesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -270,7 +264,6 @@ func (r *DeleteBatchInstancesResponse) ToJsonString() string {
 func (r *DeleteBatchInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type InstanceStatisticsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -303,11 +296,11 @@ type InstanceStatisticsResponse struct {
 		StatusStatistic struct {
 			MySQL struct {
 				Normal *int `json:"Normal" name:"Normal"`
-				Error *int `json:"Error" name:"Error"`
+				Error  *int `json:"Error" name:"Error"`
 			} `json:"MySQL"`
 			Redis struct {
 				Normal *int `json:"Normal" name:"Normal"`
-				Error *int `json:"Error" name:"Error"`
+				Error  *int `json:"Error" name:"Error"`
 			} `json:"Redis"`
 		} `json:"StatusStatistic" name:"StatusStatistic"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
@@ -322,7 +315,6 @@ func (r *InstanceStatisticsResponse) ToJsonString() string {
 func (r *InstanceStatisticsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeMonitorPanelListRequest struct {
 	*ksyunhttp.BaseRequest
@@ -348,8 +340,8 @@ type DescribeMonitorPanelListResponse struct {
 			Description *string `json:"Description" name:"Description"`
 			CreateTime  *string `json:"CreateTime" name:"CreateTime"`
 		} `json:"MonitorPanels" name:"MonitorPanels"`
-		Page     *int `json:"Page" name:"Page"`
-		PageSize *int `json:"PageSize" name:"PageSize"`
+		Page       *int `json:"Page" name:"Page"`
+		PageSize   *int `json:"PageSize" name:"PageSize"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
 	} `json:"Data"`
 }
@@ -362,7 +354,6 @@ func (r *DescribeMonitorPanelListResponse) ToJsonString() string {
 func (r *DescribeMonitorPanelListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeInstanceListRequest struct {
 	*ksyunhttp.BaseRequest
@@ -414,7 +405,6 @@ func (r *DescribeInstanceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ImportInstanceToDmpRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceRegion *string `json:"InstanceRegion,omitempty" name:"InstanceRegion"`
@@ -431,7 +421,7 @@ type ImportInstanceToDmpResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
 		InstanceName *string `json:"InstanceName" name:"InstanceName"`
 	} `json:"Data"`
 }
@@ -444,7 +434,6 @@ func (r *ImportInstanceToDmpResponse) ToJsonString() string {
 func (r *ImportInstanceToDmpResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeDedicatedClustersRequest struct {
 	*ksyunhttp.BaseRequest
@@ -470,9 +459,9 @@ type DescribeDedicatedClustersResponse struct {
 			InstanceNum          *int    `json:"InstanceNum" name:"InstanceNum"`
 			KceClusterId         *string `json:"KceClusterId" name:"KceClusterId"`
 			Ratio                struct {
-				MemRatio *int `json:"MemRatio" name:"MemRatio"`
+				MemRatio  *int `json:"MemRatio" name:"MemRatio"`
 				DiskRatio *int `json:"DiskRatio" name:"DiskRatio"`
-				CpuRatio *int `json:"CpuRatio" name:"CpuRatio"`
+				CpuRatio  *int `json:"CpuRatio" name:"CpuRatio"`
 			} `json:"Ratio"`
 			CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
 		} `json:"DedicatedClusters" name:"DedicatedClusters"`
@@ -487,7 +476,6 @@ func (r *DescribeDedicatedClustersResponse) ToJsonString() string {
 func (r *DescribeDedicatedClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeDedicatedHostsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -538,7 +526,6 @@ func (r *DescribeDedicatedHostsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeDatabaseSchemaRequest struct {
 	*ksyunhttp.BaseRequest
 	DatabaseId *int `json:"DatabaseId,omitempty" name:"DatabaseId"`
@@ -564,7 +551,6 @@ func (r *DescribeDatabaseSchemaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeDatabaseListRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -589,7 +575,6 @@ func (r *DescribeDatabaseListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeHistorySQLRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -613,7 +598,6 @@ func (r *DescribeHistorySQLResponse) ToJsonString() string {
 func (r *DescribeHistorySQLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type StartExecuteSQLRequest struct {
 	*ksyunhttp.BaseRequest
@@ -723,4 +707,3 @@ func (r *TestInstanceConnectionResponse) ToJsonString() string {
 func (r *TestInstanceConnectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

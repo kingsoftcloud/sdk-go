@@ -1,8 +1,10 @@
 package v20190425
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 type CreateSecurityGroupSecurityGroupRule struct {
 	SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol,omitempty" name:"SecurityGroupRuleProtocol"`
 	SecurityGroupRuleName     *string `json:"SecurityGroupRuleName,omitempty" name:"SecurityGroupRuleName"`
@@ -38,7 +40,6 @@ type RestoreToCurInstanceDstDatabases struct {
 	WholeDatabase *string   `json:"WholeDatabase,omitempty" name:"WholeDatabase"`
 	TableNames    []*string `json:"TableNames,omitempty" name:"TableNames"`
 }
-
 
 type CreateDBInstanceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -81,41 +82,41 @@ type CreateDBInstanceResponse struct {
 				Mem     *int    `json:"Mem" name:"Mem"`
 				MaxConn *int    `json:"MaxConn" name:"MaxConn"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier  *string   `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-			DBInstanceName        *string   `json:"DBInstanceName" name:"DBInstanceName"`
-			DBInstanceStatus      *string   `json:"DBInstanceStatus" name:"DBInstanceStatus"`
-			DBInstanceType        *string   `json:"DBInstanceType" name:"DBInstanceType"`
-			DBParameterGroupId    *string   `json:"DBParameterGroupId" name:"DBParameterGroupId"`
-			PreferredBackupTime   *string   `json:"PreferredBackupTime" name:"PreferredBackupTime"`
-			GroupId               *string   `json:"GroupId" name:"GroupId"`
-			Vip                   *string   `json:"Vip" name:"Vip"`
-			Port                  *int      `json:"Port" name:"Port"`
-			Engine                *string   `json:"Engine" name:"Engine"`
-			EngineVersion         *string   `json:"EngineVersion" name:"EngineVersion"`
-			VolumeSize            *int      `json:"VolumeSize" name:"VolumeSize"`
-			InstanceCreateTime    *string   `json:"InstanceCreateTime" name:"InstanceCreateTime"`
-			MasterUserName        *string   `json:"MasterUserName" name:"MasterUserName"`
-			DatastoreVersionId    *string   `json:"DatastoreVersionId" name:"DatastoreVersionId"`
-			VpcId                 *string   `json:"VpcId" name:"VpcId"`
-			SubnetId              *string   `json:"SubnetId" name:"SubnetId"`
-			PubliclyAccessible    *bool     `json:"PubliclyAccessible" name:"PubliclyAccessible"`
-			BillType              *string   `json:"BillType" name:"BillType"`
-			OrderType             *string   `json:"OrderType" name:"OrderType"`
-			MultiAvailabilityZone *bool     `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
-			AvailabilityZoneList  []*string `json:"AvailabilityZoneList" name:"AvailabilityZoneList"`
-			DiskUsed              *int      `json:"DiskUsed" name:"DiskUsed"`
-			Audit                 *bool     `json:"Audit" name:"Audit"`
+			DBInstanceIdentifier             *string   `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName                   *string   `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus                 *string   `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType                   *string   `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId               *string   `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime              *string   `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId                          *string   `json:"GroupId" name:"GroupId"`
+			Vip                              *string   `json:"Vip" name:"Vip"`
+			Port                             *int      `json:"Port" name:"Port"`
+			Engine                           *string   `json:"Engine" name:"Engine"`
+			EngineVersion                    *string   `json:"EngineVersion" name:"EngineVersion"`
+			VolumeSize                       *int      `json:"VolumeSize" name:"VolumeSize"`
+			InstanceCreateTime               *string   `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName                   *string   `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId               *string   `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                            *string   `json:"VpcId" name:"VpcId"`
+			SubnetId                         *string   `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible               *bool     `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType                         *string   `json:"BillType" name:"BillType"`
+			OrderType                        *string   `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone            *bool     `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			AvailabilityZoneList             []*string `json:"AvailabilityZoneList" name:"AvailabilityZoneList"`
+			DiskUsed                         *int      `json:"DiskUsed" name:"DiskUsed"`
+			Audit                            *bool     `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers []*string `json:"ReadReplicaDBInstanceIdentifiers" name:"ReadReplicaDBInstanceIdentifiers"`
-			ProductId             *string   `json:"ProductId" name:"ProductId"`
-			ProductWhat           *int      `json:"ProductWhat" name:"ProductWhat"`
-			ProjectId             *int      `json:"ProjectId" name:"ProjectId"`
-			ProjectName           *string   `json:"ProjectName" name:"ProjectName"`
-			Region                *string   `json:"Region" name:"Region"`
-			ServiceStartTime      *string   `json:"ServiceStartTime" name:"ServiceStartTime"`
-			SubOrderId            *string   `json:"SubOrderId" name:"SubOrderId"`
-			SecurityGroups        []*string `json:"SecurityGroups" name:"SecurityGroups"`
-			SupportIPV6           *bool     `json:"SupportIPV6" name:"SupportIPV6"`
-			BillTypeId            *int      `json:"BillTypeId" name:"BillTypeId"`
+			ProductId                        *string   `json:"ProductId" name:"ProductId"`
+			ProductWhat                      *int      `json:"ProductWhat" name:"ProductWhat"`
+			ProjectId                        *int      `json:"ProjectId" name:"ProjectId"`
+			ProjectName                      *string   `json:"ProjectName" name:"ProjectName"`
+			Region                           *string   `json:"Region" name:"Region"`
+			ServiceStartTime                 *string   `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId                       *string   `json:"SubOrderId" name:"SubOrderId"`
+			SecurityGroups                   []*string `json:"SecurityGroups" name:"SecurityGroups"`
+			SupportIPV6                      *bool     `json:"SupportIPV6" name:"SupportIPV6"`
+			BillTypeId                       *int      `json:"BillTypeId" name:"BillTypeId"`
 		} `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -129,7 +130,6 @@ func (r *CreateDBInstanceResponse) ToJsonString() string {
 func (r *CreateDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeDBInstancesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -157,40 +157,40 @@ type DescribeDBInstancesResponse struct {
 				Disk  *int    `json:"Disk" name:"Disk"`
 				Ram   *int    `json:"Ram" name:"Ram"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier   *string   `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-			DBInstanceName         *string   `json:"DBInstanceName" name:"DBInstanceName"`
-			DBInstanceStatus       *string   `json:"DBInstanceStatus" name:"DBInstanceStatus"`
-			DBInstanceType         *string   `json:"DBInstanceType" name:"DBInstanceType"`
-			DBParameterGroupId     *string   `json:"DBParameterGroupId" name:"DBParameterGroupId"`
-			GroupId                *string   `json:"GroupId" name:"GroupId"`
-			Vip                    *string   `json:"Vip" name:"Vip"`
-			Port                   *int      `json:"Port" name:"Port"`
-			Engine                 *string   `json:"Engine" name:"Engine"`
-			EngineVersion          *string   `json:"EngineVersion" name:"EngineVersion"`
-			InstanceCreateTime     *string   `json:"InstanceCreateTime" name:"InstanceCreateTime"`
-			MasterUserName         *string   `json:"MasterUserName" name:"MasterUserName"`
-			VpcId                  *string   `json:"VpcId" name:"VpcId"`
-			SubnetId               *string   `json:"SubnetId" name:"SubnetId"`
-			PubliclyAccessible     *bool     `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			DBInstanceIdentifier             *string   `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName                   *string   `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus                 *string   `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType                   *string   `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId               *string   `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			GroupId                          *string   `json:"GroupId" name:"GroupId"`
+			Vip                              *string   `json:"Vip" name:"Vip"`
+			Port                             *int      `json:"Port" name:"Port"`
+			Engine                           *string   `json:"Engine" name:"Engine"`
+			EngineVersion                    *string   `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime               *string   `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName                   *string   `json:"MasterUserName" name:"MasterUserName"`
+			VpcId                            *string   `json:"VpcId" name:"VpcId"`
+			SubnetId                         *string   `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible               *bool     `json:"PubliclyAccessible" name:"PubliclyAccessible"`
 			ReadReplicaDBInstanceIdentifiers []*string `json:"ReadReplicaDBInstanceIdentifiers" name:"ReadReplicaDBInstanceIdentifiers"`
-			BillType               *string   `json:"BillType" name:"BillType"`
-			OrderType              *string   `json:"OrderType" name:"OrderType"`
-			OrderSource            *string   `json:"OrderSource" name:"OrderSource"`
-			MultiAvailabilityZone  *bool     `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
-			MasterAvailabilityZone *string   `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
-			SlaveAvailabilityZone  *string   `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
-			ProductId              *string   `json:"ProductId" name:"ProductId"`
-			OrderUse               *string   `json:"OrderUse" name:"OrderUse"`
-			SupportIPV6            *bool     `json:"SupportIPV6" name:"SupportIPV6"`
-			ProjectId              *int      `json:"ProjectId" name:"ProjectId"`
-			ProjectName            *string   `json:"ProjectName" name:"ProjectName"`
-			Region                 *string   `json:"Region" name:"Region"`
-			BillTypeId             *int      `json:"BillTypeId" name:"BillTypeId"`
-			Tags                   []*string `json:"Tags" name:"Tags"`
+			BillType                         *string   `json:"BillType" name:"BillType"`
+			OrderType                        *string   `json:"OrderType" name:"OrderType"`
+			OrderSource                      *string   `json:"OrderSource" name:"OrderSource"`
+			MultiAvailabilityZone            *bool     `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone           *string   `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone            *string   `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
+			ProductId                        *string   `json:"ProductId" name:"ProductId"`
+			OrderUse                         *string   `json:"OrderUse" name:"OrderUse"`
+			SupportIPV6                      *bool     `json:"SupportIPV6" name:"SupportIPV6"`
+			ProjectId                        *int      `json:"ProjectId" name:"ProjectId"`
+			ProjectName                      *string   `json:"ProjectName" name:"ProjectName"`
+			Region                           *string   `json:"Region" name:"Region"`
+			BillTypeId                       *int      `json:"BillTypeId" name:"BillTypeId"`
+			Tags                             []*string `json:"Tags" name:"Tags"`
 		} `json:"Instances" name:"Instances"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
 		MaxRecords *int `json:"MaxRecords" name:"MaxRecords"`
-		Marker *int `json:"Marker" name:"Marker"`
+		Marker     *int `json:"Marker" name:"Marker"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -203,7 +203,6 @@ func (r *DescribeDBInstancesResponse) ToJsonString() string {
 func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DeleteDBInstanceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -225,42 +224,42 @@ type DeleteDBInstanceResponse struct {
 				Disk  *int    `json:"Disk" name:"Disk"`
 				Ram   *int    `json:"Ram" name:"Ram"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier   *string   `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-			DBInstanceName         *string   `json:"DBInstanceName" name:"DBInstanceName"`
-			DBInstanceStatus       *string   `json:"DBInstanceStatus" name:"DBInstanceStatus"`
-			DBInstanceType         *string   `json:"DBInstanceType" name:"DBInstanceType"`
-			DBParameterGroupId     *string   `json:"DBParameterGroupId" name:"DBParameterGroupId"`
-			GroupId                *string   `json:"GroupId" name:"GroupId"`
-			Vip                    *string   `json:"Vip" name:"Vip"`
-			Port                   *int      `json:"Port" name:"Port"`
-			Engine                 *string   `json:"Engine" name:"Engine"`
-			EngineVersion          *string   `json:"EngineVersion" name:"EngineVersion"`
-			InstanceCreateTime     *string   `json:"InstanceCreateTime" name:"InstanceCreateTime"`
-			MasterUserName         *string   `json:"MasterUserName" name:"MasterUserName"`
-			VpcId                  *string   `json:"VpcId" name:"VpcId"`
-			SubnetId               *string   `json:"SubnetId" name:"SubnetId"`
-			PubliclyAccessible     *bool     `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			DBInstanceIdentifier             *string   `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName                   *string   `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus                 *string   `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType                   *string   `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId               *string   `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			GroupId                          *string   `json:"GroupId" name:"GroupId"`
+			Vip                              *string   `json:"Vip" name:"Vip"`
+			Port                             *int      `json:"Port" name:"Port"`
+			Engine                           *string   `json:"Engine" name:"Engine"`
+			EngineVersion                    *string   `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime               *string   `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName                   *string   `json:"MasterUserName" name:"MasterUserName"`
+			VpcId                            *string   `json:"VpcId" name:"VpcId"`
+			SubnetId                         *string   `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible               *bool     `json:"PubliclyAccessible" name:"PubliclyAccessible"`
 			ReadReplicaDBInstanceIdentifiers []*string `json:"ReadReplicaDBInstanceIdentifiers" name:"ReadReplicaDBInstanceIdentifiers"`
-			BillType               *string   `json:"BillType" name:"BillType"`
-			OrderType              *string   `json:"OrderType" name:"OrderType"`
-			OrderSource            *string   `json:"OrderSource" name:"OrderSource"`
-			MultiAvailabilityZone  *bool     `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
-			MasterAvailabilityZone *string   `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
-			SlaveAvailabilityZone  *string   `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
-			ProductId              *string   `json:"ProductId" name:"ProductId"`
-			OrderUse               *string   `json:"OrderUse" name:"OrderUse"`
-			Eip                    *string   `json:"Eip" name:"Eip"`
-			EipPort                *string   `json:"EipPort" name:"EipPort"`
-			SupportIPV6            *bool     `json:"SupportIPV6" name:"SupportIPV6"`
-			ProjectId              *int      `json:"ProjectId" name:"ProjectId"`
-			ProjectName            *string   `json:"ProjectName" name:"ProjectName"`
-			Region                 *string   `json:"Region" name:"Region"`
-			BillTypeId             *int      `json:"BillTypeId" name:"BillTypeId"`
-			Tags                   []*string `json:"Tags" name:"Tags"`
+			BillType                         *string   `json:"BillType" name:"BillType"`
+			OrderType                        *string   `json:"OrderType" name:"OrderType"`
+			OrderSource                      *string   `json:"OrderSource" name:"OrderSource"`
+			MultiAvailabilityZone            *bool     `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone           *string   `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone            *string   `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
+			ProductId                        *string   `json:"ProductId" name:"ProductId"`
+			OrderUse                         *string   `json:"OrderUse" name:"OrderUse"`
+			Eip                              *string   `json:"Eip" name:"Eip"`
+			EipPort                          *string   `json:"EipPort" name:"EipPort"`
+			SupportIPV6                      *bool     `json:"SupportIPV6" name:"SupportIPV6"`
+			ProjectId                        *int      `json:"ProjectId" name:"ProjectId"`
+			ProjectName                      *string   `json:"ProjectName" name:"ProjectName"`
+			Region                           *string   `json:"Region" name:"Region"`
+			BillTypeId                       *int      `json:"BillTypeId" name:"BillTypeId"`
+			Tags                             []*string `json:"Tags" name:"Tags"`
 		} `json:"Instances" name:"Instances"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
 		MaxRecords *int `json:"MaxRecords" name:"MaxRecords"`
-		Marker *int `json:"Marker" name:"Marker"`
+		Marker     *int `json:"Marker" name:"Marker"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -273,7 +272,6 @@ func (r *DeleteDBInstanceResponse) ToJsonString() string {
 func (r *DeleteDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifyDBInstanceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -323,29 +321,29 @@ type ModifyDBInstanceResponse struct {
 			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
 			AvailabilityZoneList   []struct {
 				MemberType *string `json:"MemberType" name:"MemberType"`
-				AzCode *string `json:"AzCode" name:"AzCode"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
 			} `json:"AvailabilityZoneList"`
-			DiskUsed         *int      `json:"DiskUsed" name:"DiskUsed"`
-			InnerAzCode      *string   `json:"InnerAzCode" name:"InnerAzCode"`
-			Audit            *bool     `json:"Audit" name:"Audit"`
+			DiskUsed                         *int      `json:"DiskUsed" name:"DiskUsed"`
+			InnerAzCode                      *string   `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool     `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers []*string `json:"ReadReplicaDBInstanceIdentifiers" name:"ReadReplicaDBInstanceIdentifiers"`
-			ProductId        *string   `json:"ProductId" name:"ProductId"`
-			ProductWhat      *int      `json:"ProductWhat" name:"ProductWhat"`
-			ProjectId        *int      `json:"ProjectId" name:"ProjectId"`
-			ProjectName      *string   `json:"ProjectName" name:"ProjectName"`
-			Region           *string   `json:"Region" name:"Region"`
-			ServiceStartTime *string   `json:"ServiceStartTime" name:"ServiceStartTime"`
-			SubOrderId       *string   `json:"SubOrderId" name:"SubOrderId"`
-			MiniVersion      *string   `json:"MiniVersion" name:"MiniVersion"`
-			SecurityGroups   []*string `json:"SecurityGroups" name:"SecurityGroups"`
-			NetworkType      *int      `json:"NetworkType" name:"NetworkType"`
-			MaintenanceTime  *string   `json:"MaintenanceTime" name:"MaintenanceTime"`
-			SupportIPV6      *bool     `json:"SupportIPV6" name:"SupportIPV6"`
-			BindInstances    []*string `json:"BindInstances" name:"BindInstances"`
-			ProxyNodeInfo    []*string `json:"ProxyNodeInfo" name:"ProxyNodeInfo"`
-			ProxyInfo        []*string `json:"ProxyInfo" name:"ProxyInfo"`
-			AutoSwitch       *int      `json:"AutoSwitch" name:"AutoSwitch"`
-			BillTypeId       *int      `json:"BillTypeId" name:"BillTypeId"`
+			ProductId                        *string   `json:"ProductId" name:"ProductId"`
+			ProductWhat                      *int      `json:"ProductWhat" name:"ProductWhat"`
+			ProjectId                        *int      `json:"ProjectId" name:"ProjectId"`
+			ProjectName                      *string   `json:"ProjectName" name:"ProjectName"`
+			Region                           *string   `json:"Region" name:"Region"`
+			ServiceStartTime                 *string   `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId                       *string   `json:"SubOrderId" name:"SubOrderId"`
+			MiniVersion                      *string   `json:"MiniVersion" name:"MiniVersion"`
+			SecurityGroups                   []*string `json:"SecurityGroups" name:"SecurityGroups"`
+			NetworkType                      *int      `json:"NetworkType" name:"NetworkType"`
+			MaintenanceTime                  *string   `json:"MaintenanceTime" name:"MaintenanceTime"`
+			SupportIPV6                      *bool     `json:"SupportIPV6" name:"SupportIPV6"`
+			BindInstances                    []*string `json:"BindInstances" name:"BindInstances"`
+			ProxyNodeInfo                    []*string `json:"ProxyNodeInfo" name:"ProxyNodeInfo"`
+			ProxyInfo                        []*string `json:"ProxyInfo" name:"ProxyInfo"`
+			AutoSwitch                       *int      `json:"AutoSwitch" name:"AutoSwitch"`
+			BillTypeId                       *int      `json:"BillTypeId" name:"BillTypeId"`
 		} `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -359,7 +357,6 @@ func (r *ModifyDBInstanceResponse) ToJsonString() string {
 func (r *ModifyDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateSecurityGroupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -384,16 +381,16 @@ type CreateSecurityGroupResponse struct {
 			Created                  *string `json:"Created" name:"Created"`
 			Instances                []struct {
 				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-				DBInstanceName *string `json:"DBInstanceName" name:"DBInstanceName"`
-				Vip            *string `json:"Vip" name:"Vip"`
-				Created        *string `json:"Created" name:"Created"`
-				DBInstanceType *string `json:"DBInstanceType" name:"DBInstanceType"`
+				DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+				Vip                  *string `json:"Vip" name:"Vip"`
+				Created              *string `json:"Created" name:"Created"`
+				DBInstanceType       *string `json:"DBInstanceType" name:"DBInstanceType"`
 			} `json:"Instances"`
 			SecurityGroupRules []struct {
-				SecurityGroupRuleId   *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
-				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
+				SecurityGroupRuleId       *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleName     *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
-				Created               *string `json:"Created" name:"Created"`
+				Created                   *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -408,7 +405,6 @@ func (r *CreateSecurityGroupResponse) ToJsonString() string {
 func (r *CreateSecurityGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeSecurityGroupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -430,16 +426,16 @@ type DescribeSecurityGroupResponse struct {
 			Created                  *string `json:"Created" name:"Created"`
 			Instances                []struct {
 				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-				DBInstanceName *string `json:"DBInstanceName" name:"DBInstanceName"`
-				Vip            *string `json:"Vip" name:"Vip"`
-				Created        *string `json:"Created" name:"Created"`
-				DBInstanceType *string `json:"DBInstanceType" name:"DBInstanceType"`
+				DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+				Vip                  *string `json:"Vip" name:"Vip"`
+				Created              *string `json:"Created" name:"Created"`
+				DBInstanceType       *string `json:"DBInstanceType" name:"DBInstanceType"`
 			} `json:"Instances"`
 			SecurityGroupRules []struct {
-				SecurityGroupRuleId   *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
-				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
+				SecurityGroupRuleId       *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleName     *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
-				Created               *string `json:"Created" name:"Created"`
+				Created                   *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -454,7 +450,6 @@ func (r *DescribeSecurityGroupResponse) ToJsonString() string {
 func (r *DescribeSecurityGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DeleteSecurityGroupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -476,16 +471,16 @@ type DeleteSecurityGroupResponse struct {
 			Created                  *string `json:"Created" name:"Created"`
 			Instances                []struct {
 				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-				DBInstanceName *string `json:"DBInstanceName" name:"DBInstanceName"`
-				Vip            *string `json:"Vip" name:"Vip"`
-				Created        *string `json:"Created" name:"Created"`
-				DBInstanceType *string `json:"DBInstanceType" name:"DBInstanceType"`
+				DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+				Vip                  *string `json:"Vip" name:"Vip"`
+				Created              *string `json:"Created" name:"Created"`
+				DBInstanceType       *string `json:"DBInstanceType" name:"DBInstanceType"`
 			} `json:"Instances"`
 			SecurityGroupRules []struct {
-				SecurityGroupRuleId   *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
-				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
+				SecurityGroupRuleId       *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleName     *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
-				Created               *string `json:"Created" name:"Created"`
+				Created                   *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -500,7 +495,6 @@ func (r *DeleteSecurityGroupResponse) ToJsonString() string {
 func (r *DeleteSecurityGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifySecurityGroupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -524,16 +518,16 @@ type ModifySecurityGroupResponse struct {
 			Created                  *string `json:"Created" name:"Created"`
 			Instances                []struct {
 				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-				DBInstanceName *string `json:"DBInstanceName" name:"DBInstanceName"`
-				Vip            *string `json:"Vip" name:"Vip"`
-				Created        *string `json:"Created" name:"Created"`
-				DBInstanceType *string `json:"DBInstanceType" name:"DBInstanceType"`
+				DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+				Vip                  *string `json:"Vip" name:"Vip"`
+				Created              *string `json:"Created" name:"Created"`
+				DBInstanceType       *string `json:"DBInstanceType" name:"DBInstanceType"`
 			} `json:"Instances"`
 			SecurityGroupRules []struct {
-				SecurityGroupRuleId   *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
-				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
+				SecurityGroupRuleId       *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleName     *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
-				Created               *string `json:"Created" name:"Created"`
+				Created                   *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -548,7 +542,6 @@ func (r *ModifySecurityGroupResponse) ToJsonString() string {
 func (r *ModifySecurityGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CloneSecurityGroupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -572,10 +565,10 @@ type CloneSecurityGroupResponse struct {
 			Created                  *string   `json:"Created" name:"Created"`
 			Instances                []*string `json:"Instances" name:"Instances"`
 			SecurityGroupRules       []struct {
-				SecurityGroupRuleId   *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
-				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
+				SecurityGroupRuleId       *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleName     *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
-				Created               *string `json:"Created" name:"Created"`
+				Created                   *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -590,7 +583,6 @@ func (r *CloneSecurityGroupResponse) ToJsonString() string {
 func (r *CloneSecurityGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifySecurityGroupRuleRequest struct {
 	*ksyunhttp.BaseRequest
@@ -614,15 +606,15 @@ type ModifySecurityGroupRuleResponse struct {
 			Created                  *string `json:"Created" name:"Created"`
 			Instances                []struct {
 				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-				DBInstanceName *string `json:"DBInstanceName" name:"DBInstanceName"`
-				Vip            *string `json:"Vip" name:"Vip"`
-				Created        *string `json:"Created" name:"Created"`
-				DBInstanceType *string `json:"DBInstanceType" name:"DBInstanceType"`
+				DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+				Vip                  *string `json:"Vip" name:"Vip"`
+				Created              *string `json:"Created" name:"Created"`
+				DBInstanceType       *string `json:"DBInstanceType" name:"DBInstanceType"`
 			} `json:"Instances"`
 			SecurityGroupRules []struct {
-				SecurityGroupRuleId *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleId       *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
-				Created             *string `json:"Created" name:"Created"`
+				Created                   *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -637,7 +629,6 @@ func (r *ModifySecurityGroupRuleResponse) ToJsonString() string {
 func (r *ModifySecurityGroupRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type SecurityGroupRelationRequest struct {
 	*ksyunhttp.BaseRequest
@@ -661,10 +652,10 @@ type SecurityGroupRelationResponse struct {
 			Created                  *string   `json:"Created" name:"Created"`
 			Instances                []*string `json:"Instances" name:"Instances"`
 			SecurityGroupRules       []struct {
-				SecurityGroupRuleId   *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
-				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
+				SecurityGroupRuleId       *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
+				SecurityGroupRuleName     *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
-				Created               *string `json:"Created" name:"Created"`
+				Created                   *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -679,7 +670,6 @@ func (r *SecurityGroupRelationResponse) ToJsonString() string {
 func (r *SecurityGroupRelationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifySecurityGroupRuleNameRequest struct {
 	*ksyunhttp.BaseRequest
@@ -707,7 +697,6 @@ func (r *ModifySecurityGroupRuleNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeCollationsRequest struct {
 	*ksyunhttp.BaseRequest
 	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
@@ -734,7 +723,6 @@ func (r *DescribeCollationsResponse) ToJsonString() string {
 func (r *DescribeCollationsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateInstanceDatabaseRequest struct {
 	*ksyunhttp.BaseRequest
@@ -764,7 +752,6 @@ func (r *CreateInstanceDatabaseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ModifyInstanceDatabasePrivilegesRequest struct {
 	*ksyunhttp.BaseRequest
 	DBInstanceIdentifier       *string                                                       `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
@@ -791,7 +778,6 @@ func (r *ModifyInstanceDatabasePrivilegesResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeInstanceDatabasesRequest struct {
 	*ksyunhttp.BaseRequest
 	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
@@ -814,7 +800,7 @@ type DescribeInstanceDatabasesResponse struct {
 			Created                     *string `json:"Created" name:"Created"`
 			InstanceDatabasePrivileges  []struct {
 				InstanceAccountName *string `json:"InstanceAccountName" name:"InstanceAccountName"`
-				Privilege *string `json:"Privilege" name:"Privilege"`
+				Privilege           *string `json:"Privilege" name:"Privilege"`
 			} `json:"InstanceDatabasePrivileges"`
 		} `json:"InstanceDatabases" name:"InstanceDatabases"`
 	} `json:"Data"`
@@ -829,7 +815,6 @@ func (r *DescribeInstanceDatabasesResponse) ToJsonString() string {
 func (r *DescribeInstanceDatabasesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateInstanceAccountRequest struct {
 	*ksyunhttp.BaseRequest
@@ -859,7 +844,6 @@ func (r *CreateInstanceAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeInstanceAccountsRequest struct {
 	*ksyunhttp.BaseRequest
 	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
@@ -881,7 +865,7 @@ type DescribeInstanceAccountsResponse struct {
 			InstanceAccountType        *string `json:"InstanceAccountType" name:"InstanceAccountType"`
 			InstanceAccountPrivileges  []struct {
 				InstanceDatabaseName *string `json:"InstanceDatabaseName" name:"InstanceDatabaseName"`
-				Privilege *string `json:"Privilege" name:"Privilege"`
+				Privilege            *string `json:"Privilege" name:"Privilege"`
 			} `json:"InstanceAccountPrivileges"`
 		} `json:"Accounts" name:"Accounts"`
 	} `json:"Data"`
@@ -896,7 +880,6 @@ func (r *DescribeInstanceAccountsResponse) ToJsonString() string {
 func (r *DescribeInstanceAccountsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifyInstanceAccountInfoRequest struct {
 	*ksyunhttp.BaseRequest
@@ -925,7 +908,6 @@ func (r *ModifyInstanceAccountInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ModifyInstanceAccountPrivilegesRequest struct {
 	*ksyunhttp.BaseRequest
 	DBInstanceIdentifier      *string                                                     `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
@@ -952,7 +934,6 @@ func (r *ModifyInstanceAccountPrivilegesResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteInstanceAccountRequest struct {
 	*ksyunhttp.BaseRequest
 	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
@@ -978,7 +959,6 @@ func (r *DeleteInstanceAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteInstanceDatabaseRequest struct {
 	*ksyunhttp.BaseRequest
 	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
@@ -1003,7 +983,6 @@ func (r *DeleteInstanceDatabaseResponse) ToJsonString() string {
 func (r *DeleteInstanceDatabaseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifyInstanceDatabaseInfoRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1031,7 +1010,6 @@ func (r *ModifyInstanceDatabaseInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type OverrideDBInstanceRequest struct {
 	*ksyunhttp.BaseRequest
 	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
@@ -1056,41 +1034,41 @@ type OverrideDBInstanceResponse struct {
 				Mem     *int    `json:"Mem" name:"Mem"`
 				MaxConn *int    `json:"MaxConn" name:"MaxConn"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier  *string   `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-			DBInstanceName        *string   `json:"DBInstanceName" name:"DBInstanceName"`
-			DBInstanceStatus      *string   `json:"DBInstanceStatus" name:"DBInstanceStatus"`
-			DBInstanceType        *string   `json:"DBInstanceType" name:"DBInstanceType"`
-			DBParameterGroupId    *string   `json:"DBParameterGroupId" name:"DBParameterGroupId"`
-			PreferredBackupTime   *string   `json:"PreferredBackupTime" name:"PreferredBackupTime"`
-			GroupId               *string   `json:"GroupId" name:"GroupId"`
-			Vip                   *string   `json:"Vip" name:"Vip"`
-			Port                  *int      `json:"Port" name:"Port"`
-			Engine                *string   `json:"Engine" name:"Engine"`
-			EngineVersion         *string   `json:"EngineVersion" name:"EngineVersion"`
-			VolumeSize            *int      `json:"VolumeSize" name:"VolumeSize"`
-			InstanceCreateTime    *string   `json:"InstanceCreateTime" name:"InstanceCreateTime"`
-			MasterUserName        *string   `json:"MasterUserName" name:"MasterUserName"`
-			DatastoreVersionId    *string   `json:"DatastoreVersionId" name:"DatastoreVersionId"`
-			VpcId                 *string   `json:"VpcId" name:"VpcId"`
-			SubnetId              *string   `json:"SubnetId" name:"SubnetId"`
-			PubliclyAccessible    *bool     `json:"PubliclyAccessible" name:"PubliclyAccessible"`
-			BillType              *string   `json:"BillType" name:"BillType"`
-			OrderType             *string   `json:"OrderType" name:"OrderType"`
-			MultiAvailabilityZone *bool     `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
-			AvailabilityZoneList  []*string `json:"AvailabilityZoneList" name:"AvailabilityZoneList"`
-			DiskUsed              *int      `json:"DiskUsed" name:"DiskUsed"`
-			Audit                 *bool     `json:"Audit" name:"Audit"`
+			DBInstanceIdentifier             *string   `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName                   *string   `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus                 *string   `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType                   *string   `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId               *string   `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime              *string   `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId                          *string   `json:"GroupId" name:"GroupId"`
+			Vip                              *string   `json:"Vip" name:"Vip"`
+			Port                             *int      `json:"Port" name:"Port"`
+			Engine                           *string   `json:"Engine" name:"Engine"`
+			EngineVersion                    *string   `json:"EngineVersion" name:"EngineVersion"`
+			VolumeSize                       *int      `json:"VolumeSize" name:"VolumeSize"`
+			InstanceCreateTime               *string   `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName                   *string   `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId               *string   `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                            *string   `json:"VpcId" name:"VpcId"`
+			SubnetId                         *string   `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible               *bool     `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType                         *string   `json:"BillType" name:"BillType"`
+			OrderType                        *string   `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone            *bool     `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			AvailabilityZoneList             []*string `json:"AvailabilityZoneList" name:"AvailabilityZoneList"`
+			DiskUsed                         *int      `json:"DiskUsed" name:"DiskUsed"`
+			Audit                            *bool     `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers []*string `json:"ReadReplicaDBInstanceIdentifiers" name:"ReadReplicaDBInstanceIdentifiers"`
-			ProductId             *string   `json:"ProductId" name:"ProductId"`
-			ProductWhat           *int      `json:"ProductWhat" name:"ProductWhat"`
-			ProjectId             *int      `json:"ProjectId" name:"ProjectId"`
-			ProjectName           *string   `json:"ProjectName" name:"ProjectName"`
-			Region                *string   `json:"Region" name:"Region"`
-			ServiceStartTime      *string   `json:"ServiceStartTime" name:"ServiceStartTime"`
-			SubOrderId            *string   `json:"SubOrderId" name:"SubOrderId"`
-			SecurityGroups        []*string `json:"SecurityGroups" name:"SecurityGroups"`
-			SupportIPV6           *bool     `json:"SupportIPV6" name:"SupportIPV6"`
-			BillTypeId            *int      `json:"BillTypeId" name:"BillTypeId"`
+			ProductId                        *string   `json:"ProductId" name:"ProductId"`
+			ProductWhat                      *int      `json:"ProductWhat" name:"ProductWhat"`
+			ProjectId                        *int      `json:"ProjectId" name:"ProjectId"`
+			ProjectName                      *string   `json:"ProjectName" name:"ProjectName"`
+			Region                           *string   `json:"Region" name:"Region"`
+			ServiceStartTime                 *string   `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId                       *string   `json:"SubOrderId" name:"SubOrderId"`
+			SecurityGroups                   []*string `json:"SecurityGroups" name:"SecurityGroups"`
+			SupportIPV6                      *bool     `json:"SupportIPV6" name:"SupportIPV6"`
+			BillTypeId                       *int      `json:"BillTypeId" name:"BillTypeId"`
 		} `json:"Instances" name:"Instances"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -1104,7 +1082,6 @@ func (r *OverrideDBInstanceResponse) ToJsonString() string {
 func (r *OverrideDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type RestoreDBInstanceFromDBBackupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1137,35 +1114,35 @@ type RestoreDBInstanceFromDBBackupResponse struct {
 				Mem     *int    `json:"Mem" name:"Mem"`
 				MaxConn *int    `json:"MaxConn" name:"MaxConn"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier  *string   `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-			DBInstanceName        *string   `json:"DBInstanceName" name:"DBInstanceName"`
-			DBInstanceStatus      *string   `json:"DBInstanceStatus" name:"DBInstanceStatus"`
-			DBInstanceType        *string   `json:"DBInstanceType" name:"DBInstanceType"`
-			DBParameterGroupId    *string   `json:"DBParameterGroupId" name:"DBParameterGroupId"`
-			PreferredBackupTime   *string   `json:"PreferredBackupTime" name:"PreferredBackupTime"`
-			GroupId               *string   `json:"GroupId" name:"GroupId"`
-			Vip                   *string   `json:"Vip" name:"Vip"`
-			Port                  *int      `json:"Port" name:"Port"`
-			Engine                *string   `json:"Engine" name:"Engine"`
-			EngineVersion         *string   `json:"EngineVersion" name:"EngineVersion"`
-			InstanceCreateTime    *string   `json:"InstanceCreateTime" name:"InstanceCreateTime"`
-			DatastoreVersionId    *string   `json:"DatastoreVersionId" name:"DatastoreVersionId"`
-			VpcId                 *string   `json:"VpcId" name:"VpcId"`
-			SubnetId              *string   `json:"SubnetId" name:"SubnetId"`
-			PubliclyAccessible    *bool     `json:"PubliclyAccessible" name:"PubliclyAccessible"`
-			BillType              *string   `json:"BillType" name:"BillType"`
-			OrderType             *string   `json:"OrderType" name:"OrderType"`
-			MultiAvailabilityZone *bool     `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
-			AvailabilityZoneList  []*string `json:"AvailabilityZoneList" name:"AvailabilityZoneList"`
-			DiskUsed              *int      `json:"DiskUsed" name:"DiskUsed"`
-			Audit                 *bool     `json:"Audit" name:"Audit"`
+			DBInstanceIdentifier             *string   `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName                   *string   `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus                 *string   `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType                   *string   `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId               *string   `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime              *string   `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId                          *string   `json:"GroupId" name:"GroupId"`
+			Vip                              *string   `json:"Vip" name:"Vip"`
+			Port                             *int      `json:"Port" name:"Port"`
+			Engine                           *string   `json:"Engine" name:"Engine"`
+			EngineVersion                    *string   `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime               *string   `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			DatastoreVersionId               *string   `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                            *string   `json:"VpcId" name:"VpcId"`
+			SubnetId                         *string   `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible               *bool     `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType                         *string   `json:"BillType" name:"BillType"`
+			OrderType                        *string   `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone            *bool     `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			AvailabilityZoneList             []*string `json:"AvailabilityZoneList" name:"AvailabilityZoneList"`
+			DiskUsed                         *int      `json:"DiskUsed" name:"DiskUsed"`
+			Audit                            *bool     `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers []*string `json:"ReadReplicaDBInstanceIdentifiers" name:"ReadReplicaDBInstanceIdentifiers"`
-			DBSource              struct {
+			DBSource                         struct {
 				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-				DBInstanceName     *string `json:"DBInstanceName" name:"DBInstanceName"`
-				DBInstanceType     *string `json:"DBInstanceType" name:"DBInstanceType"`
-				DBBackupIdentifier *string `json:"DBBackupIdentifier" name:"DBBackupIdentifier"`
-				DBBackupName       *string `json:"DBBackupName" name:"DBBackupName"`
+				DBInstanceName       *string `json:"DBInstanceName" name:"DBInstanceName"`
+				DBInstanceType       *string `json:"DBInstanceType" name:"DBInstanceType"`
+				DBBackupIdentifier   *string `json:"DBBackupIdentifier" name:"DBBackupIdentifier"`
+				DBBackupName         *string `json:"DBBackupName" name:"DBBackupName"`
 			} `json:"DBSource"`
 			ProductId        *string   `json:"ProductId" name:"ProductId"`
 			ProductWhat      *int      `json:"ProductWhat" name:"ProductWhat"`
@@ -1192,7 +1169,6 @@ func (r *RestoreDBInstanceFromDBBackupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type CreateDBBackupRequest struct {
 	*ksyunhttp.BaseRequest
 	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
@@ -1209,15 +1185,15 @@ type CreateDBBackupResponse struct {
 	*ksyunhttp.BaseResponse
 	DBBackup struct {
 		DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-		DBBackupIdentifier *string `json:"DBBackupIdentifier" name:"DBBackupIdentifier"`
-		Engine             *string `json:"Engine" name:"Engine"`
-		EngineVersion      *string `json:"EngineVersion" name:"EngineVersion"`
-		BackupCreateTime   *string `json:"BackupCreateTime" name:"BackupCreateTime"`
-		BackupUpdatedTime  *string `json:"BackupUpdatedTime" name:"BackupUpdatedTime"`
-		DBBackupName       *string `json:"DBBackupName" name:"DBBackupName"`
-		Description        *string `json:"Description" name:"Description"`
-		BackupType         *string `json:"BackupType" name:"BackupType"`
-		Status             *string `json:"Status" name:"Status"`
+		DBBackupIdentifier   *string `json:"DBBackupIdentifier" name:"DBBackupIdentifier"`
+		Engine               *string `json:"Engine" name:"Engine"`
+		EngineVersion        *string `json:"EngineVersion" name:"EngineVersion"`
+		BackupCreateTime     *string `json:"BackupCreateTime" name:"BackupCreateTime"`
+		BackupUpdatedTime    *string `json:"BackupUpdatedTime" name:"BackupUpdatedTime"`
+		DBBackupName         *string `json:"DBBackupName" name:"DBBackupName"`
+		Description          *string `json:"Description" name:"Description"`
+		BackupType           *string `json:"BackupType" name:"BackupType"`
+		Status               *string `json:"Status" name:"Status"`
 	} `json:"DBBackup"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1230,7 +1206,6 @@ func (r *CreateDBBackupResponse) ToJsonString() string {
 func (r *CreateDBBackupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DeleteDBBackupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1256,7 +1231,6 @@ func (r *DeleteDBBackupResponse) ToJsonString() string {
 func (r *DeleteDBBackupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeDBBackupsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1293,7 +1267,7 @@ type DescribeDBBackupsResponse struct {
 		} `json:"DBBackup" name:"DBBackup"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
 		MaxRecords *int `json:"MaxRecords" name:"MaxRecords"`
-		Marker *int `json:"Marker" name:"Marker"`
+		Marker     *int `json:"Marker" name:"Marker"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1306,7 +1280,6 @@ func (r *DescribeDBBackupsResponse) ToJsonString() string {
 func (r *DescribeDBBackupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifyDBBackupPolicyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1333,7 +1306,6 @@ func (r *ModifyDBBackupPolicyResponse) ToJsonString() string {
 func (r *ModifyDBBackupPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type AllocateDBInstanceEipRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1383,22 +1355,22 @@ type AllocateDBInstanceEipResponse struct {
 			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
 			AvailabilityZoneList   []struct {
 				MemberType *string `json:"MemberType" name:"MemberType"`
-				AzCode *string `json:"AzCode" name:"AzCode"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
 			} `json:"AvailabilityZoneList"`
-			DiskUsed         *int      `json:"DiskUsed" name:"DiskUsed"`
-			InnerAzCode      *string   `json:"InnerAzCode" name:"InnerAzCode"`
-			Audit            *bool     `json:"Audit" name:"Audit"`
+			DiskUsed                         *int      `json:"DiskUsed" name:"DiskUsed"`
+			InnerAzCode                      *string   `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool     `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers []*string `json:"ReadReplicaDBInstanceIdentifiers" name:"ReadReplicaDBInstanceIdentifiers"`
-			ProductId        *string   `json:"ProductId" name:"ProductId"`
-			ProductWhat      *int      `json:"ProductWhat" name:"ProductWhat"`
-			ProjectId        *int      `json:"ProjectId" name:"ProjectId"`
-			ProjectName      *string   `json:"ProjectName" name:"ProjectName"`
-			Region           *string   `json:"Region" name:"Region"`
-			ServiceStartTime *string   `json:"ServiceStartTime" name:"ServiceStartTime"`
-			SubOrderId       *string   `json:"SubOrderId" name:"SubOrderId"`
-			SecurityGroups   []*string `json:"SecurityGroups" name:"SecurityGroups"`
-			SupportIPV6      *bool     `json:"SupportIPV6" name:"SupportIPV6"`
-			BillTypeId       *int      `json:"BillTypeId" name:"BillTypeId"`
+			ProductId                        *string   `json:"ProductId" name:"ProductId"`
+			ProductWhat                      *int      `json:"ProductWhat" name:"ProductWhat"`
+			ProjectId                        *int      `json:"ProjectId" name:"ProjectId"`
+			ProjectName                      *string   `json:"ProjectName" name:"ProjectName"`
+			Region                           *string   `json:"Region" name:"Region"`
+			ServiceStartTime                 *string   `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId                       *string   `json:"SubOrderId" name:"SubOrderId"`
+			SecurityGroups                   []*string `json:"SecurityGroups" name:"SecurityGroups"`
+			SupportIPV6                      *bool     `json:"SupportIPV6" name:"SupportIPV6"`
+			BillTypeId                       *int      `json:"BillTypeId" name:"BillTypeId"`
 		} `json:"DBInstance" name:"DBInstance"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -1412,7 +1384,6 @@ func (r *AllocateDBInstanceEipResponse) ToJsonString() string {
 func (r *AllocateDBInstanceEipResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ReleaseDBInstanceEipRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1461,22 +1432,22 @@ type ReleaseDBInstanceEipResponse struct {
 			SlaveAvailabilityZone  *string `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
 			AvailabilityZoneList   []struct {
 				MemberType *string `json:"MemberType" name:"MemberType"`
-				AzCode *string `json:"AzCode" name:"AzCode"`
+				AzCode     *string `json:"AzCode" name:"AzCode"`
 			} `json:"AvailabilityZoneList"`
-			DiskUsed         *int      `json:"DiskUsed" name:"DiskUsed"`
-			InnerAzCode      *string   `json:"InnerAzCode" name:"InnerAzCode"`
-			Audit            *bool     `json:"Audit" name:"Audit"`
+			DiskUsed                         *int      `json:"DiskUsed" name:"DiskUsed"`
+			InnerAzCode                      *string   `json:"InnerAzCode" name:"InnerAzCode"`
+			Audit                            *bool     `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers []*string `json:"ReadReplicaDBInstanceIdentifiers" name:"ReadReplicaDBInstanceIdentifiers"`
-			ProductId        *string   `json:"ProductId" name:"ProductId"`
-			ProductWhat      *int      `json:"ProductWhat" name:"ProductWhat"`
-			ProjectId        *int      `json:"ProjectId" name:"ProjectId"`
-			ProjectName      *string   `json:"ProjectName" name:"ProjectName"`
-			Region           *string   `json:"Region" name:"Region"`
-			ServiceStartTime *string   `json:"ServiceStartTime" name:"ServiceStartTime"`
-			SubOrderId       *string   `json:"SubOrderId" name:"SubOrderId"`
-			SecurityGroups   []*string `json:"SecurityGroups" name:"SecurityGroups"`
-			SupportIPV6      *bool     `json:"SupportIPV6" name:"SupportIPV6"`
-			BillTypeId       *int      `json:"BillTypeId" name:"BillTypeId"`
+			ProductId                        *string   `json:"ProductId" name:"ProductId"`
+			ProductWhat                      *int      `json:"ProductWhat" name:"ProductWhat"`
+			ProjectId                        *int      `json:"ProjectId" name:"ProjectId"`
+			ProjectName                      *string   `json:"ProjectName" name:"ProjectName"`
+			Region                           *string   `json:"Region" name:"Region"`
+			ServiceStartTime                 *string   `json:"ServiceStartTime" name:"ServiceStartTime"`
+			SubOrderId                       *string   `json:"SubOrderId" name:"SubOrderId"`
+			SecurityGroups                   []*string `json:"SecurityGroups" name:"SecurityGroups"`
+			SupportIPV6                      *bool     `json:"SupportIPV6" name:"SupportIPV6"`
+			BillTypeId                       *int      `json:"BillTypeId" name:"BillTypeId"`
 		} `json:"DBInstance" name:"DBInstance"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -1490,7 +1461,6 @@ func (r *ReleaseDBInstanceEipResponse) ToJsonString() string {
 func (r *ReleaseDBInstanceEipResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ListSlowLogsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1517,7 +1487,7 @@ type ListSlowLogsResponse struct {
 		} `json:"SlowLogs" name:"SlowLogs"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
 		MaxRecords *int `json:"MaxRecords" name:"MaxRecords"`
-		Marker *int `json:"Marker" name:"Marker"`
+		Marker     *int `json:"Marker" name:"Marker"`
 	} `json:"Data"`
 }
 
@@ -1529,7 +1499,6 @@ func (r *ListSlowLogsResponse) ToJsonString() string {
 func (r *ListSlowLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ListErrorLogsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1554,7 +1523,7 @@ type ListErrorLogsResponse struct {
 		} `json:"ErrorLogs" name:"ErrorLogs"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
 		MaxRecords *int `json:"MaxRecords" name:"MaxRecords"`
-		Marker *int `json:"Marker" name:"Marker"`
+		Marker     *int `json:"Marker" name:"Marker"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1567,7 +1536,6 @@ func (r *ListErrorLogsResponse) ToJsonString() string {
 func (r *ListErrorLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifyDBInstanceSpecRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1591,40 +1559,40 @@ type ModifyDBInstanceSpecResponse struct {
 				Disk  *int    `json:"Disk" name:"Disk"`
 				Ram   *int    `json:"Ram" name:"Ram"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier   *string   `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-			DBInstanceName         *string   `json:"DBInstanceName" name:"DBInstanceName"`
-			DBInstanceStatus       *string   `json:"DBInstanceStatus" name:"DBInstanceStatus"`
-			DBInstanceType         *string   `json:"DBInstanceType" name:"DBInstanceType"`
-			DBParameterGroupId     *string   `json:"DBParameterGroupId" name:"DBParameterGroupId"`
-			GroupId                *string   `json:"GroupId" name:"GroupId"`
-			Vip                    *string   `json:"Vip" name:"Vip"`
-			Port                   *int      `json:"Port" name:"Port"`
-			Engine                 *string   `json:"Engine" name:"Engine"`
-			EngineVersion          *string   `json:"EngineVersion" name:"EngineVersion"`
-			InstanceCreateTime     *string   `json:"InstanceCreateTime" name:"InstanceCreateTime"`
-			MasterUserName         *string   `json:"MasterUserName" name:"MasterUserName"`
-			VpcId                  *string   `json:"VpcId" name:"VpcId"`
-			SubnetId               *string   `json:"SubnetId" name:"SubnetId"`
-			PubliclyAccessible     *bool     `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			DBInstanceIdentifier             *string   `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName                   *string   `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus                 *string   `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType                   *string   `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId               *string   `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			GroupId                          *string   `json:"GroupId" name:"GroupId"`
+			Vip                              *string   `json:"Vip" name:"Vip"`
+			Port                             *int      `json:"Port" name:"Port"`
+			Engine                           *string   `json:"Engine" name:"Engine"`
+			EngineVersion                    *string   `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime               *string   `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName                   *string   `json:"MasterUserName" name:"MasterUserName"`
+			VpcId                            *string   `json:"VpcId" name:"VpcId"`
+			SubnetId                         *string   `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible               *bool     `json:"PubliclyAccessible" name:"PubliclyAccessible"`
 			ReadReplicaDBInstanceIdentifiers []*string `json:"ReadReplicaDBInstanceIdentifiers" name:"ReadReplicaDBInstanceIdentifiers"`
-			BillType               *string   `json:"BillType" name:"BillType"`
-			OrderType              *string   `json:"OrderType" name:"OrderType"`
-			OrderSource            *string   `json:"OrderSource" name:"OrderSource"`
-			MultiAvailabilityZone  *bool     `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
-			MasterAvailabilityZone *string   `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
-			SlaveAvailabilityZone  *string   `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
-			ProductId              *string   `json:"ProductId" name:"ProductId"`
-			OrderUse               *string   `json:"OrderUse" name:"OrderUse"`
-			SupportIPV6            *bool     `json:"SupportIPV6" name:"SupportIPV6"`
-			ProjectId              *int      `json:"ProjectId" name:"ProjectId"`
-			ProjectName            *string   `json:"ProjectName" name:"ProjectName"`
-			Region                 *string   `json:"Region" name:"Region"`
-			BillTypeId             *int      `json:"BillTypeId" name:"BillTypeId"`
-			Tags                   []*string `json:"Tags" name:"Tags"`
+			BillType                         *string   `json:"BillType" name:"BillType"`
+			OrderType                        *string   `json:"OrderType" name:"OrderType"`
+			OrderSource                      *string   `json:"OrderSource" name:"OrderSource"`
+			MultiAvailabilityZone            *bool     `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone           *string   `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone            *string   `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
+			ProductId                        *string   `json:"ProductId" name:"ProductId"`
+			OrderUse                         *string   `json:"OrderUse" name:"OrderUse"`
+			SupportIPV6                      *bool     `json:"SupportIPV6" name:"SupportIPV6"`
+			ProjectId                        *int      `json:"ProjectId" name:"ProjectId"`
+			ProjectName                      *string   `json:"ProjectName" name:"ProjectName"`
+			Region                           *string   `json:"Region" name:"Region"`
+			BillTypeId                       *int      `json:"BillTypeId" name:"BillTypeId"`
+			Tags                             []*string `json:"Tags" name:"Tags"`
 		} `json:"Instances" name:"Instances"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
 		MaxRecords *int `json:"MaxRecords" name:"MaxRecords"`
-		Marker *int `json:"Marker" name:"Marker"`
+		Marker     *int `json:"Marker" name:"Marker"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1637,7 +1605,6 @@ func (r *ModifyDBInstanceSpecResponse) ToJsonString() string {
 func (r *ModifyDBInstanceSpecResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeImportTaskRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1674,7 +1641,6 @@ func (r *DescribeImportTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeImportFileRequest struct {
 	*ksyunhttp.BaseRequest
 	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
@@ -1709,7 +1675,6 @@ func (r *DescribeImportFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type CreateImportTaskRequest struct {
 	*ksyunhttp.BaseRequest
 	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
@@ -1740,7 +1705,6 @@ func (r *CreateImportTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type FinishImportTaskRequest struct {
 	*ksyunhttp.BaseRequest
 	DBInstanceIdentifier *string `json:"DBInstanceIdentifier,omitempty" name:"DBInstanceIdentifier"`
@@ -1765,7 +1729,6 @@ func (r *FinishImportTaskResponse) ToJsonString() string {
 func (r *FinishImportTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeDBInstanceRestorableTimeRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1901,40 +1864,40 @@ type RebootDBInstanceResponse struct {
 				Disk  *int    `json:"Disk" name:"Disk"`
 				Ram   *int    `json:"Ram" name:"Ram"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier   *string   `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-			DBInstanceName         *string   `json:"DBInstanceName" name:"DBInstanceName"`
-			DBInstanceStatus       *string   `json:"DBInstanceStatus" name:"DBInstanceStatus"`
-			DBInstanceType         *string   `json:"DBInstanceType" name:"DBInstanceType"`
-			DBParameterGroupId     *string   `json:"DBParameterGroupId" name:"DBParameterGroupId"`
-			GroupId                *string   `json:"GroupId" name:"GroupId"`
-			Vip                    *string   `json:"Vip" name:"Vip"`
-			Port                   *int      `json:"Port" name:"Port"`
-			Engine                 *string   `json:"Engine" name:"Engine"`
-			EngineVersion          *string   `json:"EngineVersion" name:"EngineVersion"`
-			InstanceCreateTime     *string   `json:"InstanceCreateTime" name:"InstanceCreateTime"`
-			MasterUserName         *string   `json:"MasterUserName" name:"MasterUserName"`
-			VpcId                  *string   `json:"VpcId" name:"VpcId"`
-			SubnetId               *string   `json:"SubnetId" name:"SubnetId"`
-			PubliclyAccessible     *bool     `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			DBInstanceIdentifier             *string   `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName                   *string   `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus                 *string   `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType                   *string   `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId               *string   `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			GroupId                          *string   `json:"GroupId" name:"GroupId"`
+			Vip                              *string   `json:"Vip" name:"Vip"`
+			Port                             *int      `json:"Port" name:"Port"`
+			Engine                           *string   `json:"Engine" name:"Engine"`
+			EngineVersion                    *string   `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime               *string   `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName                   *string   `json:"MasterUserName" name:"MasterUserName"`
+			VpcId                            *string   `json:"VpcId" name:"VpcId"`
+			SubnetId                         *string   `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible               *bool     `json:"PubliclyAccessible" name:"PubliclyAccessible"`
 			ReadReplicaDBInstanceIdentifiers []*string `json:"ReadReplicaDBInstanceIdentifiers" name:"ReadReplicaDBInstanceIdentifiers"`
-			BillType               *string   `json:"BillType" name:"BillType"`
-			OrderType              *string   `json:"OrderType" name:"OrderType"`
-			OrderSource            *string   `json:"OrderSource" name:"OrderSource"`
-			MultiAvailabilityZone  *bool     `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
-			MasterAvailabilityZone *string   `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
-			SlaveAvailabilityZone  *string   `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
-			ProductId              *string   `json:"ProductId" name:"ProductId"`
-			OrderUse               *string   `json:"OrderUse" name:"OrderUse"`
-			SupportIPV6            *bool     `json:"SupportIPV6" name:"SupportIPV6"`
-			ProjectId              *int      `json:"ProjectId" name:"ProjectId"`
-			ProjectName            *string   `json:"ProjectName" name:"ProjectName"`
-			Region                 *string   `json:"Region" name:"Region"`
-			BillTypeId             *int      `json:"BillTypeId" name:"BillTypeId"`
-			Tags                   []*string `json:"Tags" name:"Tags"`
+			BillType                         *string   `json:"BillType" name:"BillType"`
+			OrderType                        *string   `json:"OrderType" name:"OrderType"`
+			OrderSource                      *string   `json:"OrderSource" name:"OrderSource"`
+			MultiAvailabilityZone            *bool     `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			MasterAvailabilityZone           *string   `json:"MasterAvailabilityZone" name:"MasterAvailabilityZone"`
+			SlaveAvailabilityZone            *string   `json:"SlaveAvailabilityZone" name:"SlaveAvailabilityZone"`
+			ProductId                        *string   `json:"ProductId" name:"ProductId"`
+			OrderUse                         *string   `json:"OrderUse" name:"OrderUse"`
+			SupportIPV6                      *bool     `json:"SupportIPV6" name:"SupportIPV6"`
+			ProjectId                        *int      `json:"ProjectId" name:"ProjectId"`
+			ProjectName                      *string   `json:"ProjectName" name:"ProjectName"`
+			Region                           *string   `json:"Region" name:"Region"`
+			BillTypeId                       *int      `json:"BillTypeId" name:"BillTypeId"`
+			Tags                             []*string `json:"Tags" name:"Tags"`
 		} `json:"Instances" name:"Instances"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
 		MaxRecords *int `json:"MaxRecords" name:"MaxRecords"`
-		Marker *int `json:"Marker" name:"Marker"`
+		Marker     *int `json:"Marker" name:"Marker"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -2039,4 +2002,3 @@ func (r *UpdateResourceProtectionResponse) ToJsonString() string {
 func (r *UpdateResourceProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

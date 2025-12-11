@@ -134,13 +134,13 @@ type GetDomainRankingListDataResponse struct {
 	CdnType   *string `json:"CdnType" name:"CdnType"`
 	SortBy    *string `json:"SortBy" name:"SortBy"`
 	Datas     []struct {
-		Domain       *string  `json:"Domain" name:"Domain"`
-		Rank         *int     `json:"Rank" name:"Rank"`
-		Flow         *int     `json:"Flow" name:"Flow"`
+		Domain   *string `json:"Domain" name:"Domain"`
+		Rank     *int    `json:"Rank" name:"Rank"`
+		Flow     *int    `json:"Flow" name:"Flow"`
 		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
-		Bw           *int     `json:"Bw" name:"Bw"`
-		PeakTime     *string  `json:"PeakTime" name:"PeakTime"`
-		Pv           *int     `json:"Pv" name:"Pv"`
+		Bw       *int    `json:"Bw" name:"Bw"`
+		PeakTime *string `json:"PeakTime" name:"PeakTime"`
+		Pv       *int    `json:"Pv" name:"Pv"`
 		PvProportion *float64 `json:"PvProportion" name:"PvProportion"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -176,12 +176,12 @@ type GetAreaIspDataResponse struct {
 	CdnType   *string `json:"CdnType" name:"CdnType"`
 	Domains   *string `json:"Domains" name:"Domains"`
 	Datas     []struct {
-		Area         *string  `json:"Area" name:"Area"`
-		Flow         *int     `json:"Flow" name:"Flow"`
-		Pv           *int     `json:"Pv" name:"Pv"`
+		Area *string `json:"Area" name:"Area"`
+		Flow *int    `json:"Flow" name:"Flow"`
+		Pv   *int    `json:"Pv" name:"Pv"`
 		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
 		PvProportion *float64 `json:"PvProportion" name:"PvProportion"`
-		Isps         []struct {
+		Isps []struct {
 			Isp            *string  `json:"Isp" name:"Isp"`
 			Flow           *int     `json:"Flow" name:"Flow"`
 			Pv             *int     `json:"Pv" name:"Pv"`
@@ -226,11 +226,11 @@ type GetTopReferDataResponse struct {
 	LimitN    *int    `json:"LimitN" name:"LimitN"`
 	SortBy    *string `json:"SortBy" name:"SortBy"`
 	Datas     []struct {
-		Refer        *string  `json:"Refer" name:"Refer"`
-		Rank         *int     `json:"Rank" name:"Rank"`
-		Pv           *int     `json:"Pv" name:"Pv"`
+		Refer *string `json:"Refer" name:"Refer"`
+		Rank  *int    `json:"Rank" name:"Rank"`
+		Pv    *int    `json:"Pv" name:"Pv"`
 		PvProportion *float64 `json:"PvProportion" name:"PvProportion"`
-		Flow         *int     `json:"Flow" name:"Flow"`
+		Flow  *int    `json:"Flow" name:"Flow"`
 		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -270,11 +270,11 @@ type GetTopUrlDataResponse struct {
 	LimitN    *int    `json:"LimitN" name:"LimitN"`
 	SortBy    *string `json:"SortBy" name:"SortBy"`
 	Datas     []struct {
-		Url          *string  `json:"Url" name:"Url"`
-		Rank         *int     `json:"Rank" name:"Rank"`
-		Pv           *int     `json:"Pv" name:"Pv"`
+		Url  *string `json:"Url" name:"Url"`
+		Rank *int    `json:"Rank" name:"Rank"`
+		Pv   *int    `json:"Pv" name:"Pv"`
 		PvProportion *float64 `json:"PvProportion" name:"PvProportion"`
-		Flow         *int     `json:"Flow" name:"Flow"`
+		Flow *int    `json:"Flow" name:"Flow"`
 		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -690,6 +690,7 @@ func (r *GetDomainHttpCodeDetailedDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type GetDomainHttpCodeDataRequest struct {
 	*ksyunhttp.BaseRequest
 	StartTime  *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -742,6 +743,7 @@ func (r *GetDomainHttpCodeDataResponse) ToJsonString() string {
 func (r *GetDomainHttpCodeDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type GetEntryRateDataRequest struct {
 	*ksyunhttp.BaseRequest

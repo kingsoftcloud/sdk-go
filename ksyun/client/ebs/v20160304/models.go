@@ -3,7 +3,6 @@ import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 type CreateVolumeTag struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
@@ -50,6 +49,9 @@ func (r *CreateVolumeResponse) FromJsonString(s string) error {
 
 type AttachVolumeRequest struct {
 	*ksyunhttp.BaseRequest
+	VolumeId           *string `json:"VolumeId,omitempty" name:"VolumeId"`
+	InstanceId         *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	DeleteWithInstance *string `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
 }
 
 func (r *AttachVolumeRequest) ToJsonString() string {
@@ -59,8 +61,8 @@ func (r *AttachVolumeRequest) ToJsonString() string {
 
 type AttachVolumeResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *string `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *string `json:"Return" name:"Return"`
 }
 
 func (r *AttachVolumeResponse) ToJsonString() string {
@@ -86,8 +88,8 @@ func (r *DetachVolumeRequest) ToJsonString() string {
 
 type DetachVolumeResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DetachVolumeResponse) ToJsonString() string {
@@ -102,6 +104,8 @@ func (r *DetachVolumeResponse) FromJsonString(s string) error {
 
 type DeleteVolumeRequest struct {
 	*ksyunhttp.BaseRequest
+	VolumeId    *string `json:"VolumeId,omitempty" name:"VolumeId"`
+	ForceDelete *bool   `json:"ForceDelete,omitempty" name:"ForceDelete"`
 }
 
 func (r *DeleteVolumeRequest) ToJsonString() string {
@@ -111,8 +115,8 @@ func (r *DeleteVolumeRequest) ToJsonString() string {
 
 type DeleteVolumeResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *string `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *string `json:"Return" name:"Return"`
 }
 
 func (r *DeleteVolumeResponse) ToJsonString() string {
@@ -140,8 +144,8 @@ func (r *ResizeVolumeRequest) ToJsonString() string {
 
 type ResizeVolumeResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *ResizeVolumeResponse) ToJsonString() string {
@@ -213,6 +217,10 @@ func (r *DescribeVolumesResponse) FromJsonString(s string) error {
 
 type ModifyVolumeRequest struct {
 	*ksyunhttp.BaseRequest
+	VolumeId           *string `json:"VolumeId,omitempty" name:"VolumeId"`
+	VolumeName         *string `json:"VolumeName,omitempty" name:"VolumeName"`
+	VolumeDesc         *string `json:"VolumeDesc,omitempty" name:"VolumeDesc"`
+	DeleteWithInstance *string `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
 }
 
 func (r *ModifyVolumeRequest) ToJsonString() string {
@@ -222,8 +230,8 @@ func (r *ModifyVolumeRequest) ToJsonString() string {
 
 type ModifyVolumeResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *ModifyVolumeResponse) ToJsonString() string {
@@ -251,9 +259,9 @@ type DescribeEbsInstancesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Instances []struct {
-		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 		InstanceName *string `json:"InstanceName" name:"InstanceName"`
-		InstanceIp   *string `json:"InstanceIp" name:"InstanceIp"`
+		InstanceIp *string `json:"InstanceIp" name:"InstanceIp"`
 		InstanceEnable *string `json:"InstanceEnable" name:"InstanceEnable"`
 	} `json:"Instances"`
 }
@@ -270,6 +278,7 @@ func (r *DescribeEbsInstancesResponse) FromJsonString(s string) error {
 
 type DescribeInstanceVolumesRequest struct {
 	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 func (r *DescribeInstanceVolumesRequest) ToJsonString() string {
@@ -279,7 +288,7 @@ func (r *DescribeInstanceVolumesRequest) ToJsonString() string {
 
 type DescribeInstanceVolumesResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
 	Attachments []struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 		VolumeId *string `json:"VolumeId" name:"VolumeId"`
@@ -299,6 +308,8 @@ func (r *DescribeInstanceVolumesResponse) FromJsonString(s string) error {
 
 type RenewVolumeRequest struct {
 	*ksyunhttp.BaseRequest
+	VolumeId     *string `json:"VolumeId,omitempty" name:"VolumeId"`
+	PurchaseTime *int    `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
 }
 
 func (r *RenewVolumeRequest) ToJsonString() string {
@@ -335,8 +346,8 @@ func (r *UpdateVolumeProjectRequest) ToJsonString() string {
 
 type UpdateVolumeProjectResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *UpdateVolumeProjectResponse) ToJsonString() string {
@@ -369,19 +380,19 @@ type DescribeSnapshotsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Snapshots []struct {
-		SnapshotId     *string `json:"SnapshotId" name:"SnapshotId"`
-		SnapshotName   *string `json:"SnapshotName" name:"SnapshotName"`
-		VolumeId       *string `json:"VolumeId" name:"VolumeId"`
-		Size           *int    `json:"Size" name:"Size"`
-		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+		SnapshotId   *string `json:"SnapshotId" name:"SnapshotId"`
+		SnapshotName *string `json:"SnapshotName" name:"SnapshotName"`
+		VolumeId     *string `json:"VolumeId" name:"VolumeId"`
+		Size         *int    `json:"Size" name:"Size"`
+		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
 		SnapshotStatus *string `json:"SnapshotStatus" name:"SnapshotStatus"`
 		VolumeCategory *string `json:"VolumeCategory" name:"VolumeCategory"`
-		VolumeName     *string `json:"VolumeName" name:"VolumeName"`
-		VolumeType     *string `json:"VolumeType" name:"VolumeType"`
-		Progress       *string `json:"Progress" name:"Progress"`
+		VolumeName   *string `json:"VolumeName" name:"VolumeName"`
+		VolumeType   *string `json:"VolumeType" name:"VolumeType"`
+		Progress     *string `json:"Progress" name:"Progress"`
 		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
-		VolumeStatus   *string `json:"VolumeStatus" name:"VolumeStatus"`
-		SnapshotType   *string `json:"SnapshotType" name:"SnapshotType"`
+		VolumeStatus *string `json:"VolumeStatus" name:"VolumeStatus"`
+		SnapshotType *string `json:"SnapshotType" name:"SnapshotType"`
 	} `json:"Snapshots"`
 }
 
@@ -436,8 +447,8 @@ func (r *DeleteSnapshotRequest) ToJsonString() string {
 
 type DeleteSnapshotResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *string `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *string `json:"Return" name:"Return"`
 }
 
 func (r *DeleteSnapshotResponse) ToJsonString() string {
@@ -461,8 +472,8 @@ func (r *RollbackSnapshotRequest) ToJsonString() string {
 
 type RollbackSnapshotResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *RollbackSnapshotResponse) ToJsonString() string {
@@ -486,8 +497,8 @@ func (r *ModifySnapshotRequest) ToJsonString() string {
 
 type ModifySnapshotResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *ModifySnapshotResponse) ToJsonString() string {
@@ -502,6 +513,7 @@ func (r *ModifySnapshotResponse) FromJsonString(s string) error {
 
 type RecoveryVolumeRequest struct {
 	*ksyunhttp.BaseRequest
+	VolumeId *string `json:"VolumeId,omitempty" name:"VolumeId"`
 }
 
 func (r *RecoveryVolumeRequest) ToJsonString() string {
@@ -511,8 +523,8 @@ func (r *RecoveryVolumeRequest) ToJsonString() string {
 
 type RecoveryVolumeResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *string `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *string `json:"Return" name:"Return"`
 }
 
 func (r *RecoveryVolumeResponse) ToJsonString() string {
@@ -551,6 +563,7 @@ func (r *ValidateAttachInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeAvailabilityZonesRequest struct {
 	*ksyunhttp.BaseRequest
 	VolumeType *string `json:"VolumeType,omitempty" name:"VolumeType"`
@@ -563,7 +576,7 @@ func (r *DescribeAvailabilityZonesRequest) ToJsonString() string {
 
 type DescribeAvailabilityZonesResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId         *string   `json:"RequestId" name:"RequestId"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
 	AvailabilityZones []*string `json:"AvailabilityZones" name:"AvailabilityZones"`
 }
 
@@ -722,6 +735,7 @@ func (r *ResizeDedicatedBlockStorageClustersResponse) FromJsonString(s string) e
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeDedicatedBlockStorageClustersRequest struct {
 	*ksyunhttp.BaseRequest
 	AvailabilityZone *string   `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
@@ -770,6 +784,7 @@ func (r *DescribeDedicatedBlockStorageClustersResponse) FromJsonString(s string)
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type CreateDedicatedBlockStorageClusterRequest struct {
 	*ksyunhttp.BaseRequest
 	DbscName         *string `json:"DbscName,omitempty" name:"DbscName"`
@@ -799,6 +814,7 @@ func (r *CreateDedicatedBlockStorageClusterResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyVolumePresetRequest struct {
 	*ksyunhttp.BaseRequest
 	VolumeId        *string `json:"VolumeId,omitempty" name:"VolumeId"`
@@ -812,8 +828,8 @@ func (r *ModifyVolumePresetRequest) ToJsonString() string {
 
 type ModifyVolumePresetResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *ModifyVolumePresetResponse) ToJsonString() string {
@@ -824,6 +840,7 @@ func (r *ModifyVolumePresetResponse) ToJsonString() string {
 func (r *ModifyVolumePresetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type GetUpgradeVolumeTypeProcessInfoRequest struct {
 	*ksyunhttp.BaseRequest
@@ -840,7 +857,7 @@ type GetUpgradeVolumeTypeProcessInfoResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Result    []struct {
 		VolumeId *string `json:"VolumeId" name:"VolumeId"`
-		Process  struct {
+		Process struct {
 			PrepareProcess    *int  `json:"PrepareProcess" name:"PrepareProcess"`
 			LatestDataProcess *int  `json:"LatestDataProcess" name:"LatestDataProcess"`
 			PrepareDone       *bool `json:"PrepareDone" name:"PrepareDone"`

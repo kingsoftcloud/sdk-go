@@ -1,9 +1,9 @@
 package v20250828
-
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type QueryInstancesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -66,3 +66,4 @@ func (r *QueryInstancesResponse) ToJsonString() string {
 func (r *QueryInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

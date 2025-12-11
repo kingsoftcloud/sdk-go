@@ -1,4 +1,5 @@
 package v20151101
+
 import (
 	"context"
 	"fmt"
@@ -4246,5 +4247,3 @@ func (c *Client) GetEffectivePoliciesWithContextV2(ctx context.Context, request 
 	}
 	return statusCode, msg, nil
 }
-
-

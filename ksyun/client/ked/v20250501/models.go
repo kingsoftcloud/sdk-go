@@ -424,14 +424,14 @@ type StrategycreateResponse struct {
 	Message   *string `json:"message" name:"message"`
 	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
-		Id          *int    `json:"Id" name:"Id"`
-		StrategyId  *string `json:"StrategyId" name:"StrategyId"`
+		Id         *int    `json:"Id" name:"Id"`
+		StrategyId *string `json:"StrategyId" name:"StrategyId"`
 		StrategyName *string `json:"StrategyName" name:"StrategyName"`
-		AccountId   *int    `json:"AccountId" name:"AccountId"`
-		Comment     *string `json:"Comment" name:"Comment"`
+		AccountId  *int    `json:"AccountId" name:"AccountId"`
+		Comment    *string `json:"Comment" name:"Comment"`
 		InstanceNum *string `json:"InstanceNum" name:"InstanceNum"`
-		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
-		UpdateTime  *string `json:"UpdateTime" name:"UpdateTime"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
 	} `json:"Data"`
 }
 
@@ -464,10 +464,10 @@ type StrategylistResponse struct {
 	Message   *string `json:"message" name:"message"`
 	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
-		PageNum  *int `json:"PageNum" name:"PageNum"`
+		PageNum *int `json:"PageNum" name:"PageNum"`
 		PageSize *int `json:"PageSize" name:"PageSize"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
-		Records  []struct {
+		Records []struct {
 			Id              *int    `json:"id" name:"id"`
 			SecurityGroupId *string `json:"securityGroupId" name:"securityGroupId"`
 			Name            *string `json:"name" name:"name"`
@@ -607,10 +607,10 @@ type RoleslistResponse struct {
 	Code      *int    `json:"code" name:"code"`
 	RequestId *string `json:"requestId" name:"requestId"`
 	Data      struct {
-		PageNum  *int `json:"PageNum" name:"PageNum"`
+		PageNum *int `json:"PageNum" name:"PageNum"`
 		PageSize *int `json:"PageSize" name:"PageSize"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
-		Records  []struct {
+		Records []struct {
 			Id           *int    `json:"id" name:"id"`
 			CreatedAt    *string `json:"createdAt" name:"createdAt"`
 			Name         *string `json:"name" name:"name"`
@@ -747,10 +747,10 @@ type ImagelistResponse struct {
 	Message   *string `json:"message" name:"message"`
 	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
-		PageNum  *int `json:"PageNum" name:"PageNum"`
+		PageNum *int `json:"PageNum" name:"PageNum"`
 		PageSize *int `json:"PageSize" name:"PageSize"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
-		Records  []struct {
+		Records []struct {
 			Id            *int    `json:"id" name:"id"`
 			Name          *string `json:"name" name:"name"`
 			AccountId     *int    `json:"accountId" name:"accountId"`
@@ -1015,10 +1015,10 @@ type UserslistResponse struct {
 	Code      *int    `json:"code" name:"code"`
 	RequestId *string `json:"requestId" name:"requestId"`
 	Data      struct {
-		PageNum  *int `json:"PageNum" name:"PageNum"`
+		PageNum *int `json:"PageNum" name:"PageNum"`
 		PageSize *int `json:"PageSize" name:"PageSize"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
-		Records  []struct {
+		Records []struct {
 			Id           *int    `json:"id" name:"id"`
 			CreateTime   *string `json:"createTime" name:"createTime"`
 			UserName     *string `json:"userName" name:"userName"`
@@ -1308,16 +1308,16 @@ type QueryUsersinfoResponse struct {
 	Message   *string `json:"message" name:"message"`
 	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
-		Id         *int    `json:"Id" name:"Id"`
-		AccountId  *int    `json:"AccountId" name:"AccountId"`
-		UserName   *string `json:"UserName" name:"UserName"`
-		NickName   *string `json:"NickName" name:"NickName"`
-		Phone      *string `json:"Phone" name:"Phone"`
-		Email      *string `json:"Email" name:"Email"`
+		Id        *int    `json:"Id" name:"Id"`
+		AccountId *int    `json:"AccountId" name:"AccountId"`
+		UserName  *string `json:"UserName" name:"UserName"`
+		NickName  *string `json:"NickName" name:"NickName"`
+		Phone     *string `json:"Phone" name:"Phone"`
+		Email     *string `json:"Email" name:"Email"`
 		PhoneOrEmail *string `json:"PhoneOrEmail" name:"PhoneOrEmail"`
-		DeskNums   *int    `json:"DeskNums" name:"DeskNums"`
-		RoleId     *int    `json:"RoleId" name:"RoleId"`
-		RoleName   *string `json:"RoleName" name:"RoleName"`
+		DeskNums  *int    `json:"DeskNums" name:"DeskNums"`
+		RoleId    *int    `json:"RoleId" name:"RoleId"`
+		RoleName  *string `json:"RoleName" name:"RoleName"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
 	} `json:"Data"`
@@ -1331,6 +1331,7 @@ func (r *QueryUsersinfoResponse) ToJsonString() string {
 func (r *QueryUsersinfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type GetDetailRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1375,6 +1376,7 @@ func (r *GetDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ListLabelRequest struct {
 	*ksyunhttp.BaseRequest
 	Name *string `json:"name,omitempty" name:"name"`
@@ -1405,6 +1407,7 @@ func (r *ListLabelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type CancelInstanceLabelRequest struct {
 	*ksyunhttp.BaseRequest
 	LabelId    []*int  `json:"labelId,omitempty" name:"labelId"`
@@ -1432,6 +1435,7 @@ func (r *CancelInstanceLabelResponse) ToJsonString() string {
 func (r *CancelInstanceLabelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type UpdateInstanceLabelRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1461,6 +1465,7 @@ func (r *UpdateInstanceLabelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteLabelRequest struct {
 	*ksyunhttp.BaseRequest
 	Id []*int `json:"id,omitempty" name:"id"`
@@ -1487,6 +1492,7 @@ func (r *DeleteLabelResponse) ToJsonString() string {
 func (r *DeleteLabelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type UpdateLabelRequest struct {
 	*ksyunhttp.BaseRequest

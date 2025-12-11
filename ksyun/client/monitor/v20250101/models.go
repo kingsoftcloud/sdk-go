@@ -33,8 +33,8 @@ type DescribeAlertingResourcesResponse struct {
 			InstanceTags []struct {
 				ResourceType *string `json:"ResourceType" name:"ResourceType"`
 				ResourceId *string `json:"ResourceId" name:"ResourceId"`
-				Key        *string `json:"Key" name:"Key"`
-				Value      *string `json:"Value" name:"Value"`
+				Key   *string `json:"Key" name:"Key"`
+				Value *string `json:"Value" name:"Value"`
 			} `json:"InstanceTags"`
 			ProjectID *int    `json:"ProjectID" name:"ProjectID"`
 			Region    *string `json:"Region" name:"Region"`

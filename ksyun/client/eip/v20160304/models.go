@@ -1,8 +1,10 @@
 package v20160304
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 type DescribeAddressesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
@@ -11,7 +13,6 @@ type DescribeAddressesTagKV struct {
 	Name  *string `json:"Name,omitempty" name:"Name"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-
 
 type GetLinesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -30,11 +31,11 @@ type GetLinesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	LineSet   []struct {
-		LineId   *string `json:"LineId" name:"LineId"`
-		LineType *string `json:"LineType" name:"LineType"`
-		LineName *string `json:"LineName" name:"LineName"`
+		LineId    *string `json:"LineId" name:"LineId"`
+		LineType  *string `json:"LineType" name:"LineType"`
+		LineName  *string `json:"LineName" name:"LineName"`
 		IpVersion *string `json:"IpVersion" name:"IpVersion"`
-		Isp      *string `json:"Isp" name:"Isp"`
+		Isp       *string `json:"Isp" name:"Isp"`
 	} `json:"LineSet"`
 }
 
@@ -46,7 +47,6 @@ func (r *GetLinesResponse) ToJsonString() string {
 func (r *GetLinesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeAddressesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -72,27 +72,27 @@ type DescribeAddressesResponse struct {
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	NextToken    *string `json:"NextToken" name:"NextToken"`
 	AddressesSet []struct {
-		LineId             *string `json:"LineId" name:"LineId"`
-		BandWidth          *int    `json:"BandWidth" name:"BandWidth"`
-		CreateTime         *string `json:"CreateTime" name:"CreateTime"`
-		State              *string `json:"State" name:"State"`
-		IpState            *string `json:"IpState" name:"IpState"`
-		AllocationId       *string `json:"AllocationId" name:"AllocationId"`
-		InternetGatewayId  *string `json:"InternetGatewayId" name:"InternetGatewayId"`
-		PublicIp           *string `json:"PublicIp" name:"PublicIp"`
-		InstanceType       *string `json:"InstanceType" name:"InstanceType"`
-		InstanceId         *string `json:"InstanceId" name:"InstanceId"`
-		IpVersion          *string `json:"IpVersion" name:"IpVersion"`
-		NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+		LineId               *string `json:"LineId" name:"LineId"`
+		BandWidth            *int    `json:"BandWidth" name:"BandWidth"`
+		CreateTime           *string `json:"CreateTime" name:"CreateTime"`
+		State                *string `json:"State" name:"State"`
+		IpState              *string `json:"IpState" name:"IpState"`
+		AllocationId         *string `json:"AllocationId" name:"AllocationId"`
+		InternetGatewayId    *string `json:"InternetGatewayId" name:"InternetGatewayId"`
+		PublicIp             *string `json:"PublicIp" name:"PublicIp"`
+		InstanceType         *string `json:"InstanceType" name:"InstanceType"`
+		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
+		IpVersion            *string `json:"IpVersion" name:"IpVersion"`
+		NetworkInterfaceId   *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
 		NetworkInterfaceType *string `json:"NetworkInterfaceType" name:"NetworkInterfaceType"`
-		PrivateIpAddress   *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
-		BandWidthShareId   *string `json:"BandWidthShareId" name:"BandWidthShareId"`
-		ProjectId          *string `json:"ProjectId" name:"ProjectId"`
-		Mode               *string `json:"Mode" name:"Mode"`
-		ChargeType         *string `json:"ChargeType" name:"ChargeType"`
-		ServiceEndTime     *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		HostType           *string `json:"HostType" name:"HostType"`
-		TagSet             []struct {
+		PrivateIpAddress     *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+		BandWidthShareId     *string `json:"BandWidthShareId" name:"BandWidthShareId"`
+		ProjectId            *string `json:"ProjectId" name:"ProjectId"`
+		Mode                 *string `json:"Mode" name:"Mode"`
+		ChargeType           *string `json:"ChargeType" name:"ChargeType"`
+		ServiceEndTime       *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		HostType             *string `json:"HostType" name:"HostType"`
+		TagSet               []struct {
 			ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
 			TagId        *string `json:"TagId" name:"TagId"`
 			TagKey       *string `json:"TagKey" name:"TagKey"`
@@ -109,7 +109,6 @@ func (r *DescribeAddressesResponse) ToJsonString() string {
 func (r *DescribeAddressesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type AllocateAddressRequest struct {
 	*ksyunhttp.BaseRequest
@@ -142,7 +141,6 @@ func (r *AllocateAddressResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ReleaseAddressRequest struct {
 	*ksyunhttp.BaseRequest
 	AllocationId *string `json:"AllocationId,omitempty" name:"AllocationId"`
@@ -155,8 +153,8 @@ func (r *ReleaseAddressRequest) ToJsonString() string {
 
 type ReleaseAddressResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *ReleaseAddressResponse) ToJsonString() string {
@@ -167,7 +165,6 @@ func (r *ReleaseAddressResponse) ToJsonString() string {
 func (r *ReleaseAddressResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type AssociateAddressRequest struct {
 	*ksyunhttp.BaseRequest
@@ -186,8 +183,8 @@ func (r *AssociateAddressRequest) ToJsonString() string {
 
 type AssociateAddressResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *AssociateAddressResponse) ToJsonString() string {
@@ -198,7 +195,6 @@ func (r *AssociateAddressResponse) ToJsonString() string {
 func (r *AssociateAddressResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DisassociateAddressRequest struct {
 	*ksyunhttp.BaseRequest
@@ -212,8 +208,8 @@ func (r *DisassociateAddressRequest) ToJsonString() string {
 
 type DisassociateAddressResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DisassociateAddressResponse) ToJsonString() string {
@@ -224,7 +220,6 @@ func (r *DisassociateAddressResponse) ToJsonString() string {
 func (r *DisassociateAddressResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifyAddressRequest struct {
 	*ksyunhttp.BaseRequest
@@ -261,7 +256,6 @@ func (r *ModifyAddressResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type CreateEipPoolRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -285,7 +279,6 @@ func (r *CreateEipPoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteEipPoolRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -308,7 +301,6 @@ func (r *DeleteEipPoolResponse) ToJsonString() string {
 func (r *DeleteEipPoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifyEipPoolRequest struct {
 	*ksyunhttp.BaseRequest
@@ -378,4 +370,3 @@ func (r *DescribeIpExistEipPoolUseResponse) ToJsonString() string {
 func (r *DescribeIpExistEipPoolUseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

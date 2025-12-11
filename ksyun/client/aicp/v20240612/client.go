@@ -1,4 +1,5 @@
 package v20240612
+
 import (
 	"context"
 	"fmt"
@@ -1451,5 +1452,3 @@ func (c *Client) DescribeResourcePoolInstancesWithContextV2(ctx context.Context,
 	}
 	return statusCode, msg, nil
 }
-
-

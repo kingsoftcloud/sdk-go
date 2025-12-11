@@ -1,9 +1,9 @@
 package v20230306
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type CreatePrometheusInstanceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -32,7 +32,6 @@ func (r *CreatePrometheusInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribePrometheusInstanceRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId []*string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -48,9 +47,9 @@ func (r *DescribePrometheusInstanceRequest) ToJsonString() string {
 
 type DescribePrometheusInstanceResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId  *string `json:"RequestId" name:"RequestId"`
-	Marker     *int    `json:"Marker" name:"Marker"`
-	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	Marker      *int    `json:"Marker" name:"Marker"`
+	TotalCount  *int    `json:"TotalCount" name:"TotalCount"`
 	InstanceSet []struct {
 	} `json:"InstanceSet"`
 }
@@ -63,7 +62,6 @@ func (r *DescribePrometheusInstanceResponse) ToJsonString() string {
 func (r *DescribePrometheusInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type UpdatePrometheusInstanceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -91,7 +89,6 @@ func (r *UpdatePrometheusInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeletePrometheusInstanceRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -115,7 +112,6 @@ func (r *DeletePrometheusInstanceResponse) ToJsonString() string {
 func (r *DeletePrometheusInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type EnableGrafanaRequest struct {
 	*ksyunhttp.BaseRequest
@@ -143,7 +139,6 @@ func (r *EnableGrafanaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type UpdateGrafanaPasswordRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -168,7 +163,6 @@ func (r *UpdateGrafanaPasswordResponse) ToJsonString() string {
 func (r *UpdateGrafanaPasswordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type EnableGrafanaInternetRequest struct {
 	*ksyunhttp.BaseRequest
@@ -195,7 +189,6 @@ func (r *EnableGrafanaInternetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeGrafanaWhiteListRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -208,7 +201,7 @@ func (r *DescribeGrafanaWhiteListRequest) ToJsonString() string {
 
 type DescribeGrafanaWhiteListResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	RequestId *string   `json:"RequestId" name:"RequestId"`
 	WhiteList []*string `json:"WhiteList" name:"WhiteList"`
 }
 
@@ -220,7 +213,6 @@ func (r *DescribeGrafanaWhiteListResponse) ToJsonString() string {
 func (r *DescribeGrafanaWhiteListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type UpdateGrafanaWhiteListRequest struct {
 	*ksyunhttp.BaseRequest
@@ -247,7 +239,6 @@ func (r *UpdateGrafanaWhiteListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type AssociateClusterRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -273,7 +264,6 @@ func (r *AssociateClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DisassociateClusterRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -298,7 +288,6 @@ func (r *DisassociateClusterResponse) ToJsonString() string {
 func (r *DisassociateClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeAssociateClusterListRequest struct {
 	*ksyunhttp.BaseRequest
@@ -330,7 +319,6 @@ func (r *DescribeAssociateClusterListResponse) ToJsonString() string {
 func (r *DescribeAssociateClusterListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeMonitorListRequest struct {
 	*ksyunhttp.BaseRequest
@@ -364,7 +352,6 @@ func (r *DescribeMonitorListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeMonitorCollectionConfigRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId  *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -393,7 +380,6 @@ func (r *DescribeMonitorCollectionConfigResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type UpdateMonitorCollectionConfigRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId  *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -421,7 +407,6 @@ func (r *UpdateMonitorCollectionConfigResponse) ToJsonString() string {
 func (r *UpdateMonitorCollectionConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeMonitorMetricsListRequest struct {
 	*ksyunhttp.BaseRequest
@@ -457,7 +442,6 @@ func (r *DescribeMonitorMetricsListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeTargetsListRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId  *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -491,7 +475,6 @@ func (r *DescribeTargetsListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeAgentStatusRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -518,7 +501,6 @@ func (r *DescribeAgentStatusResponse) ToJsonString() string {
 func (r *DescribeAgentStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateMonitorCollectionConfigRequest struct {
 	*ksyunhttp.BaseRequest
@@ -629,4 +611,3 @@ func (r *DropMetricsResponse) ToJsonString() string {
 func (r *DropMetricsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

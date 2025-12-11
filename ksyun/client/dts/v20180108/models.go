@@ -1,8 +1,10 @@
 package v20180108
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 type CreatePrecheckDTSParameter struct {
 	DBParameter            *string `json:"DBParameter,omitempty" name:"DBParameter"`
 	TargetDBParameterValue *string `json:"TargetDBParameterValue,omitempty" name:"TargetDBParameterValue"`
@@ -11,7 +13,6 @@ type CreatePrecheckSourceUser struct {
 	Username   *string `json:"Username,omitempty" name:"Username"`
 	SourceHost *string `json:"SourceHost,omitempty" name:"SourceHost"`
 }
-
 
 type SchemaStructRequest struct {
 	*ksyunhttp.BaseRequest
@@ -64,7 +65,6 @@ func (r *SchemaStructResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ConnectivityCheckRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -77,7 +77,7 @@ func (r *ConnectivityCheckRequest) ToJsonString() string {
 type ConnectivityCheckResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
-		Status *string `json:"Status" name:"Status"`
+		Status  *string `json:"Status" name:"Status"`
 		Message *string `json:"Message" name:"Message"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -91,7 +91,6 @@ func (r *ConnectivityCheckResponse) ToJsonString() string {
 func (r *ConnectivityCheckResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreatePrecheckRequest struct {
 	*ksyunhttp.BaseRequest
@@ -132,7 +131,6 @@ func (r *CreatePrecheckResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type CreateTaskRequest struct {
 	*ksyunhttp.BaseRequest
 	TaskName   *string `json:"TaskName,omitempty" name:"TaskName"`
@@ -154,10 +152,10 @@ type CreateTaskResponse struct {
 	Code      *string `json:"code" name:"code"`
 	Message   *string `json:"message" name:"message"`
 	Data      struct {
-		TaskId  *string `json:"TaskId" name:"TaskId"`
+		TaskId   *string `json:"TaskId" name:"TaskId"`
 		TaskName *string `json:"TaskName" name:"TaskName"`
 		TaskType *string `json:"TaskType" name:"TaskType"`
-		OrderId *string `json:"OrderId" name:"OrderId"`
+		OrderId  *string `json:"OrderId" name:"OrderId"`
 	} `json:"Data"`
 }
 
@@ -169,7 +167,6 @@ func (r *CreateTaskResponse) ToJsonString() string {
 func (r *CreateTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeTaskRequest struct {
 	*ksyunhttp.BaseRequest
@@ -205,33 +202,33 @@ type DescribeTaskResponse struct {
 			StartTime                    *string `json:"StartTime" name:"StartTime"`
 			MeasureValue                 *int    `json:"MeasureValue" name:"MeasureValue"`
 			SubTasks                     []struct {
-				Id          *string `json:"Id" name:"Id"`
-				TaskId      *string `json:"TaskId" name:"TaskId"`
+				Id           *string `json:"Id" name:"Id"`
+				TaskId       *string `json:"TaskId" name:"TaskId"`
 				ConnConfigId *string `json:"ConnConfigId" name:"ConnConfigId"`
-				Name        *string `json:"Name" name:"Name"`
-				ActionOn    *string `json:"ActionOn" name:"ActionOn"`
-				Status      *string `json:"Status" name:"Status"`
-				AgentStage  *string `json:"AgentStage" name:"AgentStage"`
-				Judging     *int    `json:"Judging" name:"Judging"`
-				Message     *string `json:"Message" name:"Message"`
-				Node        *string `json:"Node" name:"Node"`
-				Region      *string `json:"Region" name:"Region"`
-				Created     *string `json:"Created" name:"Created"`
-				Updated     *string `json:"Updated" name:"Updated"`
-				Deleted     *int    `json:"Deleted" name:"Deleted"`
-				Params      *string `json:"Params" name:"Params"`
-				Progress    *int    `json:"Progress" name:"Progress"`
-				Latency     *int    `json:"Latency" name:"Latency"`
-				AccountId   *string `json:"AccountId" name:"AccountId"`
-				StartTime   *string `json:"StartTime" name:"StartTime"`
-				EndTime     *string `json:"EndTime" name:"EndTime"`
-				ReloadTimes *int    `json:"ReloadTimes" name:"ReloadTimes"`
-				FailureNum  *int    `json:"FailureNum" name:"FailureNum"`
-				ErrSkip     *int    `json:"ErrSkip" name:"ErrSkip"`
+				Name         *string `json:"Name" name:"Name"`
+				ActionOn     *string `json:"ActionOn" name:"ActionOn"`
+				Status       *string `json:"Status" name:"Status"`
+				AgentStage   *string `json:"AgentStage" name:"AgentStage"`
+				Judging      *int    `json:"Judging" name:"Judging"`
+				Message      *string `json:"Message" name:"Message"`
+				Node         *string `json:"Node" name:"Node"`
+				Region       *string `json:"Region" name:"Region"`
+				Created      *string `json:"Created" name:"Created"`
+				Updated      *string `json:"Updated" name:"Updated"`
+				Deleted      *int    `json:"Deleted" name:"Deleted"`
+				Params       *string `json:"Params" name:"Params"`
+				Progress     *int    `json:"Progress" name:"Progress"`
+				Latency      *int    `json:"Latency" name:"Latency"`
+				AccountId    *string `json:"AccountId" name:"AccountId"`
+				StartTime    *string `json:"StartTime" name:"StartTime"`
+				EndTime      *string `json:"EndTime" name:"EndTime"`
+				ReloadTimes  *int    `json:"ReloadTimes" name:"ReloadTimes"`
+				FailureNum   *int    `json:"FailureNum" name:"FailureNum"`
+				ErrSkip      *int    `json:"ErrSkip" name:"ErrSkip"`
 			} `json:"SubTasks"`
 		} `json:"Tasks" name:"Tasks"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
-		Marker *int `json:"Marker" name:"Marker"`
+		Marker     *int `json:"Marker" name:"Marker"`
 		MaxRecords *int `json:"MaxRecords" name:"MaxRecords"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -245,7 +242,6 @@ func (r *DescribeTaskResponse) ToJsonString() string {
 func (r *DescribeTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type OperateTaskRequest struct {
 	*ksyunhttp.BaseRequest
@@ -273,7 +269,6 @@ func (r *OperateTaskResponse) ToJsonString() string {
 func (r *OperateTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeConnConfigRequest struct {
 	*ksyunhttp.BaseRequest
@@ -318,7 +313,6 @@ func (r *DescribeConnConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribePrecheckRequest struct {
 	*ksyunhttp.BaseRequest
 	PrecheckId *string `json:"PrecheckId,omitempty" name:"PrecheckId"`
@@ -355,7 +349,6 @@ func (r *DescribePrecheckResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeSourceUserConfigRequest struct {
 	*ksyunhttp.BaseRequest
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -382,7 +375,6 @@ func (r *DescribeSourceUserConfigResponse) ToJsonString() string {
 func (r *DescribeSourceUserConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type SetConsistencyCheckRequest struct {
 	*ksyunhttp.BaseRequest
@@ -411,7 +403,6 @@ func (r *SetConsistencyCheckResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeConsistencyCheckRequest struct {
 	*ksyunhttp.BaseRequest
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -425,10 +416,10 @@ func (r *DescribeConsistencyCheckRequest) ToJsonString() string {
 type DescribeConsistencyCheckResponse struct {
 	*ksyunhttp.BaseResponse
 	Data struct {
-		TaskId                *string `json:"TaskId" name:"TaskId"`
-		ConsistencyCheckCycle *int    `json:"ConsistencyCheckCycle" name:"ConsistencyCheckCycle"`
+		TaskId                    *string `json:"TaskId" name:"TaskId"`
+		ConsistencyCheckCycle     *int    `json:"ConsistencyCheckCycle" name:"ConsistencyCheckCycle"`
 		ConsistencyCheckFixedTime *string `json:"ConsistencyCheckFixedTime" name:"ConsistencyCheckFixedTime"`
-		ConsistencyCheckAuto  *string `json:"ConsistencyCheckAuto" name:"ConsistencyCheckAuto"`
+		ConsistencyCheckAuto      *string `json:"ConsistencyCheckAuto" name:"ConsistencyCheckAuto"`
 	} `json:"Data"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -441,7 +432,6 @@ func (r *DescribeConsistencyCheckResponse) ToJsonString() string {
 func (r *DescribeConsistencyCheckResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeDTSParameterRequest struct {
 	*ksyunhttp.BaseRequest
@@ -489,7 +479,6 @@ func (r *DescribeDTSParameterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeDTSParameterConfigRequest struct {
 	*ksyunhttp.BaseRequest
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -516,7 +505,6 @@ func (r *DescribeDTSParameterConfigResponse) ToJsonString() string {
 func (r *DescribeDTSParameterConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeSourceUserRequest struct {
 	*ksyunhttp.BaseRequest
@@ -557,7 +545,6 @@ func (r *DescribeSourceUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeSubTaskRequest struct {
 	*ksyunhttp.BaseRequest
 	TaskId       *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -593,7 +580,7 @@ type DescribeSubTaskResponse struct {
 			TimeUsed           *int    `json:"TimeUsed" name:"TimeUsed"`
 		} `json:"Object" name:"Object"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
-		Marker *int `json:"Marker" name:"Marker"`
+		Marker     *int `json:"Marker" name:"Marker"`
 		MaxRecords *int `json:"MaxRecords" name:"MaxRecords"`
 	} `json:"Data"`
 }
@@ -606,7 +593,6 @@ func (r *DescribeSubTaskResponse) ToJsonString() string {
 func (r *DescribeSubTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateConsistencyCheckRequest struct {
 	*ksyunhttp.BaseRequest
@@ -632,7 +618,6 @@ func (r *CreateConsistencyCheckResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type StopConsistencyCheckRequest struct {
 	*ksyunhttp.BaseRequest
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -657,7 +642,6 @@ func (r *StopConsistencyCheckResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeRegionConfigRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -672,92 +656,92 @@ type DescribeRegionConfigResponse struct {
 	Data struct {
 		RegionConfig struct {
 			SubscriptionKrds []struct {
-				RegionCode *string `json:"RegionCode" name:"RegionCode"`
-				RegionName *string `json:"RegionName" name:"RegionName"`
+				RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+				RegionName   *string `json:"RegionName" name:"RegionName"`
 				RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
-				AreaCode   *string `json:"AreaCode" name:"AreaCode"`
-				AreaName   *string `json:"AreaName" name:"AreaName"`
-				AreaEnName *string `json:"AreaEnName" name:"AreaEnName"`
+				AreaCode     *string `json:"AreaCode" name:"AreaCode"`
+				AreaName     *string `json:"AreaName" name:"AreaName"`
+				AreaEnName   *string `json:"AreaEnName" name:"AreaEnName"`
 			} `json:"SubscriptionKrds"`
 			ClusterKcs []struct {
-				RegionCode *string `json:"RegionCode" name:"RegionCode"`
-				RegionName *string `json:"RegionName" name:"RegionName"`
+				RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+				RegionName   *string `json:"RegionName" name:"RegionName"`
 				RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
-				AreaCode   *string `json:"AreaCode" name:"AreaCode"`
-				AreaName   *string `json:"AreaName" name:"AreaName"`
-				AreaEnName *string `json:"AreaEnName" name:"AreaEnName"`
+				AreaCode     *string `json:"AreaCode" name:"AreaCode"`
+				AreaName     *string `json:"AreaName" name:"AreaName"`
+				AreaEnName   *string `json:"AreaEnName" name:"AreaEnName"`
 			} `json:"ClusterKcs"`
 			Kpg []struct {
-				RegionCode *string `json:"RegionCode" name:"RegionCode"`
-				RegionName *string `json:"RegionName" name:"RegionName"`
+				RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+				RegionName   *string `json:"RegionName" name:"RegionName"`
 				RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
-				AreaCode   *string `json:"AreaCode" name:"AreaCode"`
-				AreaName   *string `json:"AreaName" name:"AreaName"`
-				AreaEnName *string `json:"AreaEnName" name:"AreaEnName"`
+				AreaCode     *string `json:"AreaCode" name:"AreaCode"`
+				AreaName     *string `json:"AreaName" name:"AreaName"`
+				AreaEnName   *string `json:"AreaEnName" name:"AreaEnName"`
 			} `json:"Kpg"`
 			PublicPg []struct {
-				RegionCode *string `json:"RegionCode" name:"RegionCode"`
-				RegionName *string `json:"RegionName" name:"RegionName"`
+				RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+				RegionName   *string `json:"RegionName" name:"RegionName"`
 				RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
-				AreaCode   *string `json:"AreaCode" name:"AreaCode"`
-				AreaName   *string `json:"AreaName" name:"AreaName"`
-				AreaEnName *string `json:"AreaEnName" name:"AreaEnName"`
+				AreaCode     *string `json:"AreaCode" name:"AreaCode"`
+				AreaName     *string `json:"AreaName" name:"AreaName"`
+				AreaEnName   *string `json:"AreaEnName" name:"AreaEnName"`
 			} `json:"PublicPg"`
 			Krds []struct {
-				RegionCode *string `json:"RegionCode" name:"RegionCode"`
-				RegionName *string `json:"RegionName" name:"RegionName"`
+				RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+				RegionName   *string `json:"RegionName" name:"RegionName"`
 				RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
-				AreaCode   *string `json:"AreaCode" name:"AreaCode"`
-				AreaName   *string `json:"AreaName" name:"AreaName"`
-				AreaEnName *string `json:"AreaEnName" name:"AreaEnName"`
+				AreaCode     *string `json:"AreaCode" name:"AreaCode"`
+				AreaName     *string `json:"AreaName" name:"AreaName"`
+				AreaEnName   *string `json:"AreaEnName" name:"AreaEnName"`
 			} `json:"Krds"`
 			Kmgo []struct {
-				RegionCode *string `json:"RegionCode" name:"RegionCode"`
-				RegionName *string `json:"RegionName" name:"RegionName"`
+				RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+				RegionName   *string `json:"RegionName" name:"RegionName"`
 				RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
-				AreaCode   *string `json:"AreaCode" name:"AreaCode"`
-				AreaName   *string `json:"AreaName" name:"AreaName"`
-				AreaEnName *string `json:"AreaEnName" name:"AreaEnName"`
+				AreaCode     *string `json:"AreaCode" name:"AreaCode"`
+				AreaName     *string `json:"AreaName" name:"AreaName"`
+				AreaEnName   *string `json:"AreaEnName" name:"AreaEnName"`
 			} `json:"Kmgo"`
 			PublicRedis []struct {
-				RegionCode *string `json:"RegionCode" name:"RegionCode"`
-				RegionName *string `json:"RegionName" name:"RegionName"`
+				RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+				RegionName   *string `json:"RegionName" name:"RegionName"`
 				RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
-				AreaCode   *string `json:"AreaCode" name:"AreaCode"`
-				AreaName   *string `json:"AreaName" name:"AreaName"`
-				AreaEnName *string `json:"AreaEnName" name:"AreaEnName"`
+				AreaCode     *string `json:"AreaCode" name:"AreaCode"`
+				AreaName     *string `json:"AreaName" name:"AreaName"`
+				AreaEnName   *string `json:"AreaEnName" name:"AreaEnName"`
 			} `json:"PublicRedis"`
 			Kcs []struct {
-				RegionCode *string `json:"RegionCode" name:"RegionCode"`
-				RegionName *string `json:"RegionName" name:"RegionName"`
+				RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+				RegionName   *string `json:"RegionName" name:"RegionName"`
 				RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
-				AreaCode   *string `json:"AreaCode" name:"AreaCode"`
-				AreaName   *string `json:"AreaName" name:"AreaName"`
-				AreaEnName *string `json:"AreaEnName" name:"AreaEnName"`
+				AreaCode     *string `json:"AreaCode" name:"AreaCode"`
+				AreaName     *string `json:"AreaName" name:"AreaName"`
+				AreaEnName   *string `json:"AreaEnName" name:"AreaEnName"`
 			} `json:"Kcs"`
 			Public []struct {
-				RegionCode *string `json:"RegionCode" name:"RegionCode"`
-				RegionName *string `json:"RegionName" name:"RegionName"`
+				RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+				RegionName   *string `json:"RegionName" name:"RegionName"`
 				RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
-				AreaCode   *string `json:"AreaCode" name:"AreaCode"`
-				AreaName   *string `json:"AreaName" name:"AreaName"`
-				AreaEnName *string `json:"AreaEnName" name:"AreaEnName"`
+				AreaCode     *string `json:"AreaCode" name:"AreaCode"`
+				AreaName     *string `json:"AreaName" name:"AreaName"`
+				AreaEnName   *string `json:"AreaEnName" name:"AreaEnName"`
 			} `json:"Public"`
 			PublicMgo []struct {
-				RegionCode *string `json:"RegionCode" name:"RegionCode"`
-				RegionName *string `json:"RegionName" name:"RegionName"`
+				RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+				RegionName   *string `json:"RegionName" name:"RegionName"`
 				RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
-				AreaCode   *string `json:"AreaCode" name:"AreaCode"`
-				AreaName   *string `json:"AreaName" name:"AreaName"`
-				AreaEnName *string `json:"AreaEnName" name:"AreaEnName"`
+				AreaCode     *string `json:"AreaCode" name:"AreaCode"`
+				AreaName     *string `json:"AreaName" name:"AreaName"`
+				AreaEnName   *string `json:"AreaEnName" name:"AreaEnName"`
 			} `json:"PublicMgo"`
 			PublicClusterRedis []struct {
-				RegionCode *string `json:"RegionCode" name:"RegionCode"`
-				RegionName *string `json:"RegionName" name:"RegionName"`
+				RegionCode   *string `json:"RegionCode" name:"RegionCode"`
+				RegionName   *string `json:"RegionName" name:"RegionName"`
 				RegionEnName *string `json:"RegionEnName" name:"RegionEnName"`
-				AreaCode   *string `json:"AreaCode" name:"AreaCode"`
-				AreaName   *string `json:"AreaName" name:"AreaName"`
-				AreaEnName *string `json:"AreaEnName" name:"AreaEnName"`
+				AreaCode     *string `json:"AreaCode" name:"AreaCode"`
+				AreaName     *string `json:"AreaName" name:"AreaName"`
+				AreaEnName   *string `json:"AreaEnName" name:"AreaEnName"`
 			} `json:"PublicClusterRedis"`
 		} `json:"RegionConfig" name:"RegionConfig"`
 	} `json:"Data"`
@@ -799,10 +783,10 @@ type TaskBirdViewResponse struct {
 			RegionName *string `json:"regionName" name:"regionName"`
 			Total      *int    `json:"total" name:"total"`
 			Statistic  struct {
-				Running  *int `json:"Running" name:"Running"`
-				Finished *int `json:"Finished" name:"Finished"`
+				Running   *int `json:"Running" name:"Running"`
+				Finished  *int `json:"Finished" name:"Finished"`
 				Erroneous *int `json:"Erroneous" name:"Erroneous"`
-				Others   *int `json:"Others" name:"Others"`
+				Others    *int `json:"Others" name:"Others"`
 			} `json:"Statistic"`
 		} `json:"Regions" name:"Regions"`
 	} `json:"Data"`
@@ -816,4 +800,3 @@ func (r *TaskBirdViewResponse) ToJsonString() string {
 func (r *TaskBirdViewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

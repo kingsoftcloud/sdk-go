@@ -524,7 +524,7 @@ type ModifyNodeResponse struct {
 	ClusterId  *string `json:"ClusterId" name:"ClusterId"`
 	InstanceId *string `json:"InstanceId" name:"InstanceId"`
 	Components []struct {
-		TypeField *string `json:"TypeField" name:"TypeField"`
+		Type *string `json:"Type" name:"Type"`
 	} `json:"Components"`
 }
 
@@ -585,7 +585,7 @@ type DescribeNodeComponentsResponse struct {
 		NodeComponents []struct {
 			NodeId          *string `json:"NodeId" name:"NodeId"`
 			ComponentStatus []struct {
-				TypeField  *string `json:"TypeField" name:"TypeField"`
+				Type *string `json:"Type" name:"Type"`
 				CurVersion *string `json:"CurVersion" name:"CurVersion"`
 				SpecVersion *string `json:"SpecVersion" name:"SpecVersion"`
 			} `json:"ComponentStatus"`
@@ -631,7 +631,7 @@ type DescribeNetworkResponse struct {
 	PrivateLink struct {
 		LinkIp *string `json:"LinkIp" name:"LinkIp"`
 		LinkPort *string `json:"LinkPort" name:"LinkPort"`
-		Phase  *string `json:"Phase" name:"Phase"`
+		Phase *string `json:"Phase" name:"Phase"`
 		Reason *string `json:"Reason" name:"Reason"`
 	} `json:"PrivateLink"`
 	EIP struct {
@@ -674,9 +674,9 @@ type DescribeComponentParamsResponse struct {
 		ClusterId *string `json:"ClusterId" name:"ClusterId"`
 	} `json:"Data"`
 	Components []struct {
-		TypeField *string `json:"TypeField" name:"TypeField"`
+		Type *string `json:"Type" name:"Type"`
 		Version *string `json:"Version" name:"Version"`
-		Args      *string `json:"Args" name:"Args"`
+		Args *string `json:"Args" name:"Args"`
 	} `json:"Components"`
 }
 
@@ -777,6 +777,7 @@ func (r *AddKecNodesResponse) ToJsonString() string {
 func (r *AddKecNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type AddEpcNodesRequest struct {
 	*ksyunhttp.BaseRequest

@@ -1,9 +1,9 @@
 package v20161122
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type CreateForwardConfRequest struct {
 	*ksyunhttp.BaseRequest
@@ -31,7 +31,6 @@ func (r *CreateForwardConfResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteForwardConfRequest struct {
 	*ksyunhttp.BaseRequest
 	ForwardConfId *string `json:"ForwardConfId,omitempty" name:"ForwardConfId"`
@@ -49,8 +48,8 @@ type DeleteForwardConfResponse struct {
 		ForwardConfSet struct {
 			Item []struct {
 				ForwardConfId *string `json:"ForwardConfId" name:"ForwardConfId"`
-				ReturnField *string `json:"ReturnField" name:"ReturnField"`
-				Message     *string `json:"Message" name:"Message"`
+				Return        *string `json:"Return" name:"Return"`
+				Message       *string `json:"Message" name:"Message"`
 			} `json:"Item"`
 		} `json:"ForwardConfSet" name:"ForwardConfSet"`
 	} `json:"Response"`
@@ -64,7 +63,6 @@ func (r *DeleteForwardConfResponse) ToJsonString() string {
 func (r *DeleteForwardConfResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeForwardConfRequest struct {
 	*ksyunhttp.BaseRequest
@@ -90,10 +88,10 @@ type DescribeForwardConfResponse struct {
 				Protocol      *string `json:"Protocol" name:"Protocol"`
 				SourceCount   *string `json:"SourceCount" name:"SourceCount"`
 				HealthMonitor struct {
-					SwitchField *string `json:"Switch" name:"Switch"`
-					Rise        *string `json:"Rise" name:"Rise"`
-					Fall        *string `json:"Fall" name:"Fall"`
-					Delay       *string `json:"Delay" name:"Delay"`
+					Switch *string `json:"Switch" name:"Switch"`
+					Rise   *string `json:"Rise" name:"Rise"`
+					Fall   *string `json:"Fall" name:"Fall"`
+					Delay  *string `json:"Delay" name:"Delay"`
 				} `json:"HealthMonitor" name:"HealthMonitor"`
 			} `json:"Item"`
 		} `json:"ForwardConfSet" name:"ForwardConfSet"`
@@ -108,7 +106,6 @@ func (r *DescribeForwardConfResponse) ToJsonString() string {
 func (r *DescribeForwardConfResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateForwardSourceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -144,7 +141,6 @@ func (r *CreateForwardSourceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteForwardSourceRequest struct {
 	*ksyunhttp.BaseRequest
 	ForwardSourceId *string `json:"ForwardSourceId,omitempty" name:"ForwardSourceId"`
@@ -159,7 +155,7 @@ type DeleteForwardSourceResponse struct {
 	*ksyunhttp.BaseResponse
 	DeleteForwardSourceResponse struct {
 		RequestId *string `json:"RequestId" name:"RequestId"`
-		ReturnField *string `json:"ReturnField" name:"ReturnField"`
+		Return    *string `json:"Return" name:"Return"`
 	} `json:"DeleteForwardSourceResponse"`
 }
 
@@ -171,7 +167,6 @@ func (r *DeleteForwardSourceResponse) ToJsonString() string {
 func (r *DeleteForwardSourceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeForwardSourceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -198,9 +193,9 @@ type DescribeForwardSourceResponse struct {
 				RsRegion               *string `json:"RsRegion" name:"RsRegion"`
 				HealthMonitorStatusSet struct {
 					Item struct {
-						Ip     *string `json:"Ip" name:"Ip"`
-						Region *string `json:"Region" name:"Region"`
-						Status *string `json:"Status" name:"Status"`
+						Ip       *string `json:"Ip" name:"Ip"`
+						Region   *string `json:"Region" name:"Region"`
+						Status   *string `json:"Status" name:"Status"`
 						LinkType *string `json:"LinkType" name:"LinkType"`
 					} `json:"Item"`
 				} `json:"HealthMonitorStatusSet" name:"HealthMonitorStatusSet"`
@@ -217,7 +212,6 @@ func (r *DescribeForwardSourceResponse) ToJsonString() string {
 func (r *DescribeForwardSourceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetAttackLogRequest struct {
 	*ksyunhttp.BaseRequest
@@ -265,4 +259,3 @@ func (r *DescribeOverviewResponse) ToJsonString() string {
 func (r *DescribeOverviewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

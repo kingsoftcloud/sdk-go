@@ -313,7 +313,7 @@ type DescribeContainerGroupResponse struct {
 		DnsConfig struct {
 			NameServers []*string `json:"NameServers" name:"NameServers"`
 			Searches []*string `json:"Searches" name:"Searches"`
-			Options  []struct {
+			Options []struct {
 				Name *string `json:"Name" name:"Name"`
 				Value *string `json:"Value" name:"Value"`
 			} `json:"Options"`
@@ -324,7 +324,7 @@ type DescribeContainerGroupResponse struct {
 		} `json:"HostAliases" name:"HostAliases"`
 		Volumes []struct {
 			Name      *string `json:"Name" name:"Name"`
-			TypeField *string `json:"Type" name:"Type"`
+			Type      *string `json:"Type" name:"Type"`
 			NFSVolume struct {
 				Path     *string `json:"Path" name:"Path"`
 				Server   *string `json:"Server" name:"Server"`
@@ -348,7 +348,7 @@ type DescribeContainerGroupResponse struct {
 			Commands        []*string `json:"Commands" name:"Commands"`
 			Args            []*string `json:"Args" name:"Args"`
 			EnvironmentVars []struct {
-				Key   *string `json:"Key" name:"Key"`
+				Key *string `json:"Key" name:"Key"`
 				Value *string `json:"Value" name:"Value"`
 				ValueFrom struct {
 					FieldRef struct {
@@ -375,24 +375,24 @@ type DescribeContainerGroupResponse struct {
 			CurrentState struct {
 				StartTime *string `json:"StartTime" name:"StartTime"`
 				FinishTime *string `json:"FinishTime" name:"FinishTime"`
-				State     *string `json:"State" name:"State"`
-				Reason    *string `json:"Reason" name:"Reason"`
-				ExitCode  *int    `json:"ExitCode" name:"ExitCode"`
+				State    *string `json:"State" name:"State"`
+				Reason   *string `json:"Reason" name:"Reason"`
+				ExitCode *int    `json:"ExitCode" name:"ExitCode"`
 			} `json:"CurrentState"`
 			PreviousState struct {
 				StartTime *string `json:"StartTime" name:"StartTime"`
 				FinishTime *string `json:"FinishTime" name:"FinishTime"`
-				State     *string `json:"State" name:"State"`
-				Reason    *string `json:"Reason" name:"Reason"`
-				ExitCode  *int    `json:"ExitCode" name:"ExitCode"`
+				State    *string `json:"State" name:"State"`
+				Reason   *string `json:"Reason" name:"Reason"`
+				ExitCode *int    `json:"ExitCode" name:"ExitCode"`
 			} `json:"PreviousState"`
 			LivenessProbe struct {
 				InitialDelaySeconds *int `json:"InitialDelaySeconds" name:"InitialDelaySeconds"`
-				PeriodSeconds    *int `json:"PeriodSeconds" name:"PeriodSeconds"`
-				TimeoutSeconds   *int `json:"TimeoutSeconds" name:"TimeoutSeconds"`
+				PeriodSeconds  *int `json:"PeriodSeconds" name:"PeriodSeconds"`
+				TimeoutSeconds *int `json:"TimeoutSeconds" name:"TimeoutSeconds"`
 				SuccessThreshold *int `json:"SuccessThreshold" name:"SuccessThreshold"`
 				FailureThreshold *int `json:"FailureThreshold" name:"FailureThreshold"`
-				HttpGet          struct {
+				HttpGet        struct {
 					Port   *int    `json:"Port" name:"Port"`
 					Path   *string `json:"Path" name:"Path"`
 					Scheme *string `json:"Scheme" name:"Scheme"`
@@ -406,11 +406,11 @@ type DescribeContainerGroupResponse struct {
 			} `json:"LivenessProbe"`
 			ReadinessProbe struct {
 				InitialDelaySeconds *int `json:"InitialDelaySeconds" name:"InitialDelaySeconds"`
-				PeriodSeconds    *int `json:"PeriodSeconds" name:"PeriodSeconds"`
-				TimeoutSeconds   *int `json:"TimeoutSeconds" name:"TimeoutSeconds"`
+				PeriodSeconds  *int `json:"PeriodSeconds" name:"PeriodSeconds"`
+				TimeoutSeconds *int `json:"TimeoutSeconds" name:"TimeoutSeconds"`
 				SuccessThreshold *int `json:"SuccessThreshold" name:"SuccessThreshold"`
 				FailureThreshold *int `json:"FailureThreshold" name:"FailureThreshold"`
-				HttpGet          struct {
+				HttpGet        struct {
 					Port   *int    `json:"Port" name:"Port"`
 					Path   *string `json:"Path" name:"Path"`
 					Scheme *string `json:"Scheme" name:"Scheme"`
@@ -560,7 +560,7 @@ func (r *DescribeContainerGroupCountRequest) ToJsonString() string {
 
 type DescribeContainerGroupCountResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId        *string `json:"RequestId" name:"RequestId"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
 	ClusterPodCounts []struct {
 		ClusterId *string `json:"ClusterId" name:"ClusterId"`
 		Count *int `json:"Count" name:"Count"`
@@ -593,10 +593,10 @@ type DescribeContainerGroupEventsResponse struct {
 	Events    []struct {
 		FirstTimestamp *string `json:"FirstTimestamp" name:"FirstTimestamp"`
 		LastTimestamp *string `json:"LastTimestamp" name:"LastTimestamp"`
-		Count         *int    `json:"Count" name:"Count"`
-		TypeField     *string `json:"TypeField" name:"TypeField"`
-		Reason        *string `json:"Reason" name:"Reason"`
-		Message       *string `json:"Message" name:"Message"`
+		Count   *int    `json:"Count" name:"Count"`
+		Type    *string `json:"Type" name:"Type"`
+		Reason  *string `json:"Reason" name:"Reason"`
+		Message *string `json:"Message" name:"Message"`
 	} `json:"Events"`
 }
 
@@ -757,7 +757,7 @@ func (r *MatchImageCacheRequest) ToJsonString() string {
 
 type MatchImageCacheResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
 	ImageCaches []struct {
 		ImageCacheId *string `json:"ImageCacheId" name:"ImageCacheId"`
 		ImageCacheName *string `json:"ImageCacheName" name:"ImageCacheName"`
@@ -772,6 +772,7 @@ func (r *MatchImageCacheResponse) ToJsonString() string {
 func (r *MatchImageCacheResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeImageCacheEventRequest struct {
 	*ksyunhttp.BaseRequest
@@ -789,10 +790,10 @@ type DescribeImageCacheEventResponse struct {
 	Events    []struct {
 		FirstTimestamp *string `json:"FirstTimestamp" name:"FirstTimestamp"`
 		LastTimestamp *string `json:"LastTimestamp" name:"LastTimestamp"`
-		Count         *int    `json:"Count" name:"Count"`
-		TypeField     *string `json:"TypeField" name:"TypeField"`
-		Reason        *string `json:"Reason" name:"Reason"`
-		Message       *string `json:"Message" name:"Message"`
+		Count   *int    `json:"Count" name:"Count"`
+		Type    *string `json:"Type" name:"Type"`
+		Reason  *string `json:"Reason" name:"Reason"`
+		Message *string `json:"Message" name:"Message"`
 	} `json:"Events"`
 }
 
@@ -804,6 +805,7 @@ func (r *DescribeImageCacheEventResponse) ToJsonString() string {
 func (r *DescribeImageCacheEventResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type UpdateImageCacheRequest struct {
 	*ksyunhttp.BaseRequest

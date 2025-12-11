@@ -712,7 +712,7 @@ func (c *Client) UpdateVolumeProjectWithContext(ctx context.Context, request *Up
 		request = NewUpdateVolumeProjectRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewUpdateVolumeProjectResponse()
 	err, msg := c.Send(request, response)
@@ -727,7 +727,7 @@ func (c *Client) UpdateVolumeProjectWithContextV2(ctx context.Context, request *
 		request = NewUpdateVolumeProjectRequest()
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewUpdateVolumeProjectResponse()
 	statusCode, msg, err := c.SendV2(request, response)

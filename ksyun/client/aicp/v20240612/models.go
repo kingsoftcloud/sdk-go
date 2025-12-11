@@ -1,8 +1,10 @@
 package v20240612
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 type ModifyNotebookStorageConfigs struct {
 	StorageConfigId   *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
 	MountPath         *string `json:"MountPath,omitempty" name:"MountPath"`
@@ -59,7 +61,6 @@ type DescribeResourcePoolInstancesFilter struct {
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
-
 type SaveNotebookImageRequest struct {
 	*ksyunhttp.BaseRequest
 	ImageName           *string `json:"ImageName,omitempty" name:"ImageName"`
@@ -96,7 +97,6 @@ func (r *SaveNotebookImageResponse) ToJsonString() string {
 func (r *SaveNotebookImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifyNotebookRequest struct {
 	*ksyunhttp.BaseRequest
@@ -147,7 +147,6 @@ func (r *ModifyNotebookResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteNotebookRequest struct {
 	*ksyunhttp.BaseRequest
 	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
@@ -173,7 +172,6 @@ func (r *DeleteNotebookResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeNotebooksRequest struct {
 	*ksyunhttp.BaseRequest
 	NotebookId []*string                  `json:"NotebookId,omitempty" name:"NotebookId"`
@@ -194,10 +192,10 @@ type DescribeNotebooksResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Notebooks []struct {
-		NotebookId  *string `json:"NotebookId" name:"NotebookId"`
+		NotebookId   *string `json:"NotebookId" name:"NotebookId"`
 		NotebookName *string `json:"NotebookName" name:"NotebookName"`
-		Description *string `json:"Description" name:"Description"`
-		Status      struct {
+		Description  *string `json:"Description" name:"Description"`
+		Status       struct {
 			State         *string `json:"State" name:"State"`
 			SubmitTime    *string `json:"SubmitTime" name:"SubmitTime"`
 			StartTime     *string `json:"StartTime" name:"StartTime"`
@@ -247,11 +245,11 @@ type DescribeNotebooksResponse struct {
 		Label struct {
 			TerminatePolicyId *string `json:"TerminatePolicyId" name:"TerminatePolicyId"`
 		} `json:"Label" name:"Label"`
-		Version       *string `json:"Version" name:"Version"`
+		Version            *string  `json:"Version" name:"Version"`
 		EstimatedImageSize *float64 `json:"EstimatedImageSize" name:"EstimatedImageSize"`
-		ComputeStatus *string `json:"ComputeStatus" name:"ComputeStatus"`
-		RunOnCPU      *bool   `json:"RunOnCPU" name:"RunOnCPU"`
-		NodeIp        *string `json:"NodeIp" name:"NodeIp"`
+		ComputeStatus      *string  `json:"ComputeStatus" name:"ComputeStatus"`
+		RunOnCPU           *bool    `json:"RunOnCPU" name:"RunOnCPU"`
+		NodeIp             *string  `json:"NodeIp" name:"NodeIp"`
 	} `json:"Notebooks"`
 	TotalCount *int `json:"TotalCount" name:"TotalCount"`
 	Marker     *int `json:"Marker" name:"Marker"`
@@ -266,7 +264,6 @@ func (r *DescribeNotebooksResponse) ToJsonString() string {
 func (r *DescribeNotebooksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateNotebookRequest struct {
 	*ksyunhttp.BaseRequest
@@ -315,7 +312,6 @@ func (r *CreateNotebookResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type StopNotebookRequest struct {
 	*ksyunhttp.BaseRequest
 	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
@@ -341,7 +337,6 @@ func (r *StopNotebookResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type StartNotebookRequest struct {
 	*ksyunhttp.BaseRequest
 	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
@@ -366,7 +361,6 @@ func (r *StartNotebookResponse) ToJsonString() string {
 func (r *StartNotebookResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetWebIdeUrlRequest struct {
 	*ksyunhttp.BaseRequest
@@ -396,7 +390,6 @@ func (r *GetWebIdeUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeNotebookEventsRequest struct {
 	*ksyunhttp.BaseRequest
 	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
@@ -413,14 +406,14 @@ type DescribeNotebookEventsResponse struct {
 	DataSet   []struct {
 		FirstSeen *string `json:"FirstSeen" name:"FirstSeen"`
 		LastSeen  *string `json:"LastSeen" name:"LastSeen"`
-		TypeField *string `json:"TypeField" name:"TypeField"`
+		Type      *string `json:"Type" name:"Type"`
 		Object    struct {
 			Kind *string `json:"Kind" name:"Kind"`
 			Name *string `json:"Name" name:"Name"`
 		} `json:"Object" name:"Object"`
-		Reason *string `json:"Reason" name:"Reason"`
+		Reason  *string `json:"Reason" name:"Reason"`
 		Message *string `json:"Message" name:"Message"`
-		Source struct {
+		Source  struct {
 			Component *string `json:"Component" name:"Component"`
 		} `json:"Source" name:"Source"`
 		Count *int `json:"Count" name:"Count"`
@@ -435,7 +428,6 @@ func (r *DescribeNotebookEventsResponse) ToJsonString() string {
 func (r *DescribeNotebookEventsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeNotebookLogRequest struct {
 	*ksyunhttp.BaseRequest
@@ -461,7 +453,6 @@ func (r *DescribeNotebookLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type StopNotebookSavingImageRequest struct {
 	*ksyunhttp.BaseRequest
 	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
@@ -486,7 +477,6 @@ func (r *StopNotebookSavingImageResponse) ToJsonString() string {
 func (r *StopNotebookSavingImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateTrainJobRequest struct {
 	*ksyunhttp.BaseRequest
@@ -537,7 +527,6 @@ func (r *CreateTrainJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeTrainJobEventsRequest struct {
 	*ksyunhttp.BaseRequest
 	ResourcePoolId *string `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
@@ -555,7 +544,7 @@ type DescribeTrainJobEventsResponse struct {
 	DataSet   []struct {
 		FirstSeen *string `json:"FirstSeen" name:"FirstSeen"`
 		LastSeen  *string `json:"LastSeen" name:"LastSeen"`
-		TypeField *string `json:"TypeField" name:"TypeField"`
+		Type      *string `json:"Type" name:"Type"`
 		Object    struct {
 			Kind            *string `json:"Kind" name:"Kind"`
 			Namespace       *string `json:"Namespace" name:"Namespace"`
@@ -565,9 +554,9 @@ type DescribeTrainJobEventsResponse struct {
 			ResourceVersion *string `json:"ResourceVersion" name:"ResourceVersion"`
 			FieldPath       *string `json:"FieldPath" name:"FieldPath"`
 		} `json:"Object" name:"Object"`
-		Reason *string `json:"Reason" name:"Reason"`
+		Reason  *string `json:"Reason" name:"Reason"`
 		Message *string `json:"Message" name:"Message"`
-		Source struct {
+		Source  struct {
 			Component *string `json:"component" name:"component"`
 			Host      *string `json:"host" name:"host"`
 		} `json:"Source" name:"Source"`
@@ -583,7 +572,6 @@ func (r *DescribeTrainJobEventsResponse) ToJsonString() string {
 func (r *DescribeTrainJobEventsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type StopTrainJobRequest struct {
 	*ksyunhttp.BaseRequest
@@ -609,7 +597,6 @@ func (r *StopTrainJobResponse) ToJsonString() string {
 func (r *StopTrainJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeTrainJobRequest struct {
 	*ksyunhttp.BaseRequest
@@ -655,12 +642,12 @@ type DescribeTrainJobResponse struct {
 			Evaluator *int `json:"Evaluator" name:"Evaluator"`
 			PS        *int `json:"PS" name:"PS"`
 		} `json:"FrameworkReplicas" name:"FrameworkReplicas"`
-		GPUType   *string `json:"GPUType" name:"GPUType"`
-		GPUNumber *int    `json:"GPUNumber" name:"GPUNumber"`
-		CPUNum    *int    `json:"CPUNum" name:"CPUNum"`
-		Memory    *int    `json:"Memory" name:"Memory"`
+		GPUType       *string `json:"GPUType" name:"GPUType"`
+		GPUNumber     *int    `json:"GPUNumber" name:"GPUNumber"`
+		CPUNum        *int    `json:"CPUNum" name:"CPUNum"`
+		Memory        *int    `json:"Memory" name:"Memory"`
 		RestartPolicy *string `json:"RestartPolicy" name:"RestartPolicy"`
-		Status    struct {
+		Status        struct {
 			State         *string `json:"State" name:"State"`
 			PodSucceedNum *int    `json:"PodSucceedNum" name:"PodSucceedNum"`
 			PodFailedNum  *int    `json:"PodFailedNum" name:"PodFailedNum"`
@@ -671,8 +658,8 @@ type DescribeTrainJobResponse struct {
 			Message       *string `json:"Message" name:"Message"`
 		} `json:"Status" name:"Status"`
 		CreateUserId *string `json:"CreateUserId" name:"CreateUserId"`
-		SelfHealing *bool `json:"SelfHealing" name:"SelfHealing"`
-		Envs        []struct {
+		SelfHealing  *bool   `json:"SelfHealing" name:"SelfHealing"`
+		Envs         []struct {
 			Name  *string `json:"Name" name:"Name"`
 			Value *string `json:"Value" name:"Value"`
 		} `json:"Envs" name:"Envs"`
@@ -697,7 +684,6 @@ func (r *DescribeTrainJobResponse) ToJsonString() string {
 func (r *DescribeTrainJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type StartTrainJobRequest struct {
 	*ksyunhttp.BaseRequest
@@ -724,7 +710,6 @@ func (r *StartTrainJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteTrainJobRequest struct {
 	*ksyunhttp.BaseRequest
 	TrainJobId *string `json:"TrainJobId,omitempty" name:"TrainJobId"`
@@ -749,7 +734,6 @@ func (r *DeleteTrainJobResponse) ToJsonString() string {
 func (r *DeleteTrainJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifyTrainJobRequest struct {
 	*ksyunhttp.BaseRequest
@@ -776,7 +760,6 @@ func (r *ModifyTrainJobResponse) ToJsonString() string {
 func (r *ModifyTrainJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeTrainJobPodLogsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -806,7 +789,6 @@ func (r *DescribeTrainJobPodLogsResponse) ToJsonString() string {
 func (r *DescribeTrainJobPodLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeTrainJobPodsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -839,8 +821,8 @@ type DescribeTrainJobPodsResponse struct {
 			RestartCount   *int    `json:"RestartCount" name:"RestartCount"`
 		} `json:"Status" name:"Status"`
 		ContainerName *string `json:"ContainerName" name:"ContainerName"`
-		Kind      *string `json:"Kind" name:"Kind"`
-		NameSpace *string `json:"NameSpace" name:"NameSpace"`
+		Kind          *string `json:"Kind" name:"Kind"`
+		NameSpace     *string `json:"NameSpace" name:"NameSpace"`
 	} `json:"TrainJobPodSet"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
@@ -984,4 +966,3 @@ func (r *DescribeResourcePoolInstancesResponse) ToJsonString() string {
 func (r *DescribeResourcePoolInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

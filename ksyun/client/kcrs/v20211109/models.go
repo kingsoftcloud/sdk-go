@@ -85,7 +85,7 @@ type DescribeNamespaceResponse struct {
 	TotalCount   *int    `json:"TotalCount" name:"TotalCount"`
 	NamespaceSet []struct {
 		Namespace *string `json:"Namespace" name:"Namespace"`
-		Public    *bool   `json:"Public" name:"Public"`
+		Public *bool `json:"Public" name:"Public"`
 		RepoCount *string `json:"RepoCount" name:"RepoCount"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"NamespaceSet"`
@@ -298,10 +298,10 @@ type DescribeRepositoryResponse struct {
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	RepoSet    []struct {
 		RepoName *string `json:"RepoName" name:"RepoName"`
-		Public   *bool   `json:"Public" name:"Public"`
+		Public *bool   `json:"Public" name:"Public"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
-		Desc     *string `json:"Desc" name:"Desc"`
+		Desc   *string `json:"Desc" name:"Desc"`
 	} `json:"RepoSet"`
 }
 
@@ -418,18 +418,18 @@ type DescribeImageScanResponse struct {
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	FinishTime *string `json:"FinishTime" name:"FinishTime"`
 	Summary    struct {
-		High    *int `json:"High" name:"High"`
-		Medium  *int `json:"Medium" name:"Medium"`
-		Low     *int `json:"Low" name:"Low"`
+		High   *int `json:"High" name:"High"`
+		Medium *int `json:"Medium" name:"Medium"`
+		Low    *int `json:"Low" name:"Low"`
 		Negligible *int `json:"Negligible" name:"Negligible"`
 		Unknown *int `json:"Unknown" name:"Unknown"`
 	} `json:"Summary"`
 	VulnerabilitySet struct {
-		CveName        *string `json:"CveName" name:"CveName"`
-		CveLink        *string `json:"CveLink" name:"CveLink"`
-		Description    *string `json:"Description" name:"Description"`
-		Severity       *string `json:"Severity" name:"Severity"`
-		Feature        *string `json:"Feature" name:"Feature"`
+		CveName     *string `json:"CveName" name:"CveName"`
+		CveLink     *string `json:"CveLink" name:"CveLink"`
+		Description *string `json:"Description" name:"Description"`
+		Severity    *string `json:"Severity" name:"Severity"`
+		Feature     *string `json:"Feature" name:"Feature"`
 		CurrentVersion *string `json:"CurrentVersion" name:"CurrentVersion"`
 		RepairedVersion *string `json:"RepairedVersion" name:"RepairedVersion"`
 	} `json:"VulnerabilitySet"`
@@ -492,9 +492,9 @@ type DescribeInternalEndpointResponse struct {
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	TotalCount   *int    `json:"TotalCount" name:"TotalCount"`
 	AccessVpcSet []struct {
-		VpcId   *string `json:"VpcId" name:"VpcId"`
+		VpcId  *string `json:"VpcId" name:"VpcId"`
 		SubnetId *string `json:"SubnetId" name:"SubnetId"`
-		Status  *string `json:"Status" name:"Status"`
+		Status *string `json:"Status" name:"Status"`
 		EniLBIp *string `json:"EniLBIp" name:"EniLBIp"`
 	} `json:"AccessVpcSet"`
 }
@@ -529,8 +529,8 @@ type DescribeInstanceTokenResponse struct {
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
 	TokenSet   []struct {
 		TokenId *string `json:"TokenId" name:"TokenId"`
-		Enable  *bool   `json:"Enable" name:"Enable"`
-		Desc    *string `json:"Desc" name:"Desc"`
+		Enable *bool   `json:"Enable" name:"Enable"`
+		Desc   *string `json:"Desc" name:"Desc"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		ExpireTime *string `json:"ExpireTime" name:"ExpireTime"`
 	} `json:"TokenSet"`
@@ -671,7 +671,7 @@ func (r *DescribeInternalEndpointDnsRequest) ToJsonString() string {
 
 type DescribeInternalEndpointDnsResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId              *string `json:"RequestId" name:"RequestId"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
 	InternalEndpointDnsSet []struct {
 		InternalEndpointDns *string `json:"InternalEndpointDns" name:"InternalEndpointDns"`
 		Status *string `json:"Status" name:"Status"`
@@ -873,15 +873,15 @@ type DescribeInstanceResponse struct {
 	*ksyunhttp.BaseResponse
 	TotalCount  *int `json:"TotalCount" name:"TotalCount"`
 	InstanceSet []struct {
-		InstanceId     *string `json:"InstanceId" name:"InstanceId"`
-		InstanceName   *string `json:"InstanceName" name:"InstanceName"`
-		InstanceType   *string `json:"InstanceType" name:"InstanceType"`
+		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName *string `json:"InstanceName" name:"InstanceName"`
+		InstanceType *string `json:"InstanceType" name:"InstanceType"`
 		InstanceStatus *string `json:"InstanceStatus" name:"InstanceStatus"`
 		InternalEndpoint *string `json:"InternalEndpoint" name:"InternalEndpoint"`
-		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
-		ExpiredTime    *string `json:"ExpiredTime" name:"ExpiredTime"`
-		ChargeType     *string `json:"ChargeType" name:"ChargeType"`
-		ProjectId      *string `json:"ProjectId" name:"ProjectId"`
+		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		ExpiredTime  *string `json:"ExpiredTime" name:"ExpiredTime"`
+		ChargeType   *string `json:"ChargeType" name:"ChargeType"`
+		ProjectId    *string `json:"ProjectId" name:"ProjectId"`
 	} `json:"InstanceSet"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
@@ -1162,14 +1162,14 @@ type DescribeRetentionRuleResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		Id        *int    `json:"Id" name:"Id"`
-		Disabled  *bool   `json:"Disabled" name:"Disabled"`
+		Id       *int    `json:"Id" name:"Id"`
+		Disabled *bool   `json:"Disabled" name:"Disabled"`
 		RegistryScope *string `json:"RegistryScope" name:"RegistryScope"`
-		TypeField *string `json:"TypeField" name:"TypeField"`
-		UnTagged  *bool   `json:"UnTagged" name:"UnTagged"`
-		Template  *string `json:"Template" name:"Template"`
+		Type     *string `json:"Type" name:"Type"`
+		UnTagged *bool   `json:"UnTagged" name:"UnTagged"`
+		Template *string `json:"Template" name:"Template"`
 		TagPatten *string `json:"TagPatten" name:"TagPatten"`
-		Param     *int    `json:"Param" name:"Param"`
+		Param    *int    `json:"Param" name:"Param"`
 	} `json:"Data"`
 }
 
@@ -1210,6 +1210,7 @@ func (r *RunRetentionPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type GetRetentionPolicyLogsRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -1249,6 +1250,7 @@ func (r *GetRetentionPolicyLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type GetRetentionPolicyLogDetailRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId  *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -1279,7 +1281,7 @@ type GetRetentionPolicyLogDetailResponse struct {
 			Total       *int    `json:"Total" name:"Total"`
 			TakeTime    *int    `json:"TakeTime" name:"TakeTime"`
 		} `json:"LogDetail" name:"LogDetail"`
-		Page  *int `json:"Page" name:"Page"`
+		Page *int `json:"Page" name:"Page"`
 		PageSize *int `json:"PageSize" name:"PageSize"`
 		Total *int `json:"Total" name:"Total"`
 	} `json:"Data"`
@@ -1293,6 +1295,7 @@ func (r *GetRetentionPolicyLogDetailResponse) ToJsonString() string {
 func (r *GetRetentionPolicyLogDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type GetRetentionPolicyLogRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1320,6 +1323,7 @@ func (r *GetRetentionPolicyLogResponse) ToJsonString() string {
 func (r *GetRetentionPolicyLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type GetRetentionTriggerRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1350,6 +1354,7 @@ func (r *GetRetentionTriggerResponse) ToJsonString() string {
 func (r *GetRetentionTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type UpdateRetentionTriggerRequest struct {
 	*ksyunhttp.BaseRequest

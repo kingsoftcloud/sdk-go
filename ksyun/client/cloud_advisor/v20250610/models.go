@@ -23,11 +23,11 @@ type GetReportResponse struct {
 	Msg       *string `json:"msg" name:"msg"`
 	RequestId *string `json:"requestId" name:"requestId"`
 	Data      []struct {
-		TaskId     *string `json:"TaskId" name:"TaskId"`
+		TaskId *string `json:"TaskId" name:"TaskId"`
 		FilePdfUrl *string `json:"FilePdfUrl" name:"FilePdfUrl"`
 		FileExcelUrl *string `json:"FileExcelUrl" name:"FileExcelUrl"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		Status     *int    `json:"Status" name:"Status"`
+		Status *int    `json:"Status" name:"Status"`
 		StatusName *string `json:"StatusName" name:"StatusName"`
 	} `json:"Data"`
 }
@@ -97,7 +97,7 @@ type ListInspectionItemResponse struct {
 			InspectionItemName *string `json:"inspectionItemName" name:"inspectionItemName"`
 			ProductGroupId     *int    `json:"productGroupId" name:"productGroupId"`
 			ProductGroupName   *string `json:"productGroupName" name:"productGroupName"`
-			TypeField          *int    `json:"type" name:"type"`
+			Type               *int    `json:"type" name:"type"`
 			TypeName           *string `json:"typeName" name:"typeName"`
 			Status             *int    `json:"status" name:"status"`
 			StatusName         *string `json:"StatusName" name:"StatusName"`

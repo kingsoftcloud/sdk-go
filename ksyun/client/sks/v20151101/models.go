@@ -74,8 +74,8 @@ func (r *DeleteKeyRequest) ToJsonString() string {
 
 type DeleteKeyResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DeleteKeyResponse) ToJsonString() string {
@@ -101,8 +101,8 @@ func (r *ModifyKeyRequest) ToJsonString() string {
 
 type ModifyKeyResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *ModifyKeyResponse) ToJsonString() string {
@@ -134,10 +134,10 @@ type DescribeKeysResponse struct {
 	NextToken  *string `json:"NextToken" name:"NextToken"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	KeySet     []struct {
-		KeyId     *string `json:"KeyId" name:"KeyId"`
+		KeyId   *string `json:"KeyId" name:"KeyId"`
 		PublicKey *string `json:"PublicKey" name:"PublicKey"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		KeyName   *string `json:"KeyName" name:"KeyName"`
+		KeyName *string `json:"KeyName" name:"KeyName"`
 	} `json:"KeySet"`
 }
 

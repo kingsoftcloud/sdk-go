@@ -2,6 +2,7 @@ package v20160304
 
 import (
 	"encoding/json"
+
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -419,8 +420,8 @@ func (r *ModifyPdnsZoneRequest) ToJsonString() string {
 
 type ModifyPdnsZoneResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *ModifyPdnsZoneResponse) ToJsonString() string {
@@ -444,8 +445,8 @@ func (r *DeletePdnsZoneRequest) ToJsonString() string {
 
 type DeletePdnsZoneResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DeletePdnsZoneResponse) ToJsonString() string {
@@ -510,8 +511,8 @@ func (r *BindZoneVpcRequest) ToJsonString() string {
 
 type BindZoneVpcResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *BindZoneVpcResponse) ToJsonString() string {
@@ -536,8 +537,8 @@ func (r *UnbindZoneVpcRequest) ToJsonString() string {
 
 type UnbindZoneVpcResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *UnbindZoneVpcResponse) ToJsonString() string {
@@ -569,7 +570,7 @@ type CreateZoneRecordResponse struct {
 	Record    struct {
 		RecordId      *string `json:"RecordId" name:"RecordId"`
 		RecordName    *string `json:"RecordName" name:"RecordName"`
-		TypeField     *string `json:"TypeField" name:"TypeField"`
+		Type          *string `json:"Type" name:"Type"`
 		RecordTtl     *int    `json:"RecordTtl" name:"RecordTtl"`
 		RecordDataSet []struct {
 			RecordValue *string `json:"RecordValue" name:"RecordValue"`
@@ -606,8 +607,8 @@ func (r *DeleteZoneRecordRequest) ToJsonString() string {
 
 type DeleteZoneRecordResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DeleteZoneRecordResponse) ToJsonString() string {
@@ -637,7 +638,7 @@ type ModifyZoneRecordResponse struct {
 	Record    struct {
 		RecordId      *string `json:"RecordId" name:"RecordId"`
 		RecordName    *string `json:"RecordName" name:"RecordName"`
-		TypeField     *string `json:"TypeField" name:"TypeField"`
+		Type          *string `json:"Type" name:"Type"`
 		RecordTtl     *int    `json:"RecordTtl" name:"RecordTtl"`
 		RecordDataSet []struct {
 			RecordValue *string `json:"RecordValue" name:"RecordValue"`
@@ -676,7 +677,7 @@ type DescribeZoneRecordResponse struct {
 	RecordSet []struct {
 		RecordId      *string `json:"RecordId" name:"RecordId"`
 		RecordName    *string `json:"RecordName" name:"RecordName"`
-		TypeField     *string `json:"TypeField" name:"TypeField"`
+		Type          *string `json:"Type" name:"Type"`
 		RecordTtl     *int    `json:"RecordTtl" name:"RecordTtl"`
 		RecordDataSet []struct {
 			RecordValue *string `json:"RecordValue" name:"RecordValue"`
@@ -707,8 +708,8 @@ func (r *UnbindFdZoneVpcRequest) ToJsonString() string {
 
 type UnbindFdZoneVpcResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *UnbindFdZoneVpcResponse) ToJsonString() string {
@@ -733,9 +734,9 @@ func (r *BindFdZoneVpcRequest) ToJsonString() string {
 
 type BindFdZoneVpcResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
-	BindVpcSet  []struct {
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	Return     *bool   `json:"Return" name:"Return"`
+	BindVpcSet []struct {
 		BindVpcId  *string `json:"BindVpcId" name:"BindVpcId"`
 		RegionName *string `json:"RegionName" name:"RegionName"`
 		VpcId      *string `json:"VpcId" name:"VpcId"`
@@ -806,8 +807,8 @@ func (r *DeletePdnsFdZoneRequest) ToJsonString() string {
 
 type DeletePdnsFdZoneResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DeletePdnsFdZoneResponse) ToJsonString() string {
@@ -944,7 +945,7 @@ type DescribeEndPointsResponse struct {
 		EndPointId      *string   `json:"EndPointId" name:"EndPointId"`
 		Region          *string   `json:"Region" name:"Region"`
 		EndPointName    *string   `json:"EndPointName" name:"EndPointName"`
-		TypeField       *string   `json:"TypeField" name:"TypeField"`
+		Type            *string   `json:"Type" name:"Type"`
 		VpcId           *string   `json:"VpcId" name:"VpcId"`
 		SecurityGroupId *string   `json:"SecurityGroupId" name:"SecurityGroupId"`
 		FdZoneIds       []*string `json:"FdZoneIds" name:"FdZoneIds"`
@@ -980,8 +981,8 @@ func (r *DeleteEndPointRequest) ToJsonString() string {
 
 type DeleteEndPointResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DeleteEndPointResponse) ToJsonString() string {
@@ -1013,7 +1014,7 @@ type ModifyEndPointResponse struct {
 		EndPointId      *string   `json:"EndPointId" name:"EndPointId"`
 		Region          *string   `json:"Region" name:"Region"`
 		EndPointName    *string   `json:"EndPointName" name:"EndPointName"`
-		TypeField       *string   `json:"TypeField" name:"TypeField"`
+		Type            *string   `json:"Type" name:"Type"`
 		VpcId           *string   `json:"VpcId" name:"VpcId"`
 		SecurityGroupId *string   `json:"SecurityGroupId" name:"SecurityGroupId"`
 		FdZoneIds       []*string `json:"FdZoneIds" name:"FdZoneIds"`
@@ -1058,7 +1059,7 @@ type CreateEndPointResponse struct {
 		EndPointId      *string   `json:"EndPointId" name:"EndPointId"`
 		Region          *string   `json:"Region" name:"Region"`
 		EndPointName    *string   `json:"EndPointName" name:"EndPointName"`
-		TypeField       *string   `json:"TypeField" name:"TypeField"`
+		Type            *string   `json:"Type" name:"Type"`
 		VpcId           *string   `json:"VpcId" name:"VpcId"`
 		SecurityGroupId *string   `json:"SecurityGroupId" name:"SecurityGroupId"`
 		FdZoneIds       []*string `json:"FdZoneIds" name:"FdZoneIds"`

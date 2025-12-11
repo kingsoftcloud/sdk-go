@@ -20,11 +20,11 @@ type QueryCashWalletActionResponse struct {
 	Status    *int    `json:"status" name:"status"`
 	RequestId *string `json:"request_id" name:"request_id"`
 	Data      struct {
-		CustomerId   *int    `json:"CustomerId" name:"CustomerId"`
+		CustomerId *int    `json:"CustomerId" name:"CustomerId"`
 		AvailableAmount *string `json:"AvailableAmount" name:"AvailableAmount"`
 		RewardAmount *string `json:"RewardAmount" name:"RewardAmount"`
 		FrozenAmount *string `json:"FrozenAmount" name:"FrozenAmount"`
-		Currency     *string `json:"Currency" name:"Currency"`
+		Currency   *string `json:"Currency" name:"Currency"`
 	} `json:"Data"`
 }
 

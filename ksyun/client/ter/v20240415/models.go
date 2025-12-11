@@ -19,11 +19,11 @@ type DescribeStackOutputsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Outputs   []struct {
-		Name      *string `json:"Name" name:"Name"`
-		TypeField *string `json:"TypeField" name:"TypeField"`
+		Name   *string `json:"Name" name:"Name"`
+		Type   *string `json:"Type" name:"Type"`
 		Description *string `json:"Description" name:"Description"`
-		Value     *string `json:"Value" name:"Value"`
-		Params    *string `json:"Params" name:"Params"`
+		Value  *string `json:"Value" name:"Value"`
+		Params *string `json:"Params" name:"Params"`
 	} `json:"Outputs"`
 }
 
@@ -53,11 +53,11 @@ type DescribeStackEventsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Events    []struct {
-		EventType        *string `json:"EventType" name:"EventType"`
-		ResourceId       *string `json:"ResourceId" name:"ResourceId"`
+		EventType    *string `json:"EventType" name:"EventType"`
+		ResourceId   *string `json:"ResourceId" name:"ResourceId"`
 		ResourceLogicName *string `json:"ResourceLogicName" name:"ResourceLogicName"`
-		ResourceType     *string `json:"ResourceType" name:"ResourceType"`
-		EventTime        *string `json:"EventTime" name:"EventTime"`
+		ResourceType *string `json:"ResourceType" name:"ResourceType"`
+		EventTime    *string `json:"EventTime" name:"EventTime"`
 		EventDescription *string `json:"EventDescription" name:"EventDescription"`
 	} `json:"Events"`
 }
@@ -84,8 +84,8 @@ func (r *DeleteTemplateRequest) ToJsonString() string {
 
 type DeleteTemplateResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DeleteTemplateResponse) ToJsonString() string {
@@ -113,8 +113,8 @@ type DescribeTemplateVersionsResponse struct {
 	Versions []struct {
 		VersionNumber *string `json:"VersionNumber" name:"VersionNumber"`
 		VersionDescription *string `json:"VersionDescription" name:"VersionDescription"`
-		VersionState  *string `json:"VersionState" name:"VersionState"`
-		CreateTime    *string `json:"CreateTime" name:"CreateTime"`
+		VersionState *string `json:"VersionState" name:"VersionState"`
+		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"Versions"`
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	TemplateId   *string `json:"TemplateId" name:"TemplateId"`
@@ -149,15 +149,15 @@ type DescribeTemplatesResponse struct {
 	*ksyunhttp.BaseResponse
 	TemplateCount *int `json:"TemplateCount" name:"TemplateCount"`
 	Templates     []struct {
-		TemplateId    *string `json:"TemplateId" name:"TemplateId"`
-		TemplateType  *string `json:"TemplateType" name:"TemplateType"`
-		TemplateName  *string `json:"TemplateName" name:"TemplateName"`
+		TemplateId   *string `json:"TemplateId" name:"TemplateId"`
+		TemplateType *string `json:"TemplateType" name:"TemplateType"`
+		TemplateName *string `json:"TemplateName" name:"TemplateName"`
 		TemplateDescription *string `json:"TemplateDescription" name:"TemplateDescription"`
 		LatestVersion *string `json:"LatestVersion" name:"LatestVersion"`
-		VersionCount  *int    `json:"VersionCount" name:"VersionCount"`
-		UsingCount    *int    `json:"UsingCount" name:"UsingCount"`
-		CreatTime     *string `json:"CreatTime" name:"CreatTime"`
-		UpdateTime    *string `json:"UpdateTime" name:"UpdateTime"`
+		VersionCount *int    `json:"VersionCount" name:"VersionCount"`
+		UsingCount   *int    `json:"UsingCount" name:"UsingCount"`
+		CreatTime    *string `json:"CreatTime" name:"CreatTime"`
+		UpdateTime   *string `json:"UpdateTime" name:"UpdateTime"`
 	} `json:"Templates"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }

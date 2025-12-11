@@ -1,13 +1,14 @@
 package v20170101
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 type StartLoopSrcInfo struct {
 	Path  *string `json:"Path,omitempty" name:"Path"`
 	Index *int    `json:"Index,omitempty" name:"Index"`
 }
-
 
 type PresetRequest struct {
 	*ksyunhttp.BaseRequest
@@ -38,7 +39,6 @@ func (r *PresetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type UpdatePresetRequest struct {
 	*ksyunhttp.BaseRequest
 	UniqName    *string `json:"UniqName,omitempty" name:"UniqName"`
@@ -68,7 +68,6 @@ func (r *UpdatePresetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DelPresetRequest struct {
 	*ksyunhttp.BaseRequest
 	UniqName *string `json:"UniqName,omitempty" name:"UniqName"`
@@ -95,7 +94,6 @@ func (r *DelPresetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetPresetListRequest struct {
 	*ksyunhttp.BaseRequest
 	UniqName *string `json:"UniqName,omitempty" name:"UniqName"`
@@ -120,7 +118,6 @@ func (r *GetPresetListResponse) ToJsonString() string {
 func (r *GetPresetListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetPresetDetailRequest struct {
 	*ksyunhttp.BaseRequest
@@ -148,7 +145,6 @@ func (r *GetPresetDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetStreamTranListRequest struct {
 	*ksyunhttp.BaseRequest
 	UniqName *string `json:"UniqName,omitempty" name:"UniqName"`
@@ -175,7 +171,6 @@ func (r *GetStreamTranListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type StartLoopRequest struct {
 	*ksyunhttp.BaseRequest
 	UniqName      *string             `json:"UniqName,omitempty" name:"UniqName"`
@@ -200,7 +195,7 @@ type StartLoopResponse struct {
 	ErrMsg *string `json:"ErrMsg" name:"ErrMsg"`
 	List   []struct {
 		TaskID *string `json:"TaskID" name:"TaskID"`
-		Format *int `json:"Format" name:"Format"`
+		Format *int    `json:"Format" name:"Format"`
 	} `json:"List"`
 }
 
@@ -239,4 +234,3 @@ func (r *StopLoopResponse) ToJsonString() string {
 func (r *StopLoopResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

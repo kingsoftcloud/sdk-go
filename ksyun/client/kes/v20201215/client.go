@@ -1,4 +1,5 @@
 package v20201215
+
 import (
 	"context"
 	"fmt"
@@ -541,5 +542,3 @@ func (c *Client) CheckClusterHealthWithContextV2(ctx context.Context, request *C
 	}
 	return statusCode, msg, nil
 }
-
-

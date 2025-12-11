@@ -1,4 +1,5 @@
 package v20250321
+
 import (
 	"context"
 	"fmt"
@@ -281,5 +282,3 @@ func (c *Client) LaunchPayOrderWithContextV2(ctx context.Context, request *Launc
 	}
 	return statusCode, msg, nil
 }
-
-

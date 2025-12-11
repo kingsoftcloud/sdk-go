@@ -1,4 +1,5 @@
 package v20230323
+
 import (
 	"context"
 	"fmt"
@@ -1061,5 +1062,3 @@ func (c *Client) GetKnadPolicyWithContextV2(ctx context.Context, request *GetKna
 	}
 	return statusCode, msg, nil
 }
-
-

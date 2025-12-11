@@ -209,6 +209,7 @@ func (r *GetUsageDetailDataExportTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteUsageDetailDataExportTaskRequest struct {
 	*ksyunhttp.BaseRequest
 	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`

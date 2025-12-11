@@ -229,8 +229,8 @@ type ListTagsByResourceIdsResponse struct {
 	*ksyunhttp.BaseResponse
 	Tags []struct {
 		ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
-		TagId    *int    `json:"TagId" name:"TagId"`
-		TagKey   *string `json:"TagKey" name:"TagKey"`
+		TagId  *int    `json:"TagId" name:"TagId"`
+		TagKey *string `json:"TagKey" name:"TagKey"`
 		TagValue *string `json:"TagValue" name:"TagValue"`
 	} `json:"Tags"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -299,6 +299,7 @@ func (r *DetachResourceTagsResponse) ToJsonString() string {
 func (r *DetachResourceTagsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreateTagAndAttachResourceRequest struct {
 	*ksyunhttp.BaseRequest

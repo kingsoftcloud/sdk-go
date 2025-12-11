@@ -1,13 +1,14 @@
 package v20231115
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 type DescribeClusterFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-
 
 type DescribeClusterRequest struct {
 	*ksyunhttp.BaseRequest
@@ -63,7 +64,6 @@ func (r *DescribeClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type UpdateClusterDelProtectionRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId           *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -88,4 +88,3 @@ func (r *UpdateClusterDelProtectionResponse) ToJsonString() string {
 func (r *UpdateClusterDelProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

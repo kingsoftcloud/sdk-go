@@ -1,8 +1,10 @@
 package v20231010
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 type CreateSecurityRulesRules struct {
 	Cidr   *string `json:"Cidr,omitempty" name:"Cidr"`
 	Detail *string `json:"Detail,omitempty" name:"Detail"`
@@ -16,7 +18,6 @@ type CreateBackupDBCollection struct {
 	Description *string   `json:"Description,omitempty" name:"Description"`
 	Collections []*string `json:"Collections,omitempty" name:"Collections"`
 }
-
 
 type DeleteSecurityRulesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -46,7 +47,6 @@ func (r *DeleteSecurityRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type CreateSecurityRulesRequest struct {
 	*ksyunhttp.BaseRequest
 	SecurityGroupId *string                     `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
@@ -74,7 +74,6 @@ func (r *CreateSecurityRulesResponse) ToJsonString() string {
 func (r *CreateSecurityRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type UnbindSecurityGroupInstancesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -104,7 +103,6 @@ func (r *UnbindSecurityGroupInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type BindSecurityGroupInstancesRequest struct {
 	*ksyunhttp.BaseRequest
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
@@ -133,7 +131,6 @@ func (r *BindSecurityGroupInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteSecurityGroupRequest struct {
 	*ksyunhttp.BaseRequest
 	SecurityGroupIds *string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
@@ -151,8 +148,8 @@ type DeleteSecurityGroupResponse struct {
 	Message   *string `json:"Message" name:"Message"`
 	Data      []struct {
 		SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
-		OperStatus *string `json:"OperStatus" name:"OperStatus"`
-		Msg        *string `json:"Msg" name:"Msg"`
+		OperStatus      *string `json:"OperStatus" name:"OperStatus"`
+		Msg             *string `json:"Msg" name:"Msg"`
 	} `json:"Data"`
 }
 
@@ -164,7 +161,6 @@ func (r *DeleteSecurityGroupResponse) ToJsonString() string {
 func (r *DeleteSecurityGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeSecurityGroupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -182,13 +178,13 @@ type DescribeSecurityGroupResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		Id     *string `json:"Id" name:"Id"`
-		Name   *string `json:"Name" name:"Name"`
+		Id        *string `json:"Id" name:"Id"`
+		Name      *string `json:"Name" name:"Name"`
 		IpVersion *string `json:"IpVersion" name:"IpVersion"`
 		CreatedAt *string `json:"CreatedAt" name:"CreatedAt"`
 		UpdatedAt *string `json:"UpdatedAt" name:"UpdatedAt"`
-		Detail *string `json:"Detail" name:"Detail"`
-		Rules  []struct {
+		Detail    *string `json:"Detail" name:"Detail"`
+		Rules     []struct {
 			Cidr      *string `json:"Cidr" name:"Cidr"`
 			Detail    *string `json:"Detail" name:"Detail"`
 			Id        *string `json:"Id" name:"Id"`
@@ -201,7 +197,7 @@ type DescribeSecurityGroupResponse struct {
 			CreatedAt *string `json:"CreatedAt" name:"CreatedAt"`
 			Addresses []struct {
 				Host *string `json:"Host" name:"Host"`
-				TypeField *string `json:"TypeField" name:"TypeField"`
+				Type *string `json:"Type" name:"Type"`
 			} `json:"Addresses"`
 		} `json:"Instances" name:"Instances"`
 	} `json:"Data"`
@@ -215,7 +211,6 @@ func (r *DescribeSecurityGroupResponse) ToJsonString() string {
 func (r *DescribeSecurityGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateSecurityGroupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -236,8 +231,8 @@ type CreateSecurityGroupResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		Id   *string `json:"Id" name:"Id"`
-		Name *string `json:"Name" name:"Name"`
+		Id        *string `json:"Id" name:"Id"`
+		Name      *string `json:"Name" name:"Name"`
 		IpVersion *string `json:"IpVersion" name:"IpVersion"`
 		CreatedAt *string `json:"CreatedAt" name:"CreatedAt"`
 		UpdatedAt *string `json:"UpdatedAt" name:"UpdatedAt"`
@@ -252,7 +247,6 @@ func (r *CreateSecurityGroupResponse) ToJsonString() string {
 func (r *CreateSecurityGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ListSecurityGroupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -274,13 +268,13 @@ type ListSecurityGroupResponse struct {
 	Limit     *int    `json:"Limit" name:"Limit"`
 	Total     *int    `json:"Total" name:"Total"`
 	Data      []struct {
-		Id     *string `json:"Id" name:"Id"`
-		Name   *string `json:"Name" name:"Name"`
+		Id        *string `json:"Id" name:"Id"`
+		Name      *string `json:"Name" name:"Name"`
 		IpVersion *string `json:"IpVersion" name:"IpVersion"`
 		CreatedAt *string `json:"CreatedAt" name:"CreatedAt"`
 		UpdatedAt *string `json:"UpdatedAt" name:"UpdatedAt"`
-		Detail *string `json:"Detail" name:"Detail"`
-		Rules  []struct {
+		Detail    *string `json:"Detail" name:"Detail"`
+		Rules     []struct {
 			Id        *string `json:"Id" name:"Id"`
 			Cidr      *string `json:"Cidr" name:"Cidr"`
 			Detail    *string `json:"Detail" name:"Detail"`
@@ -288,9 +282,9 @@ type ListSecurityGroupResponse struct {
 			UpdatedAt *string `json:"UpdatedAt" name:"UpdatedAt"`
 		} `json:"Rules" name:"Rules"`
 		Instances []struct {
-			Id        *string `json:"Id" name:"Id"`
-			Name      *string `json:"Name" name:"Name"`
-			CreatedAt *string `json:"CreatedAt" name:"CreatedAt"`
+			Id        *string   `json:"Id" name:"Id"`
+			Name      *string   `json:"Name" name:"Name"`
+			CreatedAt *string   `json:"CreatedAt" name:"CreatedAt"`
 			Addresses []*string `json:"Addresses" name:"Addresses"`
 		} `json:"Instances" name:"Instances"`
 	} `json:"Data"`
@@ -304,7 +298,6 @@ func (r *ListSecurityGroupResponse) ToJsonString() string {
 func (r *ListSecurityGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DeleteInstanceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -324,7 +317,7 @@ type DeleteInstanceResponse struct {
 	Data      []struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 		OperStatus *string `json:"OperStatus" name:"OperStatus"`
-		Msg *string `json:"Msg" name:"Msg"`
+		Msg        *string `json:"Msg" name:"Msg"`
 	} `json:"Data"`
 }
 
@@ -336,7 +329,6 @@ func (r *DeleteInstanceResponse) ToJsonString() string {
 func (r *DeleteInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeInstanceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -355,29 +347,29 @@ type DescribeInstanceResponse struct {
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
 		InstanceName *string `json:"InstanceName" name:"InstanceName"`
-		Az         *string `json:"Az" name:"Az"`
-		AzName     *string `json:"AzName" name:"AzName"`
-		InstanceId *string `json:"InstanceId" name:"InstanceId"`
-		State      *string `json:"State" name:"State"`
-		StateName  *string `json:"StateName" name:"StateName"`
-		Engine     *string `json:"Engine" name:"Engine"`
-		CreateDate *string `json:"CreateDate" name:"CreateDate"`
-		Addresses  []struct {
-			Host      *string `json:"Host" name:"Host"`
-			Port      *int    `json:"Port" name:"Port"`
-			TypeField *string `json:"Type" name:"Type"`
+		Az           *string `json:"Az" name:"Az"`
+		AzName       *string `json:"AzName" name:"AzName"`
+		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+		State        *string `json:"State" name:"State"`
+		StateName    *string `json:"StateName" name:"StateName"`
+		Engine       *string `json:"Engine" name:"Engine"`
+		CreateDate   *string `json:"CreateDate" name:"CreateDate"`
+		Addresses    []struct {
+			Host *string `json:"Host" name:"Host"`
+			Port *int    `json:"Port" name:"Port"`
+			Type *string `json:"Type" name:"Type"`
 		} `json:"Addresses" name:"Addresses"`
 		Resources struct {
 			CU struct {
-				CU        *int    `json:"CU" name:"CU"`
-				TypeField *string `json:"TypeField" name:"TypeField"`
+				CU       *int    `json:"CU" name:"CU"`
+				Type     *string `json:"Type" name:"Type"`
 				TypeName *string `json:"TypeName" name:"TypeName"`
 			} `json:"CU"`
 		} `json:"Resources" name:"Resources"`
-		SubnetId *string `json:"SubnetId" name:"SubnetId"`
-		VnetId   *string `json:"VnetId" name:"VnetId"`
+		SubnetId    *string `json:"SubnetId" name:"SubnetId"`
+		VnetId      *string `json:"VnetId" name:"VnetId"`
 		MonitorLink *string `json:"MonitorLink" name:"MonitorLink"`
-		Users    []struct {
+		Users       []struct {
 			Id        *string `json:"Id" name:"Id"`
 			Name      *string `json:"Name" name:"Name"`
 			IsAdmin   *bool   `json:"IsAdmin" name:"IsAdmin"`
@@ -404,7 +396,6 @@ func (r *DescribeInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ListInstanceRequest struct {
 	*ksyunhttp.BaseRequest
 	Offset           *string `json:"Offset,omitempty" name:"Offset"`
@@ -428,22 +419,22 @@ type ListInstanceResponse struct {
 	Total     *int    `json:"Total" name:"Total"`
 	Data      []struct {
 		InstanceName *string `json:"InstanceName" name:"InstanceName"`
-		Az         *string `json:"Az" name:"Az"`
-		AzName     *string `json:"AzName" name:"AzName"`
-		InstanceId *string `json:"InstanceId" name:"InstanceId"`
-		State      *string `json:"State" name:"State"`
-		StateName  *string `json:"StateName" name:"StateName"`
-		Engine     *string `json:"Engine" name:"Engine"`
-		CreateDate *string `json:"CreateDate" name:"CreateDate"`
-		Addresses  []struct {
-			Host      *string `json:"Host" name:"Host"`
-			Port      *int    `json:"Port" name:"Port"`
-			TypeField *string `json:"Type" name:"Type"`
+		Az           *string `json:"Az" name:"Az"`
+		AzName       *string `json:"AzName" name:"AzName"`
+		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+		State        *string `json:"State" name:"State"`
+		StateName    *string `json:"StateName" name:"StateName"`
+		Engine       *string `json:"Engine" name:"Engine"`
+		CreateDate   *string `json:"CreateDate" name:"CreateDate"`
+		Addresses    []struct {
+			Host *string `json:"Host" name:"Host"`
+			Port *int    `json:"Port" name:"Port"`
+			Type *string `json:"Type" name:"Type"`
 		} `json:"Addresses" name:"Addresses"`
 		Resources struct {
 			CU struct {
-				CU        *int    `json:"CU" name:"CU"`
-				TypeField *string `json:"TypeField" name:"TypeField"`
+				CU       *int    `json:"CU" name:"CU"`
+				Type     *string `json:"Type" name:"Type"`
 				TypeName *string `json:"TypeName" name:"TypeName"`
 			} `json:"CU"`
 		} `json:"Resources" name:"Resources"`
@@ -468,7 +459,6 @@ func (r *ListInstanceResponse) ToJsonString() string {
 func (r *ListInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateInstanceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -497,13 +487,13 @@ type CreateInstanceResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      struct {
-		InstanceId *string `json:"InstanceId" name:"InstanceId"`
+		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
 		InstanceName *string `json:"InstanceName" name:"InstanceName"`
 		InstanceType *string `json:"InstanceType" name:"InstanceType"`
-		OrderId    *string `json:"OrderId" name:"OrderId"`
-		AccountId  *string `json:"AccountId" name:"AccountId"`
-		Region     *string `json:"Region" name:"Region"`
-		Az         *string `json:"Az" name:"Az"`
+		OrderId      *string `json:"OrderId" name:"OrderId"`
+		AccountId    *string `json:"AccountId" name:"AccountId"`
+		Region       *string `json:"Region" name:"Region"`
+		Az           *string `json:"Az" name:"Az"`
 	} `json:"Data"`
 }
 
@@ -515,7 +505,6 @@ func (r *CreateInstanceResponse) ToJsonString() string {
 func (r *CreateInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ReleaseDBInstanceEipRequest struct {
 	*ksyunhttp.BaseRequest
@@ -543,7 +532,6 @@ func (r *ReleaseDBInstanceEipResponse) ToJsonString() string {
 func (r *ReleaseDBInstanceEipResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type AllocateDBInstanceEipRequest struct {
 	*ksyunhttp.BaseRequest
@@ -573,7 +561,6 @@ func (r *AllocateDBInstanceEipResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ListBackupRequest struct {
 	*ksyunhttp.BaseRequest
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -596,14 +583,14 @@ type ListBackupResponse struct {
 	Limit     *int    `json:"Limit" name:"Limit"`
 	Total     *int    `json:"Total" name:"Total"`
 	Data      []struct {
-		BackupId      *string `json:"BackupId" name:"BackupId"`
-		BackupName    *string `json:"BackupName" name:"BackupName"`
-		BackupState   *string `json:"BackupState" name:"BackupState"`
-		BackupMethod  *string `json:"BackupMethod" name:"BackupMethod"`
+		BackupId        *string `json:"BackupId" name:"BackupId"`
+		BackupName      *string `json:"BackupName" name:"BackupName"`
+		BackupState     *string `json:"BackupState" name:"BackupState"`
+		BackupMethod    *string `json:"BackupMethod" name:"BackupMethod"`
 		BackupDimension *string `json:"BackupDimension" name:"BackupDimension"`
-		BackupSize    *int    `json:"BackupSize" name:"BackupSize"`
-		RetentionDays *int    `json:"RetentionDays" name:"RetentionDays"`
-		Collections   []struct {
+		BackupSize      *int    `json:"BackupSize" name:"BackupSize"`
+		RetentionDays   *int    `json:"RetentionDays" name:"RetentionDays"`
+		Collections     []struct {
 			DbName         *string `json:"DbName" name:"DbName"`
 			CollectionName *string `json:"CollectionName" name:"CollectionName"`
 			LoadState      *string `json:"LoadState" name:"LoadState"`
@@ -622,7 +609,6 @@ func (r *ListBackupResponse) ToJsonString() string {
 func (r *ListBackupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateBackupRequest struct {
 	*ksyunhttp.BaseRequest
@@ -763,4 +749,3 @@ func (r *UpdateInstanceTrialOrderResponse) ToJsonString() string {
 func (r *UpdateInstanceTrialOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

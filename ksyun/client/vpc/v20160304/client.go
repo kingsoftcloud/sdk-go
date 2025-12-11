@@ -1,4 +1,5 @@
 package v20160304
+
 import (
 	"context"
 	"fmt"
@@ -5041,7 +5042,7 @@ func NewPublishDirectConnectRouteToBgpResponse() (response *PublishDirectConnect
 	return
 }
 
-func (c *Client) PublishDirectConnectRouteToBgp(request *PublishDirectConnectRouteToBgpRequest) (string) {
+func (c *Client) PublishDirectConnectRouteToBgp(request *PublishDirectConnectRouteToBgpRequest) string {
 	return c.PublishDirectConnectRouteToBgpWithContext(context.Background(), request)
 }
 
@@ -5062,7 +5063,7 @@ func (c *Client) PublishDirectConnectRouteToBgpSend(request *PublishDirectConnec
 	return &respStruct, nil
 }
 
-func (c *Client) PublishDirectConnectRouteToBgpWithContext(ctx context.Context, request *PublishDirectConnectRouteToBgpRequest) (string) {
+func (c *Client) PublishDirectConnectRouteToBgpWithContext(ctx context.Context, request *PublishDirectConnectRouteToBgpRequest) string {
 	if request == nil {
 		request = NewPublishDirectConnectRouteToBgpRequest()
 	}
@@ -5106,7 +5107,7 @@ func NewCancelDirectConnectRouteToBgpResponse() (response *CancelDirectConnectRo
 	return
 }
 
-func (c *Client) CancelDirectConnectRouteToBgp(request *CancelDirectConnectRouteToBgpRequest) (string) {
+func (c *Client) CancelDirectConnectRouteToBgp(request *CancelDirectConnectRouteToBgpRequest) string {
 	return c.CancelDirectConnectRouteToBgpWithContext(context.Background(), request)
 }
 
@@ -5127,7 +5128,7 @@ func (c *Client) CancelDirectConnectRouteToBgpSend(request *CancelDirectConnectR
 	return &respStruct, nil
 }
 
-func (c *Client) CancelDirectConnectRouteToBgpWithContext(ctx context.Context, request *CancelDirectConnectRouteToBgpRequest) (string) {
+func (c *Client) CancelDirectConnectRouteToBgpWithContext(ctx context.Context, request *CancelDirectConnectRouteToBgpRequest) string {
 	if request == nil {
 		request = NewCancelDirectConnectRouteToBgpRequest()
 	}
@@ -8601,5 +8602,3 @@ func (c *Client) CreateFlowLogWithContextV2(ctx context.Context, request *Create
 	}
 	return statusCode, msg, nil
 }
-
-

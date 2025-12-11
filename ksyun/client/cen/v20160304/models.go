@@ -53,8 +53,8 @@ type CreateCenResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Cen       struct {
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		CenId      *string `json:"CenId" name:"CenId"`
-		CenName    *string `json:"CenName" name:"CenName"`
+		CenId   *string `json:"CenId" name:"CenId"`
+		CenName *string `json:"CenName" name:"CenName"`
 		Description *string `json:"Description" name:"Description"`
 	} `json:"Cen"`
 }
@@ -86,8 +86,8 @@ type ModifyCenResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Cen       struct {
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		CenId      *string `json:"CenId" name:"CenId"`
-		CenName    *string `json:"CenName" name:"CenName"`
+		CenId   *string `json:"CenId" name:"CenId"`
+		CenName *string `json:"CenName" name:"CenName"`
 		Description *string `json:"Description" name:"Description"`
 	} `json:"Cen"`
 }
@@ -114,8 +114,8 @@ func (r *DeleteCenRequest) ToJsonString() string {
 
 type DeleteCenResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DeleteCenResponse) ToJsonString() string {
@@ -146,8 +146,8 @@ type DescribeCensResponse struct {
 	NextToken *string `json:"NextToken" name:"NextToken"`
 	CenSet    []struct {
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		CenId      *string `json:"CenId" name:"CenId"`
-		CenName    *string `json:"CenName" name:"CenName"`
+		CenId   *string `json:"CenId" name:"CenId"`
+		CenName *string `json:"CenName" name:"CenName"`
 		Description *string `json:"Description" name:"Description"`
 	} `json:"CenSet"`
 }
@@ -174,8 +174,8 @@ func (r *DeleteCenGrantRequest) ToJsonString() string {
 
 type DeleteCenGrantResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DeleteCenGrantResponse) ToJsonString() string {
@@ -206,9 +206,9 @@ type DescribeCenGrantsResponse struct {
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	NextToken   *string `json:"NextToken" name:"NextToken"`
 	CenGrantSet []struct {
-		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
-		CenGrantId   *string `json:"CenGrantId" name:"CenGrantId"`
-		CenId        *string `json:"CenId" name:"CenId"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		CenGrantId *string `json:"CenGrantId" name:"CenGrantId"`
+		CenId      *string `json:"CenId" name:"CenId"`
 		NetworkInstanceId *string `json:"NetworkInstanceId" name:"NetworkInstanceId"`
 		InstanceType *string `json:"InstanceType" name:"InstanceType"`
 		CenAccountId *string `json:"CenAccountId" name:"CenAccountId"`
@@ -246,14 +246,14 @@ type CreateCenBandWidthPackageResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId           *string `json:"RequestId" name:"RequestId"`
 	CenBandWidthPackage struct {
-		CreateTime            *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
 		CenBandWidthPackageId *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
 		CenBandWidthPackageName *string `json:"CenBandWidthPackageName" name:"CenBandWidthPackageName"`
-		CenId                 *string `json:"CenId" name:"CenId"`
-		ProjectId             *string `json:"ProjectId" name:"ProjectId"`
-		PackageBandWidth      *int    `json:"PackageBandWidth" name:"PackageBandWidth"`
-		LocalAreaId           *string `json:"LocalAreaId" name:"LocalAreaId"`
-		RemoteAreaId          *string `json:"RemoteAreaId" name:"RemoteAreaId"`
+		CenId            *string `json:"CenId" name:"CenId"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		PackageBandWidth *int    `json:"PackageBandWidth" name:"PackageBandWidth"`
+		LocalAreaId      *string `json:"LocalAreaId" name:"LocalAreaId"`
+		RemoteAreaId     *string `json:"RemoteAreaId" name:"RemoteAreaId"`
 	} `json:"CenBandWidthPackage"`
 }
 
@@ -283,14 +283,14 @@ type ModifyCenBandWidthPackageResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId           *string `json:"RequestId" name:"RequestId"`
 	CenBandWidthPackage struct {
-		CreateTime            *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
 		CenBandWidthPackageId *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
 		CenBandWidthPackageName *string `json:"CenBandWidthPackageName" name:"CenBandWidthPackageName"`
-		CenId                 *string `json:"CenId" name:"CenId"`
-		ProjectId             *string `json:"ProjectId" name:"ProjectId"`
-		PackageBandWidth      *int    `json:"PackageBandWidth" name:"PackageBandWidth"`
-		LocalAreaId           *string `json:"LocalAreaId" name:"LocalAreaId"`
-		RemoteAreaId          *string `json:"RemoteAreaId" name:"RemoteAreaId"`
+		CenId            *string `json:"CenId" name:"CenId"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		PackageBandWidth *int    `json:"PackageBandWidth" name:"PackageBandWidth"`
+		LocalAreaId      *string `json:"LocalAreaId" name:"LocalAreaId"`
+		RemoteAreaId     *string `json:"RemoteAreaId" name:"RemoteAreaId"`
 	} `json:"CenBandWidthPackage"`
 }
 
@@ -316,8 +316,8 @@ func (r *DeleteCenBandWidthPackageRequest) ToJsonString() string {
 
 type DeleteCenBandWidthPackageResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DeleteCenBandWidthPackageResponse) ToJsonString() string {
@@ -343,8 +343,8 @@ func (r *AttachCenBandWidthPackageRequest) ToJsonString() string {
 
 type AttachCenBandWidthPackageResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *AttachCenBandWidthPackageResponse) ToJsonString() string {
@@ -370,8 +370,8 @@ func (r *DetachCenBandWidthPackageRequest) ToJsonString() string {
 
 type DetachCenBandWidthPackageResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DetachCenBandWidthPackageResponse) ToJsonString() string {
@@ -405,18 +405,18 @@ type DescribeCenBandWidthPackagesResponse struct {
 	RequestId              *string `json:"RequestId" name:"RequestId"`
 	NextToken              *string `json:"NextToken" name:"NextToken"`
 	CenBandWidthPackageSet []struct {
-		CreateTime            *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
 		CenBandWidthPackageId *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
 		CenBandWidthPackageName *string `json:"CenBandWidthPackageName" name:"CenBandWidthPackageName"`
-		CenId                 *string `json:"CenId" name:"CenId"`
-		ProjectId             *string `json:"ProjectId" name:"ProjectId"`
-		PackageBandWidth      *int    `json:"PackageBandWidth" name:"PackageBandWidth"`
-		LocalAreaId           *string `json:"LocalAreaId" name:"LocalAreaId"`
-		RemoteAreaId          *string `json:"RemoteAreaId" name:"RemoteAreaId"`
-		BillType              *int    `json:"BillType" name:"BillType"`
-		ProductWhat           *int    `json:"ProductWhat" name:"ProductWhat"`
-		ServiceEndTime        *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		TagSet                []struct {
+		CenId            *string `json:"CenId" name:"CenId"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		PackageBandWidth *int    `json:"PackageBandWidth" name:"PackageBandWidth"`
+		LocalAreaId      *string `json:"LocalAreaId" name:"LocalAreaId"`
+		RemoteAreaId     *string `json:"RemoteAreaId" name:"RemoteAreaId"`
+		BillType         *int    `json:"BillType" name:"BillType"`
+		ProductWhat      *int    `json:"ProductWhat" name:"ProductWhat"`
+		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		TagSet           []struct {
 			TagId        *int    `json:"TagId" name:"TagId"`
 			ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
 			TagKey       *string `json:"TagKey" name:"TagKey"`
@@ -453,10 +453,10 @@ type CreateCenRegionBandwidthResponse struct {
 	RequestId          *string `json:"RequestId" name:"RequestId"`
 	CenRegionBandwidth struct {
 		CenBandWidthPackageId *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
-		CenId                *string `json:"CenId" name:"CenId"`
-		LocalRegion          *string `json:"LocalRegion" name:"LocalRegion"`
-		RemoteRegion         *string `json:"RemoteRegion" name:"RemoteRegion"`
-		InterBandWidth       *int    `json:"InterBandWidth" name:"InterBandWidth"`
+		CenId          *string `json:"CenId" name:"CenId"`
+		LocalRegion    *string `json:"LocalRegion" name:"LocalRegion"`
+		RemoteRegion   *string `json:"RemoteRegion" name:"RemoteRegion"`
+		InterBandWidth *int    `json:"InterBandWidth" name:"InterBandWidth"`
 		CenRegionBandwidthId *string `json:"CenRegionBandwidthId" name:"CenRegionBandwidthId"`
 	} `json:"CenRegionBandwidth"`
 }
@@ -483,8 +483,8 @@ func (r *DeleteCenRegionBandwidthRequest) ToJsonString() string {
 
 type DeleteCenRegionBandwidthResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DeleteCenRegionBandwidthResponse) ToJsonString() string {
@@ -513,10 +513,10 @@ type ModifyCenRegionBandwidthResponse struct {
 	RequestId          *string `json:"RequestId" name:"RequestId"`
 	CenRegionBandwidth struct {
 		CenBandWidthPackageId *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
-		CenId                *string `json:"CenId" name:"CenId"`
-		LocalRegion          *string `json:"LocalRegion" name:"LocalRegion"`
-		RemoteRegion         *string `json:"RemoteRegion" name:"RemoteRegion"`
-		InterBandWidth       *int    `json:"InterBandWidth" name:"InterBandWidth"`
+		CenId          *string `json:"CenId" name:"CenId"`
+		LocalRegion    *string `json:"LocalRegion" name:"LocalRegion"`
+		RemoteRegion   *string `json:"RemoteRegion" name:"RemoteRegion"`
+		InterBandWidth *int    `json:"InterBandWidth" name:"InterBandWidth"`
 		CenRegionBandwidthId *string `json:"CenRegionBandwidthId" name:"CenRegionBandwidthId"`
 	} `json:"CenRegionBandwidth"`
 }
@@ -550,10 +550,10 @@ type DescribeCenRegionBandwidthsResponse struct {
 	NextToken             *string `json:"NextToken" name:"NextToken"`
 	CenRegionBandwidthSet []struct {
 		CenBandWidthPackageId *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
-		CenId                *string `json:"CenId" name:"CenId"`
-		LocalRegion          *string `json:"LocalRegion" name:"LocalRegion"`
-		RemoteRegion         *string `json:"RemoteRegion" name:"RemoteRegion"`
-		InterBandWidth       *int    `json:"InterBandWidth" name:"InterBandWidth"`
+		CenId          *string `json:"CenId" name:"CenId"`
+		LocalRegion    *string `json:"LocalRegion" name:"LocalRegion"`
+		RemoteRegion   *string `json:"RemoteRegion" name:"RemoteRegion"`
+		InterBandWidth *int    `json:"InterBandWidth" name:"InterBandWidth"`
 		CenRegionBandwidthId *string `json:"CenRegionBandwidthId" name:"CenRegionBandwidthId"`
 	} `json:"CenRegionBandwidthSet"`
 }
@@ -586,16 +586,16 @@ type DescribeCenRoutesResponse struct {
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	NextToken   *string `json:"NextToken" name:"NextToken"`
 	CenRouteSet []struct {
-		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
-		CenRouteId        *string `json:"CenRouteId" name:"CenRouteId"`
-		CenId             *string `json:"CenId" name:"CenId"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+		CenRouteId     *string `json:"CenRouteId" name:"CenRouteId"`
+		CenId          *string `json:"CenId" name:"CenId"`
 		DestinationCidrBlock *string `json:"DestinationCidrBlock" name:"DestinationCidrBlock"`
 		NetworkInstanceId *string `json:"NetworkInstanceId" name:"NetworkInstanceId"`
-		InstanceType      *string `json:"InstanceType" name:"InstanceType"`
-		InstanceRegion    *string `json:"InstanceRegion" name:"InstanceRegion"`
+		InstanceType   *string `json:"InstanceType" name:"InstanceType"`
+		InstanceRegion *string `json:"InstanceRegion" name:"InstanceRegion"`
 		InstanceAccountId *string `json:"InstanceAccountId" name:"InstanceAccountId"`
-		NetworkRouteId    *string `json:"NetworkRouteId" name:"NetworkRouteId"`
-		SelfRouteId       *string `json:"SelfRouteId" name:"SelfRouteId"`
+		NetworkRouteId *string `json:"NetworkRouteId" name:"NetworkRouteId"`
+		SelfRouteId    *string `json:"SelfRouteId" name:"SelfRouteId"`
 		InstanceRouteType *string `json:"InstanceRouteType" name:"InstanceRouteType"`
 	} `json:"CenRouteSet"`
 }
@@ -622,7 +622,7 @@ func (r *DescribeCenBandWidthPackageUsageRequest) ToJsonString() string {
 
 type DescribeCenBandWidthPackageUsageResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId                *string `json:"RequestId" name:"RequestId"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
 	CenBandWidthPackageUsage struct {
 		PackageUsage *int `json:"PackageUsage" name:"PackageUsage"`
 		CenBandWidthPackageId *string `json:"CenBandWidthPackageId" name:"CenBandWidthPackageId"`
@@ -657,12 +657,12 @@ type DescribeNetworkInstancesResponse struct {
 	RequestId          *string `json:"RequestId" name:"RequestId"`
 	NextToken          *string `json:"NextToken" name:"NextToken"`
 	NetworkInstanceSet []struct {
-		CenId          *string `json:"CenId" name:"CenId"`
+		CenId        *string `json:"CenId" name:"CenId"`
 		NetworkInstanceId *string `json:"NetworkInstanceId" name:"NetworkInstanceId"`
-		InstanceType   *string `json:"InstanceType" name:"InstanceType"`
+		InstanceType *string `json:"InstanceType" name:"InstanceType"`
 		InstanceRegion *string `json:"InstanceRegion" name:"InstanceRegion"`
 		InstanceAccountId *string `json:"InstanceAccountId" name:"InstanceAccountId"`
-		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"NetworkInstanceSet"`
 }
 
@@ -693,9 +693,9 @@ type CreateCenGrantResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	CenGrant  struct {
-		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
-		CenGrantId   *string `json:"CenGrantId" name:"CenGrantId"`
-		CenId        *string `json:"CenId" name:"CenId"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		CenGrantId *string `json:"CenGrantId" name:"CenGrantId"`
+		CenId      *string `json:"CenId" name:"CenId"`
 		NetworkInstanceId *string `json:"NetworkInstanceId" name:"NetworkInstanceId"`
 		InstanceType *string `json:"InstanceType" name:"InstanceType"`
 		CenAccountId *string `json:"CenAccountId" name:"CenAccountId"`
@@ -727,8 +727,8 @@ func (r *DescribeInterAreasRequest) ToJsonString() string {
 
 type DescribeInterAreasResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId    *string `json:"RequestId" name:"RequestId"`
-	NextToken    *string `json:"NextToken" name:"NextToken"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	NextToken *string `json:"NextToken" name:"NextToken"`
 	InterAreaSet []struct {
 		InterAreaId *string `json:"InterAreaId" name:"InterAreaId"`
 		InterAreaName *string `json:"InterAreaName" name:"InterAreaName"`
@@ -763,7 +763,7 @@ type DescribeInterRegionsResponse struct {
 	RequestId      *string `json:"RequestId" name:"RequestId"`
 	NextToken      *string `json:"NextToken" name:"NextToken"`
 	InterRegionSet []struct {
-		InterAreaId   *string `json:"InterAreaId" name:"InterAreaId"`
+		InterAreaId *string `json:"InterAreaId" name:"InterAreaId"`
 		InterRegionId *string `json:"InterRegionId" name:"InterRegionId"`
 		InterRegionName *string `json:"InterRegionName" name:"InterRegionName"`
 	} `json:"InterRegionSet"`
@@ -777,6 +777,7 @@ func (r *DescribeInterRegionsResponse) ToJsonString() string {
 func (r *DescribeInterRegionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type AttachNetworkInstanceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -794,8 +795,8 @@ func (r *AttachNetworkInstanceRequest) ToJsonString() string {
 
 type AttachNetworkInstanceResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *AttachNetworkInstanceResponse) ToJsonString() string {
@@ -806,6 +807,7 @@ func (r *AttachNetworkInstanceResponse) ToJsonString() string {
 func (r *AttachNetworkInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DetachNetworkInstanceRequest struct {
 	*ksyunhttp.BaseRequest
@@ -820,8 +822,8 @@ func (r *DetachNetworkInstanceRequest) ToJsonString() string {
 
 type DetachNetworkInstanceResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *DetachNetworkInstanceResponse) ToJsonString() string {
@@ -832,6 +834,7 @@ func (r *DetachNetworkInstanceResponse) ToJsonString() string {
 func (r *DetachNetworkInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CenCidrPublishRequest struct {
 	*ksyunhttp.BaseRequest
@@ -849,8 +852,8 @@ func (r *CenCidrPublishRequest) ToJsonString() string {
 
 type CenCidrPublishResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *CenCidrPublishResponse) ToJsonString() string {
@@ -861,6 +864,7 @@ func (r *CenCidrPublishResponse) ToJsonString() string {
 func (r *CenCidrPublishResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CenCidrDeleteRequest struct {
 	*ksyunhttp.BaseRequest
@@ -878,8 +882,8 @@ func (r *CenCidrDeleteRequest) ToJsonString() string {
 
 type CenCidrDeleteResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	ReturnField *bool   `json:"Return" name:"Return"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
 }
 
 func (r *CenCidrDeleteResponse) ToJsonString() string {

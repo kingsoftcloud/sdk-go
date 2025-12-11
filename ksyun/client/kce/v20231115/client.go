@@ -1,4 +1,5 @@
 package v20231115
+
 import (
 	"context"
 	"fmt"
@@ -151,5 +152,3 @@ func (c *Client) UpdateClusterDelProtectionWithContextV2(ctx context.Context, re
 	}
 	return statusCode, msg, nil
 }
-
-
