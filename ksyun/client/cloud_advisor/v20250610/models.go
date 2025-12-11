@@ -27,7 +27,7 @@ type GetReportResponse struct {
 		FilePdfUrl *string `json:"FilePdfUrl" name:"FilePdfUrl"`
 		FileExcelUrl *string `json:"FileExcelUrl" name:"FileExcelUrl"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		Status *int    `json:"Status" name:"Status"`
+		Status *int `json:"Status" name:"Status"`
 		StatusName *string `json:"StatusName" name:"StatusName"`
 	} `json:"Data"`
 }

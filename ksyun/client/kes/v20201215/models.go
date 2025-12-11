@@ -286,8 +286,8 @@ type ClusterHealthStatisticResponse struct {
 			Failed    *int    `json:"Failed" name:"Failed"`
 			Stage     *string `json:"Stage" name:"Stage"`
 			Status    []struct {
-				Item      *string `json:"Item" name:"Item"`
-				Flag      *string `json:"Flag" name:"Flag"`
+				Item *string `json:"Item" name:"Item"`
+				Flag *string `json:"Flag" name:"Flag"`
 				Description *string `json:"Description" name:"Description"`
 				Suggestion *string `json:"Suggestion" name:"Suggestion"`
 				Diagnosis *string `json:"Diagnosis" name:"Diagnosis"`

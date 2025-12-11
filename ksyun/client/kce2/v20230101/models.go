@@ -583,7 +583,7 @@ type DescribeNodeComponentsResponse struct {
 	Data      struct {
 		ClusterId      *string `json:"ClusterId" name:"ClusterId"`
 		NodeComponents []struct {
-			NodeId          *string `json:"NodeId" name:"NodeId"`
+			NodeId *string `json:"NodeId" name:"NodeId"`
 			ComponentStatus []struct {
 				Type *string `json:"Type" name:"Type"`
 				CurVersion *string `json:"CurVersion" name:"CurVersion"`

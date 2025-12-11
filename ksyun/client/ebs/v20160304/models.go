@@ -380,16 +380,16 @@ type DescribeSnapshotsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Snapshots []struct {
-		SnapshotId   *string `json:"SnapshotId" name:"SnapshotId"`
+		SnapshotId *string `json:"SnapshotId" name:"SnapshotId"`
 		SnapshotName *string `json:"SnapshotName" name:"SnapshotName"`
-		VolumeId     *string `json:"VolumeId" name:"VolumeId"`
-		Size         *int    `json:"Size" name:"Size"`
-		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		VolumeId   *string `json:"VolumeId" name:"VolumeId"`
+		Size       *int    `json:"Size" name:"Size"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		SnapshotStatus *string `json:"SnapshotStatus" name:"SnapshotStatus"`
 		VolumeCategory *string `json:"VolumeCategory" name:"VolumeCategory"`
-		VolumeName   *string `json:"VolumeName" name:"VolumeName"`
-		VolumeType   *string `json:"VolumeType" name:"VolumeType"`
-		Progress     *string `json:"Progress" name:"Progress"`
+		VolumeName *string `json:"VolumeName" name:"VolumeName"`
+		VolumeType *string `json:"VolumeType" name:"VolumeType"`
+		Progress   *string `json:"Progress" name:"Progress"`
 		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 		VolumeStatus *string `json:"VolumeStatus" name:"VolumeStatus"`
 		SnapshotType *string `json:"SnapshotType" name:"SnapshotType"`

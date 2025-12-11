@@ -225,6 +225,7 @@ func (r *DeleteDataFlowStrategyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeDataFlowStrategyListRequest struct {
 	*ksyunhttp.BaseRequest
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`

@@ -134,7 +134,7 @@ type DescribeKeysResponse struct {
 	NextToken  *string `json:"NextToken" name:"NextToken"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	KeySet     []struct {
-		KeyId   *string `json:"KeyId" name:"KeyId"`
+		KeyId *string `json:"KeyId" name:"KeyId"`
 		PublicKey *string `json:"PublicKey" name:"PublicKey"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		KeyName *string `json:"KeyName" name:"KeyName"`

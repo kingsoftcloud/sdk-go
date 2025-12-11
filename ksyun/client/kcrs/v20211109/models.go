@@ -79,10 +79,10 @@ func (r *DescribeNamespaceRequest) ToJsonString() string {
 
 type DescribeNamespaceResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId    *string `json:"RequestId" name:"RequestId"`
-	MaxResults   *int    `json:"MaxResults" name:"MaxResults"`
-	Marker       *int    `json:"Marker" name:"Marker"`
-	TotalCount   *int    `json:"TotalCount" name:"TotalCount"`
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
+	Marker     *int    `json:"Marker" name:"Marker"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	NamespaceSet []struct {
 		Namespace *string `json:"Namespace" name:"Namespace"`
 		Public *bool `json:"Public" name:"Public"`
@@ -418,18 +418,18 @@ type DescribeImageScanResponse struct {
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	FinishTime *string `json:"FinishTime" name:"FinishTime"`
 	Summary    struct {
-		High   *int `json:"High" name:"High"`
+		High *int `json:"High" name:"High"`
 		Medium *int `json:"Medium" name:"Medium"`
-		Low    *int `json:"Low" name:"Low"`
+		Low  *int `json:"Low" name:"Low"`
 		Negligible *int `json:"Negligible" name:"Negligible"`
 		Unknown *int `json:"Unknown" name:"Unknown"`
 	} `json:"Summary"`
 	VulnerabilitySet struct {
-		CveName     *string `json:"CveName" name:"CveName"`
-		CveLink     *string `json:"CveLink" name:"CveLink"`
+		CveName  *string `json:"CveName" name:"CveName"`
+		CveLink  *string `json:"CveLink" name:"CveLink"`
 		Description *string `json:"Description" name:"Description"`
-		Severity    *string `json:"Severity" name:"Severity"`
-		Feature     *string `json:"Feature" name:"Feature"`
+		Severity *string `json:"Severity" name:"Severity"`
+		Feature  *string `json:"Feature" name:"Feature"`
 		CurrentVersion *string `json:"CurrentVersion" name:"CurrentVersion"`
 		RepairedVersion *string `json:"RepairedVersion" name:"RepairedVersion"`
 	} `json:"VulnerabilitySet"`
@@ -492,7 +492,7 @@ type DescribeInternalEndpointResponse struct {
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	TotalCount   *int    `json:"TotalCount" name:"TotalCount"`
 	AccessVpcSet []struct {
-		VpcId  *string `json:"VpcId" name:"VpcId"`
+		VpcId *string `json:"VpcId" name:"VpcId"`
 		SubnetId *string `json:"SubnetId" name:"SubnetId"`
 		Status *string `json:"Status" name:"Status"`
 		EniLBIp *string `json:"EniLBIp" name:"EniLBIp"`
@@ -873,15 +873,15 @@ type DescribeInstanceResponse struct {
 	*ksyunhttp.BaseResponse
 	TotalCount  *int `json:"TotalCount" name:"TotalCount"`
 	InstanceSet []struct {
-		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+		InstanceId  *string `json:"InstanceId" name:"InstanceId"`
 		InstanceName *string `json:"InstanceName" name:"InstanceName"`
 		InstanceType *string `json:"InstanceType" name:"InstanceType"`
 		InstanceStatus *string `json:"InstanceStatus" name:"InstanceStatus"`
 		InternalEndpoint *string `json:"InternalEndpoint" name:"InternalEndpoint"`
-		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
-		ExpiredTime  *string `json:"ExpiredTime" name:"ExpiredTime"`
-		ChargeType   *string `json:"ChargeType" name:"ChargeType"`
-		ProjectId    *string `json:"ProjectId" name:"ProjectId"`
+		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+		ExpiredTime *string `json:"ExpiredTime" name:"ExpiredTime"`
+		ChargeType  *string `json:"ChargeType" name:"ChargeType"`
+		ProjectId   *string `json:"ProjectId" name:"ProjectId"`
 	} `json:"InstanceSet"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
@@ -1382,6 +1382,7 @@ func (r *UpdateRetentionTriggerResponse) ToJsonString() string {
 func (r *UpdateRetentionTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ScheduleRequest struct {
 	*ksyunhttp.BaseRequest

@@ -104,7 +104,7 @@ type GetInstanceDetailResponse struct {
 			HighAvailability *bool   `json:"HighAvailability" name:"HighAvailability"`
 			FeEndpoints      struct {
 				FeQueryPort *int `json:"FeQueryPort" name:"FeQueryPort"`
-				FeHttpPort  *int `json:"FeHttpPort" name:"FeHttpPort"`
+				FeHttpPort *int `json:"FeHttpPort" name:"FeHttpPort"`
 				FePrivateSlbIP *string `json:"FePrivateSlbIP" name:"FePrivateSlbIP"`
 				FePublicSlbIP *string `json:"FePublicSlbIP" name:"FePublicSlbIP"`
 				FePublicAClId *string `json:"FePublicAClId" name:"FePublicAClId"`

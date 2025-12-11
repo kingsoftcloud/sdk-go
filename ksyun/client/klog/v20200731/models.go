@@ -370,7 +370,7 @@ type GetLogsResponse struct {
 	Count  *int  `json:"Count" name:"Count"`
 	HasSql *bool `json:"HasSql" name:"HasSql"`
 	Logs   []struct {
-		Id   *string `json:"Id" name:"Id"`
+		Id *string `json:"Id" name:"Id"`
 		Source *string `json:"Source" name:"Source"`
 		Path *string `json:"Path" name:"Path"`
 		Timestamp *string `json:"Timestamp" name:"Timestamp"`
@@ -525,15 +525,15 @@ type ListDownloadTasksResponse struct {
 		ProjectName *string `json:"ProjectName" name:"ProjectName"`
 		DownloadTaskId *string `json:"DownloadTaskId" name:"DownloadTaskId"`
 		LogPoolNames *string `json:"LogPoolNames" name:"LogPoolNames"`
-		Status      *string `json:"Status" name:"Status"`
-		AccountId   *string `json:"AccountId" name:"AccountId"`
-		From        *string `json:"From" name:"From"`
-		To          *string `json:"To" name:"To"`
-		Count       *string `json:"Count" name:"Count"`
-		Size        *int    `json:"Size" name:"Size"`
+		Status    *string `json:"Status" name:"Status"`
+		AccountId *string `json:"AccountId" name:"AccountId"`
+		From      *string `json:"From" name:"From"`
+		To        *string `json:"To" name:"To"`
+		Count     *string `json:"Count" name:"Count"`
+		Size      *int    `json:"Size" name:"Size"`
 		DownloadUrl *string `json:"DownloadUrl" name:"DownloadUrl"`
-		Query       *string `json:"Query" name:"Query"`
-		CreatedAt   *int    `json:"CreatedAt" name:"CreatedAt"`
+		Query     *string `json:"Query" name:"Query"`
+		CreatedAt *int    `json:"CreatedAt" name:"CreatedAt"`
 	} `json:"Data"`
 }
 

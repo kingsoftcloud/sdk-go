@@ -344,9 +344,9 @@ type DescribeContainerGroupResponse struct {
 			} `json:"ConfigFileVolume"`
 		} `json:"Volumes" name:"Volumes"`
 		Containers []struct {
-			Name            *string   `json:"Name" name:"Name"`
-			Commands        []*string `json:"Commands" name:"Commands"`
-			Args            []*string `json:"Args" name:"Args"`
+			Name     *string   `json:"Name" name:"Name"`
+			Commands []*string `json:"Commands" name:"Commands"`
+			Args     []*string `json:"Args" name:"Args"`
 			EnvironmentVars []struct {
 				Key *string `json:"Key" name:"Key"`
 				Value *string `json:"Value" name:"Value"`
@@ -388,11 +388,11 @@ type DescribeContainerGroupResponse struct {
 			} `json:"PreviousState"`
 			LivenessProbe struct {
 				InitialDelaySeconds *int `json:"InitialDelaySeconds" name:"InitialDelaySeconds"`
-				PeriodSeconds  *int `json:"PeriodSeconds" name:"PeriodSeconds"`
+				PeriodSeconds *int `json:"PeriodSeconds" name:"PeriodSeconds"`
 				TimeoutSeconds *int `json:"TimeoutSeconds" name:"TimeoutSeconds"`
 				SuccessThreshold *int `json:"SuccessThreshold" name:"SuccessThreshold"`
 				FailureThreshold *int `json:"FailureThreshold" name:"FailureThreshold"`
-				HttpGet        struct {
+				HttpGet       struct {
 					Port   *int    `json:"Port" name:"Port"`
 					Path   *string `json:"Path" name:"Path"`
 					Scheme *string `json:"Scheme" name:"Scheme"`
@@ -406,11 +406,11 @@ type DescribeContainerGroupResponse struct {
 			} `json:"LivenessProbe"`
 			ReadinessProbe struct {
 				InitialDelaySeconds *int `json:"InitialDelaySeconds" name:"InitialDelaySeconds"`
-				PeriodSeconds  *int `json:"PeriodSeconds" name:"PeriodSeconds"`
+				PeriodSeconds *int `json:"PeriodSeconds" name:"PeriodSeconds"`
 				TimeoutSeconds *int `json:"TimeoutSeconds" name:"TimeoutSeconds"`
 				SuccessThreshold *int `json:"SuccessThreshold" name:"SuccessThreshold"`
 				FailureThreshold *int `json:"FailureThreshold" name:"FailureThreshold"`
-				HttpGet        struct {
+				HttpGet       struct {
 					Port   *int    `json:"Port" name:"Port"`
 					Path   *string `json:"Path" name:"Path"`
 					Scheme *string `json:"Scheme" name:"Scheme"`
@@ -593,9 +593,9 @@ type DescribeContainerGroupEventsResponse struct {
 	Events    []struct {
 		FirstTimestamp *string `json:"FirstTimestamp" name:"FirstTimestamp"`
 		LastTimestamp *string `json:"LastTimestamp" name:"LastTimestamp"`
-		Count   *int    `json:"Count" name:"Count"`
-		Type    *string `json:"Type" name:"Type"`
-		Reason  *string `json:"Reason" name:"Reason"`
+		Count  *int    `json:"Count" name:"Count"`
+		Type   *string `json:"Type" name:"Type"`
+		Reason *string `json:"Reason" name:"Reason"`
 		Message *string `json:"Message" name:"Message"`
 	} `json:"Events"`
 }
@@ -790,9 +790,9 @@ type DescribeImageCacheEventResponse struct {
 	Events    []struct {
 		FirstTimestamp *string `json:"FirstTimestamp" name:"FirstTimestamp"`
 		LastTimestamp *string `json:"LastTimestamp" name:"LastTimestamp"`
-		Count   *int    `json:"Count" name:"Count"`
-		Type    *string `json:"Type" name:"Type"`
-		Reason  *string `json:"Reason" name:"Reason"`
+		Count  *int    `json:"Count" name:"Count"`
+		Type   *string `json:"Type" name:"Type"`
+		Reason *string `json:"Reason" name:"Reason"`
 		Message *string `json:"Message" name:"Message"`
 	} `json:"Events"`
 }

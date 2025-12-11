@@ -19,10 +19,10 @@ type DescribeStackOutputsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Outputs   []struct {
-		Name   *string `json:"Name" name:"Name"`
-		Type   *string `json:"Type" name:"Type"`
+		Name  *string `json:"Name" name:"Name"`
+		Type  *string `json:"Type" name:"Type"`
 		Description *string `json:"Description" name:"Description"`
-		Value  *string `json:"Value" name:"Value"`
+		Value *string `json:"Value" name:"Value"`
 		Params *string `json:"Params" name:"Params"`
 	} `json:"Outputs"`
 }
@@ -53,11 +53,11 @@ type DescribeStackEventsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Events    []struct {
-		EventType    *string `json:"EventType" name:"EventType"`
-		ResourceId   *string `json:"ResourceId" name:"ResourceId"`
+		EventType  *string `json:"EventType" name:"EventType"`
+		ResourceId *string `json:"ResourceId" name:"ResourceId"`
 		ResourceLogicName *string `json:"ResourceLogicName" name:"ResourceLogicName"`
 		ResourceType *string `json:"ResourceType" name:"ResourceType"`
-		EventTime    *string `json:"EventTime" name:"EventTime"`
+		EventTime  *string `json:"EventTime" name:"EventTime"`
 		EventDescription *string `json:"EventDescription" name:"EventDescription"`
 	} `json:"Events"`
 }
@@ -114,7 +114,7 @@ type DescribeTemplateVersionsResponse struct {
 		VersionNumber *string `json:"VersionNumber" name:"VersionNumber"`
 		VersionDescription *string `json:"VersionDescription" name:"VersionDescription"`
 		VersionState *string `json:"VersionState" name:"VersionState"`
-		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"Versions"`
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	TemplateId   *string `json:"TemplateId" name:"TemplateId"`

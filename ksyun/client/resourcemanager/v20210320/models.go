@@ -236,13 +236,13 @@ type ListFoldersResponse struct {
 	ParentId    *int    `json:"ParentId" name:"ParentId"`
 	Num         *int    `json:"Num" name:"Num"`
 	SonFolder   []struct {
-		Name     *string `json:"Name" name:"Name"`
-		Desc     *string `json:"Desc" name:"Desc"`
-		Id       *string `json:"Id" name:"Id"`
+		Name  *string `json:"Name" name:"Name"`
+		Desc  *string `json:"Desc" name:"Desc"`
+		Id    *string `json:"Id" name:"Id"`
 		CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
-		Level    *int    `json:"Level" name:"Level"`
+		Level *int    `json:"Level" name:"Level"`
 		ParentId *string `json:"ParentId" name:"ParentId"`
-		Num      *int    `json:"Num" name:"Num"`
+		Num   *int    `json:"Num" name:"Num"`
 		SonFolder []struct {
 		} `json:"SonFolder" name:"SonFolder"`
 	} `json:"SonFolder"`

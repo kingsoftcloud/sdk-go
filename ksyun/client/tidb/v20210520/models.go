@@ -78,10 +78,10 @@ type CreateInstanceResponse struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 		InstanceName *string `json:"InstanceName" name:"InstanceName"`
 		InstanceType *string `json:"InstanceType" name:"InstanceType"`
-		OrderId   *string `json:"OrderId" name:"OrderId"`
+		OrderId *string `json:"OrderId" name:"OrderId"`
 		AccountId *string `json:"AccountId" name:"AccountId"`
-		Region    *string `json:"Region" name:"Region"`
-		Az        *string `json:"Az" name:"Az"`
+		Region  *string `json:"Region" name:"Region"`
+		Az      *string `json:"Az" name:"Az"`
 	} `json:"Data"`
 }
 
@@ -198,30 +198,30 @@ type DescribeInstanceResponse struct {
 			Tidisk      *int    `json:"tidisk" name:"tidisk"`
 			CreateTime  *string `json:"createTime" name:"createTime"`
 		} `json:"ModuleConfigs" name:"ModuleConfigs"`
-		AdminUser     *string `json:"AdminUser" name:"AdminUser"`
-		StatusName    *string `json:"StatusName" name:"StatusName"`
-		Status        *string `json:"Status" name:"Status"`
-		VpcId         *string `json:"VpcId" name:"VpcId"`
-		SubnetId      *string `json:"SubnetId" name:"SubnetId"`
-		Engine        *string `json:"Engine" name:"Engine"`
+		AdminUser    *string `json:"AdminUser" name:"AdminUser"`
+		StatusName   *string `json:"StatusName" name:"StatusName"`
+		Status       *string `json:"Status" name:"Status"`
+		VpcId        *string `json:"VpcId" name:"VpcId"`
+		SubnetId     *string `json:"SubnetId" name:"SubnetId"`
+		Engine       *string `json:"Engine" name:"Engine"`
 		EngineVersion *string `json:"EngineVersion" name:"EngineVersion"`
-		ProjectId     *string `json:"ProjectId" name:"ProjectId"`
-		ProjectName   *string `json:"ProjectName" name:"ProjectName"`
-		BillType      *int    `json:"BillType" name:"BillType"`
-		ProductId     *string `json:"ProductId" name:"ProductId"`
-		ProductType   *int    `json:"ProductType" name:"ProductType"`
+		ProjectId    *string `json:"ProjectId" name:"ProjectId"`
+		ProjectName  *string `json:"ProjectName" name:"ProjectName"`
+		BillType     *int    `json:"BillType" name:"BillType"`
+		ProductId    *string `json:"ProductId" name:"ProductId"`
+		ProductType  *int    `json:"ProductType" name:"ProductType"`
 		ProductTypeName *string `json:"ProductTypeName" name:"ProductTypeName"`
-		ProductWhat   *int    `json:"ProductWhat" name:"ProductWhat"`
-		CreateDate    *string `json:"CreateDate" name:"CreateDate"`
-		Region        *string `json:"Region" name:"Region"`
-		RegionName    *string `json:"RegionName" name:"RegionName"`
-		Az            *string `json:"Az" name:"Az"`
-		AzName        *string `json:"AzName" name:"AzName"`
-		UserId        *string `json:"UserId" name:"UserId"`
+		ProductWhat  *int    `json:"ProductWhat" name:"ProductWhat"`
+		CreateDate   *string `json:"CreateDate" name:"CreateDate"`
+		Region       *string `json:"Region" name:"Region"`
+		RegionName   *string `json:"RegionName" name:"RegionName"`
+		Az           *string `json:"Az" name:"Az"`
+		AzName       *string `json:"AzName" name:"AzName"`
+		UserId       *string `json:"UserId" name:"UserId"`
 		SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
 		SecurityGroupName *string `json:"SecurityGroupName" name:"SecurityGroupName"`
 		SecurityGroupDesc *string `json:"SecurityGroupDesc" name:"SecurityGroupDesc"`
-		BackupConfig  struct {
+		BackupConfig struct {
 			MaxBackups          *int    `json:"maxBackups" name:"maxBackups"`
 			MaxReservedHours    *int    `json:"maxReservedHours" name:"maxReservedHours"`
 			PreferredBackupTime *string `json:"preferredBackupTime" name:"preferredBackupTime"`
@@ -949,19 +949,19 @@ type ListBackupResponse struct {
 	Code      *string `json:"Code" name:"Code"`
 	Message   *string `json:"Message" name:"Message"`
 	Data      []struct {
-		BackupId     *string `json:"BackupId" name:"BackupId"`
-		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
-		BackupName   *string `json:"BackupName" name:"BackupName"`
+		BackupId    *string `json:"BackupId" name:"BackupId"`
+		InstanceId  *string `json:"InstanceId" name:"InstanceId"`
+		BackupName  *string `json:"BackupName" name:"BackupName"`
 		BackupStatus *string `json:"BackupStatus" name:"BackupStatus"`
 		BackupStatusName *string `json:"BackupStatusName" name:"BackupStatusName"`
 		BackupSizeReadable *string `json:"BackupSizeReadable" name:"BackupSizeReadable"`
-		RunType      *int    `json:"RunType" name:"RunType"`
-		RunTypeName  *string `json:"RunTypeName" name:"RunTypeName"`
+		RunType     *int    `json:"RunType" name:"RunType"`
+		RunTypeName *string `json:"RunTypeName" name:"RunTypeName"`
 		IncreaseName *string `json:"IncreaseName" name:"IncreaseName"`
-		StartTime    *string `json:"StartTime" name:"StartTime"`
+		StartTime   *string `json:"StartTime" name:"StartTime"`
 		ComplateTime *string `json:"ComplateTime" name:"ComplateTime"`
-		Cost         *int    `json:"Cost" name:"Cost"`
-		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		Cost        *int    `json:"Cost" name:"Cost"`
+		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"Data"`
 }
 
@@ -1290,7 +1290,7 @@ type ListTasksResponse struct {
 		TargetId *string `json:"TargetId" name:"TargetId"`
 		TargetAddress *string `json:"TargetAddress" name:"TargetAddress"`
 		TargetPort *string `json:"TargetPort" name:"TargetPort"`
-		VpcId    *string `json:"VpcId" name:"VpcId"`
+		VpcId *string `json:"VpcId" name:"VpcId"`
 	} `json:"Data"`
 }
 
@@ -1558,10 +1558,10 @@ type UpdateInstanceTrialOrderResponse struct {
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 		InstanceName *string `json:"InstanceName" name:"InstanceName"`
 		InstanceType *string `json:"InstanceType" name:"InstanceType"`
-		OrderId    *string `json:"OrderId" name:"OrderId"`
-		AccountId  *string `json:"AccountId" name:"AccountId"`
-		Region     *string `json:"Region" name:"Region"`
-		Az         *string `json:"Az" name:"Az"`
+		OrderId   *string `json:"OrderId" name:"OrderId"`
+		AccountId *string `json:"AccountId" name:"AccountId"`
+		Region    *string `json:"Region" name:"Region"`
+		Az        *string `json:"Az" name:"Az"`
 	} `json:"Data"`
 }
 

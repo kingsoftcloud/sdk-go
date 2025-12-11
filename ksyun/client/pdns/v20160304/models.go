@@ -1,11 +1,8 @@
 package v20160304
-
 import (
 	"encoding/json"
-
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 type BindZoneVpcVpcs struct {
 	RegionName *string   `json:"RegionName,omitempty" name:"RegionName"`
 	VpcId      []*string `json:"VpcId,omitempty" name:"VpcId"`
@@ -33,6 +30,7 @@ type CreateEndPointIpConfig struct {
 	IP               *string `json:"IP,omitempty" name:"IP"`
 }
 
+
 type CreatePrivateDnsRequest struct {
 	*ksyunhttp.BaseRequest
 	Action    *string `json:"Action,omitempty" name:"Action"`
@@ -57,6 +55,7 @@ func (r *CreatePrivateDnsResponse) ToJsonString() string {
 func (r *CreatePrivateDnsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DeletePrivateDnsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -83,6 +82,7 @@ func (r *DeletePrivateDnsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribePrivateDnsRequest struct {
 	*ksyunhttp.BaseRequest
 	Action  *string `json:"Action,omitempty" name:"Action"`
@@ -106,6 +106,7 @@ func (r *DescribePrivateDnsResponse) ToJsonString() string {
 func (r *DescribePrivateDnsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type AssociateVpcsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -132,6 +133,7 @@ func (r *AssociateVpcsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DisassociateVpcsRequest struct {
 	*ksyunhttp.BaseRequest
 	Action  *string `json:"Action,omitempty" name:"Action"`
@@ -156,6 +158,7 @@ func (r *DisassociateVpcsResponse) ToJsonString() string {
 func (r *DisassociateVpcsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreateZoneRequest struct {
 	*ksyunhttp.BaseRequest
@@ -183,6 +186,7 @@ func (r *CreateZoneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteZoneRequest struct {
 	*ksyunhttp.BaseRequest
 	Action *string `json:"Action,omitempty" name:"Action"`
@@ -205,6 +209,7 @@ func (r *DeleteZoneResponse) ToJsonString() string {
 func (r *DeleteZoneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ModifyZoneRequest struct {
 	*ksyunhttp.BaseRequest
@@ -229,6 +234,7 @@ func (r *ModifyZoneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribeZoneRequest struct {
 	*ksyunhttp.BaseRequest
 	Action *string `json:"Action,omitempty" name:"Action"`
@@ -251,6 +257,7 @@ func (r *DescribeZoneResponse) ToJsonString() string {
 func (r *DescribeZoneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreateRecordRequest struct {
 	*ksyunhttp.BaseRequest
@@ -275,6 +282,7 @@ func (r *CreateRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteRecordRequest struct {
 	*ksyunhttp.BaseRequest
 	Action *string `json:"Action,omitempty" name:"Action"`
@@ -297,6 +305,7 @@ func (r *DeleteRecordResponse) ToJsonString() string {
 func (r *DeleteRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeRecordRequest struct {
 	*ksyunhttp.BaseRequest
@@ -321,6 +330,7 @@ func (r *DescribeRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type CreateRecordDataRequest struct {
 	*ksyunhttp.BaseRequest
 	Action *string `json:"Action,omitempty" name:"Action"`
@@ -344,6 +354,7 @@ func (r *CreateRecordDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteRecordDataRequest struct {
 	*ksyunhttp.BaseRequest
 	Action *string `json:"Action,omitempty" name:"Action"`
@@ -366,6 +377,7 @@ func (r *DeleteRecordDataResponse) ToJsonString() string {
 func (r *DeleteRecordDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreatePdnsZoneRequest struct {
 	*ksyunhttp.BaseRequest
@@ -407,6 +419,7 @@ func (r *CreatePdnsZoneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyPdnsZoneRequest struct {
 	*ksyunhttp.BaseRequest
 	ZoneId  *string `json:"ZoneId,omitempty" name:"ZoneId"`
@@ -433,6 +446,7 @@ func (r *ModifyPdnsZoneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeletePdnsZoneRequest struct {
 	*ksyunhttp.BaseRequest
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
@@ -457,6 +471,7 @@ func (r *DeletePdnsZoneResponse) ToJsonString() string {
 func (r *DeletePdnsZoneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribePdnsZonesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -498,6 +513,7 @@ func (r *DescribePdnsZonesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type BindZoneVpcRequest struct {
 	*ksyunhttp.BaseRequest
 	ZoneId *string            `json:"ZoneId,omitempty" name:"ZoneId"`
@@ -524,6 +540,7 @@ func (r *BindZoneVpcResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type UnbindZoneVpcRequest struct {
 	*ksyunhttp.BaseRequest
 	ZoneId *string              `json:"ZoneId,omitempty" name:"ZoneId"`
@@ -549,6 +566,7 @@ func (r *UnbindZoneVpcResponse) ToJsonString() string {
 func (r *UnbindZoneVpcResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreateZoneRecordRequest struct {
 	*ksyunhttp.BaseRequest
@@ -590,6 +608,7 @@ func (r *CreateZoneRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DeleteZoneRecordRequest struct {
 	*ksyunhttp.BaseRequest
 	ZoneId      *string `json:"ZoneId,omitempty" name:"ZoneId"`
@@ -619,6 +638,7 @@ func (r *DeleteZoneRecordResponse) ToJsonString() string {
 func (r *DeleteZoneRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type ModifyZoneRecordRequest struct {
 	*ksyunhttp.BaseRequest
@@ -657,6 +677,7 @@ func (r *ModifyZoneRecordResponse) ToJsonString() string {
 func (r *ModifyZoneRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DescribeZoneRecordRequest struct {
 	*ksyunhttp.BaseRequest
@@ -697,8 +718,10 @@ func (r *DescribeZoneRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type UnbindFdZoneVpcRequest struct {
 	*ksyunhttp.BaseRequest
+	BindVpcId []*UnbindFdZoneVpcBindVpcId `json:"BindVpcId,omitempty" name:"BindVpcId"`
 }
 
 func (r *UnbindFdZoneVpcRequest) ToJsonString() string {
@@ -721,10 +744,12 @@ func (r *UnbindFdZoneVpcResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type BindFdZoneVpcRequest struct {
 	*ksyunhttp.BaseRequest
-	FdZoneId   *string `json:"FdZoneId,omitempty" name:"FdZoneId"`
-	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+	FdZoneId   *string               `json:"FdZoneId,omitempty" name:"FdZoneId"`
+	RegionName *string               `json:"RegionName,omitempty" name:"RegionName"`
+	VpcId      []*BindFdZoneVpcVpcId `json:"VpcId,omitempty" name:"VpcId"`
 }
 
 func (r *BindFdZoneVpcRequest) ToJsonString() string {
@@ -737,12 +762,12 @@ type BindFdZoneVpcResponse struct {
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	Return     *bool   `json:"Return" name:"Return"`
 	BindVpcSet []struct {
-		BindVpcId  *string `json:"BindVpcId" name:"BindVpcId"`
+		BindVpcId *string `json:"BindVpcId" name:"BindVpcId"`
 		RegionName *string `json:"RegionName" name:"RegionName"`
-		VpcId      *string `json:"VpcId" name:"VpcId"`
-		FdZoneId   *string `json:"FdZoneId" name:"FdZoneId"`
-		Status     *string `json:"Status" name:"Status"`
-		Created    *string `json:"Created" name:"Created"`
+		VpcId     *string `json:"VpcId" name:"VpcId"`
+		FdZoneId  *string `json:"FdZoneId" name:"FdZoneId"`
+		Status    *string `json:"Status" name:"Status"`
+		Created   *string `json:"Created" name:"Created"`
 	} `json:"BindVpcSet"`
 }
 
@@ -755,9 +780,11 @@ func (r *BindFdZoneVpcResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type DescribePdnsFdZoneRequest struct {
 	*ksyunhttp.BaseRequest
-	FdZoneId []*string `json:"FdZoneId,omitempty" name:"FdZoneId"`
+	FdZoneId []*string                   `json:"FdZoneId,omitempty" name:"FdZoneId"`
+	Filter   []*DescribePdnsFdZoneFilter `json:"Filter,omitempty" name:"Filter"`
 }
 
 func (r *DescribePdnsFdZoneRequest) ToJsonString() string {
@@ -770,12 +797,12 @@ type DescribePdnsFdZoneResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	NextToken *string `json:"NextToken" name:"NextToken"`
 	FdZoneSet []struct {
-		Id          *string `json:"Id" name:"Id"`
-		ZoneName    *string `json:"ZoneName" name:"ZoneName"`
-		EndPointId  *string `json:"EndPointId" name:"EndPointId"`
-		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+		Id         *string `json:"Id" name:"Id"`
+		ZoneName   *string `json:"ZoneName" name:"ZoneName"`
+		EndPointId *string `json:"EndPointId" name:"EndPointId"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		Description *string `json:"Description" name:"Description"`
-		BindVpcSet  []struct {
+		BindVpcSet []struct {
 			BindVpcId  *string `json:"BindVpcId" name:"BindVpcId"`
 			RegionName *string `json:"RegionName" name:"RegionName"`
 			VpcId      *string `json:"VpcId" name:"VpcId"`
@@ -794,6 +821,7 @@ func (r *DescribePdnsFdZoneResponse) ToJsonString() string {
 func (r *DescribePdnsFdZoneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type DeletePdnsFdZoneRequest struct {
 	*ksyunhttp.BaseRequest
@@ -820,6 +848,7 @@ func (r *DeletePdnsFdZoneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type ModifyPdnsFdZoneRequest struct {
 	*ksyunhttp.BaseRequest
 	FdZoneId    *string                      `json:"FdZoneId,omitempty" name:"FdZoneId"`
@@ -836,12 +865,12 @@ type ModifyPdnsFdZoneResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	FdZone    struct {
-		Id          *string `json:"Id" name:"Id"`
-		ZoneName    *string `json:"ZoneName" name:"ZoneName"`
-		EndPointId  *string `json:"EndPointId" name:"EndPointId"`
-		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+		Id         *string `json:"Id" name:"Id"`
+		ZoneName   *string `json:"ZoneName" name:"ZoneName"`
+		EndPointId *string `json:"EndPointId" name:"EndPointId"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		Description *string `json:"Description" name:"Description"`
-		BindVpcSet  []struct {
+		BindVpcSet []struct {
 			BindVpcId  *string `json:"BindVpcId" name:"BindVpcId"`
 			RegionName *string `json:"RegionName" name:"RegionName"`
 			VpcId      *string `json:"VpcId" name:"VpcId"`
@@ -861,6 +890,7 @@ func (r *ModifyPdnsFdZoneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+
 type CreatePdnsFdZoneRequest struct {
 	*ksyunhttp.BaseRequest
 	EndPointId  *string                      `json:"EndPointId,omitempty" name:"EndPointId"`
@@ -878,12 +908,12 @@ type CreatePdnsFdZoneResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	FdZone    struct {
-		Id          *string `json:"Id" name:"Id"`
-		ZoneName    *string `json:"ZoneName" name:"ZoneName"`
-		EndPointId  *string `json:"EndPointId" name:"EndPointId"`
-		CreateTime  *string `json:"CreateTime" name:"CreateTime"`
+		Id         *string `json:"Id" name:"Id"`
+		ZoneName   *string `json:"ZoneName" name:"ZoneName"`
+		EndPointId *string `json:"EndPointId" name:"EndPointId"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		Description *string `json:"Description" name:"Description"`
-		BindVpcSet  []struct {
+		BindVpcSet []struct {
 			BindVpcId  *string `json:"BindVpcId" name:"BindVpcId"`
 			RegionName *string `json:"RegionName" name:"RegionName"`
 			VpcId      *string `json:"VpcId" name:"VpcId"`
@@ -915,7 +945,7 @@ func (r *QueryEndPointRegionAZRequest) ToJsonString() string {
 
 type QueryEndPointRegionAZResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId   *string   `json:"RequestId" name:"RequestId"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
 	AvailableAz []*string `json:"AvailableAz" name:"AvailableAz"`
 }
 
@@ -1082,3 +1112,4 @@ func (r *CreateEndPointResponse) ToJsonString() string {
 func (r *CreateEndPointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+

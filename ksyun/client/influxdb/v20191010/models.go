@@ -86,36 +86,36 @@ type DescribeInstanceResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Error     *string `json:"Error" name:"Error"`
 	Data      struct {
-		InstanceId      *string `json:"InstanceId" name:"InstanceId"`
-		InstanceName    *string `json:"InstanceName" name:"InstanceName"`
-		Region          *string `json:"Region" name:"Region"`
-		RegionName      *string `json:"RegionName" name:"RegionName"`
+		InstanceId     *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName   *string `json:"InstanceName" name:"InstanceName"`
+		Region         *string `json:"Region" name:"Region"`
+		RegionName     *string `json:"RegionName" name:"RegionName"`
 		AvailabilityZoneName *string `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
 		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
-		Status          *string `json:"Status" name:"Status"`
-		EngineVersion   *string `json:"EngineVersion" name:"EngineVersion"`
-		BillType        *int    `json:"BillType" name:"BillType"`
-		BillTypeName    *string `json:"BillTypeName" name:"BillTypeName"`
-		ProductWhat     *int    `json:"ProductWhat" name:"ProductWhat"`
-		Mode            *int    `json:"Mode" name:"Mode"`
-		ModeName        *string `json:"ModeName" name:"ModeName"`
-		InstanceType    *string `json:"InstanceType" name:"InstanceType"`
-		EbsType         *string `json:"EbsType" name:"EbsType"`
-		EbsSize         *int    `json:"EbsSize" name:"EbsSize"`
-		Vip             *string `json:"Vip" name:"Vip"`
-		Port            *int    `json:"Port" name:"Port"`
-		VpcId           *string `json:"VpcId" name:"VpcId"`
-		SubnetId        *string `json:"SubnetId" name:"SubnetId"`
+		Status         *string `json:"Status" name:"Status"`
+		EngineVersion  *string `json:"EngineVersion" name:"EngineVersion"`
+		BillType       *int    `json:"BillType" name:"BillType"`
+		BillTypeName   *string `json:"BillTypeName" name:"BillTypeName"`
+		ProductWhat    *int    `json:"ProductWhat" name:"ProductWhat"`
+		Mode           *int    `json:"Mode" name:"Mode"`
+		ModeName       *string `json:"ModeName" name:"ModeName"`
+		InstanceType   *string `json:"InstanceType" name:"InstanceType"`
+		EbsType        *string `json:"EbsType" name:"EbsType"`
+		EbsSize        *int    `json:"EbsSize" name:"EbsSize"`
+		Vip            *string `json:"Vip" name:"Vip"`
+		Port           *int    `json:"Port" name:"Port"`
+		VpcId          *string `json:"VpcId" name:"VpcId"`
+		SubnetId       *string `json:"SubnetId" name:"SubnetId"`
 		SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
-		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
-		ExpirationTime  *string `json:"ExpirationTime" name:"ExpirationTime"`
-		ProjectId       *int    `json:"ProjectId" name:"ProjectId"`
-		ProjectName     *string `json:"ProjectName" name:"ProjectName"`
-		UsedDisk        *string `json:"UsedDisk" name:"UsedDisk"`
-		MaxDisk         *string `json:"MaxDisk" name:"MaxDisk"`
-		Eip             *string `json:"Eip" name:"Eip"`
-		Eport           *int    `json:"Eport" name:"Eport"`
-		Bandwidth       *string `json:"Bandwidth" name:"Bandwidth"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+		ExpirationTime *string `json:"ExpirationTime" name:"ExpirationTime"`
+		ProjectId      *int    `json:"ProjectId" name:"ProjectId"`
+		ProjectName    *string `json:"ProjectName" name:"ProjectName"`
+		UsedDisk       *string `json:"UsedDisk" name:"UsedDisk"`
+		MaxDisk        *string `json:"MaxDisk" name:"MaxDisk"`
+		Eip            *string `json:"Eip" name:"Eip"`
+		Eport          *int    `json:"Eport" name:"Eport"`
+		Bandwidth      *string `json:"Bandwidth" name:"Bandwidth"`
 	} `json:"Data"`
 }
 
@@ -210,15 +210,15 @@ type DescribeInstanceNodeResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Error     *string `json:"Error" name:"Error"`
 	Data      []struct {
-		Id     *string `json:"Id" name:"Id"`
-		Name   *string `json:"Name" name:"Name"`
+		Id   *string `json:"Id" name:"Id"`
+		Name *string `json:"Name" name:"Name"`
 		Status *string `json:"Status" name:"Status"`
-		Ip     *string `json:"Ip" name:"Ip"`
-		Vip    *string `json:"Vip" name:"Vip"`
-		Port   *int    `json:"Port" name:"Port"`
+		Ip   *string `json:"Ip" name:"Ip"`
+		Vip  *string `json:"Vip" name:"Vip"`
+		Port *int    `json:"Port" name:"Port"`
 		UsedMemory *string `json:"UsedMemory" name:"UsedMemory"`
 		MaxMemory *string `json:"MaxMemory" name:"MaxMemory"`
-		Role   *string `json:"Role" name:"Role"`
+		Role *string `json:"Role" name:"Role"`
 	} `json:"Data"`
 }
 
@@ -344,8 +344,8 @@ type CreateSecurityRuleResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      []struct {
-		Id     *string `json:"Id" name:"Id"`
-		Cidr   *string `json:"Cidr" name:"Cidr"`
+		Id   *string `json:"Id" name:"Id"`
+		Cidr *string `json:"Cidr" name:"Cidr"`
 		Protocol *string `json:"Protocol" name:"Protocol"`
 		FromPort *string `json:"FromPort" name:"FromPort"`
 		ToPort *string `json:"ToPort" name:"ToPort"`

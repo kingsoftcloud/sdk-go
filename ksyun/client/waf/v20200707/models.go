@@ -208,18 +208,18 @@ type CreateAccessControlRuleResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId         *string `json:"RequestId" name:"RequestId"`
 	AccessControlRule struct {
-		RuleType      *string `json:"RuleType" name:"RuleType"`
-		MatchRule     *int    `json:"MatchRule" name:"MatchRule"`
-		ArgName       *string `json:"ArgName" name:"ArgName"`
-		RuleData      *string `json:"RuleData" name:"RuleData"`
-		Status        *bool   `json:"Status" name:"Status"`
-		Priority      *int    `json:"Priority" name:"Priority"`
-		RuleAction    *int    `json:"RuleAction" name:"RuleAction"`
+		RuleType   *string `json:"RuleType" name:"RuleType"`
+		MatchRule  *int    `json:"MatchRule" name:"MatchRule"`
+		ArgName    *string `json:"ArgName" name:"ArgName"`
+		RuleData   *string `json:"RuleData" name:"RuleData"`
+		Status     *bool   `json:"Status" name:"Status"`
+		Priority   *int    `json:"Priority" name:"Priority"`
+		RuleAction *int    `json:"RuleAction" name:"RuleAction"`
 		MatchRuleInfo *string `json:"MatchRuleInfo" name:"MatchRuleInfo"`
-		Level         *int    `json:"Level" name:"Level"`
+		Level      *int    `json:"Level" name:"Level"`
 		ResourceRecordId *string `json:"ResourceRecordId" name:"ResourceRecordId"`
-		RuleName      *string `json:"RuleName" name:"RuleName"`
-		RuleId        *string `json:"RuleId" name:"RuleId"`
+		RuleName   *string `json:"RuleName" name:"RuleName"`
+		RuleId     *string `json:"RuleId" name:"RuleId"`
 	} `json:"AccessControlRule"`
 }
 

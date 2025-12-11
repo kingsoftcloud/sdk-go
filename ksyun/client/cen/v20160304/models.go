@@ -53,7 +53,7 @@ type CreateCenResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Cen       struct {
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		CenId   *string `json:"CenId" name:"CenId"`
+		CenId *string `json:"CenId" name:"CenId"`
 		CenName *string `json:"CenName" name:"CenName"`
 		Description *string `json:"Description" name:"Description"`
 	} `json:"Cen"`
@@ -86,7 +86,7 @@ type ModifyCenResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Cen       struct {
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		CenId   *string `json:"CenId" name:"CenId"`
+		CenId *string `json:"CenId" name:"CenId"`
 		CenName *string `json:"CenName" name:"CenName"`
 		Description *string `json:"Description" name:"Description"`
 	} `json:"Cen"`
@@ -146,7 +146,7 @@ type DescribeCensResponse struct {
 	NextToken *string `json:"NextToken" name:"NextToken"`
 	CenSet    []struct {
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		CenId   *string `json:"CenId" name:"CenId"`
+		CenId *string `json:"CenId" name:"CenId"`
 		CenName *string `json:"CenName" name:"CenName"`
 		Description *string `json:"Description" name:"Description"`
 	} `json:"CenSet"`
@@ -208,7 +208,7 @@ type DescribeCenGrantsResponse struct {
 	CenGrantSet []struct {
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		CenGrantId *string `json:"CenGrantId" name:"CenGrantId"`
-		CenId      *string `json:"CenId" name:"CenId"`
+		CenId *string `json:"CenId" name:"CenId"`
 		NetworkInstanceId *string `json:"NetworkInstanceId" name:"NetworkInstanceId"`
 		InstanceType *string `json:"InstanceType" name:"InstanceType"`
 		CenAccountId *string `json:"CenAccountId" name:"CenAccountId"`
@@ -586,16 +586,16 @@ type DescribeCenRoutesResponse struct {
 	RequestId   *string `json:"RequestId" name:"RequestId"`
 	NextToken   *string `json:"NextToken" name:"NextToken"`
 	CenRouteSet []struct {
-		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
-		CenRouteId     *string `json:"CenRouteId" name:"CenRouteId"`
-		CenId          *string `json:"CenId" name:"CenId"`
+		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		CenRouteId   *string `json:"CenRouteId" name:"CenRouteId"`
+		CenId        *string `json:"CenId" name:"CenId"`
 		DestinationCidrBlock *string `json:"DestinationCidrBlock" name:"DestinationCidrBlock"`
 		NetworkInstanceId *string `json:"NetworkInstanceId" name:"NetworkInstanceId"`
-		InstanceType   *string `json:"InstanceType" name:"InstanceType"`
+		InstanceType *string `json:"InstanceType" name:"InstanceType"`
 		InstanceRegion *string `json:"InstanceRegion" name:"InstanceRegion"`
 		InstanceAccountId *string `json:"InstanceAccountId" name:"InstanceAccountId"`
 		NetworkRouteId *string `json:"NetworkRouteId" name:"NetworkRouteId"`
-		SelfRouteId    *string `json:"SelfRouteId" name:"SelfRouteId"`
+		SelfRouteId  *string `json:"SelfRouteId" name:"SelfRouteId"`
 		InstanceRouteType *string `json:"InstanceRouteType" name:"InstanceRouteType"`
 	} `json:"CenRouteSet"`
 }
@@ -657,12 +657,12 @@ type DescribeNetworkInstancesResponse struct {
 	RequestId          *string `json:"RequestId" name:"RequestId"`
 	NextToken          *string `json:"NextToken" name:"NextToken"`
 	NetworkInstanceSet []struct {
-		CenId        *string `json:"CenId" name:"CenId"`
+		CenId      *string `json:"CenId" name:"CenId"`
 		NetworkInstanceId *string `json:"NetworkInstanceId" name:"NetworkInstanceId"`
 		InstanceType *string `json:"InstanceType" name:"InstanceType"`
 		InstanceRegion *string `json:"InstanceRegion" name:"InstanceRegion"`
 		InstanceAccountId *string `json:"InstanceAccountId" name:"InstanceAccountId"`
-		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"NetworkInstanceSet"`
 }
 
@@ -695,7 +695,7 @@ type CreateCenGrantResponse struct {
 	CenGrant  struct {
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		CenGrantId *string `json:"CenGrantId" name:"CenGrantId"`
-		CenId      *string `json:"CenId" name:"CenId"`
+		CenId *string `json:"CenId" name:"CenId"`
 		NetworkInstanceId *string `json:"NetworkInstanceId" name:"NetworkInstanceId"`
 		InstanceType *string `json:"InstanceType" name:"InstanceType"`
 		CenAccountId *string `json:"CenAccountId" name:"CenAccountId"`
@@ -760,8 +760,8 @@ func (r *DescribeInterRegionsRequest) ToJsonString() string {
 
 type DescribeInterRegionsResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId      *string `json:"RequestId" name:"RequestId"`
-	NextToken      *string `json:"NextToken" name:"NextToken"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	NextToken *string `json:"NextToken" name:"NextToken"`
 	InterRegionSet []struct {
 		InterAreaId *string `json:"InterAreaId" name:"InterAreaId"`
 		InterRegionId *string `json:"InterRegionId" name:"InterRegionId"`

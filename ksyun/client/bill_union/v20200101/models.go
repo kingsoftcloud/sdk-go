@@ -20,9 +20,9 @@ func (r *DescribeBillSummaryByPayModeRequest) ToJsonString() string {
 
 type DescribeBillSummaryByPayModeResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId       *string `json:"RequestId" name:"RequestId"`
-	Currency        *string `json:"Currency" name:"Currency"`
-	RealTotalCost   *string `json:"RealTotalCost" name:"RealTotalCost"`
+	RequestId     *string `json:"RequestId" name:"RequestId"`
+	Currency      *string `json:"Currency" name:"Currency"`
+	RealTotalCost *string `json:"RealTotalCost" name:"RealTotalCost"`
 	SummaryOverview []struct {
 		PayMode *string `json:"PayMode" name:"PayMode"`
 		RealTotalCost *string `json:"RealTotalCost" name:"RealTotalCost"`
@@ -55,9 +55,9 @@ func (r *DescribeBillSummaryByProductRequest) ToJsonString() string {
 
 type DescribeBillSummaryByProductResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId       *string `json:"RequestId" name:"RequestId"`
-	Currency        *string `json:"Currency" name:"Currency"`
-	RealTotalCost   *string `json:"RealTotalCost" name:"RealTotalCost"`
+	RequestId     *string `json:"RequestId" name:"RequestId"`
+	Currency      *string `json:"Currency" name:"Currency"`
+	RealTotalCost *string `json:"RealTotalCost" name:"RealTotalCost"`
 	SummaryOverview []struct {
 		ProductCode *string `json:"ProductCode" name:"ProductCode"`
 		ProductName *string `json:"ProductName" name:"ProductName"`
@@ -91,9 +91,9 @@ func (r *DescribeBillSummaryByProjectRequest) ToJsonString() string {
 
 type DescribeBillSummaryByProjectResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId       *string `json:"RequestId" name:"RequestId"`
-	Currency        *string `json:"Currency" name:"Currency"`
-	RealTotalCost   *string `json:"RealTotalCost" name:"RealTotalCost"`
+	RequestId     *string `json:"RequestId" name:"RequestId"`
+	Currency      *string `json:"Currency" name:"Currency"`
+	RealTotalCost *string `json:"RealTotalCost" name:"RealTotalCost"`
 	SummaryOverview []struct {
 		ProjectId *string `json:"ProjectId" name:"ProjectId"`
 		ProjectName *string `json:"ProjectName" name:"ProjectName"`
@@ -134,27 +134,27 @@ type DescribeInstanceSummaryBillsResponse struct {
 	TotalCount      *int    `json:"TotalCount" name:"TotalCount"`
 	CustomerId      *int    `json:"CustomerId" name:"CustomerId"`
 	SummaryOverview []struct {
-		BillsNo           *string `json:"BillsNo" name:"BillsNo"`
+		BillsNo      *string `json:"BillsNo" name:"BillsNo"`
 		CustomerBillMonth *string `json:"CustomerBillMonth" name:"CustomerBillMonth"`
-		BillMonth         *string `json:"BillMonth" name:"BillMonth"`
-		ProductName       *string `json:"ProductName" name:"ProductName"`
+		BillMonth    *string `json:"BillMonth" name:"BillMonth"`
+		ProductName  *string `json:"ProductName" name:"ProductName"`
 		ProductSubTyeName *string `json:"ProductSubTyeName" name:"ProductSubTyeName"`
-		InstanceId        *string `json:"InstanceId" name:"InstanceId"`
-		InstanceName      *string `json:"InstanceName" name:"InstanceName"`
-		Currency          *string `json:"Currency" name:"Currency"`
+		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
+		InstanceName *string `json:"InstanceName" name:"InstanceName"`
+		Currency     *string `json:"Currency" name:"Currency"`
 		DetailBillStartTime *string `json:"DetailBillStartTime" name:"DetailBillStartTime"`
 		DetailBillEndTime *string `json:"DetailBillEndTime" name:"DetailBillEndTime"`
 		ServiceBillStartTime *string `json:"ServiceBillStartTime" name:"ServiceBillStartTime"`
-		PayMode           *string `json:"PayMode" name:"PayMode"`
-		BillTypeName      *string `json:"BillTypeName" name:"BillTypeName"`
-		RegionName        *string `json:"RegionName" name:"RegionName"`
-		ZoneName          *string `json:"ZoneName" name:"ZoneName"`
-		ProjectName       *string `json:"ProjectName" name:"ProjectName"`
-		Duration          *string `json:"Duration" name:"Duration"`
-		Remark            *string `json:"Remark" name:"Remark"`
-		Cost              *string `json:"Cost" name:"Cost"`
-		RealCost          *string `json:"RealCost" name:"RealCost"`
-		ConfigSet         []struct {
+		PayMode      *string `json:"PayMode" name:"PayMode"`
+		BillTypeName *string `json:"BillTypeName" name:"BillTypeName"`
+		RegionName   *string `json:"RegionName" name:"RegionName"`
+		ZoneName     *string `json:"ZoneName" name:"ZoneName"`
+		ProjectName  *string `json:"ProjectName" name:"ProjectName"`
+		Duration     *string `json:"Duration" name:"Duration"`
+		Remark       *string `json:"Remark" name:"Remark"`
+		Cost         *string `json:"Cost" name:"Cost"`
+		RealCost     *string `json:"RealCost" name:"RealCost"`
+		ConfigSet    []struct {
 			Key   *string `json:"Key" name:"Key"`
 			Code  *string `json:"Code" name:"Code"`
 			Value *string `json:"Value" name:"Value"`

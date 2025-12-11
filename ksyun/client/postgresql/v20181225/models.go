@@ -386,7 +386,7 @@ type CreateSecurityGroupResponse struct {
 				SecurityGroupRuleId *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
 				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
-				Created             *string `json:"Created" name:"Created"`
+				Created *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -424,7 +424,7 @@ type DescribeSecurityGroupResponse struct {
 			Instances                []struct {
 				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
 				DBInstanceName *string `json:"DBInstanceName" name:"DBInstanceName"`
-				Vip     *string `json:"Vip" name:"Vip"`
+				Vip *string `json:"Vip" name:"Vip"`
 				Created *string `json:"Created" name:"Created"`
 				DBInstanceType *string `json:"DBInstanceType" name:"DBInstanceType"`
 			} `json:"Instances"`
@@ -471,7 +471,7 @@ type DeleteSecurityGroupResponse struct {
 				SecurityGroupRuleId *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
 				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
-				Created             *string `json:"Created" name:"Created"`
+				Created *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -513,7 +513,7 @@ type ModifySecurityGroupResponse struct {
 				SecurityGroupRuleId *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
 				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
-				Created             *string `json:"Created" name:"Created"`
+				Created *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -596,7 +596,7 @@ type ModifySecurityGroupRuleResponse struct {
 				SecurityGroupRuleId *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
 				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
-				Created             *string `json:"Created" name:"Created"`
+				Created *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -638,7 +638,7 @@ type SecurityGroupRelationResponse struct {
 				SecurityGroupRuleId *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
 				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
-				Created             *string `json:"Created" name:"Created"`
+				Created *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -742,14 +742,14 @@ type CreateDBBackupResponse struct {
 	DBBackup struct {
 		DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
 		DBBackupIdentifier *string `json:"DBBackupIdentifier" name:"DBBackupIdentifier"`
-		Engine            *string `json:"Engine" name:"Engine"`
-		EngineVersion     *string `json:"EngineVersion" name:"EngineVersion"`
-		BackupCreateTime  *string `json:"BackupCreateTime" name:"BackupCreateTime"`
+		Engine           *string `json:"Engine" name:"Engine"`
+		EngineVersion    *string `json:"EngineVersion" name:"EngineVersion"`
+		BackupCreateTime *string `json:"BackupCreateTime" name:"BackupCreateTime"`
 		BackupUpdatedTime *string `json:"BackupUpdatedTime" name:"BackupUpdatedTime"`
-		DBBackupName      *string `json:"DBBackupName" name:"DBBackupName"`
-		Description       *string `json:"Description" name:"Description"`
-		BackupType        *string `json:"BackupType" name:"BackupType"`
-		Status            *string `json:"Status" name:"Status"`
+		DBBackupName     *string `json:"DBBackupName" name:"DBBackupName"`
+		Description      *string `json:"Description" name:"Description"`
+		BackupType       *string `json:"BackupType" name:"BackupType"`
+		Status           *string `json:"Status" name:"Status"`
 	} `json:"DBBackup"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -1772,10 +1772,10 @@ type RestoreDBInstanceFromDBBackupResponse struct {
 			ReadReplicaDBInstanceIdentifiers []*string `json:"ReadReplicaDBInstanceIdentifiers" name:"ReadReplicaDBInstanceIdentifiers"`
 			DBSource              struct {
 				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-				DBInstanceName   *string `json:"DBInstanceName" name:"DBInstanceName"`
-				DBInstanceType   *string `json:"DBInstanceType" name:"DBInstanceType"`
+				DBInstanceName *string `json:"DBInstanceName" name:"DBInstanceName"`
+				DBInstanceType *string `json:"DBInstanceType" name:"DBInstanceType"`
 				DBBackupIdentifier *string `json:"DBBackupIdentifier" name:"DBBackupIdentifier"`
-				DBBackupName     *string `json:"DBBackupName" name:"DBBackupName"`
+				DBBackupName   *string `json:"DBBackupName" name:"DBBackupName"`
 				DBInstanceStatus *string `json:"DBInstanceStatus" name:"DBInstanceStatus"`
 			} `json:"DBSource"`
 			ProductId        *string `json:"ProductId" name:"ProductId"`
@@ -1920,29 +1920,29 @@ type CreateDBInstanceReadReplicaResponse struct {
 				Mem     *int    `json:"Mem" name:"Mem"`
 				MaxConn *int    `json:"MaxConn" name:"MaxConn"`
 			} `json:"DBInstanceClass"`
-			DBInstanceIdentifier             *string   `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
-			DBInstanceName                   *string   `json:"DBInstanceName" name:"DBInstanceName"`
-			DBInstanceStatus                 *string   `json:"DBInstanceStatus" name:"DBInstanceStatus"`
-			DBInstanceType                   *string   `json:"DBInstanceType" name:"DBInstanceType"`
-			DBParameterGroupId               *string   `json:"DBParameterGroupId" name:"DBParameterGroupId"`
-			PreferredBackupTime              *string   `json:"PreferredBackupTime" name:"PreferredBackupTime"`
-			GroupId                          *string   `json:"GroupId" name:"GroupId"`
-			Vip                              *string   `json:"Vip" name:"Vip"`
-			Port                             *int      `json:"Port" name:"Port"`
-			Engine                           *string   `json:"Engine" name:"Engine"`
-			EngineVersion                    *string   `json:"EngineVersion" name:"EngineVersion"`
-			InstanceCreateTime               *string   `json:"InstanceCreateTime" name:"InstanceCreateTime"`
-			MasterUserName                   *string   `json:"MasterUserName" name:"MasterUserName"`
-			DatastoreVersionId               *string   `json:"DatastoreVersionId" name:"DatastoreVersionId"`
-			VpcId                            *string   `json:"VpcId" name:"VpcId"`
-			SubnetId                         *string   `json:"SubnetId" name:"SubnetId"`
-			PubliclyAccessible               *bool     `json:"PubliclyAccessible" name:"PubliclyAccessible"`
-			BillType                         *string   `json:"BillType" name:"BillType"`
-			OrderType                        *string   `json:"OrderType" name:"OrderType"`
-			MultiAvailabilityZone            *bool     `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
-			AvailabilityZoneList             []*string `json:"AvailabilityZoneList" name:"AvailabilityZoneList"`
-			DiskUsed                         *int      `json:"DiskUsed" name:"DiskUsed"`
-			Audit                            *bool     `json:"Audit" name:"Audit"`
+			DBInstanceIdentifier  *string   `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
+			DBInstanceName        *string   `json:"DBInstanceName" name:"DBInstanceName"`
+			DBInstanceStatus      *string   `json:"DBInstanceStatus" name:"DBInstanceStatus"`
+			DBInstanceType        *string   `json:"DBInstanceType" name:"DBInstanceType"`
+			DBParameterGroupId    *string   `json:"DBParameterGroupId" name:"DBParameterGroupId"`
+			PreferredBackupTime   *string   `json:"PreferredBackupTime" name:"PreferredBackupTime"`
+			GroupId               *string   `json:"GroupId" name:"GroupId"`
+			Vip                   *string   `json:"Vip" name:"Vip"`
+			Port                  *int      `json:"Port" name:"Port"`
+			Engine                *string   `json:"Engine" name:"Engine"`
+			EngineVersion         *string   `json:"EngineVersion" name:"EngineVersion"`
+			InstanceCreateTime    *string   `json:"InstanceCreateTime" name:"InstanceCreateTime"`
+			MasterUserName        *string   `json:"MasterUserName" name:"MasterUserName"`
+			DatastoreVersionId    *string   `json:"DatastoreVersionId" name:"DatastoreVersionId"`
+			VpcId                 *string   `json:"VpcId" name:"VpcId"`
+			SubnetId              *string   `json:"SubnetId" name:"SubnetId"`
+			PubliclyAccessible    *bool     `json:"PubliclyAccessible" name:"PubliclyAccessible"`
+			BillType              *string   `json:"BillType" name:"BillType"`
+			OrderType             *string   `json:"OrderType" name:"OrderType"`
+			MultiAvailabilityZone *bool     `json:"MultiAvailabilityZone" name:"MultiAvailabilityZone"`
+			AvailabilityZoneList  []*string `json:"AvailabilityZoneList" name:"AvailabilityZoneList"`
+			DiskUsed              *int      `json:"DiskUsed" name:"DiskUsed"`
+			Audit                 *bool     `json:"Audit" name:"Audit"`
 			ReadReplicaDBInstanceIdentifiers []struct {
 				Vip *string `json:"Vip" name:"Vip"`
 				ReadReplicaDBInstanceIdentifier *string `json:"ReadReplicaDBInstanceIdentifier" name:"ReadReplicaDBInstanceIdentifier"`
@@ -2485,6 +2485,7 @@ func (r *UpdateDBInstanceOrderResponse) ToJsonString() string {
 func (r *UpdateDBInstanceOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type UpdateResourceProtectionRequest struct {
 	*ksyunhttp.BaseRequest

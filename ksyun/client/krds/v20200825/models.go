@@ -44,7 +44,7 @@ type CreateSecurityGroupResponse struct {
 				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
 				SecurityGroupRuleCidr *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
-				Created             *string `json:"Created" name:"Created"`
+				Created *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -84,7 +84,7 @@ type DescribeSecurityGroupResponse struct {
 			Instances                []struct {
 				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
 				DBInstanceName *string `json:"DBInstanceName" name:"DBInstanceName"`
-				Vip     *string `json:"Vip" name:"Vip"`
+				Vip *string `json:"Vip" name:"Vip"`
 				Created *string `json:"Created" name:"Created"`
 				DBInstanceType *string `json:"DBInstanceType" name:"DBInstanceType"`
 			} `json:"Instances"`
@@ -93,7 +93,7 @@ type DescribeSecurityGroupResponse struct {
 				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
 				SecurityGroupRuleCidr *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
-				Created             *string `json:"Created" name:"Created"`
+				Created *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -132,14 +132,14 @@ type DeleteSecurityGroupResponse struct {
 			Instances                []struct {
 				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
 				DBInstanceName *string `json:"DBInstanceName" name:"DBInstanceName"`
-				Vip     *string `json:"Vip" name:"Vip"`
+				Vip *string `json:"Vip" name:"Vip"`
 				Created *string `json:"Created" name:"Created"`
 			} `json:"Instances"`
 			SecurityGroupRules []struct {
 				SecurityGroupRuleId *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
 				SecurityGroupRuleCidr *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
-				Created             *string `json:"Created" name:"Created"`
+				Created *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -180,7 +180,7 @@ type ModifySecurityGroupResponse struct {
 			Instances                []struct {
 				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
 				DBInstanceName *string `json:"DBInstanceName" name:"DBInstanceName"`
-				Vip     *string `json:"Vip" name:"Vip"`
+				Vip *string `json:"Vip" name:"Vip"`
 				Created *string `json:"Created" name:"Created"`
 				DBInstanceType *string `json:"DBInstanceType" name:"DBInstanceType"`
 			} `json:"Instances"`
@@ -189,7 +189,7 @@ type ModifySecurityGroupResponse struct {
 				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
 				SecurityGroupRuleCidr *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
-				Created             *string `json:"Created" name:"Created"`
+				Created *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -233,7 +233,7 @@ type CloneSecurityGroupResponse struct {
 				SecurityGroupRuleId *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
 				SecurityGroupRuleCidr *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
-				Created             *string `json:"Created" name:"Created"`
+				Created *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -276,7 +276,7 @@ type ModifySecurityGroupRuleResponse struct {
 			Instances                []struct {
 				DBInstanceIdentifier *string `json:"DBInstanceIdentifier" name:"DBInstanceIdentifier"`
 				DBInstanceName *string `json:"DBInstanceName" name:"DBInstanceName"`
-				Vip     *string `json:"Vip" name:"Vip"`
+				Vip *string `json:"Vip" name:"Vip"`
 				Created *string `json:"Created" name:"Created"`
 				DBInstanceType *string `json:"DBInstanceType" name:"DBInstanceType"`
 			} `json:"Instances"`
@@ -285,7 +285,7 @@ type ModifySecurityGroupRuleResponse struct {
 				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
 				SecurityGroupRuleCidr *string `json:"SecurityGroupRuleCidr" name:"SecurityGroupRuleCidr"`
-				Created             *string `json:"Created" name:"Created"`
+				Created *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`
@@ -328,7 +328,7 @@ type SecurityGroupRelationResponse struct {
 				SecurityGroupRuleId *string `json:"SecurityGroupRuleId" name:"SecurityGroupRuleId"`
 				SecurityGroupRuleName *string `json:"SecurityGroupRuleName" name:"SecurityGroupRuleName"`
 				SecurityGroupRuleProtocol *string `json:"SecurityGroupRuleProtocol" name:"SecurityGroupRuleProtocol"`
-				Created             *string `json:"Created" name:"Created"`
+				Created *string `json:"Created" name:"Created"`
 			} `json:"SecurityGroupRules"`
 		} `json:"SecurityGroups" name:"SecurityGroups"`
 	} `json:"Data"`

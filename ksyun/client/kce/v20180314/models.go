@@ -312,15 +312,15 @@ type DescribeTagResponse struct {
 	MaxResults *int    `json:"MaxResults" name:"MaxResults"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	TagSet     []struct {
-		RepoName   *string `json:"RepoName" name:"RepoName"`
-		TagName    *string `json:"TagName" name:"TagName"`
-		ImageId    *string `json:"ImageId" name:"ImageId"`
+		RepoName *string `json:"RepoName" name:"RepoName"`
+		TagName  *string `json:"TagName" name:"TagName"`
+		ImageId  *string `json:"ImageId" name:"ImageId"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
-		SizeByte   *int    `json:"SizeByte" name:"SizeByte"`
-		Author     *string `json:"Author" name:"Author"`
+		SizeByte *int    `json:"SizeByte" name:"SizeByte"`
+		Author   *string `json:"Author" name:"Author"`
 		DockerVersion *string `json:"DockerVersion" name:"DockerVersion"`
 		Architecture *string `json:"Architecture" name:"Architecture"`
-		Os         *string `json:"Os" name:"Os"`
+		Os       *string `json:"Os" name:"Os"`
 	} `json:"TagSet"`
 }
 

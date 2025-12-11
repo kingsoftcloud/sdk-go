@@ -229,7 +229,7 @@ type ListTagsByResourceIdsResponse struct {
 	*ksyunhttp.BaseResponse
 	Tags []struct {
 		ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
-		TagId  *int    `json:"TagId" name:"TagId"`
+		TagId *int `json:"TagId" name:"TagId"`
 		TagKey *string `json:"TagKey" name:"TagKey"`
 		TagValue *string `json:"TagValue" name:"TagValue"`
 	} `json:"Tags"`

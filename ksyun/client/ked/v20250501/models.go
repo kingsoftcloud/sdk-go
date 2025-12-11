@@ -424,11 +424,11 @@ type StrategycreateResponse struct {
 	Message   *string `json:"message" name:"message"`
 	Detail    *string `json:"detail" name:"detail"`
 	Data      struct {
-		Id         *int    `json:"Id" name:"Id"`
+		Id        *int    `json:"Id" name:"Id"`
 		StrategyId *string `json:"StrategyId" name:"StrategyId"`
 		StrategyName *string `json:"StrategyName" name:"StrategyName"`
-		AccountId  *int    `json:"AccountId" name:"AccountId"`
-		Comment    *string `json:"Comment" name:"Comment"`
+		AccountId *int    `json:"AccountId" name:"AccountId"`
+		Comment   *string `json:"Comment" name:"Comment"`
 		InstanceNum *string `json:"InstanceNum" name:"InstanceNum"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
@@ -1521,6 +1521,7 @@ func (r *UpdateLabelResponse) ToJsonString() string {
 func (r *UpdateLabelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type CreateLabelRequest struct {
 	*ksyunhttp.BaseRequest

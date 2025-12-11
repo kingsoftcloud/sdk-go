@@ -69,8 +69,8 @@ type ListMetricsResponse struct {
 				MetricDesc *string `json:"MetricDesc" name:"MetricDesc"`
 				Namespace *string `json:"Namespace" name:"Namespace"`
 				Interval *string `json:"Interval" name:"Interval"`
-				Type     *string `json:"Type" name:"Type"`
-				Unit     *string `json:"Unit" name:"Unit"`
+				Type *string `json:"Type" name:"Type"`
+				Unit *string `json:"Unit" name:"Unit"`
 			} `json:"Member"`
 		} `json:"Metrics" name:"Metrics"`
 	} `json:"ListMetricsResult"`

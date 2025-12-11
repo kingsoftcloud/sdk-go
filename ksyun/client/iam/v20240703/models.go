@@ -21,8 +21,8 @@ type ProjectsInfoByInstanceIdsResponse struct {
 		ProductLine *string `json:"ProductLine" name:"ProductLine"`
 		InstanceId *string `json:"InstanceId" name:"InstanceId"`
 		InstanceName *string `json:"InstanceName" name:"InstanceName"`
-		Region     *string `json:"Region" name:"Region"`
-		ProjectId  *int    `json:"ProjectId" name:"ProjectId"`
+		Region    *string `json:"Region" name:"Region"`
+		ProjectId *int    `json:"ProjectId" name:"ProjectId"`
 		ProjectName *string `json:"ProjectName" name:"ProjectName"`
 		ProjectDesc *string `json:"ProjectDesc" name:"ProjectDesc"`
 	} `json:"List"`

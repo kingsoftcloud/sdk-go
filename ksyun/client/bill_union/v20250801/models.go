@@ -54,7 +54,7 @@ type QueryProductTypesResponse struct {
 	Data      []struct {
 		ProductGroupId *int `json:"ProductGroupId" name:"ProductGroupId"`
 		ProductGroupName *string `json:"ProductGroupName" name:"ProductGroupName"`
-		ProductTypeId  *int `json:"ProductTypeId" name:"ProductTypeId"`
+		ProductTypeId *int `json:"ProductTypeId" name:"ProductTypeId"`
 		ProductTypeName *string `json:"ProductTypeName" name:"ProductTypeName"`
 		ProductGroupCode *string `json:"ProductGroupCode" name:"ProductGroupCode"`
 		ProductTypeCode *string `json:"ProductTypeCode" name:"ProductTypeCode"`
