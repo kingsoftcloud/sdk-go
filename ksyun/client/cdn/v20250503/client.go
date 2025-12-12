@@ -1,4 +1,5 @@
 package v20250503
+
 import (
 	"context"
 	"fmt"
@@ -216,5 +217,3 @@ func (c *Client) GetCdnDomainsWithContextV2(ctx context.Context, request *GetCdn
 	}
 	return statusCode, msg, nil
 }
-
-

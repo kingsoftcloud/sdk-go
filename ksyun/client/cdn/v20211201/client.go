@@ -3,7 +3,6 @@ package v20211201
 import (
 	"context"
 	"fmt"
-
 	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/profile"
@@ -88,5 +87,3 @@ func (c *Client) GetRefreshOrPreloadTaskWithContextV2(ctx context.Context, reque
 	}
 	return statusCode, msg, nil
 }
-
-

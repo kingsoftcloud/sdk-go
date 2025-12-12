@@ -1,9 +1,9 @@
 package v20160901
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type GetRefreshOrPreloadTaskRequest struct {
 	*ksyunhttp.BaseRequest
@@ -29,7 +29,6 @@ func (r *GetRefreshOrPreloadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type RefreshCachesRequest struct {
 	*ksyunhttp.BaseRequest
 	Files *string `json:"Files,omitempty" name:"Files"`
@@ -54,7 +53,6 @@ func (r *RefreshCachesResponse) ToJsonString() string {
 func (r *RefreshCachesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetDomainPidDimensionUsageDataRequest struct {
 	*ksyunhttp.BaseRequest
@@ -93,4 +91,3 @@ func (r *GetDomainPidDimensionUsageDataResponse) ToJsonString() string {
 func (r *GetDomainPidDimensionUsageDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

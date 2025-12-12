@@ -2,10 +2,8 @@ package v20200630
 
 import (
 	"encoding/json"
-
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type GetClientRequestDataRequest struct {
 	*ksyunhttp.BaseRequest
@@ -62,7 +60,6 @@ func (r *GetClientRequestDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetServerDataRequest struct {
 	*ksyunhttp.BaseRequest
 	StartTime  *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -115,7 +112,6 @@ func (r *GetServerDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetDomainRankingListDataRequest struct {
 	*ksyunhttp.BaseRequest
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -136,14 +132,14 @@ type GetDomainRankingListDataResponse struct {
 	CdnType   *string `json:"CdnType" name:"CdnType"`
 	SortBy    *string `json:"SortBy" name:"SortBy"`
 	Datas     []struct {
-		Domain *string `json:"Domain" name:"Domain"`
-		Rank *int `json:"Rank" name:"Rank"`
-		Flow *int `json:"Flow" name:"Flow"`
+		Domain         *string  `json:"Domain" name:"Domain"`
+		Rank           *int     `json:"Rank" name:"Rank"`
+		Flow           *int     `json:"Flow" name:"Flow"`
 		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
-		Bw   *int `json:"Bw" name:"Bw"`
-		PeakTime *string `json:"PeakTime" name:"PeakTime"`
-		Pv   *int `json:"Pv" name:"Pv"`
-		PvProportion *float64 `json:"PvProportion" name:"PvProportion"`
+		Bw             *int     `json:"Bw" name:"Bw"`
+		PeakTime       *string  `json:"PeakTime" name:"PeakTime"`
+		Pv             *int     `json:"Pv" name:"Pv"`
+		PvProportion   *float64 `json:"PvProportion" name:"PvProportion"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -156,7 +152,6 @@ func (r *GetDomainRankingListDataResponse) ToJsonString() string {
 func (r *GetDomainRankingListDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetAreaIspDataRequest struct {
 	*ksyunhttp.BaseRequest
@@ -178,12 +173,12 @@ type GetAreaIspDataResponse struct {
 	CdnType   *string `json:"CdnType" name:"CdnType"`
 	Domains   *string `json:"Domains" name:"Domains"`
 	Datas     []struct {
-		Area *string `json:"Area" name:"Area"`
-		Flow *int `json:"Flow" name:"Flow"`
-		Pv   *int `json:"Pv" name:"Pv"`
+		Area           *string  `json:"Area" name:"Area"`
+		Flow           *int     `json:"Flow" name:"Flow"`
+		Pv             *int     `json:"Pv" name:"Pv"`
 		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
-		PvProportion *float64 `json:"PvProportion" name:"PvProportion"`
-		Isps []struct {
+		PvProportion   *float64 `json:"PvProportion" name:"PvProportion"`
+		Isps           []struct {
 			Isp            *string  `json:"Isp" name:"Isp"`
 			Flow           *int     `json:"Flow" name:"Flow"`
 			Pv             *int     `json:"Pv" name:"Pv"`
@@ -202,7 +197,6 @@ func (r *GetAreaIspDataResponse) ToJsonString() string {
 func (r *GetAreaIspDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetTopReferDataRequest struct {
 	*ksyunhttp.BaseRequest
@@ -228,11 +222,11 @@ type GetTopReferDataResponse struct {
 	LimitN    *int    `json:"LimitN" name:"LimitN"`
 	SortBy    *string `json:"SortBy" name:"SortBy"`
 	Datas     []struct {
-		Refer *string `json:"Refer" name:"Refer"`
-		Rank *int `json:"Rank" name:"Rank"`
-		Pv *int `json:"Pv" name:"Pv"`
-		PvProportion *float64 `json:"PvProportion" name:"PvProportion"`
-		Flow *int `json:"Flow" name:"Flow"`
+		Refer          *string  `json:"Refer" name:"Refer"`
+		Rank           *int     `json:"Rank" name:"Rank"`
+		Pv             *int     `json:"Pv" name:"Pv"`
+		PvProportion   *float64 `json:"PvProportion" name:"PvProportion"`
+		Flow           *int     `json:"Flow" name:"Flow"`
 		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -246,7 +240,6 @@ func (r *GetTopReferDataResponse) ToJsonString() string {
 func (r *GetTopReferDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetTopUrlDataRequest struct {
 	*ksyunhttp.BaseRequest
@@ -272,11 +265,11 @@ type GetTopUrlDataResponse struct {
 	LimitN    *int    `json:"LimitN" name:"LimitN"`
 	SortBy    *string `json:"SortBy" name:"SortBy"`
 	Datas     []struct {
-		Url  *string `json:"Url" name:"Url"`
-		Rank *int    `json:"Rank" name:"Rank"`
-		Pv   *int    `json:"Pv" name:"Pv"`
-		PvProportion *float64 `json:"PvProportion" name:"PvProportion"`
-		Flow *int    `json:"Flow" name:"Flow"`
+		Url            *string  `json:"Url" name:"Url"`
+		Rank           *int     `json:"Rank" name:"Rank"`
+		Pv             *int     `json:"Pv" name:"Pv"`
+		PvProportion   *float64 `json:"PvProportion" name:"PvProportion"`
+		Flow           *int     `json:"Flow" name:"Flow"`
 		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -290,7 +283,6 @@ func (r *GetTopUrlDataResponse) ToJsonString() string {
 func (r *GetTopUrlDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetRealTimeHitRateDataRequest struct {
 	*ksyunhttp.BaseRequest
@@ -336,7 +328,6 @@ func (r *GetRealTimeHitRateDataResponse) ToJsonString() string {
 func (r *GetRealTimeHitRateDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetReqHitRateDataRequest struct {
 	*ksyunhttp.BaseRequest
@@ -384,7 +375,6 @@ func (r *GetReqHitRateDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetFlowHitRateDataRequest struct {
 	*ksyunhttp.BaseRequest
 	StartTime  *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -430,7 +420,6 @@ func (r *GetFlowHitRateDataResponse) ToJsonString() string {
 func (r *GetFlowHitRateDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetDomainRequestPeriodRatioDataRequest struct {
 	*ksyunhttp.BaseRequest
@@ -494,7 +483,6 @@ func (r *GetDomainRequestPeriodRatioDataResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetUvDataRequest struct {
 	*ksyunhttp.BaseRequest
 	StartTime  *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -538,7 +526,6 @@ func (r *GetUvDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetTopIpDataRequest struct {
 	*ksyunhttp.BaseRequest
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -579,7 +566,6 @@ func (r *GetTopIpDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetSrcDomainHttpCodeDetailedDataRequest struct {
 	*ksyunhttp.BaseRequest
 	StartTime  *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -609,7 +595,6 @@ func (r *GetSrcDomainHttpCodeDetailedDataResponse) ToJsonString() string {
 func (r *GetSrcDomainHttpCodeDetailedDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetSrcDomainHttpCodeDataRequest struct {
 	*ksyunhttp.BaseRequest
@@ -656,7 +641,6 @@ func (r *GetSrcDomainHttpCodeDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetDomainHttpCodeDetailedDataRequest struct {
 	*ksyunhttp.BaseRequest
 	StartTime  *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -691,7 +675,6 @@ func (r *GetDomainHttpCodeDetailedDataResponse) ToJsonString() string {
 func (r *GetDomainHttpCodeDetailedDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetDomainHttpCodeDataRequest struct {
 	*ksyunhttp.BaseRequest
@@ -746,7 +729,6 @@ func (r *GetDomainHttpCodeDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetEntryRateDataRequest struct {
 	*ksyunhttp.BaseRequest
 	Domains   *string `json:"Domains,omitempty" name:"Domains"`
@@ -775,4 +757,3 @@ func (r *GetEntryRateDataResponse) ToJsonString() string {
 func (r *GetEntryRateDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

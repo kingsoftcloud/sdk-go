@@ -2,10 +2,8 @@ package v20250503
 
 import (
 	"encoding/json"
-
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type GetDomainLogsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -30,7 +28,6 @@ func (r *GetDomainLogsResponse) ToJsonString() string {
 func (r *GetDomainLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetClientRequestDataRequest struct {
 	*ksyunhttp.BaseRequest
@@ -89,6 +86,13 @@ func (r *GetClientRequestDataResponse) FromJsonString(s string) error {
 
 type GetCdnDomainsRequest struct {
 	*ksyunhttp.BaseRequest
+	PageSize     *int    `json:"PageSize,omitempty" name:"PageSize"`
+	PageNumber   *int    `json:"PageNumber,omitempty" name:"PageNumber"`
+	DomainName   *string `json:"DomainName,omitempty" name:"DomainName"`
+	ProjectId    *int    `json:"ProjectId,omitempty" name:"ProjectId"`
+	DomainStatus *string `json:"DomainStatus,omitempty" name:"DomainStatus"`
+	CdnType      *string `json:"CdnType,omitempty" name:"CdnType"`
+	FuzzyMatch   *string `json:"FuzzyMatch,omitempty" name:"FuzzyMatch"`
 }
 
 func (r *GetCdnDomainsRequest) ToJsonString() string {
@@ -98,7 +102,24 @@ func (r *GetCdnDomainsRequest) ToJsonString() string {
 
 type GetCdnDomainsResponse struct {
 	*ksyunhttp.BaseResponse
-	GetCdnDomainsResponse *string `json:"GetCdnDomainsResponse" name:"GetCdnDomainsResponse"`
+	PageNumber *int `json:"PageNumber" name:"PageNumber"`
+	PageSize   *int `json:"PageSize" name:"PageSize"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+	Domains    []struct {
+		DomainName      *string `json:"DomainName" name:"DomainName"`
+		DomainId        *string `json:"DomainId" name:"DomainId"`
+		Cname           *string `json:"Cname" name:"Cname"`
+		CdnType         *string `json:"CdnType" name:"CdnType"`
+		CdnSubType      *string `json:"CdnSubType" name:"CdnSubType"`
+		IcpRegistration *string `json:"IcpRegistration" name:"IcpRegistration"`
+		DomainStatus    *string `json:"DomainStatus" name:"DomainStatus"`
+		CreatedTime     *string `json:"CreatedTime" name:"CreatedTime"`
+		ModifiedTime    *string `json:"ModifiedTime" name:"ModifiedTime"`
+		Description     *string `json:"Description" name:"Description"`
+		Projectld       *int    `json:"Projectld" name:"Projectld"`
+		ProjectName     *string `json:"ProjectName" name:"ProjectName"`
+		Region          *string `json:"Region" name:"Region"`
+	} `json:"Domains"`
 }
 
 func (r *GetCdnDomainsResponse) ToJsonString() string {
@@ -109,4 +130,3 @@ func (r *GetCdnDomainsResponse) ToJsonString() string {
 func (r *GetCdnDomainsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

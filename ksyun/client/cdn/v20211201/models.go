@@ -2,10 +2,8 @@ package v20211201
 
 import (
 	"encoding/json"
-
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type GetRefreshOrPreloadTaskRequest struct {
 	*ksyunhttp.BaseRequest
@@ -31,4 +29,3 @@ func (r *GetRefreshOrPreloadTaskResponse) ToJsonString() string {
 func (r *GetRefreshOrPreloadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
