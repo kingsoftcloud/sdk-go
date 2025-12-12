@@ -1,6 +1,8 @@
 package v20200630
+
 import (
 	"encoding/json"
+
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -135,12 +137,12 @@ type GetDomainRankingListDataResponse struct {
 	SortBy    *string `json:"SortBy" name:"SortBy"`
 	Datas     []struct {
 		Domain *string `json:"Domain" name:"Domain"`
-		Rank   *int    `json:"Rank" name:"Rank"`
-		Flow   *int    `json:"Flow" name:"Flow"`
+		Rank *int `json:"Rank" name:"Rank"`
+		Flow *int `json:"Flow" name:"Flow"`
 		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`
-		Bw     *int    `json:"Bw" name:"Bw"`
+		Bw   *int `json:"Bw" name:"Bw"`
 		PeakTime *string `json:"PeakTime" name:"PeakTime"`
-		Pv     *int    `json:"Pv" name:"Pv"`
+		Pv   *int `json:"Pv" name:"Pv"`
 		PvProportion *float64 `json:"PvProportion" name:"PvProportion"`
 	} `json:"Datas"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -228,7 +230,7 @@ type GetTopReferDataResponse struct {
 	Datas     []struct {
 		Refer *string `json:"Refer" name:"Refer"`
 		Rank *int `json:"Rank" name:"Rank"`
-		Pv   *int `json:"Pv" name:"Pv"`
+		Pv *int `json:"Pv" name:"Pv"`
 		PvProportion *float64 `json:"PvProportion" name:"PvProportion"`
 		Flow *int `json:"Flow" name:"Flow"`
 		FlowProportion *float64 `json:"FlowProportion" name:"FlowProportion"`

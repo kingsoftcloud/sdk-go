@@ -2,8 +2,10 @@ package v20250503
 
 import (
 	"encoding/json"
+
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 
 type GetDomainLogsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -28,6 +30,7 @@ func (r *GetDomainLogsResponse) ToJsonString() string {
 func (r *GetDomainLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
 
 type GetClientRequestDataRequest struct {
 	*ksyunhttp.BaseRequest
@@ -83,3 +86,27 @@ func (r *GetClientRequestDataResponse) ToJsonString() string {
 func (r *GetClientRequestDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type GetCdnDomainsRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *GetCdnDomainsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetCdnDomainsResponse struct {
+	*ksyunhttp.BaseResponse
+	GetCdnDomainsResponse *string `json:"GetCdnDomainsResponse" name:"GetCdnDomainsResponse"`
+}
+
+func (r *GetCdnDomainsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetCdnDomainsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+

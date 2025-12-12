@@ -1,5 +1,4 @@
 package v20250503
-
 import (
 	"context"
 	"fmt"
@@ -152,3 +151,70 @@ func (c *Client) GetClientRequestDataWithContextV2(ctx context.Context, request 
 	}
 	return statusCode, msg, nil
 }
+func NewGetCdnDomainsRequest() (request *GetCdnDomainsRequest) {
+	request = &GetCdnDomainsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "GetCdnDomains")
+	return
+}
+
+func NewGetCdnDomainsResponse() (response *GetCdnDomainsResponse) {
+	response = &GetCdnDomainsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetCdnDomains(request *GetCdnDomainsRequest) string {
+	return c.GetCdnDomainsWithContext(context.Background(), request)
+}
+
+func (c *Client) GetCdnDomainsSend(request *GetCdnDomainsRequest) (*GetCdnDomainsResponse, error) {
+	statusCode, msg, err := c.GetCdnDomainsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	var respStruct GetCdnDomainsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetCdnDomainsWithContext(ctx context.Context, request *GetCdnDomainsRequest) string {
+	if request == nil {
+		request = NewGetCdnDomainsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetCdnDomainsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetCdnDomainsWithContextV2(ctx context.Context, request *GetCdnDomainsRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetCdnDomainsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetCdnDomainsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+
+
