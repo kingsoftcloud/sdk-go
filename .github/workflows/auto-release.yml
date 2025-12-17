@@ -68,7 +68,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.get_version.outputs.tag }}
-          name: Release ${{ steps.get_version.outputs.tag }}
+          name: ${{ steps.get_version.outputs.tag }}
           body_path: changelog.txt
           draft: false
           prerelease: false
