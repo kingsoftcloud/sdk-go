@@ -21,9 +21,9 @@ jobs:
         id: get_version
         run: |
           if [ -f "ksyun/common/version.go" ]; then
-            VERSION=$(grep -oP 'Version\s*=\s*"\\K[^"]+' ksyun/common/version.go || echo "")
+            VERSION=$(grep -oP 'SDKVersion\s*=\s*"\K[^"]+' ksyun/common/version.go || echo "")
           fi
-          
+
           if [ -z "$VERSION" ]; then
             echo "Error: Could not extract version"
             exit 1
