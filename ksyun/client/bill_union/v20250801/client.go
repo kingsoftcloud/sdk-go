@@ -1,4 +1,5 @@
 package v20250801
+
 import (
 	"context"
 	"fmt"
@@ -151,5 +152,3 @@ func (c *Client) QueryProductTypesWithContextV2(ctx context.Context, request *Qu
 	}
 	return statusCode, msg, nil
 }
-
-

@@ -1,4 +1,5 @@
 package v20180627
+
 import (
 	"context"
 	"fmt"
@@ -866,5 +867,3 @@ func (c *Client) DescribeAvailabilityZonesWithContextV2(ctx context.Context, req
 	}
 	return statusCode, msg, nil
 }
-
-

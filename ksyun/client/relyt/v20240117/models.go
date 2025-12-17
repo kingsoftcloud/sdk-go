@@ -1,9 +1,9 @@
 package v20240117
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type GetDwsuMetricRequest struct {
 	*ksyunhttp.BaseRequest
@@ -21,9 +21,9 @@ type GetDwsuMetricResponse struct {
 	Code    *int    `json:"Code" name:"Code"`
 	Message *string `json:"Message" name:"Message"`
 	Data    []struct {
-		Name *string `json:"Name" name:"Name"`
+		Name       *string `json:"Name" name:"Name"`
 		ResourceId *string `json:"ResourceId" name:"ResourceId"`
-		Value *string `json:"Value" name:"Value"`
+		Value      *string `json:"Value" name:"Value"`
 	} `json:"Data"`
 }
 
@@ -35,4 +35,3 @@ func (r *GetDwsuMetricResponse) ToJsonString() string {
 func (r *GetDwsuMetricResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

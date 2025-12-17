@@ -1,13 +1,14 @@
 package v20240930
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 type UpdatePerformanceOnePosixAclFileSystemList struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 	VolumePath   *string `json:"VolumePath,omitempty" name:"VolumePath"`
 }
-
 
 type UpdatePerformanceOnePosixAclRequest struct {
 	*ksyunhttp.BaseRequest
@@ -36,7 +37,6 @@ func (r *UpdatePerformanceOnePosixAclResponse) ToJsonString() string {
 func (r *UpdatePerformanceOnePosixAclResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribePerformanceOnePosixAclListRequest struct {
 	*ksyunhttp.BaseRequest
@@ -81,7 +81,6 @@ func (r *DescribePerformanceOnePosixAclListResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ManageDataFlowTaskRequest struct {
 	*ksyunhttp.BaseRequest
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
@@ -104,7 +103,6 @@ func (r *ManageDataFlowTaskResponse) ToJsonString() string {
 func (r *ManageDataFlowTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateDataFlowStrategyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -129,7 +127,6 @@ func (r *CreateDataFlowStrategyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ModifyDataFlowTaskRequest struct {
 	*ksyunhttp.BaseRequest
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
@@ -152,7 +149,6 @@ func (r *ModifyDataFlowTaskResponse) ToJsonString() string {
 func (r *ModifyDataFlowTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeDataFlowTaskListRequest struct {
 	*ksyunhttp.BaseRequest
@@ -177,7 +173,6 @@ func (r *DescribeDataFlowTaskListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ActivateDataFlowTaskRequest struct {
 	*ksyunhttp.BaseRequest
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
@@ -200,7 +195,6 @@ func (r *ActivateDataFlowTaskResponse) ToJsonString() string {
 func (r *ActivateDataFlowTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DeleteDataFlowStrategyRequest struct {
 	*ksyunhttp.BaseRequest
@@ -225,7 +219,6 @@ func (r *DeleteDataFlowStrategyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeDataFlowStrategyListRequest struct {
 	*ksyunhttp.BaseRequest
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
@@ -248,4 +241,3 @@ func (r *DescribeDataFlowStrategyListResponse) ToJsonString() string {
 func (r *DescribeDataFlowStrategyListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

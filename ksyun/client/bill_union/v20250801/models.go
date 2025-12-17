@@ -1,9 +1,9 @@
 package v20250801
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type QueryItemBillsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -37,7 +37,6 @@ func (r *QueryItemBillsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type QueryProductTypesRequest struct {
 	*ksyunhttp.BaseRequest
 	ProductGroupCode *string `json:"ProductGroupCode,omitempty" name:"ProductGroupCode"`
@@ -52,12 +51,12 @@ type QueryProductTypesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      []struct {
-		ProductGroupId *int `json:"ProductGroupId" name:"ProductGroupId"`
+		ProductGroupId   *int    `json:"ProductGroupId" name:"ProductGroupId"`
 		ProductGroupName *string `json:"ProductGroupName" name:"ProductGroupName"`
-		ProductTypeId *int `json:"ProductTypeId" name:"ProductTypeId"`
-		ProductTypeName *string `json:"ProductTypeName" name:"ProductTypeName"`
+		ProductTypeId    *int    `json:"ProductTypeId" name:"ProductTypeId"`
+		ProductTypeName  *string `json:"ProductTypeName" name:"ProductTypeName"`
 		ProductGroupCode *string `json:"ProductGroupCode" name:"ProductGroupCode"`
-		ProductTypeCode *string `json:"ProductTypeCode" name:"ProductTypeCode"`
+		ProductTypeCode  *string `json:"ProductTypeCode" name:"ProductTypeCode"`
 	} `json:"Data"`
 }
 
@@ -69,4 +68,3 @@ func (r *QueryProductTypesResponse) ToJsonString() string {
 func (r *QueryProductTypesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

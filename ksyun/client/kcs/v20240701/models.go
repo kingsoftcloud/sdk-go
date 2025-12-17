@@ -1,9 +1,9 @@
 package v20240701
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type DescribeCacheByRoleRequest struct {
 	*ksyunhttp.BaseRequest
@@ -64,4 +64,3 @@ func (r *DescribeCacheByRoleResponse) ToJsonString() string {
 func (r *DescribeCacheByRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

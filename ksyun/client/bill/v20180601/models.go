@@ -1,9 +1,9 @@
 package v20180601
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type GetMonthBillRequest struct {
 	*ksyunhttp.BaseRequest
@@ -28,7 +28,6 @@ func (r *GetMonthBillResponse) ToJsonString() string {
 func (r *GetMonthBillResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type GetPostpayDetailBillRequest struct {
 	*ksyunhttp.BaseRequest
@@ -56,7 +55,6 @@ func (r *GetPostpayDetailBillResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetProductCodeRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -78,4 +76,3 @@ func (r *GetProductCodeResponse) ToJsonString() string {
 func (r *GetProductCodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

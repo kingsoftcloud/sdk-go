@@ -1,9 +1,9 @@
 package v20180627
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type CreateCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
@@ -30,10 +30,10 @@ type CreateCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		CacheId *string `json:"CacheId" name:"CacheId"`
-		Name *string `json:"Name" name:"Name"`
-		Size *string `json:"Size" name:"Size"`
-		Port *string `json:"Port" name:"Port"`
+		CacheId    *string `json:"CacheId" name:"CacheId"`
+		Name       *string `json:"Name" name:"Name"`
+		Size       *string `json:"Size" name:"Size"`
+		Port       *string `json:"Port" name:"Port"`
 		SubOrderId *string `json:"SubOrderId" name:"SubOrderId"`
 	} `json:"Data"`
 }
@@ -46,7 +46,6 @@ func (r *CreateCacheClusterResponse) ToJsonString() string {
 func (r *CreateCacheClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DeleteCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
@@ -71,7 +70,6 @@ func (r *DeleteCacheClusterResponse) ToJsonString() string {
 func (r *DeleteCacheClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ResizeCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
@@ -99,7 +97,6 @@ func (r *ResizeCacheClusterResponse) ToJsonString() string {
 func (r *ResizeCacheClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeCacheClustersRequest struct {
 	*ksyunhttp.BaseRequest
@@ -144,8 +141,8 @@ type DescribeCacheClustersResponse struct {
 			IamProjectName  *string `json:"iamProjectName" name:"iamProjectName"`
 		} `json:"List" name:"List"`
 		Offset *int `json:"Offset" name:"Offset"`
-		Limit *int `json:"Limit" name:"Limit"`
-		Total *int `json:"Total" name:"Total"`
+		Limit  *int `json:"Limit" name:"Limit"`
+		Total  *int `json:"Total" name:"Total"`
 	} `json:"Data"`
 }
 
@@ -157,7 +154,6 @@ func (r *DescribeCacheClustersResponse) ToJsonString() string {
 func (r *DescribeCacheClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
@@ -174,35 +170,35 @@ type DescribeCacheClusterResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		CacheId        *string `json:"CacheId" name:"CacheId"`
-		Az             *string `json:"Az" name:"Az"`
-		Name           *string `json:"Name" name:"Name"`
-		SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
-		Engine         *string `json:"Engine" name:"Engine"`
-		Mode           *int    `json:"Mode" name:"Mode"`
-		Size           *int    `json:"Size" name:"Size"`
-		Port           *int    `json:"Port" name:"Port"`
-		Vip            *string `json:"Vip" name:"Vip"`
-		SlaveVip       *string `json:"SlaveVip" name:"SlaveVip"`
-		SlaveNum       *int    `json:"SlaveNum" name:"SlaveNum"`
-		Status         *int    `json:"Status" name:"Status"`
-		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
-		NetType        *int    `json:"NetType" name:"NetType"`
-		VpcId          *string `json:"VpcId" name:"VpcId"`
-		VnetId         *string `json:"VnetId" name:"VnetId"`
-		TimingSwitch   *string `json:"TimingSwitch" name:"TimingSwitch"`
-		Timezone       *string `json:"Timezone" name:"Timezone"`
-		UsedMemory     *int    `json:"UsedMemory" name:"UsedMemory"`
-		SubOrderId     *string `json:"SubOrderId" name:"SubOrderId"`
-		ProductId      *string `json:"ProductId" name:"ProductId"`
-		BillType       *int    `json:"BillType" name:"BillType"`
-		OrderType      *int    `json:"OrderType" name:"OrderType"`
-		OrderUse       *int    `json:"OrderUse" name:"OrderUse"`
+		CacheId          *string `json:"CacheId" name:"CacheId"`
+		Az               *string `json:"Az" name:"Az"`
+		Name             *string `json:"Name" name:"Name"`
+		SecurityGroupId  *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+		Engine           *string `json:"Engine" name:"Engine"`
+		Mode             *int    `json:"Mode" name:"Mode"`
+		Size             *int    `json:"Size" name:"Size"`
+		Port             *int    `json:"Port" name:"Port"`
+		Vip              *string `json:"Vip" name:"Vip"`
+		SlaveVip         *string `json:"SlaveVip" name:"SlaveVip"`
+		SlaveNum         *int    `json:"SlaveNum" name:"SlaveNum"`
+		Status           *int    `json:"Status" name:"Status"`
+		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
+		NetType          *int    `json:"NetType" name:"NetType"`
+		VpcId            *string `json:"VpcId" name:"VpcId"`
+		VnetId           *string `json:"VnetId" name:"VnetId"`
+		TimingSwitch     *string `json:"TimingSwitch" name:"TimingSwitch"`
+		Timezone         *string `json:"Timezone" name:"Timezone"`
+		UsedMemory       *int    `json:"UsedMemory" name:"UsedMemory"`
+		SubOrderId       *string `json:"SubOrderId" name:"SubOrderId"`
+		ProductId        *string `json:"ProductId" name:"ProductId"`
+		BillType         *int    `json:"BillType" name:"BillType"`
+		OrderType        *int    `json:"OrderType" name:"OrderType"`
+		OrderUse         *int    `json:"OrderUse" name:"OrderUse"`
 		ServiceBeginTime *string `json:"ServiceBeginTime" name:"ServiceBeginTime"`
-		ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		IamProjectId   *string `json:"IamProjectId" name:"IamProjectId"`
-		IamProjectName *string `json:"IamProjectName" name:"IamProjectName"`
-		Protocol       *string `json:"Protocol" name:"Protocol"`
+		ServiceEndTime   *string `json:"ServiceEndTime" name:"ServiceEndTime"`
+		IamProjectId     *string `json:"IamProjectId" name:"IamProjectId"`
+		IamProjectName   *string `json:"IamProjectName" name:"IamProjectName"`
+		Protocol         *string `json:"Protocol" name:"Protocol"`
 	} `json:"Data"`
 }
 
@@ -214,7 +210,6 @@ func (r *DescribeCacheClusterResponse) ToJsonString() string {
 func (r *DescribeCacheClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type FlushCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
@@ -239,7 +234,6 @@ func (r *FlushCacheClusterResponse) ToJsonString() string {
 func (r *FlushCacheClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type RenameCacheClusterRequest struct {
 	*ksyunhttp.BaseRequest
@@ -268,7 +262,6 @@ func (r *RenameCacheClusterResponse) ToJsonString() string {
 func (r *RenameCacheClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type UpdatePasswordRequest struct {
 	*ksyunhttp.BaseRequest
@@ -299,7 +292,6 @@ func (r *UpdatePasswordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeCacheSecurityRulesRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -325,7 +317,6 @@ func (r *DescribeCacheSecurityRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteCacheSecurityRuleRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -349,7 +340,6 @@ func (r *DeleteCacheSecurityRuleResponse) ToJsonString() string {
 func (r *DeleteCacheSecurityRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type SetCacheSecurityRulesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -375,7 +365,6 @@ func (r *SetCacheSecurityRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeRegionsRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -389,7 +378,7 @@ type DescribeRegionsResponse struct {
 	*ksyunhttp.BaseResponse
 	RegionSet []struct {
 		RegionName *string `json:"RegionName" name:"RegionName"`
-		Region *string `json:"Region" name:"Region"`
+		Region     *string `json:"Region" name:"Region"`
 	} `json:"RegionSet"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -403,7 +392,6 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeAvailabilityZonesRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -416,7 +404,7 @@ func (r *DescribeAvailabilityZonesRequest) ToJsonString() string {
 type DescribeAvailabilityZonesResponse struct {
 	*ksyunhttp.BaseResponse
 	AvailabilityZoneSet []struct {
-		Region *string `json:"Region" name:"Region"`
+		Region           *string `json:"Region" name:"Region"`
 		AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 	} `json:"AvailabilityZoneSet"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
@@ -430,4 +418,3 @@ func (r *DescribeAvailabilityZonesResponse) ToJsonString() string {
 func (r *DescribeAvailabilityZonesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

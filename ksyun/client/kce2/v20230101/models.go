@@ -1,8 +1,10 @@
 package v20230101
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 type CreateClusterNetworkApiServer struct {
 	EipId                 *string `json:"EipId,omitempty" name:"EipId"`
 	PublicApiServerEnable *bool   `json:"PublicApiServerEnable,omitempty" name:"PublicApiServerEnable"`
@@ -275,7 +277,6 @@ type AddEpcNodesNodeInstanceSet struct {
 	AdvancedSetting *AddEpcNodesNodeInstanceSetAdvancedSetting `json:"AdvancedSetting,omitempty" name:"AdvancedSetting"`
 }
 
-
 type CreateClusterRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterName       *string                         `json:"ClusterName,omitempty" name:"ClusterName"`
@@ -310,7 +311,6 @@ func (r *CreateClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeClustersRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
@@ -337,7 +337,7 @@ type DescribeClustersResponse struct {
 			KubernetesVersion *string `json:"KubernetesVersion" name:"KubernetesVersion"`
 			Network           struct {
 				NetworkPluginType *string `json:"NetworkPluginType" name:"NetworkPluginType"`
-				ApiServer struct {
+				ApiServer         struct {
 					PublicApiServerEnable *bool   `json:"PublicApiServerEnable" name:"PublicApiServerEnable"`
 					EipId                 *string `json:"EipId" name:"EipId"`
 					ReserveSubnetId       *string `json:"ReserveSubnetId" name:"ReserveSubnetId"`
@@ -373,7 +373,6 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteClusterRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId      *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -401,7 +400,6 @@ func (r *DeleteClusterResponse) ToJsonString() string {
 func (r *DeleteClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ModifyClusterRequest struct {
 	*ksyunhttp.BaseRequest
@@ -434,7 +432,6 @@ func (r *ModifyClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeNodesRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId   *string   `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -454,7 +451,7 @@ type DescribeNodesResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
 		MaxResults *int `json:"MaxResults" name:"MaxResults"`
-		Marker *int `json:"Marker" name:"Marker"`
+		Marker     *int `json:"Marker" name:"Marker"`
 		TotalCount *int `json:"TotalCount" name:"TotalCount"`
 	} `json:"Data"`
 	InstanceSet struct {
@@ -469,7 +466,6 @@ func (r *DescribeNodesResponse) ToJsonString() string {
 func (r *DescribeNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DeleteNodeRequest struct {
 	*ksyunhttp.BaseRequest
@@ -505,7 +501,6 @@ func (r *DeleteNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ModifyNodeRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusteId   *string                 `json:"ClusteId,omitempty" name:"ClusteId"`
@@ -537,7 +532,6 @@ func (r *ModifyNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeComponentListRequest struct {
 	*ksyunhttp.BaseRequest
 	K8sVersion *string `json:"K8sVersion,omitempty" name:"K8sVersion"`
@@ -561,7 +555,6 @@ func (r *DescribeComponentListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeNodeComponentsRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId   *string   `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -583,10 +576,10 @@ type DescribeNodeComponentsResponse struct {
 	Data      struct {
 		ClusterId      *string `json:"ClusterId" name:"ClusterId"`
 		NodeComponents []struct {
-			NodeId *string `json:"NodeId" name:"NodeId"`
+			NodeId          *string `json:"NodeId" name:"NodeId"`
 			ComponentStatus []struct {
-				Type *string `json:"Type" name:"Type"`
-				CurVersion *string `json:"CurVersion" name:"CurVersion"`
+				Type        *string `json:"Type" name:"Type"`
+				CurVersion  *string `json:"CurVersion" name:"CurVersion"`
 				SpecVersion *string `json:"SpecVersion" name:"SpecVersion"`
 			} `json:"ComponentStatus"`
 		} `json:"NodeComponents" name:"NodeComponents"`
@@ -601,7 +594,6 @@ func (r *DescribeNodeComponentsResponse) ToJsonString() string {
 func (r *DescribeNodeComponentsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeNetworkRequest struct {
 	*ksyunhttp.BaseRequest
@@ -619,24 +611,24 @@ type DescribeNetworkResponse struct {
 	ClusterId *string `json:"ClusterId" name:"ClusterId"`
 	NetworkId *string `json:"NetworkId" name:"NetworkId"`
 	PublicSLB struct {
-		Phase *string `json:"Phase" name:"Phase"`
+		Phase  *string `json:"Phase" name:"Phase"`
 		Reason *string `json:"Reason" name:"Reason"`
 	} `json:"PublicSLB"`
 	PrivateSLB struct {
-		SLBId *string `json:"SLBId" name:"SLBId"`
-		SLBIp *string `json:"SLBIp" name:"SLBIp"`
-		Phase *string `json:"Phase" name:"Phase"`
+		SLBId  *string `json:"SLBId" name:"SLBId"`
+		SLBIp  *string `json:"SLBIp" name:"SLBIp"`
+		Phase  *string `json:"Phase" name:"Phase"`
 		Reason *string `json:"Reason" name:"Reason"`
 	} `json:"PrivateSLB"`
 	PrivateLink struct {
-		LinkIp *string `json:"LinkIp" name:"LinkIp"`
+		LinkIp   *string `json:"LinkIp" name:"LinkIp"`
 		LinkPort *string `json:"LinkPort" name:"LinkPort"`
-		Phase *string `json:"Phase" name:"Phase"`
-		Reason *string `json:"Reason" name:"Reason"`
+		Phase    *string `json:"Phase" name:"Phase"`
+		Reason   *string `json:"Reason" name:"Reason"`
 	} `json:"PrivateLink"`
 	EIP struct {
-		EIPId *string `json:"EIPId" name:"EIPId"`
-		Phase *string `json:"Phase" name:"Phase"`
+		EIPId  *string `json:"EIPId" name:"EIPId"`
+		Phase  *string `json:"Phase" name:"Phase"`
 		Reason *string `json:"Reason" name:"Reason"`
 	} `json:"EIP"`
 	PublicAccess *bool   `json:"PublicAccess" name:"PublicAccess"`
@@ -652,7 +644,6 @@ func (r *DescribeNetworkResponse) ToJsonString() string {
 func (r *DescribeNetworkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeComponentParamsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -674,9 +665,9 @@ type DescribeComponentParamsResponse struct {
 		ClusterId *string `json:"ClusterId" name:"ClusterId"`
 	} `json:"Data"`
 	Components []struct {
-		Type *string `json:"Type" name:"Type"`
+		Type    *string `json:"Type" name:"Type"`
 		Version *string `json:"Version" name:"Version"`
-		Args *string `json:"Args" name:"Args"`
+		Args    *string `json:"Args" name:"Args"`
 	} `json:"Components"`
 }
 
@@ -688,7 +679,6 @@ func (r *DescribeComponentParamsResponse) ToJsonString() string {
 func (r *DescribeComponentParamsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeEventLogsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -719,7 +709,6 @@ func (r *DescribeEventLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeClusterVersionListRequest struct {
 	*ksyunhttp.BaseRequest
 	K8sVersion *string `json:"K8sVersion,omitempty" name:"K8sVersion"`
@@ -745,7 +734,6 @@ func (r *DescribeClusterVersionListResponse) ToJsonString() string {
 func (r *DescribeClusterVersionListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type AddKecNodesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -778,7 +766,6 @@ func (r *AddKecNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type AddEpcNodesRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId       *string                       `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -809,4 +796,3 @@ func (r *AddEpcNodesResponse) ToJsonString() string {
 func (r *AddEpcNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

@@ -1,4 +1,5 @@
 package v20160304
+
 import (
 	"context"
 	"fmt"
@@ -1711,5 +1712,3 @@ func (c *Client) CenCidrDeleteWithContextV2(ctx context.Context, request *CenCid
 	}
 	return statusCode, msg, nil
 }
-
-

@@ -1,4 +1,5 @@
 package v20181114
+
 import (
 	"context"
 	"fmt"
@@ -86,5 +87,3 @@ func (c *Client) GetMetricStatisticsBatchWithContextV2(ctx context.Context, requ
 	}
 	return statusCode, msg, nil
 }
-
-

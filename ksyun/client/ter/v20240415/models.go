@@ -1,9 +1,9 @@
 package v20240415
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
-
 
 type DescribeStackOutputsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -19,11 +19,11 @@ type DescribeStackOutputsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Outputs   []struct {
-		Name  *string `json:"Name" name:"Name"`
-		Type  *string `json:"Type" name:"Type"`
+		Name        *string `json:"Name" name:"Name"`
+		Type        *string `json:"Type" name:"Type"`
 		Description *string `json:"Description" name:"Description"`
-		Value *string `json:"Value" name:"Value"`
-		Params *string `json:"Params" name:"Params"`
+		Value       *string `json:"Value" name:"Value"`
+		Params      *string `json:"Params" name:"Params"`
 	} `json:"Outputs"`
 }
 
@@ -35,7 +35,6 @@ func (r *DescribeStackOutputsResponse) ToJsonString() string {
 func (r *DescribeStackOutputsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeStackEventsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -53,12 +52,12 @@ type DescribeStackEventsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Events    []struct {
-		EventType  *string `json:"EventType" name:"EventType"`
-		ResourceId *string `json:"ResourceId" name:"ResourceId"`
+		EventType         *string `json:"EventType" name:"EventType"`
+		ResourceId        *string `json:"ResourceId" name:"ResourceId"`
 		ResourceLogicName *string `json:"ResourceLogicName" name:"ResourceLogicName"`
-		ResourceType *string `json:"ResourceType" name:"ResourceType"`
-		EventTime  *string `json:"EventTime" name:"EventTime"`
-		EventDescription *string `json:"EventDescription" name:"EventDescription"`
+		ResourceType      *string `json:"ResourceType" name:"ResourceType"`
+		EventTime         *string `json:"EventTime" name:"EventTime"`
+		EventDescription  *string `json:"EventDescription" name:"EventDescription"`
 	} `json:"Events"`
 }
 
@@ -70,7 +69,6 @@ func (r *DescribeStackEventsResponse) ToJsonString() string {
 func (r *DescribeStackEventsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DeleteTemplateRequest struct {
 	*ksyunhttp.BaseRequest
@@ -97,7 +95,6 @@ func (r *DeleteTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeTemplateVersionsRequest struct {
 	*ksyunhttp.BaseRequest
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
@@ -111,10 +108,10 @@ func (r *DescribeTemplateVersionsRequest) ToJsonString() string {
 type DescribeTemplateVersionsResponse struct {
 	*ksyunhttp.BaseResponse
 	Versions []struct {
-		VersionNumber *string `json:"VersionNumber" name:"VersionNumber"`
+		VersionNumber      *string `json:"VersionNumber" name:"VersionNumber"`
 		VersionDescription *string `json:"VersionDescription" name:"VersionDescription"`
-		VersionState *string `json:"VersionState" name:"VersionState"`
-		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		VersionState       *string `json:"VersionState" name:"VersionState"`
+		CreateTime         *string `json:"CreateTime" name:"CreateTime"`
 	} `json:"Versions"`
 	RequestId    *string `json:"RequestId" name:"RequestId"`
 	TemplateId   *string `json:"TemplateId" name:"TemplateId"`
@@ -129,7 +126,6 @@ func (r *DescribeTemplateVersionsResponse) ToJsonString() string {
 func (r *DescribeTemplateVersionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type DescribeTemplatesRequest struct {
 	*ksyunhttp.BaseRequest
@@ -149,15 +145,15 @@ type DescribeTemplatesResponse struct {
 	*ksyunhttp.BaseResponse
 	TemplateCount *int `json:"TemplateCount" name:"TemplateCount"`
 	Templates     []struct {
-		TemplateId   *string `json:"TemplateId" name:"TemplateId"`
-		TemplateType *string `json:"TemplateType" name:"TemplateType"`
-		TemplateName *string `json:"TemplateName" name:"TemplateName"`
+		TemplateId          *string `json:"TemplateId" name:"TemplateId"`
+		TemplateType        *string `json:"TemplateType" name:"TemplateType"`
+		TemplateName        *string `json:"TemplateName" name:"TemplateName"`
 		TemplateDescription *string `json:"TemplateDescription" name:"TemplateDescription"`
-		LatestVersion *string `json:"LatestVersion" name:"LatestVersion"`
-		VersionCount *int    `json:"VersionCount" name:"VersionCount"`
-		UsingCount   *int    `json:"UsingCount" name:"UsingCount"`
-		CreatTime    *string `json:"CreatTime" name:"CreatTime"`
-		UpdateTime   *string `json:"UpdateTime" name:"UpdateTime"`
+		LatestVersion       *string `json:"LatestVersion" name:"LatestVersion"`
+		VersionCount        *int    `json:"VersionCount" name:"VersionCount"`
+		UsingCount          *int    `json:"UsingCount" name:"UsingCount"`
+		CreatTime           *string `json:"CreatTime" name:"CreatTime"`
+		UpdateTime          *string `json:"UpdateTime" name:"UpdateTime"`
 	} `json:"Templates"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 }
@@ -170,4 +166,3 @@ func (r *DescribeTemplatesResponse) ToJsonString() string {
 func (r *DescribeTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

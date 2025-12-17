@@ -1,4 +1,5 @@
 package v20240814
+
 import (
 	"context"
 	"fmt"
@@ -1256,5 +1257,3 @@ func (c *Client) QueryMetricsWithContextV2(ctx context.Context, request *QueryMe
 	}
 	return statusCode, msg, nil
 }
-
-

@@ -1,8 +1,10 @@
 package v20200731
+
 import (
 	"encoding/json"
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
+
 type UpdateLogPoolConfigColumns struct {
 	Id      *string `json:"Id,omitempty" name:"Id"`
 	Name    *string `json:"Name,omitempty" name:"Name"`
@@ -24,7 +26,6 @@ type CreateDownloadTaskConfig struct {
 	Order  *string `json:"Order,omitempty" name:"Order"`
 	Count  *int    `json:"Count,omitempty" name:"Count"`
 }
-
 
 type CreateProjectRequest struct {
 	*ksyunhttp.BaseRequest
@@ -52,7 +53,6 @@ func (r *CreateProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeProjectRequest struct {
 	*ksyunhttp.BaseRequest
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
@@ -73,8 +73,8 @@ type DescribeProjectResponse struct {
 	Region         *string `json:"Region" name:"Region"`
 	Status         *string `json:"Status" name:"Status"`
 	Tags           []struct {
-		Id *int `json:"Id" name:"Id"`
-		Key *string `json:"Key" name:"Key"`
+		Id    *int    `json:"Id" name:"Id"`
+		Key   *string `json:"Key" name:"Key"`
 		Value *string `json:"Value" name:"Value"`
 	} `json:"Tags"`
 }
@@ -87,7 +87,6 @@ func (r *DescribeProjectResponse) ToJsonString() string {
 func (r *DescribeProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type UpdateProjectRequest struct {
 	*ksyunhttp.BaseRequest
@@ -115,7 +114,6 @@ func (r *UpdateProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteProjectRequest struct {
 	*ksyunhttp.BaseRequest
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
@@ -140,7 +138,6 @@ func (r *DeleteProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ListProjectsRequest struct {
 	*ksyunhttp.BaseRequest
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
@@ -159,15 +156,15 @@ type ListProjectsResponse struct {
 	Total    *int `json:"Total" name:"Total"`
 	Count    *int `json:"Count" name:"Count"`
 	Projects []struct {
-		ProjectName  *string `json:"ProjectName" name:"ProjectName"`
+		ProjectName    *string `json:"ProjectName" name:"ProjectName"`
 		IamProjectName *string `json:"IamProjectName" name:"IamProjectName"`
-		IamProjectId *int    `json:"IamProjectId" name:"IamProjectId"`
-		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
-		UpdateTime   *string `json:"UpdateTime" name:"UpdateTime"`
-		Region       *string `json:"Region" name:"Region"`
-		Status       *string `json:"Status" name:"Status"`
-		LogPoolNum   *int    `json:"LogPoolNum" name:"LogPoolNum"`
-		Tags         []struct {
+		IamProjectId   *int    `json:"IamProjectId" name:"IamProjectId"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime     *string `json:"UpdateTime" name:"UpdateTime"`
+		Region         *string `json:"Region" name:"Region"`
+		Status         *string `json:"Status" name:"Status"`
+		LogPoolNum     *int    `json:"LogPoolNum" name:"LogPoolNum"`
+		Tags           []struct {
 			ID    *int    `json:"ID" name:"ID"`
 			Key   *string `json:"Key" name:"Key"`
 			Value *string `json:"Value" name:"Value"`
@@ -183,7 +180,6 @@ func (r *ListProjectsResponse) ToJsonString() string {
 func (r *ListProjectsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateLogPoolRequest struct {
 	*ksyunhttp.BaseRequest
@@ -213,7 +209,6 @@ func (r *CreateLogPoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DescribeLogPoolRequest struct {
 	*ksyunhttp.BaseRequest
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
@@ -238,7 +233,6 @@ func (r *DescribeLogPoolResponse) ToJsonString() string {
 func (r *DescribeLogPoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type UpdateLogPoolRequest struct {
 	*ksyunhttp.BaseRequest
@@ -270,7 +264,6 @@ func (r *UpdateLogPoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteLogPoolRequest struct {
 	*ksyunhttp.BaseRequest
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
@@ -295,7 +288,6 @@ func (r *DeleteLogPoolResponse) ToJsonString() string {
 func (r *DeleteLogPoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type ListLogPoolsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -344,7 +336,6 @@ func (r *ListLogPoolsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type GetLogsRequest struct {
 	*ksyunhttp.BaseRequest
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
@@ -370,9 +361,9 @@ type GetLogsResponse struct {
 	Count  *int  `json:"Count" name:"Count"`
 	HasSql *bool `json:"HasSql" name:"HasSql"`
 	Logs   []struct {
-		Id *string `json:"Id" name:"Id"`
-		Source *string `json:"Source" name:"Source"`
-		Path *string `json:"Path" name:"Path"`
+		Id        *string `json:"Id" name:"Id"`
+		Source    *string `json:"Source" name:"Source"`
+		Path      *string `json:"Path" name:"Path"`
 		Timestamp *string `json:"Timestamp" name:"Timestamp"`
 	} `json:"Logs"`
 	Histogram []struct {
@@ -390,7 +381,6 @@ func (r *GetLogsResponse) ToJsonString() string {
 func (r *GetLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateQuickSearchRequest struct {
 	*ksyunhttp.BaseRequest
@@ -421,7 +411,6 @@ func (r *CreateQuickSearchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ListQuickSearchsRequest struct {
 	*ksyunhttp.BaseRequest
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
@@ -450,7 +439,6 @@ func (r *ListQuickSearchsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type DeleteQuickSearchsRequest struct {
 	*ksyunhttp.BaseRequest
 	ProjectName     *string `json:"ProjectName,omitempty" name:"ProjectName"`
@@ -476,7 +464,6 @@ func (r *DeleteQuickSearchsResponse) ToJsonString() string {
 func (r *DeleteQuickSearchsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-
 
 type CreateDownloadTaskRequest struct {
 	*ksyunhttp.BaseRequest
@@ -504,7 +491,6 @@ func (r *CreateDownloadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-
 type ListDownloadTasksRequest struct {
 	*ksyunhttp.BaseRequest
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
@@ -522,18 +508,18 @@ type ListDownloadTasksResponse struct {
 	Total *int `json:"Total" name:"Total"`
 	Count *int `json:"Count" name:"Count"`
 	Data  []struct {
-		ProjectName *string `json:"ProjectName" name:"ProjectName"`
+		ProjectName    *string `json:"ProjectName" name:"ProjectName"`
 		DownloadTaskId *string `json:"DownloadTaskId" name:"DownloadTaskId"`
-		LogPoolNames *string `json:"LogPoolNames" name:"LogPoolNames"`
-		Status    *string `json:"Status" name:"Status"`
-		AccountId *string `json:"AccountId" name:"AccountId"`
-		From      *string `json:"From" name:"From"`
-		To        *string `json:"To" name:"To"`
-		Count     *string `json:"Count" name:"Count"`
-		Size      *int    `json:"Size" name:"Size"`
-		DownloadUrl *string `json:"DownloadUrl" name:"DownloadUrl"`
-		Query     *string `json:"Query" name:"Query"`
-		CreatedAt *int    `json:"CreatedAt" name:"CreatedAt"`
+		LogPoolNames   *string `json:"LogPoolNames" name:"LogPoolNames"`
+		Status         *string `json:"Status" name:"Status"`
+		AccountId      *string `json:"AccountId" name:"AccountId"`
+		From           *string `json:"From" name:"From"`
+		To             *string `json:"To" name:"To"`
+		Count          *string `json:"Count" name:"Count"`
+		Size           *int    `json:"Size" name:"Size"`
+		DownloadUrl    *string `json:"DownloadUrl" name:"DownloadUrl"`
+		Query          *string `json:"Query" name:"Query"`
+		CreatedAt      *int    `json:"CreatedAt" name:"CreatedAt"`
 	} `json:"Data"`
 }
 
@@ -545,4 +531,3 @@ func (r *ListDownloadTasksResponse) ToJsonString() string {
 func (r *ListDownloadTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
-

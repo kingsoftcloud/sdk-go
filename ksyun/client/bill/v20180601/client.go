@@ -1,4 +1,5 @@
 package v20180601
+
 import (
 	"context"
 	"fmt"
@@ -216,5 +217,3 @@ func (c *Client) GetProductCodeWithContextV2(ctx context.Context, request *GetPr
 	}
 	return statusCode, msg, nil
 }
-
-

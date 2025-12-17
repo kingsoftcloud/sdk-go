@@ -1,4 +1,5 @@
 package v20200707
+
 import (
 	"context"
 	"fmt"
@@ -1321,5 +1322,3 @@ func (c *Client) DescribeAlbDomainsWithContextV2(ctx context.Context, request *D
 	}
 	return statusCode, msg, nil
 }
-
-

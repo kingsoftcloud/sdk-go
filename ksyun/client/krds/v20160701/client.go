@@ -1,4 +1,5 @@
 package v20160701
+
 import (
 	"context"
 	"fmt"
@@ -5936,5 +5937,3 @@ func (c *Client) UpdateResourceProtectionWithContextV2(ctx context.Context, requ
 	}
 	return statusCode, msg, nil
 }
-
-

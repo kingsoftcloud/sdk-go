@@ -1,4 +1,5 @@
 package v20250828
+
 import (
 	"context"
 	"fmt"
@@ -86,5 +87,3 @@ func (c *Client) QueryInstancesWithContextV2(ctx context.Context, request *Query
 	}
 	return statusCode, msg, nil
 }
-
-

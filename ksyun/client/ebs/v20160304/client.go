@@ -1,4 +1,5 @@
 package v20160304
+
 import (
 	"context"
 	"fmt"
@@ -1841,5 +1842,3 @@ func (c *Client) GetUpgradeVolumeTypeProcessInfoWithContextV2(ctx context.Contex
 	}
 	return statusCode, msg, nil
 }
-
-
