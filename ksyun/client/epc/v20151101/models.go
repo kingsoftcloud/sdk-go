@@ -109,6 +109,7 @@ type CreateEpcRequest struct {
 	StorageRoceNetworkInterfaceMode *string   `json:"StorageRoceNetworkInterfaceMode,omitempty" name:"StorageRoceNetworkInterfaceMode"`
 	RoceCluster                     *string   `json:"RoceCluster,omitempty" name:"RoceCluster"`
 	SRoceCluster                    *string   `json:"SRoceCluster,omitempty" name:"SRoceCluster"`
+	UserDefinedData                 *string   `json:"UserDefinedData,omitempty" name:"UserDefinedData"`
 }
 
 func (r *CreateEpcRequest) ToJsonString() string {
@@ -348,6 +349,7 @@ type ReinstallEpcRequest struct {
 	PasswordInherit             *string `json:"PasswordInherit,omitempty" name:"PasswordInherit"`
 	DataDiskMount               *string `json:"DataDiskMount,omitempty" name:"DataDiskMount"`
 	StorageRoceNetworkCardName  *string `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
+	UserDefinedData             *string `json:"UserDefinedData,omitempty" name:"UserDefinedData"`
 }
 
 func (r *ReinstallEpcRequest) ToJsonString() string {
