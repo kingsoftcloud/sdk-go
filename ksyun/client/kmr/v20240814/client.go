@@ -50,6 +50,10 @@ func (c *Client) DetailWorkspaceSend(request *DetailWorkspaceRequest) (*DetailWo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DetailWorkspaceResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) ListWorkspacesSend(request *ListWorkspacesRequest) (*ListWorksp
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ListWorkspacesResponse
@@ -180,6 +188,10 @@ func (c *Client) StartJobRunSend(request *StartJobRunRequest) (*StartJobRunRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct StartJobRunResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) GetJobRunSend(request *GetJobRunRequest) (*GetJobRunResponse, e
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetJobRunResponse
@@ -310,6 +326,10 @@ func (c *Client) ListJobRunsSend(request *ListJobRunsRequest) (*ListJobRunsRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ListJobRunsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -373,6 +393,10 @@ func (c *Client) CancelJobRunSend(request *CancelJobRunRequest) (*CancelJobRunRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CancelJobRunResponse
@@ -440,6 +464,10 @@ func (c *Client) ListExecutorSend(request *ListExecutorRequest) (*ListExecutorRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ListExecutorResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -503,6 +531,10 @@ func (c *Client) StartRayJobRunSend(request *StartRayJobRunRequest) (*StartRayJo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct StartRayJobRunResponse
@@ -570,6 +602,10 @@ func (c *Client) GetRayJobRunSend(request *GetRayJobRunRequest) (*GetRayJobRunRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetRayJobRunResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -633,6 +669,10 @@ func (c *Client) ListRayJobRunsSend(request *ListRayJobRunsRequest) (*ListRayJob
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ListRayJobRunsResponse
@@ -700,6 +740,10 @@ func (c *Client) CancelRayJobRunSend(request *CancelRayJobRunRequest) (*CancelRa
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CancelRayJobRunResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -763,6 +807,10 @@ func (c *Client) StartFlinkJobRunSend(request *StartFlinkJobRunRequest) (*StartF
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct StartFlinkJobRunResponse
@@ -830,6 +878,10 @@ func (c *Client) GetFlinkJobRunSend(request *GetFlinkJobRunRequest) (*GetFlinkJo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetFlinkJobRunResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -893,6 +945,10 @@ func (c *Client) ListFlinkJobRunsSend(request *ListFlinkJobRunsRequest) (*ListFl
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ListFlinkJobRunsResponse
@@ -960,6 +1016,10 @@ func (c *Client) CancelFlinkJobRunSend(request *CancelFlinkJobRunRequest) (*Canc
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CancelFlinkJobRunResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1023,6 +1083,10 @@ func (c *Client) SuspendFlinkJobRunSend(request *SuspendFlinkJobRunRequest) (*Su
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct SuspendFlinkJobRunResponse
@@ -1090,6 +1154,10 @@ func (c *Client) RestartFlinkJobRunSend(request *RestartFlinkJobRunRequest) (*Re
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RestartFlinkJobRunResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1155,6 +1223,10 @@ func (c *Client) DescribeMetricListSend(request *DescribeMetricListRequest) (*De
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeMetricListResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1218,6 +1290,10 @@ func (c *Client) QueryMetricsSend(request *QueryMetricsRequest) (*QueryMetricsRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct QueryMetricsResponse

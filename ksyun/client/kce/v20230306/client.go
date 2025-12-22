@@ -50,6 +50,10 @@ func (c *Client) CreatePrometheusInstanceSend(request *CreatePrometheusInstanceR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreatePrometheusInstanceResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) DescribePrometheusInstanceSend(request *DescribePrometheusInsta
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribePrometheusInstanceResponse
@@ -180,6 +188,10 @@ func (c *Client) UpdatePrometheusInstanceSend(request *UpdatePrometheusInstanceR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct UpdatePrometheusInstanceResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) DeletePrometheusInstanceSend(request *DeletePrometheusInstanceR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeletePrometheusInstanceResponse
@@ -310,6 +326,10 @@ func (c *Client) EnableGrafanaSend(request *EnableGrafanaRequest) (*EnableGrafan
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct EnableGrafanaResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -373,6 +393,10 @@ func (c *Client) UpdateGrafanaPasswordSend(request *UpdateGrafanaPasswordRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct UpdateGrafanaPasswordResponse
@@ -440,6 +464,10 @@ func (c *Client) EnableGrafanaInternetSend(request *EnableGrafanaInternetRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct EnableGrafanaInternetResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -503,6 +531,10 @@ func (c *Client) DescribeGrafanaWhiteListSend(request *DescribeGrafanaWhiteListR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeGrafanaWhiteListResponse
@@ -570,6 +602,10 @@ func (c *Client) UpdateGrafanaWhiteListSend(request *UpdateGrafanaWhiteListReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct UpdateGrafanaWhiteListResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -633,6 +669,10 @@ func (c *Client) AssociateClusterSend(request *AssociateClusterRequest) (*Associ
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct AssociateClusterResponse
@@ -700,6 +740,10 @@ func (c *Client) DisassociateClusterSend(request *DisassociateClusterRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DisassociateClusterResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -763,6 +807,10 @@ func (c *Client) DescribeAssociateClusterListSend(request *DescribeAssociateClus
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeAssociateClusterListResponse
@@ -830,6 +878,10 @@ func (c *Client) DescribeMonitorListSend(request *DescribeMonitorListRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeMonitorListResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -893,6 +945,10 @@ func (c *Client) DescribeMonitorCollectionConfigSend(request *DescribeMonitorCol
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeMonitorCollectionConfigResponse
@@ -960,6 +1016,10 @@ func (c *Client) UpdateMonitorCollectionConfigSend(request *UpdateMonitorCollect
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct UpdateMonitorCollectionConfigResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1023,6 +1083,10 @@ func (c *Client) DescribeMonitorMetricsListSend(request *DescribeMonitorMetricsL
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeMonitorMetricsListResponse
@@ -1090,6 +1154,10 @@ func (c *Client) DescribeTargetsListSend(request *DescribeTargetsListRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeTargetsListResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1153,6 +1221,10 @@ func (c *Client) DescribeAgentStatusSend(request *DescribeAgentStatusRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeAgentStatusResponse
@@ -1220,6 +1292,10 @@ func (c *Client) CreateMonitorCollectionConfigSend(request *CreateMonitorCollect
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateMonitorCollectionConfigResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1283,6 +1359,10 @@ func (c *Client) DeleteMonitorCollectionConfigSend(request *DeleteMonitorCollect
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteMonitorCollectionConfigResponse
@@ -1350,6 +1430,10 @@ func (c *Client) EnableMetricsSend(request *EnableMetricsRequest) (*EnableMetric
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct EnableMetricsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1413,6 +1497,10 @@ func (c *Client) DropMetricsSend(request *DropMetricsRequest) (*DropMetricsRespo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DropMetricsResponse

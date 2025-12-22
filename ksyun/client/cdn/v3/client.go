@@ -1,4 +1,4 @@
-package v20250503
+package v3
 
 import (
 	"context"
@@ -48,6 +48,10 @@ func (c *Client) GetDomainLogsSend(request *GetDomainLogsRequest) (*GetDomainLog
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetDomainLogsResponse
@@ -115,6 +119,10 @@ func (c *Client) GetClientRequestDataSend(request *GetClientRequestDataRequest) 
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetClientRequestDataResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -178,6 +186,10 @@ func (c *Client) GetCdnDomainsSend(request *GetCdnDomainsRequest) (*GetCdnDomain
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetCdnDomainsResponse
@@ -245,6 +257,10 @@ func (c *Client) DeleteCdnDomainSend(request *DeleteCdnDomainRequest) (*DeleteCd
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteCdnDomainResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -308,6 +324,10 @@ func (c *Client) GetCdnDomainBasicInfoSend(request *GetCdnDomainBasicInfoRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetCdnDomainBasicInfoResponse
@@ -375,6 +395,10 @@ func (c *Client) ModifyCdnDomainBasicInfoSend(request *ModifyCdnDomainBasicInfoR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyCdnDomainBasicInfoResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -438,6 +462,10 @@ func (c *Client) AddCdnDomainSend(request *AddCdnDomainRequest) (*AddCdnDomainRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct AddCdnDomainResponse
@@ -505,6 +533,10 @@ func (c *Client) GetDomainConfigsSend(request *GetDomainConfigsRequest) (*GetDom
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetDomainConfigsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -568,6 +600,10 @@ func (c *Client) StartStopCdnDomainSend(request *StartStopCdnDomainRequest) (*St
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct StartStopCdnDomainResponse
@@ -635,6 +671,10 @@ func (c *Client) SetCacheRuleConfigSend(request *SetCacheRuleConfigRequest) (*Se
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct SetCacheRuleConfigResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -698,6 +738,10 @@ func (c *Client) SetBackOriginHostConfigSend(request *SetBackOriginHostConfigReq
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct SetBackOriginHostConfigResponse
@@ -765,6 +809,10 @@ func (c *Client) GetValidDomainListSend(request *GetValidDomainListRequest) (*Ge
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetValidDomainListResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -828,6 +876,10 @@ func (c *Client) GetDomainAuthContentSend(request *GetDomainAuthContentRequest) 
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetDomainAuthContentResponse
@@ -895,6 +947,10 @@ func (c *Client) SetVideoSeekConfigSend(request *SetVideoSeekConfigRequest) (*Se
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct SetVideoSeekConfigResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -958,6 +1014,10 @@ func (c *Client) SetPageCompressConfigSend(request *SetPageCompressConfigRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct SetPageCompressConfigResponse
@@ -1025,6 +1085,10 @@ func (c *Client) SetBrCompressConfigSend(request *SetBrCompressConfigRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct SetBrCompressConfigResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1088,6 +1152,10 @@ func (c *Client) SetIgnoreQueryStringConfigSend(request *SetIgnoreQueryStringCon
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct SetIgnoreQueryStringConfigResponse
@@ -1155,6 +1223,10 @@ func (c *Client) SetSetOriginAdvancedConfigSend(request *SetSetOriginAdvancedCon
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct SetSetOriginAdvancedConfigResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1218,6 +1290,10 @@ func (c *Client) ValidateDomainOwnerSend(request *ValidateDomainOwnerRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ValidateDomainOwnerResponse
@@ -1285,6 +1361,10 @@ func (c *Client) SetHttp2OptionConfigSend(request *SetHttp2OptionConfigRequest) 
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct SetHttp2OptionConfigResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1316,6 +1396,75 @@ func (c *Client) SetHttp2OptionConfigWithContextV2(ctx context.Context, request 
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewSetHttp2OptionConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewSetReferProtectionConfigRequest() (request *SetReferProtectionConfigRequest) {
+	request = &SetReferProtectionConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "SetReferProtectionConfig")
+	return
+}
+
+func NewSetReferProtectionConfigResponse() (response *SetReferProtectionConfigResponse) {
+	response = &SetReferProtectionConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetReferProtectionConfig(request *SetReferProtectionConfigRequest) string {
+	return c.SetReferProtectionConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) SetReferProtectionConfigSend(request *SetReferProtectionConfigRequest) (*SetReferProtectionConfigResponse, error) {
+	statusCode, msg, err := c.SetReferProtectionConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetReferProtectionConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetReferProtectionConfigWithContext(ctx context.Context, request *SetReferProtectionConfigRequest) string {
+	if request == nil {
+		request = NewSetReferProtectionConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetReferProtectionConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetReferProtectionConfigWithContextV2(ctx context.Context, request *SetReferProtectionConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetReferProtectionConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetReferProtectionConfigResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err

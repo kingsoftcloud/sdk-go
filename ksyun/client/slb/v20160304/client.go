@@ -50,6 +50,10 @@ func (c *Client) DescribeListenersSend(request *DescribeListenersRequest) (*Desc
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeListenersResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) DeleteListenersSend(request *DeleteListenersRequest) (*DeleteLi
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteListenersResponse
@@ -180,6 +188,10 @@ func (c *Client) ModifyListenersSend(request *ModifyListenersRequest) (*ModifyLi
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyListenersResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) CreateListenersSend(request *CreateListenersRequest) (*CreateLi
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateListenersResponse
@@ -310,6 +326,10 @@ func (c *Client) ModifyInstancesWithListenerSend(request *ModifyInstancesWithLis
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyInstancesWithListenerResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -373,6 +393,10 @@ func (c *Client) RegisterInstancesWithListenerSend(request *RegisterInstancesWit
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct RegisterInstancesWithListenerResponse
@@ -440,6 +464,10 @@ func (c *Client) DeregisterInstancesFromListenerSend(request *DeregisterInstance
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeregisterInstancesFromListenerResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -503,6 +531,10 @@ func (c *Client) DescribeInstancesWithListenerSend(request *DescribeInstancesWit
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeInstancesWithListenerResponse
@@ -570,6 +602,10 @@ func (c *Client) ModifyHealthCheckSend(request *ModifyHealthCheckRequest) (*Modi
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyHealthCheckResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -633,6 +669,10 @@ func (c *Client) DeleteHealthCheckSend(request *DeleteHealthCheckRequest) (*Dele
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteHealthCheckResponse
@@ -700,6 +740,10 @@ func (c *Client) DescribeHealthChecksSend(request *DescribeHealthChecksRequest) 
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeHealthChecksResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -763,6 +807,10 @@ func (c *Client) ConfigureHealthCheckSend(request *ConfigureHealthCheckRequest) 
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ConfigureHealthCheckResponse
@@ -830,6 +878,10 @@ func (c *Client) DescribeLoadBalancersSend(request *DescribeLoadBalancersRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeLoadBalancersResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -893,6 +945,10 @@ func (c *Client) DeleteLoadBalancerSend(request *DeleteLoadBalancerRequest) (*De
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteLoadBalancerResponse
@@ -960,6 +1016,10 @@ func (c *Client) ModifyLoadBalancerSend(request *ModifyLoadBalancerRequest) (*Mo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyLoadBalancerResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1023,6 +1083,10 @@ func (c *Client) CreateLoadBalancerSend(request *CreateLoadBalancerRequest) (*Cr
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateLoadBalancerResponse
@@ -1090,6 +1154,10 @@ func (c *Client) CreateHostHeaderSend(request *CreateHostHeaderRequest) (*Create
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateHostHeaderResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1153,6 +1221,10 @@ func (c *Client) ModifyHostHeaderSend(request *ModifyHostHeaderRequest) (*Modify
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyHostHeaderResponse
@@ -1220,6 +1292,10 @@ func (c *Client) DeleteHostHeaderSend(request *DeleteHostHeaderRequest) (*Delete
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteHostHeaderResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1283,6 +1359,10 @@ func (c *Client) DescribeHostHeadersSend(request *DescribeHostHeadersRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeHostHeadersResponse
@@ -1350,6 +1430,10 @@ func (c *Client) DeleteRuleSend(request *DeleteRuleRequest) (*DeleteRuleResponse
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteRuleResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1413,6 +1497,10 @@ func (c *Client) DescribeRulesSend(request *DescribeRulesRequest) (*DescribeRule
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeRulesResponse
@@ -1480,6 +1568,10 @@ func (c *Client) CreateBackendServerGroupSend(request *CreateBackendServerGroupR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateBackendServerGroupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1543,6 +1635,10 @@ func (c *Client) DeleteBackendServerGroupSend(request *DeleteBackendServerGroupR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteBackendServerGroupResponse
@@ -1610,6 +1706,10 @@ func (c *Client) ModifyBackendServerGroupSend(request *ModifyBackendServerGroupR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyBackendServerGroupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1673,6 +1773,10 @@ func (c *Client) DescribeBackendServerGroupsSend(request *DescribeBackendServerG
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeBackendServerGroupsResponse
@@ -1740,6 +1844,10 @@ func (c *Client) RegisterBackendServerSend(request *RegisterBackendServerRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RegisterBackendServerResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1803,6 +1911,10 @@ func (c *Client) DeregisterBackendServerSend(request *DeregisterBackendServerReq
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeregisterBackendServerResponse
@@ -1870,6 +1982,10 @@ func (c *Client) DescribeBackendServersSend(request *DescribeBackendServersReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeBackendServersResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1933,6 +2049,10 @@ func (c *Client) CreateLoadBalancerAclSend(request *CreateLoadBalancerAclRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateLoadBalancerAclResponse
@@ -2000,6 +2120,10 @@ func (c *Client) DeleteLoadBalancerAclSend(request *DeleteLoadBalancerAclRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteLoadBalancerAclResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2063,6 +2187,10 @@ func (c *Client) ModifyLoadBalancerAclSend(request *ModifyLoadBalancerAclRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyLoadBalancerAclResponse
@@ -2130,6 +2258,10 @@ func (c *Client) CreateLoadBalancerAclEntrySend(request *CreateLoadBalancerAclEn
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateLoadBalancerAclEntryResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2193,6 +2325,10 @@ func (c *Client) DeleteLoadBalancerAclEntrySend(request *DeleteLoadBalancerAclEn
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteLoadBalancerAclEntryResponse
@@ -2260,6 +2396,10 @@ func (c *Client) AssociateLoadBalancerAclSend(request *AssociateLoadBalancerAclR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AssociateLoadBalancerAclResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2323,6 +2463,10 @@ func (c *Client) DisassociateLoadBalancerAclSend(request *DisassociateLoadBalanc
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DisassociateLoadBalancerAclResponse
@@ -2390,6 +2534,10 @@ func (c *Client) DescribeLoadBalancerAclsSend(request *DescribeLoadBalancerAclsR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeLoadBalancerAclsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2453,6 +2601,10 @@ func (c *Client) CreateSlbRuleSend(request *CreateSlbRuleRequest) (*CreateSlbRul
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateSlbRuleResponse
@@ -2520,6 +2672,10 @@ func (c *Client) ModifySlbRuleSend(request *ModifySlbRuleRequest) (*ModifySlbRul
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifySlbRuleResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2583,6 +2739,10 @@ func (c *Client) CreatePrivateLinkServerSend(request *CreatePrivateLinkServerReq
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreatePrivateLinkServerResponse
@@ -2650,6 +2810,10 @@ func (c *Client) DescribePrivateLinkServerSend(request *DescribePrivateLinkServe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribePrivateLinkServerResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2713,6 +2877,10 @@ func (c *Client) DeletePrivateLinkServerSend(request *DeletePrivateLinkServerReq
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeletePrivateLinkServerResponse
@@ -2780,6 +2948,10 @@ func (c *Client) ModifyPrivateLinkServerSend(request *ModifyPrivateLinkServerReq
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyPrivateLinkServerResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2843,6 +3015,10 @@ func (c *Client) AssociatePrivateLinkServerSend(request *AssociatePrivateLinkSer
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct AssociatePrivateLinkServerResponse
@@ -2910,6 +3086,10 @@ func (c *Client) DescribePrivateLinkSend(request *DescribePrivateLinkRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribePrivateLinkResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2973,6 +3153,10 @@ func (c *Client) DeletePrivateLinkSend(request *DeletePrivateLinkRequest) (*Dele
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeletePrivateLinkResponse
@@ -3040,6 +3224,10 @@ func (c *Client) ModifyLoadBalancerAclEntrySend(request *ModifyLoadBalancerAclEn
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyLoadBalancerAclEntryResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3103,6 +3291,10 @@ func (c *Client) AcceptPrivateLinkSend(request *AcceptPrivateLinkRequest) (*Acce
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct AcceptPrivateLinkResponse
@@ -3170,6 +3362,10 @@ func (c *Client) RejectPrivateLinkSend(request *RejectPrivateLinkRequest) (*Reje
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RejectPrivateLinkResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3233,6 +3429,10 @@ func (c *Client) ListPrivateLinkServerSend(request *ListPrivateLinkServerRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ListPrivateLinkServerResponse
@@ -3300,6 +3500,10 @@ func (c *Client) RemovePrivateLinkSend(request *RemovePrivateLinkRequest) (*Remo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RemovePrivateLinkResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3363,6 +3567,10 @@ func (c *Client) CreateAlbSend(request *CreateAlbRequest) (*CreateAlbResponse, e
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateAlbResponse
@@ -3430,6 +3638,10 @@ func (c *Client) DeleteAlbSend(request *DeleteAlbRequest) (*DeleteAlbResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteAlbResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3493,6 +3705,10 @@ func (c *Client) SetAlbNameSend(request *SetAlbNameRequest) (*SetAlbNameResponse
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct SetAlbNameResponse
@@ -3560,6 +3776,10 @@ func (c *Client) SetAlbStatusSend(request *SetAlbStatusRequest) (*SetAlbStatusRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct SetAlbStatusResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3623,6 +3843,10 @@ func (c *Client) DescribeAlbsSend(request *DescribeAlbsRequest) (*DescribeAlbsRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeAlbsResponse
@@ -3690,6 +3914,10 @@ func (c *Client) CreateAlbListenerSend(request *CreateAlbListenerRequest) (*Crea
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateAlbListenerResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3753,6 +3981,10 @@ func (c *Client) ModifyAlbListenerSend(request *ModifyAlbListenerRequest) (*Modi
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyAlbListenerResponse
@@ -3820,6 +4052,10 @@ func (c *Client) DeleteAlbListenerSend(request *DeleteAlbListenerRequest) (*Dele
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteAlbListenerResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3883,6 +4119,10 @@ func (c *Client) DescribeAlbListenersSend(request *DescribeAlbListenersRequest) 
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeAlbListenersResponse
@@ -3950,6 +4190,10 @@ func (c *Client) CreateAlbRuleGroupSend(request *CreateAlbRuleGroupRequest) (*Cr
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateAlbRuleGroupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4013,6 +4257,10 @@ func (c *Client) DeleteAlbRuleGroupSend(request *DeleteAlbRuleGroupRequest) (*De
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteAlbRuleGroupResponse
@@ -4080,6 +4328,10 @@ func (c *Client) DescribeAlbRuleGroupsSend(request *DescribeAlbRuleGroupsRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeAlbRuleGroupsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4143,6 +4395,10 @@ func (c *Client) ModifyAlbRuleGroupSend(request *ModifyAlbRuleGroupRequest) (*Mo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyAlbRuleGroupResponse
@@ -4210,6 +4466,10 @@ func (c *Client) AddAlbRuleSend(request *AddAlbRuleRequest) (*AddAlbRuleResponse
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AddAlbRuleResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4273,6 +4533,10 @@ func (c *Client) DeleteAlbRuleSend(request *DeleteAlbRuleRequest) (*DeleteAlbRul
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteAlbRuleResponse
@@ -4340,6 +4604,10 @@ func (c *Client) CreateAlbListenerCertGroupSend(request *CreateAlbListenerCertGr
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateAlbListenerCertGroupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4403,6 +4671,10 @@ func (c *Client) DeleteAlbListenerCertGroupSend(request *DeleteAlbListenerCertGr
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteAlbListenerCertGroupResponse
@@ -4470,6 +4742,10 @@ func (c *Client) DescribeAlbListenerCertGroupsSend(request *DescribeAlbListenerC
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeAlbListenerCertGroupsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4533,6 +4809,10 @@ func (c *Client) AssociateCertificateWithGroupSend(request *AssociateCertificate
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct AssociateCertificateWithGroupResponse
@@ -4600,6 +4880,10 @@ func (c *Client) DissociateCertificateWithGroupSend(request *DissociateCertifica
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DissociateCertificateWithGroupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4663,6 +4947,10 @@ func (c *Client) SetEnableAlbAccessLogSend(request *SetEnableAlbAccessLogRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct SetEnableAlbAccessLogResponse
@@ -4730,6 +5018,10 @@ func (c *Client) SetAlbAccessLogSend(request *SetAlbAccessLogRequest) (*SetAlbAc
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct SetAlbAccessLogResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4793,6 +5085,10 @@ func (c *Client) CloneLoadBalancerSend(request *CloneLoadBalancerRequest) (*Clon
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CloneLoadBalancerResponse
@@ -4860,6 +5156,10 @@ func (c *Client) SetLBDeleteProtectionSend(request *SetLBDeleteProtectionRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct SetLBDeleteProtectionResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4923,6 +5223,10 @@ func (c *Client) SetLBModificationProtectionSend(request *SetLBModificationProte
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct SetLBModificationProtectionResponse
@@ -4990,6 +5294,10 @@ func (c *Client) ModifyCertificateWithGroupSend(request *ModifyCertificateWithGr
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyCertificateWithGroupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5053,6 +5361,10 @@ func (c *Client) CreateAlbBackendServerGroupSend(request *CreateAlbBackendServer
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateAlbBackendServerGroupResponse
@@ -5120,6 +5432,10 @@ func (c *Client) DeleteAlbBackendServerGroupSend(request *DeleteAlbBackendServer
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteAlbBackendServerGroupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5183,6 +5499,10 @@ func (c *Client) ModifyAlbBackendServerGroupSend(request *ModifyAlbBackendServer
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyAlbBackendServerGroupResponse
@@ -5250,6 +5570,10 @@ func (c *Client) DescribeAlbBackendServerGroupsSend(request *DescribeAlbBackendS
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeAlbBackendServerGroupsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5313,6 +5637,10 @@ func (c *Client) RegisterAlbBackendServerSend(request *RegisterAlbBackendServerR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct RegisterAlbBackendServerResponse
@@ -5380,6 +5708,10 @@ func (c *Client) DeregisterAlbBackendServerSend(request *DeregisterAlbBackendSer
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeregisterAlbBackendServerResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5443,6 +5775,10 @@ func (c *Client) ModifyAlbBackendServerSend(request *ModifyAlbBackendServerReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyAlbBackendServerResponse
@@ -5510,6 +5846,10 @@ func (c *Client) DescribeAlbBackendServersSend(request *DescribeAlbBackendServer
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeAlbBackendServersResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5573,6 +5913,10 @@ func (c *Client) RegisterBackendServerGroupWithListenerSend(request *RegisterBac
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct RegisterBackendServerGroupWithListenerResponse
@@ -5640,6 +5984,10 @@ func (c *Client) SetPrivateLinkDeleteProtectionSend(request *SetPrivateLinkDelet
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct SetPrivateLinkDeleteProtectionResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5703,6 +6051,10 @@ func (c *Client) SetAlbDeleteProtectionSend(request *SetAlbDeleteProtectionReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct SetAlbDeleteProtectionResponse
@@ -5770,6 +6122,10 @@ func (c *Client) SetAlbModificationProtectionSend(request *SetAlbModificationPro
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct SetAlbModificationProtectionResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5835,6 +6191,10 @@ func (c *Client) AddAlbRulesSend(request *AddAlbRulesRequest) (*AddAlbRulesRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AddAlbRulesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5898,6 +6258,10 @@ func (c *Client) SetLbProtocolLayersSend(request *SetLbProtocolLayersRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct SetLbProtocolLayersResponse

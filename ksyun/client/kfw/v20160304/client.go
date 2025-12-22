@@ -50,6 +50,10 @@ func (c *Client) DescribeCfwAvSend(request *DescribeCfwAvRequest) (*DescribeCfwA
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeCfwAvResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) DeleteBatchCfwAddrbookSend(request *DeleteBatchCfwAddrbookReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteBatchCfwAddrbookResponse

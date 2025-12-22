@@ -50,6 +50,10 @@ func (c *Client) GetRefreshOrPreloadTaskSend(request *GetRefreshOrPreloadTaskReq
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetRefreshOrPreloadTaskResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {

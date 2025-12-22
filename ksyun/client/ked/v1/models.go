@@ -1,4 +1,4 @@
-package v20250501
+package v1
 
 import (
 	"encoding/json"

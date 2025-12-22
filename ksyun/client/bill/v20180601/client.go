@@ -50,6 +50,10 @@ func (c *Client) GetMonthBillSend(request *GetMonthBillRequest) (*GetMonthBillRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetMonthBillResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -115,6 +119,10 @@ func (c *Client) GetPostpayDetailBillSend(request *GetPostpayDetailBillRequest) 
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetPostpayDetailBillResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -178,6 +186,10 @@ func (c *Client) GetProductCodeSend(request *GetProductCodeRequest) (*GetProduct
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetProductCodeResponse

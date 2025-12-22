@@ -50,6 +50,10 @@ func (c *Client) CreatePrivateDnsSend(request *CreatePrivateDnsRequest) (*Create
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreatePrivateDnsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) DeletePrivateDnsSend(request *DeletePrivateDnsRequest) (*Delete
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeletePrivateDnsResponse
@@ -180,6 +188,10 @@ func (c *Client) DescribePrivateDnsSend(request *DescribePrivateDnsRequest) (*De
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribePrivateDnsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) AssociateVpcsSend(request *AssociateVpcsRequest) (*AssociateVpc
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct AssociateVpcsResponse
@@ -310,6 +326,10 @@ func (c *Client) DisassociateVpcsSend(request *DisassociateVpcsRequest) (*Disass
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DisassociateVpcsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -373,6 +393,10 @@ func (c *Client) CreateZoneSend(request *CreateZoneRequest) (*CreateZoneResponse
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateZoneResponse
@@ -440,6 +464,10 @@ func (c *Client) DeleteZoneSend(request *DeleteZoneRequest) (*DeleteZoneResponse
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteZoneResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -503,6 +531,10 @@ func (c *Client) ModifyZoneSend(request *ModifyZoneRequest) (*ModifyZoneResponse
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyZoneResponse
@@ -570,6 +602,10 @@ func (c *Client) DescribeZoneSend(request *DescribeZoneRequest) (*DescribeZoneRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeZoneResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -633,6 +669,10 @@ func (c *Client) CreateRecordSend(request *CreateRecordRequest) (*CreateRecordRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateRecordResponse
@@ -700,6 +740,10 @@ func (c *Client) DeleteRecordSend(request *DeleteRecordRequest) (*DeleteRecordRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteRecordResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -763,6 +807,10 @@ func (c *Client) DescribeRecordSend(request *DescribeRecordRequest) (*DescribeRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeRecordResponse
@@ -830,6 +878,10 @@ func (c *Client) CreateRecordDataSend(request *CreateRecordDataRequest) (*Create
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateRecordDataResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -893,6 +945,10 @@ func (c *Client) DeleteRecordDataSend(request *DeleteRecordDataRequest) (*Delete
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteRecordDataResponse
@@ -960,6 +1016,10 @@ func (c *Client) CreatePdnsZoneSend(request *CreatePdnsZoneRequest) (*CreatePdns
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreatePdnsZoneResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1023,6 +1083,10 @@ func (c *Client) ModifyPdnsZoneSend(request *ModifyPdnsZoneRequest) (*ModifyPdns
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyPdnsZoneResponse
@@ -1090,6 +1154,10 @@ func (c *Client) DeletePdnsZoneSend(request *DeletePdnsZoneRequest) (*DeletePdns
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeletePdnsZoneResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1153,6 +1221,10 @@ func (c *Client) DescribePdnsZonesSend(request *DescribePdnsZonesRequest) (*Desc
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribePdnsZonesResponse
@@ -1220,6 +1292,10 @@ func (c *Client) BindZoneVpcSend(request *BindZoneVpcRequest) (*BindZoneVpcRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct BindZoneVpcResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1283,6 +1359,10 @@ func (c *Client) UnbindZoneVpcSend(request *UnbindZoneVpcRequest) (*UnbindZoneVp
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct UnbindZoneVpcResponse
@@ -1350,6 +1430,10 @@ func (c *Client) CreateZoneRecordSend(request *CreateZoneRecordRequest) (*Create
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateZoneRecordResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1413,6 +1497,10 @@ func (c *Client) DeleteZoneRecordSend(request *DeleteZoneRecordRequest) (*Delete
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteZoneRecordResponse
@@ -1480,6 +1568,10 @@ func (c *Client) ModifyZoneRecordSend(request *ModifyZoneRecordRequest) (*Modify
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyZoneRecordResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1543,6 +1635,10 @@ func (c *Client) DescribeZoneRecordSend(request *DescribeZoneRecordRequest) (*De
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeZoneRecordResponse
@@ -1610,6 +1706,10 @@ func (c *Client) UnbindFdZoneVpcSend(request *UnbindFdZoneVpcRequest) (*UnbindFd
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct UnbindFdZoneVpcResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1673,6 +1773,10 @@ func (c *Client) BindFdZoneVpcSend(request *BindFdZoneVpcRequest) (*BindFdZoneVp
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct BindFdZoneVpcResponse
@@ -1740,6 +1844,10 @@ func (c *Client) DescribePdnsFdZoneSend(request *DescribePdnsFdZoneRequest) (*De
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribePdnsFdZoneResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1803,6 +1911,10 @@ func (c *Client) DeletePdnsFdZoneSend(request *DeletePdnsFdZoneRequest) (*Delete
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeletePdnsFdZoneResponse
@@ -1870,6 +1982,10 @@ func (c *Client) ModifyPdnsFdZoneSend(request *ModifyPdnsFdZoneRequest) (*Modify
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyPdnsFdZoneResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1933,6 +2049,10 @@ func (c *Client) CreatePdnsFdZoneSend(request *CreatePdnsFdZoneRequest) (*Create
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreatePdnsFdZoneResponse
@@ -2000,6 +2120,10 @@ func (c *Client) QueryEndPointRegionAZSend(request *QueryEndPointRegionAZRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct QueryEndPointRegionAZResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2063,6 +2187,10 @@ func (c *Client) DescribeEndPointsSend(request *DescribeEndPointsRequest) (*Desc
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeEndPointsResponse
@@ -2130,6 +2258,10 @@ func (c *Client) DeleteEndPointSend(request *DeleteEndPointRequest) (*DeleteEndP
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteEndPointResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2195,6 +2327,10 @@ func (c *Client) ModifyEndPointSend(request *ModifyEndPointRequest) (*ModifyEndP
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyEndPointResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2258,6 +2394,10 @@ func (c *Client) CreateEndPointSend(request *CreateEndPointRequest) (*CreateEndP
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateEndPointResponse

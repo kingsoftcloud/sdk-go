@@ -488,3 +488,27 @@ func (r *GetKnadPolicyResponse) ToJsonString() string {
 func (r *GetKnadPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type InsertEipsRequest struct {
+	*ksyunhttp.BaseRequest
+	KnadId *string   `json:"KnadId,omitempty" name:"KnadId"`
+	Ip     []*string `json:"Ip,omitempty" name:"Ip"`
+}
+
+func (r *InsertEipsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type InsertEipsResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *InsertEipsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *InsertEipsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

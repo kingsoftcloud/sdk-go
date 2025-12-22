@@ -50,6 +50,10 @@ func (c *Client) CreateKeySend(request *CreateKeyRequest) (*CreateKeyResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateKeyResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) ImportKeySend(request *ImportKeyRequest) (*ImportKeyResponse, e
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ImportKeyResponse
@@ -180,6 +188,10 @@ func (c *Client) DeleteKeySend(request *DeleteKeyRequest) (*DeleteKeyResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteKeyResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -245,6 +257,10 @@ func (c *Client) ModifyKeySend(request *ModifyKeyRequest) (*ModifyKeyResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyKeyResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -308,6 +324,10 @@ func (c *Client) DescribeKeysSend(request *DescribeKeysRequest) (*DescribeKeysRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeKeysResponse

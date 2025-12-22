@@ -50,6 +50,10 @@ func (c *Client) DescribeEventLogsSend(request *DescribeEventLogsRequest) (*Desc
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeEventLogsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) CreateAddonInstanceSend(request *CreateAddonInstanceRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateAddonInstanceResponse
@@ -180,6 +188,10 @@ func (c *Client) DeleteAddonInstanceSend(request *DeleteAddonInstanceRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteAddonInstanceResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) DescribeAddonInstancesSend(request *DescribeAddonInstancesReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeAddonInstancesResponse
@@ -310,6 +326,10 @@ func (c *Client) DescribeAddonListSend(request *DescribeAddonListRequest) (*Desc
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeAddonListResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -373,6 +393,10 @@ func (c *Client) DescribeComponentParamsSend(request *DescribeComponentParamsReq
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeComponentParamsResponse
@@ -440,6 +464,10 @@ func (c *Client) DescribeNetworkSend(request *DescribeNetworkRequest) (*Describe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeNetworkResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -505,6 +533,10 @@ func (c *Client) DescribeNodeComponentsSend(request *DescribeNodeComponentsReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeNodeComponentsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -568,6 +600,10 @@ func (c *Client) DescribeComponentListSend(request *DescribeComponentListRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeComponentListResponse

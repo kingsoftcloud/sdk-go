@@ -50,6 +50,10 @@ func (c *Client) CreateVolumeSend(request *CreateVolumeRequest) (*CreateVolumeRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateVolumeResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) AttachVolumeSend(request *AttachVolumeRequest) (*AttachVolumeRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct AttachVolumeResponse
@@ -180,6 +188,10 @@ func (c *Client) DetachVolumeSend(request *DetachVolumeRequest) (*DetachVolumeRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DetachVolumeResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) DeleteVolumeSend(request *DeleteVolumeRequest) (*DeleteVolumeRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteVolumeResponse
@@ -310,6 +326,10 @@ func (c *Client) ResizeVolumeSend(request *ResizeVolumeRequest) (*ResizeVolumeRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ResizeVolumeResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -373,6 +393,10 @@ func (c *Client) DescribeVolumesSend(request *DescribeVolumesRequest) (*Describe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeVolumesResponse
@@ -440,6 +464,10 @@ func (c *Client) ModifyVolumeSend(request *ModifyVolumeRequest) (*ModifyVolumeRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyVolumeResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -503,6 +531,10 @@ func (c *Client) DescribeEbsInstancesSend(request *DescribeEbsInstancesRequest) 
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeEbsInstancesResponse
@@ -570,6 +602,10 @@ func (c *Client) DescribeInstanceVolumesSend(request *DescribeInstanceVolumesReq
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeInstanceVolumesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -633,6 +669,10 @@ func (c *Client) RenewVolumeSend(request *RenewVolumeRequest) (*RenewVolumeRespo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct RenewVolumeResponse
@@ -700,6 +740,10 @@ func (c *Client) UpdateVolumeProjectSend(request *UpdateVolumeProjectRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct UpdateVolumeProjectResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -763,6 +807,10 @@ func (c *Client) DescribeSnapshotsSend(request *DescribeSnapshotsRequest) (*Desc
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeSnapshotsResponse
@@ -830,6 +878,10 @@ func (c *Client) CreateSnapshotSend(request *CreateSnapshotRequest) (*CreateSnap
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateSnapshotResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -893,6 +945,10 @@ func (c *Client) DeleteSnapshotSend(request *DeleteSnapshotRequest) (*DeleteSnap
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteSnapshotResponse
@@ -960,6 +1016,10 @@ func (c *Client) RollbackSnapshotSend(request *RollbackSnapshotRequest) (*Rollba
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RollbackSnapshotResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1023,6 +1083,10 @@ func (c *Client) ModifySnapshotSend(request *ModifySnapshotRequest) (*ModifySnap
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifySnapshotResponse
@@ -1090,6 +1154,10 @@ func (c *Client) RecoveryVolumeSend(request *RecoveryVolumeRequest) (*RecoveryVo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RecoveryVolumeResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1153,6 +1221,10 @@ func (c *Client) ValidateAttachInstanceSend(request *ValidateAttachInstanceReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ValidateAttachInstanceResponse
@@ -1220,6 +1292,10 @@ func (c *Client) DescribeAvailabilityZonesSend(request *DescribeAvailabilityZone
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeAvailabilityZonesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1283,6 +1359,10 @@ func (c *Client) DescribeCreateVolumePriceSend(request *DescribeCreateVolumePric
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeCreateVolumePriceResponse
@@ -1350,6 +1430,10 @@ func (c *Client) ModifySnapshotTypeSend(request *ModifySnapshotTypeRequest) (*Mo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifySnapshotTypeResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1413,6 +1497,10 @@ func (c *Client) ModifyVolumeTypeSend(request *ModifyVolumeTypeRequest) (*Modify
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyVolumeTypeResponse
@@ -1480,6 +1568,10 @@ func (c *Client) ModifyDedicatedBlockStorageClusterAttributeSend(request *Modify
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyDedicatedBlockStorageClusterAttributeResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1543,6 +1635,10 @@ func (c *Client) ResizeDedicatedBlockStorageClustersSend(request *ResizeDedicate
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ResizeDedicatedBlockStorageClustersResponse
@@ -1610,6 +1706,10 @@ func (c *Client) DescribeDedicatedBlockStorageClustersSend(request *DescribeDedi
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeDedicatedBlockStorageClustersResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1673,6 +1773,10 @@ func (c *Client) CreateDedicatedBlockStorageClusterSend(request *CreateDedicated
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateDedicatedBlockStorageClusterResponse
@@ -1740,6 +1844,10 @@ func (c *Client) ModifyVolumePresetSend(request *ModifyVolumePresetRequest) (*Mo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyVolumePresetResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1803,6 +1911,10 @@ func (c *Client) GetUpgradeVolumeTypeProcessInfoSend(request *GetUpgradeVolumeTy
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetUpgradeVolumeTypeProcessInfoResponse

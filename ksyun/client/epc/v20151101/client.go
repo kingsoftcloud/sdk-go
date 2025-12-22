@@ -50,6 +50,10 @@ func (c *Client) CreateEpcSend(request *CreateEpcRequest) (*CreateEpcResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateEpcResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) StartEpcSend(request *StartEpcRequest) (*StartEpcResponse, erro
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct StartEpcResponse
@@ -180,6 +188,10 @@ func (c *Client) RebootEpcSend(request *RebootEpcRequest) (*RebootEpcResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RebootEpcResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) DeleteEpcSend(request *DeleteEpcRequest) (*DeleteEpcResponse, e
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteEpcResponse
@@ -310,6 +326,10 @@ func (c *Client) ReinstallEpcSend(request *ReinstallEpcRequest) (*ReinstallEpcRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ReinstallEpcResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -373,6 +393,10 @@ func (c *Client) ModifySecurityGroupSend(request *ModifySecurityGroupRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifySecurityGroupResponse
@@ -440,6 +464,10 @@ func (c *Client) CreateKeySend(request *CreateKeyRequest) (*CreateKeyResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateKeyResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -503,6 +531,10 @@ func (c *Client) DescribeEpcsSend(request *DescribeEpcsRequest) (*DescribeEpcsRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeEpcsResponse
@@ -570,6 +602,10 @@ func (c *Client) GetDynamicCodeSend(request *GetDynamicCodeRequest) (*GetDynamic
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetDynamicCodeResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -633,6 +669,10 @@ func (c *Client) DescribeVpnsSend(request *DescribeVpnsRequest) (*DescribeVpnsRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeVpnsResponse
@@ -700,6 +740,10 @@ func (c *Client) CreateImageSend(request *CreateImageRequest) (*CreateImageRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateImageResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -763,6 +807,10 @@ func (c *Client) ModifyImageSend(request *ModifyImageRequest) (*ModifyImageRespo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyImageResponse
@@ -830,6 +878,10 @@ func (c *Client) DeleteImageSend(request *DeleteImageRequest) (*DeleteImageRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteImageResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -893,6 +945,10 @@ func (c *Client) DescribeImagesSend(request *DescribeImagesRequest) (*DescribeIm
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeImagesResponse
@@ -960,6 +1016,10 @@ func (c *Client) ModifyDnsSend(request *ModifyDnsRequest) (*ModifyDnsResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyDnsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1023,6 +1083,10 @@ func (c *Client) ModifyNetworkInterfaceAttributeSend(request *ModifyNetworkInter
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyNetworkInterfaceAttributeResponse
@@ -1090,6 +1154,10 @@ func (c *Client) DescribePhysicalMonitorSend(request *DescribePhysicalMonitorReq
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribePhysicalMonitorResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1153,6 +1221,10 @@ func (c *Client) DescribeEpcManagementsSend(request *DescribeEpcManagementsReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeEpcManagementsResponse
@@ -1220,6 +1292,10 @@ func (c *Client) DescribeRemoteManagementsSend(request *DescribeRemoteManagement
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeRemoteManagementsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1283,6 +1359,10 @@ func (c *Client) StopEpcSend(request *StopEpcRequest) (*StopEpcResponse, error) 
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct StopEpcResponse
@@ -1350,6 +1430,10 @@ func (c *Client) ModifyEpcSend(request *ModifyEpcRequest) (*ModifyEpcResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyEpcResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1413,6 +1497,10 @@ func (c *Client) ModifyRemoteManagementSend(request *ModifyRemoteManagementReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyRemoteManagementResponse
@@ -1480,6 +1568,10 @@ func (c *Client) CreateRemoteManagementSend(request *CreateRemoteManagementReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateRemoteManagementResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1543,6 +1635,10 @@ func (c *Client) ReinstallCustomerEpcSend(request *ReinstallCustomerEpcRequest) 
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ReinstallCustomerEpcResponse
@@ -1610,6 +1706,10 @@ func (c *Client) DeleteRemoteManagementSend(request *DeleteRemoteManagementReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteRemoteManagementResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1673,6 +1773,10 @@ func (c *Client) ResetPasswordSend(request *ResetPasswordRequest) (*ResetPasswor
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ResetPasswordResponse
@@ -1740,6 +1844,10 @@ func (c *Client) ModifyHyperThreadingSend(request *ModifyHyperThreadingRequest) 
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyHyperThreadingResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1803,6 +1911,10 @@ func (c *Client) AssociateClusterSend(request *AssociateClusterRequest) (*Associ
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct AssociateClusterResponse
@@ -1870,6 +1982,10 @@ func (c *Client) DisassociateClusterSend(request *DisassociateClusterRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DisassociateClusterResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1933,6 +2049,10 @@ func (c *Client) DescribeInspectionsSend(request *DescribeInspectionsRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeInspectionsResponse
@@ -2000,6 +2120,10 @@ func (c *Client) DescribeEpcStocksSend(request *DescribeEpcStocksRequest) (*Desc
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeEpcStocksResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2063,6 +2187,10 @@ func (c *Client) DescribeEpcDeviceAttributesSend(request *DescribeEpcDeviceAttri
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeEpcDeviceAttributesResponse
@@ -2130,6 +2258,10 @@ func (c *Client) DescribeProcessesSend(request *DescribeProcessesRequest) (*Desc
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeProcessesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2193,6 +2325,10 @@ func (c *Client) CreateProcessSend(request *CreateProcessRequest) (*CreateProces
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateProcessResponse
@@ -2260,6 +2396,10 @@ func (c *Client) DeleteProcessSend(request *DeleteProcessRequest) (*DeleteProces
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteProcessResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2323,6 +2463,10 @@ func (c *Client) ReplyProcessSend(request *ReplyProcessRequest) (*ReplyProcessRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ReplyProcessResponse
@@ -2390,6 +2534,10 @@ func (c *Client) DescribeEpcTrashesSend(request *DescribeEpcTrashesRequest) (*De
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeEpcTrashesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2453,6 +2601,10 @@ func (c *Client) ReturnEpcSend(request *ReturnEpcRequest) (*ReturnEpcResponse, e
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ReturnEpcResponse
@@ -2520,6 +2672,10 @@ func (c *Client) CreateResourceRequirementSend(request *CreateResourceRequiremen
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateResourceRequirementResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2583,6 +2739,10 @@ func (c *Client) AttachVolumeSend(request *AttachVolumeRequest) (*AttachVolumeRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct AttachVolumeResponse
@@ -2650,6 +2810,10 @@ func (c *Client) DetachVolumeSend(request *DetachVolumeRequest) (*DetachVolumeRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DetachVolumeResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2713,6 +2877,10 @@ func (c *Client) DescribePriceSend(request *DescribePriceRequest) (*DescribePric
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribePriceResponse
@@ -2780,6 +2948,10 @@ func (c *Client) UpdateConfirmSend(request *UpdateConfirmRequest) (*UpdateConfir
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct UpdateConfirmResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2843,6 +3015,10 @@ func (c *Client) ModifyOverclockingAttributeSend(request *ModifyOverclockingAttr
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyOverclockingAttributeResponse
@@ -2910,6 +3086,10 @@ func (c *Client) CopyImageSend(request *CopyImageRequest) (*CopyImageResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CopyImageResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2973,6 +3153,10 @@ func (c *Client) DescribeEpcRaidAttributesSend(request *DescribeEpcRaidAttribute
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeEpcRaidAttributesResponse
@@ -3040,6 +3224,10 @@ func (c *Client) DescribeGpuImageDriverSend(request *DescribeGpuImageDriverReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeGpuImageDriverResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3103,6 +3291,10 @@ func (c *Client) CreateShareImageSend(request *CreateShareImageRequest) (*Create
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateShareImageResponse
@@ -3170,6 +3362,10 @@ func (c *Client) DeleteShareImageSend(request *DeleteShareImageRequest) (*Delete
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteShareImageResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3233,6 +3429,10 @@ func (c *Client) DescribeShareImageAccountListSend(request *DescribeShareImageAc
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeShareImageAccountListResponse
@@ -3300,6 +3500,10 @@ func (c *Client) DescribeShareImageSend(request *DescribeShareImageRequest) (*De
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeShareImageResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3363,6 +3567,10 @@ func (c *Client) AcceptShareImageSend(request *AcceptShareImageRequest) (*Accept
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct AcceptShareImageResponse
@@ -3430,6 +3638,10 @@ func (c *Client) RejectShareImageSend(request *RejectShareImageRequest) (*Reject
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RejectShareImageResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3493,6 +3705,10 @@ func (c *Client) DescribeManagedAccessorySend(request *DescribeManagedAccessoryR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeManagedAccessoryResponse
@@ -3560,6 +3776,10 @@ func (c *Client) AutoDeleteEpcSend(request *AutoDeleteEpcRequest) (*AutoDeleteEp
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AutoDeleteEpcResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3623,6 +3843,10 @@ func (c *Client) ExportImageSend(request *ExportImageRequest) (*ExportImageRespo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ExportImageResponse
@@ -3690,6 +3914,10 @@ func (c *Client) QueryBucketsSend(request *QueryBucketsRequest) (*QueryBucketsRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct QueryBucketsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3753,6 +3981,10 @@ func (c *Client) CancelImageExportSend(request *CancelImageExportRequest) (*Canc
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CancelImageExportResponse
@@ -3820,6 +4052,10 @@ func (c *Client) UseHotStandByEpcSend(request *UseHotStandByEpcRequest) (*UseHot
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct UseHotStandByEpcResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3883,6 +4119,10 @@ func (c *Client) ActivateHotStandbyEpcSend(request *ActivateHotStandbyEpcRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ActivateHotStandbyEpcResponse
@@ -3950,6 +4190,10 @@ func (c *Client) BatchCreateEpcSend(request *BatchCreateEpcRequest) (*BatchCreat
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct BatchCreateEpcResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4013,6 +4257,10 @@ func (c *Client) DescribeUseHotStandbyRecordsSend(request *DescribeUseHotStandby
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeUseHotStandbyRecordsResponse
@@ -4080,6 +4328,10 @@ func (c *Client) DescribeGpuRoceTopologySend(request *DescribeGpuRoceTopologyReq
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeGpuRoceTopologyResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4143,6 +4395,10 @@ func (c *Client) ModifyProcessSend(request *ModifyProcessRequest) (*ModifyProces
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyProcessResponse
@@ -4210,6 +4466,10 @@ func (c *Client) ConfirmProcessSend(request *ConfirmProcessRequest) (*ConfirmPro
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ConfirmProcessResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4273,6 +4533,10 @@ func (c *Client) DescribeModelConfigSend(request *DescribeModelConfigRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeModelConfigResponse
@@ -4340,6 +4604,10 @@ func (c *Client) DescribeRoceEventSend(request *DescribeRoceEventRequest) (*Desc
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeRoceEventResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4403,6 +4671,10 @@ func (c *Client) DescribeRoceEventDetailsSend(request *DescribeRoceEventDetailsR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeRoceEventDetailsResponse
@@ -4470,6 +4742,10 @@ func (c *Client) BatchCreateProcessSend(request *BatchCreateProcessRequest) (*Ba
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct BatchCreateProcessResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4533,6 +4809,10 @@ func (c *Client) CreateInspectHostSend(request *CreateInspectHostRequest) (*Crea
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateInspectHostResponse
@@ -4600,6 +4880,10 @@ func (c *Client) DescribeInspectHostResultsSend(request *DescribeInspectHostResu
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeInspectHostResultsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4663,6 +4947,10 @@ func (c *Client) DescribeXidDetailsSend(request *DescribeXidDetailsRequest) (*De
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeXidDetailsResponse
@@ -4730,6 +5018,10 @@ func (c *Client) RunSoInstancesSend(request *RunSoInstancesRequest) (*RunSoInsta
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RunSoInstancesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4793,6 +5085,10 @@ func (c *Client) DescribeSoImagesSend(request *DescribeSoImagesRequest) (*Descri
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeSoImagesResponse
@@ -4860,6 +5156,10 @@ func (c *Client) RebootSoInstanceSend(request *RebootSoInstanceRequest) (*Reboot
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RebootSoInstanceResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4923,6 +5223,10 @@ func (c *Client) DeleteSoImagesSend(request *DeleteSoImagesRequest) (*DeleteSoIm
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteSoImagesResponse
@@ -4990,6 +5294,10 @@ func (c *Client) DeleteSoVpcSend(request *DeleteSoVpcRequest) (*DeleteSoVpcRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteSoVpcResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5053,6 +5361,10 @@ func (c *Client) DescribeSoAvailableResourceSend(request *DescribeSoAvailableRes
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeSoAvailableResourceResponse
@@ -5120,6 +5432,10 @@ func (c *Client) DescribeSoInstancesSend(request *DescribeSoInstancesRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeSoInstancesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5183,6 +5499,10 @@ func (c *Client) DeleteSoInstanceSend(request *DeleteSoInstanceRequest) (*Delete
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteSoInstanceResponse
@@ -5250,6 +5570,10 @@ func (c *Client) DescribeSoSecurityGroupsSend(request *DescribeSoSecurityGroupsR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeSoSecurityGroupsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5313,6 +5637,10 @@ func (c *Client) CreateSoVpcSend(request *CreateSoVpcRequest) (*CreateSoVpcRespo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateSoVpcResponse
@@ -5380,6 +5708,10 @@ func (c *Client) DeleteSoSubnetSend(request *DeleteSoSubnetRequest) (*DeleteSoSu
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteSoSubnetResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5443,6 +5775,10 @@ func (c *Client) DescribeSoKeyPairsSend(request *DescribeSoKeyPairsRequest) (*De
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeSoKeyPairsResponse
@@ -5510,6 +5846,10 @@ func (c *Client) StartSoInstanceSend(request *StartSoInstanceRequest) (*StartSoI
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct StartSoInstanceResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5573,6 +5913,10 @@ func (c *Client) DescribeSoInstanceTypesSend(request *DescribeSoInstanceTypesReq
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeSoInstanceTypesResponse
@@ -5640,6 +5984,10 @@ func (c *Client) ModifySoSubnetAttributesSend(request *ModifySoSubnetAttributesR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifySoSubnetAttributesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5703,6 +6051,10 @@ func (c *Client) DescribeSoSubnetSend(request *DescribeSoSubnetRequest) (*Descri
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeSoSubnetResponse
@@ -5770,6 +6122,10 @@ func (c *Client) ModifySoKeyPairAttributeSend(request *ModifySoKeyPairAttributeR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifySoKeyPairAttributeResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5833,6 +6189,10 @@ func (c *Client) ModifySoImageAttributeSend(request *ModifySoImageAttributeReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifySoImageAttributeResponse
@@ -5900,6 +6260,10 @@ func (c *Client) ModifySoVpcAttributesSend(request *ModifySoVpcAttributesRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifySoVpcAttributesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5963,6 +6327,10 @@ func (c *Client) ReplaceSoSystemVolumeSend(request *ReplaceSoSystemVolumeRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ReplaceSoSystemVolumeResponse
@@ -6030,6 +6398,10 @@ func (c *Client) CreateSoSubnetSend(request *CreateSoSubnetRequest) (*CreateSoSu
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateSoSubnetResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -6093,6 +6465,10 @@ func (c *Client) DescribeSoVpcsSend(request *DescribeSoVpcsRequest) (*DescribeSo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeSoVpcsResponse
@@ -6160,6 +6536,10 @@ func (c *Client) StopSoInstanceSend(request *StopSoInstanceRequest) (*StopSoInst
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct StopSoInstanceResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -6223,6 +6603,10 @@ func (c *Client) DeleteSoKeyPairsSend(request *DeleteSoKeyPairsRequest) (*Delete
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteSoKeyPairsResponse
@@ -6290,6 +6674,10 @@ func (c *Client) CreateSoImageSend(request *CreateSoImageRequest) (*CreateSoImag
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateSoImageResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -6353,6 +6741,10 @@ func (c *Client) ModifySoInstanceAttributeSend(request *ModifySoInstanceAttribut
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifySoInstanceAttributeResponse
@@ -6420,6 +6812,10 @@ func (c *Client) CreateSoKeyPairSend(request *CreateSoKeyPairRequest) (*CreateSo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateSoKeyPairResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -6483,6 +6879,10 @@ func (c *Client) InstallAgentSend(request *InstallAgentRequest) (*InstallAgentRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct InstallAgentResponse
@@ -6550,6 +6950,10 @@ func (c *Client) DescribeAgentSend(request *DescribeAgentRequest) (*DescribeAgen
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeAgentResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -6615,6 +7019,10 @@ func (c *Client) DescribeAgentInstallStatusSend(request *DescribeAgentInstallSta
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeAgentInstallStatusResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -6678,6 +7086,10 @@ func (c *Client) DescribeSoUserDataSend(request *DescribeSoUserDataRequest) (*De
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeSoUserDataResponse

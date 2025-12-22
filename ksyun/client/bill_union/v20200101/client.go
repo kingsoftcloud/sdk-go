@@ -50,6 +50,10 @@ func (c *Client) DescribeBillSummaryByPayModeSend(request *DescribeBillSummaryBy
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeBillSummaryByPayModeResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) DescribeBillSummaryByProductSend(request *DescribeBillSummaryBy
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeBillSummaryByProductResponse
@@ -180,6 +188,10 @@ func (c *Client) DescribeBillSummaryByProjectSend(request *DescribeBillSummaryBy
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeBillSummaryByProjectResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) DescribeInstanceSummaryBillsSend(request *DescribeInstanceSumma
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeInstanceSummaryBillsResponse
@@ -310,6 +326,10 @@ func (c *Client) DescribeProductCodeSend(request *DescribeProductCodeRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeProductCodeResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -373,6 +393,10 @@ func (c *Client) DescribeSplitItemBillDetailsSend(request *DescribeSplitItemBill
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeSplitItemBillDetailsResponse
@@ -440,6 +464,10 @@ func (c *Client) DescribeMiItemBillsSend(request *DescribeMiItemBillsRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeMiItemBillsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -505,6 +533,10 @@ func (c *Client) DescribeSplitItemDayBillDetailsSend(request *DescribeSplitItemD
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeSplitItemDayBillDetailsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -568,6 +600,10 @@ func (c *Client) ListProductGroupsSend(request *ListProductGroupsRequest) (*List
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ListProductGroupsResponse

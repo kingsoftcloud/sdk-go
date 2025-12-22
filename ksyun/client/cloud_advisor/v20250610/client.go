@@ -50,6 +50,10 @@ func (c *Client) GetReportSend(request *GetReportRequest) (*GetReportResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetReportResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -115,6 +119,10 @@ func (c *Client) CreateTaskSend(request *CreateTaskRequest) (*CreateTaskResponse
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateTaskResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -178,6 +186,10 @@ func (c *Client) ListInspectionItemSend(request *ListInspectionItemRequest) (*Li
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ListInspectionItemResponse

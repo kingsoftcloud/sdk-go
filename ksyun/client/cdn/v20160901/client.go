@@ -50,6 +50,10 @@ func (c *Client) GetRefreshOrPreloadTaskSend(request *GetRefreshOrPreloadTaskReq
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetRefreshOrPreloadTaskResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -115,6 +119,10 @@ func (c *Client) RefreshCachesSend(request *RefreshCachesRequest) (*RefreshCache
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RefreshCachesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -178,6 +186,10 @@ func (c *Client) GetDomainPidDimensionUsageDataSend(request *GetDomainPidDimensi
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetDomainPidDimensionUsageDataResponse

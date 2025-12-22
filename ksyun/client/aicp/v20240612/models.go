@@ -478,6 +478,54 @@ func (r *StopNotebookSavingImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryTokenDataRequest struct {
+	*ksyunhttp.BaseRequest
+	StartTimestamp *int    `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
+	EndTimestamp   *int    `json:"EndTimestamp,omitempty" name:"EndTimestamp"`
+	MaxResults     *int    `json:"MaxResults,omitempty" name:"MaxResults"`
+	ModelKeyword   *string `json:"ModelKeyword,omitempty" name:"ModelKeyword"`
+	Keyword        *string `json:"Keyword,omitempty" name:"Keyword"`
+	GroupBy        *string `json:"GroupBy,omitempty" name:"GroupBy"`
+	ReasoningType  *string `json:"ReasoningType,omitempty" name:"ReasoningType"`
+	Marker         *int    `json:"Marker,omitempty" name:"Marker"`
+	IsGlobalServer *bool   `json:"IsGlobalServer,omitempty" name:"IsGlobalServer"`
+}
+
+func (r *QueryTokenDataRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type QueryTokenDataResponse struct {
+	*ksyunhttp.BaseResponse
+	TotalCount     *int    `json:"TotalCount" name:"TotalCount"`
+	LastKey        *string `json:"LastKey" name:"LastKey"`
+	SumInputToken  *int    `json:"SumInputToken" name:"SumInputToken"`
+	SumOutputToken *int    `json:"SumOutputToken" name:"SumOutputToken"`
+	SumTotalToken  *int    `json:"SumTotalToken" name:"SumTotalToken"`
+	Data           []struct {
+		Model               *string `json:"Model" name:"Model"`
+		InputToken          *int    `json:"InputToken" name:"InputToken"`
+		OutputToken         *int    `json:"OutputToken" name:"OutputToken"`
+		TotalToken          *int    `json:"TotalToken" name:"TotalToken"`
+		TotalCacheToken     *int    `json:"TotalCacheToken" name:"TotalCacheToken"`
+		TotalCacheMissToken *int    `json:"TotalCacheMissToken" name:"TotalCacheMissToken"`
+		TotalWebSearch      *int    `json:"TotalWebSearch" name:"TotalWebSearch"`
+	} `json:"Data"`
+	SumTotalCacheToken     *int `json:"SumTotalCacheToken" name:"SumTotalCacheToken"`
+	SumTotalCacheMissToken *int `json:"SumTotalCacheMissToken" name:"SumTotalCacheMissToken"`
+	SumTotalWebSearch      *int `json:"SumTotalWebSearch" name:"SumTotalWebSearch"`
+}
+
+func (r *QueryTokenDataResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *QueryTokenDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateTrainJobRequest struct {
 	*ksyunhttp.BaseRequest
 	TrainJobName       *string                          `json:"TrainJobName,omitempty" name:"TrainJobName"`

@@ -50,6 +50,10 @@ func (c *Client) DescribeKeadSend(request *DescribeKeadRequest) (*DescribeKeadRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeKeadResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -115,6 +119,10 @@ func (c *Client) DescribeKeadIpSend(request *DescribeKeadIpRequest) (*DescribeKe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeKeadIpResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -178,6 +186,10 @@ func (c *Client) DescribeBlockIpSend(request *DescribeBlockIpRequest) (*Describe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeBlockIpResponse

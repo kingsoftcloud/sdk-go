@@ -50,6 +50,10 @@ func (c *Client) SaveNotebookImageSend(request *SaveNotebookImageRequest) (*Save
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct SaveNotebookImageResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) ModifyNotebookSend(request *ModifyNotebookRequest) (*ModifyNote
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyNotebookResponse
@@ -180,6 +188,10 @@ func (c *Client) DeleteNotebookSend(request *DeleteNotebookRequest) (*DeleteNote
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteNotebookResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) DescribeNotebooksSend(request *DescribeNotebooksRequest) (*Desc
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeNotebooksResponse
@@ -310,6 +326,10 @@ func (c *Client) CreateNotebookSend(request *CreateNotebookRequest) (*CreateNote
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateNotebookResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -373,6 +393,10 @@ func (c *Client) StopNotebookSend(request *StopNotebookRequest) (*StopNotebookRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct StopNotebookResponse
@@ -440,6 +464,10 @@ func (c *Client) StartNotebookSend(request *StartNotebookRequest) (*StartNoteboo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct StartNotebookResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -503,6 +531,10 @@ func (c *Client) GetWebIdeUrlSend(request *GetWebIdeUrlRequest) (*GetWebIdeUrlRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetWebIdeUrlResponse
@@ -570,6 +602,10 @@ func (c *Client) DescribeNotebookEventsSend(request *DescribeNotebookEventsReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeNotebookEventsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -633,6 +669,10 @@ func (c *Client) DescribeNotebookLogSend(request *DescribeNotebookLogRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeNotebookLogResponse
@@ -700,6 +740,10 @@ func (c *Client) StopNotebookSavingImageSend(request *StopNotebookSavingImageReq
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct StopNotebookSavingImageResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -737,6 +781,75 @@ func (c *Client) StopNotebookSavingImageWithContextV2(ctx context.Context, reque
 	}
 	return statusCode, msg, nil
 }
+func NewQueryTokenDataRequest() (request *QueryTokenDataRequest) {
+	request = &QueryTokenDataRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "QueryTokenData")
+	return
+}
+
+func NewQueryTokenDataResponse() (response *QueryTokenDataResponse) {
+	response = &QueryTokenDataResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) QueryTokenData(request *QueryTokenDataRequest) string {
+	return c.QueryTokenDataWithContext(context.Background(), request)
+}
+
+func (c *Client) QueryTokenDataSend(request *QueryTokenDataRequest) (*QueryTokenDataResponse, error) {
+	statusCode, msg, err := c.QueryTokenDataWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct QueryTokenDataResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) QueryTokenDataWithContext(ctx context.Context, request *QueryTokenDataRequest) string {
+	if request == nil {
+		request = NewQueryTokenDataRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewQueryTokenDataResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) QueryTokenDataWithContextV2(ctx context.Context, request *QueryTokenDataRequest) (int, string, error) {
+	if request == nil {
+		request = NewQueryTokenDataRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewQueryTokenDataResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewCreateTrainJobRequest() (request *CreateTrainJobRequest) {
 	request = &CreateTrainJobRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -763,6 +876,10 @@ func (c *Client) CreateTrainJobSend(request *CreateTrainJobRequest) (*CreateTrai
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateTrainJobResponse
@@ -830,6 +947,10 @@ func (c *Client) DescribeTrainJobEventsSend(request *DescribeTrainJobEventsReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeTrainJobEventsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -893,6 +1014,10 @@ func (c *Client) StopTrainJobSend(request *StopTrainJobRequest) (*StopTrainJobRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct StopTrainJobResponse
@@ -960,6 +1085,10 @@ func (c *Client) DescribeTrainJobSend(request *DescribeTrainJobRequest) (*Descri
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeTrainJobResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1023,6 +1152,10 @@ func (c *Client) StartTrainJobSend(request *StartTrainJobRequest) (*StartTrainJo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct StartTrainJobResponse
@@ -1090,6 +1223,10 @@ func (c *Client) DeleteTrainJobSend(request *DeleteTrainJobRequest) (*DeleteTrai
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteTrainJobResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1153,6 +1290,10 @@ func (c *Client) ModifyTrainJobSend(request *ModifyTrainJobRequest) (*ModifyTrai
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyTrainJobResponse
@@ -1220,6 +1361,10 @@ func (c *Client) DescribeTrainJobPodLogsSend(request *DescribeTrainJobPodLogsReq
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeTrainJobPodLogsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1283,6 +1428,10 @@ func (c *Client) DescribeTrainJobPodsSend(request *DescribeTrainJobPodsRequest) 
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeTrainJobPodsResponse
@@ -1350,6 +1499,10 @@ func (c *Client) DescribeResourcePoolsSend(request *DescribeResourcePoolsRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeResourcePoolsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1413,6 +1566,10 @@ func (c *Client) DescribeResourcePoolInstancesSend(request *DescribeResourcePool
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeResourcePoolInstancesResponse

@@ -50,6 +50,10 @@ func (c *Client) CreateKnadSend(request *CreateKnadRequest) (*CreateKnadResponse
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateKnadResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) ModifyKnadSend(request *ModifyKnadRequest) (*ModifyKnadResponse
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyKnadResponse
@@ -180,6 +188,10 @@ func (c *Client) UnbindIpListSend(request *UnbindIpListRequest) (*UnbindIpListRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct UnbindIpListResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) AssociateIpSend(request *AssociateIpRequest) (*AssociateIpRespo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct AssociateIpResponse
@@ -310,6 +326,10 @@ func (c *Client) DisassociateIpSend(request *DisassociateIpRequest) (*Disassocia
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DisassociateIpResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -373,6 +393,10 @@ func (c *Client) DescribeKnadIpSend(request *DescribeKnadIpRequest) (*DescribeKn
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeKnadIpResponse
@@ -440,6 +464,10 @@ func (c *Client) DeleteKnadSend(request *DeleteKnadRequest) (*DeleteKnadResponse
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteKnadResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -503,6 +531,10 @@ func (c *Client) DescribeKnadSend(request *DescribeKnadRequest) (*DescribeKnadRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeKnadResponse
@@ -570,6 +602,10 @@ func (c *Client) GetBWIpListSend(request *GetBWIpListRequest) (*GetBWIpListRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetBWIpListResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -633,6 +669,10 @@ func (c *Client) DeleteBWSend(request *DeleteBWRequest) (*DeleteBWResponse, erro
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteBWResponse
@@ -700,6 +740,10 @@ func (c *Client) AddBWIpListSend(request *AddBWIpListRequest) (*AddBWIpListRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AddBWIpListResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -763,6 +807,10 @@ func (c *Client) GetZoneListSend(request *GetZoneListRequest) (*GetZoneListRespo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetZoneListResponse
@@ -830,6 +878,10 @@ func (c *Client) ModifyPolicySend(request *ModifyPolicyRequest) (*ModifyPolicyRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyPolicyResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -893,6 +945,10 @@ func (c *Client) ModifyBlockLocationSend(request *ModifyBlockLocationRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyBlockLocationResponse
@@ -960,6 +1016,10 @@ func (c *Client) GetBlockLocationsSend(request *GetBlockLocationsRequest) (*GetB
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetBlockLocationsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1025,6 +1085,10 @@ func (c *Client) GetKnadPolicySend(request *GetKnadPolicyRequest) (*GetKnadPolic
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetKnadPolicyResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1056,6 +1120,75 @@ func (c *Client) GetKnadPolicyWithContextV2(ctx context.Context, request *GetKna
 	request.SetContentType("application/json")
 
 	response := NewGetKnadPolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewInsertEipsRequest() (request *InsertEipsRequest) {
+	request = &InsertEipsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("knad", APIVersion, "InsertEips")
+	return
+}
+
+func NewInsertEipsResponse() (response *InsertEipsResponse) {
+	response = &InsertEipsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) InsertEips(request *InsertEipsRequest) string {
+	return c.InsertEipsWithContext(context.Background(), request)
+}
+
+func (c *Client) InsertEipsSend(request *InsertEipsRequest) (*InsertEipsResponse, error) {
+	statusCode, msg, err := c.InsertEipsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct InsertEipsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) InsertEipsWithContext(ctx context.Context, request *InsertEipsRequest) string {
+	if request == nil {
+		request = NewInsertEipsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewInsertEipsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) InsertEipsWithContextV2(ctx context.Context, request *InsertEipsRequest) (int, string, error) {
+	if request == nil {
+		request = NewInsertEipsRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewInsertEipsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err

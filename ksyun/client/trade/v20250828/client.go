@@ -50,6 +50,10 @@ func (c *Client) QueryInstancesSend(request *QueryInstancesRequest) (*QueryInsta
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct QueryInstancesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {

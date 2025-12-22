@@ -50,6 +50,10 @@ func (c *Client) CreateUserUsageDataExportTaskSend(request *CreateUserUsageDataE
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateUserUsageDataExportTaskResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) GetUserUsageDataExportTaskSend(request *GetUserUsageDataExportT
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetUserUsageDataExportTaskResponse
@@ -180,6 +188,10 @@ func (c *Client) DeleteUserUsageDataExportTaskSend(request *DeleteUserUsageDataE
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteUserUsageDataExportTaskResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) GetDomainUsageDataSend(request *GetDomainUsageDataRequest) (*Ge
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetDomainUsageDataResponse
@@ -310,6 +326,10 @@ func (c *Client) CreateUsageDetailDataExportTaskSend(request *CreateUsageDetailD
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateUsageDetailDataExportTaskResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -375,6 +395,10 @@ func (c *Client) GetUsageDetailDataExportTaskSend(request *GetUsageDetailDataExp
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetUsageDetailDataExportTaskResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -438,6 +462,10 @@ func (c *Client) DeleteUsageDetailDataExportTaskSend(request *DeleteUsageDetailD
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteUsageDetailDataExportTaskResponse

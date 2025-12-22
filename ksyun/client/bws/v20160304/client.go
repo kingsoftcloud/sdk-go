@@ -50,6 +50,10 @@ func (c *Client) CreateBandWidthShareSend(request *CreateBandWidthShareRequest) 
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateBandWidthShareResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) DescribeBandWidthSharesSend(request *DescribeBandWidthSharesReq
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeBandWidthSharesResponse
@@ -180,6 +188,10 @@ func (c *Client) AssociateBandWidthShareSend(request *AssociateBandWidthShareReq
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AssociateBandWidthShareResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) DisassociateBandWidthShareSend(request *DisassociateBandWidthSh
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DisassociateBandWidthShareResponse
@@ -310,6 +326,10 @@ func (c *Client) ModifyBandWidthShareSend(request *ModifyBandWidthShareRequest) 
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyBandWidthShareResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -375,6 +395,10 @@ func (c *Client) DeleteBandWidthShareSend(request *DeleteBandWidthShareRequest) 
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteBandWidthShareResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -438,6 +462,10 @@ func (c *Client) QueryBwsTopEipMonitorSend(request *QueryBwsTopEipMonitorRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct QueryBwsTopEipMonitorResponse

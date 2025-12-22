@@ -9,6 +9,10 @@ type CreateClusterNetworkApiServer struct {
 	EipId                 *string `json:"EipId,omitempty" name:"EipId"`
 	PublicApiServerEnable *bool   `json:"PublicApiServerEnable,omitempty" name:"PublicApiServerEnable"`
 	ReserveSubnetId       *string `json:"ReserveSubnetId,omitempty" name:"ReserveSubnetId"`
+	LbType                *string `json:"LbType,omitempty" name:"LbType"`
+	IsAdaptationLb        *bool   `json:"IsAdaptationLb,omitempty" name:"IsAdaptationLb"`
+	PrivateLbId           *string `json:"PrivateLbId,omitempty" name:"PrivateLbId"`
+	PublicLbId            *string `json:"PublicLbId,omitempty" name:"PublicLbId"`
 }
 type CreateClusterNetworkVpcCNI struct {
 	Enable        *bool     `json:"Enable,omitempty" name:"Enable"`
@@ -25,6 +29,7 @@ type CreateClusterNetwork struct {
 	ServiceCidr       *string                        `json:"ServiceCidr,omitempty" name:"ServiceCidr"`
 	MaxPodPerNode     *int                           `json:"MaxPodPerNode,omitempty" name:"MaxPodPerNode"`
 	SANs              []*string                      `json:"SANs,omitempty" name:"SANs"`
+	SecurityGroupId   *string                        `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 }
 type CreateClusterNodeInstanceSetBasicSettingSystemDisk struct {
 	Type       *string `json:"Type,omitempty" name:"Type"`
@@ -110,8 +115,11 @@ type CreateClusterAddons struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 type ModifyClusterPublicApiServer struct {
-	EipId  *string `json:"EipId,omitempty" name:"EipId"`
-	Enable *bool   `json:"Enable,omitempty" name:"Enable"`
+	EipId            *string `json:"EipId,omitempty" name:"EipId"`
+	Enable           *bool   `json:"Enable,omitempty" name:"Enable"`
+	AclId            *string `json:"AclId,omitempty" name:"AclId"`
+	PublicLbId       *string `json:"PublicLbId,omitempty" name:"PublicLbId"`
+	IsPublicLbDelete *bool   `json:"IsPublicLbDelete,omitempty" name:"IsPublicLbDelete"`
 }
 type ModifyClusterVpcCNI struct {
 	Enable        *bool     `json:"Enable,omitempty" name:"Enable"`
@@ -341,6 +349,10 @@ type DescribeClustersResponse struct {
 					PublicApiServerEnable *bool   `json:"PublicApiServerEnable" name:"PublicApiServerEnable"`
 					EipId                 *string `json:"EipId" name:"EipId"`
 					ReserveSubnetId       *string `json:"ReserveSubnetId" name:"ReserveSubnetId"`
+					LbType                *string `json:"LbType" name:"LbType"`
+					IsAdaptationLb        *bool   `json:"IsAdaptationLb" name:"IsAdaptationLb"`
+					PrivateLbId           *string `json:"PrivateLbId" name:"PrivateLbId"`
+					PublicLbId            *string `json:"PublicLbId" name:"PublicLbId"`
 				} `json:"ApiServer" name:"ApiServer"`
 				VpcCNI struct {
 					Enable        *bool     `json:"Enable" name:"Enable"`
@@ -375,8 +387,11 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
 
 type DeleteClusterRequest struct {
 	*ksyunhttp.BaseRequest
-	ClusterId      *string `json:"ClusterId,omitempty" name:"ClusterId"`
-	InstanceDelete *bool   `json:"InstanceDelete,omitempty" name:"InstanceDelete"`
+	ClusterId           *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	InstanceDelete      *bool   `json:"InstanceDelete,omitempty" name:"InstanceDelete"`
+	SecurityGroupDelete *bool   `json:"SecurityGroupDelete,omitempty" name:"SecurityGroupDelete"`
+	PrivateLbDelete     *bool   `json:"PrivateLbDelete,omitempty" name:"PrivateLbDelete"`
+	PublicLbDelete      *bool   `json:"PublicLbDelete,omitempty" name:"PublicLbDelete"`
 }
 
 func (r *DeleteClusterRequest) ToJsonString() string {

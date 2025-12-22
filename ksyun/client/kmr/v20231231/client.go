@@ -50,6 +50,10 @@ func (c *Client) ListInstancesSend(request *ListInstancesRequest) (*ListInstance
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ListInstancesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) GetInstanceDetailSend(request *GetInstanceDetailRequest) (*GetI
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetInstanceDetailResponse
@@ -180,6 +188,10 @@ func (c *Client) ModifyHostsSend(request *ModifyHostsRequest) (*ModifyHostsRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyHostsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) ListAutoScaleHistorySend(request *ListAutoScaleHistoryRequest) 
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ListAutoScaleHistoryResponse
@@ -310,6 +326,10 @@ func (c *Client) CreateAutoScalePolicySend(request *CreateAutoScalePolicyRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateAutoScalePolicyResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -375,6 +395,10 @@ func (c *Client) ListAutoScalePolicySend(request *ListAutoScalePolicyRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ListAutoScalePolicyResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -438,6 +462,10 @@ func (c *Client) DeleteAutoScalePolicySend(request *DeleteAutoScalePolicyRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteAutoScalePolicyResponse

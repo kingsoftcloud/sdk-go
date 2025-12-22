@@ -1,4 +1,4 @@
-package v20250501
+package v1
 
 import (
 	"context"
@@ -48,6 +48,10 @@ func (c *Client) CloudDeskreinstallSend(request *CloudDeskreinstallRequest) (*Cl
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CloudDeskreinstallResponse
@@ -115,6 +119,10 @@ func (c *Client) CloudDeskmanageSend(request *CloudDeskmanageRequest) (*CloudDes
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CloudDeskmanageResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -178,6 +186,10 @@ func (c *Client) CloudDeskeditSend(request *CloudDeskeditRequest) (*CloudDeskedi
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CloudDeskeditResponse
@@ -245,6 +257,10 @@ func (c *Client) CloudDeskcreateSend(request *CloudDeskcreateRequest) (*CloudDes
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CloudDeskcreateResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -308,6 +324,10 @@ func (c *Client) CloudDesklistSend(request *CloudDesklistRequest) (*CloudDesklis
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CloudDesklistResponse
@@ -375,6 +395,10 @@ func (c *Client) StrategyruleeditSend(request *StrategyruleeditRequest) (*Strate
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct StrategyruleeditResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -438,6 +462,10 @@ func (c *Client) StrategyrulecreateSend(request *StrategyrulecreateRequest) (*St
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct StrategyrulecreateResponse
@@ -505,6 +533,10 @@ func (c *Client) StrategyunboundSend(request *StrategyunboundRequest) (*Strategy
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct StrategyunboundResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -568,6 +600,10 @@ func (c *Client) StrategyboundSend(request *StrategyboundRequest) (*Strategyboun
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct StrategyboundResponse
@@ -635,6 +671,10 @@ func (c *Client) StrategydeleteSend(request *StrategydeleteRequest) (*Strategyde
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct StrategydeleteResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -698,6 +738,10 @@ func (c *Client) StrategyeditSend(request *StrategyeditRequest) (*StrategyeditRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct StrategyeditResponse
@@ -765,6 +809,10 @@ func (c *Client) StrategycreateSend(request *StrategycreateRequest) (*Strategycr
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct StrategycreateResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -828,6 +876,10 @@ func (c *Client) StrategylistSend(request *StrategylistRequest) (*StrategylistRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct StrategylistResponse
@@ -895,6 +947,10 @@ func (c *Client) RolesdeleteSend(request *RolesdeleteRequest) (*RolesdeleteRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RolesdeleteResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -958,6 +1014,10 @@ func (c *Client) RoleseditSend(request *RoleseditRequest) (*RoleseditResponse, e
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct RoleseditResponse
@@ -1025,6 +1085,10 @@ func (c *Client) RolescreateSend(request *RolescreateRequest) (*RolescreateRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RolescreateResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1088,6 +1152,10 @@ func (c *Client) RoleslistSend(request *RoleslistRequest) (*RoleslistResponse, e
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct RoleslistResponse
@@ -1155,6 +1223,10 @@ func (c *Client) ImagedeleteSend(request *ImagedeleteRequest) (*ImagedeleteRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ImagedeleteResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1218,6 +1290,10 @@ func (c *Client) ImageeditSend(request *ImageeditRequest) (*ImageeditResponse, e
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ImageeditResponse
@@ -1285,6 +1361,10 @@ func (c *Client) ImagecreateSend(request *ImagecreateRequest) (*ImagecreateRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ImagecreateResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1348,6 +1428,10 @@ func (c *Client) ImagelistSend(request *ImagelistRequest) (*ImagelistResponse, e
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ImagelistResponse
@@ -1415,6 +1499,10 @@ func (c *Client) StrategyrulebatchEditSend(request *StrategyrulebatchEditRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct StrategyrulebatchEditResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1478,6 +1566,10 @@ func (c *Client) MonitorregionsSend(request *MonitorregionsRequest) (*Monitorreg
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct MonitorregionsResponse
@@ -1545,6 +1637,10 @@ func (c *Client) UsersinstancebindSend(request *UsersinstancebindRequest) (*User
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct UsersinstancebindResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1608,6 +1704,10 @@ func (c *Client) UserspasswordresetSend(request *UserspasswordresetRequest) (*Us
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct UserspasswordresetResponse
@@ -1675,6 +1775,10 @@ func (c *Client) UsersdeleteSend(request *UsersdeleteRequest) (*UsersdeleteRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct UsersdeleteResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1738,6 +1842,10 @@ func (c *Client) UserseditSend(request *UserseditRequest) (*UserseditResponse, e
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct UserseditResponse
@@ -1805,6 +1913,10 @@ func (c *Client) UserscreateSend(request *UserscreateRequest) (*UserscreateRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct UserscreateResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1868,6 +1980,10 @@ func (c *Client) UserslistSend(request *UserslistRequest) (*UserslistResponse, e
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct UserslistResponse
@@ -1935,6 +2051,10 @@ func (c *Client) CloudDeskgetDesktopUrlSend(request *CloudDeskgetDesktopUrlReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CloudDeskgetDesktopUrlResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1998,6 +2118,10 @@ func (c *Client) QueryCloudDesksubmitShellSend(request *QueryCloudDesksubmitShel
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct QueryCloudDesksubmitShellResponse
@@ -2065,6 +2189,10 @@ func (c *Client) CreateCloudDeskgetTokenSend(request *CreateCloudDeskgetTokenReq
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateCloudDeskgetTokenResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2128,6 +2256,10 @@ func (c *Client) QueryShellStatusSend(request *QueryShellStatusRequest) (*QueryS
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct QueryShellStatusResponse
@@ -2195,6 +2327,10 @@ func (c *Client) SetProxyIpSend(request *SetProxyIpRequest) (*SetProxyIpResponse
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct SetProxyIpResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2258,6 +2394,10 @@ func (c *Client) GetProxyConfigSend(request *GetProxyConfigRequest) (*GetProxyCo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetProxyConfigResponse
@@ -2325,6 +2465,10 @@ func (c *Client) QueryRuledetailSend(request *QueryRuledetailRequest) (*QueryRul
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct QueryRuledetailResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2388,6 +2532,10 @@ func (c *Client) QueryUsersinfoSend(request *QueryUsersinfoRequest) (*QueryUsers
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct QueryUsersinfoResponse
@@ -2455,6 +2603,10 @@ func (c *Client) GetDetailSend(request *GetDetailRequest) (*GetDetailResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetDetailResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2518,6 +2670,10 @@ func (c *Client) ListLabelSend(request *ListLabelRequest) (*ListLabelResponse, e
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ListLabelResponse
@@ -2585,6 +2741,10 @@ func (c *Client) CancelInstanceLabelSend(request *CancelInstanceLabelRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CancelInstanceLabelResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2648,6 +2808,10 @@ func (c *Client) UpdateInstanceLabelSend(request *UpdateInstanceLabelRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct UpdateInstanceLabelResponse
@@ -2715,6 +2879,10 @@ func (c *Client) DeleteLabelSend(request *DeleteLabelRequest) (*DeleteLabelRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteLabelResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2780,6 +2948,10 @@ func (c *Client) UpdateLabelSend(request *UpdateLabelRequest) (*UpdateLabelRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct UpdateLabelResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2843,6 +3015,10 @@ func (c *Client) CreateLabelSend(request *CreateLabelRequest) (*CreateLabelRespo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateLabelResponse

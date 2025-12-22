@@ -50,6 +50,10 @@ func (c *Client) UpdatePerformanceOnePosixAclSend(request *UpdatePerformanceOneP
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct UpdatePerformanceOnePosixAclResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) DescribePerformanceOnePosixAclListSend(request *DescribePerform
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribePerformanceOnePosixAclListResponse
@@ -180,6 +188,10 @@ func (c *Client) ManageDataFlowTaskSend(request *ManageDataFlowTaskRequest) (*Ma
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ManageDataFlowTaskResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) CreateDataFlowStrategySend(request *CreateDataFlowStrategyReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateDataFlowStrategyResponse
@@ -310,6 +326,10 @@ func (c *Client) ModifyDataFlowTaskSend(request *ModifyDataFlowTaskRequest) (*Mo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyDataFlowTaskResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -373,6 +393,10 @@ func (c *Client) DescribeDataFlowTaskListSend(request *DescribeDataFlowTaskListR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeDataFlowTaskListResponse
@@ -440,6 +464,10 @@ func (c *Client) ActivateDataFlowTaskSend(request *ActivateDataFlowTaskRequest) 
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ActivateDataFlowTaskResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -505,6 +533,10 @@ func (c *Client) DeleteDataFlowStrategySend(request *DeleteDataFlowStrategyReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteDataFlowStrategyResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -568,6 +600,10 @@ func (c *Client) DescribeDataFlowStrategyListSend(request *DescribeDataFlowStrat
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeDataFlowStrategyListResponse

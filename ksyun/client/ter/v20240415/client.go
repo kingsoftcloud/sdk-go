@@ -50,6 +50,10 @@ func (c *Client) DescribeStackOutputsSend(request *DescribeStackOutputsRequest) 
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeStackOutputsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) DescribeStackEventsSend(request *DescribeStackEventsRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeStackEventsResponse
@@ -180,6 +188,10 @@ func (c *Client) DeleteTemplateSend(request *DeleteTemplateRequest) (*DeleteTemp
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteTemplateResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -245,6 +257,10 @@ func (c *Client) DescribeTemplateVersionsSend(request *DescribeTemplateVersionsR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeTemplateVersionsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -308,6 +324,10 @@ func (c *Client) DescribeTemplatesSend(request *DescribeTemplatesRequest) (*Desc
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeTemplatesResponse

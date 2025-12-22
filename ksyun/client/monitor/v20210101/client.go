@@ -50,6 +50,10 @@ func (c *Client) ListAlarmPolicySend(request *ListAlarmPolicyRequest) (*ListAlar
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ListAlarmPolicyResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) DescribeAlarmPolicySend(request *DescribeAlarmPolicyRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeAlarmPolicyResponse
@@ -180,6 +188,10 @@ func (c *Client) DescribePolicyObjectSend(request *DescribePolicyObjectRequest) 
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribePolicyObjectResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) DescribeAlarmReceivesSend(request *DescribeAlarmReceivesRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeAlarmReceivesResponse
@@ -310,6 +326,10 @@ func (c *Client) AddAlarmReceivesSend(request *AddAlarmReceivesRequest) (*AddAla
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AddAlarmReceivesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -373,6 +393,10 @@ func (c *Client) DeleteAlarmReceivesSend(request *DeleteAlarmReceivesRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteAlarmReceivesResponse
@@ -440,6 +464,10 @@ func (c *Client) GetUserGroupSend(request *GetUserGroupRequest) (*GetUserGroupRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetUserGroupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -503,6 +531,10 @@ func (c *Client) GetAlertUserSend(request *GetAlertUserRequest) (*GetAlertUserRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetAlertUserResponse
@@ -570,6 +602,10 @@ func (c *Client) UpdateAlertUserStatusSend(request *UpdateAlertUserStatusRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct UpdateAlertUserStatusResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -635,6 +671,10 @@ func (c *Client) DescribeSysEventGroupListSend(request *DescribeSysEventGroupLis
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeSysEventGroupListResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -698,6 +738,10 @@ func (c *Client) DescribeMonitorProductListSend(request *DescribeMonitorProductL
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeMonitorProductListResponse

@@ -50,6 +50,10 @@ func (c *Client) CreateVpcSend(request *CreateVpcRequest) (*CreateVpcResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateVpcResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) DeleteVpcSend(request *DeleteVpcRequest) (*DeleteVpcResponse, e
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteVpcResponse
@@ -180,6 +188,10 @@ func (c *Client) DescribeVpcsSend(request *DescribeVpcsRequest) (*DescribeVpcsRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeVpcsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) CreateSubnetSend(request *CreateSubnetRequest) (*CreateSubnetRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateSubnetResponse
@@ -310,6 +326,10 @@ func (c *Client) DeleteSubnetSend(request *DeleteSubnetRequest) (*DeleteSubnetRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteSubnetResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -373,6 +393,10 @@ func (c *Client) DescribeSubnetsSend(request *DescribeSubnetsRequest) (*Describe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeSubnetsResponse
@@ -440,6 +464,10 @@ func (c *Client) AssociateNetworkAclSend(request *AssociateNetworkAclRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AssociateNetworkAclResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -503,6 +531,10 @@ func (c *Client) DisassociateNetworkAclSend(request *DisassociateNetworkAclReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DisassociateNetworkAclResponse
@@ -570,6 +602,10 @@ func (c *Client) CreateRouteSend(request *CreateRouteRequest) (*CreateRouteRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateRouteResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -633,6 +669,10 @@ func (c *Client) DeleteRouteSend(request *DeleteRouteRequest) (*DeleteRouteRespo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteRouteResponse
@@ -700,6 +740,10 @@ func (c *Client) DescribeRoutesSend(request *DescribeRoutesRequest) (*DescribeRo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeRoutesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -763,6 +807,10 @@ func (c *Client) CreateNetworkAclSend(request *CreateNetworkAclRequest) (*Create
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateNetworkAclResponse
@@ -830,6 +878,10 @@ func (c *Client) DeleteNetworkAclSend(request *DeleteNetworkAclRequest) (*Delete
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteNetworkAclResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -893,6 +945,10 @@ func (c *Client) CreateNetworkAclEntrySend(request *CreateNetworkAclEntryRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateNetworkAclEntryResponse
@@ -960,6 +1016,10 @@ func (c *Client) DeleteNetworkAclEntrySend(request *DeleteNetworkAclEntryRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteNetworkAclEntryResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1023,6 +1083,10 @@ func (c *Client) DescribeNetworkAclsSend(request *DescribeNetworkAclsRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeNetworkAclsResponse
@@ -1090,6 +1154,10 @@ func (c *Client) CreateSecurityGroupSend(request *CreateSecurityGroupRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateSecurityGroupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1153,6 +1221,10 @@ func (c *Client) DeleteSecurityGroupSend(request *DeleteSecurityGroupRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteSecurityGroupResponse
@@ -1220,6 +1292,10 @@ func (c *Client) AuthorizeSecurityGroupEntrySend(request *AuthorizeSecurityGroup
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AuthorizeSecurityGroupEntryResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1283,6 +1359,10 @@ func (c *Client) RevokeSecurityGroupEntrySend(request *RevokeSecurityGroupEntryR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct RevokeSecurityGroupEntryResponse
@@ -1350,6 +1430,10 @@ func (c *Client) DescribeSecurityGroupsSend(request *DescribeSecurityGroupsReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeSecurityGroupsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1413,6 +1497,10 @@ func (c *Client) CreateNatSend(request *CreateNatRequest) (*CreateNatResponse, e
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateNatResponse
@@ -1480,6 +1568,10 @@ func (c *Client) DeleteNatSend(request *DeleteNatRequest) (*DeleteNatResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteNatResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1543,6 +1635,10 @@ func (c *Client) DescribeNatsSend(request *DescribeNatsRequest) (*DescribeNatsRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeNatsResponse
@@ -1610,6 +1706,10 @@ func (c *Client) AssociateNatSend(request *AssociateNatRequest) (*AssociateNatRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AssociateNatResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1673,6 +1773,10 @@ func (c *Client) DisassociateNatSend(request *DisassociateNatRequest) (*Disassoc
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DisassociateNatResponse
@@ -1740,6 +1844,10 @@ func (c *Client) DescribeInternetGatewaysSend(request *DescribeInternetGatewaysR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeInternetGatewaysResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1803,6 +1911,10 @@ func (c *Client) CreateVpcPeeringConnectionSend(request *CreateVpcPeeringConnect
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateVpcPeeringConnectionResponse
@@ -1870,6 +1982,10 @@ func (c *Client) DeleteVpcPeeringConnectionSend(request *DeleteVpcPeeringConnect
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteVpcPeeringConnectionResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1933,6 +2049,10 @@ func (c *Client) DescribeVpcPeeringConnectionsSend(request *DescribeVpcPeeringCo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeVpcPeeringConnectionsResponse
@@ -2000,6 +2120,10 @@ func (c *Client) ModifyNetworkAclSend(request *ModifyNetworkAclRequest) (*Modify
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyNetworkAclResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2063,6 +2187,10 @@ func (c *Client) ModifySecurityGroupSend(request *ModifySecurityGroupRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifySecurityGroupResponse
@@ -2130,6 +2258,10 @@ func (c *Client) ModifySubnetSend(request *ModifySubnetRequest) (*ModifySubnetRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifySubnetResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2193,6 +2325,10 @@ func (c *Client) ModifyNatSend(request *ModifyNatRequest) (*ModifyNatResponse, e
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyNatResponse
@@ -2260,6 +2396,10 @@ func (c *Client) DescribeNetworkInterfacesSend(request *DescribeNetworkInterface
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeNetworkInterfacesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2323,6 +2463,10 @@ func (c *Client) DescribeSubnetAvailableAddressesSend(request *DescribeSubnetAva
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeSubnetAvailableAddressesResponse
@@ -2390,6 +2534,10 @@ func (c *Client) ModifyVpcSend(request *ModifyVpcRequest) (*ModifyVpcResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyVpcResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2453,6 +2601,10 @@ func (c *Client) AcceptVpcPeeringConnectionSend(request *AcceptVpcPeeringConnect
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct AcceptVpcPeeringConnectionResponse
@@ -2520,6 +2672,10 @@ func (c *Client) RejectVpcPeeringConnectionSend(request *RejectVpcPeeringConnect
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RejectVpcPeeringConnectionResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2583,6 +2739,10 @@ func (c *Client) ModifyVpcPeeringConnectionSend(request *ModifyVpcPeeringConnect
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyVpcPeeringConnectionResponse
@@ -2650,6 +2810,10 @@ func (c *Client) DescribeAvailabilityZonesSend(request *DescribeAvailabilityZone
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeAvailabilityZonesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2713,6 +2877,10 @@ func (c *Client) DescribeDirectConnectsSend(request *DescribeDirectConnectsReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeDirectConnectsResponse
@@ -2780,6 +2948,10 @@ func (c *Client) CreateDirectConnectInterfaceSend(request *CreateDirectConnectIn
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateDirectConnectInterfaceResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2843,6 +3015,10 @@ func (c *Client) DeleteDirectConnectInterfaceSend(request *DeleteDirectConnectIn
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteDirectConnectInterfaceResponse
@@ -2910,6 +3086,10 @@ func (c *Client) DescribeDirectConnectInterfacesSend(request *DescribeDirectConn
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeDirectConnectInterfacesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2973,6 +3153,10 @@ func (c *Client) CreateDirectConnectGatewaySend(request *CreateDirectConnectGate
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateDirectConnectGatewayResponse
@@ -3040,6 +3224,10 @@ func (c *Client) DeleteDirectConnectGatewaySend(request *DeleteDirectConnectGate
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteDirectConnectGatewayResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3103,6 +3291,10 @@ func (c *Client) DescribeDirectConnectGatewaysSend(request *DescribeDirectConnec
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeDirectConnectGatewaysResponse
@@ -3170,6 +3362,10 @@ func (c *Client) AttachDirectConnectGatewaySend(request *AttachDirectConnectGate
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AttachDirectConnectGatewayResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3233,6 +3429,10 @@ func (c *Client) DetachDirectConnectGatewaySend(request *DetachDirectConnectGate
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DetachDirectConnectGatewayResponse
@@ -3300,6 +3500,10 @@ func (c *Client) ModifyDirectConnectInterfaceSend(request *ModifyDirectConnectIn
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyDirectConnectInterfaceResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3363,6 +3567,10 @@ func (c *Client) ModifyDirectConnectGatewaySend(request *ModifyDirectConnectGate
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyDirectConnectGatewayResponse
@@ -3430,6 +3638,10 @@ func (c *Client) CreateVpnGatewaySend(request *CreateVpnGatewayRequest) (*Create
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateVpnGatewayResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3493,6 +3705,10 @@ func (c *Client) ModifyVpnGatewaySend(request *ModifyVpnGatewayRequest) (*Modify
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyVpnGatewayResponse
@@ -3560,6 +3776,10 @@ func (c *Client) DeleteVpnGatewaySend(request *DeleteVpnGatewayRequest) (*Delete
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteVpnGatewayResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3623,6 +3843,10 @@ func (c *Client) DescribeVpnGatewaysSend(request *DescribeVpnGatewaysRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeVpnGatewaysResponse
@@ -3690,6 +3914,10 @@ func (c *Client) CreateVpnTunnelSend(request *CreateVpnTunnelRequest) (*CreateVp
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateVpnTunnelResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3753,6 +3981,10 @@ func (c *Client) ModifyVpnTunnelSend(request *ModifyVpnTunnelRequest) (*ModifyVp
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyVpnTunnelResponse
@@ -3820,6 +4052,10 @@ func (c *Client) DeleteVpnTunnelSend(request *DeleteVpnTunnelRequest) (*DeleteVp
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteVpnTunnelResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3883,6 +4119,10 @@ func (c *Client) DescribeVpnTunnelsSend(request *DescribeVpnTunnelsRequest) (*De
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeVpnTunnelsResponse
@@ -3950,6 +4190,10 @@ func (c *Client) CreateCustomerGatewaySend(request *CreateCustomerGatewayRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateCustomerGatewayResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4013,6 +4257,10 @@ func (c *Client) ModifyCustomerGatewaySend(request *ModifyCustomerGatewayRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyCustomerGatewayResponse
@@ -4080,6 +4328,10 @@ func (c *Client) DeleteCustomerGatewaySend(request *DeleteCustomerGatewayRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteCustomerGatewayResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4143,6 +4395,10 @@ func (c *Client) ModifyDirectConnectSend(request *ModifyDirectConnectRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyDirectConnectResponse
@@ -4210,6 +4466,10 @@ func (c *Client) DescribeCustomerGatewaysSend(request *DescribeCustomerGatewaysR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeCustomerGatewaysResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4273,6 +4533,10 @@ func (c *Client) DescribeSubnetAllocatedIpAddressesSend(request *DescribeSubnetA
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeSubnetAllocatedIpAddressesResponse
@@ -4340,6 +4604,10 @@ func (c *Client) AddNatIpSend(request *AddNatIpRequest) (*AddNatIpResponse, erro
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AddNatIpResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4403,6 +4671,10 @@ func (c *Client) DeleteNatIpSend(request *DeleteNatIpRequest) (*DeleteNatIpRespo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteNatIpResponse
@@ -4470,6 +4742,10 @@ func (c *Client) AssociateVpcCidrBlockSend(request *AssociateVpcCidrBlockRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AssociateVpcCidrBlockResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4533,6 +4809,10 @@ func (c *Client) DescribeIpv6PublicIpAddressesSend(request *DescribeIpv6PublicIp
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeIpv6PublicIpAddressesResponse
@@ -4600,6 +4880,10 @@ func (c *Client) DescribeIpv6NetworkInterfacesSend(request *DescribeIpv6NetworkI
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeIpv6NetworkInterfacesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4663,6 +4947,10 @@ func (c *Client) CreateIpv6PublicIpSend(request *CreateIpv6PublicIpRequest) (*Cr
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateIpv6PublicIpResponse
@@ -4730,6 +5018,10 @@ func (c *Client) ReleaseIpv6PublicIpSend(request *ReleaseIpv6PublicIpRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ReleaseIpv6PublicIpResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4793,6 +5085,10 @@ func (c *Client) AlterIpv6PublicIpStateSend(request *AlterIpv6PublicIpStateReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct AlterIpv6PublicIpStateResponse
@@ -4860,6 +5156,10 @@ func (c *Client) ModifyIpv6PublicIpSend(request *ModifyIpv6PublicIpRequest) (*Mo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyIpv6PublicIpResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4923,6 +5223,10 @@ func (c *Client) ModifyPrivateIpAddressAttributeSend(request *ModifyPrivateIpAdd
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyPrivateIpAddressAttributeResponse
@@ -4990,6 +5294,10 @@ func (c *Client) DescribeDirectConnectRoutesSend(request *DescribeDirectConnectR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeDirectConnectRoutesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5053,6 +5361,10 @@ func (c *Client) PublishDirectConnectRouteToBgpSend(request *PublishDirectConnec
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct PublishDirectConnectRouteToBgpResponse
@@ -5120,6 +5432,10 @@ func (c *Client) CancelDirectConnectRouteToBgpSend(request *CancelDirectConnectR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CancelDirectConnectRouteToBgpResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5183,6 +5499,10 @@ func (c *Client) DetachDirectConnectGatewayWithVpcSend(request *DetachDirectConn
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DetachDirectConnectGatewayWithVpcResponse
@@ -5250,6 +5570,10 @@ func (c *Client) AttachDirectConnectGatewayWithVpcSend(request *AttachDirectConn
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AttachDirectConnectGatewayWithVpcResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5313,6 +5637,10 @@ func (c *Client) AllocateSubnetIpv6CidrBlockSend(request *AllocateSubnetIpv6Cidr
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct AllocateSubnetIpv6CidrBlockResponse
@@ -5380,6 +5708,10 @@ func (c *Client) CreateRouteTableSend(request *CreateRouteTableRequest) (*Create
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateRouteTableResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5443,6 +5775,10 @@ func (c *Client) DeleteRouteTableSend(request *DeleteRouteTableRequest) (*Delete
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteRouteTableResponse
@@ -5510,6 +5846,10 @@ func (c *Client) ModifyRouteTableSend(request *ModifyRouteTableRequest) (*Modify
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyRouteTableResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5573,6 +5913,10 @@ func (c *Client) DescribeRouteTablesSend(request *DescribeRouteTablesRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeRouteTablesResponse
@@ -5640,6 +5984,10 @@ func (c *Client) AssociateRouteTableSend(request *AssociateRouteTableRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AssociateRouteTableResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5703,6 +6051,10 @@ func (c *Client) DeleteNetworkInterfaceSend(request *DeleteNetworkInterfaceReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteNetworkInterfaceResponse
@@ -5770,6 +6122,10 @@ func (c *Client) CreateNetworkInterfaceSend(request *CreateNetworkInterfaceReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateNetworkInterfaceResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5833,6 +6189,10 @@ func (c *Client) ModifyNetworkInterfaceSend(request *ModifyNetworkInterfaceReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyNetworkInterfaceResponse
@@ -5900,6 +6260,10 @@ func (c *Client) CreateNatRateLimitSend(request *CreateNatRateLimitRequest) (*Cr
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateNatRateLimitResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5963,6 +6327,10 @@ func (c *Client) DescribeNatRateLimitSend(request *DescribeNatRateLimitRequest) 
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeNatRateLimitResponse
@@ -6030,6 +6398,10 @@ func (c *Client) ModifyNatRateLimitSend(request *ModifyNatRateLimitRequest) (*Mo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyNatRateLimitResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -6093,6 +6465,10 @@ func (c *Client) DeleteNatRateLimitSend(request *DeleteNatRateLimitRequest) (*De
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteNatRateLimitResponse
@@ -6160,6 +6536,10 @@ func (c *Client) CreateDnatSend(request *CreateDnatRequest) (*CreateDnatResponse
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateDnatResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -6223,6 +6603,10 @@ func (c *Client) DeleteDnatSend(request *DeleteDnatRequest) (*DeleteDnatResponse
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteDnatResponse
@@ -6290,6 +6674,10 @@ func (c *Client) DescribeDnatsSend(request *DescribeDnatsRequest) (*DescribeDnat
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeDnatsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -6353,6 +6741,10 @@ func (c *Client) ModifyDnatSend(request *ModifyDnatRequest) (*ModifyDnatResponse
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyDnatResponse
@@ -6420,6 +6812,10 @@ func (c *Client) AssociateInstanceSend(request *AssociateInstanceRequest) (*Asso
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AssociateInstanceResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -6483,6 +6879,10 @@ func (c *Client) DisassociateInstanceSend(request *DisassociateInstanceRequest) 
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DisassociateInstanceResponse
@@ -6550,6 +6950,10 @@ func (c *Client) CreateHaVipSend(request *CreateHaVipRequest) (*CreateHaVipRespo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateHaVipResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -6613,6 +7017,10 @@ func (c *Client) DeleteHaVipSend(request *DeleteHaVipRequest) (*DeleteHaVipRespo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteHaVipResponse
@@ -6680,6 +7088,10 @@ func (c *Client) AssociateHaVipSend(request *AssociateHaVipRequest) (*AssociateH
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AssociateHaVipResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -6743,6 +7155,10 @@ func (c *Client) UnAssociateHaVipSend(request *UnAssociateHaVipRequest) (*UnAsso
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct UnAssociateHaVipResponse
@@ -6810,6 +7226,10 @@ func (c *Client) DescribeHaVipSend(request *DescribeHaVipRequest) (*DescribeHaVi
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeHaVipResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -6873,6 +7293,10 @@ func (c *Client) CreateDirectConnectGatewayRouteSend(request *CreateDirectConnec
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateDirectConnectGatewayRouteResponse
@@ -6940,6 +7364,10 @@ func (c *Client) DeleteDirectConnectGatewayRouteSend(request *DeleteDirectConnec
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteDirectConnectGatewayRouteResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -7003,6 +7431,10 @@ func (c *Client) DescribeDirectConnectGatewayRouteSend(request *DescribeDirectCo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeDirectConnectGatewayRouteResponse
@@ -7070,6 +7502,10 @@ func (c *Client) PublishDirectConnectRouteSend(request *PublishDirectConnectRout
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct PublishDirectConnectRouteResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -7133,6 +7569,10 @@ func (c *Client) UnpublishDirectConnectRouteSend(request *UnpublishDirectConnect
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct UnpublishDirectConnectRouteResponse
@@ -7200,6 +7640,10 @@ func (c *Client) AddSecondaryCidrBlockSend(request *AddSecondaryCidrBlockRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AddSecondaryCidrBlockResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -7263,6 +7707,10 @@ func (c *Client) DeleteSecondaryCidrBlockSend(request *DeleteSecondaryCidrBlockR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteSecondaryCidrBlockResponse
@@ -7330,6 +7778,10 @@ func (c *Client) AssignPrivateIpAddressSend(request *AssignPrivateIpAddressReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AssignPrivateIpAddressResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -7393,6 +7845,10 @@ func (c *Client) UnassignPrivateIpAddressSend(request *UnassignPrivateIpAddressR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct UnassignPrivateIpAddressResponse
@@ -7460,6 +7916,10 @@ func (c *Client) BatchCreateNatRateLimitSend(request *BatchCreateNatRateLimitReq
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct BatchCreateNatRateLimitResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -7523,6 +7983,10 @@ func (c *Client) BatchModifyNatRateLimitSend(request *BatchModifyNatRateLimitReq
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct BatchModifyNatRateLimitResponse
@@ -7590,6 +8054,10 @@ func (c *Client) BatchDeleteNatRateLimitSend(request *BatchDeleteNatRateLimitReq
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct BatchDeleteNatRateLimitResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -7653,6 +8121,10 @@ func (c *Client) DescribeVpnGatewayRoutesSend(request *DescribeVpnGatewayRoutesR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeVpnGatewayRoutesResponse
@@ -7720,6 +8192,10 @@ func (c *Client) CreateVpnGatewayRouteSend(request *CreateVpnGatewayRouteRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateVpnGatewayRouteResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -7783,6 +8259,10 @@ func (c *Client) DeleteVpnGatewayRouteSend(request *DeleteVpnGatewayRouteRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteVpnGatewayRouteResponse
@@ -7850,6 +8330,10 @@ func (c *Client) DescribeVpnTunnelIpsecStatusSend(request *DescribeVpnTunnelIpse
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeVpnTunnelIpsecStatusResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -7913,6 +8397,10 @@ func (c *Client) QueryNatTopVifMonitorSend(request *QueryNatTopVifMonitorRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct QueryNatTopVifMonitorResponse
@@ -7980,6 +8468,10 @@ func (c *Client) ModifyNatIpStatusSend(request *ModifyNatIpStatusRequest) (*Modi
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyNatIpStatusResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -8043,6 +8535,10 @@ func (c *Client) QueryPeerTopVifMonitorSend(request *QueryPeerTopVifMonitorReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct QueryPeerTopVifMonitorResponse
@@ -8110,6 +8606,10 @@ func (c *Client) ModifyVpnGatewayRouteSend(request *ModifyVpnGatewayRouteRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyVpnGatewayRouteResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -8173,6 +8673,10 @@ func (c *Client) DescribeDirectConnectInterfacesBgpStatusSend(request *DescribeD
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeDirectConnectInterfacesBgpStatusResponse
@@ -8240,6 +8744,10 @@ func (c *Client) DeactiveFlowLogSend(request *DeactiveFlowLogRequest) (*Deactive
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeactiveFlowLogResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -8303,6 +8811,10 @@ func (c *Client) ActiveFlowLogSend(request *ActiveFlowLogRequest) (*ActiveFlowLo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ActiveFlowLogResponse
@@ -8370,6 +8882,10 @@ func (c *Client) DeleteFlowLogSend(request *DeleteFlowLogRequest) (*DeleteFlowLo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteFlowLogResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -8433,6 +8949,10 @@ func (c *Client) ModifyFlowLogSend(request *ModifyFlowLogRequest) (*ModifyFlowLo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyFlowLogResponse
@@ -8500,6 +9020,10 @@ func (c *Client) DescribeFlowLogsSend(request *DescribeFlowLogsRequest) (*Descri
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeFlowLogsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -8563,6 +9087,10 @@ func (c *Client) CreateFlowLogSend(request *CreateFlowLogRequest) (*CreateFlowLo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateFlowLogResponse

@@ -50,6 +50,10 @@ func (c *Client) CreateClusterSend(request *CreateClusterRequest) (*CreateCluste
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateClusterResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {

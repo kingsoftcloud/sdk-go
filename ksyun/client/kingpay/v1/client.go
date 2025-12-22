@@ -1,4 +1,4 @@
-package v20250501
+package v1
 
 import (
 	"context"
@@ -48,6 +48,10 @@ func (c *Client) QueryCashWalletActionSend(request *QueryCashWalletActionRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct QueryCashWalletActionResponse

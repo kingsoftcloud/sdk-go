@@ -50,6 +50,10 @@ func (c *Client) GetClientRequestDataSend(request *GetClientRequestDataRequest) 
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetClientRequestDataResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) GetServerDataSend(request *GetServerDataRequest) (*GetServerDat
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetServerDataResponse
@@ -180,6 +188,10 @@ func (c *Client) GetDomainRankingListDataSend(request *GetDomainRankingListDataR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetDomainRankingListDataResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) GetAreaIspDataSend(request *GetAreaIspDataRequest) (*GetAreaIsp
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetAreaIspDataResponse
@@ -310,6 +326,10 @@ func (c *Client) GetTopReferDataSend(request *GetTopReferDataRequest) (*GetTopRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetTopReferDataResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -373,6 +393,10 @@ func (c *Client) GetTopUrlDataSend(request *GetTopUrlDataRequest) (*GetTopUrlDat
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetTopUrlDataResponse
@@ -440,6 +464,10 @@ func (c *Client) GetRealTimeHitRateDataSend(request *GetRealTimeHitRateDataReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetRealTimeHitRateDataResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -503,6 +531,10 @@ func (c *Client) GetReqHitRateDataSend(request *GetReqHitRateDataRequest) (*GetR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetReqHitRateDataResponse
@@ -570,6 +602,10 @@ func (c *Client) GetFlowHitRateDataSend(request *GetFlowHitRateDataRequest) (*Ge
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetFlowHitRateDataResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -633,6 +669,10 @@ func (c *Client) GetDomainRequestPeriodRatioDataSend(request *GetDomainRequestPe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetDomainRequestPeriodRatioDataResponse
@@ -700,6 +740,10 @@ func (c *Client) GetUvDataSend(request *GetUvDataRequest) (*GetUvDataResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetUvDataResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -763,6 +807,10 @@ func (c *Client) GetTopIpDataSend(request *GetTopIpDataRequest) (*GetTopIpDataRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetTopIpDataResponse
@@ -830,6 +878,10 @@ func (c *Client) GetSrcDomainHttpCodeDetailedDataSend(request *GetSrcDomainHttpC
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetSrcDomainHttpCodeDetailedDataResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -893,6 +945,10 @@ func (c *Client) GetSrcDomainHttpCodeDataSend(request *GetSrcDomainHttpCodeDataR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetSrcDomainHttpCodeDataResponse
@@ -960,6 +1016,10 @@ func (c *Client) GetDomainHttpCodeDetailedDataSend(request *GetDomainHttpCodeDet
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetDomainHttpCodeDetailedDataResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1025,6 +1085,10 @@ func (c *Client) GetDomainHttpCodeDataSend(request *GetDomainHttpCodeDataRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetDomainHttpCodeDataResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1088,6 +1152,10 @@ func (c *Client) GetEntryRateDataSend(request *GetEntryRateDataRequest) (*GetEnt
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetEntryRateDataResponse

@@ -50,6 +50,10 @@ func (c *Client) RebootDBInstanceSend(request *RebootDBInstanceRequest) (*Reboot
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RebootDBInstanceResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -113,6 +117,10 @@ func (c *Client) ModifyDBParameterGroupSend(request *ModifyDBParameterGroupReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyDBParameterGroupResponse
@@ -180,6 +188,10 @@ func (c *Client) ResetDBParameterGroupSend(request *ResetDBParameterGroupRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ResetDBParameterGroupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -243,6 +255,10 @@ func (c *Client) DescribeDBParameterGroupSend(request *DescribeDBParameterGroupR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeDBParameterGroupResponse
@@ -310,6 +326,10 @@ func (c *Client) DescribeEngineDefaultParametersSend(request *DescribeEngineDefa
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeEngineDefaultParametersResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -373,6 +393,10 @@ func (c *Client) CreateDBParameterGroupSend(request *CreateDBParameterGroupReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateDBParameterGroupResponse
@@ -440,6 +464,10 @@ func (c *Client) DeleteDBParameterGroupSend(request *DeleteDBParameterGroupReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteDBParameterGroupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -503,6 +531,10 @@ func (c *Client) CreateDBInstanceSend(request *CreateDBInstanceRequest) (*Create
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct CreateDBInstanceResponse
@@ -570,6 +602,10 @@ func (c *Client) RestoreDBInstanceFromDBBackupSend(request *RestoreDBInstanceFro
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RestoreDBInstanceFromDBBackupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -633,6 +669,10 @@ func (c *Client) DeleteDBInstanceSend(request *DeleteDBInstanceRequest) (*Delete
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteDBInstanceResponse
@@ -700,6 +740,10 @@ func (c *Client) CreateDBInstanceReadReplicaSend(request *CreateDBInstanceReadRe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateDBInstanceReadReplicaResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -763,6 +807,10 @@ func (c *Client) RestoreDBInstanceToPointInTimeSend(request *RestoreDBInstanceTo
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct RestoreDBInstanceToPointInTimeResponse
@@ -830,6 +878,10 @@ func (c *Client) DescribeDBInstanceRestorableTimeSend(request *DescribeDBInstanc
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeDBInstanceRestorableTimeResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -893,6 +945,10 @@ func (c *Client) ModifyDBInstanceSend(request *ModifyDBInstanceRequest) (*Modify
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyDBInstanceResponse
@@ -960,6 +1016,10 @@ func (c *Client) DescribeDBLogFilesSend(request *DescribeDBLogFilesRequest) (*De
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeDBLogFilesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1023,6 +1083,10 @@ func (c *Client) DescribeDBBackupsSend(request *DescribeDBBackupsRequest) (*Desc
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeDBBackupsResponse
@@ -1090,6 +1154,10 @@ func (c *Client) ModifyDBInstanceSpecSend(request *ModifyDBInstanceSpecRequest) 
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyDBInstanceSpecResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1153,6 +1221,10 @@ func (c *Client) DescribeDBInstancesSend(request *DescribeDBInstancesRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeDBInstancesResponse
@@ -1220,6 +1292,10 @@ func (c *Client) OverrideDBInstanceSend(request *OverrideDBInstanceRequest) (*Ov
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct OverrideDBInstanceResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1283,6 +1359,10 @@ func (c *Client) DescribeDBEngineVersionsSend(request *DescribeDBEngineVersionsR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeDBEngineVersionsResponse
@@ -1350,6 +1430,10 @@ func (c *Client) UpgradeDBInstanceEngineVersionSend(request *UpgradeDBInstanceEn
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct UpgradeDBInstanceEngineVersionResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1413,6 +1497,10 @@ func (c *Client) ModifyDBInstanceTypeSend(request *ModifyDBInstanceTypeRequest) 
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyDBInstanceTypeResponse
@@ -1480,6 +1568,10 @@ func (c *Client) DescribeDBInstanceParametersSend(request *DescribeDBInstancePar
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeDBInstanceParametersResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1543,6 +1635,10 @@ func (c *Client) ModifyDBBackupPolicySend(request *ModifyDBBackupPolicyRequest) 
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyDBBackupPolicyResponse
@@ -1610,6 +1706,10 @@ func (c *Client) DescribeDBBackupPolicySend(request *DescribeDBBackupPolicyReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeDBBackupPolicyResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1673,6 +1773,10 @@ func (c *Client) DeleteDBBackupSend(request *DeleteDBBackupRequest) (*DeleteDBBa
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteDBBackupResponse
@@ -1740,6 +1844,10 @@ func (c *Client) CreateDBBackupSend(request *CreateDBBackupRequest) (*CreateDBBa
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateDBBackupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1803,6 +1911,10 @@ func (c *Client) SwitchDBInstanceHASend(request *SwitchDBInstanceHARequest) (*Sw
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct SwitchDBInstanceHAResponse
@@ -1870,6 +1982,10 @@ func (c *Client) GenerateDBAdminURLSend(request *GenerateDBAdminURLRequest) (*Ge
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GenerateDBAdminURLResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -1933,6 +2049,10 @@ func (c *Client) AllocateDBInstanceEipSend(request *AllocateDBInstanceEipRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct AllocateDBInstanceEipResponse
@@ -2000,6 +2120,10 @@ func (c *Client) ReleaseDBInstanceEipSend(request *ReleaseDBInstanceEipRequest) 
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ReleaseDBInstanceEipResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2063,6 +2187,10 @@ func (c *Client) ModifyDBInstanceAvailabilityZoneSend(request *ModifyDBInstanceA
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyDBInstanceAvailabilityZoneResponse
@@ -2130,6 +2258,10 @@ func (c *Client) CreateSecurityGroupSend(request *CreateSecurityGroupRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateSecurityGroupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2193,6 +2325,10 @@ func (c *Client) DescribeSecurityGroupSend(request *DescribeSecurityGroupRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeSecurityGroupResponse
@@ -2260,6 +2396,10 @@ func (c *Client) DeleteSecurityGroupSend(request *DeleteSecurityGroupRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteSecurityGroupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2323,6 +2463,10 @@ func (c *Client) ModifySecurityGroupSend(request *ModifySecurityGroupRequest) (*
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifySecurityGroupResponse
@@ -2390,6 +2534,10 @@ func (c *Client) CloneSecurityGroupSend(request *CloneSecurityGroupRequest) (*Cl
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CloneSecurityGroupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2453,6 +2601,10 @@ func (c *Client) ModifySecurityGroupRuleSend(request *ModifySecurityGroupRuleReq
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifySecurityGroupRuleResponse
@@ -2520,6 +2672,10 @@ func (c *Client) SecurityGroupRelationSend(request *SecurityGroupRelationRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct SecurityGroupRelationResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2583,6 +2739,10 @@ func (c *Client) ModifySecurityGroupRuleNameSend(request *ModifySecurityGroupRul
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifySecurityGroupRuleNameResponse
@@ -2650,6 +2810,10 @@ func (c *Client) DescribeLastLogSend(request *DescribeLastLogRequest) (*Describe
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeLastLogResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2713,6 +2877,10 @@ func (c *Client) StartAuditSend(request *StartAuditRequest) (*StartAuditResponse
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct StartAuditResponse
@@ -2780,6 +2948,10 @@ func (c *Client) StopAuditSend(request *StopAuditRequest) (*StopAuditResponse, e
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct StopAuditResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2843,6 +3015,10 @@ func (c *Client) ListAuditSend(request *ListAuditRequest) (*ListAuditResponse, e
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ListAuditResponse
@@ -2910,6 +3086,10 @@ func (c *Client) AuditStatisticSend(request *AuditStatisticRequest) (*AuditStati
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct AuditStatisticResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -2973,6 +3153,10 @@ func (c *Client) GetCurrentDatabaseInfoSend(request *GetCurrentDatabaseInfoReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetCurrentDatabaseInfoResponse
@@ -3040,6 +3224,10 @@ func (c *Client) GetTableRestorableTimeSend(request *GetTableRestorableTimeReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct GetTableRestorableTimeResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3103,6 +3291,10 @@ func (c *Client) GetHistoryDatabaseInfoSend(request *GetHistoryDatabaseInfoReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct GetHistoryDatabaseInfoResponse
@@ -3170,6 +3362,10 @@ func (c *Client) OverrideDBInstanceByPointInTimeSend(request *OverrideDBInstance
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct OverrideDBInstanceByPointInTimeResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3233,6 +3429,10 @@ func (c *Client) RestoreToCurInstanceSend(request *RestoreToCurInstanceRequest) 
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct RestoreToCurInstanceResponse
@@ -3300,6 +3500,10 @@ func (c *Client) RestoreToSgInstanceSend(request *RestoreToSgInstanceRequest) (*
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct RestoreToSgInstanceResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3363,6 +3567,10 @@ func (c *Client) DescribeAuditHotCountSend(request *DescribeAuditHotCountRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeAuditHotCountResponse
@@ -3430,6 +3638,10 @@ func (c *Client) DescribeAuditHotDurationSend(request *DescribeAuditHotDurationR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeAuditHotDurationResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3493,6 +3705,10 @@ func (c *Client) SqlAuditReportSend(request *SqlAuditReportRequest) (*SqlAuditRe
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct SqlAuditReportResponse
@@ -3560,6 +3776,10 @@ func (c *Client) SqlAuditLineChartSend(request *SqlAuditLineChartRequest) (*SqlA
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct SqlAuditLineChartResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3623,6 +3843,10 @@ func (c *Client) SlowLogReportSend(request *SlowLogReportRequest) (*SlowLogRepor
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct SlowLogReportResponse
@@ -3690,6 +3914,10 @@ func (c *Client) SlowLogLineChartSend(request *SlowLogLineChartRequest) (*SlowLo
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct SlowLogLineChartResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3753,6 +3981,10 @@ func (c *Client) SlowLogDetailSend(request *SlowLogDetailRequest) (*SlowLogDetai
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct SlowLogDetailResponse
@@ -3820,6 +4052,10 @@ func (c *Client) StartAuditDetailExportTaskSend(request *StartAuditDetailExportT
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct StartAuditDetailExportTaskResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -3883,6 +4119,10 @@ func (c *Client) ListAuditDetailExportTaskSend(request *ListAuditDetailExportTas
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ListAuditDetailExportTaskResponse
@@ -3950,6 +4190,10 @@ func (c *Client) CreateInstanceAccountSend(request *CreateInstanceAccountRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateInstanceAccountResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4013,6 +4257,10 @@ func (c *Client) DescribeInstanceAccountsSend(request *DescribeInstanceAccountsR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeInstanceAccountsResponse
@@ -4080,6 +4328,10 @@ func (c *Client) ModifyInstanceAccountInfoSend(request *ModifyInstanceAccountInf
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyInstanceAccountInfoResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4143,6 +4395,10 @@ func (c *Client) ModifyInstanceAccountPrivilegesSend(request *ModifyInstanceAcco
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyInstanceAccountPrivilegesResponse
@@ -4210,6 +4466,10 @@ func (c *Client) DeleteInstanceAccountSend(request *DeleteInstanceAccountRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteInstanceAccountResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4273,6 +4533,10 @@ func (c *Client) DescribeCollationsSend(request *DescribeCollationsRequest) (*De
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeCollationsResponse
@@ -4340,6 +4604,10 @@ func (c *Client) CreateInstanceDatabaseSend(request *CreateInstanceDatabaseReque
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateInstanceDatabaseResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4403,6 +4671,10 @@ func (c *Client) ModifyInstanceDatabasePrivilegesSend(request *ModifyInstanceDat
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyInstanceDatabasePrivilegesResponse
@@ -4470,6 +4742,10 @@ func (c *Client) DescribeInstanceDatabasesSend(request *DescribeInstanceDatabase
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeInstanceDatabasesResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4533,6 +4809,10 @@ func (c *Client) ModifyInstanceDatabaseInfoSend(request *ModifyInstanceDatabaseI
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyInstanceDatabaseInfoResponse
@@ -4600,6 +4880,10 @@ func (c *Client) StartSlowLogDetailExportTaskSend(request *StartSlowLogDetailExp
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct StartSlowLogDetailExportTaskResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4663,6 +4947,10 @@ func (c *Client) ListSlowLogDetailExportTaskSend(request *ListSlowLogDetailExpor
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ListSlowLogDetailExportTaskResponse
@@ -4730,6 +5018,10 @@ func (c *Client) CreateInstanceAccountActionSend(request *CreateInstanceAccountA
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct CreateInstanceAccountActionResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4793,6 +5085,10 @@ func (c *Client) ModifyInstanceAccountPrivilegesActionSend(request *ModifyInstan
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyInstanceAccountPrivilegesActionResponse
@@ -4860,6 +5156,10 @@ func (c *Client) DeleteInstanceAccountActionSend(request *DeleteInstanceAccountA
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DeleteInstanceAccountActionResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -4923,6 +5223,10 @@ func (c *Client) DeleteInstanceDatabaseActionSend(request *DeleteInstanceDatabas
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DeleteInstanceDatabaseActionResponse
@@ -4990,6 +5294,10 @@ func (c *Client) ModifyDBNetworkSend(request *ModifyDBNetworkRequest) (*ModifyDB
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyDBNetworkResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5053,6 +5361,10 @@ func (c *Client) DescribeDBInstanceMonitorPeriodSend(request *DescribeDBInstance
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeDBInstanceMonitorPeriodResponse
@@ -5120,6 +5432,10 @@ func (c *Client) ModifyDBInstanceMonitorPeriodSend(request *ModifyDBInstanceMoni
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyDBInstanceMonitorPeriodResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5183,6 +5499,10 @@ func (c *Client) DescribeEngineParametersModifyHistorySend(request *DescribeEngi
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeEngineParametersModifyHistoryResponse
@@ -5250,6 +5570,10 @@ func (c *Client) BatchApplyDBParameterGroupSend(request *BatchApplyDBParameterGr
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct BatchApplyDBParameterGroupResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5313,6 +5637,10 @@ func (c *Client) UpgradeDBInstanceLatesVersionSend(request *UpgradeDBInstanceLat
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct UpgradeDBInstanceLatesVersionResponse
@@ -5380,6 +5708,10 @@ func (c *Client) DescribeProxyInstanceSend(request *DescribeProxyInstanceRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeProxyInstanceResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5443,6 +5775,10 @@ func (c *Client) SetUpProxyInstanceSend(request *SetUpProxyInstanceRequest) (*Se
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct SetUpProxyInstanceResponse
@@ -5510,6 +5846,10 @@ func (c *Client) TemporaryCloseSwitchoverSend(request *TemporaryCloseSwitchoverR
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct TemporaryCloseSwitchoverResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5573,6 +5913,10 @@ func (c *Client) DescribeBackupOverviewSend(request *DescribeBackupOverviewReque
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct DescribeBackupOverviewResponse
@@ -5640,6 +5984,10 @@ func (c *Client) DescribeStatisticBackupDetailsSend(request *DescribeStatisticBa
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeStatisticBackupDetailsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5703,6 +6051,10 @@ func (c *Client) ModifyMaintenanceTimeSend(request *ModifyMaintenanceTimeRequest
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct ModifyMaintenanceTimeResponse
@@ -5770,6 +6122,10 @@ func (c *Client) ModifyInstanceDatabasePrivilegesActionSend(request *ModifyInsta
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct ModifyInstanceDatabasePrivilegesActionResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5835,6 +6191,10 @@ func (c *Client) UpdateDBInstanceOrderSend(request *UpdateDBInstanceOrderRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct UpdateDBInstanceOrderResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
@@ -5898,6 +6258,10 @@ func (c *Client) UpdateResourceProtectionSend(request *UpdateResourceProtectionR
 	}
 	if statusCode < 200 || statusCode > 299 {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
 	}
 
 	var respStruct UpdateResourceProtectionResponse

@@ -751,7 +751,6 @@ type GetFlinkJobRunResponse struct {
 			JarUri       *string   `json:"JarUri" name:"JarUri"`
 		} `json:"FlinkDeploymentData" name:"FlinkDeploymentData"`
 		ResourceUsage *int `json:"ResourceUsage" name:"ResourceUsage"`
-		ResourceUsage *int `json:"ResourceUsage" name:"ResourceUsage"`
 	} `json:"Data"`
 }
 

@@ -1,4 +1,4 @@
-package v20250503
+package v3
 
 import (
 	"encoding/json"
@@ -610,5 +610,33 @@ func (r *SetHttp2OptionConfigResponse) ToJsonString() string {
 }
 
 func (r *SetHttp2OptionConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetReferProtectionConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	DomainId   *string `json:"DomainId,omitempty" name:"DomainId"`
+	Enable     *string `json:"Enable,omitempty" name:"Enable"`
+	ReferType  *string `json:"ReferType,omitempty" name:"ReferType"`
+	ReferList  *string `json:"ReferList,omitempty" name:"ReferList"`
+	AllowEmpty *string `json:"AllowEmpty,omitempty" name:"AllowEmpty"`
+}
+
+func (r *SetReferProtectionConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetReferProtectionConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	SetReferProtectionConfigResponse *string `json:"SetReferProtectionConfigResponse" name:"SetReferProtectionConfigResponse"`
+}
+
+func (r *SetReferProtectionConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetReferProtectionConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

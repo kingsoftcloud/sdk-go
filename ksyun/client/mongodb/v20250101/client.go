@@ -50,6 +50,10 @@ func (c *Client) DescribeDefaultParamsSend(request *DescribeDefaultParamsRequest
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
 	}
 
+	if msg == "" {
+		return nil, nil
+	}
+
 	var respStruct DescribeDefaultParamsResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
