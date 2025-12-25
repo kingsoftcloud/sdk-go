@@ -12,6 +12,10 @@ type SetCacheRuleConfigCacheRules struct {
 	CacheTime     *int    `json:"CacheTime,omitempty" name:"CacheTime"`
 	RespectOrigin *string `json:"RespectOrigin,omitempty" name:"RespectOrigin"`
 }
+type SetErrorPageConfigErrorPages struct {
+	ErrorHttpCode *string `json:"ErrorHttpCode,omitempty" name:"ErrorHttpCode"`
+	CustomPageUrl *string `json:"CustomPageUrl,omitempty" name:"CustomPageUrl"`
+}
 
 type GetDomainLogsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -638,5 +642,264 @@ func (r *SetReferProtectionConfigResponse) ToJsonString() string {
 }
 
 func (r *SetReferProtectionConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetIpProtectionConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	Enable   *string `json:"Enable,omitempty" name:"Enable"`
+	IpType   *string `json:"IpType,omitempty" name:"IpType"`
+	IpList   *string `json:"IpList,omitempty" name:"IpList"`
+}
+
+func (r *SetIpProtectionConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetIpProtectionConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	SetIpProtectionConfigResponse *string `json:"SetIpProtectionConfigResponse" name:"SetIpProtectionConfigResponse"`
+}
+
+func (r *SetIpProtectionConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetIpProtectionConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetHttpHeadersConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	DomainId    *string `json:"DomainId,omitempty" name:"DomainId"`
+	HeaderKey   *string `json:"HeaderKey,omitempty" name:"HeaderKey"`
+	HeaderValue *string `json:"HeaderValue,omitempty" name:"HeaderValue"`
+}
+
+func (r *SetHttpHeadersConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetHttpHeadersConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	SetHttpHeadersConfig *string `json:"SetHttpHeadersConfig" name:"SetHttpHeadersConfig"`
+}
+
+func (r *SetHttpHeadersConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetHttpHeadersConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteHttpHeadersConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	DomainId  *string `json:"DomainId,omitempty" name:"DomainId"`
+	HeaderKey *string `json:"HeaderKey,omitempty" name:"HeaderKey"`
+}
+
+func (r *DeleteHttpHeadersConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteHttpHeadersConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	DeleteHttpHeadersConfig *string `json:"DeleteHttpHeadersConfig" name:"DeleteHttpHeadersConfig"`
+}
+
+func (r *DeleteHttpHeadersConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteHttpHeadersConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetHttpHeaderListRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *GetHttpHeaderListRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetHttpHeaderListResponse struct {
+	*ksyunhttp.BaseResponse
+	GetHttpHeaderListResponse *string `json:"GetHttpHeaderListResponse" name:"GetHttpHeaderListResponse"`
+}
+
+func (r *GetHttpHeaderListResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetHttpHeaderListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetRequestAuthConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	DomainId       *string `json:"DomainId,omitempty" name:"DomainId"`
+	Enable         *string `json:"Enable,omitempty" name:"Enable"`
+	AuthType       *string `json:"AuthType,omitempty" name:"AuthType"`
+	Key1           *string `json:"Key1,omitempty" name:"Key1"`
+	Key2           *string `json:"Key2,omitempty" name:"Key2"`
+	ExpirationTime *string `json:"ExpirationTime,omitempty" name:"ExpirationTime"`
+}
+
+func (r *SetRequestAuthConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetRequestAuthConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	SetRequestAuthConfigResponse *string `json:"SetRequestAuthConfigResponse" name:"SetRequestAuthConfigResponse"`
+}
+
+func (r *SetRequestAuthConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetRequestAuthConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetForceRedirectConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	DomainId     *string `json:"DomainId,omitempty" name:"DomainId"`
+	RedirectType *string `json:"RedirectType,omitempty" name:"RedirectType"`
+	RedirectCode *string `json:"RedirectCode,omitempty" name:"RedirectCode"`
+}
+
+func (r *SetForceRedirectConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetForceRedirectConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	SetForceRedirectConfig *string `json:"SetForceRedirectConfig" name:"SetForceRedirectConfig"`
+}
+
+func (r *SetForceRedirectConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetForceRedirectConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetErrorPageConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	DomainId   *string                         `json:"DomainId,omitempty" name:"DomainId"`
+	ErrorPages []*SetErrorPageConfigErrorPages `json:"ErrorPages,omitempty" name:"ErrorPages"`
+}
+
+func (r *SetErrorPageConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetErrorPageConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	SetErrorPageConfig *string `json:"SetErrorPageConfig" name:"SetErrorPageConfig"`
+}
+
+func (r *SetErrorPageConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetErrorPageConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetTLSVersionConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	DomainId   *string   `json:"DomainId,omitempty" name:"DomainId"`
+	TLSVersion []*string `json:"TLSVersion,omitempty" name:"TLSVersion"`
+}
+
+func (r *SetTLSVersionConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetTLSVersionConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	TLSVersionConfigResponse *string `json:"TLSVersionConfigResponse" name:"TLSVersionConfigResponse"`
+}
+
+func (r *SetTLSVersionConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetTLSVersionConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBillingModeRequest struct {
+	*ksyunhttp.BaseRequest
+	StartTime   *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime     *string `json:"EndTime,omitempty" name:"EndTime"`
+	CdnType     *string `json:"CdnType,omitempty" name:"CdnType"`
+	DomainIds   *string `json:"DomainIds,omitempty" name:"DomainIds"`
+	Regions     *string `json:"Regions,omitempty" name:"Regions"`
+	BillingMode *string `json:"BillingMode,omitempty" name:"BillingMode"`
+}
+
+func (r *GetBillingModeRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetBillingModeResponse struct {
+	*ksyunhttp.BaseResponse
+	GetBillingModeResponse *string `json:"GetBillingModeResponse" name:"GetBillingModeResponse"`
+}
+
+func (r *GetBillingModeResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetBillingModeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBlockUrlQuotaRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *GetBlockUrlQuotaRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetBlockUrlQuotaResponse struct {
+	*ksyunhttp.BaseResponse
+	BlockUrlQuota   *int `json:"BlockUrlQuota" name:"BlockUrlQuota"`
+	BlockUrlSurplus *int `json:"BlockUrlSurplus" name:"BlockUrlSurplus"`
+}
+
+func (r *GetBlockUrlQuotaResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetBlockUrlQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -1471,3 +1471,693 @@ func (c *Client) SetReferProtectionConfigWithContextV2(ctx context.Context, requ
 	}
 	return statusCode, msg, nil
 }
+func NewSetIpProtectionConfigRequest() (request *SetIpProtectionConfigRequest) {
+	request = &SetIpProtectionConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "SetIpProtectionConfig")
+	return
+}
+
+func NewSetIpProtectionConfigResponse() (response *SetIpProtectionConfigResponse) {
+	response = &SetIpProtectionConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetIpProtectionConfig(request *SetIpProtectionConfigRequest) string {
+	return c.SetIpProtectionConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) SetIpProtectionConfigSend(request *SetIpProtectionConfigRequest) (*SetIpProtectionConfigResponse, error) {
+	statusCode, msg, err := c.SetIpProtectionConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetIpProtectionConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetIpProtectionConfigWithContext(ctx context.Context, request *SetIpProtectionConfigRequest) string {
+	if request == nil {
+		request = NewSetIpProtectionConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetIpProtectionConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetIpProtectionConfigWithContextV2(ctx context.Context, request *SetIpProtectionConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetIpProtectionConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetIpProtectionConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewSetHttpHeadersConfigRequest() (request *SetHttpHeadersConfigRequest) {
+	request = &SetHttpHeadersConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "SetHttpHeadersConfig")
+	return
+}
+
+func NewSetHttpHeadersConfigResponse() (response *SetHttpHeadersConfigResponse) {
+	response = &SetHttpHeadersConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetHttpHeadersConfig(request *SetHttpHeadersConfigRequest) string {
+	return c.SetHttpHeadersConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) SetHttpHeadersConfigSend(request *SetHttpHeadersConfigRequest) (*SetHttpHeadersConfigResponse, error) {
+	statusCode, msg, err := c.SetHttpHeadersConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetHttpHeadersConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetHttpHeadersConfigWithContext(ctx context.Context, request *SetHttpHeadersConfigRequest) string {
+	if request == nil {
+		request = NewSetHttpHeadersConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetHttpHeadersConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetHttpHeadersConfigWithContextV2(ctx context.Context, request *SetHttpHeadersConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetHttpHeadersConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetHttpHeadersConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteHttpHeadersConfigRequest() (request *DeleteHttpHeadersConfigRequest) {
+	request = &DeleteHttpHeadersConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "DeleteHttpHeadersConfig")
+	return
+}
+
+func NewDeleteHttpHeadersConfigResponse() (response *DeleteHttpHeadersConfigResponse) {
+	response = &DeleteHttpHeadersConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteHttpHeadersConfig(request *DeleteHttpHeadersConfigRequest) string {
+	return c.DeleteHttpHeadersConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteHttpHeadersConfigSend(request *DeleteHttpHeadersConfigRequest) (*DeleteHttpHeadersConfigResponse, error) {
+	statusCode, msg, err := c.DeleteHttpHeadersConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteHttpHeadersConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteHttpHeadersConfigWithContext(ctx context.Context, request *DeleteHttpHeadersConfigRequest) string {
+	if request == nil {
+		request = NewDeleteHttpHeadersConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteHttpHeadersConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteHttpHeadersConfigWithContextV2(ctx context.Context, request *DeleteHttpHeadersConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteHttpHeadersConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteHttpHeadersConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetHttpHeaderListRequest() (request *GetHttpHeaderListRequest) {
+	request = &GetHttpHeaderListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "GetHttpHeaderList")
+	return
+}
+
+func NewGetHttpHeaderListResponse() (response *GetHttpHeaderListResponse) {
+	response = &GetHttpHeaderListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetHttpHeaderList(request *GetHttpHeaderListRequest) string {
+	return c.GetHttpHeaderListWithContext(context.Background(), request)
+}
+
+func (c *Client) GetHttpHeaderListSend(request *GetHttpHeaderListRequest) (*GetHttpHeaderListResponse, error) {
+	statusCode, msg, err := c.GetHttpHeaderListWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetHttpHeaderListResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetHttpHeaderListWithContext(ctx context.Context, request *GetHttpHeaderListRequest) string {
+	if request == nil {
+		request = NewGetHttpHeaderListRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetHttpHeaderListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetHttpHeaderListWithContextV2(ctx context.Context, request *GetHttpHeaderListRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetHttpHeaderListRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetHttpHeaderListResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewSetRequestAuthConfigRequest() (request *SetRequestAuthConfigRequest) {
+	request = &SetRequestAuthConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "SetRequestAuthConfig")
+	return
+}
+
+func NewSetRequestAuthConfigResponse() (response *SetRequestAuthConfigResponse) {
+	response = &SetRequestAuthConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetRequestAuthConfig(request *SetRequestAuthConfigRequest) string {
+	return c.SetRequestAuthConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) SetRequestAuthConfigSend(request *SetRequestAuthConfigRequest) (*SetRequestAuthConfigResponse, error) {
+	statusCode, msg, err := c.SetRequestAuthConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetRequestAuthConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetRequestAuthConfigWithContext(ctx context.Context, request *SetRequestAuthConfigRequest) string {
+	if request == nil {
+		request = NewSetRequestAuthConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetRequestAuthConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetRequestAuthConfigWithContextV2(ctx context.Context, request *SetRequestAuthConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetRequestAuthConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetRequestAuthConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewSetForceRedirectConfigRequest() (request *SetForceRedirectConfigRequest) {
+	request = &SetForceRedirectConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "SetForceRedirectConfig")
+	return
+}
+
+func NewSetForceRedirectConfigResponse() (response *SetForceRedirectConfigResponse) {
+	response = &SetForceRedirectConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetForceRedirectConfig(request *SetForceRedirectConfigRequest) string {
+	return c.SetForceRedirectConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) SetForceRedirectConfigSend(request *SetForceRedirectConfigRequest) (*SetForceRedirectConfigResponse, error) {
+	statusCode, msg, err := c.SetForceRedirectConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetForceRedirectConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetForceRedirectConfigWithContext(ctx context.Context, request *SetForceRedirectConfigRequest) string {
+	if request == nil {
+		request = NewSetForceRedirectConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetForceRedirectConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetForceRedirectConfigWithContextV2(ctx context.Context, request *SetForceRedirectConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetForceRedirectConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetForceRedirectConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewSetErrorPageConfigRequest() (request *SetErrorPageConfigRequest) {
+	request = &SetErrorPageConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "SetErrorPageConfig")
+	return
+}
+
+func NewSetErrorPageConfigResponse() (response *SetErrorPageConfigResponse) {
+	response = &SetErrorPageConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetErrorPageConfig(request *SetErrorPageConfigRequest) string {
+	return c.SetErrorPageConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) SetErrorPageConfigSend(request *SetErrorPageConfigRequest) (*SetErrorPageConfigResponse, error) {
+	statusCode, msg, err := c.SetErrorPageConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetErrorPageConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetErrorPageConfigWithContext(ctx context.Context, request *SetErrorPageConfigRequest) string {
+	if request == nil {
+		request = NewSetErrorPageConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetErrorPageConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetErrorPageConfigWithContextV2(ctx context.Context, request *SetErrorPageConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetErrorPageConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetErrorPageConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewSetTLSVersionConfigRequest() (request *SetTLSVersionConfigRequest) {
+	request = &SetTLSVersionConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "SetTLSVersionConfig")
+	return
+}
+
+func NewSetTLSVersionConfigResponse() (response *SetTLSVersionConfigResponse) {
+	response = &SetTLSVersionConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetTLSVersionConfig(request *SetTLSVersionConfigRequest) string {
+	return c.SetTLSVersionConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) SetTLSVersionConfigSend(request *SetTLSVersionConfigRequest) (*SetTLSVersionConfigResponse, error) {
+	statusCode, msg, err := c.SetTLSVersionConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetTLSVersionConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetTLSVersionConfigWithContext(ctx context.Context, request *SetTLSVersionConfigRequest) string {
+	if request == nil {
+		request = NewSetTLSVersionConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetTLSVersionConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetTLSVersionConfigWithContextV2(ctx context.Context, request *SetTLSVersionConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetTLSVersionConfigRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetTLSVersionConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetBillingModeRequest() (request *GetBillingModeRequest) {
+	request = &GetBillingModeRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "GetBillingMode")
+	return
+}
+
+func NewGetBillingModeResponse() (response *GetBillingModeResponse) {
+	response = &GetBillingModeResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetBillingMode(request *GetBillingModeRequest) string {
+	return c.GetBillingModeWithContext(context.Background(), request)
+}
+
+func (c *Client) GetBillingModeSend(request *GetBillingModeRequest) (*GetBillingModeResponse, error) {
+	statusCode, msg, err := c.GetBillingModeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetBillingModeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetBillingModeWithContext(ctx context.Context, request *GetBillingModeRequest) string {
+	if request == nil {
+		request = NewGetBillingModeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetBillingModeResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetBillingModeWithContextV2(ctx context.Context, request *GetBillingModeRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetBillingModeRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetBillingModeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetBlockUrlQuotaRequest() (request *GetBlockUrlQuotaRequest) {
+	request = &GetBlockUrlQuotaRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "GetBlockUrlQuota")
+	return
+}
+
+func NewGetBlockUrlQuotaResponse() (response *GetBlockUrlQuotaResponse) {
+	response = &GetBlockUrlQuotaResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetBlockUrlQuota(request *GetBlockUrlQuotaRequest) string {
+	return c.GetBlockUrlQuotaWithContext(context.Background(), request)
+}
+
+func (c *Client) GetBlockUrlQuotaSend(request *GetBlockUrlQuotaRequest) (*GetBlockUrlQuotaResponse, error) {
+	statusCode, msg, err := c.GetBlockUrlQuotaWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetBlockUrlQuotaResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetBlockUrlQuotaWithContext(ctx context.Context, request *GetBlockUrlQuotaRequest) string {
+	if request == nil {
+		request = NewGetBlockUrlQuotaRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetBlockUrlQuotaResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetBlockUrlQuotaWithContextV2(ctx context.Context, request *GetBlockUrlQuotaRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetBlockUrlQuotaRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetBlockUrlQuotaResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
