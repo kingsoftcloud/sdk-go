@@ -2161,3 +2161,210 @@ func (c *Client) GetBlockUrlQuotaWithContextV2(ctx context.Context, request *Get
 	}
 	return statusCode, msg, nil
 }
+func NewGetBandwidthDataRequest() (request *GetBandwidthDataRequest) {
+	request = &GetBandwidthDataRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "GetBandwidthData")
+	return
+}
+
+func NewGetBandwidthDataResponse() (response *GetBandwidthDataResponse) {
+	response = &GetBandwidthDataResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetBandwidthData(request *GetBandwidthDataRequest) string {
+	return c.GetBandwidthDataWithContext(context.Background(), request)
+}
+
+func (c *Client) GetBandwidthDataSend(request *GetBandwidthDataRequest) (*GetBandwidthDataResponse, error) {
+	statusCode, msg, err := c.GetBandwidthDataWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetBandwidthDataResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetBandwidthDataWithContext(ctx context.Context, request *GetBandwidthDataRequest) string {
+	if request == nil {
+		request = NewGetBandwidthDataRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetBandwidthDataResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetBandwidthDataWithContextV2(ctx context.Context, request *GetBandwidthDataRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetBandwidthDataRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetBandwidthDataResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetFlowDataRequest() (request *GetFlowDataRequest) {
+	request = &GetFlowDataRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "GetFlowData")
+	return
+}
+
+func NewGetFlowDataResponse() (response *GetFlowDataResponse) {
+	response = &GetFlowDataResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetFlowData(request *GetFlowDataRequest) string {
+	return c.GetFlowDataWithContext(context.Background(), request)
+}
+
+func (c *Client) GetFlowDataSend(request *GetFlowDataRequest) (*GetFlowDataResponse, error) {
+	statusCode, msg, err := c.GetFlowDataWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetFlowDataResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetFlowDataWithContext(ctx context.Context, request *GetFlowDataRequest) string {
+	if request == nil {
+		request = NewGetFlowDataRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetFlowDataResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetFlowDataWithContextV2(ctx context.Context, request *GetFlowDataRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetFlowDataRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetFlowDataResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetPvDataRequest() (request *GetPvDataRequest) {
+	request = &GetPvDataRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "GetPvData")
+	return
+}
+
+func NewGetPvDataResponse() (response *GetPvDataResponse) {
+	response = &GetPvDataResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetPvData(request *GetPvDataRequest) string {
+	return c.GetPvDataWithContext(context.Background(), request)
+}
+
+func (c *Client) GetPvDataSend(request *GetPvDataRequest) (*GetPvDataResponse, error) {
+	statusCode, msg, err := c.GetPvDataWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetPvDataResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetPvDataWithContext(ctx context.Context, request *GetPvDataRequest) string {
+	if request == nil {
+		request = NewGetPvDataRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetPvDataResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetPvDataWithContextV2(ctx context.Context, request *GetPvDataRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetPvDataRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetPvDataResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}

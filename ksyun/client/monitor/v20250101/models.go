@@ -111,3 +111,46 @@ func (r *DescribeSystemEventAttributesResponse) ToJsonString() string {
 func (r *DescribeSystemEventAttributesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type ListAlarmEffectInstanceRequest struct {
+	*ksyunhttp.BaseRequest
+	StartTime *int `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime   *int `json:"EndTime,omitempty" name:"EndTime"`
+	PageIndex *int `json:"PageIndex,omitempty" name:"PageIndex"`
+	PageSize  *int `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *ListAlarmEffectInstanceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ListAlarmEffectInstanceResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestID  *string `json:"RequestID" name:"RequestID"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	Alarms     []struct {
+		AlarmID           *int    `json:"AlarmID" name:"AlarmID"`
+		Product           *string `json:"Product" name:"Product"`
+		AlarmTime         *string `json:"AlarmTime" name:"AlarmTime"`
+		RecoveryTime      *string `json:"RecoveryTime" name:"RecoveryTime"`
+		RelatedProductSet []struct {
+			ProductName *string `json:"ProductName" name:"ProductName"`
+			ResourceSet []struct {
+				InstanceID   *string `json:"InstanceID" name:"InstanceID"`
+				InstanceName *string `json:"InstanceName" name:"InstanceName"`
+				Project      *string `json:"Project" name:"Project"`
+				Region       *string `json:"Region" name:"Region"`
+			} `json:"ResourceSet"`
+		} `json:"RelatedProductSet" name:"RelatedProductSet"`
+	} `json:"Alarms"`
+}
+
+func (r *ListAlarmEffectInstanceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListAlarmEffectInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

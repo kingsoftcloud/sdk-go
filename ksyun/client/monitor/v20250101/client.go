@@ -160,3 +160,72 @@ func (c *Client) DescribeSystemEventAttributesWithContextV2(ctx context.Context,
 	}
 	return statusCode, msg, nil
 }
+func NewListAlarmEffectInstanceRequest() (request *ListAlarmEffectInstanceRequest) {
+	request = &ListAlarmEffectInstanceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("monitor", APIVersion, "ListAlarmEffectInstance")
+	return
+}
+
+func NewListAlarmEffectInstanceResponse() (response *ListAlarmEffectInstanceResponse) {
+	response = &ListAlarmEffectInstanceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ListAlarmEffectInstance(request *ListAlarmEffectInstanceRequest) string {
+	return c.ListAlarmEffectInstanceWithContext(context.Background(), request)
+}
+
+func (c *Client) ListAlarmEffectInstanceSend(request *ListAlarmEffectInstanceRequest) (*ListAlarmEffectInstanceResponse, error) {
+	statusCode, msg, err := c.ListAlarmEffectInstanceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ListAlarmEffectInstanceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ListAlarmEffectInstanceWithContext(ctx context.Context, request *ListAlarmEffectInstanceRequest) string {
+	if request == nil {
+		request = NewListAlarmEffectInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewListAlarmEffectInstanceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ListAlarmEffectInstanceWithContextV2(ctx context.Context, request *ListAlarmEffectInstanceRequest) (int, string, error) {
+	if request == nil {
+		request = NewListAlarmEffectInstanceRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewListAlarmEffectInstanceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}

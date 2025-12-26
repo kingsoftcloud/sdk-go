@@ -903,3 +903,165 @@ func (r *GetBlockUrlQuotaResponse) ToJsonString() string {
 func (r *GetBlockUrlQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type GetBandwidthDataRequest struct {
+	*ksyunhttp.BaseRequest
+	StartTime    *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime      *string `json:"EndTime,omitempty" name:"EndTime"`
+	CdnType      *string `json:"CdnType,omitempty" name:"CdnType"`
+	DomainIds    *string `json:"DomainIds,omitempty" name:"DomainIds"`
+	Regions      *string `json:"Regions,omitempty" name:"Regions"`
+	ResultType   *int    `json:"ResultType,omitempty" name:"ResultType"`
+	Granularity  *int    `json:"Granularity,omitempty" name:"Granularity"`
+	DataType     *string `json:"DataType,omitempty" name:"DataType"`
+	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+}
+
+func (r *GetBandwidthDataRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetBandwidthDataResponse struct {
+	*ksyunhttp.BaseResponse
+	StartTime   *string `json:"StartTime" name:"StartTime"`
+	EndTime     *string `json:"EndTime" name:"EndTime"`
+	CdnType     *string `json:"CdnType" name:"CdnType"`
+	DomainIds   *string `json:"DomainIds" name:"DomainIds"`
+	Regions     *string `json:"Regions" name:"Regions"`
+	ResultType  *int    `json:"ResultType" name:"ResultType"`
+	Granularity *int    `json:"Granularity" name:"Granularity"`
+	DataType    *string `json:"DataType" name:"DataType"`
+	Datas       []struct {
+		Time    *string `json:"Time" name:"Time"`
+		Bw      *int    `json:"Bw" name:"Bw"`
+		SrcBw   *int    `json:"SrcBw" name:"SrcBw"`
+		Domains []struct {
+			DomainId *string `json:"DomainId" name:"DomainId"`
+			Bw       *int    `json:"Bw" name:"Bw"`
+			SrcBw    *int    `json:"SrcBw" name:"SrcBw"`
+			Regions  []struct {
+				Region *string `json:"Region" name:"Region"`
+				Bw     *int    `json:"Bw" name:"Bw"`
+				SrcBw  *int    `json:"SrcBw" name:"SrcBw"`
+			} `json:"Regions"`
+		} `json:"Domains" name:"Domains"`
+	} `json:"Datas"`
+}
+
+func (r *GetBandwidthDataResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetBandwidthDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetFlowDataRequest struct {
+	*ksyunhttp.BaseRequest
+	StartTime    *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime      *string `json:"EndTime,omitempty" name:"EndTime"`
+	CdnType      *string `json:"CdnType,omitempty" name:"CdnType"`
+	DomainIds    *string `json:"DomainIds,omitempty" name:"DomainIds"`
+	Regions      *string `json:"Regions,omitempty" name:"Regions"`
+	ResultType   *int    `json:"ResultType,omitempty" name:"ResultType"`
+	Granularity  *int    `json:"Granularity,omitempty" name:"Granularity"`
+	DataType     *string `json:"DataType,omitempty" name:"DataType"`
+	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+}
+
+func (r *GetFlowDataRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetFlowDataResponse struct {
+	*ksyunhttp.BaseResponse
+	StartTime   *string `json:"StartTime" name:"StartTime"`
+	EndTime     *string `json:"EndTime" name:"EndTime"`
+	CdnType     *string `json:"CdnType" name:"CdnType"`
+	DomainIds   *string `json:"DomainIds" name:"DomainIds"`
+	Regions     *string `json:"Regions" name:"Regions"`
+	ResultType  *int    `json:"ResultType" name:"ResultType"`
+	Granularity *int    `json:"Granularity" name:"Granularity"`
+	DataType    *string `json:"DataType" name:"DataType"`
+	Datas       []struct {
+		Time    *string `json:"Time" name:"Time"`
+		Flow    *int    `json:"Flow" name:"Flow"`
+		SrcFlow *int    `json:"SrcFlow" name:"SrcFlow"`
+		Domains []struct {
+			DomainId *string `json:"DomainId" name:"DomainId"`
+			Flow     *int    `json:"Flow" name:"Flow"`
+			SrcFlow  *int    `json:"SrcFlow" name:"SrcFlow"`
+			Regions  []struct {
+				Region  *string `json:"Region" name:"Region"`
+				Flow    *int    `json:"Flow" name:"Flow"`
+				SrcFlow *int    `json:"SrcFlow" name:"SrcFlow"`
+			} `json:"Regions"`
+		} `json:"Domains" name:"Domains"`
+	} `json:"Datas"`
+}
+
+func (r *GetFlowDataResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetFlowDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetPvDataRequest struct {
+	*ksyunhttp.BaseRequest
+	StartTime    *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime      *string `json:"EndTime,omitempty" name:"EndTime"`
+	CdnType      *string `json:"CdnType,omitempty" name:"CdnType"`
+	DomainIds    *string `json:"DomainIds,omitempty" name:"DomainIds"`
+	Regions      *string `json:"Regions,omitempty" name:"Regions"`
+	ResultType   *int    `json:"ResultType,omitempty" name:"ResultType"`
+	Granularity  *int    `json:"Granularity,omitempty" name:"Granularity"`
+	DataType     *string `json:"DataType,omitempty" name:"DataType"`
+	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+}
+
+func (r *GetPvDataRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetPvDataResponse struct {
+	*ksyunhttp.BaseResponse
+	StartTime   *string `json:"StartTime" name:"StartTime"`
+	EndTime     *string `json:"EndTime" name:"EndTime"`
+	CdnType     *string `json:"CdnType" name:"CdnType"`
+	DomainIds   *string `json:"DomainIds" name:"DomainIds"`
+	Regions     *string `json:"Regions" name:"Regions"`
+	ResultType  *int    `json:"ResultType" name:"ResultType"`
+	Granularity *int    `json:"Granularity" name:"Granularity"`
+	DataType    *string `json:"DataType" name:"DataType"`
+	Datas       []struct {
+		Time    *string `json:"Time" name:"Time"`
+		Pv      *int    `json:"Pv" name:"Pv"`
+		SrcPv   *int    `json:"SrcPv" name:"SrcPv"`
+		Domains []struct {
+			DomainId *string `json:"DomainId" name:"DomainId"`
+			Pv       *int    `json:"Pv" name:"Pv"`
+			Regions  []struct {
+				Region *string `json:"Region" name:"Region"`
+				Pv     *int    `json:"Pv" name:"Pv"`
+				SrcPv  *int    `json:"SrcPv" name:"SrcPv"`
+			} `json:"Regions"`
+			SrcPv *int `json:"SrcPv" name:"SrcPv"`
+		} `json:"Domains" name:"Domains"`
+	} `json:"Datas"`
+}
+
+func (r *GetPvDataResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetPvDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
