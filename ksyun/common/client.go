@@ -9,12 +9,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/credentials"
-	"github.com/aws/aws-sdk-go/aws/session"
-	v4 "github.com/aws/aws-sdk-go/aws/signer/v4"
-	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
-	ksyunprofile "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/profile"
 	"log"
 	"net/http"
 	"net/http/httputil"
@@ -23,6 +17,13 @@ import (
 	"runtime"
 	"strings"
 	"time"
+
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/credentials"
+	"github.com/aws/aws-sdk-go/aws/session"
+	v4 "github.com/aws/aws-sdk-go/aws/signer/v4"
+	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
+	ksyunprofile "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/profile"
 )
 
 type Client struct {
@@ -97,12 +98,16 @@ func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksy
 		runtime.GOOS,
 		runtime.GOARCH,
 	)
+	accountId := request.GetAccountId()
+	userId := request.GetUserId()
+	roleId := request.GetRoleId()
 	var urlRe = ""
 	isBodyMethod := request.GetHttpMethod() == "POST" || request.GetHttpMethod() == "PUT" || request.GetHttpMethod() == "DELETE"
 	if isBodyMethod && request.GetContentType() == "application/json" {
 		body, _ := json.Marshal(request)
 		request.SetBody(body)
 		urlRe = request.GetUrl() + "?Action=" + request.GetAction() + "&Version=" + request.GetVersion() + "&Service=" + request.GetService()
+		urlRe = c.appendQueryParams(urlRe, accountId, userId, roleId)
 		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
 		if len(customizeHeaders) > 0 {
 			for headerK, headerV := range customizeHeaders {
@@ -135,6 +140,7 @@ func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksy
 		}
 		formDataEncoded := formData.Encode()
 		urlRe = request.GetUrl()
+		urlRe = c.appendQueryParams(urlRe, accountId, userId, roleId)
 		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
 		if len(customizeHeaders) > 0 {
 			for headerK, headerV := range customizeHeaders {
@@ -160,6 +166,7 @@ func (c *Client) sendWithSampleSignature(request ksyunhttp.Request, response ksy
 			return err, ""
 		}
 		urlRe = request.GetUrl()
+		urlRe = c.appendQueryParams(urlRe, accountId, userId, roleId)
 		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
 		if len(customizeHeaders) > 0 {
 			for headerK, headerV := range customizeHeaders {
@@ -196,12 +203,16 @@ func (c *Client) sendWithSampleSignatureV2(request ksyunhttp.Request, response k
 		runtime.GOOS,
 		runtime.GOARCH,
 	)
+	accountId := request.GetAccountId()
+	userId := request.GetUserId()
+	roleId := request.GetRoleId()
 	var urlRe = ""
 	isBodyMethod := request.GetHttpMethod() == "POST" || request.GetHttpMethod() == "PUT" || request.GetHttpMethod() == "DELETE"
 	if isBodyMethod && request.GetContentType() == "application/json" {
 		body, _ := json.Marshal(request)
 		request.SetBody(body)
 		urlRe = request.GetUrl() + "?Action=" + request.GetAction() + "&Version=" + request.GetVersion() + "&Service=" + request.GetService()
+		urlRe = c.appendQueryParams(urlRe, accountId, userId, roleId)
 		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
 		if len(customizeHeaders) > 0 {
 			for headerK, headerV := range customizeHeaders {
@@ -234,6 +245,7 @@ func (c *Client) sendWithSampleSignatureV2(request ksyunhttp.Request, response k
 		}
 		formDataEncoded := formData.Encode()
 		urlRe = request.GetUrl()
+		urlRe = c.appendQueryParams(urlRe, accountId, userId, roleId)
 		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
 		if len(customizeHeaders) > 0 {
 			for headerK, headerV := range customizeHeaders {
@@ -259,6 +271,7 @@ func (c *Client) sendWithSampleSignatureV2(request ksyunhttp.Request, response k
 			return 0, "", err
 		}
 		urlRe = request.GetUrl()
+		urlRe = c.appendQueryParams(urlRe, accountId, userId, roleId)
 		httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, request.GetBodyReader())
 		if len(customizeHeaders) > 0 {
 			for headerK, headerV := range customizeHeaders {
@@ -338,4 +351,28 @@ func (c *Client) WithHttpTransport(transport http.RoundTripper) *Client {
 func (c *Client) WithDebug(flag bool) *Client {
 	c.debug = flag
 	return c
+}
+
+func (c *Client) appendQueryParams(urlStr string, accountId string, userId string, roleId string) string {
+	parsedUrl, err := url.Parse(urlStr)
+	if err != nil {
+		return urlStr
+	}
+
+	queryParams := parsedUrl.Query()
+
+	if accountId != "" && !queryParams.Has("AccountId") {
+		queryParams.Set("AccountId", accountId)
+	}
+
+	if userId != "" && !queryParams.Has("UserId") {
+		queryParams.Set("UserId", userId)
+	}
+
+	if roleId != "" && !queryParams.Has("RoleId") {
+		queryParams.Set("RoleId", roleId)
+	}
+
+	parsedUrl.RawQuery = queryParams.Encode()
+	return parsedUrl.String()
 }

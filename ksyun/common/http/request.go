@@ -52,6 +52,12 @@ type Request interface {
 	SetContext(context.Context)
 	GetHeaders() map[string]string
 	SetHeaders(map[string]string)
+	SetAccountId(string)
+	SetUserId(string)
+	SetRoleId(string)
+	GetAccountId() string
+	GetUserId() string
+	GetRoleId() string
 }
 
 type BaseRequest struct {
@@ -64,6 +70,9 @@ type BaseRequest struct {
 	params     map[string]string
 	formParams map[string]string
 	headers    map[string]string
+	accountId  string
+	userId     string
+	roleId     string
 
 	service string
 	version string
@@ -152,6 +161,24 @@ func (r *BaseRequest) GetHeaders() map[string]string {
 		r.headers = make(map[string]string)
 	}
 	return r.headers
+}
+func (r *BaseRequest) SetAccountId(accountId string) {
+	r.accountId = accountId
+}
+func (r *BaseRequest) GetAccountId() string {
+	return r.accountId
+}
+func (r *BaseRequest) SetUserId(userId string) {
+	r.userId = userId
+}
+func (r *BaseRequest) GetUserId() string {
+	return r.userId
+}
+func (r *BaseRequest) SetRoleId(roleId string) {
+	r.roleId = roleId
+}
+func (r *BaseRequest) GetRoleId() string {
+	return r.roleId
 }
 
 func (r *BaseRequest) SetHttpMethod(method string) {

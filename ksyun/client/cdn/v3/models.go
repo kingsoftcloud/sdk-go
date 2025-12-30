@@ -19,7 +19,11 @@ type SetErrorPageConfigErrorPages struct {
 
 type GetDomainLogsRequest struct {
 	*ksyunhttp.BaseRequest
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId   *string `json:"DomainId,omitempty" name:"DomainId"`
+	StartTime  *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime    *string `json:"EndTime,omitempty" name:"EndTime"`
+	PageSize   *int    `json:"PageSize,omitempty" name:"PageSize"`
+	PageNumber *int    `json:"PageNumber,omitempty" name:"PageNumber"`
 }
 
 func (r *GetDomainLogsRequest) ToJsonString() string {
@@ -29,7 +33,17 @@ func (r *GetDomainLogsRequest) ToJsonString() string {
 
 type GetDomainLogsResponse struct {
 	*ksyunhttp.BaseResponse
-	GetDomainLogsResponse *string `json:"GetDomainLogsResponse" name:"GetDomainLogsResponse"`
+	DomainId   *string `json:"DomainId" name:"DomainId"`
+	PageSize   *int    `json:"PageSize" name:"PageSize"`
+	PageNumber *int    `json:"PageNumber" name:"PageNumber"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	DomainLogs []struct {
+		StartTime *string `json:"StartTime" name:"StartTime"`
+		EndTime   *string `json:"EndTime" name:"EndTime"`
+		LogName   *string `json:"LogName" name:"LogName"`
+		LogUrl    *string `json:"LogUrl" name:"LogUrl"`
+		LogSize   *string `json:"LogSize" name:"LogSize"`
+	} `json:"DomainLogs"`
 }
 
 func (r *GetDomainLogsResponse) ToJsonString() string {
