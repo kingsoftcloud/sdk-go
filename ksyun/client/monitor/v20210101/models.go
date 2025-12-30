@@ -396,3 +396,70 @@ func (r *DescribeMonitorProductListResponse) ToJsonString() string {
 func (r *DescribeMonitorProductListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type DescribeAlertHistoriesRequest struct {
+	*ksyunhttp.BaseRequest
+	StartTime   *int    `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime     *int    `json:"EndTime,omitempty" name:"EndTime"`
+	ProductType *int    `json:"ProductType,omitempty" name:"ProductType"`
+	PolicyId    *int    `json:"PolicyId,omitempty" name:"PolicyId"`
+	InstanceId  *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	PageIndex   *int    `json:"PageIndex,omitempty" name:"PageIndex"`
+	PageSize    *int    `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeAlertHistoriesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeAlertHistoriesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId        *string `json:"requestId" name:"requestId"`
+	Code             *string `json:"code" name:"code"`
+	Message          *string `json:"message" name:"message"`
+	AlertHistoryList []struct {
+		HistoryId      *int      `json:"HistoryId" name:"HistoryId"`
+		PolicyId       *int      `json:"PolicyId" name:"PolicyId"`
+		PolicyName     *string   `json:"PolicyName" name:"PolicyName"`
+		ProductType    *int      `json:"ProductType" name:"ProductType"`
+		ProductName    *string   `json:"ProductName" name:"ProductName"`
+		InstanceId     *string   `json:"InstanceId" name:"InstanceId"`
+		InstanceName   *string   `json:"InstanceName" name:"InstanceName"`
+		InstanceIP     *string   `json:"InstanceIP" name:"InstanceIP"`
+		Region         *string   `json:"Region" name:"Region"`
+		GroupDataId    *int      `json:"GroupDataId" name:"GroupDataId"`
+		Rule           *string   `json:"Rule" name:"Rule"`
+		CurValue       *int      `json:"CurValue" name:"CurValue"`
+		AlarmState     *int      `json:"AlarmState" name:"AlarmState"`
+		TriggerTime    *string   `json:"TriggerTime" name:"TriggerTime"`
+		RecoveryTime   *string   `json:"RecoveryTime" name:"RecoveryTime"`
+		Duration       *string   `json:"Duration" name:"Duration"`
+		AlarmReceivers []*string `json:"AlarmReceivers" name:"AlarmReceivers"`
+		CallBack       *string   `json:"CallBack" name:"CallBack"`
+		ShieldVersion  *string   `json:"ShieldVersion" name:"ShieldVersion"`
+		QueryData      struct {
+			StartTime  *int    `json:"startTime" name:"startTime"`
+			EndTime    *int    `json:"endTime" name:"endTime"`
+			Interval   *int    `json:"interval" name:"interval"`
+			Function   *string `json:"function" name:"function"`
+			Legend     *string `json:"legend" name:"legend"`
+			Metricname *string `json:"metricname" name:"metricname"`
+			Tags       *string `json:"tags" name:"tags"`
+		} `json:"QueryData" name:"QueryData"`
+		CallBackResult []struct {
+			CallBack *string `json:"callBack" name:"callBack"`
+			Result   *string `json:"result" name:"result"`
+		} `json:"CallBackResult" name:"CallBackResult"`
+	} `json:"AlertHistoryList"`
+	TotalCount *int `json:"totalCount" name:"totalCount"`
+}
+
+func (r *DescribeAlertHistoriesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeAlertHistoriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

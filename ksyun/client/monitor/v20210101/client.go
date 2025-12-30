@@ -781,3 +781,72 @@ func (c *Client) DescribeMonitorProductListWithContextV2(ctx context.Context, re
 	}
 	return statusCode, msg, nil
 }
+func NewDescribeAlertHistoriesRequest() (request *DescribeAlertHistoriesRequest) {
+	request = &DescribeAlertHistoriesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlertHistories")
+	return
+}
+
+func NewDescribeAlertHistoriesResponse() (response *DescribeAlertHistoriesResponse) {
+	response = &DescribeAlertHistoriesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeAlertHistories(request *DescribeAlertHistoriesRequest) string {
+	return c.DescribeAlertHistoriesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAlertHistoriesSend(request *DescribeAlertHistoriesRequest) (*DescribeAlertHistoriesResponse, error) {
+	statusCode, msg, err := c.DescribeAlertHistoriesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeAlertHistoriesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeAlertHistoriesWithContext(ctx context.Context, request *DescribeAlertHistoriesRequest) string {
+	if request == nil {
+		request = NewDescribeAlertHistoriesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAlertHistoriesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeAlertHistoriesWithContextV2(ctx context.Context, request *DescribeAlertHistoriesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeAlertHistoriesRequest()
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAlertHistoriesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
