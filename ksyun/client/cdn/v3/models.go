@@ -42,7 +42,7 @@ type GetDomainLogsResponse struct {
 		EndTime   *string `json:"EndTime" name:"EndTime"`
 		LogName   *string `json:"LogName" name:"LogName"`
 		LogUrl    *string `json:"LogUrl" name:"LogUrl"`
-		LogSize   *string `json:"LogSize" name:"LogSize"`
+		LogSize   *int    `json:"LogSize" name:"LogSize"`
 	} `json:"DomainLogs"`
 }
 
