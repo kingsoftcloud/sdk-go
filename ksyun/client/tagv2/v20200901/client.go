@@ -66,6 +66,11 @@ func (c *Client) CreateTagWithContext(ctx context.Context, request *CreateTagReq
 	if request == nil {
 		request = NewCreateTagRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "CreateTag")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateTagWithContext(ctx context.Context, request *CreateTagReq
 func (c *Client) CreateTagWithContextV2(ctx context.Context, request *CreateTagRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateTagRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "CreateTag")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) DeleteTagWithContext(ctx context.Context, request *DeleteTagReq
 	if request == nil {
 		request = NewDeleteTagRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "DeleteTag")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) DeleteTagWithContext(ctx context.Context, request *DeleteTagReq
 func (c *Client) DeleteTagWithContextV2(ctx context.Context, request *DeleteTagRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteTagRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "DeleteTag")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) ListTagsWithContext(ctx context.Context, request *ListTagsReque
 	if request == nil {
 		request = NewListTagsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "ListTags")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) ListTagsWithContext(ctx context.Context, request *ListTagsReque
 func (c *Client) ListTagsWithContextV2(ctx context.Context, request *ListTagsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListTagsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "ListTags")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) ListTagKeysWithContext(ctx context.Context, request *ListTagKey
 	if request == nil {
 		request = NewListTagKeysRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "ListTagKeys")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) ListTagKeysWithContext(ctx context.Context, request *ListTagKey
 func (c *Client) ListTagKeysWithContextV2(ctx context.Context, request *ListTagKeysRequest) (int, string, error) {
 	if request == nil {
 		request = NewListTagKeysRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "ListTagKeys")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) ListTagValuesWithContext(ctx context.Context, request *ListTagV
 	if request == nil {
 		request = NewListTagValuesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "ListTagValues")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) ListTagValuesWithContext(ctx context.Context, request *ListTagV
 func (c *Client) ListTagValuesWithContextV2(ctx context.Context, request *ListTagValuesRequest) (int, string, error) {
 	if request == nil {
 		request = NewListTagValuesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "ListTagValues")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) ListResourcesWithContext(ctx context.Context, request *ListReso
 	if request == nil {
 		request = NewListResourcesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "ListResources")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -425,6 +480,11 @@ func (c *Client) ListResourcesWithContext(ctx context.Context, request *ListReso
 func (c *Client) ListResourcesWithContextV2(ctx context.Context, request *ListResourcesRequest) (int, string, error) {
 	if request == nil {
 		request = NewListResourcesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "ListResources")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -480,6 +540,11 @@ func (c *Client) ListTagsByResourceIdsWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewListTagsByResourceIdsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "ListTagsByResourceIds")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) ListTagsByResourceIdsWithContext(ctx context.Context, request *
 func (c *Client) ListTagsByResourceIdsWithContextV2(ctx context.Context, request *ListTagsByResourceIdsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListTagsByResourceIdsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "ListTagsByResourceIds")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) ReplaceResourcesTagsWithContext(ctx context.Context, request *R
 	if request == nil {
 		request = NewReplaceResourcesTagsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "ReplaceResourcesTags")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -563,6 +638,11 @@ func (c *Client) ReplaceResourcesTagsWithContext(ctx context.Context, request *R
 func (c *Client) ReplaceResourcesTagsWithContextV2(ctx context.Context, request *ReplaceResourcesTagsRequest) (int, string, error) {
 	if request == nil {
 		request = NewReplaceResourcesTagsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "ReplaceResourcesTags")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -618,6 +698,11 @@ func (c *Client) DetachResourceTagsWithContext(ctx context.Context, request *Det
 	if request == nil {
 		request = NewDetachResourceTagsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "DetachResourceTags")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) DetachResourceTagsWithContext(ctx context.Context, request *Det
 func (c *Client) DetachResourceTagsWithContextV2(ctx context.Context, request *DetachResourceTagsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDetachResourceTagsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "DetachResourceTags")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) CreateTagAndAttachResourceWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewCreateTagAndAttachResourceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "CreateTagAndAttachResource")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) CreateTagAndAttachResourceWithContext(ctx context.Context, requ
 func (c *Client) CreateTagAndAttachResourceWithContextV2(ctx context.Context, request *CreateTagAndAttachResourceRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateTagAndAttachResourceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tagv2", APIVersion, "CreateTagAndAttachResource")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

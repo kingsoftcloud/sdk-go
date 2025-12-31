@@ -66,6 +66,11 @@ func (c *Client) DescribeBackendServersWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeBackendServersRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DescribeBackendServers")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) DescribeBackendServersWithContext(ctx context.Context, request 
 func (c *Client) DescribeBackendServersWithContextV2(ctx context.Context, request *DescribeBackendServersRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeBackendServersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DescribeBackendServers")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) ModifyBackendServerWithContext(ctx context.Context, request *Mo
 	if request == nil {
 		request = NewModifyBackendServerRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "ModifyBackendServer")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) ModifyBackendServerWithContext(ctx context.Context, request *Mo
 func (c *Client) ModifyBackendServerWithContextV2(ctx context.Context, request *ModifyBackendServerRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyBackendServerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "ModifyBackendServer")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) DeregisterBackendServerWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewDeregisterBackendServerRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DeregisterBackendServer")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) DeregisterBackendServerWithContext(ctx context.Context, request
 func (c *Client) DeregisterBackendServerWithContextV2(ctx context.Context, request *DeregisterBackendServerRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeregisterBackendServerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DeregisterBackendServer")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) RegisterBackendServerWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewRegisterBackendServerRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "RegisterBackendServer")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) RegisterBackendServerWithContext(ctx context.Context, request *
 func (c *Client) RegisterBackendServerWithContextV2(ctx context.Context, request *RegisterBackendServerRequest) (int, string, error) {
 	if request == nil {
 		request = NewRegisterBackendServerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "RegisterBackendServer")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) DescribeBackendServerGroupsWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewDescribeBackendServerGroupsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DescribeBackendServerGroups")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) DescribeBackendServerGroupsWithContext(ctx context.Context, req
 func (c *Client) DescribeBackendServerGroupsWithContextV2(ctx context.Context, request *DescribeBackendServerGroupsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeBackendServerGroupsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DescribeBackendServerGroups")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) ModifyBackendServerGroupWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewModifyBackendServerGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "ModifyBackendServerGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) ModifyBackendServerGroupWithContext(ctx context.Context, reques
 func (c *Client) ModifyBackendServerGroupWithContextV2(ctx context.Context, request *ModifyBackendServerGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyBackendServerGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "ModifyBackendServerGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) DeleteBackendServerGroupWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDeleteBackendServerGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DeleteBackendServerGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) DeleteBackendServerGroupWithContext(ctx context.Context, reques
 func (c *Client) DeleteBackendServerGroupWithContextV2(ctx context.Context, request *DeleteBackendServerGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteBackendServerGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DeleteBackendServerGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) CreateBackendServerGroupWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewCreateBackendServerGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "CreateBackendServerGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) CreateBackendServerGroupWithContext(ctx context.Context, reques
 func (c *Client) CreateBackendServerGroupWithContextV2(ctx context.Context, request *CreateBackendServerGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateBackendServerGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "CreateBackendServerGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) DescribeListenersWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeListenersRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DescribeListeners")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) DescribeListenersWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeListenersWithContextV2(ctx context.Context, request *DescribeListenersRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeListenersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DescribeListeners")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) ModifyListenerWithContext(ctx context.Context, request *ModifyL
 	if request == nil {
 		request = NewModifyListenerRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "ModifyListener")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -701,6 +796,11 @@ func (c *Client) ModifyListenerWithContext(ctx context.Context, request *ModifyL
 func (c *Client) ModifyListenerWithContextV2(ctx context.Context, request *ModifyListenerRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyListenerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "ModifyListener")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -756,6 +856,11 @@ func (c *Client) DeleteListenerWithContext(ctx context.Context, request *DeleteL
 	if request == nil {
 		request = NewDeleteListenerRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DeleteListener")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) DeleteListenerWithContext(ctx context.Context, request *DeleteL
 func (c *Client) DeleteListenerWithContextV2(ctx context.Context, request *DeleteListenerRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteListenerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DeleteListener")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) CreateListenerWithContext(ctx context.Context, request *CreateL
 	if request == nil {
 		request = NewCreateListenerRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "CreateListener")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -839,6 +954,11 @@ func (c *Client) CreateListenerWithContext(ctx context.Context, request *CreateL
 func (c *Client) CreateListenerWithContextV2(ctx context.Context, request *CreateListenerRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateListenerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "CreateListener")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -894,6 +1014,11 @@ func (c *Client) SetAccessLogWithContext(ctx context.Context, request *SetAccess
 	if request == nil {
 		request = NewSetAccessLogRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "SetAccessLog")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) SetAccessLogWithContext(ctx context.Context, request *SetAccess
 func (c *Client) SetAccessLogWithContextV2(ctx context.Context, request *SetAccessLogRequest) (int, string, error) {
 	if request == nil {
 		request = NewSetAccessLogRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "SetAccessLog")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -963,6 +1093,11 @@ func (c *Client) SetEnableAccessLogWithContext(ctx context.Context, request *Set
 	if request == nil {
 		request = NewSetEnableAccessLogRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "SetEnableAccessLog")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +1112,11 @@ func (c *Client) SetEnableAccessLogWithContext(ctx context.Context, request *Set
 func (c *Client) SetEnableAccessLogWithContextV2(ctx context.Context, request *SetEnableAccessLogRequest) (int, string, error) {
 	if request == nil {
 		request = NewSetEnableAccessLogRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "SetEnableAccessLog")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +1172,11 @@ func (c *Client) SetLbProtocolLayersWithContext(ctx context.Context, request *Se
 	if request == nil {
 		request = NewSetLbProtocolLayersRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "SetLbProtocolLayers")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1046,6 +1191,11 @@ func (c *Client) SetLbProtocolLayersWithContext(ctx context.Context, request *Se
 func (c *Client) SetLbProtocolLayersWithContextV2(ctx context.Context, request *SetLbProtocolLayersRequest) (int, string, error) {
 	if request == nil {
 		request = NewSetLbProtocolLayersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "SetLbProtocolLayers")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1101,6 +1251,11 @@ func (c *Client) SetLoadBalancerStatusWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewSetLoadBalancerStatusRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "SetLoadBalancerStatus")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1115,6 +1270,11 @@ func (c *Client) SetLoadBalancerStatusWithContext(ctx context.Context, request *
 func (c *Client) SetLoadBalancerStatusWithContextV2(ctx context.Context, request *SetLoadBalancerStatusRequest) (int, string, error) {
 	if request == nil {
 		request = NewSetLoadBalancerStatusRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "SetLoadBalancerStatus")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1170,6 +1330,11 @@ func (c *Client) SetLoadBalancerNameWithContext(ctx context.Context, request *Se
 	if request == nil {
 		request = NewSetLoadBalancerNameRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "SetLoadBalancerName")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1184,6 +1349,11 @@ func (c *Client) SetLoadBalancerNameWithContext(ctx context.Context, request *Se
 func (c *Client) SetLoadBalancerNameWithContextV2(ctx context.Context, request *SetLoadBalancerNameRequest) (int, string, error) {
 	if request == nil {
 		request = NewSetLoadBalancerNameRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "SetLoadBalancerName")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1239,6 +1409,11 @@ func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeLoadBalancersRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DescribeLoadBalancers")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1253,6 +1428,11 @@ func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, request *
 func (c *Client) DescribeLoadBalancersWithContextV2(ctx context.Context, request *DescribeLoadBalancersRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeLoadBalancersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DescribeLoadBalancers")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1308,6 +1488,11 @@ func (c *Client) DeleteLoadBalancerWithContext(ctx context.Context, request *Del
 	if request == nil {
 		request = NewDeleteLoadBalancerRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DeleteLoadBalancer")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1322,6 +1507,11 @@ func (c *Client) DeleteLoadBalancerWithContext(ctx context.Context, request *Del
 func (c *Client) DeleteLoadBalancerWithContextV2(ctx context.Context, request *DeleteLoadBalancerRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteLoadBalancerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DeleteLoadBalancer")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1377,6 +1567,11 @@ func (c *Client) CreateLoadBalancerWithContext(ctx context.Context, request *Cre
 	if request == nil {
 		request = NewCreateLoadBalancerRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "CreateLoadBalancer")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1391,6 +1586,11 @@ func (c *Client) CreateLoadBalancerWithContext(ctx context.Context, request *Cre
 func (c *Client) CreateLoadBalancerWithContextV2(ctx context.Context, request *CreateLoadBalancerRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateLoadBalancerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "CreateLoadBalancer")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1446,6 +1646,11 @@ func (c *Client) ModifyCertificateWithGroupWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewModifyCertificateWithGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "ModifyCertificateWithGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1460,6 +1665,11 @@ func (c *Client) ModifyCertificateWithGroupWithContext(ctx context.Context, requ
 func (c *Client) ModifyCertificateWithGroupWithContextV2(ctx context.Context, request *ModifyCertificateWithGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyCertificateWithGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "ModifyCertificateWithGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1515,6 +1725,11 @@ func (c *Client) DissociateCertificateWithGroupWithContext(ctx context.Context, 
 	if request == nil {
 		request = NewDissociateCertificateWithGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DissociateCertificateWithGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1529,6 +1744,11 @@ func (c *Client) DissociateCertificateWithGroupWithContext(ctx context.Context, 
 func (c *Client) DissociateCertificateWithGroupWithContextV2(ctx context.Context, request *DissociateCertificateWithGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDissociateCertificateWithGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DissociateCertificateWithGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1584,6 +1804,11 @@ func (c *Client) AssociateCertificateWithGroupWithContext(ctx context.Context, r
 	if request == nil {
 		request = NewAssociateCertificateWithGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "AssociateCertificateWithGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1598,6 +1823,11 @@ func (c *Client) AssociateCertificateWithGroupWithContext(ctx context.Context, r
 func (c *Client) AssociateCertificateWithGroupWithContextV2(ctx context.Context, request *AssociateCertificateWithGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewAssociateCertificateWithGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "AssociateCertificateWithGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1653,6 +1883,11 @@ func (c *Client) DescribeListenerCertGroupsWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewDescribeListenerCertGroupsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DescribeListenerCertGroups")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1667,6 +1902,11 @@ func (c *Client) DescribeListenerCertGroupsWithContext(ctx context.Context, requ
 func (c *Client) DescribeListenerCertGroupsWithContextV2(ctx context.Context, request *DescribeListenerCertGroupsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeListenerCertGroupsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DescribeListenerCertGroups")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1722,6 +1962,11 @@ func (c *Client) DeleteListenerCertGroupWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewDeleteListenerCertGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DeleteListenerCertGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1736,6 +1981,11 @@ func (c *Client) DeleteListenerCertGroupWithContext(ctx context.Context, request
 func (c *Client) DeleteListenerCertGroupWithContextV2(ctx context.Context, request *DeleteListenerCertGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteListenerCertGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DeleteListenerCertGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1791,6 +2041,11 @@ func (c *Client) CreateListenerCertGroupWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewCreateListenerCertGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "CreateListenerCertGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1805,6 +2060,11 @@ func (c *Client) CreateListenerCertGroupWithContext(ctx context.Context, request
 func (c *Client) CreateListenerCertGroupWithContextV2(ctx context.Context, request *CreateListenerCertGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateListenerCertGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "CreateListenerCertGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1860,6 +2120,11 @@ func (c *Client) AddRulesWithContext(ctx context.Context, request *AddRulesReque
 	if request == nil {
 		request = NewAddRulesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "AddRules")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1874,6 +2139,11 @@ func (c *Client) AddRulesWithContext(ctx context.Context, request *AddRulesReque
 func (c *Client) AddRulesWithContextV2(ctx context.Context, request *AddRulesRequest) (int, string, error) {
 	if request == nil {
 		request = NewAddRulesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "AddRules")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1929,6 +2199,11 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleR
 	if request == nil {
 		request = NewDeleteRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DeleteRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1943,6 +2218,11 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleR
 func (c *Client) DeleteRuleWithContextV2(ctx context.Context, request *DeleteRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DeleteRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1998,6 +2278,11 @@ func (c *Client) AddRuleWithContext(ctx context.Context, request *AddRuleRequest
 	if request == nil {
 		request = NewAddRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "AddRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2012,6 +2297,11 @@ func (c *Client) AddRuleWithContext(ctx context.Context, request *AddRuleRequest
 func (c *Client) AddRuleWithContextV2(ctx context.Context, request *AddRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewAddRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "AddRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2067,6 +2357,11 @@ func (c *Client) ModifyRuleGroupWithContext(ctx context.Context, request *Modify
 	if request == nil {
 		request = NewModifyRuleGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "ModifyRuleGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2081,6 +2376,11 @@ func (c *Client) ModifyRuleGroupWithContext(ctx context.Context, request *Modify
 func (c *Client) ModifyRuleGroupWithContextV2(ctx context.Context, request *ModifyRuleGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyRuleGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "ModifyRuleGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2136,6 +2436,11 @@ func (c *Client) DescribeRuleGroupsWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeRuleGroupsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DescribeRuleGroups")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2150,6 +2455,11 @@ func (c *Client) DescribeRuleGroupsWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeRuleGroupsWithContextV2(ctx context.Context, request *DescribeRuleGroupsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeRuleGroupsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DescribeRuleGroups")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2205,6 +2515,11 @@ func (c *Client) DeleteRuleGroupWithContext(ctx context.Context, request *Delete
 	if request == nil {
 		request = NewDeleteRuleGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DeleteRuleGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2219,6 +2534,11 @@ func (c *Client) DeleteRuleGroupWithContext(ctx context.Context, request *Delete
 func (c *Client) DeleteRuleGroupWithContextV2(ctx context.Context, request *DeleteRuleGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteRuleGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "DeleteRuleGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2274,6 +2594,11 @@ func (c *Client) CreateRuleGroupWithContext(ctx context.Context, request *Create
 	if request == nil {
 		request = NewCreateRuleGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "CreateRuleGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2288,6 +2613,11 @@ func (c *Client) CreateRuleGroupWithContext(ctx context.Context, request *Create
 func (c *Client) CreateRuleGroupWithContextV2(ctx context.Context, request *CreateRuleGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateRuleGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "CreateRuleGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2343,6 +2673,11 @@ func (c *Client) SetLBModificationProtectionWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewSetLBModificationProtectionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "SetLBModificationProtection")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2357,6 +2692,11 @@ func (c *Client) SetLBModificationProtectionWithContext(ctx context.Context, req
 func (c *Client) SetLBModificationProtectionWithContextV2(ctx context.Context, request *SetLBModificationProtectionRequest) (int, string, error) {
 	if request == nil {
 		request = NewSetLBModificationProtectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "SetLBModificationProtection")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2412,6 +2752,11 @@ func (c *Client) SetLBDeleteProtectionWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewSetLBDeleteProtectionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "SetLBDeleteProtection")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2426,6 +2771,11 @@ func (c *Client) SetLBDeleteProtectionWithContext(ctx context.Context, request *
 func (c *Client) SetLBDeleteProtectionWithContextV2(ctx context.Context, request *SetLBDeleteProtectionRequest) (int, string, error) {
 	if request == nil {
 		request = NewSetLBDeleteProtectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("slb", APIVersion, "SetLBDeleteProtection")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

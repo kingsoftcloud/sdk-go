@@ -66,6 +66,11 @@ func (c *Client) QueryUnPayOrdersWithContext(ctx context.Context, request *Query
 	if request == nil {
 		request = NewQueryUnPayOrdersRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "QueryUnPayOrders")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) QueryUnPayOrdersWithContext(ctx context.Context, request *Query
 func (c *Client) QueryUnPayOrdersWithContextV2(ctx context.Context, request *QueryUnPayOrdersRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryUnPayOrdersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "QueryUnPayOrders")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) QueryOrderInfoWithContext(ctx context.Context, request *QueryOr
 	if request == nil {
 		request = NewQueryOrderInfoRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "QueryOrderInfo")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) QueryOrderInfoWithContext(ctx context.Context, request *QueryOr
 func (c *Client) QueryOrderInfoWithContextV2(ctx context.Context, request *QueryOrderInfoRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryOrderInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "QueryOrderInfo")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) CancelOrderWithContext(ctx context.Context, request *CancelOrde
 	if request == nil {
 		request = NewCancelOrderRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "CancelOrder")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) CancelOrderWithContext(ctx context.Context, request *CancelOrde
 func (c *Client) CancelOrderWithContextV2(ctx context.Context, request *CancelOrderRequest) (int, string, error) {
 	if request == nil {
 		request = NewCancelOrderRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "CancelOrder")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) LaunchPayOrderWithContext(ctx context.Context, request *LaunchP
 	if request == nil {
 		request = NewLaunchPayOrderRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "LaunchPayOrder")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) LaunchPayOrderWithContext(ctx context.Context, request *LaunchP
 func (c *Client) LaunchPayOrderWithContextV2(ctx context.Context, request *LaunchPayOrderRequest) (int, string, error) {
 	if request == nil {
 		request = NewLaunchPayOrderRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "LaunchPayOrder")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

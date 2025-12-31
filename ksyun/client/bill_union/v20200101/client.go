@@ -66,6 +66,11 @@ func (c *Client) DescribeBillSummaryByPayModeWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewDescribeBillSummaryByPayModeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "DescribeBillSummaryByPayMode")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) DescribeBillSummaryByPayModeWithContext(ctx context.Context, re
 func (c *Client) DescribeBillSummaryByPayModeWithContextV2(ctx context.Context, request *DescribeBillSummaryByPayModeRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeBillSummaryByPayModeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "DescribeBillSummaryByPayMode")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DescribeBillSummaryByProductWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewDescribeBillSummaryByProductRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "DescribeBillSummaryByProduct")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) DescribeBillSummaryByProductWithContext(ctx context.Context, re
 func (c *Client) DescribeBillSummaryByProductWithContextV2(ctx context.Context, request *DescribeBillSummaryByProductRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeBillSummaryByProductRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "DescribeBillSummaryByProduct")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) DescribeBillSummaryByProjectWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewDescribeBillSummaryByProjectRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "DescribeBillSummaryByProject")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) DescribeBillSummaryByProjectWithContext(ctx context.Context, re
 func (c *Client) DescribeBillSummaryByProjectWithContextV2(ctx context.Context, request *DescribeBillSummaryByProjectRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeBillSummaryByProjectRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "DescribeBillSummaryByProject")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) DescribeInstanceSummaryBillsWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewDescribeInstanceSummaryBillsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "DescribeInstanceSummaryBills")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -287,6 +322,11 @@ func (c *Client) DescribeInstanceSummaryBillsWithContext(ctx context.Context, re
 func (c *Client) DescribeInstanceSummaryBillsWithContextV2(ctx context.Context, request *DescribeInstanceSummaryBillsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstanceSummaryBillsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "DescribeInstanceSummaryBills")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -342,6 +382,11 @@ func (c *Client) DescribeProductCodeWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeProductCodeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "DescribeProductCode")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -356,6 +401,11 @@ func (c *Client) DescribeProductCodeWithContext(ctx context.Context, request *De
 func (c *Client) DescribeProductCodeWithContextV2(ctx context.Context, request *DescribeProductCodeRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeProductCodeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "DescribeProductCode")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -411,6 +461,11 @@ func (c *Client) DescribeSplitItemBillDetailsWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewDescribeSplitItemBillDetailsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "DescribeSplitItemBillDetails")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -425,6 +480,11 @@ func (c *Client) DescribeSplitItemBillDetailsWithContext(ctx context.Context, re
 func (c *Client) DescribeSplitItemBillDetailsWithContextV2(ctx context.Context, request *DescribeSplitItemBillDetailsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSplitItemBillDetailsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "DescribeSplitItemBillDetails")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -480,6 +540,11 @@ func (c *Client) DescribeMiItemBillsWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeMiItemBillsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "DescribeMiItemBills")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -494,6 +559,11 @@ func (c *Client) DescribeMiItemBillsWithContext(ctx context.Context, request *De
 func (c *Client) DescribeMiItemBillsWithContextV2(ctx context.Context, request *DescribeMiItemBillsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeMiItemBillsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "DescribeMiItemBills")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -549,6 +619,11 @@ func (c *Client) DescribeSplitItemDayBillDetailsWithContext(ctx context.Context,
 	if request == nil {
 		request = NewDescribeSplitItemDayBillDetailsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "DescribeSplitItemDayBillDetails")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -563,6 +638,11 @@ func (c *Client) DescribeSplitItemDayBillDetailsWithContext(ctx context.Context,
 func (c *Client) DescribeSplitItemDayBillDetailsWithContextV2(ctx context.Context, request *DescribeSplitItemDayBillDetailsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSplitItemDayBillDetailsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "DescribeSplitItemDayBillDetails")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -618,6 +698,11 @@ func (c *Client) ListProductGroupsWithContext(ctx context.Context, request *List
 	if request == nil {
 		request = NewListProductGroupsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "ListProductGroups")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -632,6 +717,11 @@ func (c *Client) ListProductGroupsWithContext(ctx context.Context, request *List
 func (c *Client) ListProductGroupsWithContextV2(ctx context.Context, request *ListProductGroupsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListProductGroupsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "ListProductGroups")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

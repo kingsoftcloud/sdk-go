@@ -66,6 +66,11 @@ func (c *Client) CreateDBInstanceWithContext(ctx context.Context, request *Creat
 	if request == nil {
 		request = NewCreateDBInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "CreateDBInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateDBInstanceWithContext(ctx context.Context, request *Creat
 func (c *Client) CreateDBInstanceWithContextV2(ctx context.Context, request *CreateDBInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateDBInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "CreateDBInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeDBInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDBInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, request *De
 func (c *Client) DescribeDBInstancesWithContextV2(ctx context.Context, request *DescribeDBInstancesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDBInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDBInstances")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) DeleteDBInstanceWithContext(ctx context.Context, request *Delet
 	if request == nil {
 		request = NewDeleteDBInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DeleteDBInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) DeleteDBInstanceWithContext(ctx context.Context, request *Delet
 func (c *Client) DeleteDBInstanceWithContextV2(ctx context.Context, request *DeleteDBInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteDBInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DeleteDBInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) ModifyDBInstanceWithContext(ctx context.Context, request *Modif
 	if request == nil {
 		request = NewModifyDBInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDBInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) ModifyDBInstanceWithContext(ctx context.Context, request *Modif
 func (c *Client) ModifyDBInstanceWithContextV2(ctx context.Context, request *ModifyDBInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyDBInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDBInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
 	if request == nil {
 		request = NewCreateSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "CreateSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -356,6 +401,11 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
 func (c *Client) CreateSecurityGroupWithContextV2(ctx context.Context, request *CreateSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "CreateSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -411,6 +461,11 @@ func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -425,6 +480,11 @@ func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *
 func (c *Client) DescribeSecurityGroupWithContextV2(ctx context.Context, request *DescribeSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -480,6 +540,11 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDeleteSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DeleteSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -494,6 +559,11 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
 func (c *Client) DeleteSecurityGroupWithContextV2(ctx context.Context, request *DeleteSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DeleteSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -549,6 +619,11 @@ func (c *Client) ModifySecurityGroupWithContext(ctx context.Context, request *Mo
 	if request == nil {
 		request = NewModifySecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifySecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -563,6 +638,11 @@ func (c *Client) ModifySecurityGroupWithContext(ctx context.Context, request *Mo
 func (c *Client) ModifySecurityGroupWithContextV2(ctx context.Context, request *ModifySecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifySecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifySecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -618,6 +698,11 @@ func (c *Client) CloneSecurityGroupWithContext(ctx context.Context, request *Clo
 	if request == nil {
 		request = NewCloneSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "CloneSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -632,6 +717,11 @@ func (c *Client) CloneSecurityGroupWithContext(ctx context.Context, request *Clo
 func (c *Client) CloneSecurityGroupWithContextV2(ctx context.Context, request *CloneSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCloneSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "CloneSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -687,6 +777,11 @@ func (c *Client) ModifySecurityGroupRuleWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewModifySecurityGroupRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifySecurityGroupRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -701,6 +796,11 @@ func (c *Client) ModifySecurityGroupRuleWithContext(ctx context.Context, request
 func (c *Client) ModifySecurityGroupRuleWithContextV2(ctx context.Context, request *ModifySecurityGroupRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifySecurityGroupRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifySecurityGroupRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -756,6 +856,11 @@ func (c *Client) SecurityGroupRelationWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewSecurityGroupRelationRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "SecurityGroupRelation")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -770,6 +875,11 @@ func (c *Client) SecurityGroupRelationWithContext(ctx context.Context, request *
 func (c *Client) SecurityGroupRelationWithContextV2(ctx context.Context, request *SecurityGroupRelationRequest) (int, string, error) {
 	if request == nil {
 		request = NewSecurityGroupRelationRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "SecurityGroupRelation")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -825,6 +935,11 @@ func (c *Client) ModifySecurityGroupRuleNameWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewModifySecurityGroupRuleNameRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifySecurityGroupRuleName")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -839,6 +954,11 @@ func (c *Client) ModifySecurityGroupRuleNameWithContext(ctx context.Context, req
 func (c *Client) ModifySecurityGroupRuleNameWithContextV2(ctx context.Context, request *ModifySecurityGroupRuleNameRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifySecurityGroupRuleNameRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifySecurityGroupRuleName")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -894,6 +1014,11 @@ func (c *Client) DescribeCollationsWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeCollationsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeCollations")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -908,6 +1033,11 @@ func (c *Client) DescribeCollationsWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeCollationsWithContextV2(ctx context.Context, request *DescribeCollationsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeCollationsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeCollations")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -963,6 +1093,11 @@ func (c *Client) CreateInstanceDatabaseWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewCreateInstanceDatabaseRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "CreateInstanceDatabase")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -977,6 +1112,11 @@ func (c *Client) CreateInstanceDatabaseWithContext(ctx context.Context, request 
 func (c *Client) CreateInstanceDatabaseWithContextV2(ctx context.Context, request *CreateInstanceDatabaseRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateInstanceDatabaseRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "CreateInstanceDatabase")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1032,6 +1172,11 @@ func (c *Client) ModifyInstanceDatabasePrivilegesWithContext(ctx context.Context
 	if request == nil {
 		request = NewModifyInstanceDatabasePrivilegesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyInstanceDatabasePrivileges")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1046,6 +1191,11 @@ func (c *Client) ModifyInstanceDatabasePrivilegesWithContext(ctx context.Context
 func (c *Client) ModifyInstanceDatabasePrivilegesWithContextV2(ctx context.Context, request *ModifyInstanceDatabasePrivilegesRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyInstanceDatabasePrivilegesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyInstanceDatabasePrivileges")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1101,6 +1251,11 @@ func (c *Client) DescribeInstanceDatabasesWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeInstanceDatabasesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeInstanceDatabases")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1115,6 +1270,11 @@ func (c *Client) DescribeInstanceDatabasesWithContext(ctx context.Context, reque
 func (c *Client) DescribeInstanceDatabasesWithContextV2(ctx context.Context, request *DescribeInstanceDatabasesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstanceDatabasesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeInstanceDatabases")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1170,6 +1330,11 @@ func (c *Client) CreateInstanceAccountWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewCreateInstanceAccountRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "CreateInstanceAccount")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1184,6 +1349,11 @@ func (c *Client) CreateInstanceAccountWithContext(ctx context.Context, request *
 func (c *Client) CreateInstanceAccountWithContextV2(ctx context.Context, request *CreateInstanceAccountRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateInstanceAccountRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "CreateInstanceAccount")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1239,6 +1409,11 @@ func (c *Client) DescribeInstanceAccountsWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeInstanceAccountsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeInstanceAccounts")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1253,6 +1428,11 @@ func (c *Client) DescribeInstanceAccountsWithContext(ctx context.Context, reques
 func (c *Client) DescribeInstanceAccountsWithContextV2(ctx context.Context, request *DescribeInstanceAccountsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstanceAccountsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeInstanceAccounts")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1308,6 +1488,11 @@ func (c *Client) ModifyInstanceAccountInfoWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewModifyInstanceAccountInfoRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyInstanceAccountInfo")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1322,6 +1507,11 @@ func (c *Client) ModifyInstanceAccountInfoWithContext(ctx context.Context, reque
 func (c *Client) ModifyInstanceAccountInfoWithContextV2(ctx context.Context, request *ModifyInstanceAccountInfoRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyInstanceAccountInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyInstanceAccountInfo")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1377,6 +1567,11 @@ func (c *Client) ModifyInstanceAccountPrivilegesWithContext(ctx context.Context,
 	if request == nil {
 		request = NewModifyInstanceAccountPrivilegesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyInstanceAccountPrivileges")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1391,6 +1586,11 @@ func (c *Client) ModifyInstanceAccountPrivilegesWithContext(ctx context.Context,
 func (c *Client) ModifyInstanceAccountPrivilegesWithContextV2(ctx context.Context, request *ModifyInstanceAccountPrivilegesRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyInstanceAccountPrivilegesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyInstanceAccountPrivileges")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1446,6 +1646,11 @@ func (c *Client) DeleteInstanceAccountWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDeleteInstanceAccountRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DeleteInstanceAccount")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1460,6 +1665,11 @@ func (c *Client) DeleteInstanceAccountWithContext(ctx context.Context, request *
 func (c *Client) DeleteInstanceAccountWithContextV2(ctx context.Context, request *DeleteInstanceAccountRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteInstanceAccountRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DeleteInstanceAccount")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1515,6 +1725,11 @@ func (c *Client) DeleteInstanceDatabaseWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDeleteInstanceDatabaseRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DeleteInstanceDatabase")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1529,6 +1744,11 @@ func (c *Client) DeleteInstanceDatabaseWithContext(ctx context.Context, request 
 func (c *Client) DeleteInstanceDatabaseWithContextV2(ctx context.Context, request *DeleteInstanceDatabaseRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteInstanceDatabaseRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DeleteInstanceDatabase")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1584,6 +1804,11 @@ func (c *Client) ModifyInstanceDatabaseInfoWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewModifyInstanceDatabaseInfoRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyInstanceDatabaseInfo")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1598,6 +1823,11 @@ func (c *Client) ModifyInstanceDatabaseInfoWithContext(ctx context.Context, requ
 func (c *Client) ModifyInstanceDatabaseInfoWithContextV2(ctx context.Context, request *ModifyInstanceDatabaseInfoRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyInstanceDatabaseInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyInstanceDatabaseInfo")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1653,6 +1883,11 @@ func (c *Client) OverrideDBInstanceWithContext(ctx context.Context, request *Ove
 	if request == nil {
 		request = NewOverrideDBInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "OverrideDBInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1667,6 +1902,11 @@ func (c *Client) OverrideDBInstanceWithContext(ctx context.Context, request *Ove
 func (c *Client) OverrideDBInstanceWithContextV2(ctx context.Context, request *OverrideDBInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewOverrideDBInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "OverrideDBInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1722,6 +1962,11 @@ func (c *Client) RestoreDBInstanceFromDBBackupWithContext(ctx context.Context, r
 	if request == nil {
 		request = NewRestoreDBInstanceFromDBBackupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "RestoreDBInstanceFromDBBackup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1736,6 +1981,11 @@ func (c *Client) RestoreDBInstanceFromDBBackupWithContext(ctx context.Context, r
 func (c *Client) RestoreDBInstanceFromDBBackupWithContextV2(ctx context.Context, request *RestoreDBInstanceFromDBBackupRequest) (int, string, error) {
 	if request == nil {
 		request = NewRestoreDBInstanceFromDBBackupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "RestoreDBInstanceFromDBBackup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1791,6 +2041,11 @@ func (c *Client) CreateDBBackupWithContext(ctx context.Context, request *CreateD
 	if request == nil {
 		request = NewCreateDBBackupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "CreateDBBackup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1805,6 +2060,11 @@ func (c *Client) CreateDBBackupWithContext(ctx context.Context, request *CreateD
 func (c *Client) CreateDBBackupWithContextV2(ctx context.Context, request *CreateDBBackupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateDBBackupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "CreateDBBackup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1860,6 +2120,11 @@ func (c *Client) DeleteDBBackupWithContext(ctx context.Context, request *DeleteD
 	if request == nil {
 		request = NewDeleteDBBackupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DeleteDBBackup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1874,6 +2139,11 @@ func (c *Client) DeleteDBBackupWithContext(ctx context.Context, request *DeleteD
 func (c *Client) DeleteDBBackupWithContextV2(ctx context.Context, request *DeleteDBBackupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteDBBackupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DeleteDBBackup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1929,6 +2199,11 @@ func (c *Client) DescribeDBBackupsWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeDBBackupsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDBBackups")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1943,6 +2218,11 @@ func (c *Client) DescribeDBBackupsWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeDBBackupsWithContextV2(ctx context.Context, request *DescribeDBBackupsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDBBackupsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDBBackups")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1998,6 +2278,11 @@ func (c *Client) ModifyDBBackupPolicyWithContext(ctx context.Context, request *M
 	if request == nil {
 		request = NewModifyDBBackupPolicyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDBBackupPolicy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2012,6 +2297,11 @@ func (c *Client) ModifyDBBackupPolicyWithContext(ctx context.Context, request *M
 func (c *Client) ModifyDBBackupPolicyWithContextV2(ctx context.Context, request *ModifyDBBackupPolicyRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyDBBackupPolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDBBackupPolicy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2067,6 +2357,11 @@ func (c *Client) AllocateDBInstanceEipWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewAllocateDBInstanceEipRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "AllocateDBInstanceEip")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2081,6 +2376,11 @@ func (c *Client) AllocateDBInstanceEipWithContext(ctx context.Context, request *
 func (c *Client) AllocateDBInstanceEipWithContextV2(ctx context.Context, request *AllocateDBInstanceEipRequest) (int, string, error) {
 	if request == nil {
 		request = NewAllocateDBInstanceEipRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "AllocateDBInstanceEip")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2136,6 +2436,11 @@ func (c *Client) ReleaseDBInstanceEipWithContext(ctx context.Context, request *R
 	if request == nil {
 		request = NewReleaseDBInstanceEipRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ReleaseDBInstanceEip")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2150,6 +2455,11 @@ func (c *Client) ReleaseDBInstanceEipWithContext(ctx context.Context, request *R
 func (c *Client) ReleaseDBInstanceEipWithContextV2(ctx context.Context, request *ReleaseDBInstanceEipRequest) (int, string, error) {
 	if request == nil {
 		request = NewReleaseDBInstanceEipRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ReleaseDBInstanceEip")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2205,6 +2515,11 @@ func (c *Client) ListSlowLogsWithContext(ctx context.Context, request *ListSlowL
 	if request == nil {
 		request = NewListSlowLogsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ListSlowLogs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2219,6 +2534,11 @@ func (c *Client) ListSlowLogsWithContext(ctx context.Context, request *ListSlowL
 func (c *Client) ListSlowLogsWithContextV2(ctx context.Context, request *ListSlowLogsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListSlowLogsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ListSlowLogs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2274,6 +2594,11 @@ func (c *Client) ListErrorLogsWithContext(ctx context.Context, request *ListErro
 	if request == nil {
 		request = NewListErrorLogsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ListErrorLogs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2288,6 +2613,11 @@ func (c *Client) ListErrorLogsWithContext(ctx context.Context, request *ListErro
 func (c *Client) ListErrorLogsWithContextV2(ctx context.Context, request *ListErrorLogsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListErrorLogsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ListErrorLogs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2343,6 +2673,11 @@ func (c *Client) ModifyDBInstanceSpecWithContext(ctx context.Context, request *M
 	if request == nil {
 		request = NewModifyDBInstanceSpecRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDBInstanceSpec")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2357,6 +2692,11 @@ func (c *Client) ModifyDBInstanceSpecWithContext(ctx context.Context, request *M
 func (c *Client) ModifyDBInstanceSpecWithContextV2(ctx context.Context, request *ModifyDBInstanceSpecRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyDBInstanceSpecRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDBInstanceSpec")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2412,6 +2752,11 @@ func (c *Client) DescribeImportTaskWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeImportTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeImportTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2426,6 +2771,11 @@ func (c *Client) DescribeImportTaskWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeImportTaskWithContextV2(ctx context.Context, request *DescribeImportTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeImportTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeImportTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2481,6 +2831,11 @@ func (c *Client) DescribeImportFileWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeImportFileRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeImportFile")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2495,6 +2850,11 @@ func (c *Client) DescribeImportFileWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeImportFileWithContextV2(ctx context.Context, request *DescribeImportFileRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeImportFileRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeImportFile")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2550,6 +2910,11 @@ func (c *Client) CreateImportTaskWithContext(ctx context.Context, request *Creat
 	if request == nil {
 		request = NewCreateImportTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "CreateImportTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2564,6 +2929,11 @@ func (c *Client) CreateImportTaskWithContext(ctx context.Context, request *Creat
 func (c *Client) CreateImportTaskWithContextV2(ctx context.Context, request *CreateImportTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateImportTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "CreateImportTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2619,6 +2989,11 @@ func (c *Client) FinishImportTaskWithContext(ctx context.Context, request *Finis
 	if request == nil {
 		request = NewFinishImportTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "FinishImportTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2633,6 +3008,11 @@ func (c *Client) FinishImportTaskWithContext(ctx context.Context, request *Finis
 func (c *Client) FinishImportTaskWithContextV2(ctx context.Context, request *FinishImportTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewFinishImportTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "FinishImportTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2688,6 +3068,11 @@ func (c *Client) DescribeDBInstanceRestorableTimeWithContext(ctx context.Context
 	if request == nil {
 		request = NewDescribeDBInstanceRestorableTimeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDBInstanceRestorableTime")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2702,6 +3087,11 @@ func (c *Client) DescribeDBInstanceRestorableTimeWithContext(ctx context.Context
 func (c *Client) DescribeDBInstanceRestorableTimeWithContextV2(ctx context.Context, request *DescribeDBInstanceRestorableTimeRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDBInstanceRestorableTimeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDBInstanceRestorableTime")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2757,6 +3147,11 @@ func (c *Client) GetHistoryDatabaseInfoWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewGetHistoryDatabaseInfoRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "GetHistoryDatabaseInfo")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2771,6 +3166,11 @@ func (c *Client) GetHistoryDatabaseInfoWithContext(ctx context.Context, request 
 func (c *Client) GetHistoryDatabaseInfoWithContextV2(ctx context.Context, request *GetHistoryDatabaseInfoRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetHistoryDatabaseInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "GetHistoryDatabaseInfo")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2826,6 +3226,11 @@ func (c *Client) RestoreToCurInstanceWithContext(ctx context.Context, request *R
 	if request == nil {
 		request = NewRestoreToCurInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "RestoreToCurInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2840,6 +3245,11 @@ func (c *Client) RestoreToCurInstanceWithContext(ctx context.Context, request *R
 func (c *Client) RestoreToCurInstanceWithContextV2(ctx context.Context, request *RestoreToCurInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewRestoreToCurInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "RestoreToCurInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2895,6 +3305,11 @@ func (c *Client) ModifyInstanceDatabaseNameWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewModifyInstanceDatabaseNameRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyInstanceDatabaseName")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2909,6 +3324,11 @@ func (c *Client) ModifyInstanceDatabaseNameWithContext(ctx context.Context, requ
 func (c *Client) ModifyInstanceDatabaseNameWithContextV2(ctx context.Context, request *ModifyInstanceDatabaseNameRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyInstanceDatabaseNameRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyInstanceDatabaseName")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2964,6 +3384,11 @@ func (c *Client) RebootDBInstanceWithContext(ctx context.Context, request *Reboo
 	if request == nil {
 		request = NewRebootDBInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "RebootDBInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2978,6 +3403,11 @@ func (c *Client) RebootDBInstanceWithContext(ctx context.Context, request *Reboo
 func (c *Client) RebootDBInstanceWithContextV2(ctx context.Context, request *RebootDBInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewRebootDBInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "RebootDBInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -3033,6 +3463,11 @@ func (c *Client) DescribeDBBackupPolicyWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeDBBackupPolicyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDBBackupPolicy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -3047,6 +3482,11 @@ func (c *Client) DescribeDBBackupPolicyWithContext(ctx context.Context, request 
 func (c *Client) DescribeDBBackupPolicyWithContextV2(ctx context.Context, request *DescribeDBBackupPolicyRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDBBackupPolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDBBackupPolicy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -3102,6 +3542,11 @@ func (c *Client) UpdateDBInstanceOrderWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewUpdateDBInstanceOrderRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "UpdateDBInstanceOrder")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -3116,6 +3561,11 @@ func (c *Client) UpdateDBInstanceOrderWithContext(ctx context.Context, request *
 func (c *Client) UpdateDBInstanceOrderWithContextV2(ctx context.Context, request *UpdateDBInstanceOrderRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateDBInstanceOrderRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "UpdateDBInstanceOrder")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -3171,6 +3621,11 @@ func (c *Client) UpdateResourceProtectionWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewUpdateResourceProtectionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "UpdateResourceProtection")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3185,6 +3640,11 @@ func (c *Client) UpdateResourceProtectionWithContext(ctx context.Context, reques
 func (c *Client) UpdateResourceProtectionWithContextV2(ctx context.Context, request *UpdateResourceProtectionRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateResourceProtectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sqlserver", APIVersion, "UpdateResourceProtection")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

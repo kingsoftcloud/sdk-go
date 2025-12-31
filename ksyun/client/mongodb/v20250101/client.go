@@ -66,6 +66,11 @@ func (c *Client) DescribeDefaultParamsWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeDefaultParamsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDefaultParams")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) DescribeDefaultParamsWithContext(ctx context.Context, request *
 func (c *Client) DescribeDefaultParamsWithContextV2(ctx context.Context, request *DescribeDefaultParamsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDefaultParamsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDefaultParams")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

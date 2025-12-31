@@ -2705,12 +2705,16 @@ func (r *AddVmIntoDataGuardResponse) FromJsonString(s string) error {
 
 type CreateFileSystemRequest struct {
 	*ksyunhttp.BaseRequest
-	AvailabilityZone *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
-	VpcId            *string `json:"VpcId,omitempty" name:"VpcId"`
-	StorageType      *string `json:"StorageType,omitempty" name:"StorageType"`
-	ProtocolType     *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
-	FileSystemName   *string `json:"FileSystemName,omitempty" name:"FileSystemName"`
-	ProjectId        *int    `json:"ProjectId,omitempty" name:"ProjectId"`
+	AvailabilityZone    *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	VpcId               *string `json:"VpcId,omitempty" name:"VpcId"`
+	StorageType         *string `json:"StorageType,omitempty" name:"StorageType"`
+	ProtocolType        *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+	FileSystemName      *string `json:"FileSystemName,omitempty" name:"FileSystemName"`
+	ProjectId           *int    `json:"ProjectId,omitempty" name:"ProjectId"`
+	IsTrashEnable       *bool   `json:"IsTrashEnable,omitempty" name:"IsTrashEnable"`
+	IsTrashVisible      *bool   `json:"IsTrashVisible,omitempty" name:"IsTrashVisible"`
+	IntervalTrash       *int    `json:"IntervalTrash,omitempty" name:"IntervalTrash"`
+	RecycleOpPermission *int    `json:"RecycleOpPermission,omitempty" name:"RecycleOpPermission"`
 }
 
 func (r *CreateFileSystemRequest) ToJsonString() string {
@@ -2799,8 +2803,14 @@ type DescribeFileSystemsResponse struct {
 			MountTargetState *string `json:"MountTargetState" name:"MountTargetState"`
 			CreationDate     *string `json:"CreationDate" name:"CreationDate"`
 		} `json:"MountTargets" name:"MountTargets"`
-		Size     *int `json:"Size" name:"Size"`
-		UsedSize *int `json:"UsedSize" name:"UsedSize"`
+		Size       *int `json:"Size" name:"Size"`
+		UsedSize   *int `json:"UsedSize" name:"UsedSize"`
+		RecycleBin struct {
+			IsTrashEnable       *bool `json:"IsTrashEnable" name:"IsTrashEnable"`
+			IsTrashVisible      *bool `json:"IsTrashVisible" name:"IsTrashVisible"`
+			IntervalTrash       *int  `json:"IntervalTrash" name:"IntervalTrash"`
+			RecycleOpPermission *int  `json:"RecycleOpPermission" name:"RecycleOpPermission"`
+		} `json:"RecycleBin" name:"RecycleBin"`
 	} `json:"FileSystems"`
 }
 
@@ -2843,9 +2853,10 @@ func (r *ModifyFileSystemResponse) FromJsonString(s string) error {
 
 type CreateMountTargetRequest struct {
 	*ksyunhttp.BaseRequest
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
-	SubnetId     *string `json:"SubnetId,omitempty" name:"SubnetId"`
-	IpVersion    *string `json:"IpVersion,omitempty" name:"IpVersion"`
+	FileSystemId  *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	SubnetId      *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	IpVersion     *string `json:"IpVersion,omitempty" name:"IpVersion"`
+	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
 }
 
 func (r *CreateMountTargetRequest) ToJsonString() string {
@@ -2924,6 +2935,11 @@ type DescribeMountTargetsResponse struct {
 				IpAddress        *string `json:"IpAddress" name:"IpAddress"`
 				MountTargetState *string `json:"MountTargetState" name:"MountTargetState"`
 				CreationDate     *string `json:"CreationDate" name:"CreationDate"`
+				AccessGroup      struct {
+					AccessGroupId   *string `json:"AccessGroupId" name:"AccessGroupId"`
+					AccessGroupName *string `json:"AccessGroupName" name:"AccessGroupName"`
+					DefaultGroup    *bool   `json:"DefaultGroup" name:"DefaultGroup"`
+				} `json:"AccessGroup" name:"AccessGroup"`
 			} `json:"Item"`
 		} `json:"MountTargets" name:"MountTargets"`
 	} `json:"DescribeMountTargetsResponse"`
@@ -3311,11 +3327,8 @@ func (r *ModifyInstanceAutoDeleteTimeResponse) FromJsonString(s string) error {
 
 type DescribeKecInventoryRequest struct {
 	*ksyunhttp.BaseRequest
-	InstanceType       *string `json:"InstanceType,omitempty" name:"InstanceType"`
-	DataDiskGb         *int    `json:"DataDiskGb,omitempty" name:"DataDiskGb"`
-	SystemDiskDiskSize *int    `json:"SystemDisk.DiskSize,omitempty" name:"SystemDisk.DiskSize"`
-	SystemDiskDiskType *string `json:"SystemDisk.DiskType,omitempty" name:"SystemDisk.DiskType"`
-	AvailabilityZone   *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	InstanceType     *string `json:"InstanceType,omitempty" name:"InstanceType"`
+	AvailabilityZone *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
 }
 
 func (r *DescribeKecInventoryRequest) ToJsonString() string {
@@ -3325,7 +3338,8 @@ func (r *DescribeKecInventoryRequest) ToJsonString() string {
 
 type DescribeKecInventoryResponse struct {
 	*ksyunhttp.BaseResponse
-	Field1 *string `json:"1" name:"1"`
+	RequestId     *string `json:"RequestId" name:"RequestId"`
+	InstanceCount *int    `json:"InstanceCount" name:"InstanceCount"`
 }
 
 func (r *DescribeKecInventoryResponse) ToJsonString() string {
@@ -3769,5 +3783,521 @@ func (r *DescribeInstanceVncUrlResponse) ToJsonString() string {
 }
 
 func (r *DescribeInstanceVncUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSnapshotRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+	Description  *string `json:"Description,omitempty" name:"Description"`
+	AliveDays    *int    `json:"AliveDays,omitempty" name:"AliveDays"`
+}
+
+func (r *CreateSnapshotRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateSnapshotResponse struct {
+	*ksyunhttp.BaseResponse
+	SnapshotId   *string `json:"SnapshotId" name:"SnapshotId"`
+	FileSystemId *string `json:"FileSystemId" name:"FileSystemId"`
+	RequestId    *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateSnapshotResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateSnapshotRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	SnapshotId   *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+	Description  *string `json:"Description,omitempty" name:"Description"`
+	AliveDays    *int    `json:"AliveDays,omitempty" name:"AliveDays"`
+}
+
+func (r *UpdateSnapshotRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type UpdateSnapshotResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *UpdateSnapshotResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RevertSnapshotRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	SnapshotId   *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+}
+
+func (r *RevertSnapshotRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type RevertSnapshotResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *RevertSnapshotResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *RevertSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateSnapshotPolicyRequest struct {
+	*ksyunhttp.BaseRequest
+	AutoSnapshotPolicyId   *string   `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+	AutoSnapshotPolicyName *string   `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
+	FrequencyUnit          *string   `json:"FrequencyUnit,omitempty" name:"FrequencyUnit"`
+	IndexOfFrequency       []*int    `json:"IndexOfFrequency,omitempty" name:"IndexOfFrequency"`
+	SnapshotTimePoint      []*string `json:"SnapshotTimePoint,omitempty" name:"SnapshotTimePoint"`
+	AliveDays              *int      `json:"AliveDays,omitempty" name:"AliveDays"`
+}
+
+func (r *UpdateSnapshotPolicyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type UpdateSnapshotPolicyResponse struct {
+	*ksyunhttp.BaseResponse
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId" name:"AutoSnapshotPolicyId"`
+	RequestId            *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *UpdateSnapshotPolicyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateSnapshotPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSnapshotPolicyRequest struct {
+	*ksyunhttp.BaseRequest
+	AutoSnapshotPolicyId []*string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+}
+
+func (r *DeleteSnapshotPolicyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteSnapshotPolicyResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteSnapshotPolicyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteSnapshotPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplySnapshotPolicyRequest struct {
+	*ksyunhttp.BaseRequest
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+	FileSystemId         *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *ApplySnapshotPolicyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ApplySnapshotPolicyResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ApplySnapshotPolicyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ApplySnapshotPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelSnapshotPolicyRequest struct {
+	*ksyunhttp.BaseRequest
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+	FileSystemId         *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *CancelSnapshotPolicyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CancelSnapshotPolicyResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CancelSnapshotPolicyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CancelSnapshotPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSnapshotPolicyListRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId           *string   `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	AutoSnapshotPolicyId   []*string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+	AutoSnapshotPolicyName *string   `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
+	Sort                   *string   `json:"Sort,omitempty" name:"Sort"`
+	PageNum                *int      `json:"PageNum,omitempty" name:"PageNum"`
+	PageSize               *int      `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeSnapshotPolicyListRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeSnapshotPolicyListResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	Data       []struct {
+		AutoSnapshotPolicyId   *string `json:"AutoSnapshotPolicyId" name:"AutoSnapshotPolicyId"`
+		AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName" name:"AutoSnapshotPolicyName"`
+		CreateTime             *string `json:"CreateTime" name:"CreateTime"`
+		FileSystems            []struct {
+			FileSystemName *string `json:"FileSystemName" name:"FileSystemName"`
+			FileSystemId   *string `json:"FileSystemId" name:"FileSystemId"`
+		} `json:"FileSystems" name:"FileSystems"`
+		FrequencyUnit      *string   `json:"FrequencyUnit" name:"FrequencyUnit"`
+		IndexOfFrequency   []*int    `json:"IndexOfFrequency" name:"IndexOfFrequency"`
+		SnapshotTimePoints []*string `json:"SnapshotTimePoints" name:"SnapshotTimePoints"`
+		NextActiveTime     *string   `json:"NextActiveTime" name:"NextActiveTime"`
+		AliveDays          *int      `json:"AliveDays" name:"AliveDays"`
+	} `json:"Data"`
+}
+
+func (r *DescribeSnapshotPolicyListResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeSnapshotPolicyListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyRecycleBinAttributeRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId        *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	IsTrashEnable       *bool   `json:"IsTrashEnable,omitempty" name:"IsTrashEnable"`
+	IsTrashVisible      *bool   `json:"IsTrashVisible,omitempty" name:"IsTrashVisible"`
+	IntervalTrash       *int    `json:"IntervalTrash,omitempty" name:"IntervalTrash"`
+	RecycleOpPermission *int    `json:"RecycleOpPermission,omitempty" name:"RecycleOpPermission"`
+}
+
+func (r *ModifyRecycleBinAttributeRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyRecycleBinAttributeResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyRecycleBinAttributeResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyRecycleBinAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccessGroupsRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	PageSize      *int    `json:"PageSize,omitempty" name:"PageSize"`
+	PageNumber    *int    `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+func (r *DescribeAccessGroupsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeAccessGroupsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId    *string `json:"RequestId" name:"RequestId"`
+	TotalCount   *int    `json:"TotalCount" name:"TotalCount"`
+	AccessGroups []struct {
+		AccessGroupId   *string `json:"AccessGroupId" name:"AccessGroupId"`
+		AccessGroupName *string `json:"AccessGroupName" name:"AccessGroupName"`
+		DefaultGroup    *bool   `json:"DefaultGroup" name:"DefaultGroup"`
+		Description     *string `json:"Description" name:"Description"`
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+		RuleCount       *int    `json:"RuleCount" name:"RuleCount"`
+		FileSystemCount *int    `json:"FileSystemCount" name:"FileSystemCount"`
+		FileSystemInfos []struct {
+			Name *string `json:"Name" name:"Name"`
+			Id   *string `json:"Id" name:"Id"`
+		} `json:"FileSystemInfos" name:"FileSystemInfos"`
+	} `json:"AccessGroups"`
+}
+
+func (r *DescribeAccessGroupsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeAccessGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAccessGroupRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupName *string `json:"AccessGroupName,omitempty" name:"AccessGroupName"`
+	Description     *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateAccessGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateAccessGroupResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId       *string `json:"RequestId" name:"RequestId"`
+	AccessGroupName *string `json:"AccessGroupName" name:"AccessGroupName"`
+	AccessGroupId   *string `json:"AccessGroupId" name:"AccessGroupId"`
+}
+
+func (r *CreateAccessGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateAccessGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAccessGroupRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupId   *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	AccessGroupName *string `json:"AccessGroupName,omitempty" name:"AccessGroupName"`
+	Description     *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *ModifyAccessGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyAccessGroupResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyAccessGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyAccessGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAccessGroupRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+}
+
+func (r *DeleteAccessGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteAccessGroupResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteAccessGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteAccessGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccessRulesRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	AccessRuleId  *string `json:"AccessRuleId,omitempty" name:"AccessRuleId"`
+	PageSize      *int    `json:"PageSize,omitempty" name:"PageSize"`
+	PageNumber    *int    `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+func (r *DescribeAccessRulesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeAccessRulesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	TotalCount  *int    `json:"TotalCount" name:"TotalCount"`
+	AccessRules []struct {
+		AccessRuleId   *string `json:"AccessRuleId" name:"AccessRuleId"`
+		SourceCidrIp   *string `json:"SourceCidrIp" name:"SourceCidrIp"`
+		RwAccessType   *string `json:"RwAccessType" name:"RwAccessType"`
+		UserAccessType *string `json:"UserAccessType" name:"UserAccessType"`
+	} `json:"AccessRules"`
+}
+
+func (r *DescribeAccessRulesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeAccessRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAccessRuleRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupId  *string   `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	SourceCidrIp   []*string `json:"SourceCidrIp,omitempty" name:"SourceCidrIp"`
+	RwAccessType   *string   `json:"RwAccessType,omitempty" name:"RwAccessType"`
+	UserAccessType *string   `json:"UserAccessType,omitempty" name:"UserAccessType"`
+}
+
+func (r *CreateAccessRuleRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateAccessRuleResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId     *string   `json:"RequestId" name:"RequestId"`
+	AccessRuleIds []*string `json:"AccessRuleIds" name:"AccessRuleIds"`
+}
+
+func (r *CreateAccessRuleResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateAccessRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAccessRuleRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupId  *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	AccessRuleId   *string `json:"AccessRuleId,omitempty" name:"AccessRuleId"`
+	SourceCidrIp   *string `json:"SourceCidrIp,omitempty" name:"SourceCidrIp"`
+	RwAccessType   *string `json:"RwAccessType,omitempty" name:"RwAccessType"`
+	UserAccessType *string `json:"UserAccessType,omitempty" name:"UserAccessType"`
+}
+
+func (r *ModifyAccessRuleRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyAccessRuleResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyAccessRuleResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyAccessRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAccessRuleRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupId *string   `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	AccessRuleId  []*string `json:"AccessRuleId,omitempty" name:"AccessRuleId"`
+}
+
+func (r *DeleteAccessRuleRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteAccessRuleResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteAccessRuleResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteAccessRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyMountTargetRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId  *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	MountTargetId *string `json:"MountTargetId,omitempty" name:"MountTargetId"`
+	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+}
+
+func (r *ModifyMountTargetRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyMountTargetResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyMountTargetResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyMountTargetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

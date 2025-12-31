@@ -66,6 +66,11 @@ func (c *Client) SetRenewalWithContext(ctx context.Context, request *SetRenewalR
 	if request == nil {
 		request = NewSetRenewalRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "SetRenewal")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) SetRenewalWithContext(ctx context.Context, request *SetRenewalR
 func (c *Client) SetRenewalWithContextV2(ctx context.Context, request *SetRenewalRequest) (int, string, error) {
 	if request == nil {
 		request = NewSetRenewalRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "SetRenewal")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

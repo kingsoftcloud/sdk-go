@@ -66,6 +66,11 @@ func (c *Client) GetMonthBillWithContext(ctx context.Context, request *GetMonthB
 	if request == nil {
 		request = NewGetMonthBillRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill", APIVersion, "GetMonthBill")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) GetMonthBillWithContext(ctx context.Context, request *GetMonthB
 func (c *Client) GetMonthBillWithContextV2(ctx context.Context, request *GetMonthBillRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetMonthBillRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill", APIVersion, "GetMonthBill")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) GetPostpayDetailBillWithContext(ctx context.Context, request *G
 	if request == nil {
 		request = NewGetPostpayDetailBillRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill", APIVersion, "GetPostpayDetailBill")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) GetPostpayDetailBillWithContext(ctx context.Context, request *G
 func (c *Client) GetPostpayDetailBillWithContextV2(ctx context.Context, request *GetPostpayDetailBillRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetPostpayDetailBillRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill", APIVersion, "GetPostpayDetailBill")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) GetProductCodeWithContext(ctx context.Context, request *GetProd
 	if request == nil {
 		request = NewGetProductCodeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill", APIVersion, "GetProductCode")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) GetProductCodeWithContext(ctx context.Context, request *GetProd
 func (c *Client) GetProductCodeWithContextV2(ctx context.Context, request *GetProductCodeRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetProductCodeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill", APIVersion, "GetProductCode")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

@@ -66,6 +66,11 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
 	if request == nil {
 		request = NewCreateSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "CreateSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
 func (c *Client) CreateSecurityGroupWithContextV2(ctx context.Context, request *CreateSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "CreateSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "DescribeSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *
 func (c *Client) DescribeSecurityGroupWithContextV2(ctx context.Context, request *DescribeSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "DescribeSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDeleteSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "DeleteSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
 func (c *Client) DeleteSecurityGroupWithContextV2(ctx context.Context, request *DeleteSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "DeleteSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) ModifySecurityGroupWithContext(ctx context.Context, request *Mo
 	if request == nil {
 		request = NewModifySecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "ModifySecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) ModifySecurityGroupWithContext(ctx context.Context, request *Mo
 func (c *Client) ModifySecurityGroupWithContextV2(ctx context.Context, request *ModifySecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifySecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "ModifySecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) CloneSecurityGroupWithContext(ctx context.Context, request *Clo
 	if request == nil {
 		request = NewCloneSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "CloneSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) CloneSecurityGroupWithContext(ctx context.Context, request *Clo
 func (c *Client) CloneSecurityGroupWithContextV2(ctx context.Context, request *CloneSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCloneSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "CloneSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) ModifySecurityGroupRuleWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewModifySecurityGroupRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "ModifySecurityGroupRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) ModifySecurityGroupRuleWithContext(ctx context.Context, request
 func (c *Client) ModifySecurityGroupRuleWithContextV2(ctx context.Context, request *ModifySecurityGroupRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifySecurityGroupRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "ModifySecurityGroupRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) SecurityGroupRelationWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewSecurityGroupRelationRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "SecurityGroupRelation")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) SecurityGroupRelationWithContext(ctx context.Context, request *
 func (c *Client) SecurityGroupRelationWithContextV2(ctx context.Context, request *SecurityGroupRelationRequest) (int, string, error) {
 	if request == nil {
 		request = NewSecurityGroupRelationRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "SecurityGroupRelation")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) ModifySecurityGroupRuleNameWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewModifySecurityGroupRuleNameRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "ModifySecurityGroupRuleName")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) ModifySecurityGroupRuleNameWithContext(ctx context.Context, req
 func (c *Client) ModifySecurityGroupRuleNameWithContextV2(ctx context.Context, request *ModifySecurityGroupRuleNameRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifySecurityGroupRuleNameRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "ModifySecurityGroupRuleName")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) CreateDBParameterGroupWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewCreateDBParameterGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "CreateDBParameterGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -632,6 +717,11 @@ func (c *Client) CreateDBParameterGroupWithContext(ctx context.Context, request 
 func (c *Client) CreateDBParameterGroupWithContextV2(ctx context.Context, request *CreateDBParameterGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateDBParameterGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "CreateDBParameterGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -687,6 +777,11 @@ func (c *Client) ModifyDBParameterGroupWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewModifyDBParameterGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "ModifyDBParameterGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -701,6 +796,11 @@ func (c *Client) ModifyDBParameterGroupWithContext(ctx context.Context, request 
 func (c *Client) ModifyDBParameterGroupWithContextV2(ctx context.Context, request *ModifyDBParameterGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyDBParameterGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("krds", APIVersion, "ModifyDBParameterGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

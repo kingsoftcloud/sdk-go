@@ -66,6 +66,11 @@ func (c *Client) PresetWithContext(ctx context.Context, request *PresetRequest) 
 	if request == nil {
 		request = NewPresetRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ket", APIVersion, "Preset")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) PresetWithContext(ctx context.Context, request *PresetRequest) 
 func (c *Client) PresetWithContextV2(ctx context.Context, request *PresetRequest) (int, string, error) {
 	if request == nil {
 		request = NewPresetRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ket", APIVersion, "Preset")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) UpdatePresetWithContext(ctx context.Context, request *UpdatePre
 	if request == nil {
 		request = NewUpdatePresetRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ket", APIVersion, "UpdatePreset")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) UpdatePresetWithContext(ctx context.Context, request *UpdatePre
 func (c *Client) UpdatePresetWithContextV2(ctx context.Context, request *UpdatePresetRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdatePresetRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ket", APIVersion, "UpdatePreset")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) DelPresetWithContext(ctx context.Context, request *DelPresetReq
 	if request == nil {
 		request = NewDelPresetRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ket", APIVersion, "DelPreset")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) DelPresetWithContext(ctx context.Context, request *DelPresetReq
 func (c *Client) DelPresetWithContextV2(ctx context.Context, request *DelPresetRequest) (int, string, error) {
 	if request == nil {
 		request = NewDelPresetRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ket", APIVersion, "DelPreset")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) GetPresetListWithContext(ctx context.Context, request *GetPrese
 	if request == nil {
 		request = NewGetPresetListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ket", APIVersion, "GetPresetList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) GetPresetListWithContext(ctx context.Context, request *GetPrese
 func (c *Client) GetPresetListWithContextV2(ctx context.Context, request *GetPresetListRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetPresetListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ket", APIVersion, "GetPresetList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) GetPresetDetailWithContext(ctx context.Context, request *GetPre
 	if request == nil {
 		request = NewGetPresetDetailRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ket", APIVersion, "GetPresetDetail")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) GetPresetDetailWithContext(ctx context.Context, request *GetPre
 func (c *Client) GetPresetDetailWithContextV2(ctx context.Context, request *GetPresetDetailRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetPresetDetailRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ket", APIVersion, "GetPresetDetail")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) GetStreamTranListWithContext(ctx context.Context, request *GetS
 	if request == nil {
 		request = NewGetStreamTranListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ket", APIVersion, "GetStreamTranList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) GetStreamTranListWithContext(ctx context.Context, request *GetS
 func (c *Client) GetStreamTranListWithContextV2(ctx context.Context, request *GetStreamTranListRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetStreamTranListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ket", APIVersion, "GetStreamTranList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) StartLoopWithContext(ctx context.Context, request *StartLoopReq
 	if request == nil {
 		request = NewStartLoopRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ket", APIVersion, "StartLoop")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -494,6 +559,11 @@ func (c *Client) StartLoopWithContext(ctx context.Context, request *StartLoopReq
 func (c *Client) StartLoopWithContextV2(ctx context.Context, request *StartLoopRequest) (int, string, error) {
 	if request == nil {
 		request = NewStartLoopRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ket", APIVersion, "StartLoop")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -549,6 +619,11 @@ func (c *Client) StopLoopWithContext(ctx context.Context, request *StopLoopReque
 	if request == nil {
 		request = NewStopLoopRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ket", APIVersion, "StopLoop")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -563,6 +638,11 @@ func (c *Client) StopLoopWithContext(ctx context.Context, request *StopLoopReque
 func (c *Client) StopLoopWithContextV2(ctx context.Context, request *StopLoopRequest) (int, string, error) {
 	if request == nil {
 		request = NewStopLoopRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ket", APIVersion, "StopLoop")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

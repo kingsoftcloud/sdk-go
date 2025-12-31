@@ -66,6 +66,11 @@ func (c *Client) CreateKnadWithContext(ctx context.Context, request *CreateKnadR
 	if request == nil {
 		request = NewCreateKnadRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "CreateKnad")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateKnadWithContext(ctx context.Context, request *CreateKnadR
 func (c *Client) CreateKnadWithContextV2(ctx context.Context, request *CreateKnadRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateKnadRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "CreateKnad")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) ModifyKnadWithContext(ctx context.Context, request *ModifyKnadR
 	if request == nil {
 		request = NewModifyKnadRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "ModifyKnad")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) ModifyKnadWithContext(ctx context.Context, request *ModifyKnadR
 func (c *Client) ModifyKnadWithContextV2(ctx context.Context, request *ModifyKnadRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyKnadRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "ModifyKnad")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) UnbindIpListWithContext(ctx context.Context, request *UnbindIpL
 	if request == nil {
 		request = NewUnbindIpListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "UnbindIpList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) UnbindIpListWithContext(ctx context.Context, request *UnbindIpL
 func (c *Client) UnbindIpListWithContextV2(ctx context.Context, request *UnbindIpListRequest) (int, string, error) {
 	if request == nil {
 		request = NewUnbindIpListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "UnbindIpList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) AssociateIpWithContext(ctx context.Context, request *AssociateI
 	if request == nil {
 		request = NewAssociateIpRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "AssociateIp")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) AssociateIpWithContext(ctx context.Context, request *AssociateI
 func (c *Client) AssociateIpWithContextV2(ctx context.Context, request *AssociateIpRequest) (int, string, error) {
 	if request == nil {
 		request = NewAssociateIpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "AssociateIp")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) DisassociateIpWithContext(ctx context.Context, request *Disasso
 	if request == nil {
 		request = NewDisassociateIpRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "DisassociateIp")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) DisassociateIpWithContext(ctx context.Context, request *Disasso
 func (c *Client) DisassociateIpWithContextV2(ctx context.Context, request *DisassociateIpRequest) (int, string, error) {
 	if request == nil {
 		request = NewDisassociateIpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "DisassociateIp")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) DescribeKnadIpWithContext(ctx context.Context, request *Describ
 	if request == nil {
 		request = NewDescribeKnadIpRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "DescribeKnadIp")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) DescribeKnadIpWithContext(ctx context.Context, request *Describ
 func (c *Client) DescribeKnadIpWithContextV2(ctx context.Context, request *DescribeKnadIpRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeKnadIpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "DescribeKnadIp")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) DeleteKnadWithContext(ctx context.Context, request *DeleteKnadR
 	if request == nil {
 		request = NewDeleteKnadRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "DeleteKnad")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) DeleteKnadWithContext(ctx context.Context, request *DeleteKnadR
 func (c *Client) DeleteKnadWithContextV2(ctx context.Context, request *DeleteKnadRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteKnadRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "DeleteKnad")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) DescribeKnadWithContext(ctx context.Context, request *DescribeK
 	if request == nil {
 		request = NewDescribeKnadRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "DescribeKnad")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -563,6 +638,11 @@ func (c *Client) DescribeKnadWithContext(ctx context.Context, request *DescribeK
 func (c *Client) DescribeKnadWithContextV2(ctx context.Context, request *DescribeKnadRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeKnadRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "DescribeKnad")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -618,6 +698,11 @@ func (c *Client) GetBWIpListWithContext(ctx context.Context, request *GetBWIpLis
 	if request == nil {
 		request = NewGetBWIpListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "GetBWIpList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) GetBWIpListWithContext(ctx context.Context, request *GetBWIpLis
 func (c *Client) GetBWIpListWithContextV2(ctx context.Context, request *GetBWIpListRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetBWIpListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "GetBWIpList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) DeleteBWWithContext(ctx context.Context, request *DeleteBWReque
 	if request == nil {
 		request = NewDeleteBWRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "DeleteBW")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) DeleteBWWithContext(ctx context.Context, request *DeleteBWReque
 func (c *Client) DeleteBWWithContextV2(ctx context.Context, request *DeleteBWRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteBWRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "DeleteBW")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) AddBWIpListWithContext(ctx context.Context, request *AddBWIpLis
 	if request == nil {
 		request = NewAddBWIpListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "AddBWIpList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) AddBWIpListWithContext(ctx context.Context, request *AddBWIpLis
 func (c *Client) AddBWIpListWithContextV2(ctx context.Context, request *AddBWIpListRequest) (int, string, error) {
 	if request == nil {
 		request = NewAddBWIpListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "AddBWIpList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) GetZoneListWithContext(ctx context.Context, request *GetZoneLis
 	if request == nil {
 		request = NewGetZoneListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "GetZoneList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -839,6 +954,11 @@ func (c *Client) GetZoneListWithContext(ctx context.Context, request *GetZoneLis
 func (c *Client) GetZoneListWithContextV2(ctx context.Context, request *GetZoneListRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetZoneListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "GetZoneList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -894,6 +1014,11 @@ func (c *Client) ModifyPolicyWithContext(ctx context.Context, request *ModifyPol
 	if request == nil {
 		request = NewModifyPolicyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "ModifyPolicy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) ModifyPolicyWithContext(ctx context.Context, request *ModifyPol
 func (c *Client) ModifyPolicyWithContextV2(ctx context.Context, request *ModifyPolicyRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyPolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "ModifyPolicy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -963,6 +1093,11 @@ func (c *Client) ModifyBlockLocationWithContext(ctx context.Context, request *Mo
 	if request == nil {
 		request = NewModifyBlockLocationRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "ModifyBlockLocation")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +1112,11 @@ func (c *Client) ModifyBlockLocationWithContext(ctx context.Context, request *Mo
 func (c *Client) ModifyBlockLocationWithContextV2(ctx context.Context, request *ModifyBlockLocationRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyBlockLocationRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "ModifyBlockLocation")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +1172,11 @@ func (c *Client) GetBlockLocationsWithContext(ctx context.Context, request *GetB
 	if request == nil {
 		request = NewGetBlockLocationsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "GetBlockLocations")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1046,6 +1191,11 @@ func (c *Client) GetBlockLocationsWithContext(ctx context.Context, request *GetB
 func (c *Client) GetBlockLocationsWithContextV2(ctx context.Context, request *GetBlockLocationsRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetBlockLocationsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "GetBlockLocations")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1101,6 +1251,11 @@ func (c *Client) GetKnadPolicyWithContext(ctx context.Context, request *GetKnadP
 	if request == nil {
 		request = NewGetKnadPolicyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "GetKnadPolicy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1115,6 +1270,11 @@ func (c *Client) GetKnadPolicyWithContext(ctx context.Context, request *GetKnadP
 func (c *Client) GetKnadPolicyWithContextV2(ctx context.Context, request *GetKnadPolicyRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetKnadPolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "GetKnadPolicy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1170,6 +1330,11 @@ func (c *Client) InsertEipsWithContext(ctx context.Context, request *InsertEipsR
 	if request == nil {
 		request = NewInsertEipsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "InsertEips")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1184,6 +1349,11 @@ func (c *Client) InsertEipsWithContext(ctx context.Context, request *InsertEipsR
 func (c *Client) InsertEipsWithContextV2(ctx context.Context, request *InsertEipsRequest) (int, string, error) {
 	if request == nil {
 		request = NewInsertEipsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("knad", APIVersion, "InsertEips")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

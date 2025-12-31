@@ -66,6 +66,11 @@ func (c *Client) GetRefreshOrPreloadTaskWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewGetRefreshOrPreloadTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetRefreshOrPreloadTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) GetRefreshOrPreloadTaskWithContext(ctx context.Context, request
 func (c *Client) GetRefreshOrPreloadTaskWithContextV2(ctx context.Context, request *GetRefreshOrPreloadTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetRefreshOrPreloadTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetRefreshOrPreloadTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) RefreshCachesWithContext(ctx context.Context, request *RefreshC
 	if request == nil {
 		request = NewRefreshCachesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "RefreshCaches")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) RefreshCachesWithContext(ctx context.Context, request *RefreshC
 func (c *Client) RefreshCachesWithContextV2(ctx context.Context, request *RefreshCachesRequest) (int, string, error) {
 	if request == nil {
 		request = NewRefreshCachesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "RefreshCaches")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) GetDomainPidDimensionUsageDataWithContext(ctx context.Context, 
 	if request == nil {
 		request = NewGetDomainPidDimensionUsageDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetDomainPidDimensionUsageData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) GetDomainPidDimensionUsageDataWithContext(ctx context.Context, 
 func (c *Client) GetDomainPidDimensionUsageDataWithContextV2(ctx context.Context, request *GetDomainPidDimensionUsageDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetDomainPidDimensionUsageDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetDomainPidDimensionUsageData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

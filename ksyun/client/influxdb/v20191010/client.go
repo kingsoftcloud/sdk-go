@@ -66,6 +66,11 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
 	if request == nil {
 		request = NewCreateInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "CreateInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
 func (c *Client) CreateInstanceWithContextV2(ctx context.Context, request *CreateInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "CreateInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
 	if request == nil {
 		request = NewDeleteInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DeleteInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
 func (c *Client) DeleteInstanceWithContextV2(ctx context.Context, request *DeleteInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DeleteInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
 	if request == nil {
 		request = NewDescribeInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
 func (c *Client) DescribeInstanceWithContextV2(ctx context.Context, request *DescribeInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -287,6 +322,11 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeInstancesWithContextV2(ctx context.Context, request *DescribeInstancesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeInstances")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -342,6 +382,11 @@ func (c *Client) DescribeInstanceNodeWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeInstanceNodeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeInstanceNode")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -356,6 +401,11 @@ func (c *Client) DescribeInstanceNodeWithContext(ctx context.Context, request *D
 func (c *Client) DescribeInstanceNodeWithContextV2(ctx context.Context, request *DescribeInstanceNodeRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstanceNodeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeInstanceNode")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -411,6 +461,11 @@ func (c *Client) RenameInstanceWithContext(ctx context.Context, request *RenameI
 	if request == nil {
 		request = NewRenameInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "RenameInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) RenameInstanceWithContext(ctx context.Context, request *RenameI
 func (c *Client) RenameInstanceWithContextV2(ctx context.Context, request *RenameInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewRenameInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "RenameInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) DescribeValidRegionsWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeValidRegionsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeValidRegions")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -494,6 +559,11 @@ func (c *Client) DescribeValidRegionsWithContext(ctx context.Context, request *D
 func (c *Client) DescribeValidRegionsWithContextV2(ctx context.Context, request *DescribeValidRegionsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeValidRegionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeValidRegions")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -549,6 +619,11 @@ func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -563,6 +638,11 @@ func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *
 func (c *Client) DescribeSecurityGroupWithContextV2(ctx context.Context, request *DescribeSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -618,6 +698,11 @@ func (c *Client) CreateSecurityRuleWithContext(ctx context.Context, request *Cre
 	if request == nil {
 		request = NewCreateSecurityRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "CreateSecurityRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) CreateSecurityRuleWithContext(ctx context.Context, request *Cre
 func (c *Client) CreateSecurityRuleWithContextV2(ctx context.Context, request *CreateSecurityRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateSecurityRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "CreateSecurityRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) DeleteSecurityRuleWithContext(ctx context.Context, request *Del
 	if request == nil {
 		request = NewDeleteSecurityRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DeleteSecurityRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) DeleteSecurityRuleWithContext(ctx context.Context, request *Del
 func (c *Client) DeleteSecurityRuleWithContextV2(ctx context.Context, request *DeleteSecurityRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSecurityRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DeleteSecurityRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) DescribeDatabasesWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeDatabasesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeDatabases")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -770,6 +875,11 @@ func (c *Client) DescribeDatabasesWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeDatabasesWithContextV2(ctx context.Context, request *DescribeDatabasesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDatabasesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeDatabases")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -825,6 +935,11 @@ func (c *Client) CreateDatabaseWithContext(ctx context.Context, request *CreateD
 	if request == nil {
 		request = NewCreateDatabaseRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "CreateDatabase")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -839,6 +954,11 @@ func (c *Client) CreateDatabaseWithContext(ctx context.Context, request *CreateD
 func (c *Client) CreateDatabaseWithContextV2(ctx context.Context, request *CreateDatabaseRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateDatabaseRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "CreateDatabase")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -894,6 +1014,11 @@ func (c *Client) DeleteDatabaseWithContext(ctx context.Context, request *DeleteD
 	if request == nil {
 		request = NewDeleteDatabaseRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DeleteDatabase")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) DeleteDatabaseWithContext(ctx context.Context, request *DeleteD
 func (c *Client) DeleteDatabaseWithContextV2(ctx context.Context, request *DeleteDatabaseRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteDatabaseRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DeleteDatabase")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -963,6 +1093,11 @@ func (c *Client) DescribeRetentionPolicyListWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewDescribeRetentionPolicyListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeRetentionPolicyList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -977,6 +1112,11 @@ func (c *Client) DescribeRetentionPolicyListWithContext(ctx context.Context, req
 func (c *Client) DescribeRetentionPolicyListWithContextV2(ctx context.Context, request *DescribeRetentionPolicyListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeRetentionPolicyListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeRetentionPolicyList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1032,6 +1172,11 @@ func (c *Client) CreateRetentionPolicyWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewCreateRetentionPolicyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "CreateRetentionPolicy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1046,6 +1191,11 @@ func (c *Client) CreateRetentionPolicyWithContext(ctx context.Context, request *
 func (c *Client) CreateRetentionPolicyWithContextV2(ctx context.Context, request *CreateRetentionPolicyRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateRetentionPolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "CreateRetentionPolicy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1101,6 +1251,11 @@ func (c *Client) DeleteRetentionPolicyWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDeleteRetentionPolicyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DeleteRetentionPolicy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1115,6 +1270,11 @@ func (c *Client) DeleteRetentionPolicyWithContext(ctx context.Context, request *
 func (c *Client) DeleteRetentionPolicyWithContextV2(ctx context.Context, request *DeleteRetentionPolicyRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteRetentionPolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DeleteRetentionPolicy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1170,6 +1330,11 @@ func (c *Client) ModifyRetentionPolicyWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewModifyRetentionPolicyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "ModifyRetentionPolicy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1184,6 +1349,11 @@ func (c *Client) ModifyRetentionPolicyWithContext(ctx context.Context, request *
 func (c *Client) ModifyRetentionPolicyWithContextV2(ctx context.Context, request *ModifyRetentionPolicyRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyRetentionPolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "ModifyRetentionPolicy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1239,6 +1409,11 @@ func (c *Client) DescribeMeasurementsWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeMeasurementsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeMeasurements")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1253,6 +1428,11 @@ func (c *Client) DescribeMeasurementsWithContext(ctx context.Context, request *D
 func (c *Client) DescribeMeasurementsWithContextV2(ctx context.Context, request *DescribeMeasurementsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeMeasurementsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeMeasurements")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1308,6 +1488,11 @@ func (c *Client) DeleteMeasurementWithContext(ctx context.Context, request *Dele
 	if request == nil {
 		request = NewDeleteMeasurementRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DeleteMeasurement")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1322,6 +1507,11 @@ func (c *Client) DeleteMeasurementWithContext(ctx context.Context, request *Dele
 func (c *Client) DeleteMeasurementWithContextV2(ctx context.Context, request *DeleteMeasurementRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteMeasurementRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DeleteMeasurement")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1377,6 +1567,11 @@ func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *Descr
 	if request == nil {
 		request = NewDescribeAccountsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeAccounts")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1391,6 +1586,11 @@ func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *Descr
 func (c *Client) DescribeAccountsWithContextV2(ctx context.Context, request *DescribeAccountsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAccountsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeAccounts")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1446,6 +1646,11 @@ func (c *Client) CreateAccountWithContext(ctx context.Context, request *CreateAc
 	if request == nil {
 		request = NewCreateAccountRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "CreateAccount")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1460,6 +1665,11 @@ func (c *Client) CreateAccountWithContext(ctx context.Context, request *CreateAc
 func (c *Client) CreateAccountWithContextV2(ctx context.Context, request *CreateAccountRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateAccountRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "CreateAccount")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1515,6 +1725,11 @@ func (c *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAc
 	if request == nil {
 		request = NewDeleteAccountRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DeleteAccount")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1529,6 +1744,11 @@ func (c *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAc
 func (c *Client) DeleteAccountWithContextV2(ctx context.Context, request *DeleteAccountRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteAccountRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DeleteAccount")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1584,6 +1804,11 @@ func (c *Client) DescribeAccountPrivilegesWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeAccountPrivilegesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeAccountPrivileges")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1598,6 +1823,11 @@ func (c *Client) DescribeAccountPrivilegesWithContext(ctx context.Context, reque
 func (c *Client) DescribeAccountPrivilegesWithContextV2(ctx context.Context, request *DescribeAccountPrivilegesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAccountPrivilegesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeAccountPrivileges")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1653,6 +1883,11 @@ func (c *Client) GrantAccountPrivilegeWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewGrantAccountPrivilegeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "GrantAccountPrivilege")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1667,6 +1902,11 @@ func (c *Client) GrantAccountPrivilegeWithContext(ctx context.Context, request *
 func (c *Client) GrantAccountPrivilegeWithContextV2(ctx context.Context, request *GrantAccountPrivilegeRequest) (int, string, error) {
 	if request == nil {
 		request = NewGrantAccountPrivilegeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "GrantAccountPrivilege")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1722,6 +1962,11 @@ func (c *Client) RevokeAccountPrivilegeWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewRevokeAccountPrivilegeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "RevokeAccountPrivilege")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1736,6 +1981,11 @@ func (c *Client) RevokeAccountPrivilegeWithContext(ctx context.Context, request 
 func (c *Client) RevokeAccountPrivilegeWithContextV2(ctx context.Context, request *RevokeAccountPrivilegeRequest) (int, string, error) {
 	if request == nil {
 		request = NewRevokeAccountPrivilegeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "RevokeAccountPrivilege")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1791,6 +2041,11 @@ func (c *Client) ResetAccountPasswordWithContext(ctx context.Context, request *R
 	if request == nil {
 		request = NewResetAccountPasswordRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "ResetAccountPassword")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1805,6 +2060,11 @@ func (c *Client) ResetAccountPasswordWithContext(ctx context.Context, request *R
 func (c *Client) ResetAccountPasswordWithContextV2(ctx context.Context, request *ResetAccountPasswordRequest) (int, string, error) {
 	if request == nil {
 		request = NewResetAccountPasswordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "ResetAccountPassword")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1860,6 +2120,11 @@ func (c *Client) DescribeAccountDetailListWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeAccountDetailListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeAccountDetailList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1874,6 +2139,11 @@ func (c *Client) DescribeAccountDetailListWithContext(ctx context.Context, reque
 func (c *Client) DescribeAccountDetailListWithContextV2(ctx context.Context, request *DescribeAccountDetailListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAccountDetailListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("Influxdb", APIVersion, "DescribeAccountDetailList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

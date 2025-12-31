@@ -66,6 +66,11 @@ func (c *Client) AssumeRoleWithContext(ctx context.Context, request *AssumeRoleR
 	if request == nil {
 		request = NewAssumeRoleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sts", APIVersion, "AssumeRole")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) AssumeRoleWithContext(ctx context.Context, request *AssumeRoleR
 func (c *Client) AssumeRoleWithContextV2(ctx context.Context, request *AssumeRoleRequest) (int, string, error) {
 	if request == nil {
 		request = NewAssumeRoleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sts", APIVersion, "AssumeRole")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) AssumeRoleTemporarySAMLWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewAssumeRoleTemporarySAMLRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sts", APIVersion, "AssumeRoleTemporarySAML")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) AssumeRoleTemporarySAMLWithContext(ctx context.Context, request
 func (c *Client) AssumeRoleTemporarySAMLWithContextV2(ctx context.Context, request *AssumeRoleTemporarySAMLRequest) (int, string, error) {
 	if request == nil {
 		request = NewAssumeRoleTemporarySAMLRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("sts", APIVersion, "AssumeRoleTemporarySAML")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

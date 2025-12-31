@@ -66,6 +66,11 @@ func (c *Client) CreateContainerGroupWithContext(ctx context.Context, request *C
 	if request == nil {
 		request = NewCreateContainerGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "CreateContainerGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateContainerGroupWithContext(ctx context.Context, request *C
 func (c *Client) CreateContainerGroupWithContextV2(ctx context.Context, request *CreateContainerGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateContainerGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "CreateContainerGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DescribeContainerGroupWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeContainerGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DescribeContainerGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DescribeContainerGroupWithContext(ctx context.Context, request 
 func (c *Client) DescribeContainerGroupWithContextV2(ctx context.Context, request *DescribeContainerGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeContainerGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DescribeContainerGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) DeleteContainerGroupWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDeleteContainerGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DeleteContainerGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) DeleteContainerGroupWithContext(ctx context.Context, request *D
 func (c *Client) DeleteContainerGroupWithContextV2(ctx context.Context, request *DeleteContainerGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteContainerGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DeleteContainerGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) DescribeContainerLogWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeContainerLogRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DescribeContainerLog")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) DescribeContainerLogWithContext(ctx context.Context, request *D
 func (c *Client) DescribeContainerLogWithContextV2(ctx context.Context, request *DescribeContainerLogRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeContainerLogRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DescribeContainerLog")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
 	if request == nil {
 		request = NewDescribeRegionsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DescribeRegions")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
 func (c *Client) DescribeRegionsWithContextV2(ctx context.Context, request *DescribeRegionsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeRegionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DescribeRegions")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) ExecContainerCommandWithContext(ctx context.Context, request *E
 	if request == nil {
 		request = NewExecContainerCommandRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "ExecContainerCommand")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) ExecContainerCommandWithContext(ctx context.Context, request *E
 func (c *Client) ExecContainerCommandWithContextV2(ctx context.Context, request *ExecContainerCommandRequest) (int, string, error) {
 	if request == nil {
 		request = NewExecContainerCommandRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "ExecContainerCommand")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) DescribeContainerGroupCountWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewDescribeContainerGroupCountRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DescribeContainerGroupCount")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) DescribeContainerGroupCountWithContext(ctx context.Context, req
 func (c *Client) DescribeContainerGroupCountWithContextV2(ctx context.Context, request *DescribeContainerGroupCountRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeContainerGroupCountRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DescribeContainerGroupCount")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) DescribeContainerGroupEventsWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewDescribeContainerGroupEventsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DescribeContainerGroupEvents")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) DescribeContainerGroupEventsWithContext(ctx context.Context, re
 func (c *Client) DescribeContainerGroupEventsWithContextV2(ctx context.Context, request *DescribeContainerGroupEventsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeContainerGroupEventsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DescribeContainerGroupEvents")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) DescribeKciPackagesWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeKciPackagesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DescribeKciPackages")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) DescribeKciPackagesWithContext(ctx context.Context, request *De
 func (c *Client) DescribeKciPackagesWithContextV2(ctx context.Context, request *DescribeKciPackagesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeKciPackagesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DescribeKciPackages")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) CreateImageCacheWithContext(ctx context.Context, request *Creat
 	if request == nil {
 		request = NewCreateImageCacheRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "CreateImageCache")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) CreateImageCacheWithContext(ctx context.Context, request *Creat
 func (c *Client) CreateImageCacheWithContextV2(ctx context.Context, request *CreateImageCacheRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateImageCacheRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "CreateImageCache")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) DeleteImageCacheWithContext(ctx context.Context, request *Delet
 	if request == nil {
 		request = NewDeleteImageCacheRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DeleteImageCache")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) DeleteImageCacheWithContext(ctx context.Context, request *Delet
 func (c *Client) DeleteImageCacheWithContextV2(ctx context.Context, request *DeleteImageCacheRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteImageCacheRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DeleteImageCache")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) DescribeImageCacheWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeImageCacheRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DescribeImageCache")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -839,6 +954,11 @@ func (c *Client) DescribeImageCacheWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeImageCacheWithContextV2(ctx context.Context, request *DescribeImageCacheRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeImageCacheRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DescribeImageCache")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -894,6 +1014,11 @@ func (c *Client) MatchImageCacheWithContext(ctx context.Context, request *MatchI
 	if request == nil {
 		request = NewMatchImageCacheRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "MatchImageCache")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) MatchImageCacheWithContext(ctx context.Context, request *MatchI
 func (c *Client) MatchImageCacheWithContextV2(ctx context.Context, request *MatchImageCacheRequest) (int, string, error) {
 	if request == nil {
 		request = NewMatchImageCacheRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "MatchImageCache")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -963,6 +1093,11 @@ func (c *Client) DescribeImageCacheEventWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewDescribeImageCacheEventRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DescribeImageCacheEvent")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +1112,11 @@ func (c *Client) DescribeImageCacheEventWithContext(ctx context.Context, request
 func (c *Client) DescribeImageCacheEventWithContextV2(ctx context.Context, request *DescribeImageCacheEventRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeImageCacheEventRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "DescribeImageCacheEvent")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +1172,11 @@ func (c *Client) UpdateImageCacheWithContext(ctx context.Context, request *Updat
 	if request == nil {
 		request = NewUpdateImageCacheRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "UpdateImageCache")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1046,6 +1191,11 @@ func (c *Client) UpdateImageCacheWithContext(ctx context.Context, request *Updat
 func (c *Client) UpdateImageCacheWithContextV2(ctx context.Context, request *UpdateImageCacheRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateImageCacheRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kci", APIVersion, "UpdateImageCache")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

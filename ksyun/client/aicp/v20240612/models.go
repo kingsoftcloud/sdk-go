@@ -478,12 +478,279 @@ func (r *StopNotebookSavingImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EnableApikeyStatusRequest struct {
+	*ksyunhttp.BaseRequest
+	KeyId  *string `json:"KeyId,omitempty" name:"KeyId"`
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *EnableApikeyStatusRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type EnableApikeyStatusResponse struct {
+	*ksyunhttp.BaseResponse
+	Success   *bool   `json:"Success" name:"Success"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *EnableApikeyStatusResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *EnableApikeyStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyApikeyRequest struct {
+	*ksyunhttp.BaseRequest
+	KeyId              *string   `json:"KeyId,omitempty" name:"KeyId"`
+	Name               *string   `json:"Name,omitempty" name:"Name"`
+	Description        *string   `json:"Description,omitempty" name:"Description"`
+	AssociatedModelIds []*string `json:"AssociatedModelIds,omitempty" name:"AssociatedModelIds"`
+	AllAssociatedModel *bool     `json:"AllAssociatedModel,omitempty" name:"AllAssociatedModel"`
+}
+
+func (r *ModifyApikeyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyApikeyResponse struct {
+	*ksyunhttp.BaseResponse
+	Success   *bool   `json:"Success" name:"Success"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyApikeyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyApikeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ActivateApiServiceRequest struct {
+	*ksyunhttp.BaseRequest
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ActivateApiServiceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ActivateApiServiceResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Success   *bool   `json:"Success" name:"Success"`
+	Error     struct {
+	} `json:"Error"`
+}
+
+func (r *ActivateApiServiceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ActivateApiServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteApikeyRequest struct {
+	*ksyunhttp.BaseRequest
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+}
+
+func (r *DeleteApikeyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteApikeyResponse struct {
+	*ksyunhttp.BaseResponse
+	Success   *bool   `json:"Success" name:"Success"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteApikeyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteApikeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeModelsRequest struct {
+	*ksyunhttp.BaseRequest
+	Marker        *int      `json:"Marker,omitempty" name:"Marker"`
+	MaxResults    *int      `json:"MaxResults,omitempty" name:"MaxResults"`
+	ModelCategory []*string `json:"ModelCategory,omitempty" name:"ModelCategory"`
+	Provider      []*string `json:"Provider,omitempty" name:"Provider"`
+	ContextLength []*int    `json:"ContextLength,omitempty" name:"ContextLength"`
+	ModelName     *string   `json:"ModelName,omitempty" name:"ModelName"`
+}
+
+func (r *DescribeModelsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeModelsResponse struct {
+	*ksyunhttp.BaseResponse
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+	Marker     *int `json:"Marker" name:"Marker"`
+	MaxResults *int `json:"MaxResults" name:"MaxResults"`
+	Data       []struct {
+		ModelId     *string   `json:"ModelId" name:"ModelId"`
+		ModelName   *string   `json:"ModelName" name:"ModelName"`
+		Description *string   `json:"Description" name:"Description"`
+		IconUrl     *string   `json:"IconUrl" name:"IconUrl"`
+		Tags        []*string `json:"Tags" name:"Tags"`
+		UpdateTime  *int      `json:"UpdateTime" name:"UpdateTime"`
+		CodeCase    struct {
+			VideoModel    *bool     `json:"VideoModel" name:"VideoModel"`
+			Batch         *bool     `json:"Batch" name:"Batch"`
+			ModelKind     *int      `json:"ModelKind" name:"ModelKind"`
+			InputType     []*string `json:"InputType" name:"InputType"`
+			OutputType    []*string `json:"OutputType" name:"OutputType"`
+			SupportTryout *string   `json:"SupportTryout" name:"SupportTryout"`
+		} `json:"CodeCase" name:"CodeCase"`
+		IsOverFreeDisable *bool   `json:"IsOverFreeDisable" name:"IsOverFreeDisable"`
+		FreeTotalQuota    *int    `json:"FreeTotalQuota" name:"FreeTotalQuota"`
+		FreeUsedQuota     *int    `json:"FreeUsedQuota" name:"FreeUsedQuota"`
+		Tpm               *int    `json:"Tpm" name:"Tpm"`
+		Rpm               *int    `json:"Rpm" name:"Rpm"`
+		ActiveStatus      *int    `json:"ActiveStatus" name:"ActiveStatus"`
+		ModelType         *string `json:"ModelType" name:"ModelType"`
+		Provider          *string `json:"Provider" name:"Provider"`
+	} `json:"Data"`
+}
+
+func (r *DescribeModelsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeModelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateApikeyRequest struct {
+	*ksyunhttp.BaseRequest
+	Name               *string   `json:"Name,omitempty" name:"Name"`
+	Description        *string   `json:"Description,omitempty" name:"Description"`
+	ProjectId          *int      `json:"ProjectId,omitempty" name:"ProjectId"`
+	AssociatedModelIds []*string `json:"AssociatedModelIds,omitempty" name:"AssociatedModelIds"`
+	AllAssociatedModel *bool     `json:"AllAssociatedModel,omitempty" name:"AllAssociatedModel"`
+	AllowedIps         []*string `json:"AllowedIps,omitempty" name:"AllowedIps"`
+}
+
+func (r *CreateApikeyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateApikeyResponse struct {
+	*ksyunhttp.BaseResponse
+	Success   *bool   `json:"Success" name:"Success"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateApikeyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateApikeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetModelDetailRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+}
+
+func (r *GetModelDetailRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetModelDetailResponse struct {
+	*ksyunhttp.BaseResponse
+	ModelApiModelDataWebResp struct {
+	} `json:"ModelApiModelDataWebResp"`
+}
+
+func (r *GetModelDetailResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetModelDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeApikeysRequest struct {
+	*ksyunhttp.BaseRequest
+	Marker            *int      `json:"Marker,omitempty" name:"Marker"`
+	MaxResults        *int      `json:"MaxResults,omitempty" name:"MaxResults"`
+	AssociatedModelId []*string `json:"AssociatedModelId,omitempty" name:"AssociatedModelId"`
+	Status            []*string `json:"Status,omitempty" name:"Status"`
+	Namekeyword       *string   `json:"Namekeyword,omitempty" name:"Namekeyword"`
+	DefaultKey        *bool     `json:"DefaultKey,omitempty" name:"DefaultKey"`
+}
+
+func (r *DescribeApikeysRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeApikeysResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		KeyId              *string   `json:"KeyId" name:"KeyId"`
+		KeyValue           *string   `json:"KeyValue" name:"KeyValue"`
+		AssociatedModelIds []*string `json:"AssociatedModelIds" name:"AssociatedModelIds"`
+		Name               *string   `json:"Name" name:"Name"`
+		Description        *string   `json:"Description" name:"Description"`
+		Status             *string   `json:"Status" name:"Status"`
+		CreateTimestamp    *int      `json:"CreateTimestamp" name:"CreateTimestamp"`
+		ProjectId          *string   `json:"ProjectId" name:"ProjectId"`
+		ProjectName        *string   `json:"ProjectName" name:"ProjectName"`
+		CreateUserId       *string   `json:"CreateUserId" name:"CreateUserId"`
+		CreateUserName     *string   `json:"CreateUserName" name:"CreateUserName"`
+		AssociatedModels   []struct {
+			ModelId   *string `json:"ModelId" name:"ModelId"`
+			ModelName *string `json:"ModelName" name:"ModelName"`
+		} `json:"AssociatedModels" name:"AssociatedModels"`
+		AllAssociatedModel *bool     `json:"AllAssociatedModel" name:"AllAssociatedModel"`
+		AllowedIps         []*string `json:"AllowedIps" name:"AllowedIps"`
+	} `json:"Data"`
+	Marker     *int `json:"Marker" name:"Marker"`
+	MaxResults *int `json:"MaxResults" name:"MaxResults"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+}
+
+func (r *DescribeApikeysResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeApikeysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type QueryTokenDataRequest struct {
 	*ksyunhttp.BaseRequest
 	StartTimestamp *int    `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
 	EndTimestamp   *int    `json:"EndTimestamp,omitempty" name:"EndTimestamp"`
 	MaxResults     *int    `json:"MaxResults,omitempty" name:"MaxResults"`
-	ModelKeyword   *string `json:"ModelKeyword,omitempty" name:"ModelKeyword"`
 	Keyword        *string `json:"Keyword,omitempty" name:"Keyword"`
 	GroupBy        *string `json:"GroupBy,omitempty" name:"GroupBy"`
 	ReasoningType  *string `json:"ReasoningType,omitempty" name:"ReasoningType"`
@@ -523,6 +790,417 @@ func (r *QueryTokenDataResponse) ToJsonString() string {
 }
 
 func (r *QueryTokenDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableApikeyStatusRequest struct {
+	*ksyunhttp.BaseRequest
+	KeyId  *string `json:"KeyId,omitempty" name:"KeyId"`
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *DisableApikeyStatusRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DisableApikeyStatusResponse struct {
+	*ksyunhttp.BaseResponse
+	Success   *bool   `json:"Success" name:"Success"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DisableApikeyStatusResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DisableApikeyStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetApiServiceRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *GetApiServiceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetApiServiceResponse struct {
+	*ksyunhttp.BaseResponse
+	Status    *int    `json:"Status" name:"Status"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *GetApiServiceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetApiServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBatchInferenceJobsFinalResultDownloadUrlRequest struct {
+	*ksyunhttp.BaseRequest
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+func (r *GetBatchInferenceJobsFinalResultDownloadUrlRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetBatchInferenceJobsFinalResultDownloadUrlResponse struct {
+	*ksyunhttp.BaseResponse
+	DownloadUrl *string `json:"DownloadUrl" name:"DownloadUrl"`
+}
+
+func (r *GetBatchInferenceJobsFinalResultDownloadUrlResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetBatchInferenceJobsFinalResultDownloadUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInferenceJobsKs3AuthInfoRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *DescribeInferenceJobsKs3AuthInfoRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeInferenceJobsKs3AuthInfoResponse struct {
+	*ksyunhttp.BaseResponse
+	Id             *string `json:"Id" name:"Id"`
+	Ak             *string `json:"Ak" name:"Ak"`
+	Sk             *string `json:"Sk" name:"Sk"`
+	NeedCreateRole *bool   `json:"NeedCreateRole" name:"NeedCreateRole"`
+}
+
+func (r *DescribeInferenceJobsKs3AuthInfoResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeInferenceJobsKs3AuthInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StopBatchInferenceJobRequest struct {
+	*ksyunhttp.BaseRequest
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+func (r *StopBatchInferenceJobRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type StopBatchInferenceJobResponse struct {
+	*ksyunhttp.BaseResponse
+	Success   *bool   `json:"Success" name:"Success"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *StopBatchInferenceJobResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *StopBatchInferenceJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateBatchInferenceJobRequest struct {
+	*ksyunhttp.BaseRequest
+	JobName          *string `json:"JobName,omitempty" name:"JobName"`
+	JobDesc          *string `json:"JobDesc,omitempty" name:"JobDesc"`
+	ApikeyId         *string `json:"ApikeyId,omitempty" name:"ApikeyId"`
+	Model            *string `json:"Model,omitempty" name:"Model"`
+	ExecuteTimeoutMs *int    `json:"ExecuteTimeoutMs,omitempty" name:"ExecuteTimeoutMs"`
+	InputDataType    *string `json:"InputDataType,omitempty" name:"InputDataType"`
+	Ks3Region        *string `json:"Ks3Region,omitempty" name:"Ks3Region"`
+	Ks3Ak            *string `json:"Ks3Ak,omitempty" name:"Ks3Ak"`
+	Ks3Sk            *string `json:"Ks3Sk,omitempty" name:"Ks3Sk"`
+	InBucket         *string `json:"InBucket,omitempty" name:"InBucket"`
+	OutBucket        *string `json:"OutBucket,omitempty" name:"OutBucket"`
+	InObjectName     *string `json:"InObjectName,omitempty" name:"InObjectName"`
+	OutObjectName    *string `json:"OutObjectName,omitempty" name:"OutObjectName"`
+}
+
+func (r *CreateBatchInferenceJobRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateBatchInferenceJobResponse struct {
+	*ksyunhttp.BaseResponse
+	Success   *bool   `json:"Success" name:"Success"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateBatchInferenceJobResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateBatchInferenceJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyBatchInferenceJobRequest struct {
+	*ksyunhttp.BaseRequest
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+	JobName *string `json:"JobName,omitempty" name:"JobName"`
+	JobDesc *string `json:"JobDesc,omitempty" name:"JobDesc"`
+}
+
+func (r *ModifyBatchInferenceJobRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyBatchInferenceJobResponse struct {
+	*ksyunhttp.BaseResponse
+	Success   *bool   `json:"Success" name:"Success"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyBatchInferenceJobResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyBatchInferenceJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBatchInferenceJobsRequest struct {
+	*ksyunhttp.BaseRequest
+	Marker         *int      `json:"Marker,omitempty" name:"Marker"`
+	MaxResults     *int      `json:"MaxResults,omitempty" name:"MaxResults"`
+	JobNameKeyword *string   `json:"JobNameKeyword,omitempty" name:"JobNameKeyword"`
+	Status         []*string `json:"Status,omitempty" name:"Status"`
+	BatchId        *string   `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+func (r *DescribeBatchInferenceJobsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeBatchInferenceJobsResponse struct {
+	*ksyunhttp.BaseResponse
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+	Marker     *int `json:"Marker" name:"Marker"`
+	MaxResults *int `json:"MaxResults" name:"MaxResults"`
+	Data       []struct {
+		BatchId        *string `json:"BatchId" name:"BatchId"`
+		JobName        *string `json:"JobName" name:"JobName"`
+		JobDesc        *string `json:"JobDesc" name:"JobDesc"`
+		Status         *string `json:"Status" name:"Status"`
+		CreateTime     *int    `json:"CreateTime" name:"CreateTime"`
+		CreateUserName *string `json:"CreateUserName" name:"CreateUserName"`
+		JobMetadata    struct {
+			Total            *int    `json:"Total" name:"Total"`
+			Executed         *int    `json:"Executed" name:"Executed"`
+			ApikeyId         *string `json:"ApikeyId" name:"ApikeyId"`
+			Model            *string `json:"Model" name:"Model"`
+			ExecuteTimeoutMs *int    `json:"ExecuteTimeoutMs" name:"ExecuteTimeoutMs"`
+			InputDataType    *string `json:"InputDataType" name:"InputDataType"`
+			Ks3Region        *string `json:"Ks3Region" name:"Ks3Region"`
+			InBucket         *string `json:"InBucket" name:"InBucket"`
+			OutBucket        *string `json:"OutBucket" name:"OutBucket"`
+			InObjectName     *string `json:"InObjectName" name:"InObjectName"`
+			OutObjectName    *string `json:"OutObjectName" name:"OutObjectName"`
+			FailReasonCode   *string `json:"FailReasonCode" name:"FailReasonCode"`
+			FailReason       *string `json:"FailReason" name:"FailReason"`
+			FailReasonDesc   *string `json:"FailReasonDesc" name:"FailReasonDesc"`
+		} `json:"JobMetadata" name:"JobMetadata"`
+	} `json:"Data"`
+}
+
+func (r *DescribeBatchInferenceJobsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeBatchInferenceJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteBatchInferenceJobRequest struct {
+	*ksyunhttp.BaseRequest
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+func (r *DeleteBatchInferenceJobRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteBatchInferenceJobResponse struct {
+	*ksyunhttp.BaseResponse
+	Success   *bool   `json:"Success" name:"Success"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteBatchInferenceJobResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteBatchInferenceJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableModelsRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelIds []*string `json:"ModelIds,omitempty" name:"ModelIds"`
+}
+
+func (r *EnableModelsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type EnableModelsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Success   *bool   `json:"Success" name:"Success"`
+}
+
+func (r *EnableModelsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *EnableModelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeModelQuotasRequest struct {
+	*ksyunhttp.BaseRequest
+	Marker     *int    `json:"Marker,omitempty" name:"Marker"`
+	MaxResults *int    `json:"MaxResults,omitempty" name:"MaxResults"`
+	Keyword    *string `json:"Keyword,omitempty" name:"Keyword"`
+	Type       *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DescribeModelQuotasRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeModelQuotasResponse struct {
+	*ksyunhttp.BaseResponse
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+	Marker     *int `json:"Marker" name:"Marker"`
+	MaxResults *int `json:"MaxResults" name:"MaxResults"`
+	Data       []struct {
+		ModelId         *string `json:"ModelId" name:"ModelId"`
+		ModelName       *string `json:"ModelName" name:"ModelName"`
+		Description     *string `json:"Description" name:"Description"`
+		Icon            *string `json:"Icon" name:"Icon"`
+		FreeQuotaStatus *string `json:"FreeQuotaStatus" name:"FreeQuotaStatus"`
+		ActiveStatus    *int    `json:"ActiveStatus" name:"ActiveStatus"`
+		FreeTotalQuota  *int    `json:"FreeTotalQuota" name:"FreeTotalQuota"`
+		FreeUsedQuota   *int    `json:"FreeUsedQuota" name:"FreeUsedQuota"`
+		BatchSupported  *bool   `json:"BatchSupported" name:"BatchSupported"`
+		VideoModel      *bool   `json:"VideoModel" name:"VideoModel"`
+		Tpm             *int    `json:"Tpm" name:"Tpm"`
+		Rpm             *int    `json:"Rpm" name:"Rpm"`
+	} `json:"Data"`
+}
+
+func (r *DescribeModelQuotasResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeModelQuotasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableModelsRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelIds []*string `json:"ModelIds,omitempty" name:"ModelIds"`
+}
+
+func (r *DisableModelsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DisableModelsResponse struct {
+	*ksyunhttp.BaseResponse
+	Success   *bool   `json:"Success" name:"Success"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DisableModelsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DisableModelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableOverFreeLimitRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelIds []*string `json:"ModelIds,omitempty" name:"ModelIds"`
+}
+
+func (r *EnableOverFreeLimitRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type EnableOverFreeLimitResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Success   *bool   `json:"Success" name:"Success"`
+}
+
+func (r *EnableOverFreeLimitResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *EnableOverFreeLimitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableOverFreeLimitRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelIds []*string `json:"ModelIds,omitempty" name:"ModelIds"`
+}
+
+func (r *DisableOverFreeLimitRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DisableOverFreeLimitResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Success   *bool   `json:"Success" name:"Success"`
+}
+
+func (r *DisableOverFreeLimitResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DisableOverFreeLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1012,5 +1690,30 @@ func (r *DescribeResourcePoolInstancesResponse) ToJsonString() string {
 }
 
 func (r *DescribeResourcePoolInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableKpfsComponentRequest struct {
+	*ksyunhttp.BaseRequest
+	ResourcePoolId *string `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	FileSystemId   *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *EnableKpfsComponentRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type EnableKpfsComponentResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *EnableKpfsComponentResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *EnableKpfsComponentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

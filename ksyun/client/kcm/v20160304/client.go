@@ -66,6 +66,11 @@ func (c *Client) CreateCertificateWithContext(ctx context.Context, request *Crea
 	if request == nil {
 		request = NewCreateCertificateRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "CreateCertificate")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateCertificateWithContext(ctx context.Context, request *Crea
 func (c *Client) CreateCertificateWithContextV2(ctx context.Context, request *CreateCertificateRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateCertificateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "CreateCertificate")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DeleteCertificateWithContext(ctx context.Context, request *Dele
 	if request == nil {
 		request = NewDeleteCertificateRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "DeleteCertificate")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DeleteCertificateWithContext(ctx context.Context, request *Dele
 func (c *Client) DeleteCertificateWithContextV2(ctx context.Context, request *DeleteCertificateRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteCertificateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "DeleteCertificate")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) ModifyCertificateWithContext(ctx context.Context, request *Modi
 	if request == nil {
 		request = NewModifyCertificateRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "ModifyCertificate")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) ModifyCertificateWithContext(ctx context.Context, request *Modi
 func (c *Client) ModifyCertificateWithContextV2(ctx context.Context, request *ModifyCertificateRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyCertificateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "ModifyCertificate")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) DescribeCertificatesWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeCertificatesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "DescribeCertificates")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) DescribeCertificatesWithContext(ctx context.Context, request *D
 func (c *Client) DescribeCertificatesWithContextV2(ctx context.Context, request *DescribeCertificatesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeCertificatesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "DescribeCertificates")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) ApplyCertificateWithContext(ctx context.Context, request *Apply
 	if request == nil {
 		request = NewApplyCertificateRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "ApplyCertificate")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) ApplyCertificateWithContext(ctx context.Context, request *Apply
 func (c *Client) ApplyCertificateWithContextV2(ctx context.Context, request *ApplyCertificateRequest) (int, string, error) {
 	if request == nil {
 		request = NewApplyCertificateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "ApplyCertificate")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) UpdateCertificateWithContext(ctx context.Context, request *Upda
 	if request == nil {
 		request = NewUpdateCertificateRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "UpdateCertificate")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) UpdateCertificateWithContext(ctx context.Context, request *Upda
 func (c *Client) UpdateCertificateWithContextV2(ctx context.Context, request *UpdateCertificateRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateCertificateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "UpdateCertificate")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) ReIssueCertificateWithContext(ctx context.Context, request *ReI
 	if request == nil {
 		request = NewReIssueCertificateRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "ReIssueCertificate")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) ReIssueCertificateWithContext(ctx context.Context, request *ReI
 func (c *Client) ReIssueCertificateWithContextV2(ctx context.Context, request *ReIssueCertificateRequest) (int, string, error) {
 	if request == nil {
 		request = NewReIssueCertificateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "ReIssueCertificate")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) CancelTransactionWithContext(ctx context.Context, request *Canc
 	if request == nil {
 		request = NewCancelTransactionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "CancelTransaction")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) CancelTransactionWithContext(ctx context.Context, request *Canc
 func (c *Client) CancelTransactionWithContextV2(ctx context.Context, request *CancelTransactionRequest) (int, string, error) {
 	if request == nil {
 		request = NewCancelTransactionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "CancelTransaction")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) ListCertificatesWithContext(ctx context.Context, request *ListC
 	if request == nil {
 		request = NewListCertificatesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "ListCertificates")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -632,6 +717,11 @@ func (c *Client) ListCertificatesWithContext(ctx context.Context, request *ListC
 func (c *Client) ListCertificatesWithContextV2(ctx context.Context, request *ListCertificatesRequest) (int, string, error) {
 	if request == nil {
 		request = NewListCertificatesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "ListCertificates")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -687,6 +777,11 @@ func (c *Client) GetCertificateDetailWithContext(ctx context.Context, request *G
 	if request == nil {
 		request = NewGetCertificateDetailRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "GetCertificateDetail")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -701,6 +796,11 @@ func (c *Client) GetCertificateDetailWithContext(ctx context.Context, request *G
 func (c *Client) GetCertificateDetailWithContextV2(ctx context.Context, request *GetCertificateDetailRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetCertificateDetailRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "GetCertificateDetail")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

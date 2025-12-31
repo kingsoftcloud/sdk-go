@@ -66,6 +66,11 @@ func (c *Client) DescribeDefaultMonitorItemsWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewDescribeDefaultMonitorItemsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeDefaultMonitorItems")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) DescribeDefaultMonitorItemsWithContext(ctx context.Context, req
 func (c *Client) DescribeDefaultMonitorItemsWithContextV2(ctx context.Context, request *DescribeDefaultMonitorItemsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDefaultMonitorItemsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeDefaultMonitorItems")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DeleteMonitorPanelWithContext(ctx context.Context, request *Del
 	if request == nil {
 		request = NewDeleteMonitorPanelRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DeleteMonitorPanel")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) DeleteMonitorPanelWithContext(ctx context.Context, request *Del
 func (c *Client) DeleteMonitorPanelWithContextV2(ctx context.Context, request *DeleteMonitorPanelRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteMonitorPanelRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DeleteMonitorPanel")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) OperateMonitorPanelWithContext(ctx context.Context, request *Op
 	if request == nil {
 		request = NewOperateMonitorPanelRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "OperateMonitorPanel")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) OperateMonitorPanelWithContext(ctx context.Context, request *Op
 func (c *Client) OperateMonitorPanelWithContextV2(ctx context.Context, request *OperateMonitorPanelRequest) (int, string, error) {
 	if request == nil {
 		request = NewOperateMonitorPanelRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "OperateMonitorPanel")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) DescribeMonitorPanelWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeMonitorPanelRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeMonitorPanel")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) DescribeMonitorPanelWithContext(ctx context.Context, request *D
 func (c *Client) DescribeMonitorPanelWithContextV2(ctx context.Context, request *DescribeMonitorPanelRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeMonitorPanelRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeMonitorPanel")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) ModifyMonitorPanelInfoWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewModifyMonitorPanelInfoRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "ModifyMonitorPanelInfo")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -356,6 +401,11 @@ func (c *Client) ModifyMonitorPanelInfoWithContext(ctx context.Context, request 
 func (c *Client) ModifyMonitorPanelInfoWithContextV2(ctx context.Context, request *ModifyMonitorPanelInfoRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyMonitorPanelInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "ModifyMonitorPanelInfo")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -411,6 +461,11 @@ func (c *Client) CreateMonitorPanelWithContext(ctx context.Context, request *Cre
 	if request == nil {
 		request = NewCreateMonitorPanelRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "CreateMonitorPanel")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -425,6 +480,11 @@ func (c *Client) CreateMonitorPanelWithContext(ctx context.Context, request *Cre
 func (c *Client) CreateMonitorPanelWithContextV2(ctx context.Context, request *CreateMonitorPanelRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateMonitorPanelRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "CreateMonitorPanel")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -480,6 +540,11 @@ func (c *Client) DeleteBatchInstancesWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDeleteBatchInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DeleteBatchInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -494,6 +559,11 @@ func (c *Client) DeleteBatchInstancesWithContext(ctx context.Context, request *D
 func (c *Client) DeleteBatchInstancesWithContextV2(ctx context.Context, request *DeleteBatchInstancesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteBatchInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DeleteBatchInstances")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -549,6 +619,11 @@ func (c *Client) InstanceStatisticsWithContext(ctx context.Context, request *Ins
 	if request == nil {
 		request = NewInstanceStatisticsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "InstanceStatistics")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) InstanceStatisticsWithContext(ctx context.Context, request *Ins
 func (c *Client) InstanceStatisticsWithContextV2(ctx context.Context, request *InstanceStatisticsRequest) (int, string, error) {
 	if request == nil {
 		request = NewInstanceStatisticsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "InstanceStatistics")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) DescribeMonitorPanelListWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeMonitorPanelListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeMonitorPanelList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) DescribeMonitorPanelListWithContext(ctx context.Context, reques
 func (c *Client) DescribeMonitorPanelListWithContextV2(ctx context.Context, request *DescribeMonitorPanelListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeMonitorPanelListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeMonitorPanelList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) DescribeInstanceListWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeInstanceListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeInstanceList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -701,6 +796,11 @@ func (c *Client) DescribeInstanceListWithContext(ctx context.Context, request *D
 func (c *Client) DescribeInstanceListWithContextV2(ctx context.Context, request *DescribeInstanceListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstanceListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeInstanceList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -756,6 +856,11 @@ func (c *Client) ImportInstanceToDmpWithContext(ctx context.Context, request *Im
 	if request == nil {
 		request = NewImportInstanceToDmpRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "ImportInstanceToDmp")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -770,6 +875,11 @@ func (c *Client) ImportInstanceToDmpWithContext(ctx context.Context, request *Im
 func (c *Client) ImportInstanceToDmpWithContextV2(ctx context.Context, request *ImportInstanceToDmpRequest) (int, string, error) {
 	if request == nil {
 		request = NewImportInstanceToDmpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "ImportInstanceToDmp")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -825,6 +935,11 @@ func (c *Client) DescribeDedicatedClustersWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeDedicatedClustersRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeDedicatedClusters")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -839,6 +954,11 @@ func (c *Client) DescribeDedicatedClustersWithContext(ctx context.Context, reque
 func (c *Client) DescribeDedicatedClustersWithContextV2(ctx context.Context, request *DescribeDedicatedClustersRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDedicatedClustersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeDedicatedClusters")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -894,6 +1014,11 @@ func (c *Client) DescribeDedicatedHostsWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeDedicatedHostsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeDedicatedHosts")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) DescribeDedicatedHostsWithContext(ctx context.Context, request 
 func (c *Client) DescribeDedicatedHostsWithContextV2(ctx context.Context, request *DescribeDedicatedHostsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDedicatedHostsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeDedicatedHosts")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -963,6 +1093,11 @@ func (c *Client) DescribeDatabaseSchemaWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeDatabaseSchemaRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeDatabaseSchema")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +1112,11 @@ func (c *Client) DescribeDatabaseSchemaWithContext(ctx context.Context, request 
 func (c *Client) DescribeDatabaseSchemaWithContextV2(ctx context.Context, request *DescribeDatabaseSchemaRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDatabaseSchemaRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeDatabaseSchema")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +1172,11 @@ func (c *Client) DescribeDatabaseListWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeDatabaseListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeDatabaseList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1046,6 +1191,11 @@ func (c *Client) DescribeDatabaseListWithContext(ctx context.Context, request *D
 func (c *Client) DescribeDatabaseListWithContextV2(ctx context.Context, request *DescribeDatabaseListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDatabaseListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeDatabaseList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1101,6 +1251,11 @@ func (c *Client) DescribeHistorySQLWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeHistorySQLRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeHistorySQL")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1115,6 +1270,11 @@ func (c *Client) DescribeHistorySQLWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeHistorySQLWithContextV2(ctx context.Context, request *DescribeHistorySQLRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeHistorySQLRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "DescribeHistorySQL")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1170,6 +1330,11 @@ func (c *Client) StartExecuteSQLWithContext(ctx context.Context, request *StartE
 	if request == nil {
 		request = NewStartExecuteSQLRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "StartExecuteSQL")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1184,6 +1349,11 @@ func (c *Client) StartExecuteSQLWithContext(ctx context.Context, request *StartE
 func (c *Client) StartExecuteSQLWithContextV2(ctx context.Context, request *StartExecuteSQLRequest) (int, string, error) {
 	if request == nil {
 		request = NewStartExecuteSQLRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "StartExecuteSQL")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1239,6 +1409,11 @@ func (c *Client) UpdateInstanceDatabaseWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewUpdateInstanceDatabaseRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "UpdateInstanceDatabase")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1253,6 +1428,11 @@ func (c *Client) UpdateInstanceDatabaseWithContext(ctx context.Context, request 
 func (c *Client) UpdateInstanceDatabaseWithContextV2(ctx context.Context, request *UpdateInstanceDatabaseRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateInstanceDatabaseRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "UpdateInstanceDatabase")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1308,6 +1488,11 @@ func (c *Client) UpdateDatabaseTableWithContext(ctx context.Context, request *Up
 	if request == nil {
 		request = NewUpdateDatabaseTableRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "UpdateDatabaseTable")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1322,6 +1507,11 @@ func (c *Client) UpdateDatabaseTableWithContext(ctx context.Context, request *Up
 func (c *Client) UpdateDatabaseTableWithContextV2(ctx context.Context, request *UpdateDatabaseTableRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateDatabaseTableRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "UpdateDatabaseTable")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1377,6 +1567,11 @@ func (c *Client) TestInstanceConnectionWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewTestInstanceConnectionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "TestInstanceConnection")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1391,6 +1586,11 @@ func (c *Client) TestInstanceConnectionWithContext(ctx context.Context, request 
 func (c *Client) TestInstanceConnectionWithContextV2(ctx context.Context, request *TestInstanceConnectionRequest) (int, string, error) {
 	if request == nil {
 		request = NewTestInstanceConnectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dmp", APIVersion, "TestInstanceConnection")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

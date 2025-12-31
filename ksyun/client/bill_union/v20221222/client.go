@@ -66,6 +66,11 @@ func (c *Client) QueryInstanceConsumeWithContext(ctx context.Context, request *Q
 	if request == nil {
 		request = NewQueryInstanceConsumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "QueryInstanceConsume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) QueryInstanceConsumeWithContext(ctx context.Context, request *Q
 func (c *Client) QueryInstanceConsumeWithContextV2(ctx context.Context, request *QueryInstanceConsumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryInstanceConsumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "QueryInstanceConsume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) QueryProjectConsumeWithContext(ctx context.Context, request *Qu
 	if request == nil {
 		request = NewQueryProjectConsumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "QueryProjectConsume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) QueryProjectConsumeWithContext(ctx context.Context, request *Qu
 func (c *Client) QueryProjectConsumeWithContextV2(ctx context.Context, request *QueryProjectConsumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryProjectConsumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "QueryProjectConsume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) QueryProductConsumeWithContext(ctx context.Context, request *Qu
 	if request == nil {
 		request = NewQueryProductConsumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "QueryProductConsume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) QueryProductConsumeWithContext(ctx context.Context, request *Qu
 func (c *Client) QueryProductConsumeWithContextV2(ctx context.Context, request *QueryProductConsumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryProductConsumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "QueryProductConsume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) QueryFinanceUnitConsumeWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewQueryFinanceUnitConsumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "QueryFinanceUnitConsume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -287,6 +322,11 @@ func (c *Client) QueryFinanceUnitConsumeWithContext(ctx context.Context, request
 func (c *Client) QueryFinanceUnitConsumeWithContextV2(ctx context.Context, request *QueryFinanceUnitConsumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryFinanceUnitConsumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "QueryFinanceUnitConsume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -342,6 +382,11 @@ func (c *Client) QueryFinanceUnitConsumeOfMonthWithContext(ctx context.Context, 
 	if request == nil {
 		request = NewQueryFinanceUnitConsumeOfMonthRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "QueryFinanceUnitConsumeOfMonth")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -356,6 +401,11 @@ func (c *Client) QueryFinanceUnitConsumeOfMonthWithContext(ctx context.Context, 
 func (c *Client) QueryFinanceUnitConsumeOfMonthWithContextV2(ctx context.Context, request *QueryFinanceUnitConsumeOfMonthRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryFinanceUnitConsumeOfMonthRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "QueryFinanceUnitConsumeOfMonth")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -411,6 +461,11 @@ func (c *Client) QueryUserConsumeWithContext(ctx context.Context, request *Query
 	if request == nil {
 		request = NewQueryUserConsumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "QueryUserConsume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -425,6 +480,11 @@ func (c *Client) QueryUserConsumeWithContext(ctx context.Context, request *Query
 func (c *Client) QueryUserConsumeWithContextV2(ctx context.Context, request *QueryUserConsumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryUserConsumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "QueryUserConsume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

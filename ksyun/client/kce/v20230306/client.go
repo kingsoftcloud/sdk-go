@@ -66,6 +66,11 @@ func (c *Client) CreatePrometheusInstanceWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewCreatePrometheusInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "CreatePrometheusInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreatePrometheusInstanceWithContext(ctx context.Context, reques
 func (c *Client) CreatePrometheusInstanceWithContextV2(ctx context.Context, request *CreatePrometheusInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreatePrometheusInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "CreatePrometheusInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DescribePrometheusInstanceWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewDescribePrometheusInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribePrometheusInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DescribePrometheusInstanceWithContext(ctx context.Context, requ
 func (c *Client) DescribePrometheusInstanceWithContextV2(ctx context.Context, request *DescribePrometheusInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribePrometheusInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribePrometheusInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) UpdatePrometheusInstanceWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewUpdatePrometheusInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "UpdatePrometheusInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) UpdatePrometheusInstanceWithContext(ctx context.Context, reques
 func (c *Client) UpdatePrometheusInstanceWithContextV2(ctx context.Context, request *UpdatePrometheusInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdatePrometheusInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "UpdatePrometheusInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) DeletePrometheusInstanceWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDeletePrometheusInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DeletePrometheusInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) DeletePrometheusInstanceWithContext(ctx context.Context, reques
 func (c *Client) DeletePrometheusInstanceWithContextV2(ctx context.Context, request *DeletePrometheusInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeletePrometheusInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DeletePrometheusInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) EnableGrafanaWithContext(ctx context.Context, request *EnableGr
 	if request == nil {
 		request = NewEnableGrafanaRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "EnableGrafana")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) EnableGrafanaWithContext(ctx context.Context, request *EnableGr
 func (c *Client) EnableGrafanaWithContextV2(ctx context.Context, request *EnableGrafanaRequest) (int, string, error) {
 	if request == nil {
 		request = NewEnableGrafanaRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "EnableGrafana")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) UpdateGrafanaPasswordWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewUpdateGrafanaPasswordRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "UpdateGrafanaPassword")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) UpdateGrafanaPasswordWithContext(ctx context.Context, request *
 func (c *Client) UpdateGrafanaPasswordWithContextV2(ctx context.Context, request *UpdateGrafanaPasswordRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateGrafanaPasswordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "UpdateGrafanaPassword")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) EnableGrafanaInternetWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewEnableGrafanaInternetRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "EnableGrafanaInternet")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) EnableGrafanaInternetWithContext(ctx context.Context, request *
 func (c *Client) EnableGrafanaInternetWithContextV2(ctx context.Context, request *EnableGrafanaInternetRequest) (int, string, error) {
 	if request == nil {
 		request = NewEnableGrafanaInternetRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "EnableGrafanaInternet")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) DescribeGrafanaWhiteListWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeGrafanaWhiteListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeGrafanaWhiteList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) DescribeGrafanaWhiteListWithContext(ctx context.Context, reques
 func (c *Client) DescribeGrafanaWhiteListWithContextV2(ctx context.Context, request *DescribeGrafanaWhiteListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeGrafanaWhiteListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeGrafanaWhiteList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) UpdateGrafanaWhiteListWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewUpdateGrafanaWhiteListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "UpdateGrafanaWhiteList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) UpdateGrafanaWhiteListWithContext(ctx context.Context, request 
 func (c *Client) UpdateGrafanaWhiteListWithContextV2(ctx context.Context, request *UpdateGrafanaWhiteListRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateGrafanaWhiteListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "UpdateGrafanaWhiteList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) AssociateClusterWithContext(ctx context.Context, request *Assoc
 	if request == nil {
 		request = NewAssociateClusterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "AssociateCluster")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) AssociateClusterWithContext(ctx context.Context, request *Assoc
 func (c *Client) AssociateClusterWithContextV2(ctx context.Context, request *AssociateClusterRequest) (int, string, error) {
 	if request == nil {
 		request = NewAssociateClusterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "AssociateCluster")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) DisassociateClusterWithContext(ctx context.Context, request *Di
 	if request == nil {
 		request = NewDisassociateClusterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DisassociateCluster")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) DisassociateClusterWithContext(ctx context.Context, request *Di
 func (c *Client) DisassociateClusterWithContextV2(ctx context.Context, request *DisassociateClusterRequest) (int, string, error) {
 	if request == nil {
 		request = NewDisassociateClusterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DisassociateCluster")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) DescribeAssociateClusterListWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewDescribeAssociateClusterListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeAssociateClusterList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -839,6 +954,11 @@ func (c *Client) DescribeAssociateClusterListWithContext(ctx context.Context, re
 func (c *Client) DescribeAssociateClusterListWithContextV2(ctx context.Context, request *DescribeAssociateClusterListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAssociateClusterListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeAssociateClusterList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -894,6 +1014,11 @@ func (c *Client) DescribeMonitorListWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeMonitorListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeMonitorList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) DescribeMonitorListWithContext(ctx context.Context, request *De
 func (c *Client) DescribeMonitorListWithContextV2(ctx context.Context, request *DescribeMonitorListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeMonitorListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeMonitorList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -963,6 +1093,11 @@ func (c *Client) DescribeMonitorCollectionConfigWithContext(ctx context.Context,
 	if request == nil {
 		request = NewDescribeMonitorCollectionConfigRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeMonitorCollectionConfig")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +1112,11 @@ func (c *Client) DescribeMonitorCollectionConfigWithContext(ctx context.Context,
 func (c *Client) DescribeMonitorCollectionConfigWithContextV2(ctx context.Context, request *DescribeMonitorCollectionConfigRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeMonitorCollectionConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeMonitorCollectionConfig")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +1172,11 @@ func (c *Client) UpdateMonitorCollectionConfigWithContext(ctx context.Context, r
 	if request == nil {
 		request = NewUpdateMonitorCollectionConfigRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "UpdateMonitorCollectionConfig")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1046,6 +1191,11 @@ func (c *Client) UpdateMonitorCollectionConfigWithContext(ctx context.Context, r
 func (c *Client) UpdateMonitorCollectionConfigWithContextV2(ctx context.Context, request *UpdateMonitorCollectionConfigRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateMonitorCollectionConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "UpdateMonitorCollectionConfig")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1101,6 +1251,11 @@ func (c *Client) DescribeMonitorMetricsListWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewDescribeMonitorMetricsListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeMonitorMetricsList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1115,6 +1270,11 @@ func (c *Client) DescribeMonitorMetricsListWithContext(ctx context.Context, requ
 func (c *Client) DescribeMonitorMetricsListWithContextV2(ctx context.Context, request *DescribeMonitorMetricsListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeMonitorMetricsListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeMonitorMetricsList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1170,6 +1330,11 @@ func (c *Client) DescribeTargetsListWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeTargetsListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeTargetsList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1184,6 +1349,11 @@ func (c *Client) DescribeTargetsListWithContext(ctx context.Context, request *De
 func (c *Client) DescribeTargetsListWithContextV2(ctx context.Context, request *DescribeTargetsListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeTargetsListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeTargetsList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1239,6 +1409,11 @@ func (c *Client) DescribeAgentStatusWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeAgentStatusRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeAgentStatus")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1253,6 +1428,11 @@ func (c *Client) DescribeAgentStatusWithContext(ctx context.Context, request *De
 func (c *Client) DescribeAgentStatusWithContextV2(ctx context.Context, request *DescribeAgentStatusRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAgentStatusRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeAgentStatus")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1308,6 +1488,11 @@ func (c *Client) CreateMonitorCollectionConfigWithContext(ctx context.Context, r
 	if request == nil {
 		request = NewCreateMonitorCollectionConfigRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "CreateMonitorCollectionConfig")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1322,6 +1507,11 @@ func (c *Client) CreateMonitorCollectionConfigWithContext(ctx context.Context, r
 func (c *Client) CreateMonitorCollectionConfigWithContextV2(ctx context.Context, request *CreateMonitorCollectionConfigRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateMonitorCollectionConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "CreateMonitorCollectionConfig")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1377,6 +1567,11 @@ func (c *Client) DeleteMonitorCollectionConfigWithContext(ctx context.Context, r
 	if request == nil {
 		request = NewDeleteMonitorCollectionConfigRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DeleteMonitorCollectionConfig")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1391,6 +1586,11 @@ func (c *Client) DeleteMonitorCollectionConfigWithContext(ctx context.Context, r
 func (c *Client) DeleteMonitorCollectionConfigWithContextV2(ctx context.Context, request *DeleteMonitorCollectionConfigRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteMonitorCollectionConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DeleteMonitorCollectionConfig")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1446,6 +1646,11 @@ func (c *Client) EnableMetricsWithContext(ctx context.Context, request *EnableMe
 	if request == nil {
 		request = NewEnableMetricsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "EnableMetrics")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1460,6 +1665,11 @@ func (c *Client) EnableMetricsWithContext(ctx context.Context, request *EnableMe
 func (c *Client) EnableMetricsWithContextV2(ctx context.Context, request *EnableMetricsRequest) (int, string, error) {
 	if request == nil {
 		request = NewEnableMetricsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "EnableMetrics")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1515,6 +1725,11 @@ func (c *Client) DropMetricsWithContext(ctx context.Context, request *DropMetric
 	if request == nil {
 		request = NewDropMetricsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DropMetrics")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1529,6 +1744,11 @@ func (c *Client) DropMetricsWithContext(ctx context.Context, request *DropMetric
 func (c *Client) DropMetricsWithContextV2(ctx context.Context, request *DropMetricsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDropMetricsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DropMetrics")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

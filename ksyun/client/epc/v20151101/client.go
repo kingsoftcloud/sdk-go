@@ -66,6 +66,11 @@ func (c *Client) CreateEpcWithContext(ctx context.Context, request *CreateEpcReq
 	if request == nil {
 		request = NewCreateEpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateEpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateEpcWithContext(ctx context.Context, request *CreateEpcReq
 func (c *Client) CreateEpcWithContextV2(ctx context.Context, request *CreateEpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateEpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateEpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) StartEpcWithContext(ctx context.Context, request *StartEpcReque
 	if request == nil {
 		request = NewStartEpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "StartEpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) StartEpcWithContext(ctx context.Context, request *StartEpcReque
 func (c *Client) StartEpcWithContextV2(ctx context.Context, request *StartEpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewStartEpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "StartEpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) RebootEpcWithContext(ctx context.Context, request *RebootEpcReq
 	if request == nil {
 		request = NewRebootEpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "RebootEpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) RebootEpcWithContext(ctx context.Context, request *RebootEpcReq
 func (c *Client) RebootEpcWithContextV2(ctx context.Context, request *RebootEpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewRebootEpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "RebootEpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) DeleteEpcWithContext(ctx context.Context, request *DeleteEpcReq
 	if request == nil {
 		request = NewDeleteEpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteEpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) DeleteEpcWithContext(ctx context.Context, request *DeleteEpcReq
 func (c *Client) DeleteEpcWithContextV2(ctx context.Context, request *DeleteEpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteEpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteEpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) ReinstallEpcWithContext(ctx context.Context, request *Reinstall
 	if request == nil {
 		request = NewReinstallEpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ReinstallEpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) ReinstallEpcWithContext(ctx context.Context, request *Reinstall
 func (c *Client) ReinstallEpcWithContextV2(ctx context.Context, request *ReinstallEpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewReinstallEpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ReinstallEpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) ModifySecurityGroupWithContext(ctx context.Context, request *Mo
 	if request == nil {
 		request = NewModifySecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifySecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) ModifySecurityGroupWithContext(ctx context.Context, request *Mo
 func (c *Client) ModifySecurityGroupWithContextV2(ctx context.Context, request *ModifySecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifySecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifySecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) CreateKeyWithContext(ctx context.Context, request *CreateKeyReq
 	if request == nil {
 		request = NewCreateKeyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateKey")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) CreateKeyWithContext(ctx context.Context, request *CreateKeyReq
 func (c *Client) CreateKeyWithContextV2(ctx context.Context, request *CreateKeyRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateKeyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateKey")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) DescribeEpcsWithContext(ctx context.Context, request *DescribeE
 	if request == nil {
 		request = NewDescribeEpcsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeEpcs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) DescribeEpcsWithContext(ctx context.Context, request *DescribeE
 func (c *Client) DescribeEpcsWithContextV2(ctx context.Context, request *DescribeEpcsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeEpcsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeEpcs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) GetDynamicCodeWithContext(ctx context.Context, request *GetDyna
 	if request == nil {
 		request = NewGetDynamicCodeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "GetDynamicCode")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) GetDynamicCodeWithContext(ctx context.Context, request *GetDyna
 func (c *Client) GetDynamicCodeWithContextV2(ctx context.Context, request *GetDynamicCodeRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetDynamicCodeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "GetDynamicCode")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) DescribeVpnsWithContext(ctx context.Context, request *DescribeV
 	if request == nil {
 		request = NewDescribeVpnsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeVpns")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) DescribeVpnsWithContext(ctx context.Context, request *DescribeV
 func (c *Client) DescribeVpnsWithContextV2(ctx context.Context, request *DescribeVpnsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeVpnsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeVpns")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) CreateImageWithContext(ctx context.Context, request *CreateImag
 	if request == nil {
 		request = NewCreateImageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateImage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) CreateImageWithContext(ctx context.Context, request *CreateImag
 func (c *Client) CreateImageWithContextV2(ctx context.Context, request *CreateImageRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateImageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateImage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) ModifyImageWithContext(ctx context.Context, request *ModifyImag
 	if request == nil {
 		request = NewModifyImageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyImage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -839,6 +954,11 @@ func (c *Client) ModifyImageWithContext(ctx context.Context, request *ModifyImag
 func (c *Client) ModifyImageWithContextV2(ctx context.Context, request *ModifyImageRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyImageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyImage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -894,6 +1014,11 @@ func (c *Client) DeleteImageWithContext(ctx context.Context, request *DeleteImag
 	if request == nil {
 		request = NewDeleteImageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteImage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) DeleteImageWithContext(ctx context.Context, request *DeleteImag
 func (c *Client) DeleteImageWithContextV2(ctx context.Context, request *DeleteImageRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteImageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteImage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -963,6 +1093,11 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, request *Describ
 	if request == nil {
 		request = NewDescribeImagesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeImages")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +1112,11 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, request *Describ
 func (c *Client) DescribeImagesWithContextV2(ctx context.Context, request *DescribeImagesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeImagesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeImages")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +1172,11 @@ func (c *Client) ModifyDnsWithContext(ctx context.Context, request *ModifyDnsReq
 	if request == nil {
 		request = NewModifyDnsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyDns")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1046,6 +1191,11 @@ func (c *Client) ModifyDnsWithContext(ctx context.Context, request *ModifyDnsReq
 func (c *Client) ModifyDnsWithContextV2(ctx context.Context, request *ModifyDnsRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyDnsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyDns")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1101,6 +1251,11 @@ func (c *Client) ModifyNetworkInterfaceAttributeWithContext(ctx context.Context,
 	if request == nil {
 		request = NewModifyNetworkInterfaceAttributeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyNetworkInterfaceAttribute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1115,6 +1270,11 @@ func (c *Client) ModifyNetworkInterfaceAttributeWithContext(ctx context.Context,
 func (c *Client) ModifyNetworkInterfaceAttributeWithContextV2(ctx context.Context, request *ModifyNetworkInterfaceAttributeRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyNetworkInterfaceAttributeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyNetworkInterfaceAttribute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1170,6 +1330,11 @@ func (c *Client) DescribePhysicalMonitorWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewDescribePhysicalMonitorRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribePhysicalMonitor")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1184,6 +1349,11 @@ func (c *Client) DescribePhysicalMonitorWithContext(ctx context.Context, request
 func (c *Client) DescribePhysicalMonitorWithContextV2(ctx context.Context, request *DescribePhysicalMonitorRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribePhysicalMonitorRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribePhysicalMonitor")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1239,6 +1409,11 @@ func (c *Client) DescribeEpcManagementsWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeEpcManagementsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeEpcManagements")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1253,6 +1428,11 @@ func (c *Client) DescribeEpcManagementsWithContext(ctx context.Context, request 
 func (c *Client) DescribeEpcManagementsWithContextV2(ctx context.Context, request *DescribeEpcManagementsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeEpcManagementsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeEpcManagements")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1308,6 +1488,11 @@ func (c *Client) DescribeRemoteManagementsWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeRemoteManagementsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeRemoteManagements")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1322,6 +1507,11 @@ func (c *Client) DescribeRemoteManagementsWithContext(ctx context.Context, reque
 func (c *Client) DescribeRemoteManagementsWithContextV2(ctx context.Context, request *DescribeRemoteManagementsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeRemoteManagementsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeRemoteManagements")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1377,6 +1567,11 @@ func (c *Client) StopEpcWithContext(ctx context.Context, request *StopEpcRequest
 	if request == nil {
 		request = NewStopEpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "StopEpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1391,6 +1586,11 @@ func (c *Client) StopEpcWithContext(ctx context.Context, request *StopEpcRequest
 func (c *Client) StopEpcWithContextV2(ctx context.Context, request *StopEpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewStopEpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "StopEpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1446,6 +1646,11 @@ func (c *Client) ModifyEpcWithContext(ctx context.Context, request *ModifyEpcReq
 	if request == nil {
 		request = NewModifyEpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyEpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1460,6 +1665,11 @@ func (c *Client) ModifyEpcWithContext(ctx context.Context, request *ModifyEpcReq
 func (c *Client) ModifyEpcWithContextV2(ctx context.Context, request *ModifyEpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyEpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyEpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1515,6 +1725,11 @@ func (c *Client) ModifyRemoteManagementWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewModifyRemoteManagementRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyRemoteManagement")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1529,6 +1744,11 @@ func (c *Client) ModifyRemoteManagementWithContext(ctx context.Context, request 
 func (c *Client) ModifyRemoteManagementWithContextV2(ctx context.Context, request *ModifyRemoteManagementRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyRemoteManagementRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyRemoteManagement")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1584,6 +1804,11 @@ func (c *Client) CreateRemoteManagementWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewCreateRemoteManagementRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateRemoteManagement")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1598,6 +1823,11 @@ func (c *Client) CreateRemoteManagementWithContext(ctx context.Context, request 
 func (c *Client) CreateRemoteManagementWithContextV2(ctx context.Context, request *CreateRemoteManagementRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateRemoteManagementRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateRemoteManagement")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1653,6 +1883,11 @@ func (c *Client) ReinstallCustomerEpcWithContext(ctx context.Context, request *R
 	if request == nil {
 		request = NewReinstallCustomerEpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ReinstallCustomerEpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1667,6 +1902,11 @@ func (c *Client) ReinstallCustomerEpcWithContext(ctx context.Context, request *R
 func (c *Client) ReinstallCustomerEpcWithContextV2(ctx context.Context, request *ReinstallCustomerEpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewReinstallCustomerEpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ReinstallCustomerEpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1722,6 +1962,11 @@ func (c *Client) DeleteRemoteManagementWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDeleteRemoteManagementRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteRemoteManagement")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1736,6 +1981,11 @@ func (c *Client) DeleteRemoteManagementWithContext(ctx context.Context, request 
 func (c *Client) DeleteRemoteManagementWithContextV2(ctx context.Context, request *DeleteRemoteManagementRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteRemoteManagementRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteRemoteManagement")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1791,6 +2041,11 @@ func (c *Client) ResetPasswordWithContext(ctx context.Context, request *ResetPas
 	if request == nil {
 		request = NewResetPasswordRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ResetPassword")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1805,6 +2060,11 @@ func (c *Client) ResetPasswordWithContext(ctx context.Context, request *ResetPas
 func (c *Client) ResetPasswordWithContextV2(ctx context.Context, request *ResetPasswordRequest) (int, string, error) {
 	if request == nil {
 		request = NewResetPasswordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ResetPassword")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1860,6 +2120,11 @@ func (c *Client) ModifyHyperThreadingWithContext(ctx context.Context, request *M
 	if request == nil {
 		request = NewModifyHyperThreadingRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyHyperThreading")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1874,6 +2139,11 @@ func (c *Client) ModifyHyperThreadingWithContext(ctx context.Context, request *M
 func (c *Client) ModifyHyperThreadingWithContextV2(ctx context.Context, request *ModifyHyperThreadingRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyHyperThreadingRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyHyperThreading")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1929,6 +2199,11 @@ func (c *Client) AssociateClusterWithContext(ctx context.Context, request *Assoc
 	if request == nil {
 		request = NewAssociateClusterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "AssociateCluster")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1943,6 +2218,11 @@ func (c *Client) AssociateClusterWithContext(ctx context.Context, request *Assoc
 func (c *Client) AssociateClusterWithContextV2(ctx context.Context, request *AssociateClusterRequest) (int, string, error) {
 	if request == nil {
 		request = NewAssociateClusterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "AssociateCluster")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1998,6 +2278,11 @@ func (c *Client) DisassociateClusterWithContext(ctx context.Context, request *Di
 	if request == nil {
 		request = NewDisassociateClusterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DisassociateCluster")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2012,6 +2297,11 @@ func (c *Client) DisassociateClusterWithContext(ctx context.Context, request *Di
 func (c *Client) DisassociateClusterWithContextV2(ctx context.Context, request *DisassociateClusterRequest) (int, string, error) {
 	if request == nil {
 		request = NewDisassociateClusterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DisassociateCluster")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2067,6 +2357,11 @@ func (c *Client) DescribeInspectionsWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeInspectionsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeInspections")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2081,6 +2376,11 @@ func (c *Client) DescribeInspectionsWithContext(ctx context.Context, request *De
 func (c *Client) DescribeInspectionsWithContextV2(ctx context.Context, request *DescribeInspectionsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInspectionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeInspections")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2136,6 +2436,11 @@ func (c *Client) DescribeEpcStocksWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeEpcStocksRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeEpcStocks")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2150,6 +2455,11 @@ func (c *Client) DescribeEpcStocksWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeEpcStocksWithContextV2(ctx context.Context, request *DescribeEpcStocksRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeEpcStocksRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeEpcStocks")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2205,6 +2515,11 @@ func (c *Client) DescribeEpcDeviceAttributesWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewDescribeEpcDeviceAttributesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeEpcDeviceAttributes")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2219,6 +2534,11 @@ func (c *Client) DescribeEpcDeviceAttributesWithContext(ctx context.Context, req
 func (c *Client) DescribeEpcDeviceAttributesWithContextV2(ctx context.Context, request *DescribeEpcDeviceAttributesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeEpcDeviceAttributesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeEpcDeviceAttributes")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2274,6 +2594,11 @@ func (c *Client) DescribeProcessesWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeProcessesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeProcesses")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2288,6 +2613,11 @@ func (c *Client) DescribeProcessesWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeProcessesWithContextV2(ctx context.Context, request *DescribeProcessesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeProcessesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeProcesses")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2343,6 +2673,11 @@ func (c *Client) CreateProcessWithContext(ctx context.Context, request *CreatePr
 	if request == nil {
 		request = NewCreateProcessRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateProcess")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2357,6 +2692,11 @@ func (c *Client) CreateProcessWithContext(ctx context.Context, request *CreatePr
 func (c *Client) CreateProcessWithContextV2(ctx context.Context, request *CreateProcessRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateProcessRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateProcess")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2412,6 +2752,11 @@ func (c *Client) DeleteProcessWithContext(ctx context.Context, request *DeletePr
 	if request == nil {
 		request = NewDeleteProcessRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteProcess")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2426,6 +2771,11 @@ func (c *Client) DeleteProcessWithContext(ctx context.Context, request *DeletePr
 func (c *Client) DeleteProcessWithContextV2(ctx context.Context, request *DeleteProcessRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteProcessRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteProcess")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2481,6 +2831,11 @@ func (c *Client) ReplyProcessWithContext(ctx context.Context, request *ReplyProc
 	if request == nil {
 		request = NewReplyProcessRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ReplyProcess")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2495,6 +2850,11 @@ func (c *Client) ReplyProcessWithContext(ctx context.Context, request *ReplyProc
 func (c *Client) ReplyProcessWithContextV2(ctx context.Context, request *ReplyProcessRequest) (int, string, error) {
 	if request == nil {
 		request = NewReplyProcessRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ReplyProcess")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2550,6 +2910,11 @@ func (c *Client) DescribeEpcTrashesWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeEpcTrashesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeEpcTrashes")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2564,6 +2929,11 @@ func (c *Client) DescribeEpcTrashesWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeEpcTrashesWithContextV2(ctx context.Context, request *DescribeEpcTrashesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeEpcTrashesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeEpcTrashes")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2619,6 +2989,11 @@ func (c *Client) ReturnEpcWithContext(ctx context.Context, request *ReturnEpcReq
 	if request == nil {
 		request = NewReturnEpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ReturnEpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2633,6 +3008,11 @@ func (c *Client) ReturnEpcWithContext(ctx context.Context, request *ReturnEpcReq
 func (c *Client) ReturnEpcWithContextV2(ctx context.Context, request *ReturnEpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewReturnEpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ReturnEpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2688,6 +3068,11 @@ func (c *Client) CreateResourceRequirementWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewCreateResourceRequirementRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateResourceRequirement")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2702,6 +3087,11 @@ func (c *Client) CreateResourceRequirementWithContext(ctx context.Context, reque
 func (c *Client) CreateResourceRequirementWithContextV2(ctx context.Context, request *CreateResourceRequirementRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateResourceRequirementRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateResourceRequirement")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2757,6 +3147,11 @@ func (c *Client) AttachVolumeWithContext(ctx context.Context, request *AttachVol
 	if request == nil {
 		request = NewAttachVolumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "AttachVolume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2771,6 +3166,11 @@ func (c *Client) AttachVolumeWithContext(ctx context.Context, request *AttachVol
 func (c *Client) AttachVolumeWithContextV2(ctx context.Context, request *AttachVolumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewAttachVolumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "AttachVolume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2826,6 +3226,11 @@ func (c *Client) DetachVolumeWithContext(ctx context.Context, request *DetachVol
 	if request == nil {
 		request = NewDetachVolumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DetachVolume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2840,6 +3245,11 @@ func (c *Client) DetachVolumeWithContext(ctx context.Context, request *DetachVol
 func (c *Client) DetachVolumeWithContextV2(ctx context.Context, request *DetachVolumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewDetachVolumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DetachVolume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2895,6 +3305,11 @@ func (c *Client) DescribePriceWithContext(ctx context.Context, request *Describe
 	if request == nil {
 		request = NewDescribePriceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribePrice")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2909,6 +3324,11 @@ func (c *Client) DescribePriceWithContext(ctx context.Context, request *Describe
 func (c *Client) DescribePriceWithContextV2(ctx context.Context, request *DescribePriceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribePriceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribePrice")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2964,6 +3384,11 @@ func (c *Client) UpdateConfirmWithContext(ctx context.Context, request *UpdateCo
 	if request == nil {
 		request = NewUpdateConfirmRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "UpdateConfirm")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2978,6 +3403,11 @@ func (c *Client) UpdateConfirmWithContext(ctx context.Context, request *UpdateCo
 func (c *Client) UpdateConfirmWithContextV2(ctx context.Context, request *UpdateConfirmRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateConfirmRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "UpdateConfirm")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3033,6 +3463,11 @@ func (c *Client) ModifyOverclockingAttributeWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewModifyOverclockingAttributeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyOverclockingAttribute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3047,6 +3482,11 @@ func (c *Client) ModifyOverclockingAttributeWithContext(ctx context.Context, req
 func (c *Client) ModifyOverclockingAttributeWithContextV2(ctx context.Context, request *ModifyOverclockingAttributeRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyOverclockingAttributeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyOverclockingAttribute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3102,6 +3542,11 @@ func (c *Client) CopyImageWithContext(ctx context.Context, request *CopyImageReq
 	if request == nil {
 		request = NewCopyImageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CopyImage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3116,6 +3561,11 @@ func (c *Client) CopyImageWithContext(ctx context.Context, request *CopyImageReq
 func (c *Client) CopyImageWithContextV2(ctx context.Context, request *CopyImageRequest) (int, string, error) {
 	if request == nil {
 		request = NewCopyImageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CopyImage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3171,6 +3621,11 @@ func (c *Client) DescribeEpcRaidAttributesWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeEpcRaidAttributesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeEpcRaidAttributes")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3185,6 +3640,11 @@ func (c *Client) DescribeEpcRaidAttributesWithContext(ctx context.Context, reque
 func (c *Client) DescribeEpcRaidAttributesWithContextV2(ctx context.Context, request *DescribeEpcRaidAttributesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeEpcRaidAttributesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeEpcRaidAttributes")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3240,6 +3700,11 @@ func (c *Client) DescribeGpuImageDriverWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeGpuImageDriverRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeGpuImageDriver")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3254,6 +3719,11 @@ func (c *Client) DescribeGpuImageDriverWithContext(ctx context.Context, request 
 func (c *Client) DescribeGpuImageDriverWithContextV2(ctx context.Context, request *DescribeGpuImageDriverRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeGpuImageDriverRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeGpuImageDriver")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3309,6 +3779,11 @@ func (c *Client) CreateShareImageWithContext(ctx context.Context, request *Creat
 	if request == nil {
 		request = NewCreateShareImageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateShareImage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3323,6 +3798,11 @@ func (c *Client) CreateShareImageWithContext(ctx context.Context, request *Creat
 func (c *Client) CreateShareImageWithContextV2(ctx context.Context, request *CreateShareImageRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateShareImageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateShareImage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3378,6 +3858,11 @@ func (c *Client) DeleteShareImageWithContext(ctx context.Context, request *Delet
 	if request == nil {
 		request = NewDeleteShareImageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteShareImage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3392,6 +3877,11 @@ func (c *Client) DeleteShareImageWithContext(ctx context.Context, request *Delet
 func (c *Client) DeleteShareImageWithContextV2(ctx context.Context, request *DeleteShareImageRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteShareImageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteShareImage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3447,6 +3937,11 @@ func (c *Client) DescribeShareImageAccountListWithContext(ctx context.Context, r
 	if request == nil {
 		request = NewDescribeShareImageAccountListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeShareImageAccountList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3461,6 +3956,11 @@ func (c *Client) DescribeShareImageAccountListWithContext(ctx context.Context, r
 func (c *Client) DescribeShareImageAccountListWithContextV2(ctx context.Context, request *DescribeShareImageAccountListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeShareImageAccountListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeShareImageAccountList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3516,6 +4016,11 @@ func (c *Client) DescribeShareImageWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeShareImageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeShareImage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3530,6 +4035,11 @@ func (c *Client) DescribeShareImageWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeShareImageWithContextV2(ctx context.Context, request *DescribeShareImageRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeShareImageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeShareImage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3585,6 +4095,11 @@ func (c *Client) AcceptShareImageWithContext(ctx context.Context, request *Accep
 	if request == nil {
 		request = NewAcceptShareImageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "AcceptShareImage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3599,6 +4114,11 @@ func (c *Client) AcceptShareImageWithContext(ctx context.Context, request *Accep
 func (c *Client) AcceptShareImageWithContextV2(ctx context.Context, request *AcceptShareImageRequest) (int, string, error) {
 	if request == nil {
 		request = NewAcceptShareImageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "AcceptShareImage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3654,6 +4174,11 @@ func (c *Client) RejectShareImageWithContext(ctx context.Context, request *Rejec
 	if request == nil {
 		request = NewRejectShareImageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "RejectShareImage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3668,6 +4193,11 @@ func (c *Client) RejectShareImageWithContext(ctx context.Context, request *Rejec
 func (c *Client) RejectShareImageWithContextV2(ctx context.Context, request *RejectShareImageRequest) (int, string, error) {
 	if request == nil {
 		request = NewRejectShareImageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "RejectShareImage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3723,6 +4253,11 @@ func (c *Client) DescribeManagedAccessoryWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeManagedAccessoryRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeManagedAccessory")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3737,6 +4272,11 @@ func (c *Client) DescribeManagedAccessoryWithContext(ctx context.Context, reques
 func (c *Client) DescribeManagedAccessoryWithContextV2(ctx context.Context, request *DescribeManagedAccessoryRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeManagedAccessoryRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeManagedAccessory")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3792,6 +4332,11 @@ func (c *Client) AutoDeleteEpcWithContext(ctx context.Context, request *AutoDele
 	if request == nil {
 		request = NewAutoDeleteEpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "AutoDeleteEpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3806,6 +4351,11 @@ func (c *Client) AutoDeleteEpcWithContext(ctx context.Context, request *AutoDele
 func (c *Client) AutoDeleteEpcWithContextV2(ctx context.Context, request *AutoDeleteEpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewAutoDeleteEpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "AutoDeleteEpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3861,6 +4411,11 @@ func (c *Client) ExportImageWithContext(ctx context.Context, request *ExportImag
 	if request == nil {
 		request = NewExportImageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ExportImage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3875,6 +4430,11 @@ func (c *Client) ExportImageWithContext(ctx context.Context, request *ExportImag
 func (c *Client) ExportImageWithContextV2(ctx context.Context, request *ExportImageRequest) (int, string, error) {
 	if request == nil {
 		request = NewExportImageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ExportImage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3930,6 +4490,11 @@ func (c *Client) QueryBucketsWithContext(ctx context.Context, request *QueryBuck
 	if request == nil {
 		request = NewQueryBucketsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "QueryBuckets")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3944,6 +4509,11 @@ func (c *Client) QueryBucketsWithContext(ctx context.Context, request *QueryBuck
 func (c *Client) QueryBucketsWithContextV2(ctx context.Context, request *QueryBucketsRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryBucketsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "QueryBuckets")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3999,6 +4569,11 @@ func (c *Client) CancelImageExportWithContext(ctx context.Context, request *Canc
 	if request == nil {
 		request = NewCancelImageExportRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CancelImageExport")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4013,6 +4588,11 @@ func (c *Client) CancelImageExportWithContext(ctx context.Context, request *Canc
 func (c *Client) CancelImageExportWithContextV2(ctx context.Context, request *CancelImageExportRequest) (int, string, error) {
 	if request == nil {
 		request = NewCancelImageExportRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CancelImageExport")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4068,6 +4648,11 @@ func (c *Client) UseHotStandByEpcWithContext(ctx context.Context, request *UseHo
 	if request == nil {
 		request = NewUseHotStandByEpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "UseHotStandByEpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4082,6 +4667,11 @@ func (c *Client) UseHotStandByEpcWithContext(ctx context.Context, request *UseHo
 func (c *Client) UseHotStandByEpcWithContextV2(ctx context.Context, request *UseHotStandByEpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewUseHotStandByEpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "UseHotStandByEpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4137,6 +4727,11 @@ func (c *Client) ActivateHotStandbyEpcWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewActivateHotStandbyEpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ActivateHotStandbyEpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4151,6 +4746,11 @@ func (c *Client) ActivateHotStandbyEpcWithContext(ctx context.Context, request *
 func (c *Client) ActivateHotStandbyEpcWithContextV2(ctx context.Context, request *ActivateHotStandbyEpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewActivateHotStandbyEpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ActivateHotStandbyEpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4206,6 +4806,11 @@ func (c *Client) BatchCreateEpcWithContext(ctx context.Context, request *BatchCr
 	if request == nil {
 		request = NewBatchCreateEpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "BatchCreateEpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4220,6 +4825,11 @@ func (c *Client) BatchCreateEpcWithContext(ctx context.Context, request *BatchCr
 func (c *Client) BatchCreateEpcWithContextV2(ctx context.Context, request *BatchCreateEpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewBatchCreateEpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "BatchCreateEpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4275,6 +4885,11 @@ func (c *Client) DescribeUseHotStandbyRecordsWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewDescribeUseHotStandbyRecordsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeUseHotStandbyRecords")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4289,6 +4904,11 @@ func (c *Client) DescribeUseHotStandbyRecordsWithContext(ctx context.Context, re
 func (c *Client) DescribeUseHotStandbyRecordsWithContextV2(ctx context.Context, request *DescribeUseHotStandbyRecordsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeUseHotStandbyRecordsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeUseHotStandbyRecords")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4344,6 +4964,11 @@ func (c *Client) DescribeGpuRoceTopologyWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewDescribeGpuRoceTopologyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeGpuRoceTopology")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4358,6 +4983,11 @@ func (c *Client) DescribeGpuRoceTopologyWithContext(ctx context.Context, request
 func (c *Client) DescribeGpuRoceTopologyWithContextV2(ctx context.Context, request *DescribeGpuRoceTopologyRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeGpuRoceTopologyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeGpuRoceTopology")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4413,6 +5043,11 @@ func (c *Client) ModifyProcessWithContext(ctx context.Context, request *ModifyPr
 	if request == nil {
 		request = NewModifyProcessRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyProcess")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4427,6 +5062,11 @@ func (c *Client) ModifyProcessWithContext(ctx context.Context, request *ModifyPr
 func (c *Client) ModifyProcessWithContextV2(ctx context.Context, request *ModifyProcessRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyProcessRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyProcess")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4482,6 +5122,11 @@ func (c *Client) ConfirmProcessWithContext(ctx context.Context, request *Confirm
 	if request == nil {
 		request = NewConfirmProcessRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ConfirmProcess")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4496,6 +5141,11 @@ func (c *Client) ConfirmProcessWithContext(ctx context.Context, request *Confirm
 func (c *Client) ConfirmProcessWithContextV2(ctx context.Context, request *ConfirmProcessRequest) (int, string, error) {
 	if request == nil {
 		request = NewConfirmProcessRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ConfirmProcess")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4551,6 +5201,11 @@ func (c *Client) DescribeModelConfigWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeModelConfigRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeModelConfig")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4565,6 +5220,11 @@ func (c *Client) DescribeModelConfigWithContext(ctx context.Context, request *De
 func (c *Client) DescribeModelConfigWithContextV2(ctx context.Context, request *DescribeModelConfigRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeModelConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeModelConfig")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4620,6 +5280,11 @@ func (c *Client) DescribeRoceEventWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeRoceEventRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeRoceEvent")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4634,6 +5299,11 @@ func (c *Client) DescribeRoceEventWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeRoceEventWithContextV2(ctx context.Context, request *DescribeRoceEventRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeRoceEventRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeRoceEvent")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4689,6 +5359,11 @@ func (c *Client) DescribeRoceEventDetailsWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeRoceEventDetailsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeRoceEventDetails")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4703,6 +5378,11 @@ func (c *Client) DescribeRoceEventDetailsWithContext(ctx context.Context, reques
 func (c *Client) DescribeRoceEventDetailsWithContextV2(ctx context.Context, request *DescribeRoceEventDetailsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeRoceEventDetailsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeRoceEventDetails")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4758,6 +5438,11 @@ func (c *Client) BatchCreateProcessWithContext(ctx context.Context, request *Bat
 	if request == nil {
 		request = NewBatchCreateProcessRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "BatchCreateProcess")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4772,6 +5457,11 @@ func (c *Client) BatchCreateProcessWithContext(ctx context.Context, request *Bat
 func (c *Client) BatchCreateProcessWithContextV2(ctx context.Context, request *BatchCreateProcessRequest) (int, string, error) {
 	if request == nil {
 		request = NewBatchCreateProcessRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "BatchCreateProcess")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4827,6 +5517,11 @@ func (c *Client) CreateInspectHostWithContext(ctx context.Context, request *Crea
 	if request == nil {
 		request = NewCreateInspectHostRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateInspectHost")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4841,6 +5536,11 @@ func (c *Client) CreateInspectHostWithContext(ctx context.Context, request *Crea
 func (c *Client) CreateInspectHostWithContextV2(ctx context.Context, request *CreateInspectHostRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateInspectHostRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateInspectHost")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4896,6 +5596,11 @@ func (c *Client) DescribeInspectHostResultsWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewDescribeInspectHostResultsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeInspectHostResults")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4910,6 +5615,11 @@ func (c *Client) DescribeInspectHostResultsWithContext(ctx context.Context, requ
 func (c *Client) DescribeInspectHostResultsWithContextV2(ctx context.Context, request *DescribeInspectHostResultsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInspectHostResultsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeInspectHostResults")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4965,6 +5675,11 @@ func (c *Client) DescribeXidDetailsWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeXidDetailsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeXidDetails")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4979,6 +5694,11 @@ func (c *Client) DescribeXidDetailsWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeXidDetailsWithContextV2(ctx context.Context, request *DescribeXidDetailsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeXidDetailsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeXidDetails")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5034,6 +5754,11 @@ func (c *Client) RunSoInstancesWithContext(ctx context.Context, request *RunSoIn
 	if request == nil {
 		request = NewRunSoInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "RunSoInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5048,6 +5773,11 @@ func (c *Client) RunSoInstancesWithContext(ctx context.Context, request *RunSoIn
 func (c *Client) RunSoInstancesWithContextV2(ctx context.Context, request *RunSoInstancesRequest) (int, string, error) {
 	if request == nil {
 		request = NewRunSoInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "RunSoInstances")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5103,6 +5833,11 @@ func (c *Client) DescribeSoImagesWithContext(ctx context.Context, request *Descr
 	if request == nil {
 		request = NewDescribeSoImagesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoImages")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5117,6 +5852,11 @@ func (c *Client) DescribeSoImagesWithContext(ctx context.Context, request *Descr
 func (c *Client) DescribeSoImagesWithContextV2(ctx context.Context, request *DescribeSoImagesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSoImagesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoImages")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5172,6 +5912,11 @@ func (c *Client) RebootSoInstanceWithContext(ctx context.Context, request *Reboo
 	if request == nil {
 		request = NewRebootSoInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "RebootSoInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5186,6 +5931,11 @@ func (c *Client) RebootSoInstanceWithContext(ctx context.Context, request *Reboo
 func (c *Client) RebootSoInstanceWithContextV2(ctx context.Context, request *RebootSoInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewRebootSoInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "RebootSoInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5241,6 +5991,11 @@ func (c *Client) DeleteSoImagesWithContext(ctx context.Context, request *DeleteS
 	if request == nil {
 		request = NewDeleteSoImagesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteSoImages")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5255,6 +6010,11 @@ func (c *Client) DeleteSoImagesWithContext(ctx context.Context, request *DeleteS
 func (c *Client) DeleteSoImagesWithContextV2(ctx context.Context, request *DeleteSoImagesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSoImagesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteSoImages")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5310,6 +6070,11 @@ func (c *Client) DeleteSoVpcWithContext(ctx context.Context, request *DeleteSoVp
 	if request == nil {
 		request = NewDeleteSoVpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteSoVpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5324,6 +6089,11 @@ func (c *Client) DeleteSoVpcWithContext(ctx context.Context, request *DeleteSoVp
 func (c *Client) DeleteSoVpcWithContextV2(ctx context.Context, request *DeleteSoVpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSoVpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteSoVpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5379,6 +6149,11 @@ func (c *Client) DescribeSoAvailableResourceWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewDescribeSoAvailableResourceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoAvailableResource")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5393,6 +6168,11 @@ func (c *Client) DescribeSoAvailableResourceWithContext(ctx context.Context, req
 func (c *Client) DescribeSoAvailableResourceWithContextV2(ctx context.Context, request *DescribeSoAvailableResourceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSoAvailableResourceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoAvailableResource")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5448,6 +6228,11 @@ func (c *Client) DescribeSoInstancesWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeSoInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5462,6 +6247,11 @@ func (c *Client) DescribeSoInstancesWithContext(ctx context.Context, request *De
 func (c *Client) DescribeSoInstancesWithContextV2(ctx context.Context, request *DescribeSoInstancesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSoInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoInstances")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5517,6 +6307,11 @@ func (c *Client) DeleteSoInstanceWithContext(ctx context.Context, request *Delet
 	if request == nil {
 		request = NewDeleteSoInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteSoInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5531,6 +6326,11 @@ func (c *Client) DeleteSoInstanceWithContext(ctx context.Context, request *Delet
 func (c *Client) DeleteSoInstanceWithContextV2(ctx context.Context, request *DeleteSoInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSoInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteSoInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5586,6 +6386,11 @@ func (c *Client) DescribeSoSecurityGroupsWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeSoSecurityGroupsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoSecurityGroups")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5600,6 +6405,11 @@ func (c *Client) DescribeSoSecurityGroupsWithContext(ctx context.Context, reques
 func (c *Client) DescribeSoSecurityGroupsWithContextV2(ctx context.Context, request *DescribeSoSecurityGroupsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSoSecurityGroupsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoSecurityGroups")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5655,6 +6465,11 @@ func (c *Client) CreateSoVpcWithContext(ctx context.Context, request *CreateSoVp
 	if request == nil {
 		request = NewCreateSoVpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateSoVpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5669,6 +6484,11 @@ func (c *Client) CreateSoVpcWithContext(ctx context.Context, request *CreateSoVp
 func (c *Client) CreateSoVpcWithContextV2(ctx context.Context, request *CreateSoVpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateSoVpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateSoVpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5724,6 +6544,11 @@ func (c *Client) DeleteSoSubnetWithContext(ctx context.Context, request *DeleteS
 	if request == nil {
 		request = NewDeleteSoSubnetRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteSoSubnet")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5738,6 +6563,11 @@ func (c *Client) DeleteSoSubnetWithContext(ctx context.Context, request *DeleteS
 func (c *Client) DeleteSoSubnetWithContextV2(ctx context.Context, request *DeleteSoSubnetRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSoSubnetRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteSoSubnet")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5793,6 +6623,11 @@ func (c *Client) DescribeSoKeyPairsWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeSoKeyPairsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoKeyPairs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5807,6 +6642,11 @@ func (c *Client) DescribeSoKeyPairsWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeSoKeyPairsWithContextV2(ctx context.Context, request *DescribeSoKeyPairsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSoKeyPairsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoKeyPairs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5862,6 +6702,11 @@ func (c *Client) StartSoInstanceWithContext(ctx context.Context, request *StartS
 	if request == nil {
 		request = NewStartSoInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "StartSoInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5876,6 +6721,11 @@ func (c *Client) StartSoInstanceWithContext(ctx context.Context, request *StartS
 func (c *Client) StartSoInstanceWithContextV2(ctx context.Context, request *StartSoInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewStartSoInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "StartSoInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5931,6 +6781,11 @@ func (c *Client) DescribeSoInstanceTypesWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewDescribeSoInstanceTypesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoInstanceTypes")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5945,6 +6800,11 @@ func (c *Client) DescribeSoInstanceTypesWithContext(ctx context.Context, request
 func (c *Client) DescribeSoInstanceTypesWithContextV2(ctx context.Context, request *DescribeSoInstanceTypesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSoInstanceTypesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoInstanceTypes")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6000,6 +6860,11 @@ func (c *Client) ModifySoSubnetAttributesWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewModifySoSubnetAttributesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifySoSubnetAttributes")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6014,6 +6879,11 @@ func (c *Client) ModifySoSubnetAttributesWithContext(ctx context.Context, reques
 func (c *Client) ModifySoSubnetAttributesWithContextV2(ctx context.Context, request *ModifySoSubnetAttributesRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifySoSubnetAttributesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifySoSubnetAttributes")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6069,6 +6939,11 @@ func (c *Client) DescribeSoSubnetWithContext(ctx context.Context, request *Descr
 	if request == nil {
 		request = NewDescribeSoSubnetRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoSubnet")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6083,6 +6958,11 @@ func (c *Client) DescribeSoSubnetWithContext(ctx context.Context, request *Descr
 func (c *Client) DescribeSoSubnetWithContextV2(ctx context.Context, request *DescribeSoSubnetRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSoSubnetRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoSubnet")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6138,6 +7018,11 @@ func (c *Client) ModifySoKeyPairAttributeWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewModifySoKeyPairAttributeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifySoKeyPairAttribute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6152,6 +7037,11 @@ func (c *Client) ModifySoKeyPairAttributeWithContext(ctx context.Context, reques
 func (c *Client) ModifySoKeyPairAttributeWithContextV2(ctx context.Context, request *ModifySoKeyPairAttributeRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifySoKeyPairAttributeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifySoKeyPairAttribute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6207,6 +7097,11 @@ func (c *Client) ModifySoImageAttributeWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewModifySoImageAttributeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifySoImageAttribute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6221,6 +7116,11 @@ func (c *Client) ModifySoImageAttributeWithContext(ctx context.Context, request 
 func (c *Client) ModifySoImageAttributeWithContextV2(ctx context.Context, request *ModifySoImageAttributeRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifySoImageAttributeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifySoImageAttribute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6276,6 +7176,11 @@ func (c *Client) ModifySoVpcAttributesWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewModifySoVpcAttributesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifySoVpcAttributes")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6290,6 +7195,11 @@ func (c *Client) ModifySoVpcAttributesWithContext(ctx context.Context, request *
 func (c *Client) ModifySoVpcAttributesWithContextV2(ctx context.Context, request *ModifySoVpcAttributesRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifySoVpcAttributesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifySoVpcAttributes")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6345,6 +7255,11 @@ func (c *Client) ReplaceSoSystemVolumeWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewReplaceSoSystemVolumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ReplaceSoSystemVolume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6359,6 +7274,11 @@ func (c *Client) ReplaceSoSystemVolumeWithContext(ctx context.Context, request *
 func (c *Client) ReplaceSoSystemVolumeWithContextV2(ctx context.Context, request *ReplaceSoSystemVolumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewReplaceSoSystemVolumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ReplaceSoSystemVolume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6414,6 +7334,11 @@ func (c *Client) CreateSoSubnetWithContext(ctx context.Context, request *CreateS
 	if request == nil {
 		request = NewCreateSoSubnetRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateSoSubnet")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6428,6 +7353,11 @@ func (c *Client) CreateSoSubnetWithContext(ctx context.Context, request *CreateS
 func (c *Client) CreateSoSubnetWithContextV2(ctx context.Context, request *CreateSoSubnetRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateSoSubnetRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateSoSubnet")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6483,6 +7413,11 @@ func (c *Client) DescribeSoVpcsWithContext(ctx context.Context, request *Describ
 	if request == nil {
 		request = NewDescribeSoVpcsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoVpcs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6497,6 +7432,11 @@ func (c *Client) DescribeSoVpcsWithContext(ctx context.Context, request *Describ
 func (c *Client) DescribeSoVpcsWithContextV2(ctx context.Context, request *DescribeSoVpcsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSoVpcsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoVpcs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6552,6 +7492,11 @@ func (c *Client) StopSoInstanceWithContext(ctx context.Context, request *StopSoI
 	if request == nil {
 		request = NewStopSoInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "StopSoInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6566,6 +7511,11 @@ func (c *Client) StopSoInstanceWithContext(ctx context.Context, request *StopSoI
 func (c *Client) StopSoInstanceWithContextV2(ctx context.Context, request *StopSoInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewStopSoInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "StopSoInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6621,6 +7571,11 @@ func (c *Client) DeleteSoKeyPairsWithContext(ctx context.Context, request *Delet
 	if request == nil {
 		request = NewDeleteSoKeyPairsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteSoKeyPairs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6635,6 +7590,11 @@ func (c *Client) DeleteSoKeyPairsWithContext(ctx context.Context, request *Delet
 func (c *Client) DeleteSoKeyPairsWithContextV2(ctx context.Context, request *DeleteSoKeyPairsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSoKeyPairsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteSoKeyPairs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6690,6 +7650,11 @@ func (c *Client) CreateSoImageWithContext(ctx context.Context, request *CreateSo
 	if request == nil {
 		request = NewCreateSoImageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateSoImage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6704,6 +7669,11 @@ func (c *Client) CreateSoImageWithContext(ctx context.Context, request *CreateSo
 func (c *Client) CreateSoImageWithContextV2(ctx context.Context, request *CreateSoImageRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateSoImageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateSoImage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6759,6 +7729,11 @@ func (c *Client) ModifySoInstanceAttributeWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewModifySoInstanceAttributeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifySoInstanceAttribute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6773,6 +7748,11 @@ func (c *Client) ModifySoInstanceAttributeWithContext(ctx context.Context, reque
 func (c *Client) ModifySoInstanceAttributeWithContextV2(ctx context.Context, request *ModifySoInstanceAttributeRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifySoInstanceAttributeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifySoInstanceAttribute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6828,6 +7808,11 @@ func (c *Client) CreateSoKeyPairWithContext(ctx context.Context, request *Create
 	if request == nil {
 		request = NewCreateSoKeyPairRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateSoKeyPair")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6842,6 +7827,11 @@ func (c *Client) CreateSoKeyPairWithContext(ctx context.Context, request *Create
 func (c *Client) CreateSoKeyPairWithContextV2(ctx context.Context, request *CreateSoKeyPairRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateSoKeyPairRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateSoKeyPair")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6897,6 +7887,11 @@ func (c *Client) InstallAgentWithContext(ctx context.Context, request *InstallAg
 	if request == nil {
 		request = NewInstallAgentRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "InstallAgent")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6911,6 +7906,11 @@ func (c *Client) InstallAgentWithContext(ctx context.Context, request *InstallAg
 func (c *Client) InstallAgentWithContextV2(ctx context.Context, request *InstallAgentRequest) (int, string, error) {
 	if request == nil {
 		request = NewInstallAgentRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "InstallAgent")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6966,6 +7966,11 @@ func (c *Client) DescribeAgentWithContext(ctx context.Context, request *Describe
 	if request == nil {
 		request = NewDescribeAgentRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeAgent")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6980,6 +7985,11 @@ func (c *Client) DescribeAgentWithContext(ctx context.Context, request *Describe
 func (c *Client) DescribeAgentWithContextV2(ctx context.Context, request *DescribeAgentRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAgentRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeAgent")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -7035,6 +8045,11 @@ func (c *Client) DescribeAgentInstallStatusWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewDescribeAgentInstallStatusRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeAgentInstallStatus")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -7049,6 +8064,11 @@ func (c *Client) DescribeAgentInstallStatusWithContext(ctx context.Context, requ
 func (c *Client) DescribeAgentInstallStatusWithContextV2(ctx context.Context, request *DescribeAgentInstallStatusRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAgentInstallStatusRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeAgentInstallStatus")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -7104,6 +8124,11 @@ func (c *Client) DescribeSoUserDataWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeSoUserDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoUserData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -7118,6 +8143,11 @@ func (c *Client) DescribeSoUserDataWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeSoUserDataWithContextV2(ctx context.Context, request *DescribeSoUserDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSoUserDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeSoUserData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

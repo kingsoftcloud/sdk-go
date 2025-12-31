@@ -66,6 +66,11 @@ func (c *Client) CreateBandWidthShareWithContext(ctx context.Context, request *C
 	if request == nil {
 		request = NewCreateBandWidthShareRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bws", APIVersion, "CreateBandWidthShare")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateBandWidthShareWithContext(ctx context.Context, request *C
 func (c *Client) CreateBandWidthShareWithContextV2(ctx context.Context, request *CreateBandWidthShareRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateBandWidthShareRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bws", APIVersion, "CreateBandWidthShare")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DescribeBandWidthSharesWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewDescribeBandWidthSharesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bws", APIVersion, "DescribeBandWidthShares")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DescribeBandWidthSharesWithContext(ctx context.Context, request
 func (c *Client) DescribeBandWidthSharesWithContextV2(ctx context.Context, request *DescribeBandWidthSharesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeBandWidthSharesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bws", APIVersion, "DescribeBandWidthShares")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) AssociateBandWidthShareWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewAssociateBandWidthShareRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bws", APIVersion, "AssociateBandWidthShare")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) AssociateBandWidthShareWithContext(ctx context.Context, request
 func (c *Client) AssociateBandWidthShareWithContextV2(ctx context.Context, request *AssociateBandWidthShareRequest) (int, string, error) {
 	if request == nil {
 		request = NewAssociateBandWidthShareRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bws", APIVersion, "AssociateBandWidthShare")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) DisassociateBandWidthShareWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewDisassociateBandWidthShareRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bws", APIVersion, "DisassociateBandWidthShare")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) DisassociateBandWidthShareWithContext(ctx context.Context, requ
 func (c *Client) DisassociateBandWidthShareWithContextV2(ctx context.Context, request *DisassociateBandWidthShareRequest) (int, string, error) {
 	if request == nil {
 		request = NewDisassociateBandWidthShareRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bws", APIVersion, "DisassociateBandWidthShare")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) ModifyBandWidthShareWithContext(ctx context.Context, request *M
 	if request == nil {
 		request = NewModifyBandWidthShareRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bws", APIVersion, "ModifyBandWidthShare")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) ModifyBandWidthShareWithContext(ctx context.Context, request *M
 func (c *Client) ModifyBandWidthShareWithContextV2(ctx context.Context, request *ModifyBandWidthShareRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyBandWidthShareRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bws", APIVersion, "ModifyBandWidthShare")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) DeleteBandWidthShareWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDeleteBandWidthShareRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bws", APIVersion, "DeleteBandWidthShare")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) DeleteBandWidthShareWithContext(ctx context.Context, request *D
 func (c *Client) DeleteBandWidthShareWithContextV2(ctx context.Context, request *DeleteBandWidthShareRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteBandWidthShareRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bws", APIVersion, "DeleteBandWidthShare")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) QueryBwsTopEipMonitorWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewQueryBwsTopEipMonitorRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bws", APIVersion, "QueryBwsTopEipMonitor")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) QueryBwsTopEipMonitorWithContext(ctx context.Context, request *
 func (c *Client) QueryBwsTopEipMonitorWithContextV2(ctx context.Context, request *QueryBwsTopEipMonitorRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryBwsTopEipMonitorRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bws", APIVersion, "QueryBwsTopEipMonitor")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

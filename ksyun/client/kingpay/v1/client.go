@@ -66,6 +66,11 @@ func (c *Client) QueryCashWalletActionWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewQueryCashWalletActionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kingpay", APIVersion, "QueryCashWalletAction")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) QueryCashWalletActionWithContext(ctx context.Context, request *
 func (c *Client) QueryCashWalletActionWithContextV2(ctx context.Context, request *QueryCashWalletActionRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryCashWalletActionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kingpay", APIVersion, "QueryCashWalletAction")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

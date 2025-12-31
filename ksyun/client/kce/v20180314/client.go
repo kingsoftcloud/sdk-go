@@ -66,6 +66,11 @@ func (c *Client) CreateRepoNamespaceWithContext(ctx context.Context, request *Cr
 	if request == nil {
 		request = NewCreateRepoNamespaceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "CreateRepoNamespace")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateRepoNamespaceWithContext(ctx context.Context, request *Cr
 func (c *Client) CreateRepoNamespaceWithContextV2(ctx context.Context, request *CreateRepoNamespaceRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateRepoNamespaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "CreateRepoNamespace")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DescribeRepoNamespaceWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeRepoNamespaceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeRepoNamespace")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DescribeRepoNamespaceWithContext(ctx context.Context, request *
 func (c *Client) DescribeRepoNamespaceWithContextV2(ctx context.Context, request *DescribeRepoNamespaceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeRepoNamespaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeRepoNamespace")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) ModifyRepoNamespaceTypeWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewModifyRepoNamespaceTypeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "ModifyRepoNamespaceType")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) ModifyRepoNamespaceTypeWithContext(ctx context.Context, request
 func (c *Client) ModifyRepoNamespaceTypeWithContextV2(ctx context.Context, request *ModifyRepoNamespaceTypeRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyRepoNamespaceTypeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "ModifyRepoNamespaceType")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) RepoNamespaceExistWithContext(ctx context.Context, request *Rep
 	if request == nil {
 		request = NewRepoNamespaceExistRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "RepoNamespaceExist")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) RepoNamespaceExistWithContext(ctx context.Context, request *Rep
 func (c *Client) RepoNamespaceExistWithContextV2(ctx context.Context, request *RepoNamespaceExistRequest) (int, string, error) {
 	if request == nil {
 		request = NewRepoNamespaceExistRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "RepoNamespaceExist")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) CreateRepositoryWithContext(ctx context.Context, request *Creat
 	if request == nil {
 		request = NewCreateRepositoryRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "CreateRepository")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) CreateRepositoryWithContext(ctx context.Context, request *Creat
 func (c *Client) CreateRepositoryWithContextV2(ctx context.Context, request *CreateRepositoryRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateRepositoryRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "CreateRepository")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) DeleteRepositoryWithContext(ctx context.Context, request *Delet
 	if request == nil {
 		request = NewDeleteRepositoryRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DeleteRepository")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) DeleteRepositoryWithContext(ctx context.Context, request *Delet
 func (c *Client) DeleteRepositoryWithContextV2(ctx context.Context, request *DeleteRepositoryRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteRepositoryRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DeleteRepository")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) DescribeRepositoryWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeRepositoryRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeRepository")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) DescribeRepositoryWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeRepositoryWithContextV2(ctx context.Context, request *DescribeRepositoryRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeRepositoryRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeRepository")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) DescribePublicRepositoryWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribePublicRepositoryRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribePublicRepository")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) DescribePublicRepositoryWithContext(ctx context.Context, reques
 func (c *Client) DescribePublicRepositoryWithContextV2(ctx context.Context, request *DescribePublicRepositoryRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribePublicRepositoryRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribePublicRepository")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) UpdateRepoDescWithContext(ctx context.Context, request *UpdateR
 	if request == nil {
 		request = NewUpdateRepoDescRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "UpdateRepoDesc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) UpdateRepoDescWithContext(ctx context.Context, request *UpdateR
 func (c *Client) UpdateRepoDescWithContextV2(ctx context.Context, request *UpdateRepoDescRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateRepoDescRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "UpdateRepoDesc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) DescribeTagWithContext(ctx context.Context, request *DescribeTa
 	if request == nil {
 		request = NewDescribeTagRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeTag")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) DescribeTagWithContext(ctx context.Context, request *DescribeTa
 func (c *Client) DescribeTagWithContextV2(ctx context.Context, request *DescribeTagRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeTagRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeTag")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, request *DeleteTagsR
 	if request == nil {
 		request = NewDeleteTagsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DeleteTags")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, request *DeleteTagsR
 func (c *Client) DeleteTagsWithContextV2(ctx context.Context, request *DeleteTagsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteTagsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DeleteTags")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) AddFavorWithContext(ctx context.Context, request *AddFavorReque
 	if request == nil {
 		request = NewAddFavorRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "AddFavor")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -839,6 +954,11 @@ func (c *Client) AddFavorWithContext(ctx context.Context, request *AddFavorReque
 func (c *Client) AddFavorWithContextV2(ctx context.Context, request *AddFavorRequest) (int, string, error) {
 	if request == nil {
 		request = NewAddFavorRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "AddFavor")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -894,6 +1014,11 @@ func (c *Client) DeleteFavorWithContext(ctx context.Context, request *DeleteFavo
 	if request == nil {
 		request = NewDeleteFavorRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DeleteFavor")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) DeleteFavorWithContext(ctx context.Context, request *DeleteFavo
 func (c *Client) DeleteFavorWithContextV2(ctx context.Context, request *DeleteFavorRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteFavorRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DeleteFavor")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -963,6 +1093,11 @@ func (c *Client) GetFavorWithContext(ctx context.Context, request *GetFavorReque
 	if request == nil {
 		request = NewGetFavorRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "GetFavor")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +1112,11 @@ func (c *Client) GetFavorWithContext(ctx context.Context, request *GetFavorReque
 func (c *Client) GetFavorWithContextV2(ctx context.Context, request *GetFavorRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetFavorRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "GetFavor")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +1172,11 @@ func (c *Client) RegisterRepositoryAccountWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewRegisterRepositoryAccountRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "RegisterRepositoryAccount")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1046,6 +1191,11 @@ func (c *Client) RegisterRepositoryAccountWithContext(ctx context.Context, reque
 func (c *Client) RegisterRepositoryAccountWithContextV2(ctx context.Context, request *RegisterRepositoryAccountRequest) (int, string, error) {
 	if request == nil {
 		request = NewRegisterRepositoryAccountRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "RegisterRepositoryAccount")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1101,6 +1251,11 @@ func (c *Client) ModifyPasswordWithContext(ctx context.Context, request *ModifyP
 	if request == nil {
 		request = NewModifyPasswordRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "ModifyPassword")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1115,6 +1270,11 @@ func (c *Client) ModifyPasswordWithContext(ctx context.Context, request *ModifyP
 func (c *Client) ModifyPasswordWithContextV2(ctx context.Context, request *ModifyPasswordRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyPasswordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "ModifyPassword")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1170,6 +1330,11 @@ func (c *Client) DeleteRepoNamespaceWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDeleteRepoNamespaceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DeleteRepoNamespace")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1184,6 +1349,11 @@ func (c *Client) DeleteRepoNamespaceWithContext(ctx context.Context, request *De
 func (c *Client) DeleteRepoNamespaceWithContextV2(ctx context.Context, request *DeleteRepoNamespaceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteRepoNamespaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DeleteRepoNamespace")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

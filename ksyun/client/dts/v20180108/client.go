@@ -66,6 +66,11 @@ func (c *Client) SchemaStructWithContext(ctx context.Context, request *SchemaStr
 	if request == nil {
 		request = NewSchemaStructRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "SchemaStruct")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) SchemaStructWithContext(ctx context.Context, request *SchemaStr
 func (c *Client) SchemaStructWithContextV2(ctx context.Context, request *SchemaStructRequest) (int, string, error) {
 	if request == nil {
 		request = NewSchemaStructRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "SchemaStruct")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) ConnectivityCheckWithContext(ctx context.Context, request *Conn
 	if request == nil {
 		request = NewConnectivityCheckRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "ConnectivityCheck")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) ConnectivityCheckWithContext(ctx context.Context, request *Conn
 func (c *Client) ConnectivityCheckWithContextV2(ctx context.Context, request *ConnectivityCheckRequest) (int, string, error) {
 	if request == nil {
 		request = NewConnectivityCheckRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "ConnectivityCheck")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) CreatePrecheckWithContext(ctx context.Context, request *CreateP
 	if request == nil {
 		request = NewCreatePrecheckRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "CreatePrecheck")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) CreatePrecheckWithContext(ctx context.Context, request *CreateP
 func (c *Client) CreatePrecheckWithContextV2(ctx context.Context, request *CreatePrecheckRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreatePrecheckRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "CreatePrecheck")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskR
 	if request == nil {
 		request = NewCreateTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "CreateTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskR
 func (c *Client) CreateTaskWithContextV2(ctx context.Context, request *CreateTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "CreateTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeT
 	if request == nil {
 		request = NewDescribeTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -356,6 +401,11 @@ func (c *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeT
 func (c *Client) DescribeTaskWithContextV2(ctx context.Context, request *DescribeTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -411,6 +461,11 @@ func (c *Client) OperateTaskWithContext(ctx context.Context, request *OperateTas
 	if request == nil {
 		request = NewOperateTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "OperateTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) OperateTaskWithContext(ctx context.Context, request *OperateTas
 func (c *Client) OperateTaskWithContextV2(ctx context.Context, request *OperateTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewOperateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "OperateTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) DescribeConnConfigWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeConnConfigRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeConnConfig")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) DescribeConnConfigWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeConnConfigWithContextV2(ctx context.Context, request *DescribeConnConfigRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeConnConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeConnConfig")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) DescribePrecheckWithContext(ctx context.Context, request *Descr
 	if request == nil {
 		request = NewDescribePrecheckRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribePrecheck")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) DescribePrecheckWithContext(ctx context.Context, request *Descr
 func (c *Client) DescribePrecheckWithContextV2(ctx context.Context, request *DescribePrecheckRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribePrecheckRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribePrecheck")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) DescribeSourceUserConfigWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeSourceUserConfigRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeSourceUserConfig")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -632,6 +717,11 @@ func (c *Client) DescribeSourceUserConfigWithContext(ctx context.Context, reques
 func (c *Client) DescribeSourceUserConfigWithContextV2(ctx context.Context, request *DescribeSourceUserConfigRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSourceUserConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeSourceUserConfig")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -687,6 +777,11 @@ func (c *Client) SetConsistencyCheckWithContext(ctx context.Context, request *Se
 	if request == nil {
 		request = NewSetConsistencyCheckRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "SetConsistencyCheck")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -701,6 +796,11 @@ func (c *Client) SetConsistencyCheckWithContext(ctx context.Context, request *Se
 func (c *Client) SetConsistencyCheckWithContextV2(ctx context.Context, request *SetConsistencyCheckRequest) (int, string, error) {
 	if request == nil {
 		request = NewSetConsistencyCheckRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "SetConsistencyCheck")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -756,6 +856,11 @@ func (c *Client) DescribeConsistencyCheckWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeConsistencyCheckRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeConsistencyCheck")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -770,6 +875,11 @@ func (c *Client) DescribeConsistencyCheckWithContext(ctx context.Context, reques
 func (c *Client) DescribeConsistencyCheckWithContextV2(ctx context.Context, request *DescribeConsistencyCheckRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeConsistencyCheckRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeConsistencyCheck")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -825,6 +935,11 @@ func (c *Client) DescribeDTSParameterWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeDTSParameterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeDTSParameter")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -839,6 +954,11 @@ func (c *Client) DescribeDTSParameterWithContext(ctx context.Context, request *D
 func (c *Client) DescribeDTSParameterWithContextV2(ctx context.Context, request *DescribeDTSParameterRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDTSParameterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeDTSParameter")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -894,6 +1014,11 @@ func (c *Client) DescribeDTSParameterConfigWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewDescribeDTSParameterConfigRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeDTSParameterConfig")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -908,6 +1033,11 @@ func (c *Client) DescribeDTSParameterConfigWithContext(ctx context.Context, requ
 func (c *Client) DescribeDTSParameterConfigWithContextV2(ctx context.Context, request *DescribeDTSParameterConfigRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDTSParameterConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeDTSParameterConfig")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -963,6 +1093,11 @@ func (c *Client) DescribeSourceUserWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeSourceUserRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeSourceUser")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -977,6 +1112,11 @@ func (c *Client) DescribeSourceUserWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeSourceUserWithContextV2(ctx context.Context, request *DescribeSourceUserRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSourceUserRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeSourceUser")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1032,6 +1172,11 @@ func (c *Client) DescribeSubTaskWithContext(ctx context.Context, request *Descri
 	if request == nil {
 		request = NewDescribeSubTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeSubTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1046,6 +1191,11 @@ func (c *Client) DescribeSubTaskWithContext(ctx context.Context, request *Descri
 func (c *Client) DescribeSubTaskWithContextV2(ctx context.Context, request *DescribeSubTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSubTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeSubTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1101,6 +1251,11 @@ func (c *Client) CreateConsistencyCheckWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewCreateConsistencyCheckRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "CreateConsistencyCheck")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1115,6 +1270,11 @@ func (c *Client) CreateConsistencyCheckWithContext(ctx context.Context, request 
 func (c *Client) CreateConsistencyCheckWithContextV2(ctx context.Context, request *CreateConsistencyCheckRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateConsistencyCheckRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "CreateConsistencyCheck")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1170,6 +1330,11 @@ func (c *Client) StopConsistencyCheckWithContext(ctx context.Context, request *S
 	if request == nil {
 		request = NewStopConsistencyCheckRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "StopConsistencyCheck")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1184,6 +1349,11 @@ func (c *Client) StopConsistencyCheckWithContext(ctx context.Context, request *S
 func (c *Client) StopConsistencyCheckWithContextV2(ctx context.Context, request *StopConsistencyCheckRequest) (int, string, error) {
 	if request == nil {
 		request = NewStopConsistencyCheckRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "StopConsistencyCheck")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1239,6 +1409,11 @@ func (c *Client) DescribeRegionConfigWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeRegionConfigRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeRegionConfig")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1253,6 +1428,11 @@ func (c *Client) DescribeRegionConfigWithContext(ctx context.Context, request *D
 func (c *Client) DescribeRegionConfigWithContextV2(ctx context.Context, request *DescribeRegionConfigRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeRegionConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "DescribeRegionConfig")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1308,6 +1488,11 @@ func (c *Client) TaskBirdViewWithContext(ctx context.Context, request *TaskBirdV
 	if request == nil {
 		request = NewTaskBirdViewRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "TaskBirdView")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1322,6 +1507,11 @@ func (c *Client) TaskBirdViewWithContext(ctx context.Context, request *TaskBirdV
 func (c *Client) TaskBirdViewWithContextV2(ctx context.Context, request *TaskBirdViewRequest) (int, string, error) {
 	if request == nil {
 		request = NewTaskBirdViewRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("dts", APIVersion, "TaskBirdView")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

@@ -66,6 +66,11 @@ func (c *Client) DetailWorkspaceWithContext(ctx context.Context, request *Detail
 	if request == nil {
 		request = NewDetailWorkspaceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "DetailWorkspace")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) DetailWorkspaceWithContext(ctx context.Context, request *Detail
 func (c *Client) DetailWorkspaceWithContextV2(ctx context.Context, request *DetailWorkspaceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDetailWorkspaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "DetailWorkspace")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) ListWorkspacesWithContext(ctx context.Context, request *ListWor
 	if request == nil {
 		request = NewListWorkspacesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListWorkspaces")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) ListWorkspacesWithContext(ctx context.Context, request *ListWor
 func (c *Client) ListWorkspacesWithContextV2(ctx context.Context, request *ListWorkspacesRequest) (int, string, error) {
 	if request == nil {
 		request = NewListWorkspacesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListWorkspaces")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) StartJobRunWithContext(ctx context.Context, request *StartJobRu
 	if request == nil {
 		request = NewStartJobRunRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "StartJobRun")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) StartJobRunWithContext(ctx context.Context, request *StartJobRu
 func (c *Client) StartJobRunWithContextV2(ctx context.Context, request *StartJobRunRequest) (int, string, error) {
 	if request == nil {
 		request = NewStartJobRunRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "StartJobRun")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) GetJobRunWithContext(ctx context.Context, request *GetJobRunReq
 	if request == nil {
 		request = NewGetJobRunRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "GetJobRun")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -287,6 +322,11 @@ func (c *Client) GetJobRunWithContext(ctx context.Context, request *GetJobRunReq
 func (c *Client) GetJobRunWithContextV2(ctx context.Context, request *GetJobRunRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetJobRunRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "GetJobRun")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -342,6 +382,11 @@ func (c *Client) ListJobRunsWithContext(ctx context.Context, request *ListJobRun
 	if request == nil {
 		request = NewListJobRunsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListJobRuns")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -356,6 +401,11 @@ func (c *Client) ListJobRunsWithContext(ctx context.Context, request *ListJobRun
 func (c *Client) ListJobRunsWithContextV2(ctx context.Context, request *ListJobRunsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListJobRunsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListJobRuns")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -411,6 +461,11 @@ func (c *Client) CancelJobRunWithContext(ctx context.Context, request *CancelJob
 	if request == nil {
 		request = NewCancelJobRunRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "CancelJobRun")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -425,6 +480,11 @@ func (c *Client) CancelJobRunWithContext(ctx context.Context, request *CancelJob
 func (c *Client) CancelJobRunWithContextV2(ctx context.Context, request *CancelJobRunRequest) (int, string, error) {
 	if request == nil {
 		request = NewCancelJobRunRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "CancelJobRun")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -480,6 +540,11 @@ func (c *Client) ListExecutorWithContext(ctx context.Context, request *ListExecu
 	if request == nil {
 		request = NewListExecutorRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListExecutor")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -494,6 +559,11 @@ func (c *Client) ListExecutorWithContext(ctx context.Context, request *ListExecu
 func (c *Client) ListExecutorWithContextV2(ctx context.Context, request *ListExecutorRequest) (int, string, error) {
 	if request == nil {
 		request = NewListExecutorRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListExecutor")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -549,6 +619,11 @@ func (c *Client) StartRayJobRunWithContext(ctx context.Context, request *StartRa
 	if request == nil {
 		request = NewStartRayJobRunRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "StartRayJobRun")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -563,6 +638,11 @@ func (c *Client) StartRayJobRunWithContext(ctx context.Context, request *StartRa
 func (c *Client) StartRayJobRunWithContextV2(ctx context.Context, request *StartRayJobRunRequest) (int, string, error) {
 	if request == nil {
 		request = NewStartRayJobRunRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "StartRayJobRun")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -618,6 +698,11 @@ func (c *Client) GetRayJobRunWithContext(ctx context.Context, request *GetRayJob
 	if request == nil {
 		request = NewGetRayJobRunRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "GetRayJobRun")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -632,6 +717,11 @@ func (c *Client) GetRayJobRunWithContext(ctx context.Context, request *GetRayJob
 func (c *Client) GetRayJobRunWithContextV2(ctx context.Context, request *GetRayJobRunRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetRayJobRunRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "GetRayJobRun")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -687,6 +777,11 @@ func (c *Client) ListRayJobRunsWithContext(ctx context.Context, request *ListRay
 	if request == nil {
 		request = NewListRayJobRunsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListRayJobRuns")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -701,6 +796,11 @@ func (c *Client) ListRayJobRunsWithContext(ctx context.Context, request *ListRay
 func (c *Client) ListRayJobRunsWithContextV2(ctx context.Context, request *ListRayJobRunsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListRayJobRunsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListRayJobRuns")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -756,6 +856,11 @@ func (c *Client) CancelRayJobRunWithContext(ctx context.Context, request *Cancel
 	if request == nil {
 		request = NewCancelRayJobRunRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "CancelRayJobRun")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -770,6 +875,11 @@ func (c *Client) CancelRayJobRunWithContext(ctx context.Context, request *Cancel
 func (c *Client) CancelRayJobRunWithContextV2(ctx context.Context, request *CancelRayJobRunRequest) (int, string, error) {
 	if request == nil {
 		request = NewCancelRayJobRunRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "CancelRayJobRun")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -825,6 +935,11 @@ func (c *Client) StartFlinkJobRunWithContext(ctx context.Context, request *Start
 	if request == nil {
 		request = NewStartFlinkJobRunRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "StartFlinkJobRun")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -839,6 +954,11 @@ func (c *Client) StartFlinkJobRunWithContext(ctx context.Context, request *Start
 func (c *Client) StartFlinkJobRunWithContextV2(ctx context.Context, request *StartFlinkJobRunRequest) (int, string, error) {
 	if request == nil {
 		request = NewStartFlinkJobRunRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "StartFlinkJobRun")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -894,6 +1014,11 @@ func (c *Client) GetFlinkJobRunWithContext(ctx context.Context, request *GetFlin
 	if request == nil {
 		request = NewGetFlinkJobRunRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "GetFlinkJobRun")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -908,6 +1033,11 @@ func (c *Client) GetFlinkJobRunWithContext(ctx context.Context, request *GetFlin
 func (c *Client) GetFlinkJobRunWithContextV2(ctx context.Context, request *GetFlinkJobRunRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetFlinkJobRunRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "GetFlinkJobRun")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -963,6 +1093,11 @@ func (c *Client) ListFlinkJobRunsWithContext(ctx context.Context, request *ListF
 	if request == nil {
 		request = NewListFlinkJobRunsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListFlinkJobRuns")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -977,6 +1112,11 @@ func (c *Client) ListFlinkJobRunsWithContext(ctx context.Context, request *ListF
 func (c *Client) ListFlinkJobRunsWithContextV2(ctx context.Context, request *ListFlinkJobRunsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListFlinkJobRunsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListFlinkJobRuns")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1032,6 +1172,11 @@ func (c *Client) CancelFlinkJobRunWithContext(ctx context.Context, request *Canc
 	if request == nil {
 		request = NewCancelFlinkJobRunRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "CancelFlinkJobRun")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1046,6 +1191,11 @@ func (c *Client) CancelFlinkJobRunWithContext(ctx context.Context, request *Canc
 func (c *Client) CancelFlinkJobRunWithContextV2(ctx context.Context, request *CancelFlinkJobRunRequest) (int, string, error) {
 	if request == nil {
 		request = NewCancelFlinkJobRunRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "CancelFlinkJobRun")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1101,6 +1251,11 @@ func (c *Client) SuspendFlinkJobRunWithContext(ctx context.Context, request *Sus
 	if request == nil {
 		request = NewSuspendFlinkJobRunRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "SuspendFlinkJobRun")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1115,6 +1270,11 @@ func (c *Client) SuspendFlinkJobRunWithContext(ctx context.Context, request *Sus
 func (c *Client) SuspendFlinkJobRunWithContextV2(ctx context.Context, request *SuspendFlinkJobRunRequest) (int, string, error) {
 	if request == nil {
 		request = NewSuspendFlinkJobRunRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "SuspendFlinkJobRun")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1170,6 +1330,11 @@ func (c *Client) RestartFlinkJobRunWithContext(ctx context.Context, request *Res
 	if request == nil {
 		request = NewRestartFlinkJobRunRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "RestartFlinkJobRun")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1184,6 +1349,11 @@ func (c *Client) RestartFlinkJobRunWithContext(ctx context.Context, request *Res
 func (c *Client) RestartFlinkJobRunWithContextV2(ctx context.Context, request *RestartFlinkJobRunRequest) (int, string, error) {
 	if request == nil {
 		request = NewRestartFlinkJobRunRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "RestartFlinkJobRun")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1239,6 +1409,11 @@ func (c *Client) DescribeMetricListWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeMetricListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "DescribeMetricList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1253,6 +1428,11 @@ func (c *Client) DescribeMetricListWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeMetricListWithContextV2(ctx context.Context, request *DescribeMetricListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeMetricListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "DescribeMetricList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1308,6 +1488,11 @@ func (c *Client) QueryMetricsWithContext(ctx context.Context, request *QueryMetr
 	if request == nil {
 		request = NewQueryMetricsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "QueryMetrics")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1322,6 +1507,11 @@ func (c *Client) QueryMetricsWithContext(ctx context.Context, request *QueryMetr
 func (c *Client) QueryMetricsWithContextV2(ctx context.Context, request *QueryMetricsRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryMetricsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "QueryMetrics")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

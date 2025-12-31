@@ -66,6 +66,11 @@ func (c *Client) CreateUserUsageDataExportTaskWithContext(ctx context.Context, r
 	if request == nil {
 		request = NewCreateUserUsageDataExportTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "CreateUserUsageDataExportTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateUserUsageDataExportTaskWithContext(ctx context.Context, r
 func (c *Client) CreateUserUsageDataExportTaskWithContextV2(ctx context.Context, request *CreateUserUsageDataExportTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateUserUsageDataExportTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "CreateUserUsageDataExportTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) GetUserUsageDataExportTaskWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewGetUserUsageDataExportTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetUserUsageDataExportTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) GetUserUsageDataExportTaskWithContext(ctx context.Context, requ
 func (c *Client) GetUserUsageDataExportTaskWithContextV2(ctx context.Context, request *GetUserUsageDataExportTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetUserUsageDataExportTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetUserUsageDataExportTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) DeleteUserUsageDataExportTaskWithContext(ctx context.Context, r
 	if request == nil {
 		request = NewDeleteUserUsageDataExportTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "DeleteUserUsageDataExportTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) DeleteUserUsageDataExportTaskWithContext(ctx context.Context, r
 func (c *Client) DeleteUserUsageDataExportTaskWithContextV2(ctx context.Context, request *DeleteUserUsageDataExportTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteUserUsageDataExportTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "DeleteUserUsageDataExportTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) GetDomainUsageDataWithContext(ctx context.Context, request *Get
 	if request == nil {
 		request = NewGetDomainUsageDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetDomainUsageData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) GetDomainUsageDataWithContext(ctx context.Context, request *Get
 func (c *Client) GetDomainUsageDataWithContextV2(ctx context.Context, request *GetDomainUsageDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetDomainUsageDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetDomainUsageData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) CreateUsageDetailDataExportTaskWithContext(ctx context.Context,
 	if request == nil {
 		request = NewCreateUsageDetailDataExportTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "CreateUsageDetailDataExportTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) CreateUsageDetailDataExportTaskWithContext(ctx context.Context,
 func (c *Client) CreateUsageDetailDataExportTaskWithContextV2(ctx context.Context, request *CreateUsageDetailDataExportTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateUsageDetailDataExportTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "CreateUsageDetailDataExportTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) GetUsageDetailDataExportTaskWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewGetUsageDetailDataExportTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetUsageDetailDataExportTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) GetUsageDetailDataExportTaskWithContext(ctx context.Context, re
 func (c *Client) GetUsageDetailDataExportTaskWithContextV2(ctx context.Context, request *GetUsageDetailDataExportTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetUsageDetailDataExportTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetUsageDetailDataExportTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) DeleteUsageDetailDataExportTaskWithContext(ctx context.Context,
 	if request == nil {
 		request = NewDeleteUsageDetailDataExportTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "DeleteUsageDetailDataExportTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) DeleteUsageDetailDataExportTaskWithContext(ctx context.Context,
 func (c *Client) DeleteUsageDetailDataExportTaskWithContextV2(ctx context.Context, request *DeleteUsageDetailDataExportTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteUsageDetailDataExportTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "DeleteUsageDetailDataExportTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

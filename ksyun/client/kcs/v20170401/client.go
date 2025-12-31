@@ -66,6 +66,11 @@ func (c *Client) DeleteCacheSlaveNodeWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDeleteCacheSlaveNodeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcs", APIVersion, "DeleteCacheSlaveNode")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) DeleteCacheSlaveNodeWithContext(ctx context.Context, request *D
 func (c *Client) DeleteCacheSlaveNodeWithContextV2(ctx context.Context, request *DeleteCacheSlaveNodeRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteCacheSlaveNodeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcs", APIVersion, "DeleteCacheSlaveNode")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

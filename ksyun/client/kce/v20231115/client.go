@@ -66,6 +66,11 @@ func (c *Client) DescribeClusterWithContext(ctx context.Context, request *Descri
 	if request == nil {
 		request = NewDescribeClusterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeCluster")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) DescribeClusterWithContext(ctx context.Context, request *Descri
 func (c *Client) DescribeClusterWithContextV2(ctx context.Context, request *DescribeClusterRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeClusterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeCluster")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) UpdateClusterDelProtectionWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewUpdateClusterDelProtectionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "UpdateClusterDelProtection")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) UpdateClusterDelProtectionWithContext(ctx context.Context, requ
 func (c *Client) UpdateClusterDelProtectionWithContextV2(ctx context.Context, request *UpdateClusterDelProtectionRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateClusterDelProtectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "UpdateClusterDelProtection")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

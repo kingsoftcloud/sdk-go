@@ -66,6 +66,11 @@ func (c *Client) ListAlarmPolicyWithContext(ctx context.Context, request *ListAl
 	if request == nil {
 		request = NewListAlarmPolicyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "ListAlarmPolicy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) ListAlarmPolicyWithContext(ctx context.Context, request *ListAl
 func (c *Client) ListAlarmPolicyWithContextV2(ctx context.Context, request *ListAlarmPolicyRequest) (int, string, error) {
 	if request == nil {
 		request = NewListAlarmPolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "ListAlarmPolicy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) DescribeAlarmPolicyWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeAlarmPolicyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmPolicy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) DescribeAlarmPolicyWithContext(ctx context.Context, request *De
 func (c *Client) DescribeAlarmPolicyWithContextV2(ctx context.Context, request *DescribeAlarmPolicyRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAlarmPolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmPolicy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) DescribePolicyObjectWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribePolicyObjectRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DescribePolicyObject")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) DescribePolicyObjectWithContext(ctx context.Context, request *D
 func (c *Client) DescribePolicyObjectWithContextV2(ctx context.Context, request *DescribePolicyObjectRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribePolicyObjectRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DescribePolicyObject")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) DescribeAlarmReceivesWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeAlarmReceivesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmReceives")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -287,6 +322,11 @@ func (c *Client) DescribeAlarmReceivesWithContext(ctx context.Context, request *
 func (c *Client) DescribeAlarmReceivesWithContextV2(ctx context.Context, request *DescribeAlarmReceivesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAlarmReceivesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlarmReceives")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -342,6 +382,11 @@ func (c *Client) AddAlarmReceivesWithContext(ctx context.Context, request *AddAl
 	if request == nil {
 		request = NewAddAlarmReceivesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "AddAlarmReceives")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) AddAlarmReceivesWithContext(ctx context.Context, request *AddAl
 func (c *Client) AddAlarmReceivesWithContextV2(ctx context.Context, request *AddAlarmReceivesRequest) (int, string, error) {
 	if request == nil {
 		request = NewAddAlarmReceivesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "AddAlarmReceives")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) DeleteAlarmReceivesWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDeleteAlarmReceivesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DeleteAlarmReceives")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) DeleteAlarmReceivesWithContext(ctx context.Context, request *De
 func (c *Client) DeleteAlarmReceivesWithContextV2(ctx context.Context, request *DeleteAlarmReceivesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteAlarmReceivesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DeleteAlarmReceives")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) GetUserGroupWithContext(ctx context.Context, request *GetUserGr
 	if request == nil {
 		request = NewGetUserGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "GetUserGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -494,6 +559,11 @@ func (c *Client) GetUserGroupWithContext(ctx context.Context, request *GetUserGr
 func (c *Client) GetUserGroupWithContextV2(ctx context.Context, request *GetUserGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetUserGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "GetUserGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -549,6 +619,11 @@ func (c *Client) GetAlertUserWithContext(ctx context.Context, request *GetAlertU
 	if request == nil {
 		request = NewGetAlertUserRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "GetAlertUser")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -563,6 +638,11 @@ func (c *Client) GetAlertUserWithContext(ctx context.Context, request *GetAlertU
 func (c *Client) GetAlertUserWithContextV2(ctx context.Context, request *GetAlertUserRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetAlertUserRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "GetAlertUser")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -618,6 +698,11 @@ func (c *Client) UpdateAlertUserStatusWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewUpdateAlertUserStatusRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "UpdateAlertUserStatus")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) UpdateAlertUserStatusWithContext(ctx context.Context, request *
 func (c *Client) UpdateAlertUserStatusWithContextV2(ctx context.Context, request *UpdateAlertUserStatusRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateAlertUserStatusRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "UpdateAlertUserStatus")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) DescribeSysEventGroupListWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeSysEventGroupListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DescribeSysEventGroupList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -701,6 +796,11 @@ func (c *Client) DescribeSysEventGroupListWithContext(ctx context.Context, reque
 func (c *Client) DescribeSysEventGroupListWithContextV2(ctx context.Context, request *DescribeSysEventGroupListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSysEventGroupListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DescribeSysEventGroupList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -756,6 +856,11 @@ func (c *Client) DescribeMonitorProductListWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewDescribeMonitorProductListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DescribeMonitorProductList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -770,6 +875,11 @@ func (c *Client) DescribeMonitorProductListWithContext(ctx context.Context, requ
 func (c *Client) DescribeMonitorProductListWithContextV2(ctx context.Context, request *DescribeMonitorProductListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeMonitorProductListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DescribeMonitorProductList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -825,6 +935,11 @@ func (c *Client) DescribeAlertHistoriesWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeAlertHistoriesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlertHistories")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -839,6 +954,11 @@ func (c *Client) DescribeAlertHistoriesWithContext(ctx context.Context, request 
 func (c *Client) DescribeAlertHistoriesWithContextV2(ctx context.Context, request *DescribeAlertHistoriesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAlertHistoriesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlertHistories")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

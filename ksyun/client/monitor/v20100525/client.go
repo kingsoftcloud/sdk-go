@@ -66,6 +66,11 @@ func (c *Client) GetMetricStatisticsWithContext(ctx context.Context, request *Ge
 	if request == nil {
 		request = NewGetMetricStatisticsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "GetMetricStatistics")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) GetMetricStatisticsWithContext(ctx context.Context, request *Ge
 func (c *Client) GetMetricStatisticsWithContextV2(ctx context.Context, request *GetMetricStatisticsRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetMetricStatisticsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "GetMetricStatistics")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) ListMetricsWithContext(ctx context.Context, request *ListMetric
 	if request == nil {
 		request = NewListMetricsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "ListMetrics")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) ListMetricsWithContext(ctx context.Context, request *ListMetric
 func (c *Client) ListMetricsWithContextV2(ctx context.Context, request *ListMetricsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListMetricsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "ListMetrics")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

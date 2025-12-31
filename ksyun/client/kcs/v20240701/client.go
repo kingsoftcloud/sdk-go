@@ -66,6 +66,11 @@ func (c *Client) DescribeCacheByRoleWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeCacheByRoleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcs", APIVersion, "DescribeCacheByRole")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) DescribeCacheByRoleWithContext(ctx context.Context, request *De
 func (c *Client) DescribeCacheByRoleWithContextV2(ctx context.Context, request *DescribeCacheByRoleRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeCacheByRoleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcs", APIVersion, "DescribeCacheByRole")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

@@ -66,6 +66,11 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
 	if request == nil {
 		request = NewCreateClusterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "CreateCluster")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
 func (c *Client) CreateClusterWithContextV2(ctx context.Context, request *CreateClusterRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateClusterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "CreateCluster")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

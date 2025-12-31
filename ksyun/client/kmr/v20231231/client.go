@@ -66,6 +66,11 @@ func (c *Client) ListInstancesWithContext(ctx context.Context, request *ListInst
 	if request == nil {
 		request = NewListInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) ListInstancesWithContext(ctx context.Context, request *ListInst
 func (c *Client) ListInstancesWithContextV2(ctx context.Context, request *ListInstancesRequest) (int, string, error) {
 	if request == nil {
 		request = NewListInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListInstances")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) GetInstanceDetailWithContext(ctx context.Context, request *GetI
 	if request == nil {
 		request = NewGetInstanceDetailRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "GetInstanceDetail")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) GetInstanceDetailWithContext(ctx context.Context, request *GetI
 func (c *Client) GetInstanceDetailWithContextV2(ctx context.Context, request *GetInstanceDetailRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetInstanceDetailRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "GetInstanceDetail")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) ModifyHostsWithContext(ctx context.Context, request *ModifyHost
 	if request == nil {
 		request = NewModifyHostsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ModifyHosts")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) ModifyHostsWithContext(ctx context.Context, request *ModifyHost
 func (c *Client) ModifyHostsWithContextV2(ctx context.Context, request *ModifyHostsRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyHostsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ModifyHosts")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) ListAutoScaleHistoryWithContext(ctx context.Context, request *L
 	if request == nil {
 		request = NewListAutoScaleHistoryRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListAutoScaleHistory")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) ListAutoScaleHistoryWithContext(ctx context.Context, request *L
 func (c *Client) ListAutoScaleHistoryWithContextV2(ctx context.Context, request *ListAutoScaleHistoryRequest) (int, string, error) {
 	if request == nil {
 		request = NewListAutoScaleHistoryRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListAutoScaleHistory")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) CreateAutoScalePolicyWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewCreateAutoScalePolicyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "CreateAutoScalePolicy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) CreateAutoScalePolicyWithContext(ctx context.Context, request *
 func (c *Client) CreateAutoScalePolicyWithContextV2(ctx context.Context, request *CreateAutoScalePolicyRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateAutoScalePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "CreateAutoScalePolicy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) ListAutoScalePolicyWithContext(ctx context.Context, request *Li
 	if request == nil {
 		request = NewListAutoScalePolicyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListAutoScalePolicy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) ListAutoScalePolicyWithContext(ctx context.Context, request *Li
 func (c *Client) ListAutoScalePolicyWithContextV2(ctx context.Context, request *ListAutoScalePolicyRequest) (int, string, error) {
 	if request == nil {
 		request = NewListAutoScalePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListAutoScalePolicy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) DeleteAutoScalePolicyWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDeleteAutoScalePolicyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "DeleteAutoScalePolicy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) DeleteAutoScalePolicyWithContext(ctx context.Context, request *
 func (c *Client) DeleteAutoScalePolicyWithContextV2(ctx context.Context, request *DeleteAutoScalePolicyRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteAutoScalePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "DeleteAutoScalePolicy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

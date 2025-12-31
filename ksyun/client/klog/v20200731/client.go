@@ -66,6 +66,11 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreatePr
 	if request == nil {
 		request = NewCreateProjectRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "CreateProject")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreatePr
 func (c *Client) CreateProjectWithContextV2(ctx context.Context, request *CreateProjectRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateProjectRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "CreateProject")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) DescribeProjectWithContext(ctx context.Context, request *Descri
 	if request == nil {
 		request = NewDescribeProjectRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "DescribeProject")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) DescribeProjectWithContext(ctx context.Context, request *Descri
 func (c *Client) DescribeProjectWithContextV2(ctx context.Context, request *DescribeProjectRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeProjectRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "DescribeProject")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) UpdateProjectWithContext(ctx context.Context, request *UpdatePr
 	if request == nil {
 		request = NewUpdateProjectRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "UpdateProject")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) UpdateProjectWithContext(ctx context.Context, request *UpdatePr
 func (c *Client) UpdateProjectWithContextV2(ctx context.Context, request *UpdateProjectRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateProjectRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "UpdateProject")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) DeleteProjectWithContext(ctx context.Context, request *DeletePr
 	if request == nil {
 		request = NewDeleteProjectRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "DeleteProject")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -287,6 +322,11 @@ func (c *Client) DeleteProjectWithContext(ctx context.Context, request *DeletePr
 func (c *Client) DeleteProjectWithContextV2(ctx context.Context, request *DeleteProjectRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteProjectRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "DeleteProject")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -342,6 +382,11 @@ func (c *Client) ListProjectsWithContext(ctx context.Context, request *ListProje
 	if request == nil {
 		request = NewListProjectsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "ListProjects")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -356,6 +401,11 @@ func (c *Client) ListProjectsWithContext(ctx context.Context, request *ListProje
 func (c *Client) ListProjectsWithContextV2(ctx context.Context, request *ListProjectsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListProjectsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "ListProjects")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -411,6 +461,11 @@ func (c *Client) CreateLogPoolWithContext(ctx context.Context, request *CreateLo
 	if request == nil {
 		request = NewCreateLogPoolRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "CreateLogPool")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -425,6 +480,11 @@ func (c *Client) CreateLogPoolWithContext(ctx context.Context, request *CreateLo
 func (c *Client) CreateLogPoolWithContextV2(ctx context.Context, request *CreateLogPoolRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateLogPoolRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "CreateLogPool")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -480,6 +540,11 @@ func (c *Client) DescribeLogPoolWithContext(ctx context.Context, request *Descri
 	if request == nil {
 		request = NewDescribeLogPoolRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "DescribeLogPool")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -494,6 +559,11 @@ func (c *Client) DescribeLogPoolWithContext(ctx context.Context, request *Descri
 func (c *Client) DescribeLogPoolWithContextV2(ctx context.Context, request *DescribeLogPoolRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeLogPoolRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "DescribeLogPool")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -549,6 +619,11 @@ func (c *Client) UpdateLogPoolWithContext(ctx context.Context, request *UpdateLo
 	if request == nil {
 		request = NewUpdateLogPoolRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "UpdateLogPool")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -563,6 +638,11 @@ func (c *Client) UpdateLogPoolWithContext(ctx context.Context, request *UpdateLo
 func (c *Client) UpdateLogPoolWithContextV2(ctx context.Context, request *UpdateLogPoolRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateLogPoolRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "UpdateLogPool")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -618,6 +698,11 @@ func (c *Client) DeleteLogPoolWithContext(ctx context.Context, request *DeleteLo
 	if request == nil {
 		request = NewDeleteLogPoolRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "DeleteLogPool")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -632,6 +717,11 @@ func (c *Client) DeleteLogPoolWithContext(ctx context.Context, request *DeleteLo
 func (c *Client) DeleteLogPoolWithContextV2(ctx context.Context, request *DeleteLogPoolRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteLogPoolRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "DeleteLogPool")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -687,6 +777,11 @@ func (c *Client) ListLogPoolsWithContext(ctx context.Context, request *ListLogPo
 	if request == nil {
 		request = NewListLogPoolsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "ListLogPools")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -701,6 +796,11 @@ func (c *Client) ListLogPoolsWithContext(ctx context.Context, request *ListLogPo
 func (c *Client) ListLogPoolsWithContextV2(ctx context.Context, request *ListLogPoolsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListLogPoolsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "ListLogPools")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -756,6 +856,11 @@ func (c *Client) GetLogsWithContext(ctx context.Context, request *GetLogsRequest
 	if request == nil {
 		request = NewGetLogsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "GetLogs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -770,6 +875,11 @@ func (c *Client) GetLogsWithContext(ctx context.Context, request *GetLogsRequest
 func (c *Client) GetLogsWithContextV2(ctx context.Context, request *GetLogsRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetLogsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "GetLogs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -825,6 +935,11 @@ func (c *Client) CreateQuickSearchWithContext(ctx context.Context, request *Crea
 	if request == nil {
 		request = NewCreateQuickSearchRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "CreateQuickSearch")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -839,6 +954,11 @@ func (c *Client) CreateQuickSearchWithContext(ctx context.Context, request *Crea
 func (c *Client) CreateQuickSearchWithContextV2(ctx context.Context, request *CreateQuickSearchRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateQuickSearchRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "CreateQuickSearch")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -894,6 +1014,11 @@ func (c *Client) ListQuickSearchsWithContext(ctx context.Context, request *ListQ
 	if request == nil {
 		request = NewListQuickSearchsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "ListQuickSearchs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -908,6 +1033,11 @@ func (c *Client) ListQuickSearchsWithContext(ctx context.Context, request *ListQ
 func (c *Client) ListQuickSearchsWithContextV2(ctx context.Context, request *ListQuickSearchsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListQuickSearchsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "ListQuickSearchs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -963,6 +1093,11 @@ func (c *Client) DeleteQuickSearchsWithContext(ctx context.Context, request *Del
 	if request == nil {
 		request = NewDeleteQuickSearchsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "DeleteQuickSearchs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -977,6 +1112,11 @@ func (c *Client) DeleteQuickSearchsWithContext(ctx context.Context, request *Del
 func (c *Client) DeleteQuickSearchsWithContextV2(ctx context.Context, request *DeleteQuickSearchsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteQuickSearchsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "DeleteQuickSearchs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1032,6 +1172,11 @@ func (c *Client) CreateDownloadTaskWithContext(ctx context.Context, request *Cre
 	if request == nil {
 		request = NewCreateDownloadTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "CreateDownloadTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1046,6 +1191,11 @@ func (c *Client) CreateDownloadTaskWithContext(ctx context.Context, request *Cre
 func (c *Client) CreateDownloadTaskWithContextV2(ctx context.Context, request *CreateDownloadTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateDownloadTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "CreateDownloadTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1101,6 +1251,11 @@ func (c *Client) ListDownloadTasksWithContext(ctx context.Context, request *List
 	if request == nil {
 		request = NewListDownloadTasksRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "ListDownloadTasks")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1115,6 +1270,11 @@ func (c *Client) ListDownloadTasksWithContext(ctx context.Context, request *List
 func (c *Client) ListDownloadTasksWithContextV2(ctx context.Context, request *ListDownloadTasksRequest) (int, string, error) {
 	if request == nil {
 		request = NewListDownloadTasksRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("klog", APIVersion, "ListDownloadTasks")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

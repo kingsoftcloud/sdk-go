@@ -66,6 +66,11 @@ func (c *Client) GetDwsuMetricWithContext(ctx context.Context, request *GetDwsuM
 	if request == nil {
 		request = NewGetDwsuMetricRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("relyt", APIVersion, "GetDwsuMetric")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) GetDwsuMetricWithContext(ctx context.Context, request *GetDwsuM
 func (c *Client) GetDwsuMetricWithContextV2(ctx context.Context, request *GetDwsuMetricRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetDwsuMetricRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("relyt", APIVersion, "GetDwsuMetric")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

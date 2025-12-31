@@ -66,6 +66,11 @@ func (c *Client) ListInstanceWithContext(ctx context.Context, request *ListInsta
 	if request == nil {
 		request = NewListInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ListInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) ListInstanceWithContext(ctx context.Context, request *ListInsta
 func (c *Client) ListInstanceWithContextV2(ctx context.Context, request *ListInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewListInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ListInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
 	if request == nil {
 		request = NewDescribeInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
 func (c *Client) DescribeInstanceWithContextV2(ctx context.Context, request *DescribeInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
 	if request == nil {
 		request = NewCreateInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "CreateInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
 func (c *Client) CreateInstanceWithContextV2(ctx context.Context, request *CreateInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "CreateInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
 	if request == nil {
 		request = NewDeleteInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DeleteInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
 func (c *Client) DeleteInstanceWithContextV2(ctx context.Context, request *DeleteInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DeleteInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) RestartInstanceWithContext(ctx context.Context, request *Restar
 	if request == nil {
 		request = NewRestartInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "RestartInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) RestartInstanceWithContext(ctx context.Context, request *Restar
 func (c *Client) RestartInstanceWithContextV2(ctx context.Context, request *RestartInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewRestartInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "RestartInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) RenameInstanceWithContext(ctx context.Context, request *RenameI
 	if request == nil {
 		request = NewRenameInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "RenameInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) RenameInstanceWithContext(ctx context.Context, request *RenameI
 func (c *Client) RenameInstanceWithContextV2(ctx context.Context, request *RenameInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewRenameInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "RenameInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) ListSecurityGroupWithContext(ctx context.Context, request *List
 	if request == nil {
 		request = NewListSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ListSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) ListSecurityGroupWithContext(ctx context.Context, request *List
 func (c *Client) ListSecurityGroupWithContextV2(ctx context.Context, request *ListSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewListSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ListSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *
 func (c *Client) DescribeSecurityGroupWithContextV2(ctx context.Context, request *DescribeSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
 	if request == nil {
 		request = NewCreateSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "CreateSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
 func (c *Client) CreateSecurityGroupWithContextV2(ctx context.Context, request *CreateSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "CreateSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDeleteSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DeleteSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
 func (c *Client) DeleteSecurityGroupWithContextV2(ctx context.Context, request *DeleteSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DeleteSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) RenameSecurityGroupWithContext(ctx context.Context, request *Re
 	if request == nil {
 		request = NewRenameSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "RenameSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) RenameSecurityGroupWithContext(ctx context.Context, request *Re
 func (c *Client) RenameSecurityGroupWithContextV2(ctx context.Context, request *RenameSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewRenameSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "RenameSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) CloneSecurityGroupWithContext(ctx context.Context, request *Clo
 	if request == nil {
 		request = NewCloneSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "CloneSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -839,6 +954,11 @@ func (c *Client) CloneSecurityGroupWithContext(ctx context.Context, request *Clo
 func (c *Client) CloneSecurityGroupWithContextV2(ctx context.Context, request *CloneSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCloneSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "CloneSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -894,6 +1014,11 @@ func (c *Client) BindSecurityGroupWithContext(ctx context.Context, request *Bind
 	if request == nil {
 		request = NewBindSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "BindSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) BindSecurityGroupWithContext(ctx context.Context, request *Bind
 func (c *Client) BindSecurityGroupWithContextV2(ctx context.Context, request *BindSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewBindSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "BindSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -963,6 +1093,11 @@ func (c *Client) UnbindSecurityGroupWithContext(ctx context.Context, request *Un
 	if request == nil {
 		request = NewUnbindSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "UnbindSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +1112,11 @@ func (c *Client) UnbindSecurityGroupWithContext(ctx context.Context, request *Un
 func (c *Client) UnbindSecurityGroupWithContextV2(ctx context.Context, request *UnbindSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewUnbindSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "UnbindSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +1172,11 @@ func (c *Client) CreateSecurityRuleWithContext(ctx context.Context, request *Cre
 	if request == nil {
 		request = NewCreateSecurityRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "CreateSecurityRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1046,6 +1191,11 @@ func (c *Client) CreateSecurityRuleWithContext(ctx context.Context, request *Cre
 func (c *Client) CreateSecurityRuleWithContextV2(ctx context.Context, request *CreateSecurityRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateSecurityRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "CreateSecurityRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1101,6 +1251,11 @@ func (c *Client) DeleteSecurityRuleWithContext(ctx context.Context, request *Del
 	if request == nil {
 		request = NewDeleteSecurityRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DeleteSecurityRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1115,6 +1270,11 @@ func (c *Client) DeleteSecurityRuleWithContext(ctx context.Context, request *Del
 func (c *Client) DeleteSecurityRuleWithContextV2(ctx context.Context, request *DeleteSecurityRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSecurityRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DeleteSecurityRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1170,6 +1330,11 @@ func (c *Client) ListSecuredInstanceWithContext(ctx context.Context, request *Li
 	if request == nil {
 		request = NewListSecuredInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ListSecuredInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1184,6 +1349,11 @@ func (c *Client) ListSecuredInstanceWithContext(ctx context.Context, request *Li
 func (c *Client) ListSecuredInstanceWithContextV2(ctx context.Context, request *ListSecuredInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewListSecuredInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ListSecuredInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1239,6 +1409,11 @@ func (c *Client) ListUnsecuredInstanceWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewListUnsecuredInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ListUnsecuredInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1253,6 +1428,11 @@ func (c *Client) ListUnsecuredInstanceWithContext(ctx context.Context, request *
 func (c *Client) ListUnsecuredInstanceWithContextV2(ctx context.Context, request *ListUnsecuredInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewListUnsecuredInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ListUnsecuredInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1308,6 +1488,11 @@ func (c *Client) ListRecycledInstanceWithContext(ctx context.Context, request *L
 	if request == nil {
 		request = NewListRecycledInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ListRecycledInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1322,6 +1507,11 @@ func (c *Client) ListRecycledInstanceWithContext(ctx context.Context, request *L
 func (c *Client) ListRecycledInstanceWithContextV2(ctx context.Context, request *ListRecycledInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewListRecycledInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ListRecycledInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1377,6 +1567,11 @@ func (c *Client) RecoverRecycledInstanceWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewRecoverRecycledInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "RecoverRecycledInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1391,6 +1586,11 @@ func (c *Client) RecoverRecycledInstanceWithContext(ctx context.Context, request
 func (c *Client) RecoverRecycledInstanceWithContextV2(ctx context.Context, request *RecoverRecycledInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewRecoverRecycledInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "RecoverRecycledInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1446,6 +1646,11 @@ func (c *Client) DropRecycledInstanceWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDropRecycledInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DropRecycledInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1460,6 +1665,11 @@ func (c *Client) DropRecycledInstanceWithContext(ctx context.Context, request *D
 func (c *Client) DropRecycledInstanceWithContextV2(ctx context.Context, request *DropRecycledInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDropRecycledInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DropRecycledInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1515,6 +1725,11 @@ func (c *Client) ListRegionWithContext(ctx context.Context, request *ListRegionR
 	if request == nil {
 		request = NewListRegionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ListRegion")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1529,6 +1744,11 @@ func (c *Client) ListRegionWithContext(ctx context.Context, request *ListRegionR
 func (c *Client) ListRegionWithContextV2(ctx context.Context, request *ListRegionRequest) (int, string, error) {
 	if request == nil {
 		request = NewListRegionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ListRegion")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1584,6 +1804,11 @@ func (c *Client) DescRegionWithContext(ctx context.Context, request *DescRegionR
 	if request == nil {
 		request = NewDescRegionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescRegion")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1598,6 +1823,11 @@ func (c *Client) DescRegionWithContext(ctx context.Context, request *DescRegionR
 func (c *Client) DescRegionWithContextV2(ctx context.Context, request *DescRegionRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescRegionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescRegion")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1653,6 +1883,11 @@ func (c *Client) UpdateSecurityRuleWithContext(ctx context.Context, request *Upd
 	if request == nil {
 		request = NewUpdateSecurityRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "UpdateSecurityRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1667,6 +1902,11 @@ func (c *Client) UpdateSecurityRuleWithContext(ctx context.Context, request *Upd
 func (c *Client) UpdateSecurityRuleWithContextV2(ctx context.Context, request *UpdateSecurityRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateSecurityRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "UpdateSecurityRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1722,6 +1962,11 @@ func (c *Client) RebindSecurityGroupWithContext(ctx context.Context, request *Re
 	if request == nil {
 		request = NewRebindSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "RebindSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1736,6 +1981,11 @@ func (c *Client) RebindSecurityGroupWithContext(ctx context.Context, request *Re
 func (c *Client) RebindSecurityGroupWithContextV2(ctx context.Context, request *RebindSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewRebindSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "RebindSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1791,6 +2041,11 @@ func (c *Client) DescribeEngineDefaultParametersWithContext(ctx context.Context,
 	if request == nil {
 		request = NewDescribeEngineDefaultParametersRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeEngineDefaultParameters")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1805,6 +2060,11 @@ func (c *Client) DescribeEngineDefaultParametersWithContext(ctx context.Context,
 func (c *Client) DescribeEngineDefaultParametersWithContextV2(ctx context.Context, request *DescribeEngineDefaultParametersRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeEngineDefaultParametersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeEngineDefaultParameters")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1860,6 +2120,11 @@ func (c *Client) ModifyDBParameterGroupWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewModifyDBParameterGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ModifyDBParameterGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1874,6 +2139,11 @@ func (c *Client) ModifyDBParameterGroupWithContext(ctx context.Context, request 
 func (c *Client) ModifyDBParameterGroupWithContextV2(ctx context.Context, request *ModifyDBParameterGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyDBParameterGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ModifyDBParameterGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1929,6 +2199,11 @@ func (c *Client) DescribeDBInstanceParametersWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewDescribeDBInstanceParametersRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeDBInstanceParameters")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1943,6 +2218,11 @@ func (c *Client) DescribeDBInstanceParametersWithContext(ctx context.Context, re
 func (c *Client) DescribeDBInstanceParametersWithContextV2(ctx context.Context, request *DescribeDBInstanceParametersRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDBInstanceParametersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeDBInstanceParameters")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1998,6 +2278,11 @@ func (c *Client) ResetDBParameterWithContext(ctx context.Context, request *Reset
 	if request == nil {
 		request = NewResetDBParameterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ResetDBParameter")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2012,6 +2297,11 @@ func (c *Client) ResetDBParameterWithContext(ctx context.Context, request *Reset
 func (c *Client) ResetDBParameterWithContextV2(ctx context.Context, request *ResetDBParameterRequest) (int, string, error) {
 	if request == nil {
 		request = NewResetDBParameterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ResetDBParameter")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2067,6 +2357,11 @@ func (c *Client) DescribeBucketsWithContext(ctx context.Context, request *Descri
 	if request == nil {
 		request = NewDescribeBucketsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeBuckets")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2081,6 +2376,11 @@ func (c *Client) DescribeBucketsWithContext(ctx context.Context, request *Descri
 func (c *Client) DescribeBucketsWithContextV2(ctx context.Context, request *DescribeBucketsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeBucketsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeBuckets")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2136,6 +2436,11 @@ func (c *Client) OperateHotAndColdSeparationWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewOperateHotAndColdSeparationRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "OperateHotAndColdSeparation")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2150,6 +2455,11 @@ func (c *Client) OperateHotAndColdSeparationWithContext(ctx context.Context, req
 func (c *Client) OperateHotAndColdSeparationWithContextV2(ctx context.Context, request *OperateHotAndColdSeparationRequest) (int, string, error) {
 	if request == nil {
 		request = NewOperateHotAndColdSeparationRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "OperateHotAndColdSeparation")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2205,6 +2515,11 @@ func (c *Client) CreateInstanceAccountWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewCreateInstanceAccountRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "CreateInstanceAccount")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2219,6 +2534,11 @@ func (c *Client) CreateInstanceAccountWithContext(ctx context.Context, request *
 func (c *Client) CreateInstanceAccountWithContextV2(ctx context.Context, request *CreateInstanceAccountRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateInstanceAccountRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "CreateInstanceAccount")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2274,6 +2594,11 @@ func (c *Client) ModifyInstanceAccountPrivilegesWithContext(ctx context.Context,
 	if request == nil {
 		request = NewModifyInstanceAccountPrivilegesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ModifyInstanceAccountPrivileges")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2288,6 +2613,11 @@ func (c *Client) ModifyInstanceAccountPrivilegesWithContext(ctx context.Context,
 func (c *Client) ModifyInstanceAccountPrivilegesWithContextV2(ctx context.Context, request *ModifyInstanceAccountPrivilegesRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyInstanceAccountPrivilegesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ModifyInstanceAccountPrivileges")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2343,6 +2673,11 @@ func (c *Client) DeleteInstanceAccountWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDeleteInstanceAccountRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DeleteInstanceAccount")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2357,6 +2692,11 @@ func (c *Client) DeleteInstanceAccountWithContext(ctx context.Context, request *
 func (c *Client) DeleteInstanceAccountWithContextV2(ctx context.Context, request *DeleteInstanceAccountRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteInstanceAccountRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DeleteInstanceAccount")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2412,6 +2752,11 @@ func (c *Client) DescribeInstanceAccountsWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeInstanceAccountsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeInstanceAccounts")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2426,6 +2771,11 @@ func (c *Client) DescribeInstanceAccountsWithContext(ctx context.Context, reques
 func (c *Client) DescribeInstanceAccountsWithContextV2(ctx context.Context, request *DescribeInstanceAccountsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstanceAccountsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeInstanceAccounts")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2481,6 +2831,11 @@ func (c *Client) DescribeInstanceDatabasesWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeInstanceDatabasesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeInstanceDatabases")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2495,6 +2850,11 @@ func (c *Client) DescribeInstanceDatabasesWithContext(ctx context.Context, reque
 func (c *Client) DescribeInstanceDatabasesWithContextV2(ctx context.Context, request *DescribeInstanceDatabasesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstanceDatabasesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeInstanceDatabases")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2550,6 +2910,11 @@ func (c *Client) ModifyInstanceAccountInfoWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewModifyInstanceAccountInfoRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ModifyInstanceAccountInfo")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2564,6 +2929,11 @@ func (c *Client) ModifyInstanceAccountInfoWithContext(ctx context.Context, reque
 func (c *Client) ModifyInstanceAccountInfoWithContextV2(ctx context.Context, request *ModifyInstanceAccountInfoRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyInstanceAccountInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "ModifyInstanceAccountInfo")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2619,6 +2989,11 @@ func (c *Client) DescribeInstanceShardInfoWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeInstanceShardInfoRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeInstanceShardInfo")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2633,6 +3008,11 @@ func (c *Client) DescribeInstanceShardInfoWithContext(ctx context.Context, reque
 func (c *Client) DescribeInstanceShardInfoWithContextV2(ctx context.Context, request *DescribeInstanceShardInfoRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstanceShardInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "DescribeInstanceShardInfo")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2688,6 +3068,11 @@ func (c *Client) UpdateInstanceTrialOrderWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewUpdateInstanceTrialOrderRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "UpdateInstanceTrialOrder")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2702,6 +3087,11 @@ func (c *Client) UpdateInstanceTrialOrderWithContext(ctx context.Context, reques
 func (c *Client) UpdateInstanceTrialOrderWithContextV2(ctx context.Context, request *UpdateInstanceTrialOrderRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateInstanceTrialOrderRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("clickhouse", APIVersion, "UpdateInstanceTrialOrder")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

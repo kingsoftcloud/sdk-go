@@ -66,6 +66,11 @@ func (c *Client) ListInstanceSupportBillTypesWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewListInstanceSupportBillTypesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "ListInstanceSupportBillTypes")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) ListInstanceSupportBillTypesWithContext(ctx context.Context, re
 func (c *Client) ListInstanceSupportBillTypesWithContextV2(ctx context.Context, request *ListInstanceSupportBillTypesRequest) (int, string, error) {
 	if request == nil {
 		request = NewListInstanceSupportBillTypesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "ListInstanceSupportBillTypes")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) AddTrialToBuyTaskWithContext(ctx context.Context, request *AddT
 	if request == nil {
 		request = NewAddTrialToBuyTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "AddTrialToBuyTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) AddTrialToBuyTaskWithContext(ctx context.Context, request *AddT
 func (c *Client) AddTrialToBuyTaskWithContextV2(ctx context.Context, request *AddTrialToBuyTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewAddTrialToBuyTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "AddTrialToBuyTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) DeleteTrialToBuyTaskWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDeleteTrialToBuyTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "DeleteTrialToBuyTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) DeleteTrialToBuyTaskWithContext(ctx context.Context, request *D
 func (c *Client) DeleteTrialToBuyTaskWithContextV2(ctx context.Context, request *DeleteTrialToBuyTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteTrialToBuyTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "DeleteTrialToBuyTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) CreateTrialToBuyNowWithContext(ctx context.Context, request *Cr
 	if request == nil {
 		request = NewCreateTrialToBuyNowRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "CreateTrialToBuyNow")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -287,6 +322,11 @@ func (c *Client) CreateTrialToBuyNowWithContext(ctx context.Context, request *Cr
 func (c *Client) CreateTrialToBuyNowWithContextV2(ctx context.Context, request *CreateTrialToBuyNowRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateTrialToBuyNowRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "CreateTrialToBuyNow")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

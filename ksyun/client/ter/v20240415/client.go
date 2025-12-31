@@ -66,6 +66,11 @@ func (c *Client) DescribeStackOutputsWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeStackOutputsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ter", APIVersion, "DescribeStackOutputs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) DescribeStackOutputsWithContext(ctx context.Context, request *D
 func (c *Client) DescribeStackOutputsWithContextV2(ctx context.Context, request *DescribeStackOutputsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeStackOutputsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ter", APIVersion, "DescribeStackOutputs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DescribeStackEventsWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeStackEventsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ter", APIVersion, "DescribeStackEvents")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DescribeStackEventsWithContext(ctx context.Context, request *De
 func (c *Client) DescribeStackEventsWithContextV2(ctx context.Context, request *DescribeStackEventsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeStackEventsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ter", APIVersion, "DescribeStackEvents")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) DeleteTemplateWithContext(ctx context.Context, request *DeleteT
 	if request == nil {
 		request = NewDeleteTemplateRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ter", APIVersion, "DeleteTemplate")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) DeleteTemplateWithContext(ctx context.Context, request *DeleteT
 func (c *Client) DeleteTemplateWithContextV2(ctx context.Context, request *DeleteTemplateRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteTemplateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ter", APIVersion, "DeleteTemplate")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) DescribeTemplateVersionsWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeTemplateVersionsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ter", APIVersion, "DescribeTemplateVersions")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) DescribeTemplateVersionsWithContext(ctx context.Context, reques
 func (c *Client) DescribeTemplateVersionsWithContextV2(ctx context.Context, request *DescribeTemplateVersionsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeTemplateVersionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ter", APIVersion, "DescribeTemplateVersions")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) DescribeTemplatesWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeTemplatesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ter", APIVersion, "DescribeTemplates")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) DescribeTemplatesWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeTemplatesWithContextV2(ctx context.Context, request *DescribeTemplatesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeTemplatesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ter", APIVersion, "DescribeTemplates")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

@@ -66,6 +66,11 @@ func (c *Client) CreateFolderWithContext(ctx context.Context, request *CreateFol
 	if request == nil {
 		request = NewCreateFolderRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("resourcemanager", APIVersion, "CreateFolder")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateFolderWithContext(ctx context.Context, request *CreateFol
 func (c *Client) CreateFolderWithContextV2(ctx context.Context, request *CreateFolderRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateFolderRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("resourcemanager", APIVersion, "CreateFolder")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DeleteFolderWithContext(ctx context.Context, request *DeleteFol
 	if request == nil {
 		request = NewDeleteFolderRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("resourcemanager", APIVersion, "DeleteFolder")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DeleteFolderWithContext(ctx context.Context, request *DeleteFol
 func (c *Client) DeleteFolderWithContextV2(ctx context.Context, request *DeleteFolderRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteFolderRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("resourcemanager", APIVersion, "DeleteFolder")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) UpdateFolderWithContext(ctx context.Context, request *UpdateFol
 	if request == nil {
 		request = NewUpdateFolderRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("resourcemanager", APIVersion, "UpdateFolder")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) UpdateFolderWithContext(ctx context.Context, request *UpdateFol
 func (c *Client) UpdateFolderWithContextV2(ctx context.Context, request *UpdateFolderRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateFolderRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("resourcemanager", APIVersion, "UpdateFolder")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) ListAccountsForParentWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewListAccountsForParentRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("resourcemanager", APIVersion, "ListAccountsForParent")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) ListAccountsForParentWithContext(ctx context.Context, request *
 func (c *Client) ListAccountsForParentWithContextV2(ctx context.Context, request *ListAccountsForParentRequest) (int, string, error) {
 	if request == nil {
 		request = NewListAccountsForParentRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("resourcemanager", APIVersion, "ListAccountsForParent")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) MoveAccountWithContext(ctx context.Context, request *MoveAccoun
 	if request == nil {
 		request = NewMoveAccountRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("resourcemanager", APIVersion, "MoveAccount")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) MoveAccountWithContext(ctx context.Context, request *MoveAccoun
 func (c *Client) MoveAccountWithContextV2(ctx context.Context, request *MoveAccountRequest) (int, string, error) {
 	if request == nil {
 		request = NewMoveAccountRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("resourcemanager", APIVersion, "MoveAccount")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) UpdateAccountWithContext(ctx context.Context, request *UpdateAc
 	if request == nil {
 		request = NewUpdateAccountRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("resourcemanager", APIVersion, "UpdateAccount")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) UpdateAccountWithContext(ctx context.Context, request *UpdateAc
 func (c *Client) UpdateAccountWithContextV2(ctx context.Context, request *UpdateAccountRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateAccountRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("resourcemanager", APIVersion, "UpdateAccount")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) ListAccountsWithContext(ctx context.Context, request *ListAccou
 	if request == nil {
 		request = NewListAccountsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("resourcemanager", APIVersion, "ListAccounts")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) ListAccountsWithContext(ctx context.Context, request *ListAccou
 func (c *Client) ListAccountsWithContextV2(ctx context.Context, request *ListAccountsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListAccountsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("resourcemanager", APIVersion, "ListAccounts")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) ListFoldersWithContext(ctx context.Context, request *ListFolder
 	if request == nil {
 		request = NewListFoldersRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("resourcemanager", APIVersion, "ListFolders")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) ListFoldersWithContext(ctx context.Context, request *ListFolder
 func (c *Client) ListFoldersWithContextV2(ctx context.Context, request *ListFoldersRequest) (int, string, error) {
 	if request == nil {
 		request = NewListFoldersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("resourcemanager", APIVersion, "ListFolders")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

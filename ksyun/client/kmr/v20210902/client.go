@@ -66,6 +66,11 @@ func (c *Client) DescribeClusterWithContext(ctx context.Context, request *Descri
 	if request == nil {
 		request = NewDescribeClusterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "DescribeCluster")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) DescribeClusterWithContext(ctx context.Context, request *Descri
 func (c *Client) DescribeClusterWithContextV2(ctx context.Context, request *DescribeClusterRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeClusterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "DescribeCluster")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) LaunchClusterWithContext(ctx context.Context, request *LaunchCl
 	if request == nil {
 		request = NewLaunchClusterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "LaunchCluster")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) LaunchClusterWithContext(ctx context.Context, request *LaunchCl
 func (c *Client) LaunchClusterWithContextV2(ctx context.Context, request *LaunchClusterRequest) (int, string, error) {
 	if request == nil {
 		request = NewLaunchClusterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "LaunchCluster")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) ScaleInInstanceGroupsWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewScaleInInstanceGroupsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ScaleInInstanceGroups")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) ScaleInInstanceGroupsWithContext(ctx context.Context, request *
 func (c *Client) ScaleInInstanceGroupsWithContextV2(ctx context.Context, request *ScaleInInstanceGroupsRequest) (int, string, error) {
 	if request == nil {
 		request = NewScaleInInstanceGroupsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ScaleInInstanceGroups")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) ScaleOutInstanceGroupsWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewScaleOutInstanceGroupsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ScaleOutInstanceGroups")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -287,6 +322,11 @@ func (c *Client) ScaleOutInstanceGroupsWithContext(ctx context.Context, request 
 func (c *Client) ScaleOutInstanceGroupsWithContextV2(ctx context.Context, request *ScaleOutInstanceGroupsRequest) (int, string, error) {
 	if request == nil {
 		request = NewScaleOutInstanceGroupsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ScaleOutInstanceGroups")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -342,6 +382,11 @@ func (c *Client) DescribeClusterInfoWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeClusterInfoRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "DescribeClusterInfo")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -356,6 +401,11 @@ func (c *Client) DescribeClusterInfoWithContext(ctx context.Context, request *De
 func (c *Client) DescribeClusterInfoWithContextV2(ctx context.Context, request *DescribeClusterInfoRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeClusterInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "DescribeClusterInfo")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -411,6 +461,11 @@ func (c *Client) ListServiceStatusWithContext(ctx context.Context, request *List
 	if request == nil {
 		request = NewListServiceStatusRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListServiceStatus")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -425,6 +480,11 @@ func (c *Client) ListServiceStatusWithContext(ctx context.Context, request *List
 func (c *Client) ListServiceStatusWithContextV2(ctx context.Context, request *ListServiceStatusRequest) (int, string, error) {
 	if request == nil {
 		request = NewListServiceStatusRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListServiceStatus")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -480,6 +540,11 @@ func (c *Client) ListClustersWithContext(ctx context.Context, request *ListClust
 	if request == nil {
 		request = NewListClustersRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListClusters")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -494,6 +559,11 @@ func (c *Client) ListClustersWithContext(ctx context.Context, request *ListClust
 func (c *Client) ListClustersWithContextV2(ctx context.Context, request *ListClustersRequest) (int, string, error) {
 	if request == nil {
 		request = NewListClustersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListClusters")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -549,6 +619,11 @@ func (c *Client) ListClusterVersionsWithContext(ctx context.Context, request *Li
 	if request == nil {
 		request = NewListClusterVersionsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListClusterVersions")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -563,6 +638,11 @@ func (c *Client) ListClusterVersionsWithContext(ctx context.Context, request *Li
 func (c *Client) ListClusterVersionsWithContextV2(ctx context.Context, request *ListClusterVersionsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListClusterVersionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListClusterVersions")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -618,6 +698,11 @@ func (c *Client) DescribeServiceWithContext(ctx context.Context, request *Descri
 	if request == nil {
 		request = NewDescribeServiceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "DescribeService")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -632,6 +717,11 @@ func (c *Client) DescribeServiceWithContext(ctx context.Context, request *Descri
 func (c *Client) DescribeServiceWithContextV2(ctx context.Context, request *DescribeServiceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeServiceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "DescribeService")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -687,6 +777,11 @@ func (c *Client) ListConfigurationsWithContext(ctx context.Context, request *Lis
 	if request == nil {
 		request = NewListConfigurationsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListConfigurations")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -701,6 +796,11 @@ func (c *Client) ListConfigurationsWithContext(ctx context.Context, request *Lis
 func (c *Client) ListConfigurationsWithContextV2(ctx context.Context, request *ListConfigurationsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListConfigurationsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListConfigurations")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -756,6 +856,11 @@ func (c *Client) ListConfigurationHistoryWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewListConfigurationHistoryRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListConfigurationHistory")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -770,6 +875,11 @@ func (c *Client) ListConfigurationHistoryWithContext(ctx context.Context, reques
 func (c *Client) ListConfigurationHistoryWithContextV2(ctx context.Context, request *ListConfigurationHistoryRequest) (int, string, error) {
 	if request == nil {
 		request = NewListConfigurationHistoryRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListConfigurationHistory")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -825,6 +935,11 @@ func (c *Client) ListTagValuesWithContext(ctx context.Context, request *ListTagV
 	if request == nil {
 		request = NewListTagValuesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListTagValues")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -839,6 +954,11 @@ func (c *Client) ListTagValuesWithContext(ctx context.Context, request *ListTagV
 func (c *Client) ListTagValuesWithContextV2(ctx context.Context, request *ListTagValuesRequest) (int, string, error) {
 	if request == nil {
 		request = NewListTagValuesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListTagValues")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -894,6 +1014,11 @@ func (c *Client) ListTagKeysWithContext(ctx context.Context, request *ListTagKey
 	if request == nil {
 		request = NewListTagKeysRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListTagKeys")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -908,6 +1033,11 @@ func (c *Client) ListTagKeysWithContext(ctx context.Context, request *ListTagKey
 func (c *Client) ListTagKeysWithContextV2(ctx context.Context, request *ListTagKeysRequest) (int, string, error) {
 	if request == nil {
 		request = NewListTagKeysRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListTagKeys")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -963,6 +1093,11 @@ func (c *Client) BindTagsWithContext(ctx context.Context, request *BindTagsReque
 	if request == nil {
 		request = NewBindTagsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "BindTags")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -977,6 +1112,11 @@ func (c *Client) BindTagsWithContext(ctx context.Context, request *BindTagsReque
 func (c *Client) BindTagsWithContextV2(ctx context.Context, request *BindTagsRequest) (int, string, error) {
 	if request == nil {
 		request = NewBindTagsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "BindTags")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1032,6 +1172,11 @@ func (c *Client) StartInstancesWithContext(ctx context.Context, request *StartIn
 	if request == nil {
 		request = NewStartInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "StartInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1046,6 +1191,11 @@ func (c *Client) StartInstancesWithContext(ctx context.Context, request *StartIn
 func (c *Client) StartInstancesWithContextV2(ctx context.Context, request *StartInstancesRequest) (int, string, error) {
 	if request == nil {
 		request = NewStartInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "StartInstances")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1101,6 +1251,11 @@ func (c *Client) RestartInstancesWithContext(ctx context.Context, request *Resta
 	if request == nil {
 		request = NewRestartInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "RestartInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1115,6 +1270,11 @@ func (c *Client) RestartInstancesWithContext(ctx context.Context, request *Resta
 func (c *Client) RestartInstancesWithContextV2(ctx context.Context, request *RestartInstancesRequest) (int, string, error) {
 	if request == nil {
 		request = NewRestartInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "RestartInstances")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1170,6 +1330,11 @@ func (c *Client) StopInstancesWithContext(ctx context.Context, request *StopInst
 	if request == nil {
 		request = NewStopInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "StopInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1184,6 +1349,11 @@ func (c *Client) StopInstancesWithContext(ctx context.Context, request *StopInst
 func (c *Client) StopInstancesWithContextV2(ctx context.Context, request *StopInstancesRequest) (int, string, error) {
 	if request == nil {
 		request = NewStopInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "StopInstances")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1239,6 +1409,11 @@ func (c *Client) ListScaleStrategyWithContext(ctx context.Context, request *List
 	if request == nil {
 		request = NewListScaleStrategyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListScaleStrategy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1253,6 +1428,11 @@ func (c *Client) ListScaleStrategyWithContext(ctx context.Context, request *List
 func (c *Client) ListScaleStrategyWithContextV2(ctx context.Context, request *ListScaleStrategyRequest) (int, string, error) {
 	if request == nil {
 		request = NewListScaleStrategyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListScaleStrategy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1308,6 +1488,11 @@ func (c *Client) ModifyScaleStrategyWithContext(ctx context.Context, request *Mo
 	if request == nil {
 		request = NewModifyScaleStrategyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ModifyScaleStrategy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1322,6 +1507,11 @@ func (c *Client) ModifyScaleStrategyWithContext(ctx context.Context, request *Mo
 func (c *Client) ModifyScaleStrategyWithContextV2(ctx context.Context, request *ModifyScaleStrategyRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyScaleStrategyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ModifyScaleStrategy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1377,6 +1567,11 @@ func (c *Client) DeleteScaleStrategyWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDeleteScaleStrategyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "DeleteScaleStrategy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1391,6 +1586,11 @@ func (c *Client) DeleteScaleStrategyWithContext(ctx context.Context, request *De
 func (c *Client) DeleteScaleStrategyWithContextV2(ctx context.Context, request *DeleteScaleStrategyRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteScaleStrategyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "DeleteScaleStrategy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1446,6 +1646,11 @@ func (c *Client) ListScaleHistoryWithContext(ctx context.Context, request *ListS
 	if request == nil {
 		request = NewListScaleHistoryRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListScaleHistory")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1460,6 +1665,11 @@ func (c *Client) ListScaleHistoryWithContext(ctx context.Context, request *ListS
 func (c *Client) ListScaleHistoryWithContextV2(ctx context.Context, request *ListScaleHistoryRequest) (int, string, error) {
 	if request == nil {
 		request = NewListScaleHistoryRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ListScaleHistory")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1515,6 +1725,11 @@ func (c *Client) AddLoadBasedScaleStrategyWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewAddLoadBasedScaleStrategyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "AddLoadBasedScaleStrategy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1529,6 +1744,11 @@ func (c *Client) AddLoadBasedScaleStrategyWithContext(ctx context.Context, reque
 func (c *Client) AddLoadBasedScaleStrategyWithContextV2(ctx context.Context, request *AddLoadBasedScaleStrategyRequest) (int, string, error) {
 	if request == nil {
 		request = NewAddLoadBasedScaleStrategyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "AddLoadBasedScaleStrategy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1584,6 +1804,11 @@ func (c *Client) ModifyLoadBasedScaleStrategyWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewModifyLoadBasedScaleStrategyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ModifyLoadBasedScaleStrategy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1598,6 +1823,11 @@ func (c *Client) ModifyLoadBasedScaleStrategyWithContext(ctx context.Context, re
 func (c *Client) ModifyLoadBasedScaleStrategyWithContextV2(ctx context.Context, request *ModifyLoadBasedScaleStrategyRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyLoadBasedScaleStrategyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kmr", APIVersion, "ModifyLoadBasedScaleStrategy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

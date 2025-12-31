@@ -66,6 +66,11 @@ func (c *Client) GetMetricStatisticsBatchWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewGetMetricStatisticsBatchRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "GetMetricStatisticsBatch")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) GetMetricStatisticsBatchWithContext(ctx context.Context, reques
 func (c *Client) GetMetricStatisticsBatchWithContextV2(ctx context.Context, request *GetMetricStatisticsBatchRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetMetricStatisticsBatchRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "GetMetricStatisticsBatch")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

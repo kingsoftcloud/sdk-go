@@ -66,6 +66,11 @@ func (c *Client) CreateVolumeWithContext(ctx context.Context, request *CreateVol
 	if request == nil {
 		request = NewCreateVolumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "CreateVolume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateVolumeWithContext(ctx context.Context, request *CreateVol
 func (c *Client) CreateVolumeWithContextV2(ctx context.Context, request *CreateVolumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateVolumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "CreateVolume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) AttachVolumeWithContext(ctx context.Context, request *AttachVol
 	if request == nil {
 		request = NewAttachVolumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "AttachVolume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) AttachVolumeWithContext(ctx context.Context, request *AttachVol
 func (c *Client) AttachVolumeWithContextV2(ctx context.Context, request *AttachVolumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewAttachVolumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "AttachVolume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) DetachVolumeWithContext(ctx context.Context, request *DetachVol
 	if request == nil {
 		request = NewDetachVolumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DetachVolume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) DetachVolumeWithContext(ctx context.Context, request *DetachVol
 func (c *Client) DetachVolumeWithContextV2(ctx context.Context, request *DetachVolumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewDetachVolumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DetachVolume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) DeleteVolumeWithContext(ctx context.Context, request *DeleteVol
 	if request == nil {
 		request = NewDeleteVolumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DeleteVolume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) DeleteVolumeWithContext(ctx context.Context, request *DeleteVol
 func (c *Client) DeleteVolumeWithContextV2(ctx context.Context, request *DeleteVolumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteVolumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DeleteVolume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) ResizeVolumeWithContext(ctx context.Context, request *ResizeVol
 	if request == nil {
 		request = NewResizeVolumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ResizeVolume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) ResizeVolumeWithContext(ctx context.Context, request *ResizeVol
 func (c *Client) ResizeVolumeWithContextV2(ctx context.Context, request *ResizeVolumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewResizeVolumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ResizeVolume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) DescribeVolumesWithContext(ctx context.Context, request *Descri
 	if request == nil {
 		request = NewDescribeVolumesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DescribeVolumes")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) DescribeVolumesWithContext(ctx context.Context, request *Descri
 func (c *Client) DescribeVolumesWithContextV2(ctx context.Context, request *DescribeVolumesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeVolumesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DescribeVolumes")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) ModifyVolumeWithContext(ctx context.Context, request *ModifyVol
 	if request == nil {
 		request = NewModifyVolumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ModifyVolume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) ModifyVolumeWithContext(ctx context.Context, request *ModifyVol
 func (c *Client) ModifyVolumeWithContextV2(ctx context.Context, request *ModifyVolumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyVolumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ModifyVolume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) DescribeEbsInstancesWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeEbsInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DescribeEbsInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) DescribeEbsInstancesWithContext(ctx context.Context, request *D
 func (c *Client) DescribeEbsInstancesWithContextV2(ctx context.Context, request *DescribeEbsInstancesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeEbsInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DescribeEbsInstances")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) DescribeInstanceVolumesWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewDescribeInstanceVolumesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DescribeInstanceVolumes")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) DescribeInstanceVolumesWithContext(ctx context.Context, request
 func (c *Client) DescribeInstanceVolumesWithContextV2(ctx context.Context, request *DescribeInstanceVolumesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstanceVolumesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DescribeInstanceVolumes")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) RenewVolumeWithContext(ctx context.Context, request *RenewVolum
 	if request == nil {
 		request = NewRenewVolumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "RenewVolume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) RenewVolumeWithContext(ctx context.Context, request *RenewVolum
 func (c *Client) RenewVolumeWithContextV2(ctx context.Context, request *RenewVolumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewRenewVolumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "RenewVolume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) UpdateVolumeProjectWithContext(ctx context.Context, request *Up
 	if request == nil {
 		request = NewUpdateVolumeProjectRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "UpdateVolumeProject")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) UpdateVolumeProjectWithContext(ctx context.Context, request *Up
 func (c *Client) UpdateVolumeProjectWithContextV2(ctx context.Context, request *UpdateVolumeProjectRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateVolumeProjectRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "UpdateVolumeProject")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeSnapshotsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DescribeSnapshots")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -839,6 +954,11 @@ func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeSnapshotsWithContextV2(ctx context.Context, request *DescribeSnapshotsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSnapshotsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DescribeSnapshots")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -894,6 +1014,11 @@ func (c *Client) CreateSnapshotWithContext(ctx context.Context, request *CreateS
 	if request == nil {
 		request = NewCreateSnapshotRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "CreateSnapshot")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) CreateSnapshotWithContext(ctx context.Context, request *CreateS
 func (c *Client) CreateSnapshotWithContextV2(ctx context.Context, request *CreateSnapshotRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateSnapshotRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "CreateSnapshot")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -963,6 +1093,11 @@ func (c *Client) DeleteSnapshotWithContext(ctx context.Context, request *DeleteS
 	if request == nil {
 		request = NewDeleteSnapshotRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DeleteSnapshot")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +1112,11 @@ func (c *Client) DeleteSnapshotWithContext(ctx context.Context, request *DeleteS
 func (c *Client) DeleteSnapshotWithContextV2(ctx context.Context, request *DeleteSnapshotRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSnapshotRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DeleteSnapshot")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +1172,11 @@ func (c *Client) RollbackSnapshotWithContext(ctx context.Context, request *Rollb
 	if request == nil {
 		request = NewRollbackSnapshotRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "RollbackSnapshot")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1046,6 +1191,11 @@ func (c *Client) RollbackSnapshotWithContext(ctx context.Context, request *Rollb
 func (c *Client) RollbackSnapshotWithContextV2(ctx context.Context, request *RollbackSnapshotRequest) (int, string, error) {
 	if request == nil {
 		request = NewRollbackSnapshotRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "RollbackSnapshot")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1101,6 +1251,11 @@ func (c *Client) ModifySnapshotWithContext(ctx context.Context, request *ModifyS
 	if request == nil {
 		request = NewModifySnapshotRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ModifySnapshot")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1115,6 +1270,11 @@ func (c *Client) ModifySnapshotWithContext(ctx context.Context, request *ModifyS
 func (c *Client) ModifySnapshotWithContextV2(ctx context.Context, request *ModifySnapshotRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifySnapshotRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ModifySnapshot")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1170,6 +1330,11 @@ func (c *Client) RecoveryVolumeWithContext(ctx context.Context, request *Recover
 	if request == nil {
 		request = NewRecoveryVolumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "RecoveryVolume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1184,6 +1349,11 @@ func (c *Client) RecoveryVolumeWithContext(ctx context.Context, request *Recover
 func (c *Client) RecoveryVolumeWithContextV2(ctx context.Context, request *RecoveryVolumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewRecoveryVolumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "RecoveryVolume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1239,6 +1409,11 @@ func (c *Client) ValidateAttachInstanceWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewValidateAttachInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ValidateAttachInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1253,6 +1428,11 @@ func (c *Client) ValidateAttachInstanceWithContext(ctx context.Context, request 
 func (c *Client) ValidateAttachInstanceWithContextV2(ctx context.Context, request *ValidateAttachInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewValidateAttachInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ValidateAttachInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1308,6 +1488,11 @@ func (c *Client) DescribeAvailabilityZonesWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeAvailabilityZonesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DescribeAvailabilityZones")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1322,6 +1507,11 @@ func (c *Client) DescribeAvailabilityZonesWithContext(ctx context.Context, reque
 func (c *Client) DescribeAvailabilityZonesWithContextV2(ctx context.Context, request *DescribeAvailabilityZonesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAvailabilityZonesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DescribeAvailabilityZones")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1377,6 +1567,11 @@ func (c *Client) DescribeCreateVolumePriceWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeCreateVolumePriceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DescribeCreateVolumePrice")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1391,6 +1586,11 @@ func (c *Client) DescribeCreateVolumePriceWithContext(ctx context.Context, reque
 func (c *Client) DescribeCreateVolumePriceWithContextV2(ctx context.Context, request *DescribeCreateVolumePriceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeCreateVolumePriceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DescribeCreateVolumePrice")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1446,6 +1646,11 @@ func (c *Client) ModifySnapshotTypeWithContext(ctx context.Context, request *Mod
 	if request == nil {
 		request = NewModifySnapshotTypeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ModifySnapshotType")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1460,6 +1665,11 @@ func (c *Client) ModifySnapshotTypeWithContext(ctx context.Context, request *Mod
 func (c *Client) ModifySnapshotTypeWithContextV2(ctx context.Context, request *ModifySnapshotTypeRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifySnapshotTypeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ModifySnapshotType")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1515,6 +1725,11 @@ func (c *Client) ModifyVolumeTypeWithContext(ctx context.Context, request *Modif
 	if request == nil {
 		request = NewModifyVolumeTypeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ModifyVolumeType")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1529,6 +1744,11 @@ func (c *Client) ModifyVolumeTypeWithContext(ctx context.Context, request *Modif
 func (c *Client) ModifyVolumeTypeWithContextV2(ctx context.Context, request *ModifyVolumeTypeRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyVolumeTypeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ModifyVolumeType")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1584,6 +1804,11 @@ func (c *Client) ModifyDedicatedBlockStorageClusterAttributeWithContext(ctx cont
 	if request == nil {
 		request = NewModifyDedicatedBlockStorageClusterAttributeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ModifyDedicatedBlockStorageClusterAttribute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1598,6 +1823,11 @@ func (c *Client) ModifyDedicatedBlockStorageClusterAttributeWithContext(ctx cont
 func (c *Client) ModifyDedicatedBlockStorageClusterAttributeWithContextV2(ctx context.Context, request *ModifyDedicatedBlockStorageClusterAttributeRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyDedicatedBlockStorageClusterAttributeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ModifyDedicatedBlockStorageClusterAttribute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1653,6 +1883,11 @@ func (c *Client) ResizeDedicatedBlockStorageClustersWithContext(ctx context.Cont
 	if request == nil {
 		request = NewResizeDedicatedBlockStorageClustersRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ResizeDedicatedBlockStorageClusters")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1667,6 +1902,11 @@ func (c *Client) ResizeDedicatedBlockStorageClustersWithContext(ctx context.Cont
 func (c *Client) ResizeDedicatedBlockStorageClustersWithContextV2(ctx context.Context, request *ResizeDedicatedBlockStorageClustersRequest) (int, string, error) {
 	if request == nil {
 		request = NewResizeDedicatedBlockStorageClustersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ResizeDedicatedBlockStorageClusters")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1722,6 +1962,11 @@ func (c *Client) DescribeDedicatedBlockStorageClustersWithContext(ctx context.Co
 	if request == nil {
 		request = NewDescribeDedicatedBlockStorageClustersRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DescribeDedicatedBlockStorageClusters")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1736,6 +1981,11 @@ func (c *Client) DescribeDedicatedBlockStorageClustersWithContext(ctx context.Co
 func (c *Client) DescribeDedicatedBlockStorageClustersWithContextV2(ctx context.Context, request *DescribeDedicatedBlockStorageClustersRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDedicatedBlockStorageClustersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "DescribeDedicatedBlockStorageClusters")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1791,6 +2041,11 @@ func (c *Client) CreateDedicatedBlockStorageClusterWithContext(ctx context.Conte
 	if request == nil {
 		request = NewCreateDedicatedBlockStorageClusterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "CreateDedicatedBlockStorageCluster")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1805,6 +2060,11 @@ func (c *Client) CreateDedicatedBlockStorageClusterWithContext(ctx context.Conte
 func (c *Client) CreateDedicatedBlockStorageClusterWithContextV2(ctx context.Context, request *CreateDedicatedBlockStorageClusterRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateDedicatedBlockStorageClusterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "CreateDedicatedBlockStorageCluster")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1860,6 +2120,11 @@ func (c *Client) ModifyVolumePresetWithContext(ctx context.Context, request *Mod
 	if request == nil {
 		request = NewModifyVolumePresetRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ModifyVolumePreset")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1874,6 +2139,11 @@ func (c *Client) ModifyVolumePresetWithContext(ctx context.Context, request *Mod
 func (c *Client) ModifyVolumePresetWithContextV2(ctx context.Context, request *ModifyVolumePresetRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyVolumePresetRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "ModifyVolumePreset")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1929,6 +2199,11 @@ func (c *Client) GetUpgradeVolumeTypeProcessInfoWithContext(ctx context.Context,
 	if request == nil {
 		request = NewGetUpgradeVolumeTypeProcessInfoRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "GetUpgradeVolumeTypeProcessInfo")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1943,6 +2218,11 @@ func (c *Client) GetUpgradeVolumeTypeProcessInfoWithContext(ctx context.Context,
 func (c *Client) GetUpgradeVolumeTypeProcessInfoWithContextV2(ctx context.Context, request *GetUpgradeVolumeTypeProcessInfoRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetUpgradeVolumeTypeProcessInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("ebs", APIVersion, "GetUpgradeVolumeTypeProcessInfo")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

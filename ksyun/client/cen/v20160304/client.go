@@ -66,6 +66,11 @@ func (c *Client) CreateCenWithContext(ctx context.Context, request *CreateCenReq
 	if request == nil {
 		request = NewCreateCenRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "CreateCen")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateCenWithContext(ctx context.Context, request *CreateCenReq
 func (c *Client) CreateCenWithContextV2(ctx context.Context, request *CreateCenRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateCenRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "CreateCen")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) ModifyCenWithContext(ctx context.Context, request *ModifyCenReq
 	if request == nil {
 		request = NewModifyCenRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "ModifyCen")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) ModifyCenWithContext(ctx context.Context, request *ModifyCenReq
 func (c *Client) ModifyCenWithContextV2(ctx context.Context, request *ModifyCenRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyCenRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "ModifyCen")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) DeleteCenWithContext(ctx context.Context, request *DeleteCenReq
 	if request == nil {
 		request = NewDeleteCenRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DeleteCen")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) DeleteCenWithContext(ctx context.Context, request *DeleteCenReq
 func (c *Client) DeleteCenWithContextV2(ctx context.Context, request *DeleteCenRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteCenRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DeleteCen")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) DescribeCensWithContext(ctx context.Context, request *DescribeC
 	if request == nil {
 		request = NewDescribeCensRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeCens")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) DescribeCensWithContext(ctx context.Context, request *DescribeC
 func (c *Client) DescribeCensWithContextV2(ctx context.Context, request *DescribeCensRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeCensRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeCens")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) DeleteCenGrantWithContext(ctx context.Context, request *DeleteC
 	if request == nil {
 		request = NewDeleteCenGrantRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DeleteCenGrant")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) DeleteCenGrantWithContext(ctx context.Context, request *DeleteC
 func (c *Client) DeleteCenGrantWithContextV2(ctx context.Context, request *DeleteCenGrantRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteCenGrantRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DeleteCenGrant")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) DescribeCenGrantsWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeCenGrantsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeCenGrants")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) DescribeCenGrantsWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeCenGrantsWithContextV2(ctx context.Context, request *DescribeCenGrantsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeCenGrantsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeCenGrants")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) CreateCenBandWidthPackageWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewCreateCenBandWidthPackageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "CreateCenBandWidthPackage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) CreateCenBandWidthPackageWithContext(ctx context.Context, reque
 func (c *Client) CreateCenBandWidthPackageWithContextV2(ctx context.Context, request *CreateCenBandWidthPackageRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateCenBandWidthPackageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "CreateCenBandWidthPackage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) ModifyCenBandWidthPackageWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewModifyCenBandWidthPackageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "ModifyCenBandWidthPackage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) ModifyCenBandWidthPackageWithContext(ctx context.Context, reque
 func (c *Client) ModifyCenBandWidthPackageWithContextV2(ctx context.Context, request *ModifyCenBandWidthPackageRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyCenBandWidthPackageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "ModifyCenBandWidthPackage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) DeleteCenBandWidthPackageWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDeleteCenBandWidthPackageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DeleteCenBandWidthPackage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) DeleteCenBandWidthPackageWithContext(ctx context.Context, reque
 func (c *Client) DeleteCenBandWidthPackageWithContextV2(ctx context.Context, request *DeleteCenBandWidthPackageRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteCenBandWidthPackageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DeleteCenBandWidthPackage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) AttachCenBandWidthPackageWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewAttachCenBandWidthPackageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "AttachCenBandWidthPackage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) AttachCenBandWidthPackageWithContext(ctx context.Context, reque
 func (c *Client) AttachCenBandWidthPackageWithContextV2(ctx context.Context, request *AttachCenBandWidthPackageRequest) (int, string, error) {
 	if request == nil {
 		request = NewAttachCenBandWidthPackageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "AttachCenBandWidthPackage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) DetachCenBandWidthPackageWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDetachCenBandWidthPackageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DetachCenBandWidthPackage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) DetachCenBandWidthPackageWithContext(ctx context.Context, reque
 func (c *Client) DetachCenBandWidthPackageWithContextV2(ctx context.Context, request *DetachCenBandWidthPackageRequest) (int, string, error) {
 	if request == nil {
 		request = NewDetachCenBandWidthPackageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DetachCenBandWidthPackage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) DescribeCenBandWidthPackagesWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewDescribeCenBandWidthPackagesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeCenBandWidthPackages")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -839,6 +954,11 @@ func (c *Client) DescribeCenBandWidthPackagesWithContext(ctx context.Context, re
 func (c *Client) DescribeCenBandWidthPackagesWithContextV2(ctx context.Context, request *DescribeCenBandWidthPackagesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeCenBandWidthPackagesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeCenBandWidthPackages")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -894,6 +1014,11 @@ func (c *Client) CreateCenRegionBandwidthWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewCreateCenRegionBandwidthRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "CreateCenRegionBandwidth")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) CreateCenRegionBandwidthWithContext(ctx context.Context, reques
 func (c *Client) CreateCenRegionBandwidthWithContextV2(ctx context.Context, request *CreateCenRegionBandwidthRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateCenRegionBandwidthRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "CreateCenRegionBandwidth")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -963,6 +1093,11 @@ func (c *Client) DeleteCenRegionBandwidthWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDeleteCenRegionBandwidthRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DeleteCenRegionBandwidth")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +1112,11 @@ func (c *Client) DeleteCenRegionBandwidthWithContext(ctx context.Context, reques
 func (c *Client) DeleteCenRegionBandwidthWithContextV2(ctx context.Context, request *DeleteCenRegionBandwidthRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteCenRegionBandwidthRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DeleteCenRegionBandwidth")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +1172,11 @@ func (c *Client) ModifyCenRegionBandwidthWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewModifyCenRegionBandwidthRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "ModifyCenRegionBandwidth")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1046,6 +1191,11 @@ func (c *Client) ModifyCenRegionBandwidthWithContext(ctx context.Context, reques
 func (c *Client) ModifyCenRegionBandwidthWithContextV2(ctx context.Context, request *ModifyCenRegionBandwidthRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyCenRegionBandwidthRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "ModifyCenRegionBandwidth")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1101,6 +1251,11 @@ func (c *Client) DescribeCenRegionBandwidthsWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewDescribeCenRegionBandwidthsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeCenRegionBandwidths")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1115,6 +1270,11 @@ func (c *Client) DescribeCenRegionBandwidthsWithContext(ctx context.Context, req
 func (c *Client) DescribeCenRegionBandwidthsWithContextV2(ctx context.Context, request *DescribeCenRegionBandwidthsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeCenRegionBandwidthsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeCenRegionBandwidths")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1170,6 +1330,11 @@ func (c *Client) DescribeCenRoutesWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeCenRoutesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeCenRoutes")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1184,6 +1349,11 @@ func (c *Client) DescribeCenRoutesWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeCenRoutesWithContextV2(ctx context.Context, request *DescribeCenRoutesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeCenRoutesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeCenRoutes")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1239,6 +1409,11 @@ func (c *Client) DescribeCenBandWidthPackageUsageWithContext(ctx context.Context
 	if request == nil {
 		request = NewDescribeCenBandWidthPackageUsageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeCenBandWidthPackageUsage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1253,6 +1428,11 @@ func (c *Client) DescribeCenBandWidthPackageUsageWithContext(ctx context.Context
 func (c *Client) DescribeCenBandWidthPackageUsageWithContextV2(ctx context.Context, request *DescribeCenBandWidthPackageUsageRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeCenBandWidthPackageUsageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeCenBandWidthPackageUsage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1308,6 +1488,11 @@ func (c *Client) DescribeNetworkInstancesWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeNetworkInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeNetworkInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1322,6 +1507,11 @@ func (c *Client) DescribeNetworkInstancesWithContext(ctx context.Context, reques
 func (c *Client) DescribeNetworkInstancesWithContextV2(ctx context.Context, request *DescribeNetworkInstancesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeNetworkInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeNetworkInstances")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1377,6 +1567,11 @@ func (c *Client) CreateCenGrantWithContext(ctx context.Context, request *CreateC
 	if request == nil {
 		request = NewCreateCenGrantRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "CreateCenGrant")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1391,6 +1586,11 @@ func (c *Client) CreateCenGrantWithContext(ctx context.Context, request *CreateC
 func (c *Client) CreateCenGrantWithContextV2(ctx context.Context, request *CreateCenGrantRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateCenGrantRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "CreateCenGrant")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1446,6 +1646,11 @@ func (c *Client) DescribeInterAreasWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeInterAreasRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeInterAreas")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1460,6 +1665,11 @@ func (c *Client) DescribeInterAreasWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeInterAreasWithContextV2(ctx context.Context, request *DescribeInterAreasRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInterAreasRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeInterAreas")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1515,6 +1725,11 @@ func (c *Client) DescribeInterRegionsWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeInterRegionsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeInterRegions")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1529,6 +1744,11 @@ func (c *Client) DescribeInterRegionsWithContext(ctx context.Context, request *D
 func (c *Client) DescribeInterRegionsWithContextV2(ctx context.Context, request *DescribeInterRegionsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInterRegionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DescribeInterRegions")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1584,6 +1804,11 @@ func (c *Client) AttachNetworkInstanceWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewAttachNetworkInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "AttachNetworkInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1598,6 +1823,11 @@ func (c *Client) AttachNetworkInstanceWithContext(ctx context.Context, request *
 func (c *Client) AttachNetworkInstanceWithContextV2(ctx context.Context, request *AttachNetworkInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewAttachNetworkInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "AttachNetworkInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1653,6 +1883,11 @@ func (c *Client) DetachNetworkInstanceWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDetachNetworkInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DetachNetworkInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1667,6 +1902,11 @@ func (c *Client) DetachNetworkInstanceWithContext(ctx context.Context, request *
 func (c *Client) DetachNetworkInstanceWithContextV2(ctx context.Context, request *DetachNetworkInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDetachNetworkInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "DetachNetworkInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1722,6 +1962,11 @@ func (c *Client) CenCidrPublishWithContext(ctx context.Context, request *CenCidr
 	if request == nil {
 		request = NewCenCidrPublishRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "CenCidrPublish")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1736,6 +1981,11 @@ func (c *Client) CenCidrPublishWithContext(ctx context.Context, request *CenCidr
 func (c *Client) CenCidrPublishWithContextV2(ctx context.Context, request *CenCidrPublishRequest) (int, string, error) {
 	if request == nil {
 		request = NewCenCidrPublishRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "CenCidrPublish")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1791,6 +2041,11 @@ func (c *Client) CenCidrDeleteWithContext(ctx context.Context, request *CenCidrD
 	if request == nil {
 		request = NewCenCidrDeleteRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "CenCidrDelete")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1805,6 +2060,11 @@ func (c *Client) CenCidrDeleteWithContext(ctx context.Context, request *CenCidrD
 func (c *Client) CenCidrDeleteWithContextV2(ctx context.Context, request *CenCidrDeleteRequest) (int, string, error) {
 	if request == nil {
 		request = NewCenCidrDeleteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cen", APIVersion, "CenCidrDelete")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

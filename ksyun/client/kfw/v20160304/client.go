@@ -66,6 +66,11 @@ func (c *Client) DescribeCfwAvWithContext(ctx context.Context, request *Describe
 	if request == nil {
 		request = NewDescribeCfwAvRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kfw", APIVersion, "DescribeCfwAv")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) DescribeCfwAvWithContext(ctx context.Context, request *Describe
 func (c *Client) DescribeCfwAvWithContextV2(ctx context.Context, request *DescribeCfwAvRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeCfwAvRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kfw", APIVersion, "DescribeCfwAv")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DeleteBatchCfwAddrbookWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDeleteBatchCfwAddrbookRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kfw", APIVersion, "DeleteBatchCfwAddrbook")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DeleteBatchCfwAddrbookWithContext(ctx context.Context, request 
 func (c *Client) DeleteBatchCfwAddrbookWithContextV2(ctx context.Context, request *DeleteBatchCfwAddrbookRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteBatchCfwAddrbookRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kfw", APIVersion, "DeleteBatchCfwAddrbook")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

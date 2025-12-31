@@ -66,6 +66,11 @@ func (c *Client) ListStreamDurationsWithContext(ctx context.Context, request *Li
 	if request == nil {
 		request = NewListStreamDurationsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kls", APIVersion, "ListStreamDurations")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) ListStreamDurationsWithContext(ctx context.Context, request *Li
 func (c *Client) ListStreamDurationsWithContextV2(ctx context.Context, request *ListStreamDurationsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListStreamDurationsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kls", APIVersion, "ListStreamDurations")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) ListHistoryPubStreamsErrInfoWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewListHistoryPubStreamsErrInfoRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kls", APIVersion, "ListHistoryPubStreamsErrInfo")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) ListHistoryPubStreamsErrInfoWithContext(ctx context.Context, re
 func (c *Client) ListHistoryPubStreamsErrInfoWithContextV2(ctx context.Context, request *ListHistoryPubStreamsErrInfoRequest) (int, string, error) {
 	if request == nil {
 		request = NewListHistoryPubStreamsErrInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kls", APIVersion, "ListHistoryPubStreamsErrInfo")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) ListHistoryPubStreamsInfoWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewListHistoryPubStreamsInfoRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kls", APIVersion, "ListHistoryPubStreamsInfo")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) ListHistoryPubStreamsInfoWithContext(ctx context.Context, reque
 func (c *Client) ListHistoryPubStreamsInfoWithContextV2(ctx context.Context, request *ListHistoryPubStreamsInfoRequest) (int, string, error) {
 	if request == nil {
 		request = NewListHistoryPubStreamsInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kls", APIVersion, "ListHistoryPubStreamsInfo")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) ForbidStreamWithContext(ctx context.Context, request *ForbidStr
 	if request == nil {
 		request = NewForbidStreamRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kls", APIVersion, "ForbidStream")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -287,6 +322,11 @@ func (c *Client) ForbidStreamWithContext(ctx context.Context, request *ForbidStr
 func (c *Client) ForbidStreamWithContextV2(ctx context.Context, request *ForbidStreamRequest) (int, string, error) {
 	if request == nil {
 		request = NewForbidStreamRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kls", APIVersion, "ForbidStream")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -342,6 +382,11 @@ func (c *Client) ResumeStreamWithContext(ctx context.Context, request *ResumeStr
 	if request == nil {
 		request = NewResumeStreamRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kls", APIVersion, "ResumeStream")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -356,6 +401,11 @@ func (c *Client) ResumeStreamWithContext(ctx context.Context, request *ResumeStr
 func (c *Client) ResumeStreamWithContextV2(ctx context.Context, request *ResumeStreamRequest) (int, string, error) {
 	if request == nil {
 		request = NewResumeStreamRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kls", APIVersion, "ResumeStream")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -411,6 +461,11 @@ func (c *Client) GetBlacklistWithContext(ctx context.Context, request *GetBlackl
 	if request == nil {
 		request = NewGetBlacklistRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kls", APIVersion, "GetBlacklist")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -425,6 +480,11 @@ func (c *Client) GetBlacklistWithContext(ctx context.Context, request *GetBlackl
 func (c *Client) GetBlacklistWithContextV2(ctx context.Context, request *GetBlacklistRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetBlacklistRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kls", APIVersion, "GetBlacklist")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -480,6 +540,11 @@ func (c *Client) CheckBlacklistWithContext(ctx context.Context, request *CheckBl
 	if request == nil {
 		request = NewCheckBlacklistRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kls", APIVersion, "CheckBlacklist")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -494,6 +559,11 @@ func (c *Client) CheckBlacklistWithContext(ctx context.Context, request *CheckBl
 func (c *Client) CheckBlacklistWithContextV2(ctx context.Context, request *CheckBlacklistRequest) (int, string, error) {
 	if request == nil {
 		request = NewCheckBlacklistRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kls", APIVersion, "CheckBlacklist")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -549,6 +619,11 @@ func (c *Client) ListRealtimeStreamsInfoWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewListRealtimeStreamsInfoRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kls", APIVersion, "ListRealtimeStreamsInfo")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -563,6 +638,11 @@ func (c *Client) ListRealtimeStreamsInfoWithContext(ctx context.Context, request
 func (c *Client) ListRealtimeStreamsInfoWithContextV2(ctx context.Context, request *ListRealtimeStreamsInfoRequest) (int, string, error) {
 	if request == nil {
 		request = NewListRealtimeStreamsInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kls", APIVersion, "ListRealtimeStreamsInfo")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

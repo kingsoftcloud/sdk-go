@@ -66,6 +66,11 @@ func (c *Client) CreateAlarmPolicyWithContext(ctx context.Context, request *Crea
 	if request == nil {
 		request = NewCreateAlarmPolicyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "CreateAlarmPolicy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateAlarmPolicyWithContext(ctx context.Context, request *Crea
 func (c *Client) CreateAlarmPolicyWithContextV2(ctx context.Context, request *CreateAlarmPolicyRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateAlarmPolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "CreateAlarmPolicy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DeleteAlarmPolicyWithContext(ctx context.Context, request *Dele
 	if request == nil {
 		request = NewDeleteAlarmPolicyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DeleteAlarmPolicy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) DeleteAlarmPolicyWithContext(ctx context.Context, request *Dele
 func (c *Client) DeleteAlarmPolicyWithContextV2(ctx context.Context, request *DeleteAlarmPolicyRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteAlarmPolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DeleteAlarmPolicy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

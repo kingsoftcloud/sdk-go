@@ -66,6 +66,11 @@ func (c *Client) CreateForwardConfWithContext(ctx context.Context, request *Crea
 	if request == nil {
 		request = NewCreateForwardConfRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kad", APIVersion, "CreateForwardConf")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateForwardConfWithContext(ctx context.Context, request *Crea
 func (c *Client) CreateForwardConfWithContextV2(ctx context.Context, request *CreateForwardConfRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateForwardConfRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kad", APIVersion, "CreateForwardConf")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DeleteForwardConfWithContext(ctx context.Context, request *Dele
 	if request == nil {
 		request = NewDeleteForwardConfRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kad", APIVersion, "DeleteForwardConf")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DeleteForwardConfWithContext(ctx context.Context, request *Dele
 func (c *Client) DeleteForwardConfWithContextV2(ctx context.Context, request *DeleteForwardConfRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteForwardConfRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kad", APIVersion, "DeleteForwardConf")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) DescribeForwardConfWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeForwardConfRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kad", APIVersion, "DescribeForwardConf")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) DescribeForwardConfWithContext(ctx context.Context, request *De
 func (c *Client) DescribeForwardConfWithContextV2(ctx context.Context, request *DescribeForwardConfRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeForwardConfRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kad", APIVersion, "DescribeForwardConf")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) CreateForwardSourceWithContext(ctx context.Context, request *Cr
 	if request == nil {
 		request = NewCreateForwardSourceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kad", APIVersion, "CreateForwardSource")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) CreateForwardSourceWithContext(ctx context.Context, request *Cr
 func (c *Client) CreateForwardSourceWithContextV2(ctx context.Context, request *CreateForwardSourceRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateForwardSourceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kad", APIVersion, "CreateForwardSource")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) DeleteForwardSourceWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDeleteForwardSourceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kad", APIVersion, "DeleteForwardSource")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) DeleteForwardSourceWithContext(ctx context.Context, request *De
 func (c *Client) DeleteForwardSourceWithContextV2(ctx context.Context, request *DeleteForwardSourceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteForwardSourceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kad", APIVersion, "DeleteForwardSource")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) DescribeForwardSourceWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeForwardSourceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kad", APIVersion, "DescribeForwardSource")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -425,6 +480,11 @@ func (c *Client) DescribeForwardSourceWithContext(ctx context.Context, request *
 func (c *Client) DescribeForwardSourceWithContextV2(ctx context.Context, request *DescribeForwardSourceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeForwardSourceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kad", APIVersion, "DescribeForwardSource")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -480,6 +540,11 @@ func (c *Client) GetAttackLogWithContext(ctx context.Context, request *GetAttack
 	if request == nil {
 		request = NewGetAttackLogRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kad", APIVersion, "GetAttackLog")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -494,6 +559,11 @@ func (c *Client) GetAttackLogWithContext(ctx context.Context, request *GetAttack
 func (c *Client) GetAttackLogWithContextV2(ctx context.Context, request *GetAttackLogRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetAttackLogRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kad", APIVersion, "GetAttackLog")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -549,6 +619,11 @@ func (c *Client) DescribeOverviewWithContext(ctx context.Context, request *Descr
 	if request == nil {
 		request = NewDescribeOverviewRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kad", APIVersion, "DescribeOverview")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -563,6 +638,11 @@ func (c *Client) DescribeOverviewWithContext(ctx context.Context, request *Descr
 func (c *Client) DescribeOverviewWithContextV2(ctx context.Context, request *DescribeOverviewRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeOverviewRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kad", APIVersion, "DescribeOverview")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

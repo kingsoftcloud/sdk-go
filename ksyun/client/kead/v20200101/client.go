@@ -66,6 +66,11 @@ func (c *Client) DescribeKeadWithContext(ctx context.Context, request *DescribeK
 	if request == nil {
 		request = NewDescribeKeadRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kead", APIVersion, "DescribeKead")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) DescribeKeadWithContext(ctx context.Context, request *DescribeK
 func (c *Client) DescribeKeadWithContextV2(ctx context.Context, request *DescribeKeadRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeKeadRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kead", APIVersion, "DescribeKead")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) DescribeKeadIpWithContext(ctx context.Context, request *Describ
 	if request == nil {
 		request = NewDescribeKeadIpRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kead", APIVersion, "DescribeKeadIp")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) DescribeKeadIpWithContext(ctx context.Context, request *Describ
 func (c *Client) DescribeKeadIpWithContextV2(ctx context.Context, request *DescribeKeadIpRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeKeadIpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kead", APIVersion, "DescribeKeadIp")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) DescribeBlockIpWithContext(ctx context.Context, request *Descri
 	if request == nil {
 		request = NewDescribeBlockIpRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kead", APIVersion, "DescribeBlockIp")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) DescribeBlockIpWithContext(ctx context.Context, request *Descri
 func (c *Client) DescribeBlockIpWithContextV2(ctx context.Context, request *DescribeBlockIpRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeBlockIpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kead", APIVersion, "DescribeBlockIp")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

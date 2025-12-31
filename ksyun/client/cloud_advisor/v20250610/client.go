@@ -66,6 +66,11 @@ func (c *Client) GetReportWithContext(ctx context.Context, request *GetReportReq
 	if request == nil {
 		request = NewGetReportRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cloud-advisor", APIVersion, "GetReport")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) GetReportWithContext(ctx context.Context, request *GetReportReq
 func (c *Client) GetReportWithContextV2(ctx context.Context, request *GetReportRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetReportRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cloud-advisor", APIVersion, "GetReport")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskR
 	if request == nil {
 		request = NewCreateTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cloud-advisor", APIVersion, "CreateTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskR
 func (c *Client) CreateTaskWithContextV2(ctx context.Context, request *CreateTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cloud-advisor", APIVersion, "CreateTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) ListInspectionItemWithContext(ctx context.Context, request *Lis
 	if request == nil {
 		request = NewListInspectionItemRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cloud-advisor", APIVersion, "ListInspectionItem")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) ListInspectionItemWithContext(ctx context.Context, request *Lis
 func (c *Client) ListInspectionItemWithContextV2(ctx context.Context, request *ListInspectionItemRequest) (int, string, error) {
 	if request == nil {
 		request = NewListInspectionItemRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cloud-advisor", APIVersion, "ListInspectionItem")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

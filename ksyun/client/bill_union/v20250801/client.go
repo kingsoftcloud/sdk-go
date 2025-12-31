@@ -66,6 +66,11 @@ func (c *Client) QueryItemBillsWithContext(ctx context.Context, request *QueryIt
 	if request == nil {
 		request = NewQueryItemBillsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "QueryItemBills")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) QueryItemBillsWithContext(ctx context.Context, request *QueryIt
 func (c *Client) QueryItemBillsWithContextV2(ctx context.Context, request *QueryItemBillsRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryItemBillsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "QueryItemBills")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) QueryProductTypesWithContext(ctx context.Context, request *Quer
 	if request == nil {
 		request = NewQueryProductTypesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "QueryProductTypes")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) QueryProductTypesWithContext(ctx context.Context, request *Quer
 func (c *Client) QueryProductTypesWithContextV2(ctx context.Context, request *QueryProductTypesRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryProductTypesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill-union", APIVersion, "QueryProductTypes")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

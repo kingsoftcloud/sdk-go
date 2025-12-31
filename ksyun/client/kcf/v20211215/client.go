@@ -66,6 +66,11 @@ func (c *Client) GetLogDateWithContext(ctx context.Context, request *GetLogDateR
 	if request == nil {
 		request = NewGetLogDateRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "GetLogDate")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) GetLogDateWithContext(ctx context.Context, request *GetLogDateR
 func (c *Client) GetLogDateWithContextV2(ctx context.Context, request *GetLogDateRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetLogDateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "GetLogDate")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) CreateFunctionWithContext(ctx context.Context, request *CreateF
 	if request == nil {
 		request = NewCreateFunctionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "CreateFunction")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) CreateFunctionWithContext(ctx context.Context, request *CreateF
 func (c *Client) CreateFunctionWithContextV2(ctx context.Context, request *CreateFunctionRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateFunctionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "CreateFunction")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) CheckFunctionServiceWithContext(ctx context.Context, request *C
 	if request == nil {
 		request = NewCheckFunctionServiceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "CheckFunctionService")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) CheckFunctionServiceWithContext(ctx context.Context, request *C
 func (c *Client) CheckFunctionServiceWithContextV2(ctx context.Context, request *CheckFunctionServiceRequest) (int, string, error) {
 	if request == nil {
 		request = NewCheckFunctionServiceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "CheckFunctionService")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) OpenFunctionServiceWithContext(ctx context.Context, request *Op
 	if request == nil {
 		request = NewOpenFunctionServiceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "OpenFunctionService")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) OpenFunctionServiceWithContext(ctx context.Context, request *Op
 func (c *Client) OpenFunctionServiceWithContextV2(ctx context.Context, request *OpenFunctionServiceRequest) (int, string, error) {
 	if request == nil {
 		request = NewOpenFunctionServiceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "OpenFunctionService")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) DeleteFunctionWithContext(ctx context.Context, request *DeleteF
 	if request == nil {
 		request = NewDeleteFunctionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "DeleteFunction")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) DeleteFunctionWithContext(ctx context.Context, request *DeleteF
 func (c *Client) DeleteFunctionWithContextV2(ctx context.Context, request *DeleteFunctionRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteFunctionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "DeleteFunction")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) CreateTriggerWithContext(ctx context.Context, request *CreateTr
 	if request == nil {
 		request = NewCreateTriggerRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "CreateTrigger")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -425,6 +480,11 @@ func (c *Client) CreateTriggerWithContext(ctx context.Context, request *CreateTr
 func (c *Client) CreateTriggerWithContextV2(ctx context.Context, request *CreateTriggerRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateTriggerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "CreateTrigger")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -480,6 +540,11 @@ func (c *Client) DeleteTriggerWithContext(ctx context.Context, request *DeleteTr
 	if request == nil {
 		request = NewDeleteTriggerRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "DeleteTrigger")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) DeleteTriggerWithContext(ctx context.Context, request *DeleteTr
 func (c *Client) DeleteTriggerWithContextV2(ctx context.Context, request *DeleteTriggerRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteTriggerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "DeleteTrigger")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) ModifyFunctionWithContext(ctx context.Context, request *ModifyF
 	if request == nil {
 		request = NewModifyFunctionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "ModifyFunction")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -563,6 +638,11 @@ func (c *Client) ModifyFunctionWithContext(ctx context.Context, request *ModifyF
 func (c *Client) ModifyFunctionWithContextV2(ctx context.Context, request *ModifyFunctionRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyFunctionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "ModifyFunction")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -618,6 +698,11 @@ func (c *Client) DescribeTriggersWithContext(ctx context.Context, request *Descr
 	if request == nil {
 		request = NewDescribeTriggersRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "DescribeTriggers")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) DescribeTriggersWithContext(ctx context.Context, request *Descr
 func (c *Client) DescribeTriggersWithContextV2(ctx context.Context, request *DescribeTriggersRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeTriggersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "DescribeTriggers")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

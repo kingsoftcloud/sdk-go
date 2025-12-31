@@ -66,6 +66,11 @@ func (c *Client) CreateTrainJobWithContext(ctx context.Context, request *CreateT
 	if request == nil {
 		request = NewCreateTrainJobRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateTrainJob")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateTrainJobWithContext(ctx context.Context, request *CreateT
 func (c *Client) CreateTrainJobWithContextV2(ctx context.Context, request *CreateTrainJobRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateTrainJobRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateTrainJob")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) DescribeTrainJobsWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeTrainJobsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DescribeTrainJobsWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeTrainJobsWithContextV2(ctx context.Context, request *DescribeTrainJobsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeTrainJobsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

@@ -66,6 +66,11 @@ func (c *Client) GetProjectInstanceListNewWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewGetProjectInstanceListNewRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("iam", APIVersion, "GetProjectInstanceListNew")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) GetProjectInstanceListNewWithContext(ctx context.Context, reque
 func (c *Client) GetProjectInstanceListNewWithContextV2(ctx context.Context, request *GetProjectInstanceListNewRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetProjectInstanceListNewRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("iam", APIVersion, "GetProjectInstanceListNew")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

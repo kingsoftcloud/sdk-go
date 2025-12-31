@@ -66,6 +66,11 @@ func (c *Client) CreateCacheClusterWithContext(ctx context.Context, request *Cre
 	if request == nil {
 		request = NewCreateCacheClusterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "CreateCacheCluster")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateCacheClusterWithContext(ctx context.Context, request *Cre
 func (c *Client) CreateCacheClusterWithContextV2(ctx context.Context, request *CreateCacheClusterRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateCacheClusterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "CreateCacheCluster")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DeleteCacheClusterWithContext(ctx context.Context, request *Del
 	if request == nil {
 		request = NewDeleteCacheClusterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "DeleteCacheCluster")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DeleteCacheClusterWithContext(ctx context.Context, request *Del
 func (c *Client) DeleteCacheClusterWithContextV2(ctx context.Context, request *DeleteCacheClusterRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteCacheClusterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "DeleteCacheCluster")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) ResizeCacheClusterWithContext(ctx context.Context, request *Res
 	if request == nil {
 		request = NewResizeCacheClusterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "ResizeCacheCluster")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) ResizeCacheClusterWithContext(ctx context.Context, request *Res
 func (c *Client) ResizeCacheClusterWithContextV2(ctx context.Context, request *ResizeCacheClusterRequest) (int, string, error) {
 	if request == nil {
 		request = NewResizeCacheClusterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "ResizeCacheCluster")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) DescribeCacheClustersWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeCacheClustersRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "DescribeCacheClusters")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) DescribeCacheClustersWithContext(ctx context.Context, request *
 func (c *Client) DescribeCacheClustersWithContextV2(ctx context.Context, request *DescribeCacheClustersRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeCacheClustersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "DescribeCacheClusters")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) DescribeCacheClusterWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeCacheClusterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "DescribeCacheCluster")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) DescribeCacheClusterWithContext(ctx context.Context, request *D
 func (c *Client) DescribeCacheClusterWithContextV2(ctx context.Context, request *DescribeCacheClusterRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeCacheClusterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "DescribeCacheCluster")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) FlushCacheClusterWithContext(ctx context.Context, request *Flus
 	if request == nil {
 		request = NewFlushCacheClusterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "FlushCacheCluster")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) FlushCacheClusterWithContext(ctx context.Context, request *Flus
 func (c *Client) FlushCacheClusterWithContextV2(ctx context.Context, request *FlushCacheClusterRequest) (int, string, error) {
 	if request == nil {
 		request = NewFlushCacheClusterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "FlushCacheCluster")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) RenameCacheClusterWithContext(ctx context.Context, request *Ren
 	if request == nil {
 		request = NewRenameCacheClusterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "RenameCacheCluster")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) RenameCacheClusterWithContext(ctx context.Context, request *Ren
 func (c *Client) RenameCacheClusterWithContextV2(ctx context.Context, request *RenameCacheClusterRequest) (int, string, error) {
 	if request == nil {
 		request = NewRenameCacheClusterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "RenameCacheCluster")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) UpdatePasswordWithContext(ctx context.Context, request *UpdateP
 	if request == nil {
 		request = NewUpdatePasswordRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "UpdatePassword")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) UpdatePasswordWithContext(ctx context.Context, request *UpdateP
 func (c *Client) UpdatePasswordWithContextV2(ctx context.Context, request *UpdatePasswordRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdatePasswordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "UpdatePassword")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) DescribeCacheSecurityRulesWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewDescribeCacheSecurityRulesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "DescribeCacheSecurityRules")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) DescribeCacheSecurityRulesWithContext(ctx context.Context, requ
 func (c *Client) DescribeCacheSecurityRulesWithContextV2(ctx context.Context, request *DescribeCacheSecurityRulesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeCacheSecurityRulesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "DescribeCacheSecurityRules")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) DeleteCacheSecurityRuleWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewDeleteCacheSecurityRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "DeleteCacheSecurityRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) DeleteCacheSecurityRuleWithContext(ctx context.Context, request
 func (c *Client) DeleteCacheSecurityRuleWithContextV2(ctx context.Context, request *DeleteCacheSecurityRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteCacheSecurityRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "DeleteCacheSecurityRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) SetCacheSecurityRulesWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewSetCacheSecurityRulesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "SetCacheSecurityRules")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) SetCacheSecurityRulesWithContext(ctx context.Context, request *
 func (c *Client) SetCacheSecurityRulesWithContextV2(ctx context.Context, request *SetCacheSecurityRulesRequest) (int, string, error) {
 	if request == nil {
 		request = NewSetCacheSecurityRulesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "SetCacheSecurityRules")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
 	if request == nil {
 		request = NewDescribeRegionsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "DescribeRegions")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -839,6 +954,11 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
 func (c *Client) DescribeRegionsWithContextV2(ctx context.Context, request *DescribeRegionsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeRegionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "DescribeRegions")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -894,6 +1014,11 @@ func (c *Client) DescribeAvailabilityZonesWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeAvailabilityZonesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "DescribeAvailabilityZones")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) DescribeAvailabilityZonesWithContext(ctx context.Context, reque
 func (c *Client) DescribeAvailabilityZonesWithContextV2(ctx context.Context, request *DescribeAvailabilityZonesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAvailabilityZonesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("memcached", APIVersion, "DescribeAvailabilityZones")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

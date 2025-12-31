@@ -66,6 +66,11 @@ func (c *Client) CreateWafWithContext(ctx context.Context, request *CreateWafReq
 	if request == nil {
 		request = NewCreateWafRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "CreateWaf")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateWafWithContext(ctx context.Context, request *CreateWafReq
 func (c *Client) CreateWafWithContextV2(ctx context.Context, request *CreateWafRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateWafRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "CreateWaf")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DeleteWafWithContext(ctx context.Context, request *DeleteWafReq
 	if request == nil {
 		request = NewDeleteWafRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DeleteWaf")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DeleteWafWithContext(ctx context.Context, request *DeleteWafReq
 func (c *Client) DeleteWafWithContextV2(ctx context.Context, request *DeleteWafRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteWafRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DeleteWaf")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) CreateDomainWithContext(ctx context.Context, request *CreateDom
 	if request == nil {
 		request = NewCreateDomainRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "CreateDomain")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) CreateDomainWithContext(ctx context.Context, request *CreateDom
 func (c *Client) CreateDomainWithContextV2(ctx context.Context, request *CreateDomainRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateDomainRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "CreateDomain")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) DescribeDomainsWithContext(ctx context.Context, request *Descri
 	if request == nil {
 		request = NewDescribeDomainsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DescribeDomains")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) DescribeDomainsWithContext(ctx context.Context, request *Descri
 func (c *Client) DescribeDomainsWithContextV2(ctx context.Context, request *DescribeDomainsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDomainsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DescribeDomains")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) ModifyDomainWithContext(ctx context.Context, request *ModifyDom
 	if request == nil {
 		request = NewModifyDomainRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "ModifyDomain")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) ModifyDomainWithContext(ctx context.Context, request *ModifyDom
 func (c *Client) ModifyDomainWithContextV2(ctx context.Context, request *ModifyDomainRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyDomainRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "ModifyDomain")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) DeleteDomainWithContext(ctx context.Context, request *DeleteDom
 	if request == nil {
 		request = NewDeleteDomainRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DeleteDomain")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) DeleteDomainWithContext(ctx context.Context, request *DeleteDom
 func (c *Client) DeleteDomainWithContextV2(ctx context.Context, request *DeleteDomainRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteDomainRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DeleteDomain")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) CreateAccessControlRuleWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewCreateAccessControlRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "CreateAccessControlRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) CreateAccessControlRuleWithContext(ctx context.Context, request
 func (c *Client) CreateAccessControlRuleWithContextV2(ctx context.Context, request *CreateAccessControlRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateAccessControlRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "CreateAccessControlRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) DescribeAccessControlRulesWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewDescribeAccessControlRulesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DescribeAccessControlRules")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) DescribeAccessControlRulesWithContext(ctx context.Context, requ
 func (c *Client) DescribeAccessControlRulesWithContextV2(ctx context.Context, request *DescribeAccessControlRulesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAccessControlRulesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DescribeAccessControlRules")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) ModifyAccessControlRuleWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewModifyAccessControlRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "ModifyAccessControlRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) ModifyAccessControlRuleWithContext(ctx context.Context, request
 func (c *Client) ModifyAccessControlRuleWithContextV2(ctx context.Context, request *ModifyAccessControlRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyAccessControlRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "ModifyAccessControlRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) DeleteAccessControlRuleWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewDeleteAccessControlRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DeleteAccessControlRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) DeleteAccessControlRuleWithContext(ctx context.Context, request
 func (c *Client) DeleteAccessControlRuleWithContextV2(ctx context.Context, request *DeleteAccessControlRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteAccessControlRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DeleteAccessControlRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) DescribeCertificatesWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeCertificatesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DescribeCertificates")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) DescribeCertificatesWithContext(ctx context.Context, request *D
 func (c *Client) DescribeCertificatesWithContextV2(ctx context.Context, request *DescribeCertificatesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeCertificatesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DescribeCertificates")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) CreateIpv6ProtectionWithContext(ctx context.Context, request *C
 	if request == nil {
 		request = NewCreateIpv6ProtectionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "CreateIpv6Protection")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -839,6 +954,11 @@ func (c *Client) CreateIpv6ProtectionWithContext(ctx context.Context, request *C
 func (c *Client) CreateIpv6ProtectionWithContextV2(ctx context.Context, request *CreateIpv6ProtectionRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateIpv6ProtectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "CreateIpv6Protection")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -894,6 +1014,11 @@ func (c *Client) DeleteIpv6ProtectionWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDeleteIpv6ProtectionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DeleteIpv6Protection")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) DeleteIpv6ProtectionWithContext(ctx context.Context, request *D
 func (c *Client) DeleteIpv6ProtectionWithContextV2(ctx context.Context, request *DeleteIpv6ProtectionRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteIpv6ProtectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DeleteIpv6Protection")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -963,6 +1093,11 @@ func (c *Client) ModifyStorageTimeWithContext(ctx context.Context, request *Modi
 	if request == nil {
 		request = NewModifyStorageTimeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "ModifyStorageTime")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +1112,11 @@ func (c *Client) ModifyStorageTimeWithContext(ctx context.Context, request *Modi
 func (c *Client) ModifyStorageTimeWithContextV2(ctx context.Context, request *ModifyStorageTimeRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyStorageTimeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "ModifyStorageTime")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +1172,11 @@ func (c *Client) CreateAlbDomainWithContext(ctx context.Context, request *Create
 	if request == nil {
 		request = NewCreateAlbDomainRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "CreateAlbDomain")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1046,6 +1191,11 @@ func (c *Client) CreateAlbDomainWithContext(ctx context.Context, request *Create
 func (c *Client) CreateAlbDomainWithContextV2(ctx context.Context, request *CreateAlbDomainRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateAlbDomainRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "CreateAlbDomain")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1101,6 +1251,11 @@ func (c *Client) ModifyAlbDomainWithContext(ctx context.Context, request *Modify
 	if request == nil {
 		request = NewModifyAlbDomainRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "ModifyAlbDomain")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1115,6 +1270,11 @@ func (c *Client) ModifyAlbDomainWithContext(ctx context.Context, request *Modify
 func (c *Client) ModifyAlbDomainWithContextV2(ctx context.Context, request *ModifyAlbDomainRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyAlbDomainRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "ModifyAlbDomain")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1170,6 +1330,11 @@ func (c *Client) DeleteAlbDomainWithContext(ctx context.Context, request *Delete
 	if request == nil {
 		request = NewDeleteAlbDomainRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DeleteAlbDomain")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1184,6 +1349,11 @@ func (c *Client) DeleteAlbDomainWithContext(ctx context.Context, request *Delete
 func (c *Client) DeleteAlbDomainWithContextV2(ctx context.Context, request *DeleteAlbDomainRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteAlbDomainRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DeleteAlbDomain")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1239,6 +1409,11 @@ func (c *Client) CreateAlbWafWithContext(ctx context.Context, request *CreateAlb
 	if request == nil {
 		request = NewCreateAlbWafRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "CreateAlbWaf")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1253,6 +1428,11 @@ func (c *Client) CreateAlbWafWithContext(ctx context.Context, request *CreateAlb
 func (c *Client) CreateAlbWafWithContextV2(ctx context.Context, request *CreateAlbWafRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateAlbWafRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "CreateAlbWaf")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1308,6 +1488,11 @@ func (c *Client) ModifyAlbWafWithContext(ctx context.Context, request *ModifyAlb
 	if request == nil {
 		request = NewModifyAlbWafRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "ModifyAlbWaf")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1322,6 +1507,11 @@ func (c *Client) ModifyAlbWafWithContext(ctx context.Context, request *ModifyAlb
 func (c *Client) ModifyAlbWafWithContextV2(ctx context.Context, request *ModifyAlbWafRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyAlbWafRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "ModifyAlbWaf")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1377,6 +1567,11 @@ func (c *Client) DescribeAlbDomainsWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeAlbDomainsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DescribeAlbDomains")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1391,6 +1586,11 @@ func (c *Client) DescribeAlbDomainsWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeAlbDomainsWithContextV2(ctx context.Context, request *DescribeAlbDomainsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAlbDomainsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("waf", APIVersion, "DescribeAlbDomains")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

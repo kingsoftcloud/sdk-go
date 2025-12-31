@@ -66,6 +66,11 @@ func (c *Client) CreateKeyWithContext(ctx context.Context, request *CreateKeyReq
 	if request == nil {
 		request = NewCreateKeyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kkms", APIVersion, "CreateKey")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateKeyWithContext(ctx context.Context, request *CreateKeyReq
 func (c *Client) CreateKeyWithContextV2(ctx context.Context, request *CreateKeyRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateKeyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kkms", APIVersion, "CreateKey")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) ModifyKeyWithContext(ctx context.Context, request *ModifyKeyReq
 	if request == nil {
 		request = NewModifyKeyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kkms", APIVersion, "ModifyKey")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) ModifyKeyWithContext(ctx context.Context, request *ModifyKeyReq
 func (c *Client) ModifyKeyWithContextV2(ctx context.Context, request *ModifyKeyRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyKeyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kkms", APIVersion, "ModifyKey")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) ModifyKeyStateWithContext(ctx context.Context, request *ModifyK
 	if request == nil {
 		request = NewModifyKeyStateRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kkms", APIVersion, "ModifyKeyState")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) ModifyKeyStateWithContext(ctx context.Context, request *ModifyK
 func (c *Client) ModifyKeyStateWithContextV2(ctx context.Context, request *ModifyKeyStateRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyKeyStateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kkms", APIVersion, "ModifyKeyState")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) DeleteKeyWithContext(ctx context.Context, request *DeleteKeyReq
 	if request == nil {
 		request = NewDeleteKeyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kkms", APIVersion, "DeleteKey")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) DeleteKeyWithContext(ctx context.Context, request *DeleteKeyReq
 func (c *Client) DeleteKeyWithContextV2(ctx context.Context, request *DeleteKeyRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteKeyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kkms", APIVersion, "DeleteKey")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) DescribeKeysWithContext(ctx context.Context, request *DescribeK
 	if request == nil {
 		request = NewDescribeKeysRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kkms", APIVersion, "DescribeKeys")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) DescribeKeysWithContext(ctx context.Context, request *DescribeK
 func (c *Client) DescribeKeysWithContextV2(ctx context.Context, request *DescribeKeysRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeKeysRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kkms", APIVersion, "DescribeKeys")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) EncryptWithContext(ctx context.Context, request *EncryptRequest
 	if request == nil {
 		request = NewEncryptRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kkms", APIVersion, "Encrypt")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) EncryptWithContext(ctx context.Context, request *EncryptRequest
 func (c *Client) EncryptWithContextV2(ctx context.Context, request *EncryptRequest) (int, string, error) {
 	if request == nil {
 		request = NewEncryptRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kkms", APIVersion, "Encrypt")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) DecryptWithContext(ctx context.Context, request *DecryptRequest
 	if request == nil {
 		request = NewDecryptRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kkms", APIVersion, "Decrypt")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) DecryptWithContext(ctx context.Context, request *DecryptRequest
 func (c *Client) DecryptWithContextV2(ctx context.Context, request *DecryptRequest) (int, string, error) {
 	if request == nil {
 		request = NewDecryptRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kkms", APIVersion, "Decrypt")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) GenerateDataKeyWithContext(ctx context.Context, request *Genera
 	if request == nil {
 		request = NewGenerateDataKeyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kkms", APIVersion, "GenerateDataKey")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) GenerateDataKeyWithContext(ctx context.Context, request *Genera
 func (c *Client) GenerateDataKeyWithContextV2(ctx context.Context, request *GenerateDataKeyRequest) (int, string, error) {
 	if request == nil {
 		request = NewGenerateDataKeyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kkms", APIVersion, "GenerateDataKey")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

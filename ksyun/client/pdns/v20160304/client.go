@@ -66,6 +66,11 @@ func (c *Client) CreatePrivateDnsWithContext(ctx context.Context, request *Creat
 	if request == nil {
 		request = NewCreatePrivateDnsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "CreatePrivateDns")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreatePrivateDnsWithContext(ctx context.Context, request *Creat
 func (c *Client) CreatePrivateDnsWithContextV2(ctx context.Context, request *CreatePrivateDnsRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreatePrivateDnsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "CreatePrivateDns")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DeletePrivateDnsWithContext(ctx context.Context, request *Delet
 	if request == nil {
 		request = NewDeletePrivateDnsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DeletePrivateDns")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DeletePrivateDnsWithContext(ctx context.Context, request *Delet
 func (c *Client) DeletePrivateDnsWithContextV2(ctx context.Context, request *DeletePrivateDnsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeletePrivateDnsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DeletePrivateDns")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) DescribePrivateDnsWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribePrivateDnsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DescribePrivateDns")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) DescribePrivateDnsWithContext(ctx context.Context, request *Des
 func (c *Client) DescribePrivateDnsWithContextV2(ctx context.Context, request *DescribePrivateDnsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribePrivateDnsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DescribePrivateDns")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) AssociateVpcsWithContext(ctx context.Context, request *Associat
 	if request == nil {
 		request = NewAssociateVpcsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "AssociateVpcs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) AssociateVpcsWithContext(ctx context.Context, request *Associat
 func (c *Client) AssociateVpcsWithContextV2(ctx context.Context, request *AssociateVpcsRequest) (int, string, error) {
 	if request == nil {
 		request = NewAssociateVpcsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "AssociateVpcs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) DisassociateVpcsWithContext(ctx context.Context, request *Disas
 	if request == nil {
 		request = NewDisassociateVpcsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DisassociateVpcs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) DisassociateVpcsWithContext(ctx context.Context, request *Disas
 func (c *Client) DisassociateVpcsWithContextV2(ctx context.Context, request *DisassociateVpcsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDisassociateVpcsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DisassociateVpcs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) CreateZoneWithContext(ctx context.Context, request *CreateZoneR
 	if request == nil {
 		request = NewCreateZoneRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "CreateZone")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) CreateZoneWithContext(ctx context.Context, request *CreateZoneR
 func (c *Client) CreateZoneWithContextV2(ctx context.Context, request *CreateZoneRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateZoneRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "CreateZone")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) DeleteZoneWithContext(ctx context.Context, request *DeleteZoneR
 	if request == nil {
 		request = NewDeleteZoneRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DeleteZone")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) DeleteZoneWithContext(ctx context.Context, request *DeleteZoneR
 func (c *Client) DeleteZoneWithContextV2(ctx context.Context, request *DeleteZoneRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteZoneRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DeleteZone")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) ModifyZoneWithContext(ctx context.Context, request *ModifyZoneR
 	if request == nil {
 		request = NewModifyZoneRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "ModifyZone")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) ModifyZoneWithContext(ctx context.Context, request *ModifyZoneR
 func (c *Client) ModifyZoneWithContextV2(ctx context.Context, request *ModifyZoneRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyZoneRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "ModifyZone")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) DescribeZoneWithContext(ctx context.Context, request *DescribeZ
 	if request == nil {
 		request = NewDescribeZoneRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DescribeZone")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) DescribeZoneWithContext(ctx context.Context, request *DescribeZ
 func (c *Client) DescribeZoneWithContextV2(ctx context.Context, request *DescribeZoneRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeZoneRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DescribeZone")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) CreateRecordWithContext(ctx context.Context, request *CreateRec
 	if request == nil {
 		request = NewCreateRecordRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "CreateRecord")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) CreateRecordWithContext(ctx context.Context, request *CreateRec
 func (c *Client) CreateRecordWithContextV2(ctx context.Context, request *CreateRecordRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateRecordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "CreateRecord")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) DeleteRecordWithContext(ctx context.Context, request *DeleteRec
 	if request == nil {
 		request = NewDeleteRecordRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DeleteRecord")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) DeleteRecordWithContext(ctx context.Context, request *DeleteRec
 func (c *Client) DeleteRecordWithContextV2(ctx context.Context, request *DeleteRecordRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteRecordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DeleteRecord")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) DescribeRecordWithContext(ctx context.Context, request *Describ
 	if request == nil {
 		request = NewDescribeRecordRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DescribeRecord")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -839,6 +954,11 @@ func (c *Client) DescribeRecordWithContext(ctx context.Context, request *Describ
 func (c *Client) DescribeRecordWithContextV2(ctx context.Context, request *DescribeRecordRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeRecordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DescribeRecord")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -894,6 +1014,11 @@ func (c *Client) CreateRecordDataWithContext(ctx context.Context, request *Creat
 	if request == nil {
 		request = NewCreateRecordDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "CreateRecordData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) CreateRecordDataWithContext(ctx context.Context, request *Creat
 func (c *Client) CreateRecordDataWithContextV2(ctx context.Context, request *CreateRecordDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateRecordDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "CreateRecordData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -963,6 +1093,11 @@ func (c *Client) DeleteRecordDataWithContext(ctx context.Context, request *Delet
 	if request == nil {
 		request = NewDeleteRecordDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DeleteRecordData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +1112,11 @@ func (c *Client) DeleteRecordDataWithContext(ctx context.Context, request *Delet
 func (c *Client) DeleteRecordDataWithContextV2(ctx context.Context, request *DeleteRecordDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteRecordDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DeleteRecordData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +1172,11 @@ func (c *Client) CreatePdnsZoneWithContext(ctx context.Context, request *CreateP
 	if request == nil {
 		request = NewCreatePdnsZoneRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "CreatePdnsZone")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1046,6 +1191,11 @@ func (c *Client) CreatePdnsZoneWithContext(ctx context.Context, request *CreateP
 func (c *Client) CreatePdnsZoneWithContextV2(ctx context.Context, request *CreatePdnsZoneRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreatePdnsZoneRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "CreatePdnsZone")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1101,6 +1251,11 @@ func (c *Client) ModifyPdnsZoneWithContext(ctx context.Context, request *ModifyP
 	if request == nil {
 		request = NewModifyPdnsZoneRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "ModifyPdnsZone")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1115,6 +1270,11 @@ func (c *Client) ModifyPdnsZoneWithContext(ctx context.Context, request *ModifyP
 func (c *Client) ModifyPdnsZoneWithContextV2(ctx context.Context, request *ModifyPdnsZoneRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyPdnsZoneRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "ModifyPdnsZone")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1170,6 +1330,11 @@ func (c *Client) DeletePdnsZoneWithContext(ctx context.Context, request *DeleteP
 	if request == nil {
 		request = NewDeletePdnsZoneRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DeletePdnsZone")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1184,6 +1349,11 @@ func (c *Client) DeletePdnsZoneWithContext(ctx context.Context, request *DeleteP
 func (c *Client) DeletePdnsZoneWithContextV2(ctx context.Context, request *DeletePdnsZoneRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeletePdnsZoneRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DeletePdnsZone")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1239,6 +1409,11 @@ func (c *Client) DescribePdnsZonesWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribePdnsZonesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DescribePdnsZones")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1253,6 +1428,11 @@ func (c *Client) DescribePdnsZonesWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribePdnsZonesWithContextV2(ctx context.Context, request *DescribePdnsZonesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribePdnsZonesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DescribePdnsZones")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1308,6 +1488,11 @@ func (c *Client) BindZoneVpcWithContext(ctx context.Context, request *BindZoneVp
 	if request == nil {
 		request = NewBindZoneVpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "BindZoneVpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1322,6 +1507,11 @@ func (c *Client) BindZoneVpcWithContext(ctx context.Context, request *BindZoneVp
 func (c *Client) BindZoneVpcWithContextV2(ctx context.Context, request *BindZoneVpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewBindZoneVpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "BindZoneVpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1377,6 +1567,11 @@ func (c *Client) UnbindZoneVpcWithContext(ctx context.Context, request *UnbindZo
 	if request == nil {
 		request = NewUnbindZoneVpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "UnbindZoneVpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1391,6 +1586,11 @@ func (c *Client) UnbindZoneVpcWithContext(ctx context.Context, request *UnbindZo
 func (c *Client) UnbindZoneVpcWithContextV2(ctx context.Context, request *UnbindZoneVpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewUnbindZoneVpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "UnbindZoneVpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1446,6 +1646,11 @@ func (c *Client) CreateZoneRecordWithContext(ctx context.Context, request *Creat
 	if request == nil {
 		request = NewCreateZoneRecordRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "CreateZoneRecord")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1460,6 +1665,11 @@ func (c *Client) CreateZoneRecordWithContext(ctx context.Context, request *Creat
 func (c *Client) CreateZoneRecordWithContextV2(ctx context.Context, request *CreateZoneRecordRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateZoneRecordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "CreateZoneRecord")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1515,6 +1725,11 @@ func (c *Client) DeleteZoneRecordWithContext(ctx context.Context, request *Delet
 	if request == nil {
 		request = NewDeleteZoneRecordRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DeleteZoneRecord")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1529,6 +1744,11 @@ func (c *Client) DeleteZoneRecordWithContext(ctx context.Context, request *Delet
 func (c *Client) DeleteZoneRecordWithContextV2(ctx context.Context, request *DeleteZoneRecordRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteZoneRecordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DeleteZoneRecord")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1584,6 +1804,11 @@ func (c *Client) ModifyZoneRecordWithContext(ctx context.Context, request *Modif
 	if request == nil {
 		request = NewModifyZoneRecordRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "ModifyZoneRecord")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1598,6 +1823,11 @@ func (c *Client) ModifyZoneRecordWithContext(ctx context.Context, request *Modif
 func (c *Client) ModifyZoneRecordWithContextV2(ctx context.Context, request *ModifyZoneRecordRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyZoneRecordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "ModifyZoneRecord")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1653,6 +1883,11 @@ func (c *Client) DescribeZoneRecordWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeZoneRecordRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DescribeZoneRecord")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1667,6 +1902,11 @@ func (c *Client) DescribeZoneRecordWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeZoneRecordWithContextV2(ctx context.Context, request *DescribeZoneRecordRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeZoneRecordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DescribeZoneRecord")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1722,6 +1962,11 @@ func (c *Client) UnbindFdZoneVpcWithContext(ctx context.Context, request *Unbind
 	if request == nil {
 		request = NewUnbindFdZoneVpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "UnbindFdZoneVpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1736,6 +1981,11 @@ func (c *Client) UnbindFdZoneVpcWithContext(ctx context.Context, request *Unbind
 func (c *Client) UnbindFdZoneVpcWithContextV2(ctx context.Context, request *UnbindFdZoneVpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewUnbindFdZoneVpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "UnbindFdZoneVpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1791,6 +2041,11 @@ func (c *Client) BindFdZoneVpcWithContext(ctx context.Context, request *BindFdZo
 	if request == nil {
 		request = NewBindFdZoneVpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "BindFdZoneVpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1805,6 +2060,11 @@ func (c *Client) BindFdZoneVpcWithContext(ctx context.Context, request *BindFdZo
 func (c *Client) BindFdZoneVpcWithContextV2(ctx context.Context, request *BindFdZoneVpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewBindFdZoneVpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "BindFdZoneVpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1860,6 +2120,11 @@ func (c *Client) DescribePdnsFdZoneWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribePdnsFdZoneRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DescribePdnsFdZone")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1874,6 +2139,11 @@ func (c *Client) DescribePdnsFdZoneWithContext(ctx context.Context, request *Des
 func (c *Client) DescribePdnsFdZoneWithContextV2(ctx context.Context, request *DescribePdnsFdZoneRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribePdnsFdZoneRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DescribePdnsFdZone")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1929,6 +2199,11 @@ func (c *Client) DeletePdnsFdZoneWithContext(ctx context.Context, request *Delet
 	if request == nil {
 		request = NewDeletePdnsFdZoneRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DeletePdnsFdZone")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1943,6 +2218,11 @@ func (c *Client) DeletePdnsFdZoneWithContext(ctx context.Context, request *Delet
 func (c *Client) DeletePdnsFdZoneWithContextV2(ctx context.Context, request *DeletePdnsFdZoneRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeletePdnsFdZoneRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DeletePdnsFdZone")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1998,6 +2278,11 @@ func (c *Client) ModifyPdnsFdZoneWithContext(ctx context.Context, request *Modif
 	if request == nil {
 		request = NewModifyPdnsFdZoneRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "ModifyPdnsFdZone")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2012,6 +2297,11 @@ func (c *Client) ModifyPdnsFdZoneWithContext(ctx context.Context, request *Modif
 func (c *Client) ModifyPdnsFdZoneWithContextV2(ctx context.Context, request *ModifyPdnsFdZoneRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyPdnsFdZoneRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "ModifyPdnsFdZone")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2067,6 +2357,11 @@ func (c *Client) CreatePdnsFdZoneWithContext(ctx context.Context, request *Creat
 	if request == nil {
 		request = NewCreatePdnsFdZoneRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "CreatePdnsFdZone")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2081,6 +2376,11 @@ func (c *Client) CreatePdnsFdZoneWithContext(ctx context.Context, request *Creat
 func (c *Client) CreatePdnsFdZoneWithContextV2(ctx context.Context, request *CreatePdnsFdZoneRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreatePdnsFdZoneRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "CreatePdnsFdZone")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2136,6 +2436,11 @@ func (c *Client) QueryEndPointRegionAZWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewQueryEndPointRegionAZRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "QueryEndPointRegionAZ")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2150,6 +2455,11 @@ func (c *Client) QueryEndPointRegionAZWithContext(ctx context.Context, request *
 func (c *Client) QueryEndPointRegionAZWithContextV2(ctx context.Context, request *QueryEndPointRegionAZRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryEndPointRegionAZRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "QueryEndPointRegionAZ")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2205,6 +2515,11 @@ func (c *Client) DescribeEndPointsWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeEndPointsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DescribeEndPoints")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2219,6 +2534,11 @@ func (c *Client) DescribeEndPointsWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeEndPointsWithContextV2(ctx context.Context, request *DescribeEndPointsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeEndPointsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DescribeEndPoints")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2274,6 +2594,11 @@ func (c *Client) DeleteEndPointWithContext(ctx context.Context, request *DeleteE
 	if request == nil {
 		request = NewDeleteEndPointRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DeleteEndPoint")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2288,6 +2613,11 @@ func (c *Client) DeleteEndPointWithContext(ctx context.Context, request *DeleteE
 func (c *Client) DeleteEndPointWithContextV2(ctx context.Context, request *DeleteEndPointRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteEndPointRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "DeleteEndPoint")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2343,6 +2673,11 @@ func (c *Client) ModifyEndPointWithContext(ctx context.Context, request *ModifyE
 	if request == nil {
 		request = NewModifyEndPointRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "ModifyEndPoint")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2357,6 +2692,11 @@ func (c *Client) ModifyEndPointWithContext(ctx context.Context, request *ModifyE
 func (c *Client) ModifyEndPointWithContextV2(ctx context.Context, request *ModifyEndPointRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyEndPointRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "ModifyEndPoint")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2412,6 +2752,11 @@ func (c *Client) CreateEndPointWithContext(ctx context.Context, request *CreateE
 	if request == nil {
 		request = NewCreateEndPointRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "CreateEndPoint")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2426,6 +2771,11 @@ func (c *Client) CreateEndPointWithContext(ctx context.Context, request *CreateE
 func (c *Client) CreateEndPointWithContextV2(ctx context.Context, request *CreateEndPointRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateEndPointRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "CreateEndPoint")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

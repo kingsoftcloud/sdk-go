@@ -66,6 +66,11 @@ func (c *Client) CreateMongoDBInstanceWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewCreateMongoDBInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "CreateMongoDBInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateMongoDBInstanceWithContext(ctx context.Context, request *
 func (c *Client) CreateMongoDBInstanceWithContextV2(ctx context.Context, request *CreateMongoDBInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateMongoDBInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "CreateMongoDBInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DeleteMongoDBInstanceWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDeleteMongoDBInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DeleteMongoDBInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) DeleteMongoDBInstanceWithContext(ctx context.Context, request *
 func (c *Client) DeleteMongoDBInstanceWithContextV2(ctx context.Context, request *DeleteMongoDBInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteMongoDBInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DeleteMongoDBInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) DescribeMongoDBInstanceWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewDescribeMongoDBInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeMongoDBInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) DescribeMongoDBInstanceWithContext(ctx context.Context, request
 func (c *Client) DescribeMongoDBInstanceWithContextV2(ctx context.Context, request *DescribeMongoDBInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeMongoDBInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeMongoDBInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) DescribeMongoDBInstancesWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeMongoDBInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeMongoDBInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -287,6 +322,11 @@ func (c *Client) DescribeMongoDBInstancesWithContext(ctx context.Context, reques
 func (c *Client) DescribeMongoDBInstancesWithContextV2(ctx context.Context, request *DescribeMongoDBInstancesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeMongoDBInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeMongoDBInstances")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -342,6 +382,11 @@ func (c *Client) DescribeMongoDBInstanceNodeWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewDescribeMongoDBInstanceNodeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeMongoDBInstanceNode")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -356,6 +401,11 @@ func (c *Client) DescribeMongoDBInstanceNodeWithContext(ctx context.Context, req
 func (c *Client) DescribeMongoDBInstanceNodeWithContextV2(ctx context.Context, request *DescribeMongoDBInstanceNodeRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeMongoDBInstanceNodeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeMongoDBInstanceNode")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -411,6 +461,11 @@ func (c *Client) RenameMongoDBInstanceWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewRenameMongoDBInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "RenameMongoDBInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -425,6 +480,11 @@ func (c *Client) RenameMongoDBInstanceWithContext(ctx context.Context, request *
 func (c *Client) RenameMongoDBInstanceWithContextV2(ctx context.Context, request *RenameMongoDBInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewRenameMongoDBInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "RenameMongoDBInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -480,6 +540,11 @@ func (c *Client) ResetPasswordMongoDBInstanceWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewResetPasswordMongoDBInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "ResetPasswordMongoDBInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -494,6 +559,11 @@ func (c *Client) ResetPasswordMongoDBInstanceWithContext(ctx context.Context, re
 func (c *Client) ResetPasswordMongoDBInstanceWithContextV2(ctx context.Context, request *ResetPasswordMongoDBInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewResetPasswordMongoDBInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "ResetPasswordMongoDBInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -549,6 +619,11 @@ func (c *Client) RestartMongoDBInstanceWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewRestartMongoDBInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "RestartMongoDBInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -563,6 +638,11 @@ func (c *Client) RestartMongoDBInstanceWithContext(ctx context.Context, request 
 func (c *Client) RestartMongoDBInstanceWithContextV2(ctx context.Context, request *RestartMongoDBInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewRestartMongoDBInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "RestartMongoDBInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -618,6 +698,11 @@ func (c *Client) CreateMongoDBSnapshotWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewCreateMongoDBSnapshotRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "CreateMongoDBSnapshot")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) CreateMongoDBSnapshotWithContext(ctx context.Context, request *
 func (c *Client) CreateMongoDBSnapshotWithContextV2(ctx context.Context, request *CreateMongoDBSnapshotRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateMongoDBSnapshotRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "CreateMongoDBSnapshot")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) SetMongoDBTimingSnapshotWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewSetMongoDBTimingSnapshotRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "SetMongoDBTimingSnapshot")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -701,6 +796,11 @@ func (c *Client) SetMongoDBTimingSnapshotWithContext(ctx context.Context, reques
 func (c *Client) SetMongoDBTimingSnapshotWithContextV2(ctx context.Context, request *SetMongoDBTimingSnapshotRequest) (int, string, error) {
 	if request == nil {
 		request = NewSetMongoDBTimingSnapshotRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "SetMongoDBTimingSnapshot")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -756,6 +856,11 @@ func (c *Client) DescribeMongoDBSnapshotWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewDescribeMongoDBSnapshotRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeMongoDBSnapshot")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) DescribeMongoDBSnapshotWithContext(ctx context.Context, request
 func (c *Client) DescribeMongoDBSnapshotWithContextV2(ctx context.Context, request *DescribeMongoDBSnapshotRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeMongoDBSnapshotRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeMongoDBSnapshot")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) DeleteMongoDBSnapshotWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDeleteMongoDBSnapshotRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DeleteMongoDBSnapshot")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -839,6 +954,11 @@ func (c *Client) DeleteMongoDBSnapshotWithContext(ctx context.Context, request *
 func (c *Client) DeleteMongoDBSnapshotWithContextV2(ctx context.Context, request *DeleteMongoDBSnapshotRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteMongoDBSnapshotRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DeleteMongoDBSnapshot")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -894,6 +1014,11 @@ func (c *Client) RenameMongoDBSnapshotWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewRenameMongoDBSnapshotRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "RenameMongoDBSnapshot")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -908,6 +1033,11 @@ func (c *Client) RenameMongoDBSnapshotWithContext(ctx context.Context, request *
 func (c *Client) RenameMongoDBSnapshotWithContextV2(ctx context.Context, request *RenameMongoDBSnapshotRequest) (int, string, error) {
 	if request == nil {
 		request = NewRenameMongoDBSnapshotRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "RenameMongoDBSnapshot")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -963,6 +1093,11 @@ func (c *Client) AddSecurityGroupRuleWithContext(ctx context.Context, request *A
 	if request == nil {
 		request = NewAddSecurityGroupRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "AddSecurityGroupRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +1112,11 @@ func (c *Client) AddSecurityGroupRuleWithContext(ctx context.Context, request *A
 func (c *Client) AddSecurityGroupRuleWithContextV2(ctx context.Context, request *AddSecurityGroupRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewAddSecurityGroupRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "AddSecurityGroupRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +1172,11 @@ func (c *Client) DeleteSecurityGroupRulesWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDeleteSecurityGroupRulesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DeleteSecurityGroupRules")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1046,6 +1191,11 @@ func (c *Client) DeleteSecurityGroupRulesWithContext(ctx context.Context, reques
 func (c *Client) DeleteSecurityGroupRulesWithContextV2(ctx context.Context, request *DeleteSecurityGroupRulesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSecurityGroupRulesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DeleteSecurityGroupRules")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1101,6 +1251,11 @@ func (c *Client) ListSecurityGroupRulesWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewListSecurityGroupRulesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "ListSecurityGroupRules")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1115,6 +1270,11 @@ func (c *Client) ListSecurityGroupRulesWithContext(ctx context.Context, request 
 func (c *Client) ListSecurityGroupRulesWithContextV2(ctx context.Context, request *ListSecurityGroupRulesRequest) (int, string, error) {
 	if request == nil {
 		request = NewListSecurityGroupRulesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "ListSecurityGroupRules")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1170,6 +1330,11 @@ func (c *Client) UpdateMongoDBInstanceWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewUpdateMongoDBInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "UpdateMongoDBInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1184,6 +1349,11 @@ func (c *Client) UpdateMongoDBInstanceWithContext(ctx context.Context, request *
 func (c *Client) UpdateMongoDBInstanceWithContextV2(ctx context.Context, request *UpdateMongoDBInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateMongoDBInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "UpdateMongoDBInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1239,6 +1409,11 @@ func (c *Client) AddSecondaryInstanceWithContext(ctx context.Context, request *A
 	if request == nil {
 		request = NewAddSecondaryInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "AddSecondaryInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1253,6 +1428,11 @@ func (c *Client) AddSecondaryInstanceWithContext(ctx context.Context, request *A
 func (c *Client) AddSecondaryInstanceWithContextV2(ctx context.Context, request *AddSecondaryInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewAddSecondaryInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "AddSecondaryInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1308,6 +1488,11 @@ func (c *Client) DescribeMongoDBShardNodeWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeMongoDBShardNodeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeMongoDBShardNode")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1322,6 +1507,11 @@ func (c *Client) DescribeMongoDBShardNodeWithContext(ctx context.Context, reques
 func (c *Client) DescribeMongoDBShardNodeWithContextV2(ctx context.Context, request *DescribeMongoDBShardNodeRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeMongoDBShardNodeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeMongoDBShardNode")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1377,6 +1567,11 @@ func (c *Client) DescribeValidRegionWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeValidRegionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeValidRegion")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1391,6 +1586,11 @@ func (c *Client) DescribeValidRegionWithContext(ctx context.Context, request *De
 func (c *Client) DescribeValidRegionWithContextV2(ctx context.Context, request *DescribeValidRegionRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeValidRegionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeValidRegion")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1446,6 +1646,11 @@ func (c *Client) AllocateEipWithContext(ctx context.Context, request *AllocateEi
 	if request == nil {
 		request = NewAllocateEipRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "AllocateEip")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1460,6 +1665,11 @@ func (c *Client) AllocateEipWithContext(ctx context.Context, request *AllocateEi
 func (c *Client) AllocateEipWithContextV2(ctx context.Context, request *AllocateEipRequest) (int, string, error) {
 	if request == nil {
 		request = NewAllocateEipRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "AllocateEip")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1515,6 +1725,11 @@ func (c *Client) DeallocateEipWithContext(ctx context.Context, request *Dealloca
 	if request == nil {
 		request = NewDeallocateEipRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DeallocateEip")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1529,6 +1744,11 @@ func (c *Client) DeallocateEipWithContext(ctx context.Context, request *Dealloca
 func (c *Client) DeallocateEipWithContextV2(ctx context.Context, request *DeallocateEipRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeallocateEipRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DeallocateEip")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1584,6 +1804,11 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
 	if request == nil {
 		request = NewDescribeRegionsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeRegions")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1598,6 +1823,11 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
 func (c *Client) DescribeRegionsWithContextV2(ctx context.Context, request *DescribeRegionsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeRegionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeRegions")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1653,6 +1883,11 @@ func (c *Client) CreateMongoDBShardInstanceWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewCreateMongoDBShardInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "CreateMongoDBShardInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1667,6 +1902,11 @@ func (c *Client) CreateMongoDBShardInstanceWithContext(ctx context.Context, requ
 func (c *Client) CreateMongoDBShardInstanceWithContextV2(ctx context.Context, request *CreateMongoDBShardInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateMongoDBShardInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "CreateMongoDBShardInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1722,6 +1962,11 @@ func (c *Client) DownloadSnapshotWithContext(ctx context.Context, request *Downl
 	if request == nil {
 		request = NewDownloadSnapshotRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DownloadSnapshot")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1736,6 +1981,11 @@ func (c *Client) DownloadSnapshotWithContext(ctx context.Context, request *Downl
 func (c *Client) DownloadSnapshotWithContextV2(ctx context.Context, request *DownloadSnapshotRequest) (int, string, error) {
 	if request == nil {
 		request = NewDownloadSnapshotRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DownloadSnapshot")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1791,6 +2041,11 @@ func (c *Client) CloneInstanceWithContext(ctx context.Context, request *CloneIns
 	if request == nil {
 		request = NewCloneInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "CloneInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1805,6 +2060,11 @@ func (c *Client) CloneInstanceWithContext(ctx context.Context, request *CloneIns
 func (c *Client) CloneInstanceWithContextV2(ctx context.Context, request *CloneInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewCloneInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "CloneInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1860,6 +2120,11 @@ func (c *Client) DescribeShardNodeWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeShardNodeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeShardNode")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1874,6 +2139,11 @@ func (c *Client) DescribeShardNodeWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeShardNodeWithContextV2(ctx context.Context, request *DescribeShardNodeRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeShardNodeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeShardNode")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1929,6 +2199,11 @@ func (c *Client) DescribeInstanceStatisticWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeInstanceStatisticRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeInstanceStatistic")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1943,6 +2218,11 @@ func (c *Client) DescribeInstanceStatisticWithContext(ctx context.Context, reque
 func (c *Client) DescribeInstanceStatisticWithContextV2(ctx context.Context, request *DescribeInstanceStatisticRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstanceStatisticRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeInstanceStatistic")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1998,6 +2278,11 @@ func (c *Client) AddClusterNodeWithContext(ctx context.Context, request *AddClus
 	if request == nil {
 		request = NewAddClusterNodeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "AddClusterNode")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2012,6 +2297,11 @@ func (c *Client) AddClusterNodeWithContext(ctx context.Context, request *AddClus
 func (c *Client) AddClusterNodeWithContextV2(ctx context.Context, request *AddClusterNodeRequest) (int, string, error) {
 	if request == nil {
 		request = NewAddClusterNodeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "AddClusterNode")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2067,6 +2357,11 @@ func (c *Client) DeleteClusterNodeWithContext(ctx context.Context, request *Dele
 	if request == nil {
 		request = NewDeleteClusterNodeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DeleteClusterNode")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2081,6 +2376,11 @@ func (c *Client) DeleteClusterNodeWithContext(ctx context.Context, request *Dele
 func (c *Client) DeleteClusterNodeWithContextV2(ctx context.Context, request *DeleteClusterNodeRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteClusterNodeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DeleteClusterNode")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2136,6 +2436,11 @@ func (c *Client) DescribeSlowLogDetailWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeSlowLogDetailRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSlowLogDetail")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2150,6 +2455,11 @@ func (c *Client) DescribeSlowLogDetailWithContext(ctx context.Context, request *
 func (c *Client) DescribeSlowLogDetailWithContextV2(ctx context.Context, request *DescribeSlowLogDetailRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSlowLogDetailRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSlowLogDetail")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2205,6 +2515,11 @@ func (c *Client) DescribeSlowLogStatisticsWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeSlowLogStatisticsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSlowLogStatistics")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2219,6 +2534,11 @@ func (c *Client) DescribeSlowLogStatisticsWithContext(ctx context.Context, reque
 func (c *Client) DescribeSlowLogStatisticsWithContextV2(ctx context.Context, request *DescribeSlowLogStatisticsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSlowLogStatisticsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSlowLogStatistics")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2274,6 +2594,11 @@ func (c *Client) DescribeSlowLogDatabaseWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewDescribeSlowLogDatabaseRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSlowLogDatabase")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2288,6 +2613,11 @@ func (c *Client) DescribeSlowLogDatabaseWithContext(ctx context.Context, request
 func (c *Client) DescribeSlowLogDatabaseWithContextV2(ctx context.Context, request *DescribeSlowLogDatabaseRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSlowLogDatabaseRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSlowLogDatabase")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2343,6 +2673,11 @@ func (c *Client) DescribeSlowLogLineChartWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeSlowLogLineChartRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSlowLogLineChart")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2357,6 +2692,11 @@ func (c *Client) DescribeSlowLogLineChartWithContext(ctx context.Context, reques
 func (c *Client) DescribeSlowLogLineChartWithContextV2(ctx context.Context, request *DescribeSlowLogLineChartRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSlowLogLineChartRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSlowLogLineChart")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2412,6 +2752,11 @@ func (c *Client) UpdateMongoDBInstanceClusterWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewUpdateMongoDBInstanceClusterRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "UpdateMongoDBInstanceCluster")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2426,6 +2771,11 @@ func (c *Client) UpdateMongoDBInstanceClusterWithContext(ctx context.Context, re
 func (c *Client) UpdateMongoDBInstanceClusterWithContextV2(ctx context.Context, request *UpdateMongoDBInstanceClusterRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateMongoDBInstanceClusterRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "UpdateMongoDBInstanceCluster")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2481,6 +2831,11 @@ func (c *Client) DescribeClusterForRestoreWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeClusterForRestoreRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeClusterForRestore")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2495,6 +2850,11 @@ func (c *Client) DescribeClusterForRestoreWithContext(ctx context.Context, reque
 func (c *Client) DescribeClusterForRestoreWithContextV2(ctx context.Context, request *DescribeClusterForRestoreRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeClusterForRestoreRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeClusterForRestore")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2550,6 +2910,11 @@ func (c *Client) DescribeDefaultParamsWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeDefaultParamsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDefaultParams")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2564,6 +2929,11 @@ func (c *Client) DescribeDefaultParamsWithContext(ctx context.Context, request *
 func (c *Client) DescribeDefaultParamsWithContextV2(ctx context.Context, request *DescribeDefaultParamsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDefaultParamsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDefaultParams")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2619,6 +2989,11 @@ func (c *Client) CreateParamGroupWithContext(ctx context.Context, request *Creat
 	if request == nil {
 		request = NewCreateParamGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "CreateParamGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2633,6 +3008,11 @@ func (c *Client) CreateParamGroupWithContext(ctx context.Context, request *Creat
 func (c *Client) CreateParamGroupWithContextV2(ctx context.Context, request *CreateParamGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateParamGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "CreateParamGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2688,6 +3068,11 @@ func (c *Client) DescribeParamGroupListWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeParamGroupListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeParamGroupList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2702,6 +3087,11 @@ func (c *Client) DescribeParamGroupListWithContext(ctx context.Context, request 
 func (c *Client) DescribeParamGroupListWithContextV2(ctx context.Context, request *DescribeParamGroupListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeParamGroupListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeParamGroupList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2757,6 +3147,11 @@ func (c *Client) DescribeParamGroupInfoWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeParamGroupInfoRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeParamGroupInfo")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2771,6 +3166,11 @@ func (c *Client) DescribeParamGroupInfoWithContext(ctx context.Context, request 
 func (c *Client) DescribeParamGroupInfoWithContextV2(ctx context.Context, request *DescribeParamGroupInfoRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeParamGroupInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeParamGroupInfo")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2826,6 +3226,11 @@ func (c *Client) DescribeModifyHistoryWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeModifyHistoryRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeModifyHistory")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2840,6 +3245,11 @@ func (c *Client) DescribeModifyHistoryWithContext(ctx context.Context, request *
 func (c *Client) DescribeModifyHistoryWithContextV2(ctx context.Context, request *DescribeModifyHistoryRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeModifyHistoryRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeModifyHistory")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2895,6 +3305,11 @@ func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeInstanceParamsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeInstanceParams")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2909,6 +3324,11 @@ func (c *Client) DescribeInstanceParamsWithContext(ctx context.Context, request 
 func (c *Client) DescribeInstanceParamsWithContextV2(ctx context.Context, request *DescribeInstanceParamsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstanceParamsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DescribeInstanceParams")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2964,6 +3384,11 @@ func (c *Client) ModifyParamGroupWithContext(ctx context.Context, request *Modif
 	if request == nil {
 		request = NewModifyParamGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "ModifyParamGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2978,6 +3403,11 @@ func (c *Client) ModifyParamGroupWithContext(ctx context.Context, request *Modif
 func (c *Client) ModifyParamGroupWithContextV2(ctx context.Context, request *ModifyParamGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyParamGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "ModifyParamGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -3033,6 +3463,11 @@ func (c *Client) DeleteParamGroupWithContext(ctx context.Context, request *Delet
 	if request == nil {
 		request = NewDeleteParamGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DeleteParamGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -3047,6 +3482,11 @@ func (c *Client) DeleteParamGroupWithContext(ctx context.Context, request *Delet
 func (c *Client) DeleteParamGroupWithContextV2(ctx context.Context, request *DeleteParamGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteParamGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("mongodb", APIVersion, "DeleteParamGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

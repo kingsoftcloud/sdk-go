@@ -66,6 +66,11 @@ func (c *Client) SaveNotebookImageWithContext(ctx context.Context, request *Save
 	if request == nil {
 		request = NewSaveNotebookImageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "SaveNotebookImage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) SaveNotebookImageWithContext(ctx context.Context, request *Save
 func (c *Client) SaveNotebookImageWithContextV2(ctx context.Context, request *SaveNotebookImageRequest) (int, string, error) {
 	if request == nil {
 		request = NewSaveNotebookImageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "SaveNotebookImage")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) ModifyNotebookWithContext(ctx context.Context, request *ModifyN
 	if request == nil {
 		request = NewModifyNotebookRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyNotebook")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) ModifyNotebookWithContext(ctx context.Context, request *ModifyN
 func (c *Client) ModifyNotebookWithContextV2(ctx context.Context, request *ModifyNotebookRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyNotebookRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyNotebook")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) DeleteNotebookWithContext(ctx context.Context, request *DeleteN
 	if request == nil {
 		request = NewDeleteNotebookRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteNotebook")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) DeleteNotebookWithContext(ctx context.Context, request *DeleteN
 func (c *Client) DeleteNotebookWithContextV2(ctx context.Context, request *DeleteNotebookRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteNotebookRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteNotebook")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) DescribeNotebooksWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeNotebooksRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeNotebooks")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) DescribeNotebooksWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeNotebooksWithContextV2(ctx context.Context, request *DescribeNotebooksRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeNotebooksRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeNotebooks")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) CreateNotebookWithContext(ctx context.Context, request *CreateN
 	if request == nil {
 		request = NewCreateNotebookRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateNotebook")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -356,6 +401,11 @@ func (c *Client) CreateNotebookWithContext(ctx context.Context, request *CreateN
 func (c *Client) CreateNotebookWithContextV2(ctx context.Context, request *CreateNotebookRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateNotebookRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateNotebook")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -411,6 +461,11 @@ func (c *Client) StopNotebookWithContext(ctx context.Context, request *StopNoteb
 	if request == nil {
 		request = NewStopNotebookRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StopNotebook")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -425,6 +480,11 @@ func (c *Client) StopNotebookWithContext(ctx context.Context, request *StopNoteb
 func (c *Client) StopNotebookWithContextV2(ctx context.Context, request *StopNotebookRequest) (int, string, error) {
 	if request == nil {
 		request = NewStopNotebookRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StopNotebook")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -480,6 +540,11 @@ func (c *Client) StartNotebookWithContext(ctx context.Context, request *StartNot
 	if request == nil {
 		request = NewStartNotebookRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StartNotebook")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) StartNotebookWithContext(ctx context.Context, request *StartNot
 func (c *Client) StartNotebookWithContextV2(ctx context.Context, request *StartNotebookRequest) (int, string, error) {
 	if request == nil {
 		request = NewStartNotebookRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StartNotebook")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) GetWebIdeUrlWithContext(ctx context.Context, request *GetWebIde
 	if request == nil {
 		request = NewGetWebIdeUrlRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetWebIdeUrl")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) GetWebIdeUrlWithContext(ctx context.Context, request *GetWebIde
 func (c *Client) GetWebIdeUrlWithContextV2(ctx context.Context, request *GetWebIdeUrlRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetWebIdeUrlRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetWebIdeUrl")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) DescribeNotebookEventsWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeNotebookEventsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeNotebookEvents")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) DescribeNotebookEventsWithContext(ctx context.Context, request 
 func (c *Client) DescribeNotebookEventsWithContextV2(ctx context.Context, request *DescribeNotebookEventsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeNotebookEventsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeNotebookEvents")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) DescribeNotebookLogWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeNotebookLogRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeNotebookLog")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) DescribeNotebookLogWithContext(ctx context.Context, request *De
 func (c *Client) DescribeNotebookLogWithContextV2(ctx context.Context, request *DescribeNotebookLogRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeNotebookLogRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeNotebookLog")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) StopNotebookSavingImageWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewStopNotebookSavingImageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StopNotebookSavingImage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -771,10 +876,647 @@ func (c *Client) StopNotebookSavingImageWithContextV2(ctx context.Context, reque
 	if request == nil {
 		request = NewStopNotebookSavingImageRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StopNotebookSavingImage")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewStopNotebookSavingImageResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewEnableApikeyStatusRequest() (request *EnableApikeyStatusRequest) {
+	request = &EnableApikeyStatusRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "EnableApikeyStatus")
+	return
+}
+
+func NewEnableApikeyStatusResponse() (response *EnableApikeyStatusResponse) {
+	response = &EnableApikeyStatusResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) EnableApikeyStatus(request *EnableApikeyStatusRequest) string {
+	return c.EnableApikeyStatusWithContext(context.Background(), request)
+}
+
+func (c *Client) EnableApikeyStatusSend(request *EnableApikeyStatusRequest) (*EnableApikeyStatusResponse, error) {
+	statusCode, msg, err := c.EnableApikeyStatusWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct EnableApikeyStatusResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) EnableApikeyStatusWithContext(ctx context.Context, request *EnableApikeyStatusRequest) string {
+	if request == nil {
+		request = NewEnableApikeyStatusRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "EnableApikeyStatus")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewEnableApikeyStatusResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) EnableApikeyStatusWithContextV2(ctx context.Context, request *EnableApikeyStatusRequest) (int, string, error) {
+	if request == nil {
+		request = NewEnableApikeyStatusRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "EnableApikeyStatus")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewEnableApikeyStatusResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyApikeyRequest() (request *ModifyApikeyRequest) {
+	request = &ModifyApikeyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ModifyApikey")
+	return
+}
+
+func NewModifyApikeyResponse() (response *ModifyApikeyResponse) {
+	response = &ModifyApikeyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyApikey(request *ModifyApikeyRequest) string {
+	return c.ModifyApikeyWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyApikeySend(request *ModifyApikeyRequest) (*ModifyApikeyResponse, error) {
+	statusCode, msg, err := c.ModifyApikeyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ModifyApikeyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyApikeyWithContext(ctx context.Context, request *ModifyApikeyRequest) string {
+	if request == nil {
+		request = NewModifyApikeyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyApikey")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyApikeyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyApikeyWithContextV2(ctx context.Context, request *ModifyApikeyRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyApikeyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyApikey")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyApikeyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewActivateApiServiceRequest() (request *ActivateApiServiceRequest) {
+	request = &ActivateApiServiceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ActivateApiService")
+	return
+}
+
+func NewActivateApiServiceResponse() (response *ActivateApiServiceResponse) {
+	response = &ActivateApiServiceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ActivateApiService(request *ActivateApiServiceRequest) string {
+	return c.ActivateApiServiceWithContext(context.Background(), request)
+}
+
+func (c *Client) ActivateApiServiceSend(request *ActivateApiServiceRequest) (*ActivateApiServiceResponse, error) {
+	statusCode, msg, err := c.ActivateApiServiceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ActivateApiServiceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ActivateApiServiceWithContext(ctx context.Context, request *ActivateApiServiceRequest) string {
+	if request == nil {
+		request = NewActivateApiServiceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ActivateApiService")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewActivateApiServiceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ActivateApiServiceWithContextV2(ctx context.Context, request *ActivateApiServiceRequest) (int, string, error) {
+	if request == nil {
+		request = NewActivateApiServiceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ActivateApiService")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewActivateApiServiceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteApikeyRequest() (request *DeleteApikeyRequest) {
+	request = &DeleteApikeyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeleteApikey")
+	return
+}
+
+func NewDeleteApikeyResponse() (response *DeleteApikeyResponse) {
+	response = &DeleteApikeyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteApikey(request *DeleteApikeyRequest) string {
+	return c.DeleteApikeyWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteApikeySend(request *DeleteApikeyRequest) (*DeleteApikeyResponse, error) {
+	statusCode, msg, err := c.DeleteApikeyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteApikeyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteApikeyWithContext(ctx context.Context, request *DeleteApikeyRequest) string {
+	if request == nil {
+		request = NewDeleteApikeyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteApikey")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteApikeyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteApikeyWithContextV2(ctx context.Context, request *DeleteApikeyRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteApikeyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteApikey")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteApikeyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeModelsRequest() (request *DescribeModelsRequest) {
+	request = &DescribeModelsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeModels")
+	return
+}
+
+func NewDescribeModelsResponse() (response *DescribeModelsResponse) {
+	response = &DescribeModelsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeModels(request *DescribeModelsRequest) string {
+	return c.DescribeModelsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeModelsSend(request *DescribeModelsRequest) (*DescribeModelsResponse, error) {
+	statusCode, msg, err := c.DescribeModelsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeModelsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeModelsWithContext(ctx context.Context, request *DescribeModelsRequest) string {
+	if request == nil {
+		request = NewDescribeModelsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeModels")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeModelsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeModelsWithContextV2(ctx context.Context, request *DescribeModelsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeModelsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeModels")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeModelsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateApikeyRequest() (request *CreateApikeyRequest) {
+	request = &CreateApikeyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateApikey")
+	return
+}
+
+func NewCreateApikeyResponse() (response *CreateApikeyResponse) {
+	response = &CreateApikeyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateApikey(request *CreateApikeyRequest) string {
+	return c.CreateApikeyWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateApikeySend(request *CreateApikeyRequest) (*CreateApikeyResponse, error) {
+	statusCode, msg, err := c.CreateApikeyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateApikeyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateApikeyWithContext(ctx context.Context, request *CreateApikeyRequest) string {
+	if request == nil {
+		request = NewCreateApikeyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateApikey")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateApikeyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateApikeyWithContextV2(ctx context.Context, request *CreateApikeyRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateApikeyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateApikey")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateApikeyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetModelDetailRequest() (request *GetModelDetailRequest) {
+	request = &GetModelDetailRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetModelDetail")
+	return
+}
+
+func NewGetModelDetailResponse() (response *GetModelDetailResponse) {
+	response = &GetModelDetailResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetModelDetail(request *GetModelDetailRequest) string {
+	return c.GetModelDetailWithContext(context.Background(), request)
+}
+
+func (c *Client) GetModelDetailSend(request *GetModelDetailRequest) (*GetModelDetailResponse, error) {
+	statusCode, msg, err := c.GetModelDetailWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetModelDetailResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetModelDetailWithContext(ctx context.Context, request *GetModelDetailRequest) string {
+	if request == nil {
+		request = NewGetModelDetailRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetModelDetail")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetModelDetailResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetModelDetailWithContextV2(ctx context.Context, request *GetModelDetailRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetModelDetailRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetModelDetail")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetModelDetailResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeApikeysRequest() (request *DescribeApikeysRequest) {
+	request = &DescribeApikeysRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeApikeys")
+	return
+}
+
+func NewDescribeApikeysResponse() (response *DescribeApikeysResponse) {
+	response = &DescribeApikeysResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeApikeys(request *DescribeApikeysRequest) string {
+	return c.DescribeApikeysWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeApikeysSend(request *DescribeApikeysRequest) (*DescribeApikeysResponse, error) {
+	statusCode, msg, err := c.DescribeApikeysWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeApikeysResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeApikeysWithContext(ctx context.Context, request *DescribeApikeysRequest) string {
+	if request == nil {
+		request = NewDescribeApikeysRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeApikeys")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeApikeysResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeApikeysWithContextV2(ctx context.Context, request *DescribeApikeysRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeApikeysRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeApikeys")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeApikeysResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
@@ -825,6 +1567,11 @@ func (c *Client) QueryTokenDataWithContext(ctx context.Context, request *QueryTo
 	if request == nil {
 		request = NewQueryTokenDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "QueryTokenData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -840,10 +1587,1121 @@ func (c *Client) QueryTokenDataWithContextV2(ctx context.Context, request *Query
 	if request == nil {
 		request = NewQueryTokenDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "QueryTokenData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewQueryTokenDataResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDisableApikeyStatusRequest() (request *DisableApikeyStatusRequest) {
+	request = &DisableApikeyStatusRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DisableApikeyStatus")
+	return
+}
+
+func NewDisableApikeyStatusResponse() (response *DisableApikeyStatusResponse) {
+	response = &DisableApikeyStatusResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DisableApikeyStatus(request *DisableApikeyStatusRequest) string {
+	return c.DisableApikeyStatusWithContext(context.Background(), request)
+}
+
+func (c *Client) DisableApikeyStatusSend(request *DisableApikeyStatusRequest) (*DisableApikeyStatusResponse, error) {
+	statusCode, msg, err := c.DisableApikeyStatusWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DisableApikeyStatusResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DisableApikeyStatusWithContext(ctx context.Context, request *DisableApikeyStatusRequest) string {
+	if request == nil {
+		request = NewDisableApikeyStatusRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DisableApikeyStatus")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDisableApikeyStatusResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DisableApikeyStatusWithContextV2(ctx context.Context, request *DisableApikeyStatusRequest) (int, string, error) {
+	if request == nil {
+		request = NewDisableApikeyStatusRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DisableApikeyStatus")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDisableApikeyStatusResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetApiServiceRequest() (request *GetApiServiceRequest) {
+	request = &GetApiServiceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetApiService")
+	return
+}
+
+func NewGetApiServiceResponse() (response *GetApiServiceResponse) {
+	response = &GetApiServiceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetApiService(request *GetApiServiceRequest) string {
+	return c.GetApiServiceWithContext(context.Background(), request)
+}
+
+func (c *Client) GetApiServiceSend(request *GetApiServiceRequest) (*GetApiServiceResponse, error) {
+	statusCode, msg, err := c.GetApiServiceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetApiServiceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetApiServiceWithContext(ctx context.Context, request *GetApiServiceRequest) string {
+	if request == nil {
+		request = NewGetApiServiceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetApiService")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetApiServiceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetApiServiceWithContextV2(ctx context.Context, request *GetApiServiceRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetApiServiceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetApiService")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetApiServiceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetBatchInferenceJobsFinalResultDownloadUrlRequest() (request *GetBatchInferenceJobsFinalResultDownloadUrlRequest) {
+	request = &GetBatchInferenceJobsFinalResultDownloadUrlRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetBatchInferenceJobsFinalResultDownloadUrl")
+	return
+}
+
+func NewGetBatchInferenceJobsFinalResultDownloadUrlResponse() (response *GetBatchInferenceJobsFinalResultDownloadUrlResponse) {
+	response = &GetBatchInferenceJobsFinalResultDownloadUrlResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetBatchInferenceJobsFinalResultDownloadUrl(request *GetBatchInferenceJobsFinalResultDownloadUrlRequest) string {
+	return c.GetBatchInferenceJobsFinalResultDownloadUrlWithContext(context.Background(), request)
+}
+
+func (c *Client) GetBatchInferenceJobsFinalResultDownloadUrlSend(request *GetBatchInferenceJobsFinalResultDownloadUrlRequest) (*GetBatchInferenceJobsFinalResultDownloadUrlResponse, error) {
+	statusCode, msg, err := c.GetBatchInferenceJobsFinalResultDownloadUrlWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetBatchInferenceJobsFinalResultDownloadUrlResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetBatchInferenceJobsFinalResultDownloadUrlWithContext(ctx context.Context, request *GetBatchInferenceJobsFinalResultDownloadUrlRequest) string {
+	if request == nil {
+		request = NewGetBatchInferenceJobsFinalResultDownloadUrlRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetBatchInferenceJobsFinalResultDownloadUrl")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetBatchInferenceJobsFinalResultDownloadUrlResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetBatchInferenceJobsFinalResultDownloadUrlWithContextV2(ctx context.Context, request *GetBatchInferenceJobsFinalResultDownloadUrlRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetBatchInferenceJobsFinalResultDownloadUrlRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetBatchInferenceJobsFinalResultDownloadUrl")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetBatchInferenceJobsFinalResultDownloadUrlResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeInferenceJobsKs3AuthInfoRequest() (request *DescribeInferenceJobsKs3AuthInfoRequest) {
+	request = &DescribeInferenceJobsKs3AuthInfoRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeInferenceJobsKs3AuthInfo")
+	return
+}
+
+func NewDescribeInferenceJobsKs3AuthInfoResponse() (response *DescribeInferenceJobsKs3AuthInfoResponse) {
+	response = &DescribeInferenceJobsKs3AuthInfoResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeInferenceJobsKs3AuthInfo(request *DescribeInferenceJobsKs3AuthInfoRequest) string {
+	return c.DescribeInferenceJobsKs3AuthInfoWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeInferenceJobsKs3AuthInfoSend(request *DescribeInferenceJobsKs3AuthInfoRequest) (*DescribeInferenceJobsKs3AuthInfoResponse, error) {
+	statusCode, msg, err := c.DescribeInferenceJobsKs3AuthInfoWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeInferenceJobsKs3AuthInfoResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeInferenceJobsKs3AuthInfoWithContext(ctx context.Context, request *DescribeInferenceJobsKs3AuthInfoRequest) string {
+	if request == nil {
+		request = NewDescribeInferenceJobsKs3AuthInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeInferenceJobsKs3AuthInfo")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeInferenceJobsKs3AuthInfoResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeInferenceJobsKs3AuthInfoWithContextV2(ctx context.Context, request *DescribeInferenceJobsKs3AuthInfoRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeInferenceJobsKs3AuthInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeInferenceJobsKs3AuthInfo")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeInferenceJobsKs3AuthInfoResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewStopBatchInferenceJobRequest() (request *StopBatchInferenceJobRequest) {
+	request = &StopBatchInferenceJobRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "StopBatchInferenceJob")
+	return
+}
+
+func NewStopBatchInferenceJobResponse() (response *StopBatchInferenceJobResponse) {
+	response = &StopBatchInferenceJobResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) StopBatchInferenceJob(request *StopBatchInferenceJobRequest) string {
+	return c.StopBatchInferenceJobWithContext(context.Background(), request)
+}
+
+func (c *Client) StopBatchInferenceJobSend(request *StopBatchInferenceJobRequest) (*StopBatchInferenceJobResponse, error) {
+	statusCode, msg, err := c.StopBatchInferenceJobWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct StopBatchInferenceJobResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) StopBatchInferenceJobWithContext(ctx context.Context, request *StopBatchInferenceJobRequest) string {
+	if request == nil {
+		request = NewStopBatchInferenceJobRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StopBatchInferenceJob")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewStopBatchInferenceJobResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) StopBatchInferenceJobWithContextV2(ctx context.Context, request *StopBatchInferenceJobRequest) (int, string, error) {
+	if request == nil {
+		request = NewStopBatchInferenceJobRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StopBatchInferenceJob")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewStopBatchInferenceJobResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateBatchInferenceJobRequest() (request *CreateBatchInferenceJobRequest) {
+	request = &CreateBatchInferenceJobRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateBatchInferenceJob")
+	return
+}
+
+func NewCreateBatchInferenceJobResponse() (response *CreateBatchInferenceJobResponse) {
+	response = &CreateBatchInferenceJobResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateBatchInferenceJob(request *CreateBatchInferenceJobRequest) string {
+	return c.CreateBatchInferenceJobWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateBatchInferenceJobSend(request *CreateBatchInferenceJobRequest) (*CreateBatchInferenceJobResponse, error) {
+	statusCode, msg, err := c.CreateBatchInferenceJobWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateBatchInferenceJobResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateBatchInferenceJobWithContext(ctx context.Context, request *CreateBatchInferenceJobRequest) string {
+	if request == nil {
+		request = NewCreateBatchInferenceJobRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateBatchInferenceJob")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateBatchInferenceJobResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateBatchInferenceJobWithContextV2(ctx context.Context, request *CreateBatchInferenceJobRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateBatchInferenceJobRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateBatchInferenceJob")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateBatchInferenceJobResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyBatchInferenceJobRequest() (request *ModifyBatchInferenceJobRequest) {
+	request = &ModifyBatchInferenceJobRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ModifyBatchInferenceJob")
+	return
+}
+
+func NewModifyBatchInferenceJobResponse() (response *ModifyBatchInferenceJobResponse) {
+	response = &ModifyBatchInferenceJobResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyBatchInferenceJob(request *ModifyBatchInferenceJobRequest) string {
+	return c.ModifyBatchInferenceJobWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyBatchInferenceJobSend(request *ModifyBatchInferenceJobRequest) (*ModifyBatchInferenceJobResponse, error) {
+	statusCode, msg, err := c.ModifyBatchInferenceJobWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ModifyBatchInferenceJobResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyBatchInferenceJobWithContext(ctx context.Context, request *ModifyBatchInferenceJobRequest) string {
+	if request == nil {
+		request = NewModifyBatchInferenceJobRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyBatchInferenceJob")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyBatchInferenceJobResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyBatchInferenceJobWithContextV2(ctx context.Context, request *ModifyBatchInferenceJobRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyBatchInferenceJobRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyBatchInferenceJob")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyBatchInferenceJobResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeBatchInferenceJobsRequest() (request *DescribeBatchInferenceJobsRequest) {
+	request = &DescribeBatchInferenceJobsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeBatchInferenceJobs")
+	return
+}
+
+func NewDescribeBatchInferenceJobsResponse() (response *DescribeBatchInferenceJobsResponse) {
+	response = &DescribeBatchInferenceJobsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeBatchInferenceJobs(request *DescribeBatchInferenceJobsRequest) string {
+	return c.DescribeBatchInferenceJobsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeBatchInferenceJobsSend(request *DescribeBatchInferenceJobsRequest) (*DescribeBatchInferenceJobsResponse, error) {
+	statusCode, msg, err := c.DescribeBatchInferenceJobsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeBatchInferenceJobsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeBatchInferenceJobsWithContext(ctx context.Context, request *DescribeBatchInferenceJobsRequest) string {
+	if request == nil {
+		request = NewDescribeBatchInferenceJobsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeBatchInferenceJobs")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeBatchInferenceJobsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeBatchInferenceJobsWithContextV2(ctx context.Context, request *DescribeBatchInferenceJobsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeBatchInferenceJobsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeBatchInferenceJobs")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeBatchInferenceJobsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteBatchInferenceJobRequest() (request *DeleteBatchInferenceJobRequest) {
+	request = &DeleteBatchInferenceJobRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeleteBatchInferenceJob")
+	return
+}
+
+func NewDeleteBatchInferenceJobResponse() (response *DeleteBatchInferenceJobResponse) {
+	response = &DeleteBatchInferenceJobResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteBatchInferenceJob(request *DeleteBatchInferenceJobRequest) string {
+	return c.DeleteBatchInferenceJobWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteBatchInferenceJobSend(request *DeleteBatchInferenceJobRequest) (*DeleteBatchInferenceJobResponse, error) {
+	statusCode, msg, err := c.DeleteBatchInferenceJobWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteBatchInferenceJobResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteBatchInferenceJobWithContext(ctx context.Context, request *DeleteBatchInferenceJobRequest) string {
+	if request == nil {
+		request = NewDeleteBatchInferenceJobRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteBatchInferenceJob")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteBatchInferenceJobResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteBatchInferenceJobWithContextV2(ctx context.Context, request *DeleteBatchInferenceJobRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteBatchInferenceJobRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteBatchInferenceJob")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteBatchInferenceJobResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewEnableModelsRequest() (request *EnableModelsRequest) {
+	request = &EnableModelsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "EnableModels")
+	return
+}
+
+func NewEnableModelsResponse() (response *EnableModelsResponse) {
+	response = &EnableModelsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) EnableModels(request *EnableModelsRequest) string {
+	return c.EnableModelsWithContext(context.Background(), request)
+}
+
+func (c *Client) EnableModelsSend(request *EnableModelsRequest) (*EnableModelsResponse, error) {
+	statusCode, msg, err := c.EnableModelsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct EnableModelsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) EnableModelsWithContext(ctx context.Context, request *EnableModelsRequest) string {
+	if request == nil {
+		request = NewEnableModelsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "EnableModels")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewEnableModelsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) EnableModelsWithContextV2(ctx context.Context, request *EnableModelsRequest) (int, string, error) {
+	if request == nil {
+		request = NewEnableModelsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "EnableModels")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewEnableModelsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeModelQuotasRequest() (request *DescribeModelQuotasRequest) {
+	request = &DescribeModelQuotasRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeModelQuotas")
+	return
+}
+
+func NewDescribeModelQuotasResponse() (response *DescribeModelQuotasResponse) {
+	response = &DescribeModelQuotasResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeModelQuotas(request *DescribeModelQuotasRequest) string {
+	return c.DescribeModelQuotasWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeModelQuotasSend(request *DescribeModelQuotasRequest) (*DescribeModelQuotasResponse, error) {
+	statusCode, msg, err := c.DescribeModelQuotasWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeModelQuotasResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeModelQuotasWithContext(ctx context.Context, request *DescribeModelQuotasRequest) string {
+	if request == nil {
+		request = NewDescribeModelQuotasRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeModelQuotas")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeModelQuotasResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeModelQuotasWithContextV2(ctx context.Context, request *DescribeModelQuotasRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeModelQuotasRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeModelQuotas")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeModelQuotasResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDisableModelsRequest() (request *DisableModelsRequest) {
+	request = &DisableModelsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DisableModels")
+	return
+}
+
+func NewDisableModelsResponse() (response *DisableModelsResponse) {
+	response = &DisableModelsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DisableModels(request *DisableModelsRequest) string {
+	return c.DisableModelsWithContext(context.Background(), request)
+}
+
+func (c *Client) DisableModelsSend(request *DisableModelsRequest) (*DisableModelsResponse, error) {
+	statusCode, msg, err := c.DisableModelsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DisableModelsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DisableModelsWithContext(ctx context.Context, request *DisableModelsRequest) string {
+	if request == nil {
+		request = NewDisableModelsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DisableModels")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDisableModelsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DisableModelsWithContextV2(ctx context.Context, request *DisableModelsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDisableModelsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DisableModels")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDisableModelsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewEnableOverFreeLimitRequest() (request *EnableOverFreeLimitRequest) {
+	request = &EnableOverFreeLimitRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "EnableOverFreeLimit")
+	return
+}
+
+func NewEnableOverFreeLimitResponse() (response *EnableOverFreeLimitResponse) {
+	response = &EnableOverFreeLimitResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) EnableOverFreeLimit(request *EnableOverFreeLimitRequest) string {
+	return c.EnableOverFreeLimitWithContext(context.Background(), request)
+}
+
+func (c *Client) EnableOverFreeLimitSend(request *EnableOverFreeLimitRequest) (*EnableOverFreeLimitResponse, error) {
+	statusCode, msg, err := c.EnableOverFreeLimitWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct EnableOverFreeLimitResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) EnableOverFreeLimitWithContext(ctx context.Context, request *EnableOverFreeLimitRequest) string {
+	if request == nil {
+		request = NewEnableOverFreeLimitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "EnableOverFreeLimit")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewEnableOverFreeLimitResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) EnableOverFreeLimitWithContextV2(ctx context.Context, request *EnableOverFreeLimitRequest) (int, string, error) {
+	if request == nil {
+		request = NewEnableOverFreeLimitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "EnableOverFreeLimit")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewEnableOverFreeLimitResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDisableOverFreeLimitRequest() (request *DisableOverFreeLimitRequest) {
+	request = &DisableOverFreeLimitRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DisableOverFreeLimit")
+	return
+}
+
+func NewDisableOverFreeLimitResponse() (response *DisableOverFreeLimitResponse) {
+	response = &DisableOverFreeLimitResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DisableOverFreeLimit(request *DisableOverFreeLimitRequest) string {
+	return c.DisableOverFreeLimitWithContext(context.Background(), request)
+}
+
+func (c *Client) DisableOverFreeLimitSend(request *DisableOverFreeLimitRequest) (*DisableOverFreeLimitResponse, error) {
+	statusCode, msg, err := c.DisableOverFreeLimitWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DisableOverFreeLimitResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DisableOverFreeLimitWithContext(ctx context.Context, request *DisableOverFreeLimitRequest) string {
+	if request == nil {
+		request = NewDisableOverFreeLimitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DisableOverFreeLimit")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDisableOverFreeLimitResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DisableOverFreeLimitWithContextV2(ctx context.Context, request *DisableOverFreeLimitRequest) (int, string, error) {
+	if request == nil {
+		request = NewDisableOverFreeLimitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DisableOverFreeLimit")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDisableOverFreeLimitResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
@@ -894,6 +2752,11 @@ func (c *Client) CreateTrainJobWithContext(ctx context.Context, request *CreateT
 	if request == nil {
 		request = NewCreateTrainJobRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateTrainJob")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -908,6 +2771,11 @@ func (c *Client) CreateTrainJobWithContext(ctx context.Context, request *CreateT
 func (c *Client) CreateTrainJobWithContextV2(ctx context.Context, request *CreateTrainJobRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateTrainJobRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateTrainJob")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -963,6 +2831,11 @@ func (c *Client) DescribeTrainJobEventsWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeTrainJobEventsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobEvents")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +2850,11 @@ func (c *Client) DescribeTrainJobEventsWithContext(ctx context.Context, request 
 func (c *Client) DescribeTrainJobEventsWithContextV2(ctx context.Context, request *DescribeTrainJobEventsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeTrainJobEventsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobEvents")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +2910,11 @@ func (c *Client) StopTrainJobWithContext(ctx context.Context, request *StopTrain
 	if request == nil {
 		request = NewStopTrainJobRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StopTrainJob")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1046,6 +2929,11 @@ func (c *Client) StopTrainJobWithContext(ctx context.Context, request *StopTrain
 func (c *Client) StopTrainJobWithContextV2(ctx context.Context, request *StopTrainJobRequest) (int, string, error) {
 	if request == nil {
 		request = NewStopTrainJobRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StopTrainJob")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1101,6 +2989,11 @@ func (c *Client) DescribeTrainJobWithContext(ctx context.Context, request *Descr
 	if request == nil {
 		request = NewDescribeTrainJobRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJob")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1115,6 +3008,11 @@ func (c *Client) DescribeTrainJobWithContext(ctx context.Context, request *Descr
 func (c *Client) DescribeTrainJobWithContextV2(ctx context.Context, request *DescribeTrainJobRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeTrainJobRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJob")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1170,6 +3068,11 @@ func (c *Client) StartTrainJobWithContext(ctx context.Context, request *StartTra
 	if request == nil {
 		request = NewStartTrainJobRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StartTrainJob")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1184,6 +3087,11 @@ func (c *Client) StartTrainJobWithContext(ctx context.Context, request *StartTra
 func (c *Client) StartTrainJobWithContextV2(ctx context.Context, request *StartTrainJobRequest) (int, string, error) {
 	if request == nil {
 		request = NewStartTrainJobRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StartTrainJob")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1239,6 +3147,11 @@ func (c *Client) DeleteTrainJobWithContext(ctx context.Context, request *DeleteT
 	if request == nil {
 		request = NewDeleteTrainJobRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteTrainJob")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1253,6 +3166,11 @@ func (c *Client) DeleteTrainJobWithContext(ctx context.Context, request *DeleteT
 func (c *Client) DeleteTrainJobWithContextV2(ctx context.Context, request *DeleteTrainJobRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteTrainJobRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteTrainJob")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1308,6 +3226,11 @@ func (c *Client) ModifyTrainJobWithContext(ctx context.Context, request *ModifyT
 	if request == nil {
 		request = NewModifyTrainJobRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyTrainJob")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1322,6 +3245,11 @@ func (c *Client) ModifyTrainJobWithContext(ctx context.Context, request *ModifyT
 func (c *Client) ModifyTrainJobWithContextV2(ctx context.Context, request *ModifyTrainJobRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyTrainJobRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyTrainJob")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1377,6 +3305,11 @@ func (c *Client) DescribeTrainJobPodLogsWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewDescribeTrainJobPodLogsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobPodLogs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1391,6 +3324,11 @@ func (c *Client) DescribeTrainJobPodLogsWithContext(ctx context.Context, request
 func (c *Client) DescribeTrainJobPodLogsWithContextV2(ctx context.Context, request *DescribeTrainJobPodLogsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeTrainJobPodLogsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobPodLogs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1446,6 +3384,11 @@ func (c *Client) DescribeTrainJobPodsWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeTrainJobPodsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobPods")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1460,6 +3403,11 @@ func (c *Client) DescribeTrainJobPodsWithContext(ctx context.Context, request *D
 func (c *Client) DescribeTrainJobPodsWithContextV2(ctx context.Context, request *DescribeTrainJobPodsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeTrainJobPodsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobPods")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1515,6 +3463,11 @@ func (c *Client) DescribeResourcePoolsWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeResourcePoolsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeResourcePools")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1529,6 +3482,11 @@ func (c *Client) DescribeResourcePoolsWithContext(ctx context.Context, request *
 func (c *Client) DescribeResourcePoolsWithContextV2(ctx context.Context, request *DescribeResourcePoolsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeResourcePoolsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeResourcePools")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1584,6 +3542,11 @@ func (c *Client) DescribeResourcePoolInstancesWithContext(ctx context.Context, r
 	if request == nil {
 		request = NewDescribeResourcePoolInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeResourcePoolInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1599,10 +3562,94 @@ func (c *Client) DescribeResourcePoolInstancesWithContextV2(ctx context.Context,
 	if request == nil {
 		request = NewDescribeResourcePoolInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeResourcePoolInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeResourcePoolInstancesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewEnableKpfsComponentRequest() (request *EnableKpfsComponentRequest) {
+	request = &EnableKpfsComponentRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "EnableKpfsComponent")
+	return
+}
+
+func NewEnableKpfsComponentResponse() (response *EnableKpfsComponentResponse) {
+	response = &EnableKpfsComponentResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) EnableKpfsComponent(request *EnableKpfsComponentRequest) string {
+	return c.EnableKpfsComponentWithContext(context.Background(), request)
+}
+
+func (c *Client) EnableKpfsComponentSend(request *EnableKpfsComponentRequest) (*EnableKpfsComponentResponse, error) {
+	statusCode, msg, err := c.EnableKpfsComponentWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct EnableKpfsComponentResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) EnableKpfsComponentWithContext(ctx context.Context, request *EnableKpfsComponentRequest) string {
+	if request == nil {
+		request = NewEnableKpfsComponentRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "EnableKpfsComponent")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewEnableKpfsComponentResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) EnableKpfsComponentWithContextV2(ctx context.Context, request *EnableKpfsComponentRequest) (int, string, error) {
+	if request == nil {
+		request = NewEnableKpfsComponentRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "EnableKpfsComponent")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewEnableKpfsComponentResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err

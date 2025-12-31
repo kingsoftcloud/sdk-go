@@ -66,6 +66,11 @@ func (c *Client) GetClientRequestDataWithContext(ctx context.Context, request *G
 	if request == nil {
 		request = NewGetClientRequestDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetClientRequestData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) GetClientRequestDataWithContext(ctx context.Context, request *G
 func (c *Client) GetClientRequestDataWithContextV2(ctx context.Context, request *GetClientRequestDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetClientRequestDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetClientRequestData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) GetServerDataWithContext(ctx context.Context, request *GetServe
 	if request == nil {
 		request = NewGetServerDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetServerData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) GetServerDataWithContext(ctx context.Context, request *GetServe
 func (c *Client) GetServerDataWithContextV2(ctx context.Context, request *GetServerDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetServerDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetServerData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) GetDomainRankingListDataWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewGetDomainRankingListDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetDomainRankingListData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) GetDomainRankingListDataWithContext(ctx context.Context, reques
 func (c *Client) GetDomainRankingListDataWithContextV2(ctx context.Context, request *GetDomainRankingListDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetDomainRankingListDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetDomainRankingListData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) GetAreaIspDataWithContext(ctx context.Context, request *GetArea
 	if request == nil {
 		request = NewGetAreaIspDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetAreaIspData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) GetAreaIspDataWithContext(ctx context.Context, request *GetArea
 func (c *Client) GetAreaIspDataWithContextV2(ctx context.Context, request *GetAreaIspDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetAreaIspDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetAreaIspData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) GetTopReferDataWithContext(ctx context.Context, request *GetTop
 	if request == nil {
 		request = NewGetTopReferDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetTopReferData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) GetTopReferDataWithContext(ctx context.Context, request *GetTop
 func (c *Client) GetTopReferDataWithContextV2(ctx context.Context, request *GetTopReferDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetTopReferDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetTopReferData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) GetTopUrlDataWithContext(ctx context.Context, request *GetTopUr
 	if request == nil {
 		request = NewGetTopUrlDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetTopUrlData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) GetTopUrlDataWithContext(ctx context.Context, request *GetTopUr
 func (c *Client) GetTopUrlDataWithContextV2(ctx context.Context, request *GetTopUrlDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetTopUrlDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetTopUrlData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) GetRealTimeHitRateDataWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewGetRealTimeHitRateDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetRealTimeHitRateData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) GetRealTimeHitRateDataWithContext(ctx context.Context, request 
 func (c *Client) GetRealTimeHitRateDataWithContextV2(ctx context.Context, request *GetRealTimeHitRateDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetRealTimeHitRateDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetRealTimeHitRateData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) GetReqHitRateDataWithContext(ctx context.Context, request *GetR
 	if request == nil {
 		request = NewGetReqHitRateDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetReqHitRateData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) GetReqHitRateDataWithContext(ctx context.Context, request *GetR
 func (c *Client) GetReqHitRateDataWithContextV2(ctx context.Context, request *GetReqHitRateDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetReqHitRateDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetReqHitRateData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) GetFlowHitRateDataWithContext(ctx context.Context, request *Get
 	if request == nil {
 		request = NewGetFlowHitRateDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetFlowHitRateData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) GetFlowHitRateDataWithContext(ctx context.Context, request *Get
 func (c *Client) GetFlowHitRateDataWithContextV2(ctx context.Context, request *GetFlowHitRateDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetFlowHitRateDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetFlowHitRateData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) GetDomainRequestPeriodRatioDataWithContext(ctx context.Context,
 	if request == nil {
 		request = NewGetDomainRequestPeriodRatioDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetDomainRequestPeriodRatioData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) GetDomainRequestPeriodRatioDataWithContext(ctx context.Context,
 func (c *Client) GetDomainRequestPeriodRatioDataWithContextV2(ctx context.Context, request *GetDomainRequestPeriodRatioDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetDomainRequestPeriodRatioDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetDomainRequestPeriodRatioData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) GetUvDataWithContext(ctx context.Context, request *GetUvDataReq
 	if request == nil {
 		request = NewGetUvDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetUvData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) GetUvDataWithContext(ctx context.Context, request *GetUvDataReq
 func (c *Client) GetUvDataWithContextV2(ctx context.Context, request *GetUvDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetUvDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetUvData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) GetTopIpDataWithContext(ctx context.Context, request *GetTopIpD
 	if request == nil {
 		request = NewGetTopIpDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetTopIpData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -839,6 +954,11 @@ func (c *Client) GetTopIpDataWithContext(ctx context.Context, request *GetTopIpD
 func (c *Client) GetTopIpDataWithContextV2(ctx context.Context, request *GetTopIpDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetTopIpDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetTopIpData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -894,6 +1014,11 @@ func (c *Client) GetSrcDomainHttpCodeDetailedDataWithContext(ctx context.Context
 	if request == nil {
 		request = NewGetSrcDomainHttpCodeDetailedDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetSrcDomainHttpCodeDetailedData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) GetSrcDomainHttpCodeDetailedDataWithContext(ctx context.Context
 func (c *Client) GetSrcDomainHttpCodeDetailedDataWithContextV2(ctx context.Context, request *GetSrcDomainHttpCodeDetailedDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetSrcDomainHttpCodeDetailedDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetSrcDomainHttpCodeDetailedData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -963,6 +1093,11 @@ func (c *Client) GetSrcDomainHttpCodeDataWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewGetSrcDomainHttpCodeDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetSrcDomainHttpCodeData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +1112,11 @@ func (c *Client) GetSrcDomainHttpCodeDataWithContext(ctx context.Context, reques
 func (c *Client) GetSrcDomainHttpCodeDataWithContextV2(ctx context.Context, request *GetSrcDomainHttpCodeDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetSrcDomainHttpCodeDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetSrcDomainHttpCodeData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +1172,11 @@ func (c *Client) GetDomainHttpCodeDetailedDataWithContext(ctx context.Context, r
 	if request == nil {
 		request = NewGetDomainHttpCodeDetailedDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetDomainHttpCodeDetailedData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1046,6 +1191,11 @@ func (c *Client) GetDomainHttpCodeDetailedDataWithContext(ctx context.Context, r
 func (c *Client) GetDomainHttpCodeDetailedDataWithContextV2(ctx context.Context, request *GetDomainHttpCodeDetailedDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetDomainHttpCodeDetailedDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetDomainHttpCodeDetailedData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1101,6 +1251,11 @@ func (c *Client) GetDomainHttpCodeDataWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewGetDomainHttpCodeDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetDomainHttpCodeData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1115,6 +1270,11 @@ func (c *Client) GetDomainHttpCodeDataWithContext(ctx context.Context, request *
 func (c *Client) GetDomainHttpCodeDataWithContextV2(ctx context.Context, request *GetDomainHttpCodeDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetDomainHttpCodeDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetDomainHttpCodeData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1170,6 +1330,11 @@ func (c *Client) GetEntryRateDataWithContext(ctx context.Context, request *GetEn
 	if request == nil {
 		request = NewGetEntryRateDataRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetEntryRateData")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1184,6 +1349,11 @@ func (c *Client) GetEntryRateDataWithContext(ctx context.Context, request *GetEn
 func (c *Client) GetEntryRateDataWithContextV2(ctx context.Context, request *GetEntryRateDataRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetEntryRateDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "GetEntryRateData")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

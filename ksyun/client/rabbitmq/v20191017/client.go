@@ -66,6 +66,11 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
 	if request == nil {
 		request = NewCreateInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "CreateInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
 func (c *Client) CreateInstanceWithContextV2(ctx context.Context, request *CreateInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "CreateInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
 	if request == nil {
 		request = NewDeleteInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DeleteInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
 func (c *Client) DeleteInstanceWithContextV2(ctx context.Context, request *DeleteInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DeleteInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DescribeInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeInstancesWithContextV2(ctx context.Context, request *DescribeInstancesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DescribeInstances")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
 	if request == nil {
 		request = NewDescribeInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DescribeInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -287,6 +322,11 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
 func (c *Client) DescribeInstanceWithContextV2(ctx context.Context, request *DescribeInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DescribeInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -342,6 +382,11 @@ func (c *Client) DescribeInstanceNodesWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeInstanceNodesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DescribeInstanceNodes")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -356,6 +401,11 @@ func (c *Client) DescribeInstanceNodesWithContext(ctx context.Context, request *
 func (c *Client) DescribeInstanceNodesWithContextV2(ctx context.Context, request *DescribeInstanceNodesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstanceNodesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DescribeInstanceNodes")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -411,6 +461,11 @@ func (c *Client) DescribeValidRegionWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeValidRegionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DescribeValidRegion")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -425,6 +480,11 @@ func (c *Client) DescribeValidRegionWithContext(ctx context.Context, request *De
 func (c *Client) DescribeValidRegionWithContextV2(ctx context.Context, request *DescribeValidRegionRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeValidRegionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DescribeValidRegion")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -480,6 +540,11 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
 	if request == nil {
 		request = NewDescribeRegionsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DescribeRegions")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -494,6 +559,11 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
 func (c *Client) DescribeRegionsWithContextV2(ctx context.Context, request *DescribeRegionsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeRegionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DescribeRegions")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -549,6 +619,11 @@ func (c *Client) DescribeSecurityGroupRulesWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewDescribeSecurityGroupRulesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DescribeSecurityGroupRules")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -563,6 +638,11 @@ func (c *Client) DescribeSecurityGroupRulesWithContext(ctx context.Context, requ
 func (c *Client) DescribeSecurityGroupRulesWithContextV2(ctx context.Context, request *DescribeSecurityGroupRulesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSecurityGroupRulesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DescribeSecurityGroupRules")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -618,6 +698,11 @@ func (c *Client) AddSecurityGroupRuleWithContext(ctx context.Context, request *A
 	if request == nil {
 		request = NewAddSecurityGroupRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "AddSecurityGroupRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) AddSecurityGroupRuleWithContext(ctx context.Context, request *A
 func (c *Client) AddSecurityGroupRuleWithContextV2(ctx context.Context, request *AddSecurityGroupRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewAddSecurityGroupRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "AddSecurityGroupRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) DeleteSecurityGroupRulesWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDeleteSecurityGroupRulesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DeleteSecurityGroupRules")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) DeleteSecurityGroupRulesWithContext(ctx context.Context, reques
 func (c *Client) DeleteSecurityGroupRulesWithContextV2(ctx context.Context, request *DeleteSecurityGroupRulesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSecurityGroupRulesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DeleteSecurityGroupRules")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) ResetPasswordWithContext(ctx context.Context, request *ResetPas
 	if request == nil {
 		request = NewResetPasswordRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "ResetPassword")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) ResetPasswordWithContext(ctx context.Context, request *ResetPas
 func (c *Client) ResetPasswordWithContextV2(ctx context.Context, request *ResetPasswordRequest) (int, string, error) {
 	if request == nil {
 		request = NewResetPasswordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "ResetPassword")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) RenameWithContext(ctx context.Context, request *RenameRequest) 
 	if request == nil {
 		request = NewRenameRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "Rename")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -839,6 +954,11 @@ func (c *Client) RenameWithContext(ctx context.Context, request *RenameRequest) 
 func (c *Client) RenameWithContextV2(ctx context.Context, request *RenameRequest) (int, string, error) {
 	if request == nil {
 		request = NewRenameRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "Rename")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -894,6 +1014,11 @@ func (c *Client) AllocateEipWithContext(ctx context.Context, request *AllocateEi
 	if request == nil {
 		request = NewAllocateEipRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "AllocateEip")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) AllocateEipWithContext(ctx context.Context, request *AllocateEi
 func (c *Client) AllocateEipWithContextV2(ctx context.Context, request *AllocateEipRequest) (int, string, error) {
 	if request == nil {
 		request = NewAllocateEipRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "AllocateEip")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -963,6 +1093,11 @@ func (c *Client) DeallocateEipWithContext(ctx context.Context, request *Dealloca
 	if request == nil {
 		request = NewDeallocateEipRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DeallocateEip")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +1112,11 @@ func (c *Client) DeallocateEipWithContext(ctx context.Context, request *Dealloca
 func (c *Client) DeallocateEipWithContextV2(ctx context.Context, request *DeallocateEipRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeallocateEipRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DeallocateEip")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +1172,11 @@ func (c *Client) SupportPluginsWithContext(ctx context.Context, request *Support
 	if request == nil {
 		request = NewSupportPluginsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "SupportPlugins")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1046,6 +1191,11 @@ func (c *Client) SupportPluginsWithContext(ctx context.Context, request *Support
 func (c *Client) SupportPluginsWithContextV2(ctx context.Context, request *SupportPluginsRequest) (int, string, error) {
 	if request == nil {
 		request = NewSupportPluginsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "SupportPlugins")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1101,6 +1251,11 @@ func (c *Client) RestartInstanceWithContext(ctx context.Context, request *Restar
 	if request == nil {
 		request = NewRestartInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "RestartInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1115,6 +1270,11 @@ func (c *Client) RestartInstanceWithContext(ctx context.Context, request *Restar
 func (c *Client) RestartInstanceWithContextV2(ctx context.Context, request *RestartInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewRestartInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "RestartInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1170,6 +1330,11 @@ func (c *Client) ListInstancePluginsWithContext(ctx context.Context, request *Li
 	if request == nil {
 		request = NewListInstancePluginsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "ListInstancePlugins")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1184,6 +1349,11 @@ func (c *Client) ListInstancePluginsWithContext(ctx context.Context, request *Li
 func (c *Client) ListInstancePluginsWithContextV2(ctx context.Context, request *ListInstancePluginsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListInstancePluginsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "ListInstancePlugins")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1239,6 +1409,11 @@ func (c *Client) EnableInstancePluginsWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewEnableInstancePluginsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "EnableInstancePlugins")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1253,6 +1428,11 @@ func (c *Client) EnableInstancePluginsWithContext(ctx context.Context, request *
 func (c *Client) EnableInstancePluginsWithContextV2(ctx context.Context, request *EnableInstancePluginsRequest) (int, string, error) {
 	if request == nil {
 		request = NewEnableInstancePluginsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "EnableInstancePlugins")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1308,6 +1488,11 @@ func (c *Client) DisableInstancePluginsWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDisableInstancePluginsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DisableInstancePlugins")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1322,6 +1507,11 @@ func (c *Client) DisableInstancePluginsWithContext(ctx context.Context, request 
 func (c *Client) DisableInstancePluginsWithContextV2(ctx context.Context, request *DisableInstancePluginsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDisableInstancePluginsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("rabbitmq", APIVersion, "DisableInstancePlugins")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

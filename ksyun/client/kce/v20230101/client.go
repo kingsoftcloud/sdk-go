@@ -66,6 +66,11 @@ func (c *Client) DescribeEventLogsWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeEventLogsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeEventLogs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) DescribeEventLogsWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeEventLogsWithContextV2(ctx context.Context, request *DescribeEventLogsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeEventLogsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeEventLogs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) CreateAddonInstanceWithContext(ctx context.Context, request *Cr
 	if request == nil {
 		request = NewCreateAddonInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "CreateAddonInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) CreateAddonInstanceWithContext(ctx context.Context, request *Cr
 func (c *Client) CreateAddonInstanceWithContextV2(ctx context.Context, request *CreateAddonInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateAddonInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "CreateAddonInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) DeleteAddonInstanceWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDeleteAddonInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DeleteAddonInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) DeleteAddonInstanceWithContext(ctx context.Context, request *De
 func (c *Client) DeleteAddonInstanceWithContextV2(ctx context.Context, request *DeleteAddonInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteAddonInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DeleteAddonInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) DescribeAddonInstancesWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeAddonInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeAddonInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) DescribeAddonInstancesWithContext(ctx context.Context, request 
 func (c *Client) DescribeAddonInstancesWithContextV2(ctx context.Context, request *DescribeAddonInstancesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAddonInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeAddonInstances")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) DescribeAddonListWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeAddonListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeAddonList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) DescribeAddonListWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeAddonListWithContextV2(ctx context.Context, request *DescribeAddonListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAddonListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeAddonList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) DescribeComponentParamsWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewDescribeComponentParamsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeComponentParams")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) DescribeComponentParamsWithContext(ctx context.Context, request
 func (c *Client) DescribeComponentParamsWithContextV2(ctx context.Context, request *DescribeComponentParamsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeComponentParamsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeComponentParams")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) DescribeNetworkWithContext(ctx context.Context, request *Descri
 	if request == nil {
 		request = NewDescribeNetworkRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeNetwork")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) DescribeNetworkWithContext(ctx context.Context, request *Descri
 func (c *Client) DescribeNetworkWithContextV2(ctx context.Context, request *DescribeNetworkRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeNetworkRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeNetwork")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) DescribeNodeComponentsWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeNodeComponentsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeNodeComponents")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) DescribeNodeComponentsWithContext(ctx context.Context, request 
 func (c *Client) DescribeNodeComponentsWithContextV2(ctx context.Context, request *DescribeNodeComponentsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeNodeComponentsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeNodeComponents")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) DescribeComponentListWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeComponentListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeComponentList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) DescribeComponentListWithContext(ctx context.Context, request *
 func (c *Client) DescribeComponentListWithContextV2(ctx context.Context, request *DescribeComponentListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeComponentListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "DescribeComponentList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

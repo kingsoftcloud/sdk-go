@@ -66,6 +66,11 @@ func (c *Client) CreateVpcWithContext(ctx context.Context, request *CreateVpcReq
 	if request == nil {
 		request = NewCreateVpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateVpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateVpcWithContext(ctx context.Context, request *CreateVpcReq
 func (c *Client) CreateVpcWithContextV2(ctx context.Context, request *CreateVpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateVpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateVpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DeleteVpcWithContext(ctx context.Context, request *DeleteVpcReq
 	if request == nil {
 		request = NewDeleteVpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DeleteVpcWithContext(ctx context.Context, request *DeleteVpcReq
 func (c *Client) DeleteVpcWithContextV2(ctx context.Context, request *DeleteVpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteVpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) DescribeVpcsWithContext(ctx context.Context, request *DescribeV
 	if request == nil {
 		request = NewDescribeVpcsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) DescribeVpcsWithContext(ctx context.Context, request *DescribeV
 func (c *Client) DescribeVpcsWithContextV2(ctx context.Context, request *DescribeVpcsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeVpcsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) CreateSubnetWithContext(ctx context.Context, request *CreateSub
 	if request == nil {
 		request = NewCreateSubnetRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateSubnet")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) CreateSubnetWithContext(ctx context.Context, request *CreateSub
 func (c *Client) CreateSubnetWithContextV2(ctx context.Context, request *CreateSubnetRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateSubnetRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateSubnet")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) DeleteSubnetWithContext(ctx context.Context, request *DeleteSub
 	if request == nil {
 		request = NewDeleteSubnetRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteSubnet")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) DeleteSubnetWithContext(ctx context.Context, request *DeleteSub
 func (c *Client) DeleteSubnetWithContextV2(ctx context.Context, request *DeleteSubnetRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSubnetRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteSubnet")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) DescribeSubnetsWithContext(ctx context.Context, request *Descri
 	if request == nil {
 		request = NewDescribeSubnetsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeSubnets")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) DescribeSubnetsWithContext(ctx context.Context, request *Descri
 func (c *Client) DescribeSubnetsWithContextV2(ctx context.Context, request *DescribeSubnetsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSubnetsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeSubnets")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) AssociateNetworkAclWithContext(ctx context.Context, request *As
 	if request == nil {
 		request = NewAssociateNetworkAclRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AssociateNetworkAcl")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) AssociateNetworkAclWithContext(ctx context.Context, request *As
 func (c *Client) AssociateNetworkAclWithContextV2(ctx context.Context, request *AssociateNetworkAclRequest) (int, string, error) {
 	if request == nil {
 		request = NewAssociateNetworkAclRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AssociateNetworkAcl")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) DisassociateNetworkAclWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDisassociateNetworkAclRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DisassociateNetworkAcl")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) DisassociateNetworkAclWithContext(ctx context.Context, request 
 func (c *Client) DisassociateNetworkAclWithContextV2(ctx context.Context, request *DisassociateNetworkAclRequest) (int, string, error) {
 	if request == nil {
 		request = NewDisassociateNetworkAclRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DisassociateNetworkAcl")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) CreateRouteWithContext(ctx context.Context, request *CreateRout
 	if request == nil {
 		request = NewCreateRouteRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateRoute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) CreateRouteWithContext(ctx context.Context, request *CreateRout
 func (c *Client) CreateRouteWithContextV2(ctx context.Context, request *CreateRouteRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateRouteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateRoute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) DeleteRouteWithContext(ctx context.Context, request *DeleteRout
 	if request == nil {
 		request = NewDeleteRouteRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteRoute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) DeleteRouteWithContext(ctx context.Context, request *DeleteRout
 func (c *Client) DeleteRouteWithContextV2(ctx context.Context, request *DeleteRouteRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteRouteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteRoute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) DescribeRoutesWithContext(ctx context.Context, request *Describ
 	if request == nil {
 		request = NewDescribeRoutesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeRoutes")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) DescribeRoutesWithContext(ctx context.Context, request *Describ
 func (c *Client) DescribeRoutesWithContextV2(ctx context.Context, request *DescribeRoutesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeRoutesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeRoutes")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) CreateNetworkAclWithContext(ctx context.Context, request *Creat
 	if request == nil {
 		request = NewCreateNetworkAclRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkAcl")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -839,6 +954,11 @@ func (c *Client) CreateNetworkAclWithContext(ctx context.Context, request *Creat
 func (c *Client) CreateNetworkAclWithContextV2(ctx context.Context, request *CreateNetworkAclRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateNetworkAclRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkAcl")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -894,6 +1014,11 @@ func (c *Client) DeleteNetworkAclWithContext(ctx context.Context, request *Delet
 	if request == nil {
 		request = NewDeleteNetworkAclRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkAcl")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -908,6 +1033,11 @@ func (c *Client) DeleteNetworkAclWithContext(ctx context.Context, request *Delet
 func (c *Client) DeleteNetworkAclWithContextV2(ctx context.Context, request *DeleteNetworkAclRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteNetworkAclRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkAcl")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -963,6 +1093,11 @@ func (c *Client) CreateNetworkAclEntryWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewCreateNetworkAclEntryRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkAclEntry")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -977,6 +1112,11 @@ func (c *Client) CreateNetworkAclEntryWithContext(ctx context.Context, request *
 func (c *Client) CreateNetworkAclEntryWithContextV2(ctx context.Context, request *CreateNetworkAclEntryRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateNetworkAclEntryRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkAclEntry")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1032,6 +1172,11 @@ func (c *Client) DeleteNetworkAclEntryWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDeleteNetworkAclEntryRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkAclEntry")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1046,6 +1191,11 @@ func (c *Client) DeleteNetworkAclEntryWithContext(ctx context.Context, request *
 func (c *Client) DeleteNetworkAclEntryWithContextV2(ctx context.Context, request *DeleteNetworkAclEntryRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteNetworkAclEntryRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkAclEntry")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1101,6 +1251,11 @@ func (c *Client) DescribeNetworkAclsWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeNetworkAclsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetworkAcls")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1115,6 +1270,11 @@ func (c *Client) DescribeNetworkAclsWithContext(ctx context.Context, request *De
 func (c *Client) DescribeNetworkAclsWithContextV2(ctx context.Context, request *DescribeNetworkAclsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeNetworkAclsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetworkAcls")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1170,6 +1330,11 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
 	if request == nil {
 		request = NewCreateSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1184,6 +1349,11 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
 func (c *Client) CreateSecurityGroupWithContextV2(ctx context.Context, request *CreateSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1239,6 +1409,11 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDeleteSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1253,6 +1428,11 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
 func (c *Client) DeleteSecurityGroupWithContextV2(ctx context.Context, request *DeleteSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1308,6 +1488,11 @@ func (c *Client) AuthorizeSecurityGroupEntryWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewAuthorizeSecurityGroupEntryRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AuthorizeSecurityGroupEntry")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1322,6 +1507,11 @@ func (c *Client) AuthorizeSecurityGroupEntryWithContext(ctx context.Context, req
 func (c *Client) AuthorizeSecurityGroupEntryWithContextV2(ctx context.Context, request *AuthorizeSecurityGroupEntryRequest) (int, string, error) {
 	if request == nil {
 		request = NewAuthorizeSecurityGroupEntryRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AuthorizeSecurityGroupEntry")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1377,6 +1567,11 @@ func (c *Client) RevokeSecurityGroupEntryWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewRevokeSecurityGroupEntryRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "RevokeSecurityGroupEntry")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1391,6 +1586,11 @@ func (c *Client) RevokeSecurityGroupEntryWithContext(ctx context.Context, reques
 func (c *Client) RevokeSecurityGroupEntryWithContextV2(ctx context.Context, request *RevokeSecurityGroupEntryRequest) (int, string, error) {
 	if request == nil {
 		request = NewRevokeSecurityGroupEntryRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "RevokeSecurityGroupEntry")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1446,6 +1646,11 @@ func (c *Client) DescribeSecurityGroupsWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeSecurityGroupsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeSecurityGroups")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1460,6 +1665,11 @@ func (c *Client) DescribeSecurityGroupsWithContext(ctx context.Context, request 
 func (c *Client) DescribeSecurityGroupsWithContextV2(ctx context.Context, request *DescribeSecurityGroupsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSecurityGroupsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeSecurityGroups")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1515,6 +1725,11 @@ func (c *Client) CreateNatWithContext(ctx context.Context, request *CreateNatReq
 	if request == nil {
 		request = NewCreateNatRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateNat")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1529,6 +1744,11 @@ func (c *Client) CreateNatWithContext(ctx context.Context, request *CreateNatReq
 func (c *Client) CreateNatWithContextV2(ctx context.Context, request *CreateNatRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateNatRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateNat")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1584,6 +1804,11 @@ func (c *Client) DeleteNatWithContext(ctx context.Context, request *DeleteNatReq
 	if request == nil {
 		request = NewDeleteNatRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteNat")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1598,6 +1823,11 @@ func (c *Client) DeleteNatWithContext(ctx context.Context, request *DeleteNatReq
 func (c *Client) DeleteNatWithContextV2(ctx context.Context, request *DeleteNatRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteNatRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteNat")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1653,6 +1883,11 @@ func (c *Client) DescribeNatsWithContext(ctx context.Context, request *DescribeN
 	if request == nil {
 		request = NewDescribeNatsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeNats")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1667,6 +1902,11 @@ func (c *Client) DescribeNatsWithContext(ctx context.Context, request *DescribeN
 func (c *Client) DescribeNatsWithContextV2(ctx context.Context, request *DescribeNatsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeNatsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeNats")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1722,6 +1962,11 @@ func (c *Client) AssociateNatWithContext(ctx context.Context, request *Associate
 	if request == nil {
 		request = NewAssociateNatRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AssociateNat")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1736,6 +1981,11 @@ func (c *Client) AssociateNatWithContext(ctx context.Context, request *Associate
 func (c *Client) AssociateNatWithContextV2(ctx context.Context, request *AssociateNatRequest) (int, string, error) {
 	if request == nil {
 		request = NewAssociateNatRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AssociateNat")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1791,6 +2041,11 @@ func (c *Client) DisassociateNatWithContext(ctx context.Context, request *Disass
 	if request == nil {
 		request = NewDisassociateNatRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DisassociateNat")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1805,6 +2060,11 @@ func (c *Client) DisassociateNatWithContext(ctx context.Context, request *Disass
 func (c *Client) DisassociateNatWithContextV2(ctx context.Context, request *DisassociateNatRequest) (int, string, error) {
 	if request == nil {
 		request = NewDisassociateNatRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DisassociateNat")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1860,6 +2120,11 @@ func (c *Client) DescribeInternetGatewaysWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeInternetGatewaysRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeInternetGateways")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1874,6 +2139,11 @@ func (c *Client) DescribeInternetGatewaysWithContext(ctx context.Context, reques
 func (c *Client) DescribeInternetGatewaysWithContextV2(ctx context.Context, request *DescribeInternetGatewaysRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInternetGatewaysRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeInternetGateways")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1929,6 +2199,11 @@ func (c *Client) CreateVpcPeeringConnectionWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewCreateVpcPeeringConnectionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateVpcPeeringConnection")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -1943,6 +2218,11 @@ func (c *Client) CreateVpcPeeringConnectionWithContext(ctx context.Context, requ
 func (c *Client) CreateVpcPeeringConnectionWithContextV2(ctx context.Context, request *CreateVpcPeeringConnectionRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateVpcPeeringConnectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateVpcPeeringConnection")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -1998,6 +2278,11 @@ func (c *Client) DeleteVpcPeeringConnectionWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewDeleteVpcPeeringConnectionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpcPeeringConnection")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2012,6 +2297,11 @@ func (c *Client) DeleteVpcPeeringConnectionWithContext(ctx context.Context, requ
 func (c *Client) DeleteVpcPeeringConnectionWithContextV2(ctx context.Context, request *DeleteVpcPeeringConnectionRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteVpcPeeringConnectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpcPeeringConnection")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2067,6 +2357,11 @@ func (c *Client) DescribeVpcPeeringConnectionsWithContext(ctx context.Context, r
 	if request == nil {
 		request = NewDescribeVpcPeeringConnectionsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcPeeringConnections")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2081,6 +2376,11 @@ func (c *Client) DescribeVpcPeeringConnectionsWithContext(ctx context.Context, r
 func (c *Client) DescribeVpcPeeringConnectionsWithContextV2(ctx context.Context, request *DescribeVpcPeeringConnectionsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeVpcPeeringConnectionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcPeeringConnections")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2136,6 +2436,11 @@ func (c *Client) ModifyNetworkAclWithContext(ctx context.Context, request *Modif
 	if request == nil {
 		request = NewModifyNetworkAclRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkAcl")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2150,6 +2455,11 @@ func (c *Client) ModifyNetworkAclWithContext(ctx context.Context, request *Modif
 func (c *Client) ModifyNetworkAclWithContextV2(ctx context.Context, request *ModifyNetworkAclRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyNetworkAclRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkAcl")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2205,6 +2515,11 @@ func (c *Client) ModifySecurityGroupWithContext(ctx context.Context, request *Mo
 	if request == nil {
 		request = NewModifySecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifySecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2219,6 +2534,11 @@ func (c *Client) ModifySecurityGroupWithContext(ctx context.Context, request *Mo
 func (c *Client) ModifySecurityGroupWithContextV2(ctx context.Context, request *ModifySecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifySecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifySecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2274,6 +2594,11 @@ func (c *Client) ModifySubnetWithContext(ctx context.Context, request *ModifySub
 	if request == nil {
 		request = NewModifySubnetRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifySubnet")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2288,6 +2613,11 @@ func (c *Client) ModifySubnetWithContext(ctx context.Context, request *ModifySub
 func (c *Client) ModifySubnetWithContextV2(ctx context.Context, request *ModifySubnetRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifySubnetRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifySubnet")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2343,6 +2673,11 @@ func (c *Client) ModifyNatWithContext(ctx context.Context, request *ModifyNatReq
 	if request == nil {
 		request = NewModifyNatRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyNat")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2357,6 +2692,11 @@ func (c *Client) ModifyNatWithContext(ctx context.Context, request *ModifyNatReq
 func (c *Client) ModifyNatWithContextV2(ctx context.Context, request *ModifyNatRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyNatRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyNat")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2412,6 +2752,11 @@ func (c *Client) DescribeNetworkInterfacesWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeNetworkInterfacesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetworkInterfaces")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2426,6 +2771,11 @@ func (c *Client) DescribeNetworkInterfacesWithContext(ctx context.Context, reque
 func (c *Client) DescribeNetworkInterfacesWithContextV2(ctx context.Context, request *DescribeNetworkInterfacesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeNetworkInterfacesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetworkInterfaces")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2481,6 +2831,11 @@ func (c *Client) DescribeSubnetAvailableAddressesWithContext(ctx context.Context
 	if request == nil {
 		request = NewDescribeSubnetAvailableAddressesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeSubnetAvailableAddresses")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2495,6 +2850,11 @@ func (c *Client) DescribeSubnetAvailableAddressesWithContext(ctx context.Context
 func (c *Client) DescribeSubnetAvailableAddressesWithContextV2(ctx context.Context, request *DescribeSubnetAvailableAddressesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSubnetAvailableAddressesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeSubnetAvailableAddresses")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2550,6 +2910,11 @@ func (c *Client) ModifyVpcWithContext(ctx context.Context, request *ModifyVpcReq
 	if request == nil {
 		request = NewModifyVpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2564,6 +2929,11 @@ func (c *Client) ModifyVpcWithContext(ctx context.Context, request *ModifyVpcReq
 func (c *Client) ModifyVpcWithContextV2(ctx context.Context, request *ModifyVpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyVpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2619,6 +2989,11 @@ func (c *Client) AcceptVpcPeeringConnectionWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewAcceptVpcPeeringConnectionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AcceptVpcPeeringConnection")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2633,6 +3008,11 @@ func (c *Client) AcceptVpcPeeringConnectionWithContext(ctx context.Context, requ
 func (c *Client) AcceptVpcPeeringConnectionWithContextV2(ctx context.Context, request *AcceptVpcPeeringConnectionRequest) (int, string, error) {
 	if request == nil {
 		request = NewAcceptVpcPeeringConnectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AcceptVpcPeeringConnection")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2688,6 +3068,11 @@ func (c *Client) RejectVpcPeeringConnectionWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewRejectVpcPeeringConnectionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "RejectVpcPeeringConnection")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2702,6 +3087,11 @@ func (c *Client) RejectVpcPeeringConnectionWithContext(ctx context.Context, requ
 func (c *Client) RejectVpcPeeringConnectionWithContextV2(ctx context.Context, request *RejectVpcPeeringConnectionRequest) (int, string, error) {
 	if request == nil {
 		request = NewRejectVpcPeeringConnectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "RejectVpcPeeringConnection")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2757,6 +3147,11 @@ func (c *Client) ModifyVpcPeeringConnectionWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewModifyVpcPeeringConnectionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpcPeeringConnection")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2771,6 +3166,11 @@ func (c *Client) ModifyVpcPeeringConnectionWithContext(ctx context.Context, requ
 func (c *Client) ModifyVpcPeeringConnectionWithContextV2(ctx context.Context, request *ModifyVpcPeeringConnectionRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyVpcPeeringConnectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpcPeeringConnection")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2826,6 +3226,11 @@ func (c *Client) DescribeAvailabilityZonesWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeAvailabilityZonesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeAvailabilityZones")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2840,6 +3245,11 @@ func (c *Client) DescribeAvailabilityZonesWithContext(ctx context.Context, reque
 func (c *Client) DescribeAvailabilityZonesWithContextV2(ctx context.Context, request *DescribeAvailabilityZonesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAvailabilityZonesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeAvailabilityZones")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2895,6 +3305,11 @@ func (c *Client) DescribeDirectConnectsWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDescribeDirectConnectsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnects")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2909,6 +3324,11 @@ func (c *Client) DescribeDirectConnectsWithContext(ctx context.Context, request 
 func (c *Client) DescribeDirectConnectsWithContextV2(ctx context.Context, request *DescribeDirectConnectsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDirectConnectsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnects")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -2964,6 +3384,11 @@ func (c *Client) CreateDirectConnectInterfaceWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewCreateDirectConnectInterfaceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateDirectConnectInterface")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -2978,6 +3403,11 @@ func (c *Client) CreateDirectConnectInterfaceWithContext(ctx context.Context, re
 func (c *Client) CreateDirectConnectInterfaceWithContextV2(ctx context.Context, request *CreateDirectConnectInterfaceRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateDirectConnectInterfaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateDirectConnectInterface")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3033,6 +3463,11 @@ func (c *Client) DeleteDirectConnectInterfaceWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewDeleteDirectConnectInterfaceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteDirectConnectInterface")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3047,6 +3482,11 @@ func (c *Client) DeleteDirectConnectInterfaceWithContext(ctx context.Context, re
 func (c *Client) DeleteDirectConnectInterfaceWithContextV2(ctx context.Context, request *DeleteDirectConnectInterfaceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteDirectConnectInterfaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteDirectConnectInterface")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3102,6 +3542,11 @@ func (c *Client) DescribeDirectConnectInterfacesWithContext(ctx context.Context,
 	if request == nil {
 		request = NewDescribeDirectConnectInterfacesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectInterfaces")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3116,6 +3561,11 @@ func (c *Client) DescribeDirectConnectInterfacesWithContext(ctx context.Context,
 func (c *Client) DescribeDirectConnectInterfacesWithContextV2(ctx context.Context, request *DescribeDirectConnectInterfacesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDirectConnectInterfacesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectInterfaces")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3171,6 +3621,11 @@ func (c *Client) CreateDirectConnectGatewayWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewCreateDirectConnectGatewayRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateDirectConnectGateway")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3185,6 +3640,11 @@ func (c *Client) CreateDirectConnectGatewayWithContext(ctx context.Context, requ
 func (c *Client) CreateDirectConnectGatewayWithContextV2(ctx context.Context, request *CreateDirectConnectGatewayRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateDirectConnectGatewayRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateDirectConnectGateway")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3240,6 +3700,11 @@ func (c *Client) DeleteDirectConnectGatewayWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewDeleteDirectConnectGatewayRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteDirectConnectGateway")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3254,6 +3719,11 @@ func (c *Client) DeleteDirectConnectGatewayWithContext(ctx context.Context, requ
 func (c *Client) DeleteDirectConnectGatewayWithContextV2(ctx context.Context, request *DeleteDirectConnectGatewayRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteDirectConnectGatewayRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteDirectConnectGateway")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3309,6 +3779,11 @@ func (c *Client) DescribeDirectConnectGatewaysWithContext(ctx context.Context, r
 	if request == nil {
 		request = NewDescribeDirectConnectGatewaysRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectGateways")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3323,6 +3798,11 @@ func (c *Client) DescribeDirectConnectGatewaysWithContext(ctx context.Context, r
 func (c *Client) DescribeDirectConnectGatewaysWithContextV2(ctx context.Context, request *DescribeDirectConnectGatewaysRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDirectConnectGatewaysRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectGateways")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3378,6 +3858,11 @@ func (c *Client) AttachDirectConnectGatewayWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewAttachDirectConnectGatewayRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AttachDirectConnectGateway")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3392,6 +3877,11 @@ func (c *Client) AttachDirectConnectGatewayWithContext(ctx context.Context, requ
 func (c *Client) AttachDirectConnectGatewayWithContextV2(ctx context.Context, request *AttachDirectConnectGatewayRequest) (int, string, error) {
 	if request == nil {
 		request = NewAttachDirectConnectGatewayRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AttachDirectConnectGateway")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3447,6 +3937,11 @@ func (c *Client) DetachDirectConnectGatewayWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewDetachDirectConnectGatewayRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DetachDirectConnectGateway")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3461,6 +3956,11 @@ func (c *Client) DetachDirectConnectGatewayWithContext(ctx context.Context, requ
 func (c *Client) DetachDirectConnectGatewayWithContextV2(ctx context.Context, request *DetachDirectConnectGatewayRequest) (int, string, error) {
 	if request == nil {
 		request = NewDetachDirectConnectGatewayRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DetachDirectConnectGateway")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3516,6 +4016,11 @@ func (c *Client) ModifyDirectConnectInterfaceWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewModifyDirectConnectInterfaceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyDirectConnectInterface")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3530,6 +4035,11 @@ func (c *Client) ModifyDirectConnectInterfaceWithContext(ctx context.Context, re
 func (c *Client) ModifyDirectConnectInterfaceWithContextV2(ctx context.Context, request *ModifyDirectConnectInterfaceRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyDirectConnectInterfaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyDirectConnectInterface")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3585,6 +4095,11 @@ func (c *Client) ModifyDirectConnectGatewayWithContext(ctx context.Context, requ
 	if request == nil {
 		request = NewModifyDirectConnectGatewayRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyDirectConnectGateway")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3599,6 +4114,11 @@ func (c *Client) ModifyDirectConnectGatewayWithContext(ctx context.Context, requ
 func (c *Client) ModifyDirectConnectGatewayWithContextV2(ctx context.Context, request *ModifyDirectConnectGatewayRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyDirectConnectGatewayRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyDirectConnectGateway")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3654,6 +4174,11 @@ func (c *Client) CreateVpnGatewayWithContext(ctx context.Context, request *Creat
 	if request == nil {
 		request = NewCreateVpnGatewayRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnGateway")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3668,6 +4193,11 @@ func (c *Client) CreateVpnGatewayWithContext(ctx context.Context, request *Creat
 func (c *Client) CreateVpnGatewayWithContextV2(ctx context.Context, request *CreateVpnGatewayRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateVpnGatewayRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnGateway")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3723,6 +4253,11 @@ func (c *Client) ModifyVpnGatewayWithContext(ctx context.Context, request *Modif
 	if request == nil {
 		request = NewModifyVpnGatewayRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnGateway")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3737,6 +4272,11 @@ func (c *Client) ModifyVpnGatewayWithContext(ctx context.Context, request *Modif
 func (c *Client) ModifyVpnGatewayWithContextV2(ctx context.Context, request *ModifyVpnGatewayRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyVpnGatewayRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnGateway")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3792,6 +4332,11 @@ func (c *Client) DeleteVpnGatewayWithContext(ctx context.Context, request *Delet
 	if request == nil {
 		request = NewDeleteVpnGatewayRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnGateway")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3806,6 +4351,11 @@ func (c *Client) DeleteVpnGatewayWithContext(ctx context.Context, request *Delet
 func (c *Client) DeleteVpnGatewayWithContextV2(ctx context.Context, request *DeleteVpnGatewayRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteVpnGatewayRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnGateway")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3861,6 +4411,11 @@ func (c *Client) DescribeVpnGatewaysWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeVpnGatewaysRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnGateways")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3875,6 +4430,11 @@ func (c *Client) DescribeVpnGatewaysWithContext(ctx context.Context, request *De
 func (c *Client) DescribeVpnGatewaysWithContextV2(ctx context.Context, request *DescribeVpnGatewaysRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeVpnGatewaysRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnGateways")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3930,6 +4490,11 @@ func (c *Client) CreateVpnTunnelWithContext(ctx context.Context, request *Create
 	if request == nil {
 		request = NewCreateVpnTunnelRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnTunnel")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -3944,6 +4509,11 @@ func (c *Client) CreateVpnTunnelWithContext(ctx context.Context, request *Create
 func (c *Client) CreateVpnTunnelWithContextV2(ctx context.Context, request *CreateVpnTunnelRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateVpnTunnelRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnTunnel")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -3999,6 +4569,11 @@ func (c *Client) ModifyVpnTunnelWithContext(ctx context.Context, request *Modify
 	if request == nil {
 		request = NewModifyVpnTunnelRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnTunnel")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4013,6 +4588,11 @@ func (c *Client) ModifyVpnTunnelWithContext(ctx context.Context, request *Modify
 func (c *Client) ModifyVpnTunnelWithContextV2(ctx context.Context, request *ModifyVpnTunnelRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyVpnTunnelRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnTunnel")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4068,6 +4648,11 @@ func (c *Client) DeleteVpnTunnelWithContext(ctx context.Context, request *Delete
 	if request == nil {
 		request = NewDeleteVpnTunnelRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnTunnel")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4082,6 +4667,11 @@ func (c *Client) DeleteVpnTunnelWithContext(ctx context.Context, request *Delete
 func (c *Client) DeleteVpnTunnelWithContextV2(ctx context.Context, request *DeleteVpnTunnelRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteVpnTunnelRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnTunnel")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4137,6 +4727,11 @@ func (c *Client) DescribeVpnTunnelsWithContext(ctx context.Context, request *Des
 	if request == nil {
 		request = NewDescribeVpnTunnelsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnTunnels")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4151,6 +4746,11 @@ func (c *Client) DescribeVpnTunnelsWithContext(ctx context.Context, request *Des
 func (c *Client) DescribeVpnTunnelsWithContextV2(ctx context.Context, request *DescribeVpnTunnelsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeVpnTunnelsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnTunnels")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4206,6 +4806,11 @@ func (c *Client) CreateCustomerGatewayWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewCreateCustomerGatewayRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateCustomerGateway")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4220,6 +4825,11 @@ func (c *Client) CreateCustomerGatewayWithContext(ctx context.Context, request *
 func (c *Client) CreateCustomerGatewayWithContextV2(ctx context.Context, request *CreateCustomerGatewayRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateCustomerGatewayRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateCustomerGateway")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4275,6 +4885,11 @@ func (c *Client) ModifyCustomerGatewayWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewModifyCustomerGatewayRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyCustomerGateway")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4289,6 +4904,11 @@ func (c *Client) ModifyCustomerGatewayWithContext(ctx context.Context, request *
 func (c *Client) ModifyCustomerGatewayWithContextV2(ctx context.Context, request *ModifyCustomerGatewayRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyCustomerGatewayRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyCustomerGateway")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4344,6 +4964,11 @@ func (c *Client) DeleteCustomerGatewayWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDeleteCustomerGatewayRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteCustomerGateway")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4358,6 +4983,11 @@ func (c *Client) DeleteCustomerGatewayWithContext(ctx context.Context, request *
 func (c *Client) DeleteCustomerGatewayWithContextV2(ctx context.Context, request *DeleteCustomerGatewayRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteCustomerGatewayRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteCustomerGateway")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4413,6 +5043,11 @@ func (c *Client) ModifyDirectConnectWithContext(ctx context.Context, request *Mo
 	if request == nil {
 		request = NewModifyDirectConnectRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyDirectConnect")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4427,6 +5062,11 @@ func (c *Client) ModifyDirectConnectWithContext(ctx context.Context, request *Mo
 func (c *Client) ModifyDirectConnectWithContextV2(ctx context.Context, request *ModifyDirectConnectRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyDirectConnectRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyDirectConnect")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4482,6 +5122,11 @@ func (c *Client) DescribeCustomerGatewaysWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeCustomerGatewaysRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeCustomerGateways")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4496,6 +5141,11 @@ func (c *Client) DescribeCustomerGatewaysWithContext(ctx context.Context, reques
 func (c *Client) DescribeCustomerGatewaysWithContextV2(ctx context.Context, request *DescribeCustomerGatewaysRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeCustomerGatewaysRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeCustomerGateways")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4551,6 +5201,11 @@ func (c *Client) DescribeSubnetAllocatedIpAddressesWithContext(ctx context.Conte
 	if request == nil {
 		request = NewDescribeSubnetAllocatedIpAddressesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeSubnetAllocatedIpAddresses")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4565,6 +5220,11 @@ func (c *Client) DescribeSubnetAllocatedIpAddressesWithContext(ctx context.Conte
 func (c *Client) DescribeSubnetAllocatedIpAddressesWithContextV2(ctx context.Context, request *DescribeSubnetAllocatedIpAddressesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSubnetAllocatedIpAddressesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeSubnetAllocatedIpAddresses")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4620,6 +5280,11 @@ func (c *Client) AddNatIpWithContext(ctx context.Context, request *AddNatIpReque
 	if request == nil {
 		request = NewAddNatIpRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AddNatIp")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4634,6 +5299,11 @@ func (c *Client) AddNatIpWithContext(ctx context.Context, request *AddNatIpReque
 func (c *Client) AddNatIpWithContextV2(ctx context.Context, request *AddNatIpRequest) (int, string, error) {
 	if request == nil {
 		request = NewAddNatIpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AddNatIp")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4689,6 +5359,11 @@ func (c *Client) DeleteNatIpWithContext(ctx context.Context, request *DeleteNatI
 	if request == nil {
 		request = NewDeleteNatIpRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteNatIp")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4703,6 +5378,11 @@ func (c *Client) DeleteNatIpWithContext(ctx context.Context, request *DeleteNatI
 func (c *Client) DeleteNatIpWithContextV2(ctx context.Context, request *DeleteNatIpRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteNatIpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteNatIp")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4758,6 +5438,11 @@ func (c *Client) AssociateVpcCidrBlockWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewAssociateVpcCidrBlockRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AssociateVpcCidrBlock")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4772,6 +5457,11 @@ func (c *Client) AssociateVpcCidrBlockWithContext(ctx context.Context, request *
 func (c *Client) AssociateVpcCidrBlockWithContextV2(ctx context.Context, request *AssociateVpcCidrBlockRequest) (int, string, error) {
 	if request == nil {
 		request = NewAssociateVpcCidrBlockRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AssociateVpcCidrBlock")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4827,6 +5517,11 @@ func (c *Client) DescribeIpv6PublicIpAddressesWithContext(ctx context.Context, r
 	if request == nil {
 		request = NewDescribeIpv6PublicIpAddressesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeIpv6PublicIpAddresses")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4841,6 +5536,11 @@ func (c *Client) DescribeIpv6PublicIpAddressesWithContext(ctx context.Context, r
 func (c *Client) DescribeIpv6PublicIpAddressesWithContextV2(ctx context.Context, request *DescribeIpv6PublicIpAddressesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeIpv6PublicIpAddressesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeIpv6PublicIpAddresses")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4896,6 +5596,11 @@ func (c *Client) DescribeIpv6NetworkInterfacesWithContext(ctx context.Context, r
 	if request == nil {
 		request = NewDescribeIpv6NetworkInterfacesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeIpv6NetworkInterfaces")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4910,6 +5615,11 @@ func (c *Client) DescribeIpv6NetworkInterfacesWithContext(ctx context.Context, r
 func (c *Client) DescribeIpv6NetworkInterfacesWithContextV2(ctx context.Context, request *DescribeIpv6NetworkInterfacesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeIpv6NetworkInterfacesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeIpv6NetworkInterfaces")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -4965,6 +5675,11 @@ func (c *Client) CreateIpv6PublicIpWithContext(ctx context.Context, request *Cre
 	if request == nil {
 		request = NewCreateIpv6PublicIpRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateIpv6PublicIp")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -4979,6 +5694,11 @@ func (c *Client) CreateIpv6PublicIpWithContext(ctx context.Context, request *Cre
 func (c *Client) CreateIpv6PublicIpWithContextV2(ctx context.Context, request *CreateIpv6PublicIpRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateIpv6PublicIpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateIpv6PublicIp")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5034,6 +5754,11 @@ func (c *Client) ReleaseIpv6PublicIpWithContext(ctx context.Context, request *Re
 	if request == nil {
 		request = NewReleaseIpv6PublicIpRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ReleaseIpv6PublicIp")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5048,6 +5773,11 @@ func (c *Client) ReleaseIpv6PublicIpWithContext(ctx context.Context, request *Re
 func (c *Client) ReleaseIpv6PublicIpWithContextV2(ctx context.Context, request *ReleaseIpv6PublicIpRequest) (int, string, error) {
 	if request == nil {
 		request = NewReleaseIpv6PublicIpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ReleaseIpv6PublicIp")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5103,6 +5833,11 @@ func (c *Client) AlterIpv6PublicIpStateWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewAlterIpv6PublicIpStateRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AlterIpv6PublicIpState")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5117,6 +5852,11 @@ func (c *Client) AlterIpv6PublicIpStateWithContext(ctx context.Context, request 
 func (c *Client) AlterIpv6PublicIpStateWithContextV2(ctx context.Context, request *AlterIpv6PublicIpStateRequest) (int, string, error) {
 	if request == nil {
 		request = NewAlterIpv6PublicIpStateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AlterIpv6PublicIpState")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5172,6 +5912,11 @@ func (c *Client) ModifyIpv6PublicIpWithContext(ctx context.Context, request *Mod
 	if request == nil {
 		request = NewModifyIpv6PublicIpRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyIpv6PublicIp")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5186,6 +5931,11 @@ func (c *Client) ModifyIpv6PublicIpWithContext(ctx context.Context, request *Mod
 func (c *Client) ModifyIpv6PublicIpWithContextV2(ctx context.Context, request *ModifyIpv6PublicIpRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyIpv6PublicIpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyIpv6PublicIp")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5241,6 +5991,11 @@ func (c *Client) ModifyPrivateIpAddressAttributeWithContext(ctx context.Context,
 	if request == nil {
 		request = NewModifyPrivateIpAddressAttributeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyPrivateIpAddressAttribute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5255,6 +6010,11 @@ func (c *Client) ModifyPrivateIpAddressAttributeWithContext(ctx context.Context,
 func (c *Client) ModifyPrivateIpAddressAttributeWithContextV2(ctx context.Context, request *ModifyPrivateIpAddressAttributeRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyPrivateIpAddressAttributeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyPrivateIpAddressAttribute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5310,6 +6070,11 @@ func (c *Client) DescribeDirectConnectRoutesWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewDescribeDirectConnectRoutesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectRoutes")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5324,6 +6089,11 @@ func (c *Client) DescribeDirectConnectRoutesWithContext(ctx context.Context, req
 func (c *Client) DescribeDirectConnectRoutesWithContextV2(ctx context.Context, request *DescribeDirectConnectRoutesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDirectConnectRoutesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectRoutes")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5379,6 +6149,11 @@ func (c *Client) PublishDirectConnectRouteToBgpWithContext(ctx context.Context, 
 	if request == nil {
 		request = NewPublishDirectConnectRouteToBgpRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "PublishDirectConnectRouteToBgp")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5393,6 +6168,11 @@ func (c *Client) PublishDirectConnectRouteToBgpWithContext(ctx context.Context, 
 func (c *Client) PublishDirectConnectRouteToBgpWithContextV2(ctx context.Context, request *PublishDirectConnectRouteToBgpRequest) (int, string, error) {
 	if request == nil {
 		request = NewPublishDirectConnectRouteToBgpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "PublishDirectConnectRouteToBgp")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5448,6 +6228,11 @@ func (c *Client) CancelDirectConnectRouteToBgpWithContext(ctx context.Context, r
 	if request == nil {
 		request = NewCancelDirectConnectRouteToBgpRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CancelDirectConnectRouteToBgp")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5462,6 +6247,11 @@ func (c *Client) CancelDirectConnectRouteToBgpWithContext(ctx context.Context, r
 func (c *Client) CancelDirectConnectRouteToBgpWithContextV2(ctx context.Context, request *CancelDirectConnectRouteToBgpRequest) (int, string, error) {
 	if request == nil {
 		request = NewCancelDirectConnectRouteToBgpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CancelDirectConnectRouteToBgp")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5517,6 +6307,11 @@ func (c *Client) DetachDirectConnectGatewayWithVpcWithContext(ctx context.Contex
 	if request == nil {
 		request = NewDetachDirectConnectGatewayWithVpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DetachDirectConnectGatewayWithVpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5531,6 +6326,11 @@ func (c *Client) DetachDirectConnectGatewayWithVpcWithContext(ctx context.Contex
 func (c *Client) DetachDirectConnectGatewayWithVpcWithContextV2(ctx context.Context, request *DetachDirectConnectGatewayWithVpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewDetachDirectConnectGatewayWithVpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DetachDirectConnectGatewayWithVpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5586,6 +6386,11 @@ func (c *Client) AttachDirectConnectGatewayWithVpcWithContext(ctx context.Contex
 	if request == nil {
 		request = NewAttachDirectConnectGatewayWithVpcRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AttachDirectConnectGatewayWithVpc")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5600,6 +6405,11 @@ func (c *Client) AttachDirectConnectGatewayWithVpcWithContext(ctx context.Contex
 func (c *Client) AttachDirectConnectGatewayWithVpcWithContextV2(ctx context.Context, request *AttachDirectConnectGatewayWithVpcRequest) (int, string, error) {
 	if request == nil {
 		request = NewAttachDirectConnectGatewayWithVpcRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AttachDirectConnectGatewayWithVpc")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5655,6 +6465,11 @@ func (c *Client) AllocateSubnetIpv6CidrBlockWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewAllocateSubnetIpv6CidrBlockRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AllocateSubnetIpv6CidrBlock")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5669,6 +6484,11 @@ func (c *Client) AllocateSubnetIpv6CidrBlockWithContext(ctx context.Context, req
 func (c *Client) AllocateSubnetIpv6CidrBlockWithContextV2(ctx context.Context, request *AllocateSubnetIpv6CidrBlockRequest) (int, string, error) {
 	if request == nil {
 		request = NewAllocateSubnetIpv6CidrBlockRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AllocateSubnetIpv6CidrBlock")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5724,6 +6544,11 @@ func (c *Client) CreateRouteTableWithContext(ctx context.Context, request *Creat
 	if request == nil {
 		request = NewCreateRouteTableRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateRouteTable")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5738,6 +6563,11 @@ func (c *Client) CreateRouteTableWithContext(ctx context.Context, request *Creat
 func (c *Client) CreateRouteTableWithContextV2(ctx context.Context, request *CreateRouteTableRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateRouteTableRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateRouteTable")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5793,6 +6623,11 @@ func (c *Client) DeleteRouteTableWithContext(ctx context.Context, request *Delet
 	if request == nil {
 		request = NewDeleteRouteTableRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteRouteTable")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5807,6 +6642,11 @@ func (c *Client) DeleteRouteTableWithContext(ctx context.Context, request *Delet
 func (c *Client) DeleteRouteTableWithContextV2(ctx context.Context, request *DeleteRouteTableRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteRouteTableRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteRouteTable")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5862,6 +6702,11 @@ func (c *Client) ModifyRouteTableWithContext(ctx context.Context, request *Modif
 	if request == nil {
 		request = NewModifyRouteTableRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyRouteTable")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5876,6 +6721,11 @@ func (c *Client) ModifyRouteTableWithContext(ctx context.Context, request *Modif
 func (c *Client) ModifyRouteTableWithContextV2(ctx context.Context, request *ModifyRouteTableRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyRouteTableRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyRouteTable")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -5931,6 +6781,11 @@ func (c *Client) DescribeRouteTablesWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDescribeRouteTablesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeRouteTables")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -5945,6 +6800,11 @@ func (c *Client) DescribeRouteTablesWithContext(ctx context.Context, request *De
 func (c *Client) DescribeRouteTablesWithContextV2(ctx context.Context, request *DescribeRouteTablesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeRouteTablesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeRouteTables")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6000,6 +6860,11 @@ func (c *Client) AssociateRouteTableWithContext(ctx context.Context, request *As
 	if request == nil {
 		request = NewAssociateRouteTableRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AssociateRouteTable")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6014,6 +6879,11 @@ func (c *Client) AssociateRouteTableWithContext(ctx context.Context, request *As
 func (c *Client) AssociateRouteTableWithContextV2(ctx context.Context, request *AssociateRouteTableRequest) (int, string, error) {
 	if request == nil {
 		request = NewAssociateRouteTableRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AssociateRouteTable")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6069,6 +6939,11 @@ func (c *Client) DeleteNetworkInterfaceWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDeleteNetworkInterfaceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkInterface")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6083,6 +6958,11 @@ func (c *Client) DeleteNetworkInterfaceWithContext(ctx context.Context, request 
 func (c *Client) DeleteNetworkInterfaceWithContextV2(ctx context.Context, request *DeleteNetworkInterfaceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteNetworkInterfaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkInterface")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6138,6 +7018,11 @@ func (c *Client) CreateNetworkInterfaceWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewCreateNetworkInterfaceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkInterface")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6152,6 +7037,11 @@ func (c *Client) CreateNetworkInterfaceWithContext(ctx context.Context, request 
 func (c *Client) CreateNetworkInterfaceWithContextV2(ctx context.Context, request *CreateNetworkInterfaceRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateNetworkInterfaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkInterface")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6207,6 +7097,11 @@ func (c *Client) ModifyNetworkInterfaceWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewModifyNetworkInterfaceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkInterface")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6221,6 +7116,11 @@ func (c *Client) ModifyNetworkInterfaceWithContext(ctx context.Context, request 
 func (c *Client) ModifyNetworkInterfaceWithContextV2(ctx context.Context, request *ModifyNetworkInterfaceRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyNetworkInterfaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkInterface")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6276,6 +7176,11 @@ func (c *Client) CreateNatRateLimitWithContext(ctx context.Context, request *Cre
 	if request == nil {
 		request = NewCreateNatRateLimitRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateNatRateLimit")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6290,6 +7195,11 @@ func (c *Client) CreateNatRateLimitWithContext(ctx context.Context, request *Cre
 func (c *Client) CreateNatRateLimitWithContextV2(ctx context.Context, request *CreateNatRateLimitRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateNatRateLimitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateNatRateLimit")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6345,6 +7255,11 @@ func (c *Client) DescribeNatRateLimitWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDescribeNatRateLimitRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeNatRateLimit")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6359,6 +7274,11 @@ func (c *Client) DescribeNatRateLimitWithContext(ctx context.Context, request *D
 func (c *Client) DescribeNatRateLimitWithContextV2(ctx context.Context, request *DescribeNatRateLimitRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeNatRateLimitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeNatRateLimit")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6414,6 +7334,11 @@ func (c *Client) ModifyNatRateLimitWithContext(ctx context.Context, request *Mod
 	if request == nil {
 		request = NewModifyNatRateLimitRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyNatRateLimit")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6428,6 +7353,11 @@ func (c *Client) ModifyNatRateLimitWithContext(ctx context.Context, request *Mod
 func (c *Client) ModifyNatRateLimitWithContextV2(ctx context.Context, request *ModifyNatRateLimitRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyNatRateLimitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyNatRateLimit")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6483,6 +7413,11 @@ func (c *Client) DeleteNatRateLimitWithContext(ctx context.Context, request *Del
 	if request == nil {
 		request = NewDeleteNatRateLimitRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteNatRateLimit")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6497,6 +7432,11 @@ func (c *Client) DeleteNatRateLimitWithContext(ctx context.Context, request *Del
 func (c *Client) DeleteNatRateLimitWithContextV2(ctx context.Context, request *DeleteNatRateLimitRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteNatRateLimitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteNatRateLimit")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6552,6 +7492,11 @@ func (c *Client) CreateDnatWithContext(ctx context.Context, request *CreateDnatR
 	if request == nil {
 		request = NewCreateDnatRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateDnat")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6566,6 +7511,11 @@ func (c *Client) CreateDnatWithContext(ctx context.Context, request *CreateDnatR
 func (c *Client) CreateDnatWithContextV2(ctx context.Context, request *CreateDnatRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateDnatRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateDnat")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6621,6 +7571,11 @@ func (c *Client) DeleteDnatWithContext(ctx context.Context, request *DeleteDnatR
 	if request == nil {
 		request = NewDeleteDnatRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteDnat")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6635,6 +7590,11 @@ func (c *Client) DeleteDnatWithContext(ctx context.Context, request *DeleteDnatR
 func (c *Client) DeleteDnatWithContextV2(ctx context.Context, request *DeleteDnatRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteDnatRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteDnat")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6690,6 +7650,11 @@ func (c *Client) DescribeDnatsWithContext(ctx context.Context, request *Describe
 	if request == nil {
 		request = NewDescribeDnatsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeDnats")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6704,6 +7669,11 @@ func (c *Client) DescribeDnatsWithContext(ctx context.Context, request *Describe
 func (c *Client) DescribeDnatsWithContextV2(ctx context.Context, request *DescribeDnatsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDnatsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeDnats")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6759,6 +7729,11 @@ func (c *Client) ModifyDnatWithContext(ctx context.Context, request *ModifyDnatR
 	if request == nil {
 		request = NewModifyDnatRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyDnat")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6773,6 +7748,11 @@ func (c *Client) ModifyDnatWithContext(ctx context.Context, request *ModifyDnatR
 func (c *Client) ModifyDnatWithContextV2(ctx context.Context, request *ModifyDnatRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyDnatRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyDnat")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6828,6 +7808,11 @@ func (c *Client) AssociateInstanceWithContext(ctx context.Context, request *Asso
 	if request == nil {
 		request = NewAssociateInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AssociateInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6842,6 +7827,11 @@ func (c *Client) AssociateInstanceWithContext(ctx context.Context, request *Asso
 func (c *Client) AssociateInstanceWithContextV2(ctx context.Context, request *AssociateInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewAssociateInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AssociateInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6897,6 +7887,11 @@ func (c *Client) DisassociateInstanceWithContext(ctx context.Context, request *D
 	if request == nil {
 		request = NewDisassociateInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DisassociateInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6911,6 +7906,11 @@ func (c *Client) DisassociateInstanceWithContext(ctx context.Context, request *D
 func (c *Client) DisassociateInstanceWithContextV2(ctx context.Context, request *DisassociateInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDisassociateInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DisassociateInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -6966,6 +7966,11 @@ func (c *Client) CreateHaVipWithContext(ctx context.Context, request *CreateHaVi
 	if request == nil {
 		request = NewCreateHaVipRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateHaVip")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -6980,6 +7985,11 @@ func (c *Client) CreateHaVipWithContext(ctx context.Context, request *CreateHaVi
 func (c *Client) CreateHaVipWithContextV2(ctx context.Context, request *CreateHaVipRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateHaVipRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateHaVip")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -7035,6 +8045,11 @@ func (c *Client) DeleteHaVipWithContext(ctx context.Context, request *DeleteHaVi
 	if request == nil {
 		request = NewDeleteHaVipRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteHaVip")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -7049,6 +8064,11 @@ func (c *Client) DeleteHaVipWithContext(ctx context.Context, request *DeleteHaVi
 func (c *Client) DeleteHaVipWithContextV2(ctx context.Context, request *DeleteHaVipRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteHaVipRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteHaVip")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -7104,6 +8124,11 @@ func (c *Client) AssociateHaVipWithContext(ctx context.Context, request *Associa
 	if request == nil {
 		request = NewAssociateHaVipRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AssociateHaVip")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -7118,6 +8143,11 @@ func (c *Client) AssociateHaVipWithContext(ctx context.Context, request *Associa
 func (c *Client) AssociateHaVipWithContextV2(ctx context.Context, request *AssociateHaVipRequest) (int, string, error) {
 	if request == nil {
 		request = NewAssociateHaVipRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AssociateHaVip")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -7173,6 +8203,11 @@ func (c *Client) UnAssociateHaVipWithContext(ctx context.Context, request *UnAss
 	if request == nil {
 		request = NewUnAssociateHaVipRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "UnAssociateHaVip")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -7187,6 +8222,11 @@ func (c *Client) UnAssociateHaVipWithContext(ctx context.Context, request *UnAss
 func (c *Client) UnAssociateHaVipWithContextV2(ctx context.Context, request *UnAssociateHaVipRequest) (int, string, error) {
 	if request == nil {
 		request = NewUnAssociateHaVipRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "UnAssociateHaVip")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -7242,6 +8282,11 @@ func (c *Client) DescribeHaVipWithContext(ctx context.Context, request *Describe
 	if request == nil {
 		request = NewDescribeHaVipRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeHaVip")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -7256,6 +8301,11 @@ func (c *Client) DescribeHaVipWithContext(ctx context.Context, request *Describe
 func (c *Client) DescribeHaVipWithContextV2(ctx context.Context, request *DescribeHaVipRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeHaVipRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeHaVip")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -7311,6 +8361,11 @@ func (c *Client) CreateDirectConnectGatewayRouteWithContext(ctx context.Context,
 	if request == nil {
 		request = NewCreateDirectConnectGatewayRouteRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateDirectConnectGatewayRoute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -7325,6 +8380,11 @@ func (c *Client) CreateDirectConnectGatewayRouteWithContext(ctx context.Context,
 func (c *Client) CreateDirectConnectGatewayRouteWithContextV2(ctx context.Context, request *CreateDirectConnectGatewayRouteRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateDirectConnectGatewayRouteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateDirectConnectGatewayRoute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -7380,6 +8440,11 @@ func (c *Client) DeleteDirectConnectGatewayRouteWithContext(ctx context.Context,
 	if request == nil {
 		request = NewDeleteDirectConnectGatewayRouteRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteDirectConnectGatewayRoute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -7394,6 +8459,11 @@ func (c *Client) DeleteDirectConnectGatewayRouteWithContext(ctx context.Context,
 func (c *Client) DeleteDirectConnectGatewayRouteWithContextV2(ctx context.Context, request *DeleteDirectConnectGatewayRouteRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteDirectConnectGatewayRouteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteDirectConnectGatewayRoute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -7449,6 +8519,11 @@ func (c *Client) DescribeDirectConnectGatewayRouteWithContext(ctx context.Contex
 	if request == nil {
 		request = NewDescribeDirectConnectGatewayRouteRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectGatewayRoute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -7463,6 +8538,11 @@ func (c *Client) DescribeDirectConnectGatewayRouteWithContext(ctx context.Contex
 func (c *Client) DescribeDirectConnectGatewayRouteWithContextV2(ctx context.Context, request *DescribeDirectConnectGatewayRouteRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDirectConnectGatewayRouteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectGatewayRoute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -7518,6 +8598,11 @@ func (c *Client) PublishDirectConnectRouteWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewPublishDirectConnectRouteRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "PublishDirectConnectRoute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -7532,6 +8617,11 @@ func (c *Client) PublishDirectConnectRouteWithContext(ctx context.Context, reque
 func (c *Client) PublishDirectConnectRouteWithContextV2(ctx context.Context, request *PublishDirectConnectRouteRequest) (int, string, error) {
 	if request == nil {
 		request = NewPublishDirectConnectRouteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "PublishDirectConnectRoute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -7587,6 +8677,11 @@ func (c *Client) UnpublishDirectConnectRouteWithContext(ctx context.Context, req
 	if request == nil {
 		request = NewUnpublishDirectConnectRouteRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "UnpublishDirectConnectRoute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -7601,6 +8696,11 @@ func (c *Client) UnpublishDirectConnectRouteWithContext(ctx context.Context, req
 func (c *Client) UnpublishDirectConnectRouteWithContextV2(ctx context.Context, request *UnpublishDirectConnectRouteRequest) (int, string, error) {
 	if request == nil {
 		request = NewUnpublishDirectConnectRouteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "UnpublishDirectConnectRoute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -7656,6 +8756,11 @@ func (c *Client) AddSecondaryCidrBlockWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewAddSecondaryCidrBlockRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AddSecondaryCidrBlock")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -7670,6 +8775,11 @@ func (c *Client) AddSecondaryCidrBlockWithContext(ctx context.Context, request *
 func (c *Client) AddSecondaryCidrBlockWithContextV2(ctx context.Context, request *AddSecondaryCidrBlockRequest) (int, string, error) {
 	if request == nil {
 		request = NewAddSecondaryCidrBlockRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AddSecondaryCidrBlock")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -7725,6 +8835,11 @@ func (c *Client) DeleteSecondaryCidrBlockWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDeleteSecondaryCidrBlockRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteSecondaryCidrBlock")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -7739,6 +8854,11 @@ func (c *Client) DeleteSecondaryCidrBlockWithContext(ctx context.Context, reques
 func (c *Client) DeleteSecondaryCidrBlockWithContextV2(ctx context.Context, request *DeleteSecondaryCidrBlockRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSecondaryCidrBlockRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteSecondaryCidrBlock")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -7794,6 +8914,11 @@ func (c *Client) AssignPrivateIpAddressWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewAssignPrivateIpAddressRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AssignPrivateIpAddress")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -7808,6 +8933,11 @@ func (c *Client) AssignPrivateIpAddressWithContext(ctx context.Context, request 
 func (c *Client) AssignPrivateIpAddressWithContextV2(ctx context.Context, request *AssignPrivateIpAddressRequest) (int, string, error) {
 	if request == nil {
 		request = NewAssignPrivateIpAddressRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AssignPrivateIpAddress")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -7863,6 +8993,11 @@ func (c *Client) UnassignPrivateIpAddressWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewUnassignPrivateIpAddressRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "UnassignPrivateIpAddress")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -7877,6 +9012,11 @@ func (c *Client) UnassignPrivateIpAddressWithContext(ctx context.Context, reques
 func (c *Client) UnassignPrivateIpAddressWithContextV2(ctx context.Context, request *UnassignPrivateIpAddressRequest) (int, string, error) {
 	if request == nil {
 		request = NewUnassignPrivateIpAddressRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "UnassignPrivateIpAddress")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -7932,6 +9072,11 @@ func (c *Client) BatchCreateNatRateLimitWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewBatchCreateNatRateLimitRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "BatchCreateNatRateLimit")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -7946,6 +9091,11 @@ func (c *Client) BatchCreateNatRateLimitWithContext(ctx context.Context, request
 func (c *Client) BatchCreateNatRateLimitWithContextV2(ctx context.Context, request *BatchCreateNatRateLimitRequest) (int, string, error) {
 	if request == nil {
 		request = NewBatchCreateNatRateLimitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "BatchCreateNatRateLimit")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -8001,6 +9151,11 @@ func (c *Client) BatchModifyNatRateLimitWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewBatchModifyNatRateLimitRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "BatchModifyNatRateLimit")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -8015,6 +9170,11 @@ func (c *Client) BatchModifyNatRateLimitWithContext(ctx context.Context, request
 func (c *Client) BatchModifyNatRateLimitWithContextV2(ctx context.Context, request *BatchModifyNatRateLimitRequest) (int, string, error) {
 	if request == nil {
 		request = NewBatchModifyNatRateLimitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "BatchModifyNatRateLimit")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -8070,6 +9230,11 @@ func (c *Client) BatchDeleteNatRateLimitWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewBatchDeleteNatRateLimitRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "BatchDeleteNatRateLimit")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -8084,6 +9249,11 @@ func (c *Client) BatchDeleteNatRateLimitWithContext(ctx context.Context, request
 func (c *Client) BatchDeleteNatRateLimitWithContextV2(ctx context.Context, request *BatchDeleteNatRateLimitRequest) (int, string, error) {
 	if request == nil {
 		request = NewBatchDeleteNatRateLimitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "BatchDeleteNatRateLimit")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -8139,6 +9309,11 @@ func (c *Client) DescribeVpnGatewayRoutesWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeVpnGatewayRoutesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnGatewayRoutes")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -8153,6 +9328,11 @@ func (c *Client) DescribeVpnGatewayRoutesWithContext(ctx context.Context, reques
 func (c *Client) DescribeVpnGatewayRoutesWithContextV2(ctx context.Context, request *DescribeVpnGatewayRoutesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeVpnGatewayRoutesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnGatewayRoutes")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -8208,6 +9388,11 @@ func (c *Client) CreateVpnGatewayRouteWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewCreateVpnGatewayRouteRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnGatewayRoute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -8222,6 +9407,11 @@ func (c *Client) CreateVpnGatewayRouteWithContext(ctx context.Context, request *
 func (c *Client) CreateVpnGatewayRouteWithContextV2(ctx context.Context, request *CreateVpnGatewayRouteRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateVpnGatewayRouteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateVpnGatewayRoute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -8277,6 +9467,11 @@ func (c *Client) DeleteVpnGatewayRouteWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDeleteVpnGatewayRouteRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnGatewayRoute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -8291,6 +9486,11 @@ func (c *Client) DeleteVpnGatewayRouteWithContext(ctx context.Context, request *
 func (c *Client) DeleteVpnGatewayRouteWithContextV2(ctx context.Context, request *DeleteVpnGatewayRouteRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteVpnGatewayRouteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpnGatewayRoute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -8346,6 +9546,11 @@ func (c *Client) DescribeVpnTunnelIpsecStatusWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewDescribeVpnTunnelIpsecStatusRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnTunnelIpsecStatus")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -8360,6 +9565,11 @@ func (c *Client) DescribeVpnTunnelIpsecStatusWithContext(ctx context.Context, re
 func (c *Client) DescribeVpnTunnelIpsecStatusWithContextV2(ctx context.Context, request *DescribeVpnTunnelIpsecStatusRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeVpnTunnelIpsecStatusRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpnTunnelIpsecStatus")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -8415,6 +9625,11 @@ func (c *Client) QueryNatTopVifMonitorWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewQueryNatTopVifMonitorRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "QueryNatTopVifMonitor")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -8429,6 +9644,11 @@ func (c *Client) QueryNatTopVifMonitorWithContext(ctx context.Context, request *
 func (c *Client) QueryNatTopVifMonitorWithContextV2(ctx context.Context, request *QueryNatTopVifMonitorRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryNatTopVifMonitorRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "QueryNatTopVifMonitor")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -8484,6 +9704,11 @@ func (c *Client) ModifyNatIpStatusWithContext(ctx context.Context, request *Modi
 	if request == nil {
 		request = NewModifyNatIpStatusRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyNatIpStatus")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -8498,6 +9723,11 @@ func (c *Client) ModifyNatIpStatusWithContext(ctx context.Context, request *Modi
 func (c *Client) ModifyNatIpStatusWithContextV2(ctx context.Context, request *ModifyNatIpStatusRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyNatIpStatusRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyNatIpStatus")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -8553,6 +9783,11 @@ func (c *Client) QueryPeerTopVifMonitorWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewQueryPeerTopVifMonitorRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "QueryPeerTopVifMonitor")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -8567,6 +9802,11 @@ func (c *Client) QueryPeerTopVifMonitorWithContext(ctx context.Context, request 
 func (c *Client) QueryPeerTopVifMonitorWithContextV2(ctx context.Context, request *QueryPeerTopVifMonitorRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryPeerTopVifMonitorRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "QueryPeerTopVifMonitor")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -8622,6 +9862,11 @@ func (c *Client) ModifyVpnGatewayRouteWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewModifyVpnGatewayRouteRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnGatewayRoute")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -8636,6 +9881,11 @@ func (c *Client) ModifyVpnGatewayRouteWithContext(ctx context.Context, request *
 func (c *Client) ModifyVpnGatewayRouteWithContextV2(ctx context.Context, request *ModifyVpnGatewayRouteRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyVpnGatewayRouteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpnGatewayRoute")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -8691,6 +9941,11 @@ func (c *Client) DescribeDirectConnectInterfacesBgpStatusWithContext(ctx context
 	if request == nil {
 		request = NewDescribeDirectConnectInterfacesBgpStatusRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectInterfacesBgpStatus")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -8705,6 +9960,11 @@ func (c *Client) DescribeDirectConnectInterfacesBgpStatusWithContext(ctx context
 func (c *Client) DescribeDirectConnectInterfacesBgpStatusWithContextV2(ctx context.Context, request *DescribeDirectConnectInterfacesBgpStatusRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDirectConnectInterfacesBgpStatusRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeDirectConnectInterfacesBgpStatus")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -8760,6 +10020,11 @@ func (c *Client) DeactiveFlowLogWithContext(ctx context.Context, request *Deacti
 	if request == nil {
 		request = NewDeactiveFlowLogRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeactiveFlowLog")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -8774,6 +10039,11 @@ func (c *Client) DeactiveFlowLogWithContext(ctx context.Context, request *Deacti
 func (c *Client) DeactiveFlowLogWithContextV2(ctx context.Context, request *DeactiveFlowLogRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeactiveFlowLogRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeactiveFlowLog")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -8829,6 +10099,11 @@ func (c *Client) ActiveFlowLogWithContext(ctx context.Context, request *ActiveFl
 	if request == nil {
 		request = NewActiveFlowLogRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ActiveFlowLog")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -8843,6 +10118,11 @@ func (c *Client) ActiveFlowLogWithContext(ctx context.Context, request *ActiveFl
 func (c *Client) ActiveFlowLogWithContextV2(ctx context.Context, request *ActiveFlowLogRequest) (int, string, error) {
 	if request == nil {
 		request = NewActiveFlowLogRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ActiveFlowLog")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -8898,6 +10178,11 @@ func (c *Client) DeleteFlowLogWithContext(ctx context.Context, request *DeleteFl
 	if request == nil {
 		request = NewDeleteFlowLogRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteFlowLog")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -8912,6 +10197,11 @@ func (c *Client) DeleteFlowLogWithContext(ctx context.Context, request *DeleteFl
 func (c *Client) DeleteFlowLogWithContextV2(ctx context.Context, request *DeleteFlowLogRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteFlowLogRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteFlowLog")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -8967,6 +10257,11 @@ func (c *Client) ModifyFlowLogWithContext(ctx context.Context, request *ModifyFl
 	if request == nil {
 		request = NewModifyFlowLogRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyFlowLog")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -8981,6 +10276,11 @@ func (c *Client) ModifyFlowLogWithContext(ctx context.Context, request *ModifyFl
 func (c *Client) ModifyFlowLogWithContextV2(ctx context.Context, request *ModifyFlowLogRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyFlowLogRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyFlowLog")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -9036,6 +10336,11 @@ func (c *Client) DescribeFlowLogsWithContext(ctx context.Context, request *Descr
 	if request == nil {
 		request = NewDescribeFlowLogsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeFlowLogs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -9050,6 +10355,11 @@ func (c *Client) DescribeFlowLogsWithContext(ctx context.Context, request *Descr
 func (c *Client) DescribeFlowLogsWithContextV2(ctx context.Context, request *DescribeFlowLogsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeFlowLogsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeFlowLogs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -9105,6 +10415,11 @@ func (c *Client) CreateFlowLogWithContext(ctx context.Context, request *CreateFl
 	if request == nil {
 		request = NewCreateFlowLogRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateFlowLog")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -9119,6 +10434,11 @@ func (c *Client) CreateFlowLogWithContext(ctx context.Context, request *CreateFl
 func (c *Client) CreateFlowLogWithContextV2(ctx context.Context, request *CreateFlowLogRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateFlowLogRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateFlowLog")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

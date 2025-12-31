@@ -66,6 +66,11 @@ func (c *Client) UpdatePerformanceOnePosixAclWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewUpdatePerformanceOnePosixAclRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "UpdatePerformanceOnePosixAcl")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) UpdatePerformanceOnePosixAclWithContext(ctx context.Context, re
 func (c *Client) UpdatePerformanceOnePosixAclWithContextV2(ctx context.Context, request *UpdatePerformanceOnePosixAclRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdatePerformanceOnePosixAclRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "UpdatePerformanceOnePosixAcl")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) DescribePerformanceOnePosixAclListWithContext(ctx context.Conte
 	if request == nil {
 		request = NewDescribePerformanceOnePosixAclListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribePerformanceOnePosixAclList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) DescribePerformanceOnePosixAclListWithContext(ctx context.Conte
 func (c *Client) DescribePerformanceOnePosixAclListWithContextV2(ctx context.Context, request *DescribePerformanceOnePosixAclListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribePerformanceOnePosixAclListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribePerformanceOnePosixAclList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) ManageDataFlowTaskWithContext(ctx context.Context, request *Man
 	if request == nil {
 		request = NewManageDataFlowTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "ManageDataFlowTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) ManageDataFlowTaskWithContext(ctx context.Context, request *Man
 func (c *Client) ManageDataFlowTaskWithContextV2(ctx context.Context, request *ManageDataFlowTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewManageDataFlowTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "ManageDataFlowTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) CreateDataFlowStrategyWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewCreateDataFlowStrategyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlowStrategy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) CreateDataFlowStrategyWithContext(ctx context.Context, request 
 func (c *Client) CreateDataFlowStrategyWithContextV2(ctx context.Context, request *CreateDataFlowStrategyRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateDataFlowStrategyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlowStrategy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) ModifyDataFlowTaskWithContext(ctx context.Context, request *Mod
 	if request == nil {
 		request = NewModifyDataFlowTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "ModifyDataFlowTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) ModifyDataFlowTaskWithContext(ctx context.Context, request *Mod
 func (c *Client) ModifyDataFlowTaskWithContextV2(ctx context.Context, request *ModifyDataFlowTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyDataFlowTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "ModifyDataFlowTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) DescribeDataFlowTaskListWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewDescribeDataFlowTaskListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowTaskList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) DescribeDataFlowTaskListWithContext(ctx context.Context, reques
 func (c *Client) DescribeDataFlowTaskListWithContextV2(ctx context.Context, request *DescribeDataFlowTaskListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDataFlowTaskListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowTaskList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) ActivateDataFlowTaskWithContext(ctx context.Context, request *A
 	if request == nil {
 		request = NewActivateDataFlowTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "ActivateDataFlowTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) ActivateDataFlowTaskWithContext(ctx context.Context, request *A
 func (c *Client) ActivateDataFlowTaskWithContextV2(ctx context.Context, request *ActivateDataFlowTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewActivateDataFlowTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "ActivateDataFlowTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) DeleteDataFlowStrategyWithContext(ctx context.Context, request 
 	if request == nil {
 		request = NewDeleteDataFlowStrategyRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteDataFlowStrategy")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) DeleteDataFlowStrategyWithContext(ctx context.Context, request 
 func (c *Client) DeleteDataFlowStrategyWithContextV2(ctx context.Context, request *DeleteDataFlowStrategyRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteDataFlowStrategyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteDataFlowStrategy")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) DescribeDataFlowStrategyListWithContext(ctx context.Context, re
 	if request == nil {
 		request = NewDescribeDataFlowStrategyListRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowStrategyList")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) DescribeDataFlowStrategyListWithContext(ctx context.Context, re
 func (c *Client) DescribeDataFlowStrategyListWithContextV2(ctx context.Context, request *DescribeDataFlowStrategyListRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDataFlowStrategyListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowStrategyList")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

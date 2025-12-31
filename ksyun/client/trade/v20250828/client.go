@@ -66,6 +66,11 @@ func (c *Client) QueryInstancesWithContext(ctx context.Context, request *QueryIn
 	if request == nil {
 		request = NewQueryInstancesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "QueryInstances")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) QueryInstancesWithContext(ctx context.Context, request *QueryIn
 func (c *Client) QueryInstancesWithContextV2(ctx context.Context, request *QueryInstancesRequest) (int, string, error) {
 	if request == nil {
 		request = NewQueryInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("trade", APIVersion, "QueryInstances")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

@@ -66,6 +66,11 @@ func (c *Client) DescribeAlertingResourcesWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeAlertingResourcesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlertingResources")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) DescribeAlertingResourcesWithContext(ctx context.Context, reque
 func (c *Client) DescribeAlertingResourcesWithContextV2(ctx context.Context, request *DescribeAlertingResourcesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAlertingResourcesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DescribeAlertingResources")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) DescribeSystemEventAttributesWithContext(ctx context.Context, r
 	if request == nil {
 		request = NewDescribeSystemEventAttributesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DescribeSystemEventAttributes")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DescribeSystemEventAttributesWithContext(ctx context.Context, r
 func (c *Client) DescribeSystemEventAttributesWithContextV2(ctx context.Context, request *DescribeSystemEventAttributesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSystemEventAttributesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "DescribeSystemEventAttributes")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) ListAlarmEffectInstanceWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewListAlarmEffectInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "ListAlarmEffectInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) ListAlarmEffectInstanceWithContext(ctx context.Context, request
 func (c *Client) ListAlarmEffectInstanceWithContextV2(ctx context.Context, request *ListAlarmEffectInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewListAlarmEffectInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "ListAlarmEffectInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

@@ -66,6 +66,11 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
 	if request == nil {
 		request = NewCreateInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CreateInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
 func (c *Client) CreateInstanceWithContextV2(ctx context.Context, request *CreateInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CreateInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) ListInstanceWithContext(ctx context.Context, request *ListInsta
 	if request == nil {
 		request = NewListInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ListInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) ListInstanceWithContext(ctx context.Context, request *ListInsta
 func (c *Client) ListInstanceWithContextV2(ctx context.Context, request *ListInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewListInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ListInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -204,6 +224,11 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
 	if request == nil {
 		request = NewDescribeInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DescribeInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -218,6 +243,11 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
 func (c *Client) DescribeInstanceWithContextV2(ctx context.Context, request *DescribeInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DescribeInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -273,6 +303,11 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
 	if request == nil {
 		request = NewDeleteInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DeleteInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -287,6 +322,11 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
 func (c *Client) DeleteInstanceWithContextV2(ctx context.Context, request *DeleteInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DeleteInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -342,6 +382,11 @@ func (c *Client) RenameInstanceWithContext(ctx context.Context, request *RenameI
 	if request == nil {
 		request = NewRenameInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "RenameInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -356,6 +401,11 @@ func (c *Client) RenameInstanceWithContext(ctx context.Context, request *RenameI
 func (c *Client) RenameInstanceWithContextV2(ctx context.Context, request *RenameInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewRenameInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "RenameInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -411,6 +461,11 @@ func (c *Client) ListRegionWithContext(ctx context.Context, request *ListRegionR
 	if request == nil {
 		request = NewListRegionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ListRegion")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) ListRegionWithContext(ctx context.Context, request *ListRegionR
 func (c *Client) ListRegionWithContextV2(ctx context.Context, request *ListRegionRequest) (int, string, error) {
 	if request == nil {
 		request = NewListRegionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ListRegion")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) DescRegionWithContext(ctx context.Context, request *DescRegionR
 	if request == nil {
 		request = NewDescRegionRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DescRegion")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) DescRegionWithContext(ctx context.Context, request *DescRegionR
 func (c *Client) DescRegionWithContextV2(ctx context.Context, request *DescRegionRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescRegionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DescRegion")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
 	if request == nil {
 		request = NewCreateSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CreateSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -563,6 +638,11 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, request *Cr
 func (c *Client) CreateSecurityGroupWithContextV2(ctx context.Context, request *CreateSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CreateSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -618,6 +698,11 @@ func (c *Client) ListSecurityGroupWithContext(ctx context.Context, request *List
 	if request == nil {
 		request = NewListSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ListSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -632,6 +717,11 @@ func (c *Client) ListSecurityGroupWithContext(ctx context.Context, request *List
 func (c *Client) ListSecurityGroupWithContextV2(ctx context.Context, request *ListSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewListSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ListSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -687,6 +777,11 @@ func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewDescribeSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DescribeSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) DescribeSecurityGroupWithContext(ctx context.Context, request *
 func (c *Client) DescribeSecurityGroupWithContextV2(ctx context.Context, request *DescribeSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DescribeSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
 	if request == nil {
 		request = NewDeleteSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DeleteSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -770,6 +875,11 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, request *De
 func (c *Client) DeleteSecurityGroupWithContextV2(ctx context.Context, request *DeleteSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DeleteSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -825,6 +935,11 @@ func (c *Client) UpdateSecurityGroupWithContext(ctx context.Context, request *Up
 	if request == nil {
 		request = NewUpdateSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "UpdateSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -839,6 +954,11 @@ func (c *Client) UpdateSecurityGroupWithContext(ctx context.Context, request *Up
 func (c *Client) UpdateSecurityGroupWithContextV2(ctx context.Context, request *UpdateSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "UpdateSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -894,6 +1014,11 @@ func (c *Client) CloneSecurityGroupWithContext(ctx context.Context, request *Clo
 	if request == nil {
 		request = NewCloneSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CloneSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -908,6 +1033,11 @@ func (c *Client) CloneSecurityGroupWithContext(ctx context.Context, request *Clo
 func (c *Client) CloneSecurityGroupWithContextV2(ctx context.Context, request *CloneSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCloneSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CloneSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -963,6 +1093,11 @@ func (c *Client) BindSecurityGroupWithContext(ctx context.Context, request *Bind
 	if request == nil {
 		request = NewBindSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "BindSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -977,6 +1112,11 @@ func (c *Client) BindSecurityGroupWithContext(ctx context.Context, request *Bind
 func (c *Client) BindSecurityGroupWithContextV2(ctx context.Context, request *BindSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewBindSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "BindSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1032,6 +1172,11 @@ func (c *Client) UnbindSecurityGroupWithContext(ctx context.Context, request *Un
 	if request == nil {
 		request = NewUnbindSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "UnbindSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1046,6 +1191,11 @@ func (c *Client) UnbindSecurityGroupWithContext(ctx context.Context, request *Un
 func (c *Client) UnbindSecurityGroupWithContextV2(ctx context.Context, request *UnbindSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewUnbindSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "UnbindSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1101,6 +1251,11 @@ func (c *Client) RebindSecurityGroupWithContext(ctx context.Context, request *Re
 	if request == nil {
 		request = NewRebindSecurityGroupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "RebindSecurityGroup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1115,6 +1270,11 @@ func (c *Client) RebindSecurityGroupWithContext(ctx context.Context, request *Re
 func (c *Client) RebindSecurityGroupWithContextV2(ctx context.Context, request *RebindSecurityGroupRequest) (int, string, error) {
 	if request == nil {
 		request = NewRebindSecurityGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "RebindSecurityGroup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1170,6 +1330,11 @@ func (c *Client) CreateSecurityRuleWithContext(ctx context.Context, request *Cre
 	if request == nil {
 		request = NewCreateSecurityRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CreateSecurityRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1184,6 +1349,11 @@ func (c *Client) CreateSecurityRuleWithContext(ctx context.Context, request *Cre
 func (c *Client) CreateSecurityRuleWithContextV2(ctx context.Context, request *CreateSecurityRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateSecurityRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CreateSecurityRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1239,6 +1409,11 @@ func (c *Client) UpdateSecurityRuleWithContext(ctx context.Context, request *Upd
 	if request == nil {
 		request = NewUpdateSecurityRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "UpdateSecurityRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1253,6 +1428,11 @@ func (c *Client) UpdateSecurityRuleWithContext(ctx context.Context, request *Upd
 func (c *Client) UpdateSecurityRuleWithContextV2(ctx context.Context, request *UpdateSecurityRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateSecurityRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "UpdateSecurityRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1308,6 +1488,11 @@ func (c *Client) DeleteSecurityRuleWithContext(ctx context.Context, request *Del
 	if request == nil {
 		request = NewDeleteSecurityRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DeleteSecurityRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1322,6 +1507,11 @@ func (c *Client) DeleteSecurityRuleWithContext(ctx context.Context, request *Del
 func (c *Client) DeleteSecurityRuleWithContextV2(ctx context.Context, request *DeleteSecurityRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteSecurityRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DeleteSecurityRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1377,6 +1567,11 @@ func (c *Client) ListSecuredInstanceWithContext(ctx context.Context, request *Li
 	if request == nil {
 		request = NewListSecuredInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ListSecuredInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1391,6 +1586,11 @@ func (c *Client) ListSecuredInstanceWithContext(ctx context.Context, request *Li
 func (c *Client) ListSecuredInstanceWithContextV2(ctx context.Context, request *ListSecuredInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewListSecuredInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ListSecuredInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1446,6 +1646,11 @@ func (c *Client) ListUnsecuredInstanceWithContext(ctx context.Context, request *
 	if request == nil {
 		request = NewListUnsecuredInstanceRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ListUnsecuredInstance")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1460,6 +1665,11 @@ func (c *Client) ListUnsecuredInstanceWithContext(ctx context.Context, request *
 func (c *Client) ListUnsecuredInstanceWithContextV2(ctx context.Context, request *ListUnsecuredInstanceRequest) (int, string, error) {
 	if request == nil {
 		request = NewListUnsecuredInstanceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ListUnsecuredInstance")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1515,6 +1725,11 @@ func (c *Client) ListBackupWithContext(ctx context.Context, request *ListBackupR
 	if request == nil {
 		request = NewListBackupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ListBackup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1529,6 +1744,11 @@ func (c *Client) ListBackupWithContext(ctx context.Context, request *ListBackupR
 func (c *Client) ListBackupWithContextV2(ctx context.Context, request *ListBackupRequest) (int, string, error) {
 	if request == nil {
 		request = NewListBackupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ListBackup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1584,6 +1804,11 @@ func (c *Client) CreateBackupWithContext(ctx context.Context, request *CreateBac
 	if request == nil {
 		request = NewCreateBackupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CreateBackup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1598,6 +1823,11 @@ func (c *Client) CreateBackupWithContext(ctx context.Context, request *CreateBac
 func (c *Client) CreateBackupWithContextV2(ctx context.Context, request *CreateBackupRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateBackupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CreateBackup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1653,6 +1883,11 @@ func (c *Client) UpdateBackupRuleWithContext(ctx context.Context, request *Updat
 	if request == nil {
 		request = NewUpdateBackupRuleRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "UpdateBackupRule")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1667,6 +1902,11 @@ func (c *Client) UpdateBackupRuleWithContext(ctx context.Context, request *Updat
 func (c *Client) UpdateBackupRuleWithContextV2(ctx context.Context, request *UpdateBackupRuleRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateBackupRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "UpdateBackupRule")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1722,6 +1962,11 @@ func (c *Client) DeleteBackupWithContext(ctx context.Context, request *DeleteBac
 	if request == nil {
 		request = NewDeleteBackupRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DeleteBackup")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1736,6 +1981,11 @@ func (c *Client) DeleteBackupWithContext(ctx context.Context, request *DeleteBac
 func (c *Client) DeleteBackupWithContextV2(ctx context.Context, request *DeleteBackupRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteBackupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DeleteBackup")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1791,6 +2041,11 @@ func (c *Client) CreateRestoreWithContext(ctx context.Context, request *CreateRe
 	if request == nil {
 		request = NewCreateRestoreRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CreateRestore")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1805,6 +2060,11 @@ func (c *Client) CreateRestoreWithContext(ctx context.Context, request *CreateRe
 func (c *Client) CreateRestoreWithContextV2(ctx context.Context, request *CreateRestoreRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateRestoreRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CreateRestore")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1860,6 +2120,11 @@ func (c *Client) OpenTiMonitorWithContext(ctx context.Context, request *OpenTiMo
 	if request == nil {
 		request = NewOpenTiMonitorRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "OpenTiMonitor")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1874,6 +2139,11 @@ func (c *Client) OpenTiMonitorWithContext(ctx context.Context, request *OpenTiMo
 func (c *Client) OpenTiMonitorWithContextV2(ctx context.Context, request *OpenTiMonitorRequest) (int, string, error) {
 	if request == nil {
 		request = NewOpenTiMonitorRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "OpenTiMonitor")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1929,6 +2199,11 @@ func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskR
 	if request == nil {
 		request = NewCreateTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CreateTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -1943,6 +2218,11 @@ func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskR
 func (c *Client) CreateTaskWithContextV2(ctx context.Context, request *CreateTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CreateTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -1998,6 +2278,11 @@ func (c *Client) OperationTasksWithContext(ctx context.Context, request *Operati
 	if request == nil {
 		request = NewOperationTasksRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "OperationTasks")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2012,6 +2297,11 @@ func (c *Client) OperationTasksWithContext(ctx context.Context, request *Operati
 func (c *Client) OperationTasksWithContextV2(ctx context.Context, request *OperationTasksRequest) (int, string, error) {
 	if request == nil {
 		request = NewOperationTasksRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "OperationTasks")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2067,6 +2357,11 @@ func (c *Client) CheckTaskNameWithContext(ctx context.Context, request *CheckTas
 	if request == nil {
 		request = NewCheckTaskNameRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CheckTaskName")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2081,6 +2376,11 @@ func (c *Client) CheckTaskNameWithContext(ctx context.Context, request *CheckTas
 func (c *Client) CheckTaskNameWithContextV2(ctx context.Context, request *CheckTaskNameRequest) (int, string, error) {
 	if request == nil {
 		request = NewCheckTaskNameRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CheckTaskName")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2136,6 +2436,11 @@ func (c *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeT
 	if request == nil {
 		request = NewDescribeTaskRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DescribeTask")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2150,6 +2455,11 @@ func (c *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeT
 func (c *Client) DescribeTaskWithContextV2(ctx context.Context, request *DescribeTaskRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DescribeTask")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2205,6 +2515,11 @@ func (c *Client) ListTasksWithContext(ctx context.Context, request *ListTasksReq
 	if request == nil {
 		request = NewListTasksRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ListTasks")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2219,6 +2534,11 @@ func (c *Client) ListTasksWithContext(ctx context.Context, request *ListTasksReq
 func (c *Client) ListTasksWithContextV2(ctx context.Context, request *ListTasksRequest) (int, string, error) {
 	if request == nil {
 		request = NewListTasksRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ListTasks")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2274,6 +2594,11 @@ func (c *Client) DescribeDatabasesWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeDatabasesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DescribeDatabases")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2288,6 +2613,11 @@ func (c *Client) DescribeDatabasesWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeDatabasesWithContextV2(ctx context.Context, request *DescribeDatabasesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeDatabasesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DescribeDatabases")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2343,6 +2673,11 @@ func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *Descr
 	if request == nil {
 		request = NewDescribeAccountsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DescribeAccounts")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2357,6 +2692,11 @@ func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *Descr
 func (c *Client) DescribeAccountsWithContextV2(ctx context.Context, request *DescribeAccountsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAccountsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DescribeAccounts")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2412,6 +2752,11 @@ func (c *Client) CreateAccountWithContext(ctx context.Context, request *CreateAc
 	if request == nil {
 		request = NewCreateAccountRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CreateAccount")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2426,6 +2771,11 @@ func (c *Client) CreateAccountWithContext(ctx context.Context, request *CreateAc
 func (c *Client) CreateAccountWithContextV2(ctx context.Context, request *CreateAccountRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateAccountRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "CreateAccount")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2481,6 +2831,11 @@ func (c *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAc
 	if request == nil {
 		request = NewDeleteAccountRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DeleteAccount")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2495,6 +2850,11 @@ func (c *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAc
 func (c *Client) DeleteAccountWithContextV2(ctx context.Context, request *DeleteAccountRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteAccountRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "DeleteAccount")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2550,6 +2910,11 @@ func (c *Client) ModifyAccountInfoWithContext(ctx context.Context, request *Modi
 	if request == nil {
 		request = NewModifyAccountInfoRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ModifyAccountInfo")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2564,6 +2929,11 @@ func (c *Client) ModifyAccountInfoWithContext(ctx context.Context, request *Modi
 func (c *Client) ModifyAccountInfoWithContextV2(ctx context.Context, request *ModifyAccountInfoRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyAccountInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ModifyAccountInfo")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2619,6 +2989,11 @@ func (c *Client) ModifyAccountPrivilegesWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewModifyAccountPrivilegesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ModifyAccountPrivileges")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2633,6 +3008,11 @@ func (c *Client) ModifyAccountPrivilegesWithContext(ctx context.Context, request
 func (c *Client) ModifyAccountPrivilegesWithContextV2(ctx context.Context, request *ModifyAccountPrivilegesRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyAccountPrivilegesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ModifyAccountPrivileges")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2688,6 +3068,11 @@ func (c *Client) ConfigurationInstanceEipWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewConfigurationInstanceEipRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ConfigurationInstanceEip")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2702,6 +3087,11 @@ func (c *Client) ConfigurationInstanceEipWithContext(ctx context.Context, reques
 func (c *Client) ConfigurationInstanceEipWithContextV2(ctx context.Context, request *ConfigurationInstanceEipRequest) (int, string, error) {
 	if request == nil {
 		request = NewConfigurationInstanceEipRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "ConfigurationInstanceEip")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -2757,6 +3147,11 @@ func (c *Client) UpdateInstanceTrialOrderWithContext(ctx context.Context, reques
 	if request == nil {
 		request = NewUpdateInstanceTrialOrderRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "UpdateInstanceTrialOrder")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -2771,6 +3166,11 @@ func (c *Client) UpdateInstanceTrialOrderWithContext(ctx context.Context, reques
 func (c *Client) UpdateInstanceTrialOrderWithContextV2(ctx context.Context, request *UpdateInstanceTrialOrderRequest) (int, string, error) {
 	if request == nil {
 		request = NewUpdateInstanceTrialOrderRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("tidb", APIVersion, "UpdateInstanceTrialOrder")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

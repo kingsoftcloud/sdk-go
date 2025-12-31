@@ -66,6 +66,11 @@ func (c *Client) GetLinesWithContext(ctx context.Context, request *GetLinesReque
 	if request == nil {
 		request = NewGetLinesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "GetLines")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -80,6 +85,11 @@ func (c *Client) GetLinesWithContext(ctx context.Context, request *GetLinesReque
 func (c *Client) GetLinesWithContextV2(ctx context.Context, request *GetLinesRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetLinesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "GetLines")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -135,6 +145,11 @@ func (c *Client) DescribeAddressesWithContext(ctx context.Context, request *Desc
 	if request == nil {
 		request = NewDescribeAddressesRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "DescribeAddresses")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -149,6 +164,11 @@ func (c *Client) DescribeAddressesWithContext(ctx context.Context, request *Desc
 func (c *Client) DescribeAddressesWithContextV2(ctx context.Context, request *DescribeAddressesRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeAddressesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "DescribeAddresses")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -204,6 +224,11 @@ func (c *Client) AllocateAddressWithContext(ctx context.Context, request *Alloca
 	if request == nil {
 		request = NewAllocateAddressRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "AllocateAddress")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -218,6 +243,11 @@ func (c *Client) AllocateAddressWithContext(ctx context.Context, request *Alloca
 func (c *Client) AllocateAddressWithContextV2(ctx context.Context, request *AllocateAddressRequest) (int, string, error) {
 	if request == nil {
 		request = NewAllocateAddressRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "AllocateAddress")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -273,6 +303,11 @@ func (c *Client) ReleaseAddressWithContext(ctx context.Context, request *Release
 	if request == nil {
 		request = NewReleaseAddressRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "ReleaseAddress")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -287,6 +322,11 @@ func (c *Client) ReleaseAddressWithContext(ctx context.Context, request *Release
 func (c *Client) ReleaseAddressWithContextV2(ctx context.Context, request *ReleaseAddressRequest) (int, string, error) {
 	if request == nil {
 		request = NewReleaseAddressRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "ReleaseAddress")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -342,6 +382,11 @@ func (c *Client) AssociateAddressWithContext(ctx context.Context, request *Assoc
 	if request == nil {
 		request = NewAssociateAddressRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "AssociateAddress")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -356,6 +401,11 @@ func (c *Client) AssociateAddressWithContext(ctx context.Context, request *Assoc
 func (c *Client) AssociateAddressWithContextV2(ctx context.Context, request *AssociateAddressRequest) (int, string, error) {
 	if request == nil {
 		request = NewAssociateAddressRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "AssociateAddress")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -411,6 +461,11 @@ func (c *Client) DisassociateAddressWithContext(ctx context.Context, request *Di
 	if request == nil {
 		request = NewDisassociateAddressRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "DisassociateAddress")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -425,6 +480,11 @@ func (c *Client) DisassociateAddressWithContext(ctx context.Context, request *Di
 func (c *Client) DisassociateAddressWithContextV2(ctx context.Context, request *DisassociateAddressRequest) (int, string, error) {
 	if request == nil {
 		request = NewDisassociateAddressRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "DisassociateAddress")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -480,6 +540,11 @@ func (c *Client) ModifyAddressWithContext(ctx context.Context, request *ModifyAd
 	if request == nil {
 		request = NewModifyAddressRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "ModifyAddress")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -494,6 +559,11 @@ func (c *Client) ModifyAddressWithContext(ctx context.Context, request *ModifyAd
 func (c *Client) ModifyAddressWithContextV2(ctx context.Context, request *ModifyAddressRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyAddressRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "ModifyAddress")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -549,6 +619,11 @@ func (c *Client) CreateEipPoolWithContext(ctx context.Context, request *CreateEi
 	if request == nil {
 		request = NewCreateEipPoolRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "CreateEipPool")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -563,6 +638,11 @@ func (c *Client) CreateEipPoolWithContext(ctx context.Context, request *CreateEi
 func (c *Client) CreateEipPoolWithContextV2(ctx context.Context, request *CreateEipPoolRequest) (int, string, error) {
 	if request == nil {
 		request = NewCreateEipPoolRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "CreateEipPool")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -618,6 +698,11 @@ func (c *Client) DeleteEipPoolWithContext(ctx context.Context, request *DeleteEi
 	if request == nil {
 		request = NewDeleteEipPoolRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "DeleteEipPool")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -632,6 +717,11 @@ func (c *Client) DeleteEipPoolWithContext(ctx context.Context, request *DeleteEi
 func (c *Client) DeleteEipPoolWithContextV2(ctx context.Context, request *DeleteEipPoolRequest) (int, string, error) {
 	if request == nil {
 		request = NewDeleteEipPoolRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "DeleteEipPool")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -687,6 +777,11 @@ func (c *Client) ModifyEipPoolWithContext(ctx context.Context, request *ModifyEi
 	if request == nil {
 		request = NewModifyEipPoolRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "ModifyEipPool")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -701,6 +796,11 @@ func (c *Client) ModifyEipPoolWithContext(ctx context.Context, request *ModifyEi
 func (c *Client) ModifyEipPoolWithContextV2(ctx context.Context, request *ModifyEipPoolRequest) (int, string, error) {
 	if request == nil {
 		request = NewModifyEipPoolRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "ModifyEipPool")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -756,6 +856,11 @@ func (c *Client) DescribeEipPoolsWithContext(ctx context.Context, request *Descr
 	if request == nil {
 		request = NewDescribeEipPoolsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "DescribeEipPools")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -770,6 +875,11 @@ func (c *Client) DescribeEipPoolsWithContext(ctx context.Context, request *Descr
 func (c *Client) DescribeEipPoolsWithContextV2(ctx context.Context, request *DescribeEipPoolsRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeEipPoolsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "DescribeEipPools")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
@@ -825,6 +935,11 @@ func (c *Client) DescribeIpExistEipPoolUseWithContext(ctx context.Context, reque
 	if request == nil {
 		request = NewDescribeIpExistEipPoolUseRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "DescribeIpExistEipPoolUse")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")
 
@@ -839,6 +954,11 @@ func (c *Client) DescribeIpExistEipPoolUseWithContext(ctx context.Context, reque
 func (c *Client) DescribeIpExistEipPoolUseWithContextV2(ctx context.Context, request *DescribeIpExistEipPoolUseRequest) (int, string, error) {
 	if request == nil {
 		request = NewDescribeIpExistEipPoolUseRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("eip", APIVersion, "DescribeIpExistEipPoolUse")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/x-www-form-urlencoded")

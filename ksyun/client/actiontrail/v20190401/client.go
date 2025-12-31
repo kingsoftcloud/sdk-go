@@ -66,6 +66,11 @@ func (c *Client) ListOperateLogsWithContext(ctx context.Context, request *ListOp
 	if request == nil {
 		request = NewListOperateLogsRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("actiontrail", APIVersion, "ListOperateLogs")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) ListOperateLogsWithContext(ctx context.Context, request *ListOp
 func (c *Client) ListOperateLogsWithContextV2(ctx context.Context, request *ListOperateLogsRequest) (int, string, error) {
 	if request == nil {
 		request = NewListOperateLogsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("actiontrail", APIVersion, "ListOperateLogs")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")

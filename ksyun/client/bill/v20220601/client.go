@@ -66,6 +66,11 @@ func (c *Client) GetMonthConsumeWithContext(ctx context.Context, request *GetMon
 	if request == nil {
 		request = NewGetMonthConsumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill", APIVersion, "GetMonthConsume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -80,6 +85,11 @@ func (c *Client) GetMonthConsumeWithContext(ctx context.Context, request *GetMon
 func (c *Client) GetMonthConsumeWithContextV2(ctx context.Context, request *GetMonthConsumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetMonthConsumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill", APIVersion, "GetMonthConsume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
@@ -135,6 +145,11 @@ func (c *Client) GetPostpayDetailConsumeWithContext(ctx context.Context, request
 	if request == nil {
 		request = NewGetPostpayDetailConsumeRequest()
 	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill", APIVersion, "GetPostpayDetailConsume")
+	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
@@ -149,6 +164,11 @@ func (c *Client) GetPostpayDetailConsumeWithContext(ctx context.Context, request
 func (c *Client) GetPostpayDetailConsumeWithContextV2(ctx context.Context, request *GetPostpayDetailConsumeRequest) (int, string, error) {
 	if request == nil {
 		request = NewGetPostpayDetailConsumeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("bill", APIVersion, "GetPostpayDetailConsume")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
