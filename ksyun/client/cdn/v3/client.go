@@ -2708,3 +2708,240 @@ func (c *Client) GetPvDataWithContextV2(ctx context.Context, request *GetPvDataR
 	}
 	return statusCode, msg, nil
 }
+func NewSetDomainLogServiceRequest() (request *SetDomainLogServiceRequest) {
+	request = &SetDomainLogServiceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "SetDomainLogService")
+	return
+}
+
+func NewSetDomainLogServiceResponse() (response *SetDomainLogServiceResponse) {
+	response = &SetDomainLogServiceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetDomainLogService(request *SetDomainLogServiceRequest) string {
+	return c.SetDomainLogServiceWithContext(context.Background(), request)
+}
+
+func (c *Client) SetDomainLogServiceSend(request *SetDomainLogServiceRequest) (*SetDomainLogServiceResponse, error) {
+	statusCode, msg, err := c.SetDomainLogServiceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetDomainLogServiceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetDomainLogServiceWithContext(ctx context.Context, request *SetDomainLogServiceRequest) string {
+	if request == nil {
+		request = NewSetDomainLogServiceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "SetDomainLogService")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetDomainLogServiceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetDomainLogServiceWithContextV2(ctx context.Context, request *SetDomainLogServiceRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetDomainLogServiceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "SetDomainLogService")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetDomainLogServiceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewSetCertificateRequest() (request *SetCertificateRequest) {
+	request = &SetCertificateRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "SetCertificate")
+	return
+}
+
+func NewSetCertificateResponse() (response *SetCertificateResponse) {
+	response = &SetCertificateResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetCertificate(request *SetCertificateRequest) string {
+	return c.SetCertificateWithContext(context.Background(), request)
+}
+
+func (c *Client) SetCertificateSend(request *SetCertificateRequest) (*SetCertificateResponse, error) {
+	statusCode, msg, err := c.SetCertificateWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetCertificateResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetCertificateWithContext(ctx context.Context, request *SetCertificateRequest) string {
+	if request == nil {
+		request = NewSetCertificateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "SetCertificate")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetCertificateResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetCertificateWithContextV2(ctx context.Context, request *SetCertificateRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetCertificateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "SetCertificate")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetCertificateResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewRemoveCertificatesRequest() (request *RemoveCertificatesRequest) {
+	request = &RemoveCertificatesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "RemoveCertificates")
+	return
+}
+
+func NewRemoveCertificatesResponse() (response *RemoveCertificatesResponse) {
+	response = &RemoveCertificatesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RemoveCertificates(request *RemoveCertificatesRequest) string {
+	return c.RemoveCertificatesWithContext(context.Background(), request)
+}
+
+func (c *Client) RemoveCertificatesSend(request *RemoveCertificatesRequest) (*RemoveCertificatesResponse, error) {
+	statusCode, msg, err := c.RemoveCertificatesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct RemoveCertificatesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) RemoveCertificatesWithContext(ctx context.Context, request *RemoveCertificatesRequest) string {
+	if request == nil {
+		request = NewRemoveCertificatesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "RemoveCertificates")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewRemoveCertificatesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) RemoveCertificatesWithContextV2(ctx context.Context, request *RemoveCertificatesRequest) (int, string, error) {
+	if request == nil {
+		request = NewRemoveCertificatesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "RemoveCertificates")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewRemoveCertificatesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}

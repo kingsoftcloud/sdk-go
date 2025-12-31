@@ -1079,3 +1079,80 @@ func (r *GetPvDataResponse) ToJsonString() string {
 func (r *GetPvDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type SetDomainLogServiceRequest struct {
+	*ksyunhttp.BaseRequest
+	ActionType  *string `json:"ActionType,omitempty" name:"ActionType"`
+	DomainIds   *string `json:"DomainIds,omitempty" name:"DomainIds"`
+	Granularity *string `json:"Granularity,omitempty" name:"Granularity"`
+}
+
+func (r *SetDomainLogServiceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetDomainLogServiceResponse struct {
+	*ksyunhttp.BaseResponse
+	SetDomainLogService *string `json:"SetDomainLogService" name:"SetDomainLogService"`
+}
+
+func (r *SetDomainLogServiceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetDomainLogServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetCertificateRequest struct {
+	*ksyunhttp.BaseRequest
+	CertificateId     *string `json:"CertificateId,omitempty" name:"CertificateId"`
+	CertificateName   *string `json:"CertificateName,omitempty" name:"CertificateName"`
+	ServerCertificate *string `json:"ServerCertificate,omitempty" name:"ServerCertificate"`
+	PrivateKey        *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+}
+
+func (r *SetCertificateRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetCertificateResponse struct {
+	*ksyunhttp.BaseResponse
+	CertificateId *string `json:"CertificateId" name:"CertificateId"`
+}
+
+func (r *SetCertificateResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoveCertificatesRequest struct {
+	*ksyunhttp.BaseRequest
+	CertificateIds *string `json:"CertificateIds,omitempty" name:"CertificateIds"`
+}
+
+func (r *RemoveCertificatesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type RemoveCertificatesResponse struct {
+	*ksyunhttp.BaseResponse
+	RemoveCertificates *string `json:"RemoveCertificates" name:"RemoveCertificates"`
+}
+
+func (r *RemoveCertificatesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *RemoveCertificatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
