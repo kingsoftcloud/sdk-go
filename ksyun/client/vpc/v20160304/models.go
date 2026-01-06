@@ -328,9 +328,11 @@ type DescribeSubnetsResponse struct {
 		Dns2                        *string `json:"Dns2" name:"Dns2"`
 		GatewayIp                   *string `json:"GatewayIp" name:"GatewayIp"`
 		AvailabilityZoneName        *string `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
+		AvailableIpNumber           *string `json:"AvailableIpNumber" name:"AvailableIpNumber"`
+		RandomAvailableIpNum        *string `json:"RandomAvailableIpNum" name:"RandomAvailableIpNum"`
+		AvailbleIPNumber            *string `json:"AvailbleIPNumber" name:"AvailbleIPNumber"`
 		ProvidedIpv6CidrBlock       *bool   `json:"ProvidedIpv6CidrBlock" name:"ProvidedIpv6CidrBlock"`
 		SecondaryCidrId             *string `json:"SecondaryCidrId" name:"SecondaryCidrId"`
-		AvailableIpNumber           *int    `json:"AvailableIpNumber" name:"AvailableIpNumber"`
 		NetworkAclId                *string `json:"NetworkAclId" name:"NetworkAclId"`
 		NatId                       *string `json:"NatId" name:"NatId"`
 		RouteTableId                *string `json:"RouteTableId" name:"RouteTableId"`
