@@ -16,6 +16,18 @@ type SetErrorPageConfigErrorPages struct {
 	ErrorHttpCode *string `json:"ErrorHttpCode,omitempty" name:"ErrorHttpCode"`
 	CustomPageUrl *string `json:"CustomPageUrl,omitempty" name:"CustomPageUrl"`
 }
+type SetCdnBlockDomainUrlUrls struct {
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+type SyncRefreshCachesFiles struct {
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+type SyncRefreshCachesDirs struct {
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+type InsertPreloadCachesUrls struct {
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
 
 type GetDomainLogsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1154,5 +1166,163 @@ func (r *RemoveCertificatesResponse) ToJsonString() string {
 }
 
 func (r *RemoveCertificatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociateCertificateConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	Enable            *string `json:"Enable,omitempty" name:"Enable"`
+	DomainIds         *string `json:"DomainIds,omitempty" name:"DomainIds"`
+	CertificateId     *string `json:"CertificateId,omitempty" name:"CertificateId"`
+	CertificateName   *string `json:"CertificateName,omitempty" name:"CertificateName"`
+	ServerCertificate *string `json:"ServerCertificate,omitempty" name:"ServerCertificate"`
+	PrivateKey        *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+}
+
+func (r *AssociateCertificateConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type AssociateCertificateConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	ConfigCertificateResponse *string `json:"ConfigCertificateResponse" name:"ConfigCertificateResponse"`
+}
+
+func (r *AssociateCertificateConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *AssociateCertificateConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ValidateIPRequest struct {
+	*ksyunhttp.BaseRequest
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+}
+
+func (r *ValidateIPRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ValidateIPResponse struct {
+	*ksyunhttp.BaseResponse
+	CdnIp    *string `json:"CdnIp" name:"CdnIp"`
+	Isp      *string `json:"Isp" name:"Isp"`
+	Region   *string `json:"Region" name:"Region"`
+	Province *string `json:"Province" name:"Province"`
+	City     *string `json:"City" name:"City"`
+}
+
+func (r *ValidateIPResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ValidateIPResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetCdnBlockDomainUrlRequest struct {
+	*ksyunhttp.BaseRequest
+	BlockType        *string                     `json:"BlockType,omitempty" name:"BlockType"`
+	Urls             []*SetCdnBlockDomainUrlUrls `json:"Urls,omitempty" name:"Urls"`
+	RefreshOnUnblock *string                     `json:"RefreshOnUnblock,omitempty" name:"RefreshOnUnblock"`
+}
+
+func (r *SetCdnBlockDomainUrlRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetCdnBlockDomainUrlResponse struct {
+	*ksyunhttp.BaseResponse
+	TaskId *string `json:"TaskId" name:"TaskId"`
+}
+
+func (r *SetCdnBlockDomainUrlResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetCdnBlockDomainUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SyncRefreshCachesRequest struct {
+	*ksyunhttp.BaseRequest
+	Files []*SyncRefreshCachesFiles `json:"Files,omitempty" name:"Files"`
+	Dirs  []*SyncRefreshCachesDirs  `json:"Dirs,omitempty" name:"Dirs"`
+}
+
+func (r *SyncRefreshCachesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SyncRefreshCachesResponse struct {
+	*ksyunhttp.BaseResponse
+	RefreshTaskId *string `json:"RefreshTaskId" name:"RefreshTaskId"`
+}
+
+func (r *SyncRefreshCachesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SyncRefreshCachesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InsertPreloadCachesRequest struct {
+	*ksyunhttp.BaseRequest
+	Urls []*InsertPreloadCachesUrls `json:"Urls,omitempty" name:"Urls"`
+}
+
+func (r *InsertPreloadCachesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type InsertPreloadCachesResponse struct {
+	*ksyunhttp.BaseResponse
+	PreloadTaskId *string `json:"PreloadTaskId" name:"PreloadTaskId"`
+}
+
+func (r *InsertPreloadCachesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *InsertPreloadCachesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetCntvRefreshOrPreloadTaskRequest struct {
+	*ksyunhttp.BaseRequest
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime   *string `json:"EndTime,omitempty" name:"EndTime"`
+	Type      *string `json:"Type,omitempty" name:"Type"`
+	TaskId    *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *GetCntvRefreshOrPreloadTaskRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetCntvRefreshOrPreloadTaskResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *GetCntvRefreshOrPreloadTaskResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetCntvRefreshOrPreloadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
