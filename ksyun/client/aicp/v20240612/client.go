@@ -3577,27 +3577,27 @@ func (c *Client) DescribeResourcePoolInstancesWithContextV2(ctx context.Context,
 	}
 	return statusCode, msg, nil
 }
-func NewEnableKpfsComponentRequest() (request *EnableKpfsComponentRequest) {
-	request = &EnableKpfsComponentRequest{
+func NewCreateInferenceEndpointRequest() (request *CreateInferenceEndpointRequest) {
+	request = &CreateInferenceEndpointRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
 	}
-	request.Init().WithApiInfo("aicp", APIVersion, "EnableKpfsComponent")
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateInferenceEndpoint")
 	return
 }
 
-func NewEnableKpfsComponentResponse() (response *EnableKpfsComponentResponse) {
-	response = &EnableKpfsComponentResponse{
+func NewCreateInferenceEndpointResponse() (response *CreateInferenceEndpointResponse) {
+	response = &CreateInferenceEndpointResponse{
 		BaseResponse: &ksyunhttp.BaseResponse{},
 	}
 	return
 }
 
-func (c *Client) EnableKpfsComponent(request *EnableKpfsComponentRequest) string {
-	return c.EnableKpfsComponentWithContext(context.Background(), request)
+func (c *Client) CreateInferenceEndpoint(request *CreateInferenceEndpointRequest) string {
+	return c.CreateInferenceEndpointWithContext(context.Background(), request)
 }
 
-func (c *Client) EnableKpfsComponentSend(request *EnableKpfsComponentRequest) (*EnableKpfsComponentResponse, error) {
-	statusCode, msg, err := c.EnableKpfsComponentWithContextV2(context.Background(), request)
+func (c *Client) CreateInferenceEndpointSend(request *CreateInferenceEndpointRequest) (*CreateInferenceEndpointResponse, error) {
+	statusCode, msg, err := c.CreateInferenceEndpointWithContextV2(context.Background(), request)
 	if err != nil {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
 	}
@@ -3609,7 +3609,7 @@ func (c *Client) EnableKpfsComponentSend(request *EnableKpfsComponentRequest) (*
 		return nil, nil
 	}
 
-	var respStruct EnableKpfsComponentResponse
+	var respStruct CreateInferenceEndpointResponse
 	err = respStruct.FromJsonString(msg)
 	if err != nil {
 		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
@@ -3617,19 +3617,19 @@ func (c *Client) EnableKpfsComponentSend(request *EnableKpfsComponentRequest) (*
 	return &respStruct, nil
 }
 
-func (c *Client) EnableKpfsComponentWithContext(ctx context.Context, request *EnableKpfsComponentRequest) string {
+func (c *Client) CreateInferenceEndpointWithContext(ctx context.Context, request *CreateInferenceEndpointRequest) string {
 	if request == nil {
-		request = NewEnableKpfsComponentRequest()
+		request = NewCreateInferenceEndpointRequest()
 	}
 	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
 	if request.BaseRequest == nil {
 		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("aicp", APIVersion, "EnableKpfsComponent")
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateInferenceEndpoint")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
-	response := NewEnableKpfsComponentResponse()
+	response := NewCreateInferenceEndpointResponse()
 	err, msg := c.Send(request, response)
 	if err != nil {
 		return fmt.Sprintf("%+v\n", err)
@@ -3637,19 +3637,335 @@ func (c *Client) EnableKpfsComponentWithContext(ctx context.Context, request *En
 	return msg
 }
 
-func (c *Client) EnableKpfsComponentWithContextV2(ctx context.Context, request *EnableKpfsComponentRequest) (int, string, error) {
+func (c *Client) CreateInferenceEndpointWithContextV2(ctx context.Context, request *CreateInferenceEndpointRequest) (int, string, error) {
 	if request == nil {
-		request = NewEnableKpfsComponentRequest()
+		request = NewCreateInferenceEndpointRequest()
 	}
 	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
 	if request.BaseRequest == nil {
 		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("aicp", APIVersion, "EnableKpfsComponent")
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateInferenceEndpoint")
 	}
 	request.SetContext(ctx)
 	request.SetContentType("application/json")
 
-	response := NewEnableKpfsComponentResponse()
+	response := NewCreateInferenceEndpointResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeInferenceEndpointsRequest() (request *DescribeInferenceEndpointsRequest) {
+	request = &DescribeInferenceEndpointsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeInferenceEndpoints")
+	return
+}
+
+func NewDescribeInferenceEndpointsResponse() (response *DescribeInferenceEndpointsResponse) {
+	response = &DescribeInferenceEndpointsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeInferenceEndpoints(request *DescribeInferenceEndpointsRequest) string {
+	return c.DescribeInferenceEndpointsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeInferenceEndpointsSend(request *DescribeInferenceEndpointsRequest) (*DescribeInferenceEndpointsResponse, error) {
+	statusCode, msg, err := c.DescribeInferenceEndpointsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeInferenceEndpointsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeInferenceEndpointsWithContext(ctx context.Context, request *DescribeInferenceEndpointsRequest) string {
+	if request == nil {
+		request = NewDescribeInferenceEndpointsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeInferenceEndpoints")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeInferenceEndpointsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeInferenceEndpointsWithContextV2(ctx context.Context, request *DescribeInferenceEndpointsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeInferenceEndpointsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeInferenceEndpoints")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeInferenceEndpointsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewStartInferenceEndpointRequest() (request *StartInferenceEndpointRequest) {
+	request = &StartInferenceEndpointRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "StartInferenceEndpoint")
+	return
+}
+
+func NewStartInferenceEndpointResponse() (response *StartInferenceEndpointResponse) {
+	response = &StartInferenceEndpointResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) StartInferenceEndpoint(request *StartInferenceEndpointRequest) string {
+	return c.StartInferenceEndpointWithContext(context.Background(), request)
+}
+
+func (c *Client) StartInferenceEndpointSend(request *StartInferenceEndpointRequest) (*StartInferenceEndpointResponse, error) {
+	statusCode, msg, err := c.StartInferenceEndpointWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct StartInferenceEndpointResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) StartInferenceEndpointWithContext(ctx context.Context, request *StartInferenceEndpointRequest) string {
+	if request == nil {
+		request = NewStartInferenceEndpointRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StartInferenceEndpoint")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewStartInferenceEndpointResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) StartInferenceEndpointWithContextV2(ctx context.Context, request *StartInferenceEndpointRequest) (int, string, error) {
+	if request == nil {
+		request = NewStartInferenceEndpointRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StartInferenceEndpoint")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewStartInferenceEndpointResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteInferenceEndpointRequest() (request *DeleteInferenceEndpointRequest) {
+	request = &DeleteInferenceEndpointRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeleteInferenceEndpoint")
+	return
+}
+
+func NewDeleteInferenceEndpointResponse() (response *DeleteInferenceEndpointResponse) {
+	response = &DeleteInferenceEndpointResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteInferenceEndpoint(request *DeleteInferenceEndpointRequest) string {
+	return c.DeleteInferenceEndpointWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteInferenceEndpointSend(request *DeleteInferenceEndpointRequest) (*DeleteInferenceEndpointResponse, error) {
+	statusCode, msg, err := c.DeleteInferenceEndpointWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteInferenceEndpointResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteInferenceEndpointWithContext(ctx context.Context, request *DeleteInferenceEndpointRequest) string {
+	if request == nil {
+		request = NewDeleteInferenceEndpointRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteInferenceEndpoint")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteInferenceEndpointResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteInferenceEndpointWithContextV2(ctx context.Context, request *DeleteInferenceEndpointRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteInferenceEndpointRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteInferenceEndpoint")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteInferenceEndpointResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDisableEndpointRateLimitRequest() (request *DisableEndpointRateLimitRequest) {
+	request = &DisableEndpointRateLimitRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DisableEndpointRateLimit")
+	return
+}
+
+func NewDisableEndpointRateLimitResponse() (response *DisableEndpointRateLimitResponse) {
+	response = &DisableEndpointRateLimitResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DisableEndpointRateLimit(request *DisableEndpointRateLimitRequest) string {
+	return c.DisableEndpointRateLimitWithContext(context.Background(), request)
+}
+
+func (c *Client) DisableEndpointRateLimitSend(request *DisableEndpointRateLimitRequest) (*DisableEndpointRateLimitResponse, error) {
+	statusCode, msg, err := c.DisableEndpointRateLimitWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DisableEndpointRateLimitResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DisableEndpointRateLimitWithContext(ctx context.Context, request *DisableEndpointRateLimitRequest) string {
+	if request == nil {
+		request = NewDisableEndpointRateLimitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DisableEndpointRateLimit")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDisableEndpointRateLimitResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DisableEndpointRateLimitWithContextV2(ctx context.Context, request *DisableEndpointRateLimitRequest) (int, string, error) {
+	if request == nil {
+		request = NewDisableEndpointRateLimitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DisableEndpointRateLimit")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDisableEndpointRateLimitResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err

@@ -8159,3 +8159,82 @@ func (c *Client) DescribeSoUserDataWithContextV2(ctx context.Context, request *D
 	}
 	return statusCode, msg, nil
 }
+func NewDescribeUserDataRequest() (request *DescribeUserDataRequest) {
+	request = &DescribeUserDataRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "DescribeUserData")
+	return
+}
+
+func NewDescribeUserDataResponse() (response *DescribeUserDataResponse) {
+	response = &DescribeUserDataResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeUserData(request *DescribeUserDataRequest) string {
+	return c.DescribeUserDataWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeUserDataSend(request *DescribeUserDataRequest) (*DescribeUserDataResponse, error) {
+	statusCode, msg, err := c.DescribeUserDataWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeUserDataResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeUserDataWithContext(ctx context.Context, request *DescribeUserDataRequest) string {
+	if request == nil {
+		request = NewDescribeUserDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeUserData")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeUserDataResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeUserDataWithContextV2(ctx context.Context, request *DescribeUserDataRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeUserDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeUserData")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeUserDataResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}

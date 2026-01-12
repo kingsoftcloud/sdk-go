@@ -165,6 +165,7 @@ type CreateEpcResponse struct {
 			NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
 			Mac                *string `json:"Mac" name:"Mac"`
 			VpcId              *string `json:"VpcId" name:"VpcId"`
+			Ipv6Address        *string `json:"Ipv6Address" name:"Ipv6Address"`
 		} `json:"NetworkInterfaceAttributeSet" name:"NetworkInterfaceAttributeSet"`
 		ComputerName *string `json:"ComputerName" name:"ComputerName"`
 		CabinetId    *string `json:"CabinetId" name:"CabinetId"`
@@ -541,6 +542,7 @@ type DescribeEpcsResponse struct {
 				ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
 				IpVersion      *string `json:"IpVersion" name:"IpVersion"`
 			} `json:"EipAddress"`
+			Ipv6Address *string `json:"Ipv6Address" name:"Ipv6Address"`
 		} `json:"NetworkInterfaceAttributeSet" name:"NetworkInterfaceAttributeSet"`
 		NetworkCardSet []struct {
 			Type      *string `json:"Type" name:"Type"`
@@ -3955,5 +3957,30 @@ func (r *DescribeSoUserDataResponse) ToJsonString() string {
 }
 
 func (r *DescribeSoUserDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeUserDataRequest struct {
+	*ksyunhttp.BaseRequest
+	HostId *string `json:"HostId,omitempty" name:"HostId"`
+}
+
+func (r *DescribeUserDataRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeUserDataResponse struct {
+	*ksyunhttp.BaseResponse
+	HostId          *string `json:"HostId" name:"HostId"`
+	UserDefinedData *string `json:"UserDefinedData" name:"UserDefinedData"`
+}
+
+func (r *DescribeUserDataResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeUserDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
