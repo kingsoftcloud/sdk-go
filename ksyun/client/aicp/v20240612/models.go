@@ -68,7 +68,11 @@ type DescribeInferenceEndpointsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-type StartInferenceEndpointRateLimit struct {
+type EnableEndpointRateLimitRateLimit struct {
+	TPM *int `json:"TPM,omitempty" name:"TPM"`
+	RPM *int `json:"RPM,omitempty" name:"RPM"`
+}
+type UpdateInferenceEndpointRateLimit struct {
 	RPM         *int `json:"RPM,omitempty" name:"RPM"`
 	TPM         *int `json:"TPM,omitempty" name:"TPM"`
 	Concurrency *int `json:"Concurrency,omitempty" name:"Concurrency"`
@@ -717,6 +721,7 @@ type DescribeApikeysRequest struct {
 	Status            []*string `json:"Status,omitempty" name:"Status"`
 	Namekeyword       *string   `json:"Namekeyword,omitempty" name:"Namekeyword"`
 	DefaultKey        *bool     `json:"DefaultKey,omitempty" name:"DefaultKey"`
+	KeyId             []*string `json:"KeyId,omitempty" name:"KeyId"`
 }
 
 func (r *DescribeApikeysRequest) ToJsonString() string {
@@ -770,6 +775,7 @@ type QueryTokenDataRequest struct {
 	ReasoningType  *string `json:"ReasoningType,omitempty" name:"ReasoningType"`
 	Marker         *int    `json:"Marker,omitempty" name:"Marker"`
 	IsGlobalServer *bool   `json:"IsGlobalServer,omitempty" name:"IsGlobalServer"`
+	ModelName      *string `json:"ModelName,omitempty" name:"ModelName"`
 }
 
 func (r *QueryTokenDataRequest) ToJsonString() string {
@@ -1787,13 +1793,64 @@ func (r *DescribeInferenceEndpointsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EnableEndpointRateLimitRequest struct {
+	*ksyunhttp.BaseRequest
+	EndpointId *string                           `json:"EndpointId,omitempty" name:"EndpointId"`
+	RateLimit  *EnableEndpointRateLimitRateLimit `json:"RateLimit,omitempty" name:"RateLimit"`
+}
+
+func (r *EnableEndpointRateLimitRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type EnableEndpointRateLimitResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	EndpointId *string `json:"EndpointId" name:"EndpointId"`
+}
+
+func (r *EnableEndpointRateLimitResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *EnableEndpointRateLimitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateInferenceEndpointRequest struct {
+	*ksyunhttp.BaseRequest
+	EndpointName *string                           `json:"EndpointName,omitempty" name:"EndpointName"`
+	ProjectId    *string                           `json:"ProjectId,omitempty" name:"ProjectId"`
+	ModelName    *string                           `json:"ModelName,omitempty" name:"ModelName"`
+	RateLimit    *UpdateInferenceEndpointRateLimit `json:"RateLimit ,omitempty" name:"RateLimit "`
+	EndpointId   *string                           `json:"EndpointId,omitempty" name:"EndpointId"`
+}
+
+func (r *UpdateInferenceEndpointRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type UpdateInferenceEndpointResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	EndpointId *string `json:"EndpointId" name:"EndpointId"`
+}
+
+func (r *UpdateInferenceEndpointResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateInferenceEndpointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type StartInferenceEndpointRequest struct {
 	*ksyunhttp.BaseRequest
-	EndpointName *string                          `json:"EndpointName,omitempty" name:"EndpointName"`
-	ProjectId    *string                          `json:"ProjectId,omitempty" name:"ProjectId"`
-	ModelName    *string                          `json:"ModelName,omitempty" name:"ModelName"`
-	RateLimit    *StartInferenceEndpointRateLimit `json:"RateLimit ,omitempty" name:"RateLimit "`
-	EndpointId   *string                          `json:"EndpointId,omitempty" name:"EndpointId"`
+	EndpointId *string `json:"EndpointId,omitempty" name:"EndpointId"`
 }
 
 func (r *StartInferenceEndpointRequest) ToJsonString() string {
@@ -1813,6 +1870,31 @@ func (r *StartInferenceEndpointResponse) ToJsonString() string {
 }
 
 func (r *StartInferenceEndpointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StopInferenceEndpointRequest struct {
+	*ksyunhttp.BaseRequest
+	EndpointId *string `json:"EndpointId,omitempty" name:"EndpointId"`
+}
+
+func (r *StopInferenceEndpointRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type StopInferenceEndpointResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	EndpointId *string `json:"EndpointId" name:"EndpointId"`
+}
+
+func (r *StopInferenceEndpointResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *StopInferenceEndpointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
