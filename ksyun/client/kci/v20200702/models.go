@@ -206,7 +206,7 @@ type CreateContainerGroupRequest struct {
 	InstanceFamily          *string                                        `json:"InstanceFamily,omitempty" name:"InstanceFamily"`
 	ChargeType              *string                                        `json:"ChargeType,omitempty" name:"ChargeType"`
 	SpotStrategy            *string                                        `json:"SpotStrategy,omitempty" name:"SpotStrategy"`
-	ProjectId               *int                                           `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId               *int64                                         `json:"ProjectId,omitempty" name:"ProjectId"`
 	Cpu                     *float64                                       `json:"Cpu,omitempty" name:"Cpu"`
 	Memory                  *float64                                       `json:"Memory,omitempty" name:"Memory"`
 	Gpu                     *float64                                       `json:"Gpu,omitempty" name:"Gpu"`
@@ -281,7 +281,7 @@ type DescribeContainerGroupResponse struct {
 		ContainerGroupName         *string  `json:"ContainerGroupName" name:"ContainerGroupName"`
 		AvailabilityZone           *string  `json:"AvailabilityZone" name:"AvailabilityZone"`
 		ChargeType                 *string  `json:"ChargeType" name:"ChargeType"`
-		ProjectId                  *int     `json:"ProjectId" name:"ProjectId"`
+		ProjectId                  *int64   `json:"ProjectId" name:"ProjectId"`
 		KciType                    *string  `json:"KciType" name:"KciType"`
 		KciMode                    *string  `json:"KciMode" name:"KciMode"`
 		InstanceType               *string  `json:"InstanceType" name:"InstanceType"`

@@ -224,7 +224,7 @@ type ModifyDBParameterGroupResponse struct {
 				InnodbMaxDirtyPagesPct      *int     `json:"InnodbMaxDirtyPagesPct" name:"InnodbMaxDirtyPagesPct"`
 				FtMinWordLen                *int     `json:"FtMinWordLen" name:"FtMinWordLen"`
 				ConcurrentInsert            *string  `json:"ConcurrentInsert" name:"ConcurrentInsert"`
-				IntQueryTime                *float64 `json:"IntQueryTime" name:"IntQueryTime"`
+				LongQueryTime               *float64 `json:"LongQueryTime" name:"LongQueryTime"`
 				SlowQueryLog                *string  `json:"SlowQueryLog" name:"SlowQueryLog"`
 				SortBufferSize              *int     `json:"SortBufferSize" name:"SortBufferSize"`
 				InteractiveTimeout          *int     `json:"InteractiveTimeout" name:"InteractiveTimeout"`
@@ -345,7 +345,7 @@ type ResetDBParameterGroupResponse struct {
 				InnodbMaxDirtyPagesPct      *int    `json:"InnodbMaxDirtyPagesPct" name:"InnodbMaxDirtyPagesPct"`
 				FtMinWordLen                *int    `json:"FtMinWordLen" name:"FtMinWordLen"`
 				ConcurrentInsert            *string `json:"ConcurrentInsert" name:"ConcurrentInsert"`
-				IntQueryTime                *int    `json:"IntQueryTime" name:"IntQueryTime"`
+				LongQueryTime               *int    `json:"LongQueryTime" name:"LongQueryTime"`
 				SlowQueryLog                *string `json:"SlowQueryLog" name:"SlowQueryLog"`
 				SortBufferSize              *int    `json:"SortBufferSize" name:"SortBufferSize"`
 				InteractiveTimeout          *int    `json:"InteractiveTimeout" name:"InteractiveTimeout"`
@@ -879,13 +879,13 @@ type DescribeEngineDefaultParametersResponse struct {
 				Type            *string   `json:"Type" name:"Type"`
 				Enums           []*string `json:"Enums" name:"Enums"`
 			} `json:"ConcurrentInsert"`
-			IntQueryTime struct {
+			LongQueryTime struct {
 				Min             *int     `json:"Min" name:"Min"`
 				Default         *float64 `json:"Default" name:"Default"`
 				Max             *int     `json:"Max" name:"Max"`
 				RestartRequired *bool    `json:"RestartRequired" name:"RestartRequired"`
 				Type            *string  `json:"Type" name:"Type"`
-			} `json:"IntQueryTime"`
+			} `json:"LongQueryTime"`
 			SlowQueryLog struct {
 				Default         *string   `json:"Default" name:"Default"`
 				RestartRequired *bool     `json:"RestartRequired" name:"RestartRequired"`
@@ -2269,7 +2269,7 @@ type DescribeDBInstanceParametersResponse struct {
 			InnodbMaxDirtyPagesPct      *int     `json:"innodb_max_dirty_pages_pct" name:"innodb_max_dirty_pages_pct"`
 			FtMinWordLen                *int     `json:"ft_min_word_len" name:"ft_min_word_len"`
 			ConcurrentInsert            *string  `json:"concurrent_insert" name:"concurrent_insert"`
-			IntQueryTime                *float64 `json:"Int_query_time" name:"Int_query_time"`
+			LongQueryTime               *float64 `json:"long_query_time" name:"long_query_time"`
 			SlowQueryLog                *string  `json:"slow_query_log" name:"slow_query_log"`
 			SortBufferSize              *int     `json:"sort_buffer_size" name:"sort_buffer_size"`
 			InteractiveTimeout          *int     `json:"interactive_timeout" name:"interactive_timeout"`

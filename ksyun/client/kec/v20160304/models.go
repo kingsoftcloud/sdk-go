@@ -26,7 +26,7 @@ type RunInstancesSystemDisk struct {
 }
 type RunInstancesTag struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
-	Id    *int    `json:"Id,omitempty" name:"Id"`
+	Id    *int64  `json:"Id,omitempty" name:"Id"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 type RunInstancesInstanceConfigure struct {
@@ -90,7 +90,7 @@ type CreateModelNetworkInterface struct {
 }
 type CreateModelTag struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
-	Id    *int    `json:"Id,omitempty" name:"Id"`
+	Id    *int64  `json:"Id,omitempty" name:"Id"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 type ModifyScalingConfigurationDataDisk struct {
@@ -130,7 +130,7 @@ type DescribeInstancesResponse struct {
 	RequestId     *string `json:"RequestId" name:"RequestId"`
 	InstancesSet  []struct {
 		InstanceId        *string `json:"InstanceId" name:"InstanceId"`
-		ProjectId         *int    `json:"ProjectId" name:"ProjectId"`
+		ProjectId         *int64  `json:"ProjectId" name:"ProjectId"`
 		ShutdownNoCharge  *bool   `json:"ShutdownNoCharge" name:"ShutdownNoCharge"`
 		IsDistributeIpv6  *bool   `json:"IsDistributeIpv6" name:"IsDistributeIpv6"`
 		InstanceName      *string `json:"InstanceName" name:"InstanceName"`
@@ -264,13 +264,13 @@ type RunInstancesRequest struct {
 	PrivateIpAddress           *string                         `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
 	InstanceName               *string                         `json:"InstanceName,omitempty" name:"InstanceName"`
 	InstanceNameSuffix         *string                         `json:"InstanceNameSuffix,omitempty" name:"InstanceNameSuffix"`
-	ProjectId                  *int                            `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId                  *int64                          `json:"ProjectId,omitempty" name:"ProjectId"`
 	DataDisk                   []*RunInstancesDataDisk         `json:"DataDisk,omitempty" name:"DataDisk"`
 	NetworkInterface           []*RunInstancesNetworkInterface `json:"NetworkInterface,omitempty" name:"NetworkInterface"`
 	UserData                   *string                         `json:"UserData,omitempty" name:"UserData"`
 	SystemDisk                 *RunInstancesSystemDisk         `json:"SystemDisk,omitempty" name:"SystemDisk"`
 	ModelId                    *string                         `json:"ModelId,omitempty" name:"ModelId"`
-	ModelVersion               *int                            `json:"ModelVersion,omitempty" name:"ModelVersion"`
+	ModelVersion               *int64                          `json:"ModelVersion,omitempty" name:"ModelVersion"`
 	AssembledImageDataDiskType *string                         `json:"AssembledImageDataDiskType,omitempty" name:"AssembledImageDataDiskType"`
 	AutoCreateEbs              *bool                           `json:"AutoCreateEbs,omitempty" name:"AutoCreateEbs"`
 	LineId                     *string                         `json:"LineId,omitempty" name:"LineId"`
@@ -1142,7 +1142,7 @@ type CreateDedicatedHostsRequest struct {
 	DedicatedClusterId *string                    `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
 	Tag                []*CreateDedicatedHostsTag `json:"Tag,omitempty" name:"Tag"`
 	AvailabilityZone   *string                    `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
-	ProjectId          *int                       `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId          *int64                     `json:"ProjectId,omitempty" name:"ProjectId"`
 	EbsClusterMode     *string                    `json:"EbsClusterMode,omitempty" name:"EbsClusterMode"`
 }
 
@@ -1201,9 +1201,9 @@ func (r *DeleteDedicatedHostResponse) FromJsonString(s string) error {
 
 type DescribeDedicatedHostsRequest struct {
 	*ksyunhttp.BaseRequest
-	DedicatedHostId *string `json:"DedicatedHostId,omitempty" name:"DedicatedHostId"`
-	Search          *string `json:"search,omitempty" name:"search"`
-	ProjectId       []*int  `json:"ProjectId,omitempty" name:"ProjectId"`
+	DedicatedHostId *string  `json:"DedicatedHostId,omitempty" name:"DedicatedHostId"`
+	Search          *string  `json:"search,omitempty" name:"search"`
+	ProjectId       []*int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *DescribeDedicatedHostsRequest) ToJsonString() string {
@@ -1787,7 +1787,7 @@ func (r *DescribeScalingInstanceRequest) ToJsonString() string {
 type DescribeScalingInstanceResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId            *string `json:"RequestId" name:"RequestId"`
-	ScalingInstanceCount *int    `json:"ScalingInstanceCount" name:"ScalingInstanceCount"`
+	ScalingInstanceCount *int64  `json:"ScalingInstanceCount" name:"ScalingInstanceCount"`
 	ScalingInstanceSet   []struct {
 		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
 		InstanceName         *string `json:"InstanceName" name:"InstanceName"`
@@ -1881,7 +1881,7 @@ type DescribeScalingActivityResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId            *string `json:"RequestId" name:"RequestId"`
 	AvailabilityZone     *string `json:"AvailabilityZone" name:"AvailabilityZone"`
-	ScalingActivityCount *int    `json:"ScalingActivityCount" name:"ScalingActivityCount"`
+	ScalingActivityCount *int64  `json:"ScalingActivityCount" name:"ScalingActivityCount"`
 	ScalingActivitySet   []struct {
 		ScalingGroupId    *string   `json:"ScalingGroupId" name:"ScalingGroupId"`
 		Status            *int      `json:"Status" name:"Status"`
@@ -2710,7 +2710,7 @@ type CreateFileSystemRequest struct {
 	StorageType         *string `json:"StorageType,omitempty" name:"StorageType"`
 	ProtocolType        *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
 	FileSystemName      *string `json:"FileSystemName,omitempty" name:"FileSystemName"`
-	ProjectId           *int    `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId           *int64  `json:"ProjectId,omitempty" name:"ProjectId"`
 	IsTrashEnable       *bool   `json:"IsTrashEnable,omitempty" name:"IsTrashEnable"`
 	IsTrashVisible      *bool   `json:"IsTrashVisible,omitempty" name:"IsTrashVisible"`
 	IntervalTrash       *int    `json:"IntervalTrash,omitempty" name:"IntervalTrash"`
@@ -2771,7 +2771,7 @@ type DescribeFileSystemsRequest struct {
 	FileSystemId []*string                    `json:"FileSystemId,omitempty" name:"FileSystemId"`
 	MaxResults   *int                         `json:"MaxResults,omitempty" name:"MaxResults"`
 	Marker       *int                         `json:"Marker,omitempty" name:"Marker"`
-	ProjectId    []*int                       `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId    []*int64                     `json:"ProjectId,omitempty" name:"ProjectId"`
 	IncludeDel   *bool                        `json:"IncludeDel,omitempty" name:"IncludeDel"`
 	Filter       []*DescribeFileSystemsFilter `json:"Filter,omitempty" name:"Filter"`
 }
@@ -2970,7 +2970,7 @@ type CreateModelRequest struct {
 	InstanceName               *string                        `json:"InstanceName,omitempty" name:"InstanceName"`
 	InstanceNameSuffix         *string                        `json:"InstanceNameSuffix,omitempty" name:"InstanceNameSuffix"`
 	SriovNetSupport            *string                        `json:"SriovNetSupport,omitempty" name:"SriovNetSupport"`
-	ProjectId                  *int                           `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId                  *int64                         `json:"ProjectId,omitempty" name:"ProjectId"`
 	DataGuardId                *string                        `json:"DataGuardId,omitempty" name:"DataGuardId"`
 	AddressBandWidth           *int                           `json:"AddressBandWidth,omitempty" name:"AddressBandWidth"`
 	LineId                     *string                        `json:"LineId,omitempty" name:"LineId"`
@@ -3019,7 +3019,7 @@ func (r *CreateModelResponse) FromJsonString(s string) error {
 type TerminateModelsRequest struct {
 	*ksyunhttp.BaseRequest
 	ModelId      *string `json:"ModelId,omitempty" name:"ModelId"`
-	ModelVersion *int    `json:"ModelVersion,omitempty" name:"ModelVersion"`
+	ModelVersion *int64  `json:"ModelVersion,omitempty" name:"ModelVersion"`
 }
 
 func (r *TerminateModelsRequest) ToJsonString() string {
@@ -3843,6 +3843,30 @@ func (r *UpdateSnapshotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteSnapshotRequest struct {
+	*ksyunhttp.BaseRequest
+	SnapshotId []*string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+}
+
+func (r *DeleteSnapshotRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteSnapshotResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteSnapshotResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RevertSnapshotRequest struct {
 	*ksyunhttp.BaseRequest
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
@@ -3865,6 +3889,80 @@ func (r *RevertSnapshotResponse) ToJsonString() string {
 }
 
 func (r *RevertSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSnapshotListRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId []*string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	SnapshotId   []*string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+	SnapshotName *string   `json:"SnapshotName,omitempty" name:"SnapshotName"`
+	SnapshotType *string   `json:"SnapshotType,omitempty" name:"SnapshotType"`
+	Sort         *string   `json:"Sort,omitempty" name:"Sort"`
+	PageNum      *int      `json:"PageNum,omitempty" name:"PageNum"`
+	PageSize     *int      `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeSnapshotListRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeSnapshotListResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	PageNum    *int    `json:"PageNum" name:"PageNum"`
+	PageSize   *int    `json:"PageSize" name:"PageSize"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	Data       []struct {
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+		ExpireTime     *string `json:"ExpireTime" name:"ExpireTime"`
+		SnapshotName   *string `json:"SnapshotName" name:"SnapshotName"`
+		SnapshotId     *string `json:"SnapshotId" name:"SnapshotId"`
+		SnapshotStatus *string `json:"SnapshotStatus" name:"SnapshotStatus"`
+		SnapshotType   *string `json:"SnapshotType" name:"SnapshotType"`
+		FileSystemId   *string `json:"FileSystemId" name:"FileSystemId"`
+		FileSystemName *string `json:"FileSystemName" name:"FileSystemName"`
+		AliveDays      *int    `json:"AliveDays" name:"AliveDays"`
+		Description    *string `json:"Description" name:"Description"`
+	} `json:"Data"`
+}
+
+func (r *DescribeSnapshotListResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeSnapshotListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSnapshotPolicyRequest struct {
+	*ksyunhttp.BaseRequest
+	AutoSnapshotPolicyName *string   `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
+	FrequencyUnit          *string   `json:"FrequencyUnit,omitempty" name:"FrequencyUnit"`
+	IndexOfFrequency       []*int    `json:"IndexOfFrequency,omitempty" name:"IndexOfFrequency"`
+	SnapshotTimePoint      []*string `json:"SnapshotTimePoint,omitempty" name:"SnapshotTimePoint"`
+	AliveDays              *int      `json:"AliveDays,omitempty" name:"AliveDays"`
+}
+
+func (r *CreateSnapshotPolicyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateSnapshotPolicyResponse struct {
+	*ksyunhttp.BaseResponse
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId" name:"AutoSnapshotPolicyId"`
+	RequestId            *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateSnapshotPolicyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateSnapshotPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

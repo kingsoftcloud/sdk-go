@@ -489,7 +489,7 @@ type ModifyDBParameterGroupResponse struct {
 				InnodbMaxDirtyPagesPct      *int    `json:"InnodbMaxDirtyPagesPct" name:"InnodbMaxDirtyPagesPct"`
 				FtMinWordLen                *int    `json:"FtMinWordLen" name:"FtMinWordLen"`
 				ConcurrentInsert            *string `json:"ConcurrentInsert" name:"ConcurrentInsert"`
-				IntQueryTime                *int    `json:"IntQueryTime" name:"IntQueryTime"`
+				LongQueryTime               *int    `json:"LongQueryTime" name:"LongQueryTime"`
 				SlowQueryLog                *string `json:"SlowQueryLog" name:"SlowQueryLog"`
 				SortBufferSize              *int    `json:"SortBufferSize" name:"SortBufferSize"`
 				InteractiveTimeout          *int    `json:"InteractiveTimeout" name:"InteractiveTimeout"`

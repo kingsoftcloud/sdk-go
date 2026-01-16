@@ -759,7 +759,7 @@ type DescribeImagesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	NextToken  *string `json:"NextToken" name:"NextToken"`
-	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	TotalCount *int64  `json:"TotalCount" name:"TotalCount"`
 	ImageSet   []struct {
 		ImageId             *string `json:"ImageId" name:"ImageId"`
 		ImageName           *string `json:"ImageName" name:"ImageName"`
@@ -910,7 +910,7 @@ type DescribeEpcManagementsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId        *string `json:"RequestId" name:"RequestId"`
 	NextToken        *string `json:"NextToken" name:"NextToken"`
-	TotalCount       *int    `json:"TotalCount" name:"TotalCount"`
+	TotalCount       *int64  `json:"TotalCount" name:"TotalCount"`
 	EpcManagementSet []struct {
 		EpcManagementId       *string `json:"EpcManagementId" name:"EpcManagementId"`
 		EpcManagementIp       *string `json:"EpcManagementIp" name:"EpcManagementIp"`
@@ -1019,7 +1019,7 @@ type ModifyRemoteManagementRequest struct {
 	NewPhoneNumber     *string `json:"NewPhoneNumber,omitempty" name:"NewPhoneNumber"`
 	NewPin             *string `json:"NewPin,omitempty" name:"NewPin"`
 	Name               *string `json:"Name,omitempty" name:"Name"`
-	VersionId          *int    `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId          *int64  `json:"VersionId,omitempty" name:"VersionId"`
 }
 
 func (r *ModifyRemoteManagementRequest) ToJsonString() string {
@@ -1052,7 +1052,7 @@ type CreateRemoteManagementRequest struct {
 	Pin         *string `json:"Pin,omitempty" name:"Pin"`
 	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
 	Name        *string `json:"Name,omitempty" name:"Name"`
-	VersionId   *int    `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId   *int64  `json:"VersionId,omitempty" name:"VersionId"`
 }
 
 func (r *CreateRemoteManagementRequest) ToJsonString() string {
@@ -1250,7 +1250,7 @@ type DescribeInspectionsResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId     *string `json:"RequestId" name:"RequestId"`
 	NextToken     *string `json:"NextToken" name:"NextToken"`
-	TotalCount    *int    `json:"TotalCount" name:"TotalCount"`
+	TotalCount    *int64  `json:"TotalCount" name:"TotalCount"`
 	InspectionSet []struct {
 		HostId           *string `json:"HostId" name:"HostId"`
 		Sn               *string `json:"Sn" name:"Sn"`
@@ -1414,7 +1414,7 @@ type DescribeProcessesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	NextToken  *string `json:"NextToken" name:"NextToken"`
-	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	TotalCount *int64  `json:"TotalCount" name:"TotalCount"`
 	ProcessSet []struct {
 		HostId                  *string `json:"HostId" name:"HostId"`
 		Sn                      *string `json:"Sn" name:"Sn"`
@@ -1572,7 +1572,7 @@ type DescribeEpcTrashesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	NextToken  *string `json:"NextToken" name:"NextToken"`
-	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	TotalCount *int64  `json:"TotalCount" name:"TotalCount"`
 	HostSet    []struct {
 		CreateTime                  *string `json:"CreateTime" name:"CreateTime"`
 		ComputerName                *string `json:"ComputerName" name:"ComputerName"`
@@ -1934,7 +1934,7 @@ type DescribeEpcRaidAttributesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId           *string `json:"RequestId" name:"RequestId"`
 	NextToken           *string `json:"NextToken" name:"NextToken"`
-	TotalCount          *int    `json:"TotalCount" name:"TotalCount"`
+	TotalCount          *int64  `json:"TotalCount" name:"TotalCount"`
 	EpcRaidAttributeSet []struct {
 		TemplateName *string `json:"TemplateName" name:"TemplateName"`
 		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
@@ -1979,7 +1979,7 @@ type DescribeGpuImageDriverResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId          *string `json:"RequestId" name:"RequestId"`
 	NextToken          *string `json:"NextToken" name:"NextToken"`
-	TotalCount         *int    `json:"TotalCount" name:"TotalCount"`
+	TotalCount         *int64  `json:"TotalCount" name:"TotalCount"`
 	GpuImagesDriverSet []struct {
 		GpuImageDriverId *string   `json:"GpuImageDriverId" name:"GpuImageDriverId"`
 		ImageNameSet     []*string `json:"ImageNameSet" name:"ImageNameSet"`
@@ -2061,7 +2061,7 @@ func (r *DescribeShareImageAccountListRequest) ToJsonString() string {
 type DescribeShareImageAccountListResponse struct {
 	*ksyunhttp.BaseResponse
 	SharePermissionSet []struct {
-		AccountId *int    `json:"AccountId" name:"AccountId"`
+		AccountId *int64  `json:"AccountId" name:"AccountId"`
 		ShareTime *string `json:"ShareTime" name:"ShareTime"`
 		Status    *string `json:"Status" name:"Status"`
 		ImageId   *string `json:"ImageId" name:"ImageId"`
@@ -2103,7 +2103,7 @@ type DescribeShareImageResponse struct {
 		Status              *string `json:"Status" name:"Status"`
 	} `json:"SharePermissionSet"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
-	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	TotalCount *int64  `json:"TotalCount" name:"TotalCount"`
 	NextToken  *string `json:"NextToken" name:"NextToken"`
 }
 

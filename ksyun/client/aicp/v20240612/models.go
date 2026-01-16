@@ -2,6 +2,7 @@ package v20240612
 
 import (
 	"encoding/json"
+
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -566,6 +567,8 @@ type ActivateApiServiceResponse struct {
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Success   *bool   `json:"Success" name:"Success"`
 	Error     struct {
+		Code    *string `json:"Code" name:"Code"`
+		Message *string `json:"Message" name:"Message"`
 	} `json:"Error"`
 }
 
@@ -629,7 +632,7 @@ type DescribeModelsResponse struct {
 		Description *string   `json:"Description" name:"Description"`
 		IconUrl     *string   `json:"IconUrl" name:"IconUrl"`
 		Tags        []*string `json:"Tags" name:"Tags"`
-		UpdateTime  *int      `json:"UpdateTime" name:"UpdateTime"`
+		UpdateTime  *int64    `json:"UpdateTime" name:"UpdateTime"`
 		CodeCase    struct {
 			VideoModel    *bool     `json:"VideoModel" name:"VideoModel"`
 			Batch         *bool     `json:"Batch" name:"Batch"`
@@ -639,8 +642,8 @@ type DescribeModelsResponse struct {
 			SupportTryout *string   `json:"SupportTryout" name:"SupportTryout"`
 		} `json:"CodeCase" name:"CodeCase"`
 		IsOverFreeDisable *bool   `json:"IsOverFreeDisable" name:"IsOverFreeDisable"`
-		FreeTotalQuota    *int    `json:"FreeTotalQuota" name:"FreeTotalQuota"`
-		FreeUsedQuota     *int    `json:"FreeUsedQuota" name:"FreeUsedQuota"`
+		FreeTotalQuota    *int64  `json:"FreeTotalQuota" name:"FreeTotalQuota"`
+		FreeUsedQuota     *int64  `json:"FreeUsedQuota" name:"FreeUsedQuota"`
 		Tpm               *int    `json:"Tpm" name:"Tpm"`
 		Rpm               *int    `json:"Rpm" name:"Rpm"`
 		ActiveStatus      *int    `json:"ActiveStatus" name:"ActiveStatus"`
@@ -662,7 +665,7 @@ type CreateApikeyRequest struct {
 	*ksyunhttp.BaseRequest
 	Name               *string   `json:"Name,omitempty" name:"Name"`
 	Description        *string   `json:"Description,omitempty" name:"Description"`
-	ProjectId          *int      `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId          *int64    `json:"ProjectId,omitempty" name:"ProjectId"`
 	AssociatedModelIds []*string `json:"AssociatedModelIds,omitempty" name:"AssociatedModelIds"`
 	AllAssociatedModel *bool     `json:"AllAssociatedModel,omitempty" name:"AllAssociatedModel"`
 	AllowedIps         []*string `json:"AllowedIps,omitempty" name:"AllowedIps"`
@@ -701,6 +704,59 @@ func (r *GetModelDetailRequest) ToJsonString() string {
 type GetModelDetailResponse struct {
 	*ksyunhttp.BaseResponse
 	ModelApiModelDataWebResp struct {
+		ModelId     *string   `json:"ModelId" name:"ModelId"`
+		ModelName   *string   `json:"ModelName" name:"ModelName"`
+		Description *string   `json:"Description" name:"Description"`
+		IconUrl     *string   `json:"IconUrl" name:"IconUrl"`
+		Tags        []*string `json:"Tags" name:"Tags"`
+		UpdateTime  *int64    `json:"UpdateTime" name:"UpdateTime"`
+		CodeCase    struct {
+			BaseUrl                  *string `json:"BaseUrl" name:"BaseUrl"`
+			Model                    *string `json:"Model" name:"Model"`
+			RestApiExternalbaseUrl   *string `json:"RestApiExternalbaseUrl" name:"RestApiExternalbaseUrl"`
+			RestApiInternalbaseUrl   *string `json:"RestApiInternalbaseUrl" name:"RestApiInternalbaseUrl"`
+			OpenSdkExternalbaseUrl   *string `json:"OpenSdkExternalbaseUrl" name:"OpenSdkExternalbaseUrl"`
+			OpenSdkInternalbaseUrl   *string `json:"OpenSdkInternalbaseUrl" name:"OpenSdkInternalbaseUrl"`
+			VideoModel               *bool   `json:"VideoModel" name:"VideoModel"`
+			FunctionCall             *bool   `json:"FunctionCall" name:"FunctionCall"`
+			StructuredOutput         *bool   `json:"StructuredOutput" name:"StructuredOutput"`
+			InternetSearch           *bool   `json:"InternetSearch" name:"InternetSearch"`
+			DeepThinking             *bool   `json:"DeepThinking" name:"DeepThinking"`
+			Batch                    *bool   `json:"Batch" name:"Batch"`
+			CacheContext             *bool   `json:"CacheContext" name:"CacheContext"`
+			ModelProvider            *string `json:"ModelProvider" name:"ModelProvider"`
+			OnlineCalculateInput     *string `json:"OnlineCalculateInput" name:"OnlineCalculateInput"`
+			OnlineCalculateOutput    *string `json:"OnlineCalculateOutput" name:"OnlineCalculateOutput"`
+			BatchCalculateInput      *string `json:"BatchCalculateInput" name:"BatchCalculateInput"`
+			BatchCalculateOutput     *string `json:"BatchCalculateOutput" name:"BatchCalculateOutput"`
+			OnlineCalculateRight     *string `json:"OnlineCalculateRight" name:"OnlineCalculateRight"`
+			BatchCalculateCacheRight *string `json:"BatchCalculateCacheRight" name:"BatchCalculateCacheRight"`
+			RpmLimit                 *string `json:"RpmLimit" name:"RpmLimit"`
+			TpmLimit                 *string `json:"TpmLimit" name:"TpmLimit"`
+			ContextLength            *string `json:"ContextLength" name:"ContextLength"`
+			InputMaxLength           *string `json:"InputMaxLength" name:"InputMaxLength"`
+			OutputMaxLength          *string `json:"OutputMaxLength" name:"OutputMaxLength"`
+			DeepThinkMaxLength       *string `json:"DeepThinkMaxLength" name:"DeepThinkMaxLength"`
+			VideoGeneration          *bool   `json:"VideoGeneration" name:"VideoGeneration"`
+			ImageToVideo             *bool   `json:"ImageToVideo" name:"ImageToVideo"`
+			VideoModelModeSet        []struct {
+				VideoModelMode  *string `json:"VideoModelMode" name:"VideoModelMode"`
+				VideoModelPrice *string `json:"VideoModelPrice" name:"VideoModelPrice"`
+				Resolution      *string `json:"Resolution" name:"Resolution"`
+				FrameRate       *string `json:"FrameRate" name:"FrameRate"`
+				Duration        *string `json:"Duration" name:"Duration"`
+				Concurrency     *string `json:"Concurrency" name:"Concurrency"`
+			} `json:"VideoModelModeSet"`
+			SingleExternalUrl  *string   `json:"SingleExternalUrl" name:"SingleExternalUrl"`
+			SingleInternalUrl  *string   `json:"SingleInternalUrl" name:"SingleInternalUrl"`
+			DeepThinkingSwitch *bool     `json:"DeepThinkingSwitch" name:"DeepThinkingSwitch"`
+			ImageModelModeMap  *string   `json:"ImageModelModeMap" name:"ImageModelModeMap"`
+			InputType          []*string `json:"InputType" name:"InputType"`
+			OutputType         []*string `json:"OutputType" name:"OutputType"`
+			SupportTryout      *string   `json:"SupportTryout" name:"SupportTryout"`
+		} `json:"CodeCase" name:"CodeCase"`
+		RequestId    *string `json:"RequestId" name:"RequestId"`
+		ActiveStatus *int    `json:"ActiveStatus" name:"ActiveStatus"`
 	} `json:"ModelApiModelDataWebResp"`
 }
 
@@ -739,7 +795,7 @@ type DescribeApikeysResponse struct {
 		Name               *string   `json:"Name" name:"Name"`
 		Description        *string   `json:"Description" name:"Description"`
 		Status             *string   `json:"Status" name:"Status"`
-		CreateTimestamp    *int      `json:"CreateTimestamp" name:"CreateTimestamp"`
+		CreateTimestamp    *int64    `json:"CreateTimestamp" name:"CreateTimestamp"`
 		ProjectId          *string   `json:"ProjectId" name:"ProjectId"`
 		ProjectName        *string   `json:"ProjectName" name:"ProjectName"`
 		CreateUserId       *string   `json:"CreateUserId" name:"CreateUserId"`
@@ -767,8 +823,8 @@ func (r *DescribeApikeysResponse) FromJsonString(s string) error {
 
 type QueryTokenDataRequest struct {
 	*ksyunhttp.BaseRequest
-	StartTimestamp *int    `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
-	EndTimestamp   *int    `json:"EndTimestamp,omitempty" name:"EndTimestamp"`
+	StartTimestamp *int64  `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
+	EndTimestamp   *int64  `json:"EndTimestamp,omitempty" name:"EndTimestamp"`
 	MaxResults     *int    `json:"MaxResults,omitempty" name:"MaxResults"`
 	Keyword        *string `json:"Keyword,omitempty" name:"Keyword"`
 	GroupBy        *string `json:"GroupBy,omitempty" name:"GroupBy"`
@@ -785,23 +841,23 @@ func (r *QueryTokenDataRequest) ToJsonString() string {
 
 type QueryTokenDataResponse struct {
 	*ksyunhttp.BaseResponse
-	TotalCount     *int    `json:"TotalCount" name:"TotalCount"`
+	TotalCount     *int64  `json:"TotalCount" name:"TotalCount"`
 	LastKey        *string `json:"LastKey" name:"LastKey"`
-	SumInputToken  *int    `json:"SumInputToken" name:"SumInputToken"`
-	SumOutputToken *int    `json:"SumOutputToken" name:"SumOutputToken"`
-	SumTotalToken  *int    `json:"SumTotalToken" name:"SumTotalToken"`
+	SumInputToken  *int64  `json:"SumInputToken" name:"SumInputToken"`
+	SumOutputToken *int64  `json:"SumOutputToken" name:"SumOutputToken"`
+	SumTotalToken  *int64  `json:"SumTotalToken" name:"SumTotalToken"`
 	Data           []struct {
 		Model               *string `json:"Model" name:"Model"`
-		InputToken          *int    `json:"InputToken" name:"InputToken"`
-		OutputToken         *int    `json:"OutputToken" name:"OutputToken"`
-		TotalToken          *int    `json:"TotalToken" name:"TotalToken"`
-		TotalCacheToken     *int    `json:"TotalCacheToken" name:"TotalCacheToken"`
-		TotalCacheMissToken *int    `json:"TotalCacheMissToken" name:"TotalCacheMissToken"`
-		TotalWebSearch      *int    `json:"TotalWebSearch" name:"TotalWebSearch"`
+		InputToken          *int64  `json:"InputToken" name:"InputToken"`
+		OutputToken         *int64  `json:"OutputToken" name:"OutputToken"`
+		TotalToken          *int64  `json:"TotalToken" name:"TotalToken"`
+		TotalCacheToken     *int64  `json:"TotalCacheToken" name:"TotalCacheToken"`
+		TotalCacheMissToken *int64  `json:"TotalCacheMissToken" name:"TotalCacheMissToken"`
+		TotalWebSearch      *int64  `json:"TotalWebSearch" name:"TotalWebSearch"`
 	} `json:"Data"`
-	SumTotalCacheToken     *int `json:"SumTotalCacheToken" name:"SumTotalCacheToken"`
-	SumTotalCacheMissToken *int `json:"SumTotalCacheMissToken" name:"SumTotalCacheMissToken"`
-	SumTotalWebSearch      *int `json:"SumTotalWebSearch" name:"SumTotalWebSearch"`
+	SumTotalCacheToken     *int64 `json:"SumTotalCacheToken" name:"SumTotalCacheToken"`
+	SumTotalCacheMissToken *int64 `json:"SumTotalCacheMissToken" name:"SumTotalCacheMissToken"`
+	SumTotalWebSearch      *int64 `json:"SumTotalWebSearch" name:"SumTotalWebSearch"`
 }
 
 func (r *QueryTokenDataResponse) ToJsonString() string {
@@ -944,7 +1000,7 @@ type CreateBatchInferenceJobRequest struct {
 	JobDesc          *string `json:"JobDesc,omitempty" name:"JobDesc"`
 	ApikeyId         *string `json:"ApikeyId,omitempty" name:"ApikeyId"`
 	Model            *string `json:"Model,omitempty" name:"Model"`
-	ExecuteTimeoutMs *int    `json:"ExecuteTimeoutMs,omitempty" name:"ExecuteTimeoutMs"`
+	ExecuteTimeoutMs *int64  `json:"ExecuteTimeoutMs,omitempty" name:"ExecuteTimeoutMs"`
 	InputDataType    *string `json:"InputDataType,omitempty" name:"InputDataType"`
 	Ks3Region        *string `json:"Ks3Region,omitempty" name:"Ks3Region"`
 	Ks3Ak            *string `json:"Ks3Ak,omitempty" name:"Ks3Ak"`
@@ -1026,14 +1082,14 @@ type DescribeBatchInferenceJobsResponse struct {
 		JobName        *string `json:"JobName" name:"JobName"`
 		JobDesc        *string `json:"JobDesc" name:"JobDesc"`
 		Status         *string `json:"Status" name:"Status"`
-		CreateTime     *int    `json:"CreateTime" name:"CreateTime"`
+		CreateTime     *int64  `json:"CreateTime" name:"CreateTime"`
 		CreateUserName *string `json:"CreateUserName" name:"CreateUserName"`
 		JobMetadata    struct {
 			Total            *int    `json:"Total" name:"Total"`
 			Executed         *int    `json:"Executed" name:"Executed"`
 			ApikeyId         *string `json:"ApikeyId" name:"ApikeyId"`
 			Model            *string `json:"Model" name:"Model"`
-			ExecuteTimeoutMs *int    `json:"ExecuteTimeoutMs" name:"ExecuteTimeoutMs"`
+			ExecuteTimeoutMs *int64  `json:"ExecuteTimeoutMs" name:"ExecuteTimeoutMs"`
 			InputDataType    *string `json:"InputDataType" name:"InputDataType"`
 			Ks3Region        *string `json:"Ks3Region" name:"Ks3Region"`
 			InBucket         *string `json:"InBucket" name:"InBucket"`
@@ -1131,8 +1187,8 @@ type DescribeModelQuotasResponse struct {
 		Icon            *string `json:"Icon" name:"Icon"`
 		FreeQuotaStatus *string `json:"FreeQuotaStatus" name:"FreeQuotaStatus"`
 		ActiveStatus    *int    `json:"ActiveStatus" name:"ActiveStatus"`
-		FreeTotalQuota  *int    `json:"FreeTotalQuota" name:"FreeTotalQuota"`
-		FreeUsedQuota   *int    `json:"FreeUsedQuota" name:"FreeUsedQuota"`
+		FreeTotalQuota  *int64  `json:"FreeTotalQuota" name:"FreeTotalQuota"`
+		FreeUsedQuota   *int64  `json:"FreeUsedQuota" name:"FreeUsedQuota"`
 		BatchSupported  *bool   `json:"BatchSupported" name:"BatchSupported"`
 		VideoModel      *bool   `json:"VideoModel" name:"VideoModel"`
 		Tpm             *int    `json:"Tpm" name:"Tpm"`

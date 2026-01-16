@@ -51,7 +51,7 @@ type CreateTrainJobRequest struct {
 	Framework          *string                         `json:"Framework,omitempty" name:"Framework"`
 	AccessType         *string                         `json:"AccessType,omitempty" name:"AccessType"`
 	SelfHealing        *bool                           `json:"SelfHealing,omitempty" name:"SelfHealing"`
-	MaxRuntimeHour     *int                            `json:"MaxRuntimeHour,omitempty" name:"MaxRuntimeHour"`
+	MaxRuntimeHour     *int64                          `json:"MaxRuntimeHour,omitempty" name:"MaxRuntimeHour"`
 	JobRunOnCPU        *bool                           `json:"JobRunOnCPU,omitempty" name:"JobRunOnCPU"`
 	SupportTensorboard *bool                           `json:"SupportTensorboard,omitempty" name:"SupportTensorboard"`
 	StorageConfigs     []*CreateTrainJobStorageConfigs `json:"StorageConfigs,omitempty" name:"StorageConfigs"`
@@ -110,7 +110,7 @@ type DescribeTrainJobsResponse struct {
 		AccessType         *string `json:"AccessType" name:"AccessType"`
 		CreateUserId       *string `json:"CreateUserId" name:"CreateUserId"`
 		SelfHealing        *bool   `json:"SelfHealing" name:"SelfHealing"`
-		MaxRuntimeHour     *int    `json:"MaxRuntimeHour" name:"MaxRuntimeHour"`
+		MaxRuntimeHour     *int64  `json:"MaxRuntimeHour" name:"MaxRuntimeHour"`
 		JobRunOnCPU        *bool   `json:"JobRunOnCPU" name:"JobRunOnCPU"`
 		SupportTensorboard *bool   `json:"SupportTensorboard" name:"SupportTensorboard"`
 		RebootNumber       *int    `json:"RebootNumber" name:"RebootNumber"`

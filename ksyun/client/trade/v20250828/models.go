@@ -7,7 +7,7 @@ import (
 
 type QueryInstancesRequest struct {
 	*ksyunhttp.BaseRequest
-	AssociatedUserId     *int      `json:"associatedUserId,omitempty" name:"associatedUserId"`
+	AssociatedUserId     *int64    `json:"associatedUserId,omitempty" name:"associatedUserId"`
 	InstanceIds          []*string `json:"instanceIds,omitempty" name:"instanceIds"`
 	Status               *int      `json:"status,omitempty" name:"status"`
 	ProductGroup         *int      `json:"productGroup,omitempty" name:"productGroup"`

@@ -9,7 +9,7 @@ type SetCacheRuleConfigCacheRules struct {
 	CacheRuleType *string `json:"CacheRuleType,omitempty" name:"CacheRuleType"`
 	Value         *string `json:"Value,omitempty" name:"Value"`
 	CacheEnable   *string `json:"CacheEnable,omitempty" name:"CacheEnable"`
-	CacheTime     *int    `json:"CacheTime,omitempty" name:"CacheTime"`
+	CacheTime     *int64  `json:"CacheTime,omitempty" name:"CacheTime"`
 	RespectOrigin *string `json:"RespectOrigin,omitempty" name:"RespectOrigin"`
 }
 type SetErrorPageConfigErrorPages struct {
@@ -34,8 +34,8 @@ type GetDomainLogsRequest struct {
 	DomainId   *string `json:"DomainId,omitempty" name:"DomainId"`
 	StartTime  *string `json:"StartTime,omitempty" name:"StartTime"`
 	EndTime    *string `json:"EndTime,omitempty" name:"EndTime"`
-	PageSize   *int    `json:"PageSize,omitempty" name:"PageSize"`
-	PageNumber *int    `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageSize   *int64  `json:"PageSize,omitempty" name:"PageSize"`
+	PageNumber *int64  `json:"PageNumber,omitempty" name:"PageNumber"`
 }
 
 func (r *GetDomainLogsRequest) ToJsonString() string {
@@ -46,15 +46,15 @@ func (r *GetDomainLogsRequest) ToJsonString() string {
 type GetDomainLogsResponse struct {
 	*ksyunhttp.BaseResponse
 	DomainId   *string `json:"DomainId" name:"DomainId"`
-	PageSize   *int    `json:"PageSize" name:"PageSize"`
-	PageNumber *int    `json:"PageNumber" name:"PageNumber"`
-	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	PageSize   *int64  `json:"PageSize" name:"PageSize"`
+	PageNumber *int64  `json:"PageNumber" name:"PageNumber"`
+	TotalCount *int64  `json:"TotalCount" name:"TotalCount"`
 	DomainLogs []struct {
 		StartTime *string `json:"StartTime" name:"StartTime"`
 		EndTime   *string `json:"EndTime" name:"EndTime"`
 		LogName   *string `json:"LogName" name:"LogName"`
 		LogUrl    *string `json:"LogUrl" name:"LogUrl"`
-		LogSize   *int    `json:"LogSize" name:"LogSize"`
+		LogSize   *int64  `json:"LogSize" name:"LogSize"`
 	} `json:"DomainLogs"`
 }
 
@@ -124,10 +124,10 @@ func (r *GetClientRequestDataResponse) FromJsonString(s string) error {
 
 type GetCdnDomainsRequest struct {
 	*ksyunhttp.BaseRequest
-	PageSize     *int    `json:"PageSize,omitempty" name:"PageSize"`
-	PageNumber   *int    `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageSize     *int64  `json:"PageSize,omitempty" name:"PageSize"`
+	PageNumber   *int64  `json:"PageNumber,omitempty" name:"PageNumber"`
 	DomainName   *string `json:"DomainName,omitempty" name:"DomainName"`
-	ProjectId    *int    `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId    *int64  `json:"ProjectId,omitempty" name:"ProjectId"`
 	DomainStatus *string `json:"DomainStatus,omitempty" name:"DomainStatus"`
 	CdnType      *string `json:"CdnType,omitempty" name:"CdnType"`
 	FuzzyMatch   *string `json:"FuzzyMatch,omitempty" name:"FuzzyMatch"`
@@ -140,9 +140,9 @@ func (r *GetCdnDomainsRequest) ToJsonString() string {
 
 type GetCdnDomainsResponse struct {
 	*ksyunhttp.BaseResponse
-	PageNumber *int `json:"PageNumber" name:"PageNumber"`
-	PageSize   *int `json:"PageSize" name:"PageSize"`
-	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+	PageNumber *int64 `json:"PageNumber" name:"PageNumber"`
+	PageSize   *int64 `json:"PageSize" name:"PageSize"`
+	TotalCount *int64 `json:"TotalCount" name:"TotalCount"`
 	Domains    []struct {
 		DomainName      *string `json:"DomainName" name:"DomainName"`
 		DomainId        *string `json:"DomainId" name:"DomainId"`
@@ -917,8 +917,8 @@ func (r *GetBlockUrlQuotaRequest) ToJsonString() string {
 
 type GetBlockUrlQuotaResponse struct {
 	*ksyunhttp.BaseResponse
-	BlockUrlQuota   *int `json:"BlockUrlQuota" name:"BlockUrlQuota"`
-	BlockUrlSurplus *int `json:"BlockUrlSurplus" name:"BlockUrlSurplus"`
+	BlockUrlQuota   *int64 `json:"BlockUrlQuota" name:"BlockUrlQuota"`
+	BlockUrlSurplus *int64 `json:"BlockUrlSurplus" name:"BlockUrlSurplus"`
 }
 
 func (r *GetBlockUrlQuotaResponse) ToJsonString() string {
@@ -937,8 +937,8 @@ type GetBandwidthDataRequest struct {
 	CdnType      *string `json:"CdnType,omitempty" name:"CdnType"`
 	DomainIds    *string `json:"DomainIds,omitempty" name:"DomainIds"`
 	Regions      *string `json:"Regions,omitempty" name:"Regions"`
-	ResultType   *int    `json:"ResultType,omitempty" name:"ResultType"`
-	Granularity  *int    `json:"Granularity,omitempty" name:"Granularity"`
+	ResultType   *int64  `json:"ResultType,omitempty" name:"ResultType"`
+	Granularity  *int64  `json:"Granularity,omitempty" name:"Granularity"`
 	DataType     *string `json:"DataType,omitempty" name:"DataType"`
 	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
 }
@@ -955,21 +955,21 @@ type GetBandwidthDataResponse struct {
 	CdnType     *string `json:"CdnType" name:"CdnType"`
 	DomainIds   *string `json:"DomainIds" name:"DomainIds"`
 	Regions     *string `json:"Regions" name:"Regions"`
-	ResultType  *int    `json:"ResultType" name:"ResultType"`
-	Granularity *int    `json:"Granularity" name:"Granularity"`
+	ResultType  *int64  `json:"ResultType" name:"ResultType"`
+	Granularity *int64  `json:"Granularity" name:"Granularity"`
 	DataType    *string `json:"DataType" name:"DataType"`
 	Datas       []struct {
 		Time    *string `json:"Time" name:"Time"`
-		Bw      *int    `json:"Bw" name:"Bw"`
-		SrcBw   *int    `json:"SrcBw" name:"SrcBw"`
+		Bw      *int64  `json:"Bw" name:"Bw"`
+		SrcBw   *int64  `json:"SrcBw" name:"SrcBw"`
 		Domains []struct {
 			DomainId *string `json:"DomainId" name:"DomainId"`
-			Bw       *int    `json:"Bw" name:"Bw"`
-			SrcBw    *int    `json:"SrcBw" name:"SrcBw"`
+			Bw       *int64  `json:"Bw" name:"Bw"`
+			SrcBw    *int64  `json:"SrcBw" name:"SrcBw"`
 			Regions  []struct {
 				Region *string `json:"Region" name:"Region"`
-				Bw     *int    `json:"Bw" name:"Bw"`
-				SrcBw  *int    `json:"SrcBw" name:"SrcBw"`
+				Bw     *int64  `json:"Bw" name:"Bw"`
+				SrcBw  *int64  `json:"SrcBw" name:"SrcBw"`
 			} `json:"Regions"`
 		} `json:"Domains" name:"Domains"`
 	} `json:"Datas"`
@@ -991,8 +991,8 @@ type GetFlowDataRequest struct {
 	CdnType      *string `json:"CdnType,omitempty" name:"CdnType"`
 	DomainIds    *string `json:"DomainIds,omitempty" name:"DomainIds"`
 	Regions      *string `json:"Regions,omitempty" name:"Regions"`
-	ResultType   *int    `json:"ResultType,omitempty" name:"ResultType"`
-	Granularity  *int    `json:"Granularity,omitempty" name:"Granularity"`
+	ResultType   *int64  `json:"ResultType,omitempty" name:"ResultType"`
+	Granularity  *int64  `json:"Granularity,omitempty" name:"Granularity"`
 	DataType     *string `json:"DataType,omitempty" name:"DataType"`
 	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
 }
@@ -1014,16 +1014,16 @@ type GetFlowDataResponse struct {
 	DataType    *string `json:"DataType" name:"DataType"`
 	Datas       []struct {
 		Time    *string `json:"Time" name:"Time"`
-		Flow    *int    `json:"Flow" name:"Flow"`
-		SrcFlow *int    `json:"SrcFlow" name:"SrcFlow"`
+		Flow    *int64  `json:"Flow" name:"Flow"`
+		SrcFlow *int64  `json:"SrcFlow" name:"SrcFlow"`
 		Domains []struct {
 			DomainId *string `json:"DomainId" name:"DomainId"`
-			Flow     *int    `json:"Flow" name:"Flow"`
-			SrcFlow  *int    `json:"SrcFlow" name:"SrcFlow"`
+			Flow     *int64  `json:"Flow" name:"Flow"`
+			SrcFlow  *int64  `json:"SrcFlow" name:"SrcFlow"`
 			Regions  []struct {
 				Region  *string `json:"Region" name:"Region"`
-				Flow    *int    `json:"Flow" name:"Flow"`
-				SrcFlow *int    `json:"SrcFlow" name:"SrcFlow"`
+				Flow    *int64  `json:"Flow" name:"Flow"`
+				SrcFlow *int64  `json:"SrcFlow" name:"SrcFlow"`
 			} `json:"Regions"`
 		} `json:"Domains" name:"Domains"`
 	} `json:"Datas"`
@@ -1045,8 +1045,8 @@ type GetPvDataRequest struct {
 	CdnType      *string `json:"CdnType,omitempty" name:"CdnType"`
 	DomainIds    *string `json:"DomainIds,omitempty" name:"DomainIds"`
 	Regions      *string `json:"Regions,omitempty" name:"Regions"`
-	ResultType   *int    `json:"ResultType,omitempty" name:"ResultType"`
-	Granularity  *int    `json:"Granularity,omitempty" name:"Granularity"`
+	ResultType   *int64  `json:"ResultType,omitempty" name:"ResultType"`
+	Granularity  *int64  `json:"Granularity,omitempty" name:"Granularity"`
 	DataType     *string `json:"DataType,omitempty" name:"DataType"`
 	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
 }
@@ -1063,22 +1063,22 @@ type GetPvDataResponse struct {
 	CdnType     *string `json:"CdnType" name:"CdnType"`
 	DomainIds   *string `json:"DomainIds" name:"DomainIds"`
 	Regions     *string `json:"Regions" name:"Regions"`
-	ResultType  *int    `json:"ResultType" name:"ResultType"`
-	Granularity *int    `json:"Granularity" name:"Granularity"`
+	ResultType  *int64  `json:"ResultType" name:"ResultType"`
+	Granularity *int64  `json:"Granularity" name:"Granularity"`
 	DataType    *string `json:"DataType" name:"DataType"`
 	Datas       []struct {
 		Time    *string `json:"Time" name:"Time"`
-		Pv      *int    `json:"Pv" name:"Pv"`
-		SrcPv   *int    `json:"SrcPv" name:"SrcPv"`
+		Pv      *int64  `json:"Pv" name:"Pv"`
+		SrcPv   *int64  `json:"SrcPv" name:"SrcPv"`
 		Domains []struct {
 			DomainId *string `json:"DomainId" name:"DomainId"`
-			Pv       *int    `json:"Pv" name:"Pv"`
+			Pv       *int64  `json:"Pv" name:"Pv"`
 			Regions  []struct {
 				Region *string `json:"Region" name:"Region"`
-				Pv     *int    `json:"Pv" name:"Pv"`
-				SrcPv  *int    `json:"SrcPv" name:"SrcPv"`
+				Pv     *int64  `json:"Pv" name:"Pv"`
+				SrcPv  *int64  `json:"SrcPv" name:"SrcPv"`
 			} `json:"Regions"`
-			SrcPv *int `json:"SrcPv" name:"SrcPv"`
+			SrcPv *int64 `json:"SrcPv" name:"SrcPv"`
 		} `json:"Domains" name:"Domains"`
 	} `json:"Datas"`
 }

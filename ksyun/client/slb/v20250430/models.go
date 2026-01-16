@@ -142,6 +142,7 @@ type DescribeBackendServersResponse struct {
 		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
 		BackendServerId      *string `json:"BackendServerId" name:"BackendServerId"`
 		Port                 *int    `json:"Port" name:"Port"`
+		Weight               *int    `json:"Weight" name:"Weight"`
 		MasterSlaveType      *string `json:"MasterSlaveType" name:"MasterSlaveType"`
 		BackendServerState   *string `json:"BackendServerState" name:"BackendServerState"`
 	} `json:"BackendServerSet"`
@@ -180,6 +181,7 @@ type ModifyBackendServerResponse struct {
 		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
 		BackendServerId      *string `json:"BackendServerId" name:"BackendServerId"`
 		Port                 *int    `json:"Port" name:"Port"`
+		Weight               *int    `json:"Weight" name:"Weight"`
 		MasterSlaveType      *string `json:"MasterSlaveType" name:"MasterSlaveType"`
 		BackendServerState   *string `json:"BackendServerState" name:"BackendServerState"`
 	} `json:"BackendServer"`
@@ -246,6 +248,7 @@ type RegisterBackendServerResponse struct {
 		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
 		BackendServerId      *string `json:"BackendServerId" name:"BackendServerId"`
 		Port                 *int    `json:"Port" name:"Port"`
+		Weight               *int    `json:"Weight" name:"Weight"`
 		MasterSlaveType      *string `json:"MasterSlaveType" name:"MasterSlaveType"`
 		BackendServerState   *string `json:"BackendServerState" name:"BackendServerState"`
 	} `json:"BackendServer"`

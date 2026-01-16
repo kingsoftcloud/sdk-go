@@ -24,7 +24,7 @@ type CreateVolumeRequest struct {
 	SnapshotId       *string            `json:"SnapshotId,omitempty" name:"SnapshotId"`
 	ClusterId        *string            `json:"ClusterId,omitempty" name:"ClusterId"`
 	Tag              []*CreateVolumeTag `json:"Tag,omitempty" name:"Tag"`
-	ProvisionedIops  *int               `json:"ProvisionedIops,omitempty" name:"ProvisionedIops"`
+	ProvisionedIops  *int64             `json:"ProvisionedIops,omitempty" name:"ProvisionedIops"`
 }
 
 func (r *CreateVolumeRequest) ToJsonString() string {

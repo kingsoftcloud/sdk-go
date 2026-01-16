@@ -8475,6 +8475,85 @@ func (c *Client) UpdateSnapshotWithContextV2(ctx context.Context, request *Updat
 	}
 	return statusCode, msg, nil
 }
+func NewDeleteSnapshotRequest() (request *DeleteSnapshotRequest) {
+	request = &DeleteSnapshotRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kec", APIVersion, "DeleteSnapshot")
+	return
+}
+
+func NewDeleteSnapshotResponse() (response *DeleteSnapshotResponse) {
+	response = &DeleteSnapshotResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteSnapshot(request *DeleteSnapshotRequest) string {
+	return c.DeleteSnapshotWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteSnapshotSend(request *DeleteSnapshotRequest) (*DeleteSnapshotResponse, error) {
+	statusCode, msg, err := c.DeleteSnapshotWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteSnapshotResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteSnapshotWithContext(ctx context.Context, request *DeleteSnapshotRequest) string {
+	if request == nil {
+		request = NewDeleteSnapshotRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kec", APIVersion, "DeleteSnapshot")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteSnapshotResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteSnapshotWithContextV2(ctx context.Context, request *DeleteSnapshotRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteSnapshotRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kec", APIVersion, "DeleteSnapshot")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteSnapshotResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewRevertSnapshotRequest() (request *RevertSnapshotRequest) {
 	request = &RevertSnapshotRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -8548,6 +8627,164 @@ func (c *Client) RevertSnapshotWithContextV2(ctx context.Context, request *Rever
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewRevertSnapshotResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeSnapshotListRequest() (request *DescribeSnapshotListRequest) {
+	request = &DescribeSnapshotListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kec", APIVersion, "DescribeSnapshotList")
+	return
+}
+
+func NewDescribeSnapshotListResponse() (response *DescribeSnapshotListResponse) {
+	response = &DescribeSnapshotListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeSnapshotList(request *DescribeSnapshotListRequest) string {
+	return c.DescribeSnapshotListWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeSnapshotListSend(request *DescribeSnapshotListRequest) (*DescribeSnapshotListResponse, error) {
+	statusCode, msg, err := c.DescribeSnapshotListWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeSnapshotListResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeSnapshotListWithContext(ctx context.Context, request *DescribeSnapshotListRequest) string {
+	if request == nil {
+		request = NewDescribeSnapshotListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kec", APIVersion, "DescribeSnapshotList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeSnapshotListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeSnapshotListWithContextV2(ctx context.Context, request *DescribeSnapshotListRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeSnapshotListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kec", APIVersion, "DescribeSnapshotList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeSnapshotListResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateSnapshotPolicyRequest() (request *CreateSnapshotPolicyRequest) {
+	request = &CreateSnapshotPolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kec", APIVersion, "CreateSnapshotPolicy")
+	return
+}
+
+func NewCreateSnapshotPolicyResponse() (response *CreateSnapshotPolicyResponse) {
+	response = &CreateSnapshotPolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateSnapshotPolicy(request *CreateSnapshotPolicyRequest) string {
+	return c.CreateSnapshotPolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateSnapshotPolicySend(request *CreateSnapshotPolicyRequest) (*CreateSnapshotPolicyResponse, error) {
+	statusCode, msg, err := c.CreateSnapshotPolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateSnapshotPolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateSnapshotPolicyWithContext(ctx context.Context, request *CreateSnapshotPolicyRequest) string {
+	if request == nil {
+		request = NewCreateSnapshotPolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kec", APIVersion, "CreateSnapshotPolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateSnapshotPolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateSnapshotPolicyWithContextV2(ctx context.Context, request *CreateSnapshotPolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateSnapshotPolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kec", APIVersion, "CreateSnapshotPolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateSnapshotPolicyResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err

@@ -271,7 +271,7 @@ type ModifyListenersRequest struct {
 	TlsCipherPolicy          *string `json:"TlsCipherPolicy,omitempty" name:"TlsCipherPolicy"`
 	EnableHttp2              *bool   `json:"EnableHttp2,omitempty" name:"EnableHttp2"`
 	SessionState             *string `json:"SessionState,omitempty" name:"SessionState"`
-	SessionPersistencePeriod *int    `json:"SessionPersistencePeriod,omitempty" name:"SessionPersistencePeriod"`
+	SessionPersistencePeriod *int64  `json:"SessionPersistencePeriod,omitempty" name:"SessionPersistencePeriod"`
 	CookieType               *string `json:"CookieType,omitempty" name:"CookieType"`
 	CookieName               *string `json:"CookieName,omitempty" name:"CookieName"`
 	CertificateId            *string `json:"CertificateId,omitempty" name:"CertificateId"`
@@ -1647,7 +1647,7 @@ type CreateSlbRuleRequest struct {
 	ListenerSync             *string `json:"ListenerSync,omitempty" name:"ListenerSync"`
 	Method                   *string `json:"Method,omitempty" name:"Method"`
 	SessionState             *string `json:"SessionState,omitempty" name:"SessionState"`
-	SessionPersistencePeriod *int    `json:"SessionPersistencePeriod,omitempty" name:"SessionPersistencePeriod"`
+	SessionPersistencePeriod *int64  `json:"SessionPersistencePeriod,omitempty" name:"SessionPersistencePeriod"`
 	CookieType               *string `json:"cookieType,omitempty" name:"cookieType"`
 	CookieName               *string `json:"CookieName,omitempty" name:"CookieName"`
 	HealthCheckState         *string `json:"HealthCheckState,omitempty" name:"HealthCheckState"`
@@ -1716,7 +1716,7 @@ type ModifySlbRuleRequest struct {
 	ListenerSync             *string `json:"ListenerSync,omitempty" name:"ListenerSync"`
 	Method                   *string `json:"Method,omitempty" name:"Method"`
 	SessionState             *string `json:"SessionState,omitempty" name:"SessionState"`
-	SessionPersistencePeriod *int    `json:"SessionPersistencePeriod,omitempty" name:"SessionPersistencePeriod"`
+	SessionPersistencePeriod *int64  `json:"SessionPersistencePeriod,omitempty" name:"SessionPersistencePeriod"`
 	CookieType               *string `json:"cookieType,omitempty" name:"cookieType"`
 	CookieName               *string `json:"CookieName,omitempty" name:"CookieName"`
 	HealthCheckState         *string `json:"HealthCheckState,omitempty" name:"HealthCheckState"`
@@ -1843,7 +1843,6 @@ type DescribePrivateLinkServerResponse struct {
 		ProjectId             *string `json:"ProjectId" name:"ProjectId"`
 		PrivateLinkNum        *int    `json:"PrivateLinkNum" name:"PrivateLinkNum"`
 		ServiceEndTime        *string `json:"ServiceEndTime" name:"ServiceEndTime"`
-		DeleteProtection      *string `json:"DeleteProtection" name:"DeleteProtection"`
 	} `json:"PrivateLinkServerSet"`
 }
 
@@ -3577,6 +3576,7 @@ type RegisterAlbBackendServerResponse struct {
 		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
 		BackendServerId      *string `json:"BackendServerId" name:"BackendServerId"`
 		Port                 *int    `json:"Port" name:"Port"`
+		Weight               *int    `json:"Weight" name:"Weight"`
 		MasterSlaveType      *string `json:"MasterSlaveType" name:"MasterSlaveType"`
 		BackendServerState   *string `json:"BackendServerState" name:"BackendServerState"`
 	} `json:"BackendServer"`
@@ -3640,6 +3640,7 @@ type ModifyAlbBackendServerResponse struct {
 		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
 		BackendServerId      *string `json:"BackendServerId" name:"BackendServerId"`
 		Port                 *int    `json:"Port" name:"Port"`
+		Weight               *int    `json:"Weight" name:"Weight"`
 		MasterSlaveType      *string `json:"MasterSlaveType" name:"MasterSlaveType"`
 		BackendServerState   *string `json:"BackendServerState" name:"BackendServerState"`
 	} `json:"BackendServer"`
@@ -3678,6 +3679,7 @@ type DescribeAlbBackendServersResponse struct {
 		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
 		BackendServerId      *string `json:"BackendServerId" name:"BackendServerId"`
 		Port                 *int    `json:"Port" name:"Port"`
+		Weight               *int    `json:"Weight" name:"Weight"`
 		MasterSlaveType      *string `json:"MasterSlaveType" name:"MasterSlaveType"`
 		BackendServerState   *string `json:"BackendServerState" name:"BackendServerState"`
 	} `json:"BackendServerSet"`

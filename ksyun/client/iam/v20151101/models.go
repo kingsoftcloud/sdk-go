@@ -2091,9 +2091,9 @@ func (r *GetAccountAllProjectsByParamsRequest) ToJsonString() string {
 type GetAccountAllProjectsByParamsResponse struct {
 	*ksyunhttp.BaseResponse
 	ListProjectResult struct {
-		Total       *int `json:"Total" name:"Total"`
+		Total       *int64 `json:"Total" name:"Total"`
 		ProjectList []struct {
-			ProjectId   *int    `json:"ProjectId" name:"ProjectId"`
+			ProjectId   *int64  `json:"ProjectId" name:"ProjectId"`
 			AccountId   *string `json:"AccountId" name:"AccountId"`
 			ProjectName *string `json:"ProjectName" name:"ProjectName"`
 			ProjectDesc *string `json:"ProjectDesc" name:"ProjectDesc"`

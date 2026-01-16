@@ -19,8 +19,8 @@ type ListLogPoolsTags struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 type CreateDownloadTaskConfig struct {
-	From   *int    `json:"From,omitempty" name:"From"`
-	To     *int    `json:"To,omitempty" name:"To"`
+	From   *int64  `json:"From,omitempty" name:"From"`
+	To     *int64  `json:"To,omitempty" name:"To"`
 	Query  *string `json:"Query,omitempty" name:"Query"`
 	Format *string `json:"Format,omitempty" name:"Format"`
 	Order  *string `json:"Order,omitempty" name:"Order"`
