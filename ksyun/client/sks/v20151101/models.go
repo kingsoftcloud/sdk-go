@@ -2,6 +2,7 @@ package v20151101
 
 import (
 	"encoding/json"
+
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -12,6 +13,9 @@ type DescribeKeysFilter struct {
 
 type CreateKeyRequest struct {
 	*ksyunhttp.BaseRequest
+	ProjectId   *string `json:"projectId,omitempty" name:"projectId"`
+	KeyName     *string `json:"KeyName,omitempty" name:"KeyName"`
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 func (r *CreateKeyRequest) ToJsonString() string {
@@ -118,6 +122,7 @@ type DescribeKeysRequest struct {
 	NextToken  *string               `json:"NextToken,omitempty" name:"NextToken"`
 	KeyId      []*string             `json:"KeyId,omitempty" name:"KeyId"`
 	Filter     []*DescribeKeysFilter `json:"Filter,omitempty" name:"Filter"`
+	ProjectId  []*int64              `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *DescribeKeysRequest) ToJsonString() string {
@@ -135,6 +140,7 @@ type DescribeKeysResponse struct {
 		PublicKey  *string `json:"PublicKey" name:"PublicKey"`
 		CreateTime *string `json:"CreateTime" name:"CreateTime"`
 		KeyName    *string `json:"KeyName" name:"KeyName"`
+		ProjectId  *int64  `json:"ProjectId" name:"ProjectId"`
 	} `json:"KeySet"`
 }
 

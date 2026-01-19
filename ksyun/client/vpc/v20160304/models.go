@@ -2,6 +2,7 @@ package v20160304
 
 import (
 	"encoding/json"
+
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -107,6 +108,7 @@ type CreateVpcRequest struct {
 	VpcName               *string `json:"VpcName,omitempty" name:"VpcName"`
 	CidrBlock             *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
 	ProvidedIpv6CidrBlock *bool   `json:"ProvidedIpv6CidrBlock,omitempty" name:"ProvidedIpv6CidrBlock"`
+	Ipv6CidrBlock         *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
 }
 
 func (r *CreateVpcRequest) ToJsonString() string {

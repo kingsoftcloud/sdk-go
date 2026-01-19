@@ -2,6 +2,7 @@ package v20151101
 
 import (
 	"encoding/json"
+
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -899,6 +900,7 @@ type DescribeEpcManagementsRequest struct {
 	Pin                *string   `json:"Pin,omitempty" name:"Pin"`
 	EpcManagementId    []*string `json:"EpcManagementId,omitempty" name:"EpcManagementId"`
 	RemoteManagementId *string   `json:"RemoteManagementId,omitempty" name:"RemoteManagementId"`
+	ProjectId          []*string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *DescribeEpcManagementsRequest) ToJsonString() string {
@@ -918,6 +920,7 @@ type DescribeEpcManagementsResponse struct {
 		Password              *string `json:"Password" name:"Password"`
 		HostName              *string `json:"HostName" name:"HostName"`
 		Sn                    *string `json:"Sn" name:"Sn"`
+		ProjectId             *int64  `json:"ProjectId" name:"ProjectId"`
 	} `json:"EpcManagementSet"`
 }
 
@@ -2421,6 +2424,8 @@ type BatchCreateEpcRequest struct {
 	PasswordInherit             *string   `json:"PasswordInherit,omitempty" name:"PasswordInherit"`
 	DataDiskMount               *string   `json:"DataDiskMount,omitempty" name:"DataDiskMount"`
 	StorageRoceNetworkCardName  *string   `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
+	SRoceCluster                *string   `json:"SRoceCluster,omitempty" name:"SRoceCluster"`
+	RoceCluster                 *string   `json:"RoceCluster,omitempty" name:"RoceCluster"`
 }
 
 func (r *BatchCreateEpcRequest) ToJsonString() string {
