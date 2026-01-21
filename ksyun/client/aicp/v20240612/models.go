@@ -2,7 +2,6 @@ package v20240612
 
 import (
 	"encoding/json"
-
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -125,7 +124,7 @@ type ModifyNotebookRequest struct {
 	ImageId                *string                         `json:"ImageId,omitempty" name:"ImageId"`
 	QueueName              *string                         `json:"QueueName,omitempty" name:"QueueName"`
 	GPUType                *string                         `json:"GPUType,omitempty" name:"GPUType"`
-	GPUNumber              *int                            `json:"GPUNumber,omitempty" name:"GPUNumber"`
+	GPUNumber              *string                         `json:"GPUNumber,omitempty" name:"GPUNumber"`
 	CPUNum                 *int                            `json:"CPUNum,omitempty" name:"CPUNum"`
 	Memory                 *int                            `json:"Memory,omitempty" name:"Memory"`
 	AccessType             *string                         `json:"AccessType,omitempty" name:"AccessType"`
@@ -226,7 +225,7 @@ type DescribeNotebooksResponse struct {
 		ImageSaveStatus        *string `json:"ImageSaveStatus" name:"ImageSaveStatus"`
 		ImageId                *string `json:"ImageId" name:"ImageId"`
 		GPUType                *string `json:"GPUType" name:"GPUType"`
-		GPUNumber              *int    `json:"GPUNumber" name:"GPUNumber"`
+		GPUNumber              *string `json:"GPUNumber" name:"GPUNumber"`
 		CreateUser             *string `json:"CreateUser" name:"CreateUser"`
 		Namespace              *string `json:"Namespace" name:"Namespace"`
 		ResourcePoolId         *string `json:"ResourcePoolId" name:"ResourcePoolId"`
@@ -291,7 +290,7 @@ type CreateNotebookRequest struct {
 	ResourcePoolId         *string                         `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
 	QueueName              *string                         `json:"QueueName,omitempty" name:"QueueName"`
 	GPUType                *string                         `json:"GPUType,omitempty" name:"GPUType"`
-	GPUNumber              *int                            `json:"GPUNumber,omitempty" name:"GPUNumber"`
+	GPUNumber              *string                         `json:"GPUNumber,omitempty" name:"GPUNumber"`
 	CPUNum                 *int                            `json:"CPUNum,omitempty" name:"CPUNum"`
 	Memory                 *int                            `json:"Memory,omitempty" name:"Memory"`
 	AccessType             *string                         `json:"AccessType,omitempty" name:"AccessType"`
@@ -1745,16 +1744,16 @@ type DescribeResourcePoolInstancesResponse struct {
 			NetworkInterfaceType *string `json:"NetworkInterfaceType" name:"NetworkInterfaceType"`
 		} `json:"NetworkInterfaceSet" name:"NetworkInterfaceSet"`
 		Cpu struct {
-			Allocated   *int `json:"Allocated" name:"Allocated"`
-			Allocatable *int `json:"Allocatable" name:"Allocatable"`
+			Allocated   *string `json:"Allocated" name:"Allocated"`
+			Allocatable *string `json:"Allocatable" name:"Allocatable"`
 		} `json:"Cpu" name:"Cpu"`
 		Gpu struct {
-			Allocated   *int `json:"Allocated" name:"Allocated"`
-			Allocatable *int `json:"Allocatable" name:"Allocatable"`
+			Allocated   *string `json:"Allocated" name:"Allocated"`
+			Allocatable *string `json:"Allocatable" name:"Allocatable"`
 		} `json:"Gpu" name:"Gpu"`
 		Memory struct {
-			Allocated   *int `json:"Allocated" name:"Allocated"`
-			Allocatable *int `json:"Allocatable" name:"Allocatable"`
+			Allocated   *string `json:"Allocated" name:"Allocated"`
+			Allocatable *string `json:"Allocatable" name:"Allocatable"`
 		} `json:"Memory" name:"Memory"`
 		UnSchedulable *bool `json:"UnSchedulable" name:"UnSchedulable"`
 	} `json:"ResourcePoolInstanceSet"`
