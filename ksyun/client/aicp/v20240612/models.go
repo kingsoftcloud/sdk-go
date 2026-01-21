@@ -29,6 +29,10 @@ type CreateNotebookServiceConfigs struct {
 	Port                *int    `json:"Port,omitempty" name:"Port"`
 	EnablePublicNetwork *bool   `json:"EnablePublicNetwork,omitempty" name:"EnablePublicNetwork"`
 }
+type DescribeImagesFilter struct {
+	Name  *string   `json:"Name,omitempty" name:"Name"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
 type CreateTrainJobFrameworkReplicas struct {
 	Chief     *int `json:"Chief,omitempty" name:"Chief"`
 	Evaluator *int `json:"Evaluator,omitempty" name:"Evaluator"`
@@ -327,6 +331,153 @@ func (r *CreateNotebookResponse) ToJsonString() string {
 }
 
 func (r *CreateNotebookResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateImageRequest struct {
+	*ksyunhttp.BaseRequest
+	ImageName           *string `json:"ImageName,omitempty" name:"ImageName"`
+	Description         *string `json:"Description,omitempty" name:"Description"`
+	ImageType           *string `json:"ImageType,omitempty" name:"ImageType"`
+	Namespace           *string `json:"Namespace,omitempty" name:"Namespace"`
+	NamespacePermission *string `json:"NamespacePermission,omitempty" name:"NamespacePermission"`
+	ImageRepo           *string `json:"ImageRepo,omitempty" name:"ImageRepo"`
+	ImageVersion        *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
+	OfficialInstance    *string `json:"OfficialInstance,omitempty" name:"OfficialInstance"`
+	UserName            *string `json:"UserName,omitempty" name:"UserName"`
+	Password            *string `json:"Password,omitempty" name:"Password"`
+	ImagePermission     *string `json:"ImagePermission,omitempty" name:"ImagePermission"`
+}
+
+func (r *CreateImageRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateImageResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	ImageId   *string `json:"ImageId" name:"ImageId"`
+}
+
+func (r *CreateImageResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteImageRequest struct {
+	*ksyunhttp.BaseRequest
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+}
+
+func (r *DeleteImageRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteImageResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	ImageId   *string `json:"ImageId" name:"ImageId"`
+}
+
+func (r *DeleteImageResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyImageRequest struct {
+	*ksyunhttp.BaseRequest
+	ImageId         *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageName       *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImagePermission *string `json:"ImagePermission,omitempty" name:"ImagePermission"`
+}
+
+func (r *ModifyImageRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyImageResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	ImageId   *string `json:"ImageId" name:"ImageId"`
+}
+
+func (r *ModifyImageResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeImagesRequest struct {
+	*ksyunhttp.BaseRequest
+	Page                *int                    `json:"Page,omitempty" name:"Page"`
+	PageSize            *int                    `json:"PageSize,omitempty" name:"PageSize"`
+	ImageSource         *string                 `json:"ImageSource,omitempty" name:"ImageSource"`
+	ImageStatus         *string                 `json:"ImageStatus,omitempty" name:"ImageStatus"`
+	ImageType           *string                 `json:"ImageType,omitempty" name:"ImageType"`
+	ApplicationScenario *string                 `json:"ApplicationScenario,omitempty" name:"ApplicationScenario"`
+	ImageId             []*string               `json:"ImageId,omitempty" name:"ImageId"`
+	ImageName           *string                 `json:"ImageName,omitempty" name:"ImageName"`
+	Filter              []*DescribeImagesFilter `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *DescribeImagesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeImagesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	ImageSet  []struct {
+		ImageId             *string   `json:"ImageId" name:"ImageId"`
+		ImageName           *string   `json:"ImageName" name:"ImageName"`
+		ImageSource         *string   `json:"ImageSource" name:"ImageSource"`
+		ImageType           *string   `json:"ImageType" name:"ImageType"`
+		ImageFrame          []*string `json:"ImageFrame" name:"ImageFrame"`
+		PythonVersion       *string   `json:"PythonVersion" name:"PythonVersion"`
+		ApplicationScenario *string   `json:"ApplicationScenario" name:"ApplicationScenario"`
+		CudaVersion         *string   `json:"CudaVersion" name:"CudaVersion"`
+		ImageSize           *string   `json:"ImageSize" name:"ImageSize"`
+		Description         *string   `json:"Description" name:"Description"`
+		Namespace           *string   `json:"Namespace" name:"Namespace"`
+		NamespacePermission *string   `json:"NamespacePermission" name:"NamespacePermission"`
+		ImageRepo           *string   `json:"ImageRepo" name:"ImageRepo"`
+		ImageVersion        *string   `json:"ImageVersion" name:"ImageVersion"`
+		ImageDomain         *string   `json:"ImageDomain" name:"ImageDomain"`
+		OfficialInstance    *string   `json:"OfficialInstance" name:"OfficialInstance"`
+		ImagePermission     *string   `json:"ImagePermission" name:"ImagePermission"`
+		ImageStatus         *string   `json:"ImageStatus" name:"ImageStatus"`
+		ImageAbnormalReason *string   `json:"ImageAbnormalReason" name:"ImageAbnormalReason"`
+		ImageStatusName     *string   `json:"ImageStatusName" name:"ImageStatusName"`
+		CreateUser          *string   `json:"CreateUser" name:"CreateUser"`
+		CreateTime          *string   `json:"CreateTime" name:"CreateTime"`
+		UpdateTime          *string   `json:"UpdateTime" name:"UpdateTime"`
+	} `json:"ImageSet"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+	Page       *int `json:"Page" name:"Page"`
+	PageSize   *int `json:"PageSize" name:"PageSize"`
+}
+
+func (r *DescribeImagesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeImagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2000,5 +2151,31 @@ func (r *DisableEndpointRateLimitResponse) ToJsonString() string {
 }
 
 func (r *DisableEndpointRateLimitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetKcrPersonalTokenRequest struct {
+	*ksyunhttp.BaseRequest
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
+func (r *SetKcrPersonalTokenRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetKcrPersonalTokenResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *SetKcrPersonalTokenResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetKcrPersonalTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
