@@ -5,6 +5,31 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
+type CreateStorageConfigKpfsInfo struct {
+	FileSystemId   *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	SystemFilePath *string `json:"SystemFilePath,omitempty" name:"SystemFilePath"`
+	MntProtocol    *string `json:"MntProtocol,omitempty" name:"MntProtocol"`
+}
+type CreateStorageConfigKs3Info struct {
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+	BucketPath *string `json:"BucketPath,omitempty" name:"BucketPath"`
+}
+type CreateStorageConfigUsers struct {
+	UserId     *string `json:"UserId,omitempty" name:"UserId"`
+	Permission *string `json:"Permission,omitempty" name:"Permission"`
+}
+type ModifyStorageConfigKs3Info struct {
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+	BucketPath *string `json:"BucketPath,omitempty" name:"BucketPath"`
+}
+type ModifyStorageConfigUsers struct {
+	UserId     *string `json:"UserId,omitempty" name:"UserId"`
+	Permission *string `json:"Permission,omitempty" name:"Permission"`
+}
+type DescribeStorageConfigsFilter struct {
+	Name  *string   `json:"Name,omitempty" name:"Name"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
 type ModifyNotebookStorageConfigs struct {
 	StorageConfigId   *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
 	MountPath         *string `json:"MountPath,omitempty" name:"MountPath"`
@@ -38,6 +63,7 @@ type CreateTrainJobFrameworkReplicas struct {
 	Evaluator *int `json:"Evaluator,omitempty" name:"Evaluator"`
 	PS        *int `json:"PS,omitempty" name:"PS"`
 	Master    *int `json:"Master,omitempty" name:"Master"`
+	Worker    *int `json:"Worker,omitempty" name:"Worker"`
 }
 type CreateTrainJobEnvs struct {
 	Name  *string `json:"Name,omitempty" name:"Name"`
@@ -81,6 +107,156 @@ type UpdateInferenceEndpointRateLimit struct {
 	TPM         *int `json:"TPM,omitempty" name:"TPM"`
 	Concurrency *int `json:"Concurrency,omitempty" name:"Concurrency"`
 	IPM         *int `json:"IPM,omitempty" name:"IPM"`
+}
+type DescribeQueuesFilter struct {
+	Name  *string   `json:"Name,omitempty" name:"Name"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+
+type CreateStorageConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	StorageConfigName *string                      `json:"StorageConfigName,omitempty" name:"StorageConfigName"`
+	Description       *string                      `json:"Description,omitempty" name:"Description"`
+	Type              *string                      `json:"Type,omitempty" name:"Type"`
+	MountPath         *string                      `json:"MountPath,omitempty" name:"MountPath"`
+	KpfsInfo          *CreateStorageConfigKpfsInfo `json:"KpfsInfo,omitempty" name:"KpfsInfo"`
+	Ks3Info           *CreateStorageConfigKs3Info  `json:"Ks3Info,omitempty" name:"Ks3Info"`
+	Users             []*CreateStorageConfigUsers  `json:"Users,omitempty" name:"Users"`
+	Ak                *string                      `json:"Ak,omitempty" name:"Ak"`
+	Sk                *string                      `json:"Sk,omitempty" name:"Sk"`
+}
+
+func (r *CreateStorageConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateStorageConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	StorageConfigId *string `json:"StorageConfigId" name:"StorageConfigId"`
+	RequestId       *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateStorageConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateStorageConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyStorageConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	StorageConfigId   *string                     `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
+	StorageConfigName *string                     `json:"StorageConfigName,omitempty" name:"StorageConfigName"`
+	Description       *string                     `json:"Description,omitempty" name:"Description"`
+	MountPath         *string                     `json:"MountPath,omitempty" name:"MountPath"`
+	Ks3Info           *ModifyStorageConfigKs3Info `json:"Ks3Info,omitempty" name:"Ks3Info"`
+	Users             []*ModifyStorageConfigUsers `json:"Users,omitempty" name:"Users"`
+	Ak                *string                     `json:"Ak,omitempty" name:"Ak"`
+	Sk                *string                     `json:"Sk,omitempty" name:"Sk"`
+}
+
+func (r *ModifyStorageConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyStorageConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	StorageConfigId *string `json:"StorageConfigId" name:"StorageConfigId"`
+	RequestId       *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyStorageConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyStorageConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStorageConfigsRequest struct {
+	*ksyunhttp.BaseRequest
+	StorageConfigId []*string                       `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
+	Filter          []*DescribeStorageConfigsFilter `json:"Filter,omitempty" name:"Filter"`
+	PageSize        *int                            `json:"PageSize,omitempty" name:"PageSize"`
+	Page            *int                            `json:"Page,omitempty" name:"Page"`
+}
+
+func (r *DescribeStorageConfigsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeStorageConfigsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId        *string `json:"RequestId" name:"RequestId"`
+	PageSize         *int    `json:"PageSize" name:"PageSize"`
+	Page             *int    `json:"Page" name:"Page"`
+	TotalCount       *int    `json:"TotalCount" name:"TotalCount"`
+	StorageConfigSet []struct {
+		StorageConfigId   *string `json:"StorageConfigId" name:"StorageConfigId"`
+		StorageConfigName *string `json:"StorageConfigName" name:"StorageConfigName"`
+		Description       *string `json:"Description" name:"Description"`
+		Type              *string `json:"Type" name:"Type"`
+		MountPath         *string `json:"MountPath" name:"MountPath"`
+		Ak                *string `json:"Ak" name:"Ak"`
+		KpfsInfo          struct {
+			FileSystemId   *string `json:"FileSystemId" name:"FileSystemId"`
+			FileSystemName *string `json:"FileSystemName" name:"FileSystemName"`
+			SystemFilePath *string `json:"SystemFilePath" name:"SystemFilePath"`
+			MntProtocol    *string `json:"MntProtocol" name:"MntProtocol"`
+			ClusterName    *string `json:"ClusterName" name:"ClusterName"`
+		} `json:"KpfsInfo" name:"KpfsInfo"`
+		Ks3Info struct {
+			BucketName *string `json:"BucketName" name:"BucketName"`
+			BucketPath *string `json:"BucketPath" name:"BucketPath"`
+			Endpoint   *string `json:"Endpoint" name:"Endpoint"`
+		} `json:"Ks3Info" name:"Ks3Info"`
+		CreatorId  *string `json:"CreatorId" name:"CreatorId"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		Users      []struct {
+			UserId     *string `json:"UserId" name:"UserId"`
+			Permission *string `json:"Permission" name:"Permission"`
+		} `json:"Users" name:"Users"`
+	} `json:"StorageConfigSet"`
+}
+
+func (r *DescribeStorageConfigsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeStorageConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteStorageConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	StorageConfigId *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
+}
+
+func (r *DeleteStorageConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteStorageConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	StorageConfigId *string `json:"StorageConfigId" name:"StorageConfigId"`
+	RequestId       *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteStorageConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteStorageConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SaveNotebookImageRequest struct {
@@ -198,9 +374,8 @@ type DescribeNotebooksRequest struct {
 	*ksyunhttp.BaseRequest
 	NotebookId []*string                  `json:"NotebookId,omitempty" name:"NotebookId"`
 	Name       *string                    `json:"Name,omitempty" name:"Name"`
-	Marker     *int                       `json:"Marker,omitempty" name:"Marker"`
-	MaxResults *int                       `json:"MaxResults,omitempty" name:"MaxResults"`
-	State      *string                    `json:"State,omitempty" name:"State"`
+	Page       *int                       `json:"Page,omitempty" name:"Page"`
+	PageSize   *int                       `json:"PageSize,omitempty" name:"PageSize"`
 	Filter     []*DescribeNotebooksFilter `json:"Filter,omitempty" name:"Filter"`
 	QueueId    *string                    `json:"QueueId,omitempty" name:"QueueId"`
 }
@@ -274,8 +449,8 @@ type DescribeNotebooksResponse struct {
 		NodeIp             *string  `json:"NodeIp" name:"NodeIp"`
 	} `json:"Notebooks"`
 	TotalCount *int `json:"TotalCount" name:"TotalCount"`
-	Marker     *int `json:"Marker" name:"Marker"`
-	MaxResults *int `json:"MaxResults" name:"MaxResults"`
+	Page       *int `json:"Page" name:"Page"`
+	PageSize   *int `json:"PageSize" name:"PageSize"`
 }
 
 func (r *DescribeNotebooksResponse) ToJsonString() string {
@@ -559,47 +734,11 @@ func (r *GetWebIdeUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeNotebookEventsRequest struct {
-	*ksyunhttp.BaseRequest
-	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
-}
-
-func (r *DescribeNotebookEventsRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type DescribeNotebookEventsResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	DataSet   []struct {
-		FirstSeen *string `json:"FirstSeen" name:"FirstSeen"`
-		LastSeen  *string `json:"LastSeen" name:"LastSeen"`
-		Type      *string `json:"Type" name:"Type"`
-		Object    struct {
-			Kind *string `json:"Kind" name:"Kind"`
-			Name *string `json:"Name" name:"Name"`
-		} `json:"Object" name:"Object"`
-		Reason  *string `json:"Reason" name:"Reason"`
-		Message *string `json:"Message" name:"Message"`
-		Source  struct {
-			Component *string `json:"Component" name:"Component"`
-		} `json:"Source" name:"Source"`
-		Count *int `json:"Count" name:"Count"`
-	} `json:"DataSet"`
-}
-
-func (r *DescribeNotebookEventsResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DescribeNotebookEventsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeNotebookLogRequest struct {
 	*ksyunhttp.BaseRequest
+	NotebookId   *string `json:"NotebookId,omitempty" name:"NotebookId"`
+	SinceSeconds *int    `json:"SinceSeconds,omitempty" name:"SinceSeconds"`
+	TailLines    *string `json:"TailLines,omitempty" name:"TailLines"`
 }
 
 func (r *DescribeNotebookLogRequest) ToJsonString() string {
@@ -968,54 +1107,6 @@ func (r *DescribeApikeysResponse) ToJsonString() string {
 }
 
 func (r *DescribeApikeysResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type QueryTokenDataRequest struct {
-	*ksyunhttp.BaseRequest
-	StartTimestamp *int64  `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
-	EndTimestamp   *int64  `json:"EndTimestamp,omitempty" name:"EndTimestamp"`
-	MaxResults     *int    `json:"MaxResults,omitempty" name:"MaxResults"`
-	Keyword        *string `json:"Keyword,omitempty" name:"Keyword"`
-	GroupBy        *string `json:"GroupBy,omitempty" name:"GroupBy"`
-	ReasoningType  *string `json:"ReasoningType,omitempty" name:"ReasoningType"`
-	Marker         *int    `json:"Marker,omitempty" name:"Marker"`
-	IsGlobalServer *bool   `json:"IsGlobalServer,omitempty" name:"IsGlobalServer"`
-	ModelName      *string `json:"ModelName,omitempty" name:"ModelName"`
-}
-
-func (r *QueryTokenDataRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type QueryTokenDataResponse struct {
-	*ksyunhttp.BaseResponse
-	TotalCount     *int64  `json:"TotalCount" name:"TotalCount"`
-	LastKey        *string `json:"LastKey" name:"LastKey"`
-	SumInputToken  *int64  `json:"SumInputToken" name:"SumInputToken"`
-	SumOutputToken *int64  `json:"SumOutputToken" name:"SumOutputToken"`
-	SumTotalToken  *int64  `json:"SumTotalToken" name:"SumTotalToken"`
-	Data           []struct {
-		Model               *string `json:"Model" name:"Model"`
-		InputToken          *int64  `json:"InputToken" name:"InputToken"`
-		OutputToken         *int64  `json:"OutputToken" name:"OutputToken"`
-		TotalToken          *int64  `json:"TotalToken" name:"TotalToken"`
-		TotalCacheToken     *int64  `json:"TotalCacheToken" name:"TotalCacheToken"`
-		TotalCacheMissToken *int64  `json:"TotalCacheMissToken" name:"TotalCacheMissToken"`
-		TotalWebSearch      *int64  `json:"TotalWebSearch" name:"TotalWebSearch"`
-	} `json:"Data"`
-	SumTotalCacheToken     *int64 `json:"SumTotalCacheToken" name:"SumTotalCacheToken"`
-	SumTotalCacheMissToken *int64 `json:"SumTotalCacheMissToken" name:"SumTotalCacheMissToken"`
-	SumTotalWebSearch      *int64 `json:"SumTotalWebSearch" name:"SumTotalWebSearch"`
-}
-
-func (r *QueryTokenDataResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *QueryTokenDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2154,6 +2245,51 @@ func (r *DisableEndpointRateLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourcePoolInstanceTasksRequest struct {
+	*ksyunhttp.BaseRequest
+	ResourcePoolId *string `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	InstanceId     *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	TaskType       *string `json:"TaskType,omitempty" name:"TaskType"`
+	PageSize       *int    `json:"PageSize,omitempty" name:"PageSize"`
+	Page           *int    `json:"Page,omitempty" name:"Page"`
+}
+
+func (r *DescribeResourcePoolInstanceTasksRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeResourcePoolInstanceTasksResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId       *string `json:"RequestId" name:"RequestId"`
+	PageSize        *int    `json:"PageSize" name:"PageSize"`
+	Page            *int    `json:"Page" name:"Page"`
+	TotalCount      *int    `json:"TotalCount" name:"TotalCount"`
+	InstanceTaskSet []struct {
+		PodInstanceId *string `json:"PodInstanceId" name:"PodInstanceId"`
+		TaskName      *string `json:"TaskName" name:"TaskName"`
+		TaskId        *string `json:"TaskId" name:"TaskId"`
+		TaskType      *string `json:"TaskType" name:"TaskType"`
+		GPUNum        *int    `json:"GPUNum" name:"GPUNum"`
+		CPUNum        *int    `json:"CPUNum" name:"CPUNum"`
+		MemeryNum     *int    `json:"MemeryNum" name:"MemeryNum"`
+		CreateUser    *string `json:"CreateUser" name:"CreateUser"`
+		CreateTime    *string `json:"CreateTime" name:"CreateTime"`
+		StartTime     *string `json:"StartTime" name:"StartTime"`
+		EndTime       *string `json:"EndTime" name:"EndTime"`
+		Status        *string `json:"Status" name:"Status"`
+	} `json:"InstanceTaskSet"`
+}
+
+func (r *DescribeResourcePoolInstanceTasksResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeResourcePoolInstanceTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SetKcrPersonalTokenRequest struct {
 	*ksyunhttp.BaseRequest
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
@@ -2177,5 +2313,68 @@ func (r *SetKcrPersonalTokenResponse) ToJsonString() string {
 }
 
 func (r *SetKcrPersonalTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeQueuesRequest struct {
+	*ksyunhttp.BaseRequest
+	QueueId  []*string               `json:"QueueId,omitempty" name:"QueueId"`
+	Page     *int                    `json:"Page,omitempty" name:"Page"`
+	PageSize *int                    `json:"PageSize,omitempty" name:"PageSize"`
+	Filter   []*DescribeQueuesFilter `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *DescribeQueuesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeQueuesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	PageSize   *int    `json:"PageSize" name:"PageSize"`
+	Page       *int    `json:"Page" name:"Page"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	QueueSet   []struct {
+		QueueId        *string `json:"QueueId" name:"QueueId"`
+		ResourcePoolId *string `json:"ResourcePoolId" name:"ResourcePoolId"`
+		QueueName      *string `json:"QueueName" name:"QueueName"`
+		Description    *string `json:"Description" name:"Description"`
+		Reclaimable    *bool   `json:"Reclaimable" name:"Reclaimable"`
+		AllowBorrowing *bool   `json:"AllowBorrowing" name:"AllowBorrowing"`
+		Status         struct {
+			State   *string `json:"State" name:"State"`
+			Queuing *int    `json:"Queuing" name:"Queuing"`
+		} `json:"Status" name:"Status"`
+		CreatorId  *string `json:"CreatorId" name:"CreatorId"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
+		AccessList []struct {
+			UserId     *string `json:"UserId" name:"UserId"`
+			Permission *string `json:"Permission" name:"Permission"`
+		} `json:"AccessList" name:"AccessList"`
+		Capability struct {
+			CPU      *int `json:"CPU" name:"CPU"`
+			Memory   *int `json:"Memory" name:"Memory"`
+			GPUInfos []struct {
+				GPUType *string `json:"GPUType" name:"GPUType"`
+				GPUNum  *int    `json:"GPUNum" name:"GPUNum"`
+			} `json:"GPUInfos"`
+		} `json:"Capability" name:"Capability"`
+		Allocated struct {
+			CPU    *int `json:"CPU" name:"CPU"`
+			Memory *int `json:"Memory" name:"Memory"`
+			GPU    struct {
+			} `json:"GPU"`
+		} `json:"Allocated" name:"Allocated"`
+	} `json:"QueueSet"`
+}
+
+func (r *DescribeQueuesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeQueuesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

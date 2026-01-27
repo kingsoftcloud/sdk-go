@@ -40,6 +40,14 @@ type DescribeTrainJobsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
+type ModifyModelAccessUsers struct {
+	UserId     *string `json:"UserId,omitempty" name:"UserId"`
+	Permission *string `json:"Permission,omitempty" name:"Permission"`
+}
+type CreateModelAndVersionUsers struct {
+	UserId     *string `json:"UserId,omitempty" name:"UserId"`
+	Permission *string `json:"Permission,omitempty" name:"Permission"`
+}
 
 type CreateTrainJobRequest struct {
 	*ksyunhttp.BaseRequest
@@ -164,5 +172,317 @@ func (r *DescribeTrainJobsResponse) ToJsonString() string {
 }
 
 func (r *DescribeTrainJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyModelAccessRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelId *string                   `json:"ModelId,omitempty" name:"ModelId"`
+	Users   []*ModifyModelAccessUsers `json:"Users,omitempty" name:"Users"`
+}
+
+func (r *ModifyModelAccessRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyModelAccessResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	ModelId   *string `json:"ModelId" name:"ModelId"`
+}
+
+func (r *ModifyModelAccessResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyModelAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateModelAndVersionRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelName               *string                       `json:"ModelName,omitempty" name:"ModelName"`
+	ModelDescription        *string                       `json:"ModelDescription,omitempty" name:"ModelDescription"`
+	ModelVersionName        *string                       `json:"ModelVersionName,omitempty" name:"ModelVersionName"`
+	ModelVersionDescription *string                       `json:"ModelVersionDescription,omitempty" name:"ModelVersionDescription"`
+	SourceType              *string                       `json:"SourceType,omitempty" name:"SourceType"`
+	StorageConfigId         *string                       `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
+	Format                  *string                       `json:"Format,omitempty" name:"Format"`
+	Framework               *string                       `json:"Framework,omitempty" name:"Framework"`
+	Users                   []*CreateModelAndVersionUsers `json:"Users,omitempty" name:"Users"`
+}
+
+func (r *CreateModelAndVersionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateModelAndVersionResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId      *string `json:"RequestId" name:"RequestId"`
+	ModelId        *string `json:"ModelId" name:"ModelId"`
+	ModelVersionId *string `json:"ModelVersionId" name:"ModelVersionId"`
+}
+
+func (r *CreateModelAndVersionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateModelAndVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyModelRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelId          *string `json:"ModelId,omitempty" name:"ModelId"`
+	ModelName        *string `json:"ModelName,omitempty" name:"ModelName"`
+	ModelDescription *string `json:"ModelDescription,omitempty" name:"ModelDescription"`
+}
+
+func (r *ModifyModelRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyModelResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	ModelId   *string `json:"ModelId" name:"ModelId"`
+}
+
+func (r *ModifyModelResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeModelsRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelIdN  []*string `json:"ModelId.N,omitempty" name:"ModelId.N"`
+	ModelName *string   `json:"ModelName,omitempty" name:"ModelName"`
+	Page      *int      `json:"Page,omitempty" name:"Page"`
+	PageSize  *int      `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeModelsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeModelsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	Page       *int    `json:"Page" name:"Page"`
+	PageSize   *int    `json:"PageSize" name:"PageSize"`
+	ModelSet   []struct {
+		ModelId           *string `json:"ModelId" name:"ModelId"`
+		ModelName         *string `json:"ModelName" name:"ModelName"`
+		ModelDescription  *string `json:"ModelDescription" name:"ModelDescription"`
+		ModelVersionCount *int    `json:"ModelVersionCount" name:"ModelVersionCount"`
+		CreateUser        *string `json:"CreateUser" name:"CreateUser"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime        *string `json:"UpdateTime" name:"UpdateTime"`
+		AccessList        []struct {
+			UserId     *string `json:"UserId" name:"UserId"`
+			Permission *string `json:"Permission" name:"Permission"`
+		} `json:"AccessList" name:"AccessList"`
+	} `json:"ModelSet"`
+}
+
+func (r *DescribeModelsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeModelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteModelRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+}
+
+func (r *DeleteModelRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteModelResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	ModelId   *string `json:"ModelId" name:"ModelId"`
+}
+
+func (r *DeleteModelResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateModelVersionRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelId                 *string `json:"ModelId,omitempty" name:"ModelId"`
+	ModelVersionName        *string `json:"ModelVersionName,omitempty" name:"ModelVersionName"`
+	ModelVersionDescription *string `json:"ModelVersionDescription,omitempty" name:"ModelVersionDescription"`
+	SourceType              *string `json:"SourceType,omitempty" name:"SourceType"`
+	StorageConfigId         *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
+	Format                  *string `json:"Format,omitempty" name:"Format"`
+	Framework               *string `json:"Framework,omitempty" name:"Framework"`
+}
+
+func (r *CreateModelVersionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateModelVersionResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId      *string `json:"RequestId" name:"RequestId"`
+	ModelVersionId *string `json:"ModelVersionId" name:"ModelVersionId"`
+}
+
+func (r *CreateModelVersionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateModelVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteModelVersionRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelVersionId *string `json:"ModelVersionId,omitempty" name:"ModelVersionId"`
+}
+
+func (r *DeleteModelVersionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteModelVersionResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId      *string `json:"RequestId" name:"RequestId"`
+	ModelVersionId *string `json:"ModelVersionId" name:"ModelVersionId"`
+}
+
+func (r *DeleteModelVersionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteModelVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyModelVersionRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelVersionId          *string `json:"ModelVersionId,omitempty" name:"ModelVersionId"`
+	ModelVersionName        *string `json:"ModelVersionName,omitempty" name:"ModelVersionName"`
+	ModelVersionDescription *string `json:"ModelVersionDescription,omitempty" name:"ModelVersionDescription"`
+	Format                  *string `json:"Format,omitempty" name:"Format"`
+	Framework               *string `json:"Framework,omitempty" name:"Framework"`
+	SourceType              *string `json:"SourceType,omitempty" name:"SourceType"`
+	StorageConfigId         *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
+}
+
+func (r *ModifyModelVersionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyModelVersionResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId      *string `json:"RequestId" name:"RequestId"`
+	ModelVersionId *string `json:"ModelVersionId" name:"ModelVersionId"`
+}
+
+func (r *ModifyModelVersionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyModelVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeModelVersionsRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelVersionIdN  []*string `json:"ModelVersionId.N,omitempty" name:"ModelVersionId.N"`
+	ModelVersionName *string   `json:"ModelVersionName,omitempty" name:"ModelVersionName"`
+	ModelId          *string   `json:"ModelId,omitempty" name:"ModelId"`
+	Page             *int      `json:"Page,omitempty" name:"Page"`
+	PageSize         *int      `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeModelVersionsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeModelVersionsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId       *string `json:"RequestId" name:"RequestId"`
+	TotalCount      *int    `json:"TotalCount" name:"TotalCount"`
+	Page            *int    `json:"Page" name:"Page"`
+	PageSize        *int    `json:"PageSize" name:"PageSize"`
+	ModelVersionSet []struct {
+		ModelId                 *string `json:"ModelId" name:"ModelId"`
+		ModelVersionId          *string `json:"ModelVersionId" name:"ModelVersionId"`
+		ModelVersionName        *string `json:"ModelVersionName" name:"ModelVersionName"`
+		ModelVersionDescription *string `json:"ModelVersionDescription" name:"ModelVersionDescription"`
+		SourceType              *string `json:"SourceType" name:"SourceType"`
+		Format                  *string `json:"Format" name:"Format"`
+		Framework               *string `json:"Framework" name:"Framework"`
+		StorageConfigId         *string `json:"StorageConfigId" name:"StorageConfigId"`
+		CreateTime              *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime              *string `json:"UpdateTime" name:"UpdateTime"`
+	} `json:"ModelVersionSet"`
+}
+
+func (r *DescribeModelVersionsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeModelVersionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFormatAndFrameworksRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *DescribeFormatAndFrameworksRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeFormatAndFrameworksResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId           *string `json:"RequestId" name:"RequestId"`
+	FormatAndFrameworks []struct {
+		Format     *string   `json:"Format" name:"Format"`
+		Frameworks []*string `json:"Frameworks" name:"Frameworks"`
+	} `json:"FormatAndFrameworks"`
+}
+
+func (r *DescribeFormatAndFrameworksResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeFormatAndFrameworksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
