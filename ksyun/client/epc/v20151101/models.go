@@ -48,11 +48,13 @@ type RunSoInstancesVolumes struct {
 type CreateEpcRequest struct {
 	*ksyunhttp.BaseRequest
 	HostType                        *string   `json:"HostType,omitempty" name:"HostType"`
+	GroupSubType                    *string   `json:"GroupSubType,omitempty" name:"GroupSubType"`
 	AvailabilityZone                *string   `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
 	Raid                            *string   `json:"Raid,omitempty" name:"Raid"`
 	RaidId                          *string   `json:"RaidId,omitempty" name:"RaidId"`
 	ImageId                         *string   `json:"ImageId,omitempty" name:"ImageId"`
 	NetworkInterfaceMode            *string   `json:"NetworkInterfaceMode,omitempty" name:"NetworkInterfaceMode"`
+	BondAttribute                   *string   `json:"BondAttribute,omitempty" name:"BondAttribute"`
 	SubnetId                        *string   `json:"SubnetId,omitempty" name:"SubnetId"`
 	PrivateIpAddress                *string   `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
 	KeyId                           *string   `json:"keyId,omitempty" name:"keyId"`
@@ -84,7 +86,6 @@ type CreateEpcRequest struct {
 	NvmeDataFileType                *string   `json:"NvmeDataFileType,omitempty" name:"NvmeDataFileType"`
 	NvmeDataDiskCatalogue           *string   `json:"NvmeDataDiskCatalogue,omitempty" name:"NvmeDataDiskCatalogue"`
 	NvmeDataDiskCatalogueSuffix     *string   `json:"NvmeDataDiskCatalogueSuffix,omitempty" name:"NvmeDataDiskCatalogueSuffix"`
-	BondAttribute                   *string   `json:"BondAttribute,omitempty" name:"BondAttribute"`
 	ContainerAgent                  *string   `json:"ContainerAgent,omitempty" name:"ContainerAgent"`
 	KesAgent                        *string   `json:"KesAgent,omitempty" name:"KesAgent"`
 	KmrAgent                        *string   `json:"KmrAgent,omitempty" name:"KmrAgent"`
@@ -110,7 +111,6 @@ type CreateEpcRequest struct {
 	RoceCluster                     *string   `json:"RoceCluster,omitempty" name:"RoceCluster"`
 	SRoceCluster                    *string   `json:"SRoceCluster,omitempty" name:"SRoceCluster"`
 	UserDefinedData                 *string   `json:"UserDefinedData,omitempty" name:"UserDefinedData"`
-	GroupSubType                    *string   `json:"GroupSubType,omitempty" name:"GroupSubType"`
 }
 
 func (r *CreateEpcRequest) ToJsonString() string {
@@ -577,6 +577,13 @@ type DescribeEpcsResponse struct {
 		RoceCluster      *string   `json:"RoceCluster" name:"RoceCluster"`
 		RoceClusterGroup *string   `json:"RoceClusterGroup" name:"RoceClusterGroup"`
 		SRoceCluster     *string   `json:"SRoceCluster" name:"SRoceCluster"`
+		GroupSubType     *string   `json:"GroupSubType" name:"GroupSubType"`
+		Tags             []struct {
+			ResourceId *string `json:"ResourceId" name:"ResourceId"`
+			TagId      *string `json:"TagId" name:"TagId"`
+			Key        *string `json:"Key" name:"Key"`
+			Value      *string `json:"Value" name:"Value"`
+		} `json:"Tags" name:"Tags"`
 	} `json:"HostSet"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
@@ -2370,6 +2377,7 @@ func (r *ActivateHotStandbyEpcResponse) FromJsonString(s string) error {
 type BatchCreateEpcRequest struct {
 	*ksyunhttp.BaseRequest
 	HostType                    *string   `json:"HostType,omitempty" name:"HostType"`
+	GroupSubType                *string   `json:"GroupSubType,omitempty" name:"GroupSubType"`
 	AvailabilityZone            *string   `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
 	Raid                        *string   `json:"Raid,omitempty" name:"Raid"`
 	RaidId                      *string   `json:"RaidId,omitempty" name:"RaidId"`
@@ -2426,7 +2434,6 @@ type BatchCreateEpcRequest struct {
 	StorageRoceNetworkCardName  *string   `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
 	SRoceCluster                *string   `json:"SRoceCluster,omitempty" name:"SRoceCluster"`
 	RoceCluster                 *string   `json:"RoceCluster,omitempty" name:"RoceCluster"`
-	GroupSubType                *string   `json:"GroupSubType,omitempty" name:"GroupSubType"`
 }
 
 func (r *BatchCreateEpcRequest) ToJsonString() string {
@@ -3129,25 +3136,21 @@ type DescribeSoInstancesResponse struct {
 			PrimaryIpAddress *string `json:"PrimaryIpAddress" name:"PrimaryIpAddress"`
 			Type             *string `json:"Type" name:"Type"`
 			MacAddress       *string `json:"MacAddress" name:"MacAddress"`
-			Ipv6Addresses    []struct {
-			} `json:"Ipv6Addresses"`
-			SecurityGroupIds []*string `json:"SecurityGroupIds" name:"SecurityGroupIds"`
 		} `json:"NetworkInterfaces" name:"NetworkInterfaces"`
-		RdmaIpAddresses []struct {
-		} `json:"RdmaIpAddresses" name:"RdmaIpAddresses"`
-		KeyPairName        *string `json:"KeyPairName" name:"KeyPairName"`
-		KeyPairId          *string `json:"KeyPairId" name:"KeyPairId"`
-		StoppedMode        *string `json:"StoppedMode" name:"StoppedMode"`
-		InstanceChargeType *string `json:"InstanceChargeType" name:"InstanceChargeType"`
-		InstanceTypeId     *string `json:"InstanceTypeId" name:"InstanceTypeId"`
-		ExpiredAt          *string `json:"ExpiredAt" name:"ExpiredAt"`
-		OsType             *string `json:"OsType" name:"OsType"`
-		OsName             *string `json:"OsName" name:"OsName"`
-		Cpus               *int    `json:"Cpus" name:"Cpus"`
-		MemorySize         *int    `json:"MemorySize" name:"MemorySize"`
-		InstanceId         *string `json:"InstanceId" name:"InstanceId"`
-		Hostname           *string `json:"Hostname" name:"Hostname"`
-		Uuid               *string `json:"Uuid" name:"Uuid"`
+		RdmaIpAddresses    []*string `json:"RdmaIpAddresses" name:"RdmaIpAddresses"`
+		KeyPairName        *string   `json:"KeyPairName" name:"KeyPairName"`
+		KeyPairId          *string   `json:"KeyPairId" name:"KeyPairId"`
+		StoppedMode        *string   `json:"StoppedMode" name:"StoppedMode"`
+		InstanceChargeType *string   `json:"InstanceChargeType" name:"InstanceChargeType"`
+		InstanceTypeId     *string   `json:"InstanceTypeId" name:"InstanceTypeId"`
+		ExpiredAt          *string   `json:"ExpiredAt" name:"ExpiredAt"`
+		OsType             *string   `json:"OsType" name:"OsType"`
+		OsName             *string   `json:"OsName" name:"OsName"`
+		Cpus               *int      `json:"Cpus" name:"Cpus"`
+		MemorySize         *int      `json:"MemorySize" name:"MemorySize"`
+		InstanceId         *string   `json:"InstanceId" name:"InstanceId"`
+		Hostname           *string   `json:"Hostname" name:"Hostname"`
+		Uuid               *string   `json:"Uuid" name:"Uuid"`
 		LocalVolumes       []struct {
 			VolumeType *string `json:"VolumeType" name:"VolumeType"`
 			Size       *int    `json:"Size" name:"Size"`
@@ -3409,6 +3412,9 @@ type DescribeSoInstanceTypesResponse struct {
 			EncryptedSize *int `json:"EncryptedSize" name:"EncryptedSize"`
 		} `json:"Memory" name:"Memory"`
 		LocalVolumes []struct {
+			Size       *int    `json:"Size" name:"Size"`
+			Count      *int    `json:"Count" name:"Count"`
+			VolumeType *string `json:"VolumeType" name:"VolumeType"`
 		} `json:"LocalVolumes" name:"LocalVolumes"`
 	} `json:"InstanceTypes"`
 	NextToken *string `json:"NextToken" name:"NextToken"`
