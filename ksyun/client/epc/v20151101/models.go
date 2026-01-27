@@ -2,7 +2,6 @@ package v20151101
 
 import (
 	"encoding/json"
-
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -111,6 +110,7 @@ type CreateEpcRequest struct {
 	RoceCluster                     *string   `json:"RoceCluster,omitempty" name:"RoceCluster"`
 	SRoceCluster                    *string   `json:"SRoceCluster,omitempty" name:"SRoceCluster"`
 	UserDefinedData                 *string   `json:"UserDefinedData,omitempty" name:"UserDefinedData"`
+	GroupSubType                    *string   `json:"GroupSubType,omitempty" name:"GroupSubType"`
 }
 
 func (r *CreateEpcRequest) ToJsonString() string {
@@ -2426,6 +2426,7 @@ type BatchCreateEpcRequest struct {
 	StorageRoceNetworkCardName  *string   `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
 	SRoceCluster                *string   `json:"SRoceCluster,omitempty" name:"SRoceCluster"`
 	RoceCluster                 *string   `json:"RoceCluster,omitempty" name:"RoceCluster"`
+	GroupSubType                *string   `json:"GroupSubType,omitempty" name:"GroupSubType"`
 }
 
 func (r *BatchCreateEpcRequest) ToJsonString() string {
