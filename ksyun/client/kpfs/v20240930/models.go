@@ -5,6 +5,70 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
+type DescribeFileSystemListRequest struct {
+	*ksyunhttp.BaseRequest
+	Region         *string `json:"Region,omitempty" name:"Region"`
+	FileSystemName *string `json:"FileSystemName,omitempty" name:"FileSystemName"`
+	FileSystemIds  *string `json:"FileSystemIds,omitempty" name:"FileSystemIds"`
+	StoreClasses   *string `json:"StoreClasses,omitempty" name:"StoreClasses"`
+	ProjectId      *string `json:"ProjectId,omitempty" name:"ProjectId"`
+	PageNum        *int    `json:"PageNum,omitempty" name:"PageNum"`
+	PageSize       *int    `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeFileSystemListRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeFileSystemListResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Status     *string `json:"Status" name:"Status"`
+		ChargeInfo struct {
+			ChargeType  *string `json:"ChargeType" name:"ChargeType"`
+			ExpiredTime *string `json:"ExpiredTime" name:"ExpiredTime"`
+		} `json:"ChargeInfo" name:"ChargeInfo"`
+		FileSystemInfo struct {
+			FileSystemName     *string `json:"FileSystemName" name:"FileSystemName"`
+			Capacity           *int64  `json:"Capacity" name:"Capacity"`
+			Region             *string `json:"Region" name:"Region"`
+			RegionName         *string `json:"RegionName" name:"RegionName"`
+			AvailZone          *string `json:"AvailZone" name:"AvailZone"`
+			FileSystemId       *string `json:"FileSystemId" name:"FileSystemId"`
+			CreateTime         *string `json:"CreateTime" name:"CreateTime"`
+			UpdateTime         *string `json:"UpdateTime" name:"UpdateTime"`
+			StoreClass         *string `json:"StoreClass" name:"StoreClass"`
+			ClientMountCommand *string `json:"ClientMountCommand" name:"ClientMountCommand"`
+			ChunkSize          *string `json:"ChunkSize" name:"ChunkSize"`
+			SRoceCluster       *string `json:"SRoceCluster" name:"SRoceCluster"`
+			ClusterName        *string `json:"ClusterName" name:"ClusterName"`
+			ClusterCode        *string `json:"ClusterCode" name:"ClusterCode"`
+		} `json:"FileSystemInfo" name:"FileSystemInfo"`
+		AccessRules []struct {
+			Token *string `json:"Token" name:"Token"`
+		} `json:"AccessRules" name:"AccessRules"`
+		ProjectId  *string `json:"ProjectId" name:"ProjectId"`
+		VolumeInfo struct {
+			Inodes      *int64 `json:"Inodes" name:"Inodes"`
+			UseCapacity *int64 `json:"UseCapacity" name:"UseCapacity"`
+		} `json:"VolumeInfo" name:"VolumeInfo"`
+	} `json:"Data"`
+	PageSize   *int `json:"PageSize" name:"PageSize"`
+	PageNum    *int `json:"PageNum" name:"PageNum"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+}
+
+func (r *DescribeFileSystemListResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeFileSystemListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDirQuotaListRequest struct {
 	*ksyunhttp.BaseRequest
 	FileSystemId   *string `json:"FileSystemId,omitempty" name:"FileSystemId"`

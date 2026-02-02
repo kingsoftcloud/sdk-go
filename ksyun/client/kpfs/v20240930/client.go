@@ -22,6 +22,85 @@ func NewClient(credential common.Credentials, region string, clientProfile *prof
 	return
 }
 
+func NewDescribeFileSystemListRequest() (request *DescribeFileSystemListRequest) {
+	request = &DescribeFileSystemListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileSystemList")
+	return
+}
+
+func NewDescribeFileSystemListResponse() (response *DescribeFileSystemListResponse) {
+	response = &DescribeFileSystemListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeFileSystemList(request *DescribeFileSystemListRequest) string {
+	return c.DescribeFileSystemListWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeFileSystemListSend(request *DescribeFileSystemListRequest) (*DescribeFileSystemListResponse, error) {
+	statusCode, msg, err := c.DescribeFileSystemListWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeFileSystemListResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeFileSystemListWithContext(ctx context.Context, request *DescribeFileSystemListRequest) string {
+	if request == nil {
+		request = NewDescribeFileSystemListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileSystemList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeFileSystemListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeFileSystemListWithContextV2(ctx context.Context, request *DescribeFileSystemListRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeFileSystemListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileSystemList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeFileSystemListResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewDescribeDirQuotaListRequest() (request *DescribeDirQuotaListRequest) {
 	request = &DescribeDirQuotaListRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
