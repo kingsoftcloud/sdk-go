@@ -111,6 +111,7 @@ type CreateEpcRequest struct {
 	RoceCluster                     *string   `json:"RoceCluster,omitempty" name:"RoceCluster"`
 	SRoceCluster                    *string   `json:"SRoceCluster,omitempty" name:"SRoceCluster"`
 	UserDefinedData                 *string   `json:"UserDefinedData,omitempty" name:"UserDefinedData"`
+	ClientToken                     *string   `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *CreateEpcRequest) ToJsonString() string {
@@ -247,7 +248,8 @@ func (r *CreateEpcResponse) FromJsonString(s string) error {
 
 type StartEpcRequest struct {
 	*ksyunhttp.BaseRequest
-	HostId *string `json:"HostId,omitempty" name:"HostId"`
+	HostId      *string `json:"HostId,omitempty" name:"HostId"`
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *StartEpcRequest) ToJsonString() string {
@@ -272,7 +274,8 @@ func (r *StartEpcResponse) FromJsonString(s string) error {
 
 type RebootEpcRequest struct {
 	*ksyunhttp.BaseRequest
-	HostId *string `json:"HostId,omitempty" name:"HostId"`
+	HostId      *string `json:"HostId,omitempty" name:"HostId"`
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *RebootEpcRequest) ToJsonString() string {
@@ -297,7 +300,8 @@ func (r *RebootEpcResponse) FromJsonString(s string) error {
 
 type DeleteEpcRequest struct {
 	*ksyunhttp.BaseRequest
-	HostId *string `json:"HostId,omitempty" name:"HostId"`
+	HostId      *string `json:"HostId,omitempty" name:"HostId"`
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *DeleteEpcRequest) ToJsonString() string {
@@ -352,6 +356,7 @@ type ReinstallEpcRequest struct {
 	DataDiskMount               *string `json:"DataDiskMount,omitempty" name:"DataDiskMount"`
 	StorageRoceNetworkCardName  *string `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
 	UserDefinedData             *string `json:"UserDefinedData,omitempty" name:"UserDefinedData"`
+	ClientToken                 *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *ReinstallEpcRequest) ToJsonString() string {
@@ -971,7 +976,8 @@ func (r *DescribeRemoteManagementsResponse) FromJsonString(s string) error {
 
 type StopEpcRequest struct {
 	*ksyunhttp.BaseRequest
-	HostId *string `json:"HostId,omitempty" name:"HostId"`
+	HostId      *string `json:"HostId,omitempty" name:"HostId"`
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *StopEpcRequest) ToJsonString() string {
@@ -999,6 +1005,7 @@ type ModifyEpcRequest struct {
 	HostId      *string `json:"HostId,omitempty" name:"HostId"`
 	HostName    *string `json:"HostName,omitempty" name:"HostName"`
 	Description *string `json:"Description,omitempty" name:"Description"`
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *ModifyEpcRequest) ToJsonString() string {
@@ -2434,6 +2441,7 @@ type BatchCreateEpcRequest struct {
 	StorageRoceNetworkCardName  *string   `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
 	SRoceCluster                *string   `json:"SRoceCluster,omitempty" name:"SRoceCluster"`
 	RoceCluster                 *string   `json:"RoceCluster,omitempty" name:"RoceCluster"`
+	ClientToken                 *string   `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *BatchCreateEpcRequest) ToJsonString() string {

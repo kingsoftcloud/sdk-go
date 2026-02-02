@@ -3419,3 +3419,240 @@ func (c *Client) GetCntvRefreshOrPreloadTaskWithContextV2(ctx context.Context, r
 	}
 	return statusCode, msg, nil
 }
+func NewSubmitRefreshCachesRequest() (request *SubmitRefreshCachesRequest) {
+	request = &SubmitRefreshCachesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "SubmitRefreshCaches")
+	return
+}
+
+func NewSubmitRefreshCachesResponse() (response *SubmitRefreshCachesResponse) {
+	response = &SubmitRefreshCachesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SubmitRefreshCaches(request *SubmitRefreshCachesRequest) string {
+	return c.SubmitRefreshCachesWithContext(context.Background(), request)
+}
+
+func (c *Client) SubmitRefreshCachesSend(request *SubmitRefreshCachesRequest) (*SubmitRefreshCachesResponse, error) {
+	statusCode, msg, err := c.SubmitRefreshCachesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SubmitRefreshCachesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SubmitRefreshCachesWithContext(ctx context.Context, request *SubmitRefreshCachesRequest) string {
+	if request == nil {
+		request = NewSubmitRefreshCachesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "SubmitRefreshCaches")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSubmitRefreshCachesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SubmitRefreshCachesWithContextV2(ctx context.Context, request *SubmitRefreshCachesRequest) (int, string, error) {
+	if request == nil {
+		request = NewSubmitRefreshCachesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "SubmitRefreshCaches")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSubmitRefreshCachesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewSubmitPreloadCachesRequest() (request *SubmitPreloadCachesRequest) {
+	request = &SubmitPreloadCachesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "SubmitPreloadCaches")
+	return
+}
+
+func NewSubmitPreloadCachesResponse() (response *SubmitPreloadCachesResponse) {
+	response = &SubmitPreloadCachesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SubmitPreloadCaches(request *SubmitPreloadCachesRequest) string {
+	return c.SubmitPreloadCachesWithContext(context.Background(), request)
+}
+
+func (c *Client) SubmitPreloadCachesSend(request *SubmitPreloadCachesRequest) (*SubmitPreloadCachesResponse, error) {
+	statusCode, msg, err := c.SubmitPreloadCachesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SubmitPreloadCachesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SubmitPreloadCachesWithContext(ctx context.Context, request *SubmitPreloadCachesRequest) string {
+	if request == nil {
+		request = NewSubmitPreloadCachesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "SubmitPreloadCaches")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSubmitPreloadCachesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SubmitPreloadCachesWithContextV2(ctx context.Context, request *SubmitPreloadCachesRequest) (int, string, error) {
+	if request == nil {
+		request = NewSubmitPreloadCachesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "SubmitPreloadCaches")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSubmitPreloadCachesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewSetCertificateConfigRequest() (request *SetCertificateConfigRequest) {
+	request = &SetCertificateConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("cdn", APIVersion, "SetCertificateConfig")
+	return
+}
+
+func NewSetCertificateConfigResponse() (response *SetCertificateConfigResponse) {
+	response = &SetCertificateConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetCertificateConfig(request *SetCertificateConfigRequest) string {
+	return c.SetCertificateConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) SetCertificateConfigSend(request *SetCertificateConfigRequest) (*SetCertificateConfigResponse, error) {
+	statusCode, msg, err := c.SetCertificateConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetCertificateConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetCertificateConfigWithContext(ctx context.Context, request *SetCertificateConfigRequest) string {
+	if request == nil {
+		request = NewSetCertificateConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "SetCertificateConfig")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetCertificateConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetCertificateConfigWithContextV2(ctx context.Context, request *SetCertificateConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetCertificateConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("cdn", APIVersion, "SetCertificateConfig")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetCertificateConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}

@@ -28,6 +28,15 @@ type SyncRefreshCachesDirs struct {
 type InsertPreloadCachesUrls struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 }
+type SubmitRefreshCachesFiles struct {
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+type SubmitRefreshCachesDirs struct {
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+type SubmitPreloadCachesUrls struct {
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
 
 type GetDomainLogsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1324,5 +1333,83 @@ func (r *GetCntvRefreshOrPreloadTaskResponse) ToJsonString() string {
 }
 
 func (r *GetCntvRefreshOrPreloadTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitRefreshCachesRequest struct {
+	*ksyunhttp.BaseRequest
+	Files []*SubmitRefreshCachesFiles `json:"Files,omitempty" name:"Files"`
+	Dirs  []*SubmitRefreshCachesDirs  `json:"Dirs,omitempty" name:"Dirs"`
+}
+
+func (r *SubmitRefreshCachesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SubmitRefreshCachesResponse struct {
+	*ksyunhttp.BaseResponse
+	RefreshTaskId *string `json:"RefreshTaskId" name:"RefreshTaskId"`
+}
+
+func (r *SubmitRefreshCachesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SubmitRefreshCachesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SubmitPreloadCachesRequest struct {
+	*ksyunhttp.BaseRequest
+	Urls []*SubmitPreloadCachesUrls `json:"Urls,omitempty" name:"Urls"`
+}
+
+func (r *SubmitPreloadCachesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SubmitPreloadCachesResponse struct {
+	*ksyunhttp.BaseResponse
+	PreloadTaskId *string `json:"PreloadTaskId" name:"PreloadTaskId"`
+}
+
+func (r *SubmitPreloadCachesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SubmitPreloadCachesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetCertificateConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	Enable            *string `json:"Enable,omitempty" name:"Enable"`
+	DomainIds         *string `json:"DomainIds,omitempty" name:"DomainIds"`
+	CertificateId     *string `json:"CertificateId,omitempty" name:"CertificateId"`
+	CertificateName   *string `json:"CertificateName,omitempty" name:"CertificateName"`
+	ServerCertificate *string `json:"ServerCertificate,omitempty" name:"ServerCertificate"`
+	PrivateKey        *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+}
+
+func (r *SetCertificateConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetCertificateConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	ConfigCertificateResponse *string `json:"ConfigCertificateResponse" name:"ConfigCertificateResponse"`
+}
+
+func (r *SetCertificateConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetCertificateConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
