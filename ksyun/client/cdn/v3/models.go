@@ -1223,32 +1223,6 @@ func (r *SetCdnBlockDomainUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type GetCntvRefreshOrPreloadTaskRequest struct {
-	*ksyunhttp.BaseRequest
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
-	EndTime   *string `json:"EndTime,omitempty" name:"EndTime"`
-	Type      *string `json:"Type,omitempty" name:"Type"`
-	TaskId    *string `json:"TaskId,omitempty" name:"TaskId"`
-}
-
-func (r *GetCntvRefreshOrPreloadTaskRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type GetCntvRefreshOrPreloadTaskResponse struct {
-	*ksyunhttp.BaseResponse
-}
-
-func (r *GetCntvRefreshOrPreloadTaskResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *GetCntvRefreshOrPreloadTaskResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type SubmitRefreshCachesRequest struct {
 	*ksyunhttp.BaseRequest
 	Files []*SubmitRefreshCachesFiles `json:"Files,omitempty" name:"Files"`
