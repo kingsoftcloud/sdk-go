@@ -1043,9 +1043,16 @@ type GetModelDetailResponse struct {
 			InputType          []*string `json:"InputType" name:"InputType"`
 			OutputType         []*string `json:"OutputType" name:"OutputType"`
 			SupportTryout      *string   `json:"SupportTryout" name:"SupportTryout"`
+			TextToSpeech       *bool     `json:"TextToSpeech" name:"TextToSpeech"`
+			VoicePrice         *string   `json:"VoicePrice" name:"VoicePrice"`
+			PricingRules       struct {
+				OnlineCalculateDisplayCache []struct {
+				} `json:"OnlineCalculateDisplayCache" name:"OnlineCalculateDisplayCache"`
+			} `json:"PricingRules"`
 		} `json:"CodeCase" name:"CodeCase"`
 		RequestId    *string `json:"RequestId" name:"RequestId"`
 		ActiveStatus *int    `json:"ActiveStatus" name:"ActiveStatus"`
+		ExtraFields  *string `json:"ExtraFields" name:"ExtraFields"`
 	} `json:"ModelApiModelDataWebResp"`
 }
 
@@ -1716,6 +1723,7 @@ type DescribeTrainJobResponse struct {
 			StorageConfigType *string `json:"StorageConfigType" name:"StorageConfigType"`
 			MountPath         *string `json:"MountPath" name:"MountPath"`
 		} `json:"StorageConfigs" name:"StorageConfigs"`
+		ClusterId *string `json:"ClusterId" name:"ClusterId"`
 	} `json:"TrainJobSet"`
 }
 
@@ -2344,6 +2352,9 @@ type DescribeQueuesResponse struct {
 		AllowBorrowing *bool   `json:"AllowBorrowing" name:"AllowBorrowing"`
 		Status         struct {
 			State   *string `json:"State" name:"State"`
+			Running *int    `json:"Running" name:"Running"`
+			Inqueue *int    `json:"Inqueue" name:"Inqueue"`
+			Pending *int    `json:"Pending" name:"Pending"`
 			Queuing *int    `json:"Queuing" name:"Queuing"`
 		} `json:"Status" name:"Status"`
 		CreatorId  *string `json:"CreatorId" name:"CreatorId"`

@@ -117,6 +117,7 @@ type DescribeTrainJobsResponse struct {
 		Framework          *string `json:"Framework" name:"Framework"`
 		AccessType         *string `json:"AccessType" name:"AccessType"`
 		CreateUserId       *string `json:"CreateUserId" name:"CreateUserId"`
+		ClusterId          *string `json:"ClusterId" name:"ClusterId"`
 		SelfHealing        *bool   `json:"SelfHealing" name:"SelfHealing"`
 		MaxRuntimeHour     *int64  `json:"MaxRuntimeHour" name:"MaxRuntimeHour"`
 		JobRunOnCPU        *bool   `json:"JobRunOnCPU" name:"JobRunOnCPU"`
