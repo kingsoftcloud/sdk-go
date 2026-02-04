@@ -812,3 +812,477 @@ func (c *Client) DescribeDirQuotaWithContextV2(ctx context.Context, request *Des
 	}
 	return statusCode, msg, nil
 }
+func NewUpdatePerformanceNfsAclIpRequest() (request *UpdatePerformanceNfsAclIpRequest) {
+	request = &UpdatePerformanceNfsAclIpRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "UpdatePerformanceNfsAclIp")
+	return
+}
+
+func NewUpdatePerformanceNfsAclIpResponse() (response *UpdatePerformanceNfsAclIpResponse) {
+	response = &UpdatePerformanceNfsAclIpResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdatePerformanceNfsAclIp(request *UpdatePerformanceNfsAclIpRequest) string {
+	return c.UpdatePerformanceNfsAclIpWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdatePerformanceNfsAclIpSend(request *UpdatePerformanceNfsAclIpRequest) (*UpdatePerformanceNfsAclIpResponse, error) {
+	statusCode, msg, err := c.UpdatePerformanceNfsAclIpWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct UpdatePerformanceNfsAclIpResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) UpdatePerformanceNfsAclIpWithContext(ctx context.Context, request *UpdatePerformanceNfsAclIpRequest) string {
+	if request == nil {
+		request = NewUpdatePerformanceNfsAclIpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "UpdatePerformanceNfsAclIp")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdatePerformanceNfsAclIpResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) UpdatePerformanceNfsAclIpWithContextV2(ctx context.Context, request *UpdatePerformanceNfsAclIpRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdatePerformanceNfsAclIpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "UpdatePerformanceNfsAclIp")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdatePerformanceNfsAclIpResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewRemovePerformanceNfsAclClientRequest() (request *RemovePerformanceNfsAclClientRequest) {
+	request = &RemovePerformanceNfsAclClientRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "RemovePerformanceNfsAclClient")
+	return
+}
+
+func NewRemovePerformanceNfsAclClientResponse() (response *RemovePerformanceNfsAclClientResponse) {
+	response = &RemovePerformanceNfsAclClientResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RemovePerformanceNfsAclClient(request *RemovePerformanceNfsAclClientRequest) string {
+	return c.RemovePerformanceNfsAclClientWithContext(context.Background(), request)
+}
+
+func (c *Client) RemovePerformanceNfsAclClientSend(request *RemovePerformanceNfsAclClientRequest) (*RemovePerformanceNfsAclClientResponse, error) {
+	statusCode, msg, err := c.RemovePerformanceNfsAclClientWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct RemovePerformanceNfsAclClientResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) RemovePerformanceNfsAclClientWithContext(ctx context.Context, request *RemovePerformanceNfsAclClientRequest) string {
+	if request == nil {
+		request = NewRemovePerformanceNfsAclClientRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "RemovePerformanceNfsAclClient")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRemovePerformanceNfsAclClientResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) RemovePerformanceNfsAclClientWithContextV2(ctx context.Context, request *RemovePerformanceNfsAclClientRequest) (int, string, error) {
+	if request == nil {
+		request = NewRemovePerformanceNfsAclClientRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "RemovePerformanceNfsAclClient")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRemovePerformanceNfsAclClientResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewAddPerformanceNfsAclClientRequest() (request *AddPerformanceNfsAclClientRequest) {
+	request = &AddPerformanceNfsAclClientRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "AddPerformanceNfsAclClient")
+	return
+}
+
+func NewAddPerformanceNfsAclClientResponse() (response *AddPerformanceNfsAclClientResponse) {
+	response = &AddPerformanceNfsAclClientResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) AddPerformanceNfsAclClient(request *AddPerformanceNfsAclClientRequest) string {
+	return c.AddPerformanceNfsAclClientWithContext(context.Background(), request)
+}
+
+func (c *Client) AddPerformanceNfsAclClientSend(request *AddPerformanceNfsAclClientRequest) (*AddPerformanceNfsAclClientResponse, error) {
+	statusCode, msg, err := c.AddPerformanceNfsAclClientWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct AddPerformanceNfsAclClientResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) AddPerformanceNfsAclClientWithContext(ctx context.Context, request *AddPerformanceNfsAclClientRequest) string {
+	if request == nil {
+		request = NewAddPerformanceNfsAclClientRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "AddPerformanceNfsAclClient")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewAddPerformanceNfsAclClientResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) AddPerformanceNfsAclClientWithContextV2(ctx context.Context, request *AddPerformanceNfsAclClientRequest) (int, string, error) {
+	if request == nil {
+		request = NewAddPerformanceNfsAclClientRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "AddPerformanceNfsAclClient")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewAddPerformanceNfsAclClientResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeletePerformanceOneNfsAclRequest() (request *DeletePerformanceOneNfsAclRequest) {
+	request = &DeletePerformanceOneNfsAclRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DeletePerformanceOneNfsAcl")
+	return
+}
+
+func NewDeletePerformanceOneNfsAclResponse() (response *DeletePerformanceOneNfsAclResponse) {
+	response = &DeletePerformanceOneNfsAclResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeletePerformanceOneNfsAcl(request *DeletePerformanceOneNfsAclRequest) string {
+	return c.DeletePerformanceOneNfsAclWithContext(context.Background(), request)
+}
+
+func (c *Client) DeletePerformanceOneNfsAclSend(request *DeletePerformanceOneNfsAclRequest) (*DeletePerformanceOneNfsAclResponse, error) {
+	statusCode, msg, err := c.DeletePerformanceOneNfsAclWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeletePerformanceOneNfsAclResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeletePerformanceOneNfsAclWithContext(ctx context.Context, request *DeletePerformanceOneNfsAclRequest) string {
+	if request == nil {
+		request = NewDeletePerformanceOneNfsAclRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeletePerformanceOneNfsAcl")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeletePerformanceOneNfsAclResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeletePerformanceOneNfsAclWithContextV2(ctx context.Context, request *DeletePerformanceOneNfsAclRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeletePerformanceOneNfsAclRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeletePerformanceOneNfsAcl")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeletePerformanceOneNfsAclResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewSetPerformanceOneNfsAclRequest() (request *SetPerformanceOneNfsAclRequest) {
+	request = &SetPerformanceOneNfsAclRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "SetPerformanceOneNfsAcl")
+	return
+}
+
+func NewSetPerformanceOneNfsAclResponse() (response *SetPerformanceOneNfsAclResponse) {
+	response = &SetPerformanceOneNfsAclResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetPerformanceOneNfsAcl(request *SetPerformanceOneNfsAclRequest) string {
+	return c.SetPerformanceOneNfsAclWithContext(context.Background(), request)
+}
+
+func (c *Client) SetPerformanceOneNfsAclSend(request *SetPerformanceOneNfsAclRequest) (*SetPerformanceOneNfsAclResponse, error) {
+	statusCode, msg, err := c.SetPerformanceOneNfsAclWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetPerformanceOneNfsAclResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetPerformanceOneNfsAclWithContext(ctx context.Context, request *SetPerformanceOneNfsAclRequest) string {
+	if request == nil {
+		request = NewSetPerformanceOneNfsAclRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "SetPerformanceOneNfsAcl")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetPerformanceOneNfsAclResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetPerformanceOneNfsAclWithContextV2(ctx context.Context, request *SetPerformanceOneNfsAclRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetPerformanceOneNfsAclRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "SetPerformanceOneNfsAcl")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetPerformanceOneNfsAclResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribePerformanceOneNfsAclListRequest() (request *DescribePerformanceOneNfsAclListRequest) {
+	request = &DescribePerformanceOneNfsAclListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribePerformanceOneNfsAclList")
+	return
+}
+
+func NewDescribePerformanceOneNfsAclListResponse() (response *DescribePerformanceOneNfsAclListResponse) {
+	response = &DescribePerformanceOneNfsAclListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribePerformanceOneNfsAclList(request *DescribePerformanceOneNfsAclListRequest) string {
+	return c.DescribePerformanceOneNfsAclListWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribePerformanceOneNfsAclListSend(request *DescribePerformanceOneNfsAclListRequest) (*DescribePerformanceOneNfsAclListResponse, error) {
+	statusCode, msg, err := c.DescribePerformanceOneNfsAclListWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribePerformanceOneNfsAclListResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribePerformanceOneNfsAclListWithContext(ctx context.Context, request *DescribePerformanceOneNfsAclListRequest) string {
+	if request == nil {
+		request = NewDescribePerformanceOneNfsAclListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribePerformanceOneNfsAclList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribePerformanceOneNfsAclListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribePerformanceOneNfsAclListWithContextV2(ctx context.Context, request *DescribePerformanceOneNfsAclListRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribePerformanceOneNfsAclListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribePerformanceOneNfsAclList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribePerformanceOneNfsAclListResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
