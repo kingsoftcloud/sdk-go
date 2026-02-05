@@ -6,7 +6,6 @@ import (
 )
 
 type CreateFunctionCode struct {
-	SourceUrl     *string `json:"SourceUrl,omitempty" name:"SourceUrl"`
 	Ks3BucketName *string `json:"Ks3BucketName,omitempty" name:"Ks3BucketName"`
 	Ks3ObjectName *string `json:"Ks3ObjectName,omitempty" name:"Ks3ObjectName"`
 }
@@ -48,6 +47,10 @@ type CreateFunctionReadinessProbeConfigHTTPGet struct {
 type CreateFunctionReadinessProbeConfig struct {
 	HTTPGet *CreateFunctionReadinessProbeConfigHTTPGet `json:"HTTPGet,omitempty" name:"HTTPGet"`
 }
+type CreateFunctionCustomContainerConfig struct {
+	Image        *string `json:"Image,omitempty" name:"Image"`
+	ImageVersion *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
+}
 type CreateTriggerTriggerDesc struct {
 	Methods      []*string `json:"Methods,omitempty" name:"Methods"`
 	AuthRequired *bool     `json:"AuthRequired,omitempty" name:"AuthRequired"`
@@ -56,7 +59,6 @@ type CreateTriggerTriggerDesc struct {
 	Protocol     *string   `json:"Protocol,omitempty" name:"Protocol"`
 }
 type ModifyFunctionCode struct {
-	SourceUrl     *string `json:"SourceUrl,omitempty" name:"SourceUrl"`
 	Ks3BucketName *string `json:"Ks3BucketName,omitempty" name:"Ks3BucketName"`
 	Ks3ObjectName *string `json:"Ks3ObjectName,omitempty" name:"Ks3ObjectName"`
 }
@@ -98,6 +100,10 @@ type ModifyFunctionReadinessProbeConfigHTTPGet struct {
 type ModifyFunctionReadinessProbeConfig struct {
 	HTTPGet *ModifyFunctionReadinessProbeConfigHTTPGet `json:"HTTPGet,omitempty" name:"HTTPGet"`
 }
+type ModifyFunctionCustomContainerConfig struct {
+	Image        *string `json:"Image,omitempty" name:"Image"`
+	ImageVersion *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
+}
 
 type GetLogDateRequest struct {
 	*ksyunhttp.BaseRequest
@@ -125,24 +131,26 @@ func (r *GetLogDateResponse) FromJsonString(s string) error {
 
 type CreateFunctionRequest struct {
 	*ksyunhttp.BaseRequest
-	Id                        *string                             `json:"Id,omitempty" name:"Id"`
-	Name                      *string                             `json:"Name,omitempty" name:"Name"`
-	Namespace                 *string                             `json:"Namespace,omitempty" name:"Namespace"`
-	Runtime                   *string                             `json:"Runtime,omitempty" name:"Runtime"`
-	CaPort                    *int                                `json:"CaPort,omitempty" name:"CaPort"`
-	StartupCommand            []*string                           `json:"StartupCommand,omitempty" name:"StartupCommand"`
-	Description               *string                             `json:"Description,omitempty" name:"Description"`
-	Timeout                   *int                                `json:"Timeout,omitempty" name:"Timeout"`
-	MemorySize                *int                                `json:"MemorySize,omitempty" name:"MemorySize"`
-	SingleInstanceConcurrency *int                                `json:"SingleInstanceConcurrency,omitempty" name:"SingleInstanceConcurrency"`
-	InternetAccess            *bool                               `json:"InternetAccess,omitempty" name:"InternetAccess"`
-	Code                      *CreateFunctionCode                 `json:"Code,omitempty" name:"Code"`
-	Environment               *CreateFunctionEnvironment          `json:"Environment,omitempty" name:"Environment"`
-	VpcConfig                 *CreateFunctionVpcConfig            `json:"VpcConfig,omitempty" name:"VpcConfig"`
-	LogConfig                 *CreateFunctionLogConfig            `json:"LogConfig,omitempty" name:"LogConfig"`
-	LivenessProbeConfig       *CreateFunctionLivenessProbeConfig  `json:"LivenessProbeConfig,omitempty" name:"LivenessProbeConfig"`
-	ReadinessProbeConfig      *CreateFunctionReadinessProbeConfig `json:"ReadinessProbeConfig,omitempty" name:"ReadinessProbeConfig"`
-	Layers                    []*string                           `json:"Layers,omitempty" name:"Layers"`
+	Id                        *string                              `json:"Id,omitempty" name:"Id"`
+	Name                      *string                              `json:"Name,omitempty" name:"Name"`
+	Namespace                 *string                              `json:"Namespace,omitempty" name:"Namespace"`
+	Runtime                   *string                              `json:"Runtime,omitempty" name:"Runtime"`
+	CaPort                    *int                                 `json:"CaPort,omitempty" name:"CaPort"`
+	StartupCommand            []*string                            `json:"StartupCommand,omitempty" name:"StartupCommand"`
+	Description               *string                              `json:"Description,omitempty" name:"Description"`
+	Timeout                   *int                                 `json:"Timeout,omitempty" name:"Timeout"`
+	MemorySize                *int                                 `json:"MemorySize,omitempty" name:"MemorySize"`
+	SingleInstanceConcurrency *int                                 `json:"SingleInstanceConcurrency,omitempty" name:"SingleInstanceConcurrency"`
+	InternetAccess            *bool                                `json:"InternetAccess,omitempty" name:"InternetAccess"`
+	Code                      *CreateFunctionCode                  `json:"Code,omitempty" name:"Code"`
+	Environment               *CreateFunctionEnvironment           `json:"Environment,omitempty" name:"Environment"`
+	VpcConfig                 *CreateFunctionVpcConfig             `json:"VpcConfig,omitempty" name:"VpcConfig"`
+	LogConfig                 *CreateFunctionLogConfig             `json:"LogConfig,omitempty" name:"LogConfig"`
+	LivenessProbeConfig       *CreateFunctionLivenessProbeConfig   `json:"LivenessProbeConfig,omitempty" name:"LivenessProbeConfig"`
+	ReadinessProbeConfig      *CreateFunctionReadinessProbeConfig  `json:"ReadinessProbeConfig,omitempty" name:"ReadinessProbeConfig"`
+	Layers                    []*string                            `json:"Layers,omitempty" name:"Layers"`
+	CodeType                  *string                              `json:"CodeType,omitempty" name:"CodeType"`
+	CustomContainerConfig     *CreateFunctionCustomContainerConfig `json:"CustomContainerConfig,omitempty" name:"CustomContainerConfig"`
 }
 
 func (r *CreateFunctionRequest) ToJsonString() string {
@@ -294,21 +302,22 @@ func (r *DeleteTriggerResponse) FromJsonString(s string) error {
 
 type ModifyFunctionRequest struct {
 	*ksyunhttp.BaseRequest
-	Id                        *string                             `json:"Id,omitempty" name:"Id"`
-	Runtime                   *string                             `json:"Runtime,omitempty" name:"Runtime"`
-	CaPort                    *int                                `json:"CaPort,omitempty" name:"CaPort"`
-	StartupCommand            []*string                           `json:"StartupCommand,omitempty" name:"StartupCommand"`
-	Timeout                   *int                                `json:"Timeout,omitempty" name:"Timeout"`
-	MemorySize                *int                                `json:"MemorySize,omitempty" name:"MemorySize"`
-	SingleInstanceConcurrency *int                                `json:"SingleInstanceConcurrency,omitempty" name:"SingleInstanceConcurrency"`
-	InternetAccess            *bool                               `json:"InternetAccess,omitempty" name:"InternetAccess"`
-	Code                      *ModifyFunctionCode                 `json:"Code,omitempty" name:"Code"`
-	Environment               *ModifyFunctionEnvironment          `json:"Environment,omitempty" name:"Environment"`
-	VpcConfig                 *ModifyFunctionVpcConfig            `json:"VpcConfig,omitempty" name:"VpcConfig"`
-	LogConfig                 *ModifyFunctionLogConfig            `json:"LogConfig,omitempty" name:"LogConfig"`
-	LivenessProbeConfig       *ModifyFunctionLivenessProbeConfig  `json:"LivenessProbeConfig,omitempty" name:"LivenessProbeConfig"`
-	ReadinessProbeConfig      *ModifyFunctionReadinessProbeConfig `json:"ReadinessProbeConfig,omitempty" name:"ReadinessProbeConfig"`
-	Layers                    []*string                           `json:"Layers,omitempty" name:"Layers"`
+	Id                        *string                              `json:"Id,omitempty" name:"Id"`
+	Runtime                   *string                              `json:"Runtime,omitempty" name:"Runtime"`
+	CaPort                    *int                                 `json:"CaPort,omitempty" name:"CaPort"`
+	StartupCommand            []*string                            `json:"StartupCommand,omitempty" name:"StartupCommand"`
+	Timeout                   *int                                 `json:"Timeout,omitempty" name:"Timeout"`
+	MemorySize                *int                                 `json:"MemorySize,omitempty" name:"MemorySize"`
+	SingleInstanceConcurrency *int                                 `json:"SingleInstanceConcurrency,omitempty" name:"SingleInstanceConcurrency"`
+	InternetAccess            *bool                                `json:"InternetAccess,omitempty" name:"InternetAccess"`
+	Code                      *ModifyFunctionCode                  `json:"Code,omitempty" name:"Code"`
+	Environment               *ModifyFunctionEnvironment           `json:"Environment,omitempty" name:"Environment"`
+	VpcConfig                 *ModifyFunctionVpcConfig             `json:"VpcConfig,omitempty" name:"VpcConfig"`
+	LogConfig                 *ModifyFunctionLogConfig             `json:"LogConfig,omitempty" name:"LogConfig"`
+	LivenessProbeConfig       *ModifyFunctionLivenessProbeConfig   `json:"LivenessProbeConfig,omitempty" name:"LivenessProbeConfig"`
+	ReadinessProbeConfig      *ModifyFunctionReadinessProbeConfig  `json:"ReadinessProbeConfig,omitempty" name:"ReadinessProbeConfig"`
+	Layers                    []*string                            `json:"Layers,omitempty" name:"Layers"`
+	CustomContainerConfig     *ModifyFunctionCustomContainerConfig `json:"CustomContainerConfig,omitempty" name:"CustomContainerConfig"`
 }
 
 func (r *ModifyFunctionRequest) ToJsonString() string {
