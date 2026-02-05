@@ -2708,3 +2708,82 @@ func (c *Client) UpgradeReleaseWithContextV2(ctx context.Context, request *Upgra
 	}
 	return statusCode, msg, nil
 }
+func NewCreateWebSocketPublicUriRequest() (request *CreateWebSocketPublicUriRequest) {
+	request = &CreateWebSocketPublicUriRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kce", APIVersion, "CreateWebSocketPublicUri")
+	return
+}
+
+func NewCreateWebSocketPublicUriResponse() (response *CreateWebSocketPublicUriResponse) {
+	response = &CreateWebSocketPublicUriResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateWebSocketPublicUri(request *CreateWebSocketPublicUriRequest) string {
+	return c.CreateWebSocketPublicUriWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateWebSocketPublicUriSend(request *CreateWebSocketPublicUriRequest) (*CreateWebSocketPublicUriResponse, error) {
+	statusCode, msg, err := c.CreateWebSocketPublicUriWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateWebSocketPublicUriResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateWebSocketPublicUriWithContext(ctx context.Context, request *CreateWebSocketPublicUriRequest) string {
+	if request == nil {
+		request = NewCreateWebSocketPublicUriRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "CreateWebSocketPublicUri")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateWebSocketPublicUriResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateWebSocketPublicUriWithContextV2(ctx context.Context, request *CreateWebSocketPublicUriRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateWebSocketPublicUriRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kce", APIVersion, "CreateWebSocketPublicUri")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateWebSocketPublicUriResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}

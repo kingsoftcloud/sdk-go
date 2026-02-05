@@ -1666,3 +1666,35 @@ func (r *UpgradeReleaseResponse) ToJsonString() string {
 func (r *UpgradeReleaseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type CreateWebSocketPublicUriRequest struct {
+	*ksyunhttp.BaseRequest
+	ClusterId     *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	Namespace     *string `json:"Namespace,omitempty" name:"Namespace"`
+	PodName       *string `json:"PodName,omitempty" name:"PodName"`
+	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	Command       *string `json:"Command,omitempty" name:"Command"`
+	Tty           *bool   `json:"Tty,omitempty" name:"Tty"`
+}
+
+func (r *CreateWebSocketPublicUriRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateWebSocketPublicUriResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		WsURL *string `json:"WsURL" name:"WsURL"`
+	} `json:"Data"`
+}
+
+func (r *CreateWebSocketPublicUriResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateWebSocketPublicUriResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
