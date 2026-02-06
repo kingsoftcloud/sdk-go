@@ -58,6 +58,29 @@ type CreateTriggerTriggerDesc struct {
 	Timeout      *int      `json:"Timeout,omitempty" name:"Timeout"`
 	Protocol     *string   `json:"Protocol,omitempty" name:"Protocol"`
 }
+type CreateAutoScaledTriggerTriggersTriggerConfig struct {
+	QpsValue        *int    `json:"QpsValue,omitempty" name:"QpsValue"`
+	CronType        *string `json:"CronType,omitempty" name:"CronType"`
+	StartTime       *int64  `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime         *int64  `json:"EndTime,omitempty" name:"EndTime"`
+	DesiredReplicas *int    `json:"DesiredReplicas,omitempty" name:"DesiredReplicas"`
+	MemoryType      *string `json:"MemoryType,omitempty" name:"MemoryType"`
+	MemoryValue     *int    `json:"MemoryValue,omitempty" name:"MemoryValue"`
+}
+type CreateAutoScaledTriggerTriggers struct {
+	Name          *string                                       `json:"Name,omitempty" name:"Name"`
+	Type          *string                                       `json:"Type,omitempty" name:"Type"`
+	TriggerConfig *CreateAutoScaledTriggerTriggersTriggerConfig `json:"TriggerConfig,omitempty" name:"TriggerConfig"`
+}
+type ModifyAutoScaledTriggerTriggerConfig struct {
+	QpsValue        *int    `json:"QpsValue,omitempty" name:"QpsValue"`
+	CronType        *string `json:"CronType,omitempty" name:"CronType"`
+	StartTime       *int64  `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime         *int64  `json:"EndTime,omitempty" name:"EndTime"`
+	DesiredReplicas *int    `json:"DesiredReplicas,omitempty" name:"DesiredReplicas"`
+	MemoryType      *string `json:"MemoryType,omitempty" name:"MemoryType"`
+	MemoryValue     *int    `json:"MemoryValue,omitempty" name:"MemoryValue"`
+}
 type ModifyFunctionCode struct {
 	Ks3BucketName *string `json:"Ks3BucketName,omitempty" name:"Ks3BucketName"`
 	Ks3ObjectName *string `json:"Ks3ObjectName,omitempty" name:"Ks3ObjectName"`
@@ -297,6 +320,182 @@ func (r *DeleteTriggerResponse) ToJsonString() string {
 }
 
 func (r *DeleteTriggerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateOrModifyAutoScalingConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	FunctionId                 *string `json:"FunctionId,omitempty" name:"FunctionId"`
+	IdleReplicaCount           *int    `json:"IdleReplicaCount,omitempty" name:"IdleReplicaCount"`
+	MaxReplicaCount            *int    `json:"MaxReplicaCount,omitempty" name:"MaxReplicaCount"`
+	MinReplicaCount            *int    `json:"MinReplicaCount,omitempty" name:"MinReplicaCount"`
+	CooldownPeriod             *int    `json:"CooldownPeriod,omitempty" name:"CooldownPeriod"`
+	StabilizationWindowSeconds *int    `json:"StabilizationWindowSeconds,omitempty" name:"StabilizationWindowSeconds"`
+}
+
+func (r *CreateOrModifyAutoScalingConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateOrModifyAutoScalingConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateOrModifyAutoScalingConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateOrModifyAutoScalingConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAutoScalingConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	FunctionId *string `json:"FunctionId,omitempty" name:"FunctionId"`
+}
+
+func (r *DescribeAutoScalingConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeAutoScalingConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		IdleReplicaCount           *int `json:"IdleReplicaCount" name:"IdleReplicaCount"`
+		MaxReplicaCount            *int `json:"MaxReplicaCount" name:"MaxReplicaCount"`
+		MinReplicaCount            *int `json:"MinReplicaCount" name:"MinReplicaCount"`
+		CooldownPeriod             *int `json:"CooldownPeriod" name:"CooldownPeriod"`
+		StabilizationWindowSeconds *int `json:"StabilizationWindowSeconds" name:"StabilizationWindowSeconds"`
+	} `json:"Data"`
+}
+
+func (r *DescribeAutoScalingConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeAutoScalingConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateAutoScaledTriggerRequest struct {
+	*ksyunhttp.BaseRequest
+	FunctionId *string                            `json:"FunctionId,omitempty" name:"FunctionId"`
+	Triggers   []*CreateAutoScaledTriggerTriggers `json:"Triggers,omitempty" name:"Triggers"`
+}
+
+func (r *CreateAutoScaledTriggerRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateAutoScaledTriggerResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateAutoScaledTriggerResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateAutoScaledTriggerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAutoScaledTriggerRequest struct {
+	*ksyunhttp.BaseRequest
+	FucntionId    *string                               `json:"FucntionId,omitempty" name:"FucntionId"`
+	Name          *string                               `json:"Name,omitempty" name:"Name"`
+	TriggerConfig *ModifyAutoScaledTriggerTriggerConfig `json:"TriggerConfig,omitempty" name:"TriggerConfig"`
+}
+
+func (r *ModifyAutoScaledTriggerRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyAutoScaledTriggerResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyAutoScaledTriggerResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyAutoScaledTriggerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAutoScaledTriggersRequest struct {
+	*ksyunhttp.BaseRequest
+	FunctionId *string `json:"FunctionId,omitempty" name:"FunctionId"`
+	Name       *string `json:"Name,omitempty" name:"Name"`
+	Type       *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DescribeAutoScaledTriggersRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeAutoScaledTriggersResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		Triggers []struct {
+			Name          *string `json:"Name" name:"Name"`
+			Type          *string `json:"Type" name:"Type"`
+			TriggerConfig struct {
+				QpsValue        *int    `json:"QpsValue" name:"QpsValue"`
+				StartTime       *int    `json:"StartTime" name:"StartTime"`
+				EndTime         *int    `json:"EndTime" name:"EndTime"`
+				CronType        *string `json:"CronType" name:"CronType"`
+				MemoryType      *string `json:"MemoryType" name:"MemoryType"`
+				MemoryValue     *string `json:"MemoryValue" name:"MemoryValue"`
+				DesiredReplicas *int    `json:"DesiredReplicas" name:"DesiredReplicas"`
+			} `json:"TriggerConfig"`
+		} `json:"Triggers" name:"Triggers"`
+	} `json:"Data"`
+}
+
+func (r *DescribeAutoScaledTriggersResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeAutoScaledTriggersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAutoScaledTriggerRequest struct {
+	*ksyunhttp.BaseRequest
+	Functionid  *string `json:"Functionid,omitempty" name:"Functionid"`
+	TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
+}
+
+func (r *DeleteAutoScaledTriggerRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteAutoScaledTriggerResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *DeleteAutoScaledTriggerResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteAutoScaledTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

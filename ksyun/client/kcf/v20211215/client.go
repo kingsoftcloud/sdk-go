@@ -575,6 +575,480 @@ func (c *Client) DeleteTriggerWithContextV2(ctx context.Context, request *Delete
 	}
 	return statusCode, msg, nil
 }
+func NewCreateOrModifyAutoScalingConfigRequest() (request *CreateOrModifyAutoScalingConfigRequest) {
+	request = &CreateOrModifyAutoScalingConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcf", APIVersion, "CreateOrModifyAutoScalingConfig")
+	return
+}
+
+func NewCreateOrModifyAutoScalingConfigResponse() (response *CreateOrModifyAutoScalingConfigResponse) {
+	response = &CreateOrModifyAutoScalingConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateOrModifyAutoScalingConfig(request *CreateOrModifyAutoScalingConfigRequest) string {
+	return c.CreateOrModifyAutoScalingConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateOrModifyAutoScalingConfigSend(request *CreateOrModifyAutoScalingConfigRequest) (*CreateOrModifyAutoScalingConfigResponse, error) {
+	statusCode, msg, err := c.CreateOrModifyAutoScalingConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateOrModifyAutoScalingConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateOrModifyAutoScalingConfigWithContext(ctx context.Context, request *CreateOrModifyAutoScalingConfigRequest) string {
+	if request == nil {
+		request = NewCreateOrModifyAutoScalingConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "CreateOrModifyAutoScalingConfig")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateOrModifyAutoScalingConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateOrModifyAutoScalingConfigWithContextV2(ctx context.Context, request *CreateOrModifyAutoScalingConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateOrModifyAutoScalingConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "CreateOrModifyAutoScalingConfig")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateOrModifyAutoScalingConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeAutoScalingConfigRequest() (request *DescribeAutoScalingConfigRequest) {
+	request = &DescribeAutoScalingConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcf", APIVersion, "DescribeAutoScalingConfig")
+	return
+}
+
+func NewDescribeAutoScalingConfigResponse() (response *DescribeAutoScalingConfigResponse) {
+	response = &DescribeAutoScalingConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeAutoScalingConfig(request *DescribeAutoScalingConfigRequest) string {
+	return c.DescribeAutoScalingConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAutoScalingConfigSend(request *DescribeAutoScalingConfigRequest) (*DescribeAutoScalingConfigResponse, error) {
+	statusCode, msg, err := c.DescribeAutoScalingConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeAutoScalingConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeAutoScalingConfigWithContext(ctx context.Context, request *DescribeAutoScalingConfigRequest) string {
+	if request == nil {
+		request = NewDescribeAutoScalingConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "DescribeAutoScalingConfig")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeAutoScalingConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeAutoScalingConfigWithContextV2(ctx context.Context, request *DescribeAutoScalingConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeAutoScalingConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "DescribeAutoScalingConfig")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeAutoScalingConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateAutoScaledTriggerRequest() (request *CreateAutoScaledTriggerRequest) {
+	request = &CreateAutoScaledTriggerRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcf", APIVersion, "CreateAutoScaledTrigger")
+	return
+}
+
+func NewCreateAutoScaledTriggerResponse() (response *CreateAutoScaledTriggerResponse) {
+	response = &CreateAutoScaledTriggerResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateAutoScaledTrigger(request *CreateAutoScaledTriggerRequest) string {
+	return c.CreateAutoScaledTriggerWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateAutoScaledTriggerSend(request *CreateAutoScaledTriggerRequest) (*CreateAutoScaledTriggerResponse, error) {
+	statusCode, msg, err := c.CreateAutoScaledTriggerWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateAutoScaledTriggerResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateAutoScaledTriggerWithContext(ctx context.Context, request *CreateAutoScaledTriggerRequest) string {
+	if request == nil {
+		request = NewCreateAutoScaledTriggerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "CreateAutoScaledTrigger")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateAutoScaledTriggerResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateAutoScaledTriggerWithContextV2(ctx context.Context, request *CreateAutoScaledTriggerRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateAutoScaledTriggerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "CreateAutoScaledTrigger")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateAutoScaledTriggerResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyAutoScaledTriggerRequest() (request *ModifyAutoScaledTriggerRequest) {
+	request = &ModifyAutoScaledTriggerRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcf", APIVersion, "ModifyAutoScaledTrigger")
+	return
+}
+
+func NewModifyAutoScaledTriggerResponse() (response *ModifyAutoScaledTriggerResponse) {
+	response = &ModifyAutoScaledTriggerResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyAutoScaledTrigger(request *ModifyAutoScaledTriggerRequest) string {
+	return c.ModifyAutoScaledTriggerWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyAutoScaledTriggerSend(request *ModifyAutoScaledTriggerRequest) (*ModifyAutoScaledTriggerResponse, error) {
+	statusCode, msg, err := c.ModifyAutoScaledTriggerWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ModifyAutoScaledTriggerResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyAutoScaledTriggerWithContext(ctx context.Context, request *ModifyAutoScaledTriggerRequest) string {
+	if request == nil {
+		request = NewModifyAutoScaledTriggerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "ModifyAutoScaledTrigger")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyAutoScaledTriggerResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyAutoScaledTriggerWithContextV2(ctx context.Context, request *ModifyAutoScaledTriggerRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyAutoScaledTriggerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "ModifyAutoScaledTrigger")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyAutoScaledTriggerResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeAutoScaledTriggersRequest() (request *DescribeAutoScaledTriggersRequest) {
+	request = &DescribeAutoScaledTriggersRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcf", APIVersion, "DescribeAutoScaledTriggers")
+	return
+}
+
+func NewDescribeAutoScaledTriggersResponse() (response *DescribeAutoScaledTriggersResponse) {
+	response = &DescribeAutoScaledTriggersResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeAutoScaledTriggers(request *DescribeAutoScaledTriggersRequest) string {
+	return c.DescribeAutoScaledTriggersWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAutoScaledTriggersSend(request *DescribeAutoScaledTriggersRequest) (*DescribeAutoScaledTriggersResponse, error) {
+	statusCode, msg, err := c.DescribeAutoScaledTriggersWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeAutoScaledTriggersResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeAutoScaledTriggersWithContext(ctx context.Context, request *DescribeAutoScaledTriggersRequest) string {
+	if request == nil {
+		request = NewDescribeAutoScaledTriggersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "DescribeAutoScaledTriggers")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeAutoScaledTriggersResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeAutoScaledTriggersWithContextV2(ctx context.Context, request *DescribeAutoScaledTriggersRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeAutoScaledTriggersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "DescribeAutoScaledTriggers")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeAutoScaledTriggersResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteAutoScaledTriggerRequest() (request *DeleteAutoScaledTriggerRequest) {
+	request = &DeleteAutoScaledTriggerRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcf", APIVersion, "DeleteAutoScaledTrigger")
+	return
+}
+
+func NewDeleteAutoScaledTriggerResponse() (response *DeleteAutoScaledTriggerResponse) {
+	response = &DeleteAutoScaledTriggerResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteAutoScaledTrigger(request *DeleteAutoScaledTriggerRequest) string {
+	return c.DeleteAutoScaledTriggerWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteAutoScaledTriggerSend(request *DeleteAutoScaledTriggerRequest) (*DeleteAutoScaledTriggerResponse, error) {
+	statusCode, msg, err := c.DeleteAutoScaledTriggerWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteAutoScaledTriggerResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteAutoScaledTriggerWithContext(ctx context.Context, request *DeleteAutoScaledTriggerRequest) string {
+	if request == nil {
+		request = NewDeleteAutoScaledTriggerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "DeleteAutoScaledTrigger")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteAutoScaledTriggerResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteAutoScaledTriggerWithContextV2(ctx context.Context, request *DeleteAutoScaledTriggerRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteAutoScaledTriggerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "DeleteAutoScaledTrigger")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteAutoScaledTriggerResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewDescribeFunctionsRequest() (request *DescribeFunctionsRequest) {
 	request = &DescribeFunctionsRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
