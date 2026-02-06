@@ -300,6 +300,133 @@ func (r *DeleteTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeFunctionsRequest struct {
+	*ksyunhttp.BaseRequest
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+func (r *DescribeFunctionsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeFunctionsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		MaxRecords *int `json:"MaxRecords" name:"MaxRecords"`
+		Marker     *int `json:"Marker" name:"Marker"`
+		TotalCount *int `json:"TotalCount" name:"TotalCount"`
+		Functions  []struct {
+			Id                       *string `json:"Id" name:"Id"`
+			Name                     *string `json:"Name" name:"Name"`
+			Description              *string `json:"Description" name:"Description"`
+			Runtime                  *string `json:"Runtime" name:"Runtime"`
+			MemorySize               *int    `json:"MemorySize" name:"MemorySize"`
+			CodeType                 *string `json:"CodeType" name:"CodeType"`
+			State                    *string `json:"State" name:"State"`
+			FunctionTotalInvocations *int    `json:"FunctionTotalInvocations" name:"FunctionTotalInvocations"`
+			FunctionErrors           *int    `json:"FunctionErrors" name:"FunctionErrors"`
+			RequestType              *string `json:"RequestType" name:"RequestType"`
+			CreatedAt                *string `json:"CreatedAt" name:"CreatedAt"`
+			UpdatedAt                *string `json:"UpdatedAt" name:"UpdatedAt"`
+		} `json:"Functions" name:"Functions"`
+	} `json:"Data"`
+}
+
+func (r *DescribeFunctionsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeFunctionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFunctionRequest struct {
+	*ksyunhttp.BaseRequest
+	Id *string `json:"id,omitempty" name:"id"`
+}
+
+func (r *DescribeFunctionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeFunctionResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		Id          *string `json:"Id" name:"Id"`
+		Namespace   *string `json:"Namespace" name:"Namespace"`
+		Name        *string `json:"Name" name:"Name"`
+		Description *string `json:"Description" name:"Description"`
+		Runtime     *string `json:"Runtime" name:"Runtime"`
+		Code        struct {
+			TempKs3ObjectName *string `json:"TempKs3ObjectName" name:"TempKs3ObjectName"`
+		} `json:"Code" name:"Code"`
+		Timeout                   *int  `json:"Timeout" name:"Timeout"`
+		SingleInstanceConcurrency *int  `json:"SingleInstanceConcurrency" name:"SingleInstanceConcurrency"`
+		MemorySize                *int  `json:"MemorySize" name:"MemorySize"`
+		InternetAccess            *bool `json:"InternetAccess" name:"InternetAccess"`
+		VpcConfig                 struct {
+			SubnetId  *string `json:"SubnetId" name:"SubnetId"`
+			SgId      *string `json:"SgId" name:"SgId"`
+			EnableVpc *bool   `json:"EnableVpc" name:"EnableVpc"`
+			VpcId     *string `json:"VpcId" name:"VpcId"`
+			Subnets   []struct {
+				SubnetId         *string `json:"SubnetId" name:"SubnetId"`
+				SgId             *string `json:"SgId" name:"SgId"`
+				CidrBlock        *string `json:"CidrBlock" name:"CidrBlock"`
+				AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+			} `json:"Subnets"`
+			VpcCidrBlock *string `json:"VpcCidrBlock" name:"VpcCidrBlock"`
+		} `json:"VpcConfig" name:"VpcConfig"`
+		LogConfig struct {
+			EnableKlog *bool   `json:"EnableKlog" name:"EnableKlog"`
+			Project    *string `json:"Project" name:"Project"`
+			LogPool    *string `json:"LogPool" name:"LogPool"`
+		} `json:"LogConfig" name:"LogConfig"`
+		LivenessProbeConfig struct {
+			HTTPGet struct {
+				Protocol       *string `json:"Protocol" name:"Protocol"`
+				Path           *string `json:"Path" name:"Path"`
+				Port           *int    `json:"Port" name:"Port"`
+				TimeoutSeconds *int    `json:"TimeoutSeconds" name:"TimeoutSeconds"`
+			} `json:"HTTPGet"`
+		} `json:"LivenessProbeConfig" name:"LivenessProbeConfig"`
+		ReadinessProbeConfig struct {
+			HTTPGet struct {
+				Protocol       *string `json:"Protocol" name:"Protocol"`
+				Path           *string `json:"Path" name:"Path"`
+				Port           *int    `json:"Port" name:"Port"`
+				TimeoutSeconds *int    `json:"TimeoutSeconds" name:"TimeoutSeconds"`
+			} `json:"HTTPGet"`
+		} `json:"ReadinessProbeConfig" name:"ReadinessProbeConfig"`
+		AsyncConfig struct {
+			RetryEnable *bool `json:"RetryEnable" name:"RetryEnable"`
+		} `json:"AsyncConfig" name:"AsyncConfig"`
+		CaPort                *int      `json:"CaPort" name:"CaPort"`
+		StartupCommand        []*string `json:"StartupCommand" name:"StartupCommand"`
+		State                 *string   `json:"State" name:"State"`
+		CodeType              *string   `json:"CodeType" name:"CodeType"`
+		CustomContainerConfig struct {
+			Image     *string `json:"Image" name:"Image"`
+			ImageName *string `json:"ImageName" name:"ImageName"`
+			Version   *string `json:"Version" name:"Version"`
+		} `json:"CustomContainerConfig" name:"CustomContainerConfig"`
+	} `json:"Data"`
+}
+
+func (r *DescribeFunctionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeFunctionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyFunctionRequest struct {
 	*ksyunhttp.BaseRequest
 	Id                        *string                              `json:"Id,omitempty" name:"Id"`

@@ -388,7 +388,7 @@ func (c *Client) DeleteFunctionWithContext(ctx context.Context, request *DeleteF
 		request.Init().WithApiInfo("kcf", APIVersion, "DeleteFunction")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewDeleteFunctionResponse()
 	err, msg := c.Send(request, response)
@@ -408,7 +408,7 @@ func (c *Client) DeleteFunctionWithContextV2(ctx context.Context, request *Delet
 		request.Init().WithApiInfo("kcf", APIVersion, "DeleteFunction")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewDeleteFunctionResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -546,7 +546,7 @@ func (c *Client) DeleteTriggerWithContext(ctx context.Context, request *DeleteTr
 		request.Init().WithApiInfo("kcf", APIVersion, "DeleteTrigger")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewDeleteTriggerResponse()
 	err, msg := c.Send(request, response)
@@ -566,9 +566,167 @@ func (c *Client) DeleteTriggerWithContextV2(ctx context.Context, request *Delete
 		request.Init().WithApiInfo("kcf", APIVersion, "DeleteTrigger")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewDeleteTriggerResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeFunctionsRequest() (request *DescribeFunctionsRequest) {
+	request = &DescribeFunctionsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcf", APIVersion, "DescribeFunctions")
+	return
+}
+
+func NewDescribeFunctionsResponse() (response *DescribeFunctionsResponse) {
+	response = &DescribeFunctionsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeFunctions(request *DescribeFunctionsRequest) string {
+	return c.DescribeFunctionsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeFunctionsSend(request *DescribeFunctionsRequest) (*DescribeFunctionsResponse, error) {
+	statusCode, msg, err := c.DescribeFunctionsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeFunctionsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeFunctionsWithContext(ctx context.Context, request *DescribeFunctionsRequest) string {
+	if request == nil {
+		request = NewDescribeFunctionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "DescribeFunctions")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeFunctionsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeFunctionsWithContextV2(ctx context.Context, request *DescribeFunctionsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeFunctionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "DescribeFunctions")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeFunctionsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeFunctionRequest() (request *DescribeFunctionRequest) {
+	request = &DescribeFunctionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcf", APIVersion, "DescribeFunction")
+	return
+}
+
+func NewDescribeFunctionResponse() (response *DescribeFunctionResponse) {
+	response = &DescribeFunctionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeFunction(request *DescribeFunctionRequest) string {
+	return c.DescribeFunctionWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeFunctionSend(request *DescribeFunctionRequest) (*DescribeFunctionResponse, error) {
+	statusCode, msg, err := c.DescribeFunctionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeFunctionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeFunctionWithContext(ctx context.Context, request *DescribeFunctionRequest) string {
+	if request == nil {
+		request = NewDescribeFunctionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "DescribeFunction")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeFunctionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeFunctionWithContextV2(ctx context.Context, request *DescribeFunctionRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeFunctionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcf", APIVersion, "DescribeFunction")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeFunctionResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
@@ -704,7 +862,7 @@ func (c *Client) DescribeTriggersWithContext(ctx context.Context, request *Descr
 		request.Init().WithApiInfo("kcf", APIVersion, "DescribeTriggers")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewDescribeTriggersResponse()
 	err, msg := c.Send(request, response)
@@ -724,7 +882,7 @@ func (c *Client) DescribeTriggersWithContextV2(ctx context.Context, request *Des
 		request.Init().WithApiInfo("kcf", APIVersion, "DescribeTriggers")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewDescribeTriggersResponse()
 	statusCode, msg, err := c.SendV2(request, response)

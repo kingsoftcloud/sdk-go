@@ -87,6 +87,328 @@ func (r *DescribeFileSystemListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GetTotalSizeRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	StartTime    *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime      *string `json:"EndTime,omitempty" name:"EndTime"`
+	Interval     *string `json:"Interval,omitempty" name:"Interval"`
+}
+
+func (r *GetTotalSizeRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetTotalSizeResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Time  *int64 `json:"Time" name:"Time"`
+		Value *int64 `json:"Value" name:"Value"`
+	} `json:"Data"`
+}
+
+func (r *GetTotalSizeResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetTotalSizeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetInodeCountRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	StartTime    *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime      *string `json:"EndTime,omitempty" name:"EndTime"`
+	Interval     *string `json:"Interval,omitempty" name:"Interval"`
+}
+
+func (r *GetInodeCountRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetInodeCountResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Time  *int64 `json:"Time" name:"Time"`
+		Value *int64 `json:"Value" name:"Value"`
+	} `json:"Data"`
+}
+
+func (r *GetInodeCountResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetInodeCountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetCapacityAvailableRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	StartTime    *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime      *string `json:"EndTime,omitempty" name:"EndTime"`
+	Interval     *string `json:"Interval,omitempty" name:"Interval"`
+}
+
+func (r *GetCapacityAvailableRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetCapacityAvailableResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Time  *int64 `json:"Time" name:"Time"`
+		Value *int64 `json:"Value" name:"Value"`
+	} `json:"Data"`
+}
+
+func (r *GetCapacityAvailableResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetCapacityAvailableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetCapacityTotalRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	StartTime    *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime      *string `json:"EndTime,omitempty" name:"EndTime"`
+	Interval     *string `json:"Interval,omitempty" name:"Interval"`
+}
+
+func (r *GetCapacityTotalRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetCapacityTotalResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Time  *int64 `json:"Time" name:"Time"`
+		Value *int64 `json:"Value" name:"Value"`
+	} `json:"Data"`
+}
+
+func (r *GetCapacityTotalResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetCapacityTotalResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetLatencyWriteRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	StartTime    *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime      *string `json:"EndTime,omitempty" name:"EndTime"`
+	Interval     *string `json:"Interval,omitempty" name:"Interval"`
+	ClientNm     *string `json:"ClientNm,omitempty" name:"ClientNm"`
+	VpcIp        *string `json:"VpcIp,omitempty" name:"VpcIp"`
+}
+
+func (r *GetLatencyWriteRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetLatencyWriteResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Time  *int64 `json:"Time" name:"Time"`
+		Value *int64 `json:"Value" name:"Value"`
+	} `json:"Data"`
+}
+
+func (r *GetLatencyWriteResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetLatencyWriteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetLatencyReadRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	StartTime    *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime      *string `json:"EndTime,omitempty" name:"EndTime"`
+	Interval     *string `json:"Interval,omitempty" name:"Interval"`
+	ClientNm     *string `json:"ClientNm,omitempty" name:"ClientNm"`
+	VpcIp        *string `json:"VpcIp,omitempty" name:"VpcIp"`
+}
+
+func (r *GetLatencyReadRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetLatencyReadResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Time  *int64 `json:"Time" name:"Time"`
+		Value *int64 `json:"Value" name:"Value"`
+	} `json:"Data"`
+}
+
+func (r *GetLatencyReadResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetLatencyReadResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetIopsWriteRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	StartTime    *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime      *string `json:"EndTime,omitempty" name:"EndTime"`
+	Interval     *string `json:"Interval,omitempty" name:"Interval"`
+	ClientNm     *string `json:"ClientNm,omitempty" name:"ClientNm"`
+	VpcIp        *string `json:"VpcIp,omitempty" name:"VpcIp"`
+}
+
+func (r *GetIopsWriteRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetIopsWriteResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Time  *int64 `json:"Time" name:"Time"`
+		Value *int64 `json:"Value" name:"Value"`
+	} `json:"Data"`
+}
+
+func (r *GetIopsWriteResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetIopsWriteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetIopsReadRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	StartTime    *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime      *string `json:"EndTime,omitempty" name:"EndTime"`
+	Interval     *string `json:"Interval,omitempty" name:"Interval"`
+	ClientNm     *string `json:"ClientNm,omitempty" name:"ClientNm"`
+	VpcIp        *string `json:"VpcIp,omitempty" name:"VpcIp"`
+}
+
+func (r *GetIopsReadRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetIopsReadResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Time  *int64 `json:"Time" name:"Time"`
+		Value *int64 `json:"Value" name:"Value"`
+	} `json:"Data"`
+}
+
+func (r *GetIopsReadResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetIopsReadResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBandwidthWriteRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	StartTime    *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime      *string `json:"EndTime,omitempty" name:"EndTime"`
+	Interval     *string `json:"Interval,omitempty" name:"Interval"`
+	ClientNm     *string `json:"ClientNm,omitempty" name:"ClientNm"`
+	VpcIp        *string `json:"VpcIp,omitempty" name:"VpcIp"`
+}
+
+func (r *GetBandwidthWriteRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetBandwidthWriteResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Time  *int64 `json:"Time" name:"Time"`
+		Value *int64 `json:"Value" name:"Value"`
+	} `json:"Data"`
+}
+
+func (r *GetBandwidthWriteResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetBandwidthWriteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetBandwidthReadRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	StartTime    *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime      *string `json:"EndTime,omitempty" name:"EndTime"`
+	Interval     *string `json:"Interval,omitempty" name:"Interval"`
+	ClientNm     *string `json:"ClientNm,omitempty" name:"ClientNm"`
+	VpcIp        *string `json:"VpcIp,omitempty" name:"VpcIp"`
+}
+
+func (r *GetBandwidthReadRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetBandwidthReadResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Time  *int64 `json:"Time" name:"Time"`
+		Value *int64 `json:"Value" name:"Value"`
+	} `json:"Data"`
+}
+
+func (r *GetBandwidthReadResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetBandwidthReadResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDirQuotaListRequest struct {
 	*ksyunhttp.BaseRequest
 	FileSystemId   *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
@@ -537,5 +859,37 @@ func (r *DescribePerformanceOneNfsAclListResponse) ToJsonString() string {
 }
 
 func (r *DescribePerformanceOneNfsAclListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFileSystemNfsClientInfoRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	PageNum      *int    `json:"PageNum,omitempty" name:"PageNum"`
+	PageSize     *int    `json:"PageSize,omitempty" name:"PageSize"`
+	Action       *string `json:"Action,omitempty" name:"Action"`
+	Version      *string `json:"Version,omitempty" name:"Version"`
+}
+
+func (r *DescribeFileSystemNfsClientInfoRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeFileSystemNfsClientInfoResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string   `json:"RequestId" name:"RequestId"`
+	Data       []*string `json:"Data" name:"Data"`
+	PageNum    *int64    `json:"PageNum" name:"PageNum"`
+	PageSize   *int64    `json:"PageSize" name:"PageSize"`
+	TotalCount *int64    `json:"TotalCount" name:"TotalCount"`
+}
+
+func (r *DescribeFileSystemNfsClientInfoResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeFileSystemNfsClientInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

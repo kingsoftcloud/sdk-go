@@ -101,6 +101,796 @@ func (c *Client) DescribeFileSystemListWithContextV2(ctx context.Context, reques
 	}
 	return statusCode, msg, nil
 }
+func NewGetTotalSizeRequest() (request *GetTotalSizeRequest) {
+	request = &GetTotalSizeRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetTotalSize")
+	return
+}
+
+func NewGetTotalSizeResponse() (response *GetTotalSizeResponse) {
+	response = &GetTotalSizeResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetTotalSize(request *GetTotalSizeRequest) string {
+	return c.GetTotalSizeWithContext(context.Background(), request)
+}
+
+func (c *Client) GetTotalSizeSend(request *GetTotalSizeRequest) (*GetTotalSizeResponse, error) {
+	statusCode, msg, err := c.GetTotalSizeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetTotalSizeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetTotalSizeWithContext(ctx context.Context, request *GetTotalSizeRequest) string {
+	if request == nil {
+		request = NewGetTotalSizeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetTotalSize")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetTotalSizeResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetTotalSizeWithContextV2(ctx context.Context, request *GetTotalSizeRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetTotalSizeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetTotalSize")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetTotalSizeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetInodeCountRequest() (request *GetInodeCountRequest) {
+	request = &GetInodeCountRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetInodeCount")
+	return
+}
+
+func NewGetInodeCountResponse() (response *GetInodeCountResponse) {
+	response = &GetInodeCountResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetInodeCount(request *GetInodeCountRequest) string {
+	return c.GetInodeCountWithContext(context.Background(), request)
+}
+
+func (c *Client) GetInodeCountSend(request *GetInodeCountRequest) (*GetInodeCountResponse, error) {
+	statusCode, msg, err := c.GetInodeCountWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetInodeCountResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetInodeCountWithContext(ctx context.Context, request *GetInodeCountRequest) string {
+	if request == nil {
+		request = NewGetInodeCountRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetInodeCount")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetInodeCountResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetInodeCountWithContextV2(ctx context.Context, request *GetInodeCountRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetInodeCountRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetInodeCount")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetInodeCountResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetCapacityAvailableRequest() (request *GetCapacityAvailableRequest) {
+	request = &GetCapacityAvailableRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetCapacityAvailable")
+	return
+}
+
+func NewGetCapacityAvailableResponse() (response *GetCapacityAvailableResponse) {
+	response = &GetCapacityAvailableResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetCapacityAvailable(request *GetCapacityAvailableRequest) string {
+	return c.GetCapacityAvailableWithContext(context.Background(), request)
+}
+
+func (c *Client) GetCapacityAvailableSend(request *GetCapacityAvailableRequest) (*GetCapacityAvailableResponse, error) {
+	statusCode, msg, err := c.GetCapacityAvailableWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetCapacityAvailableResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetCapacityAvailableWithContext(ctx context.Context, request *GetCapacityAvailableRequest) string {
+	if request == nil {
+		request = NewGetCapacityAvailableRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetCapacityAvailable")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetCapacityAvailableResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetCapacityAvailableWithContextV2(ctx context.Context, request *GetCapacityAvailableRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetCapacityAvailableRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetCapacityAvailable")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetCapacityAvailableResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetCapacityTotalRequest() (request *GetCapacityTotalRequest) {
+	request = &GetCapacityTotalRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetCapacityTotal")
+	return
+}
+
+func NewGetCapacityTotalResponse() (response *GetCapacityTotalResponse) {
+	response = &GetCapacityTotalResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetCapacityTotal(request *GetCapacityTotalRequest) string {
+	return c.GetCapacityTotalWithContext(context.Background(), request)
+}
+
+func (c *Client) GetCapacityTotalSend(request *GetCapacityTotalRequest) (*GetCapacityTotalResponse, error) {
+	statusCode, msg, err := c.GetCapacityTotalWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetCapacityTotalResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetCapacityTotalWithContext(ctx context.Context, request *GetCapacityTotalRequest) string {
+	if request == nil {
+		request = NewGetCapacityTotalRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetCapacityTotal")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetCapacityTotalResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetCapacityTotalWithContextV2(ctx context.Context, request *GetCapacityTotalRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetCapacityTotalRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetCapacityTotal")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetCapacityTotalResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetLatencyWriteRequest() (request *GetLatencyWriteRequest) {
+	request = &GetLatencyWriteRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetLatencyWrite")
+	return
+}
+
+func NewGetLatencyWriteResponse() (response *GetLatencyWriteResponse) {
+	response = &GetLatencyWriteResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetLatencyWrite(request *GetLatencyWriteRequest) string {
+	return c.GetLatencyWriteWithContext(context.Background(), request)
+}
+
+func (c *Client) GetLatencyWriteSend(request *GetLatencyWriteRequest) (*GetLatencyWriteResponse, error) {
+	statusCode, msg, err := c.GetLatencyWriteWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetLatencyWriteResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetLatencyWriteWithContext(ctx context.Context, request *GetLatencyWriteRequest) string {
+	if request == nil {
+		request = NewGetLatencyWriteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetLatencyWrite")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetLatencyWriteResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetLatencyWriteWithContextV2(ctx context.Context, request *GetLatencyWriteRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetLatencyWriteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetLatencyWrite")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetLatencyWriteResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetLatencyReadRequest() (request *GetLatencyReadRequest) {
+	request = &GetLatencyReadRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetLatencyRead")
+	return
+}
+
+func NewGetLatencyReadResponse() (response *GetLatencyReadResponse) {
+	response = &GetLatencyReadResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetLatencyRead(request *GetLatencyReadRequest) string {
+	return c.GetLatencyReadWithContext(context.Background(), request)
+}
+
+func (c *Client) GetLatencyReadSend(request *GetLatencyReadRequest) (*GetLatencyReadResponse, error) {
+	statusCode, msg, err := c.GetLatencyReadWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetLatencyReadResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetLatencyReadWithContext(ctx context.Context, request *GetLatencyReadRequest) string {
+	if request == nil {
+		request = NewGetLatencyReadRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetLatencyRead")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetLatencyReadResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetLatencyReadWithContextV2(ctx context.Context, request *GetLatencyReadRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetLatencyReadRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetLatencyRead")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetLatencyReadResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetIopsWriteRequest() (request *GetIopsWriteRequest) {
+	request = &GetIopsWriteRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetIopsWrite")
+	return
+}
+
+func NewGetIopsWriteResponse() (response *GetIopsWriteResponse) {
+	response = &GetIopsWriteResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetIopsWrite(request *GetIopsWriteRequest) string {
+	return c.GetIopsWriteWithContext(context.Background(), request)
+}
+
+func (c *Client) GetIopsWriteSend(request *GetIopsWriteRequest) (*GetIopsWriteResponse, error) {
+	statusCode, msg, err := c.GetIopsWriteWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetIopsWriteResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetIopsWriteWithContext(ctx context.Context, request *GetIopsWriteRequest) string {
+	if request == nil {
+		request = NewGetIopsWriteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetIopsWrite")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetIopsWriteResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetIopsWriteWithContextV2(ctx context.Context, request *GetIopsWriteRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetIopsWriteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetIopsWrite")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetIopsWriteResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetIopsReadRequest() (request *GetIopsReadRequest) {
+	request = &GetIopsReadRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetIopsRead")
+	return
+}
+
+func NewGetIopsReadResponse() (response *GetIopsReadResponse) {
+	response = &GetIopsReadResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetIopsRead(request *GetIopsReadRequest) string {
+	return c.GetIopsReadWithContext(context.Background(), request)
+}
+
+func (c *Client) GetIopsReadSend(request *GetIopsReadRequest) (*GetIopsReadResponse, error) {
+	statusCode, msg, err := c.GetIopsReadWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetIopsReadResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetIopsReadWithContext(ctx context.Context, request *GetIopsReadRequest) string {
+	if request == nil {
+		request = NewGetIopsReadRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetIopsRead")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetIopsReadResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetIopsReadWithContextV2(ctx context.Context, request *GetIopsReadRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetIopsReadRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetIopsRead")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetIopsReadResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetBandwidthWriteRequest() (request *GetBandwidthWriteRequest) {
+	request = &GetBandwidthWriteRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetBandwidthWrite")
+	return
+}
+
+func NewGetBandwidthWriteResponse() (response *GetBandwidthWriteResponse) {
+	response = &GetBandwidthWriteResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetBandwidthWrite(request *GetBandwidthWriteRequest) string {
+	return c.GetBandwidthWriteWithContext(context.Background(), request)
+}
+
+func (c *Client) GetBandwidthWriteSend(request *GetBandwidthWriteRequest) (*GetBandwidthWriteResponse, error) {
+	statusCode, msg, err := c.GetBandwidthWriteWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetBandwidthWriteResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetBandwidthWriteWithContext(ctx context.Context, request *GetBandwidthWriteRequest) string {
+	if request == nil {
+		request = NewGetBandwidthWriteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetBandwidthWrite")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetBandwidthWriteResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetBandwidthWriteWithContextV2(ctx context.Context, request *GetBandwidthWriteRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetBandwidthWriteRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetBandwidthWrite")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetBandwidthWriteResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetBandwidthReadRequest() (request *GetBandwidthReadRequest) {
+	request = &GetBandwidthReadRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetBandwidthRead")
+	return
+}
+
+func NewGetBandwidthReadResponse() (response *GetBandwidthReadResponse) {
+	response = &GetBandwidthReadResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetBandwidthRead(request *GetBandwidthReadRequest) string {
+	return c.GetBandwidthReadWithContext(context.Background(), request)
+}
+
+func (c *Client) GetBandwidthReadSend(request *GetBandwidthReadRequest) (*GetBandwidthReadResponse, error) {
+	statusCode, msg, err := c.GetBandwidthReadWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetBandwidthReadResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetBandwidthReadWithContext(ctx context.Context, request *GetBandwidthReadRequest) string {
+	if request == nil {
+		request = NewGetBandwidthReadRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetBandwidthRead")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetBandwidthReadResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetBandwidthReadWithContextV2(ctx context.Context, request *GetBandwidthReadRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetBandwidthReadRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetBandwidthRead")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetBandwidthReadResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewDescribeDirQuotaListRequest() (request *DescribeDirQuotaListRequest) {
 	request = &DescribeDirQuotaListRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -1280,6 +2070,85 @@ func (c *Client) DescribePerformanceOneNfsAclListWithContextV2(ctx context.Conte
 	request.SetContentType("application/json")
 
 	response := NewDescribePerformanceOneNfsAclListResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeFileSystemNfsClientInfoRequest() (request *DescribeFileSystemNfsClientInfoRequest) {
+	request = &DescribeFileSystemNfsClientInfoRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileSystemNfsClientInfo")
+	return
+}
+
+func NewDescribeFileSystemNfsClientInfoResponse() (response *DescribeFileSystemNfsClientInfoResponse) {
+	response = &DescribeFileSystemNfsClientInfoResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeFileSystemNfsClientInfo(request *DescribeFileSystemNfsClientInfoRequest) string {
+	return c.DescribeFileSystemNfsClientInfoWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeFileSystemNfsClientInfoSend(request *DescribeFileSystemNfsClientInfoRequest) (*DescribeFileSystemNfsClientInfoResponse, error) {
+	statusCode, msg, err := c.DescribeFileSystemNfsClientInfoWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeFileSystemNfsClientInfoResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeFileSystemNfsClientInfoWithContext(ctx context.Context, request *DescribeFileSystemNfsClientInfoRequest) string {
+	if request == nil {
+		request = NewDescribeFileSystemNfsClientInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileSystemNfsClientInfo")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeFileSystemNfsClientInfoResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeFileSystemNfsClientInfoWithContextV2(ctx context.Context, request *DescribeFileSystemNfsClientInfoRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeFileSystemNfsClientInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileSystemNfsClientInfo")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeFileSystemNfsClientInfoResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
