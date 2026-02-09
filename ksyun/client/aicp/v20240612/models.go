@@ -786,6 +786,32 @@ func (r *StopNotebookSavingImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EnableApikeyStatusRequest struct {
+	*ksyunhttp.BaseRequest
+	KeyId  *string `json:"KeyId,omitempty" name:"KeyId"`
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *EnableApikeyStatusRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type EnableApikeyStatusResponse struct {
+	*ksyunhttp.BaseResponse
+	Success   *bool   `json:"Success" name:"Success"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *EnableApikeyStatusResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *EnableApikeyStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyApikeyRequest struct {
 	*ksyunhttp.BaseRequest
 	KeyId              *string   `json:"KeyId,omitempty" name:"KeyId"`
