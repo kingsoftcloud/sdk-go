@@ -112,6 +112,8 @@ type CreateEpcRequest struct {
 	SRoceCluster                    *string   `json:"SRoceCluster,omitempty" name:"SRoceCluster"`
 	UserDefinedData                 *string   `json:"UserDefinedData,omitempty" name:"UserDefinedData"`
 	ClientToken                     *string   `json:"ClientToken,omitempty" name:"ClientToken"`
+	NetworkCardNameFormat           *string   `json:"NetworkCardNameFormat,omitempty" name:"NetworkCardNameFormat"`
+	NetworkCardPriority             *string   `json:"NetworkCardPriority,omitempty" name:"NetworkCardPriority"`
 }
 
 func (r *CreateEpcRequest) ToJsonString() string {
@@ -357,6 +359,8 @@ type ReinstallEpcRequest struct {
 	StorageRoceNetworkCardName  *string `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
 	UserDefinedData             *string `json:"UserDefinedData,omitempty" name:"UserDefinedData"`
 	ClientToken                 *string `json:"ClientToken,omitempty" name:"ClientToken"`
+	NetworkCardNameFormat       *string `json:"NetworkCardNameFormat,omitempty" name:"NetworkCardNameFormat"`
+	NetworkCardPriority         *string `json:"NetworkCardPriority,omitempty" name:"NetworkCardPriority"`
 }
 
 func (r *ReinstallEpcRequest) ToJsonString() string {
@@ -2442,6 +2446,8 @@ type BatchCreateEpcRequest struct {
 	SRoceCluster                *string   `json:"SRoceCluster,omitempty" name:"SRoceCluster"`
 	RoceCluster                 *string   `json:"RoceCluster,omitempty" name:"RoceCluster"`
 	ClientToken                 *string   `json:"ClientToken,omitempty" name:"ClientToken"`
+	NetworkCardNameFormat       *string   `json:"NetworkCardNameFormat,omitempty" name:"NetworkCardNameFormat"`
+	NetworkCardPriority         *string   `json:"NetworkCardPriority,omitempty" name:"NetworkCardPriority"`
 }
 
 func (r *BatchCreateEpcRequest) ToJsonString() string {
