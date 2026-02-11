@@ -893,3 +893,178 @@ func (r *DescribeFileSystemNfsClientInfoResponse) ToJsonString() string {
 func (r *DescribeFileSystemNfsClientInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type DeleteDataFlowRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	DataFlowId   *string `json:"DataFlowId,omitempty" name:"DataFlowId"`
+}
+
+func (r *DeleteDataFlowRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteDataFlowResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteDataFlowResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteDataFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDataFlowTasksRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	DataFlowId   *string `json:"DataFlowId,omitempty" name:"DataFlowId"`
+	TaskIds      *string `json:"TaskIds,omitempty" name:"TaskIds"`
+	PageSize     *int    `json:"PageSize,omitempty" name:"PageSize"`
+	PageNum      *int    `json:"PageNum,omitempty" name:"PageNum"`
+}
+
+func (r *DescribeDataFlowTasksRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeDataFlowTasksResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		FileSystemId *string `json:"FileSystemId" name:"FileSystemId"`
+		DataFlowId   *string `json:"DataFlowId" name:"DataFlowId"`
+		Name         *string `json:"Name" name:"Name"`
+		DirPath      *string `json:"DirPath" name:"DirPath"`
+		Bucket       *string `json:"Bucket" name:"Bucket"`
+		BucketPrefix *string `json:"BucketPrefix" name:"BucketPrefix"`
+		TaskId       *string `json:"TaskId" name:"TaskId"`
+		TaskAction   *string `json:"TaskAction" name:"TaskAction"`
+		SrcDirectory *string `json:"SrcDirectory" name:"SrcDirectory"`
+		DstDirectory *string `json:"DstDirectory" name:"DstDirectory"`
+		Status       *string `json:"Status" name:"Status"`
+		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		StartTime    *string `json:"StartTime" name:"StartTime"`
+		EndTime      *string `json:"EndTime" name:"EndTime"`
+		ExcuteTime   *string `json:"ExcuteTime" name:"ExcuteTime"`
+	} `json:"Data"`
+	PageSize   *int `json:"PageSize" name:"PageSize"`
+	PageNum    *int `json:"PageNum" name:"PageNum"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+}
+
+func (r *DescribeDataFlowTasksResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDataFlowTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDataFlowsRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	DataFlowId   *string `json:"DataFlowId,omitempty" name:"DataFlowId"`
+	PageSize     *int    `json:"PageSize,omitempty" name:"PageSize"`
+	PageNum      *int    `json:"PageNum,omitempty" name:"PageNum"`
+}
+
+func (r *DescribeDataFlowsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeDataFlowsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		DataFlowId   *string `json:"DataFlowId" name:"DataFlowId"`
+		Name         *string `json:"Name" name:"Name"`
+		FileSystemId *string `json:"FileSystemId" name:"FileSystemId"`
+		DirPath      *string `json:"DirPath" name:"DirPath"`
+		Bucket       *string `json:"Bucket" name:"Bucket"`
+		BucketPrefix *string `json:"BucketPrefix" name:"BucketPrefix"`
+		Status       *string `json:"Status" name:"Status"`
+		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime   *string `json:"UpdateTime" name:"UpdateTime"`
+		Description  *string `json:"Description" name:"Description"`
+	} `json:"Data"`
+	PageSize   *int `json:"PageSize" name:"PageSize"`
+	PageNum    *int `json:"PageNum" name:"PageNum"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+}
+
+func (r *DescribeDataFlowsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeDataFlowsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDataFlowTaskRequest struct {
+	*ksyunhttp.BaseRequest
+	DataFlowId   *string   `json:"DataFlowId,omitempty" name:"DataFlowId"`
+	TaskAction   *string   `json:"TaskAction,omitempty" name:"TaskAction"`
+	SrcDirectory *string   `json:"SrcDirectory,omitempty" name:"SrcDirectory"`
+	DstDirectory *string   `json:"DstDirectory,omitempty" name:"DstDirectory"`
+	EntryList    []*string `json:"EntryList,omitempty" name:"EntryList"`
+	Bandwidth    *int      `json:"Bandwidth,omitempty" name:"Bandwidth"`
+}
+
+func (r *CreateDataFlowTaskRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateDataFlowTaskResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	TaskId    *string `json:"TaskId" name:"TaskId"`
+}
+
+func (r *CreateDataFlowTaskResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateDataFlowTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateDataFlowRequest struct {
+	*ksyunhttp.BaseRequest
+	Name         *string `json:"Name,omitempty" name:"Name"`
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	DirPath      *string `json:"DirPath,omitempty" name:"DirPath"`
+	Bucket       *string `json:"Bucket,omitempty" name:"Bucket"`
+	BucketPrefix *string `json:"BucketPrefix,omitempty" name:"BucketPrefix"`
+	Description  *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateDataFlowRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateDataFlowResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	DataFlowId *string `json:"DataFlowId" name:"DataFlowId"`
+}
+
+func (r *CreateDataFlowResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateDataFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

@@ -114,6 +114,8 @@ type CreateEpcRequest struct {
 	ClientToken                     *string   `json:"ClientToken,omitempty" name:"ClientToken"`
 	NetworkCardNameFormat           *string   `json:"NetworkCardNameFormat,omitempty" name:"NetworkCardNameFormat"`
 	NetworkCardPriority             *string   `json:"NetworkCardPriority,omitempty" name:"NetworkCardPriority"`
+	FileSystemId                    *string   `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	PosixAclId                      *string   `json:"PosixAclId,omitempty" name:"PosixAclId"`
 }
 
 func (r *CreateEpcRequest) ToJsonString() string {
@@ -361,6 +363,8 @@ type ReinstallEpcRequest struct {
 	ClientToken                 *string `json:"ClientToken,omitempty" name:"ClientToken"`
 	NetworkCardNameFormat       *string `json:"NetworkCardNameFormat,omitempty" name:"NetworkCardNameFormat"`
 	NetworkCardPriority         *string `json:"NetworkCardPriority,omitempty" name:"NetworkCardPriority"`
+	FileSystemId                *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	PosixAclId                  *string `json:"PosixAclId,omitempty" name:"PosixAclId"`
 }
 
 func (r *ReinstallEpcRequest) ToJsonString() string {
@@ -2448,6 +2452,8 @@ type BatchCreateEpcRequest struct {
 	ClientToken                 *string   `json:"ClientToken,omitempty" name:"ClientToken"`
 	NetworkCardNameFormat       *string   `json:"NetworkCardNameFormat,omitempty" name:"NetworkCardNameFormat"`
 	NetworkCardPriority         *string   `json:"NetworkCardPriority,omitempty" name:"NetworkCardPriority"`
+	FileSystemId                *string   `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	PosixAclId                  *string   `json:"PosixAclId,omitempty" name:"PosixAclId"`
 }
 
 func (r *BatchCreateEpcRequest) ToJsonString() string {

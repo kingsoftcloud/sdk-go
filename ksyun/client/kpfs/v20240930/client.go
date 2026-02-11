@@ -2155,3 +2155,398 @@ func (c *Client) DescribeFileSystemNfsClientInfoWithContextV2(ctx context.Contex
 	}
 	return statusCode, msg, nil
 }
+func NewDeleteDataFlowRequest() (request *DeleteDataFlowRequest) {
+	request = &DeleteDataFlowRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DeleteDataFlow")
+	return
+}
+
+func NewDeleteDataFlowResponse() (response *DeleteDataFlowResponse) {
+	response = &DeleteDataFlowResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteDataFlow(request *DeleteDataFlowRequest) string {
+	return c.DeleteDataFlowWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteDataFlowSend(request *DeleteDataFlowRequest) (*DeleteDataFlowResponse, error) {
+	statusCode, msg, err := c.DeleteDataFlowWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteDataFlowResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteDataFlowWithContext(ctx context.Context, request *DeleteDataFlowRequest) string {
+	if request == nil {
+		request = NewDeleteDataFlowRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteDataFlow")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteDataFlowResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteDataFlowWithContextV2(ctx context.Context, request *DeleteDataFlowRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteDataFlowRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteDataFlow")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteDataFlowResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeDataFlowTasksRequest() (request *DescribeDataFlowTasksRequest) {
+	request = &DescribeDataFlowTasksRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowTasks")
+	return
+}
+
+func NewDescribeDataFlowTasksResponse() (response *DescribeDataFlowTasksResponse) {
+	response = &DescribeDataFlowTasksResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeDataFlowTasks(request *DescribeDataFlowTasksRequest) string {
+	return c.DescribeDataFlowTasksWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDataFlowTasksSend(request *DescribeDataFlowTasksRequest) (*DescribeDataFlowTasksResponse, error) {
+	statusCode, msg, err := c.DescribeDataFlowTasksWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeDataFlowTasksResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeDataFlowTasksWithContext(ctx context.Context, request *DescribeDataFlowTasksRequest) string {
+	if request == nil {
+		request = NewDescribeDataFlowTasksRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowTasks")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeDataFlowTasksResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeDataFlowTasksWithContextV2(ctx context.Context, request *DescribeDataFlowTasksRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeDataFlowTasksRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowTasks")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeDataFlowTasksResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeDataFlowsRequest() (request *DescribeDataFlowsRequest) {
+	request = &DescribeDataFlowsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlows")
+	return
+}
+
+func NewDescribeDataFlowsResponse() (response *DescribeDataFlowsResponse) {
+	response = &DescribeDataFlowsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeDataFlows(request *DescribeDataFlowsRequest) string {
+	return c.DescribeDataFlowsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDataFlowsSend(request *DescribeDataFlowsRequest) (*DescribeDataFlowsResponse, error) {
+	statusCode, msg, err := c.DescribeDataFlowsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeDataFlowsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeDataFlowsWithContext(ctx context.Context, request *DescribeDataFlowsRequest) string {
+	if request == nil {
+		request = NewDescribeDataFlowsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlows")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeDataFlowsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeDataFlowsWithContextV2(ctx context.Context, request *DescribeDataFlowsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeDataFlowsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlows")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeDataFlowsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateDataFlowTaskRequest() (request *CreateDataFlowTaskRequest) {
+	request = &CreateDataFlowTaskRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlowTask")
+	return
+}
+
+func NewCreateDataFlowTaskResponse() (response *CreateDataFlowTaskResponse) {
+	response = &CreateDataFlowTaskResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateDataFlowTask(request *CreateDataFlowTaskRequest) string {
+	return c.CreateDataFlowTaskWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateDataFlowTaskSend(request *CreateDataFlowTaskRequest) (*CreateDataFlowTaskResponse, error) {
+	statusCode, msg, err := c.CreateDataFlowTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateDataFlowTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateDataFlowTaskWithContext(ctx context.Context, request *CreateDataFlowTaskRequest) string {
+	if request == nil {
+		request = NewCreateDataFlowTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlowTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateDataFlowTaskResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateDataFlowTaskWithContextV2(ctx context.Context, request *CreateDataFlowTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateDataFlowTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlowTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateDataFlowTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateDataFlowRequest() (request *CreateDataFlowRequest) {
+	request = &CreateDataFlowRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlow")
+	return
+}
+
+func NewCreateDataFlowResponse() (response *CreateDataFlowResponse) {
+	response = &CreateDataFlowResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateDataFlow(request *CreateDataFlowRequest) string {
+	return c.CreateDataFlowWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateDataFlowSend(request *CreateDataFlowRequest) (*CreateDataFlowResponse, error) {
+	statusCode, msg, err := c.CreateDataFlowWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateDataFlowResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateDataFlowWithContext(ctx context.Context, request *CreateDataFlowRequest) string {
+	if request == nil {
+		request = NewCreateDataFlowRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlow")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateDataFlowResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateDataFlowWithContextV2(ctx context.Context, request *CreateDataFlowRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateDataFlowRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlow")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateDataFlowResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
