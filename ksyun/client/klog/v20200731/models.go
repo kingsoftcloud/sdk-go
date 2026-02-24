@@ -341,8 +341,8 @@ type GetLogsRequest struct {
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 	LogPoolName *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
 	LogPoolId   *string `json:"LogPoolId,omitempty" name:"LogPoolId"`
-	From        *int    `json:"From,omitempty" name:"From"`
-	To          *int    `json:"To,omitempty" name:"To"`
+	From        *int64  `json:"From,omitempty" name:"From"`
+	To          *int64  `json:"To,omitempty" name:"To"`
 	Query       *string `json:"Query,omitempty" name:"Query"`
 	Offset      *int    `json:"Offset,omitempty" name:"Offset"`
 	Size        *int    `json:"Size,omitempty" name:"Size"`
