@@ -1376,7 +1376,7 @@ func (r *DescribeClusterSummaryRequest) ToJsonString() string {
 type DescribeClusterSummaryResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId  *string `json:"RequestId" name:"RequestId"`
-	ClusterSet struct {
+	ClusterSet []struct {
 		ClusterId         *string `json:"ClusterId" name:"ClusterId"`
 		ClusterName       *string `json:"ClusterName" name:"ClusterName"`
 		ClusterManageMode *string `json:"ClusterManageMode" name:"ClusterManageMode"`
