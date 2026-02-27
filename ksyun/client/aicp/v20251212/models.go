@@ -94,6 +94,7 @@ type DescribeTrainJobsRequest struct {
 	Page         *int                       `json:"Page,omitempty" name:"Page"`
 	TrainJobName *string                    `json:"TrainJobName,omitempty" name:"TrainJobName"`
 	GPUType      *string                    `json:"GPUType,omitempty" name:"GPUType"`
+	QueueId      *string                    `json:"QueueId,omitempty" name:"QueueId"`
 	SortKey      *string                    `json:"SortKey,omitempty" name:"SortKey"`
 	Sort         *string                    `json:"Sort,omitempty" name:"Sort"`
 }

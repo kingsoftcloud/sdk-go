@@ -58,29 +58,54 @@ type DescribeImagesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
-type CreateTrainJobFrameworkReplicas struct {
-	Chief     *int `json:"Chief,omitempty" name:"Chief"`
-	Evaluator *int `json:"Evaluator,omitempty" name:"Evaluator"`
-	PS        *int `json:"PS,omitempty" name:"PS"`
-	Master    *int `json:"Master,omitempty" name:"Master"`
-	Worker    *int `json:"Worker,omitempty" name:"Worker"`
-}
-type CreateTrainJobEnvs struct {
+type CreateInferenceCmdOptions struct {
 	Name  *string `json:"Name,omitempty" name:"Name"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
-type CreateTrainJobStorageConfigs struct {
-	StorageConfigId   *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
-	MountPath         *string `json:"MountPath,omitempty" name:"MountPath"`
-	StorageConfigType *string `json:"StorageConfigType,omitempty" name:"StorageConfigType"`
+type CreateInferenceEnv struct {
+	Name  *string `json:"Name,omitempty" name:"Name"`
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
-type DescribeTrainJobFilter struct {
-	Name  *string   `json:"Name,omitempty" name:"Name"`
-	Value []*string `json:"Value,omitempty" name:"Value"`
+type CreateInferenceAutoScaleStrategyMetricStrategy struct {
+	CpuUtilization *int `json:"CpuUtilization,omitempty" name:"CpuUtilization"`
+	MemUtilization *int `json:"MemUtilization,omitempty" name:"MemUtilization"`
+	MinReplicas    *int `json:"MinReplicas,omitempty" name:"MinReplicas"`
+	MaxReplicas    *int `json:"MaxReplicas,omitempty" name:"MaxReplicas"`
+}
+type CreateInferenceAutoScaleStrategy struct {
+	Mode           *string                                         `json:"Mode,omitempty" name:"Mode"`
+	MetricStrategy *CreateInferenceAutoScaleStrategyMetricStrategy `json:"MetricStrategy,omitempty" name:"MetricStrategy"`
+}
+type CreateInferenceStorageConfigs struct {
+	StorageConfigId   *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
+	StorageConfigType *string `json:"StorageConfigType,omitempty" name:"StorageConfigType"`
+	MountPath         *string `json:"MountPath,omitempty" name:"MountPath"`
 }
 type DescribeTrainJobPodsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type DescribeInferencesFilter struct {
+	Name  *string   `json:"Name,omitempty" name:"Name"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type SetInferenceAutoScaleStrategyAutoScaleStrategyMetricStrategy struct {
+	CpuUtilization *int `json:"CpuUtilization,omitempty" name:"CpuUtilization"`
+	MemUtilization *int `json:"MemUtilization,omitempty" name:"MemUtilization"`
+	MinReplicas    *int `json:"MinReplicas,omitempty" name:"MinReplicas"`
+	MaxReplicas    *int `json:"MaxReplicas,omitempty" name:"MaxReplicas"`
+}
+type SetInferenceAutoScaleStrategyAutoScaleStrategy struct {
+	Mode           *string                                                       `json:"Mode,omitempty" name:"Mode"`
+	MetricStrategy *SetInferenceAutoScaleStrategyAutoScaleStrategyMetricStrategy `json:"MetricStrategy,omitempty" name:"MetricStrategy"`
+}
+type ModifyInferenceEnv struct {
+	Name  *string `json:"Name,omitempty" name:"Name"`
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+type ModifyInferenceCmdOptions struct {
+	Name  *string `json:"Name,omitempty" name:"Name"`
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 type DescribeResourcePoolsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
@@ -656,6 +681,165 @@ func (r *DescribeImagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateInferenceRequest struct {
+	*ksyunhttp.BaseRequest
+	InferenceName       *string                           `json:"InferenceName,omitempty" name:"InferenceName"`
+	Description         *string                           `json:"Description,omitempty" name:"Description"`
+	ResourcePoolId      *string                           `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	QueueName           *string                           `json:"QueueName,omitempty" name:"QueueName"`
+	Replicas            *int                              `json:"Replicas,omitempty" name:"Replicas"`
+	AccessType          *string                           `json:"AccessType,omitempty" name:"AccessType"`
+	DeploymentType      *string                           `json:"DeploymentType,omitempty" name:"DeploymentType"`
+	Engine              *string                           `json:"Engine,omitempty" name:"Engine"`
+	ModelName           *string                           `json:"ModelName,omitempty" name:"ModelName"`
+	CmdOptions          []*CreateInferenceCmdOptions      `json:"CmdOptions,omitempty" name:"CmdOptions"`
+	ModelStorageEnabled *bool                             `json:"ModelStorageEnabled,omitempty" name:"ModelStorageEnabled"`
+	ModelStoragePath    *string                           `json:"ModelStoragePath,omitempty" name:"ModelStoragePath"`
+	EntryPoint          *string                           `json:"EntryPoint,omitempty" name:"EntryPoint"`
+	ImageSource         *string                           `json:"ImageSource,omitempty" name:"ImageSource"`
+	ImageId             *string                           `json:"ImageId,omitempty" name:"ImageId"`
+	ImageRegistryId     *string                           `json:"ImageRegistryId,omitempty" name:"ImageRegistryId"`
+	ImageRepoId         *string                           `json:"ImageRepoId,omitempty" name:"ImageRepoId"`
+	ImageTagId          *string                           `json:"ImageTagId,omitempty" name:"ImageTagId"`
+	SubnetId            *string                           `json:"SubnetId,omitempty" name:"SubnetId"`
+	Port                *int                              `json:"Port,omitempty" name:"Port"`
+	Env                 []*CreateInferenceEnv             `json:"Env,omitempty" name:"Env"`
+	GPUType             *string                           `json:"GPUType,omitempty" name:"GPUType"`
+	GPUNum              *string                           `json:"GPUNum,omitempty" name:"GPUNum"`
+	CPUNum              *int                              `json:"CPUNum,omitempty" name:"CPUNum"`
+	Memory              *int                              `json:"Memory,omitempty" name:"Memory"`
+	AutoScaleEnable     *bool                             `json:"AutoScaleEnable,omitempty" name:"AutoScaleEnable"`
+	AutoScaleStrategy   *CreateInferenceAutoScaleStrategy `json:"AutoScaleStrategy,omitempty" name:"AutoScaleStrategy"`
+	RunOnCPU            *bool                             `json:"RunOnCPU,omitempty" name:"RunOnCPU"`
+	Distributed         *bool                             `json:"Distributed,omitempty" name:"Distributed"`
+	NodeNum             *bool                             `json:"NodeNum,omitempty" name:"NodeNum"`
+	StorageConfigs      []*CreateInferenceStorageConfigs  `json:"StorageConfigs,omitempty" name:"StorageConfigs"`
+}
+
+func (r *CreateInferenceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateInferenceResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	InferenceId *string `json:"InferenceId" name:"InferenceId"`
+}
+
+func (r *CreateInferenceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateInferenceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetInferenceModelsRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *GetInferenceModelsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetInferenceModelsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId       *string `json:"RequestId" name:"RequestId"`
+	TotalCount      *int    `json:"TotalCount" name:"TotalCount"`
+	InferenceModels []struct {
+		Name        *string `json:"Name" name:"Name"`
+		Group       *string `json:"Group" name:"Group"`
+		StorageType *string `json:"StorageType" name:"StorageType"`
+		Description *string `json:"Description" name:"Description"`
+		PassParams  struct {
+			GPUNum            *string `json:"GPUNum" name:"GPUNum"`
+			CPUCore           *int    `json:"CPUCore" name:"CPUCore"`
+			Memory            *int    `json:"Memory" name:"Memory"`
+			SupportGPUNumList *string `json:"SupportGPUNumList" name:"SupportGPUNumList"`
+			SupportSingleNode *bool   `json:"SupportSingleNode" name:"SupportSingleNode"`
+			SupportMultiNode  *bool   `json:"SupportMultiNode" name:"SupportMultiNode"`
+			SupportVLLM       *bool   `json:"SupportVLLM" name:"SupportVLLM"`
+			SupportSGLang     *bool   `json:"SupportSGLang" name:"SupportSGLang"`
+			SupportSGLangPD   *bool   `json:"SupportSGLangPD" name:"SupportSGLangPD"`
+			SupportOpenPi     *bool   `json:"SupportOpenPi" name:"SupportOpenPi"`
+		} `json:"PassParams" name:"PassParams"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime *string `json:"UpdateTime" name:"UpdateTime"`
+	} `json:"InferenceModels"`
+}
+
+func (r *GetInferenceModelsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetInferenceModelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetInferencePodsRequest struct {
+	*ksyunhttp.BaseRequest
+	InferenceId *string `json:"InferenceId,omitempty" name:"InferenceId"`
+	State       *string `json:"State,omitempty" name:"State"`
+}
+
+func (r *GetInferencePodsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetInferencePodsResponse struct {
+	*ksyunhttp.BaseResponse
+	Pods []struct {
+		PodName     *string `json:"PodName" name:"PodName"`
+		InferenceId *string `json:"InferenceId" name:"InferenceId"`
+		Namespace   *string `json:"Namespace" name:"Namespace"`
+		ClusterId   *string `json:"ClusterId" name:"ClusterId"`
+		State       *string `json:"State" name:"State"`
+	} `json:"Pods"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *GetInferencePodsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetInferencePodsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetInferenceLogsRequest struct {
+	*ksyunhttp.BaseRequest
+	InferenceId  *string `json:"InferenceId,omitempty" name:"InferenceId"`
+	PodName      *string `json:"PodName,omitempty" name:"PodName"`
+	SinceSeconds *int    `json:"SinceSeconds,omitempty" name:"SinceSeconds"`
+	TailLines    *int    `json:"TailLines,omitempty" name:"TailLines"`
+}
+
+func (r *GetInferenceLogsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetInferenceLogsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	PodLogs   *string `json:"PodLogs" name:"PodLogs"`
+}
+
+func (r *GetInferenceLogsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetInferenceLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type StopNotebookRequest struct {
 	*ksyunhttp.BaseRequest
 	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
@@ -758,6 +942,39 @@ func (r *DescribeNotebookLogResponse) ToJsonString() string {
 }
 
 func (r *DescribeNotebookLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetInferenceAutoScaleStrategyRequest struct {
+	*ksyunhttp.BaseRequest
+	InferenceId *string `json:"InferenceId,omitempty" name:"InferenceId"`
+}
+
+func (r *GetInferenceAutoScaleStrategyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetInferenceAutoScaleStrategyResponse struct {
+	*ksyunhttp.BaseResponse
+	AutoScaleStrategy struct {
+		Mode           *string `json:"Mode" name:"Mode"`
+		MetricStrategy struct {
+			CpuUtilization *int `json:"CpuUtilization" name:"CpuUtilization"`
+			MemUtilization *int `json:"MemUtilization" name:"MemUtilization"`
+			MinReplicas    *int `json:"MinReplicas" name:"MinReplicas"`
+			MaxReplicas    *int `json:"MaxReplicas" name:"MaxReplicas"`
+		} `json:"MetricStrategy" name:"MetricStrategy"`
+	} `json:"AutoScaleStrategy"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *GetInferenceAutoScaleStrategyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetInferenceAutoScaleStrategyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1529,55 +1746,6 @@ func (r *DisableOverFreeLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type CreateTrainJobRequest struct {
-	*ksyunhttp.BaseRequest
-	TrainJobName       *string                          `json:"TrainJobName,omitempty" name:"TrainJobName"`
-	Description        *string                          `json:"Description,omitempty" name:"Description"`
-	ResourcePoolId     *string                          `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
-	QueueName          *string                          `json:"QueueName,omitempty" name:"QueueName"`
-	Priority           *string                          `json:"Priority,omitempty" name:"Priority"`
-	Command            *string                          `json:"Command,omitempty" name:"Command"`
-	Framework          *string                          `json:"Framework,omitempty" name:"Framework"`
-	ImageSource        *string                          `json:"ImageSource,omitempty" name:"ImageSource"`
-	FrameworkReplicas  *CreateTrainJobFrameworkReplicas `json:"FrameworkReplicas,omitempty" name:"FrameworkReplicas"`
-	RestartPolicy      *string                          `json:"RestartPolicy,omitempty" name:"RestartPolicy"`
-	Envs               []*CreateTrainJobEnvs            `json:"Envs,omitempty" name:"Envs"`
-	SupportTensorboard *bool                            `json:"SupportTensorboard,omitempty" name:"SupportTensorboard"`
-	ImageId            *string                          `json:"ImageId,omitempty" name:"ImageId"`
-	ImageRegistryId    *string                          `json:"ImageRegistryId,omitempty" name:"ImageRegistryId"`
-	ImageRepoId        *string                          `json:"ImageRepoId,omitempty" name:"ImageRepoId"`
-	ImageTagId         *string                          `json:"ImageTagId,omitempty" name:"ImageTagId"`
-	GPUType            *string                          `json:"GPUType,omitempty" name:"GPUType"`
-	GPUNumber          *int                             `json:"GPUNumber,omitempty" name:"GPUNumber"`
-	CPUNum             *int                             `json:"CPUNum,omitempty" name:"CPUNum"`
-	Memory             *int                             `json:"Memory,omitempty" name:"Memory"`
-	StorageConfigs     []*CreateTrainJobStorageConfigs  `json:"StorageConfigs,omitempty" name:"StorageConfigs"`
-	AccessType         *string                          `json:"AccessType,omitempty" name:"AccessType"`
-	MaxRuntime         *int                             `json:"MaxRuntime,omitempty" name:"MaxRuntime"`
-	SelfHealing        *bool                            `json:"SelfHealing,omitempty" name:"SelfHealing"`
-	RunOnCPU           *bool                            `json:"RunOnCPU,omitempty" name:"RunOnCPU"`
-}
-
-func (r *CreateTrainJobRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type CreateTrainJobResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId  *string `json:"RequestId" name:"RequestId"`
-	TrainJobId *string `json:"TrainJobId" name:"TrainJobId"`
-}
-
-func (r *CreateTrainJobResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *CreateTrainJobResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type DescribeTrainJobEventsRequest struct {
 	*ksyunhttp.BaseRequest
 	ResourcePoolId *string `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
@@ -1597,19 +1765,14 @@ type DescribeTrainJobEventsResponse struct {
 		LastSeen  *string `json:"LastSeen" name:"LastSeen"`
 		Type      *string `json:"Type" name:"Type"`
 		Object    struct {
-			Kind            *string `json:"Kind" name:"Kind"`
-			Namespace       *string `json:"Namespace" name:"Namespace"`
-			Name            *string `json:"Name" name:"Name"`
-			UID             *string `json:"UID" name:"UID"`
-			APIVersion      *string `json:"APIVersion" name:"APIVersion"`
-			ResourceVersion *string `json:"ResourceVersion" name:"ResourceVersion"`
-			FieldPath       *string `json:"FieldPath" name:"FieldPath"`
+			Kind      *string `json:"Kind" name:"Kind"`
+			Namespace *string `json:"Namespace" name:"Namespace"`
+			Name      *string `json:"Name" name:"Name"`
 		} `json:"Object" name:"Object"`
 		Reason  *string `json:"Reason" name:"Reason"`
 		Message *string `json:"Message" name:"Message"`
 		Source  struct {
 			Component *string `json:"component" name:"component"`
-			Host      *string `json:"host" name:"host"`
 		} `json:"Source" name:"Source"`
 		Count *int `json:"Count" name:"Count"`
 	} `json:"DataSet"`
@@ -1646,94 +1809,6 @@ func (r *StopTrainJobResponse) ToJsonString() string {
 }
 
 func (r *StopTrainJobResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeTrainJobRequest struct {
-	*ksyunhttp.BaseRequest
-	TrainJobId []*string                 `json:"TrainJobId,omitempty" name:"TrainJobId"`
-	Filter     []*DescribeTrainJobFilter `json:"Filter,omitempty" name:"Filter"`
-	Marker     *int                      `json:"Marker,omitempty" name:"Marker"`
-	MaxResults *int                      `json:"MaxResults,omitempty" name:"MaxResults"`
-}
-
-func (r *DescribeTrainJobRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type DescribeTrainJobResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId   *string `json:"RequestId" name:"RequestId"`
-	TotalCount  *int    `json:"TotalCount" name:"TotalCount"`
-	Marker      *int    `json:"Marker" name:"Marker"`
-	MaxResults  *int    `json:"MaxResults" name:"MaxResults"`
-	TrainJobSet []struct {
-		TrainJobName      *string `json:"TrainJobName" name:"TrainJobName"`
-		TrainJobId        *string `json:"TrainJobId" name:"TrainJobId"`
-		ResourcePoolName  *string `json:"ResourcePoolName" name:"ResourcePoolName"`
-		ResourcePoolId    *string `json:"ResourcePoolId" name:"ResourcePoolId"`
-		ResourcePoolType  *string `json:"ResourcePoolType" name:"ResourcePoolType"`
-		Namespace         *string `json:"Namespace" name:"Namespace"`
-		QueueName         *string `json:"QueueName" name:"QueueName"`
-		Description       *string `json:"Description" name:"Description"`
-		Priority          *string `json:"Priority" name:"Priority"`
-		Framework         *string `json:"Framework" name:"Framework"`
-		AccessType        *string `json:"AccessType" name:"AccessType"`
-		ImageId           *string `json:"ImageId" name:"ImageId"`
-		ImageSource       *string `json:"ImageSource" name:"ImageSource"`
-		ImageRegistryId   *string `json:"ImageRegistryId" name:"ImageRegistryId"`
-		ImageRepoId       *string `json:"ImageRepoId" name:"ImageRepoId"`
-		ImageTagId        *string `json:"ImageTagId" name:"ImageTagId"`
-		CreateUserName    *string `json:"CreateUserName" name:"CreateUserName"`
-		FrameworkReplicas struct {
-			Master    *int `json:"Master" name:"Master"`
-			Worker    *int `json:"Worker" name:"Worker"`
-			Chief     *int `json:"Chief" name:"Chief"`
-			Evaluator *int `json:"Evaluator" name:"Evaluator"`
-			PS        *int `json:"PS" name:"PS"`
-		} `json:"FrameworkReplicas" name:"FrameworkReplicas"`
-		GPUType       *string `json:"GPUType" name:"GPUType"`
-		GPUNumber     *int    `json:"GPUNumber" name:"GPUNumber"`
-		CPUNum        *int    `json:"CPUNum" name:"CPUNum"`
-		Memory        *int    `json:"Memory" name:"Memory"`
-		RestartPolicy *string `json:"RestartPolicy" name:"RestartPolicy"`
-		Status        struct {
-			State         *string `json:"State" name:"State"`
-			PodSucceedNum *int    `json:"PodSucceedNum" name:"PodSucceedNum"`
-			PodFailedNum  *int    `json:"PodFailedNum" name:"PodFailedNum"`
-			SubmitTime    *string `json:"SubmitTime" name:"SubmitTime"`
-			StartTime     *string `json:"StartTime" name:"StartTime"`
-			QueueTime     *int    `json:"QueueTime" name:"QueueTime"`
-			EndTime       *string `json:"EndTime" name:"EndTime"`
-			Message       *string `json:"Message" name:"Message"`
-		} `json:"Status" name:"Status"`
-		CreateUserId *string `json:"CreateUserId" name:"CreateUserId"`
-		SelfHealing  *bool   `json:"SelfHealing" name:"SelfHealing"`
-		Envs         []struct {
-			Name  *string `json:"Name" name:"Name"`
-			Value *string `json:"Value" name:"Value"`
-		} `json:"Envs" name:"Envs"`
-		Command            *string `json:"Command" name:"Command"`
-		MaxRuntime         *int    `json:"MaxRuntime" name:"MaxRuntime"`
-		EnableHostNetwork  *bool   `json:"EnableHostNetwork" name:"EnableHostNetwork"`
-		RunOnCPU           *bool   `json:"RunOnCPU" name:"RunOnCPU"`
-		SupportTensorboard *bool   `json:"SupportTensorboard" name:"SupportTensorboard"`
-		StorageConfigs     []struct {
-			StorageConfigId   *string `json:"StorageConfigId" name:"StorageConfigId"`
-			StorageConfigType *string `json:"StorageConfigType" name:"StorageConfigType"`
-			MountPath         *string `json:"MountPath" name:"MountPath"`
-		} `json:"StorageConfigs" name:"StorageConfigs"`
-		ClusterId *string `json:"ClusterId" name:"ClusterId"`
-	} `json:"TrainJobSet"`
-}
-
-func (r *DescribeTrainJobResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DescribeTrainJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1887,6 +1962,350 @@ func (r *DescribeTrainJobPodsResponse) ToJsonString() string {
 }
 
 func (r *DescribeTrainJobPodsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInferencesRequest struct {
+	*ksyunhttp.BaseRequest
+	InferenceId []*string                   `json:"InferenceId,omitempty" name:"InferenceId"`
+	Filter      []*DescribeInferencesFilter `json:"Filter,omitempty" name:"Filter"`
+	PageSize    *int                        `json:"PageSize,omitempty" name:"PageSize"`
+	Page        *int                        `json:"Page,omitempty" name:"Page"`
+}
+
+func (r *DescribeInferencesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeInferencesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId    *string `json:"RequestId" name:"RequestId"`
+	PageSize     *int    `json:"PageSize" name:"PageSize"`
+	Page         *int    `json:"Page" name:"Page"`
+	TotalCount   *int    `json:"TotalCount" name:"TotalCount"`
+	InferenceSet []struct {
+		InferenceName  *string `json:"InferenceName" name:"InferenceName"`
+		InferenceId    *string `json:"InferenceId" name:"InferenceId"`
+		Status         *string `json:"Status" name:"Status"`
+		IngressEnabled *bool   `json:"IngressEnabled" name:"IngressEnabled"`
+		Description    *string `json:"Description" name:"Description"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+		Duration       *string `json:"Duration" name:"Duration"`
+		UpdateTime     *string `json:"UpdateTime" name:"UpdateTime"`
+		ModelName      *string `json:"ModelName" name:"ModelName"`
+		BaseImage      *string `json:"BaseImage" name:"BaseImage"`
+		CustomImage    *string `json:"CustomImage" name:"CustomImage"`
+		EntryPoint     *string `json:"EntryPoint" name:"EntryPoint"`
+		AccessAddress  *string `json:"AccessAddress" name:"AccessAddress"`
+		Port           *int    `json:"Port" name:"Port"`
+		Env            []struct {
+			Name  *string `json:"Name" name:"Name"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"Env" name:"Env"`
+		CmdOptions []struct {
+			Name  *string `json:"Name" name:"Name"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"CmdOptions" name:"CmdOptions"`
+		ResourcePoolId  *string `json:"ResourcePoolId" name:"ResourcePoolId"`
+		DeploymentType  *string `json:"DeploymentType" name:"DeploymentType"`
+		Engine          *string `json:"Engine" name:"Engine"`
+		AccessType      *string `json:"AccessType" name:"AccessType"`
+		ClusterId       *string `json:"ClusterId" name:"ClusterId"`
+		QueueName       *string `json:"QueueName" name:"QueueName"`
+		GPUType         *string `json:"GPUType" name:"GPUType"`
+		GPUNum          *string `json:"GPUNum" name:"GPUNum"`
+		CPUNum          *int    `json:"CPUNum" name:"CPUNum"`
+		Memory          *int    `json:"Memory" name:"Memory"`
+		Distributed     *bool   `json:"Distributed" name:"Distributed"`
+		NodeNum         *int    `json:"NodeNum" name:"NodeNum"`
+		Replicas        *int    `json:"Replicas" name:"Replicas"`
+		CurrentReplicas *int    `json:"CurrentReplicas" name:"CurrentReplicas"`
+		VpcId           *string `json:"VpcId" name:"VpcId"`
+		SubnetId        *string `json:"SubnetId" name:"SubnetId"`
+		StorageConfigs  []struct {
+			StorageConfigId   *string `json:"StorageConfigId" name:"StorageConfigId"`
+			StorageConfigName *string `json:"StorageConfigName" name:"StorageConfigName"`
+			StorageConfigType *string `json:"StorageConfigType" name:"StorageConfigType"`
+			StorageType       *string `json:"StorageType" name:"StorageType"`
+			MountPath         *string `json:"MountPath" name:"MountPath"`
+		} `json:"StorageConfigs" name:"StorageConfigs"`
+		AutoScaleEnable      *bool   `json:"AutoScaleEnable" name:"AutoScaleEnable"`
+		ModelStorageEnabled  *bool   `json:"ModelStorageEnabled" name:"ModelStorageEnabled"`
+		ModelStoragePath     *string `json:"ModelStoragePath" name:"ModelStoragePath"`
+		ImageUrl             *string `json:"ImageUrl" name:"ImageUrl"`
+		ImageId              *string `json:"ImageId" name:"ImageId"`
+		ImageSource          *string `json:"ImageSource" name:"ImageSource"`
+		ImageRegistryId      *string `json:"ImageRegistryId" name:"ImageRegistryId"`
+		ImageRepoId          *string `json:"ImageRepoId" name:"ImageRepoId"`
+		ImageTagId           *string `json:"ImageTagId" name:"ImageTagId"`
+		ImageRegistryName    *string `json:"ImageRegistryName" name:"ImageRegistryName"`
+		ImageRepoName        *string `json:"ImageRepoName" name:"ImageRepoName"`
+		ImageTagName         *string `json:"ImageTagName" name:"ImageTagName"`
+		RunOnCPU             *bool   `json:"RunOnCPU" name:"RunOnCPU"`
+		HostNetworkEnabled   *bool   `json:"HostNetworkEnabled" name:"HostNetworkEnabled"`
+		ConsistentHashEnable *bool   `json:"ConsistentHashEnable" name:"ConsistentHashEnable"`
+		ConsistentHashHeader *string `json:"ConsistentHashHeader" name:"ConsistentHashHeader"`
+	} `json:"InferenceSet"`
+}
+
+func (r *DescribeInferencesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeInferencesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetInferenceAutoScaleStrategyRequest struct {
+	*ksyunhttp.BaseRequest
+	InferenceId       *string                                         `json:"InferenceId,omitempty" name:"InferenceId"`
+	AutoScaleEnable   *bool                                           `json:"AutoScaleEnable,omitempty" name:"AutoScaleEnable"`
+	AutoScaleStrategy *SetInferenceAutoScaleStrategyAutoScaleStrategy `json:"AutoScaleStrategy,omitempty" name:"AutoScaleStrategy"`
+}
+
+func (r *SetInferenceAutoScaleStrategyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetInferenceAutoScaleStrategyResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	InferenceId *string `json:"InferenceId" name:"InferenceId"`
+}
+
+func (r *SetInferenceAutoScaleStrategyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetInferenceAutoScaleStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteInferenceRequest struct {
+	*ksyunhttp.BaseRequest
+	InferenceId *string `json:"InferenceId,omitempty" name:"InferenceId"`
+}
+
+func (r *DeleteInferenceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteInferenceResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	InferenceId *string `json:"InferenceId" name:"InferenceId"`
+}
+
+func (r *DeleteInferenceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteInferenceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StopInferenceRequest struct {
+	*ksyunhttp.BaseRequest
+	InferenceId *string `json:"InferenceId,omitempty" name:"InferenceId"`
+}
+
+func (r *StopInferenceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type StopInferenceResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	InferenceId *string `json:"InferenceId" name:"InferenceId"`
+}
+
+func (r *StopInferenceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *StopInferenceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetInferenceDetailRequest struct {
+	*ksyunhttp.BaseRequest
+	InferenceId *string `json:"InferenceId,omitempty" name:"InferenceId"`
+}
+
+func (r *GetInferenceDetailRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetInferenceDetailResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId       *string `json:"RequestId" name:"RequestId"`
+	InferenceDetail struct {
+		InferenceName  *string `json:"InferenceName" name:"InferenceName"`
+		InferenceId    *string `json:"InferenceId" name:"InferenceId"`
+		Status         *string `json:"Status" name:"Status"`
+		IngressEnabled *bool   `json:"IngressEnabled" name:"IngressEnabled"`
+		Description    *string `json:"Description" name:"Description"`
+		CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+		Duration       *string `json:"Duration" name:"Duration"`
+		UpdateTime     *string `json:"UpdateTime" name:"UpdateTime"`
+		ModelName      *string `json:"ModelName" name:"ModelName"`
+		BaseImage      *string `json:"BaseImage" name:"BaseImage"`
+		CustomImage    *string `json:"CustomImage" name:"CustomImage"`
+		EntryPoint     *string `json:"EntryPoint" name:"EntryPoint"`
+		AccessAddress  *string `json:"AccessAddress" name:"AccessAddress"`
+		Port           *int    `json:"Port" name:"Port"`
+		Env            []struct {
+			Name  *string `json:"Name" name:"Name"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"Env" name:"Env"`
+		CmdOptions []struct {
+			Name  *string `json:"Name" name:"Name"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"CmdOptions" name:"CmdOptions"`
+		ResourcePoolId  *string `json:"ResourcePoolId" name:"ResourcePoolId"`
+		DeploymentType  *string `json:"DeploymentType" name:"DeploymentType"`
+		Engine          *string `json:"Engine" name:"Engine"`
+		AccessType      *string `json:"AccessType" name:"AccessType"`
+		ClusterId       *string `json:"ClusterId" name:"ClusterId"`
+		QueueName       *string `json:"QueueName" name:"QueueName"`
+		GPUType         *string `json:"GPUType" name:"GPUType"`
+		GPUNum          *string `json:"GPUNum" name:"GPUNum"`
+		CPUNum          *int    `json:"CPUNum" name:"CPUNum"`
+		Memory          *int    `json:"Memory" name:"Memory"`
+		Distributed     *bool   `json:"Distributed" name:"Distributed"`
+		NodeNum         *int    `json:"NodeNum" name:"NodeNum"`
+		Replicas        *int    `json:"Replicas" name:"Replicas"`
+		CurrentReplicas *int    `json:"CurrentReplicas" name:"CurrentReplicas"`
+		VpcId           *string `json:"VpcId" name:"VpcId"`
+		SubnetId        *string `json:"SubnetId" name:"SubnetId"`
+		StorageConfigs  []struct {
+			StorageConfigId   *string `json:"StorageConfigId" name:"StorageConfigId"`
+			StorageConfigName *string `json:"StorageConfigName" name:"StorageConfigName"`
+			StorageConfigType *string `json:"StorageConfigType" name:"StorageConfigType"`
+			StorageType       *string `json:"StorageType" name:"StorageType"`
+			MountPath         *string `json:"MountPath" name:"MountPath"`
+		} `json:"StorageConfigs" name:"StorageConfigs"`
+		AutoScaleEnable      *bool   `json:"AutoScaleEnable" name:"AutoScaleEnable"`
+		ModelStorageEnabled  *bool   `json:"ModelStorageEnabled" name:"ModelStorageEnabled"`
+		ModelStoragePath     *string `json:"ModelStoragePath" name:"ModelStoragePath"`
+		ImageUrl             *string `json:"ImageUrl" name:"ImageUrl"`
+		ImageId              *string `json:"ImageId" name:"ImageId"`
+		ImageSource          *string `json:"ImageSource" name:"ImageSource"`
+		ImageRegistryId      *string `json:"ImageRegistryId" name:"ImageRegistryId"`
+		ImageRepoId          *string `json:"ImageRepoId" name:"ImageRepoId"`
+		ImageTagId           *string `json:"ImageTagId" name:"ImageTagId"`
+		ImageRegistryName    *string `json:"ImageRegistryName" name:"ImageRegistryName"`
+		ImageRepoName        *string `json:"ImageRepoName" name:"ImageRepoName"`
+		ImageTagName         *string `json:"ImageTagName" name:"ImageTagName"`
+		RunOnCPU             *bool   `json:"RunOnCPU" name:"RunOnCPU"`
+		HostNetworkEnabled   *bool   `json:"HostNetworkEnabled" name:"HostNetworkEnabled"`
+		ConsistentHashEnable *bool   `json:"ConsistentHashEnable" name:"ConsistentHashEnable"`
+		ConsistentHashHeader *string `json:"ConsistentHashHeader" name:"ConsistentHashHeader"`
+	} `json:"InferenceDetail"`
+}
+
+func (r *GetInferenceDetailResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetInferenceDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StartInferenceRequest struct {
+	*ksyunhttp.BaseRequest
+	InferenceId *string `json:"InferenceId,omitempty" name:"InferenceId"`
+}
+
+func (r *StartInferenceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type StartInferenceResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	InferenceId *string `json:"InferenceId" name:"InferenceId"`
+}
+
+func (r *StartInferenceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *StartInferenceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyInferenceRequest struct {
+	*ksyunhttp.BaseRequest
+	InferenceId        *string                      `json:"InferenceId,omitempty" name:"InferenceId"`
+	InferenceName      *string                      `json:"InferenceName,omitempty" name:"InferenceName"`
+	Description        *string                      `json:"Description,omitempty" name:"Description"`
+	EntryPoint         *string                      `json:"EntryPoint,omitempty" name:"EntryPoint"`
+	ImageSource        *string                      `json:"ImageSource,omitempty" name:"ImageSource"`
+	ImageId            *string                      `json:"ImageId,omitempty" name:"ImageId"`
+	ImageRegistryId    *string                      `json:"ImageRegistryId,omitempty" name:"ImageRegistryId"`
+	ImageRepoId        *string                      `json:"ImageRepoId,omitempty" name:"ImageRepoId"`
+	ImageTagId         *string                      `json:"ImageTagId,omitempty" name:"ImageTagId"`
+	Env                []*ModifyInferenceEnv        `json:"Env,omitempty" name:"Env"`
+	CmdOptions         []*ModifyInferenceCmdOptions `json:"CmdOptions,omitempty" name:"CmdOptions"`
+	HostNetworkEnabled *bool                        `json:"HostNetworkEnabled,omitempty" name:"HostNetworkEnabled"`
+}
+
+func (r *ModifyInferenceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyInferenceResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	InferenceId *string `json:"InferenceId" name:"InferenceId"`
+}
+
+func (r *ModifyInferenceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyInferenceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetInferenceReplicasRequest struct {
+	*ksyunhttp.BaseRequest
+	InferenceId *string `json:"InferenceId,omitempty" name:"InferenceId"`
+	Replicas    *int    `json:"Replicas,omitempty" name:"Replicas"`
+}
+
+func (r *SetInferenceReplicasRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetInferenceReplicasResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	InferenceId *string `json:"InferenceId" name:"InferenceId"`
+}
+
+func (r *SetInferenceReplicasResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetInferenceReplicasResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

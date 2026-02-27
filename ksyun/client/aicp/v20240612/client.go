@@ -1049,6 +1049,322 @@ func (c *Client) DescribeImagesWithContextV2(ctx context.Context, request *Descr
 	}
 	return statusCode, msg, nil
 }
+func NewCreateInferenceRequest() (request *CreateInferenceRequest) {
+	request = &CreateInferenceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateInference")
+	return
+}
+
+func NewCreateInferenceResponse() (response *CreateInferenceResponse) {
+	response = &CreateInferenceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateInference(request *CreateInferenceRequest) string {
+	return c.CreateInferenceWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateInferenceSend(request *CreateInferenceRequest) (*CreateInferenceResponse, error) {
+	statusCode, msg, err := c.CreateInferenceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateInferenceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateInferenceWithContext(ctx context.Context, request *CreateInferenceRequest) string {
+	if request == nil {
+		request = NewCreateInferenceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateInference")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateInferenceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateInferenceWithContextV2(ctx context.Context, request *CreateInferenceRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateInferenceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateInference")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateInferenceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetInferenceModelsRequest() (request *GetInferenceModelsRequest) {
+	request = &GetInferenceModelsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetInferenceModels")
+	return
+}
+
+func NewGetInferenceModelsResponse() (response *GetInferenceModelsResponse) {
+	response = &GetInferenceModelsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetInferenceModels(request *GetInferenceModelsRequest) string {
+	return c.GetInferenceModelsWithContext(context.Background(), request)
+}
+
+func (c *Client) GetInferenceModelsSend(request *GetInferenceModelsRequest) (*GetInferenceModelsResponse, error) {
+	statusCode, msg, err := c.GetInferenceModelsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetInferenceModelsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetInferenceModelsWithContext(ctx context.Context, request *GetInferenceModelsRequest) string {
+	if request == nil {
+		request = NewGetInferenceModelsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetInferenceModels")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetInferenceModelsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetInferenceModelsWithContextV2(ctx context.Context, request *GetInferenceModelsRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetInferenceModelsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetInferenceModels")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetInferenceModelsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetInferencePodsRequest() (request *GetInferencePodsRequest) {
+	request = &GetInferencePodsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetInferencePods")
+	return
+}
+
+func NewGetInferencePodsResponse() (response *GetInferencePodsResponse) {
+	response = &GetInferencePodsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetInferencePods(request *GetInferencePodsRequest) string {
+	return c.GetInferencePodsWithContext(context.Background(), request)
+}
+
+func (c *Client) GetInferencePodsSend(request *GetInferencePodsRequest) (*GetInferencePodsResponse, error) {
+	statusCode, msg, err := c.GetInferencePodsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetInferencePodsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetInferencePodsWithContext(ctx context.Context, request *GetInferencePodsRequest) string {
+	if request == nil {
+		request = NewGetInferencePodsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetInferencePods")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetInferencePodsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetInferencePodsWithContextV2(ctx context.Context, request *GetInferencePodsRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetInferencePodsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetInferencePods")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetInferencePodsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetInferenceLogsRequest() (request *GetInferenceLogsRequest) {
+	request = &GetInferenceLogsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetInferenceLogs")
+	return
+}
+
+func NewGetInferenceLogsResponse() (response *GetInferenceLogsResponse) {
+	response = &GetInferenceLogsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetInferenceLogs(request *GetInferenceLogsRequest) string {
+	return c.GetInferenceLogsWithContext(context.Background(), request)
+}
+
+func (c *Client) GetInferenceLogsSend(request *GetInferenceLogsRequest) (*GetInferenceLogsResponse, error) {
+	statusCode, msg, err := c.GetInferenceLogsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetInferenceLogsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetInferenceLogsWithContext(ctx context.Context, request *GetInferenceLogsRequest) string {
+	if request == nil {
+		request = NewGetInferenceLogsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetInferenceLogs")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetInferenceLogsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetInferenceLogsWithContextV2(ctx context.Context, request *GetInferenceLogsRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetInferenceLogsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetInferenceLogs")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetInferenceLogsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewStopNotebookRequest() (request *StopNotebookRequest) {
 	request = &StopNotebookRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -1359,6 +1675,85 @@ func (c *Client) DescribeNotebookLogWithContextV2(ctx context.Context, request *
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeNotebookLogResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetInferenceAutoScaleStrategyRequest() (request *GetInferenceAutoScaleStrategyRequest) {
+	request = &GetInferenceAutoScaleStrategyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetInferenceAutoScaleStrategy")
+	return
+}
+
+func NewGetInferenceAutoScaleStrategyResponse() (response *GetInferenceAutoScaleStrategyResponse) {
+	response = &GetInferenceAutoScaleStrategyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetInferenceAutoScaleStrategy(request *GetInferenceAutoScaleStrategyRequest) string {
+	return c.GetInferenceAutoScaleStrategyWithContext(context.Background(), request)
+}
+
+func (c *Client) GetInferenceAutoScaleStrategySend(request *GetInferenceAutoScaleStrategyRequest) (*GetInferenceAutoScaleStrategyResponse, error) {
+	statusCode, msg, err := c.GetInferenceAutoScaleStrategyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetInferenceAutoScaleStrategyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetInferenceAutoScaleStrategyWithContext(ctx context.Context, request *GetInferenceAutoScaleStrategyRequest) string {
+	if request == nil {
+		request = NewGetInferenceAutoScaleStrategyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetInferenceAutoScaleStrategy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetInferenceAutoScaleStrategyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetInferenceAutoScaleStrategyWithContextV2(ctx context.Context, request *GetInferenceAutoScaleStrategyRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetInferenceAutoScaleStrategyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetInferenceAutoScaleStrategy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetInferenceAutoScaleStrategyResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
@@ -3182,85 +3577,6 @@ func (c *Client) DisableOverFreeLimitWithContextV2(ctx context.Context, request 
 	}
 	return statusCode, msg, nil
 }
-func NewCreateTrainJobRequest() (request *CreateTrainJobRequest) {
-	request = &CreateTrainJobRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("aicp", APIVersion, "CreateTrainJob")
-	return
-}
-
-func NewCreateTrainJobResponse() (response *CreateTrainJobResponse) {
-	response = &CreateTrainJobResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) CreateTrainJob(request *CreateTrainJobRequest) string {
-	return c.CreateTrainJobWithContext(context.Background(), request)
-}
-
-func (c *Client) CreateTrainJobSend(request *CreateTrainJobRequest) (*CreateTrainJobResponse, error) {
-	statusCode, msg, err := c.CreateTrainJobWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	if msg == "" {
-		return nil, nil
-	}
-
-	var respStruct CreateTrainJobResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) CreateTrainJobWithContext(ctx context.Context, request *CreateTrainJobRequest) string {
-	if request == nil {
-		request = NewCreateTrainJobRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("aicp", APIVersion, "CreateTrainJob")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewCreateTrainJobResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) CreateTrainJobWithContextV2(ctx context.Context, request *CreateTrainJobRequest) (int, string, error) {
-	if request == nil {
-		request = NewCreateTrainJobRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("aicp", APIVersion, "CreateTrainJob")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewCreateTrainJobResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}
 func NewDescribeTrainJobEventsRequest() (request *DescribeTrainJobEventsRequest) {
 	request = &DescribeTrainJobEventsRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -3413,85 +3729,6 @@ func (c *Client) StopTrainJobWithContextV2(ctx context.Context, request *StopTra
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewStopTrainJobResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}
-func NewDescribeTrainJobRequest() (request *DescribeTrainJobRequest) {
-	request = &DescribeTrainJobRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJob")
-	return
-}
-
-func NewDescribeTrainJobResponse() (response *DescribeTrainJobResponse) {
-	response = &DescribeTrainJobResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) DescribeTrainJob(request *DescribeTrainJobRequest) string {
-	return c.DescribeTrainJobWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeTrainJobSend(request *DescribeTrainJobRequest) (*DescribeTrainJobResponse, error) {
-	statusCode, msg, err := c.DescribeTrainJobWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	if msg == "" {
-		return nil, nil
-	}
-
-	var respStruct DescribeTrainJobResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) DescribeTrainJobWithContext(ctx context.Context, request *DescribeTrainJobRequest) string {
-	if request == nil {
-		request = NewDescribeTrainJobRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJob")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeTrainJobResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) DescribeTrainJobWithContextV2(ctx context.Context, request *DescribeTrainJobRequest) (int, string, error) {
-	if request == nil {
-		request = NewDescribeTrainJobRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJob")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeTrainJobResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
@@ -3887,6 +4124,638 @@ func (c *Client) DescribeTrainJobPodsWithContextV2(ctx context.Context, request 
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeTrainJobPodsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeInferencesRequest() (request *DescribeInferencesRequest) {
+	request = &DescribeInferencesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeInferences")
+	return
+}
+
+func NewDescribeInferencesResponse() (response *DescribeInferencesResponse) {
+	response = &DescribeInferencesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeInferences(request *DescribeInferencesRequest) string {
+	return c.DescribeInferencesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeInferencesSend(request *DescribeInferencesRequest) (*DescribeInferencesResponse, error) {
+	statusCode, msg, err := c.DescribeInferencesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeInferencesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeInferencesWithContext(ctx context.Context, request *DescribeInferencesRequest) string {
+	if request == nil {
+		request = NewDescribeInferencesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeInferences")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeInferencesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeInferencesWithContextV2(ctx context.Context, request *DescribeInferencesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeInferencesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeInferences")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeInferencesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewSetInferenceAutoScaleStrategyRequest() (request *SetInferenceAutoScaleStrategyRequest) {
+	request = &SetInferenceAutoScaleStrategyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "SetInferenceAutoScaleStrategy")
+	return
+}
+
+func NewSetInferenceAutoScaleStrategyResponse() (response *SetInferenceAutoScaleStrategyResponse) {
+	response = &SetInferenceAutoScaleStrategyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetInferenceAutoScaleStrategy(request *SetInferenceAutoScaleStrategyRequest) string {
+	return c.SetInferenceAutoScaleStrategyWithContext(context.Background(), request)
+}
+
+func (c *Client) SetInferenceAutoScaleStrategySend(request *SetInferenceAutoScaleStrategyRequest) (*SetInferenceAutoScaleStrategyResponse, error) {
+	statusCode, msg, err := c.SetInferenceAutoScaleStrategyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetInferenceAutoScaleStrategyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetInferenceAutoScaleStrategyWithContext(ctx context.Context, request *SetInferenceAutoScaleStrategyRequest) string {
+	if request == nil {
+		request = NewSetInferenceAutoScaleStrategyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "SetInferenceAutoScaleStrategy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetInferenceAutoScaleStrategyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetInferenceAutoScaleStrategyWithContextV2(ctx context.Context, request *SetInferenceAutoScaleStrategyRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetInferenceAutoScaleStrategyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "SetInferenceAutoScaleStrategy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetInferenceAutoScaleStrategyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteInferenceRequest() (request *DeleteInferenceRequest) {
+	request = &DeleteInferenceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeleteInference")
+	return
+}
+
+func NewDeleteInferenceResponse() (response *DeleteInferenceResponse) {
+	response = &DeleteInferenceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteInference(request *DeleteInferenceRequest) string {
+	return c.DeleteInferenceWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteInferenceSend(request *DeleteInferenceRequest) (*DeleteInferenceResponse, error) {
+	statusCode, msg, err := c.DeleteInferenceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteInferenceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteInferenceWithContext(ctx context.Context, request *DeleteInferenceRequest) string {
+	if request == nil {
+		request = NewDeleteInferenceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteInference")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteInferenceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteInferenceWithContextV2(ctx context.Context, request *DeleteInferenceRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteInferenceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteInference")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteInferenceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewStopInferenceRequest() (request *StopInferenceRequest) {
+	request = &StopInferenceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "StopInference")
+	return
+}
+
+func NewStopInferenceResponse() (response *StopInferenceResponse) {
+	response = &StopInferenceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) StopInference(request *StopInferenceRequest) string {
+	return c.StopInferenceWithContext(context.Background(), request)
+}
+
+func (c *Client) StopInferenceSend(request *StopInferenceRequest) (*StopInferenceResponse, error) {
+	statusCode, msg, err := c.StopInferenceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct StopInferenceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) StopInferenceWithContext(ctx context.Context, request *StopInferenceRequest) string {
+	if request == nil {
+		request = NewStopInferenceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StopInference")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewStopInferenceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) StopInferenceWithContextV2(ctx context.Context, request *StopInferenceRequest) (int, string, error) {
+	if request == nil {
+		request = NewStopInferenceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StopInference")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewStopInferenceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetInferenceDetailRequest() (request *GetInferenceDetailRequest) {
+	request = &GetInferenceDetailRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetInferenceDetail")
+	return
+}
+
+func NewGetInferenceDetailResponse() (response *GetInferenceDetailResponse) {
+	response = &GetInferenceDetailResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetInferenceDetail(request *GetInferenceDetailRequest) string {
+	return c.GetInferenceDetailWithContext(context.Background(), request)
+}
+
+func (c *Client) GetInferenceDetailSend(request *GetInferenceDetailRequest) (*GetInferenceDetailResponse, error) {
+	statusCode, msg, err := c.GetInferenceDetailWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetInferenceDetailResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetInferenceDetailWithContext(ctx context.Context, request *GetInferenceDetailRequest) string {
+	if request == nil {
+		request = NewGetInferenceDetailRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetInferenceDetail")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetInferenceDetailResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetInferenceDetailWithContextV2(ctx context.Context, request *GetInferenceDetailRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetInferenceDetailRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetInferenceDetail")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetInferenceDetailResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewStartInferenceRequest() (request *StartInferenceRequest) {
+	request = &StartInferenceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "StartInference")
+	return
+}
+
+func NewStartInferenceResponse() (response *StartInferenceResponse) {
+	response = &StartInferenceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) StartInference(request *StartInferenceRequest) string {
+	return c.StartInferenceWithContext(context.Background(), request)
+}
+
+func (c *Client) StartInferenceSend(request *StartInferenceRequest) (*StartInferenceResponse, error) {
+	statusCode, msg, err := c.StartInferenceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct StartInferenceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) StartInferenceWithContext(ctx context.Context, request *StartInferenceRequest) string {
+	if request == nil {
+		request = NewStartInferenceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StartInference")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewStartInferenceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) StartInferenceWithContextV2(ctx context.Context, request *StartInferenceRequest) (int, string, error) {
+	if request == nil {
+		request = NewStartInferenceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "StartInference")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewStartInferenceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyInferenceRequest() (request *ModifyInferenceRequest) {
+	request = &ModifyInferenceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ModifyInference")
+	return
+}
+
+func NewModifyInferenceResponse() (response *ModifyInferenceResponse) {
+	response = &ModifyInferenceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyInference(request *ModifyInferenceRequest) string {
+	return c.ModifyInferenceWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyInferenceSend(request *ModifyInferenceRequest) (*ModifyInferenceResponse, error) {
+	statusCode, msg, err := c.ModifyInferenceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ModifyInferenceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyInferenceWithContext(ctx context.Context, request *ModifyInferenceRequest) string {
+	if request == nil {
+		request = NewModifyInferenceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyInference")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyInferenceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyInferenceWithContextV2(ctx context.Context, request *ModifyInferenceRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyInferenceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyInference")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyInferenceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewSetInferenceReplicasRequest() (request *SetInferenceReplicasRequest) {
+	request = &SetInferenceReplicasRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "SetInferenceReplicas")
+	return
+}
+
+func NewSetInferenceReplicasResponse() (response *SetInferenceReplicasResponse) {
+	response = &SetInferenceReplicasResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetInferenceReplicas(request *SetInferenceReplicasRequest) string {
+	return c.SetInferenceReplicasWithContext(context.Background(), request)
+}
+
+func (c *Client) SetInferenceReplicasSend(request *SetInferenceReplicasRequest) (*SetInferenceReplicasResponse, error) {
+	statusCode, msg, err := c.SetInferenceReplicasWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetInferenceReplicasResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetInferenceReplicasWithContext(ctx context.Context, request *SetInferenceReplicasRequest) string {
+	if request == nil {
+		request = NewSetInferenceReplicasRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "SetInferenceReplicas")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetInferenceReplicasResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetInferenceReplicasWithContextV2(ctx context.Context, request *SetInferenceReplicasRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetInferenceReplicasRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "SetInferenceReplicas")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetInferenceReplicasResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err

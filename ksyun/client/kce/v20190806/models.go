@@ -445,8 +445,8 @@ type DescribeClusterInstanceResponse struct {
 			ExtraArg struct {
 				Kubelet []*string `json:"Kubelet" name:"Kubelet"`
 			} `json:"ExtraArg"`
-			ContainerLogMaxSize  *int `json:"ContainerLogMaxSize" name:"ContainerLogMaxSize"`
-			ContainerLogMaxFiles *int `json:"ContainerLogMaxFiles" name:"ContainerLogMaxFiles"`
+			ContainerLogMaxSize  *string `json:"ContainerLogMaxSize" name:"ContainerLogMaxSize"`
+			ContainerLogMaxFiles *string `json:"ContainerLogMaxFiles" name:"ContainerLogMaxFiles"`
 		} `json:"AdvancedSetting" name:"AdvancedSetting"`
 		EpcInstancePara struct {
 			ProjectId    *int    `json:"ProjectId" name:"ProjectId"`
