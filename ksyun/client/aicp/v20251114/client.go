@@ -1286,3 +1286,161 @@ func (c *Client) CreateKnowledgeBaseWithContextV2(ctx context.Context, request *
 	}
 	return statusCode, msg, nil
 }
+func NewCreateMemorySdkRequest() (request *CreateMemorySdkRequest) {
+	request = &CreateMemorySdkRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateMemorySdk")
+	return
+}
+
+func NewCreateMemorySdkResponse() (response *CreateMemorySdkResponse) {
+	response = &CreateMemorySdkResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateMemorySdk(request *CreateMemorySdkRequest) string {
+	return c.CreateMemorySdkWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateMemorySdkSend(request *CreateMemorySdkRequest) (*CreateMemorySdkResponse, error) {
+	statusCode, msg, err := c.CreateMemorySdkWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateMemorySdkResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateMemorySdkWithContext(ctx context.Context, request *CreateMemorySdkRequest) string {
+	if request == nil {
+		request = NewCreateMemorySdkRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateMemorySdk")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateMemorySdkResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateMemorySdkWithContextV2(ctx context.Context, request *CreateMemorySdkRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateMemorySdkRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateMemorySdk")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateMemorySdkResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewQueryMemorySdkRequest() (request *QueryMemorySdkRequest) {
+	request = &QueryMemorySdkRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "QueryMemorySdk")
+	return
+}
+
+func NewQueryMemorySdkResponse() (response *QueryMemorySdkResponse) {
+	response = &QueryMemorySdkResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) QueryMemorySdk(request *QueryMemorySdkRequest) string {
+	return c.QueryMemorySdkWithContext(context.Background(), request)
+}
+
+func (c *Client) QueryMemorySdkSend(request *QueryMemorySdkRequest) (*QueryMemorySdkResponse, error) {
+	statusCode, msg, err := c.QueryMemorySdkWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct QueryMemorySdkResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) QueryMemorySdkWithContext(ctx context.Context, request *QueryMemorySdkRequest) string {
+	if request == nil {
+		request = NewQueryMemorySdkRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "QueryMemorySdk")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewQueryMemorySdkResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) QueryMemorySdkWithContextV2(ctx context.Context, request *QueryMemorySdkRequest) (int, string, error) {
+	if request == nil {
+		request = NewQueryMemorySdkRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "QueryMemorySdk")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewQueryMemorySdkResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}

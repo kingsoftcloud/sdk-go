@@ -467,7 +467,6 @@ type DescribeNotebooksResponse struct {
 		Label struct {
 			TerminatePolicyId *string `json:"TerminatePolicyId" name:"TerminatePolicyId"`
 		} `json:"Label" name:"Label"`
-		Version            *string  `json:"Version" name:"Version"`
 		EstimatedImageSize *float64 `json:"EstimatedImageSize" name:"EstimatedImageSize"`
 		ComputeStatus      *string  `json:"ComputeStatus" name:"ComputeStatus"`
 		RunOnCPU           *bool    `json:"RunOnCPU" name:"RunOnCPU"`
@@ -1332,6 +1331,61 @@ func (r *DescribeApikeysResponse) ToJsonString() string {
 }
 
 func (r *DescribeApikeysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryTokenDataRequest struct {
+	*ksyunhttp.BaseRequest
+	StartTimestamp *int64  `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
+	EndTimestamp   *int64  `json:"EndTimestamp,omitempty" name:"EndTimestamp"`
+	LastKey        *string `json:"LastKey,omitempty" name:"LastKey"`
+	MaxResults     *int    `json:"MaxResults,omitempty" name:"MaxResults"`
+	ModelKeyword   *string `json:"ModelKeyword,omitempty" name:"ModelKeyword"`
+	Keyword        *string `json:"Keyword,omitempty" name:"Keyword"`
+	GroupBy        *string `json:"GroupBy,omitempty" name:"GroupBy"`
+	ReasoningType  *string `json:"ReasoningType,omitempty" name:"ReasoningType"`
+	Marker         *int    `json:"Marker,omitempty" name:"Marker"`
+	ModelName      *string `json:"ModelName,omitempty" name:"ModelName"`
+}
+
+func (r *QueryTokenDataRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type QueryTokenDataResponse struct {
+	*ksyunhttp.BaseResponse
+	TotalCount     *int64  `json:"TotalCount" name:"TotalCount"`
+	LastKey        *string `json:"LastKey" name:"LastKey"`
+	SumInputToken  *int64  `json:"SumInputToken" name:"SumInputToken"`
+	SumOutputToken *int64  `json:"SumOutputToken" name:"SumOutputToken"`
+	SumTotalToken  *int64  `json:"SumTotalToken" name:"SumTotalToken"`
+	Data           []struct {
+		Model               *string `json:"Model" name:"Model"`
+		InputToken          *int64  `json:"InputToken" name:"InputToken"`
+		OutputToken         *int64  `json:"OutputToken" name:"OutputToken"`
+		TotalToken          *int64  `json:"TotalToken" name:"TotalToken"`
+		TotalCacheToken     *int64  `json:"TotalCacheToken" name:"TotalCacheToken"`
+		TotalCacheMissToken *int64  `json:"TotalCacheMissToken" name:"TotalCacheMissToken"`
+		TotalWebSearch      *int64  `json:"TotalWebSearch" name:"TotalWebSearch"`
+		TotalImageCount     *int64  `json:"TotalImageCount" name:"TotalImageCount"`
+		TotalVideoDuration  *int64  `json:"TotalVideoDuration" name:"TotalVideoDuration"`
+		TotalWebParser      *int64  `json:"TotalWebParser" name:"TotalWebParser"`
+	} `json:"Data"`
+	SumTotalCacheToken     *int64 `json:"SumTotalCacheToken" name:"SumTotalCacheToken"`
+	SumTotalCacheMissToken *int64 `json:"SumTotalCacheMissToken" name:"SumTotalCacheMissToken"`
+	SumTotalWebSearch      *int64 `json:"SumTotalWebSearch" name:"SumTotalWebSearch"`
+	SumTotalImageCount     *int64 `json:"SumTotalImageCount" name:"SumTotalImageCount"`
+	SumTotalVideoDuration  *int64 `json:"SumTotalVideoDuration" name:"SumTotalVideoDuration"`
+	SumTotalWebParser      *int64 `json:"SumTotalWebParser" name:"SumTotalWebParser"`
+}
+
+func (r *QueryTokenDataResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *QueryTokenDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
