@@ -130,10 +130,6 @@ type ModifyClusterVpcCNI struct {
 type ModifyNodeComponents struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
-type DescribeComponentParamsComponents struct {
-	Type         *string `json:"Type,omitempty" name:"Type"`
-	ParamVersion *string `json:"ParamVersion,omitempty" name:"ParamVersion"`
-}
 type AddKecNodesNodeInstanceSetComponents struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
@@ -372,6 +368,8 @@ type DescribeClustersResponse struct {
 			Status struct {
 				Phase *string `json:"Phase" name:"Phase"`
 			} `json:"Status"`
+			CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+			UpdatedTime *string `json:"UpdatedTime" name:"UpdatedTime"`
 		} `json:"ClusterSet" name:"ClusterSet"`
 	} `json:"Data"`
 }
@@ -465,12 +463,66 @@ type DescribeNodesResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	Data      struct {
-		MaxResults *int `json:"MaxResults" name:"MaxResults"`
-		Marker     *int `json:"Marker" name:"Marker"`
-		TotalCount *int `json:"TotalCount" name:"TotalCount"`
+		MaxResults  *int `json:"MaxResults" name:"MaxResults"`
+		TotalCount  *int `json:"TotalCount" name:"TotalCount"`
+		InstanceSet []struct {
+			Provider   *string `json:"Provider" name:"Provider"`
+			Components []struct {
+				Type *string `json:"Type" name:"Type"`
+			} `json:"Components"`
+			InstanceId *string `json:"InstanceId" name:"InstanceId"`
+			KceNodeId  *string `json:"KceNodeId" name:"KceNodeId"`
+			Name       *string `json:"Name" name:"Name"`
+			ClusterId  *string `json:"ClusterId" name:"ClusterId"`
+			Status     struct {
+				Phase   *string `json:"Phase" name:"Phase"`
+				Message *string `json:"Message" name:"Message"`
+			} `json:"Status"`
+			AdvancedSetting struct {
+				PostUserScript *string `json:"PostUserScript" name:"PostUserScript"`
+				PreUserScript  *string `json:"PreUserScript" name:"PreUserScript"`
+				Labels         struct {
+					Key   *string `json:"Key" name:"Key"`
+					Value *string `json:"Value" name:"Value"`
+				} `json:"Labels" name:"Labels"`
+				Taint struct {
+					Key    *string `json:"Key" name:"Key"`
+					Value  *string `json:"Value" name:"Value"`
+					Effect *string `json:"Effect" name:"Effect"`
+				} `json:"Taint" name:"Taint"`
+			} `json:"AdvancedSetting"`
+			BasicSetting struct {
+				AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+				ImageID          *string `json:"ImageID" name:"ImageID"`
+				SecurityGroupID  *string `json:"SecurityGroupID" name:"SecurityGroupID"`
+				SubnetID         *string `json:"SubnetID" name:"SubnetID"`
+				InstanceType     *string `json:"InstanceType" name:"InstanceType"`
+				Series           *string `json:"Series" name:"Series"`
+				SystemDisk       struct {
+					FileSystem *string `json:"FileSystem" name:"FileSystem"`
+					Type       *string `json:"Type" name:"Type"`
+					Size       *int    `json:"Size" name:"Size"`
+				} `json:"SystemDisk" name:"SystemDisk"`
+				DataDisk []struct {
+					FileSystem         *string `json:"FileSystem" name:"FileSystem"`
+					MountTarget        *string `json:"MountTarget" name:"MountTarget"`
+					Type               *string `json:"Type" name:"Type"`
+					Size               *int    `json:"Size" name:"Size"`
+					DeleteWithInstance *bool   `json:"DeleteWithInstance" name:"DeleteWithInstance"`
+					AutoFormatAndMount *bool   `json:"AutoFormatAndMount" name:"AutoFormatAndMount"`
+				} `json:"DataDisk" name:"DataDisk"`
+				ChargeType           *string `json:"ChargeType" name:"ChargeType"`
+				Unit                 *int    `json:"Unit" name:"Unit"`
+				PurchaseTime         *int    `json:"PurchaseTime" name:"PurchaseTime"`
+				Raid                 *string `json:"Raid" name:"Raid"`
+				NetworkInterfaceMode *string `json:"NetworkInterfaceMode" name:"NetworkInterfaceMode"`
+				BondName             *string `json:"BondName" name:"BondName"`
+				GpuImageDriverId     *string `json:"GpuImageDriverId" name:"GpuImageDriverId"`
+			} `json:"BasicSetting"`
+			CreatedTime *string `json:"CreatedTime" name:"CreatedTime"`
+			UpdatedTime *string `json:"UpdatedTime" name:"UpdatedTime"`
+		} `json:"InstanceSet" name:"InstanceSet"`
 	} `json:"Data"`
-	InstanceSet struct {
-	} `json:"InstanceSet"`
 }
 
 func (r *DescribeNodesResponse) ToJsonString() string {
@@ -485,7 +537,6 @@ func (r *DescribeNodesResponse) FromJsonString(s string) error {
 type DeleteNodeRequest struct {
 	*ksyunhttp.BaseRequest
 	ClusterId      *string   `json:"ClusterId,omitempty" name:"ClusterId"`
-	NodeIds        []*string `json:"NodeIds,omitempty" name:"NodeIds"`
 	InstanceDelete *bool     `json:"InstanceDelete,omitempty" name:"InstanceDelete"`
 	KceNodeIds     *string   `json:"KceNodeIds,omitempty" name:"KceNodeIds"`
 	InstanceIds    []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
@@ -607,120 +658,6 @@ func (r *DescribeNodeComponentsResponse) ToJsonString() string {
 }
 
 func (r *DescribeNodeComponentsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeNetworkRequest struct {
-	*ksyunhttp.BaseRequest
-	ClusterId   *string `json:"ClusterId,omitempty" name:"ClusterId"`
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
-}
-
-func (r *DescribeNetworkRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type DescribeNetworkResponse struct {
-	*ksyunhttp.BaseResponse
-	ClusterId *string `json:"ClusterId" name:"ClusterId"`
-	NetworkId *string `json:"NetworkId" name:"NetworkId"`
-	PublicSLB struct {
-		Phase  *string `json:"Phase" name:"Phase"`
-		Reason *string `json:"Reason" name:"Reason"`
-	} `json:"PublicSLB"`
-	PrivateSLB struct {
-		SLBId  *string `json:"SLBId" name:"SLBId"`
-		SLBIp  *string `json:"SLBIp" name:"SLBIp"`
-		Phase  *string `json:"Phase" name:"Phase"`
-		Reason *string `json:"Reason" name:"Reason"`
-	} `json:"PrivateSLB"`
-	PrivateLink struct {
-		LinkIp   *string `json:"LinkIp" name:"LinkIp"`
-		LinkPort *string `json:"LinkPort" name:"LinkPort"`
-		Phase    *string `json:"Phase" name:"Phase"`
-		Reason   *string `json:"Reason" name:"Reason"`
-	} `json:"PrivateLink"`
-	EIP struct {
-		EIPId  *string `json:"EIPId" name:"EIPId"`
-		Phase  *string `json:"Phase" name:"Phase"`
-		Reason *string `json:"Reason" name:"Reason"`
-	} `json:"EIP"`
-	PublicAccess *bool   `json:"PublicAccess" name:"PublicAccess"`
-	CreatedTime  *string `json:"CreatedTime" name:"CreatedTime"`
-	UpdatedTime  *string `json:"UpdatedTime" name:"UpdatedTime"`
-}
-
-func (r *DescribeNetworkResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DescribeNetworkResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeComponentParamsRequest struct {
-	*ksyunhttp.BaseRequest
-	ClusterId  *string                              `json:"ClusterId,omitempty" name:"ClusterId"`
-	Components []*DescribeComponentParamsComponents `json:"Components,omitempty" name:"Components"`
-	Marker     *int                                 `json:"Marker,omitempty" name:"Marker"`
-	MaxResults *int                                 `json:"MaxResults,omitempty" name:"MaxResults"`
-}
-
-func (r *DescribeComponentParamsRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type DescribeComponentParamsResponse struct {
-	*ksyunhttp.BaseResponse
-	RequeestId *string `json:"RequeestId" name:"RequeestId"`
-	Data       struct {
-		ClusterId *string `json:"ClusterId" name:"ClusterId"`
-	} `json:"Data"`
-	Components []struct {
-		Type    *string `json:"Type" name:"Type"`
-		Version *string `json:"Version" name:"Version"`
-		Args    *string `json:"Args" name:"Args"`
-	} `json:"Components"`
-}
-
-func (r *DescribeComponentParamsResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DescribeComponentParamsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeEventLogsRequest struct {
-	*ksyunhttp.BaseRequest
-	ClusterId   *string `json:"ClusterId,omitempty" name:"ClusterId"`
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
-	NodeId      *string `json:"NodeId,omitempty" name:"NodeId"`
-	NodeName    *string `json:"NodeName,omitempty" name:"NodeName"`
-	Inner       *bool   `json:"Inner,omitempty" name:"Inner"`
-	Marker      *int    `json:"Marker,omitempty" name:"Marker"`
-	MaxResults  *int    `json:"MaxResults,omitempty" name:"MaxResults"`
-}
-
-func (r *DescribeEventLogsRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type DescribeEventLogsResponse struct {
-	*ksyunhttp.BaseResponse
-}
-
-func (r *DescribeEventLogsResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DescribeEventLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
