@@ -7922,6 +7922,164 @@ func (c *Client) CopySnapshotWithContextV2(ctx context.Context, request *CopySna
 	}
 	return statusCode, msg, nil
 }
+func NewExportImageRequest() (request *ExportImageRequest) {
+	request = &ExportImageRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kec", APIVersion, "ExportImage")
+	return
+}
+
+func NewExportImageResponse() (response *ExportImageResponse) {
+	response = &ExportImageResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ExportImage(request *ExportImageRequest) string {
+	return c.ExportImageWithContext(context.Background(), request)
+}
+
+func (c *Client) ExportImageSend(request *ExportImageRequest) (*ExportImageResponse, error) {
+	statusCode, msg, err := c.ExportImageWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ExportImageResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ExportImageWithContext(ctx context.Context, request *ExportImageRequest) string {
+	if request == nil {
+		request = NewExportImageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kec", APIVersion, "ExportImage")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewExportImageResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ExportImageWithContextV2(ctx context.Context, request *ExportImageRequest) (int, string, error) {
+	if request == nil {
+		request = NewExportImageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kec", APIVersion, "ExportImage")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewExportImageResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCancelImageExportRequest() (request *CancelImageExportRequest) {
+	request = &CancelImageExportRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kec", APIVersion, "CancelImageExport")
+	return
+}
+
+func NewCancelImageExportResponse() (response *CancelImageExportResponse) {
+	response = &CancelImageExportResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CancelImageExport(request *CancelImageExportRequest) string {
+	return c.CancelImageExportWithContext(context.Background(), request)
+}
+
+func (c *Client) CancelImageExportSend(request *CancelImageExportRequest) (*CancelImageExportResponse, error) {
+	statusCode, msg, err := c.CancelImageExportWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CancelImageExportResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CancelImageExportWithContext(ctx context.Context, request *CancelImageExportRequest) string {
+	if request == nil {
+		request = NewCancelImageExportRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kec", APIVersion, "CancelImageExport")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCancelImageExportResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CancelImageExportWithContextV2(ctx context.Context, request *CancelImageExportRequest) (int, string, error) {
+	if request == nil {
+		request = NewCancelImageExportRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kec", APIVersion, "CancelImageExport")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCancelImageExportResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewPreMigrateInstanceRequest() (request *PreMigrateInstanceRequest) {
 	request = &PreMigrateInstanceRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},

@@ -192,6 +192,7 @@ type DescribeInstancesResponse struct {
 				SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
 			} `json:"SecurityGroupSet"`
 			NetworkInterfaceName *string `json:"NetworkInterfaceName" name:"NetworkInterfaceName"`
+			PublicIp             *string `json:"PublicIp" name:"PublicIp"`
 		} `json:"NetworkInterfaceSet" name:"NetworkInterfaceSet"`
 		SriovNetSupport       *string `json:"SriovNetSupport" name:"SriovNetSupport"`
 		IsShowSriovNetSupport *bool   `json:"IsShowSriovNetSupport" name:"IsShowSriovNetSupport"`
@@ -598,15 +599,13 @@ func (r *ModifyImageAttributeResponse) FromJsonString(s string) error {
 
 type ModifyInstanceImageRequest struct {
 	*ksyunhttp.BaseRequest
-	InstanceId           *string   `json:"InstanceId,omitempty" name:"InstanceId"`
-	ImageId              *string   `json:"ImageId,omitempty" name:"ImageId"`
-	SystemDiskDiskSize   *int      `json:"SystemDisk.DiskSize,omitempty" name:"SystemDisk.DiskSize"`
-	InstancePassword     *string   `json:"InstancePassword,omitempty" name:"InstancePassword"`
-	KeyId                []*string `json:"KeyId,omitempty" name:"KeyId"`
-	KeepImageLogin       *bool     `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
-	SystemDiskDiskType   *string   `json:"SystemDisk.DiskType,omitempty" name:"SystemDisk.DiskType"`
-	SystemDiskResizeType *string   `json:"SystemDisk.ResizeType,omitempty" name:"SystemDisk.ResizeType"`
-	UserData             *string   `json:"UserData,omitempty" name:"UserData"`
+	InstanceId         *string   `json:"InstanceId,omitempty" name:"InstanceId"`
+	ImageId            *string   `json:"ImageId,omitempty" name:"ImageId"`
+	SystemDiskDiskSize *int      `json:"SystemDisk.DiskSize,omitempty" name:"SystemDisk.DiskSize"`
+	InstancePassword   *string   `json:"InstancePassword,omitempty" name:"InstancePassword"`
+	KeyId              []*string `json:"KeyId,omitempty" name:"KeyId"`
+	KeepImageLogin     *bool     `json:"KeepImageLogin,omitempty" name:"KeepImageLogin"`
+	SystemDiskDiskType *string   `json:"SystemDisk.DiskType,omitempty" name:"SystemDisk.DiskType"`
 }
 
 func (r *ModifyInstanceImageRequest) ToJsonString() string {
@@ -3649,6 +3648,59 @@ func (r *CopySnapshotResponse) ToJsonString() string {
 }
 
 func (r *CopySnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ExportImageRequest struct {
+	*ksyunhttp.BaseRequest
+	ImageId         *string `json:"ImageId,omitempty" name:"ImageId"`
+	Ks3Bucket       *string `json:"Ks3Bucket,omitempty" name:"Ks3Bucket"`
+	ObjectName      *string `json:"ObjectName,omitempty" name:"ObjectName"`
+	ImageExportType *string `json:"ImageExportType,omitempty" name:"ImageExportType"`
+}
+
+func (r *ExportImageRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ExportImageResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *ExportImageResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ExportImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelImageExportRequest struct {
+	*ksyunhttp.BaseRequest
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+}
+
+func (r *CancelImageExportRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CancelImageExportResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *CancelImageExportResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CancelImageExportResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
