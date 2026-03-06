@@ -5,7 +5,11 @@
  */
 package http
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"fmt"
+	"strconv"
+)
 
 type actionResult map[string]interface{}
 type CommonResponse struct {
@@ -28,4 +32,21 @@ func (r *CommonResponse) UnmarshalJSON(data []byte) error {
 func (r *CommonResponse) GetBody() []byte {
 	raw, _ := json.Marshal(r.actionResult)
 	return raw
+}
+
+type StringOrInt64 string
+
+func (s *StringOrInt64) UnmarshalJSON(b []byte) error {
+	var str string
+	if err := json.Unmarshal(b, &str); err == nil {
+		*s = StringOrInt64(str)
+		return nil
+	}
+	var num int64
+	if err := json.Unmarshal(b, &num); err == nil {
+		*s = StringOrInt64(strconv.FormatInt(num, 10))
+		return nil
+	}
+
+	return fmt.Errorf("invalid AccountId")
 }

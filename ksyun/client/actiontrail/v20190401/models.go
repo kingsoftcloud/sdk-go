@@ -23,6 +23,7 @@ type ListOperateLogsRequest struct {
 	Ip             *string `json:"Ip,omitempty" name:"Ip"`
 	EventType      *string `json:"EventType,omitempty" name:"EventType"`
 	Pre            *int    `json:"Pre,omitempty" name:"Pre"`
+	RequestId      *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 func (r *ListOperateLogsRequest) ToJsonString() string {
@@ -47,15 +48,12 @@ type ListOperateLogsResponse struct {
 		EventRw           *string      `json:"EventRw" name:"EventRw"`
 		EventName         *string      `json:"EventName" name:"EventName"`
 		UserIdentity      struct {
-			RoleName  *string `json:"RoleName" name:"RoleName"`
-			AccountId *string `json:"AccountId" name:"AccountId"`
-			UserType  *string `json:"UserType" name:"UserType"`
-			UserName  *string `json:"UserName" name:"UserName"`
-			AccessKey *string `json:"AccessKey" name:"AccessKey"`
+			RoleName  *string                  `json:"RoleName" name:"RoleName"`
+			AccountId *ksyunhttp.StringOrInt64 `json:"AccountId" name:"AccountId"`
+			UserType  *string                  `json:"UserType" name:"UserType"`
+			UserName  *string                  `json:"UserName" name:"UserName"`
+			AccessKey *string                  `json:"AccessKey" name:"AccessKey"`
 		} `json:"UserIdentity" name:"UserIdentity"`
-		ReferencedResources struct {
-			User *string `json:"User" name:"User"`
-		} `json:"ReferencedResources" name:"ReferencedResources"`
 		ErrorCode    *string `json:"ErrorCode" name:"ErrorCode"`
 		Region       *string `json:"Region" name:"Region"`
 		RequestId    *string `json:"RequestId" name:"RequestId"`
