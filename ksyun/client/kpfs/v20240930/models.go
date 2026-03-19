@@ -93,6 +93,7 @@ type GetTotalSizeRequest struct {
 	StartTime    *string `json:"StartTime,omitempty" name:"StartTime"`
 	EndTime      *string `json:"EndTime,omitempty" name:"EndTime"`
 	Interval     *string `json:"Interval,omitempty" name:"Interval"`
+	DirPath      *string `json:"DirPath,omitempty" name:"DirPath"`
 }
 
 func (r *GetTotalSizeRequest) ToJsonString() string {
@@ -124,6 +125,7 @@ type GetInodeCountRequest struct {
 	StartTime    *string `json:"StartTime,omitempty" name:"StartTime"`
 	EndTime      *string `json:"EndTime,omitempty" name:"EndTime"`
 	Interval     *string `json:"Interval,omitempty" name:"Interval"`
+	DirPath      *string `json:"DirPath,omitempty" name:"DirPath"`
 }
 
 func (r *GetInodeCountRequest) ToJsonString() string {
@@ -434,8 +436,12 @@ type DescribeDirQuotaListResponse struct {
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	Data       []struct {
 		DirPath              *string `json:"DirPath" name:"DirPath"`
-		LogicalHardThreshold *int    `json:"LogicalHardThreshold" name:"LogicalHardThreshold"`
-		LogicalUsedCapacity  *int    `json:"LogicalUsedCapacity" name:"LogicalUsedCapacity"`
+		LogicalCapacityType  *string `json:"LogicalCapacityType" name:"LogicalCapacityType"`
+		LogicalHardThreshold *int64  `json:"LogicalHardThreshold" name:"LogicalHardThreshold"`
+		LogicalUsedCapacity  *int64  `json:"LogicalUsedCapacity" name:"LogicalUsedCapacity"`
+		LogicalInodesType    *string `json:"LogicalInodesType" name:"LogicalInodesType"`
+		LogicalHardInodes    *int64  `json:"LogicalHardInodes" name:"LogicalHardInodes"`
+		LogicalUsedInodes    *int64  `json:"LogicalUsedInodes" name:"LogicalUsedInodes"`
 	} `json:"Data"`
 }
 
@@ -483,7 +489,10 @@ type UpdateDirQuotaRequest struct {
 	ClusterName          *string `json:"ClusterName,omitempty" name:"ClusterName"`
 	FileSystemName       *string `json:"FileSystemName,omitempty" name:"FileSystemName"`
 	DirPath              *string `json:"DirPath,omitempty" name:"DirPath"`
+	LogicalCapacityType  *string `json:"LogicalCapacityType,omitempty" name:"LogicalCapacityType"`
 	LogicalHardThreshold *int64  `json:"LogicalHardThreshold,omitempty" name:"LogicalHardThreshold"`
+	LogicalInodesType    *string `json:"LogicalInodesType,omitempty" name:"LogicalInodesType"`
+	LogicalHardInodes    *int64  `json:"LogicalHardInodes,omitempty" name:"LogicalHardInodes"`
 }
 
 func (r *UpdateDirQuotaRequest) ToJsonString() string {
@@ -512,7 +521,10 @@ type CreateDirQuotaRequest struct {
 	ClusterName          *string `json:"ClusterName,omitempty" name:"ClusterName"`
 	FileSystemName       *string `json:"FileSystemName,omitempty" name:"FileSystemName"`
 	DirPath              *string `json:"DirPath,omitempty" name:"DirPath"`
+	LogicalCapacityType  *string `json:"LogicalCapacityType,omitempty" name:"LogicalCapacityType"`
 	LogicalHardThreshold *int64  `json:"LogicalHardThreshold,omitempty" name:"LogicalHardThreshold"`
+	LogicalInodesType    *string `json:"LogicalInodesType,omitempty" name:"LogicalInodesType"`
+	LogicalHardInodes    *int64  `json:"LogicalHardInodes,omitempty" name:"LogicalHardInodes"`
 }
 
 func (r *CreateDirQuotaRequest) ToJsonString() string {
@@ -679,6 +691,10 @@ type DescribeDirQuotaResponse struct {
 	RequestId            *string `json:"RequestId" name:"RequestId"`
 	LogicalHardThreshold *int64  `json:"LogicalHardThreshold" name:"LogicalHardThreshold"`
 	LogicalUsedCapacity  *int64  `json:"LogicalUsedCapacity" name:"LogicalUsedCapacity"`
+	LogicalCapacityType  *string `json:"LogicalCapacityType" name:"LogicalCapacityType"`
+	LogicalInodesType    *string `json:"LogicalInodesType" name:"LogicalInodesType"`
+	LogicalHardInodes    *int64  `json:"LogicalHardInodes" name:"LogicalHardInodes"`
+	LogicalUsedInodes    *int64  `json:"LogicalUsedInodes" name:"LogicalUsedInodes"`
 }
 
 func (r *DescribeDirQuotaResponse) ToJsonString() string {
