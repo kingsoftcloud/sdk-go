@@ -1444,3 +1444,1188 @@ func (c *Client) QueryMemorySdkWithContextV2(ctx context.Context, request *Query
 	}
 	return statusCode, msg, nil
 }
+func NewCreateMemoryCollectionRequest() (request *CreateMemoryCollectionRequest) {
+	request = &CreateMemoryCollectionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateMemoryCollection")
+	return
+}
+
+func NewCreateMemoryCollectionResponse() (response *CreateMemoryCollectionResponse) {
+	response = &CreateMemoryCollectionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateMemoryCollection(request *CreateMemoryCollectionRequest) string {
+	return c.CreateMemoryCollectionWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateMemoryCollectionSend(request *CreateMemoryCollectionRequest) (*CreateMemoryCollectionResponse, error) {
+	statusCode, msg, err := c.CreateMemoryCollectionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateMemoryCollectionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateMemoryCollectionWithContext(ctx context.Context, request *CreateMemoryCollectionRequest) string {
+	if request == nil {
+		request = NewCreateMemoryCollectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateMemoryCollection")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateMemoryCollectionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateMemoryCollectionWithContextV2(ctx context.Context, request *CreateMemoryCollectionRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateMemoryCollectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateMemoryCollection")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateMemoryCollectionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetMemoryCollectionRequest() (request *GetMemoryCollectionRequest) {
+	request = &GetMemoryCollectionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetMemoryCollection")
+	return
+}
+
+func NewGetMemoryCollectionResponse() (response *GetMemoryCollectionResponse) {
+	response = &GetMemoryCollectionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetMemoryCollection(request *GetMemoryCollectionRequest) string {
+	return c.GetMemoryCollectionWithContext(context.Background(), request)
+}
+
+func (c *Client) GetMemoryCollectionSend(request *GetMemoryCollectionRequest) (*GetMemoryCollectionResponse, error) {
+	statusCode, msg, err := c.GetMemoryCollectionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetMemoryCollectionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetMemoryCollectionWithContext(ctx context.Context, request *GetMemoryCollectionRequest) string {
+	if request == nil {
+		request = NewGetMemoryCollectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetMemoryCollection")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetMemoryCollectionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetMemoryCollectionWithContextV2(ctx context.Context, request *GetMemoryCollectionRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetMemoryCollectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetMemoryCollection")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetMemoryCollectionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewListMemoryCollectionsRequest() (request *ListMemoryCollectionsRequest) {
+	request = &ListMemoryCollectionsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ListMemoryCollections")
+	return
+}
+
+func NewListMemoryCollectionsResponse() (response *ListMemoryCollectionsResponse) {
+	response = &ListMemoryCollectionsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ListMemoryCollections(request *ListMemoryCollectionsRequest) string {
+	return c.ListMemoryCollectionsWithContext(context.Background(), request)
+}
+
+func (c *Client) ListMemoryCollectionsSend(request *ListMemoryCollectionsRequest) (*ListMemoryCollectionsResponse, error) {
+	statusCode, msg, err := c.ListMemoryCollectionsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ListMemoryCollectionsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ListMemoryCollectionsWithContext(ctx context.Context, request *ListMemoryCollectionsRequest) string {
+	if request == nil {
+		request = NewListMemoryCollectionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ListMemoryCollections")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListMemoryCollectionsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ListMemoryCollectionsWithContextV2(ctx context.Context, request *ListMemoryCollectionsRequest) (int, string, error) {
+	if request == nil {
+		request = NewListMemoryCollectionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ListMemoryCollections")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListMemoryCollectionsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteMemoryCollectionRequest() (request *DeleteMemoryCollectionRequest) {
+	request = &DeleteMemoryCollectionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeleteMemoryCollection")
+	return
+}
+
+func NewDeleteMemoryCollectionResponse() (response *DeleteMemoryCollectionResponse) {
+	response = &DeleteMemoryCollectionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteMemoryCollection(request *DeleteMemoryCollectionRequest) string {
+	return c.DeleteMemoryCollectionWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteMemoryCollectionSend(request *DeleteMemoryCollectionRequest) (*DeleteMemoryCollectionResponse, error) {
+	statusCode, msg, err := c.DeleteMemoryCollectionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteMemoryCollectionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteMemoryCollectionWithContext(ctx context.Context, request *DeleteMemoryCollectionRequest) string {
+	if request == nil {
+		request = NewDeleteMemoryCollectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteMemoryCollection")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteMemoryCollectionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteMemoryCollectionWithContextV2(ctx context.Context, request *DeleteMemoryCollectionRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteMemoryCollectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteMemoryCollection")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteMemoryCollectionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetMemoryBaseServiceRequest() (request *GetMemoryBaseServiceRequest) {
+	request = &GetMemoryBaseServiceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetMemoryBaseService")
+	return
+}
+
+func NewGetMemoryBaseServiceResponse() (response *GetMemoryBaseServiceResponse) {
+	response = &GetMemoryBaseServiceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetMemoryBaseService(request *GetMemoryBaseServiceRequest) string {
+	return c.GetMemoryBaseServiceWithContext(context.Background(), request)
+}
+
+func (c *Client) GetMemoryBaseServiceSend(request *GetMemoryBaseServiceRequest) (*GetMemoryBaseServiceResponse, error) {
+	statusCode, msg, err := c.GetMemoryBaseServiceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetMemoryBaseServiceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetMemoryBaseServiceWithContext(ctx context.Context, request *GetMemoryBaseServiceRequest) string {
+	if request == nil {
+		request = NewGetMemoryBaseServiceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetMemoryBaseService")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetMemoryBaseServiceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetMemoryBaseServiceWithContextV2(ctx context.Context, request *GetMemoryBaseServiceRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetMemoryBaseServiceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetMemoryBaseService")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetMemoryBaseServiceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewActivateMemoryBaseServiceRequest() (request *ActivateMemoryBaseServiceRequest) {
+	request = &ActivateMemoryBaseServiceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ActivateMemoryBaseService")
+	return
+}
+
+func NewActivateMemoryBaseServiceResponse() (response *ActivateMemoryBaseServiceResponse) {
+	response = &ActivateMemoryBaseServiceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ActivateMemoryBaseService(request *ActivateMemoryBaseServiceRequest) string {
+	return c.ActivateMemoryBaseServiceWithContext(context.Background(), request)
+}
+
+func (c *Client) ActivateMemoryBaseServiceSend(request *ActivateMemoryBaseServiceRequest) (*ActivateMemoryBaseServiceResponse, error) {
+	statusCode, msg, err := c.ActivateMemoryBaseServiceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ActivateMemoryBaseServiceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ActivateMemoryBaseServiceWithContext(ctx context.Context, request *ActivateMemoryBaseServiceRequest) string {
+	if request == nil {
+		request = NewActivateMemoryBaseServiceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ActivateMemoryBaseService")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewActivateMemoryBaseServiceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ActivateMemoryBaseServiceWithContextV2(ctx context.Context, request *ActivateMemoryBaseServiceRequest) (int, string, error) {
+	if request == nil {
+		request = NewActivateMemoryBaseServiceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ActivateMemoryBaseService")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewActivateMemoryBaseServiceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewUpdateMemoryCollectionRequest() (request *UpdateMemoryCollectionRequest) {
+	request = &UpdateMemoryCollectionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "UpdateMemoryCollection")
+	return
+}
+
+func NewUpdateMemoryCollectionResponse() (response *UpdateMemoryCollectionResponse) {
+	response = &UpdateMemoryCollectionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateMemoryCollection(request *UpdateMemoryCollectionRequest) string {
+	return c.UpdateMemoryCollectionWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateMemoryCollectionSend(request *UpdateMemoryCollectionRequest) (*UpdateMemoryCollectionResponse, error) {
+	statusCode, msg, err := c.UpdateMemoryCollectionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct UpdateMemoryCollectionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) UpdateMemoryCollectionWithContext(ctx context.Context, request *UpdateMemoryCollectionRequest) string {
+	if request == nil {
+		request = NewUpdateMemoryCollectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "UpdateMemoryCollection")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateMemoryCollectionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) UpdateMemoryCollectionWithContextV2(ctx context.Context, request *UpdateMemoryCollectionRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdateMemoryCollectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "UpdateMemoryCollection")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateMemoryCollectionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteMcpServerRequest() (request *DeleteMcpServerRequest) {
+	request = &DeleteMcpServerRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeleteMcpServer")
+	return
+}
+
+func NewDeleteMcpServerResponse() (response *DeleteMcpServerResponse) {
+	response = &DeleteMcpServerResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteMcpServer(request *DeleteMcpServerRequest) string {
+	return c.DeleteMcpServerWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteMcpServerSend(request *DeleteMcpServerRequest) (*DeleteMcpServerResponse, error) {
+	statusCode, msg, err := c.DeleteMcpServerWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteMcpServerResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteMcpServerWithContext(ctx context.Context, request *DeleteMcpServerRequest) string {
+	if request == nil {
+		request = NewDeleteMcpServerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteMcpServer")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteMcpServerResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteMcpServerWithContextV2(ctx context.Context, request *DeleteMcpServerRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteMcpServerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteMcpServer")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteMcpServerResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyMcpServerRequest() (request *ModifyMcpServerRequest) {
+	request = &ModifyMcpServerRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ModifyMcpServer")
+	return
+}
+
+func NewModifyMcpServerResponse() (response *ModifyMcpServerResponse) {
+	response = &ModifyMcpServerResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyMcpServer(request *ModifyMcpServerRequest) string {
+	return c.ModifyMcpServerWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyMcpServerSend(request *ModifyMcpServerRequest) (*ModifyMcpServerResponse, error) {
+	statusCode, msg, err := c.ModifyMcpServerWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ModifyMcpServerResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyMcpServerWithContext(ctx context.Context, request *ModifyMcpServerRequest) string {
+	if request == nil {
+		request = NewModifyMcpServerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyMcpServer")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyMcpServerResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyMcpServerWithContextV2(ctx context.Context, request *ModifyMcpServerRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyMcpServerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyMcpServer")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyMcpServerResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateMcpServerRequest() (request *CreateMcpServerRequest) {
+	request = &CreateMcpServerRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateMcpServer")
+	return
+}
+
+func NewCreateMcpServerResponse() (response *CreateMcpServerResponse) {
+	response = &CreateMcpServerResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateMcpServer(request *CreateMcpServerRequest) string {
+	return c.CreateMcpServerWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateMcpServerSend(request *CreateMcpServerRequest) (*CreateMcpServerResponse, error) {
+	statusCode, msg, err := c.CreateMcpServerWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateMcpServerResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateMcpServerWithContext(ctx context.Context, request *CreateMcpServerRequest) string {
+	if request == nil {
+		request = NewCreateMcpServerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateMcpServer")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateMcpServerResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateMcpServerWithContextV2(ctx context.Context, request *CreateMcpServerRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateMcpServerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateMcpServer")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateMcpServerResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeMcpServersRequest() (request *DescribeMcpServersRequest) {
+	request = &DescribeMcpServersRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeMcpServers")
+	return
+}
+
+func NewDescribeMcpServersResponse() (response *DescribeMcpServersResponse) {
+	response = &DescribeMcpServersResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeMcpServers(request *DescribeMcpServersRequest) string {
+	return c.DescribeMcpServersWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeMcpServersSend(request *DescribeMcpServersRequest) (*DescribeMcpServersResponse, error) {
+	statusCode, msg, err := c.DescribeMcpServersWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeMcpServersResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeMcpServersWithContext(ctx context.Context, request *DescribeMcpServersRequest) string {
+	if request == nil {
+		request = NewDescribeMcpServersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeMcpServers")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeMcpServersResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeMcpServersWithContextV2(ctx context.Context, request *DescribeMcpServersRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeMcpServersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeMcpServers")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeMcpServersResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeMcpOfficialServersRequest() (request *DescribeMcpOfficialServersRequest) {
+	request = &DescribeMcpOfficialServersRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeMcpOfficialServers")
+	return
+}
+
+func NewDescribeMcpOfficialServersResponse() (response *DescribeMcpOfficialServersResponse) {
+	response = &DescribeMcpOfficialServersResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeMcpOfficialServers(request *DescribeMcpOfficialServersRequest) string {
+	return c.DescribeMcpOfficialServersWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeMcpOfficialServersSend(request *DescribeMcpOfficialServersRequest) (*DescribeMcpOfficialServersResponse, error) {
+	statusCode, msg, err := c.DescribeMcpOfficialServersWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeMcpOfficialServersResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeMcpOfficialServersWithContext(ctx context.Context, request *DescribeMcpOfficialServersRequest) string {
+	if request == nil {
+		request = NewDescribeMcpOfficialServersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeMcpOfficialServers")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeMcpOfficialServersResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeMcpOfficialServersWithContextV2(ctx context.Context, request *DescribeMcpOfficialServersRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeMcpOfficialServersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeMcpOfficialServers")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeMcpOfficialServersResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeactivateMcpOfficialServerRequest() (request *DeactivateMcpOfficialServerRequest) {
+	request = &DeactivateMcpOfficialServerRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeactivateMcpOfficialServer")
+	return
+}
+
+func NewDeactivateMcpOfficialServerResponse() (response *DeactivateMcpOfficialServerResponse) {
+	response = &DeactivateMcpOfficialServerResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeactivateMcpOfficialServer(request *DeactivateMcpOfficialServerRequest) string {
+	return c.DeactivateMcpOfficialServerWithContext(context.Background(), request)
+}
+
+func (c *Client) DeactivateMcpOfficialServerSend(request *DeactivateMcpOfficialServerRequest) (*DeactivateMcpOfficialServerResponse, error) {
+	statusCode, msg, err := c.DeactivateMcpOfficialServerWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeactivateMcpOfficialServerResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeactivateMcpOfficialServerWithContext(ctx context.Context, request *DeactivateMcpOfficialServerRequest) string {
+	if request == nil {
+		request = NewDeactivateMcpOfficialServerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeactivateMcpOfficialServer")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeactivateMcpOfficialServerResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeactivateMcpOfficialServerWithContextV2(ctx context.Context, request *DeactivateMcpOfficialServerRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeactivateMcpOfficialServerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeactivateMcpOfficialServer")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeactivateMcpOfficialServerResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewActivateMcpOfficialServerRequest() (request *ActivateMcpOfficialServerRequest) {
+	request = &ActivateMcpOfficialServerRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ActivateMcpOfficialServer")
+	return
+}
+
+func NewActivateMcpOfficialServerResponse() (response *ActivateMcpOfficialServerResponse) {
+	response = &ActivateMcpOfficialServerResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ActivateMcpOfficialServer(request *ActivateMcpOfficialServerRequest) string {
+	return c.ActivateMcpOfficialServerWithContext(context.Background(), request)
+}
+
+func (c *Client) ActivateMcpOfficialServerSend(request *ActivateMcpOfficialServerRequest) (*ActivateMcpOfficialServerResponse, error) {
+	statusCode, msg, err := c.ActivateMcpOfficialServerWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ActivateMcpOfficialServerResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ActivateMcpOfficialServerWithContext(ctx context.Context, request *ActivateMcpOfficialServerRequest) string {
+	if request == nil {
+		request = NewActivateMcpOfficialServerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ActivateMcpOfficialServer")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewActivateMcpOfficialServerResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ActivateMcpOfficialServerWithContextV2(ctx context.Context, request *ActivateMcpOfficialServerRequest) (int, string, error) {
+	if request == nil {
+		request = NewActivateMcpOfficialServerRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ActivateMcpOfficialServer")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewActivateMcpOfficialServerResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeMcpSquaresRequest() (request *DescribeMcpSquaresRequest) {
+	request = &DescribeMcpSquaresRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeMcpSquares")
+	return
+}
+
+func NewDescribeMcpSquaresResponse() (response *DescribeMcpSquaresResponse) {
+	response = &DescribeMcpSquaresResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeMcpSquares(request *DescribeMcpSquaresRequest) string {
+	return c.DescribeMcpSquaresWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeMcpSquaresSend(request *DescribeMcpSquaresRequest) (*DescribeMcpSquaresResponse, error) {
+	statusCode, msg, err := c.DescribeMcpSquaresWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeMcpSquaresResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeMcpSquaresWithContext(ctx context.Context, request *DescribeMcpSquaresRequest) string {
+	if request == nil {
+		request = NewDescribeMcpSquaresRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeMcpSquares")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeMcpSquaresResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeMcpSquaresWithContextV2(ctx context.Context, request *DescribeMcpSquaresRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeMcpSquaresRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeMcpSquares")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeMcpSquaresResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}

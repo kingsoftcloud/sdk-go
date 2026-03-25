@@ -189,6 +189,37 @@ type CreateMemorySdkDataConversation struct {
 type CreateMemorySdkData struct {
 	Conversation []*CreateMemorySdkDataConversation `json:"Conversation,omitempty" name:"Conversation"`
 }
+type CreateMcpServerMcpRuntimeConfigKs3Config struct {
+	Path *string `json:"Path,omitempty" name:"Path"`
+}
+type CreateMcpServerMcpRuntimeConfigImagesConfig struct {
+	ImageType              *string `json:"ImageType,omitempty" name:"ImageType"`
+	NameSpace              *string `json:"NameSpace,omitempty" name:"NameSpace"`
+	ImageRepo              *string `json:"ImageRepo,omitempty" name:"ImageRepo"`
+	ImageVersion           *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
+	EnterpriseInstanceId   *string `json:"EnterpriseInstanceId,omitempty" name:"EnterpriseInstanceId"`
+	EnterpriseInstanceName *string `json:"EnterpriseInstanceName,omitempty" name:"EnterpriseInstanceName"`
+	UserName               *string `json:"UserName,omitempty" name:"UserName"`
+	Password               *string `json:"Password,omitempty" name:"Password"`
+}
+type CreateMcpServerMcpRuntimeConfigResource struct {
+	Cpu    *int `json:"Cpu,omitempty" name:"Cpu"`
+	Memory *int `json:"Memory,omitempty" name:"Memory"`
+}
+type CreateMcpServerMcpRuntimeConfigAdvancedEnvironmentVariables struct {
+	Key   *string `json:"Key,omitempty" name:"Key"`
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+type CreateMcpServerMcpRuntimeConfigAdvanced struct {
+	EnvironmentVariables []*CreateMcpServerMcpRuntimeConfigAdvancedEnvironmentVariables `json:"EnvironmentVariables,omitempty" name:"EnvironmentVariables"`
+}
+type CreateMcpServerMcpRuntimeConfig struct {
+	CodeFrom     *string                                      `json:"CodeFrom,omitempty" name:"CodeFrom"`
+	Ks3Config    *CreateMcpServerMcpRuntimeConfigKs3Config    `json:"Ks3Config,omitempty" name:"Ks3Config"`
+	ImagesConfig *CreateMcpServerMcpRuntimeConfigImagesConfig `json:"ImagesConfig,omitempty" name:"ImagesConfig"`
+	Resource     *CreateMcpServerMcpRuntimeConfigResource     `json:"Resource,omitempty" name:"Resource"`
+	Advanced     *CreateMcpServerMcpRuntimeConfigAdvanced     `json:"Advanced,omitempty" name:"Advanced"`
+}
 
 type DescribeKnowledgeBaseModelsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -891,5 +922,501 @@ func (r *QueryMemorySdkResponse) ToJsonString() string {
 }
 
 func (r *QueryMemorySdkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateMemoryCollectionRequest struct {
+	*ksyunhttp.BaseRequest
+	Name        *string `json:"Name,omitempty" name:"Name"`
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateMemoryCollectionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateMemoryCollectionResponse struct {
+	*ksyunhttp.BaseResponse
+	MemoryCollectionId *string `json:"MemoryCollectionId" name:"MemoryCollectionId"`
+	Status             *string `json:"Status" name:"Status"`
+}
+
+func (r *CreateMemoryCollectionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateMemoryCollectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetMemoryCollectionRequest struct {
+	*ksyunhttp.BaseRequest
+	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+}
+
+func (r *GetMemoryCollectionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetMemoryCollectionResponse struct {
+	*ksyunhttp.BaseResponse
+	MemoryCollectionId *string `json:"MemoryCollectionId" name:"MemoryCollectionId"`
+	Name               *string `json:"Name" name:"Name"`
+	Description        *string `json:"Description" name:"Description"`
+	Status             *string `json:"Status" name:"Status"`
+	CreateTime         *string `json:"CreateTime" name:"CreateTime"`
+	LastUpdateTime     *string `json:"LastUpdateTime" name:"LastUpdateTime"`
+	Region             *string `json:"Region" name:"Region"`
+}
+
+func (r *GetMemoryCollectionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetMemoryCollectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListMemoryCollectionsRequest struct {
+	*ksyunhttp.BaseRequest
+	CreateTimeAfter    *int64  `json:"CreateTimeAfter,omitempty" name:"CreateTimeAfter"`
+	CreateTimeBefore   *int64  `json:"CreateTimeBefore,omitempty" name:"CreateTimeBefore"`
+	UpdateTimeAfter    *int64  `json:"UpdateTimeAfter,omitempty" name:"UpdateTimeAfter"`
+	UpdateTimeBefore   *int64  `json:"UpdateTimeBefore,omitempty" name:"UpdateTimeBefore"`
+	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+	Name               *string `json:"Name,omitempty" name:"Name"`
+	NameKeyword        *string `json:"NameKeyword,omitempty" name:"NameKeyword"`
+	Status             *string `json:"Status,omitempty" name:"Status"`
+	Marker             *int64  `json:"Marker,omitempty" name:"Marker"`
+	MaxResults         *int64  `json:"MaxResults,omitempty" name:"MaxResults"`
+}
+
+func (r *ListMemoryCollectionsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ListMemoryCollectionsResponse struct {
+	*ksyunhttp.BaseResponse
+	Memories []struct {
+		MemoryCollectionId *string `json:"MemoryCollectionId" name:"MemoryCollectionId"`
+		Name               *string `json:"Name" name:"Name"`
+		Description        *string `json:"Description" name:"Description"`
+		Status             *string `json:"Status" name:"Status"`
+		CreateTime         *int64  `json:"CreateTime" name:"CreateTime"`
+		LastUpdateTime     *int64  `json:"LastUpdateTime" name:"LastUpdateTime"`
+		Region             *string `json:"Region" name:"Region"`
+	} `json:"Memories"`
+	MaxResults *int64 `json:"MaxResults" name:"MaxResults"`
+	Marker     *int64 `json:"Marker" name:"Marker"`
+	Total      *int64 `json:"Total" name:"Total"`
+}
+
+func (r *ListMemoryCollectionsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListMemoryCollectionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteMemoryCollectionRequest struct {
+	*ksyunhttp.BaseRequest
+	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+}
+
+func (r *DeleteMemoryCollectionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteMemoryCollectionResponse struct {
+	*ksyunhttp.BaseResponse
+	MemoryCollectionId *string `json:"MemoryCollectionId" name:"MemoryCollectionId"`
+}
+
+func (r *DeleteMemoryCollectionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteMemoryCollectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetMemoryBaseServiceRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *GetMemoryBaseServiceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetMemoryBaseServiceResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Status    *string `json:"Status" name:"Status"`
+}
+
+func (r *GetMemoryBaseServiceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetMemoryBaseServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ActivateMemoryBaseServiceRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *ActivateMemoryBaseServiceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ActivateMemoryBaseServiceResponse struct {
+	*ksyunhttp.BaseResponse
+	Status    *string `json:"Status" name:"Status"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ActivateMemoryBaseServiceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ActivateMemoryBaseServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateMemoryCollectionRequest struct {
+	*ksyunhttp.BaseRequest
+	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+	Description        *string `json:"Description,omitempty" name:"Description"`
+	Name               *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *UpdateMemoryCollectionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type UpdateMemoryCollectionResponse struct {
+	*ksyunhttp.BaseResponse
+	MemoryCollectionId *string `json:"MemoryCollectionId" name:"MemoryCollectionId"`
+	Name               *string `json:"Name" name:"Name"`
+}
+
+func (r *UpdateMemoryCollectionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateMemoryCollectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteMcpServerRequest struct {
+	*ksyunhttp.BaseRequest
+	McpServerId *string `json:"McpServerId,omitempty" name:"McpServerId"`
+}
+
+func (r *DeleteMcpServerRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteMcpServerResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Result    *bool   `json:"Result" name:"Result"`
+}
+
+func (r *DeleteMcpServerResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteMcpServerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyMcpServerRequest struct {
+	*ksyunhttp.BaseRequest
+	McpServerId             *string `json:"McpServerId,omitempty" name:"McpServerId"`
+	McpServerName           *string `json:"McpServerName,omitempty" name:"McpServerName"`
+	Description             *string `json:"Description,omitempty" name:"Description"`
+	Introduction            *string `json:"Introduction,omitempty" name:"Introduction"`
+	OutboundAuthFieldValue  *string `json:"OutboundAuthFieldValue,omitempty" name:"OutboundAuthFieldValue"`
+	HttpApiConfig           *string `json:"HttpApiConfig,omitempty" name:"HttpApiConfig"`
+	HttpApiConfigUpdateType *string `json:"HttpApiConfigUpdateType,omitempty" name:"HttpApiConfigUpdateType"`
+}
+
+func (r *ModifyMcpServerRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyMcpServerResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Result    *bool   `json:"Result" name:"Result"`
+}
+
+func (r *ModifyMcpServerResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyMcpServerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateMcpServerRequest struct {
+	*ksyunhttp.BaseRequest
+	McpServerName          *string                          `json:"McpServerName,omitempty" name:"McpServerName"`
+	McpServerNameEn        *string                          `json:"McpServerNameEn,omitempty" name:"McpServerNameEn"`
+	Description            *string                          `json:"Description,omitempty" name:"Description"`
+	Introduction           *string                          `json:"Introduction,omitempty" name:"Introduction"`
+	ServiceProtocol        *string                          `json:"ServiceProtocol,omitempty" name:"ServiceProtocol"`
+	BackendServiceUrl      *string                          `json:"BackendServiceUrl,omitempty" name:"BackendServiceUrl"`
+	AllowCustomAuth        *bool                            `json:"AllowCustomAuth,omitempty" name:"AllowCustomAuth"`
+	ServiceCustomHeaders   *string                          `json:"ServiceCustomHeaders,omitempty" name:"ServiceCustomHeaders"`
+	OutboundAuthLocation   *string                          `json:"OutboundAuthLocation,omitempty" name:"OutboundAuthLocation"`
+	OutboundAuthFieldName  *string                          `json:"OutboundAuthFieldName,omitempty" name:"OutboundAuthFieldName"`
+	OutboundAuthFieldValue *string                          `json:"OutboundAuthFieldValue,omitempty" name:"OutboundAuthFieldValue"`
+	McpRuntimeConfig       *CreateMcpServerMcpRuntimeConfig `json:"McpRuntimeConfig,omitempty" name:"McpRuntimeConfig"`
+	HttpApiConfig          *string                          `json:"HttpApiConfig,omitempty" name:"HttpApiConfig"`
+	McpType                *string                          `json:"McpType,omitempty" name:"McpType"`
+}
+
+func (r *CreateMcpServerRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateMcpServerResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	McpServer struct {
+		McpServerId           *string `json:"McpServerId" name:"McpServerId"`
+		McpServerName         *string `json:"McpServerName" name:"McpServerName"`
+		State                 *string `json:"State" name:"State"`
+		CreateTime            *string `json:"CreateTime" name:"CreateTime"`
+		McpServerNameEn       *string `json:"McpServerNameEn" name:"McpServerNameEn"`
+		Description           *string `json:"Description" name:"Description"`
+		Introduction          *string `json:"Introduction" name:"Introduction"`
+		ParamConfig           *string `json:"ParamConfig" name:"ParamConfig"`
+		ServiceProtocol       *string `json:"ServiceProtocol" name:"ServiceProtocol"`
+		Tools                 *string `json:"Tools" name:"Tools"`
+		IsActivated           *bool   `json:"IsActivated" name:"IsActivated"`
+		AllowCustomAuth       *bool   `json:"AllowCustomAuth" name:"AllowCustomAuth"`
+		McpType               *string `json:"McpType" name:"McpType"`
+		McpStatus             *string `json:"McpStatus" name:"McpStatus"`
+		McpStatusMsg          *string `json:"McpStatusMsg" name:"McpStatusMsg"`
+		OutboundAuthLocation  *string `json:"OutboundAuthLocation" name:"OutboundAuthLocation"`
+		OutboundAuthFieldName *string `json:"OutboundAuthFieldName" name:"OutboundAuthFieldName"`
+	} `json:"McpServer"`
+}
+
+func (r *CreateMcpServerResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateMcpServerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMcpServersRequest struct {
+	*ksyunhttp.BaseRequest
+	McpServerIds []*string `json:"McpServerIds,omitempty" name:"McpServerIds"`
+	NameKeyword  *string   `json:"NameKeyword,omitempty" name:"NameKeyword"`
+	Region       *string   `json:"Region,omitempty" name:"Region"`
+}
+
+func (r *DescribeMcpServersRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeMcpServersResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	McpServers []struct {
+		McpServerId           *string `json:"McpServerId" name:"McpServerId"`
+		McpServerName         *string `json:"McpServerName" name:"McpServerName"`
+		State                 *string `json:"State" name:"State"`
+		CreateTime            *string `json:"CreateTime" name:"CreateTime"`
+		McpServerNameEn       *string `json:"McpServerNameEn" name:"McpServerNameEn"`
+		Description           *string `json:"Description" name:"Description"`
+		Introduction          *string `json:"Introduction" name:"Introduction"`
+		ParamConfig           *string `json:"ParamConfig" name:"ParamConfig"`
+		ServiceProtocol       *string `json:"ServiceProtocol" name:"ServiceProtocol"`
+		Tools                 *string `json:"Tools" name:"Tools"`
+		IsActivated           *bool   `json:"IsActivated" name:"IsActivated"`
+		AllowCustomAuth       *bool   `json:"AllowCustomAuth" name:"AllowCustomAuth"`
+		McpType               *string `json:"McpType" name:"McpType"`
+		McpStatus             *string `json:"McpStatus" name:"McpStatus"`
+		McpStatusMsg          *string `json:"McpStatusMsg" name:"McpStatusMsg"`
+		OutboundAuthLocation  *string `json:"OutboundAuthLocation" name:"OutboundAuthLocation"`
+		OutboundAuthFieldName *string `json:"OutboundAuthFieldName" name:"OutboundAuthFieldName"`
+	} `json:"McpServers"`
+}
+
+func (r *DescribeMcpServersResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeMcpServersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMcpOfficialServersRequest struct {
+	*ksyunhttp.BaseRequest
+	McpServerIds []*string `json:"McpServerIds,omitempty" name:"McpServerIds"`
+	NameKeyword  *string   `json:"NameKeyword,omitempty" name:"NameKeyword"`
+	Region       *string   `json:"Region,omitempty" name:"Region"`
+}
+
+func (r *DescribeMcpOfficialServersRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeMcpOfficialServersResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	McpServers []struct {
+		McpServerId           *string `json:"McpServerId" name:"McpServerId"`
+		McpServerName         *string `json:"McpServerName" name:"McpServerName"`
+		State                 *string `json:"State" name:"State"`
+		CreateTime            *string `json:"CreateTime" name:"CreateTime"`
+		McpServerNameEn       *string `json:"McpServerNameEn" name:"McpServerNameEn"`
+		Description           *string `json:"Description" name:"Description"`
+		Introduction          *string `json:"Introduction" name:"Introduction"`
+		ParamConfig           *string `json:"ParamConfig" name:"ParamConfig"`
+		ServiceProtocol       *string `json:"ServiceProtocol" name:"ServiceProtocol"`
+		Tools                 *string `json:"Tools" name:"Tools"`
+		IsActivated           *bool   `json:"IsActivated" name:"IsActivated"`
+		AllowCustomAuth       *bool   `json:"AllowCustomAuth" name:"AllowCustomAuth"`
+		McpType               *string `json:"McpType" name:"McpType"`
+		McpStatus             *string `json:"McpStatus" name:"McpStatus"`
+		McpStatusMsg          *string `json:"McpStatusMsg" name:"McpStatusMsg"`
+		OutboundAuthLocation  *string `json:"OutboundAuthLocation" name:"OutboundAuthLocation"`
+		OutboundAuthFieldName *string `json:"OutboundAuthFieldName" name:"OutboundAuthFieldName"`
+	} `json:"McpServers"`
+}
+
+func (r *DescribeMcpOfficialServersResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeMcpOfficialServersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeactivateMcpOfficialServerRequest struct {
+	*ksyunhttp.BaseRequest
+	McpServerId *string `json:"McpServerId,omitempty" name:"McpServerId"`
+}
+
+func (r *DeactivateMcpOfficialServerRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeactivateMcpOfficialServerResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Result    *bool   `json:"Result" name:"Result"`
+}
+
+func (r *DeactivateMcpOfficialServerResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeactivateMcpOfficialServerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ActivateMcpOfficialServerRequest struct {
+	*ksyunhttp.BaseRequest
+	McpServerId    *string `json:"McpServerId,omitempty" name:"McpServerId"`
+	AuthFieldValue *string `json:"AuthFieldValue,omitempty" name:"AuthFieldValue"`
+}
+
+func (r *ActivateMcpOfficialServerRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ActivateMcpOfficialServerResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Result    *bool   `json:"Result" name:"Result"`
+}
+
+func (r *ActivateMcpOfficialServerResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ActivateMcpOfficialServerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMcpSquaresRequest struct {
+	*ksyunhttp.BaseRequest
+	McpServerIds []*string `json:"McpServerIds,omitempty" name:"McpServerIds"`
+	NameKeyword  *string   `json:"NameKeyword,omitempty" name:"NameKeyword"`
+}
+
+func (r *DescribeMcpSquaresRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeMcpSquaresResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	McpServers []struct {
+		McpServerId           *string `json:"McpServerId" name:"McpServerId"`
+		McpServerName         *string `json:"McpServerName" name:"McpServerName"`
+		State                 *string `json:"State" name:"State"`
+		CreateTime            *string `json:"CreateTime" name:"CreateTime"`
+		McpServerNameEn       *string `json:"McpServerNameEn" name:"McpServerNameEn"`
+		Description           *string `json:"Description" name:"Description"`
+		Introduction          *string `json:"Introduction" name:"Introduction"`
+		ParamConfig           *string `json:"ParamConfig" name:"ParamConfig"`
+		ServiceProtocol       *string `json:"ServiceProtocol" name:"ServiceProtocol"`
+		Tools                 *string `json:"Tools" name:"Tools"`
+		IsActivated           *bool   `json:"IsActivated" name:"IsActivated"`
+		AllowCustomAuth       *bool   `json:"AllowCustomAuth" name:"AllowCustomAuth"`
+		McpType               *string `json:"McpType" name:"McpType"`
+		McpStatus             *string `json:"McpStatus" name:"McpStatus"`
+		McpStatusMsg          *string `json:"McpStatusMsg" name:"McpStatusMsg"`
+		OutboundAuthLocation  *string `json:"OutboundAuthLocation" name:"OutboundAuthLocation"`
+		OutboundAuthFieldName *string `json:"OutboundAuthFieldName" name:"OutboundAuthFieldName"`
+	} `json:"McpServers"`
+}
+
+func (r *DescribeMcpSquaresResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeMcpSquaresResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

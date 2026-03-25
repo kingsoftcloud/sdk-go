@@ -137,6 +137,32 @@ type DescribeQueuesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
+type CreateQueueCapabilityGPUInfos struct {
+	GPUType *string `json:"GPUType,omitempty" name:"GPUType"`
+	GPUNum  *int    `json:"GPUNum,omitempty" name:"GPUNum"`
+}
+type CreateQueueCapability struct {
+	CPUNum    *int                             `json:"CPUNum,omitempty" name:"CPUNum"`
+	MemoryNum *int                             `json:"MemoryNum,omitempty" name:"MemoryNum"`
+	GPUInfos  []*CreateQueueCapabilityGPUInfos `json:"GPUInfos,omitempty" name:"GPUInfos"`
+}
+type CreateQueueAccessList struct {
+	UserId     *string `json:"UserId,omitempty" name:"UserId"`
+	Permission *string `json:"Permission,omitempty" name:"Permission"`
+}
+type ModifyQueueCapabilityGPUInfos struct {
+	GPUType *string `json:"GPUType,omitempty" name:"GPUType"`
+	GPUNum  *int    `json:"GPUNum,omitempty" name:"GPUNum"`
+}
+type ModifyQueueCapability struct {
+	CPUNum    *int                             `json:"CPUNum,omitempty" name:"CPUNum"`
+	MemoryNum *int                             `json:"MemoryNum,omitempty" name:"MemoryNum"`
+	GPUInfos  []*ModifyQueueCapabilityGPUInfos `json:"GPUInfos,omitempty" name:"GPUInfos"`
+}
+type ModifyQueueAccessList struct {
+	UserId     *string `json:"UserId,omitempty" name:"UserId"`
+	Permission *string `json:"Permission,omitempty" name:"Permission"`
+}
 
 type CreateStorageConfigRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1291,6 +1317,7 @@ type DescribeApikeysRequest struct {
 	Namekeyword       *string   `json:"Namekeyword,omitempty" name:"Namekeyword"`
 	DefaultKey        *bool     `json:"DefaultKey,omitempty" name:"DefaultKey"`
 	KeyId             []*string `json:"KeyId,omitempty" name:"KeyId"`
+	ExcludeTypes      []*string `json:"ExcludeTypes,omitempty" name:"ExcludeTypes"`
 }
 
 func (r *DescribeApikeysRequest) ToJsonString() string {
@@ -2079,9 +2106,7 @@ type DescribeInferencesResponse struct {
 		SubnetId        *string `json:"SubnetId" name:"SubnetId"`
 		StorageConfigs  []struct {
 			StorageConfigId   *string `json:"StorageConfigId" name:"StorageConfigId"`
-			StorageConfigName *string `json:"StorageConfigName" name:"StorageConfigName"`
 			StorageConfigType *string `json:"StorageConfigType" name:"StorageConfigType"`
-			StorageType       *string `json:"StorageType" name:"StorageType"`
 			MountPath         *string `json:"MountPath" name:"MountPath"`
 		} `json:"StorageConfigs" name:"StorageConfigs"`
 		AutoScaleEnable      *bool   `json:"AutoScaleEnable" name:"AutoScaleEnable"`
@@ -2492,6 +2517,32 @@ func (r *DescribeResourcePoolInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EnableKpfsComponentRequest struct {
+	*ksyunhttp.BaseRequest
+	ResourcePoolId *string `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	FileSystemId   *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *EnableKpfsComponentRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type EnableKpfsComponentResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId      *string `json:"RequestId" name:"RequestId"`
+	ResourcePoolId *string `json:"ResourcePoolId" name:"ResourcePoolId"`
+}
+
+func (r *EnableKpfsComponentResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *EnableKpfsComponentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateInferenceEndpointRequest struct {
 	*ksyunhttp.BaseRequest
 	EndpointName *string                           `json:"EndpointName,omitempty" name:"EndpointName"`
@@ -2860,5 +2911,262 @@ func (r *DescribeQueuesResponse) ToJsonString() string {
 }
 
 func (r *DescribeQueuesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateQueueRequest struct {
+	*ksyunhttp.BaseRequest
+	ResourcePoolId *string                  `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	QueueName      *string                  `json:"QueueName,omitempty" name:"QueueName"`
+	Capability     *CreateQueueCapability   `json:"Capability,omitempty" name:"Capability"`
+	AllowBorrowing *bool                    `json:"AllowBorrowing,omitempty" name:"AllowBorrowing"`
+	Description    *string                  `json:"Description,omitempty" name:"Description"`
+	AccessList     []*CreateQueueAccessList `json:"AccessList,omitempty" name:"AccessList"`
+	WorkloadType   []*string                `json:"WorkloadType,omitempty" name:"WorkloadType"`
+}
+
+func (r *CreateQueueRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateQueueResponse struct {
+	*ksyunhttp.BaseResponse
+	QueueId   *string `json:"QueueId" name:"QueueId"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateQueueResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateQueueResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyQueueRequest struct {
+	*ksyunhttp.BaseRequest
+	QueueId        *string                  `json:"QueueId,omitempty" name:"QueueId"`
+	Capability     *ModifyQueueCapability   `json:"Capability,omitempty" name:"Capability"`
+	AllowBorrowing *bool                    `json:"AllowBorrowing,omitempty" name:"AllowBorrowing"`
+	Description    *string                  `json:"Description,omitempty" name:"Description"`
+	AccessList     []*ModifyQueueAccessList `json:"AccessList,omitempty" name:"AccessList"`
+	WorkloadType   []*string                `json:"WorkloadType,omitempty" name:"WorkloadType"`
+}
+
+func (r *ModifyQueueRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyQueueResponse struct {
+	*ksyunhttp.BaseResponse
+	QueueId   *string `json:"QueueId" name:"QueueId"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyQueueResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyQueueResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteQueueRequest struct {
+	*ksyunhttp.BaseRequest
+	QueueId *string `json:"QueueId,omitempty" name:"QueueId"`
+}
+
+func (r *DeleteQueueRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteQueueResponse struct {
+	*ksyunhttp.BaseResponse
+	QueueId   *string `json:"QueueId" name:"QueueId"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteQueueResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteQueueResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddQueueAccessUserRequest struct {
+	*ksyunhttp.BaseRequest
+	QueueId      *string `json:"QueueId,omitempty" name:"QueueId"`
+	SubAccountId *string `json:"SubAccountId,omitempty" name:"SubAccountId"`
+	Permission   *string `json:"Permission,omitempty" name:"Permission"`
+}
+
+func (r *AddQueueAccessUserRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type AddQueueAccessUserResponse struct {
+	*ksyunhttp.BaseResponse
+	QueueId   *string `json:"QueueId" name:"QueueId"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *AddQueueAccessUserResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *AddQueueAccessUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoveQueueAccessUserRequest struct {
+	*ksyunhttp.BaseRequest
+	QueueId      *string `json:"QueueId,omitempty" name:"QueueId"`
+	SubAccountId *string `json:"SubAccountId,omitempty" name:"SubAccountId"`
+}
+
+func (r *RemoveQueueAccessUserRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type RemoveQueueAccessUserResponse struct {
+	*ksyunhttp.BaseResponse
+	QueueId   *string `json:"QueueId" name:"QueueId"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *RemoveQueueAccessUserResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *RemoveQueueAccessUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeModelTypesRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *DescribeModelTypesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeModelTypesResponse struct {
+	*ksyunhttp.BaseResponse
+	ModelTypeList []struct {
+		ModelType *string `json:"ModelType" name:"ModelType"`
+	} `json:"ModelTypeList"`
+}
+
+func (r *DescribeModelTypesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeModelTypesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableEndpointQuotaLimitRequest struct {
+	*ksyunhttp.BaseRequest
+	EndpointId       *string `json:"EndpointId,omitempty" name:"EndpointId"`
+	QuotaLimitCycle  *string `json:"QuotaLimitCycle,omitempty" name:"QuotaLimitCycle"`
+	CustomCycle      *int    `json:"CustomCycle,omitempty" name:"CustomCycle"`
+	QuotaLimitAmount *int64  `json:"QuotaLimitAmount,omitempty" name:"QuotaLimitAmount"`
+}
+
+func (r *EnableEndpointQuotaLimitRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type EnableEndpointQuotaLimitResponse struct {
+	*ksyunhttp.BaseResponse
+	EndpointId *string `json:"EndpointId" name:"EndpointId"`
+}
+
+func (r *EnableEndpointQuotaLimitResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *EnableEndpointQuotaLimitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisableEndpointQuotaLimitRequest struct {
+	*ksyunhttp.BaseRequest
+	EndpointId       *string `json:"EndpointId,omitempty" name:"EndpointId"`
+	QuotaLimitCycle  *string `json:"QuotaLimitCycle,omitempty" name:"QuotaLimitCycle"`
+	CustomCycle      *string `json:"CustomCycle,omitempty" name:"CustomCycle"`
+	QuotaLimitAmount *string `json:"QuotaLimitAmount,omitempty" name:"QuotaLimitAmount"`
+}
+
+func (r *DisableEndpointQuotaLimitRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DisableEndpointQuotaLimitResponse struct {
+	*ksyunhttp.BaseResponse
+	EndpointId *string `json:"EndpointId" name:"EndpointId"`
+}
+
+func (r *DisableEndpointQuotaLimitResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DisableEndpointQuotaLimitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetQueueMemberRequest struct {
+	*ksyunhttp.BaseRequest
+	QueueId      *string `json:"QueueId,omitempty" name:"QueueId"`
+	SubAccountId *string `json:"SubAccountId,omitempty" name:"SubAccountId"`
+	Page         *int    `json:"Page,omitempty" name:"Page"`
+	PageSize     *int    `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *GetQueueMemberRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetQueueMemberResponse struct {
+	*ksyunhttp.BaseResponse
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+	Page       *int `json:"Page" name:"Page"`
+	PageSize   *int `json:"PageSize" name:"PageSize"`
+	Users      []struct {
+		UserId          *string `json:"UserId" name:"UserId"`
+		Permission      *string `json:"Permission" name:"Permission"`
+		GPUAllocated    *string `json:"GPUAllocated" name:"GPUAllocated"`
+		IsCreator       *bool   `json:"IsCreator" name:"IsCreator"`
+		CPUAllocated    *int    `json:"CPUAllocated" name:"CPUAllocated"`
+		MemoryAllocated *int    `json:"MemoryAllocated" name:"MemoryAllocated"`
+	} `json:"Users"`
+	CurrentUserPermission *string `json:"CurrentUserPermission" name:"CurrentUserPermission"`
+	RequestId             *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *GetQueueMemberResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetQueueMemberResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
