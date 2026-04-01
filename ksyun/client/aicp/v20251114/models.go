@@ -1216,7 +1216,6 @@ type CreateMcpServerResponse struct {
 		Introduction          *string `json:"Introduction" name:"Introduction"`
 		ParamConfig           *string `json:"ParamConfig" name:"ParamConfig"`
 		ServiceProtocol       *string `json:"ServiceProtocol" name:"ServiceProtocol"`
-		Tools                 *string `json:"Tools" name:"Tools"`
 		IsActivated           *bool   `json:"IsActivated" name:"IsActivated"`
 		AllowCustomAuth       *bool   `json:"AllowCustomAuth" name:"AllowCustomAuth"`
 		McpType               *string `json:"McpType" name:"McpType"`
@@ -1261,7 +1260,6 @@ type DescribeMcpServersResponse struct {
 		Introduction          *string `json:"Introduction" name:"Introduction"`
 		ParamConfig           *string `json:"ParamConfig" name:"ParamConfig"`
 		ServiceProtocol       *string `json:"ServiceProtocol" name:"ServiceProtocol"`
-		Tools                 *string `json:"Tools" name:"Tools"`
 		IsActivated           *bool   `json:"IsActivated" name:"IsActivated"`
 		AllowCustomAuth       *bool   `json:"AllowCustomAuth" name:"AllowCustomAuth"`
 		McpType               *string `json:"McpType" name:"McpType"`
@@ -1306,7 +1304,6 @@ type DescribeMcpOfficialServersResponse struct {
 		Introduction          *string `json:"Introduction" name:"Introduction"`
 		ParamConfig           *string `json:"ParamConfig" name:"ParamConfig"`
 		ServiceProtocol       *string `json:"ServiceProtocol" name:"ServiceProtocol"`
-		Tools                 *string `json:"Tools" name:"Tools"`
 		IsActivated           *bool   `json:"IsActivated" name:"IsActivated"`
 		AllowCustomAuth       *bool   `json:"AllowCustomAuth" name:"AllowCustomAuth"`
 		McpType               *string `json:"McpType" name:"McpType"`
@@ -1401,7 +1398,6 @@ type DescribeMcpSquaresResponse struct {
 		Introduction          *string `json:"Introduction" name:"Introduction"`
 		ParamConfig           *string `json:"ParamConfig" name:"ParamConfig"`
 		ServiceProtocol       *string `json:"ServiceProtocol" name:"ServiceProtocol"`
-		Tools                 *string `json:"Tools" name:"Tools"`
 		IsActivated           *bool   `json:"IsActivated" name:"IsActivated"`
 		AllowCustomAuth       *bool   `json:"AllowCustomAuth" name:"AllowCustomAuth"`
 		McpType               *string `json:"McpType" name:"McpType"`
@@ -1418,5 +1414,134 @@ func (r *DescribeMcpSquaresResponse) ToJsonString() string {
 }
 
 func (r *DescribeMcpSquaresResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetMcpOfficialServerDetailRequest struct {
+	*ksyunhttp.BaseRequest
+	McpServerId *string `json:"McpServerId,omitempty" name:"McpServerId"`
+}
+
+func (r *GetMcpOfficialServerDetailRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetMcpOfficialServerDetailResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	McpServer struct {
+		McpServerId           *string `json:"McpServerId" name:"McpServerId"`
+		McpServerName         *string `json:"McpServerName" name:"McpServerName"`
+		State                 *string `json:"State" name:"State"`
+		CreateTime            *string `json:"CreateTime" name:"CreateTime"`
+		McpServerNameEn       *string `json:"McpServerNameEn" name:"McpServerNameEn"`
+		Description           *string `json:"Description" name:"Description"`
+		Introduction          *string `json:"Introduction" name:"Introduction"`
+		ParamConfig           *string `json:"ParamConfig" name:"ParamConfig"`
+		ServiceProtocol       *string `json:"ServiceProtocol" name:"ServiceProtocol"`
+		Tools                 *string `json:"Tools" name:"Tools"`
+		IsActivated           *bool   `json:"IsActivated" name:"IsActivated"`
+		AllowCustomAuth       *bool   `json:"AllowCustomAuth" name:"AllowCustomAuth"`
+		McpType               *string `json:"McpType" name:"McpType"`
+		McpStatus             *string `json:"McpStatus" name:"McpStatus"`
+		McpStatusMsg          *string `json:"McpStatusMsg" name:"McpStatusMsg"`
+		OutboundAuthLocation  *string `json:"OutboundAuthLocation" name:"OutboundAuthLocation"`
+		OutboundAuthFieldName *string `json:"OutboundAuthFieldName" name:"OutboundAuthFieldName"`
+	} `json:"McpServer"`
+}
+
+func (r *GetMcpOfficialServerDetailResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetMcpOfficialServerDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetMcpServerDetailRequest struct {
+	*ksyunhttp.BaseRequest
+	McpServerId *string `json:"McpServerId,omitempty" name:"McpServerId"`
+}
+
+func (r *GetMcpServerDetailRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetMcpServerDetailResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	McpServer struct {
+		McpServerId           *string `json:"McpServerId" name:"McpServerId"`
+		McpServerName         *string `json:"McpServerName" name:"McpServerName"`
+		State                 *string `json:"State" name:"State"`
+		CreateTime            *string `json:"CreateTime" name:"CreateTime"`
+		McpServerNameEn       *string `json:"McpServerNameEn" name:"McpServerNameEn"`
+		Description           *string `json:"Description" name:"Description"`
+		Introduction          *string `json:"Introduction" name:"Introduction"`
+		ParamConfig           *string `json:"ParamConfig" name:"ParamConfig"`
+		ServiceProtocol       *string `json:"ServiceProtocol" name:"ServiceProtocol"`
+		Tools                 *string `json:"Tools" name:"Tools"`
+		IsActivated           *bool   `json:"IsActivated" name:"IsActivated"`
+		AllowCustomAuth       *bool   `json:"AllowCustomAuth" name:"AllowCustomAuth"`
+		McpType               *string `json:"McpType" name:"McpType"`
+		McpStatus             *string `json:"McpStatus" name:"McpStatus"`
+		McpStatusMsg          *string `json:"McpStatusMsg" name:"McpStatusMsg"`
+		OutboundAuthLocation  *string `json:"OutboundAuthLocation" name:"OutboundAuthLocation"`
+		OutboundAuthFieldName *string `json:"OutboundAuthFieldName" name:"OutboundAuthFieldName"`
+	} `json:"McpServer"`
+}
+
+func (r *GetMcpServerDetailResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetMcpServerDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetMcpSquareDetailRequest struct {
+	*ksyunhttp.BaseRequest
+	McpServerId *string `json:"McpServerId,omitempty" name:"McpServerId"`
+}
+
+func (r *GetMcpSquareDetailRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetMcpSquareDetailResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	McpServer struct {
+		McpServerId           *string `json:"McpServerId" name:"McpServerId"`
+		McpServerName         *string `json:"McpServerName" name:"McpServerName"`
+		State                 *string `json:"State" name:"State"`
+		CreateTime            *string `json:"CreateTime" name:"CreateTime"`
+		McpServerNameEn       *string `json:"McpServerNameEn" name:"McpServerNameEn"`
+		Description           *string `json:"Description" name:"Description"`
+		Introduction          *string `json:"Introduction" name:"Introduction"`
+		ParamConfig           *string `json:"ParamConfig" name:"ParamConfig"`
+		ServiceProtocol       *string `json:"ServiceProtocol" name:"ServiceProtocol"`
+		Tools                 *string `json:"Tools" name:"Tools"`
+		IsActivated           *bool   `json:"IsActivated" name:"IsActivated"`
+		AllowCustomAuth       *bool   `json:"AllowCustomAuth" name:"AllowCustomAuth"`
+		McpType               *string `json:"McpType" name:"McpType"`
+		McpStatus             *string `json:"McpStatus" name:"McpStatus"`
+		McpStatusMsg          *string `json:"McpStatusMsg" name:"McpStatusMsg"`
+		OutboundAuthLocation  *string `json:"OutboundAuthLocation" name:"OutboundAuthLocation"`
+		OutboundAuthFieldName *string `json:"OutboundAuthFieldName" name:"OutboundAuthFieldName"`
+	} `json:"McpServer"`
+}
+
+func (r *GetMcpSquareDetailResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetMcpSquareDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -2629,3 +2629,240 @@ func (c *Client) DescribeMcpSquaresWithContextV2(ctx context.Context, request *D
 	}
 	return statusCode, msg, nil
 }
+func NewGetMcpOfficialServerDetailRequest() (request *GetMcpOfficialServerDetailRequest) {
+	request = &GetMcpOfficialServerDetailRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetMcpOfficialServerDetail")
+	return
+}
+
+func NewGetMcpOfficialServerDetailResponse() (response *GetMcpOfficialServerDetailResponse) {
+	response = &GetMcpOfficialServerDetailResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetMcpOfficialServerDetail(request *GetMcpOfficialServerDetailRequest) string {
+	return c.GetMcpOfficialServerDetailWithContext(context.Background(), request)
+}
+
+func (c *Client) GetMcpOfficialServerDetailSend(request *GetMcpOfficialServerDetailRequest) (*GetMcpOfficialServerDetailResponse, error) {
+	statusCode, msg, err := c.GetMcpOfficialServerDetailWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetMcpOfficialServerDetailResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetMcpOfficialServerDetailWithContext(ctx context.Context, request *GetMcpOfficialServerDetailRequest) string {
+	if request == nil {
+		request = NewGetMcpOfficialServerDetailRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetMcpOfficialServerDetail")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetMcpOfficialServerDetailResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetMcpOfficialServerDetailWithContextV2(ctx context.Context, request *GetMcpOfficialServerDetailRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetMcpOfficialServerDetailRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetMcpOfficialServerDetail")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetMcpOfficialServerDetailResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetMcpServerDetailRequest() (request *GetMcpServerDetailRequest) {
+	request = &GetMcpServerDetailRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetMcpServerDetail")
+	return
+}
+
+func NewGetMcpServerDetailResponse() (response *GetMcpServerDetailResponse) {
+	response = &GetMcpServerDetailResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetMcpServerDetail(request *GetMcpServerDetailRequest) string {
+	return c.GetMcpServerDetailWithContext(context.Background(), request)
+}
+
+func (c *Client) GetMcpServerDetailSend(request *GetMcpServerDetailRequest) (*GetMcpServerDetailResponse, error) {
+	statusCode, msg, err := c.GetMcpServerDetailWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetMcpServerDetailResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetMcpServerDetailWithContext(ctx context.Context, request *GetMcpServerDetailRequest) string {
+	if request == nil {
+		request = NewGetMcpServerDetailRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetMcpServerDetail")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetMcpServerDetailResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetMcpServerDetailWithContextV2(ctx context.Context, request *GetMcpServerDetailRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetMcpServerDetailRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetMcpServerDetail")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetMcpServerDetailResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetMcpSquareDetailRequest() (request *GetMcpSquareDetailRequest) {
+	request = &GetMcpSquareDetailRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetMcpSquareDetail")
+	return
+}
+
+func NewGetMcpSquareDetailResponse() (response *GetMcpSquareDetailResponse) {
+	response = &GetMcpSquareDetailResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetMcpSquareDetail(request *GetMcpSquareDetailRequest) string {
+	return c.GetMcpSquareDetailWithContext(context.Background(), request)
+}
+
+func (c *Client) GetMcpSquareDetailSend(request *GetMcpSquareDetailRequest) (*GetMcpSquareDetailResponse, error) {
+	statusCode, msg, err := c.GetMcpSquareDetailWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetMcpSquareDetailResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetMcpSquareDetailWithContext(ctx context.Context, request *GetMcpSquareDetailRequest) string {
+	if request == nil {
+		request = NewGetMcpSquareDetailRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetMcpSquareDetail")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetMcpSquareDetailResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetMcpSquareDetailWithContextV2(ctx context.Context, request *GetMcpSquareDetailRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetMcpSquareDetailRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetMcpSquareDetail")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetMcpSquareDetailResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}

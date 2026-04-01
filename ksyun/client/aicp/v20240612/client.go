@@ -1207,85 +1207,6 @@ func (c *Client) GetInferenceModelsWithContextV2(ctx context.Context, request *G
 	}
 	return statusCode, msg, nil
 }
-func NewGetInferencePodsRequest() (request *GetInferencePodsRequest) {
-	request = &GetInferencePodsRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("aicp", APIVersion, "GetInferencePods")
-	return
-}
-
-func NewGetInferencePodsResponse() (response *GetInferencePodsResponse) {
-	response = &GetInferencePodsResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) GetInferencePods(request *GetInferencePodsRequest) string {
-	return c.GetInferencePodsWithContext(context.Background(), request)
-}
-
-func (c *Client) GetInferencePodsSend(request *GetInferencePodsRequest) (*GetInferencePodsResponse, error) {
-	statusCode, msg, err := c.GetInferencePodsWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	if msg == "" {
-		return nil, nil
-	}
-
-	var respStruct GetInferencePodsResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) GetInferencePodsWithContext(ctx context.Context, request *GetInferencePodsRequest) string {
-	if request == nil {
-		request = NewGetInferencePodsRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("aicp", APIVersion, "GetInferencePods")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewGetInferencePodsResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) GetInferencePodsWithContextV2(ctx context.Context, request *GetInferencePodsRequest) (int, string, error) {
-	if request == nil {
-		request = NewGetInferencePodsRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("aicp", APIVersion, "GetInferencePods")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewGetInferencePodsResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}
 func NewGetInferenceLogsRequest() (request *GetInferenceLogsRequest) {
 	request = &GetInferenceLogsRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -1754,6 +1675,322 @@ func (c *Client) GetInferenceAutoScaleStrategyWithContextV2(ctx context.Context,
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewGetInferenceAutoScaleStrategyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyTerminatePolicyRequest() (request *ModifyTerminatePolicyRequest) {
+	request = &ModifyTerminatePolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ModifyTerminatePolicy")
+	return
+}
+
+func NewModifyTerminatePolicyResponse() (response *ModifyTerminatePolicyResponse) {
+	response = &ModifyTerminatePolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyTerminatePolicy(request *ModifyTerminatePolicyRequest) string {
+	return c.ModifyTerminatePolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyTerminatePolicySend(request *ModifyTerminatePolicyRequest) (*ModifyTerminatePolicyResponse, error) {
+	statusCode, msg, err := c.ModifyTerminatePolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ModifyTerminatePolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyTerminatePolicyWithContext(ctx context.Context, request *ModifyTerminatePolicyRequest) string {
+	if request == nil {
+		request = NewModifyTerminatePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyTerminatePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyTerminatePolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyTerminatePolicyWithContextV2(ctx context.Context, request *ModifyTerminatePolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyTerminatePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyTerminatePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyTerminatePolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeTerminatePolicyRequest() (request *DescribeTerminatePolicyRequest) {
+	request = &DescribeTerminatePolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeTerminatePolicy")
+	return
+}
+
+func NewDescribeTerminatePolicyResponse() (response *DescribeTerminatePolicyResponse) {
+	response = &DescribeTerminatePolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeTerminatePolicy(request *DescribeTerminatePolicyRequest) string {
+	return c.DescribeTerminatePolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeTerminatePolicySend(request *DescribeTerminatePolicyRequest) (*DescribeTerminatePolicyResponse, error) {
+	statusCode, msg, err := c.DescribeTerminatePolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeTerminatePolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeTerminatePolicyWithContext(ctx context.Context, request *DescribeTerminatePolicyRequest) string {
+	if request == nil {
+		request = NewDescribeTerminatePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTerminatePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeTerminatePolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeTerminatePolicyWithContextV2(ctx context.Context, request *DescribeTerminatePolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeTerminatePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTerminatePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeTerminatePolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateTerminatePolicyRequest() (request *CreateTerminatePolicyRequest) {
+	request = &CreateTerminatePolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateTerminatePolicy")
+	return
+}
+
+func NewCreateTerminatePolicyResponse() (response *CreateTerminatePolicyResponse) {
+	response = &CreateTerminatePolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateTerminatePolicy(request *CreateTerminatePolicyRequest) string {
+	return c.CreateTerminatePolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateTerminatePolicySend(request *CreateTerminatePolicyRequest) (*CreateTerminatePolicyResponse, error) {
+	statusCode, msg, err := c.CreateTerminatePolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateTerminatePolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateTerminatePolicyWithContext(ctx context.Context, request *CreateTerminatePolicyRequest) string {
+	if request == nil {
+		request = NewCreateTerminatePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateTerminatePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateTerminatePolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateTerminatePolicyWithContextV2(ctx context.Context, request *CreateTerminatePolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateTerminatePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateTerminatePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateTerminatePolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteTerminatePolicyRequest() (request *DeleteTerminatePolicyRequest) {
+	request = &DeleteTerminatePolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeleteTerminatePolicy")
+	return
+}
+
+func NewDeleteTerminatePolicyResponse() (response *DeleteTerminatePolicyResponse) {
+	response = &DeleteTerminatePolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteTerminatePolicy(request *DeleteTerminatePolicyRequest) string {
+	return c.DeleteTerminatePolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteTerminatePolicySend(request *DeleteTerminatePolicyRequest) (*DeleteTerminatePolicyResponse, error) {
+	statusCode, msg, err := c.DeleteTerminatePolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteTerminatePolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteTerminatePolicyWithContext(ctx context.Context, request *DeleteTerminatePolicyRequest) string {
+	if request == nil {
+		request = NewDeleteTerminatePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteTerminatePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteTerminatePolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteTerminatePolicyWithContextV2(ctx context.Context, request *DeleteTerminatePolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteTerminatePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteTerminatePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteTerminatePolicyResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
@@ -6652,6 +6889,85 @@ func (c *Client) GetQueueMemberWithContextV2(ctx context.Context, request *GetQu
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewGetQueueMemberResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeInferencePodsRequest() (request *DescribeInferencePodsRequest) {
+	request = &DescribeInferencePodsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeInferencePods")
+	return
+}
+
+func NewDescribeInferencePodsResponse() (response *DescribeInferencePodsResponse) {
+	response = &DescribeInferencePodsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeInferencePods(request *DescribeInferencePodsRequest) string {
+	return c.DescribeInferencePodsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeInferencePodsSend(request *DescribeInferencePodsRequest) (*DescribeInferencePodsResponse, error) {
+	statusCode, msg, err := c.DescribeInferencePodsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeInferencePodsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeInferencePodsWithContext(ctx context.Context, request *DescribeInferencePodsRequest) string {
+	if request == nil {
+		request = NewDescribeInferencePodsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeInferencePods")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeInferencePodsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeInferencePodsWithContextV2(ctx context.Context, request *DescribeInferencePodsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeInferencePodsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeInferencePods")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeInferencePodsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err

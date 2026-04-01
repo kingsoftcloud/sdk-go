@@ -132,7 +132,7 @@ type GetDomainUsageDataResponse struct {
 	Interval  *int    `json:"Interval" name:"Interval"`
 	Metric    []struct {
 		Time  *string `json:"Time" name:"Time"`
-		Value *int    `json:"Value" name:"Value"`
+		Value *int64  `json:"Value" name:"Value"`
 	} `json:"Metric"`
 	RequestId *string `json:"RequestId" name:"RequestId"`
 	PeakTime  *string `json:"PeakTime" name:"PeakTime"`

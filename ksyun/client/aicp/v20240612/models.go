@@ -34,6 +34,7 @@ type ModifyNotebookStorageConfigs struct {
 	StorageConfigId   *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
 	MountPath         *string `json:"MountPath,omitempty" name:"MountPath"`
 	StorageConfigType *string `json:"StorageConfigType,omitempty" name:"StorageConfigType"`
+	MountProtocol     *string `json:"MountProtocol,omitempty" name:"MountProtocol"`
 }
 type ModifyNotebookServiceConfigs struct {
 	Service             *string `json:"Service,omitempty" name:"Service"`
@@ -48,6 +49,7 @@ type CreateNotebookStorageConfigs struct {
 	StorageConfigId   *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
 	MountPath         *string `json:"MountPath,omitempty" name:"MountPath"`
 	StorageConfigType *string `json:"StorageConfigType,omitempty" name:"StorageConfigType"`
+	MountProtocol     *string `json:"MountProtocol,omitempty" name:"MountProtocol"`
 }
 type CreateNotebookServiceConfigs struct {
 	Service             *string `json:"Service,omitempty" name:"Service"`
@@ -80,6 +82,23 @@ type CreateInferenceStorageConfigs struct {
 	StorageConfigId   *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
 	StorageConfigType *string `json:"StorageConfigType,omitempty" name:"StorageConfigType"`
 	MountPath         *string `json:"MountPath,omitempty" name:"MountPath"`
+	MountProtocol     *string `json:"MountProtocol,omitempty" name:"MountProtocol"`
+}
+type ModifyTerminatePolicyUseRatePolicy struct {
+	Cpu    *string `json:"Cpu,omitempty" name:"Cpu"`
+	Memory *string `json:"Memory,omitempty" name:"Memory"`
+	Gpu    *string `json:"Gpu,omitempty" name:"Gpu"`
+	Hour   *int    `json:"Hour,omitempty" name:"Hour"`
+}
+type DescribeTerminatePolicyFilter struct {
+	Name  *string   `json:"Name,omitempty" name:"Name"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type CreateTerminatePolicyUseRatePolicy struct {
+	Cpu    *string `json:"Cpu,omitempty" name:"Cpu"`
+	Memory *string `json:"Memory,omitempty" name:"Memory"`
+	Gpu    *string `json:"Gpu,omitempty" name:"Gpu"`
+	Hour   *int    `json:"Hour,omitempty" name:"Hour"`
 }
 type DescribeTrainJobPodsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
@@ -118,6 +137,11 @@ type DescribeResourcePoolInstancesFilter struct {
 type CreateInferenceEndpointRateLimit struct {
 	RPM *int `json:"RPM,omitempty" name:"RPM"`
 	TPM *int `json:"TPM,omitempty" name:"TPM"`
+}
+type CreateInferenceEndpointQuotaLimit struct {
+	QuotaLimitCycle  *string `json:"QuotaLimitCycle,omitempty" name:"QuotaLimitCycle"`
+	CustomCycle      *int    `json:"CustomCycle,omitempty" name:"CustomCycle"`
+	QuotaLimitAmount *int64  `json:"QuotaLimitAmount,omitempty" name:"QuotaLimitAmount"`
 }
 type DescribeInferenceEndpointsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
@@ -162,6 +186,10 @@ type ModifyQueueCapability struct {
 type ModifyQueueAccessList struct {
 	UserId     *string `json:"UserId,omitempty" name:"UserId"`
 	Permission *string `json:"Permission,omitempty" name:"Permission"`
+}
+type DescribeInferencePodsFilter struct {
+	Name  *string   `json:"Name,omitempty" name:"Name"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
 type CreateStorageConfigRequest struct {
@@ -484,6 +512,7 @@ type DescribeNotebooksResponse struct {
 			StorageConfigId   *string `json:"StorageConfigId" name:"StorageConfigId"`
 			MountPath         *string `json:"MountPath" name:"MountPath"`
 			StorageConfigType *string `json:"StorageConfigType" name:"StorageConfigType"`
+			MountProtocol     *string `json:"MountProtocol" name:"MountProtocol"`
 		} `json:"StorageConfigs" name:"StorageConfigs"`
 		ServiceConfigs []struct {
 			Service             *string `json:"Service" name:"Service"`
@@ -805,38 +834,6 @@ func (r *GetInferenceModelsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type GetInferencePodsRequest struct {
-	*ksyunhttp.BaseRequest
-	InferenceId *string `json:"InferenceId,omitempty" name:"InferenceId"`
-	State       *string `json:"State,omitempty" name:"State"`
-}
-
-func (r *GetInferencePodsRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type GetInferencePodsResponse struct {
-	*ksyunhttp.BaseResponse
-	Pods []struct {
-		PodName     *string `json:"PodName" name:"PodName"`
-		InferenceId *string `json:"InferenceId" name:"InferenceId"`
-		Namespace   *string `json:"Namespace" name:"Namespace"`
-		ClusterId   *string `json:"ClusterId" name:"ClusterId"`
-		State       *string `json:"State" name:"State"`
-	} `json:"Pods"`
-	RequestId *string `json:"RequestId" name:"RequestId"`
-}
-
-func (r *GetInferencePodsResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *GetInferencePodsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GetInferenceLogsRequest struct {
 	*ksyunhttp.BaseRequest
 	InferenceId  *string `json:"InferenceId,omitempty" name:"InferenceId"`
@@ -1000,6 +997,139 @@ func (r *GetInferenceAutoScaleStrategyResponse) ToJsonString() string {
 }
 
 func (r *GetInferenceAutoScaleStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTerminatePolicyRequest struct {
+	*ksyunhttp.BaseRequest
+	Name              *string                             `json:"Name,omitempty" name:"Name"`
+	InstanceIds       []*string                           `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	UseRatePolicy     *ModifyTerminatePolicyUseRatePolicy `json:"UseRatePolicy,omitempty" name:"UseRatePolicy"`
+	TerminatePolicyId *string                             `json:"TerminatePolicyId,omitempty" name:"TerminatePolicyId"`
+}
+
+func (r *ModifyTerminatePolicyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyTerminatePolicyResponse struct {
+	*ksyunhttp.BaseResponse
+	TerminatePolicyId *string `json:"TerminatePolicyId" name:"TerminatePolicyId"`
+	RequestId         *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyTerminatePolicyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyTerminatePolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTerminatePolicyRequest struct {
+	*ksyunhttp.BaseRequest
+	QueueId           *string                          `json:"QueueId,omitempty" name:"QueueId"`
+	TerminatePolicyId []*string                        `json:"TerminatePolicyId,omitempty" name:"TerminatePolicyId"`
+	CreateUser        *string                          `json:"CreateUser,omitempty" name:"CreateUser"`
+	Filter            []*DescribeTerminatePolicyFilter `json:"Filter,omitempty" name:"Filter"`
+	PageSize          *int                             `json:"PageSize,omitempty" name:"PageSize"`
+	Page              *int                             `json:"Page,omitempty" name:"Page"`
+}
+
+func (r *DescribeTerminatePolicyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeTerminatePolicyResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId        *string `json:"RequestId" name:"RequestId"`
+	TerminatePolices []struct {
+		Name                  *string   `json:"Name" name:"Name"`
+		QueueId               *string   `json:"QueueId" name:"QueueId"`
+		TerminatePolicyType   *string   `json:"TerminatePolicyType" name:"TerminatePolicyType"`
+		TerminatePolicyTarget *string   `json:"TerminatePolicyTarget" name:"TerminatePolicyTarget"`
+		InstanceIds           []*string `json:"InstanceIds" name:"InstanceIds"`
+		UseRatePolicy         struct {
+			Cpu    *string `json:"Cpu" name:"Cpu"`
+			Memory *string `json:"Memory" name:"Memory"`
+			Gpu    *string `json:"Gpu" name:"Gpu"`
+			Hour   *int    `json:"Hour" name:"Hour"`
+		} `json:"UseRatePolicy" name:"UseRatePolicy"`
+		TerminatePolicyId *string `json:"TerminatePolicyId" name:"TerminatePolicyId"`
+		CreateUser        *string `json:"CreateUser" name:"CreateUser"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime        *string `json:"UpdateTime" name:"UpdateTime"`
+		CreateUserName    *string `json:"CreateUserName" name:"CreateUserName"`
+	} `json:"TerminatePolices"`
+	PageSize   *int `json:"PageSize" name:"PageSize"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+	Page       *int `json:"Page" name:"Page"`
+}
+
+func (r *DescribeTerminatePolicyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeTerminatePolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateTerminatePolicyRequest struct {
+	*ksyunhttp.BaseRequest
+	Name                  *string                             `json:"Name,omitempty" name:"Name"`
+	QueueId               *string                             `json:"QueueId,omitempty" name:"QueueId"`
+	TerminatePolicyType   *string                             `json:"TerminatePolicyType,omitempty" name:"TerminatePolicyType"`
+	TerminatePolicyTarget *string                             `json:"TerminatePolicyTarget,omitempty" name:"TerminatePolicyTarget"`
+	InstanceIds           []*string                           `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	UseRatePolicy         *CreateTerminatePolicyUseRatePolicy `json:"UseRatePolicy,omitempty" name:"UseRatePolicy"`
+}
+
+func (r *CreateTerminatePolicyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateTerminatePolicyResponse struct {
+	*ksyunhttp.BaseResponse
+	TerminatePolicyId *string `json:"TerminatePolicyId" name:"TerminatePolicyId"`
+	RequestId         *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateTerminatePolicyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateTerminatePolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteTerminatePolicyRequest struct {
+	*ksyunhttp.BaseRequest
+	TerminatePolicyId *string `json:"TerminatePolicyId,omitempty" name:"TerminatePolicyId"`
+}
+
+func (r *DeleteTerminatePolicyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteTerminatePolicyResponse struct {
+	*ksyunhttp.BaseResponse
+	TerminatePolicyId *string `json:"TerminatePolicyId" name:"TerminatePolicyId"`
+	RequestId         *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteTerminatePolicyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteTerminatePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2108,6 +2238,7 @@ type DescribeInferencesResponse struct {
 			StorageConfigId   *string `json:"StorageConfigId" name:"StorageConfigId"`
 			StorageConfigType *string `json:"StorageConfigType" name:"StorageConfigType"`
 			MountPath         *string `json:"MountPath" name:"MountPath"`
+			MountProtocol     *string `json:"MountProtocol" name:"MountProtocol"`
 		} `json:"StorageConfigs" name:"StorageConfigs"`
 		AutoScaleEnable      *bool   `json:"AutoScaleEnable" name:"AutoScaleEnable"`
 		ModelStorageEnabled  *bool   `json:"ModelStorageEnabled" name:"ModelStorageEnabled"`
@@ -2272,6 +2403,7 @@ type GetInferenceDetailResponse struct {
 			StorageConfigType *string `json:"StorageConfigType" name:"StorageConfigType"`
 			StorageType       *string `json:"StorageType" name:"StorageType"`
 			MountPath         *string `json:"MountPath" name:"MountPath"`
+			MountProtocol     *string `json:"MountProtocol" name:"MountProtocol"`
 		} `json:"StorageConfigs" name:"StorageConfigs"`
 		AutoScaleEnable      *bool   `json:"AutoScaleEnable" name:"AutoScaleEnable"`
 		ModelStorageEnabled  *bool   `json:"ModelStorageEnabled" name:"ModelStorageEnabled"`
@@ -2504,7 +2636,8 @@ type DescribeResourcePoolInstancesResponse struct {
 			Allocated   *string `json:"Allocated" name:"Allocated"`
 			Allocatable *string `json:"Allocatable" name:"Allocatable"`
 		} `json:"Memory" name:"Memory"`
-		UnSchedulable *bool `json:"UnSchedulable" name:"UnSchedulable"`
+		UnSchedulable          *bool `json:"UnSchedulable" name:"UnSchedulable"`
+		SupportPerformanceKPFS *bool `json:"SupportPerformanceKPFS" name:"SupportPerformanceKPFS"`
 	} `json:"ResourcePoolInstanceSet"`
 }
 
@@ -2545,11 +2678,12 @@ func (r *EnableKpfsComponentResponse) FromJsonString(s string) error {
 
 type CreateInferenceEndpointRequest struct {
 	*ksyunhttp.BaseRequest
-	EndpointName *string                           `json:"EndpointName,omitempty" name:"EndpointName"`
-	ProjectId    *string                           `json:"ProjectId,omitempty" name:"ProjectId"`
-	ModelName    *string                           `json:"ModelName,omitempty" name:"ModelName"`
-	RateLimit    *CreateInferenceEndpointRateLimit `json:"RateLimit ,omitempty" name:"RateLimit "`
-	ModelId      *string                           `json:"ModelId,omitempty" name:"ModelId"`
+	EndpointName *string                            `json:"EndpointName,omitempty" name:"EndpointName"`
+	ProjectId    *string                            `json:"ProjectId,omitempty" name:"ProjectId"`
+	ModelName    *string                            `json:"ModelName,omitempty" name:"ModelName"`
+	RateLimit    *CreateInferenceEndpointRateLimit  `json:"RateLimit ,omitempty" name:"RateLimit "`
+	ModelId      *string                            `json:"ModelId,omitempty" name:"ModelId"`
+	QuotaLimit   *CreateInferenceEndpointQuotaLimit `json:"QuotaLimit,omitempty" name:"QuotaLimit"`
 }
 
 func (r *CreateInferenceEndpointRequest) ToJsonString() string {
@@ -2593,7 +2727,7 @@ type DescribeInferenceEndpointsResponse struct {
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	Endpoints  []struct {
 		ModelName        *string `json:"ModelName" name:"ModelName"`
-		ModelType        *int    `json:"ModelType" name:"ModelType"`
+		ModelType        *string `json:"ModelType" name:"ModelType"`
 		ModelSource      *string `json:"ModelSource" name:"ModelSource"`
 		Status           *string `json:"Status" name:"Status"`
 		RateLimitEnabled *bool   `json:"RateLimitEnabled" name:"RateLimitEnabled"`
@@ -2604,11 +2738,20 @@ type DescribeInferenceEndpointsResponse struct {
 			RPM *int `json:"RPM" name:"RPM"`
 			TPM *int `json:"TPM" name:"TPM"`
 		} `json:"RateLimitConfig" name:"RateLimitConfig"`
-		EndpointId   *string `json:"EndpointId" name:"EndpointId"`
-		EndpointName *string `json:"EndpointName" name:"EndpointName"`
-		Description  *string `json:"Description" name:"Description"`
-		ProjectId    *string `json:"ProjectId" name:"ProjectId"`
-		ProjectName  *string `json:"ProjectName" name:"ProjectName"`
+		EndpointId       *string `json:"EndpointId" name:"EndpointId"`
+		EndpointName     *string `json:"EndpointName" name:"EndpointName"`
+		Description      *string `json:"Description" name:"Description"`
+		ProjectId        *string `json:"ProjectId" name:"ProjectId"`
+		ProjectName      *string `json:"ProjectName" name:"ProjectName"`
+		QuotaLimitConfig struct {
+			QuotaLimitCycle  *string `json:"QuotaLimitCycle" name:"QuotaLimitCycle"`
+			CustomCycle      *string `json:"CustomCycle" name:"CustomCycle"`
+			QuotaLimitAmount *string `json:"QuotaLimitAmount" name:"QuotaLimitAmount"`
+			UsedAmount       *string `json:"UsedAmount" name:"UsedAmount"`
+			RemainingAmount  *string `json:"RemainingAmount" name:"RemainingAmount"`
+			EffectiveTime    *string `json:"EffectiveTime" name:"EffectiveTime"`
+			ExpireTime       *string `json:"ExpireTime" name:"ExpireTime"`
+		} `json:"QuotaLimitConfig" name:"QuotaLimitConfig"`
 	} `json:"Endpoints"`
 	Marker     *int `json:"Marker" name:"Marker"`
 	MaxResults *int `json:"MaxResults" name:"MaxResults"`
@@ -3168,5 +3311,46 @@ func (r *GetQueueMemberResponse) ToJsonString() string {
 }
 
 func (r *GetQueueMemberResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInferencePodsRequest struct {
+	*ksyunhttp.BaseRequest
+	InferenceId *string                        `json:"InferenceId,omitempty" name:"InferenceId"`
+	Filter      []*DescribeInferencePodsFilter `json:"Filter,omitempty" name:"Filter"`
+	Page        *int                           `json:"Page,omitempty" name:"Page"`
+	PageSize    *int                           `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeInferencePodsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeInferencePodsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	Page       *int    `json:"Page" name:"Page"`
+	PageSize   *int    `json:"PageSize" name:"PageSize"`
+	Pods       []struct {
+		PodName     *string `json:"PodName" name:"PodName"`
+		InferenceId *string `json:"InferenceId" name:"InferenceId"`
+		Namespace   *string `json:"Namespace" name:"Namespace"`
+		Role        *string `json:"Role" name:"Role"`
+		ClusterId   *string `json:"ClusterId" name:"ClusterId"`
+		Status      *string `json:"Status" name:"Status"`
+		NodeIp      *string `json:"NodeIp" name:"NodeIp"`
+		StartTime   *string `json:"StartTime" name:"StartTime"`
+		EndTime     *string `json:"EndTime" name:"EndTime"`
+	} `json:"Pods"`
+}
+
+func (r *DescribeInferencePodsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeInferencePodsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -9,6 +9,8 @@ type CreateTrainJobStorageConfigs struct {
 	StorageConfigId *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
 	MountType       *string `json:"MountType,omitempty" name:"MountType"`
 	MountPath       *string `json:"MountPath,omitempty" name:"MountPath"`
+	StorageSubPath  *string `json:"StorageSubPath,omitempty" name:"StorageSubPath"`
+	MountProtocol   *string `json:"MountProtocol,omitempty" name:"MountProtocol"`
 }
 type CreateTrainJobRolesImageConfig struct {
 	ImageId         *string `json:"ImageId,omitempty" name:"ImageId"`
@@ -141,6 +143,8 @@ type DescribeTrainJobsResponse struct {
 			StorageConfigId *string `json:"StorageConfigId" name:"StorageConfigId"`
 			MountType       *string `json:"MountType" name:"MountType"`
 			MountPath       *string `json:"MountPath" name:"MountPath"`
+			StorageSubPath  *string `json:"StorageSubPath" name:"StorageSubPath"`
+			MountProtocol   *string `json:"MountProtocol" name:"MountProtocol"`
 		} `json:"StorageConfigs" name:"StorageConfigs"`
 		Roles []struct {
 			RoleName    *string `json:"RoleName" name:"RoleName"`
