@@ -3024,85 +3024,6 @@ func (c *Client) UpdateProjectInfoWithContextV2(ctx context.Context, request *Up
 	}
 	return statusCode, msg, nil
 }
-func NewGetAccountAllProjectListRequest() (request *GetAccountAllProjectListRequest) {
-	request = &GetAccountAllProjectListRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("iam", APIVersion, "GetAccountAllProjectList")
-	return
-}
-
-func NewGetAccountAllProjectListResponse() (response *GetAccountAllProjectListResponse) {
-	response = &GetAccountAllProjectListResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) GetAccountAllProjectList(request *GetAccountAllProjectListRequest) string {
-	return c.GetAccountAllProjectListWithContext(context.Background(), request)
-}
-
-func (c *Client) GetAccountAllProjectListSend(request *GetAccountAllProjectListRequest) (*GetAccountAllProjectListResponse, error) {
-	statusCode, msg, err := c.GetAccountAllProjectListWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	if msg == "" {
-		return nil, nil
-	}
-
-	var respStruct GetAccountAllProjectListResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) GetAccountAllProjectListWithContext(ctx context.Context, request *GetAccountAllProjectListRequest) string {
-	if request == nil {
-		request = NewGetAccountAllProjectListRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("iam", APIVersion, "GetAccountAllProjectList")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewGetAccountAllProjectListResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) GetAccountAllProjectListWithContextV2(ctx context.Context, request *GetAccountAllProjectListRequest) (int, string, error) {
-	if request == nil {
-		request = NewGetAccountAllProjectListRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("iam", APIVersion, "GetAccountAllProjectList")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewGetAccountAllProjectListResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}
 func NewUpdateInstanceProjectIdRequest() (request *UpdateInstanceProjectIdRequest) {
 	request = &UpdateInstanceProjectIdRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -5151,6 +5072,85 @@ func (c *Client) GetEffectivePoliciesWithContextV2(ctx context.Context, request 
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewGetEffectivePoliciesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewBatchUpdateInstanceProjectIdRequest() (request *BatchUpdateInstanceProjectIdRequest) {
+	request = &BatchUpdateInstanceProjectIdRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("iam", APIVersion, "BatchUpdateInstanceProjectId")
+	return
+}
+
+func NewBatchUpdateInstanceProjectIdResponse() (response *BatchUpdateInstanceProjectIdResponse) {
+	response = &BatchUpdateInstanceProjectIdResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) BatchUpdateInstanceProjectId(request *BatchUpdateInstanceProjectIdRequest) string {
+	return c.BatchUpdateInstanceProjectIdWithContext(context.Background(), request)
+}
+
+func (c *Client) BatchUpdateInstanceProjectIdSend(request *BatchUpdateInstanceProjectIdRequest) (*BatchUpdateInstanceProjectIdResponse, error) {
+	statusCode, msg, err := c.BatchUpdateInstanceProjectIdWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct BatchUpdateInstanceProjectIdResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) BatchUpdateInstanceProjectIdWithContext(ctx context.Context, request *BatchUpdateInstanceProjectIdRequest) string {
+	if request == nil {
+		request = NewBatchUpdateInstanceProjectIdRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("iam", APIVersion, "BatchUpdateInstanceProjectId")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewBatchUpdateInstanceProjectIdResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) BatchUpdateInstanceProjectIdWithContextV2(ctx context.Context, request *BatchUpdateInstanceProjectIdRequest) (int, string, error) {
+	if request == nil {
+		request = NewBatchUpdateInstanceProjectIdRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("iam", APIVersion, "BatchUpdateInstanceProjectId")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewBatchUpdateInstanceProjectIdResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err

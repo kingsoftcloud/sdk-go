@@ -1297,42 +1297,6 @@ func (r *UpdateProjectInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type GetAccountAllProjectListRequest struct {
-	*ksyunhttp.BaseRequest
-}
-
-func (r *GetAccountAllProjectListRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type GetAccountAllProjectListResponse struct {
-	*ksyunhttp.BaseResponse
-	ListProjectResult struct {
-		Total       *int `json:"Total" name:"Total"`
-		ProjectList []struct {
-			ProjectId   *int    `json:"ProjectId" name:"ProjectId"`
-			AccountId   *string `json:"AccountId" name:"AccountId"`
-			ProjectName *string `json:"ProjectName" name:"ProjectName"`
-			ProjectDesc *string `json:"ProjectDesc" name:"ProjectDesc"`
-			Status      *int    `json:"Status" name:"Status"`
-			Krn         *string `json:"Krn" name:"Krn"`
-			CreateTime  *string `json:"CreateTime" name:"CreateTime"`
-			UpdateTime  *string `json:"UpdateTime" name:"UpdateTime"`
-		} `json:"ProjectList" name:"ProjectList"`
-	} `json:"ListProjectResult"`
-	RequestId *string `json:"RequestId" name:"RequestId"`
-}
-
-func (r *GetAccountAllProjectListResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *GetAccountAllProjectListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type UpdateInstanceProjectIdRequest struct {
 	*ksyunhttp.BaseRequest
 	ProjectId  *int    `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -2214,5 +2178,34 @@ func (r *GetEffectivePoliciesResponse) ToJsonString() string {
 }
 
 func (r *GetEffectivePoliciesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchUpdateInstanceProjectIdRequest struct {
+	*ksyunhttp.BaseRequest
+	ProjectId   *int      `json:"ProjectId,omitempty" name:"ProjectId"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+}
+
+func (r *BatchUpdateInstanceProjectIdRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type BatchUpdateInstanceProjectIdResponse struct {
+	*ksyunhttp.BaseResponse
+	Result struct {
+		SuccessCount *int `json:"SuccessCount" name:"SuccessCount"`
+		FailCount    *int `json:"FailCount" name:"FailCount"`
+	} `json:"Result"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *BatchUpdateInstanceProjectIdResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *BatchUpdateInstanceProjectIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
