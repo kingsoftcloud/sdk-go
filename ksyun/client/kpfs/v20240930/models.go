@@ -63,6 +63,7 @@ type DescribeFileSystemListResponse struct {
 			SRoceCluster       *string `json:"SRoceCluster" name:"SRoceCluster"`
 			ClusterName        *string `json:"ClusterName" name:"ClusterName"`
 			ClusterCode        *string `json:"ClusterCode" name:"ClusterCode"`
+			StorePoolType      *string `json:"StorePoolType" name:"StorePoolType"`
 		} `json:"FileSystemInfo" name:"FileSystemInfo"`
 		AccessRules []struct {
 			Token *string `json:"Token" name:"Token"`
@@ -1082,5 +1083,30 @@ func (r *CreateDataFlowResponse) ToJsonString() string {
 }
 
 func (r *CreateDataFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetFileSystemResourceProtectRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemIds []*string `json:"FileSystemIds,omitempty" name:"FileSystemIds"`
+	IsProtection  *bool     `json:"IsProtection,omitempty" name:"IsProtection"`
+}
+
+func (r *SetFileSystemResourceProtectRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetFileSystemResourceProtectResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *SetFileSystemResourceProtectResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetFileSystemResourceProtectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

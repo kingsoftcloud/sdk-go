@@ -2550,3 +2550,82 @@ func (c *Client) CreateDataFlowWithContextV2(ctx context.Context, request *Creat
 	}
 	return statusCode, msg, nil
 }
+func NewSetFileSystemResourceProtectRequest() (request *SetFileSystemResourceProtectRequest) {
+	request = &SetFileSystemResourceProtectRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "SetFileSystemResourceProtect")
+	return
+}
+
+func NewSetFileSystemResourceProtectResponse() (response *SetFileSystemResourceProtectResponse) {
+	response = &SetFileSystemResourceProtectResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetFileSystemResourceProtect(request *SetFileSystemResourceProtectRequest) string {
+	return c.SetFileSystemResourceProtectWithContext(context.Background(), request)
+}
+
+func (c *Client) SetFileSystemResourceProtectSend(request *SetFileSystemResourceProtectRequest) (*SetFileSystemResourceProtectResponse, error) {
+	statusCode, msg, err := c.SetFileSystemResourceProtectWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetFileSystemResourceProtectResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetFileSystemResourceProtectWithContext(ctx context.Context, request *SetFileSystemResourceProtectRequest) string {
+	if request == nil {
+		request = NewSetFileSystemResourceProtectRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "SetFileSystemResourceProtect")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetFileSystemResourceProtectResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetFileSystemResourceProtectWithContextV2(ctx context.Context, request *SetFileSystemResourceProtectRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetFileSystemResourceProtectRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "SetFileSystemResourceProtect")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetFileSystemResourceProtectResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
