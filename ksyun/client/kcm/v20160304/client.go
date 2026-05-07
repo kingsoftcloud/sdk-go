@@ -812,3 +812,82 @@ func (c *Client) GetCertificateDetailWithContextV2(ctx context.Context, request 
 	}
 	return statusCode, msg, nil
 }
+func NewDescribeCompanyRequest() (request *DescribeCompanyRequest) {
+	request = &DescribeCompanyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcm", APIVersion, "DescribeCompany")
+	return
+}
+
+func NewDescribeCompanyResponse() (response *DescribeCompanyResponse) {
+	response = &DescribeCompanyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeCompany(request *DescribeCompanyRequest) string {
+	return c.DescribeCompanyWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeCompanySend(request *DescribeCompanyRequest) (*DescribeCompanyResponse, error) {
+	statusCode, msg, err := c.DescribeCompanyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeCompanyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeCompanyWithContext(ctx context.Context, request *DescribeCompanyRequest) string {
+	if request == nil {
+		request = NewDescribeCompanyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "DescribeCompany")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeCompanyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeCompanyWithContextV2(ctx context.Context, request *DescribeCompanyRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeCompanyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "DescribeCompany")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeCompanyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
