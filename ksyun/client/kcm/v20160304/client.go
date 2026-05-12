@@ -812,6 +812,85 @@ func (c *Client) GetCertificateDetailWithContextV2(ctx context.Context, request 
 	}
 	return statusCode, msg, nil
 }
+func NewExtendCertificateRequest() (request *ExtendCertificateRequest) {
+	request = &ExtendCertificateRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kcm", APIVersion, "ExtendCertificate")
+	return
+}
+
+func NewExtendCertificateResponse() (response *ExtendCertificateResponse) {
+	response = &ExtendCertificateResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ExtendCertificate(request *ExtendCertificateRequest) string {
+	return c.ExtendCertificateWithContext(context.Background(), request)
+}
+
+func (c *Client) ExtendCertificateSend(request *ExtendCertificateRequest) (*ExtendCertificateResponse, error) {
+	statusCode, msg, err := c.ExtendCertificateWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ExtendCertificateResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ExtendCertificateWithContext(ctx context.Context, request *ExtendCertificateRequest) string {
+	if request == nil {
+		request = NewExtendCertificateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "ExtendCertificate")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewExtendCertificateResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ExtendCertificateWithContextV2(ctx context.Context, request *ExtendCertificateRequest) (int, string, error) {
+	if request == nil {
+		request = NewExtendCertificateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kcm", APIVersion, "ExtendCertificate")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewExtendCertificateResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewDescribeCompanyRequest() (request *DescribeCompanyRequest) {
 	request = &DescribeCompanyRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},

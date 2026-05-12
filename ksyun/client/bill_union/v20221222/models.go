@@ -38,7 +38,7 @@ type QueryInstanceConsumeResponse struct {
 			CustomerBillMonth       *int      `json:"customerBillMonth" name:"customerBillMonth"`
 			CurrencyCode            *string   `json:"currencyCode" name:"currencyCode"`
 			CurrencyInfo            *string   `json:"currencyInfo" name:"currencyInfo"`
-			ExchangeRate            *string   `json:"exchangeRate" name:"exchangeRate"`
+			ExchangeRate            *float64  `json:"exchangeRate" name:"exchangeRate"`
 			BillDay                 *int      `json:"billDay" name:"billDay"`
 			Id                      *string   `json:"id" name:"id"`
 			FinanceUnitName         *string   `json:"financeUnitName" name:"financeUnitName"`
@@ -51,8 +51,8 @@ type QueryInstanceConsumeResponse struct {
 			ProductGroupId          *int      `json:"productGroupId" name:"productGroupId"`
 			ProductGroupName        *string   `json:"productGroupName" name:"productGroupName"`
 			PayType                 *int      `json:"payType" name:"payType"`
-			BillRealAmount          *string   `json:"billRealAmount" name:"billRealAmount"`
-			OriginalAmount          *string   `json:"originalAmount" name:"originalAmount"`
+			BillRealAmount          *float64  `json:"billRealAmount" name:"billRealAmount"`
+			OriginalAmount          *float64  `json:"originalAmount" name:"originalAmount"`
 			RegionCode              *string   `json:"regionCode" name:"regionCode"`
 			ProjectId               *int64    `json:"projectId" name:"projectId"`
 			ProjectName             *string   `json:"projectName" name:"projectName"`
@@ -67,11 +67,11 @@ type QueryInstanceConsumeResponse struct {
 			RuleRemark              *string   `json:"ruleRemark" name:"ruleRemark"`
 			AvailabilityZone        *string   `json:"availabilityZone" name:"availabilityZone"`
 			Discount                *string   `json:"discount" name:"discount"`
-			Cash                    *string   `json:"cash" name:"cash"`
-			Reward                  *string   `json:"reward" name:"reward"`
-			Vouchers                *string   `json:"vouchers" name:"vouchers"`
-			CloudTicketDenomination *string   `json:"cloudTicketDenomination" name:"cloudTicketDenomination"`
-			CloudTicketCost         *string   `json:"cloudTicketCost" name:"cloudTicketCost"`
+			Cash                    *float64  `json:"cash" name:"cash"`
+			Reward                  *float64  `json:"reward" name:"reward"`
+			Vouchers                *float64  `json:"vouchers" name:"vouchers"`
+			CloudTicketDenomination *float64  `json:"cloudTicketDenomination" name:"cloudTicketDenomination"`
+			CloudTicketCost         *float64  `json:"cloudTicketCost" name:"cloudTicketCost"`
 			ServiceBegionTime       *string   `json:"serviceBegionTime" name:"serviceBegionTime"`
 			ConfigInfo              []*string `json:"ConfigInfo" name:"ConfigInfo"`
 			PriceFactorInfo         []*string `json:"PriceFactorInfo" name:"PriceFactorInfo"`
@@ -80,8 +80,68 @@ type QueryInstanceConsumeResponse struct {
 			TagInfo                 []*string `json:"TagInfo" name:"TagInfo"`
 		} `json:"Bills" name:"Bills"`
 	} `json:"Data"`
-	Error *string `json:"error" name:"error"`
-	Ok    *bool   `json:"ok" name:"ok"`
+	Error     *string `json:"error" name:"error"`
+	Ok        *bool   `json:"ok" name:"ok"`
+	Success   *bool   `json:"Success" name:"Success"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		Page  *int `json:"Page" name:"Page"`
+		Size  *int `json:"Size" name:"Size"`
+		Total *int `json:"Total" name:"Total"`
+		Bills []struct {
+			AliasName               *string   `json:"aliasName" name:"aliasName"`
+			Email                   *string   `json:"email" name:"email"`
+			MembershipGroup         *string   `json:"membershipGroup" name:"membershipGroup"`
+			UserId                  *int      `json:"userId" name:"userId"`
+			UserName                *string   `json:"userName" name:"userName"`
+			SellerCompanyName       *string   `json:"sellerCompanyName" name:"sellerCompanyName"`
+			BillMonth               *int      `json:"billMonth" name:"billMonth"`
+			CustomerBillMonth       *int      `json:"customerBillMonth" name:"customerBillMonth"`
+			CurrencyCode            *string   `json:"currencyCode" name:"currencyCode"`
+			CurrencyInfo            *string   `json:"currencyInfo" name:"currencyInfo"`
+			ExchangeRate            *int      `json:"exchangeRate" name:"exchangeRate"`
+			BillDay                 *int      `json:"billDay" name:"billDay"`
+			LoginName               *string   `json:"loginName" name:"loginName"`
+			Id                      *string   `json:"id" name:"id"`
+			FinanceUnitName         *string   `json:"financeUnitName" name:"financeUnitName"`
+			BillStartTime           *string   `json:"billStartTime" name:"billStartTime"`
+			BillEndTime             *string   `json:"billEndTime" name:"billEndTime"`
+			InstanceId              *string   `json:"instanceId" name:"instanceId"`
+			InstanceName            *string   `json:"instanceName" name:"instanceName"`
+			ProductTypeId           *int      `json:"productTypeId" name:"productTypeId"`
+			ProductTypeName         *string   `json:"productTypeName" name:"productTypeName"`
+			ProductGroupId          *int      `json:"productGroupId" name:"productGroupId"`
+			ProductGroupName        *string   `json:"productGroupName" name:"productGroupName"`
+			PayType                 *int      `json:"payType" name:"payType"`
+			BillRealAmount          *float64  `json:"billRealAmount" name:"billRealAmount"`
+			OriginalAmount          *string   `json:"originalAmount" name:"originalAmount"`
+			RegionCode              *string   `json:"regionCode" name:"regionCode"`
+			ProjectId               *int      `json:"projectId" name:"projectId"`
+			ProjectName             *string   `json:"projectName" name:"projectName"`
+			RegionName              *string   `json:"regionName" name:"regionName"`
+			BillType                *int      `json:"billType" name:"billType"`
+			BillTypeName            *string   `json:"billTypeName" name:"billTypeName"`
+			PayTypeName             *string   `json:"payTypeName" name:"payTypeName"`
+			BillDetailType          *int      `json:"billDetailType" name:"billDetailType"`
+			BillDetailTypeName      *string   `json:"billDetailTypeName" name:"billDetailTypeName"`
+			Duration                *string   `json:"duration" name:"duration"`
+			DurationNumber          *int      `json:"durationNumber" name:"durationNumber"`
+			RuleRemark              *string   `json:"ruleRemark" name:"ruleRemark"`
+			AvailabilityZone        *string   `json:"availabilityZone" name:"availabilityZone"`
+			Discount                *string   `json:"discount" name:"discount"`
+			Cash                    *float64  `json:"cash" name:"cash"`
+			Reward                  *int      `json:"reward" name:"reward"`
+			Vouchers                *int      `json:"vouchers" name:"vouchers"`
+			CloudTicketDenomination *int      `json:"cloudTicketDenomination" name:"cloudTicketDenomination"`
+			CloudTicketCost         *int      `json:"cloudTicketCost" name:"cloudTicketCost"`
+			ServiceBegionTime       *string   `json:"serviceBegionTime" name:"serviceBegionTime"`
+			ConfigInfo              []*string `json:"ConfigInfo" name:"ConfigInfo"`
+			PriceFactorInfo         []*string `json:"PriceFactorInfo" name:"PriceFactorInfo"`
+			ExtraInfo               []*string `json:"ExtraInfo" name:"ExtraInfo"`
+			ResourceDeductionInfo   []*string `json:"ResourceDeductionInfo" name:"ResourceDeductionInfo"`
+			TagInfo                 []*string `json:"TagInfo" name:"TagInfo"`
+		} `json:"Bills" name:"Bills"`
+	} `json:"Data"`
 }
 
 func (r *QueryInstanceConsumeResponse) ToJsonString() string {

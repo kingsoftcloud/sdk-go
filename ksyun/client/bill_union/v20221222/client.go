@@ -72,7 +72,7 @@ func (c *Client) QueryInstanceConsumeWithContext(ctx context.Context, request *Q
 		request.Init().WithApiInfo("bill-union", APIVersion, "QueryInstanceConsume")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewQueryInstanceConsumeResponse()
 	err, msg := c.Send(request, response)
@@ -92,7 +92,7 @@ func (c *Client) QueryInstanceConsumeWithContextV2(ctx context.Context, request 
 		request.Init().WithApiInfo("bill-union", APIVersion, "QueryInstanceConsume")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewQueryInstanceConsumeResponse()
 	statusCode, msg, err := c.SendV2(request, response)

@@ -435,6 +435,46 @@ func (r *GetCertificateDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ExtendCertificateRequest struct {
+	*ksyunhttp.BaseRequest
+	CertificateId   *string `json:"CertificateId,omitempty" name:"CertificateId"`
+	CertificateCode *string `json:"CertificateCode,omitempty" name:"CertificateCode"`
+	YearLength      *int    `json:"YearLength,omitempty" name:"YearLength"`
+	DomainCount     *int    `json:"DomainCount,omitempty" name:"DomainCount"`
+	WildcardCount   *int    `json:"WildcardCount,omitempty" name:"WildcardCount"`
+	BillType        *int    `json:"BillType,omitempty" name:"BillType"`
+}
+
+func (r *ExtendCertificateRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ExtendCertificateResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	Certificate struct {
+		CertificateId    *string `json:"CertificateId" name:"CertificateId"`
+		MainDomain       *string `json:"MainDomain" name:"MainDomain"`
+		CertificateBrand *string `json:"CertificateBrand" name:"CertificateBrand"`
+		CertificateLevel *string `json:"CertificateLevel" name:"CertificateLevel"`
+		CertificateName  *string `json:"CertificateName" name:"CertificateName"`
+		CertificateCode  *string `json:"CertificateCode" name:"CertificateCode"`
+		YearLength       *string `json:"YearLength" name:"YearLength"`
+		DomainCount      *string `json:"DomainCount" name:"DomainCount"`
+		WildcardCount    *string `json:"WildcardCount" name:"WildcardCount"`
+	} `json:"Certificate"`
+}
+
+func (r *ExtendCertificateResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ExtendCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeCompanyRequest struct {
 	*ksyunhttp.BaseRequest
 	Page     *int `json:"Page,omitempty" name:"Page"`
