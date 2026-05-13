@@ -481,15 +481,15 @@ type DescribeNodesResponse struct {
 			AdvancedSetting struct {
 				PostUserScript *string `json:"PostUserScript" name:"PostUserScript"`
 				PreUserScript  *string `json:"PreUserScript" name:"PreUserScript"`
-				Labels         struct {
+				Labels         []struct {
 					Key   *string `json:"Key" name:"Key"`
 					Value *string `json:"Value" name:"Value"`
 				} `json:"Labels" name:"Labels"`
-				Taint struct {
+				Taints []struct {
 					Key    *string `json:"Key" name:"Key"`
 					Value  *string `json:"Value" name:"Value"`
 					Effect *string `json:"Effect" name:"Effect"`
-				} `json:"Taint" name:"Taint"`
+				} `json:"Taints" name:"Taints"`
 			} `json:"AdvancedSetting"`
 			BasicSetting struct {
 				AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
