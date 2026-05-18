@@ -644,3 +644,84 @@ func (r *DeleteUserQuotaResponse) ToJsonString() string {
 func (r *DeleteUserQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type DescribeSharedOrganizationTreeRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *DescribeSharedOrganizationTreeRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeSharedOrganizationTreeResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId                      *string `json:"RequestId" name:"RequestId"`
+	DescribeOrganizationTreeResult struct {
+		Total *int `json:"Total" name:"Total"`
+		Items []struct {
+			Id        *string `json:"Id" name:"Id"`
+			ParentId  *string `json:"ParentId" name:"ParentId"`
+			Name      *string `json:"Name" name:"Name"`
+			AbsPath   *string `json:"AbsPath" name:"AbsPath"`
+			AiEnabled *int    `json:"AiEnabled" name:"AiEnabled"`
+			Children  []struct {
+				Id        *string `json:"Id" name:"Id"`
+				ParentId  *string `json:"ParentId" name:"ParentId"`
+				Name      *string `json:"Name" name:"Name"`
+				AbsPath   *string `json:"AbsPath" name:"AbsPath"`
+				AiEnabled *int    `json:"AiEnabled" name:"AiEnabled"`
+				Children  []struct {
+				} `json:"Children" name:"Children"`
+			} `json:"Children"`
+		} `json:"Items" name:"Items"`
+	} `json:"DescribeOrganizationTreeResult"`
+}
+
+func (r *DescribeSharedOrganizationTreeResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeSharedOrganizationTreeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSharedUserPointUsageRequest struct {
+	*ksyunhttp.BaseRequest
+	StartTime  *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime    *string `json:"EndTime,omitempty" name:"EndTime"`
+	UserName   *string `json:"UserName,omitempty" name:"UserName"`
+	Department *string `json:"Department,omitempty" name:"Department"`
+}
+
+func (r *DescribeSharedUserPointUsageRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeSharedUserPointUsageResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId                    *string `json:"RequestId" name:"RequestId"`
+	DescribeUserTokenUsageResult struct {
+		Total *int `json:"Total" name:"Total"`
+		Items []struct {
+			UserName               *string  `json:"UserName" name:"UserName"`
+			StatDate               *string  `json:"StatDate" name:"StatDate"`
+			PointCost              *float64 `json:"pointCost" name:"pointCost"`
+			SelfPointCost          *float64 `json:"selfPointCost" name:"selfPointCost"`
+			SharedPointCost        *float64 `json:"sharedPointCost" name:"sharedPointCost"`
+			CreditPackagePointCost *float64 `json:"creditPackagePointCost" name:"creditPackagePointCost"`
+			AbsPath                *string  `json:"AbsPath" name:"AbsPath"`
+		} `json:"Items" name:"Items"`
+	} `json:"DescribeUserTokenUsageResult"`
+}
+
+func (r *DescribeSharedUserPointUsageResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeSharedUserPointUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

@@ -1523,3 +1523,161 @@ func (c *Client) DeleteUserQuotaWithContextV2(ctx context.Context, request *Dele
 	}
 	return statusCode, msg, nil
 }
+func NewDescribeSharedOrganizationTreeRequest() (request *DescribeSharedOrganizationTreeRequest) {
+	request = &DescribeSharedOrganizationTreeRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kscc", APIVersion, "DescribeSharedOrganizationTree")
+	return
+}
+
+func NewDescribeSharedOrganizationTreeResponse() (response *DescribeSharedOrganizationTreeResponse) {
+	response = &DescribeSharedOrganizationTreeResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeSharedOrganizationTree(request *DescribeSharedOrganizationTreeRequest) string {
+	return c.DescribeSharedOrganizationTreeWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeSharedOrganizationTreeSend(request *DescribeSharedOrganizationTreeRequest) (*DescribeSharedOrganizationTreeResponse, error) {
+	statusCode, msg, err := c.DescribeSharedOrganizationTreeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeSharedOrganizationTreeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeSharedOrganizationTreeWithContext(ctx context.Context, request *DescribeSharedOrganizationTreeRequest) string {
+	if request == nil {
+		request = NewDescribeSharedOrganizationTreeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kscc", APIVersion, "DescribeSharedOrganizationTree")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeSharedOrganizationTreeResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeSharedOrganizationTreeWithContextV2(ctx context.Context, request *DescribeSharedOrganizationTreeRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeSharedOrganizationTreeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kscc", APIVersion, "DescribeSharedOrganizationTree")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeSharedOrganizationTreeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeSharedUserPointUsageRequest() (request *DescribeSharedUserPointUsageRequest) {
+	request = &DescribeSharedUserPointUsageRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kscc", APIVersion, "DescribeSharedUserPointUsage")
+	return
+}
+
+func NewDescribeSharedUserPointUsageResponse() (response *DescribeSharedUserPointUsageResponse) {
+	response = &DescribeSharedUserPointUsageResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeSharedUserPointUsage(request *DescribeSharedUserPointUsageRequest) string {
+	return c.DescribeSharedUserPointUsageWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeSharedUserPointUsageSend(request *DescribeSharedUserPointUsageRequest) (*DescribeSharedUserPointUsageResponse, error) {
+	statusCode, msg, err := c.DescribeSharedUserPointUsageWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeSharedUserPointUsageResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeSharedUserPointUsageWithContext(ctx context.Context, request *DescribeSharedUserPointUsageRequest) string {
+	if request == nil {
+		request = NewDescribeSharedUserPointUsageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kscc", APIVersion, "DescribeSharedUserPointUsage")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeSharedUserPointUsageResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeSharedUserPointUsageWithContextV2(ctx context.Context, request *DescribeSharedUserPointUsageRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeSharedUserPointUsageRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kscc", APIVersion, "DescribeSharedUserPointUsage")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeSharedUserPointUsageResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
