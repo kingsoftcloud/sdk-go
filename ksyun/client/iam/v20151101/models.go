@@ -175,26 +175,32 @@ func (r *GetUserRequest) ToJsonString() string {
 
 type GetUserResponse struct {
 	*ksyunhttp.BaseResponse
+	RequestId     *string `json:"RequestId" name:"RequestId"`
 	GetUserResult struct {
-		UserId                *string `json:"UserId" name:"UserId"`
-		Path                  *string `json:"Path" name:"Path"`
-		UserName              *string `json:"UserName" name:"UserName"`
-		CreateDate            *string `json:"CreateDate" name:"CreateDate"`
-		Phone                 *int    `json:"Phone" name:"Phone"`
-		CountryMobileCode     *int    `json:"CountryMobileCode" name:"CountryMobileCode"`
-		IsInternational       *int    `json:"IsInternational" name:"IsInternational"`
-		Email                 *string `json:"Email" name:"Email"`
-		PhoneVerified         *string `json:"PhoneVerified" name:"PhoneVerified"`
-		EmailVerified         *string `json:"EmailVerified" name:"EmailVerified"`
-		Remark                *string `json:"Remark" name:"Remark"`
-		PasswordResetRequired *string `json:"PasswordResetRequired" name:"PasswordResetRequired"`
-		EnableMFA             *int    `json:"EnableMFA" name:"EnableMFA"`
-		NeedBindMfa           *int    `json:"NeedBindMfa" name:"NeedBindMfa"`
-		UpdateDate            *string `json:"UpdateDate" name:"UpdateDate"`
-		ViewAllProject        *string `json:"ViewAllProject" name:"ViewAllProject"`
-		Id                    *int    `json:"Id" name:"Id"`
+		User struct {
+			UserId                *string `json:"UserId" name:"UserId"`
+			Path                  *string `json:"Path" name:"Path"`
+			UserName              *string `json:"UserName" name:"UserName"`
+			RealName              *string `json:"RealName" name:"RealName"`
+			CreateDate            *string `json:"CreateDate" name:"CreateDate"`
+			Phone                 *string `json:"Phone" name:"Phone"`
+			CountryMobileCode     *string `json:"CountryMobileCode" name:"CountryMobileCode"`
+			IsInternational       *int    `json:"isInternational" name:"isInternational"`
+			Email                 *string `json:"Email" name:"Email"`
+			PhoneVerified         *string `json:"PhoneVerified" name:"PhoneVerified"`
+			EmailVerified         *string `json:"EmailVerified" name:"EmailVerified"`
+			Remark                *string `json:"Remark" name:"Remark"`
+			Krn                   *string `json:"Krn" name:"Krn"`
+			PasswordResetRequired *bool   `json:"PasswordResetRequired" name:"PasswordResetRequired"`
+			EnableMFA             *int    `json:"EnableMFA" name:"EnableMFA"`
+			NeedBindMfa           *int    `json:"NeedBindMfa" name:"NeedBindMfa"`
+			PwdFreeze             *int    `json:"PwdFreeze" name:"PwdFreeze"`
+			UpdateDate            *string `json:"UpdateDate" name:"UpdateDate"`
+			ViewAllProject        *int    `json:"ViewAllProject" name:"ViewAllProject"`
+			PwdLastUsed           *string `json:"pwdLastUsed" name:"pwdLastUsed"`
+			Id                    *int    `json:"Id" name:"Id"`
+		} `json:"User" name:"User"`
 	} `json:"GetUserResult"`
-	RequestId *string `json:"RequestId" name:"RequestId"`
 }
 
 func (r *GetUserResponse) ToJsonString() string {
