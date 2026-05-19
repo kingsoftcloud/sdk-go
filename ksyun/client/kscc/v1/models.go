@@ -253,6 +253,7 @@ type DescribeUserTokenUsageResponse struct {
 			CachedTokens *int     `json:"CachedTokens" name:"CachedTokens"`
 			QuotaAmount  *float64 `json:"QuotaAmount" name:"QuotaAmount"`
 			AbsPath      *string  `json:"AbsPath" name:"AbsPath"`
+			ModelName    *string  `json:"ModelName" name:"ModelName"`
 		} `json:"Items" name:"Items"`
 	} `json:"DescribeUserTokenUsageResult"`
 }
