@@ -22,6 +22,85 @@ func NewClient(credential common.Credentials, region string, clientProfile *prof
 	return
 }
 
+func NewCreateResourcePoolRequest() (request *CreateResourcePoolRequest) {
+	request = &CreateResourcePoolRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateResourcePool")
+	return
+}
+
+func NewCreateResourcePoolResponse() (response *CreateResourcePoolResponse) {
+	response = &CreateResourcePoolResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateResourcePool(request *CreateResourcePoolRequest) string {
+	return c.CreateResourcePoolWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateResourcePoolSend(request *CreateResourcePoolRequest) (*CreateResourcePoolResponse, error) {
+	statusCode, msg, err := c.CreateResourcePoolWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateResourcePoolResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateResourcePoolWithContext(ctx context.Context, request *CreateResourcePoolRequest) string {
+	if request == nil {
+		request = NewCreateResourcePoolRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateResourcePool")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateResourcePoolResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateResourcePoolWithContextV2(ctx context.Context, request *CreateResourcePoolRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateResourcePoolRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateResourcePool")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateResourcePoolResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewCreateStorageConfigRequest() (request *CreateStorageConfigRequest) {
 	request = &CreateStorageConfigRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -727,6 +806,85 @@ func (c *Client) CreateNotebookWithContextV2(ctx context.Context, request *Creat
 	request.SetContentType("application/json")
 
 	response := NewCreateNotebookResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewEnableKlogRequest() (request *EnableKlogRequest) {
+	request = &EnableKlogRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "EnableKlog")
+	return
+}
+
+func NewEnableKlogResponse() (response *EnableKlogResponse) {
+	response = &EnableKlogResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) EnableKlog(request *EnableKlogRequest) string {
+	return c.EnableKlogWithContext(context.Background(), request)
+}
+
+func (c *Client) EnableKlogSend(request *EnableKlogRequest) (*EnableKlogResponse, error) {
+	statusCode, msg, err := c.EnableKlogWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct EnableKlogResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) EnableKlogWithContext(ctx context.Context, request *EnableKlogRequest) string {
+	if request == nil {
+		request = NewEnableKlogRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "EnableKlog")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewEnableKlogResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) EnableKlogWithContextV2(ctx context.Context, request *EnableKlogRequest) (int, string, error) {
+	if request == nil {
+		request = NewEnableKlogRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "EnableKlog")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewEnableKlogResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
@@ -1596,6 +1754,85 @@ func (c *Client) DescribeNotebookLogWithContextV2(ctx context.Context, request *
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeNotebookLogResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyComponentsRequest() (request *ModifyComponentsRequest) {
+	request = &ModifyComponentsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ModifyComponents")
+	return
+}
+
+func NewModifyComponentsResponse() (response *ModifyComponentsResponse) {
+	response = &ModifyComponentsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyComponents(request *ModifyComponentsRequest) string {
+	return c.ModifyComponentsWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyComponentsSend(request *ModifyComponentsRequest) (*ModifyComponentsResponse, error) {
+	statusCode, msg, err := c.ModifyComponentsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ModifyComponentsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyComponentsWithContext(ctx context.Context, request *ModifyComponentsRequest) string {
+	if request == nil {
+		request = NewModifyComponentsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyComponents")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyComponentsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyComponentsWithContextV2(ctx context.Context, request *ModifyComponentsRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyComponentsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyComponents")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyComponentsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
@@ -5552,85 +5789,6 @@ func (c *Client) EnableEndpointRateLimitWithContextV2(ctx context.Context, reque
 	}
 	return statusCode, msg, nil
 }
-func NewUpdateInferenceEndpointRequest() (request *UpdateInferenceEndpointRequest) {
-	request = &UpdateInferenceEndpointRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("aicp", APIVersion, "UpdateInferenceEndpoint")
-	return
-}
-
-func NewUpdateInferenceEndpointResponse() (response *UpdateInferenceEndpointResponse) {
-	response = &UpdateInferenceEndpointResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) UpdateInferenceEndpoint(request *UpdateInferenceEndpointRequest) string {
-	return c.UpdateInferenceEndpointWithContext(context.Background(), request)
-}
-
-func (c *Client) UpdateInferenceEndpointSend(request *UpdateInferenceEndpointRequest) (*UpdateInferenceEndpointResponse, error) {
-	statusCode, msg, err := c.UpdateInferenceEndpointWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	if msg == "" {
-		return nil, nil
-	}
-
-	var respStruct UpdateInferenceEndpointResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) UpdateInferenceEndpointWithContext(ctx context.Context, request *UpdateInferenceEndpointRequest) string {
-	if request == nil {
-		request = NewUpdateInferenceEndpointRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("aicp", APIVersion, "UpdateInferenceEndpoint")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewUpdateInferenceEndpointResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) UpdateInferenceEndpointWithContextV2(ctx context.Context, request *UpdateInferenceEndpointRequest) (int, string, error) {
-	if request == nil {
-		request = NewUpdateInferenceEndpointRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("aicp", APIVersion, "UpdateInferenceEndpoint")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewUpdateInferenceEndpointResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}
 func NewStartInferenceEndpointRequest() (request *StartInferenceEndpointRequest) {
 	request = &StartInferenceEndpointRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -6968,6 +7126,85 @@ func (c *Client) DescribeInferencePodsWithContextV2(ctx context.Context, request
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeInferencePodsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyResourcePoolRequest() (request *ModifyResourcePoolRequest) {
+	request = &ModifyResourcePoolRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ModifyResourcePool")
+	return
+}
+
+func NewModifyResourcePoolResponse() (response *ModifyResourcePoolResponse) {
+	response = &ModifyResourcePoolResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyResourcePool(request *ModifyResourcePoolRequest) string {
+	return c.ModifyResourcePoolWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyResourcePoolSend(request *ModifyResourcePoolRequest) (*ModifyResourcePoolResponse, error) {
+	statusCode, msg, err := c.ModifyResourcePoolWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ModifyResourcePoolResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyResourcePoolWithContext(ctx context.Context, request *ModifyResourcePoolRequest) string {
+	if request == nil {
+		request = NewModifyResourcePoolRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyResourcePool")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyResourcePoolResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyResourcePoolWithContextV2(ctx context.Context, request *ModifyResourcePoolRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyResourcePoolRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyResourcePool")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyResourcePoolResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err

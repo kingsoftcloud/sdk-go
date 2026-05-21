@@ -151,12 +151,6 @@ type EnableEndpointRateLimitRateLimit struct {
 	TPM *int `json:"TPM,omitempty" name:"TPM"`
 	RPM *int `json:"RPM,omitempty" name:"RPM"`
 }
-type UpdateInferenceEndpointRateLimit struct {
-	RPM         *int `json:"RPM,omitempty" name:"RPM"`
-	TPM         *int `json:"TPM,omitempty" name:"TPM"`
-	Concurrency *int `json:"Concurrency,omitempty" name:"Concurrency"`
-	IPM         *int `json:"IPM,omitempty" name:"IPM"`
-}
 type DescribeQueuesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
@@ -192,6 +186,41 @@ type DescribeInferencePodsFilter struct {
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
+type CreateResourcePoolRequest struct {
+	*ksyunhttp.BaseRequest
+	ResourcePoolName      *string   `json:"ResourcePoolName,omitempty" name:"ResourcePoolName"`
+	Description           *string   `json:"Description,omitempty" name:"Description"`
+	VpcId                 *string   `json:"VpcId,omitempty" name:"VpcId"`
+	ResourcePoolType      *string   `json:"ResourcePoolType,omitempty" name:"ResourcePoolType"`
+	ClusterId             *string   `json:"ClusterId,omitempty" name:"ClusterId"`
+	EnableKPFSPerformance *bool     `json:"EnableKPFSPerformance,omitempty" name:"EnableKPFSPerformance"`
+	FileSystemId          *string   `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	EnableKlog            *string   `json:"EnableKlog,omitempty" name:"EnableKlog"`
+	LogProjectName        *string   `json:"LogProjectName,omitempty" name:"LogProjectName"`
+	Overallocate          *bool     `json:"Overallocate,omitempty" name:"Overallocate"`
+	Components            []*string `json:"Components,omitempty" name:"Components"`
+}
+
+func (r *CreateResourcePoolRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateResourcePoolResponse struct {
+	*ksyunhttp.BaseResponse
+	ResourcePoolId *string `json:"ResourcePoolId" name:"ResourcePoolId"`
+	RequestId      *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateResourcePoolResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateResourcePoolResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateStorageConfigRequest struct {
 	*ksyunhttp.BaseRequest
 	StorageConfigName *string                      `json:"StorageConfigName,omitempty" name:"StorageConfigName"`
@@ -203,6 +232,7 @@ type CreateStorageConfigRequest struct {
 	Users             []*CreateStorageConfigUsers  `json:"Users,omitempty" name:"Users"`
 	Ak                *string                      `json:"Ak,omitempty" name:"Ak"`
 	Sk                *string                      `json:"Sk,omitempty" name:"Sk"`
+	Prefetch          *bool                        `json:"Prefetch,omitempty" name:"Prefetch"`
 }
 
 func (r *CreateStorageConfigRequest) ToJsonString() string {
@@ -235,6 +265,7 @@ type ModifyStorageConfigRequest struct {
 	Users             []*ModifyStorageConfigUsers `json:"Users,omitempty" name:"Users"`
 	Ak                *string                     `json:"Ak,omitempty" name:"Ak"`
 	Sk                *string                     `json:"Sk,omitempty" name:"Sk"`
+	Prefetch          *bool                       `json:"Prefetch,omitempty" name:"Prefetch"`
 }
 
 func (r *ModifyStorageConfigRequest) ToJsonString() string {
@@ -302,6 +333,7 @@ type DescribeStorageConfigsResponse struct {
 			Permission *string `json:"Permission" name:"Permission"`
 		} `json:"Users" name:"Users"`
 	} `json:"StorageConfigSet"`
+	Prefetch *bool `json:"Prefetch" name:"Prefetch"`
 }
 
 func (r *DescribeStorageConfigsResponse) ToJsonString() string {
@@ -585,6 +617,33 @@ func (r *CreateNotebookResponse) ToJsonString() string {
 }
 
 func (r *CreateNotebookResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type EnableKlogRequest struct {
+	*ksyunhttp.BaseRequest
+	ResourcePoolId *string `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	EnableKlog     *bool   `json:"EnableKlog,omitempty" name:"EnableKlog"`
+	LogProjectName *string `json:"LogProjectName,omitempty" name:"LogProjectName"`
+}
+
+func (r *EnableKlogRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type EnableKlogResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId      *string `json:"RequestId" name:"RequestId"`
+	ResourcePoolId *string `json:"ResourcePoolId" name:"ResourcePoolId"`
+}
+
+func (r *EnableKlogResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *EnableKlogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -964,6 +1023,32 @@ func (r *DescribeNotebookLogResponse) ToJsonString() string {
 }
 
 func (r *DescribeNotebookLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyComponentsRequest struct {
+	*ksyunhttp.BaseRequest
+	ResourcePoolId *string   `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	Components     []*string `json:"Components,omitempty" name:"Components"`
+}
+
+func (r *ModifyComponentsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyComponentsResponse struct {
+	*ksyunhttp.BaseResponse
+	ResourcePoolId *string `json:"ResourcePoolId" name:"ResourcePoolId"`
+	RequestId      *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyComponentsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyComponentsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1503,6 +1588,9 @@ type QueryTokenDataRequest struct {
 	ReasoningType  *string `json:"ReasoningType,omitempty" name:"ReasoningType"`
 	Marker         *int    `json:"Marker,omitempty" name:"Marker"`
 	ModelName      *string `json:"ModelName,omitempty" name:"ModelName"`
+	SortField      *string `json:"SortField,omitempty" name:"SortField"`
+	SortOrder      *string `json:"SortOrder,omitempty" name:"SortOrder"`
+	KeyId          *string `json:"KeyId,omitempty" name:"KeyId"`
 }
 
 func (r *QueryTokenDataRequest) ToJsonString() string {
@@ -1528,6 +1616,7 @@ type QueryTokenDataResponse struct {
 		TotalImageCount     *int64  `json:"TotalImageCount" name:"TotalImageCount"`
 		TotalVideoDuration  *int64  `json:"TotalVideoDuration" name:"TotalVideoDuration"`
 		TotalWebParser      *int64  `json:"TotalWebParser" name:"TotalWebParser"`
+		GroupByValue        *string `json:"GroupByValue" name:"GroupByValue"`
 	} `json:"Data"`
 	SumTotalCacheToken     *int64 `json:"SumTotalCacheToken" name:"SumTotalCacheToken"`
 	SumTotalCacheMissToken *int64 `json:"SumTotalCacheMissToken" name:"SumTotalCacheMissToken"`
@@ -2075,8 +2164,9 @@ func (r *DeleteTrainJobResponse) FromJsonString(s string) error {
 
 type ModifyTrainJobRequest struct {
 	*ksyunhttp.BaseRequest
-	TrainJobId *string `json:"TrainJobId,omitempty" name:"TrainJobId"`
-	Priority   *string `json:"Priority,omitempty" name:"Priority"`
+	TrainJobId         *string `json:"TrainJobId,omitempty" name:"TrainJobId"`
+	Priority           *string `json:"Priority,omitempty" name:"Priority"`
+	HoldingTimeMinutes *int    `json:"HoldingTimeMinutes,omitempty" name:"HoldingTimeMinutes"`
 }
 
 func (r *ModifyTrainJobRequest) ToJsonString() string {
@@ -2792,35 +2882,6 @@ func (r *EnableEndpointRateLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type UpdateInferenceEndpointRequest struct {
-	*ksyunhttp.BaseRequest
-	EndpointName *string                           `json:"EndpointName,omitempty" name:"EndpointName"`
-	ProjectId    *string                           `json:"ProjectId,omitempty" name:"ProjectId"`
-	ModelName    *string                           `json:"ModelName,omitempty" name:"ModelName"`
-	RateLimit    *UpdateInferenceEndpointRateLimit `json:"RateLimit ,omitempty" name:"RateLimit "`
-	EndpointId   *string                           `json:"EndpointId,omitempty" name:"EndpointId"`
-}
-
-func (r *UpdateInferenceEndpointRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type UpdateInferenceEndpointResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId  *string `json:"RequestId" name:"RequestId"`
-	EndpointId *string `json:"EndpointId" name:"EndpointId"`
-}
-
-func (r *UpdateInferenceEndpointResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *UpdateInferenceEndpointResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type StartInferenceEndpointRequest struct {
 	*ksyunhttp.BaseRequest
 	EndpointId *string `json:"EndpointId,omitempty" name:"EndpointId"`
@@ -3352,5 +3413,32 @@ func (r *DescribeInferencePodsResponse) ToJsonString() string {
 }
 
 func (r *DescribeInferencePodsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyResourcePoolRequest struct {
+	*ksyunhttp.BaseRequest
+	ResourcePoolId   *string `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	ResourcePoolName *string `json:"ResourcePoolName,omitempty" name:"ResourcePoolName"`
+	Overallocate     *bool   `json:"Overallocate,omitempty" name:"Overallocate"`
+}
+
+func (r *ModifyResourcePoolRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyResourcePoolResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId      *string `json:"RequestId" name:"RequestId"`
+	ResourcePoolId *string `json:"ResourcePoolId" name:"ResourcePoolId"`
+}
+
+func (r *ModifyResourcePoolResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyResourcePoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

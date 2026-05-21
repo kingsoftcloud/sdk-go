@@ -837,13 +837,13 @@ func (r *CreateKnowledgeBaseResponse) FromJsonString(s string) error {
 
 type CreateMemorySdkRequest struct {
 	*ksyunhttp.BaseRequest
-	Namespace *string              `json:"Namespace,omitempty" name:"Namespace"`
-	UserId    *string              `json:"UserId,omitempty" name:"UserId"`
-	AgentId   *string              `json:"AgentId,omitempty" name:"AgentId"`
-	SessionId *string              `json:"SessionId,omitempty" name:"SessionId"`
-	SceneId   *string              `json:"SceneId,omitempty" name:"SceneId"`
-	DataType  *string              `json:"DataType,omitempty" name:"DataType"`
-	Data      *CreateMemorySdkData `json:"Data,omitempty" name:"Data"`
+	AgentId            *string              `json:"AgentId,omitempty" name:"AgentId"`
+	SessionId          *string              `json:"SessionId,omitempty" name:"SessionId"`
+	SceneId            *string              `json:"SceneId,omitempty" name:"SceneId"`
+	DataType           *string              `json:"DataType,omitempty" name:"DataType"`
+	Data               *CreateMemorySdkData `json:"Data,omitempty" name:"Data"`
+	AgentUserId        *string              `json:"AgentUserId,omitempty" name:"AgentUserId"`
+	MemoryCollectionId *string              `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
 }
 
 func (r *CreateMemorySdkRequest) ToJsonString() string {
@@ -869,15 +869,16 @@ func (r *CreateMemorySdkResponse) FromJsonString(s string) error {
 
 type QueryMemorySdkRequest struct {
 	*ksyunhttp.BaseRequest
-	Namespace       *string `json:"Namespace,omitempty" name:"Namespace"`
-	UserId          *string `json:"UserId,omitempty" name:"UserId"`
-	Query           *string `json:"Query,omitempty" name:"Query"`
-	SceneId         *string `json:"SceneId,omitempty" name:"SceneId"`
-	OccurredAfter   *int64  `json:"OccurredAfter,omitempty" name:"OccurredAfter"`
-	OccurredBefore  *int64  `json:"OccurredBefore,omitempty" name:"OccurredBefore"`
-	Mode            *string `json:"Mode,omitempty" name:"Mode"`
-	ReturnCitations *bool   `json:"ReturnCitations,omitempty" name:"ReturnCitations"`
-	Limit           *int    `json:"Limit,omitempty" name:"Limit"`
+	Query              *string   `json:"Query,omitempty" name:"Query"`
+	SceneId            *string   `json:"SceneId,omitempty" name:"SceneId"`
+	OccurredAfter      *int64    `json:"OccurredAfter,omitempty" name:"OccurredAfter"`
+	OccurredBefore     *int64    `json:"OccurredBefore,omitempty" name:"OccurredBefore"`
+	Mode               *string   `json:"Mode,omitempty" name:"Mode"`
+	ReturnCitations    *bool     `json:"ReturnCitations,omitempty" name:"ReturnCitations"`
+	Limit              *int      `json:"Limit,omitempty" name:"Limit"`
+	SceneIds           []*string `json:"SceneIds,omitempty" name:"SceneIds"`
+	MemoryCollectionId *string   `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+	AgentUserId        *string   `json:"AgentUserId,omitempty" name:"AgentUserId"`
 }
 
 func (r *QueryMemorySdkRequest) ToJsonString() string {
@@ -1543,5 +1544,235 @@ func (r *GetMcpSquareDetailResponse) ToJsonString() string {
 }
 
 func (r *GetMcpSquareDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListSessionsRequest struct {
+	*ksyunhttp.BaseRequest
+	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+	AgentUserId        *string `json:"AgentUserId,omitempty" name:"AgentUserId"`
+	Query              *string `json:"Query,omitempty" name:"Query"`
+	Page               *int    `json:"Page,omitempty" name:"Page"`
+	PageSize           *int    `json:"PageSize,omitempty" name:"PageSize"`
+	CreatedAfter       *int    `json:"CreatedAfter,omitempty" name:"CreatedAfter"`
+	CreatedBefore      *int    `json:"CreatedBefore,omitempty" name:"CreatedBefore"`
+}
+
+func (r *ListSessionsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ListSessionsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		Total *int `json:"Total" name:"Total"`
+		Items []struct {
+			DataId *string `json:"DataId" name:"DataId"`
+			Data   struct {
+				Conversation []struct {
+					Role      *string `json:"Role" name:"Role"`
+					Text      *string `json:"Text" name:"Text"`
+					CreatedAt *int    `json:"CreatedAt" name:"CreatedAt"`
+				} `json:"Conversation" name:"Conversation"`
+				State *int `json:"State" name:"State"`
+			} `json:"Data"`
+			CreatedAt *int `json:"CreatedAt" name:"CreatedAt"`
+		} `json:"Items" name:"Items"`
+	} `json:"Data"`
+}
+
+func (r *ListSessionsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListSessionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddSessionRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *AddSessionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type AddSessionResponse struct {
+	*ksyunhttp.BaseResponse
+	Code    *int    `json:"Code" name:"Code"`
+	Message *string `json:"Message" name:"Message"`
+	Data    *string `json:"Data" name:"Data"`
+}
+
+func (r *AddSessionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *AddSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMemoryCollectionMetricsRequest struct {
+	*ksyunhttp.BaseRequest
+	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+	StartTime          *int64  `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime            *int64  `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *QueryMemoryCollectionMetricsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type QueryMemoryCollectionMetricsResponse struct {
+	*ksyunhttp.BaseResponse
+	MemoryCollectionId *string `json:"MemoryCollectionId" name:"MemoryCollectionId"`
+	MetricsByAction    []struct {
+		QueryMemory struct {
+			RequestCount *int     `json:"RequestCount" name:"RequestCount"`
+			AvgDuration  *float64 `json:"AvgDuration" name:"AvgDuration"`
+			ErrorRate    *float64 `json:"ErrorRate" name:"ErrorRate"`
+		} `json:"QueryMemory" name:"QueryMemory"`
+		CreateMemory struct {
+			RequestCount *int     `json:"RequestCount" name:"RequestCount"`
+			AvgDuration  *int     `json:"AvgDuration" name:"AvgDuration"`
+			ErrorRate    *float64 `json:"ErrorRate" name:"ErrorRate"`
+		} `json:"CreateMemory" name:"CreateMemory"`
+	} `json:"MetricsByAction"`
+}
+
+func (r *QueryMemoryCollectionMetricsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *QueryMemoryCollectionMetricsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QuerySessionMemoriesRequest struct {
+	*ksyunhttp.BaseRequest
+	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+	SessionId          *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
+func (r *QuerySessionMemoriesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type QuerySessionMemoriesResponse struct {
+	*ksyunhttp.BaseResponse
+	Data []struct {
+		TopicId       *string `json:"TopicId" name:"TopicId"`
+		TopicName     *string `json:"TopicName" name:"TopicName"`
+		MemoryId      *string `json:"MemoryId" name:"MemoryId"`
+		Memory        *string `json:"Memory" name:"Memory"`
+		OccurredStart *int    `json:"OccurredStart" name:"OccurredStart"`
+		OccurredEnd   *int    `json:"OccurredEnd" name:"OccurredEnd"`
+	} `json:"Data"`
+	Code    *int    `json:"Code" name:"Code"`
+	Message *string `json:"Message" name:"Message"`
+}
+
+func (r *QuerySessionMemoriesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *QuerySessionMemoriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RetrieveHistoriesRequest struct {
+	*ksyunhttp.BaseRequest
+	DatasetId *string `json:"DatasetId,omitempty" name:"DatasetId"`
+	Page      *int    `json:"Page,omitempty" name:"Page"`
+	Limit     *int    `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *RetrieveHistoriesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type RetrieveHistoriesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Id        *string `json:"Id" name:"Id"`
+		Content   *string `json:"Content" name:"Content"`
+		CreatedAt *int64  `json:"CreatedAt" name:"CreatedAt"`
+	} `json:"Data"`
+	HasMore *bool `json:"HasMore" name:"HasMore"`
+	Total   *int  `json:"Total" name:"Total"`
+	Page    *int  `json:"Page" name:"Page"`
+	Limit   *int  `json:"Limit" name:"Limit"`
+}
+
+func (r *RetrieveHistoriesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *RetrieveHistoriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReindexDocumentsRequest struct {
+	*ksyunhttp.BaseRequest
+	DatasetId   *string   `json:"DatasetId,omitempty" name:"DatasetId"`
+	DocumentIds []*string `json:"DocumentIds,omitempty" name:"DocumentIds"`
+}
+
+func (r *ReindexDocumentsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ReindexDocumentsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Result    *bool   `json:"Result" name:"Result"`
+}
+
+func (r *ReindexDocumentsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ReindexDocumentsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyDocumentStatusRequest struct {
+	*ksyunhttp.BaseRequest
+	DatasetId  *string `json:"DatasetId,omitempty" name:"DatasetId"`
+	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+	Status     *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ModifyDocumentStatusRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyDocumentStatusResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Result    *bool   `json:"Result" name:"Result"`
+}
+
+func (r *ModifyDocumentStatusResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyDocumentStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

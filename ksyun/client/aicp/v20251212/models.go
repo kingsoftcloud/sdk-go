@@ -66,6 +66,7 @@ type CreateTrainJobRequest struct {
 	SupportTensorboard *bool                           `json:"SupportTensorboard,omitempty" name:"SupportTensorboard"`
 	StorageConfigs     []*CreateTrainJobStorageConfigs `json:"StorageConfigs,omitempty" name:"StorageConfigs"`
 	Roles              []*CreateTrainJobRoles          `json:"Roles,omitempty" name:"Roles"`
+	HoldingTimeMinutes *int                            `json:"HoldingTimeMinutes,omitempty" name:"HoldingTimeMinutes"`
 }
 
 func (r *CreateTrainJobRequest) ToJsonString() string {
@@ -172,6 +173,7 @@ type DescribeTrainJobsResponse struct {
 				Value *string `json:"Value" name:"Value"`
 			} `json:"Envs"`
 		} `json:"Roles" name:"Roles"`
+		HoldingTimeMinutes *int `json:"HoldingTimeMinutes" name:"HoldingTimeMinutes"`
 	} `json:"TrainJobSet"`
 }
 
