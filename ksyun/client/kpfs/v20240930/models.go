@@ -152,6 +152,51 @@ func (r *GetInodeCountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeFileSystemClientInfoRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId   *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	CacheGroup     *string `json:"CacheGroup,omitempty" name:"CacheGroup"`
+	CacheGroupRole *string `json:"CacheGroupRole,omitempty" name:"CacheGroupRole"`
+	HostNamePrefix *string `json:"HostNamePrefix,omitempty" name:"HostNamePrefix"`
+	PageSize       *int    `json:"PageSize,omitempty" name:"PageSize"`
+	PageNum        *int    `json:"PageNum,omitempty" name:"PageNum"`
+}
+
+func (r *DescribeFileSystemClientInfoRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeFileSystemClientInfoResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		HostName       *string `json:"HostName" name:"HostName"`
+		Ip             *string `json:"Ip" name:"Ip"`
+		VpcIp          *string `json:"VpcIp" name:"VpcIp"`
+		MountPoint     *string `json:"MountPoint" name:"MountPoint"`
+		Version        *string `json:"Version" name:"Version"`
+		FileHandles    *int    `json:"FileHandles" name:"FileHandles"`
+		RunningTime    *int64  `json:"RunningTime" name:"RunningTime"`
+		CmdArgs        *string `json:"CmdArgs" name:"CmdArgs"`
+		CacheGroup     *string `json:"CacheGroup" name:"CacheGroup"`
+		CacheGroupRole *string `json:"CacheGroupRole" name:"CacheGroupRole"`
+		ClientId       *string `json:"ClientId" name:"ClientId"`
+	} `json:"Data"`
+	PageNum    *int `json:"PageNum" name:"PageNum"`
+	PageSize   *int `json:"PageSize" name:"PageSize"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+}
+
+func (r *DescribeFileSystemClientInfoResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeFileSystemClientInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GetCapacityAvailableRequest struct {
 	*ksyunhttp.BaseRequest
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
@@ -1108,5 +1153,209 @@ func (r *SetFileSystemResourceProtectResponse) ToJsonString() string {
 }
 
 func (r *SetFileSystemResourceProtectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetRemoteCachePutLatencyRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId   *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	StartTime      *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime        *string `json:"EndTime,omitempty" name:"EndTime"`
+	Interval       *string `json:"Interval,omitempty" name:"Interval"`
+	CacheGroup     *string `json:"CacheGroup,omitempty" name:"CacheGroup"`
+	CacheGroupRole *string `json:"CacheGroupRole,omitempty" name:"CacheGroupRole"`
+	ClientNm       *string `json:"ClientNm,omitempty" name:"ClientNm"`
+}
+
+func (r *GetRemoteCachePutLatencyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetRemoteCachePutLatencyResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Time  *int64   `json:"Time" name:"Time"`
+		Value *float64 `json:"Value" name:"Value"`
+	} `json:"Data"`
+}
+
+func (r *GetRemoteCachePutLatencyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetRemoteCachePutLatencyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetRemoteCacheGetLatencyRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId   *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	StartTime      *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime        *string `json:"EndTime,omitempty" name:"EndTime"`
+	Interval       *string `json:"Interval,omitempty" name:"Interval"`
+	CacheGroup     *string `json:"CacheGroup,omitempty" name:"CacheGroup"`
+	CacheGroupRole *string `json:"CacheGroupRole,omitempty" name:"CacheGroupRole"`
+	ClientNm       *string `json:"ClientNm,omitempty" name:"ClientNm"`
+}
+
+func (r *GetRemoteCacheGetLatencyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetRemoteCacheGetLatencyResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Time  *int64   `json:"Time" name:"Time"`
+		Value *float64 `json:"Value" name:"Value"`
+	} `json:"Data"`
+}
+
+func (r *GetRemoteCacheGetLatencyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetRemoteCacheGetLatencyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetRemoteCachePutThroughputRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId   *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	StartTime      *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime        *string `json:"EndTime,omitempty" name:"EndTime"`
+	Interval       *string `json:"Interval,omitempty" name:"Interval"`
+	CacheGroup     *string `json:"CacheGroup,omitempty" name:"CacheGroup"`
+	CacheGroupRole *string `json:"CacheGroupRole,omitempty" name:"CacheGroupRole"`
+	ClientNm       *string `json:"ClientNm,omitempty" name:"ClientNm"`
+}
+
+func (r *GetRemoteCachePutThroughputRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetRemoteCachePutThroughputResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Time  *int64   `json:"Time" name:"Time"`
+		Value *float64 `json:"Value" name:"Value"`
+	} `json:"Data"`
+}
+
+func (r *GetRemoteCachePutThroughputResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetRemoteCachePutThroughputResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetRemoteCacheGetThroughputRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId   *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	StartTime      *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime        *string `json:"EndTime,omitempty" name:"EndTime"`
+	Interval       *string `json:"Interval,omitempty" name:"Interval"`
+	CacheGroup     *string `json:"CacheGroup,omitempty" name:"CacheGroup"`
+	CacheGroupRole *string `json:"CacheGroupRole,omitempty" name:"CacheGroupRole"`
+	ClientNm       *string `json:"ClientNm,omitempty" name:"ClientNm"`
+}
+
+func (r *GetRemoteCacheGetThroughputRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetRemoteCacheGetThroughputResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Time  *int64   `json:"Time" name:"Time"`
+		Value *float64 `json:"Value" name:"Value"`
+	} `json:"Data"`
+}
+
+func (r *GetRemoteCacheGetThroughputResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetRemoteCacheGetThroughputResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetRemoteCacheIOPSSendRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId   *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	StartTime      *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime        *string `json:"EndTime,omitempty" name:"EndTime"`
+	Interval       *string `json:"Interval,omitempty" name:"Interval"`
+	CacheGroup     *string `json:"CacheGroup,omitempty" name:"CacheGroup"`
+	CacheGroupRole *string `json:"CacheGroupRole,omitempty" name:"CacheGroupRole"`
+	ClientNm       *string `json:"ClientNm,omitempty" name:"ClientNm"`
+}
+
+func (r *GetRemoteCacheIOPSSendRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetRemoteCacheIOPSSendResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Time  *int64   `json:"Time" name:"Time"`
+		Value *float64 `json:"Value" name:"Value"`
+	} `json:"Data"`
+}
+
+func (r *GetRemoteCacheIOPSSendResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetRemoteCacheIOPSSendResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetRemoteCacheIOPSGetRequest struct {
+	*ksyunhttp.BaseRequest
+	FileSystemId   *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	StartTime      *string `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime        *string `json:"EndTime,omitempty" name:"EndTime"`
+	Interval       *string `json:"Interval,omitempty" name:"Interval"`
+	CacheGroup     *string `json:"CacheGroup,omitempty" name:"CacheGroup"`
+	CacheGroupRole *string `json:"CacheGroupRole,omitempty" name:"CacheGroupRole"`
+	ClientNm       *string `json:"ClientNm,omitempty" name:"ClientNm"`
+}
+
+func (r *GetRemoteCacheIOPSGetRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetRemoteCacheIOPSGetResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Time  *int64   `json:"Time" name:"Time"`
+		Value *float64 `json:"Value" name:"Value"`
+	} `json:"Data"`
+}
+
+func (r *GetRemoteCacheIOPSGetResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetRemoteCacheIOPSGetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

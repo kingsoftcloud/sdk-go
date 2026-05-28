@@ -259,6 +259,85 @@ func (c *Client) GetInodeCountWithContextV2(ctx context.Context, request *GetIno
 	}
 	return statusCode, msg, nil
 }
+func NewDescribeFileSystemClientInfoRequest() (request *DescribeFileSystemClientInfoRequest) {
+	request = &DescribeFileSystemClientInfoRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileSystemClientInfo")
+	return
+}
+
+func NewDescribeFileSystemClientInfoResponse() (response *DescribeFileSystemClientInfoResponse) {
+	response = &DescribeFileSystemClientInfoResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeFileSystemClientInfo(request *DescribeFileSystemClientInfoRequest) string {
+	return c.DescribeFileSystemClientInfoWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeFileSystemClientInfoSend(request *DescribeFileSystemClientInfoRequest) (*DescribeFileSystemClientInfoResponse, error) {
+	statusCode, msg, err := c.DescribeFileSystemClientInfoWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeFileSystemClientInfoResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeFileSystemClientInfoWithContext(ctx context.Context, request *DescribeFileSystemClientInfoRequest) string {
+	if request == nil {
+		request = NewDescribeFileSystemClientInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileSystemClientInfo")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeFileSystemClientInfoResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeFileSystemClientInfoWithContextV2(ctx context.Context, request *DescribeFileSystemClientInfoRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeFileSystemClientInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileSystemClientInfo")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeFileSystemClientInfoResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewGetCapacityAvailableRequest() (request *GetCapacityAvailableRequest) {
 	request = &GetCapacityAvailableRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -2623,6 +2702,480 @@ func (c *Client) SetFileSystemResourceProtectWithContextV2(ctx context.Context, 
 	request.SetContentType("application/json")
 
 	response := NewSetFileSystemResourceProtectResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetRemoteCachePutLatencyRequest() (request *GetRemoteCachePutLatencyRequest) {
+	request = &GetRemoteCachePutLatencyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCachePutLatency")
+	return
+}
+
+func NewGetRemoteCachePutLatencyResponse() (response *GetRemoteCachePutLatencyResponse) {
+	response = &GetRemoteCachePutLatencyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetRemoteCachePutLatency(request *GetRemoteCachePutLatencyRequest) string {
+	return c.GetRemoteCachePutLatencyWithContext(context.Background(), request)
+}
+
+func (c *Client) GetRemoteCachePutLatencySend(request *GetRemoteCachePutLatencyRequest) (*GetRemoteCachePutLatencyResponse, error) {
+	statusCode, msg, err := c.GetRemoteCachePutLatencyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetRemoteCachePutLatencyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetRemoteCachePutLatencyWithContext(ctx context.Context, request *GetRemoteCachePutLatencyRequest) string {
+	if request == nil {
+		request = NewGetRemoteCachePutLatencyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCachePutLatency")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetRemoteCachePutLatencyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetRemoteCachePutLatencyWithContextV2(ctx context.Context, request *GetRemoteCachePutLatencyRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetRemoteCachePutLatencyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCachePutLatency")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetRemoteCachePutLatencyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetRemoteCacheGetLatencyRequest() (request *GetRemoteCacheGetLatencyRequest) {
+	request = &GetRemoteCacheGetLatencyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCacheGetLatency")
+	return
+}
+
+func NewGetRemoteCacheGetLatencyResponse() (response *GetRemoteCacheGetLatencyResponse) {
+	response = &GetRemoteCacheGetLatencyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetRemoteCacheGetLatency(request *GetRemoteCacheGetLatencyRequest) string {
+	return c.GetRemoteCacheGetLatencyWithContext(context.Background(), request)
+}
+
+func (c *Client) GetRemoteCacheGetLatencySend(request *GetRemoteCacheGetLatencyRequest) (*GetRemoteCacheGetLatencyResponse, error) {
+	statusCode, msg, err := c.GetRemoteCacheGetLatencyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetRemoteCacheGetLatencyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetRemoteCacheGetLatencyWithContext(ctx context.Context, request *GetRemoteCacheGetLatencyRequest) string {
+	if request == nil {
+		request = NewGetRemoteCacheGetLatencyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCacheGetLatency")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetRemoteCacheGetLatencyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetRemoteCacheGetLatencyWithContextV2(ctx context.Context, request *GetRemoteCacheGetLatencyRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetRemoteCacheGetLatencyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCacheGetLatency")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetRemoteCacheGetLatencyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetRemoteCachePutThroughputRequest() (request *GetRemoteCachePutThroughputRequest) {
+	request = &GetRemoteCachePutThroughputRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCachePutThroughput")
+	return
+}
+
+func NewGetRemoteCachePutThroughputResponse() (response *GetRemoteCachePutThroughputResponse) {
+	response = &GetRemoteCachePutThroughputResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetRemoteCachePutThroughput(request *GetRemoteCachePutThroughputRequest) string {
+	return c.GetRemoteCachePutThroughputWithContext(context.Background(), request)
+}
+
+func (c *Client) GetRemoteCachePutThroughputSend(request *GetRemoteCachePutThroughputRequest) (*GetRemoteCachePutThroughputResponse, error) {
+	statusCode, msg, err := c.GetRemoteCachePutThroughputWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetRemoteCachePutThroughputResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetRemoteCachePutThroughputWithContext(ctx context.Context, request *GetRemoteCachePutThroughputRequest) string {
+	if request == nil {
+		request = NewGetRemoteCachePutThroughputRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCachePutThroughput")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetRemoteCachePutThroughputResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetRemoteCachePutThroughputWithContextV2(ctx context.Context, request *GetRemoteCachePutThroughputRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetRemoteCachePutThroughputRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCachePutThroughput")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetRemoteCachePutThroughputResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetRemoteCacheGetThroughputRequest() (request *GetRemoteCacheGetThroughputRequest) {
+	request = &GetRemoteCacheGetThroughputRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCacheGetThroughput")
+	return
+}
+
+func NewGetRemoteCacheGetThroughputResponse() (response *GetRemoteCacheGetThroughputResponse) {
+	response = &GetRemoteCacheGetThroughputResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetRemoteCacheGetThroughput(request *GetRemoteCacheGetThroughputRequest) string {
+	return c.GetRemoteCacheGetThroughputWithContext(context.Background(), request)
+}
+
+func (c *Client) GetRemoteCacheGetThroughputSend(request *GetRemoteCacheGetThroughputRequest) (*GetRemoteCacheGetThroughputResponse, error) {
+	statusCode, msg, err := c.GetRemoteCacheGetThroughputWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetRemoteCacheGetThroughputResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetRemoteCacheGetThroughputWithContext(ctx context.Context, request *GetRemoteCacheGetThroughputRequest) string {
+	if request == nil {
+		request = NewGetRemoteCacheGetThroughputRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCacheGetThroughput")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetRemoteCacheGetThroughputResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetRemoteCacheGetThroughputWithContextV2(ctx context.Context, request *GetRemoteCacheGetThroughputRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetRemoteCacheGetThroughputRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCacheGetThroughput")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetRemoteCacheGetThroughputResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetRemoteCacheIOPSSendRequest() (request *GetRemoteCacheIOPSSendRequest) {
+	request = &GetRemoteCacheIOPSSendRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCacheIOPSSend")
+	return
+}
+
+func NewGetRemoteCacheIOPSSendResponse() (response *GetRemoteCacheIOPSSendResponse) {
+	response = &GetRemoteCacheIOPSSendResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetRemoteCacheIOPSSend(request *GetRemoteCacheIOPSSendRequest) string {
+	return c.GetRemoteCacheIOPSSendWithContext(context.Background(), request)
+}
+
+func (c *Client) GetRemoteCacheIOPSSendSend(request *GetRemoteCacheIOPSSendRequest) (*GetRemoteCacheIOPSSendResponse, error) {
+	statusCode, msg, err := c.GetRemoteCacheIOPSSendWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetRemoteCacheIOPSSendResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetRemoteCacheIOPSSendWithContext(ctx context.Context, request *GetRemoteCacheIOPSSendRequest) string {
+	if request == nil {
+		request = NewGetRemoteCacheIOPSSendRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCacheIOPSSend")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetRemoteCacheIOPSSendResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetRemoteCacheIOPSSendWithContextV2(ctx context.Context, request *GetRemoteCacheIOPSSendRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetRemoteCacheIOPSSendRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCacheIOPSSend")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetRemoteCacheIOPSSendResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetRemoteCacheIOPSGetRequest() (request *GetRemoteCacheIOPSGetRequest) {
+	request = &GetRemoteCacheIOPSGetRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCacheIOPSGet")
+	return
+}
+
+func NewGetRemoteCacheIOPSGetResponse() (response *GetRemoteCacheIOPSGetResponse) {
+	response = &GetRemoteCacheIOPSGetResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetRemoteCacheIOPSGet(request *GetRemoteCacheIOPSGetRequest) string {
+	return c.GetRemoteCacheIOPSGetWithContext(context.Background(), request)
+}
+
+func (c *Client) GetRemoteCacheIOPSGetSend(request *GetRemoteCacheIOPSGetRequest) (*GetRemoteCacheIOPSGetResponse, error) {
+	statusCode, msg, err := c.GetRemoteCacheIOPSGetWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetRemoteCacheIOPSGetResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetRemoteCacheIOPSGetWithContext(ctx context.Context, request *GetRemoteCacheIOPSGetRequest) string {
+	if request == nil {
+		request = NewGetRemoteCacheIOPSGetRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCacheIOPSGet")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetRemoteCacheIOPSGetResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetRemoteCacheIOPSGetWithContextV2(ctx context.Context, request *GetRemoteCacheIOPSGetRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetRemoteCacheIOPSGetRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetRemoteCacheIOPSGet")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetRemoteCacheIOPSGetResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
