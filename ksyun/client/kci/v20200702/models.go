@@ -127,6 +127,9 @@ type CreateContainerGroupContainerVolumeMount struct {
 	MountPath *string `json:"MountPath,omitempty" name:"MountPath"`
 	ReadOnly  *bool   `json:"ReadOnly,omitempty" name:"ReadOnly"`
 }
+type CreateContainerGroupContainerSecurityContext struct {
+	Privileged *bool `json:"Privileged,omitempty" name:"Privileged"`
+}
 type CreateContainerGroupContainer struct {
 	Name            *string                                        `json:"Name,omitempty" name:"Name"`
 	Command         []*string                                      `json:"Command,omitempty" name:"Command"`
@@ -142,6 +145,7 @@ type CreateContainerGroupContainer struct {
 	EnvironmentVar  []*CreateContainerGroupContainerEnvironmentVar `json:"EnvironmentVar,omitempty" name:"EnvironmentVar"`
 	Port            []*CreateContainerGroupContainerPort           `json:"Port,omitempty" name:"Port"`
 	VolumeMount     []*CreateContainerGroupContainerVolumeMount    `json:"VolumeMount,omitempty" name:"VolumeMount"`
+	SecurityContext *CreateContainerGroupContainerSecurityContext  `json:"SecurityContext,omitempty" name:"SecurityContext"`
 }
 type CreateContainerGroupDnsConfigOption struct {
 	Name  *string `json:"Name,omitempty" name:"Name"`
@@ -175,6 +179,39 @@ type CreateContainerGroupContainerSpec struct {
 	RequestMem *float64 `json:"RequestMem,omitempty" name:"RequestMem"`
 	LimitCpu   *float64 `json:"LimitCpu,omitempty" name:"LimitCpu"`
 	LimitMem   *float64 `json:"LimitMem,omitempty" name:"LimitMem"`
+}
+type CreateContainerGroupInitContainerEnvironmentVarValueFromFieldRef struct {
+	FieldPath *string `json:"FieldPath,omitempty" name:"FieldPath"`
+}
+type CreateContainerGroupInitContainerEnvironmentVarValueFrom struct {
+	FieldRef *CreateContainerGroupInitContainerEnvironmentVarValueFromFieldRef `json:"FieldRef,omitempty" name:"FieldRef"`
+}
+type CreateContainerGroupInitContainerEnvironmentVar struct {
+	Key       *string                                                   `json:"Key,omitempty" name:"Key"`
+	Value     *string                                                   `json:"Value,omitempty" name:"Value"`
+	ValueFrom *CreateContainerGroupInitContainerEnvironmentVarValueFrom `json:"ValueFrom,omitempty" name:"ValueFrom"`
+}
+type CreateContainerGroupInitContainerVolumeMount struct {
+	Name      *string `json:"Name,omitempty" name:"Name"`
+	MountPath *string `json:"MountPath,omitempty" name:"MountPath"`
+	ReadOnly  *bool   `json:"ReadOnly,omitempty" name:"ReadOnly"`
+}
+type CreateContainerGroupInitContainerSecurityContext struct {
+	Privileged *bool `json:"Privileged,omitempty" name:"Privileged"`
+}
+type CreateContainerGroupInitContainer struct {
+	Name            *string                                            `json:"Name,omitempty" name:"Name"`
+	Command         []*string                                          `json:"Command,omitempty" name:"Command"`
+	Arg             []*string                                          `json:"Arg,omitempty" name:"Arg"`
+	Cpu             *float64                                           `json:"Cpu,omitempty" name:"Cpu"`
+	Memory          *string                                            `json:"Memory,omitempty" name:"Memory"`
+	Gpu             *float64                                           `json:"Gpu,omitempty" name:"Gpu"`
+	WorkingDir      *string                                            `json:"WorkingDir,omitempty" name:"WorkingDir"`
+	Image           *string                                            `json:"Image,omitempty" name:"Image"`
+	ImagePullPolicy *string                                            `json:"ImagePullPolicy,omitempty" name:"ImagePullPolicy"`
+	EnvironmentVar  []*CreateContainerGroupInitContainerEnvironmentVar `json:"EnvironmentVar,omitempty" name:"EnvironmentVar"`
+	VolumeMount     []*CreateContainerGroupInitContainerVolumeMount    `json:"VolumeMount,omitempty" name:"VolumeMount"`
+	SecurityContext *CreateContainerGroupInitContainerSecurityContext  `json:"SecurityContext,omitempty" name:"SecurityContext"`
 }
 type DescribeContainerGroupFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
@@ -233,6 +270,8 @@ type CreateContainerGroupRequest struct {
 	KlogEnabled             *bool                                          `json:"KlogEnabled,omitempty" name:"KlogEnabled"`
 	DataDisk                []*CreateContainerGroupDataDisk                `json:"DataDisk,omitempty" name:"DataDisk"`
 	ContainerSpec           []*CreateContainerGroupContainerSpec           `json:"ContainerSpec,omitempty" name:"ContainerSpec"`
+	HostPID                 *bool                                          `json:"HostPID,omitempty" name:"HostPID"`
+	InitContainer           []*CreateContainerGroupInitContainer           `json:"InitContainer,omitempty" name:"InitContainer"`
 }
 
 func (r *CreateContainerGroupRequest) ToJsonString() string {
@@ -697,6 +736,8 @@ type DescribeImageCacheRequest struct {
 	Image          *string   `json:"Image,omitempty" name:"Image"`
 	Marker         *int      `json:"Marker,omitempty" name:"Marker"`
 	MaxResults     *int      `json:"MaxResults,omitempty" name:"MaxResults"`
+	SortKey        *string   `json:"SortKey,omitempty" name:"SortKey"`
+	SortDirection  *string   `json:"SortDirection,omitempty" name:"SortDirection"`
 }
 
 func (r *DescribeImageCacheRequest) ToJsonString() string {
@@ -722,6 +763,7 @@ type DescribeImageCacheResponse struct {
 		Images           []*string `json:"Images" name:"Images"`
 		Reason           *string   `json:"Reason" name:"Reason"`
 		ImageCacheType   *string   `json:"ImageCacheType" name:"ImageCacheType"`
+		LastUsedTime     *string   `json:"LastUsedTime" name:"LastUsedTime"`
 	} `json:"ImageCaches"`
 }
 
