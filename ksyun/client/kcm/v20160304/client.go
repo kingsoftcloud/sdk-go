@@ -704,7 +704,7 @@ func (c *Client) ListCertificatesWithContext(ctx context.Context, request *ListC
 		request.Init().WithApiInfo("kcm", APIVersion, "ListCertificates")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListCertificatesResponse()
 	err, msg := c.Send(request, response)
@@ -724,7 +724,7 @@ func (c *Client) ListCertificatesWithContextV2(ctx context.Context, request *Lis
 		request.Init().WithApiInfo("kcm", APIVersion, "ListCertificates")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewListCertificatesResponse()
 	statusCode, msg, err := c.SendV2(request, response)

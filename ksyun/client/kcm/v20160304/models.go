@@ -364,6 +364,7 @@ type ListCertificatesResponse struct {
 			CheckValue *string `json:"CheckValue" name:"CheckValue"`
 			RecordType *string `json:"RecordType" name:"RecordType"`
 		} `json:"AuthContent" name:"AuthContent"`
+		IssueTime *string `json:"IssueTime" name:"IssueTime"`
 	} `json:"CertificateSet"`
 }
 
