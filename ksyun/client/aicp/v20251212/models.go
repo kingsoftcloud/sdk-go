@@ -38,6 +38,10 @@ type CreateTrainJobRoles struct {
 	RestartPolicy  *string                            `json:"RestartPolicy,omitempty" name:"RestartPolicy"`
 	Envs           []*CreateTrainJobRolesEnvs         `json:"Envs,omitempty" name:"Envs"`
 }
+type CreateTrainJobDeviceHealthCheckConfig struct {
+	CheckTiming  *string `json:"CheckTiming,omitempty" name:"CheckTiming"`
+	MaxCheckTime *int64  `json:"MaxCheckTime,omitempty" name:"MaxCheckTime"`
+}
 type DescribeTrainJobsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
@@ -53,20 +57,25 @@ type CreateModelAndVersionUsers struct {
 
 type CreateTrainJobRequest struct {
 	*ksyunhttp.BaseRequest
-	TrainJobName       *string                         `json:"TrainJobName,omitempty" name:"TrainJobName"`
-	Description        *string                         `json:"Description,omitempty" name:"Description"`
-	ResourcePoolId     *string                         `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
-	Priority           *string                         `json:"Priority,omitempty" name:"Priority"`
-	QueueName          *string                         `json:"QueueName,omitempty" name:"QueueName"`
-	Framework          *string                         `json:"Framework,omitempty" name:"Framework"`
-	AccessType         *string                         `json:"AccessType,omitempty" name:"AccessType"`
-	SelfHealing        *bool                           `json:"SelfHealing,omitempty" name:"SelfHealing"`
-	MaxRuntimeHour     *int64                          `json:"MaxRuntimeHour,omitempty" name:"MaxRuntimeHour"`
-	JobRunOnCPU        *bool                           `json:"JobRunOnCPU,omitempty" name:"JobRunOnCPU"`
-	SupportTensorboard *bool                           `json:"SupportTensorboard,omitempty" name:"SupportTensorboard"`
-	StorageConfigs     []*CreateTrainJobStorageConfigs `json:"StorageConfigs,omitempty" name:"StorageConfigs"`
-	Roles              []*CreateTrainJobRoles          `json:"Roles,omitempty" name:"Roles"`
-	HoldingTimeMinutes *int                            `json:"HoldingTimeMinutes,omitempty" name:"HoldingTimeMinutes"`
+	TrainJobName            *string                                `json:"TrainJobName,omitempty" name:"TrainJobName"`
+	Description             *string                                `json:"Description,omitempty" name:"Description"`
+	ResourcePoolId          *string                                `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	Priority                *string                                `json:"Priority,omitempty" name:"Priority"`
+	QueueName               *string                                `json:"QueueName,omitempty" name:"QueueName"`
+	Framework               *string                                `json:"Framework,omitempty" name:"Framework"`
+	AccessType              *string                                `json:"AccessType,omitempty" name:"AccessType"`
+	SelfHealing             *bool                                  `json:"SelfHealing,omitempty" name:"SelfHealing"`
+	MaxRuntimeHour          *int64                                 `json:"MaxRuntimeHour,omitempty" name:"MaxRuntimeHour"`
+	JobRunOnCPU             *bool                                  `json:"JobRunOnCPU,omitempty" name:"JobRunOnCPU"`
+	SupportTensorboard      *bool                                  `json:"SupportTensorboard,omitempty" name:"SupportTensorboard"`
+	StorageConfigs          []*CreateTrainJobStorageConfigs        `json:"StorageConfigs,omitempty" name:"StorageConfigs"`
+	Roles                   []*CreateTrainJobRoles                 `json:"Roles,omitempty" name:"Roles"`
+	HoldingTimeMinutes      *int                                   `json:"HoldingTimeMinutes,omitempty" name:"HoldingTimeMinutes"`
+	EnableDeviceHealthCheck *bool                                  `json:"EnableDeviceHealthCheck,omitempty" name:"EnableDeviceHealthCheck"`
+	DeviceHealthCheckConfig *CreateTrainJobDeviceHealthCheckConfig `json:"DeviceHealthCheckConfig,omitempty" name:"DeviceHealthCheckConfig"`
+	RuntimeEnv              *string                                `json:"RuntimeEnv,omitempty" name:"RuntimeEnv"`
+	EntryPointCommand       *string                                `json:"EntryPointCommand,omitempty" name:"EntryPointCommand"`
+	UseIdleResource         *bool                                  `json:"UseIdleResource,omitempty" name:"UseIdleResource"`
 }
 
 func (r *CreateTrainJobRequest) ToJsonString() string {
@@ -91,15 +100,16 @@ func (r *CreateTrainJobResponse) FromJsonString(s string) error {
 
 type DescribeTrainJobsRequest struct {
 	*ksyunhttp.BaseRequest
-	TrainJobId   []*string                  `json:"TrainJobId,omitempty" name:"TrainJobId"`
-	Filter       []*DescribeTrainJobsFilter `json:"Filter,omitempty" name:"Filter"`
-	PageSize     *int                       `json:"PageSize,omitempty" name:"PageSize"`
-	Page         *int                       `json:"Page,omitempty" name:"Page"`
-	TrainJobName *string                    `json:"TrainJobName,omitempty" name:"TrainJobName"`
-	GPUType      *string                    `json:"GPUType,omitempty" name:"GPUType"`
-	QueueId      *string                    `json:"QueueId,omitempty" name:"QueueId"`
-	SortKey      *string                    `json:"SortKey,omitempty" name:"SortKey"`
-	Sort         *string                    `json:"Sort,omitempty" name:"Sort"`
+	TrainJobId      []*string                  `json:"TrainJobId,omitempty" name:"TrainJobId"`
+	Filter          []*DescribeTrainJobsFilter `json:"Filter,omitempty" name:"Filter"`
+	PageSize        *int                       `json:"PageSize,omitempty" name:"PageSize"`
+	Page            *int                       `json:"Page,omitempty" name:"Page"`
+	TrainJobName    *string                    `json:"TrainJobName,omitempty" name:"TrainJobName"`
+	GPUType         *string                    `json:"GPUType,omitempty" name:"GPUType"`
+	QueueId         *string                    `json:"QueueId,omitempty" name:"QueueId"`
+	UseIdleResource *bool                      `json:"UseIdleResource,omitempty" name:"UseIdleResource"`
+	SortKey         *string                    `json:"SortKey,omitempty" name:"SortKey"`
+	Sort            *string                    `json:"Sort,omitempty" name:"Sort"`
 }
 
 func (r *DescribeTrainJobsRequest) ToJsonString() string {
@@ -132,13 +142,14 @@ type DescribeTrainJobsResponse struct {
 		RebootNumber       *int    `json:"RebootNumber" name:"RebootNumber"`
 		TotalPodNum        *int    `json:"TotalPodNum" name:"TotalPodNum"`
 		JobStatus          struct {
-			Status        *string `json:"Status" name:"Status"`
-			SubmitTime    *string `json:"SubmitTime" name:"SubmitTime"`
-			StartTime     *string `json:"StartTime" name:"StartTime"`
-			QueueTime     *int    `json:"QueueTime" name:"QueueTime"`
-			EndTime       *string `json:"EndTime" name:"EndTime"`
-			Message       *string `json:"Message" name:"Message"`
-			ExecutionTime *string `json:"ExecutionTime" name:"ExecutionTime"`
+			Status                 *string `json:"Status" name:"Status"`
+			SubmitTime             *string `json:"SubmitTime" name:"SubmitTime"`
+			StartTime              *string `json:"StartTime" name:"StartTime"`
+			QueueTime              *int    `json:"QueueTime" name:"QueueTime"`
+			EndTime                *string `json:"EndTime" name:"EndTime"`
+			Message                *string `json:"Message" name:"Message"`
+			ExecutionTime          *string `json:"ExecutionTime" name:"ExecutionTime"`
+			DeviceHealthCheckState *string `json:"DeviceHealthCheckState" name:"DeviceHealthCheckState"`
 		} `json:"JobStatus" name:"JobStatus"`
 		StorageConfigs []struct {
 			StorageConfigId *string `json:"StorageConfigId" name:"StorageConfigId"`
@@ -173,7 +184,15 @@ type DescribeTrainJobsResponse struct {
 				Value *string `json:"Value" name:"Value"`
 			} `json:"Envs"`
 		} `json:"Roles" name:"Roles"`
-		HoldingTimeMinutes *int `json:"HoldingTimeMinutes" name:"HoldingTimeMinutes"`
+		HoldingTimeMinutes      *int  `json:"HoldingTimeMinutes" name:"HoldingTimeMinutes"`
+		EnableDeviceHealthCheck *bool `json:"EnableDeviceHealthCheck" name:"EnableDeviceHealthCheck"`
+		DeviceHealthCheckConfig struct {
+			CheckTiming  *string `json:"CheckTiming" name:"CheckTiming"`
+			MaxCheckTime *int64  `json:"MaxCheckTime" name:"MaxCheckTime"`
+		} `json:"DeviceHealthCheckConfig" name:"DeviceHealthCheckConfig"`
+		RuntimeEnv        *string `json:"RuntimeEnv" name:"RuntimeEnv"`
+		EntryPointCommand *string `json:"EntryPointCommand" name:"EntryPointCommand"`
+		UseIdleResource   *bool   `json:"UseIdleResource" name:"UseIdleResource"`
 	} `json:"TrainJobSet"`
 }
 

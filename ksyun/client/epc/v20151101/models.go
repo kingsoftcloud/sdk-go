@@ -5,6 +5,14 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
+type CreateEpcCustomInstallConfig struct {
+	Key   *string   `json:"Key,omitempty" name:"Key"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type ReinstallEpcCustomInstallConfig struct {
+	Key   *string   `json:"Key,omitempty" name:"Key"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
 type DescribeEpcsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
@@ -33,6 +41,10 @@ type DescribeEpcRaidAttributesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
+type BatchCreateEpcCustomInstallConfig struct {
+	Key   *string   `json:"Key,omitempty" name:"Key"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
 type DescribeUseHotStandbyRecordsFilterN struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
@@ -47,75 +59,78 @@ type RunSoInstancesVolumes struct {
 
 type CreateEpcRequest struct {
 	*ksyunhttp.BaseRequest
-	HostType                        *string   `json:"HostType,omitempty" name:"HostType"`
-	GroupSubType                    *string   `json:"GroupSubType,omitempty" name:"GroupSubType"`
-	AvailabilityZone                *string   `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
-	Raid                            *string   `json:"Raid,omitempty" name:"Raid"`
-	RaidId                          *string   `json:"RaidId,omitempty" name:"RaidId"`
-	ImageId                         *string   `json:"ImageId,omitempty" name:"ImageId"`
-	NetworkInterfaceMode            *string   `json:"NetworkInterfaceMode,omitempty" name:"NetworkInterfaceMode"`
-	BondAttribute                   *string   `json:"BondAttribute,omitempty" name:"BondAttribute"`
-	SubnetId                        *string   `json:"SubnetId,omitempty" name:"SubnetId"`
-	PrivateIpAddress                *string   `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
-	KeyId                           *string   `json:"keyId,omitempty" name:"keyId"`
-	SecurityGroupId                 []*string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
-	DNS1                            *string   `json:"DNS1,omitempty" name:"DNS1"`
-	DNS2                            *string   `json:"DNS2,omitempty" name:"DNS2"`
-	HostName                        *string   `json:"HostName,omitempty" name:"HostName"`
-	ProjectId                       *string   `json:"ProjectId,omitempty" name:"ProjectId"`
-	ChargeType                      *string   `json:"ChargeType,omitempty" name:"ChargeType"`
-	PurchaseTime                    *int      `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
-	Password                        *string   `json:"Password,omitempty" name:"Password"`
-	CloudMonitorAgent               *string   `json:"CloudMonitorAgent,omitempty" name:"CloudMonitorAgent"`
-	ExtensionSubnetId               *string   `json:"ExtensionSubnetId,omitempty" name:"ExtensionSubnetId"`
-	ExtensionPrivateIpAddress       *string   `json:"ExtensionPrivateIpAddress,omitempty" name:"ExtensionPrivateIpAddress"`
-	ExtensionDNS1                   *string   `json:"ExtensionDNS1,omitempty" name:"ExtensionDNS1"`
-	ExtensionDNS2                   *string   `json:"ExtensionDNS2,omitempty" name:"ExtensionDNS2"`
-	Description                     *string   `json:"Description,omitempty" name:"Description"`
-	AddressBandWidth                *string   `json:"AddressBandWidth,omitempty" name:"AddressBandWidth"`
-	LineId                          *string   `json:"LineId,omitempty" name:"LineId"`
-	BandWidthShareId                *string   `json:"BandWidthShareId,omitempty" name:"BandWidthShareId"`
-	AddressChargeType               *string   `json:"AddressChargeType,omitempty" name:"AddressChargeType"`
-	AddressPurchaseTime             *string   `json:"AddressPurchaseTime,omitempty" name:"AddressPurchaseTime"`
-	AddressProjectId                *string   `json:"AddressProjectId,omitempty" name:"AddressProjectId"`
-	SystemFileType                  *string   `json:"SystemFileType,omitempty" name:"SystemFileType"`
-	DataFileType                    *string   `json:"DataFileType,omitempty" name:"DataFileType"`
-	DataDiskCatalogue               *string   `json:"DataDiskCatalogue,omitempty" name:"DataDiskCatalogue"`
-	DataDiskCatalogueSuffix         *string   `json:"DataDiskCatalogueSuffix,omitempty" name:"DataDiskCatalogueSuffix"`
-	HyperThreading                  *string   `json:"HyperThreading,omitempty" name:"HyperThreading"`
-	NvmeDataFileType                *string   `json:"NvmeDataFileType,omitempty" name:"NvmeDataFileType"`
-	NvmeDataDiskCatalogue           *string   `json:"NvmeDataDiskCatalogue,omitempty" name:"NvmeDataDiskCatalogue"`
-	NvmeDataDiskCatalogueSuffix     *string   `json:"NvmeDataDiskCatalogueSuffix,omitempty" name:"NvmeDataDiskCatalogueSuffix"`
-	ContainerAgent                  *string   `json:"ContainerAgent,omitempty" name:"ContainerAgent"`
-	KesAgent                        *string   `json:"KesAgent,omitempty" name:"KesAgent"`
-	KmrAgent                        *string   `json:"KmrAgent,omitempty" name:"KmrAgent"`
-	ComputerName                    *string   `json:"ComputerName,omitempty" name:"ComputerName"`
-	OverclockingAttribute           *string   `json:"OverclockingAttribute,omitempty" name:"OverclockingAttribute"`
-	GpuImageDriverId                *string   `json:"GpuImageDriverId,omitempty" name:"GpuImageDriverId"`
-	SystemVolumeType                *string   `json:"SystemVolumeType,omitempty" name:"SystemVolumeType"`
-	SystemVolumeSize                *string   `json:"SystemVolumeSize,omitempty" name:"SystemVolumeSize"`
-	RoceNetwork                     *string   `json:"RoceNetwork,omitempty" name:"RoceNetwork"`
-	ZoneId                          *string   `json:"ZoneId,omitempty" name:"ZoneId"`
-	ZoneType                        *string   `json:"ZoneType,omitempty" name:"ZoneType"`
-	UseHotStandby                   *string   `json:"UseHotStandby,omitempty" name:"UseHotStandby"`
-	TimedRegularization             *string   `json:"TimedRegularization,omitempty" name:"TimedRegularization"`
-	PasswordInherit                 *string   `json:"PasswordInherit,omitempty" name:"PasswordInherit"`
-	DataDiskMount                   *string   `json:"DataDiskMount,omitempty" name:"DataDiskMount"`
-	StorageRoceNetworkCardName      *string   `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
-	AnacondaN                       *string   `json:"Anaconda.N,omitempty" name:"Anaconda.N"`
-	FrameworkN                      *string   `json:"Framework.N,omitempty" name:"Framework.N"`
-	EngineN                         *string   `json:"Engine.N,omitempty" name:"Engine.N"`
-	AiModelN                        *string   `json:"AiModel.N,omitempty" name:"AiModel.N"`
-	UserData                        *string   `json:"UserData,omitempty" name:"UserData"`
-	StorageRoceNetworkInterfaceMode *string   `json:"StorageRoceNetworkInterfaceMode,omitempty" name:"StorageRoceNetworkInterfaceMode"`
-	RoceCluster                     *string   `json:"RoceCluster,omitempty" name:"RoceCluster"`
-	SRoceCluster                    *string   `json:"SRoceCluster,omitempty" name:"SRoceCluster"`
-	UserDefinedData                 *string   `json:"UserDefinedData,omitempty" name:"UserDefinedData"`
-	ClientToken                     *string   `json:"ClientToken,omitempty" name:"ClientToken"`
-	NetworkCardNameFormat           *string   `json:"NetworkCardNameFormat,omitempty" name:"NetworkCardNameFormat"`
-	NetworkCardPriority             *string   `json:"NetworkCardPriority,omitempty" name:"NetworkCardPriority"`
-	FileSystemId                    *string   `json:"FileSystemId,omitempty" name:"FileSystemId"`
-	PosixAclId                      *string   `json:"PosixAclId,omitempty" name:"PosixAclId"`
+	HostType                        *string                         `json:"HostType,omitempty" name:"HostType"`
+	GroupSubType                    *string                         `json:"GroupSubType,omitempty" name:"GroupSubType"`
+	AvailabilityZone                *string                         `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	Raid                            *string                         `json:"Raid,omitempty" name:"Raid"`
+	RaidId                          *string                         `json:"RaidId,omitempty" name:"RaidId"`
+	ImageId                         *string                         `json:"ImageId,omitempty" name:"ImageId"`
+	NetworkInterfaceMode            *string                         `json:"NetworkInterfaceMode,omitempty" name:"NetworkInterfaceMode"`
+	BondAttribute                   *string                         `json:"BondAttribute,omitempty" name:"BondAttribute"`
+	SubnetId                        *string                         `json:"SubnetId,omitempty" name:"SubnetId"`
+	PrivateIpAddress                *string                         `json:"PrivateIpAddress,omitempty" name:"PrivateIpAddress"`
+	KeyId                           *string                         `json:"keyId,omitempty" name:"keyId"`
+	SecurityGroupId                 []*string                       `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	DNS1                            *string                         `json:"DNS1,omitempty" name:"DNS1"`
+	DNS2                            *string                         `json:"DNS2,omitempty" name:"DNS2"`
+	HostName                        *string                         `json:"HostName,omitempty" name:"HostName"`
+	ProjectId                       *string                         `json:"ProjectId,omitempty" name:"ProjectId"`
+	ChargeType                      *string                         `json:"ChargeType,omitempty" name:"ChargeType"`
+	PurchaseTime                    *int                            `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
+	Password                        *string                         `json:"Password,omitempty" name:"Password"`
+	CloudMonitorAgent               *string                         `json:"CloudMonitorAgent,omitempty" name:"CloudMonitorAgent"`
+	ExtensionSubnetId               *string                         `json:"ExtensionSubnetId,omitempty" name:"ExtensionSubnetId"`
+	ExtensionPrivateIpAddress       *string                         `json:"ExtensionPrivateIpAddress,omitempty" name:"ExtensionPrivateIpAddress"`
+	ExtensionDNS1                   *string                         `json:"ExtensionDNS1,omitempty" name:"ExtensionDNS1"`
+	ExtensionDNS2                   *string                         `json:"ExtensionDNS2,omitempty" name:"ExtensionDNS2"`
+	Description                     *string                         `json:"Description,omitempty" name:"Description"`
+	AddressBandWidth                *string                         `json:"AddressBandWidth,omitempty" name:"AddressBandWidth"`
+	LineId                          *string                         `json:"LineId,omitempty" name:"LineId"`
+	BandWidthShareId                *string                         `json:"BandWidthShareId,omitempty" name:"BandWidthShareId"`
+	AddressChargeType               *string                         `json:"AddressChargeType,omitempty" name:"AddressChargeType"`
+	AddressPurchaseTime             *string                         `json:"AddressPurchaseTime,omitempty" name:"AddressPurchaseTime"`
+	AddressProjectId                *string                         `json:"AddressProjectId,omitempty" name:"AddressProjectId"`
+	SystemFileType                  *string                         `json:"SystemFileType,omitempty" name:"SystemFileType"`
+	DataFileType                    *string                         `json:"DataFileType,omitempty" name:"DataFileType"`
+	DataDiskCatalogue               *string                         `json:"DataDiskCatalogue,omitempty" name:"DataDiskCatalogue"`
+	DataDiskCatalogueSuffix         *string                         `json:"DataDiskCatalogueSuffix,omitempty" name:"DataDiskCatalogueSuffix"`
+	HyperThreading                  *string                         `json:"HyperThreading,omitempty" name:"HyperThreading"`
+	NvmeDataFileType                *string                         `json:"NvmeDataFileType,omitempty" name:"NvmeDataFileType"`
+	NvmeDataDiskCatalogue           *string                         `json:"NvmeDataDiskCatalogue,omitempty" name:"NvmeDataDiskCatalogue"`
+	NvmeDataDiskCatalogueSuffix     *string                         `json:"NvmeDataDiskCatalogueSuffix,omitempty" name:"NvmeDataDiskCatalogueSuffix"`
+	ContainerAgent                  *string                         `json:"ContainerAgent,omitempty" name:"ContainerAgent"`
+	KesAgent                        *string                         `json:"KesAgent,omitempty" name:"KesAgent"`
+	KmrAgent                        *string                         `json:"KmrAgent,omitempty" name:"KmrAgent"`
+	ComputerName                    *string                         `json:"ComputerName,omitempty" name:"ComputerName"`
+	OverclockingAttribute           *string                         `json:"OverclockingAttribute,omitempty" name:"OverclockingAttribute"`
+	GpuImageDriverId                *string                         `json:"GpuImageDriverId,omitempty" name:"GpuImageDriverId"`
+	SystemVolumeType                *string                         `json:"SystemVolumeType,omitempty" name:"SystemVolumeType"`
+	SystemVolumeSize                *string                         `json:"SystemVolumeSize,omitempty" name:"SystemVolumeSize"`
+	RoceNetwork                     *string                         `json:"RoceNetwork,omitempty" name:"RoceNetwork"`
+	ZoneId                          *string                         `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneType                        *string                         `json:"ZoneType,omitempty" name:"ZoneType"`
+	UseHotStandby                   *string                         `json:"UseHotStandby,omitempty" name:"UseHotStandby"`
+	TimedRegularization             *string                         `json:"TimedRegularization,omitempty" name:"TimedRegularization"`
+	PasswordInherit                 *string                         `json:"PasswordInherit,omitempty" name:"PasswordInherit"`
+	DataDiskMount                   *string                         `json:"DataDiskMount,omitempty" name:"DataDiskMount"`
+	StorageRoceNetworkCardName      *string                         `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
+	AnacondaN                       *string                         `json:"Anaconda.N,omitempty" name:"Anaconda.N"`
+	FrameworkN                      *string                         `json:"Framework.N,omitempty" name:"Framework.N"`
+	EngineN                         *string                         `json:"Engine.N,omitempty" name:"Engine.N"`
+	AiModelN                        *string                         `json:"AiModel.N,omitempty" name:"AiModel.N"`
+	UserData                        *string                         `json:"UserData,omitempty" name:"UserData"`
+	StorageRoceNetworkInterfaceMode *string                         `json:"StorageRoceNetworkInterfaceMode,omitempty" name:"StorageRoceNetworkInterfaceMode"`
+	RoceCluster                     *string                         `json:"RoceCluster,omitempty" name:"RoceCluster"`
+	SRoceCluster                    *string                         `json:"SRoceCluster,omitempty" name:"SRoceCluster"`
+	UserDefinedData                 *string                         `json:"UserDefinedData,omitempty" name:"UserDefinedData"`
+	ClientToken                     *string                         `json:"ClientToken,omitempty" name:"ClientToken"`
+	NetworkCardNameFormat           *string                         `json:"NetworkCardNameFormat,omitempty" name:"NetworkCardNameFormat"`
+	NetworkCardPriority             *string                         `json:"NetworkCardPriority,omitempty" name:"NetworkCardPriority"`
+	FileSystemId                    *string                         `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	PosixAclId                      *string                         `json:"PosixAclId,omitempty" name:"PosixAclId"`
+	CustomInstallConfig             []*CreateEpcCustomInstallConfig `json:"CustomInstallConfig,omitempty" name:"CustomInstallConfig"`
+	DeleteProtection                *string                         `json:"DeleteProtection,omitempty" name:"DeleteProtection"`
+	UltraServerSn                   *string                         `json:"UltraServerSn,omitempty" name:"UltraServerSn"`
 }
 
 func (r *CreateEpcRequest) ToJsonString() string {
@@ -236,9 +251,13 @@ type CreateEpcResponse struct {
 		Frameworks              []*string `json:"Frameworks" name:"Frameworks"`
 		Engines                 []*string `json:"Engines" name:"Engines"`
 		AiModels                []*string `json:"AiModels" name:"AiModels"`
+		DeleteProtection        *string   `json:"DeleteProtection" name:"DeleteProtection"`
+		SRoceCluster            *string   `json:"SRoceCluster" name:"SRoceCluster"`
+		RoceCluster             *string   `json:"RoceCluster" name:"RoceCluster"`
+		RoceClusterGroup        *string   `json:"RoceClusterGroup" name:"RoceClusterGroup"`
+		IbCluster               *string   `json:"IbCluster" name:"IbCluster"`
+		IbClusterGroup          *string   `json:"IbClusterGroup" name:"IbClusterGroup"`
 	} `json:"Host"`
-	SRoceCluster *string `json:"SRoceCluster" name:"SRoceCluster"`
-	RoceCluster  *string `json:"RoceCluster" name:"RoceCluster"`
 }
 
 func (r *CreateEpcResponse) ToJsonString() string {
@@ -330,41 +349,42 @@ func (r *DeleteEpcResponse) FromJsonString(s string) error {
 
 type ReinstallEpcRequest struct {
 	*ksyunhttp.BaseRequest
-	HostId                      *string `json:"HostId,omitempty" name:"HostId"`
-	ImageId                     *string `json:"ImageId,omitempty" name:"ImageId"`
-	KeyId                       *string `json:"keyId,omitempty" name:"keyId"`
-	Password                    *string `json:"Password,omitempty" name:"Password"`
-	NetworkInterfaceMode        *string `json:"NetworkInterfaceMode,omitempty" name:"NetworkInterfaceMode"`
-	CloudMonitorAgent           *string `json:"CloudMonitorAgent,omitempty" name:"CloudMonitorAgent"`
-	Raid                        *string `json:"Raid,omitempty" name:"Raid"`
-	RaidId                      *string `json:"RaidId,omitempty" name:"RaidId"`
-	HostName                    *string `json:"HostName,omitempty" name:"HostName"`
-	SystemFileType              *string `json:"SystemFileType,omitempty" name:"SystemFileType"`
-	DataFileType                *string `json:"DataFileType,omitempty" name:"DataFileType"`
-	DataDiskCatalogue           *string `json:"DataDiskCatalogue,omitempty" name:"DataDiskCatalogue"`
-	DataDiskCatalogueSuffix     *string `json:"DataDiskCatalogueSuffix,omitempty" name:"DataDiskCatalogueSuffix"`
-	HyperThreading              *string `json:"HyperThreading,omitempty" name:"HyperThreading"`
-	NvmeDataFileType            *string `json:"NvmeDataFileType,omitempty" name:"NvmeDataFileType"`
-	NvmeDataDiskCatalogue       *string `json:"NvmeDataDiskCatalogue,omitempty" name:"NvmeDataDiskCatalogue"`
-	NvmeDataDiskCatalogueSuffix *string `json:"NvmeDataDiskCatalogueSuffix,omitempty" name:"NvmeDataDiskCatalogueSuffix"`
-	BondAttribute               *string `json:"BondAttribute,omitempty" name:"BondAttribute"`
-	KesAgent                    *string `json:"KesAgent,omitempty" name:"KesAgent"`
-	KmrAgent                    *string `json:"KmrAgent,omitempty" name:"KmrAgent"`
-	ComputerName                *string `json:"ComputerName,omitempty" name:"ComputerName"`
-	OverclockingAttribute       *string `json:"OverclockingAttribute,omitempty" name:"OverclockingAttribute"`
-	DelayStart                  *int    `json:"DelayStart,omitempty" name:"DelayStart"`
-	AvailabilityZone            *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
-	GpuImageDriverId            *string `json:"GpuImageDriverId,omitempty" name:"GpuImageDriverId"`
-	ContainerAgent              *string `json:"ContainerAgent,omitempty" name:"ContainerAgent"`
-	PasswordInherit             *string `json:"PasswordInherit,omitempty" name:"PasswordInherit"`
-	DataDiskMount               *string `json:"DataDiskMount,omitempty" name:"DataDiskMount"`
-	StorageRoceNetworkCardName  *string `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
-	UserDefinedData             *string `json:"UserDefinedData,omitempty" name:"UserDefinedData"`
-	ClientToken                 *string `json:"ClientToken,omitempty" name:"ClientToken"`
-	NetworkCardNameFormat       *string `json:"NetworkCardNameFormat,omitempty" name:"NetworkCardNameFormat"`
-	NetworkCardPriority         *string `json:"NetworkCardPriority,omitempty" name:"NetworkCardPriority"`
-	FileSystemId                *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
-	PosixAclId                  *string `json:"PosixAclId,omitempty" name:"PosixAclId"`
+	HostId                      *string                            `json:"HostId,omitempty" name:"HostId"`
+	ImageId                     *string                            `json:"ImageId,omitempty" name:"ImageId"`
+	KeyId                       *string                            `json:"keyId,omitempty" name:"keyId"`
+	Password                    *string                            `json:"Password,omitempty" name:"Password"`
+	NetworkInterfaceMode        *string                            `json:"NetworkInterfaceMode,omitempty" name:"NetworkInterfaceMode"`
+	CloudMonitorAgent           *string                            `json:"CloudMonitorAgent,omitempty" name:"CloudMonitorAgent"`
+	Raid                        *string                            `json:"Raid,omitempty" name:"Raid"`
+	RaidId                      *string                            `json:"RaidId,omitempty" name:"RaidId"`
+	HostName                    *string                            `json:"HostName,omitempty" name:"HostName"`
+	SystemFileType              *string                            `json:"SystemFileType,omitempty" name:"SystemFileType"`
+	DataFileType                *string                            `json:"DataFileType,omitempty" name:"DataFileType"`
+	DataDiskCatalogue           *string                            `json:"DataDiskCatalogue,omitempty" name:"DataDiskCatalogue"`
+	DataDiskCatalogueSuffix     *string                            `json:"DataDiskCatalogueSuffix,omitempty" name:"DataDiskCatalogueSuffix"`
+	HyperThreading              *string                            `json:"HyperThreading,omitempty" name:"HyperThreading"`
+	NvmeDataFileType            *string                            `json:"NvmeDataFileType,omitempty" name:"NvmeDataFileType"`
+	NvmeDataDiskCatalogue       *string                            `json:"NvmeDataDiskCatalogue,omitempty" name:"NvmeDataDiskCatalogue"`
+	NvmeDataDiskCatalogueSuffix *string                            `json:"NvmeDataDiskCatalogueSuffix,omitempty" name:"NvmeDataDiskCatalogueSuffix"`
+	BondAttribute               *string                            `json:"BondAttribute,omitempty" name:"BondAttribute"`
+	KesAgent                    *string                            `json:"KesAgent,omitempty" name:"KesAgent"`
+	KmrAgent                    *string                            `json:"KmrAgent,omitempty" name:"KmrAgent"`
+	ComputerName                *string                            `json:"ComputerName,omitempty" name:"ComputerName"`
+	OverclockingAttribute       *string                            `json:"OverclockingAttribute,omitempty" name:"OverclockingAttribute"`
+	DelayStart                  *int                               `json:"DelayStart,omitempty" name:"DelayStart"`
+	AvailabilityZone            *string                            `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	GpuImageDriverId            *string                            `json:"GpuImageDriverId,omitempty" name:"GpuImageDriverId"`
+	ContainerAgent              *string                            `json:"ContainerAgent,omitempty" name:"ContainerAgent"`
+	PasswordInherit             *string                            `json:"PasswordInherit,omitempty" name:"PasswordInherit"`
+	DataDiskMount               *string                            `json:"DataDiskMount,omitempty" name:"DataDiskMount"`
+	StorageRoceNetworkCardName  *string                            `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
+	UserDefinedData             *string                            `json:"UserDefinedData,omitempty" name:"UserDefinedData"`
+	ClientToken                 *string                            `json:"ClientToken,omitempty" name:"ClientToken"`
+	NetworkCardNameFormat       *string                            `json:"NetworkCardNameFormat,omitempty" name:"NetworkCardNameFormat"`
+	NetworkCardPriority         *string                            `json:"NetworkCardPriority,omitempty" name:"NetworkCardPriority"`
+	FileSystemId                *string                            `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	PosixAclId                  *string                            `json:"PosixAclId,omitempty" name:"PosixAclId"`
+	CustomInstallConfig         []*ReinstallEpcCustomInstallConfig `json:"CustomInstallConfig,omitempty" name:"CustomInstallConfig"`
 }
 
 func (r *ReinstallEpcRequest) ToJsonString() string {
@@ -597,6 +617,10 @@ type DescribeEpcsResponse struct {
 			Key        *string `json:"Key" name:"Key"`
 			Value      *string `json:"Value" name:"Value"`
 		} `json:"Tags" name:"Tags"`
+		IbCluster        *string `json:"IbCluster" name:"IbCluster"`
+		IbClusterGroup   *string `json:"IbClusterGroup" name:"IbClusterGroup"`
+		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
+		UltraServerSn    *string `json:"UltraServerSn" name:"UltraServerSn"`
 	} `json:"HostSet"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
@@ -677,6 +701,7 @@ type CreateImageRequest struct {
 	ImageName           *string `json:"ImageName,omitempty" name:"ImageName"`
 	ImageMode           *string `json:"ImageMode,omitempty" name:"ImageMode"`
 	ImageInitialization *string `json:"ImageInitialization,omitempty" name:"ImageInitialization"`
+	Description         *string `json:"Description,omitempty" name:"Description"`
 }
 
 func (r *CreateImageRequest) ToJsonString() string {
@@ -798,6 +823,8 @@ type DescribeImagesResponse struct {
 		ExportProgress      *string `json:"ExportProgress" name:"ExportProgress"`
 		Source              *string `json:"Source" name:"Source"`
 		KernelVersion       *string `json:"KernelVersion" name:"KernelVersion"`
+		Description         *string `json:"Description" name:"Description"`
+		Architecture        *string `json:"Architecture" name:"Architecture"`
 	} `json:"ImageSet"`
 }
 
@@ -1010,10 +1037,11 @@ func (r *StopEpcResponse) FromJsonString(s string) error {
 
 type ModifyEpcRequest struct {
 	*ksyunhttp.BaseRequest
-	HostId      *string `json:"HostId,omitempty" name:"HostId"`
-	HostName    *string `json:"HostName,omitempty" name:"HostName"`
-	Description *string `json:"Description,omitempty" name:"Description"`
-	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+	HostId           *string `json:"HostId,omitempty" name:"HostId"`
+	HostName         *string `json:"HostName,omitempty" name:"HostName"`
+	Description      *string `json:"Description,omitempty" name:"Description"`
+	ClientToken      *string `json:"ClientToken,omitempty" name:"ClientToken"`
+	DeleteProtection *string `json:"DeleteProtection,omitempty" name:"DeleteProtection"`
 }
 
 func (r *ModifyEpcRequest) ToJsonString() string {
@@ -2391,69 +2419,71 @@ func (r *ActivateHotStandbyEpcResponse) FromJsonString(s string) error {
 
 type BatchCreateEpcRequest struct {
 	*ksyunhttp.BaseRequest
-	HostType                    *string   `json:"HostType,omitempty" name:"HostType"`
-	GroupSubType                *string   `json:"GroupSubType,omitempty" name:"GroupSubType"`
-	AvailabilityZone            *string   `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
-	Raid                        *string   `json:"Raid,omitempty" name:"Raid"`
-	RaidId                      *string   `json:"RaidId,omitempty" name:"RaidId"`
-	ImageId                     *string   `json:"ImageId,omitempty" name:"ImageId"`
-	NetworkInterfaceMode        *string   `json:"NetworkInterfaceMode,omitempty" name:"NetworkInterfaceMode"`
-	SubnetId                    *string   `json:"SubnetId,omitempty" name:"SubnetId"`
-	KeyId                       *string   `json:"keyId,omitempty" name:"keyId"`
-	SecurityGroupId             []*string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
-	DNS1                        *string   `json:"DNS1,omitempty" name:"DNS1"`
-	DNS2                        *string   `json:"DNS2,omitempty" name:"DNS2"`
-	HostName                    *string   `json:"HostName,omitempty" name:"HostName"`
-	ProjectId                   *string   `json:"ProjectId,omitempty" name:"ProjectId"`
-	ChargeType                  *string   `json:"ChargeType,omitempty" name:"ChargeType"`
-	Sn                          *string   `json:"Sn,omitempty" name:"Sn"`
-	PurchaseTime                *int      `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
-	Password                    *string   `json:"Password,omitempty" name:"Password"`
-	CloudMonitorAgent           *string   `json:"CloudMonitorAgent,omitempty" name:"CloudMonitorAgent"`
-	ExtensionSubnetId           *string   `json:"ExtensionSubnetId,omitempty" name:"ExtensionSubnetId"`
-	ExtensionDNS1               *string   `json:"ExtensionDNS1,omitempty" name:"ExtensionDNS1"`
-	ExtensionDNS2               *string   `json:"ExtensionDNS2,omitempty" name:"ExtensionDNS2"`
-	Description                 *string   `json:"Description,omitempty" name:"Description"`
-	AddressBandWidth            *string   `json:"AddressBandWidth,omitempty" name:"AddressBandWidth"`
-	LineId                      *string   `json:"LineId,omitempty" name:"LineId"`
-	BandWidthShareId            *string   `json:"BandWidthShareId,omitempty" name:"BandWidthShareId"`
-	AddressChargeType           *string   `json:"AddressChargeType,omitempty" name:"AddressChargeType"`
-	AddressPurchaseTime         *string   `json:"AddressPurchaseTime,omitempty" name:"AddressPurchaseTime"`
-	AddressProjectId            *string   `json:"AddressProjectId,omitempty" name:"AddressProjectId"`
-	SystemFileType              *string   `json:"SystemFileType,omitempty" name:"SystemFileType"`
-	DataFileType                *string   `json:"DataFileType,omitempty" name:"DataFileType"`
-	DataDiskCatalogue           *string   `json:"DataDiskCatalogue,omitempty" name:"DataDiskCatalogue"`
-	DataDiskCatalogueSuffix     *string   `json:"DataDiskCatalogueSuffix,omitempty" name:"DataDiskCatalogueSuffix"`
-	HyperThreading              *string   `json:"HyperThreading,omitempty" name:"HyperThreading"`
-	NvmeDataFileType            *string   `json:"NvmeDataFileType,omitempty" name:"NvmeDataFileType"`
-	NvmeDataDiskCatalogue       *string   `json:"NvmeDataDiskCatalogue,omitempty" name:"NvmeDataDiskCatalogue"`
-	NvmeDataDiskCatalogueSuffix *string   `json:"NvmeDataDiskCatalogueSuffix,omitempty" name:"NvmeDataDiskCatalogueSuffix"`
-	BondAttribute               *string   `json:"BondAttribute,omitempty" name:"BondAttribute"`
-	ContainerAgent              *string   `json:"ContainerAgent,omitempty" name:"ContainerAgent"`
-	KesAgent                    *string   `json:"KesAgent,omitempty" name:"KesAgent"`
-	KmrAgent                    *string   `json:"KmrAgent,omitempty" name:"KmrAgent"`
-	ComputerName                *string   `json:"ComputerName,omitempty" name:"ComputerName"`
-	OverclockingAttribute       *string   `json:"OverclockingAttribute,omitempty" name:"OverclockingAttribute"`
-	GpuImageDriverId            *string   `json:"GpuImageDriverId,omitempty" name:"GpuImageDriverId"`
-	SystemVolumeType            *string   `json:"SystemVolumeType,omitempty" name:"SystemVolumeType"`
-	SystemVolumeSize            *string   `json:"SystemVolumeSize,omitempty" name:"SystemVolumeSize"`
-	RoceNetwork                 *string   `json:"RoceNetwork,omitempty" name:"RoceNetwork"`
-	ZoneId                      *string   `json:"ZoneId,omitempty" name:"ZoneId"`
-	ZoneType                    *string   `json:"ZoneType,omitempty" name:"ZoneType"`
-	HostNameStartNo             *int      `json:"HostNameStartNo,omitempty" name:"HostNameStartNo"`
-	ComputerNameStartNo         *int      `json:"ComputerNameStartNo,omitempty" name:"ComputerNameStartNo"`
-	Amount                      *int      `json:"Amount,omitempty" name:"Amount"`
-	TimedRegularization         *string   `json:"TimedRegularization,omitempty" name:"TimedRegularization"`
-	PasswordInherit             *string   `json:"PasswordInherit,omitempty" name:"PasswordInherit"`
-	DataDiskMount               *string   `json:"DataDiskMount,omitempty" name:"DataDiskMount"`
-	StorageRoceNetworkCardName  *string   `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
-	SRoceCluster                *string   `json:"SRoceCluster,omitempty" name:"SRoceCluster"`
-	RoceCluster                 *string   `json:"RoceCluster,omitempty" name:"RoceCluster"`
-	ClientToken                 *string   `json:"ClientToken,omitempty" name:"ClientToken"`
-	NetworkCardNameFormat       *string   `json:"NetworkCardNameFormat,omitempty" name:"NetworkCardNameFormat"`
-	NetworkCardPriority         *string   `json:"NetworkCardPriority,omitempty" name:"NetworkCardPriority"`
-	FileSystemId                *string   `json:"FileSystemId,omitempty" name:"FileSystemId"`
-	PosixAclId                  *string   `json:"PosixAclId,omitempty" name:"PosixAclId"`
+	HostType                    *string                              `json:"HostType,omitempty" name:"HostType"`
+	GroupSubType                *string                              `json:"GroupSubType,omitempty" name:"GroupSubType"`
+	AvailabilityZone            *string                              `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	Raid                        *string                              `json:"Raid,omitempty" name:"Raid"`
+	RaidId                      *string                              `json:"RaidId,omitempty" name:"RaidId"`
+	ImageId                     *string                              `json:"ImageId,omitempty" name:"ImageId"`
+	NetworkInterfaceMode        *string                              `json:"NetworkInterfaceMode,omitempty" name:"NetworkInterfaceMode"`
+	SubnetId                    *string                              `json:"SubnetId,omitempty" name:"SubnetId"`
+	KeyId                       *string                              `json:"keyId,omitempty" name:"keyId"`
+	SecurityGroupId             []*string                            `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	DNS1                        *string                              `json:"DNS1,omitempty" name:"DNS1"`
+	DNS2                        *string                              `json:"DNS2,omitempty" name:"DNS2"`
+	HostName                    *string                              `json:"HostName,omitempty" name:"HostName"`
+	ProjectId                   *string                              `json:"ProjectId,omitempty" name:"ProjectId"`
+	ChargeType                  *string                              `json:"ChargeType,omitempty" name:"ChargeType"`
+	Sn                          *string                              `json:"Sn,omitempty" name:"Sn"`
+	PurchaseTime                *int                                 `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
+	Password                    *string                              `json:"Password,omitempty" name:"Password"`
+	CloudMonitorAgent           *string                              `json:"CloudMonitorAgent,omitempty" name:"CloudMonitorAgent"`
+	ExtensionSubnetId           *string                              `json:"ExtensionSubnetId,omitempty" name:"ExtensionSubnetId"`
+	ExtensionDNS1               *string                              `json:"ExtensionDNS1,omitempty" name:"ExtensionDNS1"`
+	ExtensionDNS2               *string                              `json:"ExtensionDNS2,omitempty" name:"ExtensionDNS2"`
+	Description                 *string                              `json:"Description,omitempty" name:"Description"`
+	AddressBandWidth            *string                              `json:"AddressBandWidth,omitempty" name:"AddressBandWidth"`
+	LineId                      *string                              `json:"LineId,omitempty" name:"LineId"`
+	BandWidthShareId            *string                              `json:"BandWidthShareId,omitempty" name:"BandWidthShareId"`
+	AddressChargeType           *string                              `json:"AddressChargeType,omitempty" name:"AddressChargeType"`
+	AddressPurchaseTime         *string                              `json:"AddressPurchaseTime,omitempty" name:"AddressPurchaseTime"`
+	AddressProjectId            *string                              `json:"AddressProjectId,omitempty" name:"AddressProjectId"`
+	SystemFileType              *string                              `json:"SystemFileType,omitempty" name:"SystemFileType"`
+	DataFileType                *string                              `json:"DataFileType,omitempty" name:"DataFileType"`
+	DataDiskCatalogue           *string                              `json:"DataDiskCatalogue,omitempty" name:"DataDiskCatalogue"`
+	DataDiskCatalogueSuffix     *string                              `json:"DataDiskCatalogueSuffix,omitempty" name:"DataDiskCatalogueSuffix"`
+	HyperThreading              *string                              `json:"HyperThreading,omitempty" name:"HyperThreading"`
+	NvmeDataFileType            *string                              `json:"NvmeDataFileType,omitempty" name:"NvmeDataFileType"`
+	NvmeDataDiskCatalogue       *string                              `json:"NvmeDataDiskCatalogue,omitempty" name:"NvmeDataDiskCatalogue"`
+	NvmeDataDiskCatalogueSuffix *string                              `json:"NvmeDataDiskCatalogueSuffix,omitempty" name:"NvmeDataDiskCatalogueSuffix"`
+	BondAttribute               *string                              `json:"BondAttribute,omitempty" name:"BondAttribute"`
+	ContainerAgent              *string                              `json:"ContainerAgent,omitempty" name:"ContainerAgent"`
+	KesAgent                    *string                              `json:"KesAgent,omitempty" name:"KesAgent"`
+	KmrAgent                    *string                              `json:"KmrAgent,omitempty" name:"KmrAgent"`
+	ComputerName                *string                              `json:"ComputerName,omitempty" name:"ComputerName"`
+	OverclockingAttribute       *string                              `json:"OverclockingAttribute,omitempty" name:"OverclockingAttribute"`
+	GpuImageDriverId            *string                              `json:"GpuImageDriverId,omitempty" name:"GpuImageDriverId"`
+	SystemVolumeType            *string                              `json:"SystemVolumeType,omitempty" name:"SystemVolumeType"`
+	SystemVolumeSize            *string                              `json:"SystemVolumeSize,omitempty" name:"SystemVolumeSize"`
+	RoceNetwork                 *string                              `json:"RoceNetwork,omitempty" name:"RoceNetwork"`
+	ZoneId                      *string                              `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneType                    *string                              `json:"ZoneType,omitempty" name:"ZoneType"`
+	HostNameStartNo             *int                                 `json:"HostNameStartNo,omitempty" name:"HostNameStartNo"`
+	ComputerNameStartNo         *int                                 `json:"ComputerNameStartNo,omitempty" name:"ComputerNameStartNo"`
+	Amount                      *int                                 `json:"Amount,omitempty" name:"Amount"`
+	TimedRegularization         *string                              `json:"TimedRegularization,omitempty" name:"TimedRegularization"`
+	PasswordInherit             *string                              `json:"PasswordInherit,omitempty" name:"PasswordInherit"`
+	DataDiskMount               *string                              `json:"DataDiskMount,omitempty" name:"DataDiskMount"`
+	StorageRoceNetworkCardName  *string                              `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
+	SRoceCluster                *string                              `json:"SRoceCluster,omitempty" name:"SRoceCluster"`
+	RoceCluster                 *string                              `json:"RoceCluster,omitempty" name:"RoceCluster"`
+	ClientToken                 *string                              `json:"ClientToken,omitempty" name:"ClientToken"`
+	NetworkCardNameFormat       *string                              `json:"NetworkCardNameFormat,omitempty" name:"NetworkCardNameFormat"`
+	NetworkCardPriority         *string                              `json:"NetworkCardPriority,omitempty" name:"NetworkCardPriority"`
+	FileSystemId                *string                              `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	PosixAclId                  *string                              `json:"PosixAclId,omitempty" name:"PosixAclId"`
+	CustomInstallConfig         []*BatchCreateEpcCustomInstallConfig `json:"CustomInstallConfig,omitempty" name:"CustomInstallConfig"`
+	UltraServerSn               *string                              `json:"UltraServerSn,omitempty" name:"UltraServerSn"`
 }
 
 func (r *BatchCreateEpcRequest) ToJsonString() string {
@@ -2525,7 +2555,12 @@ func (r *DescribeUseHotStandbyRecordsResponse) FromJsonString(s string) error {
 
 type DescribeGpuRoceTopologyRequest struct {
 	*ksyunhttp.BaseRequest
-	SpineName *string `json:"SpineName,omitempty" name:"SpineName"`
+	SpineName    *string `json:"SpineName,omitempty" name:"SpineName"`
+	LeafName     *string `json:"LeafName,omitempty" name:"LeafName"`
+	HostId       *string `json:"HostId,omitempty" name:"HostId"`
+	Sn           *string `json:"Sn,omitempty" name:"Sn"`
+	RoceCluster  *string `json:"RoceCluster,omitempty" name:"RoceCluster"`
+	SRoceCluster *string `json:"SRoceCluster,omitempty" name:"SRoceCluster"`
 }
 
 func (r *DescribeGpuRoceTopologyRequest) ToJsonString() string {
@@ -2549,6 +2584,15 @@ type DescribeGpuRoceTopologyResponse struct {
 			CorePort  *string `json:"CorePort" name:"CorePort"`
 			SpinePort *string `json:"SpinePort" name:"SpinePort"`
 		} `json:"CoreDatas" name:"CoreDatas"`
+		ServerDatas []struct {
+			Sn               *string `json:"Sn" name:"Sn"`
+			HostId           *string `json:"HostId" name:"HostId"`
+			LeafName         *string `json:"LeafName" name:"LeafName"`
+			LeafPort         *string `json:"LeafPort" name:"LeafPort"`
+			RoceCluster      *string `json:"RoceCluster" name:"RoceCluster"`
+			RoceClusterGroup *string `json:"RoceClusterGroup" name:"RoceClusterGroup"`
+			SRoceCluster     *string `json:"SRoceCluster" name:"SRoceCluster"`
+		} `json:"ServerDatas" name:"ServerDatas"`
 	} `json:"DescribePorts"`
 }
 
@@ -4014,5 +4058,359 @@ func (r *DescribeUserDataResponse) ToJsonString() string {
 }
 
 func (r *DescribeUserDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLaunchTemplateRequest struct {
+	*ksyunhttp.BaseRequest
+	ChargeType                  *string   `json:"ChargeType,omitempty" name:"ChargeType"`
+	PurchaseTime                *int      `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
+	AvailabilityZone            *string   `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	HostType                    *string   `json:"HostType,omitempty" name:"HostType"`
+	NetworkInterfaceMode        *string   `json:"NetworkInterfaceMode,omitempty" name:"NetworkInterfaceMode"`
+	BondAttribute               *string   `json:"BondAttribute,omitempty" name:"BondAttribute"`
+	ImageId                     *string   `json:"ImageId,omitempty" name:"ImageId"`
+	GpuImageDriverId            *string   `json:"GpuImageDriverId,omitempty" name:"GpuImageDriverId"`
+	Raid                        *string   `json:"Raid,omitempty" name:"Raid"`
+	RaidId                      *string   `json:"RaidId,omitempty" name:"RaidId"`
+	DataDiskMount               *string   `json:"DataDiskMount,omitempty" name:"DataDiskMount"`
+	SystemFileType              *string   `json:"SystemFileType,omitempty" name:"SystemFileType"`
+	DataFileType                *string   `json:"DataFileType,omitempty" name:"DataFileType"`
+	DataDiskCatalogue           *string   `json:"DataDiskCatalogue,omitempty" name:"DataDiskCatalogue"`
+	DataDiskCatalogueSuffix     *string   `json:"DataDiskCatalogueSuffix,omitempty" name:"DataDiskCatalogueSuffix"`
+	NvmeDataFileType            *string   `json:"NvmeDataFileType,omitempty" name:"NvmeDataFileType"`
+	NvmeDataDiskCatalogue       *string   `json:"NvmeDataDiskCatalogue,omitempty" name:"NvmeDataDiskCatalogue"`
+	NvmeDataDiskCatalogueSuffix *string   `json:"NvmeDataDiskCatalogueSuffix,omitempty" name:"NvmeDataDiskCatalogueSuffix"`
+	SubnetId                    *string   `json:"SubnetId,omitempty" name:"SubnetId"`
+	SecurityGroupId             []*string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	ExtensionSubnetId           *string   `json:"ExtensionSubnetId,omitempty" name:"ExtensionSubnetId"`
+	ExtensionSecurityGroupId    []*string `json:"ExtensionSecurityGroupId,omitempty" name:"ExtensionSecurityGroupId"`
+	AddressBandWidth            *string   `json:"AddressBandWidth,omitempty" name:"AddressBandWidth"`
+	LineId                      *string   `json:"LineId,omitempty" name:"LineId"`
+	BandWidthShareId            *string   `json:"BandWidthShareId,omitempty" name:"BandWidthShareId"`
+	AddressChargeType           *string   `json:"AddressChargeType,omitempty" name:"AddressChargeType"`
+	AddressPurchaseTime         *int      `json:"AddressPurchaseTime,omitempty" name:"AddressPurchaseTime"`
+	AddressProjectId            *string   `json:"AddressProjectId,omitempty" name:"AddressProjectId"`
+	LaunchTemplateName          *string   `json:"LaunchTemplateName,omitempty" name:"LaunchTemplateName"`
+	VersionDescription          *string   `json:"VersionDescription,omitempty" name:"VersionDescription"`
+	HostName                    *string   `json:"HostName,omitempty" name:"HostName"`
+	Description                 *string   `json:"Description,omitempty" name:"Description"`
+	ComputerName                *string   `json:"ComputerName,omitempty" name:"ComputerName"`
+	HostNameStartNo             *int      `json:"HostNameStartNo,omitempty" name:"HostNameStartNo"`
+	ComputerNameStartNo         *int      `json:"ComputerNameStartNo,omitempty" name:"ComputerNameStartNo"`
+	ProjectId                   *string   `json:"ProjectId,omitempty" name:"ProjectId"`
+	KeyId                       *string   `json:"KeyId,omitempty" name:"KeyId"`
+	PasswordInherit             *string   `json:"PasswordInherit,omitempty" name:"PasswordInherit"`
+	CloudMonitorAgent           *string   `json:"CloudMonitorAgent,omitempty" name:"CloudMonitorAgent"`
+	ContainerAgent              *string   `json:"ContainerAgent,omitempty" name:"ContainerAgent"`
+	ZoneId                      *string   `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneType                    *string   `json:"ZoneType,omitempty" name:"ZoneType"`
+	StorageRoceNetworkCardName  *string   `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
+	UserData                    *string   `json:"UserData,omitempty" name:"UserData"`
+}
+
+func (r *CreateLaunchTemplateRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateLaunchTemplateResponse struct {
+	*ksyunhttp.BaseResponse
+	LaunchTemplateId            *string `json:"LaunchTemplateId" name:"LaunchTemplateId"`
+	LaunchTemplateVersionNumber *int    `json:"LaunchTemplateVersionNumber" name:"LaunchTemplateVersionNumber"`
+	RequestId                   *string `json:"RequestId" name:"RequestId"`
+	Return                      *bool   `json:"Return" name:"Return"`
+}
+
+func (r *CreateLaunchTemplateResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateLaunchTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLaunchTemplateVersionRequest struct {
+	*ksyunhttp.BaseRequest
+	ChargeType                  *string   `json:"ChargeType,omitempty" name:"ChargeType"`
+	PurchaseTime                *int      `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
+	AvailabilityZone            *string   `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	HostType                    *string   `json:"HostType,omitempty" name:"HostType"`
+	NetworkInterfaceMode        *string   `json:"NetworkInterfaceMode,omitempty" name:"NetworkInterfaceMode"`
+	BondAttribute               *string   `json:"BondAttribute,omitempty" name:"BondAttribute"`
+	ImageId                     *string   `json:"ImageId,omitempty" name:"ImageId"`
+	GpuImageDriverId            *string   `json:"GpuImageDriverId,omitempty" name:"GpuImageDriverId"`
+	Raid                        *string   `json:"Raid,omitempty" name:"Raid"`
+	RaidId                      *string   `json:"RaidId,omitempty" name:"RaidId"`
+	DataDiskMount               *string   `json:"DataDiskMount,omitempty" name:"DataDiskMount"`
+	SystemFileType              *string   `json:"SystemFileType,omitempty" name:"SystemFileType"`
+	DataFileType                *string   `json:"DataFileType,omitempty" name:"DataFileType"`
+	DataDiskCatalogue           *string   `json:"DataDiskCatalogue,omitempty" name:"DataDiskCatalogue"`
+	DataDiskCatalogueSuffix     *string   `json:"DataDiskCatalogueSuffix,omitempty" name:"DataDiskCatalogueSuffix"`
+	NvmeDataFileType            *string   `json:"NvmeDataFileType,omitempty" name:"NvmeDataFileType"`
+	NvmeDataDiskCatalogue       *string   `json:"NvmeDataDiskCatalogue,omitempty" name:"NvmeDataDiskCatalogue"`
+	NvmeDataDiskCatalogueSuffix *string   `json:"NvmeDataDiskCatalogueSuffix,omitempty" name:"NvmeDataDiskCatalogueSuffix"`
+	SubnetId                    *string   `json:"SubnetId,omitempty" name:"SubnetId"`
+	ExtensionSecurityGroupId    []*string `json:"ExtensionSecurityGroupId,omitempty" name:"ExtensionSecurityGroupId"`
+	AddressBandWidth            *string   `json:"AddressBandWidth,omitempty" name:"AddressBandWidth"`
+	LineId                      *string   `json:"LineId,omitempty" name:"LineId"`
+	BandWidthShareId            *string   `json:"BandWidthShareId,omitempty" name:"BandWidthShareId"`
+	AddressChargeType           *string   `json:"AddressChargeType,omitempty" name:"AddressChargeType"`
+	AddressPurchaseTime         *int      `json:"AddressPurchaseTime,omitempty" name:"AddressPurchaseTime"`
+	AddressProjectId            *string   `json:"AddressProjectId,omitempty" name:"AddressProjectId"`
+	LaunchTemplateId            *string   `json:"LaunchTemplateId,omitempty" name:"LaunchTemplateId"`
+	VersionDescription          *string   `json:"VersionDescription,omitempty" name:"VersionDescription"`
+	HostName                    *string   `json:"HostName,omitempty" name:"HostName"`
+	Description                 *string   `json:"Description,omitempty" name:"Description"`
+	ComputerName                *string   `json:"ComputerName,omitempty" name:"ComputerName"`
+	HostNameStartNo             *int      `json:"HostNameStartNo,omitempty" name:"HostNameStartNo"`
+	ComputerNameStartNo         *int      `json:"ComputerNameStartNo,omitempty" name:"ComputerNameStartNo"`
+	ProjectId                   *string   `json:"ProjectId,omitempty" name:"ProjectId"`
+	KeyId                       *string   `json:"KeyId,omitempty" name:"KeyId"`
+	PasswordInherit             *string   `json:"PasswordInherit,omitempty" name:"PasswordInherit"`
+	CloudMonitorAgent           *string   `json:"CloudMonitorAgent,omitempty" name:"CloudMonitorAgent"`
+	ContainerAgent              *string   `json:"ContainerAgent,omitempty" name:"ContainerAgent"`
+	ZoneId                      *string   `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneType                    *string   `json:"ZoneType,omitempty" name:"ZoneType"`
+	StorageRoceNetworkCardName  *string   `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
+	UserData                    *string   `json:"UserData,omitempty" name:"UserData"`
+}
+
+func (r *CreateLaunchTemplateVersionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateLaunchTemplateVersionResponse struct {
+	*ksyunhttp.BaseResponse
+	LaunchTemplateId            *string `json:"LaunchTemplateId" name:"LaunchTemplateId"`
+	LaunchTemplateVersionNumber *int    `json:"LaunchTemplateVersionNumber" name:"LaunchTemplateVersionNumber"`
+	RequestId                   *string `json:"RequestId" name:"RequestId"`
+	Return                      *bool   `json:"Return" name:"Return"`
+}
+
+func (r *CreateLaunchTemplateVersionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateLaunchTemplateVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLaunchTemplatesRequest struct {
+	*ksyunhttp.BaseRequest
+	NextToken        *string   `json:"NextToken,omitempty" name:"NextToken"`
+	MaxResults       *int      `json:"MaxResults,omitempty" name:"MaxResults"`
+	LaunchTemplateId []*string `json:"LaunchTemplateId,omitempty" name:"LaunchTemplateId"`
+}
+
+func (r *DescribeLaunchTemplatesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeLaunchTemplatesResponse struct {
+	*ksyunhttp.BaseResponse
+	LaunchTemplates []struct {
+		LaunchTemplateId     *string `json:"LaunchTemplateId" name:"LaunchTemplateId"`
+		LaunchTemplateName   *string `json:"LaunchTemplateName" name:"LaunchTemplateName"`
+		LatestVersionNumber  *int    `json:"LatestVersionNumber" name:"LatestVersionNumber"`
+		DefaultVersionNumber *int    `json:"DefaultVersionNumber" name:"DefaultVersionNumber"`
+		CreateTime           *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime           *string `json:"UpdateTime" name:"UpdateTime"`
+	} `json:"LaunchTemplates"`
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	NextToken  *string `json:"NextToken" name:"NextToken"`
+}
+
+func (r *DescribeLaunchTemplatesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeLaunchTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeLaunchTemplateVersionsRequest struct {
+	*ksyunhttp.BaseRequest
+	LaunchTemplateId      *string `json:"LaunchTemplateId,omitempty" name:"LaunchTemplateId"`
+	DefaultVersion        *bool   `json:"DefaultVersion,omitempty" name:"DefaultVersion"`
+	LaunchTemplateVersion []*int  `json:"LaunchTemplateVersion,omitempty" name:"LaunchTemplateVersion"`
+	NextToken             *string `json:"NextToken,omitempty" name:"NextToken"`
+	MaxResults            *int    `json:"MaxResults,omitempty" name:"MaxResults"`
+}
+
+func (r *DescribeLaunchTemplateVersionsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeLaunchTemplateVersionsResponse struct {
+	*ksyunhttp.BaseResponse
+	LaunchTemplateVersions []struct {
+		LaunchTemplateId          *string `json:"LaunchTemplateId" name:"LaunchTemplateId"`
+		LaunchTemplateName        *string `json:"LaunchTemplateName" name:"LaunchTemplateName"`
+		VersionDescription        *string `json:"VersionDescription" name:"VersionDescription"`
+		VersionNumber             *int    `json:"VersionNumber" name:"VersionNumber"`
+		IsDefault                 *bool   `json:"IsDefault" name:"IsDefault"`
+		CreateTime                *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime                *string `json:"UpdateTime" name:"UpdateTime"`
+		LaunchTemplateVersionData struct {
+			ChargeType                   *string `json:"ChargeType" name:"ChargeType"`
+			PurchaseTime                 *int    `json:"PurchaseTime" name:"PurchaseTime"`
+			AvailabilityZone             *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+			HostType                     *string `json:"HostType" name:"HostType"`
+			NetworkInterfaceMode         *string `json:"NetworkInterfaceMode" name:"NetworkInterfaceMode"`
+			BondAttribute                *string `json:"BondAttribute" name:"BondAttribute"`
+			ImageId                      *string `json:"ImageId" name:"ImageId"`
+			OsType                       *string `json:"OsType" name:"OsType"`
+			GpuImageDriverId             *string `json:"GpuImageDriverId" name:"GpuImageDriverId"`
+			Raid                         *string `json:"Raid" name:"Raid"`
+			RaidId                       *string `json:"RaidId" name:"RaidId"`
+			DataDiskMount                *string `json:"DataDiskMount" name:"DataDiskMount"`
+			SystemFileType               *string `json:"SystemFileType" name:"SystemFileType"`
+			DataFileType                 *string `json:"DataFileType" name:"DataFileType"`
+			DataDiskCatalogue            *string `json:"DataDiskCatalogue" name:"DataDiskCatalogue"`
+			DataDiskCatalogueSuffix      *string `json:"DataDiskCatalogueSuffix" name:"DataDiskCatalogueSuffix"`
+			NvmeDataFileType             *string `json:"NvmeDataFileType" name:"NvmeDataFileType"`
+			NvmeDataDiskCatalogue        *string `json:"NvmeDataDiskCatalogue" name:"NvmeDataDiskCatalogue"`
+			NvmeDataDiskCatalogueSuffix  *string `json:"NvmeDataDiskCatalogueSuffix" name:"NvmeDataDiskCatalogueSuffix"`
+			NetworkInterfaceAttributeSet []struct {
+				VpcId                *string `json:"VpcId" name:"VpcId"`
+				NetworkInterfaceType *string `json:"NetworkInterfaceType" name:"NetworkInterfaceType"`
+				SubnetId             *string `json:"SubnetId" name:"SubnetId"`
+				SecurityGroupSet     []struct {
+					SecurityGroupId *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+				} `json:"SecurityGroupSet" name:"SecurityGroupSet"`
+			} `json:"NetworkInterfaceAttributeSet"`
+			AddressBandWidth           *string `json:"AddressBandWidth" name:"AddressBandWidth"`
+			LineId                     *string `json:"LineId" name:"LineId"`
+			BandWidthShareId           *string `json:"BandWidthShareId" name:"BandWidthShareId"`
+			AddressChargeType          *string `json:"AddressChargeType" name:"AddressChargeType"`
+			AddressPurchaseTime        *string `json:"AddressPurchaseTime" name:"AddressPurchaseTime"`
+			AddressProjectId           *string `json:"AddressProjectId" name:"AddressProjectId"`
+			HostName                   *string `json:"HostName" name:"HostName"`
+			Description                *string `json:"Description" name:"Description"`
+			ComputerName               *string `json:"ComputerName" name:"ComputerName"`
+			HostNameStartNo            *int    `json:"HostNameStartNo" name:"HostNameStartNo"`
+			ComputerNameStartNo        *int    `json:"ComputerNameStartNo" name:"ComputerNameStartNo"`
+			ProjectId                  *string `json:"ProjectId" name:"ProjectId"`
+			KeyId                      *string `json:"KeyId" name:"KeyId"`
+			KeepImageCredential        *string `json:"KeepImageCredential" name:"KeepImageCredential"`
+			CloudMonitorAgent          *string `json:"CloudMonitorAgent" name:"CloudMonitorAgent"`
+			ContainerAgent             *string `json:"ContainerAgent" name:"ContainerAgent"`
+			ZoneId                     *string `json:"ZoneId" name:"ZoneId"`
+			ZoneType                   *string `json:"ZoneType" name:"ZoneType"`
+			StorageRoceNetworkCardName *string `json:"StorageRoceNetworkCardName" name:"StorageRoceNetworkCardName"`
+			UserData                   *string `json:"UserData" name:"UserData"`
+			HostTypeName               *string `json:"HostTypeName" name:"HostTypeName"`
+			CpuModel                   *string `json:"CpuModel" name:"CpuModel"`
+			CpuCount                   *int    `json:"CpuCount" name:"CpuCount"`
+			Memory                     *string `json:"Memory" name:"Memory"`
+			GpuModel                   *string `json:"GpuModel" name:"GpuModel"`
+			CudaVersion                *string `json:"CudaVersion" name:"CudaVersion"`
+			CudaDriver                 *string `json:"CudaDriver" name:"CudaDriver"`
+			KernelVersion              *string `json:"KernelVersion" name:"KernelVersion"`
+			NetworkCardSet             []struct {
+				Type      *string `json:"Type" name:"Type"`
+				Attribute *string `json:"Attribute" name:"Attribute"`
+				Num       *int    `json:"Num" name:"Num"`
+				Kind      *string `json:"Kind" name:"Kind"`
+				UseType   *string `json:"UseType" name:"UseType"`
+			} `json:"NetworkCardSet"`
+		} `json:"LaunchTemplateVersionData" name:"LaunchTemplateVersionData"`
+	} `json:"LaunchTemplateVersions"`
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	NextToken  *string `json:"NextToken" name:"NextToken"`
+}
+
+func (r *DescribeLaunchTemplateVersionsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeLaunchTemplateVersionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyTemplateDefaultVersionRequest struct {
+	*ksyunhttp.BaseRequest
+	LaunchTemplateId     *string `json:"LaunchTemplateId,omitempty" name:"LaunchTemplateId"`
+	DefaultVersionNumber *int    `json:"DefaultVersionNumber,omitempty" name:"DefaultVersionNumber"`
+}
+
+func (r *ModifyTemplateDefaultVersionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyTemplateDefaultVersionResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *ModifyTemplateDefaultVersionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyTemplateDefaultVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLaunchTemplateRequest struct {
+	*ksyunhttp.BaseRequest
+	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" name:"LaunchTemplateId"`
+}
+
+func (r *DeleteLaunchTemplateRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteLaunchTemplateResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *DeleteLaunchTemplateResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteLaunchTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLaunchTemplateVersionRequest struct {
+	*ksyunhttp.BaseRequest
+	LaunchTemplateId      *string `json:"LaunchTemplateId,omitempty" name:"LaunchTemplateId"`
+	LaunchTemplateVersion []*int  `json:"LaunchTemplateVersion,omitempty" name:"LaunchTemplateVersion"`
+}
+
+func (r *DeleteLaunchTemplateVersionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteLaunchTemplateVersionResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *DeleteLaunchTemplateVersionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteLaunchTemplateVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

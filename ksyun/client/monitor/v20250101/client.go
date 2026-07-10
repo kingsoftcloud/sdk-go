@@ -101,6 +101,85 @@ func (c *Client) DescribeAlertingResourcesWithContextV2(ctx context.Context, req
 	}
 	return statusCode, msg, nil
 }
+func NewListGrafanaInstancesRequest() (request *ListGrafanaInstancesRequest) {
+	request = &ListGrafanaInstancesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("monitor", APIVersion, "ListGrafanaInstances")
+	return
+}
+
+func NewListGrafanaInstancesResponse() (response *ListGrafanaInstancesResponse) {
+	response = &ListGrafanaInstancesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ListGrafanaInstances(request *ListGrafanaInstancesRequest) string {
+	return c.ListGrafanaInstancesWithContext(context.Background(), request)
+}
+
+func (c *Client) ListGrafanaInstancesSend(request *ListGrafanaInstancesRequest) (*ListGrafanaInstancesResponse, error) {
+	statusCode, msg, err := c.ListGrafanaInstancesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ListGrafanaInstancesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ListGrafanaInstancesWithContext(ctx context.Context, request *ListGrafanaInstancesRequest) string {
+	if request == nil {
+		request = NewListGrafanaInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "ListGrafanaInstances")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewListGrafanaInstancesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ListGrafanaInstancesWithContextV2(ctx context.Context, request *ListGrafanaInstancesRequest) (int, string, error) {
+	if request == nil {
+		request = NewListGrafanaInstancesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("monitor", APIVersion, "ListGrafanaInstances")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewListGrafanaInstancesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewDescribeSystemEventAttributesRequest() (request *DescribeSystemEventAttributesRequest) {
 	request = &DescribeSystemEventAttributesRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},

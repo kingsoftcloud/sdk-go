@@ -8238,3 +8238,556 @@ func (c *Client) DescribeUserDataWithContextV2(ctx context.Context, request *Des
 	}
 	return statusCode, msg, nil
 }
+func NewCreateLaunchTemplateRequest() (request *CreateLaunchTemplateRequest) {
+	request = &CreateLaunchTemplateRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "CreateLaunchTemplate")
+	return
+}
+
+func NewCreateLaunchTemplateResponse() (response *CreateLaunchTemplateResponse) {
+	response = &CreateLaunchTemplateResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateLaunchTemplate(request *CreateLaunchTemplateRequest) string {
+	return c.CreateLaunchTemplateWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateLaunchTemplateSend(request *CreateLaunchTemplateRequest) (*CreateLaunchTemplateResponse, error) {
+	statusCode, msg, err := c.CreateLaunchTemplateWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateLaunchTemplateResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateLaunchTemplateWithContext(ctx context.Context, request *CreateLaunchTemplateRequest) string {
+	if request == nil {
+		request = NewCreateLaunchTemplateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateLaunchTemplate")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateLaunchTemplateResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateLaunchTemplateWithContextV2(ctx context.Context, request *CreateLaunchTemplateRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateLaunchTemplateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateLaunchTemplate")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateLaunchTemplateResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateLaunchTemplateVersionRequest() (request *CreateLaunchTemplateVersionRequest) {
+	request = &CreateLaunchTemplateVersionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "CreateLaunchTemplateVersion")
+	return
+}
+
+func NewCreateLaunchTemplateVersionResponse() (response *CreateLaunchTemplateVersionResponse) {
+	response = &CreateLaunchTemplateVersionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateLaunchTemplateVersion(request *CreateLaunchTemplateVersionRequest) string {
+	return c.CreateLaunchTemplateVersionWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateLaunchTemplateVersionSend(request *CreateLaunchTemplateVersionRequest) (*CreateLaunchTemplateVersionResponse, error) {
+	statusCode, msg, err := c.CreateLaunchTemplateVersionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateLaunchTemplateVersionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateLaunchTemplateVersionWithContext(ctx context.Context, request *CreateLaunchTemplateVersionRequest) string {
+	if request == nil {
+		request = NewCreateLaunchTemplateVersionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateLaunchTemplateVersion")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateLaunchTemplateVersionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateLaunchTemplateVersionWithContextV2(ctx context.Context, request *CreateLaunchTemplateVersionRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateLaunchTemplateVersionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "CreateLaunchTemplateVersion")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateLaunchTemplateVersionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeLaunchTemplatesRequest() (request *DescribeLaunchTemplatesRequest) {
+	request = &DescribeLaunchTemplatesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "DescribeLaunchTemplates")
+	return
+}
+
+func NewDescribeLaunchTemplatesResponse() (response *DescribeLaunchTemplatesResponse) {
+	response = &DescribeLaunchTemplatesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeLaunchTemplates(request *DescribeLaunchTemplatesRequest) string {
+	return c.DescribeLaunchTemplatesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeLaunchTemplatesSend(request *DescribeLaunchTemplatesRequest) (*DescribeLaunchTemplatesResponse, error) {
+	statusCode, msg, err := c.DescribeLaunchTemplatesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeLaunchTemplatesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeLaunchTemplatesWithContext(ctx context.Context, request *DescribeLaunchTemplatesRequest) string {
+	if request == nil {
+		request = NewDescribeLaunchTemplatesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeLaunchTemplates")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeLaunchTemplatesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeLaunchTemplatesWithContextV2(ctx context.Context, request *DescribeLaunchTemplatesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeLaunchTemplatesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeLaunchTemplates")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeLaunchTemplatesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeLaunchTemplateVersionsRequest() (request *DescribeLaunchTemplateVersionsRequest) {
+	request = &DescribeLaunchTemplateVersionsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "DescribeLaunchTemplateVersions")
+	return
+}
+
+func NewDescribeLaunchTemplateVersionsResponse() (response *DescribeLaunchTemplateVersionsResponse) {
+	response = &DescribeLaunchTemplateVersionsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeLaunchTemplateVersions(request *DescribeLaunchTemplateVersionsRequest) string {
+	return c.DescribeLaunchTemplateVersionsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeLaunchTemplateVersionsSend(request *DescribeLaunchTemplateVersionsRequest) (*DescribeLaunchTemplateVersionsResponse, error) {
+	statusCode, msg, err := c.DescribeLaunchTemplateVersionsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeLaunchTemplateVersionsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeLaunchTemplateVersionsWithContext(ctx context.Context, request *DescribeLaunchTemplateVersionsRequest) string {
+	if request == nil {
+		request = NewDescribeLaunchTemplateVersionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeLaunchTemplateVersions")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeLaunchTemplateVersionsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeLaunchTemplateVersionsWithContextV2(ctx context.Context, request *DescribeLaunchTemplateVersionsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeLaunchTemplateVersionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DescribeLaunchTemplateVersions")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeLaunchTemplateVersionsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyTemplateDefaultVersionRequest() (request *ModifyTemplateDefaultVersionRequest) {
+	request = &ModifyTemplateDefaultVersionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "ModifyTemplateDefaultVersion")
+	return
+}
+
+func NewModifyTemplateDefaultVersionResponse() (response *ModifyTemplateDefaultVersionResponse) {
+	response = &ModifyTemplateDefaultVersionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyTemplateDefaultVersion(request *ModifyTemplateDefaultVersionRequest) string {
+	return c.ModifyTemplateDefaultVersionWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyTemplateDefaultVersionSend(request *ModifyTemplateDefaultVersionRequest) (*ModifyTemplateDefaultVersionResponse, error) {
+	statusCode, msg, err := c.ModifyTemplateDefaultVersionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ModifyTemplateDefaultVersionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyTemplateDefaultVersionWithContext(ctx context.Context, request *ModifyTemplateDefaultVersionRequest) string {
+	if request == nil {
+		request = NewModifyTemplateDefaultVersionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyTemplateDefaultVersion")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyTemplateDefaultVersionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyTemplateDefaultVersionWithContextV2(ctx context.Context, request *ModifyTemplateDefaultVersionRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyTemplateDefaultVersionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "ModifyTemplateDefaultVersion")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyTemplateDefaultVersionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteLaunchTemplateRequest() (request *DeleteLaunchTemplateRequest) {
+	request = &DeleteLaunchTemplateRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "DeleteLaunchTemplate")
+	return
+}
+
+func NewDeleteLaunchTemplateResponse() (response *DeleteLaunchTemplateResponse) {
+	response = &DeleteLaunchTemplateResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteLaunchTemplate(request *DeleteLaunchTemplateRequest) string {
+	return c.DeleteLaunchTemplateWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteLaunchTemplateSend(request *DeleteLaunchTemplateRequest) (*DeleteLaunchTemplateResponse, error) {
+	statusCode, msg, err := c.DeleteLaunchTemplateWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteLaunchTemplateResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteLaunchTemplateWithContext(ctx context.Context, request *DeleteLaunchTemplateRequest) string {
+	if request == nil {
+		request = NewDeleteLaunchTemplateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteLaunchTemplate")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteLaunchTemplateResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteLaunchTemplateWithContextV2(ctx context.Context, request *DeleteLaunchTemplateRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteLaunchTemplateRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteLaunchTemplate")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteLaunchTemplateResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteLaunchTemplateVersionRequest() (request *DeleteLaunchTemplateVersionRequest) {
+	request = &DeleteLaunchTemplateVersionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("epc", APIVersion, "DeleteLaunchTemplateVersion")
+	return
+}
+
+func NewDeleteLaunchTemplateVersionResponse() (response *DeleteLaunchTemplateVersionResponse) {
+	response = &DeleteLaunchTemplateVersionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteLaunchTemplateVersion(request *DeleteLaunchTemplateVersionRequest) string {
+	return c.DeleteLaunchTemplateVersionWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteLaunchTemplateVersionSend(request *DeleteLaunchTemplateVersionRequest) (*DeleteLaunchTemplateVersionResponse, error) {
+	statusCode, msg, err := c.DeleteLaunchTemplateVersionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteLaunchTemplateVersionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteLaunchTemplateVersionWithContext(ctx context.Context, request *DeleteLaunchTemplateVersionRequest) string {
+	if request == nil {
+		request = NewDeleteLaunchTemplateVersionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteLaunchTemplateVersion")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteLaunchTemplateVersionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteLaunchTemplateVersionWithContextV2(ctx context.Context, request *DeleteLaunchTemplateVersionRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteLaunchTemplateVersionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("epc", APIVersion, "DeleteLaunchTemplateVersion")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteLaunchTemplateVersionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}

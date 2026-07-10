@@ -189,6 +189,18 @@ type CreateMemorySdkDataConversation struct {
 type CreateMemorySdkData struct {
 	Conversation []*CreateMemorySdkDataConversation `json:"Conversation,omitempty" name:"Conversation"`
 }
+type CreateMemoryCollectionLongTermConfigurationStrategies struct {
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+type CreateMemoryCollectionLongTermConfiguration struct {
+	Strategies []*CreateMemoryCollectionLongTermConfigurationStrategies `json:"Strategies,omitempty" name:"Strategies"`
+}
+type UpdateMemoryCollectionLongTermConfigurationStrategies struct {
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+type UpdateMemoryCollectionLongTermConfiguration struct {
+	Strategies []*UpdateMemoryCollectionLongTermConfigurationStrategies `json:"Strategies,omitempty" name:"Strategies"`
+}
 type CreateMcpServerMcpRuntimeConfigKs3Config struct {
 	Path *string `json:"Path,omitempty" name:"Path"`
 }
@@ -672,6 +684,7 @@ type ModifyKnowledgeBaseRequest struct {
 	EmbeddingModelProvider *string                            `json:"EmbeddingModelProvider,omitempty" name:"EmbeddingModelProvider"`
 	EmbeddingModel         *string                            `json:"EmbeddingModel,omitempty" name:"EmbeddingModel"`
 	RetrievalModel         *ModifyKnowledgeBaseRetrievalModel `json:"RetrievalModel,omitempty" name:"RetrievalModel"`
+	ComputeUnit            *int                               `json:"ComputeUnit,omitempty" name:"ComputeUnit"`
 }
 
 func (r *ModifyKnowledgeBaseRequest) ToJsonString() string {
@@ -715,7 +728,6 @@ type DescribeKnowledgeBaseResponse struct {
 	IndexingTechnique      *string `json:"IndexingTechnique" name:"IndexingTechnique"`
 	AppCount               *int    `json:"AppCount" name:"AppCount"`
 	DocumentCount          *int    `json:"DocumentCount" name:"DocumentCount"`
-	WordCount              *int    `json:"WordCount" name:"WordCount"`
 	CreatedBy              *string `json:"CreatedBy" name:"CreatedBy"`
 	CreatedAt              *int64  `json:"CreatedAt" name:"CreatedAt"`
 	UpdatedBy              *string `json:"UpdatedBy" name:"UpdatedBy"`
@@ -759,6 +771,9 @@ type DescribeKnowledgeBaseResponse struct {
 		ScoreThreshold        *float64 `json:"ScoreThreshold" name:"ScoreThreshold"`
 		ScoreThresholdEnabled *bool    `json:"ScoreThresholdEnabled" name:"ScoreThresholdEnabled"`
 	} `json:"ExternalRetrievalModel"`
+	ProjectId   *string `json:"ProjectId" name:"ProjectId"`
+	ChargeType  *string `json:"ChargeType" name:"ChargeType"`
+	ComputeUnit *int    `json:"ComputeUnit" name:"ComputeUnit"`
 }
 
 func (r *DescribeKnowledgeBaseResponse) ToJsonString() string {
@@ -789,9 +804,11 @@ type DescribeKnowledgeBasesResponse struct {
 		Id            *string `json:"Id" name:"Id"`
 		Name          *string `json:"Name" name:"Name"`
 		DocumentCount *int    `json:"DocumentCount" name:"DocumentCount"`
-		WordCount     *int    `json:"WordCount" name:"WordCount"`
 		CreatedAt     *int64  `json:"CreatedAt" name:"CreatedAt"`
 		UpdatedAt     *int64  `json:"UpdatedAt" name:"UpdatedAt"`
+		ProjectId     *string `json:"ProjectId" name:"ProjectId"`
+		ChargeType    *string `json:"ChargeType" name:"ChargeType"`
+		ComputeUnit   *int    `json:"ComputeUnit" name:"ComputeUnit"`
 	} `json:"Data"`
 	HasMore *bool `json:"HasMore" name:"HasMore"`
 	Total   *int  `json:"Total" name:"Total"`
@@ -813,6 +830,9 @@ type CreateKnowledgeBaseRequest struct {
 	Name              *string                            `json:"Name,omitempty" name:"Name"`
 	IndexingTechnique *string                            `json:"IndexingTechnique,omitempty" name:"IndexingTechnique"`
 	RetrievalModel    *CreateKnowledgeBaseRetrievalModel `json:"RetrievalModel,omitempty" name:"RetrievalModel"`
+	ComputeUnit       *int                               `json:"ComputeUnit,omitempty" name:"ComputeUnit"`
+	ProjectId         *string                            `json:"ProjectId,omitempty" name:"ProjectId"`
+	ChargeType        *string                            `json:"ChargeType,omitempty" name:"ChargeType"`
 }
 
 func (r *CreateKnowledgeBaseRequest) ToJsonString() string {
@@ -844,6 +864,7 @@ type CreateMemorySdkRequest struct {
 	Data               *CreateMemorySdkData `json:"Data,omitempty" name:"Data"`
 	AgentUserId        *string              `json:"AgentUserId,omitempty" name:"AgentUserId"`
 	MemoryCollectionId *string              `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+	Flush              *bool                `json:"Flush,omitempty" name:"Flush"`
 }
 
 func (r *CreateMemorySdkRequest) ToJsonString() string {
@@ -928,8 +949,12 @@ func (r *QueryMemorySdkResponse) FromJsonString(s string) error {
 
 type CreateMemoryCollectionRequest struct {
 	*ksyunhttp.BaseRequest
-	Name        *string `json:"Name,omitempty" name:"Name"`
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Name                  *string                                      `json:"Name,omitempty" name:"Name"`
+	Description           *string                                      `json:"Description,omitempty" name:"Description"`
+	LongTermConfiguration *CreateMemoryCollectionLongTermConfiguration `json:"LongTermConfiguration,omitempty" name:"LongTermConfiguration"`
+	MemoryType            *string                                      `json:"MemoryType,omitempty" name:"MemoryType"`
+	ProjectId             *string                                      `json:"ProjectId,omitempty" name:"ProjectId"`
+	ChargeType            *string                                      `json:"ChargeType,omitempty" name:"ChargeType"`
 }
 
 func (r *CreateMemoryCollectionRequest) ToJsonString() string {
@@ -964,13 +989,18 @@ func (r *GetMemoryCollectionRequest) ToJsonString() string {
 
 type GetMemoryCollectionResponse struct {
 	*ksyunhttp.BaseResponse
-	MemoryCollectionId *string `json:"MemoryCollectionId" name:"MemoryCollectionId"`
-	Name               *string `json:"Name" name:"Name"`
-	Description        *string `json:"Description" name:"Description"`
-	Status             *string `json:"Status" name:"Status"`
-	CreateTime         *string `json:"CreateTime" name:"CreateTime"`
-	LastUpdateTime     *string `json:"LastUpdateTime" name:"LastUpdateTime"`
-	Region             *string `json:"Region" name:"Region"`
+	MemoryCollectionId    *string `json:"MemoryCollectionId" name:"MemoryCollectionId"`
+	Name                  *string `json:"Name" name:"Name"`
+	Description           *string `json:"Description" name:"Description"`
+	Status                *string `json:"Status" name:"Status"`
+	CreateTime            *string `json:"CreateTime" name:"CreateTime"`
+	LastUpdateTime        *string `json:"LastUpdateTime" name:"LastUpdateTime"`
+	Region                *string `json:"Region" name:"Region"`
+	LongTermConfiguration struct {
+		Strategies []struct {
+			Type *string `json:"Type" name:"Type"`
+		} `json:"Strategies" name:"Strategies"`
+	} `json:"LongTermConfiguration"`
 }
 
 func (r *GetMemoryCollectionResponse) ToJsonString() string {
@@ -1004,13 +1034,18 @@ func (r *ListMemoryCollectionsRequest) ToJsonString() string {
 type ListMemoryCollectionsResponse struct {
 	*ksyunhttp.BaseResponse
 	Memories []struct {
-		MemoryCollectionId *string `json:"MemoryCollectionId" name:"MemoryCollectionId"`
-		Name               *string `json:"Name" name:"Name"`
-		Description        *string `json:"Description" name:"Description"`
-		Status             *string `json:"Status" name:"Status"`
-		CreateTime         *int64  `json:"CreateTime" name:"CreateTime"`
-		LastUpdateTime     *int64  `json:"LastUpdateTime" name:"LastUpdateTime"`
-		Region             *string `json:"Region" name:"Region"`
+		MemoryCollectionId    *string `json:"MemoryCollectionId" name:"MemoryCollectionId"`
+		Name                  *string `json:"Name" name:"Name"`
+		Description           *string `json:"Description" name:"Description"`
+		Status                *string `json:"Status" name:"Status"`
+		CreateTime            *int64  `json:"CreateTime" name:"CreateTime"`
+		LastUpdateTime        *int64  `json:"LastUpdateTime" name:"LastUpdateTime"`
+		Region                *string `json:"Region" name:"Region"`
+		LongTermConfiguration struct {
+			Strategies []struct {
+				Type *string `json:"Type" name:"Type"`
+			} `json:"Strategies"`
+		} `json:"LongTermConfiguration" name:"LongTermConfiguration"`
 	} `json:"Memories"`
 	MaxResults *int64 `json:"MaxResults" name:"MaxResults"`
 	Marker     *int64 `json:"Marker" name:"Marker"`
@@ -1100,9 +1135,10 @@ func (r *ActivateMemoryBaseServiceResponse) FromJsonString(s string) error {
 
 type UpdateMemoryCollectionRequest struct {
 	*ksyunhttp.BaseRequest
-	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
-	Description        *string `json:"Description,omitempty" name:"Description"`
-	Name               *string `json:"Name,omitempty" name:"Name"`
+	MemoryCollectionId    *string                                      `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+	Description           *string                                      `json:"Description,omitempty" name:"Description"`
+	Name                  *string                                      `json:"Name,omitempty" name:"Name"`
+	LongTermConfiguration *UpdateMemoryCollectionLongTermConfiguration `json:"LongTermConfiguration,omitempty" name:"LongTermConfiguration"`
 }
 
 func (r *UpdateMemoryCollectionRequest) ToJsonString() string {
@@ -1112,8 +1148,13 @@ func (r *UpdateMemoryCollectionRequest) ToJsonString() string {
 
 type UpdateMemoryCollectionResponse struct {
 	*ksyunhttp.BaseResponse
-	MemoryCollectionId *string `json:"MemoryCollectionId" name:"MemoryCollectionId"`
-	Name               *string `json:"Name" name:"Name"`
+	MemoryCollectionId    *string `json:"MemoryCollectionId" name:"MemoryCollectionId"`
+	Name                  *string `json:"Name" name:"Name"`
+	LongTermConfiguration struct {
+		Strategies []struct {
+			Type *string `json:"Type" name:"Type"`
+		} `json:"Strategies" name:"Strategies"`
+	} `json:"LongTermConfiguration"`
 }
 
 func (r *UpdateMemoryCollectionResponse) ToJsonString() string {
@@ -1774,5 +1815,335 @@ func (r *ModifyDocumentStatusResponse) ToJsonString() string {
 }
 
 func (r *ModifyDocumentStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetApiDetailRequest struct {
+	*ksyunhttp.BaseRequest
+	ApiService *string `json:"ApiService,omitempty" name:"ApiService"`
+	ApiName    *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiVersion *string `json:"ApiVersion,omitempty" name:"ApiVersion"`
+}
+
+func (r *GetApiDetailRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetApiDetailResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	ApiDetail struct {
+		ApiService      *string `json:"ApiService" name:"ApiService"`
+		ApiName         *string `json:"ApiName" name:"ApiName"`
+		ApiVersion      *string `json:"ApiVersion" name:"ApiVersion"`
+		ApiNameCn       *string `json:"ApiNameCn" name:"ApiNameCn"`
+		ApiDescription  *string `json:"ApiDescription" name:"ApiDescription"`
+		ApiInstructions *string `json:"ApiInstructions" name:"ApiInstructions"`
+		ApiParams       struct {
+			Type        *string `json:"type" name:"type"`
+			Description *string `json:"description" name:"description"`
+			Properties  struct {
+				Type        *string `json:"Type" name:"Type"`
+				Format      *string `json:"Format" name:"Format"`
+				Description *string `json:"Description" name:"Description"`
+				MaxLength   *int    `json:"MaxLength" name:"MaxLength"`
+				MinLength   *int    `json:"MinLength" name:"MinLength"`
+				MinItems    *int    `json:"MinItems" name:"MinItems"`
+				MaxItems    *int    `json:"MaxItems" name:"MaxItems"`
+				Properties  struct {
+				} `json:"Properties" name:"Properties"`
+				Items struct {
+				} `json:"Items" name:"Items"`
+				Required             []*string `json:"Required" name:"Required"`
+				AdditionalProperties *bool     `json:"AdditionalProperties" name:"AdditionalProperties"`
+			} `json:"Properties"`
+			Required             []*string `json:"Required" name:"Required"`
+			AdditionalProperties *bool     `json:"additionalProperties" name:"additionalProperties"`
+		} `json:"ApiParams" name:"ApiParams"`
+		HttpMethod     *string `json:"HttpMethod" name:"HttpMethod"`
+		ContentType    *string `json:"ContentType" name:"ContentType"`
+		ApiGroup       *string `json:"ApiGroup" name:"ApiGroup"`
+		ApiExplorerUrl *string `json:"ApiExplorerUrl" name:"ApiExplorerUrl"`
+		OperationType  *string `json:"OperationType" name:"OperationType"`
+	} `json:"ApiDetail"`
+}
+
+func (r *GetApiDetailResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetApiDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetApiOverviewRequest struct {
+	*ksyunhttp.BaseRequest
+	ApiService *string `json:"ApiService,omitempty" name:"ApiService"`
+	ApiVersion *string `json:"ApiVersion,omitempty" name:"ApiVersion"`
+}
+
+func (r *GetApiOverviewRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetApiOverviewResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId       *string `json:"RequestId" name:"RequestId"`
+	ApiOverviewList []struct {
+		ApiService      *string `json:"ApiService" name:"ApiService"`
+		ApiName         *string `json:"ApiName" name:"ApiName"`
+		ApiVersion      *string `json:"ApiVersion" name:"ApiVersion"`
+		ApiNameCn       *string `json:"ApiNameCn" name:"ApiNameCn"`
+		ApiDescription  *string `json:"ApiDescription" name:"ApiDescription"`
+		ApiInstructions *string `json:"ApiInstructions" name:"ApiInstructions"`
+		ApiGroup        *string `json:"ApiGroup" name:"ApiGroup"`
+		ApiExplorerUrl  *string `json:"ApiExplorerUrl" name:"ApiExplorerUrl"`
+		OperationType   *string `json:"OperationType" name:"OperationType"`
+	} `json:"ApiOverviewList"`
+}
+
+func (r *GetApiOverviewResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetApiOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetProductListRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *GetProductListRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetProductListResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId       *string `json:"RequestId" name:"RequestId"`
+	ProductInfoList []struct {
+		ApiService     *string   `json:"ApiService" name:"ApiService"`
+		ApiServiceName *string   `json:"ApiServiceName" name:"ApiServiceName"`
+		Versions       []*string `json:"Versions" name:"Versions"`
+	} `json:"ProductInfoList"`
+}
+
+func (r *GetProductListResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetProductListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMcpRuntimeMetricsRequest struct {
+	*ksyunhttp.BaseRequest
+	McpServerId *string `json:"McpServerId,omitempty" name:"McpServerId"`
+	StartTime   *int64  `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime     *int64  `json:"EndTime,omitempty" name:"EndTime"`
+	Interval    *int    `json:"Interval,omitempty" name:"Interval"`
+}
+
+func (r *DescribeMcpRuntimeMetricsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeMcpRuntimeMetricsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId     *string `json:"RequestId" name:"RequestId"`
+	McpServerId   *string `json:"McpServerId" name:"McpServerId"`
+	StartTime     *int64  `json:"StartTime" name:"StartTime"`
+	EndTime       *int64  `json:"EndTime" name:"EndTime"`
+	Interval      *int    `json:"Interval" name:"Interval"`
+	InstanceCount *int    `json:"InstanceCount" name:"InstanceCount"`
+	Series        []struct {
+		MetricName  *string `json:"MetricName" name:"MetricName"`
+		DisplayName *string `json:"DisplayName" name:"DisplayName"`
+		Unit        *string `json:"Unit" name:"Unit"`
+		Points      []struct {
+			Timestamp *int64   `json:"Timestamp" name:"Timestamp"`
+			Value     *float64 `json:"Value" name:"Value"`
+		} `json:"Points" name:"Points"`
+	} `json:"Series"`
+}
+
+func (r *DescribeMcpRuntimeMetricsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeMcpRuntimeMetricsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMcpMetricsRequest struct {
+	*ksyunhttp.BaseRequest
+	StartTime   *int64  `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime     *int64  `json:"EndTime,omitempty" name:"EndTime"`
+	Interval    *int    `json:"Interval,omitempty" name:"Interval"`
+	McpType     *string `json:"McpType,omitempty" name:"McpType"`
+	McpServerId *string `json:"McpServerId,omitempty" name:"McpServerId"`
+}
+
+func (r *QueryMcpMetricsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type QueryMcpMetricsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Metrics   []struct {
+		McpServerId *string `json:"McpServerId" name:"McpServerId"`
+		Interval    *int    `json:"Interval" name:"Interval"`
+		StartTime   *int64  `json:"StartTime" name:"StartTime"`
+		EndTime     *int64  `json:"EndTime" name:"EndTime"`
+		Data        []struct {
+			MetricName  *string `json:"MetricName" name:"MetricName"`
+			DisplayName *string `json:"DisplayName" name:"DisplayName"`
+			Unit        *string `json:"Unit" name:"Unit"`
+			Points      []struct {
+				Timestamp *int64   `json:"Timestamp" name:"Timestamp"`
+				Value     *float64 `json:"Value" name:"Value"`
+			} `json:"Points"`
+			StatusPoint struct {
+			} `json:"StatusPoint"`
+		} `json:"Data" name:"Data"`
+	} `json:"Metrics"`
+}
+
+func (r *QueryMcpMetricsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *QueryMcpMetricsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKnowledgeTokenMonitorRequest struct {
+	*ksyunhttp.BaseRequest
+	DatasetId   *string `json:"DatasetId,omitempty" name:"DatasetId"`
+	StartTime   *int64  `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime     *int64  `json:"EndTime,omitempty" name:"EndTime"`
+	Granularity *string `json:"Granularity,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeKnowledgeTokenMonitorRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeKnowledgeTokenMonitorResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId                *string `json:"RequestId" name:"RequestId"`
+	EmbeddingInputTokens     *int64  `json:"EmbeddingInputTokens" name:"EmbeddingInputTokens"`
+	RerankInputTokens        *int64  `json:"RerankInputTokens" name:"RerankInputTokens"`
+	EmbeddingInputTokenTrend []struct {
+		Timestamp *int64 `json:"Timestamp" name:"Timestamp"`
+		Value     *int64 `json:"Value" name:"Value"`
+	} `json:"EmbeddingInputTokenTrend"`
+	RerankInputTokenTrend []struct {
+		Timestamp *int64 `json:"Timestamp" name:"Timestamp"`
+		Value     *int64 `json:"Value" name:"Value"`
+	} `json:"RerankInputTokenTrend"`
+	RequestCountTrend []struct {
+		Timestamp *int64 `json:"Timestamp" name:"Timestamp"`
+		Value     *int64 `json:"Value" name:"Value"`
+	} `json:"RequestCountTrend"`
+	RpmRateLimits []struct {
+		Model *string  `json:"Model" name:"Model"`
+		Value *float64 `json:"Value" name:"Value"`
+	} `json:"RpmRateLimits"`
+	TpmRateLimits []struct {
+		Model *string  `json:"Model" name:"Model"`
+		Value *float64 `json:"Value" name:"Value"`
+	} `json:"TpmRateLimits"`
+}
+
+func (r *DescribeKnowledgeTokenMonitorResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeKnowledgeTokenMonitorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKnowledgeStorageMonitorRequest struct {
+	*ksyunhttp.BaseRequest
+	DatasetId   *string `json:"DatasetId,omitempty" name:"DatasetId"`
+	StartTime   *int64  `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime     *int64  `json:"EndTime,omitempty" name:"EndTime"`
+	Granularity *string `json:"Granularity,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeKnowledgeStorageMonitorRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeKnowledgeStorageMonitorResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId      *string  `json:"RequestId" name:"RequestId"`
+	CurrentStorage *float64 `json:"CurrentStorage" name:"CurrentStorage"`
+	TodayIncrement *float64 `json:"TodayIncrement" name:"TodayIncrement"`
+	DocumentCount  *int     `json:"DocumentCount" name:"DocumentCount"`
+	StorageTrend   []struct {
+		Timestamp *int64   `json:"Timestamp" name:"Timestamp"`
+		Value     *float64 `json:"Value" name:"Value"`
+	} `json:"StorageTrend"`
+}
+
+func (r *DescribeKnowledgeStorageMonitorResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeKnowledgeStorageMonitorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMcpRuntimeLogsRequest struct {
+	*ksyunhttp.BaseRequest
+	McpServerId *string `json:"McpServerId,omitempty" name:"McpServerId"`
+	StartTime   *int64  `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime     *int64  `json:"EndTime,omitempty" name:"EndTime"`
+	Keyword     *string `json:"Keyword,omitempty" name:"Keyword"`
+	Page        *int    `json:"Page,omitempty" name:"Page"`
+	Limit       *int    `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeMcpRuntimeLogsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeMcpRuntimeLogsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string   `json:"RequestId" name:"RequestId"`
+	McpServerId *string   `json:"McpServerId" name:"McpServerId"`
+	StartTime   *int64    `json:"StartTime" name:"StartTime"`
+	EndTime     *int64    `json:"EndTime" name:"EndTime"`
+	LogType     *string   `json:"LogType" name:"LogType"`
+	Logs        []*string `json:"Logs" name:"Logs"`
+	Total       *int64    `json:"Total" name:"Total"`
+	Page        *int      `json:"Page" name:"Page"`
+	Limit       *int      `json:"Limit" name:"Limit"`
+}
+
+func (r *DescribeMcpRuntimeLogsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeMcpRuntimeLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

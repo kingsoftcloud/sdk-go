@@ -1681,6 +1681,85 @@ func (c *Client) GetWebIdeUrlWithContextV2(ctx context.Context, request *GetWebI
 	}
 	return statusCode, msg, nil
 }
+func NewDescribeNotebookEventsRequest() (request *DescribeNotebookEventsRequest) {
+	request = &DescribeNotebookEventsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeNotebookEvents")
+	return
+}
+
+func NewDescribeNotebookEventsResponse() (response *DescribeNotebookEventsResponse) {
+	response = &DescribeNotebookEventsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeNotebookEvents(request *DescribeNotebookEventsRequest) string {
+	return c.DescribeNotebookEventsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeNotebookEventsSend(request *DescribeNotebookEventsRequest) (*DescribeNotebookEventsResponse, error) {
+	statusCode, msg, err := c.DescribeNotebookEventsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeNotebookEventsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeNotebookEventsWithContext(ctx context.Context, request *DescribeNotebookEventsRequest) string {
+	if request == nil {
+		request = NewDescribeNotebookEventsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeNotebookEvents")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeNotebookEventsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeNotebookEventsWithContextV2(ctx context.Context, request *DescribeNotebookEventsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeNotebookEventsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeNotebookEvents")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeNotebookEventsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewDescribeNotebookLogRequest() (request *DescribeNotebookLogRequest) {
 	request = &DescribeNotebookLogRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -2708,85 +2787,6 @@ func (c *Client) DescribeModelsWithContextV2(ctx context.Context, request *Descr
 	}
 	return statusCode, msg, nil
 }
-func NewCreateApikeyRequest() (request *CreateApikeyRequest) {
-	request = &CreateApikeyRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("aicp", APIVersion, "CreateApikey")
-	return
-}
-
-func NewCreateApikeyResponse() (response *CreateApikeyResponse) {
-	response = &CreateApikeyResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) CreateApikey(request *CreateApikeyRequest) string {
-	return c.CreateApikeyWithContext(context.Background(), request)
-}
-
-func (c *Client) CreateApikeySend(request *CreateApikeyRequest) (*CreateApikeyResponse, error) {
-	statusCode, msg, err := c.CreateApikeyWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	if msg == "" {
-		return nil, nil
-	}
-
-	var respStruct CreateApikeyResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) CreateApikeyWithContext(ctx context.Context, request *CreateApikeyRequest) string {
-	if request == nil {
-		request = NewCreateApikeyRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("aicp", APIVersion, "CreateApikey")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewCreateApikeyResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) CreateApikeyWithContextV2(ctx context.Context, request *CreateApikeyRequest) (int, string, error) {
-	if request == nil {
-		request = NewCreateApikeyRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("aicp", APIVersion, "CreateApikey")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewCreateApikeyResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}
 func NewGetModelDetailRequest() (request *GetModelDetailRequest) {
 	request = &GetModelDetailRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -2860,85 +2860,6 @@ func (c *Client) GetModelDetailWithContextV2(ctx context.Context, request *GetMo
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewGetModelDetailResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}
-func NewDescribeApikeysRequest() (request *DescribeApikeysRequest) {
-	request = &DescribeApikeysRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("aicp", APIVersion, "DescribeApikeys")
-	return
-}
-
-func NewDescribeApikeysResponse() (response *DescribeApikeysResponse) {
-	response = &DescribeApikeysResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) DescribeApikeys(request *DescribeApikeysRequest) string {
-	return c.DescribeApikeysWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeApikeysSend(request *DescribeApikeysRequest) (*DescribeApikeysResponse, error) {
-	statusCode, msg, err := c.DescribeApikeysWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	if msg == "" {
-		return nil, nil
-	}
-
-	var respStruct DescribeApikeysResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) DescribeApikeysWithContext(ctx context.Context, request *DescribeApikeysRequest) string {
-	if request == nil {
-		request = NewDescribeApikeysRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("aicp", APIVersion, "DescribeApikeys")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeApikeysResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) DescribeApikeysWithContextV2(ctx context.Context, request *DescribeApikeysRequest) (int, string, error) {
-	if request == nil {
-		request = NewDescribeApikeysRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("aicp", APIVersion, "DescribeApikeys")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeApikeysResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
@@ -7205,6 +7126,322 @@ func (c *Client) ModifyResourcePoolWithContextV2(ctx context.Context, request *M
 	request.SetContentType("application/json")
 
 	response := NewModifyResourcePoolResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeInferenceAndPodEventsRequest() (request *DescribeInferenceAndPodEventsRequest) {
+	request = &DescribeInferenceAndPodEventsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeInferenceAndPodEvents")
+	return
+}
+
+func NewDescribeInferenceAndPodEventsResponse() (response *DescribeInferenceAndPodEventsResponse) {
+	response = &DescribeInferenceAndPodEventsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeInferenceAndPodEvents(request *DescribeInferenceAndPodEventsRequest) string {
+	return c.DescribeInferenceAndPodEventsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeInferenceAndPodEventsSend(request *DescribeInferenceAndPodEventsRequest) (*DescribeInferenceAndPodEventsResponse, error) {
+	statusCode, msg, err := c.DescribeInferenceAndPodEventsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeInferenceAndPodEventsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeInferenceAndPodEventsWithContext(ctx context.Context, request *DescribeInferenceAndPodEventsRequest) string {
+	if request == nil {
+		request = NewDescribeInferenceAndPodEventsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeInferenceAndPodEvents")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeInferenceAndPodEventsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeInferenceAndPodEventsWithContextV2(ctx context.Context, request *DescribeInferenceAndPodEventsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeInferenceAndPodEventsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeInferenceAndPodEvents")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeInferenceAndPodEventsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeTrainJobAndPodEventsRequest() (request *DescribeTrainJobAndPodEventsRequest) {
+	request = &DescribeTrainJobAndPodEventsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobAndPodEvents")
+	return
+}
+
+func NewDescribeTrainJobAndPodEventsResponse() (response *DescribeTrainJobAndPodEventsResponse) {
+	response = &DescribeTrainJobAndPodEventsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeTrainJobAndPodEvents(request *DescribeTrainJobAndPodEventsRequest) string {
+	return c.DescribeTrainJobAndPodEventsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeTrainJobAndPodEventsSend(request *DescribeTrainJobAndPodEventsRequest) (*DescribeTrainJobAndPodEventsResponse, error) {
+	statusCode, msg, err := c.DescribeTrainJobAndPodEventsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeTrainJobAndPodEventsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeTrainJobAndPodEventsWithContext(ctx context.Context, request *DescribeTrainJobAndPodEventsRequest) string {
+	if request == nil {
+		request = NewDescribeTrainJobAndPodEventsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobAndPodEvents")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeTrainJobAndPodEventsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeTrainJobAndPodEventsWithContextV2(ctx context.Context, request *DescribeTrainJobAndPodEventsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeTrainJobAndPodEventsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobAndPodEvents")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeTrainJobAndPodEventsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeFineTuneJobAndPodEventsRequest() (request *DescribeFineTuneJobAndPodEventsRequest) {
+	request = &DescribeFineTuneJobAndPodEventsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeFineTuneJobAndPodEvents")
+	return
+}
+
+func NewDescribeFineTuneJobAndPodEventsResponse() (response *DescribeFineTuneJobAndPodEventsResponse) {
+	response = &DescribeFineTuneJobAndPodEventsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeFineTuneJobAndPodEvents(request *DescribeFineTuneJobAndPodEventsRequest) string {
+	return c.DescribeFineTuneJobAndPodEventsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeFineTuneJobAndPodEventsSend(request *DescribeFineTuneJobAndPodEventsRequest) (*DescribeFineTuneJobAndPodEventsResponse, error) {
+	statusCode, msg, err := c.DescribeFineTuneJobAndPodEventsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeFineTuneJobAndPodEventsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeFineTuneJobAndPodEventsWithContext(ctx context.Context, request *DescribeFineTuneJobAndPodEventsRequest) string {
+	if request == nil {
+		request = NewDescribeFineTuneJobAndPodEventsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeFineTuneJobAndPodEvents")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeFineTuneJobAndPodEventsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeFineTuneJobAndPodEventsWithContextV2(ctx context.Context, request *DescribeFineTuneJobAndPodEventsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeFineTuneJobAndPodEventsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeFineTuneJobAndPodEvents")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeFineTuneJobAndPodEventsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeTerminateStopRecordsRequest() (request *DescribeTerminateStopRecordsRequest) {
+	request = &DescribeTerminateStopRecordsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeTerminateStopRecords")
+	return
+}
+
+func NewDescribeTerminateStopRecordsResponse() (response *DescribeTerminateStopRecordsResponse) {
+	response = &DescribeTerminateStopRecordsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeTerminateStopRecords(request *DescribeTerminateStopRecordsRequest) string {
+	return c.DescribeTerminateStopRecordsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeTerminateStopRecordsSend(request *DescribeTerminateStopRecordsRequest) (*DescribeTerminateStopRecordsResponse, error) {
+	statusCode, msg, err := c.DescribeTerminateStopRecordsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeTerminateStopRecordsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeTerminateStopRecordsWithContext(ctx context.Context, request *DescribeTerminateStopRecordsRequest) string {
+	if request == nil {
+		request = NewDescribeTerminateStopRecordsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTerminateStopRecords")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeTerminateStopRecordsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeTerminateStopRecordsWithContextV2(ctx context.Context, request *DescribeTerminateStopRecordsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeTerminateStopRecordsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTerminateStopRecords")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeTerminateStopRecordsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err

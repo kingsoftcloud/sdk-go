@@ -56,6 +56,12 @@ type CreateNotebookServiceConfigs struct {
 	Port                *int    `json:"Port,omitempty" name:"Port"`
 	EnablePublicNetwork *bool   `json:"EnablePublicNetwork,omitempty" name:"EnablePublicNetwork"`
 }
+type CreateNotebookAutoSaveConfig struct {
+	ImageType        *string `json:"ImageType,omitempty" name:"ImageType"`
+	OfficialInstance *string `json:"OfficialInstance,omitempty" name:"OfficialInstance"`
+	UserName         *string `json:"UserName,omitempty" name:"UserName"`
+	Password         *string `json:"Password,omitempty" name:"Password"`
+}
 type DescribeImagesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
@@ -598,6 +604,7 @@ type CreateNotebookRequest struct {
 	EnablePublicNetworkSSH *bool                           `json:"EnablePublicNetworkSSH,omitempty" name:"EnablePublicNetworkSSH"`
 	AllocationId           *string                         `json:"AllocationId,omitempty" name:"AllocationId"`
 	RunOnCPU               *string                         `json:"RunOnCPU,omitempty" name:"RunOnCPU"`
+	AutoSaveConfig         *CreateNotebookAutoSaveConfig   `json:"AutoSaveConfig,omitempty" name:"AutoSaveConfig"`
 }
 
 func (r *CreateNotebookRequest) ToJsonString() string {
@@ -999,6 +1006,47 @@ func (r *GetWebIdeUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeNotebookEventsRequest struct {
+	*ksyunhttp.BaseRequest
+	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
+	Sort       *string `json:"Sort,omitempty" name:"Sort"`
+	SortKey    *string `json:"SortKey,omitempty" name:"SortKey"`
+}
+
+func (r *DescribeNotebookEventsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeNotebookEventsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	DataSet   []struct {
+		FirstSeen *string `json:"FirstSeen" name:"FirstSeen"`
+		LastSeen  *string `json:"LastSeen" name:"LastSeen"`
+		Type      *string `json:"Type" name:"Type"`
+		Object    struct {
+			Kind *string `json:"Kind" name:"Kind"`
+			Name *string `json:"Name" name:"Name"`
+		} `json:"Object" name:"Object"`
+		Reason  *string `json:"Reason" name:"Reason"`
+		Message *string `json:"Message" name:"Message"`
+		Source  struct {
+			Component *string `json:"Component" name:"Component"`
+		} `json:"Source" name:"Source"`
+		Count *int `json:"Count" name:"Count"`
+	} `json:"DataSet"`
+}
+
+func (r *DescribeNotebookEventsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeNotebookEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeNotebookLogRequest struct {
 	*ksyunhttp.BaseRequest
 	NotebookId   *string `json:"NotebookId,omitempty" name:"NotebookId"`
@@ -1271,11 +1319,17 @@ func (r *EnableApikeyStatusResponse) FromJsonString(s string) error {
 
 type ModifyApikeyRequest struct {
 	*ksyunhttp.BaseRequest
-	KeyId              *string   `json:"KeyId,omitempty" name:"KeyId"`
-	Name               *string   `json:"Name,omitempty" name:"Name"`
-	Description        *string   `json:"Description,omitempty" name:"Description"`
-	AssociatedModelIds []*string `json:"AssociatedModelIds,omitempty" name:"AssociatedModelIds"`
-	AllAssociatedModel *bool     `json:"AllAssociatedModel,omitempty" name:"AllAssociatedModel"`
+	KeyId                         *string   `json:"KeyId,omitempty" name:"KeyId"`
+	Name                          *string   `json:"Name,omitempty" name:"Name"`
+	Description                   *string   `json:"Description,omitempty" name:"Description"`
+	AssociatedModelIds            []*string `json:"AssociatedModelIds,omitempty" name:"AssociatedModelIds"`
+	AllAssociatedModel            *bool     `json:"AllAssociatedModel,omitempty" name:"AllAssociatedModel"`
+	AllowEndpoints                []*string `json:"AllowEndpoints,omitempty" name:"AllowEndpoints"`
+	AllAssociatedProjectResources *bool     `json:"AllAssociatedProjectResources,omitempty" name:"AllAssociatedProjectResources"`
+	AllAssociatedEndpoint         *bool     `json:"AllAssociatedEndpoint,omitempty" name:"AllAssociatedEndpoint"`
+	LowPriceModels                []*string `json:"LowPriceModels,omitempty" name:"LowPriceModels"`
+	HighPriceModels               []*string `json:"HighPriceModels,omitempty" name:"HighPriceModels"`
+	AllowedIps                    []*string `json:"AllowedIps,omitempty" name:"AllowedIps"`
 }
 
 func (r *ModifyApikeyRequest) ToJsonString() string {
@@ -1354,12 +1408,15 @@ func (r *DeleteApikeyResponse) FromJsonString(s string) error {
 
 type DescribeModelsRequest struct {
 	*ksyunhttp.BaseRequest
-	Marker        *int      `json:"Marker,omitempty" name:"Marker"`
-	MaxResults    *int      `json:"MaxResults,omitempty" name:"MaxResults"`
-	ModelCategory []*string `json:"ModelCategory,omitempty" name:"ModelCategory"`
-	Provider      []*string `json:"Provider,omitempty" name:"Provider"`
-	ContextLength []*int    `json:"ContextLength,omitempty" name:"ContextLength"`
-	ModelName     *string   `json:"ModelName,omitempty" name:"ModelName"`
+	Marker              *int      `json:"Marker,omitempty" name:"Marker"`
+	MaxResults          *int      `json:"MaxResults,omitempty" name:"MaxResults"`
+	ModelCategory       []*string `json:"ModelCategory,omitempty" name:"ModelCategory"`
+	Provider            []*string `json:"Provider,omitempty" name:"Provider"`
+	ContextLength       []*int    `json:"ContextLength,omitempty" name:"ContextLength"`
+	ModelName           *string   `json:"ModelName,omitempty" name:"ModelName"`
+	Capabilities        []*string `json:"Capabilities,omitempty" name:"Capabilities"`
+	Status              *int      `json:"Status,omitempty" name:"Status"`
+	ContextLengthRanges []*string `json:"ContextLengthRanges,omitempty" name:"ContextLengthRanges"`
 }
 
 func (r *DescribeModelsRequest) ToJsonString() string {
@@ -1387,6 +1444,7 @@ type DescribeModelsResponse struct {
 			OutputType    []*string `json:"OutputType" name:"OutputType"`
 			SupportTryout *string   `json:"SupportTryout" name:"SupportTryout"`
 			ContextLength *string   `json:"ContextLength" name:"ContextLength"`
+			MeteringMode  *string   `json:"MeteringMode" name:"MeteringMode"`
 		} `json:"CodeCase" name:"CodeCase"`
 		IsOverFreeDisable *bool   `json:"IsOverFreeDisable" name:"IsOverFreeDisable"`
 		FreeTotalQuota    *int64  `json:"FreeTotalQuota" name:"FreeTotalQuota"`
@@ -1405,36 +1463,6 @@ func (r *DescribeModelsResponse) ToJsonString() string {
 }
 
 func (r *DescribeModelsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type CreateApikeyRequest struct {
-	*ksyunhttp.BaseRequest
-	Name               *string   `json:"Name,omitempty" name:"Name"`
-	Description        *string   `json:"Description,omitempty" name:"Description"`
-	ProjectId          *int64    `json:"ProjectId,omitempty" name:"ProjectId"`
-	AssociatedModelIds []*string `json:"AssociatedModelIds,omitempty" name:"AssociatedModelIds"`
-	AllAssociatedModel *bool     `json:"AllAssociatedModel,omitempty" name:"AllAssociatedModel"`
-	AllowedIps         []*string `json:"AllowedIps,omitempty" name:"AllowedIps"`
-}
-
-func (r *CreateApikeyRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type CreateApikeyResponse struct {
-	*ksyunhttp.BaseResponse
-	Success   *bool   `json:"Success" name:"Success"`
-	RequestId *string `json:"RequestId" name:"RequestId"`
-}
-
-func (r *CreateApikeyResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *CreateApikeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1523,59 +1551,6 @@ func (r *GetModelDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeApikeysRequest struct {
-	*ksyunhttp.BaseRequest
-	Marker            *int      `json:"Marker,omitempty" name:"Marker"`
-	MaxResults        *int      `json:"MaxResults,omitempty" name:"MaxResults"`
-	AssociatedModelId []*string `json:"AssociatedModelId,omitempty" name:"AssociatedModelId"`
-	Status            []*string `json:"Status,omitempty" name:"Status"`
-	Namekeyword       *string   `json:"Namekeyword,omitempty" name:"Namekeyword"`
-	DefaultKey        *bool     `json:"DefaultKey,omitempty" name:"DefaultKey"`
-	KeyId             []*string `json:"KeyId,omitempty" name:"KeyId"`
-	ExcludeTypes      []*string `json:"ExcludeTypes,omitempty" name:"ExcludeTypes"`
-}
-
-func (r *DescribeApikeysRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type DescribeApikeysResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Data      []struct {
-		KeyId              *string   `json:"KeyId" name:"KeyId"`
-		KeyValue           *string   `json:"KeyValue" name:"KeyValue"`
-		AssociatedModelIds []*string `json:"AssociatedModelIds" name:"AssociatedModelIds"`
-		Name               *string   `json:"Name" name:"Name"`
-		Description        *string   `json:"Description" name:"Description"`
-		Status             *string   `json:"Status" name:"Status"`
-		CreateTimestamp    *int64    `json:"CreateTimestamp" name:"CreateTimestamp"`
-		ProjectId          *string   `json:"ProjectId" name:"ProjectId"`
-		ProjectName        *string   `json:"ProjectName" name:"ProjectName"`
-		CreateUserId       *string   `json:"CreateUserId" name:"CreateUserId"`
-		CreateUserName     *string   `json:"CreateUserName" name:"CreateUserName"`
-		AssociatedModels   []struct {
-			ModelId   *string `json:"ModelId" name:"ModelId"`
-			ModelName *string `json:"ModelName" name:"ModelName"`
-		} `json:"AssociatedModels" name:"AssociatedModels"`
-		AllAssociatedModel *bool     `json:"AllAssociatedModel" name:"AllAssociatedModel"`
-		AllowedIps         []*string `json:"AllowedIps" name:"AllowedIps"`
-	} `json:"Data"`
-	Marker     *int `json:"Marker" name:"Marker"`
-	MaxResults *int `json:"MaxResults" name:"MaxResults"`
-	TotalCount *int `json:"TotalCount" name:"TotalCount"`
-}
-
-func (r *DescribeApikeysResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DescribeApikeysResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type QueryTokenDataRequest struct {
 	*ksyunhttp.BaseRequest
 	StartTimestamp *int64  `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
@@ -1618,12 +1593,21 @@ type QueryTokenDataResponse struct {
 		TotalWebParser      *int64  `json:"TotalWebParser" name:"TotalWebParser"`
 		GroupByValue        *string `json:"GroupByValue" name:"GroupByValue"`
 	} `json:"Data"`
-	SumTotalCacheToken     *int64 `json:"SumTotalCacheToken" name:"SumTotalCacheToken"`
-	SumTotalCacheMissToken *int64 `json:"SumTotalCacheMissToken" name:"SumTotalCacheMissToken"`
-	SumTotalWebSearch      *int64 `json:"SumTotalWebSearch" name:"SumTotalWebSearch"`
-	SumTotalImageCount     *int64 `json:"SumTotalImageCount" name:"SumTotalImageCount"`
-	SumTotalVideoDuration  *int64 `json:"SumTotalVideoDuration" name:"SumTotalVideoDuration"`
-	SumTotalWebParser      *int64 `json:"SumTotalWebParser" name:"SumTotalWebParser"`
+	SumTotalCacheToken           *int64 `json:"SumTotalCacheToken" name:"SumTotalCacheToken"`
+	SumTotalCacheMissToken       *int64 `json:"SumTotalCacheMissToken" name:"SumTotalCacheMissToken"`
+	SumTotalWebSearch            *int64 `json:"SumTotalWebSearch" name:"SumTotalWebSearch"`
+	SumTotalImageCount           *int64 `json:"SumTotalImageCount" name:"SumTotalImageCount"`
+	SumTotalVideoDuration        *int64 `json:"SumTotalVideoDuration" name:"SumTotalVideoDuration"`
+	SumTotalWebParser            *int64 `json:"SumTotalWebParser" name:"SumTotalWebParser"`
+	SumTotalCacheAudioToken      *int64 `json:"SumTotalCacheAudioToken" name:"SumTotalCacheAudioToken"`
+	SumTotalCacheImageToken      *int64 `json:"SumTotalCacheImageToken" name:"SumTotalCacheImageToken"`
+	SumTotalEphemeralCacheToken  *int64 `json:"SumTotalEphemeralCacheToken" name:"SumTotalEphemeralCacheToken"`
+	SumTotalCacheMissAudioToken  *int64 `json:"SumTotalCacheMissAudioToken" name:"SumTotalCacheMissAudioToken"`
+	SumTotalCacheMissImageToken  *int64 `json:"SumTotalCacheMissImageToken" name:"SumTotalCacheMissImageToken"`
+	SumTotalVoiceWordCount       *int64 `json:"SumTotalVoiceWordCount" name:"SumTotalVoiceWordCount"`
+	SumTotalImageOutputToken     *int64 `json:"SumTotalImageOutputToken" name:"SumTotalImageOutputToken"`
+	SumTotalCreationCache5mToken *int64 `json:"SumTotalCreationCache5mToken" name:"SumTotalCreationCache5mToken"`
+	SumTotalCreationCache1hToken *int64 `json:"SumTotalCreationCache1hToken" name:"SumTotalCreationCache1hToken"`
 }
 
 func (r *QueryTokenDataResponse) ToJsonString() string {
@@ -2240,13 +2224,14 @@ type DescribeTrainJobPodsResponse struct {
 		StartTimes *int    `json:"StartTimes" name:"StartTimes"`
 		PodName    *string `json:"PodName" name:"PodName"`
 		Status     struct {
-			State          *string `json:"State" name:"State"`
-			ContainerState *string `json:"ContainerState" name:"ContainerState"`
-			SubmitTime     *string `json:"SubmitTime" name:"SubmitTime"`
-			StartTime      *string `json:"StartTime" name:"StartTime"`
-			EndTime        *string `json:"EndTime" name:"EndTime"`
-			Ip             *string `json:"Ip" name:"Ip"`
-			RestartCount   *int    `json:"RestartCount" name:"RestartCount"`
+			State                  *string `json:"State" name:"State"`
+			ContainerState         *string `json:"ContainerState" name:"ContainerState"`
+			SubmitTime             *string `json:"SubmitTime" name:"SubmitTime"`
+			StartTime              *string `json:"StartTime" name:"StartTime"`
+			EndTime                *string `json:"EndTime" name:"EndTime"`
+			Ip                     *string `json:"Ip" name:"Ip"`
+			RestartCount           *int    `json:"RestartCount" name:"RestartCount"`
+			DeviceHealthCheckState *string `json:"DeviceHealthCheckState" name:"DeviceHealthCheckState"`
 		} `json:"Status" name:"Status"`
 		ContainerName *string `json:"ContainerName" name:"ContainerName"`
 		Kind          *string `json:"Kind" name:"Kind"`
@@ -2842,6 +2827,7 @@ type DescribeInferenceEndpointsResponse struct {
 			EffectiveTime    *string `json:"EffectiveTime" name:"EffectiveTime"`
 			ExpireTime       *string `json:"ExpireTime" name:"ExpireTime"`
 		} `json:"QuotaLimitConfig" name:"QuotaLimitConfig"`
+		ModelTypeDesc *string `json:"ModelTypeDesc" name:"ModelTypeDesc"`
 	} `json:"Endpoints"`
 	Marker     *int `json:"Marker" name:"Marker"`
 	MaxResults *int `json:"MaxResults" name:"MaxResults"`
@@ -2984,11 +2970,12 @@ func (r *DisableEndpointRateLimitResponse) FromJsonString(s string) error {
 
 type DescribeResourcePoolInstanceTasksRequest struct {
 	*ksyunhttp.BaseRequest
-	ResourcePoolId *string `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
-	InstanceId     *string `json:"InstanceId,omitempty" name:"InstanceId"`
-	TaskType       *string `json:"TaskType,omitempty" name:"TaskType"`
-	PageSize       *int    `json:"PageSize,omitempty" name:"PageSize"`
-	Page           *int    `json:"Page,omitempty" name:"Page"`
+	ResourcePoolId  *string `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	InstanceId      *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	TaskType        *string `json:"TaskType,omitempty" name:"TaskType"`
+	PageSize        *int    `json:"PageSize,omitempty" name:"PageSize"`
+	Page            *int    `json:"Page,omitempty" name:"Page"`
+	UseIdleResource *bool   `json:"UseIdleResource,omitempty" name:"UseIdleResource"`
 }
 
 func (r *DescribeResourcePoolInstanceTasksRequest) ToJsonString() string {
@@ -3003,18 +2990,19 @@ type DescribeResourcePoolInstanceTasksResponse struct {
 	Page            *int    `json:"Page" name:"Page"`
 	TotalCount      *int    `json:"TotalCount" name:"TotalCount"`
 	InstanceTaskSet []struct {
-		PodInstanceId *string `json:"PodInstanceId" name:"PodInstanceId"`
-		TaskName      *string `json:"TaskName" name:"TaskName"`
-		TaskId        *string `json:"TaskId" name:"TaskId"`
-		TaskType      *string `json:"TaskType" name:"TaskType"`
-		GPUNum        *int    `json:"GPUNum" name:"GPUNum"`
-		CPUNum        *int    `json:"CPUNum" name:"CPUNum"`
-		MemeryNum     *int    `json:"MemeryNum" name:"MemeryNum"`
-		CreateUser    *string `json:"CreateUser" name:"CreateUser"`
-		CreateTime    *string `json:"CreateTime" name:"CreateTime"`
-		StartTime     *string `json:"StartTime" name:"StartTime"`
-		EndTime       *string `json:"EndTime" name:"EndTime"`
-		Status        *string `json:"Status" name:"Status"`
+		PodInstanceId   *string `json:"PodInstanceId" name:"PodInstanceId"`
+		TaskName        *string `json:"TaskName" name:"TaskName"`
+		TaskId          *string `json:"TaskId" name:"TaskId"`
+		TaskType        *string `json:"TaskType" name:"TaskType"`
+		GPUNum          *int    `json:"GPUNum" name:"GPUNum"`
+		CPUNum          *int    `json:"CPUNum" name:"CPUNum"`
+		MemeryNum       *int    `json:"MemeryNum" name:"MemeryNum"`
+		CreateUser      *string `json:"CreateUser" name:"CreateUser"`
+		CreateTime      *string `json:"CreateTime" name:"CreateTime"`
+		StartTime       *string `json:"StartTime" name:"StartTime"`
+		EndTime         *string `json:"EndTime" name:"EndTime"`
+		Status          *string `json:"Status" name:"Status"`
+		UseIdleResource *bool   `json:"UseIdleResource" name:"UseIdleResource"`
 	} `json:"InstanceTaskSet"`
 }
 
@@ -3440,5 +3428,192 @@ func (r *ModifyResourcePoolResponse) ToJsonString() string {
 }
 
 func (r *ModifyResourcePoolResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInferenceAndPodEventsRequest struct {
+	*ksyunhttp.BaseRequest
+	InferenceId *string   `json:"InferenceId,omitempty" name:"InferenceId"`
+	PodNames    []*string `json:"PodNames,omitempty" name:"PodNames"`
+	SortKey     *string   `json:"SortKey,omitempty" name:"SortKey"`
+	Sort        *string   `json:"Sort,omitempty" name:"Sort"`
+}
+
+func (r *DescribeInferenceAndPodEventsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeInferenceAndPodEventsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Events    []struct {
+		FirstSeen *string `json:"FirstSeen" name:"FirstSeen"`
+		LastSeen  *string `json:"LastSeen" name:"LastSeen"`
+		Type      *string `json:"Type" name:"Type"`
+		Object    struct {
+			Kind            *string `json:"Kind" name:"Kind"`
+			Namespace       *string `json:"Namespace" name:"Namespace"`
+			Name            *string `json:"Name" name:"Name"`
+			UID             *string `json:"UID" name:"UID"`
+			APIVersion      *string `json:"APIVersion" name:"APIVersion"`
+			ResourceVersion *string `json:"ResourceVersion" name:"ResourceVersion"`
+			FieldPath       *string `json:"FieldPath" name:"FieldPath"`
+		} `json:"Object" name:"Object"`
+		Reason  *string `json:"Reason" name:"Reason"`
+		Message *string `json:"Message" name:"Message"`
+		Source  struct {
+			Component *string `json:"Component" name:"Component"`
+			Host      *string `json:"Host" name:"Host"`
+		} `json:"Source" name:"Source"`
+		Count *int `json:"Count" name:"Count"`
+	} `json:"Events"`
+}
+
+func (r *DescribeInferenceAndPodEventsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeInferenceAndPodEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTrainJobAndPodEventsRequest struct {
+	*ksyunhttp.BaseRequest
+	TrainJobId *string   `json:"TrainJobId,omitempty" name:"TrainJobId"`
+	PodNames   []*string `json:"PodNames,omitempty" name:"PodNames"`
+	SortKey    *string   `json:"SortKey,omitempty" name:"SortKey"`
+	Sort       *string   `json:"Sort,omitempty" name:"Sort"`
+}
+
+func (r *DescribeTrainJobAndPodEventsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeTrainJobAndPodEventsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Events    []struct {
+		FirstSeen *string `json:"FirstSeen" name:"FirstSeen"`
+		LastSeen  *string `json:"LastSeen" name:"LastSeen"`
+		Type      *string `json:"Type" name:"Type"`
+		Object    struct {
+			Kind            *string `json:"Kind" name:"Kind"`
+			Namespace       *string `json:"Namespace" name:"Namespace"`
+			Name            *string `json:"Name" name:"Name"`
+			UID             *string `json:"UID" name:"UID"`
+			APIVersion      *string `json:"APIVersion" name:"APIVersion"`
+			ResourceVersion *string `json:"ResourceVersion" name:"ResourceVersion"`
+			FieldPath       *string `json:"FieldPath" name:"FieldPath"`
+		} `json:"Object" name:"Object"`
+		Reason  *string `json:"Reason" name:"Reason"`
+		Message *string `json:"Message" name:"Message"`
+		Source  struct {
+			Component *string `json:"Component" name:"Component"`
+			Host      *string `json:"Host" name:"Host"`
+		} `json:"Source" name:"Source"`
+		Count *int `json:"Count" name:"Count"`
+	} `json:"Events"`
+}
+
+func (r *DescribeTrainJobAndPodEventsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeTrainJobAndPodEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeFineTuneJobAndPodEventsRequest struct {
+	*ksyunhttp.BaseRequest
+	FineTuneJobId *string   `json:"FineTuneJobId,omitempty" name:"FineTuneJobId"`
+	PodNames      []*string `json:"PodNames,omitempty" name:"PodNames"`
+	SortKey       *string   `json:"SortKey,omitempty" name:"SortKey"`
+	Sort          *string   `json:"Sort,omitempty" name:"Sort"`
+}
+
+func (r *DescribeFineTuneJobAndPodEventsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeFineTuneJobAndPodEventsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Events    []struct {
+		FirstSeen *string `json:"FirstSeen" name:"FirstSeen"`
+		LastSeen  *string `json:"LastSeen" name:"LastSeen"`
+		Type      *string `json:"Type" name:"Type"`
+		Object    struct {
+			Kind            *string `json:"Kind" name:"Kind"`
+			Namespace       *string `json:"Namespace" name:"Namespace"`
+			Name            *string `json:"Name" name:"Name"`
+			UID             *string `json:"UID" name:"UID"`
+			APIVersion      *string `json:"APIVersion" name:"APIVersion"`
+			ResourceVersion *string `json:"ResourceVersion" name:"ResourceVersion"`
+			FieldPath       *string `json:"FieldPath" name:"FieldPath"`
+		} `json:"Object" name:"Object"`
+		Reason  *string `json:"Reason" name:"Reason"`
+		Message *string `json:"Message" name:"Message"`
+		Source  struct {
+			Component *string `json:"Component" name:"Component"`
+			Host      *string `json:"Host" name:"Host"`
+		} `json:"Source" name:"Source"`
+		Count *int `json:"Count" name:"Count"`
+	} `json:"Events"`
+}
+
+func (r *DescribeFineTuneJobAndPodEventsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeFineTuneJobAndPodEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTerminateStopRecordsRequest struct {
+	*ksyunhttp.BaseRequest
+	QueueId            *string   `json:"QueueId,omitempty" name:"QueueId"`
+	TerminatePolicyIds []*string `json:"TerminatePolicyIds,omitempty" name:"TerminatePolicyIds"`
+	NotebookIds        []*string `json:"NotebookIds,omitempty" name:"NotebookIds"`
+	StartTime          *string   `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime            *string   `json:"EndTime,omitempty" name:"EndTime"`
+	Page               *int      `json:"Page,omitempty" name:"Page"`
+	PageSize           *int      `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeTerminateStopRecordsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeTerminateStopRecordsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	Page       *int    `json:"Page" name:"Page"`
+	PageSize   *int    `json:"PageSize" name:"PageSize"`
+	Records    []struct {
+		TerminatePolicyId *string `json:"TerminatePolicyId" name:"TerminatePolicyId"`
+		NotebookName      *string `json:"NotebookName" name:"NotebookName"`
+		CreateUser        *string `json:"CreateUser" name:"CreateUser"`
+		NotebookId        *string `json:"NotebookId" name:"NotebookId"`
+		Result            *bool   `json:"Result" name:"Result"`
+		Message           *string `json:"Message" name:"Message"`
+		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
+		QueueId           *string `json:"QueueId" name:"QueueId"`
+	} `json:"Records"`
+}
+
+func (r *DescribeTerminateStopRecordsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeTerminateStopRecordsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

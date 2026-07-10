@@ -64,6 +64,56 @@ func (r *DescribeAlertingResourcesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListGrafanaInstancesRequest struct {
+	*ksyunhttp.BaseRequest
+	PageIndex *int `json:"PageIndex,omitempty" name:"PageIndex"`
+	PageSize  *int `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *ListGrafanaInstancesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ListGrafanaInstancesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestID    *string `json:"RequestID" name:"RequestID"`
+	Code         *string `json:"Code" name:"Code"`
+	InstancesSet []struct {
+		UserID             *int    `json:"UserID" name:"UserID"`
+		ClusterID          *string `json:"ClusterID" name:"ClusterID"`
+		ClusterName        *string `json:"ClusterName" name:"ClusterName"`
+		ClusterState       *string `json:"ClusterState" name:"ClusterState"`
+		ClusterType        *int    `json:"ClusterType" name:"ClusterType"`
+		InstanceID         *string `json:"InstanceID" name:"InstanceID"`
+		InstanceName       *string `json:"InstanceName" name:"InstanceName"`
+		InstanceType       *string `json:"InstanceType" name:"InstanceType"`
+		InstanceStatus     *string `json:"InstanceStatus" name:"InstanceStatus"`
+		InstanceStatusDesc *string `json:"InstanceStatusDesc" name:"InstanceStatusDesc"`
+		Region             *string `json:"Region" name:"Region"`
+		RegionCnName       *string `json:"RegionCnName" name:"RegionCnName"`
+		GrafanaUserName    *string `json:"GrafanaUserName" name:"GrafanaUserName"`
+		UID                *int    `json:"UID" name:"UID"`
+		OrgID              *int    `json:"OrgID" name:"OrgID"`
+		AccessURL          *string `json:"AccessURL" name:"AccessURL"`
+		AccessToken        *string `json:"AccessToken" name:"AccessToken"`
+		CreatedAt          *string `json:"CreatedAt" name:"CreatedAt"`
+		UpdatedAt          *string `json:"UpdatedAt" name:"UpdatedAt"`
+	} `json:"InstancesSet"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+	PageIndex  *int `json:"PageIndex" name:"PageIndex"`
+	PageSize   *int `json:"PageSize" name:"PageSize"`
+}
+
+func (r *ListGrafanaInstancesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListGrafanaInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeSystemEventAttributesRequest struct {
 	*ksyunhttp.BaseRequest
 	StartTime      *int64  `json:"StartTime,omitempty" name:"StartTime"`
