@@ -5157,3 +5157,82 @@ func (c *Client) BatchUpdateInstanceProjectIdWithContextV2(ctx context.Context, 
 	}
 	return statusCode, msg, nil
 }
+func NewSendEmailCodeRequest() (request *SendEmailCodeRequest) {
+	request = &SendEmailCodeRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("iam", APIVersion, "SendEmailCode")
+	return
+}
+
+func NewSendEmailCodeResponse() (response *SendEmailCodeResponse) {
+	response = &SendEmailCodeResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SendEmailCode(request *SendEmailCodeRequest) string {
+	return c.SendEmailCodeWithContext(context.Background(), request)
+}
+
+func (c *Client) SendEmailCodeSend(request *SendEmailCodeRequest) (*SendEmailCodeResponse, error) {
+	statusCode, msg, err := c.SendEmailCodeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SendEmailCodeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SendEmailCodeWithContext(ctx context.Context, request *SendEmailCodeRequest) string {
+	if request == nil {
+		request = NewSendEmailCodeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("iam", APIVersion, "SendEmailCode")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSendEmailCodeResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SendEmailCodeWithContextV2(ctx context.Context, request *SendEmailCodeRequest) (int, string, error) {
+	if request == nil {
+		request = NewSendEmailCodeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("iam", APIVersion, "SendEmailCode")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSendEmailCodeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}

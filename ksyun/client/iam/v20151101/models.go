@@ -2215,3 +2215,31 @@ func (r *BatchUpdateInstanceProjectIdResponse) ToJsonString() string {
 func (r *BatchUpdateInstanceProjectIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type SendEmailCodeRequest struct {
+	*ksyunhttp.BaseRequest
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+}
+
+func (r *SendEmailCodeRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SendEmailCodeResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId           *string `json:"RequestId" name:"RequestId"`
+	SendEmailCodeResult struct {
+		ToEmail   *string `json:"ToEmail" name:"ToEmail"`
+		ExpiresAt *string `json:"ExpiresAt" name:"ExpiresAt"`
+	} `json:"SendEmailCodeResult"`
+}
+
+func (r *SendEmailCodeResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SendEmailCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
