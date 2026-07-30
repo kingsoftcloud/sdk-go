@@ -4051,3 +4051,240 @@ func (c *Client) DescribeMcpRuntimeLogsWithContextV2(ctx context.Context, reques
 	}
 	return statusCode, msg, nil
 }
+func NewDescribeMemoryTokenMonitorRequest() (request *DescribeMemoryTokenMonitorRequest) {
+	request = &DescribeMemoryTokenMonitorRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeMemoryTokenMonitor")
+	return
+}
+
+func NewDescribeMemoryTokenMonitorResponse() (response *DescribeMemoryTokenMonitorResponse) {
+	response = &DescribeMemoryTokenMonitorResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeMemoryTokenMonitor(request *DescribeMemoryTokenMonitorRequest) string {
+	return c.DescribeMemoryTokenMonitorWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeMemoryTokenMonitorSend(request *DescribeMemoryTokenMonitorRequest) (*DescribeMemoryTokenMonitorResponse, error) {
+	statusCode, msg, err := c.DescribeMemoryTokenMonitorWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeMemoryTokenMonitorResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeMemoryTokenMonitorWithContext(ctx context.Context, request *DescribeMemoryTokenMonitorRequest) string {
+	if request == nil {
+		request = NewDescribeMemoryTokenMonitorRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeMemoryTokenMonitor")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeMemoryTokenMonitorResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeMemoryTokenMonitorWithContextV2(ctx context.Context, request *DescribeMemoryTokenMonitorRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeMemoryTokenMonitorRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeMemoryTokenMonitor")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeMemoryTokenMonitorResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeMemoryStorageMonitorRequest() (request *DescribeMemoryStorageMonitorRequest) {
+	request = &DescribeMemoryStorageMonitorRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeMemoryStorageMonitor")
+	return
+}
+
+func NewDescribeMemoryStorageMonitorResponse() (response *DescribeMemoryStorageMonitorResponse) {
+	response = &DescribeMemoryStorageMonitorResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeMemoryStorageMonitor(request *DescribeMemoryStorageMonitorRequest) string {
+	return c.DescribeMemoryStorageMonitorWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeMemoryStorageMonitorSend(request *DescribeMemoryStorageMonitorRequest) (*DescribeMemoryStorageMonitorResponse, error) {
+	statusCode, msg, err := c.DescribeMemoryStorageMonitorWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeMemoryStorageMonitorResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeMemoryStorageMonitorWithContext(ctx context.Context, request *DescribeMemoryStorageMonitorRequest) string {
+	if request == nil {
+		request = NewDescribeMemoryStorageMonitorRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeMemoryStorageMonitor")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeMemoryStorageMonitorResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeMemoryStorageMonitorWithContextV2(ctx context.Context, request *DescribeMemoryStorageMonitorRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeMemoryStorageMonitorRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeMemoryStorageMonitor")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeMemoryStorageMonitorResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewListMemoriesRequest() (request *ListMemoriesRequest) {
+	request = &ListMemoriesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ListMemories")
+	return
+}
+
+func NewListMemoriesResponse() (response *ListMemoriesResponse) {
+	response = &ListMemoriesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ListMemories(request *ListMemoriesRequest) string {
+	return c.ListMemoriesWithContext(context.Background(), request)
+}
+
+func (c *Client) ListMemoriesSend(request *ListMemoriesRequest) (*ListMemoriesResponse, error) {
+	statusCode, msg, err := c.ListMemoriesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ListMemoriesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ListMemoriesWithContext(ctx context.Context, request *ListMemoriesRequest) string {
+	if request == nil {
+		request = NewListMemoriesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ListMemories")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListMemoriesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ListMemoriesWithContextV2(ctx context.Context, request *ListMemoriesRequest) (int, string, error) {
+	if request == nil {
+		request = NewListMemoriesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ListMemories")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewListMemoriesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}

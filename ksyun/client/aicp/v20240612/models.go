@@ -41,6 +41,12 @@ type ModifyNotebookServiceConfigs struct {
 	Port                *int    `json:"Port,omitempty" name:"Port"`
 	EnablePublicNetwork *bool   `json:"EnablePublicNetwork,omitempty" name:"EnablePublicNetwork"`
 }
+type ModifyNotebookAutoSaveConfig struct {
+	ImageType        *string `json:"ImageType,omitempty" name:"ImageType"`
+	OfficialInstance *string `json:"OfficialInstance,omitempty" name:"OfficialInstance"`
+	UserName         *string `json:"UserName,omitempty" name:"UserName"`
+	Password         *string `json:"Password,omitempty" name:"Password"`
+}
 type DescribeNotebooksFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
@@ -61,6 +67,10 @@ type CreateNotebookAutoSaveConfig struct {
 	OfficialInstance *string `json:"OfficialInstance,omitempty" name:"OfficialInstance"`
 	UserName         *string `json:"UserName,omitempty" name:"UserName"`
 	Password         *string `json:"Password,omitempty" name:"Password"`
+}
+type CreateNotebookVolumeConfig struct {
+	VolumeSize *int    `json:"VolumeSize,omitempty" name:"VolumeSize"`
+	VolumeType *string `json:"VolumeType,omitempty" name:"VolumeType"`
 }
 type DescribeImagesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
@@ -191,6 +201,12 @@ type DescribeInferencePodsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
+type CreateUsageDownloadTaskFilter struct {
+	ModelName  []*string `json:"ModelName,omitempty" name:"ModelName"`
+	EndPointID []*string `json:"EndPointID,omitempty" name:"EndPointID"`
+	KeyId      []*string `json:"KeyId,omitempty" name:"KeyId"`
+	ProjectId  []*string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
 
 type CreateResourcePoolRequest struct {
 	*ksyunhttp.BaseRequest
@@ -205,6 +221,8 @@ type CreateResourcePoolRequest struct {
 	LogProjectName        *string   `json:"LogProjectName,omitempty" name:"LogProjectName"`
 	Overallocate          *bool     `json:"Overallocate,omitempty" name:"Overallocate"`
 	Components            []*string `json:"Components,omitempty" name:"Components"`
+	EnableVolume          *bool     `json:"EnableVolume,omitempty" name:"EnableVolume"`
+	VolumeChargeType      *string   `json:"VolumeChargeType,omitempty" name:"VolumeChargeType"`
 }
 
 func (r *CreateResourcePoolRequest) ToJsonString() string {
@@ -440,6 +458,7 @@ type ModifyNotebookRequest struct {
 	ImageSource            *string                         `json:"ImageSource,omitempty" name:"ImageSource"`
 	ImageRepoId            *string                         `json:"ImageRepoId,omitempty" name:"ImageRepoId"`
 	ImageRegistryId        *string                         `json:"ImageRegistryId,omitempty" name:"ImageRegistryId"`
+	AutoSaveConfig         *ModifyNotebookAutoSaveConfig   `json:"AutoSaveConfig,omitempty" name:"AutoSaveConfig"`
 }
 
 func (r *ModifyNotebookRequest) ToJsonString() string {
@@ -464,7 +483,8 @@ func (r *ModifyNotebookResponse) FromJsonString(s string) error {
 
 type DeleteNotebookRequest struct {
 	*ksyunhttp.BaseRequest
-	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
+	NotebookId          *string `json:"NotebookId,omitempty" name:"NotebookId"`
+	VolumeReclaimPolicy *string `json:"VolumeReclaimPolicy,omitempty" name:"VolumeReclaimPolicy"`
 }
 
 func (r *DeleteNotebookRequest) ToJsonString() string {
@@ -489,12 +509,13 @@ func (r *DeleteNotebookResponse) FromJsonString(s string) error {
 
 type DescribeNotebooksRequest struct {
 	*ksyunhttp.BaseRequest
-	NotebookId []*string                  `json:"NotebookId,omitempty" name:"NotebookId"`
-	Name       *string                    `json:"Name,omitempty" name:"Name"`
-	Page       *int                       `json:"Page,omitempty" name:"Page"`
-	PageSize   *int                       `json:"PageSize,omitempty" name:"PageSize"`
-	Filter     []*DescribeNotebooksFilter `json:"Filter,omitempty" name:"Filter"`
-	QueueId    *string                    `json:"QueueId,omitempty" name:"QueueId"`
+	NotebookId   []*string                  `json:"NotebookId,omitempty" name:"NotebookId"`
+	Name         *string                    `json:"Name,omitempty" name:"Name"`
+	Page         *int                       `json:"Page,omitempty" name:"Page"`
+	PageSize     *int                       `json:"PageSize,omitempty" name:"PageSize"`
+	Filter       []*DescribeNotebooksFilter `json:"Filter,omitempty" name:"Filter"`
+	QueueId      *string                    `json:"QueueId,omitempty" name:"QueueId"`
+	EnableVolume *bool                      `json:"EnableVolume,omitempty" name:"EnableVolume"`
 }
 
 func (r *DescribeNotebooksRequest) ToJsonString() string {
@@ -564,6 +585,20 @@ type DescribeNotebooksResponse struct {
 		ComputeStatus      *string  `json:"ComputeStatus" name:"ComputeStatus"`
 		RunOnCPU           *bool    `json:"RunOnCPU" name:"RunOnCPU"`
 		NodeIp             *string  `json:"NodeIp" name:"NodeIp"`
+		AutoSaveConfig     struct {
+			ImageType        *string `json:"ImageType" name:"ImageType"`
+			OfficialInstance *string `json:"OfficialInstance" name:"OfficialInstance"`
+			UserName         *string `json:"UserName" name:"UserName"`
+			Namespace        *string `json:"Namespace" name:"Namespace"`
+			ImageRepo        *string `json:"ImageRepo" name:"ImageRepo"`
+		} `json:"AutoSaveConfig" name:"AutoSaveConfig"`
+		EnableVolume *bool `json:"EnableVolume" name:"EnableVolume"`
+		VolumeConfig struct {
+			VolumeType       *string `json:"VolumeType" name:"VolumeType"`
+			VolumeSize       *int    `json:"VolumeSize" name:"VolumeSize"`
+			VolumeId         *string `json:"VolumeId" name:"VolumeId"`
+			AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+		} `json:"VolumeConfig" name:"VolumeConfig"`
 	} `json:"Notebooks"`
 	TotalCount *int `json:"TotalCount" name:"TotalCount"`
 	Page       *int `json:"Page" name:"Page"`
@@ -605,6 +640,8 @@ type CreateNotebookRequest struct {
 	AllocationId           *string                         `json:"AllocationId,omitempty" name:"AllocationId"`
 	RunOnCPU               *string                         `json:"RunOnCPU,omitempty" name:"RunOnCPU"`
 	AutoSaveConfig         *CreateNotebookAutoSaveConfig   `json:"AutoSaveConfig,omitempty" name:"AutoSaveConfig"`
+	EnableVolume           *bool                           `json:"EnableVolume,omitempty" name:"EnableVolume"`
+	VolumeConfig           *CreateNotebookVolumeConfig     `json:"VolumeConfig,omitempty" name:"VolumeConfig"`
 }
 
 func (r *CreateNotebookRequest) ToJsonString() string {
@@ -1466,6 +1503,41 @@ func (r *DescribeModelsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateApikeyRequest struct {
+	*ksyunhttp.BaseRequest
+	Name                          *string   `json:"Name,omitempty" name:"Name"`
+	Description                   *string   `json:"Description,omitempty" name:"Description"`
+	ProjectId                     *int64    `json:"ProjectId,omitempty" name:"ProjectId"`
+	AssociatedModelIds            []*string `json:"AssociatedModelIds,omitempty" name:"AssociatedModelIds"`
+	AllAssociatedModel            *bool     `json:"AllAssociatedModel,omitempty" name:"AllAssociatedModel"`
+	AllowedIps                    []*string `json:"AllowedIps,omitempty" name:"AllowedIps"`
+	AllowEndpoints                []*string `json:"AllowEndpoints,omitempty" name:"AllowEndpoints"`
+	AllAssociatedEndpoint         *bool     `json:"AllAssociatedEndpoint,omitempty" name:"AllAssociatedEndpoint"`
+	AllAssociatedProjectResources *bool     `json:"AllAssociatedProjectResources,omitempty" name:"AllAssociatedProjectResources"`
+	LowPriceModels                []*string `json:"LowPriceModels,omitempty" name:"LowPriceModels"`
+	HighPriceModels               []*string `json:"HighPriceModels,omitempty" name:"HighPriceModels"`
+}
+
+func (r *CreateApikeyRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateApikeyResponse struct {
+	*ksyunhttp.BaseResponse
+	Success   *bool   `json:"Success" name:"Success"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateApikeyResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateApikeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GetModelDetailRequest struct {
 	*ksyunhttp.BaseRequest
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
@@ -1548,6 +1620,64 @@ func (r *GetModelDetailResponse) ToJsonString() string {
 }
 
 func (r *GetModelDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeApikeysRequest struct {
+	*ksyunhttp.BaseRequest
+	Marker            *int      `json:"Marker,omitempty" name:"Marker"`
+	MaxResults        *int      `json:"MaxResults,omitempty" name:"MaxResults"`
+	AssociatedModelId []*string `json:"AssociatedModelId,omitempty" name:"AssociatedModelId"`
+	Status            []*string `json:"Status,omitempty" name:"Status"`
+	Namekeyword       *string   `json:"Namekeyword,omitempty" name:"Namekeyword"`
+	DefaultKey        *bool     `json:"DefaultKey,omitempty" name:"DefaultKey"`
+	SelfCreated       *bool     `json:"SelfCreated,omitempty" name:"SelfCreated"`
+	SortOrder         *string   `json:"SortOrder,omitempty" name:"SortOrder"`
+}
+
+func (r *DescribeApikeysRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeApikeysResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		KeyId              *string   `json:"KeyId" name:"KeyId"`
+		KeyValue           *string   `json:"KeyValue" name:"KeyValue"`
+		AssociatedModelIds []*string `json:"AssociatedModelIds" name:"AssociatedModelIds"`
+		Name               *string   `json:"Name" name:"Name"`
+		Description        *string   `json:"Description" name:"Description"`
+		Status             *string   `json:"Status" name:"Status"`
+		CreateTimestamp    *int64    `json:"CreateTimestamp" name:"CreateTimestamp"`
+		ProjectId          *string   `json:"ProjectId" name:"ProjectId"`
+		ProjectName        *string   `json:"ProjectName" name:"ProjectName"`
+		CreateUserId       *string   `json:"CreateUserId" name:"CreateUserId"`
+		CreateUserName     *string   `json:"CreateUserName" name:"CreateUserName"`
+		AssociatedModels   []struct {
+			ModelId   *string `json:"ModelId" name:"ModelId"`
+			ModelName *string `json:"ModelName" name:"ModelName"`
+		} `json:"AssociatedModels" name:"AssociatedModels"`
+		AllAssociatedModel            *bool     `json:"AllAssociatedModel" name:"AllAssociatedModel"`
+		AllowedIps                    []*string `json:"AllowedIps" name:"AllowedIps"`
+		AllAssociatedEndpoint         *bool     `json:"AllAssociatedEndpoint" name:"AllAssociatedEndpoint"`
+		AllowEndpoints                []*string `json:"AllowEndpoints" name:"AllowEndpoints"`
+		AllAssociatedProjectResources *bool     `json:"AllAssociatedProjectResources" name:"AllAssociatedProjectResources"`
+		HighPriceModels               []*string `json:"HighPriceModels" name:"HighPriceModels"`
+		LowPriceModels                []*string `json:"LowPriceModels" name:"LowPriceModels"`
+	} `json:"Data"`
+	Marker     *int `json:"Marker" name:"Marker"`
+	MaxResults *int `json:"MaxResults" name:"MaxResults"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
+}
+
+func (r *DescribeApikeysResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeApikeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2604,6 +2734,7 @@ type DescribeResourcePoolsRequest struct {
 	Component        *string                        `json:"Component,omitempty" name:"Component"`
 	ResourcePoolId   []*string                      `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
 	Filter           []*DescribeResourcePoolsFilter `json:"Filter,omitempty" name:"Filter"`
+	EnableVolume     *bool                          `json:"EnableVolume,omitempty" name:"EnableVolume"`
 }
 
 func (r *DescribeResourcePoolsRequest) ToJsonString() string {
@@ -2634,6 +2765,8 @@ type DescribeResourcePoolsResponse struct {
 		FileSystemId          *string   `json:"FileSystemId" name:"FileSystemId"`
 		EnableKPFSPerformance *bool     `json:"EnableKPFSPerformance" name:"EnableKPFSPerformance"`
 		EnableKlog            *bool     `json:"EnableKlog" name:"EnableKlog"`
+		EnableVolume          *bool     `json:"EnableVolume" name:"EnableVolume"`
+		VolumeChargeType      *string   `json:"VolumeChargeType" name:"VolumeChargeType"`
 	} `json:"ResourcePoolSet"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	PageSize   *int    `json:"PageSize" name:"PageSize"`
@@ -3615,5 +3748,177 @@ func (r *DescribeTerminateStopRecordsResponse) ToJsonString() string {
 }
 
 func (r *DescribeTerminateStopRecordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAccountBillRulesRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *GetAccountBillRulesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetAccountBillRulesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	StockData *bool   `json:"StockData" name:"StockData"`
+	Data      []struct {
+		ModelName          *string `json:"ModelName" name:"ModelName"`
+		LowPriceAvailable  *bool   `json:"LowPriceAvailable" name:"LowPriceAvailable"`
+		HighPriceAvailable *bool   `json:"HighPriceAvailable" name:"HighPriceAvailable"`
+	} `json:"Data"`
+}
+
+func (r *GetAccountBillRulesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetAccountBillRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateUsageDownloadTaskRequest struct {
+	*ksyunhttp.BaseRequest
+	StartTimestamp *int64                         `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
+	EndTimestamp   *int64                         `json:"EndTimestamp,omitempty" name:"EndTimestamp"`
+	Filter         *CreateUsageDownloadTaskFilter `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *CreateUsageDownloadTaskRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateUsageDownloadTaskResponse struct {
+	*ksyunhttp.BaseResponse
+	TaskId          *string `json:"TaskId" name:"TaskId"`
+	CreateTimestamp *int64  `json:"CreateTimestamp" name:"CreateTimestamp"`
+}
+
+func (r *CreateUsageDownloadTaskResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateUsageDownloadTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetUsageDownloadTaskRequest struct {
+	*ksyunhttp.BaseRequest
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *GetUsageDownloadTaskRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetUsageDownloadTaskResponse struct {
+	*ksyunhttp.BaseResponse
+	Result struct {
+		TaskId         *string `json:"TaskId" name:"TaskId"`
+		Status         *string `json:"Status" name:"Status"`
+		StartTimestamp *int64  `json:"StartTimestamp" name:"StartTimestamp"`
+		EndTimestamp   *int64  `json:"EndTimestamp" name:"EndTimestamp"`
+	} `json:"Result"`
+	File struct {
+		DownloadUrl         *string `json:"DownloadUrl" name:"DownloadUrl"`
+		FileExpireTimestamp *int64  `json:"FileExpireTimestamp" name:"FileExpireTimestamp"`
+	} `json:"File"`
+}
+
+func (r *GetUsageDownloadTaskResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetUsageDownloadTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddStorageConfigAccessRequest struct {
+	*ksyunhttp.BaseRequest
+	StorageConfigId *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
+	UserId          *string `json:"UserId,omitempty" name:"UserId"`
+	SharedGroupId   *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
+	Permission      *string `json:"Permission,omitempty" name:"Permission"`
+}
+
+func (r *AddStorageConfigAccessRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type AddStorageConfigAccessResponse struct {
+	*ksyunhttp.BaseResponse
+	StorageConfigId *string `json:"StorageConfigId" name:"StorageConfigId"`
+	RequestId       *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *AddStorageConfigAccessResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *AddStorageConfigAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyStorageConfigAccessRoleRequest struct {
+	*ksyunhttp.BaseRequest
+	StorageConfigId *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
+	UserId          *string `json:"UserId,omitempty" name:"UserId"`
+	SharedGroupId   *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
+	Permission      *string `json:"Permission,omitempty" name:"Permission"`
+}
+
+func (r *ModifyStorageConfigAccessRoleRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyStorageConfigAccessRoleResponse struct {
+	*ksyunhttp.BaseResponse
+	StorageConfigId *string `json:"StorageConfigId" name:"StorageConfigId"`
+	RequestId       *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyStorageConfigAccessRoleResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyStorageConfigAccessRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoveStorageConfigAccessRequest struct {
+	*ksyunhttp.BaseRequest
+	StorageConfigId *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
+	UserId          *string `json:"UserId,omitempty" name:"UserId"`
+	SharedGroupId   *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
+}
+
+func (r *RemoveStorageConfigAccessRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type RemoveStorageConfigAccessResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId       *string `json:"RequestId" name:"RequestId"`
+	StorageConfigId *string `json:"StorageConfigId" name:"StorageConfigId"`
+}
+
+func (r *RemoveStorageConfigAccessResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *RemoveStorageConfigAccessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

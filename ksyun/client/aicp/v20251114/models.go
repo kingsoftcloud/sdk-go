@@ -2147,3 +2147,149 @@ func (r *DescribeMcpRuntimeLogsResponse) ToJsonString() string {
 func (r *DescribeMcpRuntimeLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type DescribeMemoryTokenMonitorRequest struct {
+	*ksyunhttp.BaseRequest
+	MemoryId    *string `json:"MemoryId,omitempty" name:"MemoryId"`
+	StartTime   *int64  `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime     *int64  `json:"EndTime,omitempty" name:"EndTime"`
+	Granularity *string `json:"Granularity,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeMemoryTokenMonitorRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeMemoryTokenMonitorResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId            *string `json:"RequestId" name:"RequestId"`
+	EmbeddingInputTokens *int64  `json:"EmbeddingInputTokens" name:"EmbeddingInputTokens"`
+	RerankInputTokens    *int64  `json:"RerankInputTokens" name:"RerankInputTokens"`
+	ChatOutputTokens     *int64  `json:"ChatOutputTokens" name:"ChatOutputTokens"`
+	ChatHitCacheTokens   *int64  `json:"ChatHitCacheTokens" name:"ChatHitCacheTokens"`
+	ChatMissCacheTokens  *int64  `json:"ChatMissCacheTokens" name:"ChatMissCacheTokens"`
+	RequestCountTrend    []struct {
+		Timestamp *int64 `json:"Timestamp" name:"Timestamp"`
+		Value     *int64 `json:"Value" name:"Value"`
+	} `json:"RequestCountTrend"`
+	EmbeddingInputTokenTrend []struct {
+		Timestamp *int64 `json:"Timestamp" name:"Timestamp"`
+		Value     *int64 `json:"Value" name:"Value"`
+	} `json:"EmbeddingInputTokenTrend"`
+	RerankInputTokenTrend []struct {
+		Timestamp *int64 `json:"Timestamp" name:"Timestamp"`
+		Value     *int64 `json:"Value" name:"Value"`
+	} `json:"RerankInputTokenTrend"`
+	ChatOutputCountTrend []struct {
+		Timestamp *int64 `json:"Timestamp" name:"Timestamp"`
+		Value     *int64 `json:"Value" name:"Value"`
+	} `json:"ChatOutputCountTrend"`
+	ChatHitCacheCountTrend []struct {
+		Timestamp *int64 `json:"Timestamp" name:"Timestamp"`
+		Value     *int64 `json:"Value" name:"Value"`
+	} `json:"ChatHitCacheCountTrend"`
+	ChatMissCacheCountTrend []struct {
+		Timestamp *int64 `json:"Timestamp" name:"Timestamp"`
+		Value     *int64 `json:"Value" name:"Value"`
+	} `json:"ChatMissCacheCountTrend"`
+	RpmRateLimits []struct {
+		Model *string  `json:"Model" name:"Model"`
+		Value *float64 `json:"Value" name:"Value"`
+	} `json:"RpmRateLimits"`
+	TpmRateLimits []struct {
+		Model *string  `json:"Model" name:"Model"`
+		Value *float64 `json:"Value" name:"Value"`
+	} `json:"TpmRateLimits"`
+}
+
+func (r *DescribeMemoryTokenMonitorResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeMemoryTokenMonitorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMemoryStorageMonitorRequest struct {
+	*ksyunhttp.BaseRequest
+	MemoryId    *string `json:"MemoryId,omitempty" name:"MemoryId"`
+	StartTime   *int64  `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime     *int64  `json:"EndTime,omitempty" name:"EndTime"`
+	Granularity *string `json:"Granularity,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeMemoryStorageMonitorRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeMemoryStorageMonitorResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId      *string  `json:"RequestId" name:"RequestId"`
+	CurrentStorage *float64 `json:"CurrentStorage" name:"CurrentStorage"`
+	TodayIncrement *float64 `json:"TodayIncrement" name:"TodayIncrement"`
+	StorageTrend   []struct {
+		Timestamp *int64   `json:"Timestamp" name:"Timestamp"`
+		Value     *float64 `json:"Value" name:"Value"`
+	} `json:"StorageTrend"`
+}
+
+func (r *DescribeMemoryStorageMonitorResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeMemoryStorageMonitorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListMemoriesRequest struct {
+	*ksyunhttp.BaseRequest
+	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+	AgentUserId        *string `json:"AgentUserId,omitempty" name:"AgentUserId"`
+	TopicId            *string `json:"TopicId,omitempty" name:"TopicId"`
+	Query              *string `json:"Query,omitempty" name:"Query"`
+	Page               *int64  `json:"Page,omitempty" name:"Page"`
+	PageSize           *int64  `json:"PageSize,omitempty" name:"PageSize"`
+	SortBy             *string `json:"SortBy,omitempty" name:"SortBy"`
+	SortOrder          *string `json:"SortOrder,omitempty" name:"SortOrder"`
+	CreatedAfter       *int64  `json:"CreatedAfter,omitempty" name:"CreatedAfter"`
+	CreatedBefore      *int64  `json:"CreatedBefore,omitempty" name:"CreatedBefore"`
+	OccurredAfter      *int64  `json:"OccurredAfter,omitempty" name:"OccurredAfter"`
+	OccurredBefore     *int64  `json:"OccurredBefore,omitempty" name:"OccurredBefore"`
+}
+
+func (r *ListMemoriesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ListMemoriesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	Total      *int64  `json:"Total" name:"Total"`
+	MemoryList []struct {
+		MemoryId           *string `json:"MemoryId" name:"MemoryId"`
+		Memory             *string `json:"Memory" name:"Memory"`
+		SourceType         *string `json:"SourceType" name:"SourceType"`
+		TopicId            *string `json:"TopicId" name:"TopicId"`
+		TopicName          *string `json:"TopicName" name:"TopicName"`
+		MemoryCollectionId *string `json:"MemoryCollectionId" name:"MemoryCollectionId"`
+		AgentUserId        *string `json:"AgentUserId" name:"AgentUserId"`
+		CreatedAt          *int64  `json:"CreatedAt" name:"CreatedAt"`
+		UpdatedAt          *int64  `json:"UpdatedAt" name:"UpdatedAt"`
+		OccurredStart      *int64  `json:"OccurredStart" name:"OccurredStart"`
+		OccurredEnd        *int64  `json:"OccurredEnd" name:"OccurredEnd"`
+	} `json:"MemoryList"`
+}
+
+func (r *ListMemoriesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListMemoriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
