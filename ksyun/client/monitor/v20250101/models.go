@@ -205,6 +205,53 @@ func (r *ListAlarmEffectInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryRangeRequest struct {
+	*ksyunhttp.BaseRequest
+	Query *string `json:"Query,omitempty" name:"Query"`
+	Start *int    `json:"Start,omitempty" name:"Start"`
+	End   *int    `json:"End,omitempty" name:"End"`
+	Step  *int    `json:"Step,omitempty" name:"Step"`
+}
+
+func (r *QueryRangeRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type QueryRangeResponse struct {
+	*ksyunhttp.BaseResponse
+	Status    *string `json:"status" name:"status"`
+	IsPartial *bool   `json:"isPartial" name:"isPartial"`
+	Data      struct {
+		ResultType *string `json:"ResultType" name:"ResultType"`
+		Result     []struct {
+			Metric struct {
+				Name    *string `json:"Name" name:"Name"`
+				KcmUuid *string `json:"KcmUuid" name:"KcmUuid"`
+				Name    *string `json:"Name" name:"Name"`
+				Product *string `json:"Product" name:"Product"`
+				Region  *string `json:"Region" name:"Region"`
+				UserId  *string `json:"UserId" name:"UserId"`
+				Uuid    *string `json:"Uuid" name:"Uuid"`
+			} `json:"Metric"`
+			Values []*string `json:"Values" name:"Values"`
+		} `json:"Result" name:"Result"`
+	} `json:"Data"`
+	Stats struct {
+		SeriesFetched     *string `json:"SeriesFetched" name:"SeriesFetched"`
+		ExecutionTimeMsec *int    `json:"ExecutionTimeMsec" name:"ExecutionTimeMsec"`
+	} `json:"Stats"`
+}
+
+func (r *QueryRangeResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *QueryRangeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GetPrometheusTokenRequest struct {
 	*ksyunhttp.BaseRequest
 	ControllerID *string `json:"ControllerID,omitempty" name:"ControllerID"`
