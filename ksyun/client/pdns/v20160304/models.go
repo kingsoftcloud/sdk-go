@@ -2,7 +2,6 @@ package v20160304
 
 import (
 	"encoding/json"
-
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -557,6 +556,9 @@ type CreateZoneRecordRequest struct {
 	Type        *string `json:"Type,omitempty" name:"Type"`
 	RecordTtl   *int    `json:"RecordTtl,omitempty" name:"RecordTtl"`
 	RecordValue *string `json:"RecordValue,omitempty" name:"RecordValue"`
+	Priority    *int    `json:"Priority,omitempty" name:"Priority"`
+	Weight      *int    `json:"Weight,omitempty" name:"Weight"`
+	Port        *int    `json:"Port,omitempty" name:"Port"`
 }
 
 func (r *CreateZoneRecordRequest) ToJsonString() string {
@@ -660,9 +662,11 @@ func (r *ModifyZoneRecordResponse) FromJsonString(s string) error {
 
 type DescribeZoneRecordRequest struct {
 	*ksyunhttp.BaseRequest
-	ZoneId   *string   `json:"ZoneId,omitempty" name:"ZoneId"`
-	RecordId []*string `json:"RecordId,omitempty" name:"RecordId"`
-	Filter   []*string `json:"Filter,omitempty" name:"Filter"`
+	ZoneId     *string   `json:"ZoneId,omitempty" name:"ZoneId"`
+	RecordId   []*string `json:"RecordId,omitempty" name:"RecordId"`
+	Filter     []*string `json:"Filter,omitempty" name:"Filter"`
+	MaxResults *int      `json:"MaxResults,omitempty" name:"MaxResults"`
+	NextToken  *string   `json:"NextToken,omitempty" name:"NextToken"`
 }
 
 func (r *DescribeZoneRecordRequest) ToJsonString() string {
@@ -699,6 +703,7 @@ func (r *DescribeZoneRecordResponse) FromJsonString(s string) error {
 
 type UnbindFdZoneVpcRequest struct {
 	*ksyunhttp.BaseRequest
+	BindVpcId []*UnbindFdZoneVpcBindVpcId `json:"BindVpcId,omitempty" name:"BindVpcId"`
 }
 
 func (r *UnbindFdZoneVpcRequest) ToJsonString() string {
@@ -723,8 +728,9 @@ func (r *UnbindFdZoneVpcResponse) FromJsonString(s string) error {
 
 type BindFdZoneVpcRequest struct {
 	*ksyunhttp.BaseRequest
-	FdZoneId   *string `json:"FdZoneId,omitempty" name:"FdZoneId"`
-	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+	FdZoneId   *string               `json:"FdZoneId,omitempty" name:"FdZoneId"`
+	RegionName *string               `json:"RegionName,omitempty" name:"RegionName"`
+	VpcId      []*BindFdZoneVpcVpcId `json:"VpcId,omitempty" name:"VpcId"`
 }
 
 func (r *BindFdZoneVpcRequest) ToJsonString() string {
@@ -757,7 +763,8 @@ func (r *BindFdZoneVpcResponse) FromJsonString(s string) error {
 
 type DescribePdnsFdZoneRequest struct {
 	*ksyunhttp.BaseRequest
-	FdZoneId []*string `json:"FdZoneId,omitempty" name:"FdZoneId"`
+	FdZoneId []*string                   `json:"FdZoneId,omitempty" name:"FdZoneId"`
+	Filter   []*DescribePdnsFdZoneFilter `json:"Filter,omitempty" name:"Filter"`
 }
 
 func (r *DescribePdnsFdZoneRequest) ToJsonString() string {
