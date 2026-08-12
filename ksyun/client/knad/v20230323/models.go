@@ -157,14 +157,14 @@ func (r *DisassociateIpResponse) FromJsonString(s string) error {
 
 type DescribeKnadIpRequest struct {
 	*ksyunhttp.BaseRequest
-	IpSort       *string `json:"IpSort,omitempty" name:"IpSort"`
-	IpStatusSort *string `json:"IpStatusSort,omitempty" name:"IpStatusSort"`
-	BandSort     *string `json:"BandSort,omitempty" name:"BandSort"`
-	Ip           *string `json:"Ip,omitempty" name:"Ip"`
-	KnadId       *string `json:"KnadId,omitempty" name:"KnadId"`
-	ProjectId    []*int  `json:"ProjectId,omitempty" name:"ProjectId"`
-	PageSize     *int    `json:"PageSize,omitempty" name:"PageSize"`
-	OffSet       *int    `json:"OffSet,omitempty" name:"OffSet"`
+	IpSort       *string   `json:"IpSort,omitempty" name:"IpSort"`
+	IpStatusSort *string   `json:"IpStatusSort,omitempty" name:"IpStatusSort"`
+	BandSort     *string   `json:"BandSort,omitempty" name:"BandSort"`
+	Ip           *string   `json:"Ip,omitempty" name:"Ip"`
+	KnadId       *string   `json:"KnadId,omitempty" name:"KnadId"`
+	ProjectId    []*string `json:"ProjectId,omitempty" name:"ProjectId"`
+	PageSize     *int      `json:"PageSize,omitempty" name:"PageSize"`
+	OffSet       *int      `json:"OffSet,omitempty" name:"OffSet"`
 }
 
 func (r *DescribeKnadIpRequest) ToJsonString() string {
@@ -181,7 +181,7 @@ type DescribeKnadIpResponse struct {
 		EipId        *string `json:"EipId" name:"EipId"`
 		KnadIp       *string `json:"KnadIp" name:"KnadIp"`
 		StatusDesc   *string `json:"StatusDesc" name:"StatusDesc"`
-		ProjectId    *int    `json:"ProjectId" name:"ProjectId"`
+		ProjectId    *string `json:"ProjectId" name:"ProjectId"`
 		Band         *int    `json:"Band" name:"Band"`
 		MaxBand      *int    `json:"MaxBand" name:"MaxBand"`
 		TemplateId   *int    `json:"TemplateId" name:"TemplateId"`
@@ -365,6 +365,11 @@ func (r *GetZoneListRequest) ToJsonString() string {
 
 type GetZoneListResponse struct {
 	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	ZoneSet   []struct {
+		ZoneName *string `json:"ZoneName" name:"ZoneName"`
+		ZoneKey  *string `json:"ZoneKey" name:"ZoneKey"`
+	} `json:"ZoneSet"`
 }
 
 func (r *GetZoneListResponse) ToJsonString() string {
@@ -486,29 +491,5 @@ func (r *GetKnadPolicyResponse) ToJsonString() string {
 }
 
 func (r *GetKnadPolicyResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type InsertEipsRequest struct {
-	*ksyunhttp.BaseRequest
-	KnadId *string   `json:"KnadId,omitempty" name:"KnadId"`
-	Ip     []*string `json:"Ip,omitempty" name:"Ip"`
-}
-
-func (r *InsertEipsRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type InsertEipsResponse struct {
-	*ksyunhttp.BaseResponse
-}
-
-func (r *InsertEipsResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *InsertEipsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

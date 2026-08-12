@@ -941,7 +941,7 @@ func (c *Client) GetZoneListWithContext(ctx context.Context, request *GetZoneLis
 		request.Init().WithApiInfo("knad", APIVersion, "GetZoneList")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewGetZoneListResponse()
 	err, msg := c.Send(request, response)
@@ -961,7 +961,7 @@ func (c *Client) GetZoneListWithContextV2(ctx context.Context, request *GetZoneL
 		request.Init().WithApiInfo("knad", APIVersion, "GetZoneList")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewGetZoneListResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1178,7 +1178,7 @@ func (c *Client) GetBlockLocationsWithContext(ctx context.Context, request *GetB
 		request.Init().WithApiInfo("knad", APIVersion, "GetBlockLocations")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewGetBlockLocationsResponse()
 	err, msg := c.Send(request, response)
@@ -1198,7 +1198,7 @@ func (c *Client) GetBlockLocationsWithContextV2(ctx context.Context, request *Ge
 		request.Init().WithApiInfo("knad", APIVersion, "GetBlockLocations")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/json")
+	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewGetBlockLocationsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1280,85 +1280,6 @@ func (c *Client) GetKnadPolicyWithContextV2(ctx context.Context, request *GetKna
 	request.SetContentType("application/json")
 
 	response := NewGetKnadPolicyResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}
-func NewInsertEipsRequest() (request *InsertEipsRequest) {
-	request = &InsertEipsRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("knad", APIVersion, "InsertEips")
-	return
-}
-
-func NewInsertEipsResponse() (response *InsertEipsResponse) {
-	response = &InsertEipsResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) InsertEips(request *InsertEipsRequest) string {
-	return c.InsertEipsWithContext(context.Background(), request)
-}
-
-func (c *Client) InsertEipsSend(request *InsertEipsRequest) (*InsertEipsResponse, error) {
-	statusCode, msg, err := c.InsertEipsWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	if msg == "" {
-		return nil, nil
-	}
-
-	var respStruct InsertEipsResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) InsertEipsWithContext(ctx context.Context, request *InsertEipsRequest) string {
-	if request == nil {
-		request = NewInsertEipsRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("knad", APIVersion, "InsertEips")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewInsertEipsResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) InsertEipsWithContextV2(ctx context.Context, request *InsertEipsRequest) (int, string, error) {
-	if request == nil {
-		request = NewInsertEipsRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("knad", APIVersion, "InsertEips")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewInsertEipsResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
