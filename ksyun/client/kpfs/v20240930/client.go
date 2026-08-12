@@ -338,6 +338,322 @@ func (c *Client) DescribeFileSystemClientInfoWithContextV2(ctx context.Context, 
 	}
 	return statusCode, msg, nil
 }
+func NewDescribeFileSystemFileListRequest() (request *DescribeFileSystemFileListRequest) {
+	request = &DescribeFileSystemFileListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileSystemFileList")
+	return
+}
+
+func NewDescribeFileSystemFileListResponse() (response *DescribeFileSystemFileListResponse) {
+	response = &DescribeFileSystemFileListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeFileSystemFileList(request *DescribeFileSystemFileListRequest) string {
+	return c.DescribeFileSystemFileListWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeFileSystemFileListSend(request *DescribeFileSystemFileListRequest) (*DescribeFileSystemFileListResponse, error) {
+	statusCode, msg, err := c.DescribeFileSystemFileListWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeFileSystemFileListResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeFileSystemFileListWithContext(ctx context.Context, request *DescribeFileSystemFileListRequest) string {
+	if request == nil {
+		request = NewDescribeFileSystemFileListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileSystemFileList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeFileSystemFileListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeFileSystemFileListWithContextV2(ctx context.Context, request *DescribeFileSystemFileListRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeFileSystemFileListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileSystemFileList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeFileSystemFileListResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewRenewFileSystemRequest() (request *RenewFileSystemRequest) {
+	request = &RenewFileSystemRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "RenewFileSystem")
+	return
+}
+
+func NewRenewFileSystemResponse() (response *RenewFileSystemResponse) {
+	response = &RenewFileSystemResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RenewFileSystem(request *RenewFileSystemRequest) string {
+	return c.RenewFileSystemWithContext(context.Background(), request)
+}
+
+func (c *Client) RenewFileSystemSend(request *RenewFileSystemRequest) (*RenewFileSystemResponse, error) {
+	statusCode, msg, err := c.RenewFileSystemWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct RenewFileSystemResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) RenewFileSystemWithContext(ctx context.Context, request *RenewFileSystemRequest) string {
+	if request == nil {
+		request = NewRenewFileSystemRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "RenewFileSystem")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRenewFileSystemResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) RenewFileSystemWithContextV2(ctx context.Context, request *RenewFileSystemRequest) (int, string, error) {
+	if request == nil {
+		request = NewRenewFileSystemRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "RenewFileSystem")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRenewFileSystemResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewUpgradeFileSystemRequest() (request *UpgradeFileSystemRequest) {
+	request = &UpgradeFileSystemRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "UpgradeFileSystem")
+	return
+}
+
+func NewUpgradeFileSystemResponse() (response *UpgradeFileSystemResponse) {
+	response = &UpgradeFileSystemResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpgradeFileSystem(request *UpgradeFileSystemRequest) string {
+	return c.UpgradeFileSystemWithContext(context.Background(), request)
+}
+
+func (c *Client) UpgradeFileSystemSend(request *UpgradeFileSystemRequest) (*UpgradeFileSystemResponse, error) {
+	statusCode, msg, err := c.UpgradeFileSystemWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct UpgradeFileSystemResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) UpgradeFileSystemWithContext(ctx context.Context, request *UpgradeFileSystemRequest) string {
+	if request == nil {
+		request = NewUpgradeFileSystemRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "UpgradeFileSystem")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpgradeFileSystemResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) UpgradeFileSystemWithContextV2(ctx context.Context, request *UpgradeFileSystemRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpgradeFileSystemRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "UpgradeFileSystem")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpgradeFileSystemResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateFileSystemRequest() (request *CreateFileSystemRequest) {
+	request = &CreateFileSystemRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "CreateFileSystem")
+	return
+}
+
+func NewCreateFileSystemResponse() (response *CreateFileSystemResponse) {
+	response = &CreateFileSystemResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateFileSystem(request *CreateFileSystemRequest) string {
+	return c.CreateFileSystemWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateFileSystemSend(request *CreateFileSystemRequest) (*CreateFileSystemResponse, error) {
+	statusCode, msg, err := c.CreateFileSystemWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateFileSystemResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateFileSystemWithContext(ctx context.Context, request *CreateFileSystemRequest) string {
+	if request == nil {
+		request = NewCreateFileSystemRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateFileSystem")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateFileSystemResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateFileSystemWithContextV2(ctx context.Context, request *CreateFileSystemRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateFileSystemRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateFileSystem")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateFileSystemResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewGetCapacityAvailableRequest() (request *GetCapacityAvailableRequest) {
 	request = &GetCapacityAvailableRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -970,6 +1286,322 @@ func (c *Client) GetBandwidthReadWithContextV2(ctx context.Context, request *Get
 	}
 	return statusCode, msg, nil
 }
+func NewDeletePerformanceOnePosixAclRequest() (request *DeletePerformanceOnePosixAclRequest) {
+	request = &DeletePerformanceOnePosixAclRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DeletePerformanceOnePosixAcl")
+	return
+}
+
+func NewDeletePerformanceOnePosixAclResponse() (response *DeletePerformanceOnePosixAclResponse) {
+	response = &DeletePerformanceOnePosixAclResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeletePerformanceOnePosixAcl(request *DeletePerformanceOnePosixAclRequest) string {
+	return c.DeletePerformanceOnePosixAclWithContext(context.Background(), request)
+}
+
+func (c *Client) DeletePerformanceOnePosixAclSend(request *DeletePerformanceOnePosixAclRequest) (*DeletePerformanceOnePosixAclResponse, error) {
+	statusCode, msg, err := c.DeletePerformanceOnePosixAclWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeletePerformanceOnePosixAclResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeletePerformanceOnePosixAclWithContext(ctx context.Context, request *DeletePerformanceOnePosixAclRequest) string {
+	if request == nil {
+		request = NewDeletePerformanceOnePosixAclRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeletePerformanceOnePosixAcl")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeletePerformanceOnePosixAclResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeletePerformanceOnePosixAclWithContextV2(ctx context.Context, request *DeletePerformanceOnePosixAclRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeletePerformanceOnePosixAclRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeletePerformanceOnePosixAcl")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeletePerformanceOnePosixAclResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewUpdatePerformanceOnePosixAclRequest() (request *UpdatePerformanceOnePosixAclRequest) {
+	request = &UpdatePerformanceOnePosixAclRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "UpdatePerformanceOnePosixAcl")
+	return
+}
+
+func NewUpdatePerformanceOnePosixAclResponse() (response *UpdatePerformanceOnePosixAclResponse) {
+	response = &UpdatePerformanceOnePosixAclResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdatePerformanceOnePosixAcl(request *UpdatePerformanceOnePosixAclRequest) string {
+	return c.UpdatePerformanceOnePosixAclWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdatePerformanceOnePosixAclSend(request *UpdatePerformanceOnePosixAclRequest) (*UpdatePerformanceOnePosixAclResponse, error) {
+	statusCode, msg, err := c.UpdatePerformanceOnePosixAclWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct UpdatePerformanceOnePosixAclResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) UpdatePerformanceOnePosixAclWithContext(ctx context.Context, request *UpdatePerformanceOnePosixAclRequest) string {
+	if request == nil {
+		request = NewUpdatePerformanceOnePosixAclRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "UpdatePerformanceOnePosixAcl")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdatePerformanceOnePosixAclResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) UpdatePerformanceOnePosixAclWithContextV2(ctx context.Context, request *UpdatePerformanceOnePosixAclRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdatePerformanceOnePosixAclRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "UpdatePerformanceOnePosixAcl")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdatePerformanceOnePosixAclResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribePerformanceOnePosixAclListRequest() (request *DescribePerformanceOnePosixAclListRequest) {
+	request = &DescribePerformanceOnePosixAclListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribePerformanceOnePosixAclList")
+	return
+}
+
+func NewDescribePerformanceOnePosixAclListResponse() (response *DescribePerformanceOnePosixAclListResponse) {
+	response = &DescribePerformanceOnePosixAclListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribePerformanceOnePosixAclList(request *DescribePerformanceOnePosixAclListRequest) string {
+	return c.DescribePerformanceOnePosixAclListWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribePerformanceOnePosixAclListSend(request *DescribePerformanceOnePosixAclListRequest) (*DescribePerformanceOnePosixAclListResponse, error) {
+	statusCode, msg, err := c.DescribePerformanceOnePosixAclListWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribePerformanceOnePosixAclListResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribePerformanceOnePosixAclListWithContext(ctx context.Context, request *DescribePerformanceOnePosixAclListRequest) string {
+	if request == nil {
+		request = NewDescribePerformanceOnePosixAclListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribePerformanceOnePosixAclList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribePerformanceOnePosixAclListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribePerformanceOnePosixAclListWithContextV2(ctx context.Context, request *DescribePerformanceOnePosixAclListRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribePerformanceOnePosixAclListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribePerformanceOnePosixAclList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribePerformanceOnePosixAclListResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewSetPerformanceOnePosixAclRequest() (request *SetPerformanceOnePosixAclRequest) {
+	request = &SetPerformanceOnePosixAclRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "SetPerformanceOnePosixAcl")
+	return
+}
+
+func NewSetPerformanceOnePosixAclResponse() (response *SetPerformanceOnePosixAclResponse) {
+	response = &SetPerformanceOnePosixAclResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetPerformanceOnePosixAcl(request *SetPerformanceOnePosixAclRequest) string {
+	return c.SetPerformanceOnePosixAclWithContext(context.Background(), request)
+}
+
+func (c *Client) SetPerformanceOnePosixAclSend(request *SetPerformanceOnePosixAclRequest) (*SetPerformanceOnePosixAclResponse, error) {
+	statusCode, msg, err := c.SetPerformanceOnePosixAclWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetPerformanceOnePosixAclResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetPerformanceOnePosixAclWithContext(ctx context.Context, request *SetPerformanceOnePosixAclRequest) string {
+	if request == nil {
+		request = NewSetPerformanceOnePosixAclRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "SetPerformanceOnePosixAcl")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetPerformanceOnePosixAclResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetPerformanceOnePosixAclWithContextV2(ctx context.Context, request *SetPerformanceOnePosixAclRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetPerformanceOnePosixAclRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "SetPerformanceOnePosixAcl")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetPerformanceOnePosixAclResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewDescribeDirQuotaListRequest() (request *DescribeDirQuotaListRequest) {
 	request = &DescribeDirQuotaListRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -1020,7 +1652,7 @@ func (c *Client) DescribeDirQuotaListWithContext(ctx context.Context, request *D
 		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDirQuotaList")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewDescribeDirQuotaListResponse()
 	err, msg := c.Send(request, response)
@@ -1040,7 +1672,7 @@ func (c *Client) DescribeDirQuotaListWithContextV2(ctx context.Context, request 
 		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDirQuotaList")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewDescribeDirQuotaListResponse()
 	statusCode, msg, err := c.SendV2(request, response)
@@ -1652,7 +2284,7 @@ func (c *Client) DescribeDirQuotaWithContext(ctx context.Context, request *Descr
 		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDirQuota")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewDescribeDirQuotaResponse()
 	err, msg := c.Send(request, response)
@@ -1672,9 +2304,2142 @@ func (c *Client) DescribeDirQuotaWithContextV2(ctx context.Context, request *Des
 		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDirQuota")
 	}
 	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
+	request.SetContentType("application/json")
 
 	response := NewDescribeDirQuotaResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteFileSystemRequest() (request *DeleteFileSystemRequest) {
+	request = &DeleteFileSystemRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DeleteFileSystem")
+	return
+}
+
+func NewDeleteFileSystemResponse() (response *DeleteFileSystemResponse) {
+	response = &DeleteFileSystemResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteFileSystem(request *DeleteFileSystemRequest) string {
+	return c.DeleteFileSystemWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteFileSystemSend(request *DeleteFileSystemRequest) (*DeleteFileSystemResponse, error) {
+	statusCode, msg, err := c.DeleteFileSystemWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteFileSystemResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteFileSystemWithContext(ctx context.Context, request *DeleteFileSystemRequest) string {
+	if request == nil {
+		request = NewDeleteFileSystemRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteFileSystem")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteFileSystemResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteFileSystemWithContextV2(ctx context.Context, request *DeleteFileSystemRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteFileSystemRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteFileSystem")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteFileSystemResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewAddPerformanceOnePosixAclIpRequest() (request *AddPerformanceOnePosixAclIpRequest) {
+	request = &AddPerformanceOnePosixAclIpRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "AddPerformanceOnePosixAclIp")
+	return
+}
+
+func NewAddPerformanceOnePosixAclIpResponse() (response *AddPerformanceOnePosixAclIpResponse) {
+	response = &AddPerformanceOnePosixAclIpResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) AddPerformanceOnePosixAclIp(request *AddPerformanceOnePosixAclIpRequest) string {
+	return c.AddPerformanceOnePosixAclIpWithContext(context.Background(), request)
+}
+
+func (c *Client) AddPerformanceOnePosixAclIpSend(request *AddPerformanceOnePosixAclIpRequest) (*AddPerformanceOnePosixAclIpResponse, error) {
+	statusCode, msg, err := c.AddPerformanceOnePosixAclIpWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct AddPerformanceOnePosixAclIpResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) AddPerformanceOnePosixAclIpWithContext(ctx context.Context, request *AddPerformanceOnePosixAclIpRequest) string {
+	if request == nil {
+		request = NewAddPerformanceOnePosixAclIpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "AddPerformanceOnePosixAclIp")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewAddPerformanceOnePosixAclIpResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) AddPerformanceOnePosixAclIpWithContextV2(ctx context.Context, request *AddPerformanceOnePosixAclIpRequest) (int, string, error) {
+	if request == nil {
+		request = NewAddPerformanceOnePosixAclIpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "AddPerformanceOnePosixAclIp")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewAddPerformanceOnePosixAclIpResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewRemovePerformanceOnePosixAclIpRequest() (request *RemovePerformanceOnePosixAclIpRequest) {
+	request = &RemovePerformanceOnePosixAclIpRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "RemovePerformanceOnePosixAclIp")
+	return
+}
+
+func NewRemovePerformanceOnePosixAclIpResponse() (response *RemovePerformanceOnePosixAclIpResponse) {
+	response = &RemovePerformanceOnePosixAclIpResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RemovePerformanceOnePosixAclIp(request *RemovePerformanceOnePosixAclIpRequest) string {
+	return c.RemovePerformanceOnePosixAclIpWithContext(context.Background(), request)
+}
+
+func (c *Client) RemovePerformanceOnePosixAclIpSend(request *RemovePerformanceOnePosixAclIpRequest) (*RemovePerformanceOnePosixAclIpResponse, error) {
+	statusCode, msg, err := c.RemovePerformanceOnePosixAclIpWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct RemovePerformanceOnePosixAclIpResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) RemovePerformanceOnePosixAclIpWithContext(ctx context.Context, request *RemovePerformanceOnePosixAclIpRequest) string {
+	if request == nil {
+		request = NewRemovePerformanceOnePosixAclIpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "RemovePerformanceOnePosixAclIp")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRemovePerformanceOnePosixAclIpResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) RemovePerformanceOnePosixAclIpWithContextV2(ctx context.Context, request *RemovePerformanceOnePosixAclIpRequest) (int, string, error) {
+	if request == nil {
+		request = NewRemovePerformanceOnePosixAclIpRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "RemovePerformanceOnePosixAclIp")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRemovePerformanceOnePosixAclIpResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetDataMigrateTaskProgressRequest() (request *GetDataMigrateTaskProgressRequest) {
+	request = &GetDataMigrateTaskProgressRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetDataMigrateTaskProgress")
+	return
+}
+
+func NewGetDataMigrateTaskProgressResponse() (response *GetDataMigrateTaskProgressResponse) {
+	response = &GetDataMigrateTaskProgressResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetDataMigrateTaskProgress(request *GetDataMigrateTaskProgressRequest) string {
+	return c.GetDataMigrateTaskProgressWithContext(context.Background(), request)
+}
+
+func (c *Client) GetDataMigrateTaskProgressSend(request *GetDataMigrateTaskProgressRequest) (*GetDataMigrateTaskProgressResponse, error) {
+	statusCode, msg, err := c.GetDataMigrateTaskProgressWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetDataMigrateTaskProgressResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetDataMigrateTaskProgressWithContext(ctx context.Context, request *GetDataMigrateTaskProgressRequest) string {
+	if request == nil {
+		request = NewGetDataMigrateTaskProgressRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetDataMigrateTaskProgress")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetDataMigrateTaskProgressResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetDataMigrateTaskProgressWithContextV2(ctx context.Context, request *GetDataMigrateTaskProgressRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetDataMigrateTaskProgressRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetDataMigrateTaskProgress")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetDataMigrateTaskProgressResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeDataMigrateTaskListRequest() (request *DescribeDataMigrateTaskListRequest) {
+	request = &DescribeDataMigrateTaskListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataMigrateTaskList")
+	return
+}
+
+func NewDescribeDataMigrateTaskListResponse() (response *DescribeDataMigrateTaskListResponse) {
+	response = &DescribeDataMigrateTaskListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeDataMigrateTaskList(request *DescribeDataMigrateTaskListRequest) string {
+	return c.DescribeDataMigrateTaskListWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDataMigrateTaskListSend(request *DescribeDataMigrateTaskListRequest) (*DescribeDataMigrateTaskListResponse, error) {
+	statusCode, msg, err := c.DescribeDataMigrateTaskListWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeDataMigrateTaskListResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeDataMigrateTaskListWithContext(ctx context.Context, request *DescribeDataMigrateTaskListRequest) string {
+	if request == nil {
+		request = NewDescribeDataMigrateTaskListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataMigrateTaskList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeDataMigrateTaskListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeDataMigrateTaskListWithContextV2(ctx context.Context, request *DescribeDataMigrateTaskListRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeDataMigrateTaskListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataMigrateTaskList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeDataMigrateTaskListResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewStartDataMigrateTaskRequest() (request *StartDataMigrateTaskRequest) {
+	request = &StartDataMigrateTaskRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "StartDataMigrateTask")
+	return
+}
+
+func NewStartDataMigrateTaskResponse() (response *StartDataMigrateTaskResponse) {
+	response = &StartDataMigrateTaskResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) StartDataMigrateTask(request *StartDataMigrateTaskRequest) string {
+	return c.StartDataMigrateTaskWithContext(context.Background(), request)
+}
+
+func (c *Client) StartDataMigrateTaskSend(request *StartDataMigrateTaskRequest) (*StartDataMigrateTaskResponse, error) {
+	statusCode, msg, err := c.StartDataMigrateTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct StartDataMigrateTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) StartDataMigrateTaskWithContext(ctx context.Context, request *StartDataMigrateTaskRequest) string {
+	if request == nil {
+		request = NewStartDataMigrateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "StartDataMigrateTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewStartDataMigrateTaskResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) StartDataMigrateTaskWithContextV2(ctx context.Context, request *StartDataMigrateTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewStartDataMigrateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "StartDataMigrateTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewStartDataMigrateTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewStopDataMigrateTaskRequest() (request *StopDataMigrateTaskRequest) {
+	request = &StopDataMigrateTaskRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "StopDataMigrateTask")
+	return
+}
+
+func NewStopDataMigrateTaskResponse() (response *StopDataMigrateTaskResponse) {
+	response = &StopDataMigrateTaskResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) StopDataMigrateTask(request *StopDataMigrateTaskRequest) string {
+	return c.StopDataMigrateTaskWithContext(context.Background(), request)
+}
+
+func (c *Client) StopDataMigrateTaskSend(request *StopDataMigrateTaskRequest) (*StopDataMigrateTaskResponse, error) {
+	statusCode, msg, err := c.StopDataMigrateTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct StopDataMigrateTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) StopDataMigrateTaskWithContext(ctx context.Context, request *StopDataMigrateTaskRequest) string {
+	if request == nil {
+		request = NewStopDataMigrateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "StopDataMigrateTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewStopDataMigrateTaskResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) StopDataMigrateTaskWithContextV2(ctx context.Context, request *StopDataMigrateTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewStopDataMigrateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "StopDataMigrateTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewStopDataMigrateTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteDataMigrateTaskRequest() (request *DeleteDataMigrateTaskRequest) {
+	request = &DeleteDataMigrateTaskRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DeleteDataMigrateTask")
+	return
+}
+
+func NewDeleteDataMigrateTaskResponse() (response *DeleteDataMigrateTaskResponse) {
+	response = &DeleteDataMigrateTaskResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteDataMigrateTask(request *DeleteDataMigrateTaskRequest) string {
+	return c.DeleteDataMigrateTaskWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteDataMigrateTaskSend(request *DeleteDataMigrateTaskRequest) (*DeleteDataMigrateTaskResponse, error) {
+	statusCode, msg, err := c.DeleteDataMigrateTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteDataMigrateTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteDataMigrateTaskWithContext(ctx context.Context, request *DeleteDataMigrateTaskRequest) string {
+	if request == nil {
+		request = NewDeleteDataMigrateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteDataMigrateTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteDataMigrateTaskResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteDataMigrateTaskWithContextV2(ctx context.Context, request *DeleteDataMigrateTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteDataMigrateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteDataMigrateTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteDataMigrateTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewUpdateDataMigrateTaskRequest() (request *UpdateDataMigrateTaskRequest) {
+	request = &UpdateDataMigrateTaskRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "UpdateDataMigrateTask")
+	return
+}
+
+func NewUpdateDataMigrateTaskResponse() (response *UpdateDataMigrateTaskResponse) {
+	response = &UpdateDataMigrateTaskResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateDataMigrateTask(request *UpdateDataMigrateTaskRequest) string {
+	return c.UpdateDataMigrateTaskWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateDataMigrateTaskSend(request *UpdateDataMigrateTaskRequest) (*UpdateDataMigrateTaskResponse, error) {
+	statusCode, msg, err := c.UpdateDataMigrateTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct UpdateDataMigrateTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) UpdateDataMigrateTaskWithContext(ctx context.Context, request *UpdateDataMigrateTaskRequest) string {
+	if request == nil {
+		request = NewUpdateDataMigrateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "UpdateDataMigrateTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateDataMigrateTaskResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) UpdateDataMigrateTaskWithContextV2(ctx context.Context, request *UpdateDataMigrateTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdateDataMigrateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "UpdateDataMigrateTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateDataMigrateTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateDataMigrateTaskRequest() (request *CreateDataMigrateTaskRequest) {
+	request = &CreateDataMigrateTaskRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataMigrateTask")
+	return
+}
+
+func NewCreateDataMigrateTaskResponse() (response *CreateDataMigrateTaskResponse) {
+	response = &CreateDataMigrateTaskResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateDataMigrateTask(request *CreateDataMigrateTaskRequest) string {
+	return c.CreateDataMigrateTaskWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateDataMigrateTaskSend(request *CreateDataMigrateTaskRequest) (*CreateDataMigrateTaskResponse, error) {
+	statusCode, msg, err := c.CreateDataMigrateTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateDataMigrateTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateDataMigrateTaskWithContext(ctx context.Context, request *CreateDataMigrateTaskRequest) string {
+	if request == nil {
+		request = NewCreateDataMigrateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataMigrateTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateDataMigrateTaskResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateDataMigrateTaskWithContextV2(ctx context.Context, request *CreateDataMigrateTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateDataMigrateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataMigrateTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateDataMigrateTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeClientInstallInfoRequest() (request *DescribeClientInstallInfoRequest) {
+	request = &DescribeClientInstallInfoRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeClientInstallInfo")
+	return
+}
+
+func NewDescribeClientInstallInfoResponse() (response *DescribeClientInstallInfoResponse) {
+	response = &DescribeClientInstallInfoResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeClientInstallInfo(request *DescribeClientInstallInfoRequest) string {
+	return c.DescribeClientInstallInfoWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeClientInstallInfoSend(request *DescribeClientInstallInfoRequest) (*DescribeClientInstallInfoResponse, error) {
+	statusCode, msg, err := c.DescribeClientInstallInfoWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeClientInstallInfoResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeClientInstallInfoWithContext(ctx context.Context, request *DescribeClientInstallInfoRequest) string {
+	if request == nil {
+		request = NewDescribeClientInstallInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeClientInstallInfo")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeClientInstallInfoResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeClientInstallInfoWithContextV2(ctx context.Context, request *DescribeClientInstallInfoRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeClientInstallInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeClientInstallInfo")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeClientInstallInfoResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewManageDataFlowTaskRequest() (request *ManageDataFlowTaskRequest) {
+	request = &ManageDataFlowTaskRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "ManageDataFlowTask")
+	return
+}
+
+func NewManageDataFlowTaskResponse() (response *ManageDataFlowTaskResponse) {
+	response = &ManageDataFlowTaskResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ManageDataFlowTask(request *ManageDataFlowTaskRequest) string {
+	return c.ManageDataFlowTaskWithContext(context.Background(), request)
+}
+
+func (c *Client) ManageDataFlowTaskSend(request *ManageDataFlowTaskRequest) (*ManageDataFlowTaskResponse, error) {
+	statusCode, msg, err := c.ManageDataFlowTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ManageDataFlowTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ManageDataFlowTaskWithContext(ctx context.Context, request *ManageDataFlowTaskRequest) string {
+	if request == nil {
+		request = NewManageDataFlowTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "ManageDataFlowTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewManageDataFlowTaskResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ManageDataFlowTaskWithContextV2(ctx context.Context, request *ManageDataFlowTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewManageDataFlowTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "ManageDataFlowTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewManageDataFlowTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateDataFlowStrategyRequest() (request *CreateDataFlowStrategyRequest) {
+	request = &CreateDataFlowStrategyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlowStrategy")
+	return
+}
+
+func NewCreateDataFlowStrategyResponse() (response *CreateDataFlowStrategyResponse) {
+	response = &CreateDataFlowStrategyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateDataFlowStrategy(request *CreateDataFlowStrategyRequest) string {
+	return c.CreateDataFlowStrategyWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateDataFlowStrategySend(request *CreateDataFlowStrategyRequest) (*CreateDataFlowStrategyResponse, error) {
+	statusCode, msg, err := c.CreateDataFlowStrategyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateDataFlowStrategyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateDataFlowStrategyWithContext(ctx context.Context, request *CreateDataFlowStrategyRequest) string {
+	if request == nil {
+		request = NewCreateDataFlowStrategyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlowStrategy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateDataFlowStrategyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateDataFlowStrategyWithContextV2(ctx context.Context, request *CreateDataFlowStrategyRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateDataFlowStrategyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlowStrategy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateDataFlowStrategyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeDataFlowTaskListRequest() (request *DescribeDataFlowTaskListRequest) {
+	request = &DescribeDataFlowTaskListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowTaskList")
+	return
+}
+
+func NewDescribeDataFlowTaskListResponse() (response *DescribeDataFlowTaskListResponse) {
+	response = &DescribeDataFlowTaskListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeDataFlowTaskList(request *DescribeDataFlowTaskListRequest) string {
+	return c.DescribeDataFlowTaskListWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDataFlowTaskListSend(request *DescribeDataFlowTaskListRequest) (*DescribeDataFlowTaskListResponse, error) {
+	statusCode, msg, err := c.DescribeDataFlowTaskListWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeDataFlowTaskListResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeDataFlowTaskListWithContext(ctx context.Context, request *DescribeDataFlowTaskListRequest) string {
+	if request == nil {
+		request = NewDescribeDataFlowTaskListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowTaskList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeDataFlowTaskListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeDataFlowTaskListWithContextV2(ctx context.Context, request *DescribeDataFlowTaskListRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeDataFlowTaskListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowTaskList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeDataFlowTaskListResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewActivateDataFlowTaskRequest() (request *ActivateDataFlowTaskRequest) {
+	request = &ActivateDataFlowTaskRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "ActivateDataFlowTask")
+	return
+}
+
+func NewActivateDataFlowTaskResponse() (response *ActivateDataFlowTaskResponse) {
+	response = &ActivateDataFlowTaskResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ActivateDataFlowTask(request *ActivateDataFlowTaskRequest) string {
+	return c.ActivateDataFlowTaskWithContext(context.Background(), request)
+}
+
+func (c *Client) ActivateDataFlowTaskSend(request *ActivateDataFlowTaskRequest) (*ActivateDataFlowTaskResponse, error) {
+	statusCode, msg, err := c.ActivateDataFlowTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ActivateDataFlowTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ActivateDataFlowTaskWithContext(ctx context.Context, request *ActivateDataFlowTaskRequest) string {
+	if request == nil {
+		request = NewActivateDataFlowTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "ActivateDataFlowTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewActivateDataFlowTaskResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ActivateDataFlowTaskWithContextV2(ctx context.Context, request *ActivateDataFlowTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewActivateDataFlowTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "ActivateDataFlowTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewActivateDataFlowTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteDataFlowStrategyRequest() (request *DeleteDataFlowStrategyRequest) {
+	request = &DeleteDataFlowStrategyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DeleteDataFlowStrategy")
+	return
+}
+
+func NewDeleteDataFlowStrategyResponse() (response *DeleteDataFlowStrategyResponse) {
+	response = &DeleteDataFlowStrategyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteDataFlowStrategy(request *DeleteDataFlowStrategyRequest) string {
+	return c.DeleteDataFlowStrategyWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteDataFlowStrategySend(request *DeleteDataFlowStrategyRequest) (*DeleteDataFlowStrategyResponse, error) {
+	statusCode, msg, err := c.DeleteDataFlowStrategyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteDataFlowStrategyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteDataFlowStrategyWithContext(ctx context.Context, request *DeleteDataFlowStrategyRequest) string {
+	if request == nil {
+		request = NewDeleteDataFlowStrategyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteDataFlowStrategy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteDataFlowStrategyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteDataFlowStrategyWithContextV2(ctx context.Context, request *DeleteDataFlowStrategyRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteDataFlowStrategyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteDataFlowStrategy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteDataFlowStrategyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeDataFlowStrategyListRequest() (request *DescribeDataFlowStrategyListRequest) {
+	request = &DescribeDataFlowStrategyListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowStrategyList")
+	return
+}
+
+func NewDescribeDataFlowStrategyListResponse() (response *DescribeDataFlowStrategyListResponse) {
+	response = &DescribeDataFlowStrategyListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeDataFlowStrategyList(request *DescribeDataFlowStrategyListRequest) string {
+	return c.DescribeDataFlowStrategyListWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDataFlowStrategyListSend(request *DescribeDataFlowStrategyListRequest) (*DescribeDataFlowStrategyListResponse, error) {
+	statusCode, msg, err := c.DescribeDataFlowStrategyListWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeDataFlowStrategyListResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeDataFlowStrategyListWithContext(ctx context.Context, request *DescribeDataFlowStrategyListRequest) string {
+	if request == nil {
+		request = NewDescribeDataFlowStrategyListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowStrategyList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeDataFlowStrategyListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeDataFlowStrategyListWithContextV2(ctx context.Context, request *DescribeDataFlowStrategyListRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeDataFlowStrategyListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowStrategyList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeDataFlowStrategyListResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCleanRecycledFilesRequest() (request *CleanRecycledFilesRequest) {
+	request = &CleanRecycledFilesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "CleanRecycledFiles")
+	return
+}
+
+func NewCleanRecycledFilesResponse() (response *CleanRecycledFilesResponse) {
+	response = &CleanRecycledFilesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CleanRecycledFiles(request *CleanRecycledFilesRequest) string {
+	return c.CleanRecycledFilesWithContext(context.Background(), request)
+}
+
+func (c *Client) CleanRecycledFilesSend(request *CleanRecycledFilesRequest) (*CleanRecycledFilesResponse, error) {
+	statusCode, msg, err := c.CleanRecycledFilesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CleanRecycledFilesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CleanRecycledFilesWithContext(ctx context.Context, request *CleanRecycledFilesRequest) string {
+	if request == nil {
+		request = NewCleanRecycledFilesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CleanRecycledFiles")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCleanRecycledFilesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CleanRecycledFilesWithContextV2(ctx context.Context, request *CleanRecycledFilesRequest) (int, string, error) {
+	if request == nil {
+		request = NewCleanRecycledFilesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CleanRecycledFiles")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCleanRecycledFilesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteCleanRecycledFilesRequest() (request *DeleteCleanRecycledFilesRequest) {
+	request = &DeleteCleanRecycledFilesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DeleteCleanRecycledFiles")
+	return
+}
+
+func NewDeleteCleanRecycledFilesResponse() (response *DeleteCleanRecycledFilesResponse) {
+	response = &DeleteCleanRecycledFilesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteCleanRecycledFiles(request *DeleteCleanRecycledFilesRequest) string {
+	return c.DeleteCleanRecycledFilesWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteCleanRecycledFilesSend(request *DeleteCleanRecycledFilesRequest) (*DeleteCleanRecycledFilesResponse, error) {
+	statusCode, msg, err := c.DeleteCleanRecycledFilesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteCleanRecycledFilesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteCleanRecycledFilesWithContext(ctx context.Context, request *DeleteCleanRecycledFilesRequest) string {
+	if request == nil {
+		request = NewDeleteCleanRecycledFilesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteCleanRecycledFiles")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteCleanRecycledFilesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteCleanRecycledFilesWithContextV2(ctx context.Context, request *DeleteCleanRecycledFilesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteCleanRecycledFilesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteCleanRecycledFiles")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteCleanRecycledFilesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteRecycleBinConfigRequest() (request *DeleteRecycleBinConfigRequest) {
+	request = &DeleteRecycleBinConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DeleteRecycleBinConfig")
+	return
+}
+
+func NewDeleteRecycleBinConfigResponse() (response *DeleteRecycleBinConfigResponse) {
+	response = &DeleteRecycleBinConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteRecycleBinConfig(request *DeleteRecycleBinConfigRequest) string {
+	return c.DeleteRecycleBinConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteRecycleBinConfigSend(request *DeleteRecycleBinConfigRequest) (*DeleteRecycleBinConfigResponse, error) {
+	statusCode, msg, err := c.DeleteRecycleBinConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteRecycleBinConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteRecycleBinConfigWithContext(ctx context.Context, request *DeleteRecycleBinConfigRequest) string {
+	if request == nil {
+		request = NewDeleteRecycleBinConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteRecycleBinConfig")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteRecycleBinConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteRecycleBinConfigWithContextV2(ctx context.Context, request *DeleteRecycleBinConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteRecycleBinConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteRecycleBinConfig")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteRecycleBinConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteRecycledFileListRequest() (request *DeleteRecycledFileListRequest) {
+	request = &DeleteRecycledFileListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DeleteRecycledFileList")
+	return
+}
+
+func NewDeleteRecycledFileListResponse() (response *DeleteRecycledFileListResponse) {
+	response = &DeleteRecycledFileListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteRecycledFileList(request *DeleteRecycledFileListRequest) string {
+	return c.DeleteRecycledFileListWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteRecycledFileListSend(request *DeleteRecycledFileListRequest) (*DeleteRecycledFileListResponse, error) {
+	statusCode, msg, err := c.DeleteRecycledFileListWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteRecycledFileListResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteRecycledFileListWithContext(ctx context.Context, request *DeleteRecycledFileListRequest) string {
+	if request == nil {
+		request = NewDeleteRecycledFileListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteRecycledFileList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteRecycledFileListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteRecycledFileListWithContextV2(ctx context.Context, request *DeleteRecycledFileListRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteRecycledFileListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteRecycledFileList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteRecycledFileListResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetRecycleBinConfigRequest() (request *GetRecycleBinConfigRequest) {
+	request = &GetRecycleBinConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "GetRecycleBinConfig")
+	return
+}
+
+func NewGetRecycleBinConfigResponse() (response *GetRecycleBinConfigResponse) {
+	response = &GetRecycleBinConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetRecycleBinConfig(request *GetRecycleBinConfigRequest) string {
+	return c.GetRecycleBinConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) GetRecycleBinConfigSend(request *GetRecycleBinConfigRequest) (*GetRecycleBinConfigResponse, error) {
+	statusCode, msg, err := c.GetRecycleBinConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetRecycleBinConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetRecycleBinConfigWithContext(ctx context.Context, request *GetRecycleBinConfigRequest) string {
+	if request == nil {
+		request = NewGetRecycleBinConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetRecycleBinConfig")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetRecycleBinConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetRecycleBinConfigWithContextV2(ctx context.Context, request *GetRecycleBinConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetRecycleBinConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "GetRecycleBinConfig")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetRecycleBinConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewSetRecycleBinConfigRequest() (request *SetRecycleBinConfigRequest) {
+	request = &SetRecycleBinConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "SetRecycleBinConfig")
+	return
+}
+
+func NewSetRecycleBinConfigResponse() (response *SetRecycleBinConfigResponse) {
+	response = &SetRecycleBinConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetRecycleBinConfig(request *SetRecycleBinConfigRequest) string {
+	return c.SetRecycleBinConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) SetRecycleBinConfigSend(request *SetRecycleBinConfigRequest) (*SetRecycleBinConfigResponse, error) {
+	statusCode, msg, err := c.SetRecycleBinConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetRecycleBinConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetRecycleBinConfigWithContext(ctx context.Context, request *SetRecycleBinConfigRequest) string {
+	if request == nil {
+		request = NewSetRecycleBinConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "SetRecycleBinConfig")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetRecycleBinConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetRecycleBinConfigWithContextV2(ctx context.Context, request *SetRecycleBinConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetRecycleBinConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "SetRecycleBinConfig")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewSetRecycleBinConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeRecycledFileListRequest() (request *DescribeRecycledFileListRequest) {
+	request = &DescribeRecycledFileListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeRecycledFileList")
+	return
+}
+
+func NewDescribeRecycledFileListResponse() (response *DescribeRecycledFileListResponse) {
+	response = &DescribeRecycledFileListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeRecycledFileList(request *DescribeRecycledFileListRequest) string {
+	return c.DescribeRecycledFileListWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeRecycledFileListSend(request *DescribeRecycledFileListRequest) (*DescribeRecycledFileListResponse, error) {
+	statusCode, msg, err := c.DescribeRecycledFileListWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeRecycledFileListResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeRecycledFileListWithContext(ctx context.Context, request *DescribeRecycledFileListRequest) string {
+	if request == nil {
+		request = NewDescribeRecycledFileListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeRecycledFileList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeRecycledFileListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeRecycledFileListWithContextV2(ctx context.Context, request *DescribeRecycledFileListRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeRecycledFileListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeRecycledFileList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeRecycledFileListResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteRecycledFilesRequest() (request *DeleteRecycledFilesRequest) {
+	request = &DeleteRecycledFilesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DeleteRecycledFiles")
+	return
+}
+
+func NewDeleteRecycledFilesResponse() (response *DeleteRecycledFilesResponse) {
+	response = &DeleteRecycledFilesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteRecycledFiles(request *DeleteRecycledFilesRequest) string {
+	return c.DeleteRecycledFilesWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteRecycledFilesSend(request *DeleteRecycledFilesRequest) (*DeleteRecycledFilesResponse, error) {
+	statusCode, msg, err := c.DeleteRecycledFilesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteRecycledFilesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteRecycledFilesWithContext(ctx context.Context, request *DeleteRecycledFilesRequest) string {
+	if request == nil {
+		request = NewDeleteRecycledFilesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteRecycledFiles")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteRecycledFilesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteRecycledFilesWithContextV2(ctx context.Context, request *DeleteRecycledFilesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteRecycledFilesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteRecycledFiles")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteRecycledFilesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewRestoreRecycledFilesRequest() (request *RestoreRecycledFilesRequest) {
+	request = &RestoreRecycledFilesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "RestoreRecycledFiles")
+	return
+}
+
+func NewRestoreRecycledFilesResponse() (response *RestoreRecycledFilesResponse) {
+	response = &RestoreRecycledFilesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RestoreRecycledFiles(request *RestoreRecycledFilesRequest) string {
+	return c.RestoreRecycledFilesWithContext(context.Background(), request)
+}
+
+func (c *Client) RestoreRecycledFilesSend(request *RestoreRecycledFilesRequest) (*RestoreRecycledFilesResponse, error) {
+	statusCode, msg, err := c.RestoreRecycledFilesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct RestoreRecycledFilesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) RestoreRecycledFilesWithContext(ctx context.Context, request *RestoreRecycledFilesRequest) string {
+	if request == nil {
+		request = NewRestoreRecycledFilesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "RestoreRecycledFiles")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRestoreRecycledFilesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) RestoreRecycledFilesWithContextV2(ctx context.Context, request *RestoreRecycledFilesRequest) (int, string, error) {
+	if request == nil {
+		request = NewRestoreRecycledFilesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "RestoreRecycledFiles")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRestoreRecycledFilesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeClusterInfoRequest() (request *DescribeClusterInfoRequest) {
+	request = &DescribeClusterInfoRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeClusterInfo")
+	return
+}
+
+func NewDescribeClusterInfoResponse() (response *DescribeClusterInfoResponse) {
+	response = &DescribeClusterInfoResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeClusterInfo(request *DescribeClusterInfoRequest) string {
+	return c.DescribeClusterInfoWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeClusterInfoSend(request *DescribeClusterInfoRequest) (*DescribeClusterInfoResponse, error) {
+	statusCode, msg, err := c.DescribeClusterInfoWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeClusterInfoResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeClusterInfoWithContext(ctx context.Context, request *DescribeClusterInfoRequest) string {
+	if request == nil {
+		request = NewDescribeClusterInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeClusterInfo")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeClusterInfoResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeClusterInfoWithContextV2(ctx context.Context, request *DescribeClusterInfoRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeClusterInfoRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeClusterInfo")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeClusterInfoResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
@@ -2234,401 +4999,6 @@ func (c *Client) DescribeFileSystemNfsClientInfoWithContextV2(ctx context.Contex
 	}
 	return statusCode, msg, nil
 }
-func NewDeleteDataFlowRequest() (request *DeleteDataFlowRequest) {
-	request = &DeleteDataFlowRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("kpfs", APIVersion, "DeleteDataFlow")
-	return
-}
-
-func NewDeleteDataFlowResponse() (response *DeleteDataFlowResponse) {
-	response = &DeleteDataFlowResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) DeleteDataFlow(request *DeleteDataFlowRequest) string {
-	return c.DeleteDataFlowWithContext(context.Background(), request)
-}
-
-func (c *Client) DeleteDataFlowSend(request *DeleteDataFlowRequest) (*DeleteDataFlowResponse, error) {
-	statusCode, msg, err := c.DeleteDataFlowWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	if msg == "" {
-		return nil, nil
-	}
-
-	var respStruct DeleteDataFlowResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) DeleteDataFlowWithContext(ctx context.Context, request *DeleteDataFlowRequest) string {
-	if request == nil {
-		request = NewDeleteDataFlowRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteDataFlow")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDeleteDataFlowResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) DeleteDataFlowWithContextV2(ctx context.Context, request *DeleteDataFlowRequest) (int, string, error) {
-	if request == nil {
-		request = NewDeleteDataFlowRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteDataFlow")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDeleteDataFlowResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}
-func NewDescribeDataFlowTasksRequest() (request *DescribeDataFlowTasksRequest) {
-	request = &DescribeDataFlowTasksRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowTasks")
-	return
-}
-
-func NewDescribeDataFlowTasksResponse() (response *DescribeDataFlowTasksResponse) {
-	response = &DescribeDataFlowTasksResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) DescribeDataFlowTasks(request *DescribeDataFlowTasksRequest) string {
-	return c.DescribeDataFlowTasksWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeDataFlowTasksSend(request *DescribeDataFlowTasksRequest) (*DescribeDataFlowTasksResponse, error) {
-	statusCode, msg, err := c.DescribeDataFlowTasksWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	if msg == "" {
-		return nil, nil
-	}
-
-	var respStruct DescribeDataFlowTasksResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) DescribeDataFlowTasksWithContext(ctx context.Context, request *DescribeDataFlowTasksRequest) string {
-	if request == nil {
-		request = NewDescribeDataFlowTasksRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowTasks")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeDataFlowTasksResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) DescribeDataFlowTasksWithContextV2(ctx context.Context, request *DescribeDataFlowTasksRequest) (int, string, error) {
-	if request == nil {
-		request = NewDescribeDataFlowTasksRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowTasks")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeDataFlowTasksResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}
-func NewDescribeDataFlowsRequest() (request *DescribeDataFlowsRequest) {
-	request = &DescribeDataFlowsRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlows")
-	return
-}
-
-func NewDescribeDataFlowsResponse() (response *DescribeDataFlowsResponse) {
-	response = &DescribeDataFlowsResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) DescribeDataFlows(request *DescribeDataFlowsRequest) string {
-	return c.DescribeDataFlowsWithContext(context.Background(), request)
-}
-
-func (c *Client) DescribeDataFlowsSend(request *DescribeDataFlowsRequest) (*DescribeDataFlowsResponse, error) {
-	statusCode, msg, err := c.DescribeDataFlowsWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	if msg == "" {
-		return nil, nil
-	}
-
-	var respStruct DescribeDataFlowsResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) DescribeDataFlowsWithContext(ctx context.Context, request *DescribeDataFlowsRequest) string {
-	if request == nil {
-		request = NewDescribeDataFlowsRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlows")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeDataFlowsResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) DescribeDataFlowsWithContextV2(ctx context.Context, request *DescribeDataFlowsRequest) (int, string, error) {
-	if request == nil {
-		request = NewDescribeDataFlowsRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlows")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/x-www-form-urlencoded")
-
-	response := NewDescribeDataFlowsResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}
-func NewCreateDataFlowTaskRequest() (request *CreateDataFlowTaskRequest) {
-	request = &CreateDataFlowTaskRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlowTask")
-	return
-}
-
-func NewCreateDataFlowTaskResponse() (response *CreateDataFlowTaskResponse) {
-	response = &CreateDataFlowTaskResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) CreateDataFlowTask(request *CreateDataFlowTaskRequest) string {
-	return c.CreateDataFlowTaskWithContext(context.Background(), request)
-}
-
-func (c *Client) CreateDataFlowTaskSend(request *CreateDataFlowTaskRequest) (*CreateDataFlowTaskResponse, error) {
-	statusCode, msg, err := c.CreateDataFlowTaskWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	if msg == "" {
-		return nil, nil
-	}
-
-	var respStruct CreateDataFlowTaskResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) CreateDataFlowTaskWithContext(ctx context.Context, request *CreateDataFlowTaskRequest) string {
-	if request == nil {
-		request = NewCreateDataFlowTaskRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlowTask")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewCreateDataFlowTaskResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) CreateDataFlowTaskWithContextV2(ctx context.Context, request *CreateDataFlowTaskRequest) (int, string, error) {
-	if request == nil {
-		request = NewCreateDataFlowTaskRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlowTask")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewCreateDataFlowTaskResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}
-func NewCreateDataFlowRequest() (request *CreateDataFlowRequest) {
-	request = &CreateDataFlowRequest{
-		BaseRequest: &ksyunhttp.BaseRequest{},
-	}
-	request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlow")
-	return
-}
-
-func NewCreateDataFlowResponse() (response *CreateDataFlowResponse) {
-	response = &CreateDataFlowResponse{
-		BaseResponse: &ksyunhttp.BaseResponse{},
-	}
-	return
-}
-
-func (c *Client) CreateDataFlow(request *CreateDataFlowRequest) string {
-	return c.CreateDataFlowWithContext(context.Background(), request)
-}
-
-func (c *Client) CreateDataFlowSend(request *CreateDataFlowRequest) (*CreateDataFlowResponse, error) {
-	statusCode, msg, err := c.CreateDataFlowWithContextV2(context.Background(), request)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
-	}
-	if statusCode < 200 || statusCode > 299 {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
-	}
-
-	if msg == "" {
-		return nil, nil
-	}
-
-	var respStruct CreateDataFlowResponse
-	err = respStruct.FromJsonString(msg)
-	if err != nil {
-		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
-	}
-	return &respStruct, nil
-}
-
-func (c *Client) CreateDataFlowWithContext(ctx context.Context, request *CreateDataFlowRequest) string {
-	if request == nil {
-		request = NewCreateDataFlowRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlow")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewCreateDataFlowResponse()
-	err, msg := c.Send(request, response)
-	if err != nil {
-		return fmt.Sprintf("%+v\n", err)
-	}
-	return msg
-}
-
-func (c *Client) CreateDataFlowWithContextV2(ctx context.Context, request *CreateDataFlowRequest) (int, string, error) {
-	if request == nil {
-		request = NewCreateDataFlowRequest()
-	}
-	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
-	if request.BaseRequest == nil {
-		request.BaseRequest = &ksyunhttp.BaseRequest{}
-		request.Init().WithApiInfo("kpfs", APIVersion, "CreateDataFlow")
-	}
-	request.SetContext(ctx)
-	request.SetContentType("application/json")
-
-	response := NewCreateDataFlowResponse()
-	statusCode, msg, err := c.SendV2(request, response)
-	if err != nil {
-		return statusCode, "", err
-	}
-	return statusCode, msg, nil
-}
 func NewSetFileSystemResourceProtectRequest() (request *SetFileSystemResourceProtectRequest) {
 	request = &SetFileSystemResourceProtectRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -2702,6 +5072,717 @@ func (c *Client) SetFileSystemResourceProtectWithContextV2(ctx context.Context, 
 	request.SetContentType("application/json")
 
 	response := NewSetFileSystemResourceProtectResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeFileDeletePolicyListRequest() (request *DescribeFileDeletePolicyListRequest) {
+	request = &DescribeFileDeletePolicyListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileDeletePolicyList")
+	return
+}
+
+func NewDescribeFileDeletePolicyListResponse() (response *DescribeFileDeletePolicyListResponse) {
+	response = &DescribeFileDeletePolicyListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeFileDeletePolicyList(request *DescribeFileDeletePolicyListRequest) string {
+	return c.DescribeFileDeletePolicyListWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeFileDeletePolicyListSend(request *DescribeFileDeletePolicyListRequest) (*DescribeFileDeletePolicyListResponse, error) {
+	statusCode, msg, err := c.DescribeFileDeletePolicyListWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeFileDeletePolicyListResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeFileDeletePolicyListWithContext(ctx context.Context, request *DescribeFileDeletePolicyListRequest) string {
+	if request == nil {
+		request = NewDescribeFileDeletePolicyListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileDeletePolicyList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeFileDeletePolicyListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeFileDeletePolicyListWithContextV2(ctx context.Context, request *DescribeFileDeletePolicyListRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeFileDeletePolicyListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileDeletePolicyList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeFileDeletePolicyListResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewEnableFileDeletePolicyRequest() (request *EnableFileDeletePolicyRequest) {
+	request = &EnableFileDeletePolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "EnableFileDeletePolicy")
+	return
+}
+
+func NewEnableFileDeletePolicyResponse() (response *EnableFileDeletePolicyResponse) {
+	response = &EnableFileDeletePolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) EnableFileDeletePolicy(request *EnableFileDeletePolicyRequest) string {
+	return c.EnableFileDeletePolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) EnableFileDeletePolicySend(request *EnableFileDeletePolicyRequest) (*EnableFileDeletePolicyResponse, error) {
+	statusCode, msg, err := c.EnableFileDeletePolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct EnableFileDeletePolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) EnableFileDeletePolicyWithContext(ctx context.Context, request *EnableFileDeletePolicyRequest) string {
+	if request == nil {
+		request = NewEnableFileDeletePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "EnableFileDeletePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewEnableFileDeletePolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) EnableFileDeletePolicyWithContextV2(ctx context.Context, request *EnableFileDeletePolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewEnableFileDeletePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "EnableFileDeletePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewEnableFileDeletePolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDisableFileDeletePolicyRequest() (request *DisableFileDeletePolicyRequest) {
+	request = &DisableFileDeletePolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DisableFileDeletePolicy")
+	return
+}
+
+func NewDisableFileDeletePolicyResponse() (response *DisableFileDeletePolicyResponse) {
+	response = &DisableFileDeletePolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DisableFileDeletePolicy(request *DisableFileDeletePolicyRequest) string {
+	return c.DisableFileDeletePolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) DisableFileDeletePolicySend(request *DisableFileDeletePolicyRequest) (*DisableFileDeletePolicyResponse, error) {
+	statusCode, msg, err := c.DisableFileDeletePolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DisableFileDeletePolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DisableFileDeletePolicyWithContext(ctx context.Context, request *DisableFileDeletePolicyRequest) string {
+	if request == nil {
+		request = NewDisableFileDeletePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DisableFileDeletePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDisableFileDeletePolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DisableFileDeletePolicyWithContextV2(ctx context.Context, request *DisableFileDeletePolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewDisableFileDeletePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DisableFileDeletePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDisableFileDeletePolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeFileDeletePolicyRequest() (request *DescribeFileDeletePolicyRequest) {
+	request = &DescribeFileDeletePolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileDeletePolicy")
+	return
+}
+
+func NewDescribeFileDeletePolicyResponse() (response *DescribeFileDeletePolicyResponse) {
+	response = &DescribeFileDeletePolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeFileDeletePolicy(request *DescribeFileDeletePolicyRequest) string {
+	return c.DescribeFileDeletePolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeFileDeletePolicySend(request *DescribeFileDeletePolicyRequest) (*DescribeFileDeletePolicyResponse, error) {
+	statusCode, msg, err := c.DescribeFileDeletePolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeFileDeletePolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeFileDeletePolicyWithContext(ctx context.Context, request *DescribeFileDeletePolicyRequest) string {
+	if request == nil {
+		request = NewDescribeFileDeletePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileDeletePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeFileDeletePolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeFileDeletePolicyWithContextV2(ctx context.Context, request *DescribeFileDeletePolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeFileDeletePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeFileDeletePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeFileDeletePolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteFileDeletePolicyRequest() (request *DeleteFileDeletePolicyRequest) {
+	request = &DeleteFileDeletePolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DeleteFileDeletePolicy")
+	return
+}
+
+func NewDeleteFileDeletePolicyResponse() (response *DeleteFileDeletePolicyResponse) {
+	response = &DeleteFileDeletePolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteFileDeletePolicy(request *DeleteFileDeletePolicyRequest) string {
+	return c.DeleteFileDeletePolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteFileDeletePolicySend(request *DeleteFileDeletePolicyRequest) (*DeleteFileDeletePolicyResponse, error) {
+	statusCode, msg, err := c.DeleteFileDeletePolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteFileDeletePolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteFileDeletePolicyWithContext(ctx context.Context, request *DeleteFileDeletePolicyRequest) string {
+	if request == nil {
+		request = NewDeleteFileDeletePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteFileDeletePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteFileDeletePolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteFileDeletePolicyWithContextV2(ctx context.Context, request *DeleteFileDeletePolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteFileDeletePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteFileDeletePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteFileDeletePolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewUpdateFileDeletePolicyRequest() (request *UpdateFileDeletePolicyRequest) {
+	request = &UpdateFileDeletePolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "UpdateFileDeletePolicy")
+	return
+}
+
+func NewUpdateFileDeletePolicyResponse() (response *UpdateFileDeletePolicyResponse) {
+	response = &UpdateFileDeletePolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateFileDeletePolicy(request *UpdateFileDeletePolicyRequest) string {
+	return c.UpdateFileDeletePolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateFileDeletePolicySend(request *UpdateFileDeletePolicyRequest) (*UpdateFileDeletePolicyResponse, error) {
+	statusCode, msg, err := c.UpdateFileDeletePolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct UpdateFileDeletePolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) UpdateFileDeletePolicyWithContext(ctx context.Context, request *UpdateFileDeletePolicyRequest) string {
+	if request == nil {
+		request = NewUpdateFileDeletePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "UpdateFileDeletePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateFileDeletePolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) UpdateFileDeletePolicyWithContextV2(ctx context.Context, request *UpdateFileDeletePolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdateFileDeletePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "UpdateFileDeletePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateFileDeletePolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateFileDeletePolicyRequest() (request *CreateFileDeletePolicyRequest) {
+	request = &CreateFileDeletePolicyRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "CreateFileDeletePolicy")
+	return
+}
+
+func NewCreateFileDeletePolicyResponse() (response *CreateFileDeletePolicyResponse) {
+	response = &CreateFileDeletePolicyResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateFileDeletePolicy(request *CreateFileDeletePolicyRequest) string {
+	return c.CreateFileDeletePolicyWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateFileDeletePolicySend(request *CreateFileDeletePolicyRequest) (*CreateFileDeletePolicyResponse, error) {
+	statusCode, msg, err := c.CreateFileDeletePolicyWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateFileDeletePolicyResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateFileDeletePolicyWithContext(ctx context.Context, request *CreateFileDeletePolicyRequest) string {
+	if request == nil {
+		request = NewCreateFileDeletePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateFileDeletePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateFileDeletePolicyResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateFileDeletePolicyWithContextV2(ctx context.Context, request *CreateFileDeletePolicyRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateFileDeletePolicyRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateFileDeletePolicy")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateFileDeletePolicyResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeDataFlowStrategySubscribeRequest() (request *DescribeDataFlowStrategySubscribeRequest) {
+	request = &DescribeDataFlowStrategySubscribeRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowStrategySubscribe")
+	return
+}
+
+func NewDescribeDataFlowStrategySubscribeResponse() (response *DescribeDataFlowStrategySubscribeResponse) {
+	response = &DescribeDataFlowStrategySubscribeResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeDataFlowStrategySubscribe(request *DescribeDataFlowStrategySubscribeRequest) string {
+	return c.DescribeDataFlowStrategySubscribeWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDataFlowStrategySubscribeSend(request *DescribeDataFlowStrategySubscribeRequest) (*DescribeDataFlowStrategySubscribeResponse, error) {
+	statusCode, msg, err := c.DescribeDataFlowStrategySubscribeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeDataFlowStrategySubscribeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeDataFlowStrategySubscribeWithContext(ctx context.Context, request *DescribeDataFlowStrategySubscribeRequest) string {
+	if request == nil {
+		request = NewDescribeDataFlowStrategySubscribeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowStrategySubscribe")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeDataFlowStrategySubscribeResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeDataFlowStrategySubscribeWithContextV2(ctx context.Context, request *DescribeDataFlowStrategySubscribeRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeDataFlowStrategySubscribeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowStrategySubscribe")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeDataFlowStrategySubscribeResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewManageDataFlowStrategySubscribeRequest() (request *ManageDataFlowStrategySubscribeRequest) {
+	request = &ManageDataFlowStrategySubscribeRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "ManageDataFlowStrategySubscribe")
+	return
+}
+
+func NewManageDataFlowStrategySubscribeResponse() (response *ManageDataFlowStrategySubscribeResponse) {
+	response = &ManageDataFlowStrategySubscribeResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ManageDataFlowStrategySubscribe(request *ManageDataFlowStrategySubscribeRequest) string {
+	return c.ManageDataFlowStrategySubscribeWithContext(context.Background(), request)
+}
+
+func (c *Client) ManageDataFlowStrategySubscribeSend(request *ManageDataFlowStrategySubscribeRequest) (*ManageDataFlowStrategySubscribeResponse, error) {
+	statusCode, msg, err := c.ManageDataFlowStrategySubscribeWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ManageDataFlowStrategySubscribeResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ManageDataFlowStrategySubscribeWithContext(ctx context.Context, request *ManageDataFlowStrategySubscribeRequest) string {
+	if request == nil {
+		request = NewManageDataFlowStrategySubscribeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "ManageDataFlowStrategySubscribe")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewManageDataFlowStrategySubscribeResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ManageDataFlowStrategySubscribeWithContextV2(ctx context.Context, request *ManageDataFlowStrategySubscribeRequest) (int, string, error) {
+	if request == nil {
+		request = NewManageDataFlowStrategySubscribeRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "ManageDataFlowStrategySubscribe")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewManageDataFlowStrategySubscribeResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
@@ -3176,6 +6257,559 @@ func (c *Client) GetRemoteCacheIOPSGetWithContextV2(ctx context.Context, request
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewGetRemoteCacheIOPSGetResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeDataFlowStrategySubscribeFailedRequest() (request *DescribeDataFlowStrategySubscribeFailedRequest) {
+	request = &DescribeDataFlowStrategySubscribeFailedRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowStrategySubscribeFailed")
+	return
+}
+
+func NewDescribeDataFlowStrategySubscribeFailedResponse() (response *DescribeDataFlowStrategySubscribeFailedResponse) {
+	response = &DescribeDataFlowStrategySubscribeFailedResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeDataFlowStrategySubscribeFailed(request *DescribeDataFlowStrategySubscribeFailedRequest) string {
+	return c.DescribeDataFlowStrategySubscribeFailedWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeDataFlowStrategySubscribeFailedSend(request *DescribeDataFlowStrategySubscribeFailedRequest) (*DescribeDataFlowStrategySubscribeFailedResponse, error) {
+	statusCode, msg, err := c.DescribeDataFlowStrategySubscribeFailedWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeDataFlowStrategySubscribeFailedResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeDataFlowStrategySubscribeFailedWithContext(ctx context.Context, request *DescribeDataFlowStrategySubscribeFailedRequest) string {
+	if request == nil {
+		request = NewDescribeDataFlowStrategySubscribeFailedRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowStrategySubscribeFailed")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeDataFlowStrategySubscribeFailedResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeDataFlowStrategySubscribeFailedWithContextV2(ctx context.Context, request *DescribeDataFlowStrategySubscribeFailedRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeDataFlowStrategySubscribeFailedRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeDataFlowStrategySubscribeFailed")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeDataFlowStrategySubscribeFailedResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewManageMigrateTaskRequest() (request *ManageMigrateTaskRequest) {
+	request = &ManageMigrateTaskRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "ManageMigrateTask")
+	return
+}
+
+func NewManageMigrateTaskResponse() (response *ManageMigrateTaskResponse) {
+	response = &ManageMigrateTaskResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ManageMigrateTask(request *ManageMigrateTaskRequest) string {
+	return c.ManageMigrateTaskWithContext(context.Background(), request)
+}
+
+func (c *Client) ManageMigrateTaskSend(request *ManageMigrateTaskRequest) (*ManageMigrateTaskResponse, error) {
+	statusCode, msg, err := c.ManageMigrateTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ManageMigrateTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ManageMigrateTaskWithContext(ctx context.Context, request *ManageMigrateTaskRequest) string {
+	if request == nil {
+		request = NewManageMigrateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "ManageMigrateTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewManageMigrateTaskResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ManageMigrateTaskWithContextV2(ctx context.Context, request *ManageMigrateTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewManageMigrateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "ManageMigrateTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewManageMigrateTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeMigrateTasksRequest() (request *DescribeMigrateTasksRequest) {
+	request = &DescribeMigrateTasksRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeMigrateTasks")
+	return
+}
+
+func NewDescribeMigrateTasksResponse() (response *DescribeMigrateTasksResponse) {
+	response = &DescribeMigrateTasksResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeMigrateTasks(request *DescribeMigrateTasksRequest) string {
+	return c.DescribeMigrateTasksWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeMigrateTasksSend(request *DescribeMigrateTasksRequest) (*DescribeMigrateTasksResponse, error) {
+	statusCode, msg, err := c.DescribeMigrateTasksWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeMigrateTasksResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeMigrateTasksWithContext(ctx context.Context, request *DescribeMigrateTasksRequest) string {
+	if request == nil {
+		request = NewDescribeMigrateTasksRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeMigrateTasks")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeMigrateTasksResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeMigrateTasksWithContextV2(ctx context.Context, request *DescribeMigrateTasksRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeMigrateTasksRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeMigrateTasks")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeMigrateTasksResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateMigrateTaskRequest() (request *CreateMigrateTaskRequest) {
+	request = &CreateMigrateTaskRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "CreateMigrateTask")
+	return
+}
+
+func NewCreateMigrateTaskResponse() (response *CreateMigrateTaskResponse) {
+	response = &CreateMigrateTaskResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateMigrateTask(request *CreateMigrateTaskRequest) string {
+	return c.CreateMigrateTaskWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateMigrateTaskSend(request *CreateMigrateTaskRequest) (*CreateMigrateTaskResponse, error) {
+	statusCode, msg, err := c.CreateMigrateTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateMigrateTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateMigrateTaskWithContext(ctx context.Context, request *CreateMigrateTaskRequest) string {
+	if request == nil {
+		request = NewCreateMigrateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateMigrateTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateMigrateTaskResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateMigrateTaskWithContextV2(ctx context.Context, request *CreateMigrateTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateMigrateTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateMigrateTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateMigrateTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteMigrateRuleRequest() (request *DeleteMigrateRuleRequest) {
+	request = &DeleteMigrateRuleRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DeleteMigrateRule")
+	return
+}
+
+func NewDeleteMigrateRuleResponse() (response *DeleteMigrateRuleResponse) {
+	response = &DeleteMigrateRuleResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteMigrateRule(request *DeleteMigrateRuleRequest) string {
+	return c.DeleteMigrateRuleWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteMigrateRuleSend(request *DeleteMigrateRuleRequest) (*DeleteMigrateRuleResponse, error) {
+	statusCode, msg, err := c.DeleteMigrateRuleWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteMigrateRuleResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteMigrateRuleWithContext(ctx context.Context, request *DeleteMigrateRuleRequest) string {
+	if request == nil {
+		request = NewDeleteMigrateRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteMigrateRule")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteMigrateRuleResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteMigrateRuleWithContextV2(ctx context.Context, request *DeleteMigrateRuleRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteMigrateRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DeleteMigrateRule")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteMigrateRuleResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeMigrateRulesRequest() (request *DescribeMigrateRulesRequest) {
+	request = &DescribeMigrateRulesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "DescribeMigrateRules")
+	return
+}
+
+func NewDescribeMigrateRulesResponse() (response *DescribeMigrateRulesResponse) {
+	response = &DescribeMigrateRulesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeMigrateRules(request *DescribeMigrateRulesRequest) string {
+	return c.DescribeMigrateRulesWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeMigrateRulesSend(request *DescribeMigrateRulesRequest) (*DescribeMigrateRulesResponse, error) {
+	statusCode, msg, err := c.DescribeMigrateRulesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeMigrateRulesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeMigrateRulesWithContext(ctx context.Context, request *DescribeMigrateRulesRequest) string {
+	if request == nil {
+		request = NewDescribeMigrateRulesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeMigrateRules")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeMigrateRulesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeMigrateRulesWithContextV2(ctx context.Context, request *DescribeMigrateRulesRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeMigrateRulesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "DescribeMigrateRules")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeMigrateRulesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateMigrateRuleRequest() (request *CreateMigrateRuleRequest) {
+	request = &CreateMigrateRuleRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("kpfs", APIVersion, "CreateMigrateRule")
+	return
+}
+
+func NewCreateMigrateRuleResponse() (response *CreateMigrateRuleResponse) {
+	response = &CreateMigrateRuleResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateMigrateRule(request *CreateMigrateRuleRequest) string {
+	return c.CreateMigrateRuleWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateMigrateRuleSend(request *CreateMigrateRuleRequest) (*CreateMigrateRuleResponse, error) {
+	statusCode, msg, err := c.CreateMigrateRuleWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateMigrateRuleResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateMigrateRuleWithContext(ctx context.Context, request *CreateMigrateRuleRequest) string {
+	if request == nil {
+		request = NewCreateMigrateRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateMigrateRule")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateMigrateRuleResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateMigrateRuleWithContextV2(ctx context.Context, request *CreateMigrateRuleRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateMigrateRuleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("kpfs", APIVersion, "CreateMigrateRule")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateMigrateRuleResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
