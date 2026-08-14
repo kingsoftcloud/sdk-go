@@ -7606,6 +7606,717 @@ func (c *Client) DescribeTerminateStopRecordsWithContextV2(ctx context.Context, 
 	}
 	return statusCode, msg, nil
 }
+func NewCreateAccessGroupRequest() (request *CreateAccessGroupRequest) {
+	request = &CreateAccessGroupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateAccessGroup")
+	return
+}
+
+func NewCreateAccessGroupResponse() (response *CreateAccessGroupResponse) {
+	response = &CreateAccessGroupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateAccessGroup(request *CreateAccessGroupRequest) string {
+	return c.CreateAccessGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateAccessGroupSend(request *CreateAccessGroupRequest) (*CreateAccessGroupResponse, error) {
+	statusCode, msg, err := c.CreateAccessGroupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateAccessGroupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateAccessGroupWithContext(ctx context.Context, request *CreateAccessGroupRequest) string {
+	if request == nil {
+		request = NewCreateAccessGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateAccessGroup")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateAccessGroupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateAccessGroupWithContextV2(ctx context.Context, request *CreateAccessGroupRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateAccessGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateAccessGroup")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateAccessGroupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyAccessGroupRequest() (request *ModifyAccessGroupRequest) {
+	request = &ModifyAccessGroupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ModifyAccessGroup")
+	return
+}
+
+func NewModifyAccessGroupResponse() (response *ModifyAccessGroupResponse) {
+	response = &ModifyAccessGroupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyAccessGroup(request *ModifyAccessGroupRequest) string {
+	return c.ModifyAccessGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyAccessGroupSend(request *ModifyAccessGroupRequest) (*ModifyAccessGroupResponse, error) {
+	statusCode, msg, err := c.ModifyAccessGroupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ModifyAccessGroupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyAccessGroupWithContext(ctx context.Context, request *ModifyAccessGroupRequest) string {
+	if request == nil {
+		request = NewModifyAccessGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyAccessGroup")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyAccessGroupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyAccessGroupWithContextV2(ctx context.Context, request *ModifyAccessGroupRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyAccessGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyAccessGroup")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyAccessGroupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeAccessGroupsRequest() (request *DescribeAccessGroupsRequest) {
+	request = &DescribeAccessGroupsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeAccessGroups")
+	return
+}
+
+func NewDescribeAccessGroupsResponse() (response *DescribeAccessGroupsResponse) {
+	response = &DescribeAccessGroupsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeAccessGroups(request *DescribeAccessGroupsRequest) string {
+	return c.DescribeAccessGroupsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAccessGroupsSend(request *DescribeAccessGroupsRequest) (*DescribeAccessGroupsResponse, error) {
+	statusCode, msg, err := c.DescribeAccessGroupsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeAccessGroupsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeAccessGroupsWithContext(ctx context.Context, request *DescribeAccessGroupsRequest) string {
+	if request == nil {
+		request = NewDescribeAccessGroupsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeAccessGroups")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAccessGroupsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeAccessGroupsWithContextV2(ctx context.Context, request *DescribeAccessGroupsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeAccessGroupsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeAccessGroups")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAccessGroupsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeAccessGroupAssociatedPermissionRequest() (request *DescribeAccessGroupAssociatedPermissionRequest) {
+	request = &DescribeAccessGroupAssociatedPermissionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeAccessGroupAssociatedPermission")
+	return
+}
+
+func NewDescribeAccessGroupAssociatedPermissionResponse() (response *DescribeAccessGroupAssociatedPermissionResponse) {
+	response = &DescribeAccessGroupAssociatedPermissionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeAccessGroupAssociatedPermission(request *DescribeAccessGroupAssociatedPermissionRequest) string {
+	return c.DescribeAccessGroupAssociatedPermissionWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeAccessGroupAssociatedPermissionSend(request *DescribeAccessGroupAssociatedPermissionRequest) (*DescribeAccessGroupAssociatedPermissionResponse, error) {
+	statusCode, msg, err := c.DescribeAccessGroupAssociatedPermissionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeAccessGroupAssociatedPermissionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeAccessGroupAssociatedPermissionWithContext(ctx context.Context, request *DescribeAccessGroupAssociatedPermissionRequest) string {
+	if request == nil {
+		request = NewDescribeAccessGroupAssociatedPermissionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeAccessGroupAssociatedPermission")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAccessGroupAssociatedPermissionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeAccessGroupAssociatedPermissionWithContextV2(ctx context.Context, request *DescribeAccessGroupAssociatedPermissionRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeAccessGroupAssociatedPermissionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeAccessGroupAssociatedPermission")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeAccessGroupAssociatedPermissionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteAccessGroupRequest() (request *DeleteAccessGroupRequest) {
+	request = &DeleteAccessGroupRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeleteAccessGroup")
+	return
+}
+
+func NewDeleteAccessGroupResponse() (response *DeleteAccessGroupResponse) {
+	response = &DeleteAccessGroupResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteAccessGroup(request *DeleteAccessGroupRequest) string {
+	return c.DeleteAccessGroupWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteAccessGroupSend(request *DeleteAccessGroupRequest) (*DeleteAccessGroupResponse, error) {
+	statusCode, msg, err := c.DeleteAccessGroupWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteAccessGroupResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteAccessGroupWithContext(ctx context.Context, request *DeleteAccessGroupRequest) string {
+	if request == nil {
+		request = NewDeleteAccessGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteAccessGroup")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteAccessGroupResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteAccessGroupWithContextV2(ctx context.Context, request *DeleteAccessGroupRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteAccessGroupRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteAccessGroup")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteAccessGroupResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewAddAccessGroupMembersRequest() (request *AddAccessGroupMembersRequest) {
+	request = &AddAccessGroupMembersRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "AddAccessGroupMembers")
+	return
+}
+
+func NewAddAccessGroupMembersResponse() (response *AddAccessGroupMembersResponse) {
+	response = &AddAccessGroupMembersResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) AddAccessGroupMembers(request *AddAccessGroupMembersRequest) string {
+	return c.AddAccessGroupMembersWithContext(context.Background(), request)
+}
+
+func (c *Client) AddAccessGroupMembersSend(request *AddAccessGroupMembersRequest) (*AddAccessGroupMembersResponse, error) {
+	statusCode, msg, err := c.AddAccessGroupMembersWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct AddAccessGroupMembersResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) AddAccessGroupMembersWithContext(ctx context.Context, request *AddAccessGroupMembersRequest) string {
+	if request == nil {
+		request = NewAddAccessGroupMembersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "AddAccessGroupMembers")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewAddAccessGroupMembersResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) AddAccessGroupMembersWithContextV2(ctx context.Context, request *AddAccessGroupMembersRequest) (int, string, error) {
+	if request == nil {
+		request = NewAddAccessGroupMembersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "AddAccessGroupMembers")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewAddAccessGroupMembersResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewRemoveAccessGroupMembersRequest() (request *RemoveAccessGroupMembersRequest) {
+	request = &RemoveAccessGroupMembersRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "RemoveAccessGroupMembers")
+	return
+}
+
+func NewRemoveAccessGroupMembersResponse() (response *RemoveAccessGroupMembersResponse) {
+	response = &RemoveAccessGroupMembersResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RemoveAccessGroupMembers(request *RemoveAccessGroupMembersRequest) string {
+	return c.RemoveAccessGroupMembersWithContext(context.Background(), request)
+}
+
+func (c *Client) RemoveAccessGroupMembersSend(request *RemoveAccessGroupMembersRequest) (*RemoveAccessGroupMembersResponse, error) {
+	statusCode, msg, err := c.RemoveAccessGroupMembersWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct RemoveAccessGroupMembersResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) RemoveAccessGroupMembersWithContext(ctx context.Context, request *RemoveAccessGroupMembersRequest) string {
+	if request == nil {
+		request = NewRemoveAccessGroupMembersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "RemoveAccessGroupMembers")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRemoveAccessGroupMembersResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) RemoveAccessGroupMembersWithContextV2(ctx context.Context, request *RemoveAccessGroupMembersRequest) (int, string, error) {
+	if request == nil {
+		request = NewRemoveAccessGroupMembersRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "RemoveAccessGroupMembers")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRemoveAccessGroupMembersResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyAccessGroupMemberRoleRequest() (request *ModifyAccessGroupMemberRoleRequest) {
+	request = &ModifyAccessGroupMemberRoleRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ModifyAccessGroupMemberRole")
+	return
+}
+
+func NewModifyAccessGroupMemberRoleResponse() (response *ModifyAccessGroupMemberRoleResponse) {
+	response = &ModifyAccessGroupMemberRoleResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyAccessGroupMemberRole(request *ModifyAccessGroupMemberRoleRequest) string {
+	return c.ModifyAccessGroupMemberRoleWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyAccessGroupMemberRoleSend(request *ModifyAccessGroupMemberRoleRequest) (*ModifyAccessGroupMemberRoleResponse, error) {
+	statusCode, msg, err := c.ModifyAccessGroupMemberRoleWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ModifyAccessGroupMemberRoleResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyAccessGroupMemberRoleWithContext(ctx context.Context, request *ModifyAccessGroupMemberRoleRequest) string {
+	if request == nil {
+		request = NewModifyAccessGroupMemberRoleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyAccessGroupMemberRole")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyAccessGroupMemberRoleResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyAccessGroupMemberRoleWithContextV2(ctx context.Context, request *ModifyAccessGroupMemberRoleRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyAccessGroupMemberRoleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyAccessGroupMemberRole")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyAccessGroupMemberRoleResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteAccessGroupAssociatedPermissionRequest() (request *DeleteAccessGroupAssociatedPermissionRequest) {
+	request = &DeleteAccessGroupAssociatedPermissionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeleteAccessGroupAssociatedPermission")
+	return
+}
+
+func NewDeleteAccessGroupAssociatedPermissionResponse() (response *DeleteAccessGroupAssociatedPermissionResponse) {
+	response = &DeleteAccessGroupAssociatedPermissionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteAccessGroupAssociatedPermission(request *DeleteAccessGroupAssociatedPermissionRequest) string {
+	return c.DeleteAccessGroupAssociatedPermissionWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteAccessGroupAssociatedPermissionSend(request *DeleteAccessGroupAssociatedPermissionRequest) (*DeleteAccessGroupAssociatedPermissionResponse, error) {
+	statusCode, msg, err := c.DeleteAccessGroupAssociatedPermissionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteAccessGroupAssociatedPermissionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteAccessGroupAssociatedPermissionWithContext(ctx context.Context, request *DeleteAccessGroupAssociatedPermissionRequest) string {
+	if request == nil {
+		request = NewDeleteAccessGroupAssociatedPermissionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteAccessGroupAssociatedPermission")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteAccessGroupAssociatedPermissionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteAccessGroupAssociatedPermissionWithContextV2(ctx context.Context, request *DeleteAccessGroupAssociatedPermissionRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteAccessGroupAssociatedPermissionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteAccessGroupAssociatedPermission")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteAccessGroupAssociatedPermissionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewGetAccountBillRulesRequest() (request *GetAccountBillRulesRequest) {
 	request = &GetAccountBillRulesRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -8074,6 +8785,243 @@ func (c *Client) RemoveStorageConfigAccessWithContextV2(ctx context.Context, req
 	request.SetContentType("application/json")
 
 	response := NewRemoveStorageConfigAccessResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCheckKlogServiceStatusRequest() (request *CheckKlogServiceStatusRequest) {
+	request = &CheckKlogServiceStatusRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CheckKlogServiceStatus")
+	return
+}
+
+func NewCheckKlogServiceStatusResponse() (response *CheckKlogServiceStatusResponse) {
+	response = &CheckKlogServiceStatusResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CheckKlogServiceStatus(request *CheckKlogServiceStatusRequest) string {
+	return c.CheckKlogServiceStatusWithContext(context.Background(), request)
+}
+
+func (c *Client) CheckKlogServiceStatusSend(request *CheckKlogServiceStatusRequest) (*CheckKlogServiceStatusResponse, error) {
+	statusCode, msg, err := c.CheckKlogServiceStatusWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CheckKlogServiceStatusResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CheckKlogServiceStatusWithContext(ctx context.Context, request *CheckKlogServiceStatusRequest) string {
+	if request == nil {
+		request = NewCheckKlogServiceStatusRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CheckKlogServiceStatus")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCheckKlogServiceStatusResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CheckKlogServiceStatusWithContextV2(ctx context.Context, request *CheckKlogServiceStatusRequest) (int, string, error) {
+	if request == nil {
+		request = NewCheckKlogServiceStatusRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CheckKlogServiceStatus")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCheckKlogServiceStatusResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateLogPoolConfigRequest() (request *CreateLogPoolConfigRequest) {
+	request = &CreateLogPoolConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateLogPoolConfig")
+	return
+}
+
+func NewCreateLogPoolConfigResponse() (response *CreateLogPoolConfigResponse) {
+	response = &CreateLogPoolConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateLogPoolConfig(request *CreateLogPoolConfigRequest) string {
+	return c.CreateLogPoolConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateLogPoolConfigSend(request *CreateLogPoolConfigRequest) (*CreateLogPoolConfigResponse, error) {
+	statusCode, msg, err := c.CreateLogPoolConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateLogPoolConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateLogPoolConfigWithContext(ctx context.Context, request *CreateLogPoolConfigRequest) string {
+	if request == nil {
+		request = NewCreateLogPoolConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateLogPoolConfig")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateLogPoolConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateLogPoolConfigWithContextV2(ctx context.Context, request *CreateLogPoolConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateLogPoolConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateLogPoolConfig")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateLogPoolConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteLogPoolConfigRequest() (request *DeleteLogPoolConfigRequest) {
+	request = &DeleteLogPoolConfigRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeleteLogPoolConfig")
+	return
+}
+
+func NewDeleteLogPoolConfigResponse() (response *DeleteLogPoolConfigResponse) {
+	response = &DeleteLogPoolConfigResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteLogPoolConfig(request *DeleteLogPoolConfigRequest) string {
+	return c.DeleteLogPoolConfigWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteLogPoolConfigSend(request *DeleteLogPoolConfigRequest) (*DeleteLogPoolConfigResponse, error) {
+	statusCode, msg, err := c.DeleteLogPoolConfigWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteLogPoolConfigResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteLogPoolConfigWithContext(ctx context.Context, request *DeleteLogPoolConfigRequest) string {
+	if request == nil {
+		request = NewDeleteLogPoolConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteLogPoolConfig")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteLogPoolConfigResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteLogPoolConfigWithContextV2(ctx context.Context, request *DeleteLogPoolConfigRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteLogPoolConfigRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteLogPoolConfig")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteLogPoolConfigResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err

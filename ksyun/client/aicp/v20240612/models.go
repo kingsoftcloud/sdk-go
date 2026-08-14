@@ -18,6 +18,10 @@ type CreateStorageConfigUsers struct {
 	UserId     *string `json:"UserId,omitempty" name:"UserId"`
 	Permission *string `json:"Permission,omitempty" name:"Permission"`
 }
+type CreateStorageConfigSharedGroupList struct {
+	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	Permission    *string `json:"Permission,omitempty" name:"Permission"`
+}
 type ModifyStorageConfigKs3Info struct {
 	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
 	BucketPath *string `json:"BucketPath,omitempty" name:"BucketPath"`
@@ -25,6 +29,10 @@ type ModifyStorageConfigKs3Info struct {
 type ModifyStorageConfigUsers struct {
 	UserId     *string `json:"UserId,omitempty" name:"UserId"`
 	Permission *string `json:"Permission,omitempty" name:"Permission"`
+}
+type ModifyStorageConfigSharedGroupList struct {
+	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	Permission    *string `json:"Permission,omitempty" name:"Permission"`
 }
 type DescribeStorageConfigsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
@@ -46,6 +54,10 @@ type ModifyNotebookAutoSaveConfig struct {
 	OfficialInstance *string `json:"OfficialInstance,omitempty" name:"OfficialInstance"`
 	UserName         *string `json:"UserName,omitempty" name:"UserName"`
 	Password         *string `json:"Password,omitempty" name:"Password"`
+}
+type ModifyNotebookEnvs struct {
+	Name  *string `json:"Name,omitempty" name:"Name"`
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 type DescribeNotebooksFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
@@ -71,6 +83,26 @@ type CreateNotebookAutoSaveConfig struct {
 type CreateNotebookVolumeConfig struct {
 	VolumeSize *int    `json:"VolumeSize,omitempty" name:"VolumeSize"`
 	VolumeType *string `json:"VolumeType,omitempty" name:"VolumeType"`
+}
+type CreateNotebookEnvs struct {
+	Name  *string `json:"Name,omitempty" name:"Name"`
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+type CreateImageAccessList struct {
+	UserId     *string `json:"UserId,omitempty" name:"UserId"`
+	Permission *string `json:"Permission,omitempty" name:"Permission"`
+}
+type CreateImageSharedGroupList struct {
+	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	Permission    *string `json:"Permission,omitempty" name:"Permission"`
+}
+type ModifyImageAccessList struct {
+	UserId     *string `json:"UserId,omitempty" name:"UserId"`
+	Permission *string `json:"Permission,omitempty" name:"Permission"`
+}
+type ModifyImageSharedGroupList struct {
+	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	Permission    *string `json:"Permission,omitempty" name:"Permission"`
 }
 type DescribeImagesFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
@@ -184,6 +216,10 @@ type CreateQueueAccessList struct {
 	UserId     *string `json:"UserId,omitempty" name:"UserId"`
 	Permission *string `json:"Permission,omitempty" name:"Permission"`
 }
+type CreateQueueSharedGroupList struct {
+	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	Permission    *string `json:"Permission,omitempty" name:"Permission"`
+}
 type ModifyQueueCapabilityGPUInfos struct {
 	GPUType *string `json:"GPUType,omitempty" name:"GPUType"`
 	GPUNum  *int    `json:"GPUNum,omitempty" name:"GPUNum"`
@@ -197,9 +233,29 @@ type ModifyQueueAccessList struct {
 	UserId     *string `json:"UserId,omitempty" name:"UserId"`
 	Permission *string `json:"Permission,omitempty" name:"Permission"`
 }
+type ModifyQueueSharedGroupList struct {
+	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	Permission    *string `json:"Permission,omitempty" name:"Permission"`
+}
 type DescribeInferencePodsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type CreateAccessGroupUsers struct {
+	UserId     *string `json:"UserId,omitempty" name:"UserId"`
+	Permission *string `json:"Permission,omitempty" name:"Permission"`
+}
+type ModifyAccessGroupUsers struct {
+	UserId     *string `json:"UserId,omitempty" name:"UserId"`
+	Permission *string `json:"Permission,omitempty" name:"Permission"`
+}
+type DescribeAccessGroupsFilter struct {
+	Name  *string   `json:"Name,omitempty" name:"Name"`
+	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type AddAccessGroupMembersUsers struct {
+	UserId     *string `json:"UserId,omitempty" name:"UserId"`
+	Permission *string `json:"Permission,omitempty" name:"Permission"`
 }
 type CreateUsageDownloadTaskFilter struct {
 	ModelName  []*string `json:"ModelName,omitempty" name:"ModelName"`
@@ -247,16 +303,18 @@ func (r *CreateResourcePoolResponse) FromJsonString(s string) error {
 
 type CreateStorageConfigRequest struct {
 	*ksyunhttp.BaseRequest
-	StorageConfigName *string                      `json:"StorageConfigName,omitempty" name:"StorageConfigName"`
-	Description       *string                      `json:"Description,omitempty" name:"Description"`
-	Type              *string                      `json:"Type,omitempty" name:"Type"`
-	MountPath         *string                      `json:"MountPath,omitempty" name:"MountPath"`
-	KpfsInfo          *CreateStorageConfigKpfsInfo `json:"KpfsInfo,omitempty" name:"KpfsInfo"`
-	Ks3Info           *CreateStorageConfigKs3Info  `json:"Ks3Info,omitempty" name:"Ks3Info"`
-	Users             []*CreateStorageConfigUsers  `json:"Users,omitempty" name:"Users"`
-	Ak                *string                      `json:"Ak,omitempty" name:"Ak"`
-	Sk                *string                      `json:"Sk,omitempty" name:"Sk"`
-	Prefetch          *bool                        `json:"Prefetch,omitempty" name:"Prefetch"`
+	StorageConfigName *string                               `json:"StorageConfigName,omitempty" name:"StorageConfigName"`
+	Description       *string                               `json:"Description,omitempty" name:"Description"`
+	Type              *string                               `json:"Type,omitempty" name:"Type"`
+	MountPath         *string                               `json:"MountPath,omitempty" name:"MountPath"`
+	KpfsInfo          *CreateStorageConfigKpfsInfo          `json:"KpfsInfo,omitempty" name:"KpfsInfo"`
+	Ks3Info           *CreateStorageConfigKs3Info           `json:"Ks3Info,omitempty" name:"Ks3Info"`
+	Users             []*CreateStorageConfigUsers           `json:"Users,omitempty" name:"Users"`
+	DatasetPermission *string                               `json:"DatasetPermission,omitempty" name:"DatasetPermission"`
+	SharedGroupList   []*CreateStorageConfigSharedGroupList `json:"SharedGroupList,omitempty" name:"SharedGroupList"`
+	Prefetch          *bool                                 `json:"Prefetch,omitempty" name:"Prefetch"`
+	Ak                *string                               `json:"Ak,omitempty" name:"Ak"`
+	Sk                *string                               `json:"Sk,omitempty" name:"Sk"`
 }
 
 func (r *CreateStorageConfigRequest) ToJsonString() string {
@@ -281,15 +339,17 @@ func (r *CreateStorageConfigResponse) FromJsonString(s string) error {
 
 type ModifyStorageConfigRequest struct {
 	*ksyunhttp.BaseRequest
-	StorageConfigId   *string                     `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
-	StorageConfigName *string                     `json:"StorageConfigName,omitempty" name:"StorageConfigName"`
-	Description       *string                     `json:"Description,omitempty" name:"Description"`
-	MountPath         *string                     `json:"MountPath,omitempty" name:"MountPath"`
-	Ks3Info           *ModifyStorageConfigKs3Info `json:"Ks3Info,omitempty" name:"Ks3Info"`
-	Users             []*ModifyStorageConfigUsers `json:"Users,omitempty" name:"Users"`
-	Ak                *string                     `json:"Ak,omitempty" name:"Ak"`
-	Sk                *string                     `json:"Sk,omitempty" name:"Sk"`
-	Prefetch          *bool                       `json:"Prefetch,omitempty" name:"Prefetch"`
+	StorageConfigId   *string                               `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
+	StorageConfigName *string                               `json:"StorageConfigName,omitempty" name:"StorageConfigName"`
+	Description       *string                               `json:"Description,omitempty" name:"Description"`
+	MountPath         *string                               `json:"MountPath,omitempty" name:"MountPath"`
+	Ks3Info           *ModifyStorageConfigKs3Info           `json:"Ks3Info,omitempty" name:"Ks3Info"`
+	Users             []*ModifyStorageConfigUsers           `json:"Users,omitempty" name:"Users"`
+	DatasetPermission *string                               `json:"DatasetPermission,omitempty" name:"DatasetPermission"`
+	SharedGroupList   []*ModifyStorageConfigSharedGroupList `json:"SharedGroupList,omitempty" name:"SharedGroupList"`
+	Prefetch          *bool                                 `json:"Prefetch,omitempty" name:"Prefetch"`
+	Ak                *string                               `json:"Ak,omitempty" name:"Ak"`
+	Sk                *string                               `json:"Sk,omitempty" name:"Sk"`
 }
 
 func (r *ModifyStorageConfigRequest) ToJsonString() string {
@@ -356,8 +416,13 @@ type DescribeStorageConfigsResponse struct {
 			UserId     *string `json:"UserId" name:"UserId"`
 			Permission *string `json:"Permission" name:"Permission"`
 		} `json:"Users" name:"Users"`
+		DatasetPermission *string `json:"DatasetPermission" name:"DatasetPermission"`
+		SharedGroupList   []struct {
+			AccessGroupId *string `json:"AccessGroupId" name:"AccessGroupId"`
+			Permission    *string `json:"Permission" name:"Permission"`
+		} `json:"SharedGroupList" name:"SharedGroupList"`
+		Prefetch *bool `json:"Prefetch" name:"Prefetch"`
 	} `json:"StorageConfigSet"`
-	Prefetch *bool `json:"Prefetch" name:"Prefetch"`
 }
 
 func (r *DescribeStorageConfigsResponse) ToJsonString() string {
@@ -459,6 +524,7 @@ type ModifyNotebookRequest struct {
 	ImageRepoId            *string                         `json:"ImageRepoId,omitempty" name:"ImageRepoId"`
 	ImageRegistryId        *string                         `json:"ImageRegistryId,omitempty" name:"ImageRegistryId"`
 	AutoSaveConfig         *ModifyNotebookAutoSaveConfig   `json:"AutoSaveConfig,omitempty" name:"AutoSaveConfig"`
+	Envs                   []*ModifyNotebookEnvs           `json:"Envs,omitempty" name:"Envs"`
 }
 
 func (r *ModifyNotebookRequest) ToJsonString() string {
@@ -599,6 +665,10 @@ type DescribeNotebooksResponse struct {
 			VolumeId         *string `json:"VolumeId" name:"VolumeId"`
 			AvailabilityZone *string `json:"AvailabilityZone" name:"AvailabilityZone"`
 		} `json:"VolumeConfig" name:"VolumeConfig"`
+		Envs []struct {
+			Name  *string `json:"Name" name:"Name"`
+			Value *string `json:"Value" name:"Value"`
+		} `json:"Envs" name:"Envs"`
 	} `json:"Notebooks"`
 	TotalCount *int `json:"TotalCount" name:"TotalCount"`
 	Page       *int `json:"Page" name:"Page"`
@@ -642,6 +712,7 @@ type CreateNotebookRequest struct {
 	AutoSaveConfig         *CreateNotebookAutoSaveConfig   `json:"AutoSaveConfig,omitempty" name:"AutoSaveConfig"`
 	EnableVolume           *bool                           `json:"EnableVolume,omitempty" name:"EnableVolume"`
 	VolumeConfig           *CreateNotebookVolumeConfig     `json:"VolumeConfig,omitempty" name:"VolumeConfig"`
+	Envs                   []*CreateNotebookEnvs           `json:"Envs,omitempty" name:"Envs"`
 }
 
 func (r *CreateNotebookRequest) ToJsonString() string {
@@ -693,17 +764,19 @@ func (r *EnableKlogResponse) FromJsonString(s string) error {
 
 type CreateImageRequest struct {
 	*ksyunhttp.BaseRequest
-	ImageName           *string `json:"ImageName,omitempty" name:"ImageName"`
-	Description         *string `json:"Description,omitempty" name:"Description"`
-	ImageType           *string `json:"ImageType,omitempty" name:"ImageType"`
-	Namespace           *string `json:"Namespace,omitempty" name:"Namespace"`
-	NamespacePermission *string `json:"NamespacePermission,omitempty" name:"NamespacePermission"`
-	ImageRepo           *string `json:"ImageRepo,omitempty" name:"ImageRepo"`
-	ImageVersion        *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
-	OfficialInstance    *string `json:"OfficialInstance,omitempty" name:"OfficialInstance"`
-	UserName            *string `json:"UserName,omitempty" name:"UserName"`
-	Password            *string `json:"Password,omitempty" name:"Password"`
-	ImagePermission     *string `json:"ImagePermission,omitempty" name:"ImagePermission"`
+	ImageName           *string                       `json:"ImageName,omitempty" name:"ImageName"`
+	Description         *string                       `json:"Description,omitempty" name:"Description"`
+	ImageType           *string                       `json:"ImageType,omitempty" name:"ImageType"`
+	Namespace           *string                       `json:"Namespace,omitempty" name:"Namespace"`
+	NamespacePermission *string                       `json:"NamespacePermission,omitempty" name:"NamespacePermission"`
+	ImageRepo           *string                       `json:"ImageRepo,omitempty" name:"ImageRepo"`
+	ImageVersion        *string                       `json:"ImageVersion,omitempty" name:"ImageVersion"`
+	OfficialInstance    *string                       `json:"OfficialInstance,omitempty" name:"OfficialInstance"`
+	UserName            *string                       `json:"UserName,omitempty" name:"UserName"`
+	Password            *string                       `json:"Password,omitempty" name:"Password"`
+	ImagePermission     *string                       `json:"ImagePermission,omitempty" name:"ImagePermission"`
+	AccessList          []*CreateImageAccessList      `json:"AccessList,omitempty" name:"AccessList"`
+	SharedGroupList     []*CreateImageSharedGroupList `json:"SharedGroupList,omitempty" name:"SharedGroupList"`
 }
 
 func (r *CreateImageRequest) ToJsonString() string {
@@ -753,9 +826,11 @@ func (r *DeleteImageResponse) FromJsonString(s string) error {
 
 type ModifyImageRequest struct {
 	*ksyunhttp.BaseRequest
-	ImageId         *string `json:"ImageId,omitempty" name:"ImageId"`
-	ImageName       *string `json:"ImageName,omitempty" name:"ImageName"`
-	ImagePermission *string `json:"ImagePermission,omitempty" name:"ImagePermission"`
+	ImageId         *string                       `json:"ImageId,omitempty" name:"ImageId"`
+	ImageName       *string                       `json:"ImageName,omitempty" name:"ImageName"`
+	ImagePermission *string                       `json:"ImagePermission,omitempty" name:"ImagePermission"`
+	AccessList      []*ModifyImageAccessList      `json:"AccessList,omitempty" name:"AccessList"`
+	SharedGroupList []*ModifyImageSharedGroupList `json:"SharedGroupList,omitempty" name:"SharedGroupList"`
 }
 
 func (r *ModifyImageRequest) ToJsonString() string {
@@ -817,12 +892,20 @@ type DescribeImagesResponse struct {
 		ImageDomain         *string   `json:"ImageDomain" name:"ImageDomain"`
 		OfficialInstance    *string   `json:"OfficialInstance" name:"OfficialInstance"`
 		ImagePermission     *string   `json:"ImagePermission" name:"ImagePermission"`
-		ImageStatus         *string   `json:"ImageStatus" name:"ImageStatus"`
-		ImageAbnormalReason *string   `json:"ImageAbnormalReason" name:"ImageAbnormalReason"`
-		ImageStatusName     *string   `json:"ImageStatusName" name:"ImageStatusName"`
-		CreateUser          *string   `json:"CreateUser" name:"CreateUser"`
-		CreateTime          *string   `json:"CreateTime" name:"CreateTime"`
-		UpdateTime          *string   `json:"UpdateTime" name:"UpdateTime"`
+		AccessList          []struct {
+			UserId     *string `json:"UserId" name:"UserId"`
+			Permission *string `json:"Permission" name:"Permission"`
+		} `json:"AccessList" name:"AccessList"`
+		SharedGroupList []struct {
+			AccessGroupId *string `json:"AccessGroupId" name:"AccessGroupId"`
+			Permission    *string `json:"Permission" name:"Permission"`
+		} `json:"SharedGroupList" name:"SharedGroupList"`
+		ImageStatus         *string `json:"ImageStatus" name:"ImageStatus"`
+		ImageAbnormalReason *string `json:"ImageAbnormalReason" name:"ImageAbnormalReason"`
+		ImageStatusName     *string `json:"ImageStatusName" name:"ImageStatusName"`
+		CreateUser          *string `json:"CreateUser" name:"CreateUser"`
+		CreateTime          *string `json:"CreateTime" name:"CreateTime"`
+		UpdateTime          *string `json:"UpdateTime" name:"UpdateTime"`
 	} `json:"ImageSet"`
 	TotalCount *int `json:"TotalCount" name:"TotalCount"`
 	Page       *int `json:"Page" name:"Page"`
@@ -3214,6 +3297,10 @@ type DescribeQueuesResponse struct {
 			UserId     *string `json:"UserId" name:"UserId"`
 			Permission *string `json:"Permission" name:"Permission"`
 		} `json:"AccessList" name:"AccessList"`
+		SharedGroupList []struct {
+			AccessGroupId *string `json:"AccessGroupId" name:"AccessGroupId"`
+			Permission    *string `json:"Permission" name:"Permission"`
+		} `json:"SharedGroupList" name:"SharedGroupList"`
 		Capability struct {
 			CPUNum    *int `json:"CPUNum" name:"CPUNum"`
 			MemoryNum *int `json:"MemoryNum" name:"MemoryNum"`
@@ -3241,13 +3328,14 @@ func (r *DescribeQueuesResponse) FromJsonString(s string) error {
 
 type CreateQueueRequest struct {
 	*ksyunhttp.BaseRequest
-	ResourcePoolId *string                  `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
-	QueueName      *string                  `json:"QueueName,omitempty" name:"QueueName"`
-	Capability     *CreateQueueCapability   `json:"Capability,omitempty" name:"Capability"`
-	AllowBorrowing *bool                    `json:"AllowBorrowing,omitempty" name:"AllowBorrowing"`
-	Description    *string                  `json:"Description,omitempty" name:"Description"`
-	AccessList     []*CreateQueueAccessList `json:"AccessList,omitempty" name:"AccessList"`
-	WorkloadType   []*string                `json:"WorkloadType,omitempty" name:"WorkloadType"`
+	ResourcePoolId  *string                       `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	QueueName       *string                       `json:"QueueName,omitempty" name:"QueueName"`
+	Capability      *CreateQueueCapability        `json:"Capability,omitempty" name:"Capability"`
+	AllowBorrowing  *bool                         `json:"AllowBorrowing,omitempty" name:"AllowBorrowing"`
+	Description     *string                       `json:"Description,omitempty" name:"Description"`
+	AccessList      []*CreateQueueAccessList      `json:"AccessList,omitempty" name:"AccessList"`
+	SharedGroupList []*CreateQueueSharedGroupList `json:"SharedGroupList,omitempty" name:"SharedGroupList"`
+	WorkloadType    []*string                     `json:"WorkloadType,omitempty" name:"WorkloadType"`
 }
 
 func (r *CreateQueueRequest) ToJsonString() string {
@@ -3272,12 +3360,13 @@ func (r *CreateQueueResponse) FromJsonString(s string) error {
 
 type ModifyQueueRequest struct {
 	*ksyunhttp.BaseRequest
-	QueueId        *string                  `json:"QueueId,omitempty" name:"QueueId"`
-	Capability     *ModifyQueueCapability   `json:"Capability,omitempty" name:"Capability"`
-	AllowBorrowing *bool                    `json:"AllowBorrowing,omitempty" name:"AllowBorrowing"`
-	Description    *string                  `json:"Description,omitempty" name:"Description"`
-	AccessList     []*ModifyQueueAccessList `json:"AccessList,omitempty" name:"AccessList"`
-	WorkloadType   []*string                `json:"WorkloadType,omitempty" name:"WorkloadType"`
+	QueueId         *string                       `json:"QueueId,omitempty" name:"QueueId"`
+	Capability      *ModifyQueueCapability        `json:"Capability,omitempty" name:"Capability"`
+	AllowBorrowing  *bool                         `json:"AllowBorrowing,omitempty" name:"AllowBorrowing"`
+	Description     *string                       `json:"Description,omitempty" name:"Description"`
+	AccessList      []*ModifyQueueAccessList      `json:"AccessList,omitempty" name:"AccessList"`
+	SharedGroupList []*ModifyQueueSharedGroupList `json:"SharedGroupList,omitempty" name:"SharedGroupList"`
+	WorkloadType    []*string                     `json:"WorkloadType,omitempty" name:"WorkloadType"`
 }
 
 func (r *ModifyQueueRequest) ToJsonString() string {
@@ -3751,6 +3840,265 @@ func (r *DescribeTerminateStopRecordsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateAccessGroupRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupName        *string                   `json:"AccessGroupName,omitempty" name:"AccessGroupName"`
+	AccessGroupDescription *string                   `json:"AccessGroupDescription,omitempty" name:"AccessGroupDescription"`
+	Users                  []*CreateAccessGroupUsers `json:"Users,omitempty" name:"Users"`
+}
+
+func (r *CreateAccessGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateAccessGroupResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId     *string `json:"RequestId" name:"RequestId"`
+	AccessGroupId *string `json:"AccessGroupId" name:"AccessGroupId"`
+}
+
+func (r *CreateAccessGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateAccessGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAccessGroupRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupId          *string                   `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	AccessGroupName        *string                   `json:"AccessGroupName,omitempty" name:"AccessGroupName"`
+	AccessGroupDescription *string                   `json:"AccessGroupDescription,omitempty" name:"AccessGroupDescription"`
+	Users                  []*ModifyAccessGroupUsers `json:"Users,omitempty" name:"Users"`
+}
+
+func (r *ModifyAccessGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyAccessGroupResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId     *string `json:"RequestId" name:"RequestId"`
+	AccessGroupId *string `json:"AccessGroupId" name:"AccessGroupId"`
+}
+
+func (r *ModifyAccessGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyAccessGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccessGroupsRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupId []*string                     `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	Filter        []*DescribeAccessGroupsFilter `json:"Filter,omitempty" name:"Filter"`
+	Page          *int                          `json:"Page,omitempty" name:"Page"`
+	PageSize      *int                          `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeAccessGroupsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeAccessGroupsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId      *string `json:"RequestId" name:"RequestId"`
+	TotalCount     *int    `json:"TotalCount" name:"TotalCount"`
+	Page           *int    `json:"Page" name:"Page"`
+	PageSize       *int    `json:"PageSize" name:"PageSize"`
+	AccessGroupSet []struct {
+		AccessGroupId   *string `json:"AccessGroupId" name:"AccessGroupId"`
+		AccessGroupName *string `json:"AccessGroupName" name:"AccessGroupName"`
+		Description     *string `json:"Description" name:"Description"`
+		Users           []struct {
+			UserId     *string `json:"UserId" name:"UserId"`
+			Permission *string `json:"Permission" name:"Permission"`
+		} `json:"Users" name:"Users"`
+		CreateTime *string `json:"CreateTime" name:"CreateTime"`
+		CreateUser *string `json:"CreateUser" name:"CreateUser"`
+	} `json:"AccessGroupSet"`
+}
+
+func (r *DescribeAccessGroupsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeAccessGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeAccessGroupAssociatedPermissionRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	ResourceType  *string `json:"ResourceType,omitempty" name:"ResourceType"`
+}
+
+func (r *DescribeAccessGroupAssociatedPermissionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeAccessGroupAssociatedPermissionResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId               *string `json:"RequestId" name:"RequestId"`
+	AssociatedPermissionSet []struct {
+		AssociatedPermissionId *string `json:"AssociatedPermissionId" name:"AssociatedPermissionId"`
+		ResourceType           *string `json:"ResourceType" name:"ResourceType"`
+		ResourceInfo           struct {
+			ResourceName *string `json:"ResourceName" name:"ResourceName"`
+			ResourceId   *string `json:"ResourceId" name:"ResourceId"`
+		} `json:"ResourceInfo" name:"ResourceInfo"`
+	} `json:"AssociatedPermissionSet"`
+}
+
+func (r *DescribeAccessGroupAssociatedPermissionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeAccessGroupAssociatedPermissionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAccessGroupRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+}
+
+func (r *DeleteAccessGroupRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteAccessGroupResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId     *string `json:"RequestId" name:"RequestId"`
+	AccessGroupId *string `json:"AccessGroupId" name:"AccessGroupId"`
+}
+
+func (r *DeleteAccessGroupResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteAccessGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddAccessGroupMembersRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupId *string                       `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	Users         []*AddAccessGroupMembersUsers `json:"Users,omitempty" name:"Users"`
+}
+
+func (r *AddAccessGroupMembersRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type AddAccessGroupMembersResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId     *string `json:"RequestId" name:"RequestId"`
+	AccessGroupId *string `json:"AccessGroupId" name:"AccessGroupId"`
+}
+
+func (r *AddAccessGroupMembersResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *AddAccessGroupMembersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoveAccessGroupMembersRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupId *string   `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	UserIds       []*string `json:"UserIds,omitempty" name:"UserIds"`
+}
+
+func (r *RemoveAccessGroupMembersRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type RemoveAccessGroupMembersResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId     *string `json:"RequestId" name:"RequestId"`
+	AccessGroupId *string `json:"AccessGroupId" name:"AccessGroupId"`
+}
+
+func (r *RemoveAccessGroupMembersResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *RemoveAccessGroupMembersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyAccessGroupMemberRoleRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	UserId        *string `json:"UserId,omitempty" name:"UserId"`
+	Permission    *string `json:"Permission,omitempty" name:"Permission"`
+}
+
+func (r *ModifyAccessGroupMemberRoleRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyAccessGroupMemberRoleResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId     *string `json:"RequestId" name:"RequestId"`
+	AccessGroupId *string `json:"AccessGroupId" name:"AccessGroupId"`
+}
+
+func (r *ModifyAccessGroupMemberRoleResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyAccessGroupMemberRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAccessGroupAssociatedPermissionRequest struct {
+	*ksyunhttp.BaseRequest
+	AccessGroupId        *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	AssociatedResourceId *string `json:"AssociatedResourceId,omitempty" name:"AssociatedResourceId"`
+}
+
+func (r *DeleteAccessGroupAssociatedPermissionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteAccessGroupAssociatedPermissionResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId     *string `json:"RequestId" name:"RequestId"`
+	AccessGroupId *string `json:"AccessGroupId" name:"AccessGroupId"`
+}
+
+func (r *DeleteAccessGroupAssociatedPermissionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteAccessGroupAssociatedPermissionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GetAccountBillRulesRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -3920,5 +4268,86 @@ func (r *RemoveStorageConfigAccessResponse) ToJsonString() string {
 }
 
 func (r *RemoveStorageConfigAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CheckKlogServiceStatusRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *CheckKlogServiceStatusRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CheckKlogServiceStatusResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	UserStatus *int    `json:"UserStatus" name:"UserStatus"`
+	UserId     *string `json:"UserId" name:"UserId"`
+}
+
+func (r *CheckKlogServiceStatusResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CheckKlogServiceStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateLogPoolConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	LogPoolName *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
+	ModelName   *string `json:"ModelName,omitempty" name:"ModelName"`
+	EndpointId  *string `json:"EndpointId,omitempty" name:"EndpointId"`
+	Region      *string `json:"Region,omitempty" name:"Region"`
+}
+
+func (r *CreateLogPoolConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateLogPoolConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestID *string `json:"RequestID" name:"RequestID"`
+}
+
+func (r *CreateLogPoolConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateLogPoolConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteLogPoolConfigRequest struct {
+	*ksyunhttp.BaseRequest
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	LogPoolName *string `json:"LogPoolName,omitempty" name:"LogPoolName"`
+	ModelName   *string `json:"ModelName,omitempty" name:"ModelName"`
+	EndpointId  *string `json:"EndpointId,omitempty" name:"EndpointId"`
+	Region      *string `json:"Region,omitempty" name:"Region"`
+}
+
+func (r *DeleteLogPoolConfigRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteLogPoolConfigResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteLogPoolConfigResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteLogPoolConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

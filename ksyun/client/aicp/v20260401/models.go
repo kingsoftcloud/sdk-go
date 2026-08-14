@@ -640,7 +640,6 @@ type GetSandboxTemplateResponse struct {
 					Type               *string `json:"Type" name:"Type"`
 					Size               *int    `json:"Size" name:"Size"`
 					DeleteWithInstance *bool   `json:"DeleteWithInstance" name:"DeleteWithInstance"`
-					Path               *string `json:"Path" name:"Path"`
 				} `json:"DataDisks" name:"DataDisks"`
 			} `json:"InstanceSpecs"`
 		} `json:"KecConfig" name:"KecConfig"`

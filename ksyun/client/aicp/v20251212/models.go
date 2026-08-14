@@ -50,9 +50,17 @@ type ModifyModelAccessUsers struct {
 	UserId     *string `json:"UserId,omitempty" name:"UserId"`
 	Permission *string `json:"Permission,omitempty" name:"Permission"`
 }
+type ModifyModelAccessSharedGroupList struct {
+	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	Permission    *string `json:"Permission,omitempty" name:"Permission"`
+}
 type CreateModelAndVersionUsers struct {
 	UserId     *string `json:"UserId,omitempty" name:"UserId"`
 	Permission *string `json:"Permission,omitempty" name:"Permission"`
+}
+type CreateModelAndVersionSharedGroupList struct {
+	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
+	Permission    *string `json:"Permission,omitempty" name:"Permission"`
 }
 
 type CreateTrainJobRequest struct {
@@ -207,8 +215,10 @@ func (r *DescribeTrainJobsResponse) FromJsonString(s string) error {
 
 type ModifyModelAccessRequest struct {
 	*ksyunhttp.BaseRequest
-	ModelId *string                   `json:"ModelId,omitempty" name:"ModelId"`
-	Users   []*ModifyModelAccessUsers `json:"Users,omitempty" name:"Users"`
+	ModelId         *string                             `json:"ModelId,omitempty" name:"ModelId"`
+	Users           []*ModifyModelAccessUsers           `json:"Users,omitempty" name:"Users"`
+	ModelPermission *string                             `json:"ModelPermission,omitempty" name:"ModelPermission"`
+	SharedGroupList []*ModifyModelAccessSharedGroupList `json:"SharedGroupList,omitempty" name:"SharedGroupList"`
 }
 
 func (r *ModifyModelAccessRequest) ToJsonString() string {
@@ -233,15 +243,17 @@ func (r *ModifyModelAccessResponse) FromJsonString(s string) error {
 
 type CreateModelAndVersionRequest struct {
 	*ksyunhttp.BaseRequest
-	ModelName               *string                       `json:"ModelName,omitempty" name:"ModelName"`
-	ModelDescription        *string                       `json:"ModelDescription,omitempty" name:"ModelDescription"`
-	ModelVersionName        *string                       `json:"ModelVersionName,omitempty" name:"ModelVersionName"`
-	ModelVersionDescription *string                       `json:"ModelVersionDescription,omitempty" name:"ModelVersionDescription"`
-	SourceType              *string                       `json:"SourceType,omitempty" name:"SourceType"`
-	StorageConfigId         *string                       `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
-	Format                  *string                       `json:"Format,omitempty" name:"Format"`
-	Framework               *string                       `json:"Framework,omitempty" name:"Framework"`
-	Users                   []*CreateModelAndVersionUsers `json:"Users,omitempty" name:"Users"`
+	ModelName               *string                                 `json:"ModelName,omitempty" name:"ModelName"`
+	ModelDescription        *string                                 `json:"ModelDescription,omitempty" name:"ModelDescription"`
+	ModelVersionName        *string                                 `json:"ModelVersionName,omitempty" name:"ModelVersionName"`
+	ModelVersionDescription *string                                 `json:"ModelVersionDescription,omitempty" name:"ModelVersionDescription"`
+	SourceType              *string                                 `json:"SourceType,omitempty" name:"SourceType"`
+	StorageConfigId         *string                                 `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
+	Format                  *string                                 `json:"Format,omitempty" name:"Format"`
+	Framework               *string                                 `json:"Framework,omitempty" name:"Framework"`
+	Users                   []*CreateModelAndVersionUsers           `json:"Users,omitempty" name:"Users"`
+	ModelPermission         *string                                 `json:"ModelPermission,omitempty" name:"ModelPermission"`
+	SharedGroupList         []*CreateModelAndVersionSharedGroupList `json:"SharedGroupList,omitempty" name:"SharedGroupList"`
 }
 
 func (r *CreateModelAndVersionRequest) ToJsonString() string {
@@ -323,6 +335,11 @@ type DescribeModelsResponse struct {
 			UserId     *string `json:"UserId" name:"UserId"`
 			Permission *string `json:"Permission" name:"Permission"`
 		} `json:"AccessList" name:"AccessList"`
+		ModelPermission *string `json:"ModelPermission" name:"ModelPermission"`
+		SharedGroupList []struct {
+			AccessGroupId *string `json:"AccessGroupId" name:"AccessGroupId"`
+			Permission    *string `json:"Permission" name:"Permission"`
+		} `json:"SharedGroupList" name:"SharedGroupList"`
 	} `json:"ModelSet"`
 }
 

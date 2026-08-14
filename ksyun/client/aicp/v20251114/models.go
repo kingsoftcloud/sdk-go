@@ -2293,3 +2293,122 @@ func (r *ListMemoriesResponse) ToJsonString() string {
 func (r *ListMemoriesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type DeleteMemoryRequest struct {
+	*ksyunhttp.BaseRequest
+	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+	MemoryId           *string `json:"MemoryId,omitempty" name:"MemoryId"`
+	AgentUserId        *string `json:"AgentUserId,omitempty" name:"AgentUserId"`
+}
+
+func (r *DeleteMemoryRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteMemoryResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId          *string `json:"RequestId" name:"RequestId"`
+	MemoryCollectionId *string `json:"MemoryCollectionId" name:"MemoryCollectionId"`
+	MemoryId           *string `json:"MemoryId" name:"MemoryId"`
+}
+
+func (r *DeleteMemoryResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteMemoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateMemoryRequest struct {
+	*ksyunhttp.BaseRequest
+	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+	MemoryId           *string `json:"MemoryId,omitempty" name:"MemoryId"`
+	Content            *string `json:"Content,omitempty" name:"Content"`
+	AgentUserId        *string `json:"AgentUserId,omitempty" name:"AgentUserId"`
+}
+
+func (r *UpdateMemoryRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type UpdateMemoryResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId          *string `json:"RequestId" name:"RequestId"`
+	MemoryCollectionId *string `json:"MemoryCollectionId" name:"MemoryCollectionId"`
+	MemoryId           *string `json:"MemoryId" name:"MemoryId"`
+}
+
+func (r *UpdateMemoryResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateMemoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryMemoryHistoryRequest struct {
+	*ksyunhttp.BaseRequest
+	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+	MemoryId           *string `json:"MemoryId,omitempty" name:"MemoryId"`
+}
+
+func (r *QueryMemoryHistoryRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type QueryMemoryHistoryResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	MemoryId    *string `json:"MemoryId" name:"MemoryId"`
+	HistoryList []struct {
+		CreatedAt *int64  `json:"CreatedAt" name:"CreatedAt"`
+		Type      *string `json:"Type" name:"Type"`
+		TopicId   *string `json:"TopicId" name:"TopicId"`
+		TopicName *string `json:"TopicName" name:"TopicName"`
+		Content   *string `json:"Content" name:"Content"`
+	} `json:"HistoryList"`
+}
+
+func (r *QueryMemoryHistoryResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *QueryMemoryHistoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTopicsRequest struct {
+	*ksyunhttp.BaseRequest
+	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+}
+
+func (r *ListTopicsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ListTopicsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	TopicList []struct {
+		TopicId          *string `json:"TopicId" name:"TopicId"`
+		TopicName        *string `json:"TopicName" name:"TopicName"`
+		TopicDescription *string `json:"TopicDescription" name:"TopicDescription"`
+	} `json:"TopicList"`
+}
+
+func (r *ListTopicsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListTopicsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
