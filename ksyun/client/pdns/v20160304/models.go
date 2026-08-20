@@ -31,6 +31,15 @@ type CreateEndPointIpConfig struct {
 	SubnetId         *string `json:"SubnetId,omitempty" name:"SubnetId"`
 	IP               *string `json:"IP,omitempty" name:"IP"`
 }
+type BatchCreateZoneRecordRecordSet struct {
+	RecordName  *string   `json:"RecordName,omitempty" name:"RecordName"`
+	Type        *string   `json:"Type,omitempty" name:"Type"`
+	RecordTtl   *int      `json:"RecordTtl,omitempty" name:"RecordTtl"`
+	RecordValue []*string `json:"RecordValue,omitempty" name:"RecordValue"`
+	Priority    *int      `json:"Priority,omitempty" name:"Priority"`
+	Weight      *int      `json:"Weight,omitempty" name:"Weight"`
+	Port        *int      `json:"Port,omitempty" name:"Port"`
+}
 
 type CreatePrivateDnsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -1087,5 +1096,69 @@ func (r *CreateEndPointResponse) ToJsonString() string {
 }
 
 func (r *CreateEndPointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchCreateZoneRecordRequest struct {
+	*ksyunhttp.BaseRequest
+	ZoneId    *string                           `json:"ZoneId,omitempty" name:"ZoneId"`
+	RecordSet []*BatchCreateZoneRecordRecordSet `json:"RecordSet,omitempty" name:"RecordSet"`
+}
+
+func (r *BatchCreateZoneRecordRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type BatchCreateZoneRecordResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	RecordSet []struct {
+		RecordId      *string `json:"RecordId" name:"RecordId"`
+		RecordName    *string `json:"RecordName" name:"RecordName"`
+		CreateTime    *string `json:"CreateTime" name:"CreateTime"`
+		Type          *string `json:"Type" name:"Type"`
+		RecordTtl     *int    `json:"RecordTtl" name:"RecordTtl"`
+		RecordDataSet []struct {
+			RecordValue *string `json:"RecordValue" name:"RecordValue"`
+			Priority    *int    `json:"Priority" name:"Priority"`
+			Weight      *int    `json:"Weight" name:"Weight"`
+			Port        *int    `json:"Port" name:"Port"`
+		} `json:"RecordDataSet" name:"RecordDataSet"`
+	} `json:"RecordSet"`
+}
+
+func (r *BatchCreateZoneRecordResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *BatchCreateZoneRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchDeleteZoneRecordRequest struct {
+	*ksyunhttp.BaseRequest
+	ZoneId    *string   `json:"ZoneId,omitempty" name:"ZoneId"`
+	RecordIds []*string `json:"RecordIds,omitempty" name:"RecordIds"`
+}
+
+func (r *BatchDeleteZoneRecordRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type BatchDeleteZoneRecordResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *BatchDeleteZoneRecordResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *BatchDeleteZoneRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

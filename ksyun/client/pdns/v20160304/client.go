@@ -2787,3 +2787,161 @@ func (c *Client) CreateEndPointWithContextV2(ctx context.Context, request *Creat
 	}
 	return statusCode, msg, nil
 }
+func NewBatchCreateZoneRecordRequest() (request *BatchCreateZoneRecordRequest) {
+	request = &BatchCreateZoneRecordRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("pdns", APIVersion, "BatchCreateZoneRecord")
+	return
+}
+
+func NewBatchCreateZoneRecordResponse() (response *BatchCreateZoneRecordResponse) {
+	response = &BatchCreateZoneRecordResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) BatchCreateZoneRecord(request *BatchCreateZoneRecordRequest) string {
+	return c.BatchCreateZoneRecordWithContext(context.Background(), request)
+}
+
+func (c *Client) BatchCreateZoneRecordSend(request *BatchCreateZoneRecordRequest) (*BatchCreateZoneRecordResponse, error) {
+	statusCode, msg, err := c.BatchCreateZoneRecordWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct BatchCreateZoneRecordResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) BatchCreateZoneRecordWithContext(ctx context.Context, request *BatchCreateZoneRecordRequest) string {
+	if request == nil {
+		request = NewBatchCreateZoneRecordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "BatchCreateZoneRecord")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewBatchCreateZoneRecordResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) BatchCreateZoneRecordWithContextV2(ctx context.Context, request *BatchCreateZoneRecordRequest) (int, string, error) {
+	if request == nil {
+		request = NewBatchCreateZoneRecordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "BatchCreateZoneRecord")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewBatchCreateZoneRecordResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewBatchDeleteZoneRecordRequest() (request *BatchDeleteZoneRecordRequest) {
+	request = &BatchDeleteZoneRecordRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("pdns", APIVersion, "BatchDeleteZoneRecord")
+	return
+}
+
+func NewBatchDeleteZoneRecordResponse() (response *BatchDeleteZoneRecordResponse) {
+	response = &BatchDeleteZoneRecordResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) BatchDeleteZoneRecord(request *BatchDeleteZoneRecordRequest) string {
+	return c.BatchDeleteZoneRecordWithContext(context.Background(), request)
+}
+
+func (c *Client) BatchDeleteZoneRecordSend(request *BatchDeleteZoneRecordRequest) (*BatchDeleteZoneRecordResponse, error) {
+	statusCode, msg, err := c.BatchDeleteZoneRecordWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct BatchDeleteZoneRecordResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) BatchDeleteZoneRecordWithContext(ctx context.Context, request *BatchDeleteZoneRecordRequest) string {
+	if request == nil {
+		request = NewBatchDeleteZoneRecordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "BatchDeleteZoneRecord")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewBatchDeleteZoneRecordResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) BatchDeleteZoneRecordWithContextV2(ctx context.Context, request *BatchDeleteZoneRecordRequest) (int, string, error) {
+	if request == nil {
+		request = NewBatchDeleteZoneRecordRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "BatchDeleteZoneRecord")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewBatchDeleteZoneRecordResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
