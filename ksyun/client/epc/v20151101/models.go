@@ -535,10 +535,11 @@ type DescribeEpcsResponse struct {
 		Memory                    *string `json:"Memory" name:"Memory"`
 		HostStatus                *string `json:"HostStatus" name:"HostStatus"`
 		Cpu                       struct {
-			Model     *string `json:"Model" name:"Model"`
-			Frequence *string `json:"Frequence" name:"Frequence"`
-			Count     *int    `json:"Count" name:"Count"`
-			CoreCount *int    `json:"CoreCount" name:"CoreCount"`
+			Model       *string `json:"Model" name:"Model"`
+			Frequence   *string `json:"Frequence" name:"Frequence"`
+			Count       *int    `json:"Count" name:"Count"`
+			CoreCount   *int    `json:"CoreCount" name:"CoreCount"`
+			ThreadCount *int    `json:"ThreadCount" name:"ThreadCount"`
 		} `json:"Cpu" name:"Cpu"`
 		Gpu struct {
 			Model     *string `json:"Model" name:"Model"`
@@ -702,6 +703,7 @@ type CreateImageRequest struct {
 	ImageMode           *string `json:"ImageMode,omitempty" name:"ImageMode"`
 	ImageInitialization *string `json:"ImageInitialization,omitempty" name:"ImageInitialization"`
 	Description         *string `json:"Description,omitempty" name:"Description"`
+	ProjectId           *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *CreateImageRequest) ToJsonString() string {
@@ -725,6 +727,7 @@ type CreateImageResponse struct {
 		Status              *string `json:"Status" name:"Status"`
 		ImageInitialization *string `json:"ImageInitialization" name:"ImageInitialization"`
 		Name                *string `json:"Name" name:"Name"`
+		ProjectId           *int64  `json:"ProjectId" name:"ProjectId"`
 	} `json:"Image"`
 }
 
@@ -1207,32 +1210,6 @@ func (r *ResetPasswordResponse) ToJsonString() string {
 }
 
 func (r *ResetPasswordResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ModifyHyperThreadingRequest struct {
-	*ksyunhttp.BaseRequest
-	HostId               *string `json:"HostId,omitempty" name:"HostId"`
-	HyperThreadingStatus *string `json:"HyperThreadingStatus,omitempty" name:"HyperThreadingStatus"`
-}
-
-func (r *ModifyHyperThreadingRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type ModifyHyperThreadingResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Return    *bool   `json:"Return" name:"Return"`
-}
-
-func (r *ModifyHyperThreadingResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *ModifyHyperThreadingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1949,6 +1926,7 @@ type CopyImageRequest struct {
 	ImageId           *string `json:"ImageId,omitempty" name:"ImageId"`
 	DestinationRegion *string `json:"DestinationRegion,omitempty" name:"DestinationRegion"`
 	CopyTag           *string `json:"CopyTag,omitempty" name:"CopyTag"`
+	ProjectId         *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *CopyImageRequest) ToJsonString() string {
@@ -2607,10 +2585,12 @@ func (r *DescribeGpuRoceTopologyResponse) FromJsonString(s string) error {
 
 type ModifyProcessRequest struct {
 	*ksyunhttp.BaseRequest
-	OperationProcessId *string `json:"OperationProcessId,omitempty" name:"OperationProcessId"`
-	Confirm            *string `json:"Confirm,omitempty" name:"Confirm"`
-	Status             *string `json:"Status,omitempty" name:"Status"`
-	Content            *string `json:"Content,omitempty" name:"Content"`
+	OperationProcessId    *string `json:"OperationProcessId,omitempty" name:"OperationProcessId"`
+	Confirm               *string `json:"Confirm,omitempty" name:"Confirm"`
+	Status                *string `json:"Status,omitempty" name:"Status"`
+	Content               *string `json:"Content,omitempty" name:"Content"`
+	AuthorizeCableReplace *string `json:"AuthorizeCableReplace,omitempty" name:"AuthorizeCableReplace"`
+	Description           *string `json:"Description,omitempty" name:"Description"`
 }
 
 func (r *ModifyProcessRequest) ToJsonString() string {
@@ -4106,6 +4086,7 @@ type CreateLaunchTemplateRequest struct {
 	ZoneId                      *string   `json:"ZoneId,omitempty" name:"ZoneId"`
 	ZoneType                    *string   `json:"ZoneType,omitempty" name:"ZoneType"`
 	StorageRoceNetworkCardName  *string   `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
+	UserDefinedData             *string   `json:"UserDefinedData,omitempty" name:"UserDefinedData"`
 	UserData                    *string   `json:"UserData,omitempty" name:"UserData"`
 }
 
@@ -4175,6 +4156,7 @@ type CreateLaunchTemplateVersionRequest struct {
 	ZoneType                    *string   `json:"ZoneType,omitempty" name:"ZoneType"`
 	StorageRoceNetworkCardName  *string   `json:"StorageRoceNetworkCardName,omitempty" name:"StorageRoceNetworkCardName"`
 	UserData                    *string   `json:"UserData,omitempty" name:"UserData"`
+	UserDefinedData             *string   `json:"UserDefinedData,omitempty" name:"UserDefinedData"`
 }
 
 func (r *CreateLaunchTemplateVersionRequest) ToJsonString() string {
@@ -4322,6 +4304,7 @@ type DescribeLaunchTemplateVersionsResponse struct {
 				Kind      *string `json:"Kind" name:"Kind"`
 				UseType   *string `json:"UseType" name:"UseType"`
 			} `json:"NetworkCardSet"`
+			UserDefinedData *string `json:"UserDefinedData" name:"UserDefinedData"`
 		} `json:"LaunchTemplateVersionData" name:"LaunchTemplateVersionData"`
 	} `json:"LaunchTemplateVersions"`
 	RequestId  *string `json:"RequestId" name:"RequestId"`

@@ -10450,3 +10450,714 @@ func (c *Client) CreateFlowLogWithContextV2(ctx context.Context, request *Create
 	}
 	return statusCode, msg, nil
 }
+func NewAssociateEipRequest() (request *AssociateEipRequest) {
+	request = &AssociateEipRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "AssociateEip")
+	return
+}
+
+func NewAssociateEipResponse() (response *AssociateEipResponse) {
+	response = &AssociateEipResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) AssociateEip(request *AssociateEipRequest) string {
+	return c.AssociateEipWithContext(context.Background(), request)
+}
+
+func (c *Client) AssociateEipSend(request *AssociateEipRequest) (*AssociateEipResponse, error) {
+	statusCode, msg, err := c.AssociateEipWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct AssociateEipResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) AssociateEipWithContext(ctx context.Context, request *AssociateEipRequest) string {
+	if request == nil {
+		request = NewAssociateEipRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AssociateEip")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAssociateEipResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) AssociateEipWithContextV2(ctx context.Context, request *AssociateEipRequest) (int, string, error) {
+	if request == nil {
+		request = NewAssociateEipRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "AssociateEip")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAssociateEipResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDisassociateEipRequest() (request *DisassociateEipRequest) {
+	request = &DisassociateEipRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "DisassociateEip")
+	return
+}
+
+func NewDisassociateEipResponse() (response *DisassociateEipResponse) {
+	response = &DisassociateEipResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DisassociateEip(request *DisassociateEipRequest) string {
+	return c.DisassociateEipWithContext(context.Background(), request)
+}
+
+func (c *Client) DisassociateEipSend(request *DisassociateEipRequest) (*DisassociateEipResponse, error) {
+	statusCode, msg, err := c.DisassociateEipWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DisassociateEipResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DisassociateEipWithContext(ctx context.Context, request *DisassociateEipRequest) string {
+	if request == nil {
+		request = NewDisassociateEipRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DisassociateEip")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDisassociateEipResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DisassociateEipWithContextV2(ctx context.Context, request *DisassociateEipRequest) (int, string, error) {
+	if request == nil {
+		request = NewDisassociateEipRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DisassociateEip")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDisassociateEipResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateNetworkPathRequest() (request *CreateNetworkPathRequest) {
+	request = &CreateNetworkPathRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkPath")
+	return
+}
+
+func NewCreateNetworkPathResponse() (response *CreateNetworkPathResponse) {
+	response = &CreateNetworkPathResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateNetworkPath(request *CreateNetworkPathRequest) string {
+	return c.CreateNetworkPathWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateNetworkPathSend(request *CreateNetworkPathRequest) (*CreateNetworkPathResponse, error) {
+	statusCode, msg, err := c.CreateNetworkPathWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateNetworkPathResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateNetworkPathWithContext(ctx context.Context, request *CreateNetworkPathRequest) string {
+	if request == nil {
+		request = NewCreateNetworkPathRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkPath")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateNetworkPathResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateNetworkPathWithContextV2(ctx context.Context, request *CreateNetworkPathRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateNetworkPathRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkPath")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateNetworkPathResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteNetworkPathRequest() (request *DeleteNetworkPathRequest) {
+	request = &DeleteNetworkPathRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkPath")
+	return
+}
+
+func NewDeleteNetworkPathResponse() (response *DeleteNetworkPathResponse) {
+	response = &DeleteNetworkPathResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteNetworkPath(request *DeleteNetworkPathRequest) string {
+	return c.DeleteNetworkPathWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteNetworkPathSend(request *DeleteNetworkPathRequest) (*DeleteNetworkPathResponse, error) {
+	statusCode, msg, err := c.DeleteNetworkPathWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteNetworkPathResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteNetworkPathWithContext(ctx context.Context, request *DeleteNetworkPathRequest) string {
+	if request == nil {
+		request = NewDeleteNetworkPathRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkPath")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteNetworkPathResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteNetworkPathWithContextV2(ctx context.Context, request *DeleteNetworkPathRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteNetworkPathRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkPath")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteNetworkPathResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeNetworkPathRequest() (request *DescribeNetworkPathRequest) {
+	request = &DescribeNetworkPathRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetworkPath")
+	return
+}
+
+func NewDescribeNetworkPathResponse() (response *DescribeNetworkPathResponse) {
+	response = &DescribeNetworkPathResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeNetworkPath(request *DescribeNetworkPathRequest) string {
+	return c.DescribeNetworkPathWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeNetworkPathSend(request *DescribeNetworkPathRequest) (*DescribeNetworkPathResponse, error) {
+	statusCode, msg, err := c.DescribeNetworkPathWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeNetworkPathResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeNetworkPathWithContext(ctx context.Context, request *DescribeNetworkPathRequest) string {
+	if request == nil {
+		request = NewDescribeNetworkPathRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetworkPath")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeNetworkPathResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeNetworkPathWithContextV2(ctx context.Context, request *DescribeNetworkPathRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeNetworkPathRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetworkPath")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeNetworkPathResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreatePathTaskRequest() (request *CreatePathTaskRequest) {
+	request = &CreatePathTaskRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "CreatePathTask")
+	return
+}
+
+func NewCreatePathTaskResponse() (response *CreatePathTaskResponse) {
+	response = &CreatePathTaskResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreatePathTask(request *CreatePathTaskRequest) string {
+	return c.CreatePathTaskWithContext(context.Background(), request)
+}
+
+func (c *Client) CreatePathTaskSend(request *CreatePathTaskRequest) (*CreatePathTaskResponse, error) {
+	statusCode, msg, err := c.CreatePathTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreatePathTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreatePathTaskWithContext(ctx context.Context, request *CreatePathTaskRequest) string {
+	if request == nil {
+		request = NewCreatePathTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreatePathTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreatePathTaskResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreatePathTaskWithContextV2(ctx context.Context, request *CreatePathTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreatePathTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "CreatePathTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreatePathTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeletePathTaskRequest() (request *DeletePathTaskRequest) {
+	request = &DeletePathTaskRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "DeletePathTask")
+	return
+}
+
+func NewDeletePathTaskResponse() (response *DeletePathTaskResponse) {
+	response = &DeletePathTaskResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeletePathTask(request *DeletePathTaskRequest) string {
+	return c.DeletePathTaskWithContext(context.Background(), request)
+}
+
+func (c *Client) DeletePathTaskSend(request *DeletePathTaskRequest) (*DeletePathTaskResponse, error) {
+	statusCode, msg, err := c.DeletePathTaskWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeletePathTaskResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeletePathTaskWithContext(ctx context.Context, request *DeletePathTaskRequest) string {
+	if request == nil {
+		request = NewDeletePathTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeletePathTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeletePathTaskResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeletePathTaskWithContextV2(ctx context.Context, request *DeletePathTaskRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeletePathTaskRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DeletePathTask")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeletePathTaskResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribePathTasksRequest() (request *DescribePathTasksRequest) {
+	request = &DescribePathTasksRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "DescribePathTasks")
+	return
+}
+
+func NewDescribePathTasksResponse() (response *DescribePathTasksResponse) {
+	response = &DescribePathTasksResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribePathTasks(request *DescribePathTasksRequest) string {
+	return c.DescribePathTasksWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribePathTasksSend(request *DescribePathTasksRequest) (*DescribePathTasksResponse, error) {
+	statusCode, msg, err := c.DescribePathTasksWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribePathTasksResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribePathTasksWithContext(ctx context.Context, request *DescribePathTasksRequest) string {
+	if request == nil {
+		request = NewDescribePathTasksRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribePathTasks")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribePathTasksResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribePathTasksWithContextV2(ctx context.Context, request *DescribePathTasksRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribePathTasksRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "DescribePathTasks")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribePathTasksResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyNetworkPathNameRequest() (request *ModifyNetworkPathNameRequest) {
+	request = &ModifyNetworkPathNameRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkPathName")
+	return
+}
+
+func NewModifyNetworkPathNameResponse() (response *ModifyNetworkPathNameResponse) {
+	response = &ModifyNetworkPathNameResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyNetworkPathName(request *ModifyNetworkPathNameRequest) string {
+	return c.ModifyNetworkPathNameWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyNetworkPathNameSend(request *ModifyNetworkPathNameRequest) (*ModifyNetworkPathNameResponse, error) {
+	statusCode, msg, err := c.ModifyNetworkPathNameWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ModifyNetworkPathNameResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyNetworkPathNameWithContext(ctx context.Context, request *ModifyNetworkPathNameRequest) string {
+	if request == nil {
+		request = NewModifyNetworkPathNameRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkPathName")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyNetworkPathNameResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyNetworkPathNameWithContextV2(ctx context.Context, request *ModifyNetworkPathNameRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyNetworkPathNameRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkPathName")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewModifyNetworkPathNameResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}

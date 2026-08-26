@@ -2,7 +2,6 @@ package v20160304
 
 import (
 	"encoding/json"
-
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 )
 
@@ -109,6 +108,8 @@ type CreateVpcRequest struct {
 	CidrBlock             *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
 	ProvidedIpv6CidrBlock *bool   `json:"ProvidedIpv6CidrBlock,omitempty" name:"ProvidedIpv6CidrBlock"`
 	Ipv6CidrBlock         *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
+	VpcIpv6CidrBlock      *string `json:"VpcIpv6CidrBlock,omitempty" name:"VpcIpv6CidrBlock"`
+	IsDefault             *bool   `json:"IsDefault,omitempty" name:"IsDefault"`
 }
 
 func (r *CreateVpcRequest) ToJsonString() string {
@@ -136,6 +137,7 @@ type CreateVpcResponse struct {
 			Type            *string `json:"Type" name:"Type"`
 		} `json:"SecondaryCidrSet" name:"SecondaryCidrSet"`
 	} `json:"Vpc"`
+	CenAccountId *string `json:"CenAccountId" name:"CenAccountId"`
 }
 
 func (r *CreateVpcResponse) ToJsonString() string {
@@ -174,9 +176,10 @@ func (r *DeleteVpcResponse) FromJsonString(s string) error {
 
 type DescribeVpcsRequest struct {
 	*ksyunhttp.BaseRequest
-	VpcId      []*string `json:"VpcId,omitempty" name:"VpcId"`
-	MaxResults *int      `json:"MaxResults,omitempty" name:"MaxResults"`
-	NextToken  *string   `json:"NextToken,omitempty" name:"NextToken"`
+	VpcId                 []*string `json:"VpcId,omitempty" name:"VpcId"`
+	MaxResults            *int      `json:"MaxResults,omitempty" name:"MaxResults"`
+	NextToken             *string   `json:"NextToken,omitempty" name:"NextToken"`
+	ProvidedIpv6CidrBlock *bool     `json:"ProvidedIpv6CidrBlock,omitempty" name:"ProvidedIpv6CidrBlock"`
 }
 
 func (r *DescribeVpcsRequest) ToJsonString() string {
@@ -204,7 +207,9 @@ type DescribeVpcsResponse struct {
 			Cidr            *string `json:"Cidr" name:"Cidr"`
 			Type            *string `json:"Type" name:"Type"`
 		} `json:"SecondaryCidrSet" name:"SecondaryCidrSet"`
+		CenAccountId *string `json:"CenAccountId" name:"CenAccountId"`
 	} `json:"VpcSet"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
 }
 
 func (r *DescribeVpcsResponse) ToJsonString() string {
@@ -231,6 +236,7 @@ type CreateSubnetRequest struct {
 	SecondaryCidrId       *string `json:"SecondaryCidrId,omitempty" name:"SecondaryCidrId"`
 	AvailabilityZone      *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
 	VisitInternet         *bool   `json:"VisitInternet,omitempty" name:"VisitInternet"`
+	Ipv6CidrBlock         *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
 }
 
 func (r *CreateSubnetRequest) ToJsonString() string {
@@ -513,6 +519,7 @@ type DescribeRoutesResponse struct {
 			Mac                *string `json:"Mac" name:"Mac"`
 		} `json:"NextHopSet" name:"NextHopSet"`
 	} `json:"RouteSet"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
 }
 
 func (r *DescribeRoutesResponse) ToJsonString() string {
@@ -695,6 +702,7 @@ type CreateSecurityGroupRequest struct {
 	VpcId             *string `json:"VpcId,omitempty" name:"VpcId"`
 	SecurityGroupName *string `json:"SecurityGroupName,omitempty" name:"SecurityGroupName"`
 	Description       *string `json:"Description,omitempty" name:"Description"`
+	SecurityGroupType *string `json:"SecurityGroupType,omitempty" name:"SecurityGroupType"`
 }
 
 func (r *CreateSecurityGroupRequest) ToJsonString() string {
@@ -713,20 +721,23 @@ type CreateSecurityGroupResponse struct {
 		Description           *string `json:"Description" name:"Description"`
 		SecurityGroupType     *string `json:"SecurityGroupType" name:"SecurityGroupType"`
 		SecurityGroupEntrySet []struct {
-			CreateTime           *string `json:"CreateTime" name:"CreateTime"`
-			Description          *string `json:"Description" name:"Description"`
-			SecurityGroupEntryId *string `json:"SecurityGroupEntryId" name:"SecurityGroupEntryId"`
-			CidrBlock            *string `json:"CidrBlock" name:"CidrBlock"`
-			Direction            *string `json:"Direction" name:"Direction"`
-			Protocol             *string `json:"Protocol" name:"Protocol"`
-			IcmpType             *int    `json:"IcmpType" name:"IcmpType"`
-			IcmpCode             *int    `json:"IcmpCode" name:"IcmpCode"`
-			PortRangeFrom        *int    `json:"PortRangeFrom" name:"PortRangeFrom"`
-			PortRangeTo          *int    `json:"PortRangeTo" name:"PortRangeTo"`
-			RuleTag              *string `json:"RuleTag" name:"RuleTag"`
-			Priority             *int    `json:"Priority" name:"Priority"`
-			Policy               *string `json:"Policy" name:"Policy"`
+			CreateTime                *string `json:"CreateTime" name:"CreateTime"`
+			Description               *string `json:"Description" name:"Description"`
+			SecurityGroupEntryId      *string `json:"SecurityGroupEntryId" name:"SecurityGroupEntryId"`
+			CidrBlock                 *string `json:"CidrBlock" name:"CidrBlock"`
+			Direction                 *string `json:"Direction" name:"Direction"`
+			Protocol                  *string `json:"Protocol" name:"Protocol"`
+			IcmpType                  *int    `json:"IcmpType" name:"IcmpType"`
+			IcmpCode                  *int    `json:"IcmpCode" name:"IcmpCode"`
+			PortRangeFrom             *int    `json:"PortRangeFrom" name:"PortRangeFrom"`
+			PortRangeTo               *int    `json:"PortRangeTo" name:"PortRangeTo"`
+			RuleTag                   *string `json:"RuleTag" name:"RuleTag"`
+			Priority                  *int    `json:"Priority" name:"Priority"`
+			Policy                    *string `json:"Policy" name:"Policy"`
+			AuthorizedSecurityGroupId *string `json:"AuthorizedSecurityGroupId" name:"AuthorizedSecurityGroupId"`
 		} `json:"SecurityGroupEntrySet" name:"SecurityGroupEntrySet"`
+		AuthorizedOn *bool `json:"AuthorizedOn" name:"AuthorizedOn"`
+		EmpowerOn    *bool `json:"EmpowerOn" name:"EmpowerOn"`
 	} `json:"SecurityGroup"`
 }
 
@@ -766,18 +777,19 @@ func (r *DeleteSecurityGroupResponse) FromJsonString(s string) error {
 
 type AuthorizeSecurityGroupEntryRequest struct {
 	*ksyunhttp.BaseRequest
-	Description     *string `json:"Description,omitempty" name:"Description"`
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
-	CidrBlock       *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
-	Direction       *string `json:"Direction,omitempty" name:"Direction"`
-	Protocol        *string `json:"Protocol,omitempty" name:"Protocol"`
-	IcmpType        *int    `json:"IcmpType,omitempty" name:"IcmpType"`
-	IcmpCode        *int    `json:"IcmpCode,omitempty" name:"IcmpCode"`
-	PortRangeFrom   *int    `json:"PortRangeFrom,omitempty" name:"PortRangeFrom"`
-	PortRangeTo     *int    `json:"PortRangeTo,omitempty" name:"PortRangeTo"`
-	RuleTag         *string `json:"RuleTag,omitempty" name:"RuleTag"`
-	Priority        *int    `json:"Priority,omitempty" name:"Priority"`
-	Policy          *string `json:"Policy,omitempty" name:"Policy"`
+	Description               *string `json:"Description,omitempty" name:"Description"`
+	SecurityGroupId           *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	CidrBlock                 *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+	Direction                 *string `json:"Direction,omitempty" name:"Direction"`
+	Protocol                  *string `json:"Protocol,omitempty" name:"Protocol"`
+	IcmpType                  *int    `json:"IcmpType,omitempty" name:"IcmpType"`
+	IcmpCode                  *int    `json:"IcmpCode,omitempty" name:"IcmpCode"`
+	PortRangeFrom             *int    `json:"PortRangeFrom,omitempty" name:"PortRangeFrom"`
+	PortRangeTo               *int    `json:"PortRangeTo,omitempty" name:"PortRangeTo"`
+	RuleTag                   *string `json:"RuleTag,omitempty" name:"RuleTag"`
+	Priority                  *int    `json:"Priority,omitempty" name:"Priority"`
+	Policy                    *string `json:"Policy,omitempty" name:"Policy"`
+	AuthorizedSecurityGroupId *string `json:"AuthorizedSecurityGroupId,omitempty" name:"AuthorizedSecurityGroupId"`
 }
 
 func (r *AuthorizeSecurityGroupEntryRequest) ToJsonString() string {
@@ -852,21 +864,25 @@ type DescribeSecurityGroupsResponse struct {
 		Description           *string `json:"Description" name:"Description"`
 		SecurityGroupType     *string `json:"SecurityGroupType" name:"SecurityGroupType"`
 		SecurityGroupEntrySet []struct {
-			CreateTime           *string `json:"CreateTime" name:"CreateTime"`
-			Description          *string `json:"Description" name:"Description"`
-			SecurityGroupEntryId *string `json:"SecurityGroupEntryId" name:"SecurityGroupEntryId"`
-			CidrBlock            *string `json:"CidrBlock" name:"CidrBlock"`
-			Direction            *string `json:"Direction" name:"Direction"`
-			Protocol             *string `json:"Protocol" name:"Protocol"`
-			IcmpType             *int    `json:"IcmpType" name:"IcmpType"`
-			IcmpCode             *int    `json:"IcmpCode" name:"IcmpCode"`
-			PortRangeFrom        *int    `json:"PortRangeFrom" name:"PortRangeFrom"`
-			PortRangeTo          *int    `json:"PortRangeTo" name:"PortRangeTo"`
-			RuleTag              *string `json:"RuleTag" name:"RuleTag"`
-			Priority             *int    `json:"Priority" name:"Priority"`
-			Policy               *string `json:"Policy" name:"Policy"`
+			CreateTime                *string `json:"CreateTime" name:"CreateTime"`
+			Description               *string `json:"Description" name:"Description"`
+			SecurityGroupEntryId      *string `json:"SecurityGroupEntryId" name:"SecurityGroupEntryId"`
+			CidrBlock                 *string `json:"CidrBlock" name:"CidrBlock"`
+			Direction                 *string `json:"Direction" name:"Direction"`
+			Protocol                  *string `json:"Protocol" name:"Protocol"`
+			IcmpType                  *int    `json:"IcmpType" name:"IcmpType"`
+			IcmpCode                  *int    `json:"IcmpCode" name:"IcmpCode"`
+			PortRangeFrom             *int    `json:"PortRangeFrom" name:"PortRangeFrom"`
+			PortRangeTo               *int    `json:"PortRangeTo" name:"PortRangeTo"`
+			RuleTag                   *string `json:"RuleTag" name:"RuleTag"`
+			Priority                  *int    `json:"Priority" name:"Priority"`
+			Policy                    *string `json:"Policy" name:"Policy"`
+			AuthorizedSecurityGroupId *string `json:"AuthorizedSecurityGroupId" name:"AuthorizedSecurityGroupId"`
 		} `json:"SecurityGroupEntrySet" name:"SecurityGroupEntrySet"`
+		AuthorizedOn *bool `json:"AuthorizedOn" name:"AuthorizedOn"`
+		EmpowerOn    *bool `json:"EmpowerOn" name:"EmpowerOn"`
 	} `json:"SecurityGroupSet"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
 }
 
 func (r *DescribeSecurityGroupsResponse) ToJsonString() string {
@@ -890,6 +906,7 @@ type CreateNatRequest struct {
 	ProjectId    *string `json:"ProjectId,omitempty" name:"ProjectId"`
 	ChargeType   *string `json:"ChargeType,omitempty" name:"ChargeType"`
 	PurchaseTime *int    `json:"PurchaseTime,omitempty" name:"PurchaseTime"`
+	NatVersion   *string `json:"NatVersion,omitempty" name:"NatVersion"`
 }
 
 func (r *CreateNatRequest) ToJsonString() string {
@@ -942,6 +959,8 @@ type CreateNatResponse struct {
 		Description      *string `json:"Description" name:"Description"`
 		Enabled          *bool   `json:"Enabled" name:"Enabled"`
 	} `json:"DnatSet"`
+	NatVersion *string `json:"NatVersion" name:"NatVersion"`
+	NatLineId  *string `json:"NatLineId" name:"NatLineId"`
 }
 
 func (r *CreateNatResponse) ToJsonString() string {
@@ -988,6 +1007,7 @@ type DescribeNatsRequest struct {
 	TagKV        []*DescribeNatsTagKV  `json:"TagKV,omitempty" name:"TagKV"`
 	MaxResults   *int                  `json:"MaxResults,omitempty" name:"MaxResults"`
 	NextToken    *string               `json:"NextToken,omitempty" name:"NextToken"`
+	NatVersion   *string               `json:"NatVersion,omitempty" name:"NatVersion"`
 }
 
 func (r *DescribeNatsRequest) ToJsonString() string {
@@ -1017,19 +1037,29 @@ type DescribeNatsResponse struct {
 			Enabled *bool   `json:"Enabled" name:"Enabled"`
 		} `json:"NatIpSet" name:"NatIpSet"`
 		AssociateDirectConnectGatewaySet []struct {
-			DirectConnectGatewayId *string `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
+			DirectConnectGatewayId *string   `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
+			RuleId                 *string   `json:"RuleId" name:"RuleId"`
+			InternalCidr           *string   `json:"InternalCidr" name:"InternalCidr"`
+			NatIps                 []*string `json:"NatIps" name:"NatIps"`
 		} `json:"AssociateDirectConnectGatewaySet" name:"AssociateDirectConnectGatewaySet"`
 		AssociateVpnGatewaySet []struct {
-			VpnGatewayId *string `json:"VpnGatewayId" name:"VpnGatewayId"`
+			VpnGatewayId *string   `json:"VpnGatewayId" name:"VpnGatewayId"`
+			RuleId       *string   `json:"RuleId" name:"RuleId"`
+			InternalCidr *string   `json:"InternalCidr" name:"InternalCidr"`
+			NatIps       []*string `json:"NatIps" name:"NatIps"`
 		} `json:"AssociateVpnGatewaySet" name:"AssociateVpnGatewaySet"`
 		AssociateInstanceSet []struct {
 			PrivateIpAddress   *string   `json:"PrivateIpAddress" name:"PrivateIpAddress"`
 			NetworkInterfaceId *string   `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
 			NatIps             []*string `json:"NatIps" name:"NatIps"`
+			RuleId             *string   `json:"RuleId" name:"RuleId"`
+			InternalCidr       *string   `json:"InternalCidr" name:"InternalCidr"`
 		} `json:"AssociateInstanceSet" name:"AssociateInstanceSet"`
 		AssociateNatSet []struct {
-			SubnetId *string   `json:"SubnetId" name:"SubnetId"`
-			NatIps   []*string `json:"NatIps" name:"NatIps"`
+			SubnetId     *string   `json:"SubnetId" name:"SubnetId"`
+			NatIps       []*string `json:"NatIps" name:"NatIps"`
+			RuleId       *string   `json:"RuleId" name:"RuleId"`
+			InternalCidr *string   `json:"InternalCidr" name:"InternalCidr"`
 		} `json:"AssociateNatSet" name:"AssociateNatSet"`
 		DnatSet []struct {
 			CreateTime       *string `json:"CreateTime" name:"CreateTime"`
@@ -1051,6 +1081,14 @@ type DescribeNatsResponse struct {
 			TagValue     *string `json:"TagValue" name:"TagValue"`
 		} `json:"TagSet" name:"TagSet"`
 	} `json:"NatSet"`
+	NatVersion    *string `json:"NatVersion" name:"NatVersion"`
+	NatLineId     *string `json:"NatLineId" name:"NatLineId"`
+	TotalCount    *int    `json:"TotalCount" name:"TotalCount"`
+	FloatingIpSet []struct {
+		Address      *string `json:"Address" name:"Address"`
+		FloatingIpId *string `json:"FloatingIpId" name:"FloatingIpId"`
+		Enabled      *bool   `json:"Enabled" name:"Enabled"`
+	} `json:"FloatingIpSet"`
 }
 
 func (r *DescribeNatsResponse) ToJsonString() string {
@@ -1280,6 +1318,7 @@ type DescribeVpcPeeringConnectionsResponse struct {
 		ChargeType     *string `json:"ChargeType" name:"ChargeType"`
 		ServiceEndTime *string `json:"ServiceEndTime" name:"ServiceEndTime"`
 	} `json:"VpcPeeringConnectionSet"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
 }
 
 func (r *DescribeVpcPeeringConnectionsResponse) ToJsonString() string {
@@ -1358,20 +1397,23 @@ type ModifySecurityGroupResponse struct {
 	Description           *string `json:"Description" name:"Description"`
 	SecurityGroupType     *string `json:"SecurityGroupType" name:"SecurityGroupType"`
 	SecurityGroupEntrySet []struct {
-		CreateTime           *string `json:"CreateTime" name:"CreateTime"`
-		Description          *string `json:"Description" name:"Description"`
-		SecurityGroupEntryId *string `json:"SecurityGroupEntryId" name:"SecurityGroupEntryId"`
-		CidrBlock            *string `json:"CidrBlock" name:"CidrBlock"`
-		Direction            *string `json:"Direction" name:"Direction"`
-		Protocol             *string `json:"Protocol" name:"Protocol"`
-		IcmpType             *int    `json:"IcmpType" name:"IcmpType"`
-		IcmpCode             *int    `json:"IcmpCode" name:"IcmpCode"`
-		PortRangeFrom        *int    `json:"PortRangeFrom" name:"PortRangeFrom"`
-		PortRangeTo          *int    `json:"PortRangeTo" name:"PortRangeTo"`
-		RuleTag              *string `json:"RuleTag" name:"RuleTag"`
-		Priority             *int    `json:"Priority" name:"Priority"`
-		Policy               *string `json:"Policy" name:"Policy"`
+		CreateTime                *string `json:"CreateTime" name:"CreateTime"`
+		Description               *string `json:"Description" name:"Description"`
+		SecurityGroupEntryId      *string `json:"SecurityGroupEntryId" name:"SecurityGroupEntryId"`
+		CidrBlock                 *string `json:"CidrBlock" name:"CidrBlock"`
+		Direction                 *string `json:"Direction" name:"Direction"`
+		Protocol                  *string `json:"Protocol" name:"Protocol"`
+		IcmpType                  *int    `json:"IcmpType" name:"IcmpType"`
+		IcmpCode                  *int    `json:"IcmpCode" name:"IcmpCode"`
+		PortRangeFrom             *int    `json:"PortRangeFrom" name:"PortRangeFrom"`
+		PortRangeTo               *int    `json:"PortRangeTo" name:"PortRangeTo"`
+		RuleTag                   *string `json:"RuleTag" name:"RuleTag"`
+		Priority                  *int    `json:"Priority" name:"Priority"`
+		Policy                    *string `json:"Policy" name:"Policy"`
+		AuthorizedSecurityGroupId *string `json:"AuthorizedSecurityGroupId" name:"AuthorizedSecurityGroupId"`
 	} `json:"SecurityGroupEntrySet"`
+	AuthorizedOn *bool `json:"AuthorizedOn" name:"AuthorizedOn"`
+	EmpowerOn    *bool `json:"EmpowerOn" name:"EmpowerOn"`
 }
 
 func (r *ModifySecurityGroupResponse) ToJsonString() string {
@@ -1464,17 +1506,29 @@ type ModifyNatResponse struct {
 		Enabled *bool   `json:"Enabled" name:"Enabled"`
 	} `json:"NatIpSet"`
 	AssociateDirectConnectGatewaySet []struct {
-		DirectConnectGatewayId *string `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
+		DirectConnectGatewayId *string   `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
+		RuleId                 *string   `json:"RuleId" name:"RuleId"`
+		InternalCidr           *string   `json:"InternalCidr" name:"InternalCidr"`
+		NatIps                 []*string `json:"NatIps" name:"NatIps"`
 	} `json:"AssociateDirectConnectGatewaySet"`
 	AssociateVpnGatewaySet []struct {
-		VpnGatewayId *string `json:"VpnGatewayId" name:"VpnGatewayId"`
+		VpnGatewayId *string   `json:"VpnGatewayId" name:"VpnGatewayId"`
+		RuleId       *string   `json:"RuleId" name:"RuleId"`
+		InternalCidr *string   `json:"InternalCidr" name:"InternalCidr"`
+		NatIps       []*string `json:"NatIps" name:"NatIps"`
 	} `json:"AssociateVpnGatewaySet"`
 	AssociateInstanceSet []struct {
-		PrivateIpAddress   *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
-		NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+		PrivateIpAddress   *string   `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+		NetworkInterfaceId *string   `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+		RuleId             *string   `json:"RuleId" name:"RuleId"`
+		InternalCidr       *string   `json:"InternalCidr" name:"InternalCidr"`
+		NatIps             []*string `json:"NatIps" name:"NatIps"`
 	} `json:"AssociateInstanceSet"`
 	AssociateNatSet []struct {
-		SubnetId *string `json:"SubnetId" name:"SubnetId"`
+		SubnetId     *string   `json:"SubnetId" name:"SubnetId"`
+		RuleId       *string   `json:"RuleId" name:"RuleId"`
+		InternalCidr *string   `json:"InternalCidr" name:"InternalCidr"`
+		NatIps       []*string `json:"NatIps" name:"NatIps"`
 	} `json:"AssociateNatSet"`
 	DnatSet []struct {
 		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
@@ -1489,6 +1543,19 @@ type ModifyNatResponse struct {
 		Description      *string `json:"Description" name:"Description"`
 		Enabled          *bool   `json:"Enabled" name:"Enabled"`
 	} `json:"DnatSet"`
+	TagSet []struct {
+		ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
+		TagId        *int    `json:"TagId" name:"TagId"`
+		TagKey       *string `json:"TagKey" name:"TagKey"`
+		TagValue     *string `json:"TagValue" name:"TagValue"`
+	} `json:"TagSet"`
+	NatVersion    *string `json:"NatVersion" name:"NatVersion"`
+	NatLineId     *string `json:"NatLineId" name:"NatLineId"`
+	FloatingIpSet []struct {
+		Address      *string `json:"Address" name:"Address"`
+		FloatingIpId *string `json:"FloatingIpId" name:"FloatingIpId"`
+		Enabled      *bool   `json:"Enabled" name:"Enabled"`
+	} `json:"FloatingIpSet"`
 }
 
 func (r *ModifyNatResponse) ToJsonString() string {
@@ -1506,6 +1573,7 @@ type DescribeNetworkInterfacesRequest struct {
 	Filter             []*DescribeNetworkInterfacesFilter `json:"Filter,omitempty" name:"Filter"`
 	MaxResults         *int                               `json:"MaxResults,omitempty" name:"MaxResults"`
 	NextToken          *string                            `json:"NextToken,omitempty" name:"NextToken"`
+	VisitInternet      *bool                              `json:"VisitInternet,omitempty" name:"VisitInternet"`
 }
 
 func (r *DescribeNetworkInterfacesRequest) ToJsonString() string {
@@ -1553,6 +1621,7 @@ type DescribeNetworkInterfacesResponse struct {
 		Ipv6Public           *bool   `json:"Ipv6Public" name:"Ipv6Public"`
 		Ipv6Address          *string `json:"Ipv6Address" name:"Ipv6Address"`
 		State                *string `json:"State" name:"State"`
+		VisitInternet        *bool   `json:"VisitInternet" name:"VisitInternet"`
 	} `json:"NetworkInterfaceSet"`
 }
 
@@ -1993,6 +2062,8 @@ type CreateDirectConnectGatewayRequest struct {
 	*ksyunhttp.BaseRequest
 	VpcId                    *string `json:"VpcId,omitempty" name:"VpcId"`
 	DirectConnectGatewayName *string `json:"DirectConnectGatewayName,omitempty" name:"DirectConnectGatewayName"`
+	ProjectId                *string `json:"ProjectId,omitempty" name:"ProjectId"`
+	AutoPublishSystemRoute   *bool   `json:"AutoPublishSystemRoute,omitempty" name:"AutoPublishSystemRoute"`
 }
 
 func (r *CreateDirectConnectGatewayRequest) ToJsonString() string {
@@ -2833,6 +2904,7 @@ type AddNatIpRequest struct {
 	*ksyunhttp.BaseRequest
 	NatId     *string `json:"NatId,omitempty" name:"NatId"`
 	AddNumber *int    `json:"AddNumber,omitempty" name:"AddNumber"`
+	NatIp     *string `json:"NatIp,omitempty" name:"NatIp"`
 }
 
 func (r *AddNatIpRequest) ToJsonString() string {
@@ -2861,16 +2933,28 @@ type AddNatIpResponse struct {
 	} `json:"NatIpSet"`
 	AssociateDirectConnectGatewaySet []struct {
 		DirectConnectGatewayId *string `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
+		RuleId                 *string `json:"RuleId" name:"RuleId"`
+		InternalCidr           *string `json:"InternalCidr" name:"InternalCidr"`
+		NatIps                 *string `json:"NatIps" name:"NatIps"`
 	} `json:"AssociateDirectConnectGatewaySet"`
 	AssociateVpnGatewaySet []struct {
-		VpnGatewayId *string `json:"VpnGatewayId" name:"VpnGatewayId"`
+		VpnGatewayId *string   `json:"VpnGatewayId" name:"VpnGatewayId"`
+		RuleId       *string   `json:"RuleId" name:"RuleId"`
+		InternalCidr *string   `json:"InternalCidr" name:"InternalCidr"`
+		NatIps       []*string `json:"NatIps" name:"NatIps"`
 	} `json:"AssociateVpnGatewaySet"`
 	AssociateInstanceSet []struct {
-		PrivateIpAddress   *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
-		NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+		PrivateIpAddress   *string   `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+		NetworkInterfaceId *string   `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+		RuleId             *string   `json:"RuleId" name:"RuleId"`
+		InternalCidr       *string   `json:"InternalCidr" name:"InternalCidr"`
+		NatIps             []*string `json:"NatIps" name:"NatIps"`
 	} `json:"AssociateInstanceSet"`
 	AssociateNatSet []struct {
-		SubnetId *string `json:"SubnetId" name:"SubnetId"`
+		SubnetId     *string   `json:"SubnetId" name:"SubnetId"`
+		RuleId       *string   `json:"RuleId" name:"RuleId"`
+		InternalCidr *string   `json:"InternalCidr" name:"InternalCidr"`
+		NatIps       []*string `json:"NatIps" name:"NatIps"`
 	} `json:"AssociateNatSet"`
 	DnatSet []struct {
 		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
@@ -2885,6 +2969,19 @@ type AddNatIpResponse struct {
 		Description      *string `json:"Description" name:"Description"`
 		Enabled          *bool   `json:"Enabled" name:"Enabled"`
 	} `json:"DnatSet"`
+	TagSet []struct {
+		ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
+		TagId        *int    `json:"TagId" name:"TagId"`
+		TagKey       *string `json:"TagKey" name:"TagKey"`
+		TagValue     *string `json:"TagValue" name:"TagValue"`
+	} `json:"TagSet"`
+	NatVersion    *string `json:"NatVersion" name:"NatVersion"`
+	NatLineId     *string `json:"NatLineId" name:"NatLineId"`
+	FloatingIpSet []struct {
+		Address      *string `json:"Address" name:"Address"`
+		FloatingIpId *string `json:"FloatingIpId" name:"FloatingIpId"`
+		Enabled      *bool   `json:"Enabled" name:"Enabled"`
+	} `json:"FloatingIpSet"`
 }
 
 func (r *AddNatIpResponse) ToJsonString() string {
@@ -2927,17 +3024,29 @@ type DeleteNatIpResponse struct {
 		Enabled *bool   `json:"Enabled" name:"Enabled"`
 	} `json:"NatIpSet"`
 	AssociateDirectConnectGatewaySet []struct {
-		DirectConnectGatewayId *string `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
+		DirectConnectGatewayId *string   `json:"DirectConnectGatewayId" name:"DirectConnectGatewayId"`
+		RuleId                 *string   `json:"RuleId" name:"RuleId"`
+		InternalCidr           *string   `json:"InternalCidr" name:"InternalCidr"`
+		NatIps                 []*string `json:"NatIps" name:"NatIps"`
 	} `json:"AssociateDirectConnectGatewaySet"`
 	AssociateVpnGatewaySet []struct {
-		VpnGatewayId *string `json:"VpnGatewayId" name:"VpnGatewayId"`
+		VpnGatewayId *string   `json:"VpnGatewayId" name:"VpnGatewayId"`
+		RuleId       *string   `json:"RuleId" name:"RuleId"`
+		InternalCidr *string   `json:"InternalCidr" name:"InternalCidr"`
+		NatIps       []*string `json:"NatIps" name:"NatIps"`
 	} `json:"AssociateVpnGatewaySet"`
 	AssociateInstanceSet []struct {
-		PrivateIpAddress   *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
-		NetworkInterfaceId *string `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+		PrivateIpAddress   *string   `json:"PrivateIpAddress" name:"PrivateIpAddress"`
+		NetworkInterfaceId *string   `json:"NetworkInterfaceId" name:"NetworkInterfaceId"`
+		RuleId             *string   `json:"RuleId" name:"RuleId"`
+		InternalCidr       *string   `json:"InternalCidr" name:"InternalCidr"`
+		NatIps             []*string `json:"NatIps" name:"NatIps"`
 	} `json:"AssociateInstanceSet"`
 	AssociateNatSet []struct {
-		SubnetId *string `json:"SubnetId" name:"SubnetId"`
+		SubnetId     *string   `json:"SubnetId" name:"SubnetId"`
+		RuleId       *string   `json:"RuleId" name:"RuleId"`
+		InternalCidr *string   `json:"InternalCidr" name:"InternalCidr"`
+		NatIps       []*string `json:"NatIps" name:"NatIps"`
 	} `json:"AssociateNatSet"`
 	DnatSet []struct {
 		CreateTime       *string `json:"CreateTime" name:"CreateTime"`
@@ -2952,6 +3061,19 @@ type DeleteNatIpResponse struct {
 		Description      *string `json:"Description" name:"Description"`
 		Enabled          *bool   `json:"Enabled" name:"Enabled"`
 	} `json:"DnatSet"`
+	TagSet []struct {
+		ResourceUuid *string `json:"ResourceUuid" name:"ResourceUuid"`
+		TagId        *int    `json:"TagId" name:"TagId"`
+		TagKey       *string `json:"TagKey" name:"TagKey"`
+		TagValue     *string `json:"TagValue" name:"TagValue"`
+	} `json:"TagSet"`
+	NatVersion    *string `json:"NatVersion" name:"NatVersion"`
+	NatLineId     *string `json:"NatLineId" name:"NatLineId"`
+	FloatingIpSet []struct {
+		Address      *string `json:"Address" name:"Address"`
+		FloatingIpId *string `json:"FloatingIpId" name:"FloatingIpId"`
+		Enabled      *bool   `json:"Enabled" name:"Enabled"`
+	} `json:"FloatingIpSet"`
 }
 
 func (r *DeleteNatIpResponse) ToJsonString() string {
@@ -2992,6 +3114,7 @@ type AssociateVpcCidrBlockResponse struct {
 			Cidr            *string `json:"Cidr" name:"Cidr"`
 			Type            *string `json:"Type" name:"Type"`
 		} `json:"SecondaryCidrSet" name:"SecondaryCidrSet"`
+		CenAccountId *string `json:"CenAccountId" name:"CenAccountId"`
 	} `json:"Vpc"`
 }
 
@@ -3008,8 +3131,6 @@ type DescribeIpv6PublicIpAddressesRequest struct {
 	*ksyunhttp.BaseRequest
 	Ipv6PublicIpAddressId []*string                              `json:"Ipv6PublicIpAddressId,omitempty" name:"Ipv6PublicIpAddressId"`
 	Filter                []*DescribeIpv6PublicIpAddressesFilter `json:"Filter,omitempty" name:"Filter"`
-	MaxResults            *int                                   `json:"MaxResults,omitempty" name:"MaxResults"`
-	NextToken             *string                                `json:"NextToken,omitempty" name:"NextToken"`
 }
 
 func (r *DescribeIpv6PublicIpAddressesRequest) ToJsonString() string {
@@ -3078,7 +3199,8 @@ type DescribeIpv6NetworkInterfacesResponse struct {
 			Ipv6PublicIpCreateTime *string `json:"Ipv6PublicIpCreateTime" name:"Ipv6PublicIpCreateTime"`
 			BandWidth              *int    `json:"BandWidth" name:"BandWidth"`
 		} `json:"Ipv6PublicIpAddressSet" name:"Ipv6PublicIpAddressSet"`
-		Ipv6Public *bool `json:"Ipv6Public" name:"Ipv6Public"`
+		Ipv6Public *bool   `json:"Ipv6Public" name:"Ipv6Public"`
+		State      *string `json:"State" name:"State"`
 	} `json:"NetworkInterfaceSet"`
 }
 
@@ -3509,6 +3631,7 @@ type ModifyRouteTableResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId      *string `json:"RequestId" name:"RequestId"`
 	RouteTableName *string `json:"RouteTableName" name:"RouteTableName"`
+	Description    *string `json:"Description" name:"Description"`
 }
 
 func (r *ModifyRouteTableResponse) ToJsonString() string {
@@ -3665,7 +3788,7 @@ type CreateNatRateLimitRequest struct {
 	*ksyunhttp.BaseRequest
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
 	BandwidthLimit     *int    `json:"BandwidthLimit,omitempty" name:"BandwidthLimit"`
-	InBandwidthLimit   *int    `json:"inBandwidthLimit,omitempty" name:"inBandwidthLimit"`
+	InBandwidthLimit   *int    `json:"InBandwidthLimit,omitempty" name:"InBandwidthLimit"`
 }
 
 func (r *CreateNatRateLimitRequest) ToJsonString() string {
@@ -3695,8 +3818,10 @@ func (r *CreateNatRateLimitResponse) FromJsonString(s string) error {
 
 type DescribeNatRateLimitRequest struct {
 	*ksyunhttp.BaseRequest
-	NatId  *string                       `json:"NatId,omitempty" name:"NatId"`
-	Filter []*DescribeNatRateLimitFilter `json:"Filter,omitempty" name:"Filter"`
+	NatId      *string                       `json:"NatId,omitempty" name:"NatId"`
+	Filter     []*DescribeNatRateLimitFilter `json:"Filter,omitempty" name:"Filter"`
+	NextToken  *string                       `json:"NextToken,omitempty" name:"NextToken"`
+	MaxResults *int                          `json:"MaxResults,omitempty" name:"MaxResults"`
 }
 
 func (r *DescribeNatRateLimitRequest) ToJsonString() string {
@@ -3718,6 +3843,7 @@ type DescribeNatRateLimitResponse struct {
 		InstanceId           *string `json:"InstanceId" name:"InstanceId"`
 		PrivateIpAddress     *string `json:"PrivateIpAddress" name:"PrivateIpAddress"`
 		InstanceType         *string `json:"InstanceType" name:"InstanceType"`
+		VifMac               *string `json:"VifMac" name:"VifMac"`
 	} `json:"NatNetworkInterfaceSet"`
 }
 
@@ -4333,6 +4459,7 @@ type AddSecondaryCidrBlockResponse struct {
 			Cidr            *string `json:"Cidr" name:"Cidr"`
 			Type            *string `json:"Type" name:"Type"`
 		} `json:"SecondaryCidrSet" name:"SecondaryCidrSet"`
+		CenAccountId *string `json:"CenAccountId" name:"CenAccountId"`
 	} `json:"Vpc"`
 }
 
@@ -4480,6 +4607,7 @@ type BatchCreateNatRateLimitResponse struct {
 		NatRateLimitId     *string `json:"NatRateLimitId" name:"NatRateLimitId"`
 		InBandwidthLimit   *int    `json:"InBandwidthLimit" name:"InBandwidthLimit"`
 	} `json:"NatRateLimit"`
+	Return *bool `json:"Return" name:"Return"`
 }
 
 func (r *BatchCreateNatRateLimitResponse) ToJsonString() string {
@@ -4493,7 +4621,7 @@ func (r *BatchCreateNatRateLimitResponse) FromJsonString(s string) error {
 
 type BatchModifyNatRateLimitRequest struct {
 	*ksyunhttp.BaseRequest
-	BandwidthLimit   *string   `json:"BandwidthLimit,omitempty" name:"BandwidthLimit"`
+	BandwidthLimit   *int      `json:"BandwidthLimit,omitempty" name:"BandwidthLimit"`
 	InBandwidthLimit *int      `json:"InBandwidthLimit,omitempty" name:"InBandwidthLimit"`
 	NatRateLimitId   []*string `json:"NatRateLimitId,omitempty" name:"NatRateLimitId"`
 }
@@ -4512,6 +4640,7 @@ type BatchModifyNatRateLimitResponse struct {
 		NatRateLimitId     *string `json:"NatRateLimitId" name:"NatRateLimitId"`
 		InBandwidthLimit   *int    `json:"InBandwidthLimit" name:"InBandwidthLimit"`
 	} `json:"NatRateLimit"`
+	Return *bool `json:"Return" name:"Return"`
 }
 
 func (r *BatchModifyNatRateLimitResponse) ToJsonString() string {
@@ -4679,7 +4808,7 @@ type QueryNatTopVifMonitorRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" name:"EndTime"`
 	SortType     *string `json:"SortType,omitempty" name:"SortType"`
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
-	Ip           *string `json:"ip,omitempty" name:"ip"`
+	Ip           *string `json:"Ip,omitempty" name:"Ip"`
 }
 
 func (r *QueryNatTopVifMonitorRequest) ToJsonString() string {
@@ -4691,20 +4820,22 @@ type QueryNatTopVifMonitorResponse struct {
 	*ksyunhttp.BaseResponse
 	RequestId          *string `json:"RequestId" name:"RequestId"`
 	NatMonitorDataList []struct {
-		InstanceId   *string `json:"InstanceId" name:"InstanceId"`
-		InstanceName *string `json:"InstanceName" name:"InstanceName"`
-		Ip           *string `json:"Ip" name:"Ip"`
-		InBound      *string `json:"InBound" name:"InBound"`
-		OutBound     *string `json:"OutBound" name:"OutBound"`
-		InPeakBound  *string `json:"InPeakBound" name:"InPeakBound"`
-		OutPeakBound *string `json:"OutPeakBound" name:"OutPeakBound"`
+		InstanceId   *string  `json:"InstanceId" name:"InstanceId"`
+		InstanceName *string  `json:"InstanceName" name:"InstanceName"`
+		Ip           *string  `json:"Ip" name:"Ip"`
+		InBound      *float64 `json:"InBound" name:"InBound"`
+		OutBound     *float64 `json:"OutBound" name:"OutBound"`
+		InPeakBound  *float64 `json:"InPeakBound" name:"InPeakBound"`
+		OutPeakBound *float64 `json:"OutPeakBound" name:"OutPeakBound"`
 		MemberData   []struct {
-			Timestamp     *string `json:"Timestamp" name:"Timestamp"`
-			UnixTimestamp *string `json:"UnixTimestamp" name:"UnixTimestamp"`
-			InBoundValue  *string `json:"InBoundValue" name:"InBoundValue"`
-			OutBoundValue *string `json:"OutBoundValue" name:"OutBoundValue"`
+			Timestamp     *string  `json:"Timestamp" name:"Timestamp"`
+			UnixTimestamp *string  `json:"UnixTimestamp" name:"UnixTimestamp"`
+			InBoundValue  *float64 `json:"InBoundValue" name:"InBoundValue"`
+			OutBoundValue *float64 `json:"OutBoundValue" name:"OutBoundValue"`
 		} `json:"MemberData" name:"MemberData"`
-		Num *string `json:"Num" name:"Num"`
+		Num             *int     `json:"Num" name:"Num"`
+		InBoundPackage  *float64 `json:"InBoundPackage" name:"InBoundPackage"`
+		OutBoundPackage *float64 `json:"OutBoundPackage" name:"OutBoundPackage"`
 	} `json:"NatMonitorDataList"`
 }
 
@@ -4856,6 +4987,7 @@ type DeactiveFlowLogResponse struct {
 	WindowTime   *int    `json:"WindowTime" name:"WindowTime"`
 	Description  *string `json:"Description" name:"Description"`
 	CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+	Status       *string `json:"Status" name:"Status"`
 }
 
 func (r *DeactiveFlowLogResponse) ToJsonString() string {
@@ -4890,6 +5022,7 @@ type ActiveFlowLogResponse struct {
 	WindowTime   *int    `json:"WindowTime" name:"WindowTime"`
 	Description  *string `json:"Description" name:"Description"`
 	CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+	Status       *string `json:"Status" name:"Status"`
 }
 
 func (r *ActiveFlowLogResponse) ToJsonString() string {
@@ -4952,6 +5085,7 @@ type ModifyFlowLogResponse struct {
 	WindowTime   *int    `json:"WindowTime" name:"WindowTime"`
 	Description  *string `json:"Description" name:"Description"`
 	CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+	Status       *string `json:"Status" name:"Status"`
 }
 
 func (r *ModifyFlowLogResponse) ToJsonString() string {
@@ -4991,6 +5125,7 @@ type DescribeFlowLogsResponse struct {
 		WindowTime   *int    `json:"WindowTime" name:"WindowTime"`
 		Description  *string `json:"Description" name:"Description"`
 		CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+		Status       *string `json:"Status" name:"Status"`
 	} `json:"FlowLogs"`
 }
 
@@ -5033,6 +5168,7 @@ type CreateFlowLogResponse struct {
 	WindowTime   *int    `json:"WindowTime" name:"WindowTime"`
 	Description  *string `json:"Description" name:"Description"`
 	CreateTime   *string `json:"CreateTime" name:"CreateTime"`
+	Status       *string `json:"Status" name:"Status"`
 }
 
 func (r *CreateFlowLogResponse) ToJsonString() string {
@@ -5041,5 +5177,273 @@ func (r *CreateFlowLogResponse) ToJsonString() string {
 }
 
 func (r *CreateFlowLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AssociateEipRequest struct {
+	*ksyunhttp.BaseRequest
+	NatId         *string   `json:"NatId,omitempty" name:"NatId"`
+	FloatingIpIds []*string `json:"FloatingIpIds,omitempty" name:"FloatingIpIds"`
+}
+
+func (r *AssociateEipRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type AssociateEipResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *AssociateEipResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *AssociateEipResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DisassociateEipRequest struct {
+	*ksyunhttp.BaseRequest
+	NatId         *string   `json:"NatId,omitempty" name:"NatId"`
+	FloatingIpIds []*string `json:"FloatingIpIds,omitempty" name:"FloatingIpIds"`
+}
+
+func (r *DisassociateEipRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DisassociateEipResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DisassociateEipResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DisassociateEipResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateNetworkPathRequest struct {
+	*ksyunhttp.BaseRequest
+	SourceId   *string `json:"SourceId,omitempty" name:"SourceId"`
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+	SourceIp   *string `json:"SourceIp,omitempty" name:"SourceIp"`
+	PathName   *string `json:"PathName,omitempty" name:"PathName"`
+	TargetId   *string `json:"TargetId,omitempty" name:"TargetId"`
+	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
+	TargetIp   *string `json:"TargetIp,omitempty" name:"TargetIp"`
+	PublicPort *int    `json:"PublicPort,omitempty" name:"PublicPort"`
+	Protocol   *string `json:"Protocol,omitempty" name:"Protocol"`
+}
+
+func (r *CreateNetworkPathRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateNetworkPathResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	PathId    *string `json:"PathId" name:"PathId"`
+}
+
+func (r *CreateNetworkPathResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateNetworkPathResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteNetworkPathRequest struct {
+	*ksyunhttp.BaseRequest
+	PathId *string `json:"PathId,omitempty" name:"PathId"`
+}
+
+func (r *DeleteNetworkPathRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteNetworkPathResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *DeleteNetworkPathResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteNetworkPathResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeNetworkPathRequest struct {
+	*ksyunhttp.BaseRequest
+	PathId []*string `json:"PathId,omitempty" name:"PathId"`
+}
+
+func (r *DescribeNetworkPathRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeNetworkPathResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId      *string `json:"RequestId" name:"RequestId"`
+	NetworkPathSet []struct {
+		PathName                *string `json:"PathName" name:"PathName"`
+		PathId                  *string `json:"PathId" name:"PathId"`
+		SourceType              *string `json:"SourceType" name:"SourceType"`
+		SourceId                *string `json:"SourceId" name:"SourceId"`
+		SourceIp                *string `json:"SourceIp" name:"SourceIp"`
+		TargetType              *string `json:"TargetType" name:"TargetType"`
+		TargetId                *string `json:"TargetId" name:"TargetId"`
+		TargetIp                *string `json:"TargetIp" name:"TargetIp"`
+		Protocol                *string `json:"Protocol" name:"Protocol"`
+		PublicPort              *int    `json:"PublicPort" name:"PublicPort"`
+		PathTaskReachableResult *string `json:"PathTaskReachableResult" name:"PathTaskReachableResult"`
+		AnalysesTime            *string `json:"AnalysesTime" name:"AnalysesTime"`
+	} `json:"NetworkPathSet"`
+}
+
+func (r *DescribeNetworkPathResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeNetworkPathResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePathTaskRequest struct {
+	*ksyunhttp.BaseRequest
+	PathId *string `json:"PathId,omitempty" name:"PathId"`
+}
+
+func (r *CreatePathTaskRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreatePathTaskResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	PathTaskId *string `json:"PathTaskId" name:"PathTaskId"`
+}
+
+func (r *CreatePathTaskResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreatePathTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeletePathTaskRequest struct {
+	*ksyunhttp.BaseRequest
+	PathTaskId *string `json:"PathTaskId,omitempty" name:"PathTaskId"`
+}
+
+func (r *DeletePathTaskRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeletePathTaskResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *DeletePathTaskResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeletePathTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePathTasksRequest struct {
+	*ksyunhttp.BaseRequest
+	PathId     []*string `json:"PathId,omitempty" name:"PathId"`
+	PathTaskId []*string `json:"PathTaskId,omitempty" name:"PathTaskId"`
+	NextToken  *string   `json:"NextToken,omitempty" name:"NextToken"`
+	MaxResults *int      `json:"MaxResults,omitempty" name:"MaxResults"`
+}
+
+func (r *DescribePathTasksRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribePathTasksResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	PathTaskSet []struct {
+		PathTaskId              *string `json:"PathTaskId" name:"PathTaskId"`
+		PathTaskStatus          *string `json:"PathTaskStatus" name:"PathTaskStatus"`
+		PathTaskReachableResult *string `json:"PathTaskReachableResult" name:"PathTaskReachableResult"`
+		CreateTime              *string `json:"CreateTime" name:"CreateTime"`
+		PathId                  *string `json:"PathId" name:"PathId"`
+		UpdateTime              *string `json:"UpdateTime" name:"UpdateTime"`
+		NodeReachableAnalyses   []struct {
+			NodeInstanceId *string `json:"NodeInstanceId" name:"NodeInstanceId"`
+			CreateTime     *string `json:"CreateTime" name:"CreateTime"`
+			UpdateTime     *string `json:"UpdateTime" name:"UpdateTime"`
+			NodeType       *string `json:"NodeType" name:"NodeType"`
+			NodeOrder      *int    `json:"NodeOrder" name:"NodeOrder"`
+			Reachable      *string `json:"Reachable" name:"Reachable"`
+			Region         *string `json:"Region" name:"Region"`
+			Details        *string `json:"Details" name:"Details"`
+			AzName         *string `json:"AzName" name:"AzName"`
+		} `json:"NodeReachableAnalyses" name:"NodeReachableAnalyses"`
+	} `json:"PathTaskSet"`
+	NextToken *string `json:"NextToken" name:"NextToken"`
+}
+
+func (r *DescribePathTasksResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribePathTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyNetworkPathNameRequest struct {
+	*ksyunhttp.BaseRequest
+	PathId   *string `json:"PathId,omitempty" name:"PathId"`
+	PathName *string `json:"PathName,omitempty" name:"PathName"`
+}
+
+func (r *ModifyNetworkPathNameRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyNetworkPathNameResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *ModifyNetworkPathNameResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyNetworkPathNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
