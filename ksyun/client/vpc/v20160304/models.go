@@ -109,7 +109,6 @@ type CreateVpcRequest struct {
 	ProvidedIpv6CidrBlock *bool   `json:"ProvidedIpv6CidrBlock,omitempty" name:"ProvidedIpv6CidrBlock"`
 	Ipv6CidrBlock         *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
 	VpcIpv6CidrBlock      *string `json:"VpcIpv6CidrBlock,omitempty" name:"VpcIpv6CidrBlock"`
-	IsDefault             *bool   `json:"IsDefault,omitempty" name:"IsDefault"`
 }
 
 func (r *CreateVpcRequest) ToJsonString() string {
@@ -136,8 +135,8 @@ type CreateVpcResponse struct {
 			Cidr            *string `json:"Cidr" name:"Cidr"`
 			Type            *string `json:"Type" name:"Type"`
 		} `json:"SecondaryCidrSet" name:"SecondaryCidrSet"`
+		CenAccountId *string `json:"CenAccountId" name:"CenAccountId"`
 	} `json:"Vpc"`
-	CenAccountId *string `json:"CenAccountId" name:"CenAccountId"`
 }
 
 func (r *CreateVpcResponse) ToJsonString() string {
@@ -1080,15 +1079,15 @@ type DescribeNatsResponse struct {
 			TagKey       *string `json:"TagKey" name:"TagKey"`
 			TagValue     *string `json:"TagValue" name:"TagValue"`
 		} `json:"TagSet" name:"TagSet"`
+		NatVersion    *string `json:"NatVersion" name:"NatVersion"`
+		NatLineId     *string `json:"NatLineId" name:"NatLineId"`
+		FloatingIpSet struct {
+			Address      *string `json:"Address" name:"Address"`
+			FloatingIpId *string `json:"FloatingIpId" name:"FloatingIpId"`
+			Enabled      *bool   `json:"Enabled" name:"Enabled"`
+		} `json:"FloatingIpSet" name:"FloatingIpSet"`
 	} `json:"NatSet"`
-	NatVersion    *string `json:"NatVersion" name:"NatVersion"`
-	NatLineId     *string `json:"NatLineId" name:"NatLineId"`
-	TotalCount    *int    `json:"TotalCount" name:"TotalCount"`
-	FloatingIpSet []struct {
-		Address      *string `json:"Address" name:"Address"`
-		FloatingIpId *string `json:"FloatingIpId" name:"FloatingIpId"`
-		Enabled      *bool   `json:"Enabled" name:"Enabled"`
-	} `json:"FloatingIpSet"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
 }
 
 func (r *DescribeNatsResponse) ToJsonString() string {
