@@ -970,3 +970,240 @@ func (c *Client) DescribeFormatAndFrameworksWithContextV2(ctx context.Context, r
 	}
 	return statusCode, msg, nil
 }
+func NewAddModelAccessRequest() (request *AddModelAccessRequest) {
+	request = &AddModelAccessRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "AddModelAccess")
+	return
+}
+
+func NewAddModelAccessResponse() (response *AddModelAccessResponse) {
+	response = &AddModelAccessResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) AddModelAccess(request *AddModelAccessRequest) string {
+	return c.AddModelAccessWithContext(context.Background(), request)
+}
+
+func (c *Client) AddModelAccessSend(request *AddModelAccessRequest) (*AddModelAccessResponse, error) {
+	statusCode, msg, err := c.AddModelAccessWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct AddModelAccessResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) AddModelAccessWithContext(ctx context.Context, request *AddModelAccessRequest) string {
+	if request == nil {
+		request = NewAddModelAccessRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "AddModelAccess")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewAddModelAccessResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) AddModelAccessWithContextV2(ctx context.Context, request *AddModelAccessRequest) (int, string, error) {
+	if request == nil {
+		request = NewAddModelAccessRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "AddModelAccess")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewAddModelAccessResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyModelAccessRoleRequest() (request *ModifyModelAccessRoleRequest) {
+	request = &ModifyModelAccessRoleRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ModifyModelAccessRole")
+	return
+}
+
+func NewModifyModelAccessRoleResponse() (response *ModifyModelAccessRoleResponse) {
+	response = &ModifyModelAccessRoleResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyModelAccessRole(request *ModifyModelAccessRoleRequest) string {
+	return c.ModifyModelAccessRoleWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyModelAccessRoleSend(request *ModifyModelAccessRoleRequest) (*ModifyModelAccessRoleResponse, error) {
+	statusCode, msg, err := c.ModifyModelAccessRoleWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ModifyModelAccessRoleResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyModelAccessRoleWithContext(ctx context.Context, request *ModifyModelAccessRoleRequest) string {
+	if request == nil {
+		request = NewModifyModelAccessRoleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyModelAccessRole")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyModelAccessRoleResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyModelAccessRoleWithContextV2(ctx context.Context, request *ModifyModelAccessRoleRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyModelAccessRoleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyModelAccessRole")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyModelAccessRoleResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewRemoveModelAccessRequest() (request *RemoveModelAccessRequest) {
+	request = &RemoveModelAccessRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "RemoveModelAccess")
+	return
+}
+
+func NewRemoveModelAccessResponse() (response *RemoveModelAccessResponse) {
+	response = &RemoveModelAccessResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RemoveModelAccess(request *RemoveModelAccessRequest) string {
+	return c.RemoveModelAccessWithContext(context.Background(), request)
+}
+
+func (c *Client) RemoveModelAccessSend(request *RemoveModelAccessRequest) (*RemoveModelAccessResponse, error) {
+	statusCode, msg, err := c.RemoveModelAccessWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct RemoveModelAccessResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) RemoveModelAccessWithContext(ctx context.Context, request *RemoveModelAccessRequest) string {
+	if request == nil {
+		request = NewRemoveModelAccessRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "RemoveModelAccess")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRemoveModelAccessResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) RemoveModelAccessWithContextV2(ctx context.Context, request *RemoveModelAccessRequest) (int, string, error) {
+	if request == nil {
+		request = NewRemoveModelAccessRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "RemoveModelAccess")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRemoveModelAccessResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}

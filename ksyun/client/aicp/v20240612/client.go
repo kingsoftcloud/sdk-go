@@ -7290,6 +7290,85 @@ func (c *Client) ModifyResourcePoolWithContextV2(ctx context.Context, request *M
 	}
 	return statusCode, msg, nil
 }
+func NewDescribeResourcePoolInstanceSpecsRequest() (request *DescribeResourcePoolInstanceSpecsRequest) {
+	request = &DescribeResourcePoolInstanceSpecsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeResourcePoolInstanceSpecs")
+	return
+}
+
+func NewDescribeResourcePoolInstanceSpecsResponse() (response *DescribeResourcePoolInstanceSpecsResponse) {
+	response = &DescribeResourcePoolInstanceSpecsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeResourcePoolInstanceSpecs(request *DescribeResourcePoolInstanceSpecsRequest) string {
+	return c.DescribeResourcePoolInstanceSpecsWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeResourcePoolInstanceSpecsSend(request *DescribeResourcePoolInstanceSpecsRequest) (*DescribeResourcePoolInstanceSpecsResponse, error) {
+	statusCode, msg, err := c.DescribeResourcePoolInstanceSpecsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeResourcePoolInstanceSpecsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeResourcePoolInstanceSpecsWithContext(ctx context.Context, request *DescribeResourcePoolInstanceSpecsRequest) string {
+	if request == nil {
+		request = NewDescribeResourcePoolInstanceSpecsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeResourcePoolInstanceSpecs")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeResourcePoolInstanceSpecsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeResourcePoolInstanceSpecsWithContextV2(ctx context.Context, request *DescribeResourcePoolInstanceSpecsRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeResourcePoolInstanceSpecsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeResourcePoolInstanceSpecs")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeResourcePoolInstanceSpecsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewDescribeInferenceAndPodEventsRequest() (request *DescribeInferenceAndPodEventsRequest) {
 	request = &DescribeInferenceAndPodEventsRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -9022,6 +9101,243 @@ func (c *Client) DeleteLogPoolConfigWithContextV2(ctx context.Context, request *
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDeleteLogPoolConfigResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewAddImageAccessRequest() (request *AddImageAccessRequest) {
+	request = &AddImageAccessRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "AddImageAccess")
+	return
+}
+
+func NewAddImageAccessResponse() (response *AddImageAccessResponse) {
+	response = &AddImageAccessResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) AddImageAccess(request *AddImageAccessRequest) string {
+	return c.AddImageAccessWithContext(context.Background(), request)
+}
+
+func (c *Client) AddImageAccessSend(request *AddImageAccessRequest) (*AddImageAccessResponse, error) {
+	statusCode, msg, err := c.AddImageAccessWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct AddImageAccessResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) AddImageAccessWithContext(ctx context.Context, request *AddImageAccessRequest) string {
+	if request == nil {
+		request = NewAddImageAccessRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "AddImageAccess")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewAddImageAccessResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) AddImageAccessWithContextV2(ctx context.Context, request *AddImageAccessRequest) (int, string, error) {
+	if request == nil {
+		request = NewAddImageAccessRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "AddImageAccess")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewAddImageAccessResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewModifyImageAccessRoleRequest() (request *ModifyImageAccessRoleRequest) {
+	request = &ModifyImageAccessRoleRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ModifyImageAccessRole")
+	return
+}
+
+func NewModifyImageAccessRoleResponse() (response *ModifyImageAccessRoleResponse) {
+	response = &ModifyImageAccessRoleResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ModifyImageAccessRole(request *ModifyImageAccessRoleRequest) string {
+	return c.ModifyImageAccessRoleWithContext(context.Background(), request)
+}
+
+func (c *Client) ModifyImageAccessRoleSend(request *ModifyImageAccessRoleRequest) (*ModifyImageAccessRoleResponse, error) {
+	statusCode, msg, err := c.ModifyImageAccessRoleWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ModifyImageAccessRoleResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ModifyImageAccessRoleWithContext(ctx context.Context, request *ModifyImageAccessRoleRequest) string {
+	if request == nil {
+		request = NewModifyImageAccessRoleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyImageAccessRole")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyImageAccessRoleResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ModifyImageAccessRoleWithContextV2(ctx context.Context, request *ModifyImageAccessRoleRequest) (int, string, error) {
+	if request == nil {
+		request = NewModifyImageAccessRoleRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ModifyImageAccessRole")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewModifyImageAccessRoleResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewRemoveImageAccessRequest() (request *RemoveImageAccessRequest) {
+	request = &RemoveImageAccessRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "RemoveImageAccess")
+	return
+}
+
+func NewRemoveImageAccessResponse() (response *RemoveImageAccessResponse) {
+	response = &RemoveImageAccessResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RemoveImageAccess(request *RemoveImageAccessRequest) string {
+	return c.RemoveImageAccessWithContext(context.Background(), request)
+}
+
+func (c *Client) RemoveImageAccessSend(request *RemoveImageAccessRequest) (*RemoveImageAccessResponse, error) {
+	statusCode, msg, err := c.RemoveImageAccessWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct RemoveImageAccessResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) RemoveImageAccessWithContext(ctx context.Context, request *RemoveImageAccessRequest) string {
+	if request == nil {
+		request = NewRemoveImageAccessRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "RemoveImageAccess")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRemoveImageAccessResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) RemoveImageAccessWithContextV2(ctx context.Context, request *RemoveImageAccessRequest) (int, string, error) {
+	if request == nil {
+		request = NewRemoveImageAccessRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "RemoveImageAccess")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRemoveImageAccessResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err

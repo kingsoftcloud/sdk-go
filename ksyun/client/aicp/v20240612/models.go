@@ -212,6 +212,12 @@ type CreateQueueCapability struct {
 	MemoryNum *int                             `json:"MemoryNum,omitempty" name:"MemoryNum"`
 	GPUInfos  []*CreateQueueCapabilityGPUInfos `json:"GPUInfos,omitempty" name:"GPUInfos"`
 }
+type CreateQueueNodeSpec struct {
+	GPUType      *string   `json:"GPUType,omitempty" name:"GPUType"`
+	HostType     *string   `json:"HostType,omitempty" name:"HostType"`
+	NodeNum      *int      `json:"NodeNum,omitempty" name:"NodeNum"`
+	SpecifyNodes []*string `json:"SpecifyNodes,omitempty" name:"SpecifyNodes"`
+}
 type CreateQueueAccessList struct {
 	UserId     *string `json:"UserId,omitempty" name:"UserId"`
 	Permission *string `json:"Permission,omitempty" name:"Permission"`
@@ -236,6 +242,12 @@ type ModifyQueueAccessList struct {
 type ModifyQueueSharedGroupList struct {
 	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
 	Permission    *string `json:"Permission,omitempty" name:"Permission"`
+}
+type ModifyQueueNodeSpec struct {
+	GPUType      *string   `json:"GPUType,omitempty" name:"GPUType"`
+	HostType     *string   `json:"HostType,omitempty" name:"HostType"`
+	NodeNum      *int      `json:"NodeNum,omitempty" name:"NodeNum"`
+	SpecifyNodes []*string `json:"SpecifyNodes,omitempty" name:"SpecifyNodes"`
 }
 type DescribeInferencePodsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
@@ -279,6 +291,7 @@ type CreateResourcePoolRequest struct {
 	Components            []*string `json:"Components,omitempty" name:"Components"`
 	EnableVolume          *bool     `json:"EnableVolume,omitempty" name:"EnableVolume"`
 	VolumeChargeType      *string   `json:"VolumeChargeType,omitempty" name:"VolumeChargeType"`
+	ProjectId             *string   `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *CreateResourcePoolRequest) ToJsonString() string {
@@ -1450,6 +1463,7 @@ type ModifyApikeyRequest struct {
 	LowPriceModels                []*string `json:"LowPriceModels,omitempty" name:"LowPriceModels"`
 	HighPriceModels               []*string `json:"HighPriceModels,omitempty" name:"HighPriceModels"`
 	AllowedIps                    []*string `json:"AllowedIps,omitempty" name:"AllowedIps"`
+	ProjectId                     *string   `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *ModifyApikeyRequest) ToJsonString() string {
@@ -3314,6 +3328,15 @@ type DescribeQueuesResponse struct {
 			MemoryNum *int    `json:"MemoryNum" name:"MemoryNum"`
 			GPUNum    *string `json:"GPUNum" name:"GPUNum"`
 		} `json:"Allocated" name:"Allocated"`
+		QueueType      *string `json:"QueueType" name:"QueueType"`
+		NodeSelectType *string `json:"NodeSelectType" name:"NodeSelectType"`
+		NodeCount      *int    `json:"NodeCount" name:"NodeCount"`
+		NodeSpecs      []struct {
+			GPUType      *string   `json:"GPUType" name:"GPUType"`
+			HostType     *string   `json:"HostType" name:"HostType"`
+			NodeNum      *int      `json:"NodeNum" name:"NodeNum"`
+			SpecifyNodes []*string `json:"SpecifyNodes" name:"SpecifyNodes"`
+		} `json:"NodeSpecs" name:"NodeSpecs"`
 	} `json:"QueueSet"`
 }
 
@@ -3330,7 +3353,10 @@ type CreateQueueRequest struct {
 	*ksyunhttp.BaseRequest
 	ResourcePoolId  *string                       `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
 	QueueName       *string                       `json:"QueueName,omitempty" name:"QueueName"`
+	QueueType       *string                       `json:"QueueType,omitempty" name:"QueueType"`
+	NodeSelectType  *string                       `json:"NodeSelectType,omitempty" name:"NodeSelectType"`
 	Capability      *CreateQueueCapability        `json:"Capability,omitempty" name:"Capability"`
+	NodeSpec        []*CreateQueueNodeSpec        `json:"NodeSpec,omitempty" name:"NodeSpec"`
 	AllowBorrowing  *bool                         `json:"AllowBorrowing,omitempty" name:"AllowBorrowing"`
 	Description     *string                       `json:"Description,omitempty" name:"Description"`
 	AccessList      []*CreateQueueAccessList      `json:"AccessList,omitempty" name:"AccessList"`
@@ -3367,6 +3393,8 @@ type ModifyQueueRequest struct {
 	AccessList      []*ModifyQueueAccessList      `json:"AccessList,omitempty" name:"AccessList"`
 	SharedGroupList []*ModifyQueueSharedGroupList `json:"SharedGroupList,omitempty" name:"SharedGroupList"`
 	WorkloadType    []*string                     `json:"WorkloadType,omitempty" name:"WorkloadType"`
+	NodeSpec        []*ModifyQueueNodeSpec        `json:"NodeSpec,omitempty" name:"NodeSpec"`
+	NodeSelectType  *string                       `json:"NodeSelectType,omitempty" name:"NodeSelectType"`
 }
 
 func (r *ModifyQueueRequest) ToJsonString() string {
@@ -3653,6 +3681,41 @@ func (r *ModifyResourcePoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeResourcePoolInstanceSpecsRequest struct {
+	*ksyunhttp.BaseRequest
+	ResourcePoolId *string `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	GPUModel       *string `json:"GPUModel,omitempty" name:"GPUModel"`
+	OnlyCPU        *bool   `json:"OnlyCPU,omitempty" name:"OnlyCPU"`
+}
+
+func (r *DescribeResourcePoolInstanceSpecsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeResourcePoolInstanceSpecsResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	NodeSpecs []struct {
+		GPUModel       *string `json:"GPUModel" name:"GPUModel"`
+		HostType       *string `json:"HostType" name:"HostType"`
+		GPUCount       *int    `json:"GPUCount" name:"GPUCount"`
+		CPUCores       *int    `json:"CPUCores" name:"CPUCores"`
+		Memory         *string `json:"Memory" name:"Memory"`
+		TotalNodes     *int    `json:"TotalNodes" name:"TotalNodes"`
+		AvailableNodes *int    `json:"AvailableNodes" name:"AvailableNodes"`
+	} `json:"NodeSpecs"`
+}
+
+func (r *DescribeResourcePoolInstanceSpecsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeResourcePoolInstanceSpecsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInferenceAndPodEventsRequest struct {
 	*ksyunhttp.BaseRequest
 	InferenceId *string   `json:"InferenceId,omitempty" name:"InferenceId"`
@@ -3827,7 +3890,6 @@ type DescribeTerminateStopRecordsResponse struct {
 		Result            *bool   `json:"Result" name:"Result"`
 		Message           *string `json:"Message" name:"Message"`
 		CreateTime        *string `json:"CreateTime" name:"CreateTime"`
-		QueueId           *string `json:"QueueId" name:"QueueId"`
 	} `json:"Records"`
 }
 
@@ -4349,5 +4411,88 @@ func (r *DeleteLogPoolConfigResponse) ToJsonString() string {
 }
 
 func (r *DeleteLogPoolConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddImageAccessRequest struct {
+	*ksyunhttp.BaseRequest
+	ImageId       *string `json:"ImageId,omitempty" name:"ImageId"`
+	UserId        *string `json:"UserId,omitempty" name:"UserId"`
+	SharedGroupId *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
+	Permission    *string `json:"Permission,omitempty" name:"Permission"`
+}
+
+func (r *AddImageAccessRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type AddImageAccessResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	ImageId   *string `json:"ImageId" name:"ImageId"`
+}
+
+func (r *AddImageAccessResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *AddImageAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyImageAccessRoleRequest struct {
+	*ksyunhttp.BaseRequest
+	ImageId       *string `json:"ImageId,omitempty" name:"ImageId"`
+	UserId        *string `json:"UserId,omitempty" name:"UserId"`
+	SharedGroupId *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
+	Permission    *string `json:"Permission,omitempty" name:"Permission"`
+}
+
+func (r *ModifyImageAccessRoleRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyImageAccessRoleResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	ImageId   *string `json:"ImageId" name:"ImageId"`
+}
+
+func (r *ModifyImageAccessRoleResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyImageAccessRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoveImageAccessRequest struct {
+	*ksyunhttp.BaseRequest
+	ImageId       *string `json:"ImageId,omitempty" name:"ImageId"`
+	UserId        *string `json:"UserId,omitempty" name:"UserId"`
+	SharedGroupId *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
+}
+
+func (r *RemoveImageAccessRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type RemoveImageAccessResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	ImageId   *string `json:"ImageId" name:"ImageId"`
+}
+
+func (r *RemoveImageAccessResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *RemoveImageAccessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

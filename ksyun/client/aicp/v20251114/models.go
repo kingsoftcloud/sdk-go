@@ -31,6 +31,7 @@ type RetrieveKnowledgeRetrievalModel struct {
 	ScoreThresholdEnabled *bool                                         `json:"ScoreThresholdEnabled,omitempty" name:"ScoreThresholdEnabled"`
 	ScoreThreshold        *float64                                      `json:"ScoreThreshold,omitempty" name:"ScoreThreshold"`
 	Retriever             *RetrieveKnowledgeRetrievalModelRetriever     `json:"Retriever,omitempty" name:"Retriever"`
+	FilterExpression      *string                                       `json:"FilterExpression,omitempty" name:"FilterExpression"`
 }
 type ImportDocumentsDataProcessRuleRulesSegmentation struct {
 	Delimiter *string `json:"Delimiter,omitempty" name:"Delimiter"`
@@ -232,6 +233,15 @@ type CreateMcpServerMcpRuntimeConfig struct {
 	Resource     *CreateMcpServerMcpRuntimeConfigResource     `json:"Resource,omitempty" name:"Resource"`
 	Advanced     *CreateMcpServerMcpRuntimeConfigAdvanced     `json:"Advanced,omitempty" name:"Advanced"`
 }
+type UpdateDocumentMetadataOperationDataMetadataList struct {
+	Id    *string `json:"Id,omitempty" name:"Id"`
+	Name  *string `json:"Name,omitempty" name:"Name"`
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+type UpdateDocumentMetadataOperationData struct {
+	DocumentId   *string                                            `json:"DocumentId,omitempty" name:"DocumentId"`
+	MetadataList []*UpdateDocumentMetadataOperationDataMetadataList `json:"MetadataList,omitempty" name:"MetadataList"`
+}
 
 type DescribeKnowledgeBaseModelsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -311,7 +321,6 @@ type RetrieveKnowledgeResponse struct {
 			DocumentId    *string   `json:"DocumentId" name:"DocumentId"`
 			Content       *string   `json:"Content" name:"Content"`
 			Answer        *string   `json:"Answer" name:"Answer"`
-			WordCount     *int      `json:"WordCount" name:"WordCount"`
 			Tokens        *int      `json:"Tokens" name:"Tokens"`
 			Keywords      []*string `json:"Keywords" name:"Keywords"`
 			IndexNodeId   *string   `json:"IndexNodeId" name:"IndexNodeId"`
@@ -2028,6 +2037,37 @@ func (r *QueryMcpMetricsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryMemoryCollectionSkillsRequest struct {
+	*ksyunhttp.BaseRequest
+	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+}
+
+func (r *QueryMemoryCollectionSkillsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type QueryMemoryCollectionSkillsResponse struct {
+	*ksyunhttp.BaseResponse
+	Code    *int    `json:"Code" name:"Code"`
+	Message *string `json:"Message" name:"Message"`
+	Data    struct {
+		SystemOverview  *string `json:"SystemOverview" name:"SystemOverview"`
+		AddMemoryApi    *string `json:"AddMemoryApi" name:"AddMemoryApi"`
+		SearchMemoryApi *string `json:"SearchMemoryApi" name:"SearchMemoryApi"`
+		Scenes          *string `json:"Scenes" name:"Scenes"`
+	} `json:"Data"`
+}
+
+func (r *QueryMemoryCollectionSkillsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *QueryMemoryCollectionSkillsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeKnowledgeTokenMonitorRequest struct {
 	*ksyunhttp.BaseRequest
 	DatasetId   *string `json:"DatasetId,omitempty" name:"DatasetId"`
@@ -2410,5 +2450,143 @@ func (r *ListTopicsResponse) ToJsonString() string {
 }
 
 func (r *ListTopicsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateDocumentMetadataRequest struct {
+	*ksyunhttp.BaseRequest
+	DatasetId     *string                                `json:"DatasetId,omitempty" name:"DatasetId"`
+	OperationData []*UpdateDocumentMetadataOperationData `json:"OperationData,omitempty" name:"OperationData"`
+}
+
+func (r *UpdateDocumentMetadataRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type UpdateDocumentMetadataResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Result    *bool   `json:"Result" name:"Result"`
+}
+
+func (r *UpdateDocumentMetadataResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateDocumentMetadataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteMetadataRequest struct {
+	*ksyunhttp.BaseRequest
+	DatasetId  *string `json:"DatasetId,omitempty" name:"DatasetId"`
+	MetadataId *string `json:"MetadataId,omitempty" name:"MetadataId"`
+}
+
+func (r *DeleteMetadataRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteMetadataResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Result    *bool   `json:"Result" name:"Result"`
+}
+
+func (r *DeleteMetadataResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteMetadataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateMetadataRequest struct {
+	*ksyunhttp.BaseRequest
+	DatasetId  *string `json:"DatasetId,omitempty" name:"DatasetId"`
+	MetadataId *string `json:"MetadataId,omitempty" name:"MetadataId"`
+	Name       *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *UpdateMetadataRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type UpdateMetadataResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Result    *bool   `json:"Result" name:"Result"`
+}
+
+func (r *UpdateMetadataResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateMetadataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateMetadataRequest struct {
+	*ksyunhttp.BaseRequest
+	DatasetId *string `json:"DatasetId,omitempty" name:"DatasetId"`
+	Name      *string `json:"Name,omitempty" name:"Name"`
+	Type      *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *CreateMetadataRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateMetadataResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Id        *string `json:"Id" name:"Id"`
+	Type      *string `json:"Type" name:"Type"`
+	Name      *string `json:"Name" name:"Name"`
+}
+
+func (r *CreateMetadataResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateMetadataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeMetadataRequest struct {
+	*ksyunhttp.BaseRequest
+	DatasetId *string `json:"DatasetId,omitempty" name:"DatasetId"`
+}
+
+func (r *DescribeMetadataRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeMetadataResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	DocMetadata []struct {
+		Id    *string `json:"Id" name:"Id"`
+		Name  *string `json:"Name" name:"Name"`
+		Type  *string `json:"Type" name:"Type"`
+		Count *int    `json:"Count" name:"Count"`
+	} `json:"DocMetadata"`
+}
+
+func (r *DescribeMetadataResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeMetadataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

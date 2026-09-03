@@ -3814,6 +3814,85 @@ func (c *Client) QueryMcpMetricsWithContextV2(ctx context.Context, request *Quer
 	}
 	return statusCode, msg, nil
 }
+func NewQueryMemoryCollectionSkillsRequest() (request *QueryMemoryCollectionSkillsRequest) {
+	request = &QueryMemoryCollectionSkillsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "QueryMemoryCollectionSkills")
+	return
+}
+
+func NewQueryMemoryCollectionSkillsResponse() (response *QueryMemoryCollectionSkillsResponse) {
+	response = &QueryMemoryCollectionSkillsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) QueryMemoryCollectionSkills(request *QueryMemoryCollectionSkillsRequest) string {
+	return c.QueryMemoryCollectionSkillsWithContext(context.Background(), request)
+}
+
+func (c *Client) QueryMemoryCollectionSkillsSend(request *QueryMemoryCollectionSkillsRequest) (*QueryMemoryCollectionSkillsResponse, error) {
+	statusCode, msg, err := c.QueryMemoryCollectionSkillsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct QueryMemoryCollectionSkillsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) QueryMemoryCollectionSkillsWithContext(ctx context.Context, request *QueryMemoryCollectionSkillsRequest) string {
+	if request == nil {
+		request = NewQueryMemoryCollectionSkillsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "QueryMemoryCollectionSkills")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewQueryMemoryCollectionSkillsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) QueryMemoryCollectionSkillsWithContextV2(ctx context.Context, request *QueryMemoryCollectionSkillsRequest) (int, string, error) {
+	if request == nil {
+		request = NewQueryMemoryCollectionSkillsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "QueryMemoryCollectionSkills")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewQueryMemoryCollectionSkillsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewDescribeKnowledgeTokenMonitorRequest() (request *DescribeKnowledgeTokenMonitorRequest) {
 	request = &DescribeKnowledgeTokenMonitorRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -4598,6 +4677,401 @@ func (c *Client) ListTopicsWithContextV2(ctx context.Context, request *ListTopic
 	request.SetContentType("application/json")
 
 	response := NewListTopicsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewUpdateDocumentMetadataRequest() (request *UpdateDocumentMetadataRequest) {
+	request = &UpdateDocumentMetadataRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "UpdateDocumentMetadata")
+	return
+}
+
+func NewUpdateDocumentMetadataResponse() (response *UpdateDocumentMetadataResponse) {
+	response = &UpdateDocumentMetadataResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateDocumentMetadata(request *UpdateDocumentMetadataRequest) string {
+	return c.UpdateDocumentMetadataWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateDocumentMetadataSend(request *UpdateDocumentMetadataRequest) (*UpdateDocumentMetadataResponse, error) {
+	statusCode, msg, err := c.UpdateDocumentMetadataWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct UpdateDocumentMetadataResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) UpdateDocumentMetadataWithContext(ctx context.Context, request *UpdateDocumentMetadataRequest) string {
+	if request == nil {
+		request = NewUpdateDocumentMetadataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "UpdateDocumentMetadata")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateDocumentMetadataResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) UpdateDocumentMetadataWithContextV2(ctx context.Context, request *UpdateDocumentMetadataRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdateDocumentMetadataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "UpdateDocumentMetadata")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateDocumentMetadataResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteMetadataRequest() (request *DeleteMetadataRequest) {
+	request = &DeleteMetadataRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeleteMetadata")
+	return
+}
+
+func NewDeleteMetadataResponse() (response *DeleteMetadataResponse) {
+	response = &DeleteMetadataResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteMetadata(request *DeleteMetadataRequest) string {
+	return c.DeleteMetadataWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteMetadataSend(request *DeleteMetadataRequest) (*DeleteMetadataResponse, error) {
+	statusCode, msg, err := c.DeleteMetadataWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteMetadataResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteMetadataWithContext(ctx context.Context, request *DeleteMetadataRequest) string {
+	if request == nil {
+		request = NewDeleteMetadataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteMetadata")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteMetadataResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteMetadataWithContextV2(ctx context.Context, request *DeleteMetadataRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteMetadataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteMetadata")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteMetadataResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewUpdateMetadataRequest() (request *UpdateMetadataRequest) {
+	request = &UpdateMetadataRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "UpdateMetadata")
+	return
+}
+
+func NewUpdateMetadataResponse() (response *UpdateMetadataResponse) {
+	response = &UpdateMetadataResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateMetadata(request *UpdateMetadataRequest) string {
+	return c.UpdateMetadataWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateMetadataSend(request *UpdateMetadataRequest) (*UpdateMetadataResponse, error) {
+	statusCode, msg, err := c.UpdateMetadataWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct UpdateMetadataResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) UpdateMetadataWithContext(ctx context.Context, request *UpdateMetadataRequest) string {
+	if request == nil {
+		request = NewUpdateMetadataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "UpdateMetadata")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateMetadataResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) UpdateMetadataWithContextV2(ctx context.Context, request *UpdateMetadataRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdateMetadataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "UpdateMetadata")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateMetadataResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateMetadataRequest() (request *CreateMetadataRequest) {
+	request = &CreateMetadataRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateMetadata")
+	return
+}
+
+func NewCreateMetadataResponse() (response *CreateMetadataResponse) {
+	response = &CreateMetadataResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateMetadata(request *CreateMetadataRequest) string {
+	return c.CreateMetadataWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateMetadataSend(request *CreateMetadataRequest) (*CreateMetadataResponse, error) {
+	statusCode, msg, err := c.CreateMetadataWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateMetadataResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateMetadataWithContext(ctx context.Context, request *CreateMetadataRequest) string {
+	if request == nil {
+		request = NewCreateMetadataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateMetadata")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateMetadataResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateMetadataWithContextV2(ctx context.Context, request *CreateMetadataRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateMetadataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateMetadata")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateMetadataResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeMetadataRequest() (request *DescribeMetadataRequest) {
+	request = &DescribeMetadataRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeMetadata")
+	return
+}
+
+func NewDescribeMetadataResponse() (response *DescribeMetadataResponse) {
+	response = &DescribeMetadataResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeMetadata(request *DescribeMetadataRequest) string {
+	return c.DescribeMetadataWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeMetadataSend(request *DescribeMetadataRequest) (*DescribeMetadataResponse, error) {
+	statusCode, msg, err := c.DescribeMetadataWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeMetadataResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeMetadataWithContext(ctx context.Context, request *DescribeMetadataRequest) string {
+	if request == nil {
+		request = NewDescribeMetadataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeMetadata")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeMetadataResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeMetadataWithContextV2(ctx context.Context, request *DescribeMetadataRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeMetadataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeMetadata")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeMetadataResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err

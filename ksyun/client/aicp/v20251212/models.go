@@ -84,6 +84,7 @@ type CreateTrainJobRequest struct {
 	RuntimeEnv              *string                                `json:"RuntimeEnv,omitempty" name:"RuntimeEnv"`
 	EntryPointCommand       *string                                `json:"EntryPointCommand,omitempty" name:"EntryPointCommand"`
 	UseIdleResource         *bool                                  `json:"UseIdleResource,omitempty" name:"UseIdleResource"`
+	EnableRDMADepsCheck     *bool                                  `json:"EnableRDMADepsCheck,omitempty" name:"EnableRDMADepsCheck"`
 }
 
 func (r *CreateTrainJobRequest) ToJsonString() string {
@@ -531,5 +532,88 @@ func (r *DescribeFormatAndFrameworksResponse) ToJsonString() string {
 }
 
 func (r *DescribeFormatAndFrameworksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddModelAccessRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelId       *string `json:"ModelId,omitempty" name:"ModelId"`
+	UserId        *string `json:"UserId,omitempty" name:"UserId"`
+	SharedGroupId *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
+	Permission    *string `json:"Permission,omitempty" name:"Permission"`
+}
+
+func (r *AddModelAccessRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type AddModelAccessResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	ModelId   *string `json:"ModelId" name:"ModelId"`
+}
+
+func (r *AddModelAccessResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *AddModelAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyModelAccessRoleRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelId       *string `json:"ModelId,omitempty" name:"ModelId"`
+	UserId        *string `json:"UserId,omitempty" name:"UserId"`
+	SharedGroupId *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
+	Permission    *string `json:"Permission,omitempty" name:"Permission"`
+}
+
+func (r *ModifyModelAccessRoleRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ModifyModelAccessRoleResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	ModelId   *string `json:"ModelId" name:"ModelId"`
+}
+
+func (r *ModifyModelAccessRoleResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ModifyModelAccessRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoveModelAccessRequest struct {
+	*ksyunhttp.BaseRequest
+	ModelId       *string `json:"ModelId,omitempty" name:"ModelId"`
+	UserId        *string `json:"UserId,omitempty" name:"UserId"`
+	SharedGroupId *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
+}
+
+func (r *RemoveModelAccessRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type RemoveModelAccessResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	ModelId   *string `json:"ModelId" name:"ModelId"`
+}
+
+func (r *RemoveModelAccessResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *RemoveModelAccessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
