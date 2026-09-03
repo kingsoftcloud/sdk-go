@@ -237,6 +237,7 @@ type UpdateDocumentMetadataOperationDataMetadataList struct {
 	Id    *string `json:"Id,omitempty" name:"Id"`
 	Name  *string `json:"Name,omitempty" name:"Name"`
 	Value *string `json:"Value,omitempty" name:"Value"`
+	Type  *string `json:"Type,omitempty" name:"Type"`
 }
 type UpdateDocumentMetadataOperationData struct {
 	DocumentId   *string                                            `json:"DocumentId,omitempty" name:"DocumentId"`
