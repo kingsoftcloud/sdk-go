@@ -377,10 +377,13 @@ func (r *DeleteRecordDataResponse) FromJsonString(s string) error {
 
 type CreatePdnsZoneRequest struct {
 	*ksyunhttp.BaseRequest
-	ZoneName   *string `json:"ZoneName,omitempty" name:"ZoneName"`
-	ZoneTtl    *int    `json:"ZoneTtl,omitempty" name:"ZoneTtl"`
-	ProjectId  *string `json:"ProjectId,omitempty" name:"ProjectId"`
-	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+	ZoneName         *string `json:"ZoneName,omitempty" name:"ZoneName"`
+	ZoneTtl          *int    `json:"ZoneTtl,omitempty" name:"ZoneTtl"`
+	ProjectId        *string `json:"ProjectId,omitempty" name:"ProjectId"`
+	ChargeType       *string `json:"ChargeType,omitempty" name:"ChargeType"`
+	ProxyPattern     *string `json:"ProxyPattern,omitempty" name:"ProxyPattern"`
+	DeleteProtection *string `json:"DeleteProtection,omitempty" name:"DeleteProtection"`
+	ModifyProtection *string `json:"ModifyProtection,omitempty" name:"ModifyProtection"`
 }
 
 func (r *CreatePdnsZoneRequest) ToJsonString() string {
@@ -403,6 +406,9 @@ type CreatePdnsZoneResponse struct {
 			Status     *string `json:"Status" name:"Status"`
 			VpcName    *string `json:"VpcName" name:"VpcName"`
 		} `json:"BindVpcSet" name:"BindVpcSet"`
+		ProxyPattern     *string `json:"ProxyPattern" name:"ProxyPattern"`
+		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
+		ModifyProtection *string `json:"ModifyProtection" name:"ModifyProtection"`
 	} `json:"ZoneVpc"`
 }
 
@@ -417,8 +423,9 @@ func (r *CreatePdnsZoneResponse) FromJsonString(s string) error {
 
 type ModifyPdnsZoneRequest struct {
 	*ksyunhttp.BaseRequest
-	ZoneId  *string `json:"ZoneId,omitempty" name:"ZoneId"`
-	ZoneTtl *int    `json:"ZoneTtl,omitempty" name:"ZoneTtl"`
+	ZoneId       *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneTtl      *int    `json:"ZoneTtl,omitempty" name:"ZoneTtl"`
+	ProxyPattern *string `json:"ProxyPattern,omitempty" name:"ProxyPattern"`
 }
 
 func (r *ModifyPdnsZoneRequest) ToJsonString() string {
@@ -471,6 +478,7 @@ type DescribePdnsZonesRequest struct {
 	Filter     []*string `json:"Filter,omitempty" name:"Filter"`
 	MaxResults *int      `json:"MaxResults,omitempty" name:"MaxResults"`
 	NextToken  *string   `json:"NextToken,omitempty" name:"NextToken"`
+	ZoneName   []*string `json:"ZoneName,omitempty" name:"ZoneName"`
 }
 
 func (r *DescribePdnsZonesRequest) ToJsonString() string {
@@ -489,11 +497,15 @@ type DescribePdnsZonesResponse struct {
 		ProjectId  *string `json:"ProjectId" name:"ProjectId"`
 		ZoneTtl    *string `json:"ZoneTtl" name:"ZoneTtl"`
 		BindVpcSet []struct {
-			RegionName *string `json:"RegionName" name:"RegionName"`
-			VpcId      *string `json:"VpcId" name:"VpcId"`
-			Status     *string `json:"Status" name:"Status"`
-			VpcName    *string `json:"VpcName" name:"VpcName"`
+			RegionName   *string `json:"RegionName" name:"RegionName"`
+			VpcId        *string `json:"VpcId" name:"VpcId"`
+			Status       *string `json:"Status" name:"Status"`
+			VpcName      *string `json:"VpcName" name:"VpcName"`
+			VpcAccountId *string `json:"VpcAccountId" name:"VpcAccountId"`
 		} `json:"BindVpcSet" name:"BindVpcSet"`
+		ProxyPattern     *string `json:"ProxyPattern" name:"ProxyPattern"`
+		DeleteProtection *string `json:"DeleteProtection" name:"DeleteProtection"`
+		ModifyProtection *string `json:"ModifyProtection" name:"ModifyProtection"`
 	} `json:"ZoneSet"`
 }
 
@@ -1096,6 +1108,58 @@ func (r *CreateEndPointResponse) ToJsonString() string {
 }
 
 func (r *CreateEndPointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetPdnsDeleteProtectionRequest struct {
+	*ksyunhttp.BaseRequest
+	ZoneId           *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	DeleteProtection *string `json:"DeleteProtection,omitempty" name:"DeleteProtection"`
+}
+
+func (r *SetPdnsDeleteProtectionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetPdnsDeleteProtectionResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *SetPdnsDeleteProtectionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetPdnsDeleteProtectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SetPdnsModifyProtectionRequest struct {
+	*ksyunhttp.BaseRequest
+	ZoneId           *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ModifyProtection *string `json:"ModifyProtection,omitempty" name:"ModifyProtection"`
+}
+
+func (r *SetPdnsModifyProtectionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type SetPdnsModifyProtectionResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Return    *bool   `json:"Return" name:"Return"`
+}
+
+func (r *SetPdnsModifyProtectionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *SetPdnsModifyProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -2787,6 +2787,164 @@ func (c *Client) CreateEndPointWithContextV2(ctx context.Context, request *Creat
 	}
 	return statusCode, msg, nil
 }
+func NewSetPdnsDeleteProtectionRequest() (request *SetPdnsDeleteProtectionRequest) {
+	request = &SetPdnsDeleteProtectionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("pdns", APIVersion, "SetPdnsDeleteProtection")
+	return
+}
+
+func NewSetPdnsDeleteProtectionResponse() (response *SetPdnsDeleteProtectionResponse) {
+	response = &SetPdnsDeleteProtectionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetPdnsDeleteProtection(request *SetPdnsDeleteProtectionRequest) string {
+	return c.SetPdnsDeleteProtectionWithContext(context.Background(), request)
+}
+
+func (c *Client) SetPdnsDeleteProtectionSend(request *SetPdnsDeleteProtectionRequest) (*SetPdnsDeleteProtectionResponse, error) {
+	statusCode, msg, err := c.SetPdnsDeleteProtectionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetPdnsDeleteProtectionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetPdnsDeleteProtectionWithContext(ctx context.Context, request *SetPdnsDeleteProtectionRequest) string {
+	if request == nil {
+		request = NewSetPdnsDeleteProtectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "SetPdnsDeleteProtection")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetPdnsDeleteProtectionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetPdnsDeleteProtectionWithContextV2(ctx context.Context, request *SetPdnsDeleteProtectionRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetPdnsDeleteProtectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "SetPdnsDeleteProtection")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetPdnsDeleteProtectionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewSetPdnsModifyProtectionRequest() (request *SetPdnsModifyProtectionRequest) {
+	request = &SetPdnsModifyProtectionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("pdns", APIVersion, "SetPdnsModifyProtection")
+	return
+}
+
+func NewSetPdnsModifyProtectionResponse() (response *SetPdnsModifyProtectionResponse) {
+	response = &SetPdnsModifyProtectionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) SetPdnsModifyProtection(request *SetPdnsModifyProtectionRequest) string {
+	return c.SetPdnsModifyProtectionWithContext(context.Background(), request)
+}
+
+func (c *Client) SetPdnsModifyProtectionSend(request *SetPdnsModifyProtectionRequest) (*SetPdnsModifyProtectionResponse, error) {
+	statusCode, msg, err := c.SetPdnsModifyProtectionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct SetPdnsModifyProtectionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) SetPdnsModifyProtectionWithContext(ctx context.Context, request *SetPdnsModifyProtectionRequest) string {
+	if request == nil {
+		request = NewSetPdnsModifyProtectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "SetPdnsModifyProtection")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetPdnsModifyProtectionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) SetPdnsModifyProtectionWithContextV2(ctx context.Context, request *SetPdnsModifyProtectionRequest) (int, string, error) {
+	if request == nil {
+		request = NewSetPdnsModifyProtectionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("pdns", APIVersion, "SetPdnsModifyProtection")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewSetPdnsModifyProtectionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewBatchCreateZoneRecordRequest() (request *BatchCreateZoneRecordRequest) {
 	request = &BatchCreateZoneRecordRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
