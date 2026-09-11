@@ -226,6 +226,12 @@ type CreateQueueSharedGroupList struct {
 	AccessGroupId *string `json:"AccessGroupId,omitempty" name:"AccessGroupId"`
 	Permission    *string `json:"Permission,omitempty" name:"Permission"`
 }
+type CreateQueueResourceReservation struct {
+	Enabled                     *bool `json:"Enabled,omitempty" name:"Enabled"`
+	LargeTaskGPUThreshold       *int  `json:"LargeTaskGPUThreshold,omitempty" name:"LargeTaskGPUThreshold"`
+	AutoEnableAfterQueueMinutes *int  `json:"AutoEnableAfterQueueMinutes,omitempty" name:"AutoEnableAfterQueueMinutes"`
+	ReserveTimeoutMinutes       *int  `json:"ReserveTimeoutMinutes,omitempty" name:"ReserveTimeoutMinutes"`
+}
 type ModifyQueueCapabilityGPUInfos struct {
 	GPUType *string `json:"GPUType,omitempty" name:"GPUType"`
 	GPUNum  *int    `json:"GPUNum,omitempty" name:"GPUNum"`
@@ -249,9 +255,19 @@ type ModifyQueueNodeSpec struct {
 	NodeNum      *int      `json:"NodeNum,omitempty" name:"NodeNum"`
 	SpecifyNodes []*string `json:"SpecifyNodes,omitempty" name:"SpecifyNodes"`
 }
+type ModifyQueueResourceReservation struct {
+	Enabled                     *bool `json:"Enabled,omitempty" name:"Enabled"`
+	LargeTaskGPUThreshold       *int  `json:"LargeTaskGPUThreshold,omitempty" name:"LargeTaskGPUThreshold"`
+	AutoEnableAfterQueueMinutes *int  `json:"AutoEnableAfterQueueMinutes,omitempty" name:"AutoEnableAfterQueueMinutes"`
+	ReserveTimeoutMinutes       *int  `json:"ReserveTimeoutMinutes,omitempty" name:"ReserveTimeoutMinutes"`
+}
 type DescribeInferencePodsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type AddSkillsToSkillSpaceSkills struct {
+	SkillId        *string `json:"SkillId,omitempty" name:"SkillId"`
+	SkillVersionId *string `json:"SkillVersionId,omitempty" name:"SkillVersionId"`
 }
 type CreateAccessGroupUsers struct {
 	UserId     *string `json:"UserId,omitempty" name:"UserId"`
@@ -2459,6 +2475,7 @@ type DescribeTrainJobPodsResponse struct {
 			Ip                     *string `json:"Ip" name:"Ip"`
 			RestartCount           *int    `json:"RestartCount" name:"RestartCount"`
 			DeviceHealthCheckState *string `json:"DeviceHealthCheckState" name:"DeviceHealthCheckState"`
+			PodIp                  *string `json:"PodIp" name:"PodIp"`
 		} `json:"Status" name:"Status"`
 		ContainerName *string `json:"ContainerName" name:"ContainerName"`
 		Kind          *string `json:"Kind" name:"Kind"`
@@ -3338,6 +3355,12 @@ type DescribeQueuesResponse struct {
 			SpecifyNodes []*string `json:"SpecifyNodes" name:"SpecifyNodes"`
 		} `json:"NodeSpecs" name:"NodeSpecs"`
 	} `json:"QueueSet"`
+	ResourceReservation struct {
+		Enabled                     *bool `json:"Enabled" name:"Enabled"`
+		LargeTaskGPUThreshold       *int  `json:"LargeTaskGPUThreshold" name:"LargeTaskGPUThreshold"`
+		AutoEnableAfterQueueMinutes *int  `json:"AutoEnableAfterQueueMinutes" name:"AutoEnableAfterQueueMinutes"`
+		ReserveTimeoutMinutes       *int  `json:"ReserveTimeoutMinutes" name:"ReserveTimeoutMinutes"`
+	} `json:"ResourceReservation"`
 }
 
 func (r *DescribeQueuesResponse) ToJsonString() string {
@@ -3351,17 +3374,18 @@ func (r *DescribeQueuesResponse) FromJsonString(s string) error {
 
 type CreateQueueRequest struct {
 	*ksyunhttp.BaseRequest
-	ResourcePoolId  *string                       `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
-	QueueName       *string                       `json:"QueueName,omitempty" name:"QueueName"`
-	QueueType       *string                       `json:"QueueType,omitempty" name:"QueueType"`
-	NodeSelectType  *string                       `json:"NodeSelectType,omitempty" name:"NodeSelectType"`
-	Capability      *CreateQueueCapability        `json:"Capability,omitempty" name:"Capability"`
-	NodeSpec        []*CreateQueueNodeSpec        `json:"NodeSpec,omitempty" name:"NodeSpec"`
-	AllowBorrowing  *bool                         `json:"AllowBorrowing,omitempty" name:"AllowBorrowing"`
-	Description     *string                       `json:"Description,omitempty" name:"Description"`
-	AccessList      []*CreateQueueAccessList      `json:"AccessList,omitempty" name:"AccessList"`
-	SharedGroupList []*CreateQueueSharedGroupList `json:"SharedGroupList,omitempty" name:"SharedGroupList"`
-	WorkloadType    []*string                     `json:"WorkloadType,omitempty" name:"WorkloadType"`
+	ResourcePoolId      *string                         `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
+	QueueName           *string                         `json:"QueueName,omitempty" name:"QueueName"`
+	QueueType           *string                         `json:"QueueType,omitempty" name:"QueueType"`
+	NodeSelectType      *string                         `json:"NodeSelectType,omitempty" name:"NodeSelectType"`
+	Capability          *CreateQueueCapability          `json:"Capability,omitempty" name:"Capability"`
+	NodeSpec            []*CreateQueueNodeSpec          `json:"NodeSpec,omitempty" name:"NodeSpec"`
+	AllowBorrowing      *bool                           `json:"AllowBorrowing,omitempty" name:"AllowBorrowing"`
+	Description         *string                         `json:"Description,omitempty" name:"Description"`
+	AccessList          []*CreateQueueAccessList        `json:"AccessList,omitempty" name:"AccessList"`
+	SharedGroupList     []*CreateQueueSharedGroupList   `json:"SharedGroupList,omitempty" name:"SharedGroupList"`
+	WorkloadType        []*string                       `json:"WorkloadType,omitempty" name:"WorkloadType"`
+	ResourceReservation *CreateQueueResourceReservation `json:"ResourceReservation,omitempty" name:"ResourceReservation"`
 }
 
 func (r *CreateQueueRequest) ToJsonString() string {
@@ -3386,15 +3410,16 @@ func (r *CreateQueueResponse) FromJsonString(s string) error {
 
 type ModifyQueueRequest struct {
 	*ksyunhttp.BaseRequest
-	QueueId         *string                       `json:"QueueId,omitempty" name:"QueueId"`
-	Capability      *ModifyQueueCapability        `json:"Capability,omitempty" name:"Capability"`
-	AllowBorrowing  *bool                         `json:"AllowBorrowing,omitempty" name:"AllowBorrowing"`
-	Description     *string                       `json:"Description,omitempty" name:"Description"`
-	AccessList      []*ModifyQueueAccessList      `json:"AccessList,omitempty" name:"AccessList"`
-	SharedGroupList []*ModifyQueueSharedGroupList `json:"SharedGroupList,omitempty" name:"SharedGroupList"`
-	WorkloadType    []*string                     `json:"WorkloadType,omitempty" name:"WorkloadType"`
-	NodeSpec        []*ModifyQueueNodeSpec        `json:"NodeSpec,omitempty" name:"NodeSpec"`
-	NodeSelectType  *string                       `json:"NodeSelectType,omitempty" name:"NodeSelectType"`
+	QueueId             *string                         `json:"QueueId,omitempty" name:"QueueId"`
+	Capability          *ModifyQueueCapability          `json:"Capability,omitempty" name:"Capability"`
+	AllowBorrowing      *bool                           `json:"AllowBorrowing,omitempty" name:"AllowBorrowing"`
+	Description         *string                         `json:"Description,omitempty" name:"Description"`
+	AccessList          []*ModifyQueueAccessList        `json:"AccessList,omitempty" name:"AccessList"`
+	SharedGroupList     []*ModifyQueueSharedGroupList   `json:"SharedGroupList,omitempty" name:"SharedGroupList"`
+	WorkloadType        []*string                       `json:"WorkloadType,omitempty" name:"WorkloadType"`
+	NodeSpec            []*ModifyQueueNodeSpec          `json:"NodeSpec,omitempty" name:"NodeSpec"`
+	NodeSelectType      *string                         `json:"NodeSelectType,omitempty" name:"NodeSelectType"`
+	ResourceReservation *ModifyQueueResourceReservation `json:"ResourceReservation,omitempty" name:"ResourceReservation"`
 }
 
 func (r *ModifyQueueRequest) ToJsonString() string {
@@ -3654,6 +3679,480 @@ func (r *DescribeInferencePodsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListSkillVersionsRequest struct {
+	*ksyunhttp.BaseRequest
+	SkillId    *string `json:"SkillId,omitempty" name:"SkillId"`
+	PageNumber *int    `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageSize   *int    `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *ListSkillVersionsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ListSkillVersionsResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		Versions []struct {
+			VersionId              *string `json:"VersionId" name:"VersionId"`
+			Version                *string `json:"Version" name:"Version"`
+			Status                 *string `json:"Status" name:"Status"`
+			CreatedAt              *string `json:"CreatedAt" name:"CreatedAt"`
+			ContentHash            *string `json:"ContentHash" name:"ContentHash"`
+			ArchiveUri             *string `json:"ArchiveUri" name:"ArchiveUri"`
+			RelatedSkillSpaceCount *int    `json:"RelatedSkillSpaceCount" name:"RelatedSkillSpaceCount"`
+			RelatedSkillSpaces     []struct {
+				SkillSpaceId   *string `json:"SkillSpaceId" name:"SkillSpaceId"`
+				SkillSpaceName *string `json:"SkillSpaceName" name:"SkillSpaceName"`
+				SkillSpaceDesc *string `json:"SkillSpaceDesc" name:"SkillSpaceDesc"`
+			} `json:"RelatedSkillSpaces"`
+		} `json:"Versions" name:"Versions"`
+		Total *int `json:"Total" name:"Total"`
+	} `json:"Data"`
+}
+
+func (r *ListSkillVersionsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListSkillVersionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetSkillRequest struct {
+	*ksyunhttp.BaseRequest
+	SkillId *string `json:"SkillId,omitempty" name:"SkillId"`
+}
+
+func (r *GetSkillRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetSkillResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		Id              *string `json:"Id" name:"Id"`
+		Name            *string `json:"Name" name:"Name"`
+		Status          *string `json:"Status" name:"Status"`
+		Description     *string `json:"Description" name:"Description"`
+		CreateTimeStamp *string `json:"CreateTimeStamp" name:"CreateTimeStamp"`
+		UpdateTimeStamp *string `json:"UpdateTimeStamp" name:"UpdateTimeStamp"`
+	} `json:"Data"`
+}
+
+func (r *GetSkillResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetSkillResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListSkillsRequest struct {
+	*ksyunhttp.BaseRequest
+	SkillId    *string `json:"SkillId,omitempty" name:"SkillId"`
+	Name       *string `json:"Name,omitempty" name:"Name"`
+	Status     *string `json:"Status,omitempty" name:"Status"`
+	PageNumber *int    `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageSize   *int    `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *ListSkillsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ListSkillsResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		Items []struct {
+			Id                     *string `json:"Id" name:"Id"`
+			Name                   *string `json:"Name" name:"Name"`
+			Status                 *string `json:"Status" name:"Status"`
+			Description            *string `json:"Description" name:"Description"`
+			CreateTimeStamp        *string `json:"CreateTimeStamp" name:"CreateTimeStamp"`
+			UpdateTimeStamp        *string `json:"UpdateTimeStamp" name:"UpdateTimeStamp"`
+			RelatedSkillSpaceCount *int    `json:"RelatedSkillSpaceCount" name:"RelatedSkillSpaceCount"`
+		} `json:"Items" name:"Items"`
+		TotalCount *int `json:"TotalCount" name:"TotalCount"`
+	} `json:"Data"`
+}
+
+func (r *ListSkillsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListSkillsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListSkillSpacesRequest struct {
+	*ksyunhttp.BaseRequest
+	SkillspaceId *string `json:"SkillspaceId,omitempty" name:"SkillspaceId"`
+	Name         *string `json:"Name,omitempty" name:"Name"`
+	PageNumber   *int    `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageSize     *int    `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *ListSkillSpacesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ListSkillSpacesResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		Items []struct {
+			Id          *string `json:"Id" name:"Id"`
+			Name        *string `json:"Name" name:"Name"`
+			Status      *string `json:"Status" name:"Status"`
+			Description *string `json:"Description" name:"Description"`
+			SkillCount  *int    `json:"SkillCount" name:"SkillCount"`
+			Skills      []struct {
+				SkillId          *string `json:"SkillId" name:"SkillId"`
+				SkillName        *string `json:"SkillName" name:"SkillName"`
+				SkillDescription *string `json:"SkillDescription" name:"SkillDescription"`
+			} `json:"Skills"`
+			CreateTimeStamp *string `json:"CreateTimeStamp" name:"CreateTimeStamp"`
+			UpdateTimeStamp *string `json:"UpdateTimeStamp" name:"UpdateTimeStamp"`
+		} `json:"Items" name:"Items"`
+		TotalCount *int `json:"TotalCount" name:"TotalCount"`
+	} `json:"Data"`
+}
+
+func (r *ListSkillSpacesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListSkillSpacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListSkillsBySkillSpaceRequest struct {
+	*ksyunhttp.BaseRequest
+	SkillspaceId *string `json:"SkillspaceId,omitempty" name:"SkillspaceId"`
+	PageNumber   *int    `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageSize     *int    `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *ListSkillsBySkillSpaceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ListSkillsBySkillSpaceResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		Skills []struct {
+			SkillId     *string `json:"SkillId" name:"SkillId"`
+			Name        *string `json:"Name" name:"Name"`
+			Status      *string `json:"Status" name:"Status"`
+			Description *string `json:"Description" name:"Description"`
+			VersionId   *string `json:"VersionId" name:"VersionId"`
+			Version     *string `json:"Version" name:"Version"`
+			ContentHash *string `json:"ContentHash" name:"ContentHash"`
+			ArchiveUri  *string `json:"ArchiveUri" name:"ArchiveUri"`
+		} `json:"Skills" name:"Skills"`
+		TotalCount *int `json:"TotalCount" name:"TotalCount"`
+	} `json:"Data"`
+}
+
+func (r *ListSkillsBySkillSpaceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListSkillsBySkillSpaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSkillRequest struct {
+	*ksyunhttp.BaseRequest
+	SourceType  *string   `json:"SourceType,omitempty" name:"SourceType"`
+	SourceUrl   *string   `json:"SourceUrl,omitempty" name:"SourceUrl"`
+	SkillSpaces []*string `json:"SkillSpaces,omitempty" name:"SkillSpaces"`
+}
+
+func (r *CreateSkillRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateSkillResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		SkillId *string `json:"SkillId" name:"SkillId"`
+		Version *string `json:"Version" name:"Version"`
+	} `json:"Data"`
+}
+
+func (r *CreateSkillResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateSkillResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSkillVersionRequest struct {
+	*ksyunhttp.BaseRequest
+	SourceType  *string   `json:"SourceType,omitempty" name:"SourceType"`
+	SourceUrl   *string   `json:"SourceUrl,omitempty" name:"SourceUrl"`
+	SkillSpaces []*string `json:"SkillSpaces,omitempty" name:"SkillSpaces"`
+}
+
+func (r *CreateSkillVersionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateSkillVersionResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		SkillId *string `json:"SkillId" name:"SkillId"`
+		Version *string `json:"Version" name:"Version"`
+	} `json:"Data"`
+}
+
+func (r *CreateSkillVersionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateSkillVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetSkillUploadUrlRequest struct {
+	*ksyunhttp.BaseRequest
+	FileName  *string `json:"FileName,omitempty" name:"FileName"`
+	SkillName *string `json:"SkillName,omitempty" name:"SkillName"`
+}
+
+func (r *GetSkillUploadUrlRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetSkillUploadUrlResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		Bucket     *string `json:"Bucket" name:"Bucket"`
+		Region     *string `json:"Region" name:"Region"`
+		ObjectKey  *string `json:"ObjectKey" name:"ObjectKey"`
+		Ks3Url     *string `json:"Ks3Url" name:"Ks3Url"`
+		UploadPath *string `json:"UploadPath" name:"UploadPath"`
+	} `json:"Data"`
+	Message *string `json:"Message" name:"Message"`
+}
+
+func (r *GetSkillUploadUrlResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetSkillUploadUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSkillVersionRequest struct {
+	*ksyunhttp.BaseRequest
+	SkillId   *string `json:"SkillId,omitempty" name:"SkillId"`
+	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+}
+
+func (r *DeleteSkillVersionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteSkillVersionResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteSkillVersionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteSkillVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSkillRequest struct {
+	*ksyunhttp.BaseRequest
+	SkillId *string `json:"SkillId,omitempty" name:"SkillId"`
+}
+
+func (r *DeleteSkillRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteSkillResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteSkillResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteSkillResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateSkillSpaceSkillVersionRequest struct {
+	*ksyunhttp.BaseRequest
+	SpaceId     *string `json:"SpaceId,omitempty" name:"SpaceId"`
+	SkillId     *string `json:"SkillId,omitempty" name:"SkillId"`
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+}
+
+func (r *UpdateSkillSpaceSkillVersionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type UpdateSkillSpaceSkillVersionResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *UpdateSkillSpaceSkillVersionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateSkillSpaceSkillVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoveSkillFromSpaceRequest struct {
+	*ksyunhttp.BaseRequest
+	SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
+	SkillId *string `json:"SkillId,omitempty" name:"SkillId"`
+}
+
+func (r *RemoveSkillFromSpaceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type RemoveSkillFromSpaceResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *RemoveSkillFromSpaceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *RemoveSkillFromSpaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSkillSpaceRequest struct {
+	*ksyunhttp.BaseRequest
+	SkillSpaceId *string `json:"SkillSpaceId,omitempty" name:"SkillSpaceId"`
+}
+
+func (r *DeleteSkillSpaceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteSkillSpaceResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *DeleteSkillSpaceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteSkillSpaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSkillSpaceRequest struct {
+	*ksyunhttp.BaseRequest
+	Name        *string   `json:"Name,omitempty" name:"Name"`
+	Description *string   `json:"Description,omitempty" name:"Description"`
+	Skills      []*string `json:"Skills,omitempty" name:"Skills"`
+}
+
+func (r *CreateSkillSpaceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateSkillSpaceResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		Name        *string `json:"Name" name:"Name"`
+		SpaceId     *string `json:"SpaceId" name:"SpaceId"`
+		Description *string `json:"Description" name:"Description"`
+		SkillCount  *int    `json:"SkillCount" name:"SkillCount"`
+	} `json:"Data"`
+}
+
+func (r *CreateSkillSpaceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateSkillSpaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ModifyResourcePoolRequest struct {
 	*ksyunhttp.BaseRequest
 	ResourcePoolId   *string `json:"ResourcePoolId,omitempty" name:"ResourcePoolId"`
@@ -3678,6 +4177,36 @@ func (r *ModifyResourcePoolResponse) ToJsonString() string {
 }
 
 func (r *ModifyResourcePoolResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetSkillDownloadUrlRequest struct {
+	*ksyunhttp.BaseRequest
+	SkillId   *string `json:"SkillId,omitempty" name:"SkillId"`
+	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+}
+
+func (r *GetSkillDownloadUrlRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetSkillDownloadUrlResponse struct {
+	*ksyunhttp.BaseResponse
+	Code    *int    `json:"Code" name:"Code"`
+	Message *string `json:"Message" name:"Message"`
+	Data    struct {
+		DownloadUrl *string `json:"DownloadUrl" name:"DownloadUrl"`
+	} `json:"Data"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *GetSkillDownloadUrlResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetSkillDownloadUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3713,6 +4242,33 @@ func (r *DescribeResourcePoolInstanceSpecsResponse) ToJsonString() string {
 }
 
 func (r *DescribeResourcePoolInstanceSpecsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddSkillsToSkillSpaceRequest struct {
+	*ksyunhttp.BaseRequest
+	SkillSpaceId *string                      `json:"SkillSpaceId,omitempty" name:"SkillSpaceId"`
+	Skills       *AddSkillsToSkillSpaceSkills `json:"Skills,omitempty" name:"Skills"`
+}
+
+func (r *AddSkillsToSkillSpaceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type AddSkillsToSkillSpaceResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *AddSkillsToSkillSpaceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *AddSkillsToSkillSpaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

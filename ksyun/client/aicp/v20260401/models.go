@@ -715,3 +715,25 @@ func (r *UpdateSandboxInstanceResponse) ToJsonString() string {
 func (r *UpdateSandboxInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type DeleteImageCacheRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *DeleteImageCacheRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteImageCacheResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *DeleteImageCacheResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteImageCacheResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

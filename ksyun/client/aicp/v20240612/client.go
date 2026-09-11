@@ -7211,6 +7211,1112 @@ func (c *Client) DescribeInferencePodsWithContextV2(ctx context.Context, request
 	}
 	return statusCode, msg, nil
 }
+func NewListSkillVersionsRequest() (request *ListSkillVersionsRequest) {
+	request = &ListSkillVersionsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ListSkillVersions")
+	return
+}
+
+func NewListSkillVersionsResponse() (response *ListSkillVersionsResponse) {
+	response = &ListSkillVersionsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ListSkillVersions(request *ListSkillVersionsRequest) string {
+	return c.ListSkillVersionsWithContext(context.Background(), request)
+}
+
+func (c *Client) ListSkillVersionsSend(request *ListSkillVersionsRequest) (*ListSkillVersionsResponse, error) {
+	statusCode, msg, err := c.ListSkillVersionsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ListSkillVersionsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ListSkillVersionsWithContext(ctx context.Context, request *ListSkillVersionsRequest) string {
+	if request == nil {
+		request = NewListSkillVersionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ListSkillVersions")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewListSkillVersionsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ListSkillVersionsWithContextV2(ctx context.Context, request *ListSkillVersionsRequest) (int, string, error) {
+	if request == nil {
+		request = NewListSkillVersionsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ListSkillVersions")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewListSkillVersionsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetSkillRequest() (request *GetSkillRequest) {
+	request = &GetSkillRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetSkill")
+	return
+}
+
+func NewGetSkillResponse() (response *GetSkillResponse) {
+	response = &GetSkillResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetSkill(request *GetSkillRequest) string {
+	return c.GetSkillWithContext(context.Background(), request)
+}
+
+func (c *Client) GetSkillSend(request *GetSkillRequest) (*GetSkillResponse, error) {
+	statusCode, msg, err := c.GetSkillWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetSkillResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetSkillWithContext(ctx context.Context, request *GetSkillRequest) string {
+	if request == nil {
+		request = NewGetSkillRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetSkill")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetSkillResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetSkillWithContextV2(ctx context.Context, request *GetSkillRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetSkillRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetSkill")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetSkillResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewListSkillsRequest() (request *ListSkillsRequest) {
+	request = &ListSkillsRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ListSkills")
+	return
+}
+
+func NewListSkillsResponse() (response *ListSkillsResponse) {
+	response = &ListSkillsResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ListSkills(request *ListSkillsRequest) string {
+	return c.ListSkillsWithContext(context.Background(), request)
+}
+
+func (c *Client) ListSkillsSend(request *ListSkillsRequest) (*ListSkillsResponse, error) {
+	statusCode, msg, err := c.ListSkillsWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ListSkillsResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ListSkillsWithContext(ctx context.Context, request *ListSkillsRequest) string {
+	if request == nil {
+		request = NewListSkillsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ListSkills")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewListSkillsResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ListSkillsWithContextV2(ctx context.Context, request *ListSkillsRequest) (int, string, error) {
+	if request == nil {
+		request = NewListSkillsRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ListSkills")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewListSkillsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewListSkillSpacesRequest() (request *ListSkillSpacesRequest) {
+	request = &ListSkillSpacesRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ListSkillSpaces")
+	return
+}
+
+func NewListSkillSpacesResponse() (response *ListSkillSpacesResponse) {
+	response = &ListSkillSpacesResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ListSkillSpaces(request *ListSkillSpacesRequest) string {
+	return c.ListSkillSpacesWithContext(context.Background(), request)
+}
+
+func (c *Client) ListSkillSpacesSend(request *ListSkillSpacesRequest) (*ListSkillSpacesResponse, error) {
+	statusCode, msg, err := c.ListSkillSpacesWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ListSkillSpacesResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ListSkillSpacesWithContext(ctx context.Context, request *ListSkillSpacesRequest) string {
+	if request == nil {
+		request = NewListSkillSpacesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ListSkillSpaces")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewListSkillSpacesResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ListSkillSpacesWithContextV2(ctx context.Context, request *ListSkillSpacesRequest) (int, string, error) {
+	if request == nil {
+		request = NewListSkillSpacesRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ListSkillSpaces")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewListSkillSpacesResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewListSkillsBySkillSpaceRequest() (request *ListSkillsBySkillSpaceRequest) {
+	request = &ListSkillsBySkillSpaceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "ListSkillsBySkillSpace")
+	return
+}
+
+func NewListSkillsBySkillSpaceResponse() (response *ListSkillsBySkillSpaceResponse) {
+	response = &ListSkillsBySkillSpaceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) ListSkillsBySkillSpace(request *ListSkillsBySkillSpaceRequest) string {
+	return c.ListSkillsBySkillSpaceWithContext(context.Background(), request)
+}
+
+func (c *Client) ListSkillsBySkillSpaceSend(request *ListSkillsBySkillSpaceRequest) (*ListSkillsBySkillSpaceResponse, error) {
+	statusCode, msg, err := c.ListSkillsBySkillSpaceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct ListSkillsBySkillSpaceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) ListSkillsBySkillSpaceWithContext(ctx context.Context, request *ListSkillsBySkillSpaceRequest) string {
+	if request == nil {
+		request = NewListSkillsBySkillSpaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ListSkillsBySkillSpace")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewListSkillsBySkillSpaceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) ListSkillsBySkillSpaceWithContextV2(ctx context.Context, request *ListSkillsBySkillSpaceRequest) (int, string, error) {
+	if request == nil {
+		request = NewListSkillsBySkillSpaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "ListSkillsBySkillSpace")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewListSkillsBySkillSpaceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateSkillRequest() (request *CreateSkillRequest) {
+	request = &CreateSkillRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateSkill")
+	return
+}
+
+func NewCreateSkillResponse() (response *CreateSkillResponse) {
+	response = &CreateSkillResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateSkill(request *CreateSkillRequest) string {
+	return c.CreateSkillWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateSkillSend(request *CreateSkillRequest) (*CreateSkillResponse, error) {
+	statusCode, msg, err := c.CreateSkillWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateSkillResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateSkillWithContext(ctx context.Context, request *CreateSkillRequest) string {
+	if request == nil {
+		request = NewCreateSkillRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateSkill")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateSkillResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateSkillWithContextV2(ctx context.Context, request *CreateSkillRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateSkillRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateSkill")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateSkillResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateSkillVersionRequest() (request *CreateSkillVersionRequest) {
+	request = &CreateSkillVersionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateSkillVersion")
+	return
+}
+
+func NewCreateSkillVersionResponse() (response *CreateSkillVersionResponse) {
+	response = &CreateSkillVersionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateSkillVersion(request *CreateSkillVersionRequest) string {
+	return c.CreateSkillVersionWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateSkillVersionSend(request *CreateSkillVersionRequest) (*CreateSkillVersionResponse, error) {
+	statusCode, msg, err := c.CreateSkillVersionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateSkillVersionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateSkillVersionWithContext(ctx context.Context, request *CreateSkillVersionRequest) string {
+	if request == nil {
+		request = NewCreateSkillVersionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateSkillVersion")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateSkillVersionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateSkillVersionWithContextV2(ctx context.Context, request *CreateSkillVersionRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateSkillVersionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateSkillVersion")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateSkillVersionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetSkillUploadUrlRequest() (request *GetSkillUploadUrlRequest) {
+	request = &GetSkillUploadUrlRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetSkillUploadUrl")
+	return
+}
+
+func NewGetSkillUploadUrlResponse() (response *GetSkillUploadUrlResponse) {
+	response = &GetSkillUploadUrlResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetSkillUploadUrl(request *GetSkillUploadUrlRequest) string {
+	return c.GetSkillUploadUrlWithContext(context.Background(), request)
+}
+
+func (c *Client) GetSkillUploadUrlSend(request *GetSkillUploadUrlRequest) (*GetSkillUploadUrlResponse, error) {
+	statusCode, msg, err := c.GetSkillUploadUrlWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetSkillUploadUrlResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetSkillUploadUrlWithContext(ctx context.Context, request *GetSkillUploadUrlRequest) string {
+	if request == nil {
+		request = NewGetSkillUploadUrlRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetSkillUploadUrl")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetSkillUploadUrlResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetSkillUploadUrlWithContextV2(ctx context.Context, request *GetSkillUploadUrlRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetSkillUploadUrlRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetSkillUploadUrl")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetSkillUploadUrlResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteSkillVersionRequest() (request *DeleteSkillVersionRequest) {
+	request = &DeleteSkillVersionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeleteSkillVersion")
+	return
+}
+
+func NewDeleteSkillVersionResponse() (response *DeleteSkillVersionResponse) {
+	response = &DeleteSkillVersionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteSkillVersion(request *DeleteSkillVersionRequest) string {
+	return c.DeleteSkillVersionWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteSkillVersionSend(request *DeleteSkillVersionRequest) (*DeleteSkillVersionResponse, error) {
+	statusCode, msg, err := c.DeleteSkillVersionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteSkillVersionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteSkillVersionWithContext(ctx context.Context, request *DeleteSkillVersionRequest) string {
+	if request == nil {
+		request = NewDeleteSkillVersionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteSkillVersion")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteSkillVersionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteSkillVersionWithContextV2(ctx context.Context, request *DeleteSkillVersionRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteSkillVersionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteSkillVersion")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteSkillVersionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteSkillRequest() (request *DeleteSkillRequest) {
+	request = &DeleteSkillRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeleteSkill")
+	return
+}
+
+func NewDeleteSkillResponse() (response *DeleteSkillResponse) {
+	response = &DeleteSkillResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteSkill(request *DeleteSkillRequest) string {
+	return c.DeleteSkillWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteSkillSend(request *DeleteSkillRequest) (*DeleteSkillResponse, error) {
+	statusCode, msg, err := c.DeleteSkillWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteSkillResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteSkillWithContext(ctx context.Context, request *DeleteSkillRequest) string {
+	if request == nil {
+		request = NewDeleteSkillRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteSkill")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteSkillResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteSkillWithContextV2(ctx context.Context, request *DeleteSkillRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteSkillRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteSkill")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteSkillResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewUpdateSkillSpaceSkillVersionRequest() (request *UpdateSkillSpaceSkillVersionRequest) {
+	request = &UpdateSkillSpaceSkillVersionRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "UpdateSkillSpaceSkillVersion")
+	return
+}
+
+func NewUpdateSkillSpaceSkillVersionResponse() (response *UpdateSkillSpaceSkillVersionResponse) {
+	response = &UpdateSkillSpaceSkillVersionResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) UpdateSkillSpaceSkillVersion(request *UpdateSkillSpaceSkillVersionRequest) string {
+	return c.UpdateSkillSpaceSkillVersionWithContext(context.Background(), request)
+}
+
+func (c *Client) UpdateSkillSpaceSkillVersionSend(request *UpdateSkillSpaceSkillVersionRequest) (*UpdateSkillSpaceSkillVersionResponse, error) {
+	statusCode, msg, err := c.UpdateSkillSpaceSkillVersionWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct UpdateSkillSpaceSkillVersionResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) UpdateSkillSpaceSkillVersionWithContext(ctx context.Context, request *UpdateSkillSpaceSkillVersionRequest) string {
+	if request == nil {
+		request = NewUpdateSkillSpaceSkillVersionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "UpdateSkillSpaceSkillVersion")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateSkillSpaceSkillVersionResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) UpdateSkillSpaceSkillVersionWithContextV2(ctx context.Context, request *UpdateSkillSpaceSkillVersionRequest) (int, string, error) {
+	if request == nil {
+		request = NewUpdateSkillSpaceSkillVersionRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "UpdateSkillSpaceSkillVersion")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewUpdateSkillSpaceSkillVersionResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewRemoveSkillFromSpaceRequest() (request *RemoveSkillFromSpaceRequest) {
+	request = &RemoveSkillFromSpaceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "RemoveSkillFromSpace")
+	return
+}
+
+func NewRemoveSkillFromSpaceResponse() (response *RemoveSkillFromSpaceResponse) {
+	response = &RemoveSkillFromSpaceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) RemoveSkillFromSpace(request *RemoveSkillFromSpaceRequest) string {
+	return c.RemoveSkillFromSpaceWithContext(context.Background(), request)
+}
+
+func (c *Client) RemoveSkillFromSpaceSend(request *RemoveSkillFromSpaceRequest) (*RemoveSkillFromSpaceResponse, error) {
+	statusCode, msg, err := c.RemoveSkillFromSpaceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct RemoveSkillFromSpaceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) RemoveSkillFromSpaceWithContext(ctx context.Context, request *RemoveSkillFromSpaceRequest) string {
+	if request == nil {
+		request = NewRemoveSkillFromSpaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "RemoveSkillFromSpace")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRemoveSkillFromSpaceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) RemoveSkillFromSpaceWithContextV2(ctx context.Context, request *RemoveSkillFromSpaceRequest) (int, string, error) {
+	if request == nil {
+		request = NewRemoveSkillFromSpaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "RemoveSkillFromSpace")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewRemoveSkillFromSpaceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDeleteSkillSpaceRequest() (request *DeleteSkillSpaceRequest) {
+	request = &DeleteSkillSpaceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeleteSkillSpace")
+	return
+}
+
+func NewDeleteSkillSpaceResponse() (response *DeleteSkillSpaceResponse) {
+	response = &DeleteSkillSpaceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteSkillSpace(request *DeleteSkillSpaceRequest) string {
+	return c.DeleteSkillSpaceWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteSkillSpaceSend(request *DeleteSkillSpaceRequest) (*DeleteSkillSpaceResponse, error) {
+	statusCode, msg, err := c.DeleteSkillSpaceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteSkillSpaceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteSkillSpaceWithContext(ctx context.Context, request *DeleteSkillSpaceRequest) string {
+	if request == nil {
+		request = NewDeleteSkillSpaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteSkillSpace")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteSkillSpaceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteSkillSpaceWithContextV2(ctx context.Context, request *DeleteSkillSpaceRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteSkillSpaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteSkillSpace")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDeleteSkillSpaceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateSkillSpaceRequest() (request *CreateSkillSpaceRequest) {
+	request = &CreateSkillSpaceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateSkillSpace")
+	return
+}
+
+func NewCreateSkillSpaceResponse() (response *CreateSkillSpaceResponse) {
+	response = &CreateSkillSpaceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateSkillSpace(request *CreateSkillSpaceRequest) string {
+	return c.CreateSkillSpaceWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateSkillSpaceSend(request *CreateSkillSpaceRequest) (*CreateSkillSpaceResponse, error) {
+	statusCode, msg, err := c.CreateSkillSpaceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateSkillSpaceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateSkillSpaceWithContext(ctx context.Context, request *CreateSkillSpaceRequest) string {
+	if request == nil {
+		request = NewCreateSkillSpaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateSkillSpace")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateSkillSpaceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateSkillSpaceWithContextV2(ctx context.Context, request *CreateSkillSpaceRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateSkillSpaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateSkillSpace")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewCreateSkillSpaceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewModifyResourcePoolRequest() (request *ModifyResourcePoolRequest) {
 	request = &ModifyResourcePoolRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -7290,6 +8396,85 @@ func (c *Client) ModifyResourcePoolWithContextV2(ctx context.Context, request *M
 	}
 	return statusCode, msg, nil
 }
+func NewGetSkillDownloadUrlRequest() (request *GetSkillDownloadUrlRequest) {
+	request = &GetSkillDownloadUrlRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetSkillDownloadUrl")
+	return
+}
+
+func NewGetSkillDownloadUrlResponse() (response *GetSkillDownloadUrlResponse) {
+	response = &GetSkillDownloadUrlResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetSkillDownloadUrl(request *GetSkillDownloadUrlRequest) string {
+	return c.GetSkillDownloadUrlWithContext(context.Background(), request)
+}
+
+func (c *Client) GetSkillDownloadUrlSend(request *GetSkillDownloadUrlRequest) (*GetSkillDownloadUrlResponse, error) {
+	statusCode, msg, err := c.GetSkillDownloadUrlWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetSkillDownloadUrlResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetSkillDownloadUrlWithContext(ctx context.Context, request *GetSkillDownloadUrlRequest) string {
+	if request == nil {
+		request = NewGetSkillDownloadUrlRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetSkillDownloadUrl")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetSkillDownloadUrlResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetSkillDownloadUrlWithContextV2(ctx context.Context, request *GetSkillDownloadUrlRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetSkillDownloadUrlRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetSkillDownloadUrl")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetSkillDownloadUrlResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewDescribeResourcePoolInstanceSpecsRequest() (request *DescribeResourcePoolInstanceSpecsRequest) {
 	request = &DescribeResourcePoolInstanceSpecsRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -7363,6 +8548,85 @@ func (c *Client) DescribeResourcePoolInstanceSpecsWithContextV2(ctx context.Cont
 	request.SetContentType("application/x-www-form-urlencoded")
 
 	response := NewDescribeResourcePoolInstanceSpecsResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewAddSkillsToSkillSpaceRequest() (request *AddSkillsToSkillSpaceRequest) {
+	request = &AddSkillsToSkillSpaceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "AddSkillsToSkillSpace")
+	return
+}
+
+func NewAddSkillsToSkillSpaceResponse() (response *AddSkillsToSkillSpaceResponse) {
+	response = &AddSkillsToSkillSpaceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) AddSkillsToSkillSpace(request *AddSkillsToSkillSpaceRequest) string {
+	return c.AddSkillsToSkillSpaceWithContext(context.Background(), request)
+}
+
+func (c *Client) AddSkillsToSkillSpaceSend(request *AddSkillsToSkillSpaceRequest) (*AddSkillsToSkillSpaceResponse, error) {
+	statusCode, msg, err := c.AddSkillsToSkillSpaceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct AddSkillsToSkillSpaceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) AddSkillsToSkillSpaceWithContext(ctx context.Context, request *AddSkillsToSkillSpaceRequest) string {
+	if request == nil {
+		request = NewAddSkillsToSkillSpaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "AddSkillsToSkillSpace")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAddSkillsToSkillSpaceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) AddSkillsToSkillSpaceWithContextV2(ctx context.Context, request *AddSkillsToSkillSpaceRequest) (int, string, error) {
+	if request == nil {
+		request = NewAddSkillsToSkillSpaceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "AddSkillsToSkillSpace")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewAddSkillsToSkillSpaceResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err

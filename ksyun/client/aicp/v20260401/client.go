@@ -891,3 +891,82 @@ func (c *Client) UpdateSandboxInstanceWithContextV2(ctx context.Context, request
 	}
 	return statusCode, msg, nil
 }
+func NewDeleteImageCacheRequest() (request *DeleteImageCacheRequest) {
+	request = &DeleteImageCacheRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DeleteImageCache")
+	return
+}
+
+func NewDeleteImageCacheResponse() (response *DeleteImageCacheResponse) {
+	response = &DeleteImageCacheResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DeleteImageCache(request *DeleteImageCacheRequest) string {
+	return c.DeleteImageCacheWithContext(context.Background(), request)
+}
+
+func (c *Client) DeleteImageCacheSend(request *DeleteImageCacheRequest) (*DeleteImageCacheResponse, error) {
+	statusCode, msg, err := c.DeleteImageCacheWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DeleteImageCacheResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DeleteImageCacheWithContext(ctx context.Context, request *DeleteImageCacheRequest) string {
+	if request == nil {
+		request = NewDeleteImageCacheRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteImageCache")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteImageCacheResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DeleteImageCacheWithContextV2(ctx context.Context, request *DeleteImageCacheRequest) (int, string, error) {
+	if request == nil {
+		request = NewDeleteImageCacheRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DeleteImageCache")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDeleteImageCacheResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
