@@ -5052,3 +5052,72 @@ func (r *RemoveImageAccessResponse) ToJsonString() string {
 func (r *RemoveImageAccessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+type DescribeNotebookTimeLineRequest struct {
+	*ksyunhttp.BaseRequest
+	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
+}
+
+func (r *DescribeNotebookTimeLineRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeNotebookTimeLineResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	NotebookId *string `json:"NotebookId" name:"NotebookId"`
+	EventList  []struct {
+		Mode        *string `json:"Mode" name:"Mode"`
+		Action      *string `json:"Action" name:"Action"`
+		Reason      *string `json:"Reason" name:"Reason"`
+		Operator    *string `json:"Operator" name:"Operator"`
+		EventTime   *string `json:"EventTime" name:"EventTime"`
+		StartTimes  *int    `json:"StartTimes" name:"StartTimes"`
+		EventDetail struct {
+			TerminatePolicyId *string `json:"TerminatePolicyId" name:"TerminatePolicyId"`
+		} `json:"EventDetail" name:"EventDetail"`
+	} `json:"EventList"`
+}
+
+func (r *DescribeNotebookTimeLineResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeNotebookTimeLineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTrainJobTimeLineRequest struct {
+	*ksyunhttp.BaseRequest
+	TrainJobId *string `json:"TrainJobId,omitempty" name:"TrainJobId"`
+}
+
+func (r *DescribeTrainJobTimeLineRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeTrainJobTimeLineResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	TrainJobId *string `json:"TrainJobId" name:"TrainJobId"`
+	EventList  []struct {
+		Mode       *string `json:"Mode" name:"Mode"`
+		Action     *string `json:"Action" name:"Action"`
+		Reason     *string `json:"Reason" name:"Reason"`
+		Operator   *string `json:"Operator" name:"Operator"`
+		EventTime  *string `json:"EventTime" name:"EventTime"`
+		StartTimes *int    `json:"StartTimes" name:"StartTimes"`
+	} `json:"EventList"`
+}
+
+func (r *DescribeTrainJobTimeLineResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeTrainJobTimeLineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

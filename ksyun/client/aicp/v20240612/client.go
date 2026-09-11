@@ -10608,3 +10608,161 @@ func (c *Client) RemoveImageAccessWithContextV2(ctx context.Context, request *Re
 	}
 	return statusCode, msg, nil
 }
+func NewDescribeNotebookTimeLineRequest() (request *DescribeNotebookTimeLineRequest) {
+	request = &DescribeNotebookTimeLineRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeNotebookTimeLine")
+	return
+}
+
+func NewDescribeNotebookTimeLineResponse() (response *DescribeNotebookTimeLineResponse) {
+	response = &DescribeNotebookTimeLineResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeNotebookTimeLine(request *DescribeNotebookTimeLineRequest) string {
+	return c.DescribeNotebookTimeLineWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeNotebookTimeLineSend(request *DescribeNotebookTimeLineRequest) (*DescribeNotebookTimeLineResponse, error) {
+	statusCode, msg, err := c.DescribeNotebookTimeLineWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeNotebookTimeLineResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeNotebookTimeLineWithContext(ctx context.Context, request *DescribeNotebookTimeLineRequest) string {
+	if request == nil {
+		request = NewDescribeNotebookTimeLineRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeNotebookTimeLine")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeNotebookTimeLineResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeNotebookTimeLineWithContextV2(ctx context.Context, request *DescribeNotebookTimeLineRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeNotebookTimeLineRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeNotebookTimeLine")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeNotebookTimeLineResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewDescribeTrainJobTimeLineRequest() (request *DescribeTrainJobTimeLineRequest) {
+	request = &DescribeTrainJobTimeLineRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobTimeLine")
+	return
+}
+
+func NewDescribeTrainJobTimeLineResponse() (response *DescribeTrainJobTimeLineResponse) {
+	response = &DescribeTrainJobTimeLineResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeTrainJobTimeLine(request *DescribeTrainJobTimeLineRequest) string {
+	return c.DescribeTrainJobTimeLineWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeTrainJobTimeLineSend(request *DescribeTrainJobTimeLineRequest) (*DescribeTrainJobTimeLineResponse, error) {
+	statusCode, msg, err := c.DescribeTrainJobTimeLineWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeTrainJobTimeLineResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeTrainJobTimeLineWithContext(ctx context.Context, request *DescribeTrainJobTimeLineRequest) string {
+	if request == nil {
+		request = NewDescribeTrainJobTimeLineRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobTimeLine")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeTrainJobTimeLineResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeTrainJobTimeLineWithContextV2(ctx context.Context, request *DescribeTrainJobTimeLineRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeTrainJobTimeLineRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeTrainJobTimeLine")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewDescribeTrainJobTimeLineResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
