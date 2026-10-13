@@ -6,10 +6,13 @@
 package common
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
 	"log"
+	"mime"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
@@ -25,6 +28,121 @@ import (
 	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
 	ksyunprofile "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/profile"
 )
+
+// SendStream signs and sends an SSE request. onEvent receives one raw SSE event
+// (without the trailing blank line); returning an error closes the connection.
+func (c *Client) SendStream(request ksyunhttp.Request, onEvent func([]byte) error) error {
+	if onEvent == nil {
+		return fmt.Errorf("SSE event handler is required")
+	}
+	if request.GetScheme() == "" {
+		request.SetScheme(c.httpProfile.Scheme)
+	}
+	if request.GetDomain() == "" {
+		domain := c.httpProfile.Endpoint
+		if domain == "" {
+			domain = request.GetServiceDomain(request.GetService())
+		}
+		request.SetDomain(domain)
+	}
+	if request.GetHttpMethod() == "" {
+		request.SetHttpMethod(c.httpProfile.ReqMethod)
+	}
+	ksyunhttp.HandleCommonParams(request, c.GetRegion())
+
+	httpRequest, err := c.buildSignedStreamRequest(request)
+	if err != nil {
+		return err
+	}
+	client := *c.httpClient
+	client.Timeout = 0
+	httpResponse, err := client.Do(httpRequest)
+	if err != nil {
+		return err
+	}
+	defer httpResponse.Body.Close()
+	if httpResponse.StatusCode < 200 || httpResponse.StatusCode > 299 {
+		body, _ := io.ReadAll(io.LimitReader(httpResponse.Body, 1024*1024))
+		return fmt.Errorf("SSE request failed with HTTP %d: %s", httpResponse.StatusCode, body)
+	}
+	contentType := httpResponse.Header.Get("Content-Type")
+	mediaType, _, parseErr := mime.ParseMediaType(contentType)
+	if parseErr != nil || !strings.EqualFold(mediaType, "text/event-stream") {
+		return fmt.Errorf("invalid SSE Content-Type: %s", contentType)
+	}
+
+	reader := bufio.NewReader(httpResponse.Body)
+	event := make([]byte, 0, 1024)
+	for {
+		line, readErr := reader.ReadBytes('\n')
+		trimmed := bytes.TrimRight(line, "\r\n")
+		if len(trimmed) == 0 {
+			if len(event) > 0 {
+				if err := onEvent(bytes.TrimSuffix(event, []byte("\n"))); err != nil {
+					return err
+				}
+				event = event[:0]
+			}
+		} else {
+			event = append(event, trimmed...)
+			event = append(event, '\n')
+		}
+		if readErr != nil {
+			if readErr == io.EOF {
+				if len(event) > 0 {
+					return onEvent(bytes.TrimSuffix(event, []byte("\n")))
+				}
+				return nil
+			}
+			return readErr
+		}
+	}
+}
+
+func (c *Client) buildSignedStreamRequest(request ksyunhttp.Request) (*http.Request, error) {
+	sess := session.Must(session.NewSession(&aws.Config{
+		Region: aws.String(c.GetRegion()), Credentials: credentials.NewStaticCredentials(c.credential.GetSecretId(), c.credential.GetSecretKey(), ""),
+	}))
+	signer := v4.NewSigner(sess.Config.Credentials)
+	isBodyMethod := request.GetHttpMethod() == "POST" || request.GetHttpMethod() == "PUT" || request.GetHttpMethod() == "DELETE"
+	var body []byte
+	urlRe := request.GetUrl()
+	if isBodyMethod && request.GetContentType() == "application/json" {
+		body, _ = json.Marshal(request)
+		urlRe += "?Action=" + request.GetAction() + "&Version=" + request.GetVersion() + "&Service=" + request.GetService()
+	} else {
+		if err := ksyunhttp.FlatStructure(reflect.ValueOf(request).Elem(), request, ""); err != nil {
+			return nil, err
+		}
+		if isBodyMethod {
+			formData := url.Values{}
+			for key, value := range request.GetParams() {
+				formData.Set(key, value)
+			}
+			body = []byte(formData.Encode())
+		}
+	}
+	urlRe = c.appendQueryParams(urlRe, request.GetAccountId(), request.GetUserId(), request.GetRoleId())
+	var bodyReader io.Reader
+	if len(body) > 0 {
+		bodyReader = bytes.NewReader(body)
+	}
+	httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), urlRe, bodyReader)
+	if err != nil {
+		return nil, err
+	}
+	for key, value := range request.GetHeaders() {
+		httpRequest.Header.Set(key, value)
+	}
+	httpRequest.Header.Set("Accept", "text/event-stream")
+	httpRequest.Header.Set("Cache-Control", "no-cache")
+	httpRequest.Header.Set("X-Amz-Date", time.Now().UTC().Format("20060102T150405Z"))
+	httpRequest.Header.Set("Content-Type", request.GetContentType())
+	httpRequest.Header.Set("Host", request.GetDomain())
+	httpRequest.ContentLength = int64(len(body))
+	_, err = signer.Sign(httpRequest, bytes.NewReader(body), request.GetService(), c.GetRegion(), time.Now().UTC())
+	return httpRequest, err
+}
 
 type Client struct {
 	region          string
