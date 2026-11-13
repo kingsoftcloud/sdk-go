@@ -738,7 +738,20 @@ func (r *CreateImageCacheRequest) ToJsonString() string {
 
 type CreateImageCacheResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	ImageCaches []struct {
+		ImageCacheId *string  `json:"ImageCacheId" name:"ImageCacheId"`
+		ImageUrl     *string  `json:"ImageUrl" name:"ImageUrl"`
+		ImageTag     *string  `json:"ImageTag" name:"ImageTag"`
+		Description  *string  `json:"Description" name:"Description"`
+		TemplateType *string  `json:"TemplateType" name:"TemplateType"`
+		ImageSize    *float64 `json:"ImageSize" name:"ImageSize"`
+		CacheStatus  *string  `json:"CacheStatus" name:"CacheStatus"`
+		FailedReason *string  `json:"FailedReason" name:"FailedReason"`
+		Status       *string  `json:"Status" name:"Status"`
+		CreatedAt    *string  `json:"CreatedAt" name:"CreatedAt"`
+		UpdatedAt    *string  `json:"UpdatedAt" name:"UpdatedAt"`
+	} `json:"ImageCaches"`
 }
 
 func (r *CreateImageCacheResponse) ToJsonString() string {
@@ -768,10 +781,23 @@ func (r *GetImageCacheListRequest) ToJsonString() string {
 
 type GetImageCacheListResponse struct {
 	*ksyunhttp.BaseResponse
-	RequestId  *string `json:"RequestId" name:"RequestId"`
-	PageNum    *int    `json:"PageNum" name:"PageNum"`
-	PageSize   *int    `json:"PageSize" name:"PageSize"`
-	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+	RequestId   *string `json:"RequestId" name:"RequestId"`
+	ImageCaches []struct {
+		ImageCacheId *string  `json:"ImageCacheId" name:"ImageCacheId"`
+		ImageUrl     *string  `json:"ImageUrl" name:"ImageUrl"`
+		ImageTag     *string  `json:"ImageTag" name:"ImageTag"`
+		Description  *string  `json:"Description" name:"Description"`
+		TemplateType *string  `json:"TemplateType" name:"TemplateType"`
+		ImageSize    *float64 `json:"ImageSize" name:"ImageSize"`
+		CacheStatus  *string  `json:"CacheStatus" name:"CacheStatus"`
+		FailedReason *string  `json:"FailedReason" name:"FailedReason"`
+		Status       *string  `json:"Status" name:"Status"`
+		CreatedAt    *string  `json:"CreatedAt" name:"CreatedAt"`
+		UpdatedAt    *string  `json:"UpdatedAt" name:"UpdatedAt"`
+	} `json:"ImageCaches"`
+	PageNum    *int `json:"PageNum" name:"PageNum"`
+	PageSize   *int `json:"PageSize" name:"PageSize"`
+	TotalCount *int `json:"TotalCount" name:"TotalCount"`
 }
 
 func (r *GetImageCacheListResponse) ToJsonString() string {
