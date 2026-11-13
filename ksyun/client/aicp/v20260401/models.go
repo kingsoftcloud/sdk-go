@@ -179,6 +179,16 @@ type StartSandboxInstanceEnvs struct {
 	Key   *string `json:"Key,omitempty" name:"Key"`
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
+type CreateImageCacheImageConfigs struct {
+	ImageSource        *string `json:"ImageSource,omitempty" name:"ImageSource"`
+	ImageEndpoint      *string `json:"ImageEndpoint,omitempty" name:"ImageEndpoint"`
+	ImageNamespace     *string `json:"ImageNamespace,omitempty" name:"ImageNamespace"`
+	ImageName          *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageTag           *string `json:"ImageTag,omitempty" name:"ImageTag"`
+	RegistryInstanceId *string `json:"RegistryInstanceId,omitempty" name:"RegistryInstanceId"`
+	CredentialUsername *string `json:"CredentialUsername,omitempty" name:"CredentialUsername"`
+	CredentialPwd      *string `json:"CredentialPwd,omitempty" name:"CredentialPwd"`
+}
 
 type CreateSandboxTemplateRequest struct {
 	*ksyunhttp.BaseRequest
@@ -716,8 +726,66 @@ func (r *UpdateSandboxInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateImageCacheRequest struct {
+	*ksyunhttp.BaseRequest
+	ImageConfigs []*CreateImageCacheImageConfigs `json:"ImageConfigs,omitempty" name:"ImageConfigs"`
+}
+
+func (r *CreateImageCacheRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateImageCacheResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *CreateImageCacheResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateImageCacheResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetImageCacheListRequest struct {
+	*ksyunhttp.BaseRequest
+	Scope        *string `json:"Scope,omitempty" name:"Scope"`
+	ImageCacheId *string `json:"ImageCacheId,omitempty" name:"ImageCacheId"`
+	Image        *string `json:"Image,omitempty" name:"Image"`
+	Description  *string `json:"Description,omitempty" name:"Description"`
+	Status       *string `json:"Status,omitempty" name:"Status"`
+	PageNum      *int    `json:"PageNum,omitempty" name:"PageNum"`
+	PageSize     *int    `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *GetImageCacheListRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetImageCacheListResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId  *string `json:"RequestId" name:"RequestId"`
+	PageNum    *int    `json:"PageNum" name:"PageNum"`
+	PageSize   *int    `json:"PageSize" name:"PageSize"`
+	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
+}
+
+func (r *GetImageCacheListResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetImageCacheListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteImageCacheRequest struct {
 	*ksyunhttp.BaseRequest
+	ImageCacheId *string `json:"ImageCacheId,omitempty" name:"ImageCacheId"`
 }
 
 func (r *DeleteImageCacheRequest) ToJsonString() string {
@@ -727,6 +795,8 @@ func (r *DeleteImageCacheRequest) ToJsonString() string {
 
 type DeleteImageCacheResponse struct {
 	*ksyunhttp.BaseResponse
+	RequestId    *string `json:"RequestId" name:"RequestId"`
+	ImageCacheId *string `json:"ImageCacheId" name:"ImageCacheId"`
 }
 
 func (r *DeleteImageCacheResponse) ToJsonString() string {
@@ -735,5 +805,75 @@ func (r *DeleteImageCacheResponse) ToJsonString() string {
 }
 
 func (r *DeleteImageCacheResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSandboxInstanceCommitRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId       *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	Image            *string `json:"Image,omitempty" name:"Image"`
+	RegistryUsername *string `json:"RegistryUsername,omitempty" name:"RegistryUsername"`
+	RegistryPassword *string `json:"RegistryPassword,omitempty" name:"RegistryPassword"`
+	Pause            *bool   `json:"Pause,omitempty" name:"Pause"`
+	TimeoutSeconds   *int    `json:"TimeoutSeconds,omitempty" name:"TimeoutSeconds"`
+}
+
+func (r *CreateSandboxInstanceCommitRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateSandboxInstanceCommitResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	TaskId    *string `json:"TaskId" name:"TaskId"`
+	Status    *string `json:"Status" name:"Status"`
+	Image     *string `json:"Image" name:"Image"`
+}
+
+func (r *CreateSandboxInstanceCommitResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateSandboxInstanceCommitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetSandboxInstanceCommitRequest struct {
+	*ksyunhttp.BaseRequest
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	TaskId     *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *GetSandboxInstanceCommitRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetSandboxInstanceCommitResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId      *string `json:"RequestId" name:"RequestId"`
+	TaskId         *string `json:"TaskId" name:"TaskId"`
+	ContainerName  *string `json:"ContainerName" name:"ContainerName"`
+	CreatedAt      *string `json:"CreatedAt" name:"CreatedAt"`
+	Status         *string `json:"Status" name:"Status"`
+	Image          *string `json:"Image" name:"Image"`
+	Stage          *string `json:"Stage" name:"Stage"`
+	ImageDigest    *string `json:"ImageDigest" name:"ImageDigest"`
+	ImageRef       *string `json:"ImageRef" name:"ImageRef"`
+	StartedAt      *string `json:"StartedAt" name:"StartedAt"`
+	FinishedAt     *string `json:"FinishedAt" name:"FinishedAt"`
+	LastObservedAt *string `json:"LastObservedAt" name:"LastObservedAt"`
+	ErrorCode      *string `json:"ErrorCode" name:"ErrorCode"`
+	Message        *string `json:"Message" name:"Message"`
+}
+
+func (r *GetSandboxInstanceCommitResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetSandboxInstanceCommitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

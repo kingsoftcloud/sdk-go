@@ -148,6 +148,22 @@ type CreateTerminatePolicyUseRatePolicy struct {
 	Gpu    *string `json:"Gpu,omitempty" name:"Gpu"`
 	Hour   *int    `json:"Hour,omitempty" name:"Hour"`
 }
+type ModifyApikeyCostQuotas struct {
+	QuotaType      *string `json:"QuotaType,omitempty" name:"QuotaType"`
+	QuotaLimit     *string `json:"QuotaLimit,omitempty" name:"QuotaLimit"`
+	PeriodValue    *string `json:"PeriodValue,omitempty" name:"PeriodValue"`
+	Status         *int    `json:"Status,omitempty" name:"Status"`
+	AlertEnabled   *bool   `json:"AlertEnabled,omitempty" name:"AlertEnabled"`
+	AlertThreshold *int    `json:"AlertThreshold,omitempty" name:"AlertThreshold"`
+}
+type CreateApikeyCostQuotas struct {
+	QuotaType      *string `json:"QuotaType,omitempty" name:"QuotaType"`
+	QuotaLimit     *string `json:"QuotaLimit,omitempty" name:"QuotaLimit"`
+	PeriodValue    *string `json:"PeriodValue,omitempty" name:"PeriodValue"`
+	Status         *int    `json:"Status,omitempty" name:"Status"`
+	AlertEnabled   *bool   `json:"AlertEnabled,omitempty" name:"AlertEnabled"`
+	AlertThreshold *int    `json:"AlertThreshold,omitempty" name:"AlertThreshold"`
+}
 type DescribeTrainJobPodsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
@@ -211,6 +227,7 @@ type CreateQueueCapability struct {
 	CPUNum    *int                             `json:"CPUNum,omitempty" name:"CPUNum"`
 	MemoryNum *int                             `json:"MemoryNum,omitempty" name:"MemoryNum"`
 	GPUInfos  []*CreateQueueCapabilityGPUInfos `json:"GPUInfos,omitempty" name:"GPUInfos"`
+	VolumeNum *int                             `json:"VolumeNum,omitempty" name:"VolumeNum"`
 }
 type CreateQueueNodeSpec struct {
 	GPUType      *string   `json:"GPUType,omitempty" name:"GPUType"`
@@ -240,6 +257,7 @@ type ModifyQueueCapability struct {
 	CPUNum    *int                             `json:"CPUNum,omitempty" name:"CPUNum"`
 	MemoryNum *int                             `json:"MemoryNum,omitempty" name:"MemoryNum"`
 	GPUInfos  []*ModifyQueueCapabilityGPUInfos `json:"GPUInfos,omitempty" name:"GPUInfos"`
+	VolumeNum *int                             `json:"VolumeNum,omitempty" name:"VolumeNum"`
 }
 type ModifyQueueAccessList struct {
 	UserId     *string `json:"UserId,omitempty" name:"UserId"`
@@ -261,9 +279,183 @@ type ModifyQueueResourceReservation struct {
 	AutoEnableAfterQueueMinutes *int  `json:"AutoEnableAfterQueueMinutes,omitempty" name:"AutoEnableAfterQueueMinutes"`
 	ReserveTimeoutMinutes       *int  `json:"ReserveTimeoutMinutes,omitempty" name:"ReserveTimeoutMinutes"`
 }
+type CreateAgentProductCodeConfig struct {
+	Path                      *string   `json:"Path,omitempty" name:"Path"`
+	AccessKey                 *string   `json:"AccessKey,omitempty" name:"AccessKey"`
+	SecretKey                 *string   `json:"SecretKey,omitempty" name:"SecretKey"`
+	Bucket                    *string   `json:"Bucket,omitempty" name:"Bucket"`
+	Language                  *string   `json:"Language,omitempty" name:"Language"`
+	Command                   []*string `json:"Command,omitempty" name:"Command"`
+	Checksum                  *string   `json:"Checksum,omitempty" name:"Checksum"`
+	AgentKernelContractDigest *string   `json:"AgentKernelContractDigest,omitempty" name:"AgentKernelContractDigest"`
+}
+type CreateAgentProductContainerConfig struct {
+	ImageType            *string   `json:"ImageType,omitempty" name:"ImageType"`
+	EnterpriseInstance   *string   `json:"EnterpriseInstance,omitempty" name:"EnterpriseInstance"`
+	EnterpriseInstanceId *string   `json:"EnterpriseInstanceId,omitempty" name:"EnterpriseInstanceId"`
+	NameSpace            *string   `json:"NameSpace,omitempty" name:"NameSpace"`
+	ImageRepo            *string   `json:"ImageRepo,omitempty" name:"ImageRepo"`
+	ImageVersion         *string   `json:"ImageVersion,omitempty" name:"ImageVersion"`
+	ImageAddr            *string   `json:"ImageAddr,omitempty" name:"ImageAddr"`
+	UserName             *string   `json:"UserName,omitempty" name:"UserName"`
+	Password             *string   `json:"Password,omitempty" name:"Password"`
+	Visibility           *string   `json:"Visibility,omitempty" name:"Visibility"`
+	RequireCredential    *bool     `json:"RequireCredential,omitempty" name:"RequireCredential"`
+	Command              []*string `json:"Command,omitempty" name:"Command"`
+	Port                 *int      `json:"Port,omitempty" name:"Port"`
+}
+type CreateAgentProductResource struct {
+	Cpu    *int `json:"Cpu,omitempty" name:"Cpu"`
+	Memory *int `json:"Memory,omitempty" name:"Memory"`
+}
+type CreateAgentProductScaling struct {
+	MinReplicas    *int `json:"MinReplicas,omitempty" name:"MinReplicas"`
+	MaxReplicas    *int `json:"MaxReplicas,omitempty" name:"MaxReplicas"`
+	QpsPerInstance *int `json:"QpsPerInstance,omitempty" name:"QpsPerInstance"`
+}
+type CreateAgentProductStorage struct {
+	MountPath *string `json:"MountPath,omitempty" name:"MountPath"`
+	SizeGi    *int    `json:"SizeGi,omitempty" name:"SizeGi"`
+}
+type CreateAgentProductKS3MountConfig struct {
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+	BucketPath *string `json:"BucketPath,omitempty" name:"BucketPath"`
+	Endpoint   *string `json:"Endpoint,omitempty" name:"Endpoint"`
+	MountDir   *string `json:"MountDir,omitempty" name:"MountDir"`
+	ReadOnly   *bool   `json:"ReadOnly,omitempty" name:"ReadOnly"`
+	AkId       *string `json:"AkId,omitempty" name:"AkId"`
+	AkSecret   *string `json:"AkSecret,omitempty" name:"AkSecret"`
+}
+type CreateAgentProductSessionAffinity struct {
+	Enabled *bool   `json:"Enabled,omitempty" name:"Enabled"`
+	Type    *string `json:"Type,omitempty" name:"Type"`
+	MaxAge  *int    `json:"MaxAge,omitempty" name:"MaxAge"`
+}
+type CreateAgentProductNetwork struct {
+	EnablePublicAccess   *bool   `json:"EnablePublicAccess,omitempty" name:"EnablePublicAccess"`
+	EnableVpcAccess      *bool   `json:"EnableVpcAccess,omitempty" name:"EnableVpcAccess"`
+	VpcId                *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcName              *string `json:"VpcName,omitempty" name:"VpcName"`
+	SubnetId             *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	SubnetName           *string `json:"SubnetName,omitempty" name:"SubnetName"`
+	SecurityGroupId      *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+	SecurityGroupName    *string `json:"SecurityGroupName,omitempty" name:"SecurityGroupName"`
+	AvailabilityZone     *string `json:"AvailabilityZone,omitempty" name:"AvailabilityZone"`
+	AvailabilityZoneName *string `json:"AvailabilityZoneName,omitempty" name:"AvailabilityZoneName"`
+}
+type CreateAgentProductAccess struct {
+	AuthType  *string `json:"AuthType,omitempty" name:"AuthType"`
+	IamRole   *string `json:"IamRole,omitempty" name:"IamRole"`
+	IsPrivate *bool   `json:"IsPrivate,omitempty" name:"IsPrivate"`
+}
+type CreateAgentProductAdvancedEnvironmentVariables struct {
+	Key         *string `json:"Key,omitempty" name:"Key"`
+	Value       *string `json:"Value,omitempty" name:"Value"`
+	IsSensitive *bool   `json:"IsSensitive,omitempty" name:"IsSensitive"`
+}
+type CreateAgentProductAdvancedComponentConfigKnowledgeBase struct {
+	Id     *string `json:"Id,omitempty" name:"Id"`
+	Name   *string `json:"Name,omitempty" name:"Name"`
+	ApiKey *string `json:"ApiKey,omitempty" name:"ApiKey"`
+}
+type CreateAgentProductAdvancedComponentConfigMemory struct {
+	Id     *string `json:"Id,omitempty" name:"Id"`
+	Name   *string `json:"Name,omitempty" name:"Name"`
+	ApiKey *string `json:"ApiKey,omitempty" name:"ApiKey"`
+}
+type CreateAgentProductAdvancedComponentConfigSandbox struct {
+	Id     *string `json:"Id,omitempty" name:"Id"`
+	Name   *string `json:"Name,omitempty" name:"Name"`
+	ApiKey *string `json:"ApiKey,omitempty" name:"ApiKey"`
+}
+type CreateAgentProductAdvancedComponentConfigSkillWorkspace struct {
+	Id     *string `json:"Id,omitempty" name:"Id"`
+	Name   *string `json:"Name,omitempty" name:"Name"`
+	ApiKey *string `json:"ApiKey,omitempty" name:"ApiKey"`
+}
+type CreateAgentProductAdvancedComponentConfigSessionManagement struct {
+	SessionResourceId *string `json:"SessionResourceId,omitempty" name:"SessionResourceId"`
+	Password          *string `json:"Password,omitempty" name:"Password"`
+}
+type CreateAgentProductAdvancedComponentConfigA2ASpace struct {
+	RuntimeProfile *string `json:"RuntimeProfile,omitempty" name:"RuntimeProfile"`
+}
+type CreateAgentProductAdvancedComponentConfig struct {
+	KnowledgeBase     *CreateAgentProductAdvancedComponentConfigKnowledgeBase     `json:"KnowledgeBase,omitempty" name:"KnowledgeBase"`
+	Memory            *CreateAgentProductAdvancedComponentConfigMemory            `json:"Memory,omitempty" name:"Memory"`
+	Sandbox           *CreateAgentProductAdvancedComponentConfigSandbox           `json:"Sandbox,omitempty" name:"Sandbox"`
+	SkillWorkspace    *CreateAgentProductAdvancedComponentConfigSkillWorkspace    `json:"SkillWorkspace,omitempty" name:"SkillWorkspace"`
+	SessionManagement *CreateAgentProductAdvancedComponentConfigSessionManagement `json:"SessionManagement,omitempty" name:"SessionManagement"`
+	A2ASpace          *CreateAgentProductAdvancedComponentConfigA2ASpace          `json:"A2ASpace,omitempty" name:"A2ASpace"`
+}
+type CreateAgentProductAdvanced struct {
+	EnableObservability  *bool                                             `json:"EnableObservability,omitempty" name:"EnableObservability"`
+	EnvironmentVariables []*CreateAgentProductAdvancedEnvironmentVariables `json:"EnvironmentVariables,omitempty" name:"EnvironmentVariables"`
+	Tags                 []*string                                         `json:"Tags,omitempty" name:"Tags"`
+	InboundIdentityAuth  *string                                           `json:"InboundIdentityAuth,omitempty" name:"InboundIdentityAuth"`
+	ProjectName          *string                                           `json:"ProjectName,omitempty" name:"ProjectName"`
+	ProjectId            *int                                              `json:"ProjectId,omitempty" name:"ProjectId"`
+	DeployMode           *string                                           `json:"DeployMode,omitempty" name:"DeployMode"`
+	ComponentConfig      *CreateAgentProductAdvancedComponentConfig        `json:"ComponentConfig,omitempty" name:"ComponentConfig"`
+	IsPrivate            *bool                                             `json:"IsPrivate,omitempty" name:"IsPrivate"`
+}
+type CreateAgentProductComponentConfigKnowledgeBase struct {
+	Id     *string `json:"Id,omitempty" name:"Id"`
+	Name   *string `json:"Name,omitempty" name:"Name"`
+	ApiKey *string `json:"ApiKey,omitempty" name:"ApiKey"`
+}
+type CreateAgentProductComponentConfigMemory struct {
+	Id     *string `json:"Id,omitempty" name:"Id"`
+	Name   *string `json:"Name,omitempty" name:"Name"`
+	ApiKey *string `json:"ApiKey,omitempty" name:"ApiKey"`
+}
+type CreateAgentProductComponentConfigSandbox struct {
+	Id     *string `json:"Id,omitempty" name:"Id"`
+	Name   *string `json:"Name,omitempty" name:"Name"`
+	ApiKey *string `json:"ApiKey,omitempty" name:"ApiKey"`
+}
+type CreateAgentProductComponentConfigSkillWorkspace struct {
+	Id     *string `json:"Id,omitempty" name:"Id"`
+	Name   *string `json:"Name,omitempty" name:"Name"`
+	ApiKey *string `json:"ApiKey,omitempty" name:"ApiKey"`
+}
+type CreateAgentProductComponentConfigSessionManagement struct {
+	SessionResourceId *string `json:"SessionResourceId,omitempty" name:"SessionResourceId"`
+	Password          *string `json:"Password,omitempty" name:"Password"`
+}
+type CreateAgentProductComponentConfigA2ASpace struct {
+	RuntimeProfile *string `json:"RuntimeProfile,omitempty" name:"RuntimeProfile"`
+}
+type CreateAgentProductComponentConfig struct {
+	KnowledgeBase     *CreateAgentProductComponentConfigKnowledgeBase     `json:"KnowledgeBase,omitempty" name:"KnowledgeBase"`
+	Memory            *CreateAgentProductComponentConfigMemory            `json:"Memory,omitempty" name:"Memory"`
+	Sandbox           *CreateAgentProductComponentConfigSandbox           `json:"Sandbox,omitempty" name:"Sandbox"`
+	SkillWorkspace    *CreateAgentProductComponentConfigSkillWorkspace    `json:"SkillWorkspace,omitempty" name:"SkillWorkspace"`
+	SessionManagement *CreateAgentProductComponentConfigSessionManagement `json:"SessionManagement,omitempty" name:"SessionManagement"`
+	A2ASpace          *CreateAgentProductComponentConfigA2ASpace          `json:"A2ASpace,omitempty" name:"A2ASpace"`
+}
+type CreateAgentProductUiConfig struct {
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+	Path    *string `json:"Path,omitempty" name:"Path"`
+	Url     *string `json:"Url,omitempty" name:"Url"`
+}
+type CreateAgentProductMemoryConfig struct {
+	MemorySystem      *string `json:"MemorySystem,omitempty" name:"MemorySystem"`
+	Mem0InstanceId    *string `json:"Mem0InstanceId,omitempty" name:"Mem0InstanceId"`
+	Mem0InstanceName  *string `json:"Mem0InstanceName,omitempty" name:"Mem0InstanceName"`
+	Mem0Region        *string `json:"Mem0Region,omitempty" name:"Mem0Region"`
+	LanceDbDeployMode *string `json:"LanceDbDeployMode,omitempty" name:"LanceDbDeployMode"`
+	LanceDbKs3Uri     *string `json:"LanceDbKs3Uri,omitempty" name:"LanceDbKs3Uri"`
+}
 type DescribeInferencePodsFilter struct {
 	Name  *string   `json:"Name,omitempty" name:"Name"`
 	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+type CreateSessionTags struct {
+	Key *string `json:"key,omitempty" name:"key"`
+}
+type ListSessionsTagFilters struct {
+	Key *string `json:"key,omitempty" name:"key"`
 }
 type AddSkillsToSkillSpaceSkills struct {
 	SkillId        *string `json:"SkillId,omitempty" name:"SkillId"`
@@ -308,6 +500,7 @@ type CreateResourcePoolRequest struct {
 	EnableVolume          *bool     `json:"EnableVolume,omitempty" name:"EnableVolume"`
 	VolumeChargeType      *string   `json:"VolumeChargeType,omitempty" name:"VolumeChargeType"`
 	ProjectId             *string   `json:"ProjectId,omitempty" name:"ProjectId"`
+	VolumeQuota           *int      `json:"VolumeQuota,omitempty" name:"VolumeQuota"`
 }
 
 func (r *CreateResourcePoolRequest) ToJsonString() string {
@@ -1468,18 +1661,18 @@ func (r *EnableApikeyStatusResponse) FromJsonString(s string) error {
 
 type ModifyApikeyRequest struct {
 	*ksyunhttp.BaseRequest
-	KeyId                         *string   `json:"KeyId,omitempty" name:"KeyId"`
-	Name                          *string   `json:"Name,omitempty" name:"Name"`
-	Description                   *string   `json:"Description,omitempty" name:"Description"`
-	AssociatedModelIds            []*string `json:"AssociatedModelIds,omitempty" name:"AssociatedModelIds"`
-	AllAssociatedModel            *bool     `json:"AllAssociatedModel,omitempty" name:"AllAssociatedModel"`
-	AllowEndpoints                []*string `json:"AllowEndpoints,omitempty" name:"AllowEndpoints"`
-	AllAssociatedProjectResources *bool     `json:"AllAssociatedProjectResources,omitempty" name:"AllAssociatedProjectResources"`
-	AllAssociatedEndpoint         *bool     `json:"AllAssociatedEndpoint,omitempty" name:"AllAssociatedEndpoint"`
-	LowPriceModels                []*string `json:"LowPriceModels,omitempty" name:"LowPriceModels"`
-	HighPriceModels               []*string `json:"HighPriceModels,omitempty" name:"HighPriceModels"`
-	AllowedIps                    []*string `json:"AllowedIps,omitempty" name:"AllowedIps"`
-	ProjectId                     *string   `json:"ProjectId,omitempty" name:"ProjectId"`
+	KeyId                         *string                   `json:"KeyId,omitempty" name:"KeyId"`
+	Name                          *string                   `json:"Name,omitempty" name:"Name"`
+	Description                   *string                   `json:"Description,omitempty" name:"Description"`
+	AssociatedModelIds            []*string                 `json:"AssociatedModelIds,omitempty" name:"AssociatedModelIds"`
+	AllAssociatedModel            *bool                     `json:"AllAssociatedModel,omitempty" name:"AllAssociatedModel"`
+	AllowEndpoints                []*string                 `json:"AllowEndpoints,omitempty" name:"AllowEndpoints"`
+	AllAssociatedProjectResources *bool                     `json:"AllAssociatedProjectResources,omitempty" name:"AllAssociatedProjectResources"`
+	AllAssociatedEndpoint         *bool                     `json:"AllAssociatedEndpoint,omitempty" name:"AllAssociatedEndpoint"`
+	LowPriceModels                []*string                 `json:"LowPriceModels,omitempty" name:"LowPriceModels"`
+	HighPriceModels               []*string                 `json:"HighPriceModels,omitempty" name:"HighPriceModels"`
+	OffpeakModels                 []*string                 `json:"OffpeakModels,omitempty" name:"OffpeakModels"`
+	CostQuotas                    []*ModifyApikeyCostQuotas `json:"CostQuotas,omitempty" name:"CostQuotas"`
 }
 
 func (r *ModifyApikeyRequest) ToJsonString() string {
@@ -1504,7 +1697,6 @@ func (r *ModifyApikeyResponse) FromJsonString(s string) error {
 
 type ActivateApiServiceRequest struct {
 	*ksyunhttp.BaseRequest
-	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 func (r *ActivateApiServiceRequest) ToJsonString() string {
@@ -1618,17 +1810,19 @@ func (r *DescribeModelsResponse) FromJsonString(s string) error {
 
 type CreateApikeyRequest struct {
 	*ksyunhttp.BaseRequest
-	Name                          *string   `json:"Name,omitempty" name:"Name"`
-	Description                   *string   `json:"Description,omitempty" name:"Description"`
-	ProjectId                     *int64    `json:"ProjectId,omitempty" name:"ProjectId"`
-	AssociatedModelIds            []*string `json:"AssociatedModelIds,omitempty" name:"AssociatedModelIds"`
-	AllAssociatedModel            *bool     `json:"AllAssociatedModel,omitempty" name:"AllAssociatedModel"`
-	AllowedIps                    []*string `json:"AllowedIps,omitempty" name:"AllowedIps"`
-	AllowEndpoints                []*string `json:"AllowEndpoints,omitempty" name:"AllowEndpoints"`
-	AllAssociatedEndpoint         *bool     `json:"AllAssociatedEndpoint,omitempty" name:"AllAssociatedEndpoint"`
-	AllAssociatedProjectResources *bool     `json:"AllAssociatedProjectResources,omitempty" name:"AllAssociatedProjectResources"`
-	LowPriceModels                []*string `json:"LowPriceModels,omitempty" name:"LowPriceModels"`
-	HighPriceModels               []*string `json:"HighPriceModels,omitempty" name:"HighPriceModels"`
+	Name                          *string                   `json:"Name,omitempty" name:"Name"`
+	Description                   *string                   `json:"Description,omitempty" name:"Description"`
+	ProjectId                     *int64                    `json:"ProjectId,omitempty" name:"ProjectId"`
+	AssociatedModelIds            []*string                 `json:"AssociatedModelIds,omitempty" name:"AssociatedModelIds"`
+	AllAssociatedModel            *bool                     `json:"AllAssociatedModel,omitempty" name:"AllAssociatedModel"`
+	AllowedIps                    []*string                 `json:"AllowedIps,omitempty" name:"AllowedIps"`
+	AllowEndpoints                []*string                 `json:"AllowEndpoints,omitempty" name:"AllowEndpoints"`
+	AllAssociatedEndpoint         *bool                     `json:"AllAssociatedEndpoint,omitempty" name:"AllAssociatedEndpoint"`
+	AllAssociatedProjectResources *bool                     `json:"AllAssociatedProjectResources,omitempty" name:"AllAssociatedProjectResources"`
+	LowPriceModels                []*string                 `json:"LowPriceModels,omitempty" name:"LowPriceModels"`
+	HighPriceModels               []*string                 `json:"HighPriceModels,omitempty" name:"HighPriceModels"`
+	OffpeakModels                 []*string                 `json:"OffpeakModels,omitempty" name:"OffpeakModels"`
+	CostQuotas                    []*CreateApikeyCostQuotas `json:"CostQuotas,omitempty" name:"CostQuotas"`
 }
 
 func (r *CreateApikeyRequest) ToJsonString() string {
@@ -1779,6 +1973,23 @@ type DescribeApikeysResponse struct {
 		AllAssociatedProjectResources *bool     `json:"AllAssociatedProjectResources" name:"AllAssociatedProjectResources"`
 		HighPriceModels               []*string `json:"HighPriceModels" name:"HighPriceModels"`
 		LowPriceModels                []*string `json:"LowPriceModels" name:"LowPriceModels"`
+		QuotaLimit                    *string   `json:"QuotaLimit" name:"QuotaLimit"`
+		QuotaType                     *string   `json:"QuotaType" name:"QuotaType"`
+		QuotaPeriodValue              *string   `json:"QuotaPeriodValue" name:"QuotaPeriodValue"`
+		QuotaStartTime                *string   `json:"QuotaStartTime" name:"QuotaStartTime"`
+		QuotaStatus                   *string   `json:"QuotaStatus" name:"QuotaStatus"`
+		UsedQuota                     *string   `json:"UsedQuota" name:"UsedQuota"`
+		OffpeakModels                 []*string `json:"OffpeakModels" name:"OffpeakModels"`
+		CostQuotas                    []struct {
+			QuotaType      *string `json:"QuotaType" name:"QuotaType"`
+			QuotaLimit     *string `json:"QuotaLimit" name:"QuotaLimit"`
+			PeriodValue    *string `json:"PeriodValue" name:"PeriodValue"`
+			StartTime      *string `json:"StartTime" name:"StartTime"`
+			Status         *int    `json:"Status" name:"Status"`
+			AlertEnabled   *bool   `json:"AlertEnabled" name:"AlertEnabled"`
+			AlertThreshold *int    `json:"AlertThreshold" name:"AlertThreshold"`
+			UsagePercent   *int    `json:"UsagePercent" name:"UsagePercent"`
+		} `json:"CostQuotas" name:"CostQuotas"`
 	} `json:"Data"`
 	Marker     *int `json:"Marker" name:"Marker"`
 	MaxResults *int `json:"MaxResults" name:"MaxResults"`
@@ -1791,100 +2002,6 @@ func (r *DescribeApikeysResponse) ToJsonString() string {
 }
 
 func (r *DescribeApikeysResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type QueryTokenDataRequest struct {
-	*ksyunhttp.BaseRequest
-	StartTimestamp *int64  `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
-	EndTimestamp   *int64  `json:"EndTimestamp,omitempty" name:"EndTimestamp"`
-	LastKey        *string `json:"LastKey,omitempty" name:"LastKey"`
-	MaxResults     *int    `json:"MaxResults,omitempty" name:"MaxResults"`
-	ModelKeyword   *string `json:"ModelKeyword,omitempty" name:"ModelKeyword"`
-	Keyword        *string `json:"Keyword,omitempty" name:"Keyword"`
-	GroupBy        *string `json:"GroupBy,omitempty" name:"GroupBy"`
-	ReasoningType  *string `json:"ReasoningType,omitempty" name:"ReasoningType"`
-	Marker         *int    `json:"Marker,omitempty" name:"Marker"`
-	ModelName      *string `json:"ModelName,omitempty" name:"ModelName"`
-	SortField      *string `json:"SortField,omitempty" name:"SortField"`
-	SortOrder      *string `json:"SortOrder,omitempty" name:"SortOrder"`
-	KeyId          *string `json:"KeyId,omitempty" name:"KeyId"`
-}
-
-func (r *QueryTokenDataRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type QueryTokenDataResponse struct {
-	*ksyunhttp.BaseResponse
-	TotalCount     *int64  `json:"TotalCount" name:"TotalCount"`
-	LastKey        *string `json:"LastKey" name:"LastKey"`
-	SumInputToken  *int64  `json:"SumInputToken" name:"SumInputToken"`
-	SumOutputToken *int64  `json:"SumOutputToken" name:"SumOutputToken"`
-	SumTotalToken  *int64  `json:"SumTotalToken" name:"SumTotalToken"`
-	Data           []struct {
-		Model               *string `json:"Model" name:"Model"`
-		InputToken          *int64  `json:"InputToken" name:"InputToken"`
-		OutputToken         *int64  `json:"OutputToken" name:"OutputToken"`
-		TotalToken          *int64  `json:"TotalToken" name:"TotalToken"`
-		TotalCacheToken     *int64  `json:"TotalCacheToken" name:"TotalCacheToken"`
-		TotalCacheMissToken *int64  `json:"TotalCacheMissToken" name:"TotalCacheMissToken"`
-		TotalWebSearch      *int64  `json:"TotalWebSearch" name:"TotalWebSearch"`
-		TotalImageCount     *int64  `json:"TotalImageCount" name:"TotalImageCount"`
-		TotalVideoDuration  *int64  `json:"TotalVideoDuration" name:"TotalVideoDuration"`
-		TotalWebParser      *int64  `json:"TotalWebParser" name:"TotalWebParser"`
-		GroupByValue        *string `json:"GroupByValue" name:"GroupByValue"`
-	} `json:"Data"`
-	SumTotalCacheToken           *int64 `json:"SumTotalCacheToken" name:"SumTotalCacheToken"`
-	SumTotalCacheMissToken       *int64 `json:"SumTotalCacheMissToken" name:"SumTotalCacheMissToken"`
-	SumTotalWebSearch            *int64 `json:"SumTotalWebSearch" name:"SumTotalWebSearch"`
-	SumTotalImageCount           *int64 `json:"SumTotalImageCount" name:"SumTotalImageCount"`
-	SumTotalVideoDuration        *int64 `json:"SumTotalVideoDuration" name:"SumTotalVideoDuration"`
-	SumTotalWebParser            *int64 `json:"SumTotalWebParser" name:"SumTotalWebParser"`
-	SumTotalCacheAudioToken      *int64 `json:"SumTotalCacheAudioToken" name:"SumTotalCacheAudioToken"`
-	SumTotalCacheImageToken      *int64 `json:"SumTotalCacheImageToken" name:"SumTotalCacheImageToken"`
-	SumTotalEphemeralCacheToken  *int64 `json:"SumTotalEphemeralCacheToken" name:"SumTotalEphemeralCacheToken"`
-	SumTotalCacheMissAudioToken  *int64 `json:"SumTotalCacheMissAudioToken" name:"SumTotalCacheMissAudioToken"`
-	SumTotalCacheMissImageToken  *int64 `json:"SumTotalCacheMissImageToken" name:"SumTotalCacheMissImageToken"`
-	SumTotalVoiceWordCount       *int64 `json:"SumTotalVoiceWordCount" name:"SumTotalVoiceWordCount"`
-	SumTotalImageOutputToken     *int64 `json:"SumTotalImageOutputToken" name:"SumTotalImageOutputToken"`
-	SumTotalCreationCache5mToken *int64 `json:"SumTotalCreationCache5mToken" name:"SumTotalCreationCache5mToken"`
-	SumTotalCreationCache1hToken *int64 `json:"SumTotalCreationCache1hToken" name:"SumTotalCreationCache1hToken"`
-}
-
-func (r *QueryTokenDataResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *QueryTokenDataResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DisableApikeyStatusRequest struct {
-	*ksyunhttp.BaseRequest
-	KeyId  *string `json:"KeyId,omitempty" name:"KeyId"`
-	Status *string `json:"Status,omitempty" name:"Status"`
-}
-
-func (r *DisableApikeyStatusRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type DisableApikeyStatusResponse struct {
-	*ksyunhttp.BaseResponse
-	Success   *bool   `json:"Success" name:"Success"`
-	RequestId *string `json:"RequestId" name:"RequestId"`
-}
-
-func (r *DisableApikeyStatusResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DisableApikeyStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1964,7 +2081,6 @@ func (r *DescribeInferenceJobsKs3AuthInfoResponse) FromJsonString(s string) erro
 
 type StopBatchInferenceJobRequest struct {
 	*ksyunhttp.BaseRequest
-	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
 }
 
 func (r *StopBatchInferenceJobRequest) ToJsonString() string {
@@ -1989,19 +2105,6 @@ func (r *StopBatchInferenceJobResponse) FromJsonString(s string) error {
 
 type CreateBatchInferenceJobRequest struct {
 	*ksyunhttp.BaseRequest
-	JobName          *string `json:"JobName,omitempty" name:"JobName"`
-	JobDesc          *string `json:"JobDesc,omitempty" name:"JobDesc"`
-	ApikeyId         *string `json:"ApikeyId,omitempty" name:"ApikeyId"`
-	Model            *string `json:"Model,omitempty" name:"Model"`
-	ExecuteTimeoutMs *int64  `json:"ExecuteTimeoutMs,omitempty" name:"ExecuteTimeoutMs"`
-	InputDataType    *string `json:"InputDataType,omitempty" name:"InputDataType"`
-	Ks3Region        *string `json:"Ks3Region,omitempty" name:"Ks3Region"`
-	Ks3Ak            *string `json:"Ks3Ak,omitempty" name:"Ks3Ak"`
-	Ks3Sk            *string `json:"Ks3Sk,omitempty" name:"Ks3Sk"`
-	InBucket         *string `json:"InBucket,omitempty" name:"InBucket"`
-	OutBucket        *string `json:"OutBucket,omitempty" name:"OutBucket"`
-	InObjectName     *string `json:"InObjectName,omitempty" name:"InObjectName"`
-	OutObjectName    *string `json:"OutObjectName,omitempty" name:"OutObjectName"`
 }
 
 func (r *CreateBatchInferenceJobRequest) ToJsonString() string {
@@ -2107,7 +2210,6 @@ func (r *DescribeBatchInferenceJobsResponse) FromJsonString(s string) error {
 
 type DeleteBatchInferenceJobRequest struct {
 	*ksyunhttp.BaseRequest
-	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
 }
 
 func (r *DeleteBatchInferenceJobRequest) ToJsonString() string {
@@ -2132,7 +2234,6 @@ func (r *DeleteBatchInferenceJobResponse) FromJsonString(s string) error {
 
 type EnableModelsRequest struct {
 	*ksyunhttp.BaseRequest
-	ModelIds []*string `json:"ModelIds,omitempty" name:"ModelIds"`
 }
 
 func (r *EnableModelsRequest) ToJsonString() string {
@@ -2245,31 +2346,6 @@ func (r *EnableOverFreeLimitResponse) ToJsonString() string {
 }
 
 func (r *EnableOverFreeLimitResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DisableOverFreeLimitRequest struct {
-	*ksyunhttp.BaseRequest
-	ModelIds []*string `json:"ModelIds,omitempty" name:"ModelIds"`
-}
-
-func (r *DisableOverFreeLimitRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type DisableOverFreeLimitResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Success   *bool   `json:"Success" name:"Success"`
-}
-
-func (r *DisableOverFreeLimitResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DisableOverFreeLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2881,6 +2957,8 @@ type DescribeResourcePoolsResponse struct {
 		EnableKlog            *bool     `json:"EnableKlog" name:"EnableKlog"`
 		EnableVolume          *bool     `json:"EnableVolume" name:"EnableVolume"`
 		VolumeChargeType      *string   `json:"VolumeChargeType" name:"VolumeChargeType"`
+		VolumeQuota           *int      `json:"VolumeQuota" name:"VolumeQuota"`
+		VolumeAllocated       *int      `json:"VolumeAllocated" name:"VolumeAllocated"`
 	} `json:"ResourcePoolSet"`
 	TotalCount *int    `json:"TotalCount" name:"TotalCount"`
 	PageSize   *int    `json:"PageSize" name:"PageSize"`
@@ -3339,11 +3417,13 @@ type DescribeQueuesResponse struct {
 				GPUType *string `json:"GPUType" name:"GPUType"`
 				GPUNum  *int    `json:"GPUNum" name:"GPUNum"`
 			} `json:"GPUInfos"`
+			VolumeNum *int `json:"VolumeNum" name:"VolumeNum"`
 		} `json:"Capability" name:"Capability"`
 		Allocated struct {
 			CPUNum    *int    `json:"CPUNum" name:"CPUNum"`
 			MemoryNum *int    `json:"MemoryNum" name:"MemoryNum"`
 			GPUNum    *string `json:"GPUNum" name:"GPUNum"`
+			VolumeNum *int    `json:"VolumeNum" name:"VolumeNum"`
 		} `json:"Allocated" name:"Allocated"`
 		QueueType      *string `json:"QueueType" name:"QueueType"`
 		NodeSelectType *string `json:"NodeSelectType" name:"NodeSelectType"`
@@ -3520,6 +3600,542 @@ func (r *RemoveQueueAccessUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateAgentProductRequest struct {
+	*ksyunhttp.BaseRequest
+	Name            *string                            `json:"Name,omitempty" name:"Name"`
+	Description     *string                            `json:"Description,omitempty" name:"Description"`
+	ClientToken     *string                            `json:"ClientToken,omitempty" name:"ClientToken"`
+	Framework       *string                            `json:"Framework,omitempty" name:"Framework"`
+	DeploymentType  *string                            `json:"DeploymentType,omitempty" name:"DeploymentType"`
+	CodeConfig      *CreateAgentProductCodeConfig      `json:"CodeConfig,omitempty" name:"CodeConfig"`
+	ContainerConfig *CreateAgentProductContainerConfig `json:"ContainerConfig,omitempty" name:"ContainerConfig"`
+	Resource        *CreateAgentProductResource        `json:"Resource,omitempty" name:"Resource"`
+	Scaling         *CreateAgentProductScaling         `json:"Scaling,omitempty" name:"Scaling"`
+	Storage         *CreateAgentProductStorage         `json:"Storage,omitempty" name:"Storage"`
+	KS3MountConfig  *CreateAgentProductKS3MountConfig  `json:"KS3MountConfig,omitempty" name:"KS3MountConfig"`
+	SessionAffinity *CreateAgentProductSessionAffinity `json:"SessionAffinity,omitempty" name:"SessionAffinity"`
+	Network         *CreateAgentProductNetwork         `json:"Network,omitempty" name:"Network"`
+	Access          *CreateAgentProductAccess          `json:"Access,omitempty" name:"Access"`
+	Advanced        *CreateAgentProductAdvanced        `json:"Advanced,omitempty" name:"Advanced"`
+	ComponentConfig *CreateAgentProductComponentConfig `json:"ComponentConfig,omitempty" name:"ComponentConfig"`
+	UiConfig        *CreateAgentProductUiConfig        `json:"UiConfig,omitempty" name:"UiConfig"`
+	DeployMode      *string                            `json:"DeployMode,omitempty" name:"DeployMode"`
+	MemoryConfig    *CreateAgentProductMemoryConfig    `json:"MemoryConfig,omitempty" name:"MemoryConfig"`
+	AutoPay         *bool                              `json:"AutoPay,omitempty" name:"AutoPay"`
+}
+
+func (r *CreateAgentProductRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateAgentProductResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *CreateAgentProductResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateAgentProductResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListAgentsRequest struct {
+	*ksyunhttp.BaseRequest
+	Page      *int    `json:"Page,omitempty" name:"Page"`
+	PageSize  *int    `json:"PageSize,omitempty" name:"PageSize"`
+	Name      *string `json:"Name,omitempty" name:"Name"`
+	Id        *string `json:"Id,omitempty" name:"Id"`
+	Status    *string `json:"Status,omitempty" name:"Status"`
+	Framework *string `json:"Framework,omitempty" name:"Framework"`
+}
+
+func (r *ListAgentsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ListAgentsResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		Agents []struct {
+			AgentId  *string `json:"AgentId" name:"AgentId"`
+			Resource struct {
+				Cpu    *int `json:"Cpu" name:"Cpu"`
+				Memory *int `json:"Memory" name:"Memory"`
+			} `json:"Resource"`
+			AgentRuntimeId  *string `json:"AgentRuntimeId" name:"AgentRuntimeId"`
+			Name            *string `json:"Name" name:"Name"`
+			Description     *string `json:"Description" name:"Description"`
+			Status          *string `json:"Status" name:"Status"`
+			Phase           *string `json:"Phase" name:"Phase"`
+			Message         *string `json:"Message" name:"Message"`
+			FreezeDeadline  *string `json:"FreezeDeadline" name:"FreezeDeadline"`
+			FreezeReason    *string `json:"FreezeReason" name:"FreezeReason"`
+			Endpoint        *string `json:"Endpoint" name:"Endpoint"`
+			Replicas        *int    `json:"Replicas" name:"Replicas"`
+			ReadyReplicas   *int    `json:"ReadyReplicas" name:"ReadyReplicas"`
+			DeploymentState struct {
+				DesiredVersionId  *string `json:"DesiredVersionId" name:"DesiredVersionId"`
+				ObservedVersionId *string `json:"ObservedVersionId" name:"ObservedVersionId"`
+				Ready             *bool   `json:"Ready" name:"Ready"`
+				Phase             *string `json:"Phase" name:"Phase"`
+				Error             struct {
+				} `json:"Error" name:"Error"`
+				UpdatedAt *string `json:"UpdatedAt" name:"UpdatedAt"`
+			} `json:"DeploymentState"`
+			Framework    *string `json:"Framework" name:"Framework"`
+			ArtifactType *string `json:"ArtifactType" name:"ArtifactType"`
+			Region       *string `json:"Region" name:"Region"`
+			MemoryConfig struct {
+				MemorySystem      *string `json:"MemorySystem" name:"MemorySystem"`
+				Mem0InstanceId    *string `json:"Mem0InstanceId" name:"Mem0InstanceId"`
+				Mem0InstanceName  *string `json:"Mem0InstanceName" name:"Mem0InstanceName"`
+				Mem0Region        *string `json:"Mem0Region" name:"Mem0Region"`
+				LanceDbDeployMode *string `json:"LanceDbDeployMode" name:"LanceDbDeployMode"`
+				LanceDbKs3Uri     *string `json:"LanceDbKs3Uri" name:"LanceDbKs3Uri"`
+			} `json:"MemoryConfig"`
+			ComponentConfig struct {
+				KnowledgeBase struct {
+					Id     *string `json:"Id" name:"Id"`
+					Name   *string `json:"Name" name:"Name"`
+					ApiKey *string `json:"ApiKey" name:"ApiKey"`
+				} `json:"KnowledgeBase" name:"KnowledgeBase"`
+				Memory struct {
+					Id     *string `json:"Id" name:"Id"`
+					Name   *string `json:"Name" name:"Name"`
+					ApiKey *string `json:"ApiKey" name:"ApiKey"`
+				} `json:"Memory" name:"Memory"`
+				Sandbox struct {
+					Id     *string `json:"Id" name:"Id"`
+					Name   *string `json:"Name" name:"Name"`
+					ApiKey *string `json:"ApiKey" name:"ApiKey"`
+				} `json:"Sandbox" name:"Sandbox"`
+				SkillWorkspace struct {
+					Id     *string `json:"Id" name:"Id"`
+					Name   *string `json:"Name" name:"Name"`
+					ApiKey *string `json:"ApiKey" name:"ApiKey"`
+				} `json:"SkillWorkspace" name:"SkillWorkspace"`
+				SessionManagement struct {
+					SessionResourceId *string `json:"SessionResourceId" name:"SessionResourceId"`
+					Password          *string `json:"Password" name:"Password"`
+				} `json:"SessionManagement" name:"SessionManagement"`
+				A2ASpace struct {
+					RuntimeProfile *string `json:"RuntimeProfile" name:"RuntimeProfile"`
+				} `json:"A2ASpace" name:"A2ASpace"`
+			} `json:"ComponentConfig"`
+			IsPrivate *bool   `json:"IsPrivate" name:"IsPrivate"`
+			Creator   *string `json:"Creator" name:"Creator"`
+			CreatedAt *string `json:"CreatedAt" name:"CreatedAt"`
+			UpdatedAt *string `json:"UpdatedAt" name:"UpdatedAt"`
+		} `json:"Agents" name:"Agents"`
+		Total    *int `json:"Total" name:"Total"`
+		Page     *int `json:"Page" name:"Page"`
+		PageSize *int `json:"PageSize" name:"PageSize"`
+	} `json:"Data"`
+}
+
+func (r *ListAgentsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListAgentsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetAgentRequest struct {
+	*ksyunhttp.BaseRequest
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+}
+
+func (r *GetAgentRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetAgentResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		QuickAccess struct {
+			PublicEndpoint  *string `json:"PublicEndpoint" name:"PublicEndpoint"`
+			PrivateEndpoint *string `json:"PrivateEndpoint" name:"PrivateEndpoint"`
+			ApiKey          *string `json:"ApiKey" name:"ApiKey"`
+		} `json:"QuickAccess" name:"QuickAccess"`
+		Basic struct {
+			AgentId        *string `json:"AgentId" name:"AgentId"`
+			InstanceId     *string `json:"InstanceId" name:"InstanceId"`
+			Name           *string `json:"Name" name:"Name"`
+			Description    *string `json:"Description" name:"Description"`
+			Status         *string `json:"Status" name:"Status"`
+			Phase          *string `json:"Phase" name:"Phase"`
+			Message        *string `json:"Message" name:"Message"`
+			FreezeDeadline *string `json:"FreezeDeadline" name:"FreezeDeadline"`
+			FreezeReason   *string `json:"FreezeReason" name:"FreezeReason"`
+			Replicas       *int    `json:"Replicas" name:"Replicas"`
+			ReadyReplicas  *int    `json:"ReadyReplicas" name:"ReadyReplicas"`
+			Creator        *string `json:"Creator" name:"Creator"`
+			IsPrivate      *bool   `json:"IsPrivate" name:"IsPrivate"`
+			CreatedAt      *string `json:"CreatedAt" name:"CreatedAt"`
+			UpdatedAt      *string `json:"UpdatedAt" name:"UpdatedAt"`
+		} `json:"Basic" name:"Basic"`
+		Deployment struct {
+			DeploymentType *string `json:"DeploymentType" name:"DeploymentType"`
+			ArtifactPath   *string `json:"ArtifactPath" name:"ArtifactPath"`
+			Framework      *string `json:"Framework" name:"Framework"`
+			Region         *string `json:"Region" name:"Region"`
+			Resource       struct {
+				Cpu    *int `json:"Cpu" name:"Cpu"`
+				Memory *int `json:"Memory" name:"Memory"`
+			} `json:"Resource"`
+			Scaling struct {
+				MinReplicas    *int `json:"MinReplicas" name:"MinReplicas"`
+				MaxReplicas    *int `json:"MaxReplicas" name:"MaxReplicas"`
+				QpsPerInstance *int `json:"QpsPerInstance" name:"QpsPerInstance"`
+			} `json:"Scaling"`
+			Storage struct {
+				MountPath *string `json:"MountPath" name:"MountPath"`
+				SizeGi    *int    `json:"SizeGi" name:"SizeGi"`
+			} `json:"Storage"`
+			KS3MountConfig struct {
+				BucketName *string `json:"BucketName" name:"BucketName"`
+				BucketPath *string `json:"BucketPath" name:"BucketPath"`
+				Endpoint   *string `json:"Endpoint" name:"Endpoint"`
+				MountDir   *string `json:"MountDir" name:"MountDir"`
+				ReadOnly   *bool   `json:"ReadOnly" name:"ReadOnly"`
+				AkId       *string `json:"AkId" name:"AkId"`
+				AkSecret   *string `json:"AkSecret" name:"AkSecret"`
+			} `json:"KS3MountConfig"`
+			SessionAffinity struct {
+				Enabled *bool   `json:"Enabled" name:"Enabled"`
+				Type    *string `json:"Type" name:"Type"`
+				MaxAge  *int    `json:"MaxAge" name:"MaxAge"`
+			} `json:"SessionAffinity"`
+			CodeConfig struct {
+				Path                      *string   `json:"Path" name:"Path"`
+				AccessKey                 *string   `json:"AccessKey" name:"AccessKey"`
+				SecretKey                 *string   `json:"SecretKey" name:"SecretKey"`
+				Region                    *string   `json:"Region" name:"Region"`
+				Bucket                    *string   `json:"Bucket" name:"Bucket"`
+				Language                  *string   `json:"Language" name:"Language"`
+				Command                   []*string `json:"Command" name:"Command"`
+				Checksum                  *string   `json:"Checksum" name:"Checksum"`
+				AgentKernelContractDigest *string   `json:"AgentKernelContractDigest" name:"AgentKernelContractDigest"`
+			} `json:"CodeConfig"`
+			ContainerConfig struct {
+				ImageType            *string   `json:"ImageType" name:"ImageType"`
+				EnterpriseInstance   *string   `json:"EnterpriseInstance" name:"EnterpriseInstance"`
+				EnterpriseInstanceId *string   `json:"EnterpriseInstanceId" name:"EnterpriseInstanceId"`
+				NameSpace            *string   `json:"NameSpace" name:"NameSpace"`
+				ImageRepo            *string   `json:"ImageRepo" name:"ImageRepo"`
+				ImageVersion         *string   `json:"ImageVersion" name:"ImageVersion"`
+				ImageAddr            *string   `json:"ImageAddr" name:"ImageAddr"`
+				UserName             *string   `json:"UserName" name:"UserName"`
+				Password             *string   `json:"Password" name:"Password"`
+				Visibility           *string   `json:"Visibility" name:"Visibility"`
+				RequireCredential    *bool     `json:"RequireCredential" name:"RequireCredential"`
+				Command              []*string `json:"Command" name:"Command"`
+				Port                 *int      `json:"Port" name:"Port"`
+			} `json:"ContainerConfig"`
+			RuntimeConfig struct {
+				Name           *string `json:"Name" name:"Name"`
+				Version        *string `json:"Version" name:"Version"`
+				ManifestSha256 *string `json:"ManifestSha256" name:"ManifestSha256"`
+				ImageDigest    *string `json:"ImageDigest" name:"ImageDigest"`
+				Package        *string `json:"Package" name:"Package"`
+				Protocol       *string `json:"Protocol" name:"Protocol"`
+				ManifestFormat *string `json:"ManifestFormat" name:"ManifestFormat"`
+				Startup        struct {
+					Command     []*string `json:"Command" name:"Command"`
+					Port        *int      `json:"Port" name:"Port"`
+					HealthCheck struct {
+						Protocol *string `json:"Protocol" name:"Protocol"`
+						Path     *string `json:"Path" name:"Path"`
+					} `json:"HealthCheck"`
+					Sources struct {
+					} `json:"Sources"`
+					TemplateVersion *string `json:"TemplateVersion" name:"TemplateVersion"`
+					Overrides       struct {
+					} `json:"Overrides"`
+				} `json:"Startup" name:"Startup"`
+				PluginArtifacts []struct {
+					SchemaVersion   *string   `json:"schema_version" name:"schema_version"`
+					ArtifactId      *string   `json:"artifact_id" name:"artifact_id"`
+					ArtifactPath    *string   `json:"artifact_path" name:"artifact_path"`
+					StorageRegion   *string   `json:"storage_region" name:"storage_region"`
+					Receipt         *string   `json:"receipt" name:"receipt"`
+					BuildId         *string   `json:"build_id" name:"build_id"`
+					ManifestSha256  *string   `json:"manifest_sha256" name:"manifest_sha256"`
+					MarketplaceName *string   `json:"marketplace_name" name:"marketplace_name"`
+					PluginNames     []*string `json:"PluginNames" name:"PluginNames"`
+					SnapshotDigest  *string   `json:"snapshot_digest" name:"snapshot_digest"`
+					Bindings        []*string `json:"Bindings" name:"Bindings"`
+				} `json:"PluginArtifacts" name:"PluginArtifacts"`
+			} `json:"RuntimeConfig"`
+			AgentKernelReady *bool   `json:"AgentKernelReady" name:"AgentKernelReady"`
+			AgentInstanceId  *string `json:"AgentInstanceId" name:"AgentInstanceId"`
+			BundleDigest     *string `json:"BundleDigest" name:"BundleDigest"`
+			DeploymentPhase  *string `json:"DeploymentPhase" name:"DeploymentPhase"`
+		} `json:"Deployment" name:"Deployment"`
+		DeploymentState struct {
+			DesiredVersionId  *string `json:"DesiredVersionId" name:"DesiredVersionId"`
+			ObservedVersionId *string `json:"ObservedVersionId" name:"ObservedVersionId"`
+			Ready             *bool   `json:"Ready" name:"Ready"`
+			Phase             *string `json:"Phase" name:"Phase"`
+			Error             struct {
+			} `json:"Error"`
+			UpdatedAt *string `json:"UpdatedAt" name:"UpdatedAt"`
+		} `json:"DeploymentState" name:"DeploymentState"`
+		Network struct {
+			EnablePublicAccess   *bool   `json:"EnablePublicAccess" name:"EnablePublicAccess"`
+			EnableVpcAccess      *bool   `json:"EnableVpcAccess" name:"EnableVpcAccess"`
+			PublicEndpoint       *string `json:"PublicEndpoint" name:"PublicEndpoint"`
+			PrivateEndpoint      *string `json:"PrivateEndpoint" name:"PrivateEndpoint"`
+			VpcId                *string `json:"VpcId" name:"VpcId"`
+			VpcName              *string `json:"VpcName" name:"VpcName"`
+			SubnetId             *string `json:"SubnetId" name:"SubnetId"`
+			SubnetName           *string `json:"SubnetName" name:"SubnetName"`
+			SecurityGroupId      *string `json:"SecurityGroupId" name:"SecurityGroupId"`
+			SecurityGroupName    *string `json:"SecurityGroupName" name:"SecurityGroupName"`
+			AvailabilityZone     *string `json:"AvailabilityZone" name:"AvailabilityZone"`
+			AvailabilityZoneName *string `json:"AvailabilityZoneName" name:"AvailabilityZoneName"`
+		} `json:"Network" name:"Network"`
+		Access struct {
+			AuthType     *string `json:"AuthType" name:"AuthType"`
+			ApiKeyId     *string `json:"ApiKeyId" name:"ApiKeyId"`
+			ApiKeyMasked *string `json:"ApiKeyMasked" name:"ApiKeyMasked"`
+			IamRole      *string `json:"IamRole" name:"IamRole"`
+		} `json:"Access" name:"Access"`
+		Advanced struct {
+			EnableObservability  *bool   `json:"EnableObservability" name:"EnableObservability"`
+			ObservabilityUrl     *string `json:"ObservabilityUrl" name:"ObservabilityUrl"`
+			ProjectName          *string `json:"ProjectName" name:"ProjectName"`
+			ProjectId            *int    `json:"ProjectId" name:"ProjectId"`
+			InboundIdentityAuth  *string `json:"InboundIdentityAuth" name:"InboundIdentityAuth"`
+			EnvironmentVariables []struct {
+				Key         *string `json:"Key" name:"Key"`
+				Value       *string `json:"Value" name:"Value"`
+				IsSensitive *bool   `json:"IsSensitive" name:"IsSensitive"`
+			} `json:"EnvironmentVariables"`
+			ModelName       *string   `json:"ModelName" name:"ModelName"`
+			ModelApiBase    *string   `json:"ModelApiBase" name:"ModelApiBase"`
+			ModelApiKey     *string   `json:"ModelApiKey" name:"ModelApiKey"`
+			ModelDeployMode *string   `json:"ModelDeployMode" name:"ModelDeployMode"`
+			Tags            []*string `json:"Tags" name:"Tags"`
+			MemoryConfig    struct {
+				MemorySystem      *string `json:"MemorySystem" name:"MemorySystem"`
+				Mem0InstanceId    *string `json:"Mem0InstanceId" name:"Mem0InstanceId"`
+				Mem0InstanceName  *string `json:"Mem0InstanceName" name:"Mem0InstanceName"`
+				Mem0Region        *string `json:"Mem0Region" name:"Mem0Region"`
+				LanceDbDeployMode *string `json:"LanceDbDeployMode" name:"LanceDbDeployMode"`
+				LanceDbKs3Uri     *string `json:"LanceDbKs3Uri" name:"LanceDbKs3Uri"`
+			} `json:"MemoryConfig"`
+			IsPrivate *bool `json:"IsPrivate" name:"IsPrivate"`
+		} `json:"Advanced" name:"Advanced"`
+		ComponentConfig struct {
+			KnowledgeBase struct {
+				Id     *string `json:"Id" name:"Id"`
+				Name   *string `json:"Name" name:"Name"`
+				ApiKey *string `json:"ApiKey" name:"ApiKey"`
+			} `json:"KnowledgeBase"`
+			Memory struct {
+				Id     *string `json:"Id" name:"Id"`
+				Name   *string `json:"Name" name:"Name"`
+				ApiKey *string `json:"ApiKey" name:"ApiKey"`
+			} `json:"Memory"`
+			Sandbox struct {
+				Id     *string `json:"Id" name:"Id"`
+				Name   *string `json:"Name" name:"Name"`
+				ApiKey *string `json:"ApiKey" name:"ApiKey"`
+			} `json:"Sandbox"`
+			SkillWorkspace struct {
+				Id     *string `json:"Id" name:"Id"`
+				Name   *string `json:"Name" name:"Name"`
+				ApiKey *string `json:"ApiKey" name:"ApiKey"`
+			} `json:"SkillWorkspace"`
+			SessionManagement struct {
+				SessionResourceId *string `json:"SessionResourceId" name:"SessionResourceId"`
+				Password          *string `json:"Password" name:"Password"`
+			} `json:"SessionManagement"`
+			A2ASpace struct {
+				RuntimeProfile *string `json:"RuntimeProfile" name:"RuntimeProfile"`
+			} `json:"A2ASpace"`
+		} `json:"ComponentConfig" name:"ComponentConfig"`
+		UiConfig struct {
+			Profile *string `json:"Profile" name:"Profile"`
+			Path    *string `json:"Path" name:"Path"`
+			Url     *string `json:"Url" name:"Url"`
+		} `json:"UiConfig" name:"UiConfig"`
+	} `json:"Data"`
+}
+
+func (r *GetAgentResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateAgentRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *UpdateAgentRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type UpdateAgentResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Action    *string `json:"Action" name:"Action"`
+	Data      struct {
+		AgentId *string `json:"AgentId" name:"AgentId"`
+		Status  *string `json:"Status" name:"Status"`
+	} `json:"Data"`
+}
+
+func (r *UpdateAgentResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteAgentRequest struct {
+	*ksyunhttp.BaseRequest
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+}
+
+func (r *DeleteAgentRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteAgentResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *DeleteAgentResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListVersionsRequest struct {
+	*ksyunhttp.BaseRequest
+	AgentId  *string `json:"AgentId,omitempty" name:"AgentId"`
+	Page     *int    `json:"Page,omitempty" name:"Page"`
+	PageSize *int    `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *ListVersionsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ListVersionsResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *ListVersionsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListVersionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RollbackVersionRequest struct {
+	*ksyunhttp.BaseRequest
+	AgentId         *string `json:"AgentId,omitempty" name:"AgentId"`
+	TargetVersionId *string `json:"TargetVersionId,omitempty" name:"TargetVersionId"`
+	TargetTag       *string `json:"TargetTag,omitempty" name:"TargetTag"`
+}
+
+func (r *RollbackVersionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type RollbackVersionResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Action    *string `json:"Action" name:"Action"`
+	Data      struct {
+		AgentId         *string `json:"AgentId" name:"AgentId"`
+		TargetVersionId *string `json:"TargetVersionId" name:"TargetVersionId"`
+		Status          *string `json:"Status" name:"Status"`
+		Noop            *bool   `json:"Noop" name:"Noop"`
+	} `json:"Data"`
+	ReasonCode *string `json:"ReasonCode" name:"ReasonCode"`
+}
+
+func (r *RollbackVersionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *RollbackVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RunAgentRequest struct {
+	*ksyunhttp.BaseRequest
+	AgentId            *string   `json:"AgentId,omitempty" name:"AgentId"`
+	Messages           []*string `json:"Messages,omitempty" name:"Messages"`
+	SessionId          *string   `json:"SessionId,omitempty" name:"SessionId"`
+	Model              *string   `json:"Model,omitempty" name:"Model"`
+	Stream             *bool     `json:"Stream,omitempty" name:"Stream"`
+	Background         *bool     `json:"Background,omitempty" name:"Background"`
+	ApiFormat          *string   `json:"ApiFormat,omitempty" name:"ApiFormat"`
+	ResponsesInput     *string   `json:"ResponsesInput,omitempty" name:"ResponsesInput"`
+	PreviousResponseId *string   `json:"PreviousResponseId,omitempty" name:"PreviousResponseId"`
+	InvocationId       *string   `json:"InvocationId,omitempty" name:"InvocationId"`
+}
+
+func (r *RunAgentRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type RunAgentResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      *string `json:"Data" name:"Data"`
+}
+
+func (r *RunAgentResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *RunAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeModelTypesRequest struct {
 	*ksyunhttp.BaseRequest
 }
@@ -3676,6 +4292,205 @@ func (r *DescribeInferencePodsResponse) ToJsonString() string {
 }
 
 func (r *DescribeInferencePodsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateSessionRequest struct {
+	*ksyunhttp.BaseRequest
+	Tags         *CreateSessionTags `json:"Tags,omitempty" name:"Tags"`
+	AgentId      *string            `json:"AgentId,omitempty" name:"AgentId"`
+	SessionId    *string            `json:"SessionId,omitempty" name:"SessionId"`
+	ExpiresHours *int               `json:"ExpiresHours,omitempty" name:"ExpiresHours"`
+}
+
+func (r *CreateSessionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CreateSessionResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Action    *string `json:"Action" name:"Action"`
+	Data      struct {
+		Session struct {
+			SessionId   *string `json:"SessionId" name:"SessionId"`
+			AgentId     *string `json:"AgentId" name:"AgentId"`
+			UserId      *string `json:"UserId" name:"UserId"`
+			Title       *string `json:"Title" name:"Title"`
+			TitleSource *string `json:"TitleSource" name:"TitleSource"`
+			Summary     *string `json:"Summary" name:"Summary"`
+			FirstPrompt *string `json:"FirstPrompt" name:"FirstPrompt"`
+			LastPrompt  *string `json:"LastPrompt" name:"LastPrompt"`
+			State       struct {
+			} `json:"State"`
+			Version *int `json:"Version" name:"Version"`
+			Tags    struct {
+			} `json:"Tags"`
+			TagsRevision       *int    `json:"TagsRevision" name:"TagsRevision"`
+			CreatedAt          *string `json:"CreatedAt" name:"CreatedAt"`
+			UpdatedAt          *string `json:"UpdatedAt" name:"UpdatedAt"`
+			RuntimeSync        *string `json:"RuntimeSync" name:"RuntimeSync"`
+			ActiveRunStatus    *string `json:"ActiveRunStatus" name:"ActiveRunStatus"`
+			ActiveInvocationId *string `json:"ActiveInvocationId" name:"ActiveInvocationId"`
+			ActiveRunMode      *string `json:"ActiveRunMode" name:"ActiveRunMode"`
+			ActiveRunTrigger   *string `json:"ActiveRunTrigger" name:"ActiveRunTrigger"`
+			ActiveRunUpdatedAt *string `json:"ActiveRunUpdatedAt" name:"ActiveRunUpdatedAt"`
+			Model              struct {
+			} `json:"Model"`
+			ContextUsage struct {
+			} `json:"ContextUsage"`
+			TokenUsage struct {
+			} `json:"TokenUsage"`
+		} `json:"Session" name:"Session"`
+		RuntimeSync struct {
+		} `json:"RuntimeSync" name:"RuntimeSync"`
+	} `json:"Data"`
+}
+
+func (r *CreateSessionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CreateSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetSessionRequest struct {
+	*ksyunhttp.BaseRequest
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+	Id        *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *GetSessionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetSessionResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Action    *string `json:"Action" name:"Action"`
+	Data      struct {
+		Session struct {
+			SessionId   *string `json:"SessionId" name:"SessionId"`
+			AgentId     *string `json:"AgentId" name:"AgentId"`
+			UserId      *string `json:"UserId" name:"UserId"`
+			Title       *string `json:"Title" name:"Title"`
+			TitleSource *string `json:"TitleSource" name:"TitleSource"`
+			Summary     *string `json:"Summary" name:"Summary"`
+			FirstPrompt *string `json:"FirstPrompt" name:"FirstPrompt"`
+			LastPrompt  *string `json:"LastPrompt" name:"LastPrompt"`
+			State       struct {
+			} `json:"State"`
+			Version *int `json:"Version" name:"Version"`
+			Tags    struct {
+			} `json:"Tags"`
+			TagsRevision       *int    `json:"TagsRevision" name:"TagsRevision"`
+			CreatedAt          *string `json:"CreatedAt" name:"CreatedAt"`
+			UpdatedAt          *string `json:"UpdatedAt" name:"UpdatedAt"`
+			RuntimeSync        *string `json:"RuntimeSync" name:"RuntimeSync"`
+			ActiveRunStatus    *string `json:"ActiveRunStatus" name:"ActiveRunStatus"`
+			ActiveInvocationId *string `json:"ActiveInvocationId" name:"ActiveInvocationId"`
+			ActiveRunMode      *string `json:"ActiveRunMode" name:"ActiveRunMode"`
+			ActiveRunTrigger   *string `json:"ActiveRunTrigger" name:"ActiveRunTrigger"`
+			ActiveRunUpdatedAt *string `json:"ActiveRunUpdatedAt" name:"ActiveRunUpdatedAt"`
+			Model              struct {
+			} `json:"Model"`
+			ContextUsage struct {
+			} `json:"ContextUsage"`
+			TokenUsage struct {
+			} `json:"TokenUsage"`
+		} `json:"Session" name:"Session"`
+		DataSource *string `json:"DataSource" name:"DataSource"`
+		Degraded   *bool   `json:"Degraded" name:"Degraded"`
+	} `json:"Data"`
+}
+
+func (r *GetSessionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListSessionsRequest struct {
+	*ksyunhttp.BaseRequest
+	TagFilters *ListSessionsTagFilters `json:"TagFilters,omitempty" name:"TagFilters"`
+	TagMatch   *string                 `json:"TagMatch,omitempty" name:"TagMatch"`
+	AgentId    *string                 `json:"AgentId,omitempty" name:"AgentId"`
+	Page       *int                    `json:"Page,omitempty" name:"Page"`
+	PageSize   *int                    `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *ListSessionsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ListSessionsResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Action    *string `json:"Action" name:"Action"`
+	Data      struct {
+		Sessions               []*string `json:"Sessions" name:"Sessions"`
+		Total                  *int      `json:"Total" name:"Total"`
+		Page                   *int      `json:"Page" name:"Page"`
+		PageSize               *int      `json:"PageSize" name:"PageSize"`
+		DataSource             *string   `json:"DataSource" name:"DataSource"`
+		Degraded               *bool     `json:"Degraded" name:"Degraded"`
+		SessionContractVersion *int      `json:"SessionContractVersion" name:"SessionContractVersion"`
+	} `json:"Data"`
+}
+
+func (r *ListSessionsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListSessionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteSessionRequest struct {
+	*ksyunhttp.BaseRequest
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+	Id        *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DeleteSessionRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DeleteSessionResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Action    *string `json:"Action" name:"Action"`
+	Data      struct {
+		Deleted     *bool `json:"Deleted" name:"Deleted"`
+		RuntimeSync struct {
+		} `json:"RuntimeSync" name:"RuntimeSync"`
+	} `json:"Data"`
+}
+
+func (r *DeleteSessionResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DeleteSessionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3951,6 +4766,41 @@ func (r *CreateSkillVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GetSkillVersionTreeRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *GetSkillVersionTreeRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetSkillVersionTreeResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		Skills []struct {
+			SkillId   *string `json:"SkillId" name:"SkillId"`
+			SkillName *string `json:"SkillName" name:"SkillName"`
+			Versions  []struct {
+				VersionId   *string `json:"VersionId" name:"VersionId"`
+				VersionName *string `json:"VersionName" name:"VersionName"`
+			} `json:"Versions"`
+		} `json:"Skills" name:"Skills"`
+	} `json:"Data"`
+}
+
+func (r *GetSkillVersionTreeResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetSkillVersionTreeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GetSkillUploadUrlRequest struct {
 	*ksyunhttp.BaseRequest
 	FileName  *string `json:"FileName,omitempty" name:"FileName"`
@@ -4009,6 +4859,38 @@ func (r *DeleteSkillVersionResponse) ToJsonString() string {
 }
 
 func (r *DeleteSkillVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateSkillRequest struct {
+	*ksyunhttp.BaseRequest
+	SkillId     *string `json:"SkillId,omitempty" name:"SkillId"`
+	Name        *string `json:"Name,omitempty" name:"Name"`
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *UpdateSkillRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type UpdateSkillResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      struct {
+		SkillId *string `json:"SkillId" name:"SkillId"`
+		Version *string `json:"Version" name:"Version"`
+	} `json:"Data"`
+}
+
+func (r *UpdateSkillResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *UpdateSkillResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4116,6 +4998,41 @@ func (r *DeleteSkillSpaceResponse) ToJsonString() string {
 }
 
 func (r *DeleteSkillSpaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetSkillSpaceRequest struct {
+	*ksyunhttp.BaseRequest
+	SkillSpaceId *string `json:"SkillSpaceId,omitempty" name:"SkillSpaceId"`
+}
+
+func (r *GetSkillSpaceRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetSkillSpaceResponse struct {
+	*ksyunhttp.BaseResponse
+	Data struct {
+		Id              *string `json:"Id" name:"Id"`
+		Name            *string `json:"Name" name:"Name"`
+		Status          *string `json:"Status" name:"Status"`
+		Description     *string `json:"Description" name:"Description"`
+		Creator         *string `json:"Creator" name:"Creator"`
+		CreateTimeStamp *string `json:"CreateTimeStamp" name:"CreateTimeStamp"`
+		UpdateTimeStamp *string `json:"UpdateTimeStamp" name:"UpdateTimeStamp"`
+	} `json:"Data"`
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+}
+
+func (r *GetSkillSpaceResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetSkillSpaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4365,54 +5282,6 @@ func (r *DescribeTrainJobAndPodEventsResponse) ToJsonString() string {
 }
 
 func (r *DescribeTrainJobAndPodEventsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeFineTuneJobAndPodEventsRequest struct {
-	*ksyunhttp.BaseRequest
-	FineTuneJobId *string   `json:"FineTuneJobId,omitempty" name:"FineTuneJobId"`
-	PodNames      []*string `json:"PodNames,omitempty" name:"PodNames"`
-	SortKey       *string   `json:"SortKey,omitempty" name:"SortKey"`
-	Sort          *string   `json:"Sort,omitempty" name:"Sort"`
-}
-
-func (r *DescribeFineTuneJobAndPodEventsRequest) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-type DescribeFineTuneJobAndPodEventsResponse struct {
-	*ksyunhttp.BaseResponse
-	RequestId *string `json:"RequestId" name:"RequestId"`
-	Events    []struct {
-		FirstSeen *string `json:"FirstSeen" name:"FirstSeen"`
-		LastSeen  *string `json:"LastSeen" name:"LastSeen"`
-		Type      *string `json:"Type" name:"Type"`
-		Object    struct {
-			Kind            *string `json:"Kind" name:"Kind"`
-			Namespace       *string `json:"Namespace" name:"Namespace"`
-			Name            *string `json:"Name" name:"Name"`
-			UID             *string `json:"UID" name:"UID"`
-			APIVersion      *string `json:"APIVersion" name:"APIVersion"`
-			ResourceVersion *string `json:"ResourceVersion" name:"ResourceVersion"`
-			FieldPath       *string `json:"FieldPath" name:"FieldPath"`
-		} `json:"Object" name:"Object"`
-		Reason  *string `json:"Reason" name:"Reason"`
-		Message *string `json:"Message" name:"Message"`
-		Source  struct {
-			Component *string `json:"Component" name:"Component"`
-			Host      *string `json:"Host" name:"Host"`
-		} `json:"Source" name:"Source"`
-		Count *int `json:"Count" name:"Count"`
-	} `json:"Events"`
-}
-
-func (r *DescribeFineTuneJobAndPodEventsResponse) ToJsonString() string {
-	b, _ := json.Marshal(r)
-	return string(b)
-}
-
-func (r *DescribeFineTuneJobAndPodEventsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4746,6 +5615,117 @@ func (r *GetAccountBillRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ResumeRunRequest struct {
+	*ksyunhttp.BaseRequest
+	AgentId                  *string `json:"AgentId,omitempty" name:"AgentId"`
+	SessionId                *string `json:"SessionId,omitempty" name:"SessionId"`
+	RunId                    *string `json:"RunId,omitempty" name:"RunId"`
+	CheckpointId             *string `json:"CheckpointId,omitempty" name:"CheckpointId"`
+	ResumeAttemptId          *string `json:"ResumeAttemptId,omitempty" name:"ResumeAttemptId"`
+	InvocationId             *string `json:"InvocationId,omitempty" name:"InvocationId"`
+	Stream                   *bool   `json:"Stream,omitempty" name:"Stream"`
+	Background               *bool   `json:"Background,omitempty" name:"Background"`
+	Model                    *string `json:"Model,omitempty" name:"Model"`
+	ResumeInstructionEnabled *bool   `json:"ResumeInstructionEnabled,omitempty" name:"ResumeInstructionEnabled"`
+	ResumeInstruction        *string `json:"ResumeInstruction,omitempty" name:"ResumeInstruction"`
+}
+
+func (r *ResumeRunRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ResumeRunResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *ResumeRunResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ResumeRunResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListSessionMessagesRequest struct {
+	*ksyunhttp.BaseRequest
+	AgentId            *string `json:"AgentId,omitempty" name:"AgentId"`
+	SessionId          *string `json:"SessionId,omitempty" name:"SessionId"`
+	AfterSeqId         *int    `json:"AfterSeqId,omitempty" name:"AfterSeqId"`
+	BeforeSeqId        *int    `json:"BeforeSeqId,omitempty" name:"BeforeSeqId"`
+	CursorSource       *string `json:"CursorSource,omitempty" name:"CursorSource"`
+	HistoryEpoch       *string `json:"HistoryEpoch,omitempty" name:"HistoryEpoch"`
+	SnapshotSeqId      *int    `json:"SnapshotSeqId,omitempty" name:"SnapshotSeqId"`
+	Limit              *int    `json:"Limit,omitempty" name:"Limit"`
+	IncludeReasoning   *bool   `json:"IncludeReasoning,omitempty" name:"IncludeReasoning"`
+	IncludeToolEvents  *bool   `json:"IncludeToolEvents,omitempty" name:"IncludeToolEvents"`
+	IncludeAttachments *bool   `json:"IncludeAttachments,omitempty" name:"IncludeAttachments"`
+}
+
+func (r *ListSessionMessagesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ListSessionMessagesResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Action    *string `json:"Action" name:"Action"`
+	Data      struct {
+		SessionId           *string   `json:"SessionId" name:"SessionId"`
+		Messages            []*string `json:"Messages" name:"Messages"`
+		LatestSeqId         *int      `json:"LatestSeqId" name:"LatestSeqId"`
+		HasMore             *bool     `json:"HasMore" name:"HasMore"`
+		NextCursor          *int      `json:"NextCursor" name:"NextCursor"`
+		SnapshotSeqId       *int      `json:"SnapshotSeqId" name:"SnapshotSeqId"`
+		HistoryEpoch        *string   `json:"HistoryEpoch" name:"HistoryEpoch"`
+		PersistenceDegraded *bool     `json:"PersistenceDegraded" name:"PersistenceDegraded"`
+	} `json:"Data"`
+}
+
+func (r *ListSessionMessagesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListSessionMessagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelRunRequest struct {
+	*ksyunhttp.BaseRequest
+	AgentId      *string `json:"AgentId,omitempty" name:"AgentId"`
+	SessionId    *string `json:"SessionId,omitempty" name:"SessionId"`
+	InvocationId *string `json:"InvocationId,omitempty" name:"InvocationId"`
+	ScopeId      *string `json:"ScopeId,omitempty" name:"ScopeId"`
+	ClientToken  *string `json:"ClientToken,omitempty" name:"ClientToken"`
+}
+
+func (r *CancelRunRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type CancelRunResponse struct {
+	*ksyunhttp.BaseResponse
+	Code      *int    `json:"Code" name:"Code"`
+	Message   *string `json:"Message" name:"Message"`
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      *string `json:"Data" name:"Data"`
+}
+
+func (r *CancelRunResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *CancelRunResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateUsageDownloadTaskRequest struct {
 	*ksyunhttp.BaseRequest
 	StartTimestamp *int64                         `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
@@ -4809,7 +5789,7 @@ func (r *GetUsageDownloadTaskResponse) FromJsonString(s string) error {
 type AddStorageConfigAccessRequest struct {
 	*ksyunhttp.BaseRequest
 	StorageConfigId *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
-	UserId          *string `json:"UserId,omitempty" name:"UserId"`
+	KsyunUserId     *string `json:"KsyunUserId,omitempty" name:"KsyunUserId"`
 	SharedGroupId   *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
 	Permission      *string `json:"Permission,omitempty" name:"Permission"`
 }
@@ -4837,7 +5817,7 @@ func (r *AddStorageConfigAccessResponse) FromJsonString(s string) error {
 type ModifyStorageConfigAccessRoleRequest struct {
 	*ksyunhttp.BaseRequest
 	StorageConfigId *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
-	UserId          *string `json:"UserId,omitempty" name:"UserId"`
+	KsyunUserId     *string `json:"KsyunUserId,omitempty" name:"KsyunUserId"`
 	SharedGroupId   *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
 	Permission      *string `json:"Permission,omitempty" name:"Permission"`
 }
@@ -4865,7 +5845,7 @@ func (r *ModifyStorageConfigAccessRoleResponse) FromJsonString(s string) error {
 type RemoveStorageConfigAccessRequest struct {
 	*ksyunhttp.BaseRequest
 	StorageConfigId *string `json:"StorageConfigId,omitempty" name:"StorageConfigId"`
-	UserId          *string `json:"UserId,omitempty" name:"UserId"`
+	KsyunUserId     *string `json:"KsyunUserId,omitempty" name:"KsyunUserId"`
 	SharedGroupId   *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
 }
 
@@ -4973,7 +5953,7 @@ func (r *DeleteLogPoolConfigResponse) FromJsonString(s string) error {
 type AddImageAccessRequest struct {
 	*ksyunhttp.BaseRequest
 	ImageId       *string `json:"ImageId,omitempty" name:"ImageId"`
-	UserId        *string `json:"UserId,omitempty" name:"UserId"`
+	KsyunUserId   *string `json:"KsyunUserId,omitempty" name:"KsyunUserId"`
 	SharedGroupId *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
 	Permission    *string `json:"Permission,omitempty" name:"Permission"`
 }
@@ -5001,7 +5981,7 @@ func (r *AddImageAccessResponse) FromJsonString(s string) error {
 type ModifyImageAccessRoleRequest struct {
 	*ksyunhttp.BaseRequest
 	ImageId       *string `json:"ImageId,omitempty" name:"ImageId"`
-	UserId        *string `json:"UserId,omitempty" name:"UserId"`
+	KsyunUserId   *string `json:"KsyunUserId,omitempty" name:"KsyunUserId"`
 	SharedGroupId *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
 	Permission    *string `json:"Permission,omitempty" name:"Permission"`
 }
@@ -5029,7 +6009,7 @@ func (r *ModifyImageAccessRoleResponse) FromJsonString(s string) error {
 type RemoveImageAccessRequest struct {
 	*ksyunhttp.BaseRequest
 	ImageId       *string `json:"ImageId,omitempty" name:"ImageId"`
-	UserId        *string `json:"UserId,omitempty" name:"UserId"`
+	KsyunUserId   *string `json:"KsyunUserId,omitempty" name:"KsyunUserId"`
 	SharedGroupId *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
 }
 
@@ -5050,6 +6030,32 @@ func (r *RemoveImageAccessResponse) ToJsonString() string {
 }
 
 func (r *RemoveImageAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RemovePhysicalQueueInstancesRequest struct {
+	*ksyunhttp.BaseRequest
+	QueueId     *string   `json:"QueueId,omitempty" name:"QueueId"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+}
+
+func (r *RemovePhysicalQueueInstancesRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type RemovePhysicalQueueInstancesResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	QueueId   *string `json:"QueueId" name:"QueueId"`
+}
+
+func (r *RemovePhysicalQueueInstancesResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *RemovePhysicalQueueInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5119,5 +6125,55 @@ func (r *DescribeTrainJobTimeLineResponse) ToJsonString() string {
 }
 
 func (r *DescribeTrainJobTimeLineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetComponentObservabilityOverviewRequest struct {
+	*ksyunhttp.BaseRequest
+	ComponentType   *string `json:"ComponentType,omitempty" name:"ComponentType"`
+	StartTime       *int    `json:"StartTime,omitempty" name:"StartTime"`
+	EndTime         *int    `json:"EndTime,omitempty" name:"EndTime"`
+	IntervalSeconds *int    `json:"IntervalSeconds,omitempty" name:"IntervalSeconds"`
+}
+
+func (r *GetComponentObservabilityOverviewRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type GetComponentObservabilityOverviewResponse struct {
+	*ksyunhttp.BaseResponse
+	Code *int `json:"Code" name:"Code"`
+}
+
+func (r *GetComponentObservabilityOverviewResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *GetComponentObservabilityOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListComponentStatsRequest struct {
+	*ksyunhttp.BaseRequest
+}
+
+func (r *ListComponentStatsRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type ListComponentStatsResponse struct {
+	*ksyunhttp.BaseResponse
+	Code *int `json:"Code" name:"Code"`
+}
+
+func (r *ListComponentStatsResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *ListComponentStatsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -243,6 +243,13 @@ type UpdateDocumentMetadataOperationData struct {
 	DocumentId   *string                                            `json:"DocumentId,omitempty" name:"DocumentId"`
 	MetadataList []*UpdateDocumentMetadataOperationDataMetadataList `json:"MetadataList,omitempty" name:"MetadataList"`
 }
+type BatchModifyStructuredDataItemsValues struct {
+	Dynamic *string `json:"Dynamic,omitempty" name:"Dynamic"`
+}
+type BatchModifyStructuredDataItems struct {
+	Values *BatchModifyStructuredDataItemsValues `json:"Values,omitempty" name:"Values"`
+	RowId  *string                               `json:"RowId,omitempty" name:"RowId"`
+}
 
 type DescribeKnowledgeBaseModelsRequest struct {
 	*ksyunhttp.BaseRequest
@@ -346,6 +353,16 @@ type RetrieveKnowledgeResponse struct {
 		Score        *float64 `json:"Score" name:"Score"`
 		TsnePosition *string  `json:"TsnePosition" name:"TsnePosition"`
 	} `json:"Records"`
+	ModelUsage struct {
+		Items []struct {
+			ModelType *string `json:"ModelType" name:"ModelType"`
+			Provider  *string `json:"Provider" name:"Provider"`
+			ModelName *string `json:"ModelName" name:"ModelName"`
+			Usage     struct {
+				TotalTokens *int64 `json:"TotalTokens" name:"TotalTokens"`
+			} `json:"Usage"`
+		} `json:"Items" name:"Items"`
+	} `json:"ModelUsage"`
 }
 
 func (r *RetrieveKnowledgeResponse) ToJsonString() string {
@@ -627,10 +644,11 @@ func (r *DescribeDocumentsResponse) FromJsonString(s string) error {
 
 type ImportDocumentsRequest struct {
 	*ksyunhttp.BaseRequest
-	DatasetId *string              `json:"DatasetId,omitempty" name:"DatasetId"`
-	Data      *ImportDocumentsData `json:"Data,omitempty" name:"Data"`
-	AddType   *string              `json:"AddType,omitempty" name:"AddType"`
-	Ks3Path   []*string            `json:"Ks3Path,omitempty" name:"Ks3Path"`
+	DatasetId                 *string              `json:"DatasetId,omitempty" name:"DatasetId"`
+	Data                      *ImportDocumentsData `json:"Data,omitempty" name:"Data"`
+	AddType                   *string              `json:"AddType,omitempty" name:"AddType"`
+	Ks3Path                   []*string            `json:"Ks3Path,omitempty" name:"Ks3Path"`
+	SecurityProcessingEnabled *bool                `json:"SecurityProcessingEnabled,omitempty" name:"SecurityProcessingEnabled"`
 }
 
 func (r *ImportDocumentsRequest) ToJsonString() string {
@@ -2335,6 +2353,54 @@ func (r *ListMemoriesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryAgenticMemoryRequest struct {
+	*ksyunhttp.BaseRequest
+	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+	AgentUserId        *string `json:"AgentUserId,omitempty" name:"AgentUserId"`
+	Query              *string `json:"Query,omitempty" name:"Query"`
+	SceneId            *string `json:"SceneId,omitempty" name:"SceneId"`
+	OccurredAfter      *int64  `json:"OccurredAfter,omitempty" name:"OccurredAfter"`
+	OccurredBefore     *int64  `json:"OccurredBefore,omitempty" name:"OccurredBefore"`
+	ReturnCitations    *bool   `json:"ReturnCitations,omitempty" name:"ReturnCitations"`
+	Limit              *int    `json:"Limit,omitempty" name:"Limit"`
+	MaxSteps           *int    `json:"MaxSteps,omitempty" name:"MaxSteps"`
+}
+
+func (r *QueryAgenticMemoryRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type QueryAgenticMemoryResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Data      []struct {
+		Query      *string  `json:"Query" name:"Query"`
+		TopicId    *string  `json:"TopicId" name:"TopicId"`
+		TopicName  *string  `json:"TopicName" name:"TopicName"`
+		MemoryId   *string  `json:"MemoryId" name:"MemoryId"`
+		Memory     *string  `json:"Memory" name:"Memory"`
+		Score      *float64 `json:"Score" name:"Score"`
+		CreateTime *int64   `json:"CreateTime" name:"CreateTime"`
+		UpdateTime *int64   `json:"UpdateTime" name:"UpdateTime"`
+		Citations  []struct {
+			DataType *string `json:"DataType" name:"DataType"`
+			Data     struct {
+				Conversation []*string `json:"Conversation" name:"Conversation"`
+			} `json:"Data"`
+		} `json:"Citations" name:"Citations"`
+	} `json:"Data"`
+}
+
+func (r *QueryAgenticMemoryResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *QueryAgenticMemoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeleteMemoryRequest struct {
 	*ksyunhttp.BaseRequest
 	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
@@ -2589,5 +2655,110 @@ func (r *DescribeMetadataResponse) ToJsonString() string {
 }
 
 func (r *DescribeMetadataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryAgenticMemoryStreamRequest struct {
+	*ksyunhttp.BaseRequest
+	MemoryCollectionId *string `json:"MemoryCollectionId,omitempty" name:"MemoryCollectionId"`
+	AgentUserId        *string `json:"AgentUserId,omitempty" name:"AgentUserId"`
+	Query              *string `json:"Query,omitempty" name:"Query"`
+	Limit              *int    `json:"Limit,omitempty" name:"Limit"`
+	SceneId            *string `json:"SceneId,omitempty" name:"SceneId"`
+	ReturnCitations    *bool   `json:"ReturnCitations,omitempty" name:"ReturnCitations"`
+	OccurredAfter      *int    `json:"OccurredAfter,omitempty" name:"OccurredAfter"`
+	OccurredBefore     *int    `json:"OccurredBefore,omitempty" name:"OccurredBefore"`
+	MaxSteps           *int    `json:"MaxSteps,omitempty" name:"MaxSteps"`
+}
+
+func (r *QueryAgenticMemoryStreamRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type QueryAgenticMemoryStreamResponse struct {
+	*ksyunhttp.BaseResponse
+}
+
+func (r *QueryAgenticMemoryStreamResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *QueryAgenticMemoryStreamResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeStructuredDataRequest struct {
+	*ksyunhttp.BaseRequest
+	DatasetId    *string `json:"DatasetId,omitempty" name:"DatasetId"`
+	DocumentId   *string `json:"DocumentId,omitempty" name:"DocumentId"`
+	Page         *int    `json:"Page,omitempty" name:"Page"`
+	PageSize     *int    `json:"PageSize,omitempty" name:"PageSize"`
+	SearchColumn *string `json:"SearchColumn,omitempty" name:"SearchColumn"`
+	SearchValue  *string `json:"SearchValue,omitempty" name:"SearchValue"`
+}
+
+func (r *DescribeStructuredDataRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type DescribeStructuredDataResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	TableName *string `json:"TableName" name:"TableName"`
+	Columns   []struct {
+		Type     *string `json:"Type" name:"Type"`
+		Nullable *bool   `json:"Nullable" name:"Nullable"`
+		Name     *string `json:"Name" name:"Name"`
+	} `json:"Columns"`
+	Total    *int `json:"Total" name:"Total"`
+	Page     *int `json:"Page" name:"Page"`
+	PageSize *int `json:"PageSize" name:"PageSize"`
+	Rows     []struct {
+		RowId  *string `json:"RowId" name:"RowId"`
+		Values struct {
+		} `json:"Values" name:"Values"`
+	} `json:"Rows"`
+}
+
+func (r *DescribeStructuredDataResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *DescribeStructuredDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchModifyStructuredDataRequest struct {
+	*ksyunhttp.BaseRequest
+	DatasetId  *string                           `json:"DatasetId,omitempty" name:"DatasetId"`
+	DocumentId *string                           `json:"DocumentId,omitempty" name:"DocumentId"`
+	Items      []*BatchModifyStructuredDataItems `json:"Items,omitempty" name:"Items"`
+}
+
+func (r *BatchModifyStructuredDataRequest) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+type BatchModifyStructuredDataResponse struct {
+	*ksyunhttp.BaseResponse
+	RequestId *string `json:"RequestId" name:"RequestId"`
+	Rows      []struct {
+		RowId  *string `json:"RowId" name:"RowId"`
+		Values struct {
+		} `json:"Values" name:"Values"`
+	} `json:"Rows"`
+}
+
+func (r *BatchModifyStructuredDataResponse) ToJsonString() string {
+	b, _ := json.Marshal(r)
+	return string(b)
+}
+
+func (r *BatchModifyStructuredDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

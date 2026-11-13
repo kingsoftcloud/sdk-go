@@ -1,0 +1,103 @@
+package v20261022
+
+import (
+	"context"
+	"fmt"
+	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common"
+	ksyunhttp "github.com/kingsoftcloud/sdk-go/v2/ksyun/common/http"
+	"github.com/kingsoftcloud/sdk-go/v2/ksyun/common/profile"
+)
+
+const APIVersion = "2026-10-22"
+
+type Client struct {
+	common.Client
+}
+
+func NewClient(credential common.Credentials, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+	client = &Client{}
+	client.Init(region).
+		WithCredential(credential).
+		WithProfile(clientProfile)
+	return
+}
+
+func NewGetModelIdleResourceRequest() (request *GetModelIdleResourceRequest) {
+	request = &GetModelIdleResourceRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetModelIdleResource")
+	return
+}
+
+func NewGetModelIdleResourceResponse() (response *GetModelIdleResourceResponse) {
+	response = &GetModelIdleResourceResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetModelIdleResource(request *GetModelIdleResourceRequest) string {
+	return c.GetModelIdleResourceWithContext(context.Background(), request)
+}
+
+func (c *Client) GetModelIdleResourceSend(request *GetModelIdleResourceRequest) (*GetModelIdleResourceResponse, error) {
+	statusCode, msg, err := c.GetModelIdleResourceWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetModelIdleResourceResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetModelIdleResourceWithContext(ctx context.Context, request *GetModelIdleResourceRequest) string {
+	if request == nil {
+		request = NewGetModelIdleResourceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetModelIdleResource")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetModelIdleResourceResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetModelIdleResourceWithContextV2(ctx context.Context, request *GetModelIdleResourceRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetModelIdleResourceRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetModelIdleResource")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetModelIdleResourceResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}

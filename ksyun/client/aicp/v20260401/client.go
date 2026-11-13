@@ -891,6 +891,164 @@ func (c *Client) UpdateSandboxInstanceWithContextV2(ctx context.Context, request
 	}
 	return statusCode, msg, nil
 }
+func NewCreateImageCacheRequest() (request *CreateImageCacheRequest) {
+	request = &CreateImageCacheRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateImageCache")
+	return
+}
+
+func NewCreateImageCacheResponse() (response *CreateImageCacheResponse) {
+	response = &CreateImageCacheResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateImageCache(request *CreateImageCacheRequest) string {
+	return c.CreateImageCacheWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateImageCacheSend(request *CreateImageCacheRequest) (*CreateImageCacheResponse, error) {
+	statusCode, msg, err := c.CreateImageCacheWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateImageCacheResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateImageCacheWithContext(ctx context.Context, request *CreateImageCacheRequest) string {
+	if request == nil {
+		request = NewCreateImageCacheRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateImageCache")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateImageCacheResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateImageCacheWithContextV2(ctx context.Context, request *CreateImageCacheRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateImageCacheRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateImageCache")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateImageCacheResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetImageCacheListRequest() (request *GetImageCacheListRequest) {
+	request = &GetImageCacheListRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetImageCacheList")
+	return
+}
+
+func NewGetImageCacheListResponse() (response *GetImageCacheListResponse) {
+	response = &GetImageCacheListResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetImageCacheList(request *GetImageCacheListRequest) string {
+	return c.GetImageCacheListWithContext(context.Background(), request)
+}
+
+func (c *Client) GetImageCacheListSend(request *GetImageCacheListRequest) (*GetImageCacheListResponse, error) {
+	statusCode, msg, err := c.GetImageCacheListWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetImageCacheListResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetImageCacheListWithContext(ctx context.Context, request *GetImageCacheListRequest) string {
+	if request == nil {
+		request = NewGetImageCacheListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetImageCacheList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetImageCacheListResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetImageCacheListWithContextV2(ctx context.Context, request *GetImageCacheListRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetImageCacheListRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetImageCacheList")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/x-www-form-urlencoded")
+
+	response := NewGetImageCacheListResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewDeleteImageCacheRequest() (request *DeleteImageCacheRequest) {
 	request = &DeleteImageCacheRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -964,6 +1122,164 @@ func (c *Client) DeleteImageCacheWithContextV2(ctx context.Context, request *Del
 	request.SetContentType("application/json")
 
 	response := NewDeleteImageCacheResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewCreateSandboxInstanceCommitRequest() (request *CreateSandboxInstanceCommitRequest) {
+	request = &CreateSandboxInstanceCommitRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "CreateSandboxInstanceCommit")
+	return
+}
+
+func NewCreateSandboxInstanceCommitResponse() (response *CreateSandboxInstanceCommitResponse) {
+	response = &CreateSandboxInstanceCommitResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) CreateSandboxInstanceCommit(request *CreateSandboxInstanceCommitRequest) string {
+	return c.CreateSandboxInstanceCommitWithContext(context.Background(), request)
+}
+
+func (c *Client) CreateSandboxInstanceCommitSend(request *CreateSandboxInstanceCommitRequest) (*CreateSandboxInstanceCommitResponse, error) {
+	statusCode, msg, err := c.CreateSandboxInstanceCommitWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct CreateSandboxInstanceCommitResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) CreateSandboxInstanceCommitWithContext(ctx context.Context, request *CreateSandboxInstanceCommitRequest) string {
+	if request == nil {
+		request = NewCreateSandboxInstanceCommitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateSandboxInstanceCommit")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateSandboxInstanceCommitResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) CreateSandboxInstanceCommitWithContextV2(ctx context.Context, request *CreateSandboxInstanceCommitRequest) (int, string, error) {
+	if request == nil {
+		request = NewCreateSandboxInstanceCommitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "CreateSandboxInstanceCommit")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewCreateSandboxInstanceCommitResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewGetSandboxInstanceCommitRequest() (request *GetSandboxInstanceCommitRequest) {
+	request = &GetSandboxInstanceCommitRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "GetSandboxInstanceCommit")
+	return
+}
+
+func NewGetSandboxInstanceCommitResponse() (response *GetSandboxInstanceCommitResponse) {
+	response = &GetSandboxInstanceCommitResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) GetSandboxInstanceCommit(request *GetSandboxInstanceCommitRequest) string {
+	return c.GetSandboxInstanceCommitWithContext(context.Background(), request)
+}
+
+func (c *Client) GetSandboxInstanceCommitSend(request *GetSandboxInstanceCommitRequest) (*GetSandboxInstanceCommitResponse, error) {
+	statusCode, msg, err := c.GetSandboxInstanceCommitWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct GetSandboxInstanceCommitResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) GetSandboxInstanceCommitWithContext(ctx context.Context, request *GetSandboxInstanceCommitRequest) string {
+	if request == nil {
+		request = NewGetSandboxInstanceCommitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetSandboxInstanceCommit")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetSandboxInstanceCommitResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) GetSandboxInstanceCommitWithContextV2(ctx context.Context, request *GetSandboxInstanceCommitRequest) (int, string, error) {
+	if request == nil {
+		request = NewGetSandboxInstanceCommitRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "GetSandboxInstanceCommit")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewGetSandboxInstanceCommitResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err

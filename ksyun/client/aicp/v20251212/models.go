@@ -538,7 +538,7 @@ func (r *DescribeFormatAndFrameworksResponse) FromJsonString(s string) error {
 type AddModelAccessRequest struct {
 	*ksyunhttp.BaseRequest
 	ModelId       *string `json:"ModelId,omitempty" name:"ModelId"`
-	UserId        *string `json:"UserId,omitempty" name:"UserId"`
+	KsyunUserId   *string `json:"KsyunUserId,omitempty" name:"KsyunUserId"`
 	SharedGroupId *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
 	Permission    *string `json:"Permission,omitempty" name:"Permission"`
 }
@@ -566,7 +566,7 @@ func (r *AddModelAccessResponse) FromJsonString(s string) error {
 type ModifyModelAccessRoleRequest struct {
 	*ksyunhttp.BaseRequest
 	ModelId       *string `json:"ModelId,omitempty" name:"ModelId"`
-	UserId        *string `json:"UserId,omitempty" name:"UserId"`
+	KsyunUserId   *string `json:"KsyunUserId,omitempty" name:"KsyunUserId"`
 	SharedGroupId *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
 	Permission    *string `json:"Permission,omitempty" name:"Permission"`
 }
@@ -594,7 +594,7 @@ func (r *ModifyModelAccessRoleResponse) FromJsonString(s string) error {
 type RemoveModelAccessRequest struct {
 	*ksyunhttp.BaseRequest
 	ModelId       *string `json:"ModelId,omitempty" name:"ModelId"`
-	UserId        *string `json:"UserId,omitempty" name:"UserId"`
+	KsyunUserId   *string `json:"KsyunUserId,omitempty" name:"KsyunUserId"`
 	SharedGroupId *string `json:"SharedGroupId,omitempty" name:"SharedGroupId"`
 }
 

@@ -4367,6 +4367,85 @@ func (c *Client) ListMemoriesWithContextV2(ctx context.Context, request *ListMem
 	}
 	return statusCode, msg, nil
 }
+func NewQueryAgenticMemoryRequest() (request *QueryAgenticMemoryRequest) {
+	request = &QueryAgenticMemoryRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "QueryAgenticMemory")
+	return
+}
+
+func NewQueryAgenticMemoryResponse() (response *QueryAgenticMemoryResponse) {
+	response = &QueryAgenticMemoryResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) QueryAgenticMemory(request *QueryAgenticMemoryRequest) string {
+	return c.QueryAgenticMemoryWithContext(context.Background(), request)
+}
+
+func (c *Client) QueryAgenticMemorySend(request *QueryAgenticMemoryRequest) (*QueryAgenticMemoryResponse, error) {
+	statusCode, msg, err := c.QueryAgenticMemoryWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct QueryAgenticMemoryResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) QueryAgenticMemoryWithContext(ctx context.Context, request *QueryAgenticMemoryRequest) string {
+	if request == nil {
+		request = NewQueryAgenticMemoryRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "QueryAgenticMemory")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewQueryAgenticMemoryResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) QueryAgenticMemoryWithContextV2(ctx context.Context, request *QueryAgenticMemoryRequest) (int, string, error) {
+	if request == nil {
+		request = NewQueryAgenticMemoryRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "QueryAgenticMemory")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewQueryAgenticMemoryResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
 func NewDeleteMemoryRequest() (request *DeleteMemoryRequest) {
 	request = &DeleteMemoryRequest{
 		BaseRequest: &ksyunhttp.BaseRequest{},
@@ -5072,6 +5151,258 @@ func (c *Client) DescribeMetadataWithContextV2(ctx context.Context, request *Des
 	request.SetContentType("application/json")
 
 	response := NewDescribeMetadataResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewQueryAgenticMemoryStreamRequest() (request *QueryAgenticMemoryStreamRequest) {
+	request = &QueryAgenticMemoryStreamRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "QueryAgenticMemoryStream")
+	return
+}
+
+func NewQueryAgenticMemoryStreamResponse() (response *QueryAgenticMemoryStreamResponse) {
+	response = &QueryAgenticMemoryStreamResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) QueryAgenticMemoryStream(request *QueryAgenticMemoryStreamRequest) string {
+	return c.QueryAgenticMemoryStreamWithContext(context.Background(), request)
+}
+
+func (c *Client) QueryAgenticMemoryStreamSend(request *QueryAgenticMemoryStreamRequest) (*QueryAgenticMemoryStreamResponse, error) {
+	statusCode, msg, err := c.QueryAgenticMemoryStreamWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct QueryAgenticMemoryStreamResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) QueryAgenticMemoryStreamWithContext(ctx context.Context, request *QueryAgenticMemoryStreamRequest) string {
+	if request == nil {
+		request = NewQueryAgenticMemoryStreamRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "QueryAgenticMemoryStream")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewQueryAgenticMemoryStreamResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) QueryAgenticMemoryStreamWithContextV2(ctx context.Context, request *QueryAgenticMemoryStreamRequest) (int, string, error) {
+	if request == nil {
+		request = NewQueryAgenticMemoryStreamRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "QueryAgenticMemoryStream")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewQueryAgenticMemoryStreamResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+
+// QueryAgenticMemoryStreamStream consumes SSE events in real time. Returning an error
+// from onEvent or cancelling ctx closes the connection.
+func (c *Client) QueryAgenticMemoryStreamStream(ctx context.Context, request *QueryAgenticMemoryStreamRequest, onEvent func([]byte) error) error {
+	if request == nil {
+		request = NewQueryAgenticMemoryStreamRequest()
+	}
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "QueryAgenticMemoryStream")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+	return c.SendStream(request, onEvent)
+}
+func NewDescribeStructuredDataRequest() (request *DescribeStructuredDataRequest) {
+	request = &DescribeStructuredDataRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "DescribeStructuredData")
+	return
+}
+
+func NewDescribeStructuredDataResponse() (response *DescribeStructuredDataResponse) {
+	response = &DescribeStructuredDataResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) DescribeStructuredData(request *DescribeStructuredDataRequest) string {
+	return c.DescribeStructuredDataWithContext(context.Background(), request)
+}
+
+func (c *Client) DescribeStructuredDataSend(request *DescribeStructuredDataRequest) (*DescribeStructuredDataResponse, error) {
+	statusCode, msg, err := c.DescribeStructuredDataWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct DescribeStructuredDataResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) DescribeStructuredDataWithContext(ctx context.Context, request *DescribeStructuredDataRequest) string {
+	if request == nil {
+		request = NewDescribeStructuredDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeStructuredData")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeStructuredDataResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) DescribeStructuredDataWithContextV2(ctx context.Context, request *DescribeStructuredDataRequest) (int, string, error) {
+	if request == nil {
+		request = NewDescribeStructuredDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "DescribeStructuredData")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewDescribeStructuredDataResponse()
+	statusCode, msg, err := c.SendV2(request, response)
+	if err != nil {
+		return statusCode, "", err
+	}
+	return statusCode, msg, nil
+}
+func NewBatchModifyStructuredDataRequest() (request *BatchModifyStructuredDataRequest) {
+	request = &BatchModifyStructuredDataRequest{
+		BaseRequest: &ksyunhttp.BaseRequest{},
+	}
+	request.Init().WithApiInfo("aicp", APIVersion, "BatchModifyStructuredData")
+	return
+}
+
+func NewBatchModifyStructuredDataResponse() (response *BatchModifyStructuredDataResponse) {
+	response = &BatchModifyStructuredDataResponse{
+		BaseResponse: &ksyunhttp.BaseResponse{},
+	}
+	return
+}
+
+func (c *Client) BatchModifyStructuredData(request *BatchModifyStructuredDataRequest) string {
+	return c.BatchModifyStructuredDataWithContext(context.Background(), request)
+}
+
+func (c *Client) BatchModifyStructuredDataSend(request *BatchModifyStructuredDataRequest) (*BatchModifyStructuredDataResponse, error) {
+	statusCode, msg, err := c.BatchModifyStructuredDataWithContextV2(context.Background(), request)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:0 Err:%s] Request failed", err)
+	}
+	if statusCode < 200 || statusCode > 299 {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:Request failed] %s", statusCode, msg)
+	}
+
+	if msg == "" {
+		return nil, nil
+	}
+
+	var respStruct BatchModifyStructuredDataResponse
+	err = respStruct.FromJsonString(msg)
+	if err != nil {
+		return nil, fmt.Errorf("[KsyunSDKError] [HttpCode:%d Err:%s] %s", statusCode, err.Error(), msg)
+	}
+	return &respStruct, nil
+}
+
+func (c *Client) BatchModifyStructuredDataWithContext(ctx context.Context, request *BatchModifyStructuredDataRequest) string {
+	if request == nil {
+		request = NewBatchModifyStructuredDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "BatchModifyStructuredData")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewBatchModifyStructuredDataResponse()
+	err, msg := c.Send(request, response)
+	if err != nil {
+		return fmt.Sprintf("%+v\n", err)
+	}
+	return msg
+}
+
+func (c *Client) BatchModifyStructuredDataWithContextV2(ctx context.Context, request *BatchModifyStructuredDataRequest) (int, string, error) {
+	if request == nil {
+		request = NewBatchModifyStructuredDataRequest()
+	}
+	// 兼容字面量创建的 request，检查 BaseRequest 是否已初始化
+	if request.BaseRequest == nil {
+		request.BaseRequest = &ksyunhttp.BaseRequest{}
+		request.Init().WithApiInfo("aicp", APIVersion, "BatchModifyStructuredData")
+	}
+	request.SetContext(ctx)
+	request.SetContentType("application/json")
+
+	response := NewBatchModifyStructuredDataResponse()
 	statusCode, msg, err := c.SendV2(request, response)
 	if err != nil {
 		return statusCode, "", err
